@@ -6,6 +6,6 @@ from audio.cog import MediaPlayer
 
 
 async def setup(bot: Red):
-    cog = MediaPlayer(bot)
-    await bot.add_cog(cog)
-    await cog.initialize()
+    media_player = MediaPlayer(bot)
+    await bot.add_cog(media_player)
+    await media_player.initialize()
