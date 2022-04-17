@@ -48,4 +48,4 @@ class MediaPlayer(commands.Cog):
         if not player.is_playing:
             await player.play()
 
-        await ctx.send(message=f"{len(tracks)} Tracks enqueued")
+        await ctx.send(f"{len(tracks)} Tracks enqueued")
