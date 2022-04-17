@@ -20,7 +20,8 @@ class MediaPlayer(commands.Cog):
             await self.bot.pylav.initialize()
 
     async def cog_unload(self) -> None:
-        await self.bot.pylav.unregister(cog=self)
+        pass
+        #await self.bot.pylav.unregister(cog=self)
 
     @commands.command(name="play", aliases=["p"])
     @commands.guild_only()
@@ -30,10 +31,16 @@ class MediaPlayer(commands.Cog):
         if (player := self.pylav.get_player(ctx.guild)) is None:
             player = await self.pylav.connect_player(channel=ctx.author.voice.channel)
 
-        tracks = await self.pylav.get_tracks(query, first=True)
+        tracks = await self.pylav.get_tracks(query)
         if not tracks:
             return await ctx.send("No results found.")
-        await player.add(ctx.author.id, tracks["track"], query=query)
+        if query.is_single:
+            tracks = [tracks["tracks"].pop(0)]
+        else:
+            tracks = tracks["tracks"]
+        await player.bulk_add(requester=ctx.author.id, tracks_and_queries=[
+            (track["track"], query) for track in tracks
+        ])
 
         if not player.is_playing:
             await player.play()
