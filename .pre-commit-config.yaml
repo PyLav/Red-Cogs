@@ -1,0 +1,72 @@
+default_language_version:
+  python: python3.9
+repos:
+  - repo: https://github.com/psf/black
+    # The `refs/tags/<tag>:refs/tags/<tag>` is needed for black's required-version to work:
+    # https://github.com/psf/black/issues/2493#issuecomment-1081987650
+    rev: 'refs/tags/22.3.0:refs/tags/22.3.0'
+    hooks:
+      - id: black
+  - repo: https://github.com/Pierre-Sassoulas/black-disable-checker
+    rev: '1.0.1'
+    hooks:
+      - id: black-disable-checker
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.1.0
+    hooks:
+      # all files should end with an empty line (for one, it minimizes the diffs)
+      - id: end-of-file-fixer
+      # `.gitattributes` should technically already handle this
+      # but autocrlf can result in local files keeping the CRLF
+      # which is problematic for some tools
+      - id: mixed-line-ending
+        args:
+          - "--fix=lf"
+
+      # Trailing whitespace is evil
+      - id: trailing-whitespace
+
+      # Ensure that links to code on GitHub use the permalinks
+      - id: check-vcs-permalinks
+
+      # Syntax validation
+      - id: check-ast
+      - id: check-toml
+      # can be switched to yamllint when this issue gets resolved:
+      # https://github.com/adrienverge/yamllint/issues/238
+      - id: check-yaml
+
+      # Checks for git-related issues
+      - id: check-case-conflict
+      - id: check-merge-conflict
+
+  - repo: https://github.com/pycqa/isort
+    rev: 5.10.1
+    hooks:
+      - id: isort
+  - repo: https://github.com/myint/autoflake
+    rev: v1.4
+    hooks:
+    - id: autoflake
+      args: [--remove-all-unused-imports, --recursive, --in-place, --remove-unused-variables, --ignore-init-module-imports, --remove-duplicate-keys]
+  - repo: https://github.com/MarcoGorelli/absolufy-imports
+    rev: v0.3.1
+    hooks:
+    - id: absolufy-imports
+  - repo: https://github.com/pre-commit/mirrors-autopep8
+    rev: v1.6.0   # Use the sha / tag you want to point at
+    hooks:
+    - id: autopep8
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v2.31.1
+    hooks:
+    - id: pyupgrade
+      args: [--py39-plus]
+ci:
+  autofix_commit_msg: |
+    [pre-commit.ci] auto fixes from pre-commit.com hooks
+    for more information, see https://pre-commit.ci
+  autofix_prs: true
+  autoupdate_commit_msg: '[pre-commit.ci] pre-commit autoupdate'
+  autoupdate_schedule: weekly
+  submodules: false

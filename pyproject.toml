@@ -1,0 +1,19 @@
+[tool.isort]
+profile = "black"
+line_length = 120
+py_version = 39
+known_third_party=["aiohttp", "ujson", "red_commons", "discord", "sqlalchemy", "cached_property", "dateutils", "appdirs", "yaml"]
+known_first_party=["pylav"]
+known_local_folder=["audio"]
+
+[tool.black]
+line-length = 120
+target-version = ['py39']
+
+
+[tool.autopep8]
+max_line_length = 120
+ignore = "E712"
+in-place = true
+recursive = true
+aggressive = 3
