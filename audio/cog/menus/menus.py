@@ -524,7 +524,7 @@ class QueuePickerMenu(BaseMenu):
 
         await self._source.get_page(0)
         self.ctx = ctx
-        embed = await self.source.format_page(self, 0)
+        embed = await self.source.format_page(self, [])
         await self.prepare()
         self.message = await messageable.send(embed=embed, view=self)
         return self.message

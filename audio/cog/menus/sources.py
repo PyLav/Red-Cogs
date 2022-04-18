@@ -15,7 +15,7 @@ LOGGER = getLogger("red.3pt.mp.ui.sources")
 
 if TYPE_CHECKING:
     from audio import MediaPlayer
-    from audio.cog.menus.menus import BaseMenu, QueueMenu
+    from audio.cog.menus.menus import BaseMenu, QueueMenu, QueuePickerMenu
 
     COG = MediaPlayer
 
@@ -97,6 +97,18 @@ class QueuePickerSource(QueueSource):
         self.select_options.clear()
         self.select_mapping.clear()
         for i, (_, track) in enumerate(list(itertools.islice(self.entries, base, base + self.per_page)), start=base):
-            self.select_options.append(await QueueTrackOption.from_track(track=track, cog=self.cog, index=i))
+            self.select_options.append(await QueueTrackOption.from_track(track=track, index=i))
             self.select_mapping[track.unique_identifier] = track
         return []
+
+    async def format_page(self, menu: QueuePickerMenu, tracks: list[Track]) -> discord.Embed:
+        player = self.cog.lavalink.get_player(menu.ctx.guild.id)
+        if not player:
+            return await self.cog.lavalink.construct_embed(description="No active player found in server.")
+        if not player.current:
+            page = await self.cog.lavalink.construct_embed(description="There's nothing currently being played.")
+        else:
+            page = await player.get_queue_page(
+                page_index=menu.current_page, per_page=self.per_page, total_pages=self.get_max_pages(), embed=True
+            )
+        return page

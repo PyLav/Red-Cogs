@@ -10,17 +10,17 @@ LOGGER = getLogger("red.3pt.mp")
 
 
 async def setup(bot: Red):
-    cog = MediaPlayer(bot)
-    await bot.add_cog(cog)
+    mp = MediaPlayer(bot)
+    await bot.add_cog(mp)
 
     LOGGER.info("Guild Slash is enabled for %s", 133049272517001216)
-    bot.tree.add_command(cog.slash_play, guild=Object(id=133049272517001216))
-    bot.tree.add_command(cog.slash_now, guild=Object(id=133049272517001216))
-    bot.tree.add_command(cog.slash_skip, guild=Object(id=133049272517001216))
-    bot.tree.add_command(cog.slash_stop, guild=Object(id=133049272517001216))
-    bot.tree.add_command(cog.slash_queue, guild=Object(id=133049272517001216))
-    bot.tree.add_command(cog.slash_disconnect, guild=Object(id=133049272517001216))
-    bot.tree.add_command(cog.slash_shuffle, guild=Object(id=133049272517001216))
-    bot.tree.add_command(cog.slash_repeat, guild=Object(id=133049272517001216))
+    bot.tree.add_command(mp.slash_play, guild=Object(id=133049272517001216))
+    bot.tree.add_command(mp.slash_now, guild=Object(id=133049272517001216))
+    bot.tree.add_command(mp.slash_skip, guild=Object(id=133049272517001216))
+    bot.tree.add_command(mp.slash_stop, guild=Object(id=133049272517001216))
+    bot.tree.add_command(mp.slash_queue, guild=Object(id=133049272517001216))
+    bot.tree.add_command(mp.slash_disconnect, guild=Object(id=133049272517001216))
+    bot.tree.add_command(mp.slash_shuffle, guild=Object(id=133049272517001216))
+    bot.tree.add_command(mp.slash_repeat, guild=Object(id=133049272517001216))
 
-    await cog.initialize()
+    await mp.initialize()

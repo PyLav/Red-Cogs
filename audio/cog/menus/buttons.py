@@ -365,9 +365,9 @@ class RemoveFromQueueButton(discord.ui.Button):
         from audio.cog.menus.sources import QueuePickerSource
 
         await QueuePickerMenu(
-            cog=self.view.ctx.cog,
+            cog=self.cog,
             bot=self.view.bot,
-            source=QueuePickerSource(guild_id=self.view.ctx.guild.id, cog=self.view.ctx.cog),
+            source=QueuePickerSource(guild_id=self.view.ctx.guild.id, cog=self.cog),
             delete_after_timeout=True,
             starting_page=0,
             menu_type="remove",
@@ -396,9 +396,9 @@ class PlayNowFromQueueButton(discord.ui.Button):
         from audio.cog.menus.sources import QueuePickerSource
 
         await QueuePickerMenu(
-            cog=self.view.ctx.cog,
+            cog=self.cog,
             bot=self.view.bot,
-            source=QueuePickerSource(guild_id=self.view.ctx.guild.id, cog=self.view.ctx.cog),
+            source=QueuePickerSource(guild_id=self.view.ctx.guild.id, cog=self.cog),
             delete_after_timeout=True,
             starting_page=0,
             menu_type="play",
