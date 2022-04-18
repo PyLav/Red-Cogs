@@ -287,7 +287,6 @@ class CloseButton(discord.ui.Button):
 
     async def callback(self, interaction: discord.Interaction):
         self.view.stop()
-        await interaction.message.delete()
 
 
 class EqualizerButton(discord.ui.Button):

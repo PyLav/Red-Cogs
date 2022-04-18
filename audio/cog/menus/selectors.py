@@ -56,7 +56,6 @@ class QueueSelectTrack(discord.ui.Select):
                 ephemeral=True,
             )
             self.view.stop()
-            await interaction.message.delete()
             return
         if self.interaction_type == "remove":
             self.cog.dispatch_msg(
@@ -73,4 +72,3 @@ class QueueSelectTrack(discord.ui.Select):
                 args=f" t {track.uri}",
             )
         self.view.stop()
-        await interaction.message.delete()
