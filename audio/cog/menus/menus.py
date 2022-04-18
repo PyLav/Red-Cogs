@@ -105,14 +105,17 @@ class BaseMenu(discord.ui.View):
             return {"embed": value, "content": None}
 
     async def send_initial_message(self, ctx: commands.Context | discord.Interaction, channel: discord.abc.Messageable):
+        messageable = channel
         if isinstance(ctx, discord.Interaction):
             self.author = ctx.user
+            if ctx.response.is_done():
+                messageable = ctx.followup
         else:
             self.author = ctx.author
         self.ctx = ctx
         kwargs = await self.get_page(self.current_page)
         await self.prepare()
-        self.message = await channel.send(**kwargs, view=self)
+        self.message = await messageable.send(**kwargs, view=self)
         return self.message
 
     async def show_page(self, page_number, interaction: discord.Interaction):
@@ -510,9 +513,12 @@ class QueuePickerMenu(BaseMenu):
         self.ctx = ctx
         await self.send_initial_message(ctx, ctx.channel)
 
-    async def send_initial_message(self, ctx, channel):
+    async def send_initial_message(self, ctx: commands.Context | discord.Interaction, channel: discord.abc.Messageable):
+        messageable = channel
         if isinstance(ctx, discord.Interaction):
             self.author = ctx.user
+            if ctx.response.is_done():
+                messageable = ctx.followup
         else:
             self.author = ctx.author
 
@@ -520,7 +526,7 @@ class QueuePickerMenu(BaseMenu):
         self.ctx = ctx
         embed = await self.source.format_page(self, 0)
         await self.prepare()
-        self.message = await channel.send(embed=embed, view=self)
+        self.message = await messageable.send(embed=embed, view=self)
         return self.message
 
     async def show_page(self, page_number: int, interaction: discord.Interaction):

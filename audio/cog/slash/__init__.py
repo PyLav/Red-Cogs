@@ -121,7 +121,7 @@ class MPSlash(MPMixin):
     async def slash_queue(self, interaction: discord.Interaction):
         guild = interaction.guild
         context = interaction.response
-        await context.defer(ephemeral=True)
+        await context.defer(ephemeral=True, thinking=False)
         player = self.lavalink.get_player(guild)
         if not player:
             await interaction.followup.send("Not connected to a voice channel.", ephemeral=True)
