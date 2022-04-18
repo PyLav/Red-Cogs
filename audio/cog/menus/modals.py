@@ -43,7 +43,8 @@ class EnqueueModal(discord.ui.Modal):
         self.add_item(self.text)
 
     async def on_submit(self, interaction: discord.Interaction):
-        await self.cog.slash_play(
+        await self.cog.slash_play.callback(
+            self=self.cog,
             interaction=interaction,
             query=self.text.value,
         )

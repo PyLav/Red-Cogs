@@ -24,22 +24,27 @@ class MPSlash(MPMixin):
 
         if (player := self.lavalink.get_player(guild)) is None:
             player = await self.lavalink.connect_player(channel=user.voice.channel)
-
-        tracks: dict = await self.lavalink.get_tracks(query)
-        if not tracks:
-            await interaction.followup.send(f"No results found for {await query.query_to_string()}", ephemeral=True)
-            return
-        if query.is_single or query.is_search:
+        is_partial = query.is_search
+        if not is_partial:
+            tracks: dict = await self.lavalink.get_tracks(query)
+            if not tracks:
+                await interaction.followup.send(f"No results found for {await query.query_to_string()}", ephemeral=True)
+                return
+        if is_partial:
+            track = Track(node=player.node, data=None, query=query, extra={"requester": user.id})
+            await player.add(requester=user.id, track=track, query=query)
+            await interaction.followup.send(f"{await track.get_track_display_name()} enqueued", ephemeral=True)
+        elif query.is_single:
             track = Track(node=player.node, data=tracks["tracks"].pop(0), query=query, extra={"requester": user.id})
             await player.add(requester=user.id, track=track["track"], query=query)
-            await interaction.followup.send(f"{await track.get_track_display_name()} Tracks enqueued", ephemeral=True)
+            await interaction.followup.send(f"{await track.get_track_display_name()} enqueued", ephemeral=True)
         else:
             tracks = tracks["tracks"]
             track_count = len(tracks)
             await player.bulk_add(
                 requester=user.id, tracks_and_queries=[track["track"] async for track in AsyncIter(tracks)]
             )
-            await interaction.followup.send(f"{track_count} Tracks enqueued", ephemeral=True)
+            await interaction.followup.send(f"{track_count} tracks enqueued", ephemeral=True)
 
         if not player.is_playing:
             await player.play()
@@ -158,7 +163,12 @@ class MPSlash(MPMixin):
             player.repeat_current = False
             msg = "Repeating the queue"
         else:
-            player.repeat_current = True
-            player.repeat_queue = False
-            msg = f"Repeating {await player.current.get_track_display_name(with_url=True)}"
+            if player.repeat_queue:
+                player.repeat_queue = False
+                player.repeat_current = False
+                msg = "Repeating disabled"
+            else:
+                player.repeat_current = True
+                player.repeat_queue = False
+                msg = f"Repeating {await player.current.get_track_display_name(with_url=True)}"
         await interaction.followup.send(embed=await self.lavalink.construct_embed(description=msg), ephemeral=True)

@@ -1,19 +1,14 @@
 from __future__ import annotations
 
-import asyncio
-import datetime
 from abc import ABC
-from typing import Literal, Optional, Union
+from typing import Literal
 
-import discord
 from discord import Object
-from discord.abc import Messageable
-from discord.types.embed import EmbedType
 from redbot.core import Config, commands
 from redbot.core.bot import Red
 from redbot.core.data_manager import cog_data_path
 
-from pylav import Client, CogAlreadyRegistered, CogHasBeenRegistered, Query, converters
+from pylav import Client, CogAlreadyRegistered, CogHasBeenRegistered, Track, converters
 from pylav.utils import AsyncIter
 
 from audio.cog.abc import MPMixin
@@ -78,27 +73,34 @@ class MediaPlayer(
     @commands.is_owner()
     async def command_play(self, context: commands.Context, *, query: converters.QueryConverter) -> None:
         """Match query to a song and play it."""
-        query: Query
-        if (player := self.lavalink.get_player(context.guild)) is None:
-            player = await self.lavalink.connect_player(channel=context.author.voice.channel)
-
-        tracks: dict = await self.lavalink.get_tracks(query)
-        if not tracks:
-            await context.send("No results found.")
-            return
-        if query.is_single:
-            track = tracks["tracks"].pop(0)
-            await player.add(requester=context.author.id, track=track["track"], query=query)
+        user = context.author
+        guild = context.guild
+        if (player := self.lavalink.get_player(guild)) is None:
+            player = await self.lavalink.connect_player(channel=user.voice.channel)
+        is_partial = query.is_search
+        if not is_partial:
+            tracks: dict = await self.lavalink.get_tracks(query)
+            if not tracks:
+                await context.send(f"No results found for {await query.query_to_string()}")
+                return
+        if is_partial:
+            track = Track(node=player.node, data=None, query=query, extra={"requester": user.id})
+            await player.add(requester=user.id, track=track, query=query)
+            await context.send(f"{await track.get_track_display_name()} enqueued")
+        elif query.is_single:
+            track = Track(node=player.node, data=tracks["tracks"].pop(0), query=query, extra={"requester": user.id})
+            await player.add(requester=user.id, track=track["track"], query=query)
+            await context.send(f"{await track.get_track_display_name()} enqueued")
         else:
             tracks = tracks["tracks"]
+            track_count = len(tracks)
             await player.bulk_add(
-                requester=context.author.id, tracks_and_queries=[track["track"] async for track in AsyncIter(tracks)]
+                requester=user.id, tracks_and_queries=[track["track"] async for track in AsyncIter(tracks)]
             )
+            await context.send(f"{track_count} tracks enqueued")
 
         if not player.is_playing:
             await player.play()
-
-        await context.send(f"{len(tracks)} Tracks enqueued")
 
     @commands.command(name="sync")
     @commands.guild_only()

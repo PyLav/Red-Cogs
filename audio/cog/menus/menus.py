@@ -26,6 +26,7 @@ from audio.cog.menus.buttons import (
     SkipTrackButton,
     StopTrackButton,
     ToggleRepeatButton,
+    ToggleRepeatQueueButton,
 )
 
 if TYPE_CHECKING:
@@ -192,88 +193,112 @@ class QueueMenu(BaseMenu):
             "\N{BLACK RIGHT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
             direction=1,
             row=0,
+            cog=cog,
         )
         self.backward_button = AudioNavigateButton(
             discord.ButtonStyle.grey,
             "\N{BLACK LEFT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
             direction=-1,
             row=0,
+            cog=cog,
         )
         self.first_button = AudioNavigateButton(
             discord.ButtonStyle.grey,
             "\N{BLACK LEFT-POINTING DOUBLE TRIANGLE}",
             direction=0,
             row=0,
+            cog=cog,
         )
         self.last_button = AudioNavigateButton(
             discord.ButtonStyle.grey,
             "\N{BLACK RIGHT-POINTING DOUBLE TRIANGLE}",
             direction=self.source.get_max_pages,
             row=0,
+            cog=cog,
         )
         self.refresh_button = RefreshButton(
             discord.ButtonStyle.grey,
             row=0,
+            cog=cog,
         )
 
         self.queue_disconnect = DisconnectButton(
             discord.ButtonStyle.red,
             row=1,
+            cog=cog,
         )
         self.queue_info_button = QueueInfoButton(
             discord.ButtonStyle.blurple,
             row=1,
+            cog=cog,
+        )
+        self.repeat_queue_button_on = ToggleRepeatQueueButton(
+            discord.ButtonStyle.blurple,
+            row=1,
+            cog=cog,
         )
         self.repeat_button_on = ToggleRepeatButton(
             discord.ButtonStyle.blurple,
             row=1,
+            cog=cog,
         )
         self.repeat_button_off = ToggleRepeatButton(
             discord.ButtonStyle.grey,
             row=1,
+            cog=cog,
         )
 
         self.close_button = CloseButton(
             style=discord.ButtonStyle.red,
             row=1,
+            cog=cog,
         )
 
         self.previous_track_button = PreviousTrackButton(
             discord.ButtonStyle.grey,
             row=2,
+            cog=cog,
         )
         self.stop_button = StopTrackButton(
             discord.ButtonStyle.grey,
             row=2,
+            cog=cog,
         )
         self.paused_button = PauseTrackButton(
             discord.ButtonStyle.blurple,
             row=2,
+            cog=cog,
         )
         self.resume_button = ResumeTrackButton(
             discord.ButtonStyle.grey,
             row=2,
+            cog=cog,
         )
         self.skip_button = SkipTrackButton(
             discord.ButtonStyle.grey,
             row=2,
+            cog=cog,
         )
         self.shuffle_button = ShuffleButton(
             discord.ButtonStyle.grey,
             row=2,
+            cog=cog,
         )
 
         self.decrease_volume_button = DecreaseVolumeButton(
             discord.ButtonStyle.grey,
             row=3,
+            cog=cog,
         )
         self.increase_volume_button = IncreaseVolumeButton(
             discord.ButtonStyle.grey,
             row=3,
+            cog=cog,
         )
         self.equalize_button = EqualizerButton(
             discord.ButtonStyle.grey,
             row=3,
+            cog=cog,
         )
 
         self.enqueue_button = EnqueueButton(
@@ -307,6 +332,7 @@ class QueueMenu(BaseMenu):
 
         self.repeat_button_on.disabled = False
         self.repeat_button_off.disabled = False
+        self.repeat_queue_button_on.disabled = False
 
         self.forward_button.disabled = False
         self.backward_button.disabled = False
@@ -358,6 +384,7 @@ class QueueMenu(BaseMenu):
             self.enqueue_button.disabled = True
             self.remove_from_queue_button.disabled = True
             self.play_now_button.disabled = True
+            self.repeat_queue_button_on.disabled = True
 
             self.add_item(self.resume_button)
             self.add_item(self.repeat_button_off)
@@ -380,7 +407,7 @@ class QueueMenu(BaseMenu):
             if player.repeat_current:
                 self.add_item(self.repeat_button_on)
             elif player.repeat_queue:
-                self.add_item(self.repeat_button_on)
+                self.add_item(self.repeat_queue_button_on)
             else:
                 self.add_item(self.repeat_button_off)
 
@@ -435,32 +462,38 @@ class QueuePickerMenu(BaseMenu):
             "\N{BLACK RIGHT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
             direction=1,
             row=4,
+            cog=cog,
         )
         self.backward_button = AudioNavigateButton(
             discord.ButtonStyle.grey,
             "\N{BLACK LEFT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
             direction=-1,
             row=4,
+            cog=cog,
         )
         self.first_button = AudioNavigateButton(
             discord.ButtonStyle.grey,
             "\N{BLACK LEFT-POINTING DOUBLE TRIANGLE}",
             direction=0,
             row=4,
+            cog=cog,
         )
         self.last_button = AudioNavigateButton(
             discord.ButtonStyle.grey,
             "\N{BLACK RIGHT-POINTING DOUBLE TRIANGLE}",
             direction=self.source.get_max_pages,
             row=4,
+            cog=cog,
         )
         self.refresh_button = RefreshButton(
             discord.ButtonStyle.grey,
             row=4,
+            cog=cog,
         )
         self.close_button = CloseButton(
             style=discord.ButtonStyle.red,
             row=4,
+            cog=cog,
         )
         self.select_view: QueueSelectTrack | None = None
         self.add_item(self.close_button)

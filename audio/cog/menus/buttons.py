@@ -6,8 +6,17 @@ import discord
 from red_commons.logging import getLogger
 
 if TYPE_CHECKING:
+    from redbot.core.bot import Red
+
     from audio.cog import MediaPlayer
 
+    COG = MediaPlayer
+    CLIENT = Red
+else:
+    from discord.ext.commands import Cog
+
+    COG = Cog
+    CLIENT = discord.Client
 
 LOGGER = getLogger("red.3pt.mp.ui.buttons")
 
@@ -20,9 +29,11 @@ class AudioNavigateButton(discord.ui.Button):
         direction: int | Callable[[], int],
         row: int = None,
         label: str = None,
+        cog: COG = None,
     ):
-        super().__init__(style=style, emoji=emoji, row=row, label=label)
 
+        super().__init__(style=style, emoji=emoji, row=row, label=label)
+        self.cog = cog
         self._direction = direction
 
     @property
@@ -49,12 +60,13 @@ class AudioNavigateButton(discord.ui.Button):
 
 
 class PreviousTrackButton(discord.ui.Button):
-    def __init__(self, style: discord.ButtonStyle, row: int = None):
+    def __init__(self, style: discord.ButtonStyle, row: int = None, cog: COG = None):
         super().__init__(
             style=style,
             emoji=discord.PartialEmoji(name="previous", id=965672202424950795, animated=False),
             row=row,
         )
+        self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
         await interaction.response.defer()
@@ -64,27 +76,27 @@ class PreviousTrackButton(discord.ui.Button):
 
 
 class StopTrackButton(discord.ui.Button):
-    def __init__(self, style: discord.ButtonStyle, row: int = None):
+    def __init__(self, style: discord.ButtonStyle, row: int = None, cog: COG = None):
         super().__init__(
             style=style,
             emoji=discord.PartialEmoji(name="stop", id=965672202563362926, animated=False),
             row=row,
         )
+        self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
         await interaction.response.defer()
-        self.view.cog.dispatch_msg(  # FIXME:
-            ctx=self.view.ctx, interaction=interaction, command=self.view.cog.command_stop, args=""
-        )
+        await self.cog.slash_stop.callback(self.cog, interaction)
 
 
 class PauseTrackButton(discord.ui.Button):
-    def __init__(self, style: discord.ButtonStyle, row: int = None):
+    def __init__(self, style: discord.ButtonStyle, row: int = None, cog: COG = None):
         super().__init__(
             style=style,
             emoji=discord.PartialEmoji(name="pause", id=965672202466910268, animated=False),
             row=row,
         )
+        self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
         await interaction.response.defer()
@@ -94,18 +106,20 @@ class PauseTrackButton(discord.ui.Button):
             command=self.view.cog.command_pause,
             args="",
         )
+
         await self.view.prepare()
         kwargs = await self.view.get_page(self.view.current_page)
         await interaction.response.edit_message(view=self.view, **kwargs)
 
 
 class ResumeTrackButton(discord.ui.Button):
-    def __init__(self, style: discord.ButtonStyle, row: int = None):
+    def __init__(self, style: discord.ButtonStyle, row: int = None, cog: COG = None):
         super().__init__(
             style=style,
             emoji=discord.PartialEmoji(name="play", id=965672202441723994, animated=False),
             row=row,
         )
+        self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
         await interaction.response.defer()
@@ -121,30 +135,27 @@ class ResumeTrackButton(discord.ui.Button):
 
 
 class SkipTrackButton(discord.ui.Button):
-    def __init__(self, style: discord.ButtonStyle, row: int = None):
+    def __init__(self, style: discord.ButtonStyle, row: int = None, cog: COG = None):
         super().__init__(
             style=style,
             emoji=discord.PartialEmoji(name="next", id=965672202416570428, animated=False),
             row=row,
         )
+        self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
         await interaction.response.defer()
-        self.view.cog.dispatch_msg(  # FIXME:
-            ctx=self.view.ctx, interaction=interaction, command=self.view.cog.command_skip, args=""
-        )
-        await self.view.prepare()
-        kwargs = await self.view.get_page(self.view.current_page)
-        await interaction.response.edit_message(view=self.view, **kwargs)
+        await self.cog.slash_skip.callback(self.cog, interaction)
 
 
 class RefreshButton(discord.ui.Button):
-    def __init__(self, style: discord.ButtonStyle, row: int = None):
+    def __init__(self, style: discord.ButtonStyle, row: int = None, cog: COG = None):
         super().__init__(
             style=style,
             emoji="\N{ANTICLOCKWISE DOWNWARDS AND UPWARDS OPEN CIRCLE ARROWS}",
             row=row,
         )
+        self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
         await self.view.prepare()
@@ -153,12 +164,13 @@ class RefreshButton(discord.ui.Button):
 
 
 class IncreaseVolumeButton(discord.ui.Button):
-    def __init__(self, style: discord.ButtonStyle, row: int = None):
+    def __init__(self, style: discord.ButtonStyle, row: int = None, cog: COG = None):
         super().__init__(
             style=style,
             emoji=discord.PartialEmoji(name="volumeup", id=965672202517225492, animated=False),
             row=row,
         )
+        self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
         success = await self.view.cog.menu_increase_volume(self.view.ctx, interaction)
@@ -169,12 +181,13 @@ class IncreaseVolumeButton(discord.ui.Button):
 
 
 class DecreaseVolumeButton(discord.ui.Button):
-    def __init__(self, style: discord.ButtonStyle, row: int = None):
+    def __init__(self, style: discord.ButtonStyle, row: int = None, cog: COG = None):
         super().__init__(
             style=style,
             emoji=discord.PartialEmoji(name="volumedown", id=965672202399801374, animated=False),
             row=row,
         )
+        self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
         success = await self.view.cog.menu_decrease_volume(self.view.ctx, interaction)
@@ -185,60 +198,76 @@ class DecreaseVolumeButton(discord.ui.Button):
 
 
 class ToggleRepeatButton(discord.ui.Button):
-    def __init__(self, style: discord.ButtonStyle, row: int = None):
+    def __init__(self, style: discord.ButtonStyle, row: int = None, cog: COG = None):
         super().__init__(
             style=style,
             emoji=discord.PartialEmoji(name="loop", id=965672202143928362, animated=False),
             row=row,
         )
+        self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
-        success = await self.view.cog.menu_toggle_repeat(self.view.ctx, interaction)
-        if success:
-            await self.view.prepare()
-            kwargs = await self.view.get_page(self.view.current_page)
-            await interaction.response.edit_message(view=self.view, **kwargs)
+        player = self.cog.lavalink.get_player(self.view.ctx.guild)
+        if not player:
+            return await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(title="Not connected to a voice channel."), ephemeral=True
+            )
+        if player.repeat_current:
+            repeat_queue = True
+        else:
+            repeat_queue = False
+        await self.cog.slash_repeat.callback(self.cog, interaction, queue=repeat_queue)
+        await self.view.prepare()
+        kwargs = await self.view.get_page(self.view.current_page)
+        await (await interaction.original_message()).edit(view=self.view, **kwargs)
 
 
 class ToggleRepeatQueueButton(discord.ui.Button):
-    def __init__(self, style: discord.ButtonStyle, row: int = None):
+    def __init__(self, style: discord.ButtonStyle, row: int = None, cog: COG = None):
         super().__init__(
             style=style,
             emoji=discord.PartialEmoji(name="repeat", id=965672202412388352, animated=False),
             row=row,
         )
+        self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
-        success = await self.view.cog.menu_toggle_repeat(self.view.ctx, interaction)
-        if success:
-            await self.view.prepare()
-            kwargs = await self.view.get_page(self.view.current_page)
-            await interaction.response.edit_message(view=self.view, **kwargs)
+        player = self.cog.lavalink.get_player(self.view.ctx.guild)
+        if not player:
+            return await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(title="Not connected to a voice channel."), ephemeral=True
+            )
+        if player.repeat_current:
+            repeat_queue = True
+        else:
+            repeat_queue = False
+        await self.cog.slash_repeat.callback(self.cog, interaction, queue=repeat_queue)
+        await self.view.prepare()
+        kwargs = await self.view.get_page(self.view.current_page)
+        await (await interaction.original_message()).edit(view=self.view, **kwargs)
 
 
 class ShuffleButton(discord.ui.Button):
-    def __init__(self, style: discord.ButtonStyle, row: int = None):
+    def __init__(self, style: discord.ButtonStyle, row: int = None, cog: COG = None):
         super().__init__(
             style=style,
             emoji=discord.PartialEmoji(name="random", id=965672202458509463, animated=False),
             row=row,
         )
+        self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
-        success = await self.view.cog.menu_shuffle(self.view.ctx, interaction)
-        if success:
-            await self.view.prepare()
-            kwargs = await self.view.get_page(self.view.current_page)
-            await interaction.response.edit_message(view=self.view, **kwargs)
+        await self.cog.slash_shuffle.callback(self.cog, interaction)
 
 
 class QueueInfoButton(discord.ui.Button):
-    def __init__(self, style: discord.ButtonStyle, row: int = None):
+    def __init__(self, style: discord.ButtonStyle, row: int = None, cog: COG = None):
         super().__init__(
             style=style,
             emoji=discord.PartialEmoji(name="menu", id=965672202466910238, animated=False),
             row=row,
         )
+        self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
         await self.view.prepare()
@@ -248,12 +277,13 @@ class QueueInfoButton(discord.ui.Button):
 
 
 class CloseButton(discord.ui.Button):
-    def __init__(self, style: discord.ButtonStyle, row: int = None):
+    def __init__(self, style: discord.ButtonStyle, row: int = None, cog: COG = None):
         super().__init__(
             style=style,
             emoji=discord.PartialEmoji(name="minimize", animated=False, id=965672202424963142),
             row=row,
         )
+        self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
         self.view.stop()
@@ -261,12 +291,13 @@ class CloseButton(discord.ui.Button):
 
 
 class EqualizerButton(discord.ui.Button):
-    def __init__(self, style: discord.ButtonStyle, row: int = None):
+    def __init__(self, style: discord.ButtonStyle, row: int = None, cog: COG = None):
         super().__init__(
             style=style,
             emoji=discord.PartialEmoji(name="equalizer", animated=False, id=965672202454323250),
             row=row,
         )
+        self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
         await interaction.response.defer()
@@ -282,24 +313,22 @@ class EqualizerButton(discord.ui.Button):
 
 
 class DisconnectButton(discord.ui.Button):
-    def __init__(self, style: discord.ButtonStyle, row: int = None):
+    def __init__(self, style: discord.ButtonStyle, row: int = None, cog: COG = None):
         super().__init__(
             style=style,
             emoji=discord.PartialEmoji(name="power", animated=False, id=965672202395586691),
             row=row,
         )
+        self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
-        success = await self.view.cog.menu_disconnect(self.view.ctx, interaction)
-        if success:
-            self.view.stop()
-            await interaction.message.delete()
+        await self.cog.slash_disconnect.callback(self.cog, interaction)
 
 
 class EnqueueButton(discord.ui.Button):
     def __init__(
         self,
-        cog: MediaPlayer,
+        cog: COG,
         style: discord.ButtonStyle,
         row: int = None,
     ):
@@ -320,7 +349,7 @@ class EnqueueButton(discord.ui.Button):
 class RemoveFromQueueButton(discord.ui.Button):
     def __init__(
         self,
-        cog: MediaPlayer,
+        cog: COG,
         style: discord.ButtonStyle,
         row: int = None,
     ):
@@ -351,7 +380,7 @@ class RemoveFromQueueButton(discord.ui.Button):
 class PlayNowFromQueueButton(discord.ui.Button):
     def __init__(
         self,
-        cog: MediaPlayer,
+        cog: COG,
         style: discord.ButtonStyle,
         row: int = None,
     ):
