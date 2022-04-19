@@ -23,7 +23,7 @@ class HybridCommands(MPMixin, ABC):
     async def command_play(self, ctx: commands.Context, *, query: converters.QueryConverter):
         """Displays your currently played spotify song"""
         if isinstance(ctx, discord.Interaction):
-            ctx = await Context.from_interaction(ctx)
+            ctx = await self.bot.get_context(ctx)
         await ctx.defer(ephemeral=True)
 
         if (player := self.lavalink.get_player(ctx.guild)) is None:
@@ -83,9 +83,9 @@ class HybridCommands(MPMixin, ABC):
 
     @commands.hybrid_command(name="np", description="Shows the track currently being played.", aliases=["now"])
     @app_commands.guilds(MY_GUILD)
-    async def commmand_now(self, ctx: commands.Context):
+    async def command_now(self, ctx: commands.Context):
         if isinstance(ctx, discord.Interaction):
-            ctx = await Context.from_interaction(ctx)
+            ctx = await self.bot.get_context(ctx)
         await ctx.defer(ephemeral=True)
         player = self.lavalink.get_player(ctx.guild)
         if not player:
@@ -107,9 +107,9 @@ class HybridCommands(MPMixin, ABC):
 
     @commands.hybrid_command(name="skip", description="Skips or votes to skip the current track.")
     @app_commands.guilds(MY_GUILD)
-    async def commmand_skip(self, ctx: commands.Context):
+    async def command_skip(self, ctx: commands.Context):
         if isinstance(ctx, discord.Interaction):
-            ctx = await Context.from_interaction(ctx)
+            ctx = await self.bot.get_context(ctx)
         await ctx.defer(ephemeral=True)
         player = self.lavalink.get_player(ctx.guild)
         if not player:
@@ -135,9 +135,10 @@ class HybridCommands(MPMixin, ABC):
 
     @commands.hybrid_command(name="stop", description="Stops the player and remove all tracks from the queue.")
     @app_commands.guilds(MY_GUILD)
-    async def commmand_stop(self, ctx: commands.Context):
+    @commands.is_owner()
+    async def command_stop(self, ctx: commands.Context):
         if isinstance(ctx, discord.Interaction):
-            ctx = await Context.from_interaction(ctx)
+            ctx = await self.bot.get_context(ctx)
         await ctx.defer(ephemeral=True)
         player = self.lavalink.get_player(ctx.guild)
         if not player:
@@ -163,9 +164,10 @@ class HybridCommands(MPMixin, ABC):
         name="dc", description="Disconnects the player from the voice channel.", aliases=["disconnect"]
     )
     @app_commands.guilds(MY_GUILD)
+    @commands.is_owner()
     async def command_disconnect(self, ctx: commands.Context):
         if isinstance(ctx, discord.Interaction):
-            ctx = await Context.from_interaction(ctx)
+            ctx = await self.bot.get_context(ctx)
         await ctx.defer(ephemeral=True)
         LOGGER.info("Disconnecting from voice channel - {}", ctx.author)
         player = self.lavalink.get_player(ctx.guild)
@@ -185,9 +187,9 @@ class HybridCommands(MPMixin, ABC):
 
     @commands.hybrid_command(name="queue", description="Shows the current queue for the player.", aliases=["q"])
     @app_commands.guilds(MY_GUILD)
-    async def commmand_queue(self, ctx: commands.Context):
+    async def command_queue(self, ctx: commands.Context):
         if isinstance(ctx, discord.Interaction):
-            ctx = await Context.from_interaction(ctx)
+            ctx = await self.bot.get_context(ctx)
         await ctx.defer(ephemeral=True)
         player = self.lavalink.get_player(ctx.guild)
         if not player:
@@ -210,9 +212,9 @@ class HybridCommands(MPMixin, ABC):
 
     @commands.hybrid_command(name="shuffle", description="Shuffles the player's queue.")
     @app_commands.guilds(MY_GUILD)
-    async def commmand_shuffle(self, ctx: commands.Context):
+    async def command_shuffle(self, ctx: commands.Context):
         if isinstance(ctx, discord.Interaction):
-            ctx = await Context.from_interaction(ctx)
+            ctx = await self.bot.get_context(ctx)
         await ctx.defer(ephemeral=True)
         player = self.lavalink.get_player(ctx.guild)
         if not player:
@@ -241,9 +243,9 @@ class HybridCommands(MPMixin, ABC):
 
     @commands.hybrid_command(name="repeat", description="Set whether to repeat current song or queue.")
     @app_commands.guilds(MY_GUILD)
-    async def commmand_repeat(self, ctx: commands.Context, queue: Optional[bool] = None):
+    async def command_repeat(self, ctx: commands.Context, queue: Optional[bool] = None):
         if isinstance(ctx, discord.Interaction):
-            ctx = await Context.from_interaction(ctx)
+            ctx = await self.bot.get_context(ctx)
         await ctx.defer(ephemeral=True)
         player = self.lavalink.get_player(ctx.guild)
         if not player:

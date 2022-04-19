@@ -78,7 +78,7 @@ class StopTrackButton(discord.ui.Button):
 
     async def callback(self, interaction: discord.Interaction):
         await interaction.response.defer()
-        await self.cog.commmand_stop.callback(self.cog, interaction)
+        await self.cog.command_stop.callback(self.cog, interaction)
 
 
 class PauseTrackButton(discord.ui.Button):
@@ -136,8 +136,9 @@ class SkipTrackButton(discord.ui.Button):
         self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
-        await interaction.response.defer()
-        await self.cog.commmand_skip.callback(self.cog, interaction)
+        if not getattr(interaction, '_cs_command', None):
+            interaction._cs_command = self.cog.command_skip
+        await self.cog.command_skip.callback(self.cog, await self.cog.bot.get_context(interaction))
 
 
 class RefreshButton(discord.ui.Button):
@@ -211,7 +212,11 @@ class ToggleRepeatButton(discord.ui.Button):
             repeat_queue = True
         else:
             repeat_queue = False
-        await self.cog.commmand_repeat.callback(self.cog, interaction, queue=repeat_queue)
+        if not getattr(interaction, '_cs_command', None):
+            interaction._cs_command = self.cog.command_repeat
+        await self.cog.command_repeat.callback(
+            self.cog, await self.cog.bot.get_context(interaction), queue=repeat_queue
+        )
         await self.view.prepare()
         kwargs = await self.view.get_page(self.view.current_page)
         await (await interaction.original_message()).edit(view=self.view, **kwargs)
@@ -239,7 +244,11 @@ class ToggleRepeatQueueButton(discord.ui.Button):
             repeat_queue = True
         else:
             repeat_queue = False
-        await self.cog.commmand_repeat.callback(self.cog, interaction, queue=repeat_queue)
+        if not getattr(interaction, '_cs_command', None):
+            interaction._cs_command = self.cog.command_repeat
+        await self.cog.command_repeat.callback(
+            self.cog, await self.cog.bot.get_context(interaction), queue=repeat_queue
+        )
         await self.view.prepare()
         kwargs = await self.view.get_page(self.view.current_page)
         await (await interaction.original_message()).edit(view=self.view, **kwargs)
@@ -255,23 +264,9 @@ class ShuffleButton(discord.ui.Button):
         self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
-        await self.cog.commmand_shuffle.callback(self.cog, interaction)
-
-
-class QueueInfoButton(discord.ui.Button):
-    def __init__(self, style: discord.ButtonStyle, row: int = None, cog: COG_TYPE = None):
-        super().__init__(
-            style=style,
-            emoji=discord.PartialEmoji(name="menu", id=965672202466910238, animated=False),
-            row=row,
-        )
-        self.cog = cog
-
-    async def callback(self, interaction: discord.Interaction):
-        await self.view.prepare()
-        await self.view.ctx.send_help(self.view.cog.command_queue)
-        kwargs = await self.view.get_page(self.view.current_page)
-        await interaction.response.edit_message(view=self.view, **kwargs)
+        if not getattr(interaction, '_cs_command', None):
+            interaction._cs_command = self.cog.command_shuffle
+        await self.cog.command_shuffle.callback(self.cog, await self.cog.bot.get_context(interaction))
 
 
 class CloseButton(discord.ui.Button):
@@ -300,7 +295,7 @@ class EqualizerButton(discord.ui.Button):
 
     async def callback(self, interaction: discord.Interaction):
         await interaction.response.defer()
-        self.view.cog.dispatch_msg(  # FIXME:
+        self.cog.dispatch_msg(  # FIXME:
             ctx=self.view.ctx,
             interaction=interaction,
             command=self.view.cog.command_equalizer,
@@ -321,7 +316,9 @@ class DisconnectButton(discord.ui.Button):
         self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
-        await self.cog.command_disconnect.callback(self.cog, interaction)
+        if not getattr(interaction, '_cs_command', None):
+            interaction._cs_command = self.cog.command_disconnect
+        await self.cog.command_disconnect.callback(self.cog, await self.cog.bot.get_context(interaction))
 
 
 class EnqueueButton(discord.ui.Button):
@@ -363,14 +360,14 @@ class RemoveFromQueueButton(discord.ui.Button):
         from audio.cog.menus.menus import QueuePickerMenu
         from audio.cog.menus.sources import QueuePickerSource
 
+        interaction._cs_command = self.cog.command_queue_remove
         await QueuePickerMenu(
             cog=self.cog,
-            bot=self.view.bot,
-            source=QueuePickerSource(guild_id=self.view.ctx.guild.id, cog=self.cog),
+            source=QueuePickerSource(guild_id=interaction.guild.id, cog=self.cog),
             delete_after_timeout=True,
             starting_page=0,
             menu_type="remove",
-        ).start(self.view.ctx)
+        ).start(await self.cog.bot.get_context(interaction))
         await self.view.prepare()
         kwargs = await self.view.get_page(self.view.current_page)
         await interaction.response.edit_message(view=self.view, **kwargs)
@@ -394,14 +391,16 @@ class PlayNowFromQueueButton(discord.ui.Button):
         from audio.cog.menus.menus import QueuePickerMenu
         from audio.cog.menus.sources import QueuePickerSource
 
+        if not getattr(interaction, '_cs_command', None):
+            interaction._cs_command = self.cog.command_play
+
         await QueuePickerMenu(
             cog=self.cog,
-            bot=self.view.bot,
-            source=QueuePickerSource(guild_id=self.view.ctx.guild.id, cog=self.cog),
+            source=QueuePickerSource(guild_id=interaction.guild.id, cog=self.cog),
             delete_after_timeout=True,
             starting_page=0,
             menu_type="play",
-        ).start(self.view.ctx)
+        ).start(await self.cog.bot.get_context(interaction))
         await self.view.prepare()
         kwargs = await self.view.get_page(self.view.current_page)
         await interaction.response.edit_message(view=self.view, **kwargs)

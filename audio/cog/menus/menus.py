@@ -18,7 +18,6 @@ from audio.cog.menus.buttons import (
     PauseTrackButton,
     PlayNowFromQueueButton,
     PreviousTrackButton,
-    QueueInfoButton,
     RefreshButton,
     RemoveFromQueueButton,
     ResumeTrackButton,
@@ -96,18 +95,15 @@ class BaseMenu(discord.ui.View):
         elif isinstance(value, discord.Embed):
             return {"embed": value, "content": None}
 
-    async def send_initial_message(self, ctx: commands.Context | discord.Interaction, channel: discord.abc.Messageable):
-        messageable = channel
+    async def send_initial_message(self, ctx: commands.Context | discord.Interaction):
         if isinstance(ctx, discord.Interaction):
             self.author = ctx.user
-            if ctx.response.is_done():
-                messageable = ctx.followup
         else:
             self.author = ctx.author
         self.ctx = ctx
         kwargs = await self.get_page(self.current_page)
         await self.prepare()
-        self.message = await messageable.send(**kwargs, view=self)
+        self.message = await ctx.send(**kwargs, view=self)
         return self.message
 
     async def show_page(self, page_number, interaction: discord.Interaction):
@@ -222,11 +218,6 @@ class QueueMenu(BaseMenu):
             row=1,
             cog=cog,
         )
-        self.queue_info_button = QueueInfoButton(
-            discord.ButtonStyle.blurple,
-            row=1,
-            cog=cog,
-        )
         self.repeat_queue_button_on = ToggleRepeatQueueButton(
             discord.ButtonStyle.blurple,
             row=1,
@@ -315,9 +306,9 @@ class QueueMenu(BaseMenu):
     async def prepare(self):
         self.clear_items()
         max_pages = self.source.get_max_pages()
-        self.add_item(self.close_button)
+        if not self.ctx.interaction:
+            self.add_item(self.close_button)
         self.add_item(self.queue_disconnect)
-        self.add_item(self.queue_info_button)
 
         self.add_item(self.first_button)
         self.add_item(self.backward_button)
@@ -414,6 +405,14 @@ class QueueMenu(BaseMenu):
         self.add_item(self.enqueue_button)
         self.add_item(self.remove_from_queue_button)
         self.add_item(self.play_now_button)
+        self.previous_track_button.disabled = True
+        self.decrease_volume_button.disabled = True
+        self.increase_volume_button.disabled = True
+        self.resume_button.disabled = True
+        self.equalize_button.disabled = True
+        self.remove_from_queue_button.disabled = True
+        self.play_now_button.disabled = True
+        self.equalize_button.disabled = True
 
     @property
     def source(self) -> QueueSource:
@@ -421,7 +420,7 @@ class QueueMenu(BaseMenu):
 
     async def start(self, ctx: commands.Context | discord.Interaction):
         self.ctx = ctx
-        await self.send_initial_message(ctx, ctx.channel)
+        await self.send_initial_message(ctx)
 
 
 class QueuePickerMenu(BaseMenu):
@@ -491,7 +490,6 @@ class QueuePickerMenu(BaseMenu):
             cog=cog,
         )
         self.select_view: QueueSelectTrack | None = None
-        self.add_item(self.close_button)
         self.add_item(self.first_button)
         self.add_item(self.backward_button)
         self.add_item(self.forward_button)
@@ -503,22 +501,18 @@ class QueuePickerMenu(BaseMenu):
 
     async def start(self, ctx: commands.Context | discord.Interaction):
         self.ctx = ctx
-        await self.send_initial_message(ctx, ctx.channel)
+        await self.send_initial_message(ctx)
 
-    async def send_initial_message(self, ctx: commands.Context | discord.Interaction, channel: discord.abc.Messageable):
-        messageable = channel
+    async def send_initial_message(self, ctx: commands.Context | discord.Interaction):
         if isinstance(ctx, discord.Interaction):
             self.author = ctx.user
-            if ctx.response.is_done():
-                messageable = ctx.followup
         else:
             self.author = ctx.author
-
         await self._source.get_page(0)
         self.ctx = ctx
         embed = await self.source.format_page(self, [])
         await self.prepare()
-        self.message = await messageable.send(embed=embed, view=self)
+        self.message = await ctx.send(embed=embed, view=self)
         return self.message
 
     async def show_page(self, page_number: int, interaction: discord.Interaction):
@@ -545,7 +539,8 @@ class QueuePickerMenu(BaseMenu):
             self.backward_button.disabled = True
             self.first_button.disabled = True
             self.last_button.disabled = True
-        self.add_item(self.close_button)
+        if not self.ctx.interaction:
+            self.add_item(self.close_button)
         self.add_item(self.first_button)
         self.add_item(self.backward_button)
         self.add_item(self.forward_button)
