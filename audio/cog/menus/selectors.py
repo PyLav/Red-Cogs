@@ -8,7 +8,7 @@ from red_commons.logging import getLogger
 from pylav import Track
 
 if TYPE_CHECKING:
-    from audio.cog import MediaPlayer
+    from audio.cog.abc import COG_TYPE
 
 
 LOGGER = getLogger("red.3pt.mp.ui.selectors")
@@ -29,7 +29,7 @@ class QueueTrackOption(discord.SelectOption):
         return cls(
             name=f"{index + 1}. {name}",
             description=track.author,
-            value=track.unique_identifier,
+            value=track.id,
         )
 
 
@@ -37,7 +37,7 @@ class QueueSelectTrack(discord.ui.Select):
     def __init__(
         self,
         options: list[QueueTrackOption],
-        cog: MediaPlayer,
+        cog: COG_TYPE,
         placeholder: str,
         interaction_type: Literal["remove", "play"],
         mapping: dict[str, Track],

@@ -14,28 +14,24 @@ from audio.cog.menus.selectors import QueueTrackOption
 LOGGER = getLogger("red.3pt.mp.ui.sources")
 
 if TYPE_CHECKING:
-    from audio import MediaPlayer
+    from audio.cog.abc import COG_TYPE
     from audio.cog.menus.menus import BaseMenu, QueueMenu, QueuePickerMenu
-
-    COG = MediaPlayer
 
 
 INF = float("inf")
 ASCII_ORDER_SORT = "~" * 100
 
 
-class AudioPreformattedSource(menus.ListPageSource):
+class PreformattedSource(menus.ListPageSource):
     def __init__(self, pages: Iterable[str | discord.Embed]):
         super().__init__(pages, per_page=1)
 
     async def format_page(self, menu: BaseMenu, page: str | discord.Embed) -> discord.Embed | str:
-        if isinstance(page, discord.Embed) and page.colour is None:
-            page.colour = await menu.ctx.embed_colour()
         return page
 
 
 class QueueSource(menus.ListPageSource):
-    def __init__(self, guild_id: int, cog: MediaPlayer):
+    def __init__(self, guild_id: int, cog: COG_TYPE):  # noqa
         self.cog = cog
         self.per_page = 10
         self.guild_id = guild_id
@@ -82,7 +78,7 @@ class QueueSource(menus.ListPageSource):
 
 
 class QueuePickerSource(QueueSource):
-    def __init__(self, guild_id: int, cog: MediaPlayer):
+    def __init__(self, guild_id: int, cog: COG_TYPE):
         super().__init__(guild_id, cog=cog)
         self.per_page = 25
         self.select_options: list[QueueTrackOption] = []

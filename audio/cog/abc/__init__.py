@@ -1,9 +1,10 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Literal
+from typing import TYPE_CHECKING, Literal, TypeVar
 
 import discord
+from discord.ext.commands import Cog
 from redbot.core import Config, commands
 from redbot.core.bot import Red
 
@@ -44,3 +45,19 @@ class MPMixin(ABC):
         user_id: int,
     ):
         raise NotImplementedError()
+
+
+if TYPE_CHECKING:
+    from audio import MediaPlayer
+
+    COG_TYPE = TypeVar("COG_TYPE", bound=MediaPlayer)
+else:
+    try:
+        from audio import MediaPlayer
+
+        COG_TYPE = TypeVar("COG_TYPE", bound=MediaPlayer)
+    except ImportError:
+        COG_TYPE = TypeVar("COG_TYPE", bound=Cog)
+
+
+MY_GUILD = discord.Object(id=133049272517001216)

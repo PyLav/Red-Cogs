@@ -32,17 +32,9 @@ from audio.cog.menus.buttons import (
 if TYPE_CHECKING:
     from redbot.core.bot import Red
 
-    from audio.cog import MediaPlayer
+    from audio.cog.abc import COG_TYPE
     from audio.cog.menus.selectors import QueueSelectTrack
     from audio.cog.menus.sources import QueuePickerSource, QueueSource
-
-    COG = MediaPlayer
-    CLIENT = Red
-else:
-    from discord.ext.commands import Cog
-
-    COG = Cog
-    CLIENT = discord.Client
 
 
 LOGGER = getLogger("red.3pt.mp.ui.menus")
@@ -51,9 +43,9 @@ LOGGER = getLogger("red.3pt.mp.ui.menus")
 class BaseMenu(discord.ui.View):
     def __init__(
         self,
-        cog: COG,
-        bot: CLIENT,
-        source: menus.PageSource,
+        cog: COG_TYPE,
+        bot: Red,
+        source: menus.ListPageSource,
         *,
         clear_buttons_after: bool = True,
         delete_after_timeout: bool = False,
@@ -76,7 +68,7 @@ class BaseMenu(discord.ui.View):
         self.current_page = starting_page or kwargs.get("page_start", 0)
 
     @property
-    def source(self):
+    def source(self) -> menus.ListPageSource:
         return self._source
 
     async def on_timeout(self):
@@ -96,7 +88,7 @@ class BaseMenu(discord.ui.View):
         except IndexError:
             self.current_page = 0
             page = await self.source.get_page(self.current_page)
-        value = await self.source.format_page(self, page)
+        value = await self.source.format_page(self, page)  # type: ignore
         if isinstance(value, dict):
             return value
         elif isinstance(value, str):
@@ -168,8 +160,8 @@ class QueueMenu(BaseMenu):
 
     def __init__(
         self,
-        cog: COG,
-        bot: CLIENT,
+        cog: COG_TYPE,
+        bot: Red,
         source: QueueSource,
         *,
         clear_buttons_after: bool = True,
@@ -437,8 +429,8 @@ class QueuePickerMenu(BaseMenu):
 
     def __init__(
         self,
-        cog: COG,
-        bot: CLIENT,
+        cog: COG_TYPE,
+        bot: Red,
         source: QueuePickerSource,
         *,
         delete_after_timeout: bool = True,
