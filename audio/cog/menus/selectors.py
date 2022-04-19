@@ -52,7 +52,7 @@ class QueueSelectTrack(discord.ui.Select):
         track: Track = self.mapping.get(track_id)
         if track is None:
             await interaction.response.send_message(
-                embed=await self.cog.lavalink.construct_embed(title="Track not found."),
+                embed=await self.cog.lavalink.construct_embed(title="Track not found.", messageable=interaction),
                 ephemeral=True,
             )
             self.view.stop()

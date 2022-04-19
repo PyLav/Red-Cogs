@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import contextlib
 from typing import TYPE_CHECKING, Callable
 
 import discord
@@ -201,7 +202,10 @@ class ToggleRepeatButton(discord.ui.Button):
         player = self.cog.lavalink.get_player(self.view.ctx.guild)
         if not player:
             return await interaction.response.send_message(
-                embed=await self.cog.lavalink.construct_embed(title="Not connected to a voice channel."), ephemeral=True
+                embed=await self.cog.lavalink.construct_embed(
+                    title="Not connected to a voice channel.", messageable=interaction
+                ),
+                ephemeral=True,
             )
         if player.repeat_current:
             repeat_queue = True
@@ -226,7 +230,10 @@ class ToggleRepeatQueueButton(discord.ui.Button):
         player = self.cog.lavalink.get_player(self.view.ctx.guild)
         if not player:
             return await interaction.response.send_message(
-                embed=await self.cog.lavalink.construct_embed(title="Not connected to a voice channel."), ephemeral=True
+                embed=await self.cog.lavalink.construct_embed(
+                    title="Not connected to a voice channel.", messageable=interaction
+                ),
+                ephemeral=True,
             )
         if player.repeat_current:
             repeat_queue = True
@@ -278,6 +285,8 @@ class CloseButton(discord.ui.Button):
 
     async def callback(self, interaction: discord.Interaction):
         self.view.stop()
+        with contextlib.suppress(discord.HTTPException):
+            await interaction.message.delete()
 
 
 class EqualizerButton(discord.ui.Button):

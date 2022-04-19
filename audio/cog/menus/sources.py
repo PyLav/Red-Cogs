@@ -67,12 +67,20 @@ class QueueSource(menus.ListPageSource):
     async def format_page(self, menu: QueueMenu, tracks: list[Track]) -> discord.Embed:
         player = self.cog.lavalink.get_player(menu.ctx.guild.id)
         if not player:
-            return await self.cog.lavalink.construct_embed(description="No active player found in server.")
+            return await self.cog.lavalink.construct_embed(
+                description="No active player found in server.", messageable=menu.ctx
+            )
         if not player.current:
-            page = await self.cog.lavalink.construct_embed(description="There's nothing currently being played.")
+            page = await self.cog.lavalink.construct_embed(
+                description="There's nothing currently being played.", messageable=menu.ctx
+            )
         else:
             page = await player.get_queue_page(
-                page_index=menu.current_page, per_page=self.per_page, total_pages=self.get_max_pages(), embed=True
+                page_index=menu.current_page,
+                per_page=self.per_page,
+                total_pages=self.get_max_pages(),
+                embed=True,
+                messageable=menu.ctx,
             )
         return page
 
@@ -99,11 +107,19 @@ class QueuePickerSource(QueueSource):
     async def format_page(self, menu: QueuePickerMenu, tracks: list[Track]) -> discord.Embed:
         player = self.cog.lavalink.get_player(menu.ctx.guild.id)
         if not player:
-            return await self.cog.lavalink.construct_embed(description="No active player found in server.")
+            return await self.cog.lavalink.construct_embed(
+                description="No active player found in server.", messageable=menu.ctx
+            )
         if not player.current:
-            page = await self.cog.lavalink.construct_embed(description="There's nothing currently being played.")
+            page = await self.cog.lavalink.construct_embed(
+                description="There's nothing currently being played.", messageable=menu.ctx
+            )
         else:
             page = await player.get_queue_page(
-                page_index=menu.current_page, per_page=self.per_page, total_pages=self.get_max_pages(), embed=True
+                page_index=menu.current_page,
+                per_page=self.per_page,
+                total_pages=self.get_max_pages(),
+                embed=True,
+                messageable=menu.ctx,
             )
         return page
