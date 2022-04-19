@@ -41,19 +41,18 @@ class QueueSource(menus.ListPageSource):
         self.guild_id = guild_id
 
     @property
-    def entries(self) -> Iterable[tuple[int, Track]]:
+    def entries(self) -> Iterable[Track]:
         player = self.cog.lavalink.get_player(self.guild_id)
         if not player:
             return []
-        return player.queue._queue
+        return player.queue.raw_queue
 
     def is_paginating(self) -> bool:
         return True
 
     async def get_page(self, page_number: int) -> list[Track]:
         base = page_number * self.per_page
-        output = list(itertools.islice(self.entries, base, base + self.per_page))
-        return [i for _, i in output]
+        return list(itertools.islice(self.entries, base, base + self.per_page))
 
     def get_max_pages(self) -> int:
         player = self.cog.lavalink.get_player(self.guild_id)
@@ -96,7 +95,7 @@ class QueuePickerSource(QueueSource):
         base = page_number * self.per_page
         self.select_options.clear()
         self.select_mapping.clear()
-        for i, (_, track) in enumerate(list(itertools.islice(self.entries, base, base + self.per_page)), start=base):
+        for i, track in enumerate(list(itertools.islice(self.entries, base, base + self.per_page)), start=base):
             self.select_options.append(await QueueTrackOption.from_track(track=track, index=i))
             self.select_mapping[track.unique_identifier] = track
         return []

@@ -396,7 +396,7 @@ class QueueMenu(BaseMenu):
                 self.add_item(self.resume_button)
             else:
                 self.add_item(self.paused_button)
-            if not player.queue:
+            if player.queue.empty():
                 self.shuffle_button.disabled = True
                 self.remove_from_queue_button.disabled = True
                 self.play_now_button.disabled = True
