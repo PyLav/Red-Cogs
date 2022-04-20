@@ -1,11 +1,12 @@
 from __future__ import annotations
 
-import contextlib
+from pathlib import Path
 from typing import TYPE_CHECKING, Any, Literal
 
 import discord
 from red_commons.logging import getLogger
 from redbot.core.commands import commands
+from redbot.core.i18n import Translator
 from redbot.vendored.discord.ext import menus
 
 from audio.cog.menus.buttons import (
@@ -39,6 +40,8 @@ if TYPE_CHECKING:
 
 LOGGER = getLogger("red.3pt.mp.ui.menus")
 
+_ = Translator("MediaPlayer", Path(__file__))
+
 
 class BaseMenu(discord.ui.View):
     def __init__(
@@ -47,15 +50,14 @@ class BaseMenu(discord.ui.View):
         bot: Red,
         source: menus.ListPageSource,
         *,
-        clear_buttons_after: bool = True,
-        delete_after_timeout: bool = False,
+        delete_after_timeout: bool = True,
         timeout: int = 120,
         message: discord.Message = None,
         starting_page: int = 0,
         **kwargs: Any,
     ) -> None:
         super().__init__(
-            timeout=timeout,
+            timeout=5,
         )
         self.author = None
         self.ctx = None
@@ -63,7 +65,6 @@ class BaseMenu(discord.ui.View):
         self.bot = bot
         self.message = message
         self._source = source
-        self.clear_buttons_after = clear_buttons_after
         self.delete_after_timeout = delete_after_timeout
         self.current_page = starting_page or kwargs.get("page_start", 0)
 
@@ -74,11 +75,10 @@ class BaseMenu(discord.ui.View):
     async def on_timeout(self):
         if self.message is None:
             return
-        with contextlib.suppress(discord.HTTPException):
-            if self.clear_buttons_after:
-                await self.message.edit(view=None)
-            elif self.delete_after_timeout:
-                await self.message.delete()
+        if self.delete_after_timeout and not self.message.flags.ephemeral:
+            await self.message.delete()
+        else:
+            await self.message.edit(view=None)
 
     async def get_page(self, page_num: int):
         try:
@@ -135,10 +135,11 @@ class BaseMenu(discord.ui.View):
 
     async def interaction_check(self, interaction: discord.Interaction):
         """Just extends the default reaction_check to use owner_ids"""
+        LOGGER.critical("Interaction check - %s (%s)", interaction.user, interaction.user.id)
         if (
             self.author
             and (interaction.user.id != self.author.id)
-            and await self.bot.allowed_by_whitelist_blacklist(self.author, guild=self.ctx.guild)
+            and not await self.bot.allowed_by_whitelist_blacklist(self.author, guild=self.ctx.guild)
         ):
             await interaction.response.send_message(
                 content="You are not authorized to interact with this.", ephemeral=True
@@ -162,8 +163,7 @@ class QueueMenu(BaseMenu):
         bot: Red,
         source: QueueSource,
         *,
-        clear_buttons_after: bool = True,
-        delete_after_timeout: bool = False,
+        delete_after_timeout: bool = True,
         timeout: int = 600,
         message: discord.Message = None,
         starting_page: int = 0,
@@ -173,7 +173,6 @@ class QueueMenu(BaseMenu):
             cog=cog,
             bot=bot,
             source=source,
-            clear_buttons_after=clear_buttons_after,
             delete_after_timeout=delete_after_timeout,
             timeout=timeout,
             message=message,
@@ -308,8 +307,7 @@ class QueueMenu(BaseMenu):
     async def prepare(self):
         self.clear_items()
         max_pages = self.source.get_max_pages()
-        if not self.ctx.interaction:
-            self.add_item(self.close_button)
+        self.add_item(self.close_button)
         self.add_item(self.queue_disconnect)
 
         self.add_item(self.first_button)
@@ -392,6 +390,8 @@ class QueueMenu(BaseMenu):
                 self.previous_track_button.disabled = True
                 self.decrease_volume_button.disabled = True
                 self.increase_volume_button.disabled = True
+            if player.history.empty():
+                self.previous_track_button.disabled = True
             if player.repeat_current:
                 self.add_item(self.repeat_button_on)
             elif player.repeat_queue:
@@ -407,10 +407,7 @@ class QueueMenu(BaseMenu):
         self.add_item(self.enqueue_button)
         self.add_item(self.remove_from_queue_button)
         self.add_item(self.play_now_button)
-        self.previous_track_button.disabled = True
         self.equalize_button.disabled = True
-        self.remove_from_queue_button.disabled = True
-        self.play_now_button.disabled = True
         self.equalize_button.disabled = True
 
     @property
@@ -442,7 +439,6 @@ class QueuePickerMenu(BaseMenu):
             cog=cog,
             bot=bot,
             source=source,
-            clear_buttons_after=False,
             delete_after_timeout=delete_after_timeout,
             timeout=timeout,
             message=message,
@@ -511,7 +507,7 @@ class QueuePickerMenu(BaseMenu):
         self.ctx = ctx
         embed = await self.source.format_page(self, [])
         await self.prepare()
-        self.message = await ctx.send(embed=embed, view=self)
+        self.message = await ctx.send(embed=embed, view=self, ephemeral=True)
         return self.message
 
     async def show_page(self, page_number: int, interaction: discord.Interaction):
@@ -538,8 +534,7 @@ class QueuePickerMenu(BaseMenu):
             self.backward_button.disabled = True
             self.first_button.disabled = True
             self.last_button.disabled = True
-        if not self.ctx.interaction:
-            self.add_item(self.close_button)
+        self.add_item(self.close_button)
         self.add_item(self.first_button)
         self.add_item(self.backward_button)
         self.add_item(self.forward_button)
@@ -549,9 +544,9 @@ class QueuePickerMenu(BaseMenu):
 
             options = self.source.select_options
             if self.menu_type == "remove":
-                title = "Select Track To Remove"
+                title = _("Select Track To Remove")
             else:
-                title = "Select Track To Play Now"
+                title = _("Select Track To Play Now")
             self.remove_item(self.select_view)
             self.select_view = QueueSelectTrack(
                 options=options,

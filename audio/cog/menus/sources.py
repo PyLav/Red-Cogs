@@ -101,7 +101,7 @@ class QueuePickerSource(QueueSource):
         self.select_mapping.clear()
         for i, track in enumerate(list(itertools.islice(self.entries, base, base + self.per_page)), start=base):
             self.select_options.append(await QueueTrackOption.from_track(track=track, index=i))
-            self.select_mapping[track.unique_identifier] = track
+            self.select_mapping[track.id] = track
         return []
 
     async def format_page(self, menu: QueuePickerMenu, tracks: list[Track]) -> discord.Embed:

@@ -60,10 +60,12 @@ class PreviousTrackButton(discord.ui.Button):
         self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
-        await interaction.response.defer()
-        self.view.cog.dispatch_msg(  # FIXME:
-            ctx=self.view.ctx, interaction=interaction, command=self.view.cog.command_prev, args=""
-        )
+        if not getattr(interaction, "_cs_command", None):
+            interaction._cs_command = self.cog.command_previous
+        await self.cog.command_previous.callback(self.cog, await self.cog.bot.get_context(interaction))
+        await self.view.prepare()
+        kwargs = await self.view.get_page(self.view.current_page)
+        await interaction.edit_original_message(view=self.view, **kwargs)
 
 
 class StopTrackButton(discord.ui.Button):
@@ -207,7 +209,7 @@ class ToggleRepeatButton(discord.ui.Button):
         if not player:
             return await interaction.response.send_message(
                 embed=await self.cog.lavalink.construct_embed(
-                    title="Not connected to a voice channel.", messageable=interaction
+                    description="Not connected to a voice channel.", messageable=interaction
                 ),
                 ephemeral=True,
             )
@@ -239,7 +241,7 @@ class ToggleRepeatQueueButton(discord.ui.Button):
         if not player:
             return await interaction.response.send_message(
                 embed=await self.cog.lavalink.construct_embed(
-                    title="Not connected to a voice channel.", messageable=interaction
+                    description="Not connected to a voice channel.", messageable=interaction
                 ),
                 ephemeral=True,
             )
@@ -285,8 +287,12 @@ class CloseButton(discord.ui.Button):
         self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
-        self.view.stop()
+        if interaction.message.flags.ephemeral:
+            await interaction.response.edit_message(view=None)
+            self.view.stop()
+            return
         await interaction.message.delete()
+        self.view.stop()
 
 
 class EqualizerButton(discord.ui.Button):
@@ -366,7 +372,8 @@ class RemoveFromQueueButton(discord.ui.Button):
         from audio.cog.menus.menus import QueuePickerMenu
         from audio.cog.menus.sources import QueuePickerSource
 
-        interaction._cs_command = self.cog.command_queue_remove
+        if not getattr(interaction, "_cs_command", None):
+            interaction._cs_command = self.cog.command_remove
         await QueuePickerMenu(
             bot=self.cog.bot,
             cog=self.cog,
@@ -375,9 +382,10 @@ class RemoveFromQueueButton(discord.ui.Button):
             starting_page=0,
             menu_type="remove",
         ).start(await self.cog.bot.get_context(interaction))
-        await self.view.prepare()
-        kwargs = await self.view.get_page(self.view.current_page)
-        await interaction.response.edit_message(view=self.view, **kwargs)
+        if not interaction.response.is_done():
+            await self.view.prepare()
+            kwargs = await self.view.get_page(self.view.current_page)
+            await interaction.response.edit_message(view=self.view, **kwargs)
 
 
 class PlayNowFromQueueButton(discord.ui.Button):
@@ -399,7 +407,7 @@ class PlayNowFromQueueButton(discord.ui.Button):
         from audio.cog.menus.sources import QueuePickerSource
 
         if not getattr(interaction, "_cs_command", None):
-            interaction._cs_command = self.cog.command_play
+            interaction._cs_command = self.cog.command_playnow
 
         await QueuePickerMenu(
             bot=self.cog.bot,
@@ -409,6 +417,7 @@ class PlayNowFromQueueButton(discord.ui.Button):
             starting_page=0,
             menu_type="play",
         ).start(await self.cog.bot.get_context(interaction))
-        await self.view.prepare()
-        kwargs = await self.view.get_page(self.view.current_page)
-        await interaction.response.edit_message(view=self.view, **kwargs)
+        if not interaction.response.is_done():
+            await self.view.prepare()
+            kwargs = await self.view.get_page(self.view.current_page)
+            await interaction.response.edit_message(view=self.view, **kwargs)

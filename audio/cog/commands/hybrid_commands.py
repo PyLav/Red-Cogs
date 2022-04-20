@@ -25,6 +25,7 @@ _ = Translator("MediaPlayer", Path(__file__))
 class HybridCommands(MPMixin, ABC):
     @commands.hybrid_command(name="play", description="Plays a specified query.", aliases=["p"])
     @app_commands.guilds(MY_GUILD)
+    @commands.guild_only()
     async def command_play(self, context: commands.Context, *, query: converters.QueryConverter):
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -101,6 +102,7 @@ class HybridCommands(MPMixin, ABC):
         name="connect", description="Connects the Player to the specified channel or your current channel."
     )
     @app_commands.guilds(MY_GUILD)
+    @commands.guild_only()
     async def command_connect(self, context: commands.Context, *, channel: Optional[discord.VoiceChannel] = None):
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -146,6 +148,7 @@ class HybridCommands(MPMixin, ABC):
 
     @commands.hybrid_command(name="np", description="Shows the track currently being played.", aliases=["now"])
     @app_commands.guilds(MY_GUILD)
+    @commands.guild_only()
     @requires_player()
     async def command_now(self, context: commands.Context):
         if isinstance(context, discord.Interaction):
@@ -172,6 +175,7 @@ class HybridCommands(MPMixin, ABC):
 
     @commands.hybrid_command(name="skip", description="Skips or votes to skip the current track.")
     @app_commands.guilds(MY_GUILD)
+    @commands.guild_only()
     @requires_player()
     async def command_skip(self, context: commands.Context):
         if isinstance(context, discord.Interaction):
@@ -193,7 +197,6 @@ class HybridCommands(MPMixin, ABC):
                 ephemeral=True,
             )
             return
-        await player.skip()
         await context.send(
             embed=await self.lavalink.construct_embed(
                 description=_("Skipped - {track}").format(
@@ -203,10 +206,12 @@ class HybridCommands(MPMixin, ABC):
             ),
             ephemeral=True,
         )
+        await player.skip()
 
     @commands.hybrid_command(name="stop", description="Stops the player and remove all tracks from the queue.")
     @app_commands.guilds(MY_GUILD)
     @commands.is_owner()
+    @commands.guild_only()
     @requires_player()
     async def command_stop(self, context: commands.Context):
         if isinstance(context, discord.Interaction):
@@ -263,6 +268,7 @@ class HybridCommands(MPMixin, ABC):
 
     @commands.hybrid_command(name="queue", description="Shows the current queue for the player.", aliases=["q"])
     @app_commands.guilds(MY_GUILD)
+    @commands.guild_only()
     @requires_player()
     async def command_queue(self, context: commands.Context):
         if isinstance(context, discord.Interaction):
@@ -290,6 +296,7 @@ class HybridCommands(MPMixin, ABC):
 
     @commands.hybrid_command(name="shuffle", description="Shuffles the player's queue.")
     @app_commands.guilds(MY_GUILD)
+    @commands.guild_only()
     @requires_player()
     async def command_shuffle(self, context: commands.Context):
         if isinstance(context, discord.Interaction):
@@ -322,6 +329,7 @@ class HybridCommands(MPMixin, ABC):
 
     @commands.hybrid_command(name="repeat", description="Set whether to repeat current song or queue.")
     @app_commands.guilds(MY_GUILD)
+    @commands.guild_only()
     @requires_player()
     async def command_repeat(self, context: commands.Context, queue: Optional[bool] = None):
         if isinstance(context, discord.Interaction):
@@ -354,6 +362,7 @@ class HybridCommands(MPMixin, ABC):
 
     @commands.hybrid_command(name="pause", description="Pause the player.")
     @app_commands.guilds(MY_GUILD)
+    @commands.guild_only()
     @requires_player()
     async def command_pause(self, context: commands.Context):
         if isinstance(context, discord.Interaction):
@@ -388,6 +397,7 @@ class HybridCommands(MPMixin, ABC):
 
     @commands.hybrid_command(name="resume", description="Resume the player.")
     @app_commands.guilds(MY_GUILD)
+    @commands.guild_only()
     @requires_player()
     async def command_resume(self, context: commands.Context):
         if isinstance(context, discord.Interaction):
@@ -422,6 +432,7 @@ class HybridCommands(MPMixin, ABC):
 
     @commands.hybrid_command(name="volume", description="Set the player volume.")
     @app_commands.guilds(MY_GUILD)
+    @commands.guild_only()
     @requires_player()
     async def command_volume(self, context: commands.Context, volume: Range[int, 0, 1000] = 100):
         if isinstance(context, discord.Interaction):
@@ -436,10 +447,46 @@ class HybridCommands(MPMixin, ABC):
             )
             return
         await player.set_volume(volume)
-
         await context.send(
             embed=await self.lavalink.construct_embed(
                 messageable=context, description=_("Player volume set to {volume}%.").format(volume=volume)
+            ),
+            ephemeral=True,
+        )
+
+    @commands.hybrid_command(name="prev", description="Play the previous tracks.", aliases=["previous"])
+    @app_commands.guilds(MY_GUILD)
+    @commands.guild_only()
+    @requires_player()
+    async def command_previous(self, context: commands.Context, volume: Range[int, 0, 1000] = 100):
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+
+        player = self.lavalink.get_player(context.guild)
+        if not player:
+            await context.send(
+                embed=await self.lavalink.construct_embed(messageable=context, description=_("No player detected.")),
+                ephemeral=True,
+            )
+            return
+
+        if player.history.empty():
+            await context.send(
+                embed=await self.lavalink.construct_embed(
+                    messageable=context, description=_("No previous in player history.")
+                ),
+                ephemeral=True,
+            )
+            return
+        await player.previous()
+        await context.send(
+            embed=await self.lavalink.construct_embed(
+                messageable=context,
+                description=_("Playing previous track: {track}.").format(
+                    track=await player.current.get_track_display_name(with_url=True)
+                ),
             ),
             ephemeral=True,
         )
