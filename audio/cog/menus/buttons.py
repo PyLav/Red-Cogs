@@ -368,6 +368,7 @@ class RemoveFromQueueButton(discord.ui.Button):
 
         interaction._cs_command = self.cog.command_queue_remove
         await QueuePickerMenu(
+            bot=self.cog.bot,
             cog=self.cog,
             source=QueuePickerSource(guild_id=interaction.guild.id, cog=self.cog),
             delete_after_timeout=True,
@@ -401,6 +402,7 @@ class PlayNowFromQueueButton(discord.ui.Button):
             interaction._cs_command = self.cog.command_play
 
         await QueuePickerMenu(
+            bot=self.cog.bot,
             cog=self.cog,
             source=QueuePickerSource(guild_id=interaction.guild.id, cog=self.cog),
             delete_after_timeout=True,
