@@ -166,7 +166,7 @@ class IncreaseVolumeButton(discord.ui.Button):
         if not getattr(interaction, "_cs_command", None):
             interaction._cs_command = self.cog.command_volume_change_by
         await self.cog.command_volume_change_by.callback(
-            self.cog, await self.cog.bot.get_context(interaction), volume=5
+            self.cog, await self.cog.bot.get_context(interaction), change_by=5
         )
         await self.view.prepare()
         kwargs = await self.view.get_page(self.view.current_page)
@@ -186,7 +186,7 @@ class DecreaseVolumeButton(discord.ui.Button):
         if not getattr(interaction, "_cs_command", None):
             interaction._cs_command = self.cog.command_volume_change_by
         await self.cog.command_volume_change_by.callback(
-            self.cog, await self.cog.bot.get_context(interaction), volume=-5
+            self.cog, await self.cog.bot.get_context(interaction), change_by=-5
         )
         await self.view.prepare()
         kwargs = await self.view.get_page(self.view.current_page)
@@ -344,7 +344,7 @@ class EnqueueButton(discord.ui.Button):
     async def callback(self, interaction: discord.Interaction):
         from audio.cog.menus.modals import EnqueueModal
 
-        modal = EnqueueModal(self.cog, self.view.ctx, self, "What do you want to enqueue?")
+        modal = EnqueueModal(self.cog, "What do you want to enqueue?")
         await interaction.response.send_modal(modal)
 
 

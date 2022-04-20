@@ -25,7 +25,7 @@ class QueueTrackOption(discord.SelectOption):
 
     @classmethod
     async def from_track(cls, track: Track, index: int):
-        name = await track.get_track_display_name(max_length=90, author=False, unformatted=True)
+        name = await track.get_track_display_name(max_length=99 - len(str(index + 1)), author=False, unformatted=True)
         return cls(
             name=f"{index + 1}. {name}",
             description=track.author,

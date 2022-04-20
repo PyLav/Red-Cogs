@@ -4,7 +4,8 @@ from typing import TYPE_CHECKING, TypeVar
 
 import discord
 from red_commons.logging import getLogger
-from redbot.core import commands
+
+from pylav import Query
 
 if TYPE_CHECKING:
     from redbot.core.bot import Red
@@ -26,14 +27,10 @@ class EnqueueModal(discord.ui.Modal):
     def __init__(
         self,
         cog: COG_TYPE,
-        ctx: commands.Context,
-        button: discord.ui.Button,
         title: str,
         timeout: float | None = None,
     ):
         self.cog = cog
-        self.ctx = ctx
-        self._button = button
         super().__init__(title=title, timeout=timeout)
         self.text = discord.ui.TextInput(
             style=discord.TextStyle.paragraph,
@@ -46,5 +43,5 @@ class EnqueueModal(discord.ui.Modal):
         await self.cog.command_slash.callback(
             self=self.cog,
             interaction=interaction,
-            query=self.text.value,
+            query=await Query.from_string(self.text.value),
         )
