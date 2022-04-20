@@ -150,7 +150,7 @@ class RefreshButton(discord.ui.Button):
     async def callback(self, interaction: discord.Interaction):
         await self.view.prepare()
         kwargs = await self.view.get_page(self.view.current_page)
-        await interaction.edit_original_message(view=self.view, **kwargs)
+        await interaction.response.edit_message(view=self.view, **kwargs)
 
 
 class IncreaseVolumeButton(discord.ui.Button):

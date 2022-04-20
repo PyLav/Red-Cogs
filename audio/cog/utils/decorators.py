@@ -25,5 +25,6 @@ def requires_player():
             raise errors.MediaPlayerNotFoundError(
                 context,
             )
+        return True
 
     return commands.check(pred)
