@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from discord import Object
 from red_commons.logging import getLogger
 from redbot.core.bot import Red
 

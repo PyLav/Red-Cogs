@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import contextlib
 from typing import TYPE_CHECKING, Any, Literal
 
 import discord
@@ -73,10 +74,11 @@ class BaseMenu(discord.ui.View):
     async def on_timeout(self):
         if self.message is None:
             return
-        if self.clear_buttons_after:
-            await self.message.edit(view=None)
-        elif self.delete_after_timeout:
-            await self.message.delete()
+        with contextlib.suppress(discord.HTTPException):
+            if self.clear_buttons_after:
+                await self.message.edit(view=None)
+            elif self.delete_after_timeout:
+                await self.message.delete()
 
     async def get_page(self, page_num: int):
         try:
@@ -148,7 +150,7 @@ class BaseMenu(discord.ui.View):
         return
 
     async def on_error(self, error: Exception, item: discord.ui.Item[Any], interaction: discord.Interaction) -> None:
-        LOGGER.info("Ignoring exception in view {%s} for item {%s}:", self, item, exc_info=error)
+        LOGGER.info("Ignoring exception in view %s for item %s:", self, item, exc_info=error)
 
 
 class QueueMenu(BaseMenu):
@@ -256,7 +258,7 @@ class QueueMenu(BaseMenu):
             cog=cog,
         )
         self.resume_button = ResumeTrackButton(
-            discord.ButtonStyle.grey,
+            discord.ButtonStyle.blurple,
             row=2,
             cog=cog,
         )
@@ -375,7 +377,7 @@ class QueueMenu(BaseMenu):
             self.add_item(self.resume_button)
             self.add_item(self.repeat_button_off)
         else:
-            if player.is_playing:
+            if player.paused:
                 self.add_item(self.resume_button)
             else:
                 self.add_item(self.paused_button)
@@ -406,9 +408,6 @@ class QueueMenu(BaseMenu):
         self.add_item(self.remove_from_queue_button)
         self.add_item(self.play_now_button)
         self.previous_track_button.disabled = True
-        self.decrease_volume_button.disabled = True
-        self.increase_volume_button.disabled = True
-        self.resume_button.disabled = True
         self.equalize_button.disabled = True
         self.remove_from_queue_button.disabled = True
         self.play_now_button.disabled = True

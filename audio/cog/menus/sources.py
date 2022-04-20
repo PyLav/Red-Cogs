@@ -54,7 +54,7 @@ class QueueSource(menus.ListPageSource):
         player = self.cog.lavalink.get_player(self.guild_id)
         if not player:
             return 1
-        pages, left_over = divmod(player.queue.qsize(), self.per_page)
+        pages, left_over = divmod(player.queue.size(), self.per_page)
         if left_over:
             pages += 1
         return pages or 1

@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import contextlib
 from typing import TYPE_CHECKING, Callable
 
 import discord
@@ -77,8 +76,12 @@ class StopTrackButton(discord.ui.Button):
         self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
-        await interaction.response.defer()
-        await self.cog.command_stop.callback(self.cog, interaction)
+        if not getattr(interaction, "_cs_command", None):
+            interaction._cs_command = self.cog.command_stop
+        await self.cog.command_stop.callback(self.cog, await self.cog.bot.get_context(interaction))
+        await self.view.prepare()
+        kwargs = await self.view.get_page(self.view.current_page)
+        await interaction.edit_original_message(view=self.view, **kwargs)
 
 
 class PauseTrackButton(discord.ui.Button):
@@ -91,17 +94,12 @@ class PauseTrackButton(discord.ui.Button):
         self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
-        await interaction.response.defer()
-        self.view.cog.dispatch_msg(  # FIXME:
-            ctx=self.view.ctx,
-            interaction=interaction,
-            command=self.view.cog.command_pause,
-            args="",
-        )
-
+        if not getattr(interaction, "_cs_command", None):
+            interaction._cs_command = self.cog.command_pause
+        await self.cog.command_pause.callback(self.cog, await self.cog.bot.get_context(interaction))
         await self.view.prepare()
         kwargs = await self.view.get_page(self.view.current_page)
-        await interaction.response.edit_message(view=self.view, **kwargs)
+        await interaction.edit_original_message(view=self.view, **kwargs)
 
 
 class ResumeTrackButton(discord.ui.Button):
@@ -114,16 +112,12 @@ class ResumeTrackButton(discord.ui.Button):
         self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
-        await interaction.response.defer()
-        self.view.cog.dispatch_msg(  # FIXME:
-            ctx=self.view.ctx,
-            interaction=interaction,
-            command=self.view.cog.command_pause,
-            args="",
-        )
+        if not getattr(interaction, "_cs_command", None):
+            interaction._cs_command = self.cog.command_resume
+        await self.cog.command_resume.callback(self.cog, await self.cog.bot.get_context(interaction))
         await self.view.prepare()
         kwargs = await self.view.get_page(self.view.current_page)
-        await interaction.response.edit_message(view=self.view, **kwargs)
+        await interaction.edit_original_message(view=self.view, **kwargs)
 
 
 class SkipTrackButton(discord.ui.Button):
@@ -136,9 +130,12 @@ class SkipTrackButton(discord.ui.Button):
         self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
-        if not getattr(interaction, '_cs_command', None):
+        if not getattr(interaction, "_cs_command", None):
             interaction._cs_command = self.cog.command_skip
         await self.cog.command_skip.callback(self.cog, await self.cog.bot.get_context(interaction))
+        await self.view.prepare()
+        kwargs = await self.view.get_page(self.view.current_page)
+        await interaction.edit_original_message(view=self.view, **kwargs)
 
 
 class RefreshButton(discord.ui.Button):
@@ -153,7 +150,7 @@ class RefreshButton(discord.ui.Button):
     async def callback(self, interaction: discord.Interaction):
         await self.view.prepare()
         kwargs = await self.view.get_page(self.view.current_page)
-        await interaction.response.edit_message(view=self.view, **kwargs)
+        await interaction.edit_original_message(view=self.view, **kwargs)
 
 
 class IncreaseVolumeButton(discord.ui.Button):
@@ -166,11 +163,14 @@ class IncreaseVolumeButton(discord.ui.Button):
         self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
-        success = await self.view.cog.menu_increase_volume(self.view.ctx, interaction)
-        if success:
-            await self.view.prepare()
-            kwargs = await self.view.get_page(self.view.current_page)
-            await interaction.response.edit_message(view=self.view, **kwargs)
+        if not getattr(interaction, "_cs_command", None):
+            interaction._cs_command = self.cog.command_volume_change_by
+        await self.cog.command_volume_change_by.callback(
+            self.cog, await self.cog.bot.get_context(interaction), volume=5
+        )
+        await self.view.prepare()
+        kwargs = await self.view.get_page(self.view.current_page)
+        await interaction.edit_original_message(view=self.view, **kwargs)
 
 
 class DecreaseVolumeButton(discord.ui.Button):
@@ -183,11 +183,14 @@ class DecreaseVolumeButton(discord.ui.Button):
         self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
-        success = await self.view.cog.menu_decrease_volume(self.view.ctx, interaction)
-        if success:
-            await self.view.prepare()
-            kwargs = await self.view.get_page(self.view.current_page)
-            await interaction.response.edit_message(view=self.view, **kwargs)
+        if not getattr(interaction, "_cs_command", None):
+            interaction._cs_command = self.cog.command_volume_change_by
+        await self.cog.command_volume_change_by.callback(
+            self.cog, await self.cog.bot.get_context(interaction), volume=-5
+        )
+        await self.view.prepare()
+        kwargs = await self.view.get_page(self.view.current_page)
+        await interaction.edit_original_message(view=self.view, **kwargs)
 
 
 class ToggleRepeatButton(discord.ui.Button):
@@ -212,14 +215,14 @@ class ToggleRepeatButton(discord.ui.Button):
             repeat_queue = True
         else:
             repeat_queue = False
-        if not getattr(interaction, '_cs_command', None):
+        if not getattr(interaction, "_cs_command", None):
             interaction._cs_command = self.cog.command_repeat
         await self.cog.command_repeat.callback(
             self.cog, await self.cog.bot.get_context(interaction), queue=repeat_queue
         )
         await self.view.prepare()
         kwargs = await self.view.get_page(self.view.current_page)
-        await (await interaction.original_message()).edit(view=self.view, **kwargs)
+        await interaction.edit_original_message(view=self.view, **kwargs)
 
 
 class ToggleRepeatQueueButton(discord.ui.Button):
@@ -244,14 +247,14 @@ class ToggleRepeatQueueButton(discord.ui.Button):
             repeat_queue = True
         else:
             repeat_queue = False
-        if not getattr(interaction, '_cs_command', None):
+        if not getattr(interaction, "_cs_command", None):
             interaction._cs_command = self.cog.command_repeat
         await self.cog.command_repeat.callback(
             self.cog, await self.cog.bot.get_context(interaction), queue=repeat_queue
         )
         await self.view.prepare()
         kwargs = await self.view.get_page(self.view.current_page)
-        await (await interaction.original_message()).edit(view=self.view, **kwargs)
+        await interaction.edit_original_message(view=self.view, **kwargs)
 
 
 class ShuffleButton(discord.ui.Button):
@@ -264,9 +267,12 @@ class ShuffleButton(discord.ui.Button):
         self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
-        if not getattr(interaction, '_cs_command', None):
+        if not getattr(interaction, "_cs_command", None):
             interaction._cs_command = self.cog.command_shuffle
         await self.cog.command_shuffle.callback(self.cog, await self.cog.bot.get_context(interaction))
+        await self.view.prepare()
+        kwargs = await self.view.get_page(self.view.current_page)
+        await interaction.edit_original_message(view=self.view, **kwargs)
 
 
 class CloseButton(discord.ui.Button):
@@ -280,8 +286,7 @@ class CloseButton(discord.ui.Button):
 
     async def callback(self, interaction: discord.Interaction):
         self.view.stop()
-        with contextlib.suppress(discord.HTTPException):
-            await interaction.message.delete()
+        await interaction.message.delete()
 
 
 class EqualizerButton(discord.ui.Button):
@@ -303,7 +308,7 @@ class EqualizerButton(discord.ui.Button):
         )
         kwargs = await self.view.get_page(self.view.current_page)
         await self.view.prepare()
-        await interaction.response.edit_message(view=self.view, **kwargs)
+        await interaction.edit_original_message(view=self.view, **kwargs)
 
 
 class DisconnectButton(discord.ui.Button):
@@ -316,9 +321,10 @@ class DisconnectButton(discord.ui.Button):
         self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
-        if not getattr(interaction, '_cs_command', None):
+        if not getattr(interaction, "_cs_command", None):
             interaction._cs_command = self.cog.command_disconnect
         await self.cog.command_disconnect.callback(self.cog, await self.cog.bot.get_context(interaction))
+        self.view.stop()
 
 
 class EnqueueButton(discord.ui.Button):
@@ -391,7 +397,7 @@ class PlayNowFromQueueButton(discord.ui.Button):
         from audio.cog.menus.menus import QueuePickerMenu
         from audio.cog.menus.sources import QueuePickerSource
 
-        if not getattr(interaction, '_cs_command', None):
+        if not getattr(interaction, "_cs_command", None):
             interaction._cs_command = self.cog.command_play
 
         await QueuePickerMenu(

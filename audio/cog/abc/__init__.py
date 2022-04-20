@@ -8,7 +8,7 @@ from discord.ext.commands import Cog
 from redbot.core import Config, commands
 from redbot.core.bot import Red
 
-from pylav import Client
+from pylav import Client, converters
 
 
 class MPMixin(ABC):
@@ -45,6 +45,55 @@ class MPMixin(ABC):
         user_id: int,
     ):
         raise NotImplementedError()
+
+    # COMMANDS
+    @abstractmethod
+    async def command_play(self, ctx: commands.Context, *, query: converters.QueryConverter):
+        raise NotImplementedError()
+
+    @abstractmethod
+    async def command_now(self, ctx: commands.Context):
+        raise NotImplementedError()
+
+    @abstractmethod
+    async def command_skip(self, ctx: commands.Context):
+        raise NotImplementedError()
+
+    @abstractmethod
+    async def command_stop(self, ctx: commands.Context):
+        raise NotImplementedError()
+
+    @abstractmethod
+    async def command_pause(self, ctx: commands.Context):
+        raise NotImplementedError()
+
+    @abstractmethod
+    async def command_queue(self, ctx: commands.Context):
+        raise NotImplementedError()
+
+    @abstractmethod
+    async def command_shuffle(self, ctx: commands.Context):
+        raise NotImplementedError()
+
+    @abstractmethod
+    async def command_repeat(self, ctx: commands.Context):
+        raise NotImplementedError()
+
+    @abstractmethod
+    async def command_disconnect(self, ctx: commands.Context):
+        raise NotImplementedError()
+
+    @abstractmethod
+    async def command_resume(self, ctx: commands.Context):
+        raise NotImplementedError()
+
+    @abstractmethod
+    async def command_volume(self, ctx: commands.Context, volume: int):
+        raise NotImplementedError()
+
+    # @abstractmethod
+    # async def command_remove(self, ctx: commands.Context, index: int):
+    #     raise NotImplementedError()
 
 
 if TYPE_CHECKING:
