@@ -35,7 +35,7 @@ class UtilityCommands(MPMixin, ABC):
             return
 
         volume = player.volume + change_by
-        await player.set_volume(volume)
+        await player.set_volume(volume, requester=context.author)
         await context.send(
             embed=await self.lavalink.construct_embed(
                 messageable=context, description=_("Player volume set to {volume}%.").format(volume=volume)

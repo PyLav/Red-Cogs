@@ -60,7 +60,7 @@ class PlayerCommands(MPMixin, ABC):
             )
             return
         if after_current:
-            player.queue.put_nowait([track], 0)
+            await player.move_track(track, context.author, 0)
             await context.send(
                 embed=await self.lavalink.construct_embed(
                     messageable=context,
@@ -84,7 +84,7 @@ class PlayerCommands(MPMixin, ABC):
                 ),
                 ephemeral=True,
             )
-            await player.play(track=track)
+            await player.play(track=track, requester=context.author)
 
     @commands.command(name="remove", description="Remove the specified track from the queue.")
     @commands.guild_only()
@@ -141,7 +141,9 @@ class PlayerCommands(MPMixin, ABC):
                 track = Track(node=player.node, data=None, query=await Query.from_string(track_url_or_index))
                 await track.search(player)
         try:
-            number_removed += await player.queue.remove(track, duplicates=remove_duplicates)
+            number_removed += await player.remove_from_queue(
+                track, requester=context.author, duplicates=remove_duplicates
+            )
         except IndexError:
             if not number_removed:
                 await context.send(

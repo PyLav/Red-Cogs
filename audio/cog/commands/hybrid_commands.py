@@ -42,7 +42,7 @@ class HybridCommands(MPMixin, ABC):
                     ephemeral=True,
                 )
                 return
-            player = await self.lavalink.connect_player(channel=channel, self_deaf=True)
+            player = await self.lavalink.connect_player(channel=channel, self_deaf=True, requester=context.author)
         is_partial = query.is_search
         tracks = {}
         if not is_partial:
@@ -96,7 +96,7 @@ class HybridCommands(MPMixin, ABC):
             )
 
         if not player.is_playing:
-            await player.play()
+            await player.play(requester=context.author)
 
     @commands.hybrid_command(
         name="connect", description="Connects the Player to the specified channel or your current channel."
@@ -134,9 +134,9 @@ class HybridCommands(MPMixin, ABC):
             )
             return
         if (player := self.lavalink.get_player(context.guild)) is None:
-            await self.lavalink.connect_player(channel=channel, self_deaf=True)
+            await self.lavalink.connect_player(context.author, channel=channel, self_deaf=True)
         else:
-            await player.move_to(channel, self_deaf=True)
+            await player.move_to(context.author, channel, self_deaf=True)
 
         await context.send(
             embed=await self.lavalink.construct_embed(
@@ -206,7 +206,7 @@ class HybridCommands(MPMixin, ABC):
             ),
             ephemeral=True,
         )
-        await player.skip()
+        await player.skip(requester=context.author)
 
     @commands.hybrid_command(name="stop", description="Stops the player and remove all tracks from the queue.")
     @app_commands.guilds(MY_GUILD)
@@ -258,7 +258,7 @@ class HybridCommands(MPMixin, ABC):
                 ephemeral=True,
             )
             return
-        await player.disconnect()
+        await player.disconnect(requester=context.author)
         await context.send(
             embed=await self.lavalink.construct_embed(
                 messageable=context, description=_("Disconnected from voice channel")
@@ -318,7 +318,7 @@ class HybridCommands(MPMixin, ABC):
                 ephemeral=True,
             )
             return
-        await player.shuffle_queue()
+        await player.shuffle_queue(context.author)
         await context.send(
             embed=await self.lavalink.construct_embed(
                 messageable=context,
@@ -344,17 +344,14 @@ class HybridCommands(MPMixin, ABC):
             )
             return
         if queue:
-            player.repeat_queue = True
-            player.repeat_current = False
+            await player.set_repeat("queue", True, context.author)
             msg = _("Repeating the queue")
         else:
             if player.repeat_queue or player.repeat_current:
-                player.repeat_queue = False
-                player.repeat_current = False
+                await player.set_repeat("disable", False, context.author)
                 msg = _("Repeating disabled")
             else:
-                player.repeat_current = True
-                player.repeat_queue = False
+                await player.set_repeat("current", True, context.author)
                 msg = _("Repeating {track}").format(track=await player.current.get_track_display_name(with_url=True))
         await context.send(
             embed=await self.lavalink.construct_embed(description=msg, messageable=context), ephemeral=True
@@ -389,7 +386,7 @@ class HybridCommands(MPMixin, ABC):
             )
             return
 
-        await player.set_pause(True)
+        await player.set_pause(True, requester=context.author)
         await context.send(
             embed=await self.lavalink.construct_embed(messageable=context, description=_("Player paused.")),
             ephemeral=True,
@@ -424,7 +421,7 @@ class HybridCommands(MPMixin, ABC):
             )
             return
 
-        await player.set_pause(False)
+        await player.set_pause(False, context.author)
         await context.send(
             embed=await self.lavalink.construct_embed(messageable=context, description=_("Player resumed.")),
             ephemeral=True,
@@ -446,7 +443,7 @@ class HybridCommands(MPMixin, ABC):
                 ephemeral=True,
             )
             return
-        await player.set_volume(volume)
+        await player.set_volume(volume, requester=context.author)
         await context.send(
             embed=await self.lavalink.construct_embed(
                 messageable=context, description=_("Player volume set to {volume}%.").format(volume=volume)
@@ -480,7 +477,7 @@ class HybridCommands(MPMixin, ABC):
                 ephemeral=True,
             )
             return
-        await player.previous()
+        await player.previous(requester=context.author)
         await context.send(
             embed=await self.lavalink.construct_embed(
                 messageable=context,

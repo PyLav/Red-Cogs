@@ -114,7 +114,8 @@ class MediaPlayer(
                 embed=await self.lavalink.construct_embed(
                     messageable=context,
                     description=_(
-                        "MediaPlayer cog is currently unavailable due to an outage with the backend services."
+                        "MediaPlayer cog is currently temporarily unavailable due to an outage with "
+                        "the backend services, please try again later."
                     ),
                     footer=_("No Lavalink node currently available.")
                     if await self.bot.is_owner(context.author)

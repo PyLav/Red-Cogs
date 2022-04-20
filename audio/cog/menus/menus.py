@@ -57,7 +57,7 @@ class BaseMenu(discord.ui.View):
         **kwargs: Any,
     ) -> None:
         super().__init__(
-            timeout=5,
+            timeout=timeout,
         )
         self.author = None
         self.ctx = None
