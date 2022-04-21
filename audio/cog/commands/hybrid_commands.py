@@ -44,10 +44,10 @@ class HybridCommands(MPMixin, ABC):
                 return
             player = await self.lavalink.connect_player(channel=channel, self_deaf=True, requester=context.author)
         is_partial = query.is_search
-        tracks = {}
+        response = {}
         if not is_partial:
-            tracks: dict = await self.lavalink.get_tracks(query)
-            if not tracks:
+            response: dict = await self.lavalink.get_tracks(query)
+            if not response.get("tracks"):
                 await context.send(
                     embed=await self.lavalink.construct_embed(
                         messageable=context,
@@ -68,7 +68,7 @@ class HybridCommands(MPMixin, ABC):
             )
         elif query.is_single:
             track = Track(
-                node=player.node, data=tracks["tracks"][0], query=query.with_index(0), requester=context.author.id
+                node=player.node, data=response["tracks"][0], query=query.with_index(0), requester=context.author.id
             )
             await player.add(requester=context.author.id, track=track)
             await context.send(
@@ -79,7 +79,7 @@ class HybridCommands(MPMixin, ABC):
                 ephemeral=True,
             )
         else:
-            tracks = tracks["tracks"]
+            tracks = response["tracks"]
             track_count = len(tracks)
             await player.bulk_add(
                 requester=context.author.id,
@@ -88,9 +88,31 @@ class HybridCommands(MPMixin, ABC):
                     async for i, track in AsyncIter(tracks).enumerate()
                 ],
             )
+            bundle_name = response.get("playlistInfo", {}).get("name")
+            if bundle_name and not (query.is_search or query.is_local):
+                bundle_prefix = _("Album") if query.is_album else _("Playlist") if query.is_playlist else ""
+                if bundle_name:
+                    bundle_name = discord.utils.escape_markdown(bundle_name)
+                    bundle_name = f"[{bundle_name}]"
+                bundle_name += f"({query.query_identifier})"
+                playlist_name = f"\n\n**{bundle_prefix}:  {bundle_name}**"
+            elif not bundle_name and query.is_album and query.is_local:
+                bundle_prefix = _("Album")
+                folder_name = await query.folder()
+                if folder_name:
+                    bundle_name = discord.utils.escape_markdown(await query.query_to_string())
+                    playlist_name = f"\n\n**{bundle_prefix}:  {bundle_name}**"
+                else:
+                    playlist_name = ""
+            else:
+                playlist_name = ""
+
             await context.send(
                 embed=await self.lavalink.construct_embed(
-                    messageable=context, description=_("{track_count} tracks enqueued").format(track_count=track_count)
+                    messageable=context,
+                    description=_("{track_count} tracks enqueued.{playlist_name}").format(
+                        track_count=track_count, playlist_name=playlist_name
+                    ),
                 ),
                 ephemeral=True,
             )

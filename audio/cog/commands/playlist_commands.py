@@ -113,9 +113,18 @@ class PlaylistCommands(MPMixin, ABC):
                 async for i, track in AsyncIter(playlist.tracks).enumerate()
             ],
         )
+        playlist_name = playlist.name
+        if playlist.url:
+            playlist_name = discord.utils.escape_markdown(playlist_name)
+            playlist_name = f"**[{playlist_name}]({playlist.url})**"
+        bundle_prefix = _("Playlist")
+        playlist_name = f"\n\n**{bundle_prefix}:  {playlist_name}**"
         await context.send(
             embed=await self.lavalink.construct_embed(
-                messageable=context, description=_("{track_count} tracks enqueued").format(track_count=track_count)
+                messageable=context,
+                description=_("{track_count} tracks enqueued.{playlist_name}").format(
+                    track_count=track_count, playlist_name=playlist_name
+                ),
             ),
             ephemeral=True,
         )
