@@ -65,7 +65,9 @@ class MediaPlayer(
 
     async def initialize(self) -> None:
         if not self.lavalink.initialized:
-            await self.lavalink.initialize()
+            spotify = await self.bot.get_shared_api_tokens("spotify")
+            spotify_tokens = {"client_id": spotify.get("client_id"), "client_secret": spotify.get("client_secret")}
+            await self.lavalink.initialize(**spotify_tokens)
 
     async def _sync_tree(self) -> None:
         await self.bot.wait_until_red_ready()
@@ -86,7 +88,7 @@ class MediaPlayer(
     @red_commands.Cog.listener()
     async def on_red_api_tokens_update(self, service_name: str, api_tokens: dict[str, str]) -> None:
         if service_name == "spotify":
-            ...  # Update lib with new token
+            await self.lavalink.update_spotify_tokens(**api_tokens)
 
     async def red_delete_data_for_user(
         self,
