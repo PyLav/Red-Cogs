@@ -233,7 +233,7 @@ class HybridCommands(MPMixin, ABC):
                 ephemeral=True,
             )
             return
-        await player.stop()
+        await player.stop(context.author)
         await context.send(
             embed=await self.lavalink.construct_embed(messageable=context, description=_("Player stopped")),
             ephemeral=True,

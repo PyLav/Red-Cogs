@@ -18,6 +18,7 @@ from audio.cog import errors
 from audio.cog.abc import MY_GUILD, MPMixin
 from audio.cog.commands.hybrid_commands import HybridCommands
 from audio.cog.commands.player_commands import PlayerCommands
+from audio.cog.commands.playlist_commands import PlaylistCommands
 from audio.cog.commands.utility_commands import UtilityCommands
 
 
@@ -38,6 +39,7 @@ class MediaPlayer(
     HybridCommands,
     UtilityCommands,
     PlayerCommands,
+    PlaylistCommands,
     metaclass=CompositeMetaClass,
 ):
     def __init__(self, bot: Red, *args, **kwargs):
