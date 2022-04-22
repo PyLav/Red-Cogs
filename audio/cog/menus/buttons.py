@@ -1,13 +1,22 @@
 from __future__ import annotations
 
-from typing import Callable
+import itertools
+from pathlib import Path
+from typing import Callable, Literal
 
 import discord
 from red_commons.logging import getLogger
+from redbot.core.i18n import Translator
+
+from pylav.utils import AsyncIter
 
 from audio.cog._types import CogT
+from audio.cog.menus.modals import PlaylistSaveModal
+from audio.cog.utils import rgetattr
 
 LOGGER = getLogger("red.3pt.mp.ui.buttons")
+
+_ = Translator("MediaPlayer", Path(__file__))
 
 
 class AudioNavigateButton(discord.ui.Button):
@@ -203,7 +212,7 @@ class ToggleRepeatButton(discord.ui.Button):
         self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
-        player = self.cog.lavalink.get_player(self.view.ctx.guild)
+        player = self.cog.lavalink.get_player(interaction.guild)
         if not player:
             return await interaction.response.send_message(
                 embed=await self.cog.lavalink.construct_embed(
@@ -235,7 +244,7 @@ class ToggleRepeatQueueButton(discord.ui.Button):
         self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
-        player = self.cog.lavalink.get_player(self.view.ctx.guild)
+        player = self.cog.lavalink.get_player(interaction.guild)
         if not player:
             return await interaction.response.send_message(
                 embed=await self.cog.lavalink.construct_embed(
@@ -303,13 +312,7 @@ class EqualizerButton(discord.ui.Button):
         self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
-        await interaction.response.defer()
-        self.cog.dispatch_msg(  # FIXME:
-            ctx=self.view.ctx,
-            interaction=interaction,
-            command=self.view.cog.command_equalizer,
-            args="",
-        )
+        # TODO: Implement
         kwargs = await self.view.get_page(self.view.current_page)
         await self.view.prepare()
         await interaction.edit_original_message(view=self.view, **kwargs)
@@ -348,7 +351,7 @@ class EnqueueButton(discord.ui.Button):
     async def callback(self, interaction: discord.Interaction):
         from audio.cog.menus.modals import EnqueueModal
 
-        modal = EnqueueModal(self.cog, "What do you want to enqueue?")
+        modal = EnqueueModal(self.cog, _("What do you want to enqueue?"))
         await interaction.response.send_modal(modal)
 
 
@@ -419,3 +422,310 @@ class PlayNowFromQueueButton(discord.ui.Button):
             await self.view.prepare()
             kwargs = await self.view.get_page(self.view.current_page)
             await interaction.response.edit_message(view=self.view, **kwargs)
+
+
+class SaveQueuePlaylistButton(discord.ui.Button):
+    def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
+        super().__init__(
+            style=style,
+            emoji=discord.PartialEmoji(name="playlist", animated=False, id=961593964790689793),
+            row=row,
+        )
+        self.cog = cog
+
+    async def callback(self, interaction: discord.Interaction):
+        modal = PlaylistSaveModal(self.cog, self, _("What should the playlist name be?"))
+        await interaction.response.send_modal(modal)
+
+
+class EnqueuePlaylistButton(discord.ui.Button):
+    def __init__(
+        self,
+        cog: CogT,
+        style: discord.ButtonStyle,
+        row: int = None,
+    ):
+        self.cog = cog
+        super().__init__(
+            style=style,
+            emoji=discord.PartialEmoji(name="album", animated=False, id=961593964299976725),
+            row=row,
+        )
+
+    async def callback(self, interaction: discord.Interaction):
+        from audio.cog.menus.menus import PlaylistPickerMenu
+        from audio.cog.menus.sources import PlaylistPickerSource
+
+        if not getattr(interaction, "_cs_command", None):
+            interaction._cs_command = self.cog.command_playlist_list
+        context = await self.cog.bot.get_context(interaction)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+        playlists = await self.cog.lavalink.playlist_db_manager.get_all_for_user(
+            requester=context.author.id,
+            vc=rgetattr(context.author, "voice.channel", None),
+            guild=context.guild,
+            channel=context.channel,
+        )
+        playlists = list(itertools.chain.from_iterable(playlists))
+
+        await PlaylistPickerMenu(
+            cog=self.cog,
+            bot=self.cog.bot,
+            source=PlaylistPickerSource(
+                guild_id=interaction.guild.id,
+                cog=self.cog,
+                pages=playlists,
+            ),
+            delete_after_timeout=True,
+            clear_buttons_after=True,
+            starting_page=0,
+        ).start(context)
+        await self.view.prepare()
+        kwargs = await self.view.get_page(self.view.current_page)
+        await interaction.response.edit_message(view=self.view, **kwargs)
+
+
+class EffectPickerButton(discord.ui.Button):
+    def __init__(
+        self,
+        cog: CogT,
+        style: discord.ButtonStyle,
+        row: int = None,
+    ):
+        self.cog = cog
+        super().__init__(
+            style=style,
+            emoji=discord.PartialEmoji(name="settings", animated=False, id=961593964316729394),
+            row=row,
+        )
+
+    async def callback(self, interaction: discord.Interaction):
+        from audio.cog.menus.menus import EffectPickerMenu
+        from audio.cog.menus.sources import EffectsPickerSource
+
+        await EffectPickerMenu(
+            cog=self.cog,
+            bot=self.cog.bot,
+            source=EffectsPickerSource(guild_id=interaction.guild.id, cog=self.cog),
+            delete_after_timeout=True,
+            clear_buttons_after=False,
+            starting_page=0,
+            menu_type="play",
+        ).start(interaction)
+        await self.view.prepare()
+        kwargs = await self.view.get_page(self.view.current_page)
+        await interaction.response.edit_message(view=self.view, **kwargs)
+
+
+class AudioStatsDisconnectButton(discord.ui.Button):
+    def __init__(
+        self,
+        cog: CogT,
+        style: discord.ButtonStyle,
+        row: int = None,
+    ):
+        super().__init__(
+            style=style,
+            emoji=discord.PartialEmoji(name="power", animated=False, id=961593964354482256),
+            row=row,
+        )
+        self.cog = cog
+
+    async def callback(self, interaction: discord.Interaction):
+        if not await self.view.bot.is_owner(interaction.user):
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, title=_("You are not authorized to perform this action.")
+                ),
+                ephemeral=True,
+            )
+            return
+        player = self.view.source.current_player
+        if not player:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, title=_("No Player Available For Action - Try Refreshing.")
+                ),
+                ephemeral=True,
+            )
+            return
+        self.view.bot.dispatch("red_audio_audio_disconnect", player.guild)
+        self.cog.update_player_lock(player, False)
+        player.queue = []
+        player.store("playing_song", None)
+        player.store("autoplay_notified", False)
+        channel_id = player.fetch("notify_channel")
+        notify_channel = player.guild.get_channel_or_thread(channel_id)
+        if player.equalizer.changed:
+            async with self.cog.config.custom("EQUALIZER", player.guild.id).all() as eq_data:
+                eq_data["eq_bands"] = player.equalizer.get()
+                eq_data["name"] = player.equalizer.name
+        await player.stop()
+        await player.disconnect()
+        if notify_channel:
+            # TODO Use Text input to get a message from owner to send
+            await self.cog.send_embed_msg(
+                notify_channel, title=_("Bot Owner Action"), description=_("Player disconnected.")
+            )
+        self.cog._ll_guild_updates.discard(player.guild.id)  # noqa
+        await self.cog.api_interface.persistent_queue_api.drop(player.guild.id)
+        await self.cog.clean_up_guild_config(
+            "last_known_vc_and_notify_channels",
+            "last_known_track",
+            "currently_auto_playing_in",
+            guild_ids=[player.guild.id],
+        )
+
+        await self.view.prepare()
+        kwargs = await self.view.get_page(self.view.current_page)
+        await interaction.response.edit_message(view=self.view, **kwargs)
+
+
+class AudioStatsStopTrackButton(discord.ui.Button):
+    def __init__(
+        self,
+        cog: CogT,
+        style: discord.ButtonStyle,
+        row: int = None,
+    ):
+        super().__init__(
+            style=style,
+            emoji=discord.PartialEmoji(name="stop", id=961593964828459068, animated=False),
+            row=row,
+        )
+        self.cog = cog
+
+    async def callback(self, interaction: discord.Interaction):
+        if not await self.view.bot.is_owner(interaction.user):
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, title=_("You are not authorized to perform this action.")
+                ),
+                ephemeral=True,
+            )
+            return
+        player = self.view.source.current_player
+        if not player:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, title=_("No Player Available For Action - Try Refreshing.")
+                ),
+                ephemeral=True,
+            )
+            return
+        if player.equalizer.changed:
+            async with self.cog.config.custom("EQUALIZER", player.guild.id).all() as eq_data:
+                eq_data["eq_bands"] = player.equalizer.get()
+                eq_data["name"] = player.equalizer.name
+        player.queue = []
+        player.store("playing_song", None)
+        player.store("prev_requester", None)
+        player.store("prev_song", None)
+        player.store("requester", None)
+        player.store("autoplay_notified", False)
+        await player.stop()
+        channel_id = player.fetch("notify_channel")
+        notify_channel = player.guild.get_channel_or_thread(channel_id)
+        if notify_channel:
+            # TODO Use Text input to get a message from owner to send?
+            await self.cog.send_embed_msg(notify_channel, title=_("Bot Owner Action"), description=_("Player stopped."))
+        await self.cog.api_interface.persistent_queue_api.drop(player.guild.id)
+        await self.cog.clean_up_guild_config(
+            "last_known_vc_and_notify_channels",
+            "last_known_track",
+            "currently_auto_playing_in",
+            guild_ids=[player.guild.id],
+        )
+        await self.view.prepare()
+        kwargs = await self.view.get_page(self.view.current_page)
+        await interaction.response.edit_message(view=self.view, **kwargs)
+
+
+class AudioStatsDisconnectAllButton(discord.ui.Button):
+    def __init__(
+        self,
+        cog: CogT,
+        disconnect_type: Literal["all", "inactive"],
+        style: discord.ButtonStyle,
+        row: int = None,
+    ):
+        super().__init__(
+            style=style,
+            emoji=discord.PartialEmoji(name="power", animated=False, id=961593964354482256),
+            row=row,
+        )
+
+        self.disconnect_type = disconnect_type
+        self.cog = cog
+
+    async def callback(self, interaction: discord.Interaction):
+        if not await self.view.bot.is_owner(interaction.user):
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, title=_("You are not authorized to perform this action.")
+                ),
+                ephemeral=True,
+            )
+            return
+
+        players = (
+            self.cog.lavalink.player_manager.connected_players
+            if self.disconnect_type == "all"
+            else self.cog.lavalink.player_manager.not_playing_players
+        )
+        if not players:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, title=_("No Players Available For Action - Try Refreshing.")
+                ),
+                ephemeral=True,
+            )
+            return
+        async for player in AsyncIter(players):
+            self.view.bot.dispatch("red_audio_audio_disconnect", player.guild)
+            self.cog.update_player_lock(player, False)
+            player.queue = []
+            channel_id = player.fetch("notify_channel")
+            notify_channel = player.guild.get_channel_or_thread(channel_id)
+            if player.equalizer.changed:
+                async with self.cog.config.custom("EQUALIZER", player.guild.id).all() as eq_data:  # type: ignore
+                    eq_data["eq_bands"] = player.equalizer.get()
+                    eq_data["name"] = player.equalizer.name
+            await player.stop(requester=interaction.user)
+            await player.disconnect(requester=interaction.user)
+            if notify_channel:
+                # TODO Use Text input to get a message from owner to send
+                await self.cog.send_embed_msg(
+                    notify_channel,
+                    title=_("Bot Owner Action"),
+                    description=_("Player disconnected."),
+                )
+            self.cog._ll_guild_updates.discard(player.guild.id)  # noqa
+            await self.cog.api_interface.persistent_queue_api.drop(player.guild.id)
+            await self.cog.clean_up_guild_config(
+                "last_known_vc_and_notify_channels",
+                "last_known_track",
+                "currently_auto_playing_in",
+                guild_ids=[player.guild.id],
+            )
+        await self.view.prepare()
+        kwargs = await self.view.get_page(self.view.current_page)
+        await interaction.response.edit_message(view=self.view, **kwargs)
+
+
+class LabelButton(discord.ui.Button):
+    def __init__(
+        self,
+        disconnect_type_translation: str,
+        multiple=True,
+        row: int = None,
+    ):
+        super().__init__(
+            style=discord.ButtonStyle.secondary,
+            emoji=None,
+            row=row,
+        )
+        self.label = _("Disconnect {} {}").format(
+            disconnect_type_translation, _("players") if multiple else _("player")
+        )

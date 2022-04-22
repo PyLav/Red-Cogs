@@ -14,10 +14,11 @@ from tabulate import tabulate
 
 from pylav import Player, Query, Track
 from pylav.sql.models import PlaylistModel
-from pylav.utils import AsyncIter, PyLavContext, get_time_string
+from pylav.utils import AsyncIter, get_time_string
 
 from audio.cog._types import CogT
 from audio.cog.menus.selectors import EffectsOption, PlaylistOption, QueueTrackOption, SearchTrackOption
+from audio.cog.utils import rgetattr
 
 LOGGER = getLogger("red.3pt.mp.ui.sources")
 
@@ -134,13 +135,12 @@ class QueuePickerSource(QueueSource):
 
 
 class PlaylistPickerSource(menus.ListPageSource):
-    def __init__(self, guild_id: int, cog: CogT, pages: list[PlaylistModel], ctx: PyLavContext | discord.Interaction):
+    def __init__(self, guild_id: int, cog: CogT, pages: list[PlaylistModel]):
         pages.sort(
             key=lambda p: (
-                ([INF], INF, ASCII_ORDER_SORT, INF)
+                (INF, ASCII_ORDER_SORT)
                 if len(p.tracks) == 0
                 else (
-                    ([(-ord(c)) for c in p.scope.lower()]),
                     -len(p.tracks),
                     p.name.lower(),
                 ),
@@ -151,7 +151,7 @@ class PlaylistPickerSource(menus.ListPageSource):
         self.guild_id = guild_id
         self.select_options: list[PlaylistOption] = []
         self.cog = cog
-        self.ctx = ctx
+        self.select_mapping: dict[str, PlaylistModel] = {}
 
     def get_starting_index_and_page_number(self, menu: BaseMenu) -> tuple[int, int]:
         page_num = menu.current_page
@@ -161,7 +161,9 @@ class PlaylistPickerSource(menus.ListPageSource):
     async def format_page(self, menu: BaseMenu, tracks: list[PlaylistModel]) -> discord.Embed | str:
 
         idx_start, page_num = self.get_starting_index_and_page_number(menu)
-        page = await menu.cog.construct_embed(ctx=menu.ctx, title=_("Playlists you can access in this server:"))
+        page = await self.cog.lavalink.construct_embed(
+            messageable=menu.ctx, title=_("Playlists you can access in this server:")
+        )
         page.set_footer(
             text=_("Page {page_num}/{total_pages} | {num} playlists.").format(
                 page_num=humanize_number(page_num + 1),
@@ -176,10 +178,12 @@ class PlaylistPickerSource(menus.ListPageSource):
             page_number = 0
         base = page_number * self.per_page
         self.select_options.clear()
-        for i, playlist in enumerate(self.entries[base: base + self.per_page], start=base):
+        self.select_mapping.clear()
+        for i, playlist in enumerate(self.entries[base : base + self.per_page], start=base):  # noqa: E203
             playlist.author = self.cog.bot.get_user(playlist.author) or playlist.author
             self.select_options.append(PlaylistOption(playlist=playlist, index=i))
-        return self.entries[base: base + self.per_page]
+            self.select_mapping[f"{playlist.id}"] = playlist
+        return self.entries[base : base + self.per_page]  # noqa: E203
 
 
 class EffectsPickerSource(menus.ListPageSource):
@@ -199,6 +203,7 @@ class EffectsPickerSource(menus.ListPageSource):
         )
         self.guild_id = guild_id
         self.select_options: list[EffectsOption] = []
+        self.select_mapping: dict[str, str] = {}
         self.cog = cog
 
     def get_starting_index_and_page_number(self, menu: BaseMenu) -> tuple[int, int]:
@@ -214,7 +219,9 @@ class EffectsPickerSource(menus.ListPageSource):
             page_number = 0
         base = page_number * self.per_page
         self.select_options.clear()
-        for i, effect in enumerate(self.entries[base: base + self.per_page], start=base):
+        self.select_mapping.clear()
+        for i, effect in enumerate(self.entries[base : base + self.per_page], start=base):  # noqa: E203
+            self.select_mapping[f"{effect}"] = effect
             if effect in ["reset", "default"]:
                 self.select_options.append(
                     EffectsOption(
@@ -278,7 +285,7 @@ class EffectsPickerSource(menus.ListPageSource):
                         index=i,
                     )
                 )
-        return self.entries[base: base + self.per_page]
+        return self.entries[base : base + self.per_page]  # noqa: E203
 
 
 class ListSource(menus.ListPageSource):
@@ -329,7 +336,9 @@ class EQPresetsSource(menus.ListPageSource):
                     header_author: f"{author}",
                 }
             )
-        embed = await self.cog.lavalink.construct_embed(ctx=menu.ctx, description=box(tabulate(data, headers="keys")))
+        embed = await self.cog.lavalink.construct_embed(
+            messageable=menu.ctx, description=box(tabulate(data, headers="keys"))
+        )
         return embed
 
 
@@ -380,7 +389,7 @@ class PlaylistInfoSource(menus.ListPageSource):
             msg = authormsg + msg
 
         else:
-            embed_title = _("PlaylistModel info for {playlist_name} (`{id}`) [**{scope}**]").format(
+            embed_title = _("Playlist info for {playlist_name} (`{id}`) [**{scope}**]").format(
                 playlist_name=self.playlist.name, id=self.playlist.id, scope=self.scope_name
             )
             newmsg = f"**URL**: [{self.playlist.name}]({self.playlist.url})\n\n"
@@ -399,21 +408,18 @@ class PlaylistInfoSource(menus.ListPageSource):
 
 
 class PlaylistListSource(menus.ListPageSource):
-    def __init__(self, cog: CogT, pages: list[PlaylistModel], scope: str | None = None):
+    def __init__(self, cog: CogT, pages: list[PlaylistModel]):
         pages.sort(
             key=lambda p: (
-                ([INF], INF, ASCII_ORDER_SORT, INF)
+                (INF, ASCII_ORDER_SORT)
                 if len(p.tracks) == 0
                 else (
-                    ([(-ord(c)) for c in p.scope.lower()]),
                     -len(p.tracks),
                     p.name.lower(),
                 ),
             )
         )
         super().__init__(entries=pages, per_page=5)
-        self.per_page = 5
-        self.scope = scope
         self.cog = cog
 
     def get_starting_index_and_page_number(self, menu: BaseMenu) -> tuple[int, int]:
@@ -427,21 +433,22 @@ class PlaylistListSource(menus.ListPageSource):
         plist = ""
         space = "\N{EN SPACE}"
         async for i, playlist in AsyncIter(playlists).enumerate(start=idx_start + 1):
+            scope_name = await playlist.get_scope_name(self.cog.bot)
+            author_name = await playlist.get_author_name(self.cog.bot) or playlist.author or _("Unknown")
+            is_same = scope_name == author_name
             playlist_info = ("\n" + space * 4).join(
                 (
                     bold(playlist.name),
                     _("ID: {id}").format(id=playlist.id),
                     _("Tracks: {num}").format(num=len(playlist.tracks)),
-                    _("Author: {name}").format(
-                        name=await playlist.get_author_name(self.cog.bot) or playlist.author or _("Unknown")
-                    ),
-                    _("Scope: {scope}\n").format(scope=await playlist.get_scope_name(self.cog.bot)),
+                    _("Author: {name}").format(name=author_name),
+                    _("Scope: {scope}\n").format(scope=scope_name) if not is_same else "\n",
                 )
             )
             plist += f"`{i}.` {playlist_info}"
 
-        embed = await menu.cog.construct_embed(
-            ctx=menu.ctx,
+        embed = await self.cog.lavalink.construct_embed(
+            messageable=menu.ctx,
             title=_("Playlists you can access in this server:"),
             description=plist,
         )
@@ -458,6 +465,7 @@ class PlaylistListSource(menus.ListPageSource):
 class PlaylistChangeSource(menus.ListPageSource):
     def __init__(
         self,
+        cog: CogT,
         menu_title: str,
         tracks: list[Track],
         extras: str,
@@ -466,6 +474,7 @@ class PlaylistChangeSource(menus.ListPageSource):
         super().__init__(tracks, per_page=per_page)
         self.title = menu_title
         self.extras = extras
+        self.cog = cog
 
     def get_starting_index_and_page_number(self, menu: BaseMenu) -> tuple[int, int]:
         page_num = menu.current_page
@@ -479,7 +488,7 @@ class PlaylistChangeSource(menus.ListPageSource):
             name = await track.get_track_display_name(max_length=50, with_url=True)
             msg += f"`{i}.` {name}\n"
 
-        embed = await menu.cog.construct_embed(ctx=menu.ctx, title=self.title, description=msg)
+        embed = await self.cog.lavalink.construct_embed(messageable=menu.ctx, title=self.title, description=msg)
         embed.set_footer(
             text=_("Page {page_num}/{total_pages} | {num} tracks {added_or_removed_string}.").format(
                 page_num=humanize_number(page_num + 1),
@@ -495,6 +504,7 @@ class PlayersSource(menus.ListPageSource):
     def __init__(self, cog: CogT):
         super().__init__([], per_page=1)
         self.cog = cog
+        self.current_player = None
 
     @property
     def entries(self) -> list[Player]:
@@ -522,14 +532,15 @@ class PlayersSource(menus.ListPageSource):
             get_time_string(int((datetime.datetime.now(datetime.timezone.utc) - player.connected_at).total_seconds()))
             or "0s"
         )
+        self.current_player = player
         guild_name = player.guild.name
         queue_len = len(player.queue)
         server_owner = f"{player.guild.owner} ({player.guild.owner.id})"
         if not player.current:
             current_track = _("Nothing playing.")
         else:
-            current_track = await menu.cog.get_track_description(player.current, menu.cog.local_folder_current_path)
-        listener_count = sum(True for m in menu.cog.rgetattr(player, "channel.members", []) if not m.bot)
+            current_track = await player.current.get_track_display_name(max_length=50, with_url=True)
+        listener_count = sum(True for m in rgetattr(player, "channel.members", []) if not m.bot)
         listeners = humanize_number(listener_count)
         current_track += "\n"
 
@@ -544,7 +555,9 @@ class PlayersSource(menus.ListPageSource):
         )
         current_track += field_values
 
-        embed = await menu.cog.construct_embed(ctx=menu.ctx, title=guild_name, description=current_track)
+        embed = await self.cog.lavalink.construct_embed(
+            messageable=menu.ctx, title=guild_name, description=current_track
+        )
 
         embed.set_footer(
             text=_("Page {page_num}/{total_pages}  | Playing in {playing} servers.").format(
@@ -557,20 +570,24 @@ class PlayersSource(menus.ListPageSource):
 
 
 class SearchPickerSource(menus.ListPageSource):
-    def __init__(self, entries: list[Track], ctx: PyLavContext | discord.Interaction, cog: CogT, per_page: int = 10):
+    entries: list[Track]
+
+    def __init__(self, entries: list[Track], cog: CogT, per_page: int = 10):
         super().__init__(entries=entries, per_page=per_page)
         self.per_page = 25
         self.select_options: list[SearchTrackOption] = []
         self.cog = cog
-        self.ctx = ctx
+        self.select_mapping: dict[str, Track] = {}
 
     async def get_page(self, page_number):
         if page_number > self.get_max_pages():
             page_number = 0
         base = page_number * self.per_page
         self.select_options.clear()
-        for i, track in enumerate(self.entries[base: base + self.per_page], start=base):
-            self.select_options.append(await SearchTrackOption.from_track(track, self.cog, i))
+        self.select_mapping.clear()
+        for i, track in enumerate(self.entries[base : base + self.per_page], start=base):  # noqa: E203
+            self.select_options.append(await SearchTrackOption.from_track(track=track, index=i))
+            self.select_mapping[track.id] = track
         return []
 
     async def format_page(self, menu: BaseMenu, entries: list[Track]) -> str:

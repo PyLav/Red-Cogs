@@ -301,9 +301,11 @@ class HybridCommands(MPMixin, ABC):
                 ephemeral=True,
             )
             return
-        await QueueMenu(cog=self, bot=self.bot, source=QueueSource(guild_id=context.guild.id, cog=self)).start(
-            ctx=context
-        )
+        await QueueMenu(
+            cog=self,  # type: ignore
+            bot=self.bot,
+            source=QueueSource(guild_id=context.guild.id, cog=self),  # type: ignore
+        ).start(ctx=context)
 
     @commands.hybrid_command(name="shuffle", description="Shuffles the player's queue.")
     @app_commands.guilds(MY_GUILD)

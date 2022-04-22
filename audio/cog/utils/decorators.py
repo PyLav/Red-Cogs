@@ -13,7 +13,7 @@ _ = Translator("MediaPlayer", Path(__file__))
 
 
 def always_hidden():
-    async def pred(ctx: PyLavContext):  # noqa
+    async def pred(__: PyLavContext):
         return False
 
     return commands.check(pred)

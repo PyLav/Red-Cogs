@@ -1,20 +1,23 @@
 from __future__ import annotations
 
+from pathlib import Path
 from typing import Literal
 
 import discord
 from red_commons.logging import getLogger
+from redbot.core.i18n import Translator
 
-from pylav import Track
+from pylav import Query, Track
+from pylav.sql.models import PlaylistModel
 
 from audio.cog._types import CogT
 
 LOGGER = getLogger("red.3pt.mp.ui.selectors")
+_ = Translator("MediaPlayer", Path(__file__))
 
 
 class QueueTrackOption(discord.SelectOption):
     def __init__(self, name: str, description: str, value: str):
-
         super().__init__(
             label=name,
             description=description,
@@ -88,3 +91,149 @@ class QueueSelectTrack(discord.ui.Select):
             context = await self.cog.bot.get_context(interaction)
             await self.cog.command_playnow.callback(self.cog, context, queue_number=index)
         self.view.stop()
+
+
+class PlaylistOption(discord.SelectOption):
+    def __init__(self, playlist: PlaylistModel, index: int):
+        super().__init__(
+            label=f"{index + 1}. {playlist.name}",
+            description=_("Tracks: {} || Scope: {}  || Author: {}").format(
+                len(playlist.tracks),
+                playlist.scope,
+                playlist.author or _("Unknown"),
+            ),
+            value=f"{playlist.id}",
+        )
+
+
+class PlaylistSelector(discord.ui.Select):
+    def __init__(
+        self,
+        options: list[PlaylistOption],
+        cog: CogT,
+        placeholder: str,
+        mapping: dict[str, PlaylistModel],
+    ):
+        super().__init__(min_values=1, max_values=1, options=options, placeholder=placeholder)
+        self.cog = cog
+        self.mapping = mapping
+
+    async def callback(self, interaction: discord.Interaction):
+        playlist_id = self.values[0]
+        playlist: PlaylistModel = self.mapping.get(playlist_id)
+        if playlist is None:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, title=_("PlaylistModel not found.")
+                ),
+                ephemeral=True,
+            )
+            self.view.stop()
+            await interaction.message.delete()
+            return
+
+        if not getattr(interaction, "_cs_command", None):
+            interaction._cs_command = self.cog.command_playlist_play
+
+        self.cog.dispatch_msg(  # TODO: Replace with play command
+            ctx=self.view.ctx,
+            interaction=interaction,
+            command=self.cog.command_playlist_start,
+            args=f" {playlist.id}",
+        )
+        self.view.stop()
+        await interaction.message.delete()
+
+
+class EffectsOption(discord.SelectOption):
+    def __init__(self, label: str, description: str, value: str, index: int):
+        super().__init__(
+            label=f"{index + 1}. {label}",
+            description=description,
+            value=value,
+        )
+
+
+class EffectsSelector(discord.ui.Select):
+    def __init__(
+        self,
+        options: list[EffectsOption],
+        cog: CogT,
+        placeholder: str,
+        mapping: dict[str, str],
+    ):
+        super().__init__(min_values=1, max_values=1, options=options, placeholder=placeholder)
+        self.cog = cog
+        self.mapping = mapping
+
+    async def callback(self, interaction: discord.Interaction):
+        effect_value = self.values[0]
+        label: str = self.mapping.get(effect_value)
+        if label is None:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(messageable=interaction, title=_("No Preset Selected.")),
+                ephemeral=True,
+            )
+            self.view.stop()
+            await interaction.message.delete()
+            return
+        self.cog.dispatch_msg(  # TODO Replace with preset command
+            ctx=self.view.ctx,
+            interaction=interaction,
+            command=self.cog.command_effects,
+            args=f" {label}",
+        )
+        self.view.stop()
+        await interaction.message.delete()
+
+
+class SearchTrackOption(discord.SelectOption):
+    def __init__(self, name: str, description: str, value: str):
+        super().__init__(
+            label=name,
+            description=description,
+            value=value,
+        )
+
+    @classmethod
+    async def from_track(cls, track: Track, index: int):
+        name = await track.get_track_display_name(
+            max_length=100 - (2 + len(str(index + 1))), author=False, unformatted=True
+        )
+        return cls(name=f"{index + 1}. {name}", description=track.author, value=track.id)
+
+
+class SearchSelectTrack(discord.ui.Select):
+    def __init__(
+        self,
+        options: list[SearchTrackOption],
+        cog: CogT,
+        placeholder: str,
+        mapping: dict[str, Track],
+    ):
+        super().__init__(min_values=1, max_values=1, options=options, placeholder=placeholder)
+        self.cog = cog
+        self.mapping = mapping
+
+    async def callback(self, interaction: discord.Interaction):
+        track_id = self.values[0]
+        track: Track = self.mapping.get(track_id)
+
+        if track is None:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(messageable=interaction, title=_("Track not found.")),
+                ephemeral=True,
+            )
+            self.view.stop()
+            await interaction.message.delete()
+            return
+
+        if not getattr(interaction, "_cs_command", None):
+            interaction._cs_command = self.cog.command_play
+        await self.cog.command_play.callback(
+            self.cog,
+            await self.cog.bot.get_context(interaction),
+            query=await Query.from_string(track.uri),
+        )
+        self.view.stop()
+        await interaction.message.delete()

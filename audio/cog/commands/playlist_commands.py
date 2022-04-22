@@ -1,9 +1,11 @@
+import itertools
 from abc import ABC
-from logging import getLogger
 from pathlib import Path
 from typing import Optional
 
 import discord
+from discord import app_commands
+from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator
 
@@ -11,7 +13,9 @@ from pylav import Track
 from pylav.converters import QueryPlaylistConverter
 from pylav.utils import AsyncIter, PyLavContext
 
-from audio.cog import MPMixin
+from audio.cog import MY_GUILD, MPMixin
+from audio.cog.menus.menus import PaginatingMenu
+from audio.cog.menus.sources import PlaylistListSource
 from audio.cog.utils import rgetattr
 
 LOGGER = getLogger("red.3pt.mp.commands.playlists")
@@ -19,14 +23,14 @@ _ = Translator("MediaPlayer", Path(__file__))
 
 
 class PlaylistCommands(MPMixin, ABC):
-    @commands.group(name="playlist")
+    @commands.hybrid_group(name="playlist")
     @commands.guild_only()
     async def command_playlist(self, context: PyLavContext):
         """
         Control custom playlist.
         """
 
-    @command_playlist.command(name="create")
+    @commands.command(name="create")
     async def command_playlist_create(
         self, context: PyLavContext, url: Optional[QueryPlaylistConverter], *, name: Optional[str]
     ):
@@ -55,8 +59,8 @@ class PlaylistCommands(MPMixin, ABC):
             url = None
             if name is None:
                 name = f"{context.message.id}"
-        await context.lavalink.playlist_db_manager.create_or_update_playlist(
-            id=context.message.id, scope=context.author.id, author=context.author.id, name=name, url=url, tracks=tracks
+        await context.lavalink.playlist_db_manager.create_or_update_user_playlist(
+            id=context.message.id, author=context.author.id, name=name, url=url, tracks=tracks
         )
 
         await context.send(
@@ -129,12 +133,25 @@ class PlaylistCommands(MPMixin, ABC):
             await player.play(requester=context.author)
 
     @command_playlist.command(name="list")
-    async def command_list(self, context: PyLavContext):
+    @app_commands.guilds(MY_GUILD)
+    async def command_playlist_list(self, context: PyLavContext):
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        await context.send(
-            embed=await context.lavalink.construct_embed(description=_("List of playlists:")),
-            ephemeral=True,
+
+        playlists = await context.lavalink.playlist_db_manager.get_all_for_user(
+            requester=context.author.id,
+            vc=rgetattr(context.author, "voice.channel", None),
+            guild=context.guild,
+            channel=context.channel,
         )
+        playlists = list(itertools.chain.from_iterable(playlists))
+
+        await PaginatingMenu(
+            cog=self,  # type: ignore
+            bot=self.bot,
+            source=PlaylistListSource(cog=self, pages=playlists),  # type: ignore
+            delete_after_timeout=True,
+            timeout=120,
+        ).start(context)

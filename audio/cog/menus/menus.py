@@ -11,15 +11,19 @@ from redbot.vendored.discord.ext import menus
 from pylav.types import BotT
 from pylav.utils import PyLavContext
 
-from audio.cog._types import CogT
+from audio.cog._types import CogT, SourcesT
 from audio.cog.menus.buttons import (
     AudioNavigateButton,
+    AudioStatsDisconnectAllButton,
+    AudioStatsDisconnectButton,
+    AudioStatsStopTrackButton,
     CloseButton,
     DecreaseVolumeButton,
     DisconnectButton,
     EnqueueButton,
     EqualizerButton,
     IncreaseVolumeButton,
+    LabelButton,
     PauseTrackButton,
     PlayNowFromQueueButton,
     PreviousTrackButton,
@@ -34,9 +38,15 @@ from audio.cog.menus.buttons import (
 )
 
 if TYPE_CHECKING:
-    from audio.cog.menus.selectors import QueueSelectTrack
-    from audio.cog.menus.sources import QueuePickerSource, QueueSource
-
+    from audio.cog.menus.selectors import EffectsSelector, PlaylistSelector, QueueSelectTrack, SearchSelectTrack
+    from audio.cog.menus.sources import (
+        EffectsPickerSource,
+        PlayersSource,
+        PlaylistPickerSource,
+        QueuePickerSource,
+        QueueSource,
+        SearchPickerSource,
+    )
 
 LOGGER = getLogger("red.3pt.mp.ui.menus")
 
@@ -476,13 +486,13 @@ class QueuePickerMenu(BaseMenu):
             row=4,
             cog=cog,
         )
-        self.refresh_button = RefreshButton(
-            style=discord.ButtonStyle.grey,
+        self.close_button = CloseButton(
+            style=discord.ButtonStyle.red,
             row=4,
             cog=cog,
         )
-        self.close_button = CloseButton(
-            style=discord.ButtonStyle.red,
+        self.refresh_button = RefreshButton(
+            style=discord.ButtonStyle.grey,
             row=4,
             cog=cog,
         )
@@ -561,3 +571,607 @@ class QueuePickerMenu(BaseMenu):
         if self.select_view and not self.source.select_options:
             self.remove_item(self.select_view)
             self.select_view = None
+
+
+class PlaylistPickerMenu(BaseMenu):
+    _source: PlaylistPickerSource
+
+    def __init__(
+        self,
+        cog: CogT,
+        bot: BotT,
+        source: PlaylistPickerSource,
+        *,
+        clear_buttons_after: bool = False,
+        delete_after_timeout: bool = True,
+        timeout: int = 120,
+        message: discord.Message = None,
+        starting_page: int = 0,
+        **kwargs: Any,
+    ) -> None:
+        super().__init__(
+            cog,
+            bot,
+            source,
+            clear_buttons_after=clear_buttons_after,
+            delete_after_timeout=delete_after_timeout,
+            timeout=timeout,
+            message=message,
+            starting_page=starting_page,
+            **kwargs,
+        )
+        self.forward_button = AudioNavigateButton(
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK RIGHT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
+            direction=1,
+            row=4,
+            cog=cog,
+        )
+        self.backward_button = AudioNavigateButton(
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK LEFT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
+            direction=-1,
+            row=4,
+            cog=cog,
+        )
+        self.first_button = AudioNavigateButton(
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK LEFT-POINTING DOUBLE TRIANGLE}",
+            direction=0,
+            row=4,
+            cog=cog,
+        )
+        self.last_button = AudioNavigateButton(
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK RIGHT-POINTING DOUBLE TRIANGLE}",
+            direction=self.source.get_max_pages,
+            row=4,
+            cog=cog,
+        )
+        self.close_button = CloseButton(
+            style=discord.ButtonStyle.red,
+            row=4,
+            cog=cog,
+        )
+        self.refresh_button = RefreshButton(
+            style=discord.ButtonStyle.grey,
+            row=4,
+            cog=cog,
+        )
+        self.select_view: PlaylistSelector | None = None
+
+    @property
+    def source(self) -> PlaylistPickerSource:
+        return self._source
+
+    async def prepare(self):
+        self.clear_items()
+        max_pages = self.source.get_max_pages()
+        self.forward_button.disabled = False
+        self.backward_button.disabled = False
+        self.first_button.disabled = False
+        self.last_button.disabled = False
+        if max_pages == 2:
+            self.first_button.disabled = True
+            self.last_button.disabled = True
+        elif max_pages == 1:
+            self.forward_button.disabled = True
+            self.backward_button.disabled = True
+            self.first_button.disabled = True
+            self.last_button.disabled = True
+        self.add_item(self.close_button)
+        self.add_item(self.first_button)
+        self.add_item(self.backward_button)
+        self.add_item(self.forward_button)
+        self.add_item(self.last_button)
+        if self.source.select_options:  # type: ignore
+            options = self.source.select_options  # type: ignore
+            self.remove_item(self.select_view)
+            self.select_view = PlaylistSelector(
+                options, self.cog, _("Pick A Playlist To Enqueue"), self.source.select_mapping
+            )
+            self.add_item(self.select_view)
+        if self.select_view and not self.source.select_options:  # type: ignore
+            self.remove_item(self.select_view)
+            self.select_view = None
+
+    async def start(self, ctx: PyLavContext | discord.Interaction):
+        self.ctx = ctx
+        await self.send_initial_message(ctx)
+
+    async def show_page(self, page_number: int, interaction: discord.Interaction):
+        await self._source.get_page(page_number)
+        await self.prepare()
+        self.current_page = page_number
+        if not interaction.response.is_done():
+            await interaction.response.edit_message(view=self)
+        elif self.message is not None:
+            await self.message.edit(view=self)
+
+
+class EffectPickerMenu(BaseMenu):
+    source: EffectsPickerSource
+
+    def __init__(
+        self,
+        cog: CogT,
+        bot: BotT,
+        source: EffectsPickerSource,
+        *,
+        clear_buttons_after: bool = False,
+        delete_after_timeout: bool = True,
+        timeout: int = 120,
+        message: discord.Message = None,
+        starting_page: int = 0,
+        **kwargs: Any,
+    ) -> None:
+        super().__init__(
+            cog,
+            bot,
+            source,
+            clear_buttons_after=clear_buttons_after,
+            delete_after_timeout=delete_after_timeout,
+            timeout=timeout,
+            message=message,
+            starting_page=starting_page,
+            **kwargs,
+        )
+        self.forward_button = AudioNavigateButton(
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK RIGHT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
+            direction=1,
+            row=4,
+            cog=cog,
+        )
+        self.backward_button = AudioNavigateButton(
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK LEFT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
+            direction=-1,
+            row=4,
+            cog=cog,
+        )
+        self.first_button = AudioNavigateButton(
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK LEFT-POINTING DOUBLE TRIANGLE}",
+            direction=0,
+            row=4,
+            cog=cog,
+        )
+        self.last_button = AudioNavigateButton(
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK RIGHT-POINTING DOUBLE TRIANGLE}",
+            direction=self.source.get_max_pages,
+            row=4,
+            cog=cog,
+        )
+        self.refresh_button = RefreshButton(
+            style=discord.ButtonStyle.grey,
+            row=4,
+            cog=cog,
+        )
+        self.close_button = CloseButton(
+            style=discord.ButtonStyle.red,
+            row=4,
+            cog=cog,
+        )
+        self.select_view: PlaylistSelector | None = None
+
+    async def prepare(self):
+        self.clear_items()
+        max_pages = self.source.get_max_pages()
+        self.forward_button.disabled = False
+        self.backward_button.disabled = False
+        self.first_button.disabled = False
+        self.last_button.disabled = False
+        if max_pages == 2:
+            self.first_button.disabled = True
+            self.last_button.disabled = True
+        elif max_pages == 1:
+            self.forward_button.disabled = True
+            self.backward_button.disabled = True
+            self.first_button.disabled = True
+            self.last_button.disabled = True
+        options = self.source.select_options  # type: ignore
+        self.remove_item(self.select_view)
+        self.select_view = EffectsSelector(
+            options, self.cog, _("Pick An Effect Preset To Apply"), mapping=self.source.select_mapping
+        )
+        self.add_item(self.select_view)
+
+    async def start(self, ctx: PyLavContext | discord.Interaction):
+        self.ctx = ctx
+        await self.send_initial_message(ctx)
+
+    async def show_page(self, page_number: int, interaction: discord.Interaction):
+        await self.prepare()
+        self.current_page = page_number
+        if not interaction.response.is_done():
+            await interaction.response.edit_message(view=self)
+        elif self.message is not None:
+            await self.message.edit(view=self)
+
+
+class StatsMenu(BaseMenu):
+    _source: PlayersSource
+
+    def __init__(
+        self,
+        cog: CogT,
+        bot: BotT,
+        source: PlayersSource,
+        *,
+        clear_buttons_after: bool = False,
+        delete_after_timeout: bool = True,
+        timeout: int = 600,
+        message: discord.Message = None,
+        starting_page: int = 0,
+        **kwargs: Any,
+    ) -> None:
+        super().__init__(
+            cog=cog,
+            bot=bot,
+            source=source,
+            clear_buttons_after=clear_buttons_after,
+            delete_after_timeout=delete_after_timeout,
+            timeout=timeout,
+            message=message,
+            starting_page=starting_page,
+            **kwargs,
+        )
+
+        self.forward_button = AudioNavigateButton(
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK RIGHT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
+            direction=1,
+            row=4,
+            cog=cog,
+        )
+        self.backward_button = AudioNavigateButton(
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK LEFT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
+            direction=-1,
+            row=4,
+            cog=cog,
+        )
+        self.first_button = AudioNavigateButton(
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK LEFT-POINTING DOUBLE TRIANGLE}",
+            direction=0,
+            row=4,
+            cog=cog,
+        )
+        self.last_button = AudioNavigateButton(
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK RIGHT-POINTING DOUBLE TRIANGLE}",
+            direction=self.source.get_max_pages,
+            row=4,
+            cog=cog,
+        )
+        self.close_button = CloseButton(
+            style=discord.ButtonStyle.red,
+            row=4,
+            cog=cog,
+        )
+        self.refresh_button = RefreshButton(
+            style=discord.ButtonStyle.grey,
+            row=4,
+            cog=cog,
+        )
+        self.stop_button = AudioStatsStopTrackButton(
+            style=discord.ButtonStyle.red,
+            row=1,
+            cog=cog,
+        )
+        self.queue_disconnect_label = LabelButton(disconnect_type_translation=_("selected"), row=2, multiple=False)
+        self.queue_disconnect = AudioStatsDisconnectButton(
+            style=discord.ButtonStyle.red,
+            row=2,
+            cog=cog,
+        )
+        self.queue_disconnect_inactive_label = LabelButton(
+            disconnect_type_translation=_("inactive"),
+            row=3,
+        )
+        self.queue_disconnect_inactive = AudioStatsDisconnectAllButton(
+            disconnect_type="inactive",
+            style=discord.ButtonStyle.red,
+            row=3,
+            cog=cog,
+        )
+        self.queue_disconnect_all_label = LabelButton(
+            disconnect_type_translation=_("all"),
+            row=4,
+        )
+        self.queue_disconnect_all = AudioStatsDisconnectAllButton(
+            disconnect_type="all",
+            style=discord.ButtonStyle.red,
+            row=4,
+            cog=cog,
+        )
+
+    async def prepare(self):
+        self.clear_items()
+        max_pages = self.source.get_max_pages()
+        self.add_item(self.close_button)
+        self.add_item(self.stop_button)
+        self.add_item(self.queue_disconnect_label)
+        self.add_item(self.queue_disconnect)
+        self.add_item(self.first_button)
+        self.add_item(self.backward_button)
+        self.add_item(self.forward_button)
+        self.add_item(self.last_button)
+        self.add_item(self.refresh_button)
+        self.add_item(self.queue_disconnect_inactive_label)
+        self.add_item(self.queue_disconnect_inactive)
+        self.add_item(self.queue_disconnect_all_label)
+        self.add_item(self.queue_disconnect_all)
+
+        self.forward_button.disabled = False
+        self.backward_button.disabled = False
+        self.first_button.disabled = False
+        self.last_button.disabled = False
+        self.refresh_button.disabled = False
+        self.queue_disconnect.disabled = False
+        self.queue_disconnect_all.disabled = False
+        self.queue_disconnect_inactive.disabled = False
+        self.stop_button.disabled = False
+        self.queue_disconnect_label.disabled = True
+        self.queue_disconnect_all_label.disabled = True
+        self.queue_disconnect_inactive_label.disabled = True
+
+        if max_pages > 2:
+            self.forward_button.disabled = False
+            self.backward_button.disabled = False
+            self.first_button.disabled = False
+            self.last_button.disabled = False
+        elif max_pages == 2:
+            self.forward_button.disabled = False
+            self.backward_button.disabled = False
+            self.first_button.disabled = True
+            self.last_button.disabled = True
+        elif max_pages == 1:
+            self.forward_button.disabled = True
+            self.backward_button.disabled = True
+            self.first_button.disabled = True
+            self.last_button.disabled = True
+        player = self.source.current_player
+        if not player:
+            self.stop_button.disabled = True
+            self.queue_disconnect.disabled = True
+            self.queue_disconnect_label.disabled = True
+            self.queue_disconnect_inactive_label.disabled = True
+            self.queue_disconnect_all_label.disabled = True
+        elif not player.current:
+            self.stop_button.disabled = True
+
+        if not len(self.source.entries) > 1:
+            self.queue_disconnect_inactive.disabled = True
+            self.queue_disconnect_all.disabled = True
+
+        if not len([p for p in self.cog.lavalink.player_manager.connected_players if not p.is_playing]) > 0:
+            self.queue_disconnect_inactive.disabled = True
+
+    @property
+    def source(self) -> PlayersSource:
+        return self._source
+
+    async def start(self, ctx: PyLavContext | discord.Interaction):
+        self.ctx = ctx
+        await self.send_initial_message(ctx)
+
+    async def get_page(self, page_num: int):
+        if len(self.source.entries) == 0:
+            self._source.current_player = None
+            return {
+                "content": None,
+                "embed": await self.cog.lavalink.construct_embed(
+                    messageable=self.ctx, title=_("Not connected anywhere.")
+                ),
+            }
+        try:
+            if page_num >= self._source.get_max_pages():
+                page_num = 0
+                self.current_page = 0
+            page = await self.source.get_page(page_num)
+        except IndexError:
+            self.current_page = 0
+            page = await self.source.get_page(self.current_page)
+        value = await self.source.format_page(self, page)
+        if isinstance(value, dict):
+            return value
+        elif isinstance(value, str):
+            return {"content": value, "embed": None}
+        elif isinstance(value, discord.Embed):
+            return {"embed": value, "content": None}
+
+
+class SearchPickerMenu(BaseMenu):
+    source: SearchPickerSource
+
+    def __init__(
+        self,
+        cog: CogT,
+        bot: BotT,
+        source: SearchPickerSource,
+        *,
+        clear_buttons_after: bool = True,
+        delete_after_timeout: bool = False,
+        timeout: int = 120,
+        message: discord.Message = None,
+        starting_page: int = 0,
+        **kwargs: Any,
+    ) -> None:
+        super().__init__(
+            cog=cog,
+            bot=bot,
+            source=source,
+            clear_buttons_after=clear_buttons_after,
+            delete_after_timeout=delete_after_timeout,
+            timeout=timeout,
+            message=message,
+            starting_page=starting_page,
+            **kwargs,
+        )
+        self.forward_button = AudioNavigateButton(
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK RIGHT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
+            direction=1,
+            row=4,
+            cog=cog,
+        )
+        self.backward_button = AudioNavigateButton(
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK LEFT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
+            direction=-1,
+            row=4,
+            cog=cog,
+        )
+        self.first_button = AudioNavigateButton(
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK LEFT-POINTING DOUBLE TRIANGLE}",
+            direction=0,
+            row=4,
+            cog=cog,
+        )
+        self.last_button = AudioNavigateButton(
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK RIGHT-POINTING DOUBLE TRIANGLE}",
+            direction=self.source.get_max_pages,
+            row=4,
+            cog=cog,
+        )
+        self.close_button = CloseButton(
+            style=discord.ButtonStyle.red,
+            row=4,
+            cog=cog,
+        )
+        self.select_view: SearchSelectTrack | None = None
+
+    async def start(self, ctx: PyLavContext | discord.Interaction):
+        self.ctx = ctx
+        await self.send_initial_message(ctx)
+
+    async def show_page(self, page_number: int, interaction: discord.Interaction):
+        self.current_page = page_number
+        kwargs = await self.get_page(self.current_page)
+        await self.prepare()
+        if not interaction.response.is_done():
+            await interaction.response.edit_message(**kwargs, view=self)
+        else:
+            await interaction.followup.edit(**kwargs, view=self)
+
+    async def prepare(self):
+        self.clear_items()
+        max_pages = self.source.get_max_pages()
+        self.forward_button.disabled = False
+        self.backward_button.disabled = False
+        self.first_button.disabled = False
+        self.last_button.disabled = False
+        if max_pages == 2:
+            self.first_button.disabled = True
+            self.last_button.disabled = True
+        elif max_pages == 1:
+            self.forward_button.disabled = True
+            self.backward_button.disabled = True
+            self.first_button.disabled = True
+            self.last_button.disabled = True
+        if self.source.select_options:  # type: ignore
+            options = self.source.select_options  # type: ignore
+            title = _("Select Track To Enqueue")
+            self.remove_item(self.select_view)
+            self.select_view = SearchSelectTrack(options, self.cog, title, self.source.select_mapping)
+            self.add_item(self.select_view)
+        if self.select_view and not self.source.select_options:  # type: ignore
+            self.remove_item(self.select_view)
+            self.select_view = None
+
+        self.add_item(self.close_button)
+
+
+class PaginatingMenu(BaseMenu):
+    def __init__(
+        self,
+        cog: CogT,
+        bot: BotT,
+        source: SourcesT,
+        *,
+        clear_buttons_after: bool = True,
+        delete_after_timeout: bool = False,
+        timeout: int = 120,
+        message: discord.Message = None,
+        starting_page: int = 0,
+        **kwargs: Any,
+    ) -> None:
+        super().__init__(
+            cog=cog,
+            bot=bot,
+            source=source,
+            clear_buttons_after=clear_buttons_after,
+            delete_after_timeout=delete_after_timeout,
+            timeout=timeout,
+            message=message,
+            starting_page=starting_page,
+            **kwargs,
+        )
+        self.forward_button = AudioNavigateButton(
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK RIGHT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
+            direction=1,
+            row=0,
+            cog=cog,
+        )
+        self.backward_button = AudioNavigateButton(
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK LEFT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
+            direction=-1,
+            row=0,
+            cog=cog,
+        )
+        self.first_button = AudioNavigateButton(
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK LEFT-POINTING DOUBLE TRIANGLE}",
+            direction=0,
+            row=0,
+            cog=cog,
+        )
+        self.last_button = AudioNavigateButton(
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK RIGHT-POINTING DOUBLE TRIANGLE}",
+            direction=self.source.get_max_pages,
+            row=0,
+            cog=cog,
+        )
+        self.refresh_button = RefreshButton(
+            style=discord.ButtonStyle.grey,
+            row=0,
+            cog=cog,
+        )
+
+        self.close_button = CloseButton(
+            style=discord.ButtonStyle.red,
+            row=0,
+            cog=cog,
+        )
+        self.add_item(self.close_button)
+        self.add_item(self.first_button)
+        self.add_item(self.backward_button)
+        self.add_item(self.forward_button)
+        self.add_item(self.last_button)
+
+    async def start(self, ctx: PyLavContext | discord.Interaction):
+        await self.send_initial_message(ctx)
+
+    async def prepare(self):
+        max_pages = self.source.get_max_pages()
+        self.forward_button.disabled = False
+        self.backward_button.disabled = False
+        self.first_button.disabled = False
+        self.last_button.disabled = False
+        if max_pages == 2:
+            self.first_button.disabled = True
+            self.last_button.disabled = True
+        elif max_pages == 1:
+            self.forward_button.disabled = True
+            self.backward_button.disabled = True
+            self.first_button.disabled = True
+            self.last_button.disabled = True
