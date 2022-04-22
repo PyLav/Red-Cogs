@@ -23,14 +23,15 @@ _ = Translator("MediaPlayer", Path(__file__))
 
 
 class PlaylistCommands(MPMixin, ABC):
-    @commands.hybrid_group(name="playlist")
+    @commands.hybrid_group(name="playlist", fallback="pl")
     @commands.guild_only()
+    @app_commands.guilds(MY_GUILD)
     async def command_playlist(self, context: PyLavContext):
         """
         Control custom playlist.
         """
 
-    @commands.command(name="create")
+    @command_playlist.command(name="create")
     async def command_playlist_create(
         self, context: PyLavContext, url: Optional[QueryPlaylistConverter], *, name: Optional[str]
     ):
@@ -133,7 +134,6 @@ class PlaylistCommands(MPMixin, ABC):
             await player.play(requester=context.author)
 
     @command_playlist.command(name="list")
-    @app_commands.guilds(MY_GUILD)
     async def command_playlist_list(self, context: PyLavContext):
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
