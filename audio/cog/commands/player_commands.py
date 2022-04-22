@@ -9,7 +9,7 @@ from redbot.core.i18n import Translator
 
 from pylav import Query, Track
 from pylav.tracks import decode_track
-from pylav.utils import format_time
+from pylav.utils import PyLavContext, format_time
 
 from audio.cog import MPMixin
 
@@ -20,24 +20,23 @@ _ = Translator("MediaPlayer", Path(__file__))
 class PlayerCommands(MPMixin, ABC):
     @commands.command(name="playnow", description="Plays the specified track in the queue.", aliases=["pn"])
     @commands.guild_only()
-    async def command_playnow(self, context: commands.Context, queue_number: int, after_current: bool = False):
+    async def command_playnow(self, context: PyLavContext, queue_number: int, after_current: bool = False):
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        player = self.lavalink.get_player(context.guild)
+        player = context.player
 
         if player.queue.empty():
             await context.send(
-                embed=await self.lavalink.construct_embed(messageable=context, description=_("Queue is empty.")),
+                embed=await context.construct_embed(description=_("Queue is empty.")),
                 ephemeral=True,
             )
             return
         if queue_number < 1 or queue_number > player.queue.size():
             await context.send(
-                embed=await self.lavalink.construct_embed(
-                    messageable=context,
+                embed=await context.construct_embed(
                     description=_("Track index must be between 1 and {size}.").format(size=player.queue.size()),
                 ),
                 ephemeral=True,
@@ -52,8 +51,7 @@ class PlayerCommands(MPMixin, ABC):
             track = await player.queue.popindex(queue_number)
         if not track:
             await context.send(
-                embed=await self.lavalink.construct_embed(
-                    messageable=context,
+                embed=await context.construct_embed(
                     description=_("There is no track in position {position}.").format(position=queue_number),
                 ),
                 ephemeral=True,
@@ -62,8 +60,7 @@ class PlayerCommands(MPMixin, ABC):
         if after_current:
             await player.move_track(track, context.author, 0)
             await context.send(
-                embed=await self.lavalink.construct_embed(
-                    messageable=context,
+                embed=await context.construct_embed(
                     description=_("{track} will play after {current} finishes (in {eta}).").format(
                         track=await track.get_track_display_name(with_url=True),
                         current=await player.current.get_track_display_name(with_url=True),
@@ -74,8 +71,7 @@ class PlayerCommands(MPMixin, ABC):
             )
         else:
             await context.send(
-                embed=await self.lavalink.construct_embed(
-                    messageable=context,
+                embed=await context.construct_embed(
                     description=_("{track} will start now\n{current} has been skipped.").format(
                         track=await track.get_track_display_name(with_url=True),
                         current=await player.current.get_track_display_name(with_url=True),
@@ -88,17 +84,17 @@ class PlayerCommands(MPMixin, ABC):
 
     @commands.command(name="remove", description="Remove the specified track from the queue.")
     @commands.guild_only()
-    async def command_remove(self, context: commands.Context, track_url_or_index: str, remove_duplicates: bool = False):
+    async def command_remove(self, context: PyLavContext, track_url_or_index: str, remove_duplicates: bool = False):
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        player = self.lavalink.get_player(context.guild)
+        player = context.player
         queue_number = None
         if player.queue.empty():
             await context.send(
-                embed=await self.lavalink.construct_embed(messageable=context, description=_("Queue is empty.")),
+                embed=await context.construct_embed(description=_("Queue is empty.")),
                 ephemeral=True,
             )
             return
@@ -113,8 +109,7 @@ class PlayerCommands(MPMixin, ABC):
         if queue_number:
             if queue_number < 1 or queue_number > player.queue.size():
                 await context.send(
-                    embed=await self.lavalink.construct_embed(
-                        messageable=context,
+                    embed=await context.construct_embed(
                         description=_("Track index must be between 1 and {size}.").format(size=player.queue.size()),
                     ),
                     ephemeral=True,
@@ -126,8 +121,7 @@ class PlayerCommands(MPMixin, ABC):
                 number_removed += 1
             if not track:
                 await context.send(
-                    embed=await self.lavalink.construct_embed(
-                        messageable=context,
+                    embed=await context.construct_embed(
                         description=_("There is no track in position {position}.").format(position=queue_number),
                     ),
                     ephemeral=True,
@@ -137,7 +131,7 @@ class PlayerCommands(MPMixin, ABC):
             try:
                 data, __ = decode_track(track_url_or_index)
                 track = Track(node=player.node, data=data)
-            except BaseException:
+            except Exception:  # noqa
                 track = Track(node=player.node, data=None, query=await Query.from_string(track_url_or_index))
                 await track.search(player)
         try:
@@ -147,8 +141,7 @@ class PlayerCommands(MPMixin, ABC):
         except IndexError:
             if not number_removed:
                 await context.send(
-                    embed=await self.lavalink.construct_embed(
-                        messageable=context,
+                    embed=await context.construct_embed(
                         description=_("{track} not found in queue.").format(
                             track=await track.get_track_display_name(with_url=True)
                         ),
@@ -157,8 +150,7 @@ class PlayerCommands(MPMixin, ABC):
                 )
                 return
         await context.send(
-            embed=await self.lavalink.construct_embed(
-                messageable=context,
+            embed=await context.construct_embed(
                 description=_("Removed {times} {entry_plural} of {track} from the queue.").format(
                     times=number_removed,
                     track=await track.get_track_display_name(with_url=True),

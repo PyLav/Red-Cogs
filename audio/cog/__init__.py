@@ -6,13 +6,13 @@ from typing import Literal
 
 from red_commons.logging import getLogger
 from redbot.core import Config
-from redbot.core import commands
 from redbot.core import commands as red_commands
-from redbot.core.bot import Red
 from redbot.core.data_manager import cog_data_path
 from redbot.core.i18n import Translator
 
 from pylav import Client, CogAlreadyRegistered, CogHasBeenRegistered, exceptions
+from pylav.types import BotT
+from pylav.utils import PyLavContext
 
 from audio.cog import errors
 from audio.cog.abc import MY_GUILD, MPMixin
@@ -42,7 +42,7 @@ class MediaPlayer(
     PlaylistCommands,
     metaclass=CompositeMetaClass,
 ):
-    def __init__(self, bot: Red, *args, **kwargs):
+    def __init__(self, bot: BotT, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot
         try:
@@ -80,7 +80,7 @@ class MediaPlayer(
     @red_commands.command(name="sync")
     @red_commands.guild_only()
     @red_commands.is_owner()
-    async def command_sync(self, context: red_commands.Context) -> None:
+    async def command_sync(self, context: PyLavContext) -> None:
         """Sync the tree with the current guild."""
         await self._sync_tree()
         await context.send("Synced tree with guild")
@@ -101,7 +101,7 @@ class MediaPlayer(
         """
         await self.config.user_from_id(user_id).clear()
 
-    async def cog_command_error(self, context: commands.Context, error: Exception) -> None:
+    async def cog_command_error(self, context: PyLavContext, error: Exception) -> None:
         error = getattr(error, "original", error)
         unhandled = True
         if isinstance(error, errors.MediaPlayerNotFoundError):

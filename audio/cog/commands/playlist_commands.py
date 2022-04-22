@@ -9,7 +9,7 @@ from redbot.core.i18n import Translator
 
 from pylav import Track
 from pylav.converters import QueryPlaylistConverter
-from pylav.utils import AsyncIter
+from pylav.utils import AsyncIter, PyLavContext
 
 from audio.cog import MPMixin
 from audio.cog.utils import rgetattr
@@ -21,14 +21,14 @@ _ = Translator("MediaPlayer", Path(__file__))
 class PlaylistCommands(MPMixin, ABC):
     @commands.group(name="playlist")
     @commands.guild_only()
-    async def command_playlist(self, context: commands.Context):
+    async def command_playlist(self, context: PyLavContext):
         """
         Control custom playlist.
         """
 
     @command_playlist.command(name="create")
     async def command_playlist_create(
-        self, context: commands.Context, url: Optional[QueryPlaylistConverter], *, name: Optional[str]
+        self, context: PyLavContext, url: Optional[QueryPlaylistConverter], *, name: Optional[str]
     ):
         """
         Create a new playlist.
@@ -40,15 +40,13 @@ class PlaylistCommands(MPMixin, ABC):
 
         if not (name or url):
             await context.send(
-                embed=await self.lavalink.construct_embed(
-                    messageable=context, description=_("You must specify a name or a URL.")
-                ),
+                embed=await context.lavalink.construct_embed(description=_("You must specify a name or a URL.")),
                 ephemeral=True,
             )
             return
 
         if url:
-            tracks_response = await self.lavalink.get_tracks(url)
+            tracks_response = await context.lavalink.get_tracks(url)
             tracks = [track["track"] async for track in AsyncIter(tracks_response["tracks"])]
             url = url.query_identifier
             name = name or tracks_response.get("playlistInfo", {}).get("name", f"{context.message.id}")
@@ -57,13 +55,12 @@ class PlaylistCommands(MPMixin, ABC):
             url = None
             if name is None:
                 name = f"{context.message.id}"
-        await self.lavalink.playlist_db_manager.create_or_update_playlist(
+        await context.lavalink.playlist_db_manager.create_or_update_playlist(
             id=context.message.id, scope=context.author.id, author=context.author.id, name=name, url=url, tracks=tracks
         )
 
         await context.send(
-            embed=await self.lavalink.construct_embed(
-                messageable=context,
+            embed=await context.lavalink.construct_embed(
                 title=_("Playlist created"),
                 description=_("Name: `{name}`\nID: `{id}`\nTracks: `{track_count}`").format(
                     name=name, id=context.message.id, track_count=len(tracks)
@@ -73,37 +70,37 @@ class PlaylistCommands(MPMixin, ABC):
         )
 
     @command_playlist.command(name="delete")
-    async def command_playlist_delete(self, context: commands.Context, playlist_id: int):
+    async def command_playlist_delete(self, context: PyLavContext, playlist_id: int):
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        await self.lavalink.playlist_db_manager.delete_playlist(playlist_id)
+        await context.lavalink.playlist_db_manager.delete_playlist(playlist_id)
         await context.send(
-            embed=await self.lavalink.construct_embed(messageable=context, description=_("Playlist has been deleted.")),
+            embed=await context.lavalink.construct_embed(description=_("Playlist has been deleted.")),
             ephemeral=True,
         )
 
     @command_playlist.command(name="play")
-    async def command_playlist_play(self, context: commands.Context, *, playlist_id_or_name: str):
+    async def command_playlist_play(self, context: PyLavContext, *, playlist_id_or_name: str):
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        if (player := self.lavalink.get_player(context.guild)) is None:
+        if (player := context.player) is None:
             channel = rgetattr(context, "author.voice.channel", None)
             if not channel:
                 await context.send(
-                    embed=await self.lavalink.construct_embed(
-                        messageable=context, description=_("You must be in a voice channel to allow me to connect.")
+                    embed=await context.lavalink.construct_embed(
+                        description=_("You must be in a voice channel to allow me to connect.")
                     ),
                     ephemeral=True,
                 )
                 return
-            player = await self.lavalink.connect_player(channel=channel, self_deaf=True, requester=context.author)
+            player = await context.lavalink.connect_player(channel=channel, self_deaf=True, requester=context.author)
 
-        playlists = await self.lavalink.playlist_db_manager.get_playlist_by_name_or_id(playlist_id_or_name)
+        playlists = await context.lavalink.playlist_db_manager.get_playlist_by_name_or_id(playlist_id_or_name)
         playlist = next(iter(playlists), None)
         track_count = len(playlist.tracks)
         await player.bulk_add(
@@ -116,12 +113,11 @@ class PlaylistCommands(MPMixin, ABC):
         playlist_name = playlist.name
         if playlist.url:
             playlist_name = discord.utils.escape_markdown(playlist_name)
-            playlist_name = f"**[{playlist_name}]({playlist.url})**"
+            playlist_name = f"[{playlist_name}]({playlist.url})"
         bundle_prefix = _("Playlist")
         playlist_name = f"\n\n**{bundle_prefix}:  {playlist_name}**"
         await context.send(
-            embed=await self.lavalink.construct_embed(
-                messageable=context,
+            embed=await context.lavalink.construct_embed(
                 description=_("{track_count} tracks enqueued.{playlist_name}").format(
                     track_count=track_count, playlist_name=playlist_name
                 ),
@@ -133,14 +129,12 @@ class PlaylistCommands(MPMixin, ABC):
             await player.play(requester=context.author)
 
     @command_playlist.command(name="list")
-    async def command_list(self, context: commands.Context):
+    async def command_list(self, context: PyLavContext):
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
         await context.send(
-            embed=await self.lavalink.construct_embed(messageable=context, description=_("List of playlists:")),
+            embed=await context.lavalink.construct_embed(description=_("List of playlists:")),
             ephemeral=True,
         )
-        async for i in self.lavalink.playlist_db_manager.get_all_playlists():
-            i.tracks = len(i.tracks)

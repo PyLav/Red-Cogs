@@ -1,7 +1,8 @@
 from __future__ import annotations
 
-import discord
 from redbot.core import commands
+
+from pylav.utils import PyLavContext
 
 
 class MediaPlayerError(commands.CommandError):
@@ -21,5 +22,5 @@ class MediaPlayerNotFoundError(MediaPlayerCheckError, commands.CheckFailure):
     Raised when a media player is not found.
     """
 
-    def __init__(self, context: commands.Context | discord.Interaction) -> None:
+    def __init__(self, context: PyLavContext) -> None:
         self.context = context

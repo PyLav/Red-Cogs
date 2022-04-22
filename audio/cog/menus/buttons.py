@@ -1,13 +1,11 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Callable
+from typing import Callable
 
 import discord
 from red_commons.logging import getLogger
 
-if TYPE_CHECKING:
-    from audio.cog.abc import COG_TYPE
-
+from audio.cog._types import CogT
 
 LOGGER = getLogger("red.3pt.mp.ui.buttons")
 
@@ -15,12 +13,12 @@ LOGGER = getLogger("red.3pt.mp.ui.buttons")
 class AudioNavigateButton(discord.ui.Button):
     def __init__(
         self,
+        cog: CogT,
         style: discord.ButtonStyle,
         emoji: str | discord.PartialEmoji,
         direction: int | Callable[[], int],
         row: int = None,
         label: str = None,
-        cog: COG_TYPE = None,
     ):
 
         super().__init__(style=style, emoji=emoji, row=row, label=label)
@@ -51,7 +49,7 @@ class AudioNavigateButton(discord.ui.Button):
 
 
 class PreviousTrackButton(discord.ui.Button):
-    def __init__(self, style: discord.ButtonStyle, row: int = None, cog: COG_TYPE = None):
+    def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
             emoji=discord.PartialEmoji(name="previous", id=965672202424950795, animated=False),
@@ -69,7 +67,7 @@ class PreviousTrackButton(discord.ui.Button):
 
 
 class StopTrackButton(discord.ui.Button):
-    def __init__(self, style: discord.ButtonStyle, row: int = None, cog: COG_TYPE = None):
+    def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
             emoji=discord.PartialEmoji(name="stop", id=965672202563362926, animated=False),
@@ -87,7 +85,7 @@ class StopTrackButton(discord.ui.Button):
 
 
 class PauseTrackButton(discord.ui.Button):
-    def __init__(self, style: discord.ButtonStyle, row: int = None, cog: COG_TYPE = None):
+    def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
             emoji=discord.PartialEmoji(name="pause", id=965672202466910268, animated=False),
@@ -105,7 +103,7 @@ class PauseTrackButton(discord.ui.Button):
 
 
 class ResumeTrackButton(discord.ui.Button):
-    def __init__(self, style: discord.ButtonStyle, row: int = None, cog: COG_TYPE = None):
+    def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
             emoji=discord.PartialEmoji(name="play", id=965672202441723994, animated=False),
@@ -123,7 +121,7 @@ class ResumeTrackButton(discord.ui.Button):
 
 
 class SkipTrackButton(discord.ui.Button):
-    def __init__(self, style: discord.ButtonStyle, row: int = None, cog: COG_TYPE = None):
+    def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
             emoji=discord.PartialEmoji(name="next", id=965672202416570428, animated=False),
@@ -141,7 +139,7 @@ class SkipTrackButton(discord.ui.Button):
 
 
 class RefreshButton(discord.ui.Button):
-    def __init__(self, style: discord.ButtonStyle, row: int = None, cog: COG_TYPE = None):
+    def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
             emoji="\N{ANTICLOCKWISE DOWNWARDS AND UPWARDS OPEN CIRCLE ARROWS}",
@@ -156,7 +154,7 @@ class RefreshButton(discord.ui.Button):
 
 
 class IncreaseVolumeButton(discord.ui.Button):
-    def __init__(self, style: discord.ButtonStyle, row: int = None, cog: COG_TYPE = None):
+    def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
             emoji=discord.PartialEmoji(name="volumeup", id=965672202517225492, animated=False),
@@ -176,7 +174,7 @@ class IncreaseVolumeButton(discord.ui.Button):
 
 
 class DecreaseVolumeButton(discord.ui.Button):
-    def __init__(self, style: discord.ButtonStyle, row: int = None, cog: COG_TYPE = None):
+    def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
             emoji=discord.PartialEmoji(name="volumedown", id=965672202399801374, animated=False),
@@ -196,7 +194,7 @@ class DecreaseVolumeButton(discord.ui.Button):
 
 
 class ToggleRepeatButton(discord.ui.Button):
-    def __init__(self, style: discord.ButtonStyle, row: int = None, cog: COG_TYPE = None):
+    def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
             emoji=discord.PartialEmoji(name="loop", id=965672202143928362, animated=False),
@@ -228,7 +226,7 @@ class ToggleRepeatButton(discord.ui.Button):
 
 
 class ToggleRepeatQueueButton(discord.ui.Button):
-    def __init__(self, style: discord.ButtonStyle, row: int = None, cog: COG_TYPE = None):
+    def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
             emoji=discord.PartialEmoji(name="repeat", id=965672202412388352, animated=False),
@@ -260,7 +258,7 @@ class ToggleRepeatQueueButton(discord.ui.Button):
 
 
 class ShuffleButton(discord.ui.Button):
-    def __init__(self, style: discord.ButtonStyle, row: int = None, cog: COG_TYPE = None):
+    def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
             emoji=discord.PartialEmoji(name="random", id=965672202458509463, animated=False),
@@ -278,7 +276,7 @@ class ShuffleButton(discord.ui.Button):
 
 
 class CloseButton(discord.ui.Button):
-    def __init__(self, style: discord.ButtonStyle, row: int = None, cog: COG_TYPE = None):
+    def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
             emoji=discord.PartialEmoji(name="minimize", animated=False, id=965672202424963142),
@@ -296,7 +294,7 @@ class CloseButton(discord.ui.Button):
 
 
 class EqualizerButton(discord.ui.Button):
-    def __init__(self, style: discord.ButtonStyle, row: int = None, cog: COG_TYPE = None):
+    def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
             emoji=discord.PartialEmoji(name="equalizer", animated=False, id=965672202454323250),
@@ -318,7 +316,7 @@ class EqualizerButton(discord.ui.Button):
 
 
 class DisconnectButton(discord.ui.Button):
-    def __init__(self, style: discord.ButtonStyle, row: int = None, cog: COG_TYPE = None):
+    def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
             emoji=discord.PartialEmoji(name="power", animated=False, id=965672202395586691),
@@ -336,7 +334,7 @@ class DisconnectButton(discord.ui.Button):
 class EnqueueButton(discord.ui.Button):
     def __init__(
         self,
-        cog: COG_TYPE,
+        cog: CogT,
         style: discord.ButtonStyle,
         row: int = None,
     ):
@@ -357,7 +355,7 @@ class EnqueueButton(discord.ui.Button):
 class RemoveFromQueueButton(discord.ui.Button):
     def __init__(
         self,
-        cog: COG_TYPE,
+        cog: CogT,
         style: discord.ButtonStyle,
         row: int = None,
     ):
@@ -391,7 +389,7 @@ class RemoveFromQueueButton(discord.ui.Button):
 class PlayNowFromQueueButton(discord.ui.Button):
     def __init__(
         self,
-        cog: COG_TYPE,
+        cog: CogT,
         style: discord.ButtonStyle,
         row: int = None,
     ):

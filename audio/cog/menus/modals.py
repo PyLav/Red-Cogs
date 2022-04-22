@@ -1,24 +1,11 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, TypeVar
-
 import discord
 from red_commons.logging import getLogger
 
 from pylav import Query
 
-if TYPE_CHECKING:
-    from redbot.core.bot import Red
-
-    CLIENT = Red
-    from audio.cog.abc import COG_TYPE
-
-else:
-    CLIENT = discord.Client
-    from discord.ext.commands import Cog
-
-    COG_TYPE = TypeVar("COG_TYPE", bound=Cog)
-
+from audio.cog._types import CogT
 
 LOGGER = getLogger("red.3pt.mp.ui.modals")
 
@@ -26,12 +13,12 @@ LOGGER = getLogger("red.3pt.mp.ui.modals")
 class EnqueueModal(discord.ui.Modal):
     def __init__(
         self,
-        cog: COG_TYPE,
+        cog: CogT,
         title: str,
         timeout: float | None = None,
     ):
-        self.cog = cog
         super().__init__(title=title, timeout=timeout)
+        self.cog = cog
         self.text = discord.ui.TextInput(
             style=discord.TextStyle.paragraph,
             label="Search for a song to add to the queue",

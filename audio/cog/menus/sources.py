@@ -9,12 +9,12 @@ from redbot.vendored.discord.ext import menus
 
 from pylav import Track
 
+from audio.cog._types import CogT
 from audio.cog.menus.selectors import QueueTrackOption
 
 LOGGER = getLogger("red.3pt.mp.ui.sources")
 
 if TYPE_CHECKING:
-    from audio.cog.abc import COG_TYPE
     from audio.cog.menus.menus import BaseMenu, QueueMenu, QueuePickerMenu
 
 
@@ -31,7 +31,7 @@ class PreformattedSource(menus.ListPageSource):
 
 
 class QueueSource(menus.ListPageSource):
-    def __init__(self, guild_id: int, cog: COG_TYPE):  # noqa
+    def __init__(self, guild_id: int, cog: CogT):  # noqa
         self.cog = cog
         self.per_page = 10
         self.guild_id = guild_id
@@ -86,7 +86,7 @@ class QueueSource(menus.ListPageSource):
 
 
 class QueuePickerSource(QueueSource):
-    def __init__(self, guild_id: int, cog: COG_TYPE):
+    def __init__(self, guild_id: int, cog: CogT):
         super().__init__(guild_id, cog=cog)
         self.per_page = 25
         self.select_options: list[QueueTrackOption] = []

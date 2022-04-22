@@ -10,7 +10,7 @@ from redbot.core import commands
 from redbot.core.i18n import Translator
 
 from pylav import Track, converters
-from pylav.utils import AsyncIter
+from pylav.utils import AsyncIter, PyLavContext
 
 from audio.cog import MY_GUILD, MPMixin
 from audio.cog.menus.menus import QueueMenu
@@ -26,31 +26,31 @@ class HybridCommands(MPMixin, ABC):
     @commands.hybrid_command(name="play", description="Plays a specified query.", aliases=["p"])
     @app_commands.guilds(MY_GUILD)
     @commands.guild_only()
-    async def command_play(self, context: commands.Context, *, query: converters.QueryConverter):
+    async def command_play(self, context: PyLavContext, *, query: converters.QueryConverter):
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        if (player := self.lavalink.get_player(context.guild)) is None:
+        player = context.player
+        if player is None:
             channel = rgetattr(context, "author.voice.channel", None)
             if not channel:
                 await context.send(
-                    embed=await self.lavalink.construct_embed(
-                        messageable=context, description=_("You must be in a voice channel to allow me to connect.")
+                    embed=await context.lavalink.construct_embed(
+                        description=_("You must be in a voice channel to allow me to connect.")
                     ),
                     ephemeral=True,
                 )
                 return
-            player = await self.lavalink.connect_player(channel=channel, self_deaf=True, requester=context.author)
+            player = await context.connect_player(channel=channel, self_deaf=True)
         is_partial = query.is_search
         response = {}
         if not is_partial:
-            response: dict = await self.lavalink.get_tracks(query)
+            response: dict = await context.lavalink.get_tracks(query)
             if not response.get("tracks"):
                 await context.send(
-                    embed=await self.lavalink.construct_embed(
-                        messageable=context,
+                    embed=await context.lavalink.construct_embed(
                         description=_("No results found for {query}").format(query=await query.query_to_string()),
                     ),
                     ephemeral=True,
@@ -60,8 +60,7 @@ class HybridCommands(MPMixin, ABC):
             track = Track(node=player.node, data=None, query=query, requester=context.author.id)
             await player.add(requester=context.author.id, track=track)
             await context.send(
-                embed=await self.lavalink.construct_embed(
-                    messageable=context,
+                embed=await context.lavalink.construct_embed(
                     description=_("{track} enqueued").format(track=await track.get_track_display_name(with_url=True)),
                 ),
                 ephemeral=True,
@@ -72,8 +71,7 @@ class HybridCommands(MPMixin, ABC):
             )
             await player.add(requester=context.author.id, track=track)
             await context.send(
-                embed=await self.lavalink.construct_embed(
-                    messageable=context,
+                embed=await context.lavalink.construct_embed(
                     description=_("{track} enqueued").format(track=await track.get_track_display_name(with_url=True)),
                 ),
                 ephemeral=True,
@@ -108,8 +106,7 @@ class HybridCommands(MPMixin, ABC):
                 playlist_name = ""
 
             await context.send(
-                embed=await self.lavalink.construct_embed(
-                    messageable=context,
+                embed=await context.lavalink.construct_embed(
                     description=_("{track_count} tracks enqueued.{playlist_name}").format(
                         track_count=track_count, playlist_name=playlist_name
                     ),
@@ -125,7 +122,7 @@ class HybridCommands(MPMixin, ABC):
     )
     @app_commands.guilds(MY_GUILD)
     @commands.guild_only()
-    async def command_connect(self, context: commands.Context, *, channel: Optional[discord.VoiceChannel] = None):
+    async def command_connect(self, context: PyLavContext, *, channel: Optional[discord.VoiceChannel] = None):
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -133,8 +130,7 @@ class HybridCommands(MPMixin, ABC):
         channel = channel or rgetattr(context, "author.voice.channel", None)
         if not channel:
             await context.send(
-                embed=await self.lavalink.construct_embed(
-                    messageable=context,
+                embed=await context.lavalink.construct_embed(
                     description=_(
                         "You need to be in a voice channel if you don't specify which channel I need to connect to."
                     ),
@@ -148,21 +144,19 @@ class HybridCommands(MPMixin, ABC):
             else:
                 description = _("I don't have permission to speak in {channel}.").format(channel=channel.mention)
             await context.send(
-                embed=await self.lavalink.construct_embed(
-                    messageable=context,
+                embed=await context.lavalink.construct_embed(
                     description=_("I don't have permission to connect to {channel}.").format(channel=description),
                 ),
                 ephemeral=True,
             )
             return
-        if (player := self.lavalink.get_player(context.guild)) is None:
-            await self.lavalink.connect_player(context.author, channel=channel, self_deaf=True)
+        if (player := context.lavalink.get_player(context.guild)) is None:
+            await context.lavalink.connect_player(context.author, channel=channel, self_deaf=True)
         else:
             await player.move_to(context.author, channel, self_deaf=True)
 
         await context.send(
-            embed=await self.lavalink.construct_embed(
-                messageable=context,
+            embed=await context.lavalink.construct_embed(
                 description=_("Connected to {channel}").format(channel=channel.mention),
             ),
             ephemeral=True,
@@ -172,22 +166,22 @@ class HybridCommands(MPMixin, ABC):
     @app_commands.guilds(MY_GUILD)
     @commands.guild_only()
     @requires_player()
-    async def command_now(self, context: commands.Context):
+    async def command_now(self, context: PyLavContext):
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        player = self.lavalink.get_player(context.guild)
+        player = context.lavalink.get_player(context.guild)
         if not player:
             await context.send(
-                embed=await self.lavalink.construct_embed(messageable=context, description=_("No player detected.")),
+                embed=await context.lavalink.construct_embed(description=_("No player detected.")),
                 ephemeral=True,
             )
             return
         if not player.current:
             await context.send(
-                embed=await self.lavalink.construct_embed(
-                    messageable=context, description=_("Player is not currently playing anything.")
+                embed=await context.lavalink.construct_embed(
+                    description=_("Player is not currently playing anything.")
                 ),
                 ephemeral=True,
             )
@@ -199,32 +193,31 @@ class HybridCommands(MPMixin, ABC):
     @app_commands.guilds(MY_GUILD)
     @commands.guild_only()
     @requires_player()
-    async def command_skip(self, context: commands.Context):
+    async def command_skip(self, context: PyLavContext):
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        player = self.lavalink.get_player(context.guild)
+        player = context.lavalink.get_player(context.guild)
         if not player:
             await context.send(
-                embed=await self.lavalink.construct_embed(messageable=context, description=_("No player detected.")),
+                embed=await context.lavalink.construct_embed(description=_("No player detected.")),
                 ephemeral=True,
             )
             return
         if not player.current:
             await context.send(
-                embed=await self.lavalink.construct_embed(
-                    messageable=context, description=_("Player is not currently playing anything.")
+                embed=await context.lavalink.construct_embed(
+                    description=_("Player is not currently playing anything.")
                 ),
                 ephemeral=True,
             )
             return
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await context.lavalink.construct_embed(
                 description=_("Skipped - {track}").format(
                     track=await player.current.get_track_display_name(with_url=True)
                 ),
-                messageable=context,
             ),
             ephemeral=True,
         )
@@ -235,29 +228,29 @@ class HybridCommands(MPMixin, ABC):
     @commands.is_owner()
     @commands.guild_only()
     @requires_player()
-    async def command_stop(self, context: commands.Context):
+    async def command_stop(self, context: PyLavContext):
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        player = self.lavalink.get_player(context.guild)
+        player = context.lavalink.get_player(context.guild)
         if not player:
             await context.send(
-                embed=await self.lavalink.construct_embed(messageable=context, description=_("No player detected.")),
+                embed=await context.lavalink.construct_embed(description=_("No player detected.")),
                 ephemeral=True,
             )
             return
         if not player.current:
             await context.send(
-                embed=await self.lavalink.construct_embed(
-                    messageable=context, description=_("Player is not currently playing anything.")
+                embed=await context.lavalink.construct_embed(
+                    description=_("Player is not currently playing anything.")
                 ),
                 ephemeral=True,
             )
             return
         await player.stop(context.author)
         await context.send(
-            embed=await self.lavalink.construct_embed(messageable=context, description=_("Player stopped")),
+            embed=await context.lavalink.construct_embed(description=_("Player stopped")),
             ephemeral=True,
         )
 
@@ -267,24 +260,22 @@ class HybridCommands(MPMixin, ABC):
     @app_commands.guilds(MY_GUILD)
     @commands.is_owner()
     @requires_player()
-    async def command_disconnect(self, context: commands.Context):
+    async def command_disconnect(self, context: PyLavContext):
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
         LOGGER.info("Disconnecting from voice channel - %s", context.author)
-        player = self.lavalink.get_player(context.guild)
+        player = context.lavalink.get_player(context.guild)
         if not player:
             await context.send(
-                embed=await self.lavalink.construct_embed(messageable=context, description=_("No player detected.")),
+                embed=await context.lavalink.construct_embed(description=_("No player detected.")),
                 ephemeral=True,
             )
             return
         await player.disconnect(requester=context.author)
         await context.send(
-            embed=await self.lavalink.construct_embed(
-                messageable=context, description=_("Disconnected from voice channel")
-            ),
+            embed=await context.lavalink.construct_embed(description=_("Disconnected from voice channel")),
             ephemeral=True,
         )
 
@@ -292,23 +283,21 @@ class HybridCommands(MPMixin, ABC):
     @app_commands.guilds(MY_GUILD)
     @commands.guild_only()
     @requires_player()
-    async def command_queue(self, context: commands.Context):
+    async def command_queue(self, context: PyLavContext):
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        player = self.lavalink.get_player(context.guild)
+        player = context.lavalink.get_player(context.guild)
         if not player:
             await context.send(
-                embed=await self.lavalink.construct_embed(messageable=context, description=_("No player detected.")),
+                embed=await context.lavalink.construct_embed(description=_("No player detected.")),
                 ephemeral=True,
             )
             return
         if player.queue.empty():
             await context.send(
-                embed=await self.lavalink.construct_embed(
-                    messageable=context, description=_("There is nothing in the queue.")
-                ),
+                embed=await context.lavalink.construct_embed(description=_("There is nothing in the queue.")),
                 ephemeral=True,
             )
             return
@@ -320,30 +309,27 @@ class HybridCommands(MPMixin, ABC):
     @app_commands.guilds(MY_GUILD)
     @commands.guild_only()
     @requires_player()
-    async def command_shuffle(self, context: commands.Context):
+    async def command_shuffle(self, context: PyLavContext):
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        player = self.lavalink.get_player(context.guild)
+        player = context.lavalink.get_player(context.guild)
         if not player:
             await context.send(
-                embed=await self.lavalink.construct_embed(messageable=context, description=_("No player detected.")),
+                embed=await context.lavalink.construct_embed(description=_("No player detected.")),
                 ephemeral=True,
             )
             return
         if player.queue.empty():
             await context.send(
-                embed=await self.lavalink.construct_embed(
-                    messageable=context, description=_("There is nothing in the queue.")
-                ),
+                embed=await context.lavalink.construct_embed(description=_("There is nothing in the queue.")),
                 ephemeral=True,
             )
             return
         await player.shuffle_queue(context.author)
         await context.send(
-            embed=await self.lavalink.construct_embed(
-                messageable=context,
+            embed=await context.lavalink.construct_embed(
                 description=_("{queue_size} tracks shuffled").format(queue_size=player.queue.size()),
             ),
             ephemeral=True,
@@ -353,15 +339,15 @@ class HybridCommands(MPMixin, ABC):
     @app_commands.guilds(MY_GUILD)
     @commands.guild_only()
     @requires_player()
-    async def command_repeat(self, context: commands.Context, queue: Optional[bool] = None):
+    async def command_repeat(self, context: PyLavContext, queue: Optional[bool] = None):
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        player = self.lavalink.get_player(context.guild)
+        player = context.lavalink.get_player(context.guild)
         if not player:
             await context.send(
-                embed=await self.lavalink.construct_embed(messageable=context, description=_("No player detected.")),
+                embed=await context.lavalink.construct_embed(description=_("No player detected.")),
                 ephemeral=True,
             )
             return
@@ -376,22 +362,22 @@ class HybridCommands(MPMixin, ABC):
                 await player.set_repeat("current", True, context.author)
                 msg = _("Repeating {track}").format(track=await player.current.get_track_display_name(with_url=True))
         await context.send(
-            embed=await self.lavalink.construct_embed(description=msg, messageable=context), ephemeral=True
+            embed=await context.lavalink.construct_embed(description=msg, messageable=context), ephemeral=True
         )
 
     @commands.hybrid_command(name="pause", description="Pause the player.")
     @app_commands.guilds(MY_GUILD)
     @commands.guild_only()
     @requires_player()
-    async def command_pause(self, context: commands.Context):
+    async def command_pause(self, context: PyLavContext):
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        player = self.lavalink.get_player(context.guild)
+        player = context.lavalink.get_player(context.guild)
         if not player:
             await context.send(
-                embed=await self.lavalink.construct_embed(messageable=context, description=_("No player detected.")),
+                embed=await context.lavalink.construct_embed(description=_("No player detected.")),
                 ephemeral=True,
             )
             return
@@ -403,14 +389,14 @@ class HybridCommands(MPMixin, ABC):
                     prefix=context.prefix, command=self.command_resume.qualified_name
                 )
             await context.send(
-                embed=await self.lavalink.construct_embed(messageable=context, description=description),
+                embed=await context.lavalink.construct_embed(description=description),
                 ephemeral=True,
             )
             return
 
         await player.set_pause(True, requester=context.author)
         await context.send(
-            embed=await self.lavalink.construct_embed(messageable=context, description=_("Player paused.")),
+            embed=await context.lavalink.construct_embed(description=_("Player paused.")),
             ephemeral=True,
         )
 
@@ -418,15 +404,15 @@ class HybridCommands(MPMixin, ABC):
     @app_commands.guilds(MY_GUILD)
     @commands.guild_only()
     @requires_player()
-    async def command_resume(self, context: commands.Context):
+    async def command_resume(self, context: PyLavContext):
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        player = self.lavalink.get_player(context.guild)
+        player = context.lavalink.get_player(context.guild)
         if not player:
             await context.send(
-                embed=await self.lavalink.construct_embed(messageable=context, description=_("No player detected.")),
+                embed=await context.lavalink.construct_embed(description=_("No player detected.")),
                 ephemeral=True,
             )
             return
@@ -438,14 +424,14 @@ class HybridCommands(MPMixin, ABC):
                     prefix=context.prefix, command=self.command_pause.qualified_name
                 )
             await context.send(
-                embed=await self.lavalink.construct_embed(messageable=context, description=description),
+                embed=await context.lavalink.construct_embed(description=description),
                 ephemeral=True,
             )
             return
 
         await player.set_pause(False, context.author)
         await context.send(
-            embed=await self.lavalink.construct_embed(messageable=context, description=_("Player resumed.")),
+            embed=await context.lavalink.construct_embed(description=_("Player resumed.")),
             ephemeral=True,
         )
 
@@ -453,22 +439,22 @@ class HybridCommands(MPMixin, ABC):
     @app_commands.guilds(MY_GUILD)
     @commands.guild_only()
     @requires_player()
-    async def command_volume(self, context: commands.Context, volume: Range[int, 0, 1000] = 100):
+    async def command_volume(self, context: PyLavContext, volume: Range[int, 0, 1000] = 100):
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        player = self.lavalink.get_player(context.guild)
+        player = context.lavalink.get_player(context.guild)
         if not player:
             await context.send(
-                embed=await self.lavalink.construct_embed(messageable=context, description=_("No player detected.")),
+                embed=await context.lavalink.construct_embed(description=_("No player detected.")),
                 ephemeral=True,
             )
             return
         await player.set_volume(volume, requester=context.author)
         await context.send(
-            embed=await self.lavalink.construct_embed(
-                messageable=context, description=_("Player volume set to {volume}%.").format(volume=volume)
+            embed=await context.lavalink.construct_embed(
+                description=_("Player volume set to {volume}%.").format(volume=volume)
             ),
             ephemeral=True,
         )
@@ -477,32 +463,29 @@ class HybridCommands(MPMixin, ABC):
     @app_commands.guilds(MY_GUILD)
     @commands.guild_only()
     @requires_player()
-    async def command_previous(self, context: commands.Context, volume: Range[int, 0, 1000] = 100):
+    async def command_previous(self, context: PyLavContext):
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        player = self.lavalink.get_player(context.guild)
+        player = context.lavalink.get_player(context.guild)
         if not player:
             await context.send(
-                embed=await self.lavalink.construct_embed(messageable=context, description=_("No player detected.")),
+                embed=await context.lavalink.construct_embed(description=_("No player detected.")),
                 ephemeral=True,
             )
             return
 
         if player.history.empty():
             await context.send(
-                embed=await self.lavalink.construct_embed(
-                    messageable=context, description=_("No previous in player history.")
-                ),
+                embed=await context.lavalink.construct_embed(description=_("No previous in player history.")),
                 ephemeral=True,
             )
             return
         await player.previous(requester=context.author)
         await context.send(
-            embed=await self.lavalink.construct_embed(
-                messageable=context,
+            embed=await context.lavalink.construct_embed(
                 description=_("Playing previous track: {track}.").format(
                     track=await player.current.get_track_display_name(with_url=True)
                 ),

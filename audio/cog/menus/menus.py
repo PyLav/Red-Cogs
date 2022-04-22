@@ -5,10 +5,13 @@ from typing import TYPE_CHECKING, Any, Literal
 
 import discord
 from red_commons.logging import getLogger
-from redbot.core.commands import commands
 from redbot.core.i18n import Translator
 from redbot.vendored.discord.ext import menus
 
+from pylav.types import BotT
+from pylav.utils import PyLavContext
+
+from audio.cog._types import CogT
 from audio.cog.menus.buttons import (
     AudioNavigateButton,
     CloseButton,
@@ -31,9 +34,6 @@ from audio.cog.menus.buttons import (
 )
 
 if TYPE_CHECKING:
-    from redbot.core.bot import Red
-
-    from audio.cog.abc import COG_TYPE
     from audio.cog.menus.selectors import QueueSelectTrack
     from audio.cog.menus.sources import QueuePickerSource, QueueSource
 
@@ -46,8 +46,8 @@ _ = Translator("MediaPlayer", Path(__file__))
 class BaseMenu(discord.ui.View):
     def __init__(
         self,
-        cog: COG_TYPE,
-        bot: Red,
+        cog: CogT,
+        bot: BotT,
         source: menus.ListPageSource,
         *,
         delete_after_timeout: bool = True,
@@ -67,12 +67,14 @@ class BaseMenu(discord.ui.View):
         self._source = source
         self.delete_after_timeout = delete_after_timeout
         self.current_page = starting_page or kwargs.get("page_start", 0)
+        self._running = True
 
     @property
     def source(self) -> menus.ListPageSource:
         return self._source
 
     async def on_timeout(self):
+        self._running = False
         if self.message is None:
             return
         if self.delete_after_timeout and not self.message.flags.ephemeral:
@@ -97,7 +99,7 @@ class BaseMenu(discord.ui.View):
         elif isinstance(value, discord.Embed):
             return {"embed": value, "content": None}
 
-    async def send_initial_message(self, ctx: commands.Context | discord.Interaction):
+    async def send_initial_message(self, ctx: PyLavContext | discord.Interaction):
         if isinstance(ctx, discord.Interaction):
             self.author = ctx.user
         else:
@@ -159,8 +161,8 @@ class QueueMenu(BaseMenu):
 
     def __init__(
         self,
-        cog: COG_TYPE,
-        bot: Red,
+        cog: CogT,
+        bot: BotT,
         source: QueueSource,
         *,
         delete_after_timeout: bool = True,
@@ -181,56 +183,56 @@ class QueueMenu(BaseMenu):
         )
 
         self.forward_button = AudioNavigateButton(
-            discord.ButtonStyle.grey,
-            "\N{BLACK RIGHT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK RIGHT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
             direction=1,
             row=0,
             cog=cog,
         )
         self.backward_button = AudioNavigateButton(
-            discord.ButtonStyle.grey,
-            "\N{BLACK LEFT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK LEFT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
             direction=-1,
             row=0,
             cog=cog,
         )
         self.first_button = AudioNavigateButton(
-            discord.ButtonStyle.grey,
-            "\N{BLACK LEFT-POINTING DOUBLE TRIANGLE}",
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK LEFT-POINTING DOUBLE TRIANGLE}",
             direction=0,
             row=0,
             cog=cog,
         )
         self.last_button = AudioNavigateButton(
-            discord.ButtonStyle.grey,
-            "\N{BLACK RIGHT-POINTING DOUBLE TRIANGLE}",
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK RIGHT-POINTING DOUBLE TRIANGLE}",
             direction=self.source.get_max_pages,
             row=0,
             cog=cog,
         )
         self.refresh_button = RefreshButton(
-            discord.ButtonStyle.grey,
+            style=discord.ButtonStyle.grey,
             row=0,
             cog=cog,
         )
 
         self.queue_disconnect = DisconnectButton(
-            discord.ButtonStyle.red,
+            style=discord.ButtonStyle.red,
             row=1,
             cog=cog,
         )
         self.repeat_queue_button_on = ToggleRepeatQueueButton(
-            discord.ButtonStyle.blurple,
+            style=discord.ButtonStyle.blurple,
             row=1,
             cog=cog,
         )
         self.repeat_button_on = ToggleRepeatButton(
-            discord.ButtonStyle.blurple,
+            style=discord.ButtonStyle.blurple,
             row=1,
             cog=cog,
         )
         self.repeat_button_off = ToggleRepeatButton(
-            discord.ButtonStyle.grey,
+            style=discord.ButtonStyle.grey,
             row=1,
             cog=cog,
         )
@@ -242,65 +244,65 @@ class QueueMenu(BaseMenu):
         )
 
         self.previous_track_button = PreviousTrackButton(
-            discord.ButtonStyle.grey,
+            style=discord.ButtonStyle.grey,
             row=2,
             cog=cog,
         )
         self.stop_button = StopTrackButton(
-            discord.ButtonStyle.grey,
+            style=discord.ButtonStyle.grey,
             row=2,
             cog=cog,
         )
         self.paused_button = PauseTrackButton(
-            discord.ButtonStyle.blurple,
+            style=discord.ButtonStyle.blurple,
             row=2,
             cog=cog,
         )
         self.resume_button = ResumeTrackButton(
-            discord.ButtonStyle.blurple,
+            style=discord.ButtonStyle.blurple,
             row=2,
             cog=cog,
         )
         self.skip_button = SkipTrackButton(
-            discord.ButtonStyle.grey,
+            style=discord.ButtonStyle.grey,
             row=2,
             cog=cog,
         )
         self.shuffle_button = ShuffleButton(
-            discord.ButtonStyle.grey,
+            style=discord.ButtonStyle.grey,
             row=2,
             cog=cog,
         )
 
         self.decrease_volume_button = DecreaseVolumeButton(
-            discord.ButtonStyle.grey,
+            style=discord.ButtonStyle.grey,
             row=3,
             cog=cog,
         )
         self.increase_volume_button = IncreaseVolumeButton(
-            discord.ButtonStyle.grey,
+            style=discord.ButtonStyle.grey,
             row=3,
             cog=cog,
         )
         self.equalize_button = EqualizerButton(
-            discord.ButtonStyle.grey,
+            style=discord.ButtonStyle.grey,
             row=3,
             cog=cog,
         )
 
         self.enqueue_button = EnqueueButton(
             self.cog,
-            discord.ButtonStyle.green,
+            style=discord.ButtonStyle.green,
             row=3,
         )
         self.remove_from_queue_button = RemoveFromQueueButton(
             self.cog,
-            discord.ButtonStyle.red,
+            style=discord.ButtonStyle.red,
             row=3,
         )
         self.play_now_button = PlayNowFromQueueButton(
             self.cog,
-            discord.ButtonStyle.blurple,
+            style=discord.ButtonStyle.blurple,
             row=4,
         )
 
@@ -414,7 +416,7 @@ class QueueMenu(BaseMenu):
     def source(self) -> QueueSource:
         return self._source
 
-    async def start(self, ctx: commands.Context | discord.Interaction):
+    async def start(self, ctx: PyLavContext | discord.Interaction):
         self.ctx = ctx
         await self.send_initial_message(ctx)
 
@@ -424,8 +426,8 @@ class QueuePickerMenu(BaseMenu):
 
     def __init__(
         self,
-        cog: COG_TYPE,
-        bot: Red,
+        cog: CogT,
+        bot: BotT,
         source: QueuePickerSource,
         *,
         delete_after_timeout: bool = True,
@@ -447,35 +449,35 @@ class QueuePickerMenu(BaseMenu):
         )
         self.menu_type = menu_type
         self.forward_button = AudioNavigateButton(
-            discord.ButtonStyle.grey,
-            "\N{BLACK RIGHT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK RIGHT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
             direction=1,
             row=4,
             cog=cog,
         )
         self.backward_button = AudioNavigateButton(
-            discord.ButtonStyle.grey,
-            "\N{BLACK LEFT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK LEFT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
             direction=-1,
             row=4,
             cog=cog,
         )
         self.first_button = AudioNavigateButton(
-            discord.ButtonStyle.grey,
-            "\N{BLACK LEFT-POINTING DOUBLE TRIANGLE}",
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK LEFT-POINTING DOUBLE TRIANGLE}",
             direction=0,
             row=4,
             cog=cog,
         )
         self.last_button = AudioNavigateButton(
-            discord.ButtonStyle.grey,
-            "\N{BLACK RIGHT-POINTING DOUBLE TRIANGLE}",
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK RIGHT-POINTING DOUBLE TRIANGLE}",
             direction=self.source.get_max_pages,
             row=4,
             cog=cog,
         )
         self.refresh_button = RefreshButton(
-            discord.ButtonStyle.grey,
+            style=discord.ButtonStyle.grey,
             row=4,
             cog=cog,
         )
@@ -494,11 +496,11 @@ class QueuePickerMenu(BaseMenu):
     def source(self) -> QueuePickerSource:
         return self._source
 
-    async def start(self, ctx: commands.Context | discord.Interaction):
+    async def start(self, ctx: PyLavContext | discord.Interaction):
         self.ctx = ctx
         await self.send_initial_message(ctx)
 
-    async def send_initial_message(self, ctx: commands.Context | discord.Interaction):
+    async def send_initial_message(self, ctx: PyLavContext | discord.Interaction):
         if isinstance(ctx, discord.Interaction):
             self.author = ctx.user
         else:

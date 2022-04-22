@@ -1,15 +1,13 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Literal
+from typing import Literal
 
 import discord
 from red_commons.logging import getLogger
 
 from pylav import Track
 
-if TYPE_CHECKING:
-    from audio.cog.abc import COG_TYPE
-
+from audio.cog._types import CogT
 
 LOGGER = getLogger("red.3pt.mp.ui.selectors")
 
@@ -40,7 +38,7 @@ class QueueSelectTrack(discord.ui.Select):
     def __init__(
         self,
         options: list[QueueTrackOption],
-        cog: COG_TYPE,
+        cog: CogT,
         placeholder: str,
         interaction_type: Literal["remove", "play"],
         mapping: dict[str, Track],
