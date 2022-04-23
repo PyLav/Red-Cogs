@@ -395,6 +395,7 @@ class RemoveFromQueueButton(discord.ui.Button):
             delete_after_timeout=True,
             starting_page=0,
             menu_type="remove",
+            original_author=interaction.user,
         ).start(await self.cog.bot.get_context(interaction))
         if not interaction.response.is_done():
             await self.view.prepare()
@@ -430,6 +431,7 @@ class PlayNowFromQueueButton(discord.ui.Button):
             delete_after_timeout=True,
             starting_page=0,
             menu_type="play",
+            original_author=interaction.user,
         ).start(await self.cog.bot.get_context(interaction))
         if not interaction.response.is_done():
             await self.view.prepare()
@@ -461,7 +463,7 @@ class EnqueuePlaylistButton(discord.ui.Button):
         self.cog = cog
         super().__init__(
             style=style,
-            emoji=discord.PartialEmoji(name="album", animated=False, id=961593964299976725),
+            emoji=discord.PartialEmoji(name="playlist", animated=False, id=965672202093621319),
             row=row,
         )
 
@@ -471,17 +473,14 @@ class EnqueuePlaylistButton(discord.ui.Button):
 
         if not getattr(interaction, "_cs_command", None):
             interaction._cs_command = self.cog.command_playlist_list
-        context = await self.cog.bot.get_context(interaction)
-        if context.interaction and not context.interaction.response.is_done():
-            await context.defer(ephemeral=True)
+        await interaction.response.defer(ephemeral=True)
         playlists = await self.cog.lavalink.playlist_db_manager.get_all_for_user(
-            requester=context.author.id,
-            vc=rgetattr(context.author, "voice.channel", None),
-            guild=context.guild,
-            channel=context.channel,
+            requester=interaction.user.id,
+            vc=rgetattr(interaction.user, "voice.channel", None),
+            guild=interaction.guild,
+            channel=interaction.channel,  # type: ignore
         )
         playlists = list(itertools.chain.from_iterable(playlists))
-
         await PlaylistPickerMenu(
             cog=self.cog,
             bot=self.cog.bot,
@@ -490,16 +489,17 @@ class EnqueuePlaylistButton(discord.ui.Button):
                 guild_id=interaction.guild.id,
                 cog=self.cog,
                 pages=playlists,
-                message_str=_("Playlists you can currently"),
+                message_str=_("Playlists you can currently play"),
             ),
             delete_after_timeout=True,
             clear_buttons_after=True,
             starting_page=0,
+            original_author=interaction.user,
             selector_text=_("Pick a playlist"),
-        ).start(context)
+        ).start(await self.cog.bot.get_context(interaction))
         await self.view.prepare()
         kwargs = await self.view.get_page(self.view.current_page)
-        await interaction.response.edit_message(view=self.view, **kwargs)
+        await (await interaction.original_message()).edit(view=self.view, **kwargs)
 
 
 class EffectPickerButton(discord.ui.Button):
@@ -528,6 +528,7 @@ class EffectPickerButton(discord.ui.Button):
             clear_buttons_after=False,
             starting_page=0,
             menu_type="play",
+            original_author=interaction.user,
         ).start(interaction)
         await self.view.prepare()
         kwargs = await self.view.get_page(self.view.current_page)

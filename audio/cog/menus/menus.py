@@ -24,6 +24,7 @@ from audio.cog.menus.buttons import (
     DisconnectButton,
     DoneButton,
     EnqueueButton,
+    EnqueuePlaylistButton,
     EqualizerButton,
     IncreaseVolumeButton,
     LabelButton,
@@ -123,10 +124,6 @@ class BaseMenu(discord.ui.View):
             return {"embed": value, "content": None}
 
     async def send_initial_message(self, ctx: PyLavContext | discord.Interaction):
-        if isinstance(ctx, discord.Interaction):
-            self.author = ctx.user
-        else:
-            self.author = ctx.author
         self.ctx = ctx
         kwargs = await self.get_page(self.current_page)
         await self.prepare()
@@ -185,6 +182,7 @@ class QueueMenu(BaseMenu):
         cog: CogT,
         bot: BotT,
         source: QueueSource,
+        original_author: discord.abc.User,
         *,
         delete_after_timeout: bool = True,
         timeout: int = 600,
@@ -202,6 +200,7 @@ class QueueMenu(BaseMenu):
             starting_page=starting_page,
             **kwargs,
         )
+        self.author = original_author
 
         self.forward_button = AudioNavigateButton(
             style=discord.ButtonStyle.grey,
@@ -312,17 +311,22 @@ class QueueMenu(BaseMenu):
         )
 
         self.enqueue_button = EnqueueButton(
-            self.cog,
+            cog=cog,
             style=discord.ButtonStyle.green,
             row=3,
         )
         self.remove_from_queue_button = RemoveFromQueueButton(
-            self.cog,
+            cog=cog,
             style=discord.ButtonStyle.red,
             row=3,
         )
         self.play_now_button = PlayNowFromQueueButton(
-            self.cog,
+            cog=cog,
+            style=discord.ButtonStyle.blurple,
+            row=4,
+        )
+        self.playlist_enqueue_button = EnqueuePlaylistButton(
+            cog=cog,
             style=discord.ButtonStyle.blurple,
             row=4,
         )
@@ -394,6 +398,7 @@ class QueueMenu(BaseMenu):
             self.remove_from_queue_button.disabled = True
             self.play_now_button.disabled = True
             self.repeat_queue_button_on.disabled = True
+            self.playlist_enqueue_button.disabled = True
 
             self.add_item(self.resume_button)
             self.add_item(self.repeat_button_off)
@@ -430,6 +435,7 @@ class QueueMenu(BaseMenu):
         self.add_item(self.enqueue_button)
         self.add_item(self.remove_from_queue_button)
         self.add_item(self.play_now_button)
+        self.add_item(self.playlist_enqueue_button)
         self.equalize_button.disabled = True
         self.equalize_button.disabled = True
 
@@ -450,6 +456,7 @@ class QueuePickerMenu(BaseMenu):
         cog: CogT,
         bot: BotT,
         source: QueuePickerSource,
+        original_author: discord.abc.User,
         *,
         delete_after_timeout: bool = True,
         timeout: int = 120,
@@ -468,6 +475,7 @@ class QueuePickerMenu(BaseMenu):
             starting_page=starting_page,
             **kwargs,
         )
+        self.author = original_author
         self.menu_type = menu_type
         self.forward_button = AudioNavigateButton(
             style=discord.ButtonStyle.grey,
@@ -522,10 +530,6 @@ class QueuePickerMenu(BaseMenu):
         await self.send_initial_message(ctx)
 
     async def send_initial_message(self, ctx: PyLavContext | discord.Interaction):
-        if isinstance(ctx, discord.Interaction):
-            self.author = ctx.user
-        else:
-            self.author = ctx.author
         await self._source.get_page(0)
         self.ctx = ctx
         embed = await self.source.format_page(self, [])
@@ -595,6 +599,7 @@ class PlaylistPickerMenu(BaseMenu):
         source: PlaylistPickerSource,
         selector_text: str,
         selector_cls: type[PlaylistPlaySelector] | type[PlaylistSelectSelector],  # noqa
+        original_author: discord.abc.User,
         *,
         clear_buttons_after: bool = False,
         delete_after_timeout: bool = True,
@@ -655,7 +660,8 @@ class PlaylistPickerMenu(BaseMenu):
             row=4,
             cog=cog,
         )
-        self.select_view: PlaylistPlaySelector | None = None
+        self.select_view: PlaylistPlaySelector | PlaylistSelectSelector | None = None
+        self.author = original_author
 
     @property
     def source(self) -> PlaylistPickerSource:
@@ -719,6 +725,7 @@ class EffectPickerMenu(BaseMenu):
         cog: CogT,
         bot: BotT,
         source: EffectsPickerSource,
+        original_author: discord.abc.User,
         *,
         clear_buttons_after: bool = False,
         delete_after_timeout: bool = True,
@@ -776,7 +783,8 @@ class EffectPickerMenu(BaseMenu):
             row=4,
             cog=cog,
         )
-        self.select_view: PlaylistPlaySelector | None = None
+        self.select_view: PlaylistPlaySelector | PlaylistSelectSelector | None = None
+        self.author = original_author
 
     async def prepare(self):
         self.clear_items()
@@ -821,6 +829,7 @@ class StatsMenu(BaseMenu):
         cog: CogT,
         bot: BotT,
         source: PlayersSource,
+        original_author: discord.abc.User,
         *,
         clear_buttons_after: bool = False,
         delete_after_timeout: bool = True,
@@ -910,6 +919,7 @@ class StatsMenu(BaseMenu):
             row=4,
             cog=cog,
         )
+        self.author = original_author
 
     async def prepare(self):
         self.clear_items()
@@ -1015,6 +1025,7 @@ class SearchPickerMenu(BaseMenu):
         cog: CogT,
         bot: BotT,
         source: SearchPickerSource,
+        original_author: discord.abc.User,
         *,
         clear_buttons_after: bool = True,
         delete_after_timeout: bool = False,
@@ -1034,6 +1045,7 @@ class SearchPickerMenu(BaseMenu):
             starting_page=starting_page,
             **kwargs,
         )
+        self.author = original_author
         self.forward_button = AudioNavigateButton(
             style=discord.ButtonStyle.grey,
             emoji="\N{BLACK RIGHT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
@@ -1116,6 +1128,7 @@ class PaginatingMenu(BaseMenu):
         cog: CogT,
         bot: BotT,
         source: SourcesT,
+        original_author: discord.abc.User,
         *,
         clear_buttons_after: bool = True,
         delete_after_timeout: bool = False,
@@ -1135,6 +1148,7 @@ class PaginatingMenu(BaseMenu):
             starting_page=starting_page,
             **kwargs,
         )
+        self.author = original_author
         self.forward_button = AudioNavigateButton(
             style=discord.ButtonStyle.grey,
             emoji="\N{BLACK RIGHT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
@@ -1278,21 +1292,24 @@ class PlaylistCreationFlow(discord.ui.View):
     scope_prompt: PromptForInput
     author: discord.abc.User
 
-    def __init__(self, cog: CogT, *, updating: bool = False, timeout: int = 120) -> None:
+    def __init__(
+        self, cog: CogT, original_author: discord.abc.User, *, updating: bool = False, timeout: int = 120
+    ) -> None:
         super().__init__(timeout=timeout)
         from audio.cog.menus.modals import PromptForInput
 
         self.cog = cog
         self.bot = cog.bot
+        self.author = original_author
         self.url_prompt = PromptForInput(
             cog=self.cog,
             title=_("Please enter the playlist URL"),
             label=_("Playlist URL"),
+            style=discord.TextStyle.paragraph,
+            max_length=4000,
         )
         self.name_prompt = PromptForInput(
-            cog=self.cog,
-            title=_("Please enter the playlist name"),
-            label=_("Playlist Name"),
+            cog=self.cog, title=_("Please enter the playlist name"), label=_("Playlist Name"), max_length=64
         )
 
         if updating:
@@ -1329,10 +1346,6 @@ class PlaylistCreationFlow(discord.ui.View):
     async def send_initial_message(
         self, ctx: PyLavContext | discord.Interaction, description: str = None, title: str = None
     ):
-        if isinstance(ctx, discord.Interaction):
-            self.author = ctx.user
-        else:
-            self.author = ctx.author
         self.ctx = ctx
         self.message = await ctx.send(
             embed=await self.cog.lavalink.construct_embed(description=description, title=title, messageable=ctx),

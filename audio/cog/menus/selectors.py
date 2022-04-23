@@ -143,7 +143,7 @@ class PlaylistPlaySelector(discord.ui.Select):
 
         if not getattr(interaction, "_cs_command", None):
             interaction._cs_command = self.cog.command_playlist_play
-        await self.cog.command_playlist_play.callback(self.cog, interaction, playlist_id_or_name=playlist_id)
+        await self.cog.command_playlist_play.callback(self.cog, interaction, playlist=[playlist])
         self.view.stop()
         await interaction.message.delete()
 

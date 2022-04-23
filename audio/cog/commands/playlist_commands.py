@@ -1,4 +1,3 @@
-import asyncio
 import itertools
 from abc import ABC
 from pathlib import Path
@@ -10,15 +9,17 @@ from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator
 
-from pylav import EntryNotFoundError, Query, Track
-from pylav.converters import QueryPlaylistConverter
+from pylav import Query, Track
+from pylav.converters import PlaylistConverter, QueryPlaylistConverter
+from pylav.sql.models import PlaylistModel
+from pylav.tracks import decode_track
 from pylav.utils import AsyncIter, PyLavContext
 
 from audio.cog import MY_GUILD, MPMixin
-from audio.cog.menus.menus import PaginatingMenu, PlaylistCreationFlow, PlaylistPickerMenu
-from audio.cog.menus.selectors import PlaylistSelectSelector
-from audio.cog.menus.sources import PlaylistListSource, PlaylistPickerSource
+from audio.cog.menus.menus import PaginatingMenu, PlaylistCreationFlow
+from audio.cog.menus.sources import PlaylistListSource
 from audio.cog.utils import rgetattr
+from audio.cog.utils.playlists import maybe_prompt_for_playlist
 
 LOGGER = getLogger("red.3pt.mp.commands.playlists")
 _ = Translator("MediaPlayer", Path(__file__))
@@ -33,7 +34,7 @@ class PlaylistCommands(MPMixin, ABC):
         Control custom playlist.
         """
 
-    @command_playlist.command(name="create")
+    @command_playlist.command(name="create", aliases=["new"])
     async def command_playlist_create(
         self, context: PyLavContext, url: Optional[QueryPlaylistConverter], *, name: Optional[str]
     ):
@@ -46,7 +47,11 @@ class PlaylistCommands(MPMixin, ABC):
             await context.defer(ephemeral=True)
 
         if not (name or url):
-            playlist_prompt = PlaylistCreationFlow(cog=self, timeout=120)
+            playlist_prompt = PlaylistCreationFlow(
+                cog=self,
+                original_author=context.author if not context.interaction else context.interaction.user,
+                timeout=120,
+            )
             title = _("Let's create a playlist!")
             description = _(
                 "Select the name button to set the name for your playlist\n\n"
@@ -89,18 +94,14 @@ class PlaylistCommands(MPMixin, ABC):
             ephemeral=True,
         )
 
-    @command_playlist.command(name="delete")
-    async def command_playlist_delete(self, context: PyLavContext, *, playlist_id_or_name: str):
+    @command_playlist.command(name="delete", aliases=["del", "rm"])
+    async def command_playlist_delete(self, context: PyLavContext, *, playlist: PlaylistConverter):
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        playlists = await context.lavalink.playlist_db_manager.get_manageable_playlists(
-            requester=context.author,
-            bot=self.bot,
-            name_or_id=playlist_id_or_name,
-        )
+        playlists = [p for p in playlist if await p.can_manage(bot=self.bot, requester=context.author, guild=context.guild)]  # type: ignore
 
         if not playlists:
             await context.send(
@@ -110,43 +111,25 @@ class PlaylistCommands(MPMixin, ABC):
                 ephemeral=True,
             )
             return
-
-        if len(playlists) > 1:
-            playlist_picker = PlaylistPickerMenu(
-                cog=self,
-                bot=self.bot,
-                source=PlaylistPickerSource(
-                    guild_id=context.guild.id,
-                    cog=self,
-                    pages=playlists,
-                    message_str=_("Multiple playlist matched, pick the one which you meant."),
-                ),
-                selector_cls=PlaylistSelectSelector,
-                delete_after_timeout=True,
-                clear_buttons_after=True,
-                starting_page=0,
-                selector_text=_("Pick a playlist"),
-            )
-
-            await playlist_picker.start(context)
-            await playlist_picker.wait_for_response()
-            playlist = playlist_picker.result
-            await playlist.delete()
-        else:
-            playlist = playlists[0]
-            await playlist.delete()
+        playlist = await maybe_prompt_for_playlist(cog=self, playlists=playlists, context=context)
+        if not playlist:
+            return
+        await playlist.delete()
         await context.send(
             embed=await context.lavalink.construct_embed(description=_("Playlist has been deleted.")),
             ephemeral=True,
         )
 
-    @command_playlist.command(name="play")
-    async def command_playlist_play(self, context: PyLavContext, *, playlist_id_or_name: str):
+    @command_playlist.command(name="play", aliases=["start"])
+    async def command_playlist_play(self, context: PyLavContext, *, playlist: PlaylistConverter):
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-
+        playlists: list[PlaylistModel] = playlist  # type: ignore
+        playlist = await maybe_prompt_for_playlist(cog=self, playlists=playlists, context=context)
+        if not playlist:
+            return
         if (player := context.player) is None:
             channel = rgetattr(context, "author.voice.channel", None)
             if not channel:
@@ -158,42 +141,6 @@ class PlaylistCommands(MPMixin, ABC):
                 )
                 return
             player = await context.lavalink.connect_player(channel=channel, self_deaf=True, requester=context.author)
-
-        try:
-            playlists = await context.lavalink.playlist_db_manager.get_playlist_by_name_or_id(playlist_id_or_name)
-        except EntryNotFoundError:
-            await context.send(
-                embed=await context.lavalink.construct_embed(description=_("Playlist with that name or ID not found.")),
-                ephemeral=True,
-            )
-            return
-        if len(playlists) > 1:
-            playlist_picker = PlaylistPickerMenu(
-                cog=self,
-                bot=self.bot,
-                source=PlaylistPickerSource(
-                    guild_id=context.guild.id,
-                    cog=self,
-                    pages=playlists,
-                    message_str=_("Multiple playlist matched, pick the one which you want."),
-                ),
-                selector_cls=PlaylistSelectSelector,
-                delete_after_timeout=True,
-                clear_buttons_after=True,
-                starting_page=0,
-                selector_text=_("Pick a playlist"),
-            )
-
-            await playlist_picker.start(context)
-            try:
-                await playlist_picker.wait_for_response()
-            except asyncio.TimeoutError:
-                playlist_picker.stop()
-                await playlist_picker.on_timeout()
-                return
-            playlist = playlist_picker.result
-        else:
-            playlist = playlists[0]
         track_count = len(playlist.tracks)
         await player.bulk_add(
             requester=context.author.id,
@@ -241,4 +188,46 @@ class PlaylistCommands(MPMixin, ABC):
             source=PlaylistListSource(cog=self, pages=playlists),  # type: ignore
             delete_after_timeout=True,
             timeout=120,
+            original_author=context.author if not context.interaction else context.interaction.user,
         ).start(context)
+
+    @command_playlist.command(name="remove")
+    async def command_playlist_remove(
+        self, context: PyLavContext, url: QueryPlaylistConverter, playlist: PlaylistConverter
+    ):
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+
+        playlists: list[PlaylistModel] = playlist  # type: ignore
+        playlist = await maybe_prompt_for_playlist(cog=self, playlists=playlists, context=context)
+        if not playlist:
+            return
+        tracks = playlist.tracks
+        new_tracks = []
+        tracks_removed = []
+        async for track in AsyncIter(tracks):
+            track_obj, __ = decode_track(track)
+            if track_obj["info"]["uri"] == url.query_identifier:
+                tracks_removed.append(track_obj)
+            else:
+                new_tracks.append(track)
+        if not tracks_removed:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("No tracks were removed from the playlist."),
+                ),
+                ephemeral=True,
+            )
+            return
+        playlist.tracks = new_tracks
+        await playlist.save()
+        await context.send(
+            embed=await context.lavalink.construct_embed(
+                description=_("{track_count} tracks removed from the playlist.").format(
+                    track_count=len(tracks_removed)
+                ),
+            ),
+            ephemeral=True,
+        )

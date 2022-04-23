@@ -305,6 +305,7 @@ class HybridCommands(MPMixin, ABC):
             cog=self,  # type: ignore
             bot=self.bot,
             source=QueueSource(guild_id=context.guild.id, cog=self),  # type: ignore
+            original_author=context.author if not context.interaction else context.interaction.user,
         ).start(ctx=context)
 
     @commands.hybrid_command(name="shuffle", description="Shuffles the player's queue.")
