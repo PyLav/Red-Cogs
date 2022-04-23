@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import asyncio
 from pathlib import Path
 from typing import Literal
 
@@ -9,6 +10,7 @@ from redbot.core.i18n import Translator
 
 from pylav import Query, Track
 from pylav.sql.models import PlaylistModel
+from pylav.types import BotT
 
 from audio.cog._types import CogT
 
@@ -94,19 +96,20 @@ class QueueSelectTrack(discord.ui.Select):
 
 
 class PlaylistOption(discord.SelectOption):
-    def __init__(self, playlist: PlaylistModel, index: int):
-        super().__init__(
+    @classmethod
+    async def from_playlist(cls, playlist: PlaylistModel, bot: BotT, index: int):
+        return cls(
             label=f"{index + 1}. {playlist.name}",
-            description=_("Tracks: {} || Scope: {}  || Author: {}").format(
+            description=_("Tracks: {} || {} || {}").format(
                 len(playlist.tracks),
-                playlist.scope,
-                playlist.author or _("Unknown"),
+                await playlist.get_author_name(bot, mention=False),
+                await playlist.get_scope_name(bot, mention=False),
             ),
             value=f"{playlist.id}",
         )
 
 
-class PlaylistSelector(discord.ui.Select):
+class PlaylistPlaySelector(discord.ui.Select):
     def __init__(
         self,
         options: list[PlaylistOption],
@@ -119,13 +122,19 @@ class PlaylistSelector(discord.ui.Select):
         self.mapping = mapping
 
     async def callback(self, interaction: discord.Interaction):
+        if self.view.author.id != interaction.user.id:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, description=_("You are not authorized to interact with this option.")
+                ),
+                ephemeral=True,
+            )
+            return
         playlist_id = self.values[0]
         playlist: PlaylistModel = self.mapping.get(playlist_id)
         if playlist is None:
             await interaction.response.send_message(
-                embed=await self.cog.lavalink.construct_embed(
-                    messageable=interaction, title=_("PlaylistModel not found.")
-                ),
+                embed=await self.cog.lavalink.construct_embed(messageable=interaction, title=_("Playlist not found.")),
                 ephemeral=True,
             )
             self.view.stop()
@@ -134,13 +143,38 @@ class PlaylistSelector(discord.ui.Select):
 
         if not getattr(interaction, "_cs_command", None):
             interaction._cs_command = self.cog.command_playlist_play
+        await self.cog.command_playlist_play.callback(self.cog, interaction, playlist_id_or_name=playlist_id)
+        self.view.stop()
+        await interaction.message.delete()
 
-        self.cog.dispatch_msg(  # TODO: Replace with play command
-            ctx=self.view.ctx,
-            interaction=interaction,
-            command=self.cog.command_playlist_start,
-            args=f" {playlist.id}",
-        )
+
+class PlaylistSelectSelector(discord.ui.Select):
+    def __init__(
+        self,
+        options: list[PlaylistOption],
+        cog: CogT,
+        placeholder: str,
+        mapping: dict[str, PlaylistModel],
+    ):
+        super().__init__(min_values=1, max_values=1, options=options, placeholder=placeholder)
+        self.cog = cog
+        self.mapping = mapping
+        self.playlist: PlaylistModel = None  # type:ignore
+        self.responded = asyncio.Event()
+
+    async def callback(self, interaction: discord.Interaction):
+        playlist_id = self.values[0]
+        self.playlist: PlaylistModel = self.mapping.get(playlist_id)
+        if self.playlist is None:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(messageable=interaction, title=_("Playlist not found.")),
+                ephemeral=True,
+            )
+            self.view.stop()
+            await interaction.message.delete()
+            return
+        self.responded.set()
+        await interaction.response.pong()
         self.view.stop()
         await interaction.message.delete()
 

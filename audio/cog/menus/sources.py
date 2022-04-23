@@ -135,7 +135,7 @@ class QueuePickerSource(QueueSource):
 
 
 class PlaylistPickerSource(menus.ListPageSource):
-    def __init__(self, guild_id: int, cog: CogT, pages: list[PlaylistModel]):
+    def __init__(self, guild_id: int, cog: CogT, pages: list[PlaylistModel], message_str: str):
         pages.sort(
             key=lambda p: (
                 (INF, ASCII_ORDER_SORT)
@@ -147,6 +147,7 @@ class PlaylistPickerSource(menus.ListPageSource):
             )
         )
         super().__init__(entries=pages, per_page=5)
+        self.message_str = message_str
         self.per_page = 5
         self.guild_id = guild_id
         self.select_options: list[PlaylistOption] = []
@@ -161,9 +162,7 @@ class PlaylistPickerSource(menus.ListPageSource):
     async def format_page(self, menu: BaseMenu, tracks: list[PlaylistModel]) -> discord.Embed | str:
 
         idx_start, page_num = self.get_starting_index_and_page_number(menu)
-        page = await self.cog.lavalink.construct_embed(
-            messageable=menu.ctx, title=_("Playlists you can access in this server:")
-        )
+        page = await self.cog.lavalink.construct_embed(messageable=menu.ctx, title=self.message_str)
         page.set_footer(
             text=_("Page {page_num}/{total_pages} | {num} playlists.").format(
                 page_num=humanize_number(page_num + 1),
@@ -180,8 +179,7 @@ class PlaylistPickerSource(menus.ListPageSource):
         self.select_options.clear()
         self.select_mapping.clear()
         for i, playlist in enumerate(self.entries[base : base + self.per_page], start=base):  # noqa: E203
-            playlist.author = self.cog.bot.get_user(playlist.author) or playlist.author
-            self.select_options.append(PlaylistOption(playlist=playlist, index=i))
+            self.select_options.append(await PlaylistOption.from_playlist(playlist=playlist, index=i, bot=self.cog.bot))
             self.select_mapping[f"{playlist.id}"] = playlist
         return self.entries[base : base + self.per_page]  # noqa: E203
 
@@ -382,7 +380,7 @@ class PlaylistInfoSource(menus.ListPageSource):
         if isinstance(author_obj, discord.abc.User):
             author_obj = author_obj.mention
         if not self.playlist.url:
-            embed_title = _("PlaylistModel info for {playlist_name} (`{id}`) [**{scope}**]").format(
+            embed_title = _("Playlist info for {playlist_name} (`{id}`) [**{scope}**]").format(
                 playlist_name=self.playlist.name, id=self.playlist.id, scope=self.scope_name
             )
             authormsg = "{}: {}\n".format(bold(_("Author")), author_obj)

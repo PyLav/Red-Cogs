@@ -1,10 +1,12 @@
 from __future__ import annotations
 
+import asyncio
 import itertools
 from pathlib import Path
-from typing import Callable, Literal
+from typing import TYPE_CHECKING, Callable, Literal
 
 import discord
+from discord import Emoji, PartialEmoji
 from red_commons.logging import getLogger
 from redbot.core.i18n import Translator
 
@@ -12,7 +14,11 @@ from pylav.utils import AsyncIter
 
 from audio.cog._types import CogT
 from audio.cog.menus.modals import PlaylistSaveModal
+from audio.cog.menus.selectors import PlaylistPlaySelector
 from audio.cog.utils import rgetattr
+
+if TYPE_CHECKING:
+    from audio.cog.menus.menus import PlaylistCreationFlow
 
 LOGGER = getLogger("red.3pt.mp.ui.buttons")
 
@@ -294,6 +300,13 @@ class CloseButton(discord.ui.Button):
         self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
+        if self.view.author.id != interaction.user.id:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, description=_("You are not authorized to interact with this option.")
+                ),
+                ephemeral=True,
+            )
         if interaction.message.flags.ephemeral:
             await interaction.response.edit_message(view=None)
             self.view.stop()
@@ -472,14 +485,17 @@ class EnqueuePlaylistButton(discord.ui.Button):
         await PlaylistPickerMenu(
             cog=self.cog,
             bot=self.cog.bot,
+            selector_cls=PlaylistPlaySelector,
             source=PlaylistPickerSource(
                 guild_id=interaction.guild.id,
                 cog=self.cog,
                 pages=playlists,
+                message_str=_("Playlists you can currently"),
             ),
             delete_after_timeout=True,
             clear_buttons_after=True,
             starting_page=0,
+            selector_text=_("Pick a playlist"),
         ).start(context)
         await self.view.prepare()
         kwargs = await self.view.get_page(self.view.current_page)
@@ -729,3 +745,110 @@ class LabelButton(discord.ui.Button):
         self.label = _("Disconnect {} {}").format(
             disconnect_type_translation, _("players") if multiple else _("player")
         )
+
+
+class YesButton(discord.ui.Button):
+    interaction: discord.Interaction
+
+    def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
+        super().__init__(style=style, emoji=None, row=row, label=_("Yes"))
+        self.responded = asyncio.Event()
+        self.cog = cog
+        self.interaction = None  # type: ignore
+
+    async def callback(self, interaction: discord.Interaction):
+        if self.view.author.id != interaction.user.id:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, description=_("You are not authorized to interact with this option.")
+                ),
+                ephemeral=True,
+            )
+            return
+
+        self.responded.set()
+        self.interaction = interaction
+
+
+class NoButton(discord.ui.Button):
+    interaction: discord.Interaction
+
+    def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
+        super().__init__(style=style, emoji=None, row=row, label=_("No"))
+        self.responded = asyncio.Event()
+        self.cog = cog
+        self.interaction = None  # type: ignore
+
+    async def callback(self, interaction: discord.Interaction):
+        if self.view.author.id != interaction.user.id:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, description=_("You are not authorized to interact with this option.")
+                ),
+                ephemeral=True,
+            )
+            return
+        self.responded.set()
+        self.interaction = interaction
+
+
+class PlaylistUpsertButton(discord.ui.Button):
+    view: PlaylistCreationFlow
+
+    def __init__(
+        self,
+        cog: CogT,
+        style: discord.ButtonStyle,
+        label: str,
+        op: Literal["url", "name", "scope"],
+        emoji: str | Emoji | PartialEmoji = None,
+        row: int = None,
+    ):
+        super().__init__(
+            style=style,
+            emoji=emoji,
+            label=label,
+            row=row,
+        )
+        self.cog = cog
+        self.op = op
+
+    async def callback(self, interaction: discord.Interaction):
+        if self.view.author.id != interaction.user.id:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, description=_("You are not authorized to interact with this option.")
+                ),
+                ephemeral=True,
+            )
+        if self.op == "url":
+            await self.view.prompt_url(interaction)
+        elif self.op == "name":
+            await self.view.prompt_name(interaction)
+        elif self.op == "scope":
+            await self.view.prompt_scope(interaction)
+
+
+class DoneButton(discord.ui.Button):
+    def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
+        super().__init__(
+            style=style,
+            emoji=discord.PartialEmoji(name="check", animated=False, id=967466875535626260),
+            row=row,
+        )
+        self.cog = cog
+
+    async def callback(self, interaction: discord.Interaction):
+        if self.view.author.id != interaction.user.id:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, description=_("You are not authorized to interact with this option.")
+                ),
+                ephemeral=True,
+            )
+        if interaction.message.flags.ephemeral:
+            await interaction.response.edit_message(view=None)
+            self.view.stop()
+            return
+        await interaction.message.delete()
+        self.view.stop()

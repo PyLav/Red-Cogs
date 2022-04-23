@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import asyncio
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, Literal
 
@@ -8,7 +9,8 @@ from red_commons.logging import getLogger
 from redbot.core.i18n import Translator
 from redbot.vendored.discord.ext import menus
 
-from pylav.types import BotT
+from pylav.sql.models import PlaylistModel
+from pylav.types import BotT, ContextT
 from pylav.utils import PyLavContext
 
 from audio.cog._types import CogT, SourcesT
@@ -20,11 +22,14 @@ from audio.cog.menus.buttons import (
     CloseButton,
     DecreaseVolumeButton,
     DisconnectButton,
+    DoneButton,
     EnqueueButton,
     EqualizerButton,
     IncreaseVolumeButton,
     LabelButton,
+    NoButton,
     PauseTrackButton,
+    PlaylistUpsertButton,
     PlayNowFromQueueButton,
     PreviousTrackButton,
     RefreshButton,
@@ -35,10 +40,18 @@ from audio.cog.menus.buttons import (
     StopTrackButton,
     ToggleRepeatButton,
     ToggleRepeatQueueButton,
+    YesButton,
 )
 
 if TYPE_CHECKING:
-    from audio.cog.menus.selectors import EffectsSelector, PlaylistSelector, QueueSelectTrack, SearchSelectTrack
+    from audio.cog.menus.modals import PromptForInput
+    from audio.cog.menus.selectors import (
+        EffectsSelector,
+        PlaylistPlaySelector,
+        PlaylistSelectSelector,
+        QueueSelectTrack,
+        SearchSelectTrack,
+    )
     from audio.cog.menus.sources import (
         EffectsPickerSource,
         PlayersSource,
@@ -147,16 +160,14 @@ class BaseMenu(discord.ui.View):
 
     async def interaction_check(self, interaction: discord.Interaction):
         """Just extends the default reaction_check to use owner_ids"""
-        LOGGER.critical("Interaction check - %s (%s)", interaction.user, interaction.user.id)
-        if (
-            self.author
-            and (interaction.user.id != self.author.id)
-            and not await self.bot.allowed_by_whitelist_blacklist(self.author, guild=self.ctx.guild)
+        if (not await self.bot.allowed_by_whitelist_blacklist(interaction.user, guild=interaction.guild)) or (
+            self.author and (interaction.user.id != self.author.id)
         ):
             await interaction.response.send_message(
                 content="You are not authorized to interact with this.", ephemeral=True
             )
             return False
+        LOGGER.critical("Interaction check - %s (%s)", interaction.user, interaction.user.id)
         return True
 
     async def prepare(self):
@@ -575,12 +586,15 @@ class QueuePickerMenu(BaseMenu):
 
 class PlaylistPickerMenu(BaseMenu):
     _source: PlaylistPickerSource
+    result: PlaylistModel
 
     def __init__(
         self,
         cog: CogT,
         bot: BotT,
         source: PlaylistPickerSource,
+        selector_text: str,
+        selector_cls: type[PlaylistPlaySelector] | type[PlaylistSelectSelector],  # noqa
         *,
         clear_buttons_after: bool = False,
         delete_after_timeout: bool = True,
@@ -600,6 +614,9 @@ class PlaylistPickerMenu(BaseMenu):
             starting_page=starting_page,
             **kwargs,
         )
+        self.result: PlaylistModel = None  # type: ignore
+        self.selector_cls = selector_cls
+        self.selector_text = selector_text
         self.forward_button = AudioNavigateButton(
             style=discord.ButtonStyle.grey,
             emoji="\N{BLACK RIGHT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
@@ -638,7 +655,7 @@ class PlaylistPickerMenu(BaseMenu):
             row=4,
             cog=cog,
         )
-        self.select_view: PlaylistSelector | None = None
+        self.select_view: PlaylistPlaySelector | None = None
 
     @property
     def source(self) -> PlaylistPickerSource:
@@ -667,9 +684,7 @@ class PlaylistPickerMenu(BaseMenu):
         if self.source.select_options:  # type: ignore
             options = self.source.select_options  # type: ignore
             self.remove_item(self.select_view)
-            self.select_view = PlaylistSelector(
-                options, self.cog, _("Pick A Playlist To Enqueue"), self.source.select_mapping
-            )
+            self.select_view = self.selector_cls(options, self.cog, self.selector_text, self.source.select_mapping)
             self.add_item(self.select_view)
         if self.select_view and not self.source.select_options:  # type: ignore
             self.remove_item(self.select_view)
@@ -687,6 +702,13 @@ class PlaylistPickerMenu(BaseMenu):
             await interaction.response.edit_message(view=self)
         elif self.message is not None:
             await self.message.edit(view=self)
+
+    async def wait_for_response(self):
+        from audio.cog.menus.selectors import PlaylistSelectSelector
+
+        if isinstance(self.select_view, PlaylistSelectSelector):
+            await asyncio.wait_for(self.select_view.responded.wait(), timeout=self.timeout)
+            self.result = self.select_view.playlist
 
 
 class EffectPickerMenu(BaseMenu):
@@ -754,7 +776,7 @@ class EffectPickerMenu(BaseMenu):
             row=4,
             cog=cog,
         )
-        self.select_view: PlaylistSelector | None = None
+        self.select_view: PlaylistPlaySelector | None = None
 
     async def prepare(self):
         self.clear_items()
@@ -1175,3 +1197,183 @@ class PaginatingMenu(BaseMenu):
             self.backward_button.disabled = True
             self.first_button.disabled = True
             self.last_button.disabled = True
+
+
+class PromptYesOrNo(discord.ui.View):
+    ctx: ContextT
+    message: discord.Message
+    author: discord.abc.User
+    response: bool
+
+    def __init__(self, cog: CogT, initial_message: str, *, timeout: int = 120) -> None:
+        super().__init__(timeout=timeout)
+        self.cog = cog
+        self.initial_message_str = initial_message
+        self.yes_button = YesButton(
+            style=discord.ButtonStyle.green,
+            row=0,
+            cog=cog,
+        )
+        self.no_button = NoButton(
+            style=discord.ButtonStyle.red,
+            row=0,
+            cog=cog,
+        )
+        self.add_item(self.yes_button)
+        self.add_item(self.no_button)
+        self._running = True
+        self.message = None  # type: ignore
+        self.ctx = None  # type: ignore
+        self.author = None  # type: ignore
+        self.response = None  # type: ignore
+
+    async def on_timeout(self):
+        self._running = False
+        if self.message is None:
+            return
+        if not self.message.flags.ephemeral:
+            await self.message.delete()
+        else:
+            await self.message.edit(view=None)
+
+    async def start(self, ctx: PyLavContext | discord.Interaction):
+        await self.send_initial_message(ctx)
+
+    async def send_initial_message(self, ctx: PyLavContext | discord.Interaction):
+        if isinstance(ctx, discord.Interaction):
+            self.author = ctx.user
+        else:
+            self.author = ctx.author
+        self.ctx = ctx
+        self.message = await ctx.send(
+            embed=await self.cog.lavalink.construct_embed(description=self.initial_message_str, messageable=ctx),
+            view=self,
+        )
+        return self.message
+
+    async def wait_for_yes_no(self, wait_for: float = None) -> bool:
+        tasks = [asyncio.create_task(c) for c in [self.yes_button.responded.wait(), self.no_button.responded.wait()]]
+        done, pending = await asyncio.wait(tasks, timeout=wait_for or self.timeout, return_when=asyncio.FIRST_COMPLETED)
+        self.stop()
+        for task in pending:
+            task.cancel()
+        if done:
+            done.pop().result()
+        if not self.message.flags.ephemeral:
+            await self.message.delete()
+        else:
+            await self.message.edit(view=None)
+        if self.yes_button.responded.is_set():
+            self.response = True
+        else:
+            self.response = False
+        return self.response
+
+
+class PlaylistCreationFlow(discord.ui.View):
+    ctx: ContextT
+    message: discord.Message
+    url_prompt: PromptForInput
+    name_prompt: PromptForInput
+    scope_prompt: PromptForInput
+    author: discord.abc.User
+
+    def __init__(self, cog: CogT, *, updating: bool = False, timeout: int = 120) -> None:
+        super().__init__(timeout=timeout)
+        from audio.cog.menus.modals import PromptForInput
+
+        self.cog = cog
+        self.bot = cog.bot
+        self.url_prompt = PromptForInput(
+            cog=self.cog,
+            title=_("Please enter the playlist URL"),
+            label=_("Playlist URL"),
+        )
+        self.name_prompt = PromptForInput(
+            cog=self.cog,
+            title=_("Please enter the playlist name"),
+            label=_("Playlist Name"),
+        )
+
+        if updating:
+            url_label = _("Change URL")
+            name_label = _("New Name")
+        else:
+            url_label = _("Add URL")
+            name_label = _("Add Name")
+        self.name_button = PlaylistUpsertButton(
+            style=discord.ButtonStyle.grey, row=1, cog=cog, label=name_label, op="name"
+        )
+        self.url_button = PlaylistUpsertButton(
+            style=discord.ButtonStyle.grey, row=2, cog=cog, label=url_label, op="url"
+        )
+        self.done_button = DoneButton(
+            style=discord.ButtonStyle.green,
+            row=0,
+            cog=cog,
+        )
+        self.close_button = CloseButton(
+            style=discord.ButtonStyle.red,
+            row=0,
+            cog=cog,
+        )
+
+        self.name = None
+        self.url = None
+        self.scope = None
+        self.add_item(self.done_button)
+        self.add_item(self.close_button)
+        self.add_item(self.name_button)
+        self.add_item(self.url_button)
+
+    async def send_initial_message(
+        self, ctx: PyLavContext | discord.Interaction, description: str = None, title: str = None
+    ):
+        if isinstance(ctx, discord.Interaction):
+            self.author = ctx.user
+        else:
+            self.author = ctx.author
+        self.ctx = ctx
+        self.message = await ctx.send(
+            embed=await self.cog.lavalink.construct_embed(description=description, title=title, messageable=ctx),
+            view=self,
+        )
+        return self.message
+
+    async def start(self, ctx: PyLavContext | discord.Interaction, description: str = None, title: str = None):
+        await self.send_initial_message(ctx, description=description, title=title)
+
+    async def interaction_check(self, interaction: discord.Interaction):
+        """Just extends the default reaction_check to use owner_ids"""
+        if (not await self.bot.allowed_by_whitelist_blacklist(interaction.user, guild=interaction.guild)) or (
+            self.author and (interaction.user.id != self.author.id)
+        ):
+            await interaction.response.send_message(
+                content="You are not authorized to interact with this.", ephemeral=True
+            )
+            return False
+        return True
+
+    async def prompt_url(self, interaction: discord.Interaction) -> None:
+        await interaction.response.send_modal(self.url_prompt)
+        await self.url_prompt.responded.wait()
+        self.url = self.url_prompt.response
+
+    async def prompt_name(self, interaction: discord.Interaction) -> None:
+        await interaction.response.send_modal(self.name_prompt)
+        await self.name_prompt.responded.wait()
+
+        self.name = self.name_prompt.response
+
+    async def prompt_scope(self, interaction: discord.Interaction) -> None:
+        await interaction.response.send_modal(self.scope_prompt)
+        await self.scope_prompt.responded.wait()
+        self.scope = self.scope_prompt.response
+
+    async def on_timeout(self):
+        if self.message is None:
+            return
+        if not self.message.flags.ephemeral:
+            await self.message.delete()
+        else:
+            await self.message.edit(view=None)
