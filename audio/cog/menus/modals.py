@@ -33,11 +33,9 @@ class EnqueueModal(discord.ui.Modal):
         self.add_item(self.text)
 
     async def on_submit(self, interaction: discord.Interaction):
-        if not getattr(interaction, "_cs_command", None):
-            interaction._cs_command = self.cog.command_play
         await self.cog.command_play.callback(
             self.cog,
-            await self.cog.bot.get_context(interaction),
+            interaction,
             query=await Query.from_string(self.text.value.strip()),
         )
 
@@ -63,11 +61,7 @@ class PlaylistSaveModal(discord.ui.Modal):
         self.add_item(self.text)
 
     async def on_submit(self, interaction: discord.Interaction):
-        if not getattr(interaction, "_cs_command", None):
-            interaction._cs_command = self.cog.command_playlist_save
-        await self.cog.command_playlist_save.callback(
-            self.cog, await self.cog.bot.get_context(interaction), name=self.text.value.strip()
-        )
+        await self.cog.command_playlist_save.callback(self.cog, interaction, name=self.text.value.strip())
         # FIXME: Implement playlist save command
 
 

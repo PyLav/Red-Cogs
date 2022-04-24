@@ -44,75 +44,85 @@ class HybridCommands(MPMixin, ABC):
                 )
                 return
             player = await context.connect_player(channel=channel, self_deaf=True)
-        is_partial = query.is_search
-        response = {}
-        if not is_partial:
-            response: dict = await context.lavalink.get_tracks(query)
-            if not response.get("tracks"):
+        async with context.typing():
+            is_partial = query.is_search
+            response = {}
+            if not is_partial:
+                response: dict = await context.lavalink.get_tracks(query)
+                if not response.get("tracks"):
+                    await context.send(
+                        embed=await context.lavalink.construct_embed(
+                            description=_("No results found for {query}").format(query=await query.query_to_string()),
+                        ),
+                        ephemeral=True,
+                    )
+                    return
+            if is_partial:
+                track = Track(node=player.node, data=None, query=query, requester=context.author.id)
+                await player.add(requester=context.author.id, track=track)
                 await context.send(
                     embed=await context.lavalink.construct_embed(
-                        description=_("No results found for {query}").format(query=await query.query_to_string()),
+                        description=_("{track} enqueued").format(
+                            track=await track.get_track_display_name(with_url=True)
+                        ),
                     ),
                     ephemeral=True,
                 )
-                return
-        if is_partial:
-            track = Track(node=player.node, data=None, query=query, requester=context.author.id)
-            await player.add(requester=context.author.id, track=track)
-            await context.send(
-                embed=await context.lavalink.construct_embed(
-                    description=_("{track} enqueued").format(track=await track.get_track_display_name(with_url=True)),
-                ),
-                ephemeral=True,
-            )
-        elif query.is_single:
-            track = Track(
-                node=player.node, data=response["tracks"][0], query=query.with_index(0), requester=context.author.id
-            )
-            await player.add(requester=context.author.id, track=track)
-            await context.send(
-                embed=await context.lavalink.construct_embed(
-                    description=_("{track} enqueued").format(track=await track.get_track_display_name(with_url=True)),
-                ),
-                ephemeral=True,
-            )
-        else:
-            tracks = response["tracks"]
-            track_count = len(tracks)
-            await player.bulk_add(
-                requester=context.author.id,
-                tracks_and_queries=[
-                    Track(node=player.node, data=track["track"], query=query.with_index(i), requester=context.author.id)
-                    async for i, track in AsyncIter(tracks).enumerate()
-                ],
-            )
-            bundle_name = response.get("playlistInfo", {}).get("name")
-            if bundle_name and not (query.is_search or query.is_local):
-                bundle_prefix = _("Album") if query.is_album else _("Playlist") if query.is_playlist else ""
-                if bundle_name:
-                    bundle_name = discord.utils.escape_markdown(bundle_name)
-                    bundle_name = f"[{bundle_name}]"
-                bundle_name += f"({query.query_identifier})"
-                playlist_name = f"\n\n**{bundle_prefix}:  {bundle_name}**"
-            elif not bundle_name and query.is_album and query.is_local:
-                bundle_prefix = _("Album")
-                folder_name = await query.folder()
-                if folder_name:
-                    bundle_name = discord.utils.escape_markdown(await query.query_to_string())
+            elif query.is_single:
+                track = Track(
+                    node=player.node, data=response["tracks"][0], query=query.with_index(0), requester=context.author.id
+                )
+                await player.add(requester=context.author.id, track=track)
+                await context.send(
+                    embed=await context.lavalink.construct_embed(
+                        description=_("{track} enqueued").format(
+                            track=await track.get_track_display_name(with_url=True)
+                        ),
+                    ),
+                    ephemeral=True,
+                )
+            else:
+                tracks = response["tracks"]
+                track_count = len(tracks)
+                await player.bulk_add(
+                    requester=context.author.id,
+                    tracks_and_queries=[
+                        Track(
+                            node=player.node,
+                            data=track["track"],
+                            query=query.with_index(i),
+                            requester=context.author.id,
+                        )
+                        async for i, track in AsyncIter(tracks).enumerate()
+                    ],
+                )
+                bundle_name = response.get("playlistInfo", {}).get("name")
+                if bundle_name and not (query.is_search or query.is_local):
+                    bundle_prefix = _("Album") if query.is_album else _("Playlist") if query.is_playlist else ""
+                    if bundle_name:
+                        bundle_name = discord.utils.escape_markdown(bundle_name)
+                        bundle_name = f"[{bundle_name}]"
+                    bundle_name += f"({query.query_identifier})"
                     playlist_name = f"\n\n**{bundle_prefix}:  {bundle_name}**"
+                elif not bundle_name and query.is_album and query.is_local:
+                    bundle_prefix = _("Album")
+                    folder_name = await query.folder()
+                    if folder_name:
+                        bundle_name = discord.utils.escape_markdown(await query.query_to_string())
+                        playlist_name = f"\n\n**{bundle_prefix}:  {bundle_name}**"
+                    else:
+                        playlist_name = ""
                 else:
                     playlist_name = ""
-            else:
-                playlist_name = ""
 
-            await context.send(
-                embed=await context.lavalink.construct_embed(
-                    description=_("{track_count} tracks enqueued.{playlist_name}").format(
-                        track_count=track_count, playlist_name=playlist_name
+                await context.send(
+                    embed=await context.lavalink.construct_embed(
+                        description=_("{track_count} tracks enqueued.{playlist_name}").format(
+                            track_count=track_count, playlist_name=playlist_name
+                        ),
                     ),
-                ),
-                ephemeral=True,
-            )
+                    ephemeral=True,
+                )
 
         if not player.is_playing:
             await player.next(requester=context.author)
@@ -127,6 +137,7 @@ class HybridCommands(MPMixin, ABC):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
+
         channel = channel or rgetattr(context, "author.voice.channel", None)
         if not channel:
             await context.send(
@@ -134,6 +145,7 @@ class HybridCommands(MPMixin, ABC):
                     description=_(
                         "You need to be in a voice channel if you don't specify which channel I need to connect to."
                     ),
+                    messageable=context,
                 ),
                 ephemeral=True,
             )
@@ -146,6 +158,7 @@ class HybridCommands(MPMixin, ABC):
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("I don't have permission to connect to {channel}.").format(channel=description),
+                    messageable=context,
                 ),
                 ephemeral=True,
             )
@@ -157,7 +170,7 @@ class HybridCommands(MPMixin, ABC):
 
         await context.send(
             embed=await context.lavalink.construct_embed(
-                description=_("Connected to {channel}").format(channel=channel.mention),
+                description=_("Connected to {channel}").format(channel=channel.mention), messageable=context
             ),
             ephemeral=True,
         )

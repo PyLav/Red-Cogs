@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import contextlib
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, Literal
 
@@ -30,6 +31,11 @@ from audio.cog.menus.buttons import (
     LabelButton,
     NoButton,
     PauseTrackButton,
+    PlaylistClearButton,
+    PlaylistDeleteButton,
+    PlaylistDownloadButton,
+    PlaylistInfoButton,
+    PlaylistUpdateButton,
     PlaylistUpsertButton,
     PlayNowFromQueueButton,
     PreviousTrackButton,
@@ -101,10 +107,11 @@ class BaseMenu(discord.ui.View):
         self._running = False
         if self.message is None:
             return
-        if self.delete_after_timeout and not self.message.flags.ephemeral:
-            await self.message.delete()
-        else:
-            await self.message.edit(view=None)
+        with contextlib.suppress(discord.HTTPException):
+            if self.delete_after_timeout and not self.message.flags.ephemeral:
+                await self.message.delete()
+            else:
+                await self.message.edit(view=None)
 
     async def get_page(self, page_num: int):
         try:
@@ -1245,10 +1252,11 @@ class PromptYesOrNo(discord.ui.View):
         self._running = False
         if self.message is None:
             return
-        if not self.message.flags.ephemeral:
-            await self.message.delete()
-        else:
-            await self.message.edit(view=None)
+        with contextlib.suppress(discord.HTTPException):
+            if not self.message.flags.ephemeral:
+                await self.message.delete()
+            else:
+                await self.message.edit(view=None)
 
     async def start(self, ctx: PyLavContext | discord.Interaction):
         await self.send_initial_message(ctx)
@@ -1283,6 +1291,10 @@ class PromptYesOrNo(discord.ui.View):
             self.response = False
         return self.response
 
+    def stop(self):
+        super().stop()
+        asyncio.ensure_future(self.on_timeout())
+
 
 class PlaylistCreationFlow(discord.ui.View):
     ctx: ContextT
@@ -1292,9 +1304,7 @@ class PlaylistCreationFlow(discord.ui.View):
     scope_prompt: PromptForInput
     author: discord.abc.User
 
-    def __init__(
-        self, cog: CogT, original_author: discord.abc.User, *, updating: bool = False, timeout: int = 120
-    ) -> None:
+    def __init__(self, cog: CogT, original_author: discord.abc.User, *, timeout: int = 120) -> None:
         super().__init__(timeout=timeout)
         from audio.cog.menus.modals import PromptForInput
 
@@ -1312,17 +1322,19 @@ class PlaylistCreationFlow(discord.ui.View):
             cog=self.cog, title=_("Please enter the playlist name"), label=_("Playlist Name"), max_length=64
         )
 
-        if updating:
-            url_label = _("Change URL")
-            name_label = _("New Name")
-        else:
-            url_label = _("Add URL")
-            name_label = _("Add Name")
         self.name_button = PlaylistUpsertButton(
-            style=discord.ButtonStyle.grey, row=1, cog=cog, label=name_label, op="name"
+            style=discord.ButtonStyle.grey,
+            row=0,
+            cog=cog,
+            emoji=discord.PartialEmoji(name="name", animated=False, id=967768470781579284),
+            op="name",
         )
         self.url_button = PlaylistUpsertButton(
-            style=discord.ButtonStyle.grey, row=2, cog=cog, label=url_label, op="url"
+            style=discord.ButtonStyle.grey,
+            row=0,
+            cog=cog,
+            emoji=discord.PartialEmoji(name="url", animated=False, id=967753966093991968),
+            op="url",
         )
         self.done_button = DoneButton(
             style=discord.ButtonStyle.green,
@@ -1338,6 +1350,7 @@ class PlaylistCreationFlow(discord.ui.View):
         self.name = None
         self.url = None
         self.scope = None
+        self.done = False
         self.add_item(self.done_button)
         self.add_item(self.close_button)
         self.add_item(self.name_button)
@@ -1386,7 +1399,222 @@ class PlaylistCreationFlow(discord.ui.View):
     async def on_timeout(self):
         if self.message is None:
             return
-        if not self.message.flags.ephemeral:
-            await self.message.delete()
-        else:
-            await self.message.edit(view=None)
+        with contextlib.suppress(discord.HTTPException):
+            if not self.message.flags.ephemeral:
+                await self.message.delete()
+            else:
+                await self.message.edit(view=None)
+
+    def stop(self):
+        super().stop()
+        asyncio.ensure_future(self.on_timeout())
+
+
+class PlaylistManageFlow(discord.ui.View):
+    ctx: ContextT
+    message: discord.Message
+    url_prompt: PromptForInput
+    name_prompt: PromptForInput
+    scope_prompt: PromptForInput
+    author: discord.abc.User
+
+    def __init__(
+        self, cog: CogT, original_author: discord.abc.User, playlist: PlaylistModel, *, timeout: int = 120
+    ) -> None:
+        super().__init__(timeout=timeout)
+        from audio.cog.menus.modals import PromptForInput
+
+        self.completed = asyncio.Event()
+        self.cog = cog
+        self.bot = cog.bot
+        self.author = original_author
+        self.playlist = playlist
+        self.url_prompt = PromptForInput(
+            cog=self.cog,
+            title=_("Please enter the playlist URL"),
+            label=_("Playlist URL"),
+            style=discord.TextStyle.paragraph,
+            max_length=4000,
+        )
+        self.name_prompt = PromptForInput(
+            cog=self.cog, title=_("Please enter the new playlist name"), label=_("Playlist Name"), max_length=64
+        )
+
+        self.add_prompt = PromptForInput(
+            cog=self.cog,
+            title=_("What query to add to the playlist"),
+            label=_("Query"),
+            style=discord.TextStyle.paragraph,
+            max_length=4000,
+        )
+
+        self.remove_prompt = PromptForInput(
+            cog=self.cog,
+            title=_("What query to remove from the playlist"),
+            label=_("Query"),
+            style=discord.TextStyle.paragraph,
+            max_length=4000,
+        )
+
+        self.name_button = PlaylistUpsertButton(
+            style=discord.ButtonStyle.grey,
+            cog=cog,
+            emoji=discord.PartialEmoji(name="name", animated=False, id=967768470781579284),
+            op="name",
+        )
+        self.url_button = PlaylistUpsertButton(
+            style=discord.ButtonStyle.grey,
+            cog=cog,
+            emoji=discord.PartialEmoji(name="url", animated=False, id=967753966093991968),
+            op="url",
+        )
+        self.add_button = PlaylistUpsertButton(
+            style=discord.ButtonStyle.grey,
+            cog=cog,
+            op="add",
+            emoji=discord.PartialEmoji(name="plus", animated=False, id=965672202416570368),
+        )
+        self.remove_button = PlaylistUpsertButton(
+            style=discord.ButtonStyle.grey,
+            cog=cog,
+            op="remove",
+            emoji=discord.PartialEmoji(name="minus", animated=False, id=965672202013925447),
+        )
+
+        self.done_button = DoneButton(
+            style=discord.ButtonStyle.green,
+            cog=cog,
+        )
+        self.delete_button = PlaylistDeleteButton(
+            style=discord.ButtonStyle.red,
+            cog=cog,
+        )
+        self.clear_button = PlaylistClearButton(
+            style=discord.ButtonStyle.red,
+            cog=cog,
+        )
+        self.close_button = CloseButton(
+            style=discord.ButtonStyle.red,
+            cog=cog,
+        )
+        self.update_button = PlaylistUpdateButton(
+            style=discord.ButtonStyle.green,
+            cog=cog,
+        )
+
+        self.download_button = PlaylistDownloadButton(
+            style=discord.ButtonStyle.blurple,
+            cog=cog,
+            emoji=discord.PartialEmoji(name="download", animated=False, id=967760183977730079),
+        )
+
+        self.playlist_enqueue_button = EnqueuePlaylistButton(
+            cog=cog,
+            style=discord.ButtonStyle.blurple,
+            emoji=discord.PartialEmoji(name="play", animated=False, id=965672202441723994),
+            playlist=playlist,
+        )
+        self.playlist_info_button = PlaylistInfoButton(
+            cog=cog,
+            style=discord.ButtonStyle.blurple,
+            emoji=discord.PartialEmoji(name="info", animated=False, id=967827814160158820),
+            playlist=playlist,
+        )
+
+        self.name = None
+        self.url = None
+        self.scope = None
+        self.add_tracks = set()
+        self.remove_tracks = set()
+
+        self.clear = None
+        self.delete = None
+        self.cancelled = True
+        self.done = False
+        self.update = False
+
+        self.add_item(self.done_button)
+        self.add_item(self.close_button)
+        self.add_item(self.delete_button)
+        self.add_item(self.clear_button)
+        self.add_item(self.update_button)
+
+        self.add_item(self.name_button)
+        self.add_item(self.url_button)
+        self.add_item(self.add_button)
+        self.add_item(self.remove_button)
+        self.add_item(self.download_button)
+
+        self.add_item(self.playlist_enqueue_button)
+        self.add_item(self.playlist_info_button)
+
+    async def send_initial_message(
+        self, ctx: PyLavContext | discord.Interaction, description: str = None, title: str = None
+    ):
+        self.ctx = ctx
+        if not ctx.channel.permissions_for(ctx.me).attach_files:
+            self.download_button.disabled = True
+        self.message = await ctx.send(
+            embed=await self.cog.lavalink.construct_embed(description=description, title=title, messageable=ctx),
+            view=self,
+        )
+        return self.message
+
+    async def start(self, ctx: PyLavContext | discord.Interaction, description: str = None, title: str = None):
+        await self.send_initial_message(ctx, description=description, title=title)
+
+    async def interaction_check(self, interaction: discord.Interaction):
+        """Just extends the default reaction_check to use owner_ids"""
+        if (not await self.bot.allowed_by_whitelist_blacklist(interaction.user, guild=interaction.guild)) or (
+            self.author and (interaction.user.id != self.author.id)
+        ):
+            await interaction.response.send_message(
+                content="You are not authorized to interact with this.", ephemeral=True
+            )
+            return False
+        return True
+
+    async def prompt_url(self, interaction: discord.Interaction) -> None:
+        self.cancelled = False
+        await interaction.response.send_modal(self.url_prompt)
+        await self.url_prompt.responded.wait()
+        self.url = self.url_prompt.response
+
+    async def prompt_name(self, interaction: discord.Interaction) -> None:
+        self.cancelled = False
+        await interaction.response.send_modal(self.name_prompt)
+        await self.name_prompt.responded.wait()
+
+        self.name = self.name_prompt.response
+
+    async def prompt_scope(self, interaction: discord.Interaction) -> None:
+        self.cancelled = False
+        await interaction.response.send_modal(self.scope_prompt)
+        await self.scope_prompt.responded.wait()
+        self.scope = self.scope_prompt.response
+
+    async def prompt_add_tracks(self, interaction: discord.Interaction) -> None:
+        self.cancelled = False
+        await interaction.response.send_modal(self.add_prompt)
+        await self.add_prompt.responded.wait()
+        self.add_tracks.add(self.add_prompt.response)
+
+    async def prompt_remove_tracks(self, interaction: discord.Interaction) -> None:
+        self.cancelled = False
+        await interaction.response.send_modal(self.remove_prompt)
+        await self.remove_prompt.responded.wait()
+        self.remove_tracks.add(self.remove_prompt.response)
+
+    async def on_timeout(self):
+        self.completed.set()
+        if self.message is None:
+            return
+        with contextlib.suppress(discord.HTTPException):
+            if not self.message.flags.ephemeral:
+                await self.message.delete()
+            else:
+                await self.message.edit(view=None)
+
+    def stop(self):
+        super().stop()
+        asyncio.ensure_future(self.on_timeout())

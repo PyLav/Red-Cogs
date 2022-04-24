@@ -127,5 +127,21 @@ class MediaPlayer(
                 ),
                 ephemeral=True,
             )
+        elif isinstance(error, exceptions.NoNodeWithRequestFunctionalityAvailable):
+            unhandled = False
+            await context.send(
+                embed=await self.lavalink.construct_embed(
+                    messageable=context,
+                    description=_("MediaPlayer is currently unable to process tracks belonging to {feature}.").format(
+                        feature=error.feature
+                    ),
+                    footer=_("No Lavalink node currently available with feature {feature}.").format(
+                        feature=error.feature
+                    )
+                    if await self.bot.is_owner(context.author)
+                    else None,
+                ),
+                ephemeral=True,
+            )
         if unhandled:
             await self.bot.on_command_error(context, error, unhandled_by_cog=True)  # type: ignore

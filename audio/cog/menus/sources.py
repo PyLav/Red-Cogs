@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import datetime
 import itertools
+import random
 from pathlib import Path
 from typing import TYPE_CHECKING, Iterable
 
@@ -590,3 +591,50 @@ class SearchPickerSource(menus.ListPageSource):
 
     async def format_page(self, menu: BaseMenu, entries: list[Track]) -> str:
         return ""
+
+
+class Base64Source(menus.ListPageSource):
+    def __init__(
+        self,
+        guild_id: int,
+        cog: CogT,
+        playlist: PlaylistModel,
+        author: discord.abc.User,
+        entries: list[str],
+        per_page: int = 10,
+    ):  # noqa
+        super().__init__(entries=entries, per_page=per_page)
+        self.cog = cog
+        self.author = author
+        self.guild_id = guild_id
+        self.playlist = playlist
+
+    def is_paginating(self) -> bool:
+        return True
+
+    def get_starting_index_and_page_number(self, menu: QueueMenu) -> tuple[int, int]:
+        page_num = menu.current_page
+        start = page_num * self.per_page
+        return start, page_num
+
+    async def format_page(self, menu: QueueMenu, tracks: list[Track]) -> discord.Embed:
+        start_index, page_num = self.get_starting_index_and_page_number(menu)
+        padding = len(str(start_index + len(tracks)))
+        queue_list = ""
+        async for track_idx, track in AsyncIter(tracks).enumerate(start=start_index + 1):
+            track = Track(
+                node=random.choice(self.cog.lavalink.node_manager.nodes), requester=self.author.id, data=track
+            )
+            track_description = await track.get_track_display_name(max_length=50, with_url=True)
+            diff = padding - len(str(track_idx))
+            queue_list += f"`{track_idx}.{' ' * diff}` {track_description}\n"
+        page = await self.cog.lavalink.construct_embed(
+            title=f"Tracks in __{self.playlist.name}__",
+            description=queue_list,
+            messageable=menu.ctx,
+        )
+        text = "Page {page_num}/{total_pages} | {num_tracks} tracks\n".format(
+            page_num=page_num + 1, total_pages=self.get_max_pages(), num_tracks=len(self.entries)
+        )
+        page.set_footer(text=text)
+        return page

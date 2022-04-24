@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import asyncio
 import itertools
+from io import BytesIO
 from pathlib import Path
 from typing import TYPE_CHECKING, Callable, Literal
 
@@ -9,16 +10,19 @@ import discord
 from discord import Emoji, PartialEmoji
 from red_commons.logging import getLogger
 from redbot.core.i18n import Translator
+from redbot.core.utils.chat_formatting import bold
 
+from pylav.sql.models import PlaylistModel
 from pylav.utils import AsyncIter
 
 from audio.cog._types import CogT
 from audio.cog.menus.modals import PlaylistSaveModal
 from audio.cog.menus.selectors import PlaylistPlaySelector
+from audio.cog.menus.sources import Base64Source
 from audio.cog.utils import rgetattr
 
 if TYPE_CHECKING:
-    from audio.cog.menus.menus import PlaylistCreationFlow
+    from audio.cog.menus.menus import PlaylistCreationFlow, PlaylistManageFlow
 
 LOGGER = getLogger("red.3pt.mp.ui.buttons")
 
@@ -73,9 +77,7 @@ class PreviousTrackButton(discord.ui.Button):
         self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
-        if not getattr(interaction, "_cs_command", None):
-            interaction._cs_command = self.cog.command_previous
-        await self.cog.command_previous.callback(self.cog, await self.cog.bot.get_context(interaction))
+        await self.cog.command_previous.callback(self.cog, self.view.ctx)
         await self.view.prepare()
         kwargs = await self.view.get_page(self.view.current_page)
         await interaction.edit_original_message(view=self.view, **kwargs)
@@ -91,9 +93,7 @@ class StopTrackButton(discord.ui.Button):
         self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
-        if not getattr(interaction, "_cs_command", None):
-            interaction._cs_command = self.cog.command_stop
-        await self.cog.command_stop.callback(self.cog, await self.cog.bot.get_context(interaction))
+        await self.cog.command_stop.callback(self.cog, self.view.ctx)
         await self.view.prepare()
         kwargs = await self.view.get_page(self.view.current_page)
         await interaction.edit_original_message(view=self.view, **kwargs)
@@ -109,9 +109,7 @@ class PauseTrackButton(discord.ui.Button):
         self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
-        if not getattr(interaction, "_cs_command", None):
-            interaction._cs_command = self.cog.command_pause
-        await self.cog.command_pause.callback(self.cog, await self.cog.bot.get_context(interaction))
+        await self.cog.command_pause.callback(self.cog, self.view.ctx)
         await self.view.prepare()
         kwargs = await self.view.get_page(self.view.current_page)
         await interaction.edit_original_message(view=self.view, **kwargs)
@@ -127,9 +125,7 @@ class ResumeTrackButton(discord.ui.Button):
         self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
-        if not getattr(interaction, "_cs_command", None):
-            interaction._cs_command = self.cog.command_resume
-        await self.cog.command_resume.callback(self.cog, await self.cog.bot.get_context(interaction))
+        await self.cog.command_resume.callback(self.cog, self.view.ctx)
         await self.view.prepare()
         kwargs = await self.view.get_page(self.view.current_page)
         await interaction.edit_original_message(view=self.view, **kwargs)
@@ -145,9 +141,7 @@ class SkipTrackButton(discord.ui.Button):
         self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
-        if not getattr(interaction, "_cs_command", None):
-            interaction._cs_command = self.cog.command_skip
-        await self.cog.command_skip.callback(self.cog, await self.cog.bot.get_context(interaction))
+        await self.cog.command_skip.callback(self.cog, self.view.ctx)
         await self.view.prepare()
         kwargs = await self.view.get_page(self.view.current_page)
         await interaction.edit_original_message(view=self.view, **kwargs)
@@ -178,11 +172,7 @@ class IncreaseVolumeButton(discord.ui.Button):
         self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
-        if not getattr(interaction, "_cs_command", None):
-            interaction._cs_command = self.cog.command_volume_change_by
-        await self.cog.command_volume_change_by.callback(
-            self.cog, await self.cog.bot.get_context(interaction), change_by=5
-        )
+        await self.cog.command_volume_change_by.callback(self.cog, self.view.ctx, change_by=5)
         await self.view.prepare()
         kwargs = await self.view.get_page(self.view.current_page)
         await interaction.edit_original_message(view=self.view, **kwargs)
@@ -198,11 +188,7 @@ class DecreaseVolumeButton(discord.ui.Button):
         self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
-        if not getattr(interaction, "_cs_command", None):
-            interaction._cs_command = self.cog.command_volume_change_by
-        await self.cog.command_volume_change_by.callback(
-            self.cog, await self.cog.bot.get_context(interaction), change_by=-5
-        )
+        await self.cog.command_volume_change_by.callback(self.cog, self.view.ctx, change_by=-5)
         await self.view.prepare()
         kwargs = await self.view.get_page(self.view.current_page)
         await interaction.edit_original_message(view=self.view, **kwargs)
@@ -230,11 +216,7 @@ class ToggleRepeatButton(discord.ui.Button):
             repeat_queue = True
         else:
             repeat_queue = False
-        if not getattr(interaction, "_cs_command", None):
-            interaction._cs_command = self.cog.command_repeat
-        await self.cog.command_repeat.callback(
-            self.cog, await self.cog.bot.get_context(interaction), queue=repeat_queue
-        )
+        await self.cog.command_repeat.callback(self.cog, self.view.ctx, queue=repeat_queue)
         await self.view.prepare()
         kwargs = await self.view.get_page(self.view.current_page)
         await interaction.edit_original_message(view=self.view, **kwargs)
@@ -262,11 +244,7 @@ class ToggleRepeatQueueButton(discord.ui.Button):
             repeat_queue = True
         else:
             repeat_queue = False
-        if not getattr(interaction, "_cs_command", None):
-            interaction._cs_command = self.cog.command_repeat
-        await self.cog.command_repeat.callback(
-            self.cog, await self.cog.bot.get_context(interaction), queue=repeat_queue
-        )
+        await self.cog.command_repeat.callback(self.cog, self.view.ctx, queue=repeat_queue)
         await self.view.prepare()
         kwargs = await self.view.get_page(self.view.current_page)
         await interaction.edit_original_message(view=self.view, **kwargs)
@@ -282,9 +260,7 @@ class ShuffleButton(discord.ui.Button):
         self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
-        if not getattr(interaction, "_cs_command", None):
-            interaction._cs_command = self.cog.command_shuffle
-        await self.cog.command_shuffle.callback(self.cog, await self.cog.bot.get_context(interaction))
+        await self.cog.command_shuffle.callback(self.cog, self.view.ctx)
         await self.view.prepare()
         kwargs = await self.view.get_page(self.view.current_page)
         await interaction.edit_original_message(view=self.view, **kwargs)
@@ -307,7 +283,9 @@ class CloseButton(discord.ui.Button):
                 ),
                 ephemeral=True,
             )
+        self.view.cancelled = True
         self.view.stop()
+        await self.view.on_timeout()
 
 
 class EqualizerButton(discord.ui.Button):
@@ -336,10 +314,9 @@ class DisconnectButton(discord.ui.Button):
         self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
-        if not getattr(interaction, "_cs_command", None):
-            interaction._cs_command = self.cog.command_disconnect
-        await self.cog.command_disconnect.callback(self.cog, await self.cog.bot.get_context(interaction))
+        await self.cog.command_disconnect.callback(self.cog, self.view.ctx)
         self.view.stop()
+        await self.view.on_timeout()
 
 
 class EnqueueButton(discord.ui.Button):
@@ -381,8 +358,6 @@ class RemoveFromQueueButton(discord.ui.Button):
         from audio.cog.menus.menus import QueuePickerMenu
         from audio.cog.menus.sources import QueuePickerSource
 
-        if not getattr(interaction, "_cs_command", None):
-            interaction._cs_command = self.cog.command_remove
         await QueuePickerMenu(
             bot=self.cog.bot,
             cog=self.cog,
@@ -391,7 +366,7 @@ class RemoveFromQueueButton(discord.ui.Button):
             starting_page=0,
             menu_type="remove",
             original_author=interaction.user,
-        ).start(await self.cog.bot.get_context(interaction))
+        ).start(interaction)
         if not interaction.response.is_done():
             await self.view.prepare()
             kwargs = await self.view.get_page(self.view.current_page)
@@ -416,9 +391,6 @@ class PlayNowFromQueueButton(discord.ui.Button):
         from audio.cog.menus.menus import QueuePickerMenu
         from audio.cog.menus.sources import QueuePickerSource
 
-        if not getattr(interaction, "_cs_command", None):
-            interaction._cs_command = self.cog.command_playnow
-
         await QueuePickerMenu(
             bot=self.cog.bot,
             cog=self.cog,
@@ -427,7 +399,7 @@ class PlayNowFromQueueButton(discord.ui.Button):
             starting_page=0,
             menu_type="play",
             original_author=interaction.user,
-        ).start(await self.cog.bot.get_context(interaction))
+        ).start(interaction)
         if not interaction.response.is_done():
             await self.view.prepare()
             kwargs = await self.view.get_page(self.view.current_page)
@@ -454,47 +426,51 @@ class EnqueuePlaylistButton(discord.ui.Button):
         cog: CogT,
         style: discord.ButtonStyle,
         row: int = None,
+        emoji: Emoji | PartialEmoji = discord.PartialEmoji(name="playlist", animated=False, id=965672202093621319),
+        playlist: PlaylistModel = None,
     ):
         self.cog = cog
         super().__init__(
             style=style,
-            emoji=discord.PartialEmoji(name="playlist", animated=False, id=965672202093621319),
+            emoji=emoji,
             row=row,
         )
+        self.playlist = playlist
 
     async def callback(self, interaction: discord.Interaction):
         from audio.cog.menus.menus import PlaylistPickerMenu
         from audio.cog.menus.sources import PlaylistPickerSource
 
-        if not getattr(interaction, "_cs_command", None):
-            interaction._cs_command = self.cog.command_playlist_list
-        await interaction.response.defer(ephemeral=True)
-        playlists = await self.cog.lavalink.playlist_db_manager.get_all_for_user(
-            requester=interaction.user.id,
-            vc=rgetattr(interaction.user, "voice.channel", None),
-            guild=interaction.guild,
-            channel=interaction.channel,  # type: ignore
-        )
-        playlists = list(itertools.chain.from_iterable(playlists))
-        await PlaylistPickerMenu(
-            cog=self.cog,
-            bot=self.cog.bot,
-            selector_cls=PlaylistPlaySelector,
-            source=PlaylistPickerSource(
-                guild_id=interaction.guild.id,
+        if not self.playlist:
+            playlists = await self.cog.lavalink.playlist_db_manager.get_all_for_user(
+                requester=interaction.user.id,
+                vc=rgetattr(interaction.user, "voice.channel", None),
+                guild=interaction.guild,
+                channel=interaction.channel,  # type: ignore
+            )
+            playlists = list(itertools.chain.from_iterable(playlists))
+            await PlaylistPickerMenu(
                 cog=self.cog,
-                pages=playlists,
-                message_str=_("Playlists you can currently play"),
-            ),
-            delete_after_timeout=True,
-            clear_buttons_after=True,
-            starting_page=0,
-            original_author=interaction.user,
-            selector_text=_("Pick a playlist"),
-        ).start(await self.cog.bot.get_context(interaction))
-        await self.view.prepare()
-        kwargs = await self.view.get_page(self.view.current_page)
-        await (await interaction.original_message()).edit(view=self.view, **kwargs)
+                bot=self.cog.bot,
+                selector_cls=PlaylistPlaySelector,
+                source=PlaylistPickerSource(
+                    guild_id=interaction.guild.id,
+                    cog=self.cog,
+                    pages=playlists,
+                    message_str=_("Playlists you can currently play"),
+                ),
+                delete_after_timeout=True,
+                clear_buttons_after=True,
+                starting_page=0,
+                original_author=interaction.user,
+                selector_text=_("Pick a playlist"),
+            ).start(interaction)
+        else:
+            await self.cog.command_playlist_play.callback(self.cog, interaction, playlist=[self.playlist])  # type: ignore
+        if hasattr(self.view, "prepare"):
+            await self.view.prepare()
+            kwargs = await self.view.get_page(self.view.current_page)
+            await (await interaction.original_message()).edit(view=self.view, **kwargs)
 
 
 class EffectPickerButton(discord.ui.Button):
@@ -612,7 +588,7 @@ class AudioStatsStopTrackButton(discord.ui.Button):
         if not await self.view.bot.is_owner(interaction.user):
             await interaction.response.send_message(
                 embed=await self.cog.lavalink.construct_embed(
-                    messageable=interaction, title=_("You are not authorized to perform this action.")
+                    messageable=interaction, description=_("You are not authorized to perform this action.")
                 ),
                 ephemeral=True,
             )
@@ -621,7 +597,7 @@ class AudioStatsStopTrackButton(discord.ui.Button):
         if not player:
             await interaction.response.send_message(
                 embed=await self.cog.lavalink.construct_embed(
-                    messageable=interaction, title=_("No Player Available For Action - Try Refreshing.")
+                    messageable=interaction, description=_("No Player Available For Action - Try Refreshing.")
                 ),
                 ephemeral=True,
             )
@@ -675,7 +651,7 @@ class AudioStatsDisconnectAllButton(discord.ui.Button):
         if not await self.view.bot.is_owner(interaction.user):
             await interaction.response.send_message(
                 embed=await self.cog.lavalink.construct_embed(
-                    messageable=interaction, title=_("You are not authorized to perform this action.")
+                    messageable=interaction, description=_("You are not authorized to perform this action.")
                 ),
                 ephemeral=True,
             )
@@ -689,7 +665,7 @@ class AudioStatsDisconnectAllButton(discord.ui.Button):
         if not players:
             await interaction.response.send_message(
                 embed=await self.cog.lavalink.construct_embed(
-                    messageable=interaction, title=_("No Players Available For Action - Try Refreshing.")
+                    messageable=interaction, description=_("No Players Available For Action - Try Refreshing.")
                 ),
                 ephemeral=True,
             )
@@ -789,14 +765,14 @@ class NoButton(discord.ui.Button):
 
 
 class PlaylistUpsertButton(discord.ui.Button):
-    view: PlaylistCreationFlow
+    view: PlaylistCreationFlow | PlaylistManageFlow
 
     def __init__(
         self,
         cog: CogT,
         style: discord.ButtonStyle,
-        label: str,
-        op: Literal["url", "name", "scope"],
+        op: Literal["url", "name", "scope", "add", "remove"],
+        label: str = None,
         emoji: str | Emoji | PartialEmoji = None,
         row: int = None,
     ):
@@ -817,12 +793,17 @@ class PlaylistUpsertButton(discord.ui.Button):
                 ),
                 ephemeral=True,
             )
+        self.view.cancelled = False
         if self.op == "url":
             await self.view.prompt_url(interaction)
         elif self.op == "name":
             await self.view.prompt_name(interaction)
         elif self.op == "scope":
             await self.view.prompt_scope(interaction)
+        elif self.op == "add":
+            await self.view.prompt_add_tracks(interaction)
+        elif self.op == "remove":
+            await self.view.prompt_remove_tracks(interaction)
 
 
 class DoneButton(discord.ui.Button):
@@ -842,4 +823,192 @@ class DoneButton(discord.ui.Button):
                 ),
                 ephemeral=True,
             )
+        self.view.done = True
+        self.view.cancelled = False
         self.view.stop()
+        await self.view.on_timeout()
+
+
+class PlaylistDeleteButton(discord.ui.Button):
+    view: PlaylistManageFlow
+
+    def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
+        super().__init__(
+            style=style,
+            emoji=discord.PartialEmoji(name="trash", animated=False, id=967752655017484318),
+            row=row,
+        )
+        self.cog = cog
+
+    async def callback(self, interaction: discord.Interaction):
+        if self.view.author.id != interaction.user.id:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, description=_("You are not authorized to interact with this option.")
+                ),
+                ephemeral=True,
+            )
+        self.view.cancelled = False
+        self.view.delete = not self.view.delete
+        if self.view.delete:
+            response = _("When you press done this playlist will be permanently delete...")
+        else:
+            response = _("This playlist will no longer be deleted once you press done...")
+
+        await interaction.response.send_message(
+            embed=await self.cog.lavalink.construct_embed(messageable=interaction, description=response),
+            ephemeral=True,
+        )
+
+
+class PlaylistClearButton(discord.ui.Button):
+    view: PlaylistManageFlow
+
+    def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
+        super().__init__(
+            style=style,
+            emoji=discord.PartialEmoji(name="clear", animated=False, id=967756040521252924),
+            row=row,
+        )
+        self.cog = cog
+
+    async def callback(self, interaction: discord.Interaction):
+        if self.view.author.id != interaction.user.id:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, description=_("You are not authorized to interact with this option.")
+                ),
+                ephemeral=True,
+            )
+        self.view.cancelled = False
+        self.view.clear = not self.view.clear
+        if self.view.clear:
+            response = _("Clearing all tracks from the playlist playlist...")
+        else:
+            response = _("No longer clearing tracks from the playlist...")
+
+        await interaction.response.send_message(
+            embed=await self.cog.lavalink.construct_embed(messageable=interaction, description=response),
+            ephemeral=True,
+        )
+
+
+class PlaylistDownloadButton(discord.ui.Button):
+    view: PlaylistManageFlow
+
+    def __init__(
+        self,
+        cog: CogT,
+        style: discord.ButtonStyle,
+        emoji: str | Emoji | PartialEmoji,
+        row: int = None,
+    ):
+        super().__init__(
+            style=style,
+            emoji=emoji,
+            row=row,
+        )
+        self.cog = cog
+
+    async def callback(self, interaction: discord.Interaction):
+        if self.view.author.id != interaction.user.id:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, description=_("You are not authorized to interact with this option.")
+                ),
+                ephemeral=True,
+            )
+
+        async with self.view.playlist.to_yaml(guild=interaction.guild) as yaml_file:
+            yaml_file: BytesIO
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction,
+                    description=_("Here is your playlist: {name}{extras}").format(
+                        name=bold(self.view.playlist.name),
+                        extras=_(
+                            "\n (compressed using gzip to make it possible to send via Discord "
+                            "- you can use <https://gzip.swimburger.net/> to decompress and recompress it)"
+                        ),
+                    ),
+                ),
+                file=discord.File(filename=f"{self.view.playlist.name}.yaml", fp=yaml_file),
+                ephemeral=True,
+            )
+
+
+class PlaylistUpdateButton(discord.ui.Button):
+    view: PlaylistManageFlow
+
+    def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
+        super().__init__(
+            style=style,
+            emoji=discord.PartialEmoji(name="update", animated=False, id=967810735851860059),
+            row=row,
+        )
+        self.cog = cog
+
+    async def callback(self, interaction: discord.Interaction):
+        if self.view.author.id != interaction.user.id:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, description=_("You are not authorized to interact with this option.")
+                ),
+                ephemeral=True,
+            )
+        self.view.cancelled = False
+        self.view.update = not self.view.update
+        if (self.view.playlist.url or self.view.url) and self.view.update:
+            response = _("Updating playlist with the latest tracks...")
+        else:
+            self.view.update = False
+            response = _("Not updating playlist...")
+        await interaction.response.send_message(
+            embed=await self.cog.lavalink.construct_embed(messageable=interaction, description=response),
+            ephemeral=True,
+        )
+
+
+class PlaylistInfoButton(discord.ui.Button):
+    view: PlaylistManageFlow
+
+    def __init__(
+        self,
+        cog: CogT,
+        style: discord.ButtonStyle,
+        emoji: str | Emoji | PartialEmoji,
+        playlist: PlaylistModel,
+        row: int = None,
+    ):
+        super().__init__(
+            style=style,
+            emoji=emoji,
+            row=row,
+        )
+        self.cog = cog
+        self.playlist = playlist
+
+    async def callback(self, interaction: discord.Interaction):
+        if self.view.author.id != interaction.user.id:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, description=_("You are not authorized to interact with this option.")
+                ),
+                ephemeral=True,
+            )
+        from audio.cog.menus.menus import PaginatingMenu
+
+        await PaginatingMenu(
+            bot=self.cog.bot,
+            cog=self.cog,
+            source=Base64Source(
+                guild_id=interaction.guild.id,
+                cog=self.cog,
+                author=interaction.user,
+                entries=self.view.playlist.tracks,
+                playlist=self.playlist,
+            ),
+            delete_after_timeout=True,
+            starting_page=0,
+            original_author=interaction.user,
+        ).start(await self.cog.bot.get_context(interaction))

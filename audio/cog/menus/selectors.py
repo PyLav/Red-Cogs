@@ -64,6 +64,7 @@ class QueueSelectTrack(discord.ui.Select):
                 ephemeral=True,
             )
             self.view.stop()
+            await self.view.on_timeout()
             return
         player = self.cog.lavalink.get_player(interaction.guild)
         if not player:
@@ -74,6 +75,7 @@ class QueueSelectTrack(discord.ui.Select):
                 ephemeral=True,
             )
             self.view.stop()
+            await self.view.on_timeout()
             return
 
         await interaction.response.defer(ephemeral=True)
@@ -81,18 +83,13 @@ class QueueSelectTrack(discord.ui.Select):
         index = player.queue.index(track)
         index += 1
         if self.interaction_type == "remove":
-            if not getattr(interaction, "_cs_command", None):
-                interaction._cs_command = self.cog.command_remove
-            context = await self.cog.bot.get_context(interaction)
             await self.cog.command_remove.callback(
-                self.cog, context, track_url_or_index=f"{index}", remove_duplicates=True
+                self.cog, self.view.ctx, track_url_or_index=f"{index}", remove_duplicates=True
             )
         else:
-            if not getattr(interaction, "_cs_command", None):
-                interaction._cs_command = self.cog.command_playnow
-            context = await self.cog.bot.get_context(interaction)
-            await self.cog.command_playnow.callback(self.cog, context, queue_number=index)
+            await self.cog.command_playnow.callback(self.cog, self.view.ctx, queue_number=index)
         self.view.stop()
+        await self.view.on_timeout()
 
 
 class PlaylistOption(discord.SelectOption):
@@ -138,12 +135,11 @@ class PlaylistPlaySelector(discord.ui.Select):
                 ephemeral=True,
             )
             self.view.stop()
+            await self.view.on_timeout()
             return
-
-        if not getattr(interaction, "_cs_command", None):
-            interaction._cs_command = self.cog.command_playlist_play
-        await self.cog.command_playlist_play.callback(self.cog, interaction, playlist=[playlist])
+        await self.cog.command_playlist_play.callback(self.cog, interaction, playlist=[playlist])  # type: ignore
         self.view.stop()
+        await self.view.on_timeout()
 
 
 class PlaylistSelectSelector(discord.ui.Select):
@@ -169,10 +165,11 @@ class PlaylistSelectSelector(discord.ui.Select):
                 ephemeral=True,
             )
             self.view.stop()
+            await self.view.on_timeout()
             return
         self.responded.set()
-        await interaction.response.pong()
         self.view.stop()
+        await self.view.on_timeout()
 
 
 class EffectsOption(discord.SelectOption):
@@ -205,6 +202,7 @@ class EffectsSelector(discord.ui.Select):
                 ephemeral=True,
             )
             self.view.stop()
+            await self.view.on_timeout()
             return
         self.cog.dispatch_msg(  # TODO Replace with preset command
             ctx=self.view.ctx,
@@ -213,6 +211,7 @@ class EffectsSelector(discord.ui.Select):
             args=f" {label}",
         )
         self.view.stop()
+        await self.view.on_timeout()
 
 
 class SearchTrackOption(discord.SelectOption):
@@ -253,13 +252,13 @@ class SearchSelectTrack(discord.ui.Select):
                 ephemeral=True,
             )
             self.view.stop()
+            await self.view.on_timeout()
             return
 
-        if not getattr(interaction, "_cs_command", None):
-            interaction._cs_command = self.cog.command_play
         await self.cog.command_play.callback(
             self.cog,
-            await self.cog.bot.get_context(interaction),
+            self.view.ctx,
             query=await Query.from_string(track.uri),
         )
         self.view.stop()
+        await self.view.on_timeout()
