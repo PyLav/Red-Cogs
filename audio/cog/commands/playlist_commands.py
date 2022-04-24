@@ -120,7 +120,7 @@ class PlaylistCommands(MPMixin, ABC):
         if not playlists:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("You have no playlists."),
+                    description=_("You have no playlists."), messageable=context
                 ),
                 ephemeral=True,
             )
