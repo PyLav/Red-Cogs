@@ -117,7 +117,14 @@ class PlaylistCommands(MPMixin, ABC):
             channel=context.channel,
         )
         playlists = list(itertools.chain.from_iterable(playlists))
-
+        if not playlists:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("You have no playlists."),
+                ),
+                ephemeral=True,
+            )
+            return
         await PaginatingMenu(
             cog=self,  # type: ignore
             bot=self.bot,
