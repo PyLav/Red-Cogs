@@ -39,6 +39,10 @@ class PreformattedSource(menus.ListPageSource):
     async def format_page(self, menu: BaseMenu, page: str | discord.Embed) -> discord.Embed | str:
         return page
 
+    def get_max_pages(self):
+        """:class:`int`: The maximum number of pages required to paginate this sequence."""
+        return self._max_pages or 1
+
 
 class QueueSource(menus.ListPageSource):
     def __init__(self, guild_id: int, cog: CogT):  # noqa
@@ -184,6 +188,10 @@ class PlaylistPickerSource(menus.ListPageSource):
             self.select_mapping[f"{playlist.id}"] = playlist
         return self.entries[base : base + self.per_page]  # noqa: E203
 
+    def get_max_pages(self):
+        """:class:`int`: The maximum number of pages required to paginate this sequence."""
+        return self._max_pages or 1
+
 
 class EffectsPickerSource(menus.ListPageSource):
     def __init__(self, guild_id: int, cog: CogT):
@@ -286,6 +294,10 @@ class EffectsPickerSource(menus.ListPageSource):
                 )
         return self.entries[base : base + self.per_page]  # noqa: E203
 
+    def get_max_pages(self):
+        """:class:`int`: The maximum number of pages required to paginate this sequence."""
+        return self._max_pages or 1
+
 
 class ListSource(menus.ListPageSource):
     def __init__(self, cog: CogT, title: str, pages: list[str], per_page: int = 10):
@@ -307,6 +319,10 @@ class ListSource(menus.ListPageSource):
         output = box(text, lang="ini")
         embed = await self.cog.lavalink.construct_embed(messageable=menu.ctx, title=self.title, description=output)
         return embed
+
+    def get_max_pages(self):
+        """:class:`int`: The maximum number of pages required to paginate this sequence."""
+        return self._max_pages or 1
 
 
 class EQPresetsSource(menus.ListPageSource):
@@ -339,6 +355,10 @@ class EQPresetsSource(menus.ListPageSource):
             messageable=menu.ctx, description=box(tabulate(data, headers="keys"))
         )
         return embed
+
+    def get_max_pages(self):
+        """:class:`int`: The maximum number of pages required to paginate this sequence."""
+        return self._max_pages or 1
 
 
 class PlaylistInfoSource(menus.ListPageSource):
@@ -405,6 +425,10 @@ class PlaylistInfoSource(menus.ListPageSource):
         )
         return embed
 
+    def get_max_pages(self):
+        """:class:`int`: The maximum number of pages required to paginate this sequence."""
+        return self._max_pages or 1
+
 
 class PlaylistListSource(menus.ListPageSource):
     def __init__(self, cog: CogT, pages: list[PlaylistModel]):
@@ -460,6 +484,10 @@ class PlaylistListSource(menus.ListPageSource):
         )
         return embed
 
+    def get_max_pages(self):
+        """:class:`int`: The maximum number of pages required to paginate this sequence."""
+        return self._max_pages or 1
+
 
 class PlaylistChangeSource(menus.ListPageSource):
     def __init__(
@@ -497,6 +525,10 @@ class PlaylistChangeSource(menus.ListPageSource):
             )
         )
         return embed
+
+    def get_max_pages(self):
+        """:class:`int`: The maximum number of pages required to paginate this sequence."""
+        return self._max_pages or 1
 
 
 class PlayersSource(menus.ListPageSource):
@@ -567,6 +599,10 @@ class PlayersSource(menus.ListPageSource):
         )
         return embed
 
+    def get_max_pages(self):
+        """:class:`int`: The maximum number of pages required to paginate this sequence."""
+        return self._max_pages or 1
+
 
 class SearchPickerSource(menus.ListPageSource):
     entries: list[Track]
@@ -591,6 +627,10 @@ class SearchPickerSource(menus.ListPageSource):
 
     async def format_page(self, menu: BaseMenu, entries: list[Track]) -> str:
         return ""
+
+    def get_max_pages(self):
+        """:class:`int`: The maximum number of pages required to paginate this sequence."""
+        return self._max_pages or 1
 
 
 class Base64Source(menus.ListPageSource):
@@ -638,3 +678,7 @@ class Base64Source(menus.ListPageSource):
         )
         page.set_footer(text=text)
         return page
+
+    def get_max_pages(self):
+        """:class:`int`: The maximum number of pages required to paginate this sequence."""
+        return self._max_pages or 1

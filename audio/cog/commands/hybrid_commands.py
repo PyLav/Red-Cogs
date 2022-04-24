@@ -109,7 +109,7 @@ class HybridCommands(MPMixin, ABC):
                     folder_name = await query.folder()
                     if folder_name:
                         bundle_name = discord.utils.escape_markdown(await query.query_to_string())
-                        playlist_name = f"\n\n**{bundle_prefix}:  {bundle_name}**"
+                        playlist_name = f"\n\n**{bundle_prefix}**:  {bundle_name}"
                     else:
                         playlist_name = ""
                 else:

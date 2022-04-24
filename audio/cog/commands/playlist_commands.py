@@ -490,7 +490,7 @@ class PlaylistCommands(MPMixin, ABC):
             ],
         )
         bundle_prefix = _("Playlist")
-        playlist_name = f"\n\n**{bundle_prefix}:  {await playlist.get_name_formatted(with_url=True)}**"
+        playlist_name = f"\n\n**{bundle_prefix}**:  {await playlist.get_name_formatted(with_url=True)}"
         await context.send(
             embed=await context.lavalink.construct_embed(
                 description=_("{track_count} tracks enqueued.{playlist_name}").format(
