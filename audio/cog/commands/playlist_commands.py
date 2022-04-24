@@ -184,7 +184,8 @@ class PlaylistCommands(MPMixin, ABC):
                 "shared with others.\n"
                 "(**11**) - Select the play button to enqueue the currently selected playlist.\n"
                 "(**12**) - Select the info button to display all tracks in the playlist.\n"
-                "(**13**) - Select the queue button to add all track from the queue to the playlist.\n\n"
+                "(**13**) - Select the queue button to add all track from the queue to the playlist.\n"
+                "(**14**) - Select the dedupe button to remove all duplicate entries from the queue.\n\n"
                 "The add/remove track buttons can be used multiple times to "
                 "add/remove multiple tracks and playlists at once.\n"
                 "The clear button will always be run first before any other operations.\n"
@@ -199,7 +200,7 @@ class PlaylistCommands(MPMixin, ABC):
                 "Tracks:   {tracks} tracks\n"
                 "URL:      {url}\n"
             ).format(
-                playlist_name=playlist.name,
+                playlist_name=await playlist.get_name_formatted(with_url=True),
                 scope=await playlist.get_scope_name(bot=self.bot, mention=True, guild=context.guild),
                 author=await playlist.get_author_name(bot=self.bot, mention=True),
                 url=playlist.url or "",
@@ -227,7 +228,7 @@ class PlaylistCommands(MPMixin, ABC):
                 embed=await context.lavalink.construct_embed(
                     title=_("Playlist deleted."),
                     description=_("{user}, playlist {playlist_name} has been deleted.").format(
-                        user=context.author.mention, playlist_name=bold(playlist.name)
+                        user=context.author.mention, playlist_name=await playlist.get_name_formatted(with_url=True)
                     ),
                 ),
                 ephemeral=True,
@@ -312,7 +313,9 @@ class PlaylistCommands(MPMixin, ABC):
                             embed=await context.lavalink.construct_embed(
                                 description=_(
                                     "Playlist **{playlist_name}** could not be updated with URL: <{url}>."
-                                ).format(playlist_name=bold(playlist.name), url=playlist.url),
+                                ).format(
+                                    playlist_name=await playlist.get_name_formatted(with_url=True), url=playlist.url
+                                ),
                             ),
                             ephemeral=True,
                         )
@@ -321,6 +324,13 @@ class PlaylistCommands(MPMixin, ABC):
                     if tracks:
                         changed = True
                         playlist.tracks = tracks
+            if playlist_prompt.dedupe:
+                new_tracks = list(dict.fromkeys(playlist.tracks))
+                diff = len(playlist.tracks) - len(new_tracks)
+                if diff:
+                    changed = True
+                    playlist.tracks = new_tracks
+                    tracks_removed += diff
             if playlist_prompt.queue:
                 changed = True
                 if context.player:
@@ -344,7 +354,9 @@ class PlaylistCommands(MPMixin, ABC):
                     embed=await context.lavalink.construct_embed(
                         title=_("Playlist updated."),
                         description=_("{user}, playlist {playlist_name} has been updated.{extras}").format(
-                            user=context.author.mention, playlist_name=bold(playlist.name), extras=extras
+                            user=context.author.mention,
+                            playlist_name=await playlist.get_name_formatted(with_url=True),
+                            extras=extras,
                         ),
                     ),
                     ephemeral=True,
@@ -354,7 +366,7 @@ class PlaylistCommands(MPMixin, ABC):
                     embed=await context.lavalink.construct_embed(
                         title=_("Playlist unchanged."),
                         description=_("{user}, playlist {playlist_name} has not been updated.").format(
-                            user=context.author.mention, playlist_name=bold(playlist.name)
+                            user=context.author.mention, playlist_name=await playlist.get_name_formatted(with_url=True)
                         ),
                     ),
                     ephemeral=True,
@@ -477,12 +489,8 @@ class PlaylistCommands(MPMixin, ABC):
                 async for i, track in AsyncIter(playlist.tracks).enumerate()
             ],
         )
-        playlist_name = playlist.name
-        if playlist.url:
-            playlist_name = discord.utils.escape_markdown(playlist_name)
-            playlist_name = f"[{playlist_name}]({playlist.url})"
         bundle_prefix = _("Playlist")
-        playlist_name = f"\n\n**{bundle_prefix}:  {playlist_name}**"
+        playlist_name = f"\n\n**{bundle_prefix}:  {await playlist.get_name_formatted(with_url=True)}**"
         await context.send(
             embed=await context.lavalink.construct_embed(
                 description=_("{track_count} tracks enqueued.{playlist_name}").format(

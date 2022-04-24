@@ -10,7 +10,6 @@ import discord
 from discord import Emoji, PartialEmoji
 from red_commons.logging import getLogger
 from redbot.core.i18n import Translator
-from redbot.core.utils.chat_formatting import bold
 
 from pylav.sql.models import PlaylistModel
 from pylav.utils import AsyncIter
@@ -925,7 +924,7 @@ class PlaylistDownloadButton(discord.ui.Button):
                 embed=await self.cog.lavalink.construct_embed(
                     messageable=interaction,
                     description=_("Here is your playlist: {name}{extras}").format(
-                        name=bold(self.view.playlist.name),
+                        name=await self.view.playlist.get_name_formatted(with_url=True),
                         extras=_(
                             "\n (compressed using gzip to make it possible to send via Discord "
                             "- you can use <https://gzip.swimburger.net/> to decompress and recompress it)"
@@ -1051,6 +1050,48 @@ class PlaylistQueueButton(discord.ui.Button):
             await interaction.response.send_message(
                 embed=await self.cog.lavalink.construct_embed(
                     messageable=interaction, description=_("No longer adding the current queue to playlist...")
+                ),
+                ephemeral=True,
+            )
+
+
+class PlaylistDedupeButton(discord.ui.Button):
+    view: PlaylistManageFlow
+
+    def __init__(
+        self,
+        cog: CogT,
+        style: discord.ButtonStyle,
+        emoji: str | Emoji | PartialEmoji,
+        row: int = None,
+    ):
+        super().__init__(
+            style=style,
+            emoji=emoji,
+            row=row,
+        )
+        self.cog = cog
+
+    async def callback(self, interaction: discord.Interaction):
+        if self.view.author.id != interaction.user.id:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, description=_("You are not authorized to interact with this option.")
+                ),
+                ephemeral=True,
+            )
+        self.view.dedupe = not self.view.dedupe
+        if self.view.dedupe:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, description=_("Removing all duplicate tracks from the queue...")
+                ),
+                ephemeral=True,
+            )
+        else:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, description=_("No longer all duplicate tracks from the queue...")
                 ),
                 ephemeral=True,
             )

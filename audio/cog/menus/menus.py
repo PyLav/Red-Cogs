@@ -32,6 +32,7 @@ from audio.cog.menus.buttons import (
     NoButton,
     PauseTrackButton,
     PlaylistClearButton,
+    PlaylistDedupeButton,
     PlaylistDeleteButton,
     PlaylistDownloadButton,
     PlaylistInfoButton,
@@ -1534,6 +1535,11 @@ class PlaylistManageFlow(discord.ui.View):
             cog=cog,
             emoji=discord.PartialEmoji(name="queue", animated=False, id=967902316185415681),
         )
+        self.dedupe_button = PlaylistDedupeButton(
+            style=discord.ButtonStyle.red,
+            cog=cog,
+            emoji=discord.PartialEmoji(name="duplicate", animated=False, id=967922711026343966),
+        )
 
         self.name = None
         self.url = None
@@ -1547,6 +1553,7 @@ class PlaylistManageFlow(discord.ui.View):
         self.done = False
         self.update = False
         self.queue = None
+        self.dedupe = None
 
         self.add_item(self.done_button)
         self.add_item(self.close_button)
@@ -1563,6 +1570,7 @@ class PlaylistManageFlow(discord.ui.View):
         self.add_item(self.playlist_enqueue_button)
         self.add_item(self.playlist_info_button)
         self.add_item(self.queue_button)
+        self.add_item(self.dedupe_button)
 
     async def send_initial_message(
         self, ctx: PyLavContext | discord.Interaction, description: str = None, title: str = None

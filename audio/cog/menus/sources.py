@@ -437,7 +437,7 @@ class PlaylistListSource(menus.ListPageSource):
             is_same = scope_name == author_name
             playlist_info = ("\n" + space * 4).join(
                 (
-                    bold(playlist.name),
+                    await playlist.get_name_formatted(with_url=True),
                     _("ID: {id}").format(id=playlist.id),
                     _("Tracks: {num}").format(num=len(playlist.tracks)),
                     _("Author: {name}").format(name=author_name),
@@ -629,7 +629,7 @@ class Base64Source(menus.ListPageSource):
             diff = padding - len(str(track_idx))
             queue_list += f"`{track_idx}.{' ' * diff}` {track_description}\n"
         page = await self.cog.lavalink.construct_embed(
-            title=f"Tracks in __{self.playlist.name}__",
+            title=_("Tracks in __{name}__").format(name=self.playlist.name),
             description=queue_list,
             messageable=menu.ctx,
         )
