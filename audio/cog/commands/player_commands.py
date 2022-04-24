@@ -80,7 +80,7 @@ class PlayerCommands(MPMixin, ABC):
                 ),
                 ephemeral=True,
             )
-            await player.play(track=track, requester=context.author)
+            await player.play(track=track, requester=context.author, query=track.query)
 
     @commands.command(name="remove", description="Remove the specified track from the queue.")
     @commands.guild_only()

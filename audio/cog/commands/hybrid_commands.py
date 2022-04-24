@@ -115,7 +115,7 @@ class HybridCommands(MPMixin, ABC):
             )
 
         if not player.is_playing:
-            await player.play(requester=context.author)
+            await player.next(requester=context.author)
 
     @commands.hybrid_command(
         name="connect", description="Connects the Player to the specified channel or your current channel."

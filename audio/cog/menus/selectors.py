@@ -138,14 +138,12 @@ class PlaylistPlaySelector(discord.ui.Select):
                 ephemeral=True,
             )
             self.view.stop()
-            await interaction.message.delete()
             return
 
         if not getattr(interaction, "_cs_command", None):
             interaction._cs_command = self.cog.command_playlist_play
         await self.cog.command_playlist_play.callback(self.cog, interaction, playlist=[playlist])
         self.view.stop()
-        await interaction.message.delete()
 
 
 class PlaylistSelectSelector(discord.ui.Select):
@@ -171,12 +169,10 @@ class PlaylistSelectSelector(discord.ui.Select):
                 ephemeral=True,
             )
             self.view.stop()
-            await interaction.message.delete()
             return
         self.responded.set()
         await interaction.response.pong()
         self.view.stop()
-        await interaction.message.delete()
 
 
 class EffectsOption(discord.SelectOption):
@@ -209,7 +205,6 @@ class EffectsSelector(discord.ui.Select):
                 ephemeral=True,
             )
             self.view.stop()
-            await interaction.message.delete()
             return
         self.cog.dispatch_msg(  # TODO Replace with preset command
             ctx=self.view.ctx,
@@ -218,7 +213,6 @@ class EffectsSelector(discord.ui.Select):
             args=f" {label}",
         )
         self.view.stop()
-        await interaction.message.delete()
 
 
 class SearchTrackOption(discord.SelectOption):
@@ -259,7 +253,6 @@ class SearchSelectTrack(discord.ui.Select):
                 ephemeral=True,
             )
             self.view.stop()
-            await interaction.message.delete()
             return
 
         if not getattr(interaction, "_cs_command", None):
@@ -270,4 +263,3 @@ class SearchSelectTrack(discord.ui.Select):
             query=await Query.from_string(track.uri),
         )
         self.view.stop()
-        await interaction.message.delete()

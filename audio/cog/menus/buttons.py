@@ -307,11 +307,6 @@ class CloseButton(discord.ui.Button):
                 ),
                 ephemeral=True,
             )
-        if interaction.message.flags.ephemeral:
-            await interaction.response.edit_message(view=None)
-            self.view.stop()
-            return
-        await interaction.message.delete()
         self.view.stop()
 
 
@@ -847,9 +842,4 @@ class DoneButton(discord.ui.Button):
                 ),
                 ephemeral=True,
             )
-        if interaction.message.flags.ephemeral:
-            await interaction.response.edit_message(view=None)
-            self.view.stop()
-            return
-        await interaction.message.delete()
         self.view.stop()

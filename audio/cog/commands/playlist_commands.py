@@ -10,7 +10,7 @@ from redbot.core import commands
 from redbot.core.i18n import Translator
 
 from pylav import Query, Track
-from pylav.converters import PlaylistConverter, QueryPlaylistConverter
+from pylav.converters import PlaylistConverter, QueryConverter, QueryPlaylistConverter
 from pylav.sql.models import PlaylistModel
 from pylav.tracks import decode_track
 from pylav.utils import AsyncIter, PyLavContext
@@ -140,12 +140,12 @@ class PlaylistCommands(MPMixin, ABC):
                     ephemeral=True,
                 )
                 return
-            player = await context.lavalink.connect_player(channel=channel, self_deaf=True, requester=context.author)
+            player = await context.connect_player(channel=channel, self_deaf=True)
         track_count = len(playlist.tracks)
         await player.bulk_add(
             requester=context.author.id,
             tracks_and_queries=[
-                Track(node=player.node, data=track, requester=context.author.id)
+                Track(node=player.node, data=track, requester=context.author.id, query=await Query.from_base64(track))
                 async for i, track in AsyncIter(playlist.tracks).enumerate()
             ],
         )
@@ -165,7 +165,7 @@ class PlaylistCommands(MPMixin, ABC):
         )
 
         if not player.is_playing:
-            await player.play(requester=context.author)
+            await player.next(requester=context.author)
 
     @command_playlist.command(name="list")
     async def command_playlist_list(self, context: PyLavContext):
@@ -193,7 +193,7 @@ class PlaylistCommands(MPMixin, ABC):
 
     @command_playlist.command(name="remove")
     async def command_playlist_remove(
-        self, context: PyLavContext, url: QueryPlaylistConverter, playlist: PlaylistConverter
+        self, context: PyLavContext, playlist: PlaylistConverter, url: QueryPlaylistConverter
     ):
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -228,6 +228,60 @@ class PlaylistCommands(MPMixin, ABC):
                 description=_("{track_count} tracks removed from the playlist.").format(
                     track_count=len(tracks_removed)
                 ),
+            ),
+            ephemeral=True,
+        )
+
+    @command_playlist.command(name="add")
+    async def command_playlist_add(
+        self,
+        context: PyLavContext,
+        playlist: PlaylistConverter,
+        *,
+        query: QueryConverter,
+    ):
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+
+        playlists: list[PlaylistModel] = playlist  # type: ignore
+        playlist = await maybe_prompt_for_playlist(cog=self, playlists=playlists, context=context)
+        if not playlist:
+            return
+        new_tracks = []
+        if query.is_local:
+            for local_query in await query.get_all_tracks_in_folder():
+                result = await self.lavalink.get_tracks(local_query, bypass_cache=True, first=True)
+                track = result.get("track")
+                if track:
+                    new_tracks.append(track)
+        elif query.is_playlist or query.is_album:
+            results = await self.bot.lavalink.get_tracks(query)
+            tracks = results.get("tracks", [])
+            for track in tracks:
+                track_b64 = track.get("track")
+                if track_b64:
+                    new_tracks.append(track_b64)
+        else:
+            result = await self.bot.lavalink.get_tracks(query, first=True)
+            track = result.get("track")
+            if track:
+                new_tracks.append(track)
+        if not new_tracks:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_(
+                        "No tracks were added to the playlist because nothing supported was found in {query}"
+                    ).format(query=await query.query_to_string()),
+                ),
+                ephemeral=True,
+            )
+        playlist.tracks.extend(new_tracks)
+        await playlist.save()
+        await context.send(
+            embed=await context.lavalink.construct_embed(
+                description=_("{track_count} tracks add to the playlist.").format(track_count=len(new_tracks)),
             ),
             ephemeral=True,
         )
