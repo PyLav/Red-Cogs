@@ -1,3 +1,4 @@
+import collections
 import contextlib
 import itertools
 from abc import ABC
@@ -46,7 +47,7 @@ class PlaylistCommands(MPMixin, ABC):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-
+        add_queue = False
         if not (name or url):
             playlist_prompt = PlaylistCreationFlow(
                 cog=self,
@@ -55,22 +56,21 @@ class PlaylistCommands(MPMixin, ABC):
             )
             title = _("Let's create a playlist!")
             description = _(
-                "Select the name button to set the name for your playlist\n\n"
-                "Select the url button to link this playlist to an existing playlist\n"
-                "If you want the playlist name to be as the original "
-                "playlist simply set the URL but no name.\n\n"
-                "Select the cancel button to cancel the creation of the playlist.\n"
-                "When you are happy with the name and URL click the done button to create the playlist."
+                "(**1 **) - Select the done button to apply the changes you've made to this playlist.\n"
+                "(**2 **) - Select the cancel button to cancel this operation.\n"
+                "(**3 **) - Select the name button to set the name for your playlist.\n"
+                "(**4 **) - Select the url button to link this playlist to an existing playlist/album.\n"
+                "(**5 **) - Select the queue button to add all track from the queue to the playlist.\n\n"
+                "If you want the playlist name to be as the original playlist simply set the URL but no name.\n\n"
             )
-
             await playlist_prompt.start(ctx=context, title=title, description=description)
             await playlist_prompt.wait()
 
             url = playlist_prompt.url
             name = playlist_prompt.name
-            if not url and not name:
-                return
+            add_queue = playlist_prompt.queue
             if url:
+                add_queue = False
                 url = await Query.from_string(url)
         async with context.typing():
             if url:
@@ -79,7 +79,14 @@ class PlaylistCommands(MPMixin, ABC):
                 url = url.query_identifier
                 name = name or tracks_response.get("playlistInfo", {}).get("name", f"{context.message.id}")
             else:
-                tracks = []
+                if add_queue and context.player:
+                    tracks = context.player.queue.raw_queue
+                    if tracks:
+                        tracks = [track.track for track in tracks if track.track]
+                    else:
+                        tracks = []
+                else:
+                    tracks = []
                 url = None
             if name is None:
                 name = f"{context.message.id}"
@@ -121,7 +128,8 @@ class PlaylistCommands(MPMixin, ABC):
         ).start(context)
 
     @command_playlist.command(
-        name="manage", aliases=["delete", "remove", "rm", "del", "clear", "add", "play", "start", "enqueue", "info"]
+        name="manage",
+        aliases=["delete", "remove", "rm", "del", "clear", "add", "play", "start", "enqueue", "info", "save", "queue"],
     )
     async def command_playlist_manage(self, context: PyLavContext, *, playlist: PlaylistConverter):
         if isinstance(context, discord.Interaction):
@@ -132,6 +140,7 @@ class PlaylistCommands(MPMixin, ABC):
         # Could shortcut any other alias - but the issue comes with clarity and confirmation.
         invoked_with_start = context.invoked_with in ("start", "play", "enqueue")
         invoked_with_delete = context.invoked_with in ("delete", "del")
+        invoked_with_queue = context.invoked_with in ("queue", "save")
 
         playlists: list[PlaylistModel] = playlist  # type: ignore
         playlist = await maybe_prompt_for_playlist(cog=self, playlists=playlists, context=context)
@@ -156,9 +165,9 @@ class PlaylistCommands(MPMixin, ABC):
             timeout=600,
             playlist=playlist,
         )
-        title = _("Let's manage: {playlist_name}").format(playlist_name=playlist.name)
+        if not (invoked_with_delete or invoked_with_queue):
+            title = _("Let's manage: {playlist_name}").format(playlist_name=playlist.name)
 
-        if not invoked_with_delete:
             description = _(
                 "(**1 **) - Select the done button to apply the changes you've made to this playlist.\n"
                 "(**2 **) - Select the cancel button to cancel this operation.\n"
@@ -174,7 +183,8 @@ class PlaylistCommands(MPMixin, ABC):
                 "(**10**) - Select the download button to download this playlist so that it can be "
                 "shared with others.\n"
                 "(**11**) - Select the play button to enqueue the currently selected playlist.\n"
-                "(**12**) - Select the info button to display all tracks in the playlist.\n\n"
+                "(**12**) - Select the info button to display all tracks in the playlist.\n"
+                "(**13**) - Select the queue button to add all track from the queue to the playlist.\n\n"
                 "The add/remove track buttons can be used multiple times to "
                 "add/remove multiple tracks and playlists at once.\n"
                 "The clear button will always be run first before any other operations.\n"
@@ -203,8 +213,14 @@ class PlaylistCommands(MPMixin, ABC):
             playlist_prompt.delete = True
             playlist_prompt.cancelled = False
 
+        if invoked_with_queue and not all([playlist_prompt.update, playlist_prompt.url]):
+            playlist_prompt.queue = True
+            playlist_prompt.cancelled = False
+
         if playlist_prompt.cancelled:
             return
+        if playlist_prompt.queue and any([playlist_prompt.update, playlist_prompt.url]):
+            playlist_prompt.queue = False
         if playlist_prompt.delete:
             await playlist.delete()
             await context.send(
@@ -243,7 +259,7 @@ class PlaylistCommands(MPMixin, ABC):
                                     playlist.tracks.remove(track_b64)
                                     tracks_removed += 1
                         elif (query.is_playlist or query.is_album) and not query.is_local:
-                            tracks = await self.lavalink.get_tracks(query=query)
+                            tracks: dict = await self.lavalink.get_tracks(query=query)
                             for track in tracks.get("tracks", []):
                                 track_b64 = track.get("track")
                                 if track_b64:
@@ -288,7 +304,7 @@ class PlaylistCommands(MPMixin, ABC):
                                     tracks_added += 1
             if playlist_prompt.update and playlist.url:
                 with contextlib.suppress(Exception):
-                    tracks = await self.lavalink.get_tracks(
+                    tracks: dict = await self.lavalink.get_tracks(
                         query=await Query.from_string(playlist.url), bypass_cache=True
                     )
                     if not tracks.get("tracks"):
@@ -301,10 +317,18 @@ class PlaylistCommands(MPMixin, ABC):
                             ephemeral=True,
                         )
                         return
-                    tracks = [track["track"] for track in tracks["tracks"] if "track" in track]
+                    tracks = [track["track"] for track in tracks["tracks"] if "track" in track]  # type: ignore
                     if tracks:
                         changed = True
                         playlist.tracks = tracks
+            if playlist_prompt.queue:
+                changed = True
+                if context.player:
+                    tracks: collections.deque[Track] = context.player.queue.raw_queue
+                    if tracks:
+                        queue_tracks = [track.track for track in tracks if track.track]
+                        playlist.tracks.extend(queue_tracks)
+                        tracks_added += len(queue_tracks)
             if changed:
                 extras = ""
                 if tracks_removed:
@@ -338,7 +362,7 @@ class PlaylistCommands(MPMixin, ABC):
 
     @command_playlist.command(name="upload")
     @commands.guild_only()
-    async def command_playlist_upload(self, context: commands.Context, url: str = None):  # FIXME: Change to Greedy[str]
+    async def command_playlist_upload(self, context: commands.Context, url: str = None):
         """
         Upload a playlist to the bot.
 

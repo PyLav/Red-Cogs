@@ -35,6 +35,7 @@ from audio.cog.menus.buttons import (
     PlaylistDeleteButton,
     PlaylistDownloadButton,
     PlaylistInfoButton,
+    PlaylistQueueButton,
     PlaylistUpdateButton,
     PlaylistUpsertButton,
     PlayNowFromQueueButton,
@@ -1341,6 +1342,12 @@ class PlaylistCreationFlow(discord.ui.View):
             row=0,
             cog=cog,
         )
+        self.queue_button = PlaylistQueueButton(
+            style=discord.ButtonStyle.green,
+            row=0,
+            cog=cog,
+            emoji=discord.PartialEmoji(name="queue", animated=False, id=967902316185415681),
+        )
         self.close_button = CloseButton(
             style=discord.ButtonStyle.red,
             row=0,
@@ -1351,10 +1358,12 @@ class PlaylistCreationFlow(discord.ui.View):
         self.url = None
         self.scope = None
         self.done = False
+        self.queue = None
         self.add_item(self.done_button)
         self.add_item(self.close_button)
         self.add_item(self.name_button)
         self.add_item(self.url_button)
+        self.add_item(self.queue_button)
 
     async def send_initial_message(
         self, ctx: PyLavContext | discord.Interaction, description: str = None, title: str = None
@@ -1520,6 +1529,11 @@ class PlaylistManageFlow(discord.ui.View):
             emoji=discord.PartialEmoji(name="info", animated=False, id=967827814160158820),
             playlist=playlist,
         )
+        self.queue_button = PlaylistQueueButton(
+            style=discord.ButtonStyle.green,
+            cog=cog,
+            emoji=discord.PartialEmoji(name="queue", animated=False, id=967902316185415681),
+        )
 
         self.name = None
         self.url = None
@@ -1532,6 +1546,7 @@ class PlaylistManageFlow(discord.ui.View):
         self.cancelled = True
         self.done = False
         self.update = False
+        self.queue = None
 
         self.add_item(self.done_button)
         self.add_item(self.close_button)
@@ -1547,6 +1562,7 @@ class PlaylistManageFlow(discord.ui.View):
 
         self.add_item(self.playlist_enqueue_button)
         self.add_item(self.playlist_info_button)
+        self.add_item(self.queue_button)
 
     async def send_initial_message(
         self, ctx: PyLavContext | discord.Interaction, description: str = None, title: str = None

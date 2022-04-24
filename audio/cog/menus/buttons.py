@@ -1012,3 +1012,45 @@ class PlaylistInfoButton(discord.ui.Button):
             starting_page=0,
             original_author=interaction.user,
         ).start(await self.cog.bot.get_context(interaction))
+
+
+class PlaylistQueueButton(discord.ui.Button):
+    view: PlaylistManageFlow
+
+    def __init__(
+        self,
+        cog: CogT,
+        style: discord.ButtonStyle,
+        emoji: str | Emoji | PartialEmoji,
+        row: int = None,
+    ):
+        super().__init__(
+            style=style,
+            emoji=emoji,
+            row=row,
+        )
+        self.cog = cog
+
+    async def callback(self, interaction: discord.Interaction):
+        if self.view.author.id != interaction.user.id:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, description=_("You are not authorized to interact with this option.")
+                ),
+                ephemeral=True,
+            )
+        self.view.queue = not self.view.queue
+        if self.view.queue:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, description=_("Adding the current queue to playlist...")
+                ),
+                ephemeral=True,
+            )
+        else:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, description=_("No longer adding the current queue to playlist...")
+                ),
+                ephemeral=True,
+            )
