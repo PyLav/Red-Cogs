@@ -257,7 +257,7 @@ class PlaylistCommands(MPMixin, ABC):
             if (playlist_prompt.add_tracks or playlist_prompt.remove_prompt) and not playlist_prompt.update:
                 if playlist_prompt.remove_tracks:
                     successful, count, failed = await self.lavalink.get_all_tracks_for_queries(
-                        *playlist_prompt.remove_tracks, requester=context.author.id
+                        *playlist_prompt.remove_tracks, requester=context.author, player=None
                     )
                     for t in successful:
                         b64 = t.track
@@ -267,7 +267,7 @@ class PlaylistCommands(MPMixin, ABC):
                             tracks_removed += 1
                 if playlist_prompt.add_tracks:
                     successful, count, failed = await self.lavalink.get_all_tracks_for_queries(
-                        *playlist_prompt.remove_tracks, requester=context.author.id
+                        *playlist_prompt.remove_tracks, requester=context.author, player=None
                     )
                     for t in successful:
                         b64 = t.track

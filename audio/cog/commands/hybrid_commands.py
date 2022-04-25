@@ -60,9 +60,9 @@ class HybridCommands(MPMixin, ABC):
                 )
             else:
                 successful, count, failed = await self.lavalink.get_all_tracks_for_queries(
-                    query, requester=context.author.id
+                    query, requester=context.author, player=player
                 )
-                if not successful:
+                if not count:
                     await context.send(
                         embed=await context.lavalink.construct_embed(
                             description=_("No results found for {query}").format(
