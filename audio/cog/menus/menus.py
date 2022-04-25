@@ -136,7 +136,7 @@ class BaseMenu(discord.ui.View):
         self.ctx = ctx
         kwargs = await self.get_page(self.current_page)
         await self.prepare()
-        self.message = await ctx.send(**kwargs, view=self)
+        self.message = await ctx.send(**kwargs, view=self, ephemeral=True)
         return self.message
 
     async def show_page(self, page_number, interaction: discord.Interaction):
@@ -1307,6 +1307,7 @@ class PromptYesOrNo(discord.ui.View):
         self.message = await ctx.send(
             embed=await self.cog.lavalink.construct_embed(description=self.initial_message_str, messageable=ctx),
             view=self,
+            ephemeral=True,
         )
         return self.message
 
@@ -1408,6 +1409,7 @@ class PlaylistCreationFlow(discord.ui.View):
         self.message = await ctx.send(
             embed=await self.cog.lavalink.construct_embed(description=description, title=title, messageable=ctx),
             view=self,
+            ephemeral=True,
         )
         return self.message
 
@@ -1616,6 +1618,7 @@ class PlaylistManageFlow(discord.ui.View):
         self.message = await ctx.send(
             embed=await self.cog.lavalink.construct_embed(description=description, title=title, messageable=ctx),
             view=self,
+            ephemeral=True,
         )
         return self.message
 
