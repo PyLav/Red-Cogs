@@ -932,7 +932,7 @@ class PlaylistDownloadButton(discord.ui.Button):
                         name=await self.view.playlist.get_name_formatted(with_url=True),
                         extras=_(
                             "\n (compressed using gzip to make it possible to send via Discord "
-                            "- you can use <https://gzip.swimburger.net/> to decompress and recompress it)"
+                            "- you can use <https://gzip.swimburger.net/> to decompress it)"
                         ),
                     ),
                 ),
