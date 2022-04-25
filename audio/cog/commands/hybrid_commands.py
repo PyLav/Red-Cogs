@@ -121,6 +121,8 @@ class HybridCommands(MPMixin, ABC):
     @app_commands.guilds(MY_GUILD)
     @commands.guild_only()
     async def command_connect(self, context: PyLavContext, *, channel: Optional[discord.VoiceChannel] = None):
+        """Connect the bot to the specified channel or your current channel."""
+
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -168,6 +170,7 @@ class HybridCommands(MPMixin, ABC):
     @commands.guild_only()
     @requires_player()
     async def command_now(self, context: PyLavContext):
+        """Shows the track currently being played."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -195,6 +198,7 @@ class HybridCommands(MPMixin, ABC):
     @commands.guild_only()
     @requires_player()
     async def command_skip(self, context: PyLavContext):
+        """Skips the current track."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -230,6 +234,7 @@ class HybridCommands(MPMixin, ABC):
     @commands.guild_only()
     @requires_player()
     async def command_stop(self, context: PyLavContext):
+        """Stops the player."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -262,6 +267,7 @@ class HybridCommands(MPMixin, ABC):
     @commands.is_owner()
     @requires_player()
     async def command_disconnect(self, context: PyLavContext):
+        """Disconnects the player from the voice channel."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -285,6 +291,7 @@ class HybridCommands(MPMixin, ABC):
     @commands.guild_only()
     @requires_player()
     async def command_queue(self, context: PyLavContext):
+        """Shows the current queue for the player."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -314,6 +321,7 @@ class HybridCommands(MPMixin, ABC):
     @commands.guild_only()
     @requires_player()
     async def command_shuffle(self, context: PyLavContext):
+        """Shuffles the player's queue."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -344,6 +352,10 @@ class HybridCommands(MPMixin, ABC):
     @commands.guild_only()
     @requires_player()
     async def command_repeat(self, context: PyLavContext, queue: Optional[bool] = None):
+        """Set whether to repeat current song or queue.
+
+        If no argument is given, the current repeat mode will be toggled between current track and off.
+        """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -374,6 +386,7 @@ class HybridCommands(MPMixin, ABC):
     @commands.guild_only()
     @requires_player()
     async def command_pause(self, context: PyLavContext):
+        """Pause the player."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -409,6 +422,7 @@ class HybridCommands(MPMixin, ABC):
     @commands.guild_only()
     @requires_player()
     async def command_resume(self, context: PyLavContext):
+        """Resume the player."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -444,6 +458,11 @@ class HybridCommands(MPMixin, ABC):
     @commands.guild_only()
     @requires_player()
     async def command_volume(self, context: PyLavContext, volume: Range[int, 0, 1000] = 100):
+        """Set the player volume.
+
+        The volume is a value from 0-1000.
+        """
+
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -468,6 +487,10 @@ class HybridCommands(MPMixin, ABC):
     @commands.guild_only()
     @requires_player()
     async def command_previous(self, context: PyLavContext):
+        """Play the previous tracks.
+
+        A history of last 100 tracks are kept.
+        """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():

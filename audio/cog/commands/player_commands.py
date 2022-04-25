@@ -21,6 +21,11 @@ class PlayerCommands(MPMixin, ABC):
     @commands.command(name="playnow", description="Plays the specified track in the queue.", aliases=["pn"])
     @commands.guild_only()
     async def command_playnow(self, context: PyLavContext, queue_number: int, after_current: bool = False):
+        """
+        Plays the specified track in the queue.
+
+        If you specify the `after_current` argument, the track will be played after the current track, otherwise it will replace the current track
+        """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -85,6 +90,11 @@ class PlayerCommands(MPMixin, ABC):
     @commands.command(name="remove", description="Remove the specified track from the queue.")
     @commands.guild_only()
     async def command_remove(self, context: PyLavContext, track_url_or_index: str, remove_duplicates: bool = False):
+        """
+        Remove the specified track from the queue.
+
+        If you specify the `remove_duplicates` argument, all tracks that are the same as your URL or the index track will be removed.
+        """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():

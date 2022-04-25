@@ -32,17 +32,20 @@ class PlaylistCommands(MPMixin, ABC):
     @app_commands.guilds(MY_GUILD)
     @commands.guild_only()
     async def command_playlist(self, context: PyLavContext):
-        """
-        Control custom playlist.
-        """
+        """Control custom playlist available in the bot."""
 
     @command_playlist.command(name="create", aliases=["new"])
     async def command_playlist_create(
         self, context: PyLavContext, url: Optional[QueryPlaylistConverter], *, name: Optional[str]
     ):
+        """Create a new playlist.
+
+        If you don't specify an URL and name, you will be shows a creation menu, which also allows you to save the current player queue as a playlist.
+
+        If you don't specify a name, the playlist will be named the URL playlist if available otherwise the name will be the same as the ID.
+        If you specify an URL, the playlist will be created from the URL.
         """
-        Create a new playlist.
-        """
+
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -105,6 +108,12 @@ class PlaylistCommands(MPMixin, ABC):
 
     @command_playlist.command(name="list")
     async def command_playlist_list(self, context: PyLavContext):
+        """
+        List all playlists you have access to on the invoked context.
+
+        This takes into consideration your current VC, Text channel and Server.
+        """
+
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -139,6 +148,16 @@ class PlaylistCommands(MPMixin, ABC):
         aliases=["delete", "remove", "rm", "del", "clear", "add", "play", "start", "enqueue", "info", "save", "queue"],
     )
     async def command_playlist_manage(self, context: PyLavContext, *, playlist: PlaylistConverter):
+        """
+        Manage a playlist.
+
+        This command can be used to delete, clear all tracks, add or remove tracks or play a playlist.
+
+        If you use the `start` (`play` or `enqueue`) alias the playlist will be played instead of you being shown the control menu.
+        If you use the `delete` (`del`) alias the playlist will be deleted instead of you being shown the control menu.
+        If you use the `save` (`queue`) alias the current queue will be added to the specified playlist.
+        """
+
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -349,8 +368,8 @@ class PlaylistCommands(MPMixin, ABC):
         """
         Upload a playlist to the bot.
 
-        This command will upload a playlist to the server.
-        The playlist can be uploaded by either the URL of the playlist file or by attaching the playlist file.
+        This command will upload a playlist to the bot.
+        The playlist can be uploaded by either the URL of the playlist file or by attaching the playlist file to the message.
         """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
