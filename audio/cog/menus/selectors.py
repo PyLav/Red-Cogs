@@ -84,10 +84,10 @@ class QueueSelectTrack(discord.ui.Select):
         index += 1
         if self.interaction_type == "remove":
             await self.cog.command_remove.callback(
-                self.cog, self.view.ctx, track_url_or_index=f"{index}", remove_duplicates=True
+                self.cog, interaction, track_url_or_index=f"{index}", remove_duplicates=True
             )
         else:
-            await self.cog.command_playnow.callback(self.cog, self.view.ctx, queue_number=index)
+            await self.cog.command_playnow.callback(self.cog, interaction, queue_number=index)
         self.view.stop()
         await self.view.on_timeout()
 
@@ -257,7 +257,7 @@ class SearchSelectTrack(discord.ui.Select):
 
         await self.cog.command_play.callback(
             self.cog,
-            self.view.ctx,
+            interaction,
             query=await Query.from_string(track.uri),
         )
         self.view.stop()

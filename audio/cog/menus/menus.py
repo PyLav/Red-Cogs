@@ -453,6 +453,11 @@ class QueueMenu(BaseMenu):
         return self._source
 
     async def start(self, ctx: PyLavContext | discord.Interaction):
+        if isinstance(ctx, discord.Interaction):
+            ctx = await self.cog.bot.get_context(ctx)
+        if ctx.interaction and not ctx.interaction.response.is_done():
+            await ctx.defer(ephemeral=True)
+
         self.ctx = ctx
         await self.send_initial_message(ctx)
 
@@ -535,6 +540,10 @@ class QueuePickerMenu(BaseMenu):
         return self._source
 
     async def start(self, ctx: PyLavContext | discord.Interaction):
+        if isinstance(ctx, discord.Interaction):
+            ctx = await self.cog.bot.get_context(ctx)
+        if ctx.interaction and not ctx.interaction.response.is_done():
+            await ctx.defer(ephemeral=True)
         self.ctx = ctx
         await self.send_initial_message(ctx)
 
@@ -706,6 +715,10 @@ class PlaylistPickerMenu(BaseMenu):
             self.select_view = None
 
     async def start(self, ctx: PyLavContext | discord.Interaction):
+        if isinstance(ctx, discord.Interaction):
+            ctx = await self.cog.bot.get_context(ctx)
+        if ctx.interaction and not ctx.interaction.response.is_done():
+            await ctx.defer(ephemeral=True)
         self.ctx = ctx
         await self.send_initial_message(ctx)
 
@@ -818,6 +831,10 @@ class EffectPickerMenu(BaseMenu):
         self.add_item(self.select_view)
 
     async def start(self, ctx: PyLavContext | discord.Interaction):
+        if isinstance(ctx, discord.Interaction):
+            ctx = await self.cog.bot.get_context(ctx)
+        if ctx.interaction and not ctx.interaction.response.is_done():
+            await ctx.defer(ephemeral=True)
         self.ctx = ctx
         await self.send_initial_message(ctx)
 
@@ -997,6 +1014,10 @@ class StatsMenu(BaseMenu):
         return self._source
 
     async def start(self, ctx: PyLavContext | discord.Interaction):
+        if isinstance(ctx, discord.Interaction):
+            ctx = await self.cog.bot.get_context(ctx)
+        if ctx.interaction and not ctx.interaction.response.is_done():
+            await ctx.defer(ephemeral=True)
         self.ctx = ctx
         await self.send_initial_message(ctx)
 
@@ -1091,6 +1112,10 @@ class SearchPickerMenu(BaseMenu):
         self.select_view: SearchSelectTrack | None = None
 
     async def start(self, ctx: PyLavContext | discord.Interaction):
+        if isinstance(ctx, discord.Interaction):
+            ctx = await self.cog.bot.get_context(ctx)
+        if ctx.interaction and not ctx.interaction.response.is_done():
+            await ctx.defer(ephemeral=True)
         self.ctx = ctx
         await self.send_initial_message(ctx)
 
@@ -1204,6 +1229,11 @@ class PaginatingMenu(BaseMenu):
         self.add_item(self.last_button)
 
     async def start(self, ctx: PyLavContext | discord.Interaction):
+        if isinstance(ctx, discord.Interaction):
+            ctx = await self.cog.bot.get_context(ctx)
+        if ctx.interaction and not ctx.interaction.response.is_done():
+            await ctx.defer(ephemeral=True)
+        self.ctx = ctx
         await self.send_initial_message(ctx)
 
     async def prepare(self):
@@ -1261,6 +1291,11 @@ class PromptYesOrNo(discord.ui.View):
                 await self.message.edit(view=None)
 
     async def start(self, ctx: PyLavContext | discord.Interaction):
+        if isinstance(ctx, discord.Interaction):
+            ctx = await self.cog.bot.get_context(ctx)
+        if ctx.interaction and not ctx.interaction.response.is_done():
+            await ctx.defer(ephemeral=True)
+        self.ctx = ctx
         await self.send_initial_message(ctx)
 
     async def send_initial_message(self, ctx: PyLavContext | discord.Interaction):
