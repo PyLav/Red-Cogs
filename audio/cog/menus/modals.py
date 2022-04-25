@@ -7,8 +7,6 @@ import discord
 from red_commons.logging import getLogger
 from redbot.core.i18n import Translator
 
-from pylav import Query
-
 from audio.cog._types import CogT
 
 LOGGER = getLogger("red.3pt.mp.ui.modals")
@@ -36,7 +34,7 @@ class EnqueueModal(discord.ui.Modal):
         await self.cog.command_play.callback(
             self.cog,
             interaction,
-            query=await Query.from_string(self.text.value.strip()),
+            query=[self.text.value.strip()],
         )
 
 

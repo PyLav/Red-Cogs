@@ -8,7 +8,7 @@ import discord
 from red_commons.logging import getLogger
 from redbot.core.i18n import Translator
 
-from pylav import Query, Track
+from pylav import Track
 from pylav.sql.models import PlaylistModel
 from pylav.types import BotT
 
@@ -258,7 +258,7 @@ class SearchSelectTrack(discord.ui.Select):
         await self.cog.command_play.callback(
             self.cog,
             interaction,
-            query=await Query.from_string(track.uri),
+            query=[track.uri],
         )
         self.view.stop()
         await self.view.on_timeout()

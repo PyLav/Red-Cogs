@@ -9,7 +9,7 @@ from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator
 
-from pylav import Track, converters
+from pylav import Query, Track
 from pylav.utils import PyLavContext
 
 from audio.cog import MY_GUILD, MPMixin
@@ -26,12 +26,24 @@ class HybridCommands(MPMixin, ABC):
     @commands.hybrid_command(name="play", description="Plays a specified query.", aliases=["p"])
     @app_commands.guilds(MY_GUILD)
     @commands.guild_only()
-    async def command_play(self, context: PyLavContext, *, query: converters.QueryConverter):
+    async def command_play(self, context: PyLavContext, *, query: str):
+        """Attempt to play the queries which you provide.
+
+        Multiple queries can be provided by separating them with a new line (`shift + enter`).
+        """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-
+        if not query:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("You need to provide a query to play."),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+            return
         player = context.player
         if player is None:
             channel = rgetattr(context, "author.voice.channel", None)
@@ -44,42 +56,48 @@ class HybridCommands(MPMixin, ABC):
                 )
                 return
             player = await context.connect_player(channel=channel, self_deaf=True)
+        queries = [await Query.from_string(qf) for q in query.split("\n") if (qf := q.strip("<>").strip())]
+        search_queries = [q for q in queries if q.is_search]
+        non_search_queries = [q for q in queries if not q.is_search]
+        total_tracks_enqueue = 0
         async with context.typing():
-            is_partial = query.is_search
-            if is_partial:
-                track = Track(node=player.node, data=None, query=query, requester=context.author.id)
-                await player.add(requester=context.author.id, track=track)
-                await context.send(
-                    embed=await context.lavalink.construct_embed(
-                        description=_("{track} enqueued").format(
+            if search_queries:
+                for query in search_queries:
+                    track = Track(node=player.node, data=None, query=query, requester=context.author.id)
+                    await player.add(requester=context.author.id, track=track)
+                    if not player.is_playing:
+                        await player.next(requester=context.author)
+                    total_tracks_enqueue += 1
+                if not non_search_queries:
+                    if len(search_queries) > 1:
+                        to_user = _("{track} enqueued.").format(track=len(search_queries))
+                    else:
+                        to_user = _("{track} tracks enqueued..").format(
                             track=await track.get_track_display_name(with_url=True)
-                        ),
-                        messageable=context,
-                    ),
-                    ephemeral=True,
-                )
-            else:
-                successful, count, failed = await self.lavalink.get_all_tracks_for_queries(
-                    query, requester=context.author, player=player
-                )
-                if not count:
+                        )
                     await context.send(
                         embed=await context.lavalink.construct_embed(
-                            description=_("No results found for {query}").format(
-                                query=await query.query_to_string(ellipsis=False)
-                            ),
+                            description=to_user,
                             messageable=context,
                         ),
                         ephemeral=True,
                     )
                     return
+            if non_search_queries:
+                successful, count, failed = await self.lavalink.get_all_tracks_for_queries(
+                    *non_search_queries, requester=context.author, player=player
+                )
                 track_obj_list = successful
-                track_count = count
-                if track_count == 1:
-                    await player.add(requester=context.author.id, track=track_obj_list[0])
+                total_tracks_enqueue += count
+                if count:
+                    if count == 1:
+                        await player.add(requester=context.author.id, track=track_obj_list[0])
+                    else:
+                        await player.bulk_add(requester=context.author.id, tracks_and_queries=track_obj_list)
+                if total_tracks_enqueue == 1:
                     await context.send(
                         embed=await context.lavalink.construct_embed(
-                            description=_("{track} enqueued").format(
+                            description=_("{track} enqueued.").format(
                                 track=await track_obj_list[0].get_track_display_name(with_url=True)
                             ),
                             messageable=context,
@@ -87,10 +105,9 @@ class HybridCommands(MPMixin, ABC):
                         ephemeral=True,
                     )
                 else:
-                    await player.bulk_add(requester=context.author.id, tracks_and_queries=track_obj_list)
                     await context.send(
                         embed=await context.lavalink.construct_embed(
-                            description=_("{track_count} tracks enqueued.").format(track_count=track_count),
+                            description=_("{track_count} tracks enqueued.").format(track_count=total_tracks_enqueue),
                             messageable=context,
                         ),
                         ephemeral=True,
