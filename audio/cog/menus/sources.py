@@ -390,7 +390,7 @@ class PlaylistInfoSource(menus.ListPageSource):
                             track.author,
                             track.title,
                             spaces,
-                            query.query_to_queue(),
+                            query.query_to_queue(name_only=True),
                         )
                     else:
                         msg += f"`{track_idx}.` {query.query_to_queue()}\n"
@@ -657,13 +657,16 @@ class Base64Source(menus.ListPageSource):
         start = page_num * self.per_page
         return start, page_num
 
-    async def format_page(self, menu: QueueMenu, tracks: list[Track]) -> discord.Embed:
+    async def format_page(self, menu: QueueMenu, tracks: list[str]) -> discord.Embed:
         start_index, page_num = self.get_starting_index_and_page_number(menu)
         padding = len(str(start_index + len(tracks)))
         queue_list = ""
         async for track_idx, track in AsyncIter(tracks).enumerate(start=start_index + 1):
             track = Track(
-                node=random.choice(self.cog.lavalink.node_manager.nodes), requester=self.author.id, data=track
+                node=random.choice(self.cog.lavalink.node_manager.nodes),
+                requester=self.author.id,
+                data=track,
+                query=await Query.from_base64(track),
             )
             track_description = await track.get_track_display_name(max_length=50, with_url=True)
             diff = padding - len(str(track_idx))

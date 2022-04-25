@@ -256,60 +256,24 @@ class PlaylistCommands(MPMixin, ABC):
                 playlist.url = playlist_prompt.url
             if (playlist_prompt.add_tracks or playlist_prompt.remove_prompt) and not playlist_prompt.update:
                 if playlist_prompt.remove_tracks:
-                    for track_ in playlist_prompt.remove_tracks:
-                        query = await Query.from_string(track_)
-                        if query.is_search or query.is_single:
-                            track = await self.lavalink.get_tracks(query=query, first=True)
-                            track_b64 = track.get("track")
-                            if track_b64:
-                                while track_b64 in playlist.tracks:
-                                    changed = True
-                                    playlist.tracks.remove(track_b64)
-                                    tracks_removed += 1
-                        elif (query.is_playlist or query.is_album) and not query.is_local:
-                            tracks: dict = await self.lavalink.get_tracks(query=query)
-                            for track in tracks.get("tracks", []):
-                                track_b64 = track.get("track")
-                                if track_b64:
-                                    while track_b64 in playlist.tracks:
-                                        changed = True
-                                        playlist.tracks.remove(track_b64)
-                                        tracks_removed += 1
-                        elif query.is_album and query.is_local:
-                            for local_track in await query.get_all_tracks_in_folder():
-                                track = await self.lavalink.get_tracks(query=local_track, first=True)
-                                track_b64 = track.get("track")
-                                if track_b64:
-                                    while track_b64 in playlist.tracks:
-                                        changed = True
-                                        playlist.tracks.remove(track_b64)
-                                        tracks_removed += 1
+                    successful, count, failed = await self.lavalink.get_all_tracks_for_queries(
+                        *playlist_prompt.remove_tracks, requester=context.author.id
+                    )
+                    for t in successful:
+                        b64 = t.track
+                        while b64 in playlist.tracks:
+                            changed = True
+                            playlist.tracks.remove(b64)
+                            tracks_removed += 1
                 if playlist_prompt.add_tracks:
-                    for track_ in playlist_prompt.add_tracks:
-                        query = await Query.from_string(track_)
-                        if query.is_search or query.is_single:
-                            track = await self.lavalink.get_tracks(query=query, first=True)
-                            track_b64 = track.get("track")
-                            if track_b64:
-                                changed = True
-                                playlist.tracks.append(track_b64)
-                                tracks_added += 1
-                        elif (query.is_playlist or query.is_album) and not query.is_local:
-                            tracks = await self.lavalink.get_tracks(query=query)
-                            for track in tracks.get("tracks", []):
-                                track_b64 = track.get("track")
-                                if track_b64:
-                                    changed = True
-                                    playlist.tracks.append(track_b64)
-                                    tracks_added += 1
-                        elif query.is_album and query.is_local:
-                            for local_track in await query.get_all_tracks_in_folder():
-                                track = await self.lavalink.get_tracks(query=local_track, first=True)
-                                track_b64 = track.get("track")
-                                if track_b64:
-                                    changed = True
-                                    playlist.tracks.append(track_b64)
-                                    tracks_added += 1
+                    successful, count, failed = await self.lavalink.get_all_tracks_for_queries(
+                        *playlist_prompt.remove_tracks, requester=context.author.id
+                    )
+                    for t in successful:
+                        b64 = t.track
+                        changed = True
+                        playlist.tracks.append(b64)
+                        tracks_added += 1
             if playlist_prompt.update and playlist.url:
                 with contextlib.suppress(Exception):
                     tracks: dict = await self.lavalink.get_tracks(

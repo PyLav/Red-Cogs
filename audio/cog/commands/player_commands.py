@@ -130,9 +130,19 @@ class PlayerCommands(MPMixin, ABC):
         else:
             try:
                 data, __ = decode_track(track_url_or_index)
-                track = Track(node=player.node, data=data)
+                track = Track(
+                    node=player.node,
+                    data=data,
+                    query=await Query.from_base64(track_url_or_index),
+                    requester=context.author.id,
+                )
             except Exception:  # noqa
-                track = Track(node=player.node, data=None, query=await Query.from_string(track_url_or_index))
+                track = Track(
+                    node=player.node,
+                    data=None,
+                    query=await Query.from_string(track_url_or_index),
+                    requester=context.author.i,
+                )
                 await track.search(player)
         try:
             number_removed += await player.remove_from_queue(

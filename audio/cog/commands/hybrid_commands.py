@@ -10,7 +10,7 @@ from redbot.core import commands
 from redbot.core.i18n import Translator
 
 from pylav import Track, converters
-from pylav.utils import AsyncIter, PyLavContext
+from pylav.utils import PyLavContext
 
 from audio.cog import MY_GUILD, MPMixin
 from audio.cog.menus.menus import QueueMenu
@@ -46,17 +46,6 @@ class HybridCommands(MPMixin, ABC):
             player = await context.connect_player(channel=channel, self_deaf=True)
         async with context.typing():
             is_partial = query.is_search
-            response = {}
-            if not is_partial:
-                response: dict = await context.lavalink.get_tracks(query)
-                if not response.get("tracks"):
-                    await context.send(
-                        embed=await context.lavalink.construct_embed(
-                            description=_("No results found for {query}").format(query=await query.query_to_string()),
-                        ),
-                        ephemeral=True,
-                    )
-                    return
             if is_partial:
                 track = Track(node=player.node, data=None, query=query, requester=context.author.id)
                 await player.add(requester=context.author.id, track=track)
@@ -65,65 +54,47 @@ class HybridCommands(MPMixin, ABC):
                         description=_("{track} enqueued").format(
                             track=await track.get_track_display_name(with_url=True)
                         ),
-                    ),
-                    ephemeral=True,
-                )
-            elif query.is_single:
-                track = Track(
-                    node=player.node, data=response["tracks"][0], query=query.with_index(0), requester=context.author.id
-                )
-                await player.add(requester=context.author.id, track=track)
-                await context.send(
-                    embed=await context.lavalink.construct_embed(
-                        description=_("{track} enqueued").format(
-                            track=await track.get_track_display_name(with_url=True)
-                        ),
+                        messageable=context,
                     ),
                     ephemeral=True,
                 )
             else:
-                tracks = response["tracks"]
-                track_count = len(tracks)
-                await player.bulk_add(
-                    requester=context.author.id,
-                    tracks_and_queries=[
-                        Track(
-                            node=player.node,
-                            data=track["track"],
-                            query=query.with_index(i),
-                            requester=context.author.id,
-                        )
-                        async for i, track in AsyncIter(tracks).enumerate()
-                    ],
+                successful, count, failed = await self.lavalink.get_all_tracks_for_queries(
+                    query, requester=context.author.id
                 )
-                bundle_name = response.get("playlistInfo", {}).get("name")
-                if bundle_name and not (query.is_search or query.is_local):
-                    bundle_prefix = _("Album") if query.is_album else _("Playlist") if query.is_playlist else ""
-                    if bundle_name:
-                        bundle_name = discord.utils.escape_markdown(bundle_name)
-                        bundle_name = f"[{bundle_name}]"
-                    bundle_name += f"({query.query_identifier})"
-                    playlist_name = f"\n\n**{bundle_prefix}:  {bundle_name}**"
-                elif not bundle_name and query.is_album and query.is_local:
-                    bundle_prefix = _("Album")
-                    folder_name = await query.folder()
-                    if folder_name:
-                        bundle_name = discord.utils.escape_markdown(await query.query_to_string())
-                        playlist_name = f"\n\n**{bundle_prefix}**:  {bundle_name}"
-                    else:
-                        playlist_name = ""
-                else:
-                    playlist_name = ""
-
-                await context.send(
-                    embed=await context.lavalink.construct_embed(
-                        description=_("{track_count} tracks enqueued.{playlist_name}").format(
-                            track_count=track_count, playlist_name=playlist_name
+                if not successful:
+                    await context.send(
+                        embed=await context.lavalink.construct_embed(
+                            description=_("No results found for {query}").format(
+                                query=await query.query_to_string(ellipsis=False)
+                            ),
+                            messageable=context,
                         ),
-                    ),
-                    ephemeral=True,
-                )
-
+                        ephemeral=True,
+                    )
+                    return
+                track_obj_list = successful
+                track_count = count
+                if track_count == 1:
+                    await player.add(requester=context.author.id, track=track_obj_list[0])
+                    await context.send(
+                        embed=await context.lavalink.construct_embed(
+                            description=_("{track} enqueued").format(
+                                track=await track_obj_list[0].get_track_display_name(with_url=True)
+                            ),
+                            messageable=context,
+                        ),
+                        ephemeral=True,
+                    )
+                else:
+                    await player.bulk_add(requester=context.author.id, tracks_and_queries=track_obj_list)
+                    await context.send(
+                        embed=await context.lavalink.construct_embed(
+                            description=_("{track_count} tracks enqueued.").format(track_count=track_count),
+                            messageable=context,
+                        ),
+                        ephemeral=True,
+                    )
         if not player.is_playing:
             await player.next(requester=context.author)
 
