@@ -19,7 +19,7 @@ from pylav.utils import AsyncIter, PyLavContext
 
 from audio.cog import MY_GUILD, MPMixin
 from audio.cog.menus.menus import PaginatingMenu, PlaylistCreationFlow, PlaylistManageFlow
-from audio.cog.menus.sources import PlaylistListSource
+from audio.cog.menus.sources import Base64Source, PlaylistListSource
 from audio.cog.utils import decorators, rgetattr
 from audio.cog.utils.playlists import maybe_prompt_for_playlist
 
@@ -156,6 +156,7 @@ class PlaylistCommands(MPMixin, ABC):
         If you use the `start` (`play` or `enqueue`) alias the playlist will be played instead of you being shown the control menu.
         If you use the `delete` (`del`) alias the playlist will be deleted instead of you being shown the control menu.
         If you use the `save` (`queue`) alias the current queue will be added to the specified playlist.
+        if you use the `info` alias the playlist tracks will be displayed in a menu.
         """
 
         if isinstance(context, discord.Interaction):
@@ -167,6 +168,7 @@ class PlaylistCommands(MPMixin, ABC):
         invoked_with_start = context.invoked_with in ("start", "play", "enqueue")
         invoked_with_delete = context.invoked_with in ("delete", "del")
         invoked_with_queue = context.invoked_with in ("queue", "save")
+        invoked_with_info = context.invoked_with in ("info")
 
         playlists: list[PlaylistModel] = playlist  # type: ignore
         playlist = await maybe_prompt_for_playlist(cog=self, playlists=playlists, context=context)
@@ -174,6 +176,22 @@ class PlaylistCommands(MPMixin, ABC):
             return
         if invoked_with_start:
             await self.command_playlist_play.callback(self, context, playlist=[playlist])  # type: ignore
+            return
+        if invoked_with_info:
+            await PaginatingMenu(
+                bot=self.bot,
+                cog=self,
+                source=Base64Source(
+                    guild_id=context.guild.id,
+                    cog=self,
+                    author=context.author,
+                    entries=playlist.tracks,
+                    playlist=playlist,
+                ),
+                delete_after_timeout=True,
+                starting_page=0,
+                original_author=context.author,
+            ).start(context)
             return
 
         if not await playlist.can_manage(bot=self.bot, requester=context.author, guild=context.guild):
@@ -213,7 +231,8 @@ class PlaylistCommands(MPMixin, ABC):
                 "(**13**) - Select the queue button to add all track from the queue to the playlist.\n"
                 "(**14**) - Select the dedupe button to remove all duplicate entries from the queue.\n\n"
                 "The add/remove track buttons can be used multiple times to "
-                "add/remove multiple tracks and playlists at once.\n"
+                "add/remove multiple tracks and playlists at once.\n\n"
+                "A Query is anything playable by the play command - any query can be used by the add/remove buttons\n\n"
                 "The clear button will always be run first before any other operations.\n"
                 "The URL button will always run last - "
                 "Linking a playlist via the URL will overwrite any tracks added or removed to this playlist.\n\n"
@@ -276,7 +295,9 @@ class PlaylistCommands(MPMixin, ABC):
             if (playlist_prompt.add_tracks or playlist_prompt.remove_prompt) and not playlist_prompt.update:
                 if playlist_prompt.remove_tracks:
                     successful, count, failed = await self.lavalink.get_all_tracks_for_queries(
-                        *playlist_prompt.remove_tracks, requester=context.author, player=None
+                        *[await Query.from_string(rt) for rt in playlist_prompt.remove_tracks],
+                        requester=context.author,
+                        player=None,
                     )
                     for t in successful:
                         b64 = t.track
@@ -286,7 +307,10 @@ class PlaylistCommands(MPMixin, ABC):
                             tracks_removed += 1
                 if playlist_prompt.add_tracks:
                     successful, count, failed = await self.lavalink.get_all_tracks_for_queries(
-                        *playlist_prompt.remove_tracks, requester=context.author, player=None
+                        *[await Query.from_string(at) for at in playlist_prompt.add_tracks],
+                        requester=context.author,
+                        player=None,
+                        enqueue=False,
                     )
                     for t in successful:
                         b64 = t.track

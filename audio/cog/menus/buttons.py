@@ -28,7 +28,7 @@ LOGGER = getLogger("red.3pt.mp.ui.buttons")
 _ = Translator("MediaPlayer", Path(__file__))
 
 
-class AudioNavigateButton(discord.ui.Button):
+class NavigateButton(discord.ui.Button):
     def __init__(
         self,
         cog: CogT,

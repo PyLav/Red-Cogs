@@ -16,7 +16,6 @@ from pylav.utils import PyLavContext
 
 from audio.cog._types import CogT, SourcesT
 from audio.cog.menus.buttons import (
-    AudioNavigateButton,
     AudioStatsDisconnectAllButton,
     AudioStatsDisconnectButton,
     AudioStatsStopTrackButton,
@@ -29,6 +28,7 @@ from audio.cog.menus.buttons import (
     EqualizerButton,
     IncreaseVolumeButton,
     LabelButton,
+    NavigateButton,
     NoButton,
     PauseTrackButton,
     PlaylistClearButton,
@@ -211,28 +211,28 @@ class QueueMenu(BaseMenu):
         )
         self.author = original_author
 
-        self.forward_button = AudioNavigateButton(
+        self.forward_button = NavigateButton(
             style=discord.ButtonStyle.grey,
             emoji="\N{BLACK RIGHT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
             direction=1,
             row=0,
             cog=cog,
         )
-        self.backward_button = AudioNavigateButton(
+        self.backward_button = NavigateButton(
             style=discord.ButtonStyle.grey,
             emoji="\N{BLACK LEFT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
             direction=-1,
             row=0,
             cog=cog,
         )
-        self.first_button = AudioNavigateButton(
+        self.first_button = NavigateButton(
             style=discord.ButtonStyle.grey,
             emoji="\N{BLACK LEFT-POINTING DOUBLE TRIANGLE}",
             direction=0,
             row=0,
             cog=cog,
         )
-        self.last_button = AudioNavigateButton(
+        self.last_button = NavigateButton(
             style=discord.ButtonStyle.grey,
             emoji="\N{BLACK RIGHT-POINTING DOUBLE TRIANGLE}",
             direction=self.source.get_max_pages,
@@ -491,28 +491,28 @@ class QueuePickerMenu(BaseMenu):
         )
         self.author = original_author
         self.menu_type = menu_type
-        self.forward_button = AudioNavigateButton(
+        self.forward_button = NavigateButton(
             style=discord.ButtonStyle.grey,
             emoji="\N{BLACK RIGHT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
             direction=1,
             row=4,
             cog=cog,
         )
-        self.backward_button = AudioNavigateButton(
+        self.backward_button = NavigateButton(
             style=discord.ButtonStyle.grey,
             emoji="\N{BLACK LEFT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
             direction=-1,
             row=4,
             cog=cog,
         )
-        self.first_button = AudioNavigateButton(
+        self.first_button = NavigateButton(
             style=discord.ButtonStyle.grey,
             emoji="\N{BLACK LEFT-POINTING DOUBLE TRIANGLE}",
             direction=0,
             row=4,
             cog=cog,
         )
-        self.last_button = AudioNavigateButton(
+        self.last_button = NavigateButton(
             style=discord.ButtonStyle.grey,
             emoji="\N{BLACK RIGHT-POINTING DOUBLE TRIANGLE}",
             direction=self.source.get_max_pages,
@@ -640,28 +640,28 @@ class PlaylistPickerMenu(BaseMenu):
         self.result: PlaylistModel = None  # type: ignore
         self.selector_cls = selector_cls
         self.selector_text = selector_text
-        self.forward_button = AudioNavigateButton(
+        self.forward_button = NavigateButton(
             style=discord.ButtonStyle.grey,
             emoji="\N{BLACK RIGHT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
             direction=1,
             row=4,
             cog=cog,
         )
-        self.backward_button = AudioNavigateButton(
+        self.backward_button = NavigateButton(
             style=discord.ButtonStyle.grey,
             emoji="\N{BLACK LEFT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
             direction=-1,
             row=4,
             cog=cog,
         )
-        self.first_button = AudioNavigateButton(
+        self.first_button = NavigateButton(
             style=discord.ButtonStyle.grey,
             emoji="\N{BLACK LEFT-POINTING DOUBLE TRIANGLE}",
             direction=0,
             row=4,
             cog=cog,
         )
-        self.last_button = AudioNavigateButton(
+        self.last_button = NavigateButton(
             style=discord.ButtonStyle.grey,
             emoji="\N{BLACK RIGHT-POINTING DOUBLE TRIANGLE}",
             direction=self.source.get_max_pages,
@@ -767,28 +767,28 @@ class EffectPickerMenu(BaseMenu):
             starting_page=starting_page,
             **kwargs,
         )
-        self.forward_button = AudioNavigateButton(
+        self.forward_button = NavigateButton(
             style=discord.ButtonStyle.grey,
             emoji="\N{BLACK RIGHT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
             direction=1,
             row=4,
             cog=cog,
         )
-        self.backward_button = AudioNavigateButton(
+        self.backward_button = NavigateButton(
             style=discord.ButtonStyle.grey,
             emoji="\N{BLACK LEFT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
             direction=-1,
             row=4,
             cog=cog,
         )
-        self.first_button = AudioNavigateButton(
+        self.first_button = NavigateButton(
             style=discord.ButtonStyle.grey,
             emoji="\N{BLACK LEFT-POINTING DOUBLE TRIANGLE}",
             direction=0,
             row=4,
             cog=cog,
         )
-        self.last_button = AudioNavigateButton(
+        self.last_button = NavigateButton(
             style=discord.ButtonStyle.grey,
             emoji="\N{BLACK RIGHT-POINTING DOUBLE TRIANGLE}",
             direction=self.source.get_max_pages,
@@ -876,28 +876,28 @@ class StatsMenu(BaseMenu):
             **kwargs,
         )
 
-        self.forward_button = AudioNavigateButton(
+        self.forward_button = NavigateButton(
             style=discord.ButtonStyle.grey,
             emoji="\N{BLACK RIGHT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
             direction=1,
             row=4,
             cog=cog,
         )
-        self.backward_button = AudioNavigateButton(
+        self.backward_button = NavigateButton(
             style=discord.ButtonStyle.grey,
             emoji="\N{BLACK LEFT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
             direction=-1,
             row=4,
             cog=cog,
         )
-        self.first_button = AudioNavigateButton(
+        self.first_button = NavigateButton(
             style=discord.ButtonStyle.grey,
             emoji="\N{BLACK LEFT-POINTING DOUBLE TRIANGLE}",
             direction=0,
             row=4,
             cog=cog,
         )
-        self.last_button = AudioNavigateButton(
+        self.last_button = NavigateButton(
             style=discord.ButtonStyle.grey,
             emoji="\N{BLACK RIGHT-POINTING DOUBLE TRIANGLE}",
             direction=self.source.get_max_pages,
@@ -1076,28 +1076,28 @@ class SearchPickerMenu(BaseMenu):
             **kwargs,
         )
         self.author = original_author
-        self.forward_button = AudioNavigateButton(
+        self.forward_button = NavigateButton(
             style=discord.ButtonStyle.grey,
             emoji="\N{BLACK RIGHT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
             direction=1,
             row=4,
             cog=cog,
         )
-        self.backward_button = AudioNavigateButton(
+        self.backward_button = NavigateButton(
             style=discord.ButtonStyle.grey,
             emoji="\N{BLACK LEFT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
             direction=-1,
             row=4,
             cog=cog,
         )
-        self.first_button = AudioNavigateButton(
+        self.first_button = NavigateButton(
             style=discord.ButtonStyle.grey,
             emoji="\N{BLACK LEFT-POINTING DOUBLE TRIANGLE}",
             direction=0,
             row=4,
             cog=cog,
         )
-        self.last_button = AudioNavigateButton(
+        self.last_button = NavigateButton(
             style=discord.ButtonStyle.grey,
             emoji="\N{BLACK RIGHT-POINTING DOUBLE TRIANGLE}",
             direction=self.source.get_max_pages,
@@ -1183,28 +1183,28 @@ class PaginatingMenu(BaseMenu):
             **kwargs,
         )
         self.author = original_author
-        self.forward_button = AudioNavigateButton(
+        self.forward_button = NavigateButton(
             style=discord.ButtonStyle.grey,
             emoji="\N{BLACK RIGHT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
             direction=1,
             row=0,
             cog=cog,
         )
-        self.backward_button = AudioNavigateButton(
+        self.backward_button = NavigateButton(
             style=discord.ButtonStyle.grey,
             emoji="\N{BLACK LEFT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
             direction=-1,
             row=0,
             cog=cog,
         )
-        self.first_button = AudioNavigateButton(
+        self.first_button = NavigateButton(
             style=discord.ButtonStyle.grey,
             emoji="\N{BLACK LEFT-POINTING DOUBLE TRIANGLE}",
             direction=0,
             row=0,
             cog=cog,
         )
-        self.last_button = AudioNavigateButton(
+        self.last_button = NavigateButton(
             style=discord.ButtonStyle.grey,
             emoji="\N{BLACK RIGHT-POINTING DOUBLE TRIANGLE}",
             direction=self.source.get_max_pages,
