@@ -63,9 +63,11 @@ class MediaPlayer(
             enable_slash=False,
             enable_context=False,
         )
+        self._init_task = None
 
     async def initialize(self) -> None:
         if not self.lavalink.initialized:
+            await self.bot.wait_until_red_ready()
             asyncio.create_task(self._sync_tree())
             spotify = await self.bot.get_shared_api_tokens("spotify")
             spotify_tokens = {"client_id": spotify.get("client_id"), "client_secret": spotify.get("client_secret")}
@@ -76,6 +78,8 @@ class MediaPlayer(
         await self.bot.tree.sync(guild=MY_GUILD)
 
     async def cog_unload(self) -> None:
+        if self._init_task is not None:
+            self._init_task.cancel()
         await self.bot.lavalink.unregister(cog=self)
 
     @red_commands.command(name="sync")
