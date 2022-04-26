@@ -249,7 +249,6 @@ class HybridCommands(MPMixin, ABC):
 
     @commands.hybrid_command(name="stop", description="Stops the player and remove all tracks from the queue.")
     @app_commands.guilds(MY_GUILD)
-    @commands.is_owner()
     @commands.guild_only()
     @requires_player()
     async def command_stop(self, context: PyLavContext):
@@ -283,7 +282,6 @@ class HybridCommands(MPMixin, ABC):
         name="dc", description="Disconnects the player from the voice channel.", aliases=["disconnect"]
     )
     @app_commands.guilds(MY_GUILD)
-    @commands.is_owner()
     @requires_player()
     async def command_disconnect(self, context: PyLavContext):
         """Disconnects the player from the voice channel."""
