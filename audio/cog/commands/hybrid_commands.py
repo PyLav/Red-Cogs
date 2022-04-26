@@ -32,7 +32,7 @@ class HybridCommands(MPMixin, ABC):
         Separate multiple queries with a new line (`shift + enter`).
 
         If you want to play a a local track, you can do so by specifying the full path or path relatively to the local tracks folder.
-        For example if my local tracks folder is : `/home/draper/music`
+        For example if my local tracks folder is: `/home/draper/music`
 
         I can play a single track with `track.mp3` or `/home/draper/music/track.mp3`
         I can play everything inside a folder with `sub-folder/folder`
