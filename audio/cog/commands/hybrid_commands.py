@@ -299,10 +299,11 @@ class HybridCommands(MPMixin, ABC):
                 ephemeral=True,
             )
             return
+        channel = player.channel
         await player.disconnect(requester=context.author)
         await context.send(
             embed=await context.lavalink.construct_embed(
-                description=_("Disconnected from voice channel"), messageable=context
+                description=_("Disconnected from {channel}").format(channel=channel.mention), messageable=context
             ),
             ephemeral=True,
         )
@@ -321,14 +322,6 @@ class HybridCommands(MPMixin, ABC):
         if not player:
             await context.send(
                 embed=await context.lavalink.construct_embed(description=_("No player detected."), messageable=context),
-                ephemeral=True,
-            )
-            return
-        if player.queue.empty():
-            await context.send(
-                embed=await context.lavalink.construct_embed(
-                    description=_("There is nothing in the queue."), messageable=context
-                ),
                 ephemeral=True,
             )
             return

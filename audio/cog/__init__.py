@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import asyncio
 from abc import ABC
 from pathlib import Path
 from typing import Literal
@@ -65,6 +66,7 @@ class MediaPlayer(
 
     async def initialize(self) -> None:
         if not self.lavalink.initialized:
+            asyncio.create_task(self._sync_tree())
             spotify = await self.bot.get_shared_api_tokens("spotify")
             spotify_tokens = {"client_id": spotify.get("client_id"), "client_secret": spotify.get("client_secret")}
             await self.lavalink.initialize(**spotify_tokens)
@@ -74,8 +76,7 @@ class MediaPlayer(
         await self.bot.tree.sync(guild=MY_GUILD)
 
     async def cog_unload(self) -> None:
-        # await self.bot.lavalink.unregister(cog=self)
-        pass
+        await self.bot.lavalink.unregister(cog=self)
 
     @red_commands.command(name="sync")
     @red_commands.guild_only()
