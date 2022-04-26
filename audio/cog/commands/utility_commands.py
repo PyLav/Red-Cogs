@@ -29,7 +29,9 @@ class UtilityCommands(MPMixin, ABC):
         player = context.lavalink.get_player(context.guild)
         if not player:
             await context.send(
-                embed=await context.lavalink.construct_embed(description="Not connected to a voice channel."),
+                embed=await context.lavalink.construct_embed(
+                    description="Not connected to a voice channel.", messageable=context
+                ),
                 ephemeral=True,
             )
             return
@@ -38,7 +40,7 @@ class UtilityCommands(MPMixin, ABC):
         await player.set_volume(volume, requester=context.author)
         await context.send(
             embed=await context.lavalink.construct_embed(
-                description=_("Player volume set to {volume}%.").format(volume=volume)
+                description=_("Player volume set to {volume}%.").format(volume=volume), messageable=context
             ),
             ephemeral=True,
         )

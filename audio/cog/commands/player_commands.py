@@ -35,7 +35,7 @@ class PlayerCommands(MPMixin, ABC):
 
         if player.queue.empty():
             await context.send(
-                embed=await context.construct_embed(description=_("Queue is empty.")),
+                embed=await context.construct_embed(description=_("Queue is empty."), messageable=context),
                 ephemeral=True,
             )
             return
@@ -43,6 +43,7 @@ class PlayerCommands(MPMixin, ABC):
             await context.send(
                 embed=await context.construct_embed(
                     description=_("Track index must be between 1 and {size}.").format(size=player.queue.size()),
+                    messageable=context,
                 ),
                 ephemeral=True,
             )
@@ -58,6 +59,7 @@ class PlayerCommands(MPMixin, ABC):
             await context.send(
                 embed=await context.construct_embed(
                     description=_("There is no track in position {position}.").format(position=queue_number),
+                    messageable=context,
                 ),
                 ephemeral=True,
             )
@@ -71,6 +73,7 @@ class PlayerCommands(MPMixin, ABC):
                         current=await player.current.get_track_display_name(with_url=True),
                         eta=format_time(player.current.duration - player.position),
                     ),
+                    messageable=context,
                 ),
                 ephemeral=True,
             )
@@ -82,6 +85,7 @@ class PlayerCommands(MPMixin, ABC):
                         current=await player.current.get_track_display_name(with_url=True),
                         eta=format_time(player.current.duration - player.position),
                     ),
+                    messageable=context,
                 ),
                 ephemeral=True,
             )
@@ -104,7 +108,7 @@ class PlayerCommands(MPMixin, ABC):
         queue_number = None
         if player.queue.empty():
             await context.send(
-                embed=await context.construct_embed(description=_("Queue is empty.")),
+                embed=await context.construct_embed(description=_("Queue is empty."), messageable=context),
                 ephemeral=True,
             )
             return
@@ -121,6 +125,7 @@ class PlayerCommands(MPMixin, ABC):
                 await context.send(
                     embed=await context.construct_embed(
                         description=_("Track index must be between 1 and {size}.").format(size=player.queue.size()),
+                        messageable=context,
                     ),
                     ephemeral=True,
                 )
@@ -133,6 +138,7 @@ class PlayerCommands(MPMixin, ABC):
                 await context.send(
                     embed=await context.construct_embed(
                         description=_("There is no track in position {position}.").format(position=queue_number),
+                        messageable=context,
                     ),
                     ephemeral=True,
                 )
@@ -165,6 +171,7 @@ class PlayerCommands(MPMixin, ABC):
                         description=_("{track} not found in queue.").format(
                             track=await track.get_track_display_name(with_url=True)
                         ),
+                        messageable=context,
                     ),
                     ephemeral=True,
                 )
@@ -176,6 +183,7 @@ class PlayerCommands(MPMixin, ABC):
                     track=await track.get_track_display_name(with_url=True),
                     entry_plural=_("entry") if number_removed == 1 else _("entries"),
                 ),
+                messageable=context,
             ),
             ephemeral=True,
         )

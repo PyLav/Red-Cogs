@@ -102,6 +102,7 @@ class PlaylistCommands(MPMixin, ABC):
                     description=_("Name: `{name}`\nID: `{id}`\nTracks: `{track_count}`").format(
                         name=name, id=context.message.id, track_count=len(tracks)
                     ),
+                    messageable=context,
                 ),
                 ephemeral=True,
             )
@@ -198,6 +199,7 @@ class PlaylistCommands(MPMixin, ABC):
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("You do not have permission to manage this playlist."),
+                    messageable=context,
                 ),
                 ephemeral=True,
             )
@@ -272,6 +274,7 @@ class PlaylistCommands(MPMixin, ABC):
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     title=_("Playlist deleted."),
+                    messageable=context,
                     description=_("{user}, playlist {playlist_name} has been deleted.").format(
                         user=context.author.mention, playlist_name=await playlist.get_name_formatted(with_url=True)
                     ),
@@ -325,6 +328,7 @@ class PlaylistCommands(MPMixin, ABC):
                     if not tracks.get("tracks"):
                         await context.send(
                             embed=await context.lavalink.construct_embed(
+                                messageable=context,
                                 description=_(
                                     "Playlist **{playlist_name}** could not be updated with URL: <{url}>."
                                 ).format(
@@ -366,6 +370,7 @@ class PlaylistCommands(MPMixin, ABC):
                 await playlist.save()
                 await context.send(
                     embed=await context.lavalink.construct_embed(
+                        messageable=context,
                         title=_("Playlist updated."),
                         description=_("{user}, playlist {playlist_name} has been updated.{extras}").format(
                             user=context.author.mention,
@@ -378,6 +383,7 @@ class PlaylistCommands(MPMixin, ABC):
             else:
                 await context.send(
                     embed=await context.lavalink.construct_embed(
+                        messageable=context,
                         title=_("Playlist unchanged."),
                         description=_("{user}, playlist {playlist_name} has not been updated.").format(
                             user=context.author.mention, playlist_name=await playlist.get_name_formatted(with_url=True)
@@ -405,9 +411,10 @@ class PlaylistCommands(MPMixin, ABC):
                 if not context.message.attachments:
                     await context.send(
                         embed=await context.lavalink.construct_embed(
+                            messageable=context,
                             description=_(
                                 "You must either provide a URL or attach a playlist file to upload a playlist."
-                            )
+                            ),
                         ),
                         ephemeral=True,
                     )
@@ -424,14 +431,17 @@ class PlaylistCommands(MPMixin, ABC):
                         valid_playlist_urls.add(file.url)
             if not valid_playlist_urls:
                 await context.send(
-                    embed=await context.lavalink.construct_embed(description=_("No valid playlist file provided.")),
+                    embed=await context.lavalink.construct_embed(
+                        messageable=context, description=_("No valid playlist file provided.")
+                    ),
                     ephemeral=True,
                 )
                 return
             elif len(valid_playlist_urls) > 1:
                 await context.send(
                     embed=await context.lavalink.construct_embed(
-                        description=_("Multiple playlist files provided - Currently only 1 per message is allowed.")
+                        messageable=context,
+                        description=_("Multiple playlist files provided - Currently only 1 per message is allowed."),
                     ),
                     ephemeral=True,
                 )
@@ -449,7 +459,7 @@ class PlaylistCommands(MPMixin, ABC):
             if not saved_playlists:
                 await context.send(
                     embed=await context.lavalink.construct_embed(
-                        description=_("Failed to save any of the requested playlists.")
+                        messageable=context, description=_("Failed to save any of the requested playlists.")
                     ),
                     ephemeral=True,
                 )
@@ -457,6 +467,7 @@ class PlaylistCommands(MPMixin, ABC):
             if invalid_playlists_urls:
                 await context.send(
                     embed=await context.lavalink.construct_embed(
+                        messageable=context,
                         description=_("Failed to save the following playlists:\n{invalid_playlists}").format(
                             invalid_playlists=humanize_list(list(invalid_playlists_urls))
                         ),
@@ -466,6 +477,7 @@ class PlaylistCommands(MPMixin, ABC):
             if saved_playlists:
                 await context.send(
                     embed=await context.lavalink.construct_embed(
+                        messageable=context,
                         description=_("Successfully saved the following playlists:\n{saved_playlists}").format(
                             saved_playlists=humanize_list(saved_playlists)
                         ),
@@ -489,7 +501,7 @@ class PlaylistCommands(MPMixin, ABC):
             if not channel:
                 await context.send(
                     embed=await context.lavalink.construct_embed(
-                        description=_("You must be in a voice channel to allow me to connect.")
+                        messageable=context, description=_("You must be in a voice channel to allow me to connect.")
                     ),
                     ephemeral=True,
                 )
@@ -507,6 +519,7 @@ class PlaylistCommands(MPMixin, ABC):
         playlist_name = f"\n\n**{bundle_prefix}**:  {await playlist.get_name_formatted(with_url=True)}"
         await context.send(
             embed=await context.lavalink.construct_embed(
+                messageable=context,
                 description=_("{track_count} tracks enqueued.{playlist_name}").format(
                     track_count=track_count, playlist_name=playlist_name
                 ),
