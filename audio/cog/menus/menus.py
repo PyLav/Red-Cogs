@@ -429,9 +429,9 @@ class QueueMenu(BaseMenu):
                 self.increase_volume_button.disabled = True
             if player.history.empty():
                 self.previous_track_button.disabled = True
-            if player.repeat_current:
+            if player.config.repeat_current:
                 self.add_item(self.repeat_button_on)
-            elif player.repeat_queue:
+            elif player.config.repeat_queue:
                 self.add_item(self.repeat_queue_button_on)
             else:
                 self.add_item(self.repeat_button_off)

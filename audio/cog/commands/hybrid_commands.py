@@ -404,7 +404,7 @@ class HybridCommands(MPMixin, ABC):
             await player.set_repeat("queue", True, context.author)
             msg = _("Repeating the queue")
         else:
-            if player.repeat_queue or player.repeat_current:
+            if player.config.repeat_queue or player.config.repeat_current:
                 await player.set_repeat("disable", False, context.author)
                 msg = _("Repeating disabled")
             else:

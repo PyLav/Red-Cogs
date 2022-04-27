@@ -211,7 +211,7 @@ class ToggleRepeatButton(discord.ui.Button):
                 ),
                 ephemeral=True,
             )
-        if player.repeat_current:
+        if player.config.repeat_current:
             repeat_queue = True
         else:
             repeat_queue = False
@@ -239,7 +239,7 @@ class ToggleRepeatQueueButton(discord.ui.Button):
                 ),
                 ephemeral=True,
             )
-        if player.repeat_current:
+        if player.config.repeat_current:
             repeat_queue = True
         else:
             repeat_queue = False

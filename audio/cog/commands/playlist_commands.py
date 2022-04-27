@@ -169,7 +169,7 @@ class PlaylistCommands(MPMixin, ABC):
         invoked_with_start = context.invoked_with in ("start", "play", "enqueue")
         invoked_with_delete = context.invoked_with in ("delete", "del")
         invoked_with_queue = context.invoked_with in ("queue", "save")
-        invoked_with_info = context.invoked_with in ("info")
+        invoked_with_info = context.invoked_with in ("info",)
 
         playlists: list[PlaylistModel] = playlist  # type: ignore
         playlist = await maybe_prompt_for_playlist(cog=self, playlists=playlists, context=context)
