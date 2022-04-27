@@ -228,7 +228,7 @@ class HybridCommands(MPMixin, ABC):
                 ephemeral=True,
             )
             return
-        if not player.current:
+        if not player.current and not player.autoplay_enabled:
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("Player is not currently playing anything."), messageable=context
@@ -236,15 +236,21 @@ class HybridCommands(MPMixin, ABC):
                 ephemeral=True,
             )
             return
-        await context.send(
-            embed=await context.lavalink.construct_embed(
-                description=_("Skipped - {track}").format(
-                    track=await player.current.get_track_display_name(with_url=True)
+        if player.current:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Skipped - {track}").format(
+                        track=await player.current.get_track_display_name(with_url=True)
+                    ),
+                    messageable=context,
                 ),
-                messageable=context,
-            ),
-            ephemeral=True,
-        )
+                ephemeral=True,
+            )
+        elif player.autoplay_enabled:
+            await context.send(
+                embed=await context.lavalink.construct_embed(description=_("Autoplay started."), messageable=context),
+                ephemeral=True,
+            )
         await player.skip(requester=context.author)
 
     @commands.hybrid_command(name="stop", description="Stops the player and remove all tracks from the queue.")
@@ -394,7 +400,11 @@ class HybridCommands(MPMixin, ABC):
                 msg = _("Repeating disabled")
             else:
                 await player.set_repeat("current", True, context.author)
-                msg = _("Repeating {track}").format(track=await player.current.get_track_display_name(with_url=True))
+                msg = _("Repeating {track}").format(
+                    track=await player.current.get_track_display_name(with_url=True)
+                    if player.current
+                    else _("current track")
+                )
         await context.send(
             embed=await context.lavalink.construct_embed(description=msg, messageable=context), ephemeral=True
         )
