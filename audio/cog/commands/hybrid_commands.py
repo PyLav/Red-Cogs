@@ -172,16 +172,25 @@ class HybridCommands(MPMixin, ABC):
             )
             return
         if (player := context.lavalink.get_player(context.guild)) is None:
-            await context.lavalink.connect_player(context.author, channel=channel, self_deaf=True)
+            player = await context.lavalink.connect_player(context.author, channel=channel, self_deaf=True)
         else:
             await player.move_to(context.author, channel, self_deaf=True)
 
-        await context.send(
-            embed=await context.lavalink.construct_embed(
-                description=_("Connected to {channel}").format(channel=channel.mention), messageable=context
-            ),
-            ephemeral=True,
-        )
+        if player.forced_vc:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("I'm forced to only join {channel}.").format(channel=player.forced_vc.mention),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+        else:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Connected to {channel}").format(channel=player.channel.mention), messageable=context
+                ),
+                ephemeral=True,
+            )
 
     @commands.hybrid_command(name="np", description="Shows the track currently being played.", aliases=["now"])
     @app_commands.guilds(MY_GUILD)
