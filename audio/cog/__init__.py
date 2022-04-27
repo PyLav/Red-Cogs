@@ -11,7 +11,7 @@ from redbot.core import commands as red_commands
 from redbot.core.data_manager import cog_data_path
 from redbot.core.i18n import Translator
 
-from pylav import Client, CogAlreadyRegistered, CogHasBeenRegistered, exceptions
+from pylav import Client, exceptions
 from pylav.types import BotT
 from pylav.utils import PyLavContext
 
@@ -43,20 +43,12 @@ class MediaPlayer(
     PlaylistCommands,
     metaclass=CompositeMetaClass,
 ):
+    lavalink: Client
+
     def __init__(self, bot: BotT, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot
-        try:
-            self.lavalink: Client = Client(bot=bot, cog=self, config_folder=cog_data_path(raw_name="PyLav"))
-        except (CogHasBeenRegistered, CogAlreadyRegistered):
-            self.lavalink: Client = self.bot.lavalink
-            # self.lavalink is easier for type hinting
-            #   However this is here just for the sake of completeness
-            #   you can access the client via self.bot.lavalink if you prefer
-            #   the only important thing here is that you initialize the client and handle the 3 exceptions it can throw
-            #   CogHasBeenRegistered, CogAlreadyRegistered, AnotherClientAlreadyRegistered
-            #   In this example I don't handle AnotherClientAlreadyRegistered, as I want the cog to error loading
-            #   if another client is already registered (i.e lavalink.py)
+        self.lavalink = Client(bot=self.bot, cog=self, config_folder=cog_data_path(raw_name="PyLav"))
         self.config = Config.get_conf(self, identifier=208903205982044161)
         self.config.register_guild(enable_slash=True, enable_context=False)
         self.config.register_global(
@@ -66,12 +58,10 @@ class MediaPlayer(
         self._init_task = None
 
     async def initialize(self) -> None:
-        if not self.lavalink.initialized:
-            await self.bot.wait_until_red_ready()
-            asyncio.create_task(self._sync_tree())
-            spotify = await self.bot.get_shared_api_tokens("spotify")
-            spotify_tokens = {"client_id": spotify.get("client_id"), "client_secret": spotify.get("client_secret")}
-            await self.lavalink.initialize(**spotify_tokens)
+        await self.lavalink.register(self)
+        spotify = await self.bot.get_shared_api_tokens("spotify")
+        spotify_tokens = {"client_id": spotify.get("client_id"), "client_secret": spotify.get("client_secret")}
+        await self.lavalink.initialize(**spotify_tokens)
 
     async def _sync_tree(self) -> None:
         await self.bot.wait_until_red_ready()

@@ -1466,7 +1466,13 @@ class PlaylistManageFlow(discord.ui.View):
     author: discord.abc.User
 
     def __init__(
-        self, cog: CogT, original_author: discord.abc.User, playlist: PlaylistModel, *, timeout: int = 120
+        self,
+        cog: CogT,
+        original_author: discord.abc.User,
+        playlist: PlaylistModel,
+        *,
+        timeout: int = 120,
+        manageable: bool = True,
     ) -> None:
         super().__init__(timeout=timeout)
         from audio.cog.menus.modals import PromptForInput
@@ -1591,23 +1597,25 @@ class PlaylistManageFlow(discord.ui.View):
         self.update = False
         self.queue = None
         self.dedupe = None
-
-        self.add_item(self.done_button)
+        if manageable:
+            self.add_item(self.done_button)
         self.add_item(self.close_button)
-        self.add_item(self.delete_button)
-        self.add_item(self.clear_button)
+        if manageable:
+            self.add_item(self.delete_button)
+            self.add_item(self.clear_button)
         self.add_item(self.update_button)
-
-        self.add_item(self.name_button)
-        self.add_item(self.url_button)
-        self.add_item(self.add_button)
-        self.add_item(self.remove_button)
+        if manageable:
+            self.add_item(self.name_button)
+            self.add_item(self.url_button)
+            self.add_item(self.add_button)
+            self.add_item(self.remove_button)
         self.add_item(self.download_button)
 
         self.add_item(self.playlist_enqueue_button)
         self.add_item(self.playlist_info_button)
-        self.add_item(self.queue_button)
-        self.add_item(self.dedupe_button)
+        if manageable:
+            self.add_item(self.queue_button)
+            self.add_item(self.dedupe_button)
 
     async def send_initial_message(
         self, ctx: PyLavContext | discord.Interaction, description: str = None, title: str = None

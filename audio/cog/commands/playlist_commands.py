@@ -13,6 +13,7 @@ from redbot.core.i18n import Translator
 from redbot.core.utils.chat_formatting import bold, humanize_list
 
 from pylav import InvalidPlaylist, Query, Track
+from pylav.constants import BUNDLED_PLAYLIST_IDS
 from pylav.converters import PlaylistConverter, QueryPlaylistConverter
 from pylav.sql.models import PlaylistModel
 from pylav.utils import AsyncIter, PyLavContext
@@ -194,29 +195,26 @@ class PlaylistCommands(MPMixin, ABC):
                 original_author=context.author,
             ).start(context)
             return
-
-        if not await playlist.can_manage(bot=self.bot, requester=context.author, guild=context.guild):
+        if playlist.id not in BUNDLED_PLAYLIST_IDS:
+            manageable = await playlist.can_manage(bot=self.bot, requester=context.author, guild=context.guild)
+        else:
+            manageable = False
+        if invoked_with_delete and not manageable:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("You do not have permission to manage this playlist."),
                     messageable=context,
+                    description=_("{user}, playlist {playlist_name} cannot be managed by yourself.").format(
+                        user=context.author.mention, playlist_name=await playlist.get_name_formatted(with_url=True)
+                    ),
                 ),
                 ephemeral=True,
             )
             return
 
-        playlist_prompt = PlaylistManageFlow(
-            cog=self,
-            original_author=context.author,
-            timeout=600,
-            playlist=playlist,
-        )
-        if not (invoked_with_delete or invoked_with_queue):
-            title = _("Let's manage: {playlist_name}").format(playlist_name=playlist.name)
-
-            description = _(
+        if manageable:
+            info_description = _(
                 "(**1 **) - Apply changes to playlist.\n"
-                "(**2 **) - Cancel any changes made.\n"
+                "(**2 **) - Cancel any changes made and close the menu.\n"
                 "(**3 **) - Delete this playlist.\n"
                 "(**4 **) - Remove all tracks from this playlist.\n"
                 "(**5 **) - Update the playlist with the latest tracks.\n"
@@ -225,7 +223,6 @@ class PlaylistCommands(MPMixin, ABC):
                 "(**7 **) - Link this playlist to an existing playlist/album.\n"
                 "(**8 **) - Add a query to this playlist.\n"
                 "(**9 **) - Remove a query from this playlist.\n"
-                "(**10**) - Download the playlist file.\n"
                 "(**11**) - Add current playlist to the queue.\n"
                 "(**12**) - Show tracks in current playlist.\n"
                 "(**13**) - Add tracks from queue to this playlist.\n"
@@ -238,36 +235,62 @@ class PlaylistCommands(MPMixin, ABC):
                 "Linking a playlist via the URL will overwrite any tracks added or removed to this playlist.\n\n"
                 "If you interact with a button multiple times other than the add/remove buttons "
                 "only the last interaction will take effect.\n\n\n"
-                "**Currently managing**:\n"
-                "Name:     {playlist_name}\n"
-                "Scope:    {scope}\n"
-                "Author:   {author}\n"
-                "Tracks:   {tracks} tracks\n"
-                "URL:      {url}\n"
-            ).format(
+            )
+        else:
+            info_description = (
+                "(**1 **) - Close the menu.\n"
+                "(**2 **) - Update the playlist with the latest tracks.\n"
+                "(**3**) - Download the playlist file.\n"
+                "(**4**) - Add current playlist to the queue.\n"
+                "(**5**) - Show tracks in current playlist.\n\n\n"
+            )
+
+        playlist_info = _(
+            "**Currently managing**:\n"
+            "Name:     {playlist_name}\n"
+            "Scope:    {scope}\n"
+            "Author:   {author}\n"
+            "Tracks:   {tracks} tracks\n"
+            "URL:      {url}\n"
+        )
+        playlist_prompt = PlaylistManageFlow(
+            cog=self,
+            original_author=context.author,
+            timeout=600,
+            playlist=playlist,
+            manageable=manageable,
+        )
+        if not (invoked_with_delete or invoked_with_queue):
+            if manageable:
+                title = _("Let's manage: {playlist_name}").format(playlist_name=playlist.name)
+            else:
+                title = _("Let's take a look at: {playlist_name}").format(playlist_name=playlist.name)
+            description = info_description + playlist_info
+
+            description = description.format(
                 playlist_name=await playlist.get_name_formatted(with_url=True),
                 scope=await playlist.get_scope_name(bot=self.bot, mention=True, guild=context.guild),
                 author=await playlist.get_author_name(bot=self.bot, mention=True),
-                url=playlist.url or "",
+                url=playlist.url or _("N/A"),
                 tracks=len(playlist.tracks),
             )
 
             await playlist_prompt.start(ctx=context, title=title, description=description)
             await playlist_prompt.completed.wait()
 
-        if invoked_with_delete:
+        if manageable and invoked_with_delete:
             playlist_prompt.delete = True
             playlist_prompt.cancelled = False
 
-        if invoked_with_queue and not all([playlist_prompt.update, playlist_prompt.url]):
+        if manageable and invoked_with_queue and not all([playlist_prompt.update, playlist_prompt.url]):
             playlist_prompt.queue = True
             playlist_prompt.cancelled = False
 
         if playlist_prompt.cancelled:
             return
-        if playlist_prompt.queue and any([playlist_prompt.update, playlist_prompt.url]):
+        if manageable and playlist_prompt.queue and any([playlist_prompt.update, playlist_prompt.url]):
             playlist_prompt.queue = False
-        if playlist_prompt.delete:
+        if manageable and playlist_prompt.delete:
             await playlist.delete()
             await context.send(
                 embed=await context.lavalink.construct_embed(
@@ -284,77 +307,84 @@ class PlaylistCommands(MPMixin, ABC):
         tracks_removed = 0
         async with context.typing():
             changed = False
-            if playlist_prompt.clear:
-                changed = True
-                playlist.tracks = []
-            if playlist_prompt.name and playlist_prompt.name != playlist.name:
-                changed = True
-                playlist.name = playlist_prompt.name
-            if playlist_prompt.url and playlist_prompt.url != playlist.url:
-                changed = True
-                playlist.url = playlist_prompt.url
-            if (playlist_prompt.add_tracks or playlist_prompt.remove_prompt) and not playlist_prompt.update:
-                if playlist_prompt.remove_tracks:
-                    successful, count, failed = await self.lavalink.get_all_tracks_for_queries(
-                        *[await Query.from_string(rt) for rt in playlist_prompt.remove_tracks],
-                        requester=context.author,
-                        player=None,
-                    )
-                    for t in successful:
-                        b64 = t.track
-                        while b64 in playlist.tracks:
-                            changed = True
-                            playlist.tracks.remove(b64)
-                            tracks_removed += 1
-                if playlist_prompt.add_tracks:
-                    successful, count, failed = await self.lavalink.get_all_tracks_for_queries(
-                        *[await Query.from_string(at) for at in playlist_prompt.add_tracks],
-                        requester=context.author,
-                        player=None,
-                        enqueue=False,
-                    )
-                    for t in successful:
-                        b64 = t.track
-                        changed = True
-                        playlist.tracks.append(b64)
-                        tracks_added += 1
-            if playlist_prompt.update and playlist.url:
-                with contextlib.suppress(Exception):
-                    tracks: dict = await self.lavalink.get_tracks(
-                        query=await Query.from_string(playlist.url), bypass_cache=True
-                    )
-                    if not tracks.get("tracks"):
-                        await context.send(
-                            embed=await context.lavalink.construct_embed(
-                                messageable=context,
-                                description=_(
-                                    "Playlist **{playlist_name}** could not be updated with URL: <{url}>."
-                                ).format(
-                                    playlist_name=await playlist.get_name_formatted(with_url=True), url=playlist.url
-                                ),
-                            ),
-                            ephemeral=True,
-                        )
-                        return
-                    tracks = [track["track"] for track in tracks["tracks"] if "track" in track]  # type: ignore
-                    if tracks:
-                        changed = True
-                        playlist.tracks = tracks
-            if playlist_prompt.dedupe:
-                new_tracks = list(dict.fromkeys(playlist.tracks))
-                diff = len(playlist.tracks) - len(new_tracks)
-                if diff:
+            if manageable:
+                if playlist_prompt.clear:
                     changed = True
-                    playlist.tracks = new_tracks
-                    tracks_removed += diff
-            if playlist_prompt.queue:
-                changed = True
-                if context.player:
-                    tracks: collections.deque[Track] = context.player.queue.raw_queue
-                    if tracks:
-                        queue_tracks = [track.track for track in tracks if track.track]
-                        playlist.tracks.extend(queue_tracks)
-                        tracks_added += len(queue_tracks)
+                    playlist.tracks = []
+                if playlist_prompt.name and playlist_prompt.name != playlist.name:
+                    changed = True
+                    playlist.name = playlist_prompt.name
+                if playlist_prompt.url and playlist_prompt.url != playlist.url:
+                    changed = True
+                    playlist.url = playlist_prompt.url
+                if (playlist_prompt.add_tracks or playlist_prompt.remove_prompt) and not playlist_prompt.update:
+                    if playlist_prompt.remove_tracks:
+                        successful, count, failed = await self.lavalink.get_all_tracks_for_queries(
+                            *[await Query.from_string(rt) for rt in playlist_prompt.remove_tracks],
+                            requester=context.author,
+                            player=None,
+                        )
+                        for t in successful:
+                            b64 = t.track
+                            while b64 in playlist.tracks:
+                                changed = True
+                                playlist.tracks.remove(b64)
+                                tracks_removed += 1
+                    if playlist_prompt.add_tracks:
+                        successful, count, failed = await self.lavalink.get_all_tracks_for_queries(
+                            *[await Query.from_string(at) for at in playlist_prompt.add_tracks],
+                            requester=context.author,
+                            player=None,
+                            enqueue=False,
+                        )
+                        for t in successful:
+                            b64 = t.track
+                            changed = True
+                            playlist.tracks.append(b64)
+                            tracks_added += 1
+            if playlist_prompt.update:
+                if playlist.url:
+                    with contextlib.suppress(Exception):
+                        tracks: dict = await self.lavalink.get_tracks(
+                            query=await Query.from_string(playlist.url), bypass_cache=True
+                        )
+                        if not tracks.get("tracks"):
+                            await context.send(
+                                embed=await context.lavalink.construct_embed(
+                                    messageable=context,
+                                    description=_(
+                                        "Playlist **{playlist_name}** could not be updated with URL: <{url}>."
+                                    ).format(
+                                        playlist_name=await playlist.get_name_formatted(with_url=True), url=playlist.url
+                                    ),
+                                ),
+                                ephemeral=True,
+                            )
+                            return
+                        tracks = [track["track"] for track in tracks["tracks"] if "track" in track]  # type: ignore
+                        if tracks:
+                            changed = True
+                            playlist.tracks = tracks
+                elif playlist.id in BUNDLED_PLAYLIST_IDS:
+                    changed = True
+                    await self.lavalink.playlist_db_manager.update_bundled_playlists(playlist.id)
+            if manageable:
+                if playlist_prompt.dedupe:
+                    new_tracks = list(dict.fromkeys(playlist.tracks))
+                    diff = len(playlist.tracks) - len(new_tracks)
+                    if diff:
+                        changed = True
+                        playlist.tracks = new_tracks
+                        tracks_removed += diff
+                if playlist_prompt.queue:
+                    changed = True
+                    if context.player:
+                        tracks: collections.deque[Track] = context.player.queue.raw_queue
+                        if tracks:
+                            queue_tracks = [track.track for track in tracks if track.track]
+                            playlist.tracks.extend(queue_tracks)
+                            tracks_added += len(queue_tracks)
+
             if changed:
                 extras = ""
                 if tracks_removed:
