@@ -1522,13 +1522,13 @@ class PlaylistManageFlow(discord.ui.View):
             op="url",
         )
         self.add_button = PlaylistUpsertButton(
-            style=discord.ButtonStyle.grey,
+            style=discord.ButtonStyle.green,
             cog=cog,
             op="add",
             emoji=discord.PartialEmoji(name="plus", animated=False, id=965672202416570368),
         )
         self.remove_button = PlaylistUpsertButton(
-            style=discord.ButtonStyle.grey,
+            style=discord.ButtonStyle.red,
             cog=cog,
             op="remove",
             emoji=discord.PartialEmoji(name="minus", animated=False, id=965672202013925447),

@@ -60,11 +60,11 @@ class PlaylistCommands(MPMixin, ABC):
             )
             title = _("Let's create a playlist!")
             description = _(
-                "(**1 **) - Apply changes to playlist.\n"
-                "(**2 **) - Cancel any changes made.\n"
-                "(**3 **) - Add a name to the playlist.\n"
-                "(**4 **) - Link this playlist to an existing playlist/album.\n"
-                "(**5 **) - Add all track from the queue to the playlist.\n\n"
+                "(**1**) - Apply changes to playlist.\n"
+                "(**2**) - Cancel any changes made.\n"
+                "(**3**) - Add a name to the playlist.\n"
+                "(**4**) - Link this playlist to an existing playlist/album.\n"
+                "(**5**) - Add all track from the queue to the playlist.\n\n"
                 "If you want the playlist name to be as the original playlist simply set the URL but no name.\n\n"
             )
             await playlist_prompt.start(ctx=context, title=title, description=description)
@@ -213,16 +213,17 @@ class PlaylistCommands(MPMixin, ABC):
 
         if manageable:
             info_description = _(
-                "(**1 **) - Apply changes to playlist.\n"
-                "(**2 **) - Cancel any changes made and close the menu.\n"
-                "(**3 **) - Delete this playlist.\n"
-                "(**4 **) - Remove all tracks from this playlist.\n"
-                "(**5 **) - Update the playlist with the latest tracks.\n"
+                "(**1**){space} - Apply changes to playlist.\n"
+                "(**2**){space} - Cancel any changes made and close the menu.\n"
+                "(**3**){space} - Delete this playlist.\n"
+                "(**4**){space} - Remove all tracks from this playlist.\n"
+                "(**5**){space} - Update the playlist with the latest tracks.\n"
                 "Please note that this action will ignore any tracks added/removed via this menu.\n"
-                "(**6 **) - Change the name of the playlist.\n"
-                "(**7 **) - Link this playlist to an existing playlist/album.\n"
-                "(**8 **) - Add a query to this playlist.\n"
-                "(**9 **) - Remove a query from this playlist.\n"
+                "(**6**){space} - Change the name of the playlist.\n"
+                "(**7**){space} - Link this playlist to an existing playlist/album.\n"
+                "(**8**){space} - Add a query to this playlist.\n"
+                "(**9**){space} - Remove a query from this playlist.\n"
+                "(**10**) - Download the playlist file.\n"
                 "(**11**) - Add current playlist to the queue.\n"
                 "(**12**) - Show tracks in current playlist.\n"
                 "(**13**) - Add tracks from queue to this playlist.\n"
@@ -237,21 +238,21 @@ class PlaylistCommands(MPMixin, ABC):
                 "only the last interaction will take effect.\n\n\n"
             )
         else:
-            info_description = (
-                "(**1 **) - Close the menu.\n"
-                "(**2 **) - Update the playlist with the latest tracks.\n"
+            info_description = _(
+                "(**1**) - Close the menu.\n"
+                "(**2**) - Update the playlist with the latest tracks.\n"
                 "(**3**) - Download the playlist file.\n"
                 "(**4**) - Add current playlist to the queue.\n"
                 "(**5**) - Show tracks in current playlist.\n\n\n"
             )
 
         playlist_info = _(
-            "**Currently managing**:\n"
-            "Name:     {playlist_name}\n"
-            "Scope:    {scope}\n"
-            "Author:   {author}\n"
-            "Tracks:   {tracks} tracks\n"
-            "URL:      {url}\n"
+            "**__Currently managing__**:\n"
+            "**Name**:{space}{space}{space}{playlist_name}\n"
+            "**Scope**:{space}{space}{space}{scope}\n"
+            "**Author**:{space}{space}{author}\n"
+            "**Tracks**:{space}{space}{space}{tracks} tracks\n"
+            "**URL**:{space}{space}{space}{space}{space}{url}\n"
         )
         playlist_prompt = PlaylistManageFlow(
             cog=self,
@@ -273,6 +274,7 @@ class PlaylistCommands(MPMixin, ABC):
                 author=await playlist.get_author_name(bot=self.bot, mention=True),
                 url=playlist.url or _("N/A"),
                 tracks=len(playlist.tracks),
+                space="\N{EN SPACE}",
             )
 
             await playlist_prompt.start(ctx=context, title=title, description=description)
