@@ -321,26 +321,27 @@ class PlaylistCommands(MPMixin, ABC):
                     playlist.url = playlist_prompt.url
                 if (playlist_prompt.add_tracks or playlist_prompt.remove_prompt) and not playlist_prompt.update:
                     if playlist_prompt.remove_tracks:
-                        successful, count, failed = await self.lavalink.get_all_tracks_for_queries(
-                            *[await Query.from_string(rt) for rt in playlist_prompt.remove_tracks],
-                            requester=context.author,
-                            player=None,
+                        response = await self.lavalink.get_tracks(
+                            *[await Query.from_string(at) for at in playlist_prompt.remove_tracks],
                         )
-                        for t in successful:
-                            b64 = t.track
+                        if not response.get("tracks"):
+                            pass
+                        tracks = response.get("tracks")  # type:ignore
+                        for t in tracks:
+                            b64 = t["track"]
                             while b64 in playlist.tracks:
                                 changed = True
                                 playlist.tracks.remove(b64)
                                 tracks_removed += 1
                     if playlist_prompt.add_tracks:
-                        successful, count, failed = await self.lavalink.get_all_tracks_for_queries(
+                        response = await self.lavalink.get_tracks(
                             *[await Query.from_string(at) for at in playlist_prompt.add_tracks],
-                            requester=context.author,
-                            player=None,
-                            enqueue=False,
                         )
-                        for t in successful:
-                            b64 = t.track
+                        if not response.get("tracks"):
+                            pass
+                        tracks = response.get("tracks")  # type:ignore
+                        for t in tracks:
+                            b64 = t["track"]
                             changed = True
                             playlist.tracks.append(b64)
                             tracks_added += 1
@@ -348,7 +349,7 @@ class PlaylistCommands(MPMixin, ABC):
                 if playlist.url:
                     with contextlib.suppress(Exception):
                         tracks: dict = await self.lavalink.get_tracks(
-                            query=await Query.from_string(playlist.url), bypass_cache=True
+                            await Query.from_string(playlist.url), bypass_cache=True
                         )
                         if not tracks.get("tracks"):
                             await context.send(

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from abc import ABC
 from pathlib import Path
 
@@ -7,7 +8,9 @@ import discord
 from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator
+from redbot.core.utils.chat_formatting import box, inline
 
+from pylav.track_encoding import decode_track
 from pylav.utils import PyLavContext
 
 from audio.cog import MPMixin
@@ -44,3 +47,159 @@ class UtilityCommands(MPMixin, ABC):
             ),
             ephemeral=True,
         )
+
+    @commands.group(name="mputils")
+    async def command_mputils(self, context: PyLavContext):
+        """Utility commands for the MediaPlayer cog."""
+
+    @commands.is_owner()
+    @command_mputils.group(name="get")
+    async def command_mputils_get(self, context: PyLavContext):
+        """Get info about specific things."""
+
+    @command_mputils_get.command(name="b64")
+    async def command_mputils_get_b64(self, context: PyLavContext, *, guild: discord.Guild = None):
+        """Get the base64 of the current track."""
+        if guild is None:
+            guild = context.guild
+
+        player = context.lavalink.get_player(guild)
+        if not player:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Not connected to a voice channel."), messageable=context
+                ),
+                ephemeral=True,
+            )
+            return
+
+        if not player.current:
+            await context.send(
+                embed=await context.lavalink.construct_embed(description=_("Nothing playing."), messageable=context),
+                ephemeral=True,
+            )
+            return
+
+        await context.send(
+            embed=await context.lavalink.construct_embed(
+                description=inline(player.current.track),
+                messageable=context,
+            ),
+            ephemeral=True,
+        )
+
+    @command_mputils_get.command(name="author")
+    async def command_mputils_get_author(self, context: PyLavContext, *, guild: discord.Guild = None):
+        """Get the author of the current track."""
+        if guild is None:
+            guild = context.guild
+
+        player = context.lavalink.get_player(guild)
+        if not player:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Not connected to a voice channel."), messageable=context
+                ),
+                ephemeral=True,
+            )
+            return
+
+        if not player.current:
+            await context.send(
+                embed=await context.lavalink.construct_embed(description=_("Nothing playing."), messageable=context),
+                ephemeral=True,
+            )
+            return
+
+        await context.send(
+            embed=await context.lavalink.construct_embed(
+                description=inline(player.current.author),
+                messageable=context,
+            ),
+            ephemeral=True,
+        )
+
+    @command_mputils_get.command(name="title")
+    async def command_mputils_get_title(self, context: PyLavContext, *, guild: discord.Guild = None):
+        """Get the title of the current track."""
+        if guild is None:
+            guild = context.guild
+
+        player = context.lavalink.get_player(guild)
+        if not player:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Not connected to a voice channel."), messageable=context
+                ),
+                ephemeral=True,
+            )
+            return
+
+        if not player.current:
+            await context.send(
+                embed=await context.lavalink.construct_embed(description=_("Nothing playing."), messageable=context),
+                ephemeral=True,
+            )
+            return
+
+        await context.send(
+            embed=await context.lavalink.construct_embed(
+                description=inline(player.current.title),
+                messageable=context,
+            ),
+            ephemeral=True,
+        )
+
+    @command_mputils_get.command(name="source")
+    async def command_mputils_get_source(self, context: PyLavContext, *, guild: discord.Guild = None):
+        """Get the source of the current track."""
+        if guild is None:
+            guild = context.guild
+
+        player = context.lavalink.get_player(guild)
+        if not player:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Not connected to a voice channel."), messageable=context
+                ),
+                ephemeral=True,
+            )
+            return
+
+        if not player.current:
+            await context.send(
+                embed=await context.lavalink.construct_embed(description=_("Nothing playing."), messageable=context),
+                ephemeral=True,
+            )
+            return
+
+        await context.send(
+            embed=await context.lavalink.construct_embed(
+                description=inline(player.current.source),
+                messageable=context,
+            ),
+            ephemeral=True,
+        )
+
+    @command_mputils.command(name="decode")
+    async def command_mputils_decode(self, context: PyLavContext, *, base64: str):
+        """Decode a tracks base64 string into a JSON object."""
+
+        try:
+            data, _ = decode_track(base64)
+        except Exception:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Invalid base64 string."), messageable=context
+                ),
+                ephemeral=True,
+            )
+            return
+        else:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=box(lang="json", text=json.dumps(data["info"], indent=2, sort_keys=True)),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )

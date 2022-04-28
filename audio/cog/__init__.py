@@ -59,9 +59,7 @@ class MediaPlayer(
 
     async def initialize(self) -> None:
         await self.lavalink.register(self)
-        spotify = await self.bot.get_shared_api_tokens("spotify")
-        spotify_tokens = {"client_id": spotify.get("client_id"), "client_secret": spotify.get("client_secret")}
-        await self.lavalink.initialize(**spotify_tokens)
+        await self.lavalink.initialize()
 
     async def _sync_tree(self) -> None:
         await self.bot.wait_until_red_ready()
