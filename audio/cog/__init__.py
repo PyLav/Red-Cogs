@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import asyncio
 from abc import ABC
 from pathlib import Path
 from typing import Literal
@@ -9,7 +8,7 @@ from red_commons.logging import getLogger
 from redbot.core import Config
 from redbot.core import commands as red_commands
 from redbot.core.data_manager import cog_data_path
-from redbot.core.i18n import Translator
+from redbot.core.i18n import Translator, cog_i18n
 
 from pylav import Client, exceptions
 from pylav.types import BotT
@@ -35,6 +34,7 @@ _ = Translator("MediaPlayer", Path(__file__))
 LOGGER_ERROR = getLogger("red.3pt.mp.error_handler")
 
 
+@cog_i18n(_)
 class MediaPlayer(
     red_commands.Cog,
     HybridCommands,
