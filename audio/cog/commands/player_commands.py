@@ -54,7 +54,7 @@ class PlayerCommands(MPMixin, ABC):
         track = None
 
         with contextlib.suppress(ValueError):
-            track = await player.queue.popindex(queue_number)
+            track = player.queue.popindex(queue_number)
         if not track:
             await context.send(
                 embed=await context.construct_embed(
@@ -132,7 +132,7 @@ class PlayerCommands(MPMixin, ABC):
                 return
             queue_number -= 1
             with contextlib.suppress(ValueError):
-                track = await player.queue.popindex(queue_number)
+                track = player.queue.popindex(queue_number)
                 number_removed += 1
             if not track:
                 await context.send(
