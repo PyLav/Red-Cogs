@@ -8,11 +8,13 @@ from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.commands import TimedeltaConverter
 from redbot.core.i18n import Translator
-from redbot.core.utils.chat_formatting import humanize_number, humanize_timedelta
+from redbot.core.utils.chat_formatting import bold, humanize_number, humanize_timedelta
 
+from pylav.converters import PlaylistConverter
 from pylav.utils import PyLavContext
 
 from audio.cog.abc import MPMixin
+from audio.cog.utils.playlists import maybe_prompt_for_playlist
 
 LOGGER = getLogger("red.3pt.mp.commands.config")
 
@@ -115,7 +117,7 @@ class ConfigCommands(MPMixin, ABC):
     async def command_mpset_global_dc(self, context: PyLavContext) -> None:
         """Set whether the bot should disconnect from the voice voice channel."""
 
-    @command_mpset_global_dc.group(name="empty")
+    @command_mpset_global_dc.command(name="empty")
     async def command_mpset_global_dc_empty(
         self,
         context: PyLavContext,  # noqa
@@ -154,7 +156,7 @@ class ConfigCommands(MPMixin, ABC):
             ephemeral=True,
         )
 
-    @command_mpset_global_dc.group(name="alone")
+    @command_mpset_global_dc.command(name="alone")
     async def command_mpset_global_dc_alone(
         self,
         context: PyLavContext,  # noqa
@@ -343,7 +345,7 @@ class ConfigCommands(MPMixin, ABC):
     async def command_mpset_server_dc(self, context: PyLavContext) -> None:
         """Set whether the bot should disconnect from the voice voice channel."""
 
-    @command_mpset_server.group(name="empty")
+    @command_mpset_server.command(name="empty")
     async def command_mpset_server_dc_empty(
         self,
         context: PyLavContext,  # noqa
@@ -399,7 +401,7 @@ class ConfigCommands(MPMixin, ABC):
             ephemeral=True,
         )
 
-    @command_mpset_server.group(name="alone")
+    @command_mpset_server.command(name="alone")
     async def command_mpset_server_dc_alone(
         self,
         context: PyLavContext,  # noqa
@@ -451,6 +453,32 @@ class ConfigCommands(MPMixin, ABC):
                 description=_("Disconnect from voice channel when alone set to {empty}{extras}.").format(
                     empty=_("Enabled") if toggle else _("Disabled"), extras=extras
                 ),
+                messageable=context,
+            ),
+            ephemeral=True,
+        )
+
+    @command_mpset_server.command(name="playlist")
+    async def command_mpset_server_playlist(self, context: PyLavContext, *, playlist: PlaylistConverter) -> None:
+        """Sets the Auto-Play playlist."""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+        playlists: list[PlaylistModel] = playlist  # type: ignore
+        playlist = await maybe_prompt_for_playlist(cog=self, playlists=playlists, context=context)
+        if not playlist:
+            return
+        if context.player:
+            await context.player.set_autoplay_playlist(playlist)
+        else:
+            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
+            config.auto_play_playlist_id = playlist.id
+            await config.save()
+
+        await context.send(
+            embed=await self.lavalink.construct_embed(
+                description=_("Auto-Play playlist set to {playlist}.").format(playlist=bold(playlist.name)),
                 messageable=context,
             ),
             ephemeral=True,
