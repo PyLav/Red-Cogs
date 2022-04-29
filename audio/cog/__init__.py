@@ -16,6 +16,7 @@ from pylav.utils import PyLavContext
 
 from audio.cog import errors
 from audio.cog.abc import MY_GUILD, MPMixin
+from audio.cog.commands.config_commands import ConfigCommands
 from audio.cog.commands.hybrid_commands import HybridCommands
 from audio.cog.commands.player_commands import PlayerCommands
 from audio.cog.commands.playlist_commands import PlaylistCommands
@@ -41,6 +42,7 @@ class MediaPlayer(
     UtilityCommands,
     PlayerCommands,
     PlaylistCommands,
+    ConfigCommands,
     metaclass=CompositeMetaClass,
 ):
     lavalink: Client

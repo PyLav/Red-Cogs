@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import json
 from abc import ABC
 from pathlib import Path
@@ -8,12 +6,13 @@ import discord
 from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator
-from redbot.core.utils.chat_formatting import box, inline
+from redbot.core.utils.chat_formatting import box, humanize_number, inline
 
+from pylav.converters import QueryConverter
 from pylav.track_encoding import decode_track
 from pylav.utils import PyLavContext
 
-from audio.cog import MPMixin
+from audio.cog.abc import MPMixin
 from audio.cog.utils import decorators
 
 LOGGER = getLogger("red.3pt.mp.commands.utils")
@@ -60,6 +59,10 @@ class UtilityCommands(MPMixin, ABC):
     @command_mputils_get.command(name="b64")
     async def command_mputils_get_b64(self, context: PyLavContext, *, guild: discord.Guild = None):
         """Get the base64 of the current track."""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
         if guild is None:
             guild = context.guild
 
@@ -91,6 +94,10 @@ class UtilityCommands(MPMixin, ABC):
     @command_mputils_get.command(name="author")
     async def command_mputils_get_author(self, context: PyLavContext, *, guild: discord.Guild = None):
         """Get the author of the current track."""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
         if guild is None:
             guild = context.guild
 
@@ -122,6 +129,10 @@ class UtilityCommands(MPMixin, ABC):
     @command_mputils_get.command(name="title")
     async def command_mputils_get_title(self, context: PyLavContext, *, guild: discord.Guild = None):
         """Get the title of the current track."""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
         if guild is None:
             guild = context.guild
 
@@ -153,6 +164,10 @@ class UtilityCommands(MPMixin, ABC):
     @command_mputils_get.command(name="source")
     async def command_mputils_get_source(self, context: PyLavContext, *, guild: discord.Guild = None):
         """Get the source of the current track."""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
         if guild is None:
             guild = context.guild
 
@@ -184,9 +199,13 @@ class UtilityCommands(MPMixin, ABC):
     @command_mputils.command(name="decode")
     async def command_mputils_decode(self, context: PyLavContext, *, base64: str):
         """Decode a tracks base64 string into a JSON object."""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
 
         try:
-            data, _ = decode_track(base64)
+            data, __ = decode_track(base64)
         except Exception:
             await context.send(
                 embed=await context.lavalink.construct_embed(
@@ -203,3 +222,63 @@ class UtilityCommands(MPMixin, ABC):
                 ),
                 ephemeral=True,
             )
+
+    @command_mputils.group(name="cache")
+    async def command_mputils_cache(self, context: PyLavContext):
+        """Manage the query cache."""
+
+    @command_mputils_cache.command(name="clear")
+    async def command_mputils_cache_clear(self, context: PyLavContext):
+        """Clear the query cache."""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+        await self.lavalink.query_cache_manager.wipe()
+        await context.send(
+            embed=await context.lavalink.construct_embed(description=_("Query cache cleared."), messageable=context),
+            ephemeral=True,
+        )
+
+    @command_mputils_cache.command(name="older")
+    async def command_mputils_cache_older(self, context: PyLavContext, days: int):
+        """Clear the query cache older than a number of days."""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+        await self.lavalink.query_cache_manager.delete_older_than(days=days)
+        await context.send(
+            embed=await context.lavalink.construct_embed(description=_("Query cache cleared."), messageable=context),
+            ephemeral=True,
+        )
+
+    @command_mputils_cache.command(name="query")
+    async def command_mputils_cache_query(self, context: PyLavContext, *, query: QueryConverter):
+        """Clear the query cache for a query."""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+        await self.lavalink.query_cache_manager.delete_query(query)
+        await context.send(
+            embed=await context.lavalink.construct_embed(description=_("Query cache cleared."), messageable=context),
+            ephemeral=True,
+        )
+
+    @command_mputils_cache.command(name="size")
+    async def command_mputils_cache_size(self, context: PyLavContext):
+        """Get the size of the query cache."""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+        await context.send(
+            embed=await context.lavalink.construct_embed(
+                description=_("Query cache size: `{size}`.").format(
+                    size=humanize_number(await self.lavalink.query_cache_manager.size())
+                ),
+                messageable=context,
+            ),
+            ephemeral=True,
+        )
