@@ -47,8 +47,7 @@ class NodeCommands(MPMixin, ABC):
             "(**9**){space} - Set the connection timeout.\n"
             "(**10**) - Select which sources to disable for this node (Multiple can be selected).\n"
             "If you interact with a button multiple times,  "
-            "only the last interaction will take effect, "
-            "with the exception of the source selector.\n\n\n"
+            "only the last interaction will take effect.\n\n\n"
         ).format(
             space="\N{EN SPACE}",
         )
