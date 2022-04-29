@@ -134,7 +134,7 @@ class Commands:
             return
         await self._config.guild(guild=context.guild).set_raw(event, value=[toggle, use_mention])  # type: ignore
         if event in ["node_connected", "node_disconnected"] and await self.bot.is_owner(context.author):
-            await self._config.set_raw({event: [toggle, use_mention]})
+            await self._config.set_raw(event, value=[toggle, use_mention])
 
         await context.send(
             embed=await context.lavalink.construct_embed(
