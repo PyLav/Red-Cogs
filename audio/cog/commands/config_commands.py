@@ -542,9 +542,9 @@ class ConfigCommands(MPMixin, ABC):
             ephemeral=True,
         )
 
-    @command_mpset_server_lock.command(name="vc")
+    @command_mpset_server_lock.command(name="voice", aliases=["vc"])
     async def command_mpset_server_lock_vc(self, context: PyLavContext, *, channel: discord.VoiceChannel = None):
-        """Set the channel lock for VCs."""
+        """Set the channel lock for voice channels."""
 
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
