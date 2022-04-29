@@ -2,14 +2,17 @@ from __future__ import annotations
 
 import asyncio
 import contextlib
+import re
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, Literal
 
 import discord
 from red_commons.logging import getLogger
 from redbot.core.i18n import Translator
+from redbot.core.utils.chat_formatting import inline
 from redbot.vendored.discord.ext import menus
 
+from pylav import emojis
 from pylav.sql.models import PlaylistModel
 from pylav.types import BotT, ContextT
 from pylav.utils import PyLavContext
@@ -30,6 +33,7 @@ from audio.cog.menus.buttons import (
     LabelButton,
     NavigateButton,
     NoButton,
+    NodeButton,
     PauseTrackButton,
     PlaylistClearButton,
     PlaylistDedupeButton,
@@ -44,8 +48,10 @@ from audio.cog.menus.buttons import (
     RefreshButton,
     RemoveFromQueueButton,
     ResumeTrackButton,
+    SearchOnlyNodeToggleButton,
     ShuffleButton,
     SkipTrackButton,
+    SSLNodeToggleButton,
     StopTrackButton,
     ToggleRepeatButton,
     ToggleRepeatQueueButton,
@@ -73,6 +79,9 @@ if TYPE_CHECKING:
 LOGGER = getLogger("red.3pt.mp.ui.menus")
 
 _ = Translator("MediaPlayer", Path(__file__))
+
+
+URL_REGEX = re.compile(r"^(https?)://(\S+)$")
 
 
 class BaseMenu(discord.ui.View):
@@ -1364,14 +1373,14 @@ class PlaylistCreationFlow(discord.ui.View):
             style=discord.ButtonStyle.grey,
             row=0,
             cog=cog,
-            emoji=discord.PartialEmoji(name="name", animated=False, id=967768470781579284),
+            emoji=emojis.NAME,
             op="name",
         )
         self.url_button = PlaylistUpsertButton(
             style=discord.ButtonStyle.grey,
             row=0,
             cog=cog,
-            emoji=discord.PartialEmoji(name="url", animated=False, id=967753966093991968),
+            emoji=emojis.URL,
             op="url",
         )
         self.done_button = DoneButton(
@@ -1383,7 +1392,7 @@ class PlaylistCreationFlow(discord.ui.View):
             style=discord.ButtonStyle.green,
             row=0,
             cog=cog,
-            emoji=discord.PartialEmoji(name="queue", animated=False, id=967902316185415681),
+            emoji=emojis.QUEUE,
         )
         self.close_button = CloseButton(
             style=discord.ButtonStyle.red,
@@ -1512,26 +1521,26 @@ class PlaylistManageFlow(discord.ui.View):
         self.name_button = PlaylistUpsertButton(
             style=discord.ButtonStyle.grey,
             cog=cog,
-            emoji=discord.PartialEmoji(name="name", animated=False, id=967768470781579284),
+            emoji=emojis.NAME,
             op="name",
         )
         self.url_button = PlaylistUpsertButton(
             style=discord.ButtonStyle.grey,
             cog=cog,
-            emoji=discord.PartialEmoji(name="url", animated=False, id=967753966093991968),
+            emoji=emojis.URL,
             op="url",
         )
         self.add_button = PlaylistUpsertButton(
             style=discord.ButtonStyle.green,
             cog=cog,
             op="add",
-            emoji=discord.PartialEmoji(name="plus", animated=False, id=965672202416570368),
+            emoji=emojis.ADD,
         )
         self.remove_button = PlaylistUpsertButton(
             style=discord.ButtonStyle.red,
             cog=cog,
             op="remove",
-            emoji=discord.PartialEmoji(name="minus", animated=False, id=965672202013925447),
+            emoji=emojis.REMOVE,
         )
 
         self.done_button = DoneButton(
@@ -1558,30 +1567,30 @@ class PlaylistManageFlow(discord.ui.View):
         self.download_button = PlaylistDownloadButton(
             style=discord.ButtonStyle.blurple,
             cog=cog,
-            emoji=discord.PartialEmoji(name="download", animated=False, id=967760183977730079),
+            emoji=emojis.DOWNLOAD,
         )
 
         self.playlist_enqueue_button = EnqueuePlaylistButton(
             cog=cog,
             style=discord.ButtonStyle.blurple,
-            emoji=discord.PartialEmoji(name="play", animated=False, id=965672202441723994),
+            emoji=emojis.ENQUEUE,
             playlist=playlist,
         )
         self.playlist_info_button = PlaylistInfoButton(
             cog=cog,
             style=discord.ButtonStyle.blurple,
-            emoji=discord.PartialEmoji(name="info", animated=False, id=967827814160158820),
+            emoji=emojis.INFO,
             playlist=playlist,
         )
         self.queue_button = PlaylistQueueButton(
             style=discord.ButtonStyle.green,
             cog=cog,
-            emoji=discord.PartialEmoji(name="queue", animated=False, id=967902316185415681),
+            emoji=emojis.QUEUE,
         )
         self.dedupe_button = PlaylistDedupeButton(
             style=discord.ButtonStyle.red,
             cog=cog,
-            emoji=discord.PartialEmoji(name="duplicate", animated=False, id=967922711026343966),
+            emoji=emojis.DUPLICATE,
         )
 
         self.name = None
@@ -1688,3 +1697,279 @@ class PlaylistManageFlow(discord.ui.View):
     def stop(self):
         super().stop()
         asyncio.ensure_future(self.on_timeout())
+
+
+class AddNodeFlow(discord.ui.View):
+    ctx: ContextT
+    message: discord.Message
+    author: discord.abc.User
+
+    def __init__(self, cog: CogT, original_author: discord.abc.User):
+        super().__init__(timeout=600)
+        from audio.cog.menus.modals import PromptForInput
+        from audio.cog.menus.selectors import SourceSelector
+
+        self.cog = cog
+        self.bot = cog.bot
+        self.author = original_author
+        self.cancelled = True
+        self.completed = asyncio.Event()
+        self.done_button = DoneButton(
+            style=discord.ButtonStyle.green,
+            cog=cog,
+        )
+        self.close_button = CloseButton(
+            style=discord.ButtonStyle.red,
+            cog=cog,
+        )
+        self.host_prompt = PromptForInput(
+            cog=self.cog,
+            title=_("Enter the domain or IP address of the host"),
+            label=_("Host"),
+            style=discord.TextStyle.short,
+            min_length=4,
+            max_length=200,
+        )
+        self.port_prompt = PromptForInput(
+            cog=self.cog,
+            title=_("Enter the host port to connect to"),
+            label=_("Port"),
+            style=discord.TextStyle.short,
+            min_length=2,
+            max_length=5,
+        )
+        self.password_prompt = PromptForInput(
+            cog=self.cog,
+            title=_("Enter the node's password"),
+            label=_("Password"),
+            style=discord.TextStyle.short,
+            min_length=1,
+            max_length=64,
+        )
+        self.name_prompt = PromptForInput(
+            cog=self.cog,
+            title=_("Enter an easy to know name for the node."),
+            label=_("Name"),
+            style=discord.TextStyle.short,
+            min_length=8,
+            max_length=64,
+        )
+        self.resume_timeout_prompt = PromptForInput(
+            cog=self.cog,
+            title=_("Enter a timeout in seconds."),
+            label=_("Password"),
+            style=discord.TextStyle.short,
+            min_length=2,
+            max_length=4,
+        )
+        self.search_only_button = SearchOnlyNodeToggleButton(
+            cog=self.cog,
+            style=discord.ButtonStyle.blurple,
+            emoji=emojis.SEARCH,
+        )
+        self.ssl_button = SSLNodeToggleButton(
+            cog=self.cog,
+            style=discord.ButtonStyle.blurple,
+            emoji=emojis.SSL,
+        )
+        self.disabled_sources_selector = SourceSelector(cog=self.cog, placeholder=_("Source to disable."), row=2)
+        self.name_button = NodeButton(
+            cog=self.cog,
+            style=discord.ButtonStyle.blurple,
+            emoji=emojis.NAME,
+            op="name",
+            row=1,
+        )
+        self.host_button = NodeButton(
+            cog=self.cog,
+            style=discord.ButtonStyle.blurple,
+            emoji=emojis.HOST,
+            op="host",
+            row=1,
+        )
+        self.port_button = NodeButton(
+            cog=self.cog,
+            style=discord.ButtonStyle.blurple,
+            emoji=emojis.PORT,
+            op="port",
+            row=1,
+        )
+        self.password_button = NodeButton(
+            cog=self.cog,
+            style=discord.ButtonStyle.blurple,
+            emoji=emojis.PASSWORD,
+            op="password",
+            row=1,
+        )
+        self.timeout_button = NodeButton(
+            cog=self.cog,
+            style=discord.ButtonStyle.blurple,
+            emoji=emojis.TIMEOUT,
+            op="timeout",
+            row=1,
+        )
+
+        self.name = None
+        self.host = None
+        self.port = None
+        self.password = None
+        self.resume_timeout = 600
+        self.reconnect_attempts = -1
+        self.ssl = False
+        self.search_only = False
+        self.unique_identifier = None
+        self.done = False
+
+        self.add_item(self.done_button)
+        self.add_item(self.close_button)
+        self.add_item(self.search_only_button)
+        self.add_item(self.ssl_button)
+
+        self.add_item(self.name_button)
+        self.add_item(self.host_button)
+        self.add_item(self.port_button)
+        self.add_item(self.password_button)
+        self.add_item(self.timeout_button)
+
+        self.add_item(self.disabled_sources_selector)
+        self.last_interaction = None
+
+    def stop(self):
+        super().stop()
+        asyncio.ensure_future(self.on_timeout())
+
+    async def on_timeout(self):
+        self.completed.set()
+        if self.message is None:
+            return
+        with contextlib.suppress(discord.HTTPException):
+            if not self.message.flags.ephemeral:
+                await self.message.delete()
+            else:
+                await self.message.edit(view=None)
+
+    async def wait_until_complete(self):
+        await asyncio.wait_for(self.completed.wait(), timeout=self.timeout)
+
+    async def start(self, ctx: PyLavContext | discord.Interaction, description: str = None, title: str = None):
+        self.unique_identifier = ctx.message.id
+        await self.send_initial_message(ctx, description=description, title=title)
+
+    async def interaction_check(self, interaction: discord.Interaction):
+        """Just extends the default reaction_check to use owner_ids"""
+        if (not await self.bot.allowed_by_whitelist_blacklist(interaction.user, guild=interaction.guild)) or (
+            self.author and (interaction.user.id != self.author.id)
+        ):
+            await interaction.response.send_message(
+                content="You are not authorized to interact with this.", ephemeral=True
+            )
+            return False
+        return True
+
+    async def send_initial_message(
+        self, ctx: PyLavContext | discord.Interaction, description: str = None, title: str = None
+    ):
+        self.ctx = ctx
+        self.message = await ctx.send(
+            embed=await self.cog.lavalink.construct_embed(description=description, title=title, messageable=ctx),
+            view=self,
+            ephemeral=True,
+        )
+        return self.message
+
+    async def prompt_name(self, interaction: discord.Interaction) -> None:
+        self.cancelled = False
+        await interaction.response.send_modal(self.name_prompt)
+        await self.name_prompt.responded.wait()
+        self.name = self.name_prompt.response
+        await interaction.followup.send(
+            embed=await self.cog.lavalink.construct_embed(
+                description=_("Name set to {name}").format(name=inline(self.name)),
+                messageable=interaction,
+            ),
+            ephemeral=True,
+        )
+
+    async def prompt_password(self, interaction: discord.Interaction) -> None:
+        self.cancelled = False
+        await interaction.response.send_modal(self.password_prompt)
+        await self.password_prompt.responded.wait()
+        self.password = self.password_prompt.response
+        await interaction.followup.send(
+            embed=await self.cog.lavalink.construct_embed(
+                description=_("Password set to {password}").format(password=inline(self.password)),
+                messageable=interaction,
+            ),
+            ephemeral=True,
+        )
+
+    async def prompt_host(self, interaction: discord.Interaction) -> None:
+        self.cancelled = False
+        await interaction.response.send_modal(self.host_prompt)
+        await self.host_prompt.responded.wait()
+        if match := URL_REGEX.match(self.host_prompt.response):
+            protocol = match.group(0)
+            if protocol == "https":
+                self.ssl = True
+            else:
+                self.ssl = False
+            self.host = match.group(1)
+        else:
+            self.host = self.host_prompt.response
+        await interaction.followup.send(
+            embed=await self.cog.lavalink.construct_embed(
+                description=_("Host set to {host}").format(host=inline(self.host)),
+                messageable=interaction,
+            ),
+            ephemeral=True,
+        )
+
+    async def prompt_port(self, interaction: discord.Interaction) -> None:
+        self.cancelled = False
+        await interaction.response.send_modal(self.port_prompt)
+        await self.port_prompt.responded.wait()
+        try:
+            self.port = int(self.port_prompt.response)
+        except ValueError:
+            self.port = None
+        if self.port is None:
+            await interaction.followup.send(
+                embed=await self.cog.lavalink.construct_embed(
+                    description=_("Invalid port."),
+                    messageable=interaction,
+                ),
+                ephemeral=True,
+            )
+        else:
+            await interaction.followup.send(
+                embed=await self.cog.lavalink.construct_embed(
+                    description=_("Port set to {port}").format(port=inline(f"{self.port}")),
+                    messageable=interaction,
+                ),
+                ephemeral=True,
+            )
+
+    async def prompt_resume_timeout(self, interaction: discord.Interaction) -> None:
+        self.cancelled = False
+        await interaction.response.send_modal(self.resume_timeout_prompt)
+        await self.resume_timeout_prompt.responded.wait()
+        try:
+            self.resume_timeout = int(self.resume_timeout_prompt.response)
+        except ValueError:
+            self.resume_timeout = None
+        if self.resume_timeout is None:
+            await interaction.followup.send(
+                embed=await self.cog.lavalink.construct_embed(
+                    description=_("Invalid timeout, it must be a number in seconds."),
+                    messageable=interaction,
+                ),
+                ephemeral=True,
+            )
+        else:
+            await interaction.followup.send(
+                embed=await self.cog.lavalink.construct_embed(
+                    description=_("Timeout set to {timeout} seconds.").format(timeout=inline(f"{self.resume_timeout}")),
+                    messageable=interaction,
+                ),
+                ephemeral=True,
+            )

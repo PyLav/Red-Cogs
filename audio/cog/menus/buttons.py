@@ -11,6 +11,7 @@ from discord import Emoji, PartialEmoji
 from red_commons.logging import getLogger
 from redbot.core.i18n import Translator
 
+from pylav import emojis
 from pylav.sql.models import PlaylistModel
 from pylav.utils import AsyncIter
 
@@ -21,7 +22,7 @@ from audio.cog.menus.sources import Base64Source
 from audio.cog.utils import rgetattr
 
 if TYPE_CHECKING:
-    from audio.cog.menus.menus import PlaylistCreationFlow, PlaylistManageFlow
+    from audio.cog.menus.menus import AddNodeFlow, PlaylistCreationFlow, PlaylistManageFlow
 
 LOGGER = getLogger("red.3pt.mp.ui.buttons")
 
@@ -70,7 +71,7 @@ class PreviousTrackButton(discord.ui.Button):
     def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
-            emoji=discord.PartialEmoji(name="previous", id=965672202424950795, animated=False),
+            emoji=emojis.PREVIOUS,
             row=row,
         )
         self.cog = cog
@@ -86,7 +87,7 @@ class StopTrackButton(discord.ui.Button):
     def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
-            emoji=discord.PartialEmoji(name="stop", id=965672202563362926, animated=False),
+            emoji=emojis.STOP,
             row=row,
         )
         self.cog = cog
@@ -102,7 +103,7 @@ class PauseTrackButton(discord.ui.Button):
     def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
-            emoji=discord.PartialEmoji(name="pause", id=965672202466910268, animated=False),
+            emoji=emojis.PAUSE,
             row=row,
         )
         self.cog = cog
@@ -118,7 +119,7 @@ class ResumeTrackButton(discord.ui.Button):
     def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
-            emoji=discord.PartialEmoji(name="play", id=965672202441723994, animated=False),
+            emoji=emojis.PLAY,
             row=row,
         )
         self.cog = cog
@@ -134,7 +135,7 @@ class SkipTrackButton(discord.ui.Button):
     def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
-            emoji=discord.PartialEmoji(name="next", id=965672202416570428, animated=False),
+            emoji=emojis.NEXT,
             row=row,
         )
         self.cog = cog
@@ -165,7 +166,7 @@ class IncreaseVolumeButton(discord.ui.Button):
     def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
-            emoji=discord.PartialEmoji(name="volumeup", id=965672202517225492, animated=False),
+            emoji=emojis.VOLUME_UP,
             row=row,
         )
         self.cog = cog
@@ -181,7 +182,7 @@ class DecreaseVolumeButton(discord.ui.Button):
     def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
-            emoji=discord.PartialEmoji(name="volumedown", id=965672202399801374, animated=False),
+            emoji=emojis.VOLUME_DOWN,
             row=row,
         )
         self.cog = cog
@@ -197,7 +198,7 @@ class ToggleRepeatButton(discord.ui.Button):
     def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
-            emoji=discord.PartialEmoji(name="loop", id=965672202143928362, animated=False),
+            emoji=emojis.REPEAT_CURRENT,
             row=row,
         )
         self.cog = cog
@@ -225,7 +226,7 @@ class ToggleRepeatQueueButton(discord.ui.Button):
     def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
-            emoji=discord.PartialEmoji(name="repeat", id=965672202412388352, animated=False),
+            emoji=emojis.REPEAT_QUEUE,
             row=row,
         )
         self.cog = cog
@@ -253,7 +254,7 @@ class ShuffleButton(discord.ui.Button):
     def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
-            emoji=discord.PartialEmoji(name="random", id=965672202458509463, animated=False),
+            emoji=emojis.SHUFFLE,
             row=row,
         )
         self.cog = cog
@@ -269,7 +270,7 @@ class CloseButton(discord.ui.Button):
     def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
-            emoji=discord.PartialEmoji(name="minimize", animated=False, id=965672202424963142),
+            emoji=emojis.CLOSE,
             row=row,
         )
         self.cog = cog
@@ -291,7 +292,7 @@ class EqualizerButton(discord.ui.Button):
     def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
-            emoji=discord.PartialEmoji(name="equalizer", animated=False, id=965672202454323250),
+            emoji=emojis.EQUALIZER,
             row=row,
         )
         self.cog = cog
@@ -307,7 +308,7 @@ class DisconnectButton(discord.ui.Button):
     def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
-            emoji=discord.PartialEmoji(name="power", animated=False, id=965672202395586691),
+            emoji=emojis.POWER,
             row=row,
         )
         self.cog = cog
@@ -328,7 +329,7 @@ class EnqueueButton(discord.ui.Button):
         self.cog = cog
         super().__init__(
             style=style,
-            emoji=discord.PartialEmoji(name="plus", animated=False, id=965672202416570368),
+            emoji=emojis.ADD,
             row=row,
         )
 
@@ -352,7 +353,7 @@ class RemoveFromQueueButton(discord.ui.Button):
         self.cog = cog
         super().__init__(
             style=style,
-            emoji=discord.PartialEmoji(name="minus", animated=False, id=965672202013925447),
+            emoji=emojis.REMOVE,
             row=row,
         )
 
@@ -386,7 +387,7 @@ class PlayNowFromQueueButton(discord.ui.Button):
         self.cog = cog
         super().__init__(
             style=style,
-            emoji=discord.PartialEmoji(name="musicalnote", animated=False, id=965674278144077824),
+            emoji=emojis.PLAY_NOW,
             row=row,
         )
 
@@ -414,7 +415,7 @@ class SaveQueuePlaylistButton(discord.ui.Button):
     def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
-            emoji=discord.PartialEmoji(name="playlist", animated=False, id=961593964790689793),
+            emoji=emojis.QUEUE,
             row=row,
         )
         self.cog = cog
@@ -430,7 +431,7 @@ class EnqueuePlaylistButton(discord.ui.Button):
         cog: CogT,
         style: discord.ButtonStyle,
         row: int = None,
-        emoji: Emoji | PartialEmoji = discord.PartialEmoji(name="playlist", animated=False, id=965672202093621319),
+        emoji: Emoji | PartialEmoji = emojis.ENQUEUE,
         playlist: PlaylistModel = None,
     ):
         self.cog = cog
@@ -487,7 +488,7 @@ class EffectPickerButton(discord.ui.Button):
         self.cog = cog
         super().__init__(
             style=style,
-            emoji=discord.PartialEmoji(name="settings", animated=False, id=961593964316729394),
+            emoji=emojis.SETTINGS,
             row=row,
         )
 
@@ -519,7 +520,7 @@ class AudioStatsDisconnectButton(discord.ui.Button):
     ):
         super().__init__(
             style=style,
-            emoji=discord.PartialEmoji(name="power", animated=False, id=961593964354482256),
+            emoji=emojis.POWER,
             row=row,
         )
         self.cog = cog
@@ -583,7 +584,7 @@ class AudioStatsStopTrackButton(discord.ui.Button):
     ):
         super().__init__(
             style=style,
-            emoji=discord.PartialEmoji(name="stop", id=961593964828459068, animated=False),
+            emoji=emojis.STOP,
             row=row,
         )
         self.cog = cog
@@ -644,7 +645,7 @@ class AudioStatsDisconnectAllButton(discord.ui.Button):
     ):
         super().__init__(
             style=style,
-            emoji=discord.PartialEmoji(name="power", animated=False, id=961593964354482256),
+            emoji=emojis.POWER,
             row=row,
         )
 
@@ -814,7 +815,7 @@ class DoneButton(discord.ui.Button):
     def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
-            emoji=discord.PartialEmoji(name="check", animated=False, id=967466875535626260),
+            emoji=emojis.CHECK,
             row=row,
         )
         self.cog = cog
@@ -839,7 +840,7 @@ class PlaylistDeleteButton(discord.ui.Button):
     def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
-            emoji=discord.PartialEmoji(name="trash", animated=False, id=967752655017484318),
+            emoji=emojis.TRASH,
             row=row,
         )
         self.cog = cog
@@ -871,7 +872,7 @@ class PlaylistClearButton(discord.ui.Button):
     def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
-            emoji=discord.PartialEmoji(name="clear", animated=False, id=967756040521252924),
+            emoji=emojis.ERASE,
             row=row,
         )
         self.cog = cog
@@ -947,7 +948,7 @@ class PlaylistUpdateButton(discord.ui.Button):
     def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
-            emoji=discord.PartialEmoji(name="update", animated=False, id=967810735851860059),
+            emoji=emojis.UPDATE,
             row=row,
         )
         self.cog = cog
@@ -1100,3 +1101,166 @@ class PlaylistDedupeButton(discord.ui.Button):
                 ),
                 ephemeral=True,
             )
+
+
+class SSLNodeToggleButton(discord.ui.Button):
+    view: AddNodeFlow
+
+    def __init__(
+        self,
+        cog: CogT,
+        style: discord.ButtonStyle,
+        emoji: str | Emoji | PartialEmoji,
+        row: int = None,
+    ):
+        super().__init__(
+            style=style,
+            emoji=emoji,
+            row=row,
+        )
+        self.cog = cog
+
+    async def callback(self, interaction: discord.Interaction):
+        if self.view.author.id != interaction.user.id:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, description=_("You are not authorized to interact with this option.")
+                ),
+                ephemeral=True,
+            )
+        self.view.ssl = not self.view.ssl
+        if self.view.ssl:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, description=_("Connecting to the node with SSL enabled...")
+                ),
+                ephemeral=True,
+            )
+        else:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, description=_("Connecting to the node with SSL disabled...")
+                ),
+                ephemeral=True,
+            )
+
+
+class SearchOnlyNodeToggleButton(discord.ui.Button):
+    view: AddNodeFlow
+
+    def __init__(
+        self,
+        cog: CogT,
+        style: discord.ButtonStyle,
+        emoji: str | Emoji | PartialEmoji,
+        row: int = None,
+    ):
+        super().__init__(
+            style=style,
+            emoji=emoji,
+            row=row,
+        )
+        self.cog = cog
+
+    async def callback(self, interaction: discord.Interaction):
+        if self.view.author.id != interaction.user.id:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, description=_("You are not authorized to interact with this option.")
+                ),
+                ephemeral=True,
+            )
+        self.view.search_only = not self.view.search_only
+        if self.view.search_only:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, description=_("This node will only be used for searches...")
+                ),
+                ephemeral=True,
+            )
+        else:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, description=_("This node will be used for search and playback...")
+                ),
+                ephemeral=True,
+            )
+
+
+class AddNodeDoneButton(discord.ui.Button):
+    view: AddNodeFlow
+
+    def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
+        super().__init__(
+            style=style,
+            emoji=emojis.CHECK,
+            row=row,
+        )
+        self.cog = cog
+
+    async def callback(self, interaction: discord.Interaction):
+        if self.view.author.id != interaction.user.id:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, description=_("You are not authorized to interact with this option.")
+                ),
+                ephemeral=True,
+            )
+
+        if not all([self.view.name, self.view.host, self.view.port, self.view.password]):
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, description=_("Please fill out all the fields before continuing.")
+                ),
+                ephemeral=True,
+            )
+            return
+        await interaction.response.defer(ephemeral=True)
+        self.view.last_interaction = interaction
+        self.view.done = True
+        self.view.disabled_sources = self.view.disabled_sources_selector.values
+        self.view.cancelled = False
+        self.view.stop()
+        await self.view.on_timeout()
+
+
+class NodeButton(discord.ui.Button):
+    view: AddNodeFlow
+
+    def __init__(
+        self,
+        cog: CogT,
+        style: discord.ButtonStyle,
+        op: Literal["name", "host", "port", "password", "timeout"],
+        label: str = None,
+        emoji: str | Emoji | PartialEmoji = None,
+        row: int = None,
+    ):
+        super().__init__(
+            style=style,
+            emoji=emoji,
+            label=label,
+            row=row,
+        )
+        self.cog = cog
+        self.op = op
+
+    async def callback(self, interaction: discord.Interaction):
+        if self.view.author.id != interaction.user.id:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, description=_("You are not authorized to interact with this option.")
+                ),
+                ephemeral=True,
+            )
+        self.view.cancelled = False
+        if self.op == "name":
+            await self.view.prompt_name(interaction)
+        elif self.op == "host":
+            await self.view.prompt_host(interaction)
+        elif self.op == "port":
+            await self.view.prompt_port(interaction)
+        elif self.op == "password":
+            await self.view.prompt_password(interaction)
+        elif self.op == "timeout":
+            await self.view.prompt_resume_timeout(interaction)

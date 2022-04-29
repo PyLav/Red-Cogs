@@ -2,17 +2,22 @@ from __future__ import annotations
 
 import asyncio
 from pathlib import Path
-from typing import Literal
+from typing import TYPE_CHECKING, Literal
 
 import discord
 from red_commons.logging import getLogger
 from redbot.core.i18n import Translator
+from redbot.core.utils.chat_formatting import humanize_list
 
 from pylav import Track
+from pylav.constants import SUPPORTED_SOURCES
 from pylav.sql.models import PlaylistModel
 from pylav.types import BotT
 
 from audio.cog._types import CogT
+
+if TYPE_CHECKING:
+    from audio.cog.menus.menus import AddNodeFlow
 
 LOGGER = getLogger("red.3pt.mp.ui.selectors")
 _ = Translator("MediaPlayer", Path(__file__))
@@ -260,3 +265,52 @@ class SearchSelectTrack(discord.ui.Select):
         )
         self.view.stop()
         await self.view.on_timeout()
+
+
+class SourceOption(discord.SelectOption):
+    def __init__(self, name: str, description: str | None, value: str):
+        super().__init__(
+            label=name,
+            description=description,
+            value=value,
+        )
+
+
+SOURCE_OPTIONS = []
+for source in SUPPORTED_SOURCES:
+    SOURCE_OPTIONS.append(SourceOption(name=source, description=None, value=source))
+
+
+class SourceSelector(discord.ui.Select):
+    view: AddNodeFlow
+
+    def __init__(
+        self,
+        cog: CogT,
+        row: int | None = None,
+        placeholder: str = "",
+    ):
+        super().__init__(
+            min_values=1,
+            max_values=len(SUPPORTED_SOURCES),
+            options=SOURCE_OPTIONS,
+            placeholder=placeholder,
+            row=row,
+        )
+        self.cog = cog
+
+    async def callback(self, interaction: discord.Interaction):
+        if self.view.author.id != interaction.user.id:
+            await interaction.response.send_message(
+                embed=await self.cog.lavalink.construct_embed(
+                    messageable=interaction, description=_("You are not authorized to interact with this option.")
+                ),
+                ephemeral=True,
+            )
+        await interaction.response.send_message(
+            embed=await self.cog.lavalink.construct_embed(
+                messageable=interaction,
+                description=_("Disabling the following sources: {sources}").format(sources=humanize_list(self.values)),
+            ),
+            ephemeral=True,
+        )
