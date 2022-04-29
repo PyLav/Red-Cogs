@@ -11,6 +11,15 @@ class MediaPlayerError(commands.CommandError):
     """
 
 
+class UnauthorizedChannelError(MediaPlayerError):
+    """
+    Raised when a command is used in a channel that is not authorized.
+    """
+
+    def __init__(self, channel: int):
+        self.channel = channel
+
+
 class MediaPlayerCheckError(MediaPlayerError):
     """
     Base class for all check errors.

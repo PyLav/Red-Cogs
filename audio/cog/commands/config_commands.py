@@ -1,6 +1,7 @@
 import datetime
 from abc import ABC
 from pathlib import Path
+from typing import Union
 
 import discord
 from red_commons.logging import getLogger
@@ -450,6 +451,67 @@ class ConfigCommands(MPMixin, ABC):
                 description=_("Disconnect from voice channel when alone set to {empty}{extras}.").format(
                     empty=_("Enabled") if toggle else _("Disabled"), extras=extras
                 ),
+                messageable=context,
+            ),
+            ephemeral=True,
+        )
+
+    @command_mpset_server.group(name="lock")
+    async def command_mpset_server_lock(self, context: PyLavContext):
+        """Set the channel locks."""
+
+    @command_mpset_server_lock.command(name="commands")
+    async def command_mpset_server_lock_commands(
+        self, context: PyLavContext, *, channel: Union[discord.TextChannel, discord.Thread, discord.VoiceChannel]
+    ):
+        """Set the channel lock for commands."""
+
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+
+        if context.player:
+            config = context.player.config
+        else:
+            config = self.lavalink.player_config_manager.get_config(context.guild.id)
+        config.text_channel_id = channel.id
+        if context.player:
+            context.player.text_channel = channel
+        await config.save()
+        await context.send(
+            embed=await self.lavalink.construct_embed(
+                description=_("Commands will be locked to {channel}.").format(channel=channel.mention),
+                messageable=context,
+            ),
+            ephemeral=True,
+        )
+
+    @command_mpset_server_lock.command(name="vc")
+    async def command_mpset_server_lock_vc(self, context: PyLavContext, *, channel: discord.VoiceChannel):
+        """Set the channel lock for VCs.
+
+        This only takes place after the bot is connected to a VC.
+        """
+
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+
+        if context.player:
+            config = context.player.config
+        else:
+            config = self.lavalink.player_config_manager.get_config(context.guild.id)
+        config.voice_channel_id = channel.id
+        if context.player:
+            context.player.forced_vc = channel
+            if context.player.channel.id != channel.id:
+                await context.player.move_to(channel=channel, requester=context.author)
+        await config.save()
+        await context.send(
+            embed=await self.lavalink.construct_embed(
+                description=_("VCs will be locked to {channel}.").format(channel=channel.mention),
                 messageable=context,
             ),
             ephemeral=True,

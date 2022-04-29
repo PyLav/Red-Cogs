@@ -21,6 +21,7 @@ from audio.cog.commands.hybrid_commands import HybridCommands
 from audio.cog.commands.player_commands import PlayerCommands
 from audio.cog.commands.playlist_commands import PlaylistCommands
 from audio.cog.commands.utility_commands import UtilityCommands
+from audio.cog.errors import UnauthorizedChannelError
 
 
 class CompositeMetaClass(type(red_commands.Cog), type(ABC)):
@@ -71,6 +72,17 @@ class MediaPlayer(
         if self._init_task is not None:
             self._init_task.cancel()
         await self.bot.lavalink.unregister(cog=self)
+
+    async def cog_check(self, ctx: PyLavContext) -> bool:
+        if self.command_mpset in ctx.command.parents or self.command_mpset == ctx.command:
+            return True
+        if ctx.player:
+            config = ctx.player.config
+        else:
+            config = self.lavalink.player_config_manager.get_config(ctx.guild.id)
+        if config.text_channel_id != ctx.channel.id:
+            raise UnauthorizedChannelError(channel=config.text_channel_id)
+        return True
 
     @red_commands.command(name="sync")
     @red_commands.guild_only()
@@ -137,6 +149,18 @@ class MediaPlayer(
                     else None,
                 ),
                 ephemeral=True,
+            )
+        elif isinstance(error, UnauthorizedChannelError):
+            unhandled = False
+            await context.send(
+                embed=await self.lavalink.construct_embed(
+                    messageable=context,
+                    description=_("This command is not available in this channel. Please use {channel}").format(
+                        channel=context.guild.get_channel_or_thread(error.channel).mention
+                    ),
+                ),
+                ephemeral=True,
+                delete_after=10,
             )
         if unhandled:
             await self.bot.on_command_error(context, error, unhandled_by_cog=True)  # type: ignore
