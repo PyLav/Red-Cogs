@@ -124,8 +124,8 @@ class Commands:
         if event not in POSSIBLE_EVENTS:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("Invalid event, possible events are {events}.").format(
-                        events=humanize_list(POSSIBLE_EVENTS)
+                    description=_("Invalid event, possible events are:\n\n{events}.").format(
+                        events=humanize_list(list(POSSIBLE_EVENTS))
                     ),
                     messageable=context,
                 ),

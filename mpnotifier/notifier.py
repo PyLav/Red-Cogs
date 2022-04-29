@@ -1221,7 +1221,7 @@ class MPNotifier(commands.Cog, Commands):
         await player.notify_channel.send(
             embed=await self.lavalink.construct_embed(
                 title=_("Sponsor Segment Skipped Event"),
-                description=_("Sponsorblock: Skipped {category} running from {start} to {to}.").format(
+                description=_("Sponsorblock: Skipped {category} running from {start}s to {to}s.").format(
                     category=explanation, start=segment.start // 1000, to=segment.end // 1000
                 ),
                 messageable=player.notify_channel,
