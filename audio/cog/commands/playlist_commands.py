@@ -528,11 +528,24 @@ class PlaylistCommands(MPMixin, ABC):
         if not playlist:
             return
         if (player := context.player) is None:
-            channel = rgetattr(context, "author.voice.channel", None)
-            if not channel:
+            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
+            if (channel := context.guild.get_channel_or_thread(config.forced_channel_id)) is None:
+                channel = rgetattr(context, "author.voice.channel", None)
+                if not channel:
+                    await context.send(
+                        embed=await context.lavalink.construct_embed(
+                            messageable=context, description=_("You must be in a voice channel to allow me to connect.")
+                        ),
+                        ephemeral=True,
+                    )
+                    return
+            if not ((permission := channel.permissions_for(context.me)) and permission.connect and permission.speak):
                 await context.send(
                     embed=await context.lavalink.construct_embed(
-                        messageable=context, description=_("You must be in a voice channel to allow me to connect.")
+                        description=_("I don't have permission to connect or speak in {channel}.").format(
+                            channel=channel.mention
+                        ),
+                        messageable=context,
                     ),
                     ephemeral=True,
                 )

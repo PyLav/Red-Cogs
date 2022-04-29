@@ -219,7 +219,7 @@ class ConfigCommands(MPMixin, ABC):
         if context.player:
             config = context.player.config
         else:
-            config = self.lavalink.player_config_manager.get_config(context.guild.id)
+            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
         config.extras["max_volume"] = volume
         if context.player and context.player.volume > volume:
             await context.player.set_volume(volume, requester=context.author)
@@ -254,7 +254,7 @@ class ConfigCommands(MPMixin, ABC):
         if context.player:
             config = context.player.config
         else:
-            config = self.lavalink.player_config_manager.get_config(context.guild.id)
+            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
         if context.player and context.me.voice.self_deaf != toggle:
             await context.player.self_deafen(toggle)
         else:
@@ -290,7 +290,7 @@ class ConfigCommands(MPMixin, ABC):
         if context.player:
             config = context.player.config
         else:
-            config = self.lavalink.player_config_manager.get_config(context.guild.id)
+            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
         if context.player:
             await context.player.set_shuffle(toggle)
         else:
@@ -325,7 +325,7 @@ class ConfigCommands(MPMixin, ABC):
         if context.player:
             config = context.player.config
         else:
-            config = self.lavalink.player_config_manager.get_config(context.guild.id)
+            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
         if context.player:
             await context.player.set_autoplay(toggle)
         else:
@@ -381,7 +381,7 @@ class ConfigCommands(MPMixin, ABC):
         if context.player:
             config = context.player.config
         else:
-            config = self.lavalink.player_config_manager.get_config(context.guild.id)
+            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
         config.extras["empty_queue_dc"] = [toggle, after.total_seconds() if after else 60]
         await config.save()
         if after:
@@ -437,7 +437,7 @@ class ConfigCommands(MPMixin, ABC):
         if context.player:
             config = context.player.config
         else:
-            config = self.lavalink.player_config_manager.get_config(context.guild.id)
+            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
         config.extras["alone_dc"] = [toggle, after.total_seconds() if after else 60]
         await config.save()
         if after:
@@ -471,10 +471,28 @@ class ConfigCommands(MPMixin, ABC):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
+        if not (
+            channel
+            and (permission := channel.permissions_for(context.me))
+            and permission.send_messages
+            and permission.embed_links
+            and permission.read_message_history
+        ):
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_(
+                        "I don't have permission to send message or send embed links or read messages in {channel}."
+                    ).format(channel=channel.mention),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+            return
+
         if context.player:
             config = context.player.config
         else:
-            config = self.lavalink.player_config_manager.get_config(context.guild.id)
+            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
         config.text_channel_id = channel.id if channel else None
         if context.player:
             context.player.text_channel = channel
@@ -505,11 +523,25 @@ class ConfigCommands(MPMixin, ABC):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
+        if not (
+            channel and (permission := channel.permissions_for(context.me)) and permission.connect and permission.speak
+        ):
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("I don't have permission to connect or speak in {channel}.").format(
+                        channel=channel.mention
+                    ),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+            return
+
         if context.player:
             config = context.player.config
         else:
-            config = self.lavalink.player_config_manager.get_config(context.guild.id)
-        config.voice_channel_id = channel.id if channel else None
+            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
+        config.forced_channel_id = channel.id if channel else None
         if context.player:
             context.player.forced_vc = channel
             if channel and context.player.channel.id != channel.id:

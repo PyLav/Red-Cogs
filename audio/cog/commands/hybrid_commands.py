@@ -64,16 +64,30 @@ class HybridCommands(MPMixin, ABC):
             return
         player = context.player
         if player is None:
-            channel = rgetattr(context, "author.voice.channel", None)
-            if not channel:
+            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
+            if (channel := context.guild.get_channel_or_thread(config.forced_channel_id)) is None:
+                channel = rgetattr(context, "author.voice.channel", None)
+                if not channel:
+                    await context.send(
+                        embed=await context.lavalink.construct_embed(
+                            description=_("You must be in a voice channel to allow me to connect."), messageable=context
+                        ),
+                        ephemeral=True,
+                    )
+                    return
+            if not ((permission := channel.permissions_for(context.me)) and permission.connect and permission.speak):
                 await context.send(
                     embed=await context.lavalink.construct_embed(
-                        description=_("You must be in a voice channel to allow me to connect."), messageable=context
+                        description=_("I don't have permission to connect or speak in {channel}.").format(
+                            channel=channel.mention
+                        ),
+                        messageable=context,
                     ),
                     ephemeral=True,
                 )
                 return
             player = await context.connect_player(channel=channel, self_deaf=True)
+
         queries = [await Query.from_string(qf) for q in query.split("\n") if (qf := q.strip("<>").strip())]
         search_queries = [q for q in queries if q.is_search]
         non_search_queries = [q for q in queries if not q.is_search]
@@ -145,19 +159,20 @@ class HybridCommands(MPMixin, ABC):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-
-        channel = channel or rgetattr(context, "author.voice.channel", None)
-        if not channel:
-            await context.send(
-                embed=await context.lavalink.construct_embed(
-                    description=_(
-                        "You need to be in a voice channel if you don't specify which channel I need to connect to."
+        config = await self.lavalink.player_config_manager.get_config(context.guild.id)
+        if (channel := context.guild.get_channel_or_thread(config.forced_channel_id)) is None:
+            channel = channel or rgetattr(context, "author.voice.channel", None)
+            if not channel:
+                await context.send(
+                    embed=await context.lavalink.construct_embed(
+                        description=_(
+                            "You need to be in a voice channel if you don't specify which channel I need to connect to."
+                        ),
+                        messageable=context,
                     ),
-                    messageable=context,
-                ),
-                ephemeral=True,
-            )
-            return
+                    ephemeral=True,
+                )
+                return
         if not ((permission := channel.permissions_for(context.me)) and permission.connect and permission.speak):
             if permission.connect:
                 description = _("I don't have permission to connect to that channel.").format(channel=channel.mention)
@@ -171,7 +186,7 @@ class HybridCommands(MPMixin, ABC):
                 ephemeral=True,
             )
             return
-        if (player := context.lavalink.get_player(context.guild)) is None:
+        if (player := context.player) is None:
             player = await context.lavalink.connect_player(context.author, channel=channel, self_deaf=True)
         else:
             await player.move_to(context.author, channel, self_deaf=True)

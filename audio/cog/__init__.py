@@ -79,8 +79,8 @@ class MediaPlayer(
         if ctx.player:
             config = ctx.player.config
         else:
-            config = self.lavalink.player_config_manager.get_config(ctx.guild.id)
-        if config.text_channel_id != ctx.channel.id:
+            config = await self.lavalink.player_config_manager.get_config(ctx.guild.id)
+        if config.text_channel_id and config.text_channel_id != ctx.channel.id:
             raise UnauthorizedChannelError(channel=config.text_channel_id)
         return True
 
@@ -156,7 +156,9 @@ class MediaPlayer(
                 embed=await self.lavalink.construct_embed(
                     messageable=context,
                     description=_("This command is not available in this channel. Please use {channel}").format(
-                        channel=context.guild.get_channel_or_thread(error.channel).mention
+                        channel=channel.mention
+                        if (channel := context.guild.get_channel_or_thread(error.channel))
+                        else None
                     ),
                 ),
                 ephemeral=True,
