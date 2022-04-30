@@ -58,7 +58,7 @@ class NodeCommands(MPMixin, ABC):
             return
         if not all([menu.host, menu.password, menu.unique_identifier, menu.port, menu.name, menu.resume_timeout]):
             return
-        await self.lavalink.add_node(
+        node = await self.lavalink.add_node(
             host=menu.host,
             password=menu.password,
             unique_identifier=menu.unique_identifier,
@@ -72,32 +72,40 @@ class NodeCommands(MPMixin, ABC):
             managed=False,
             disabled_sources=list(menu.disabled_sources_selector.values),
         )
-
-        embed = await self.lavalink.construct_embed(
-            description=(
-                "Added node {name} with the following settings:\n"
-                "Host: {host}\n"
-                "Port: {port}\n"
-                "Password: {password}\n"
-                "Resume Timeout: {resume_timeout}\n"
-                "Search Only: {search_only}\n"
-                "SSL: {ssl}\n"
-                "Disabled Sources: {disabled_sources}\n"
-            ).format(
-                name=inline(menu.name),
-                host=menu.host,
-                port=menu.port,
-                password=menu.password,
-                resume_timeout=menu.resume_timeout,
-                search_only=menu.search_only,
-                ssl=menu.ssl,
-                disabled_sources=humanize_list(menu.disabled_sources_selector.values),
-            ),
-            messageable=context.channel,
-        )
-        if menu.last_interaction:
-            await menu.last_interaction.followup.send(embed=embed, ephemeral=True)
-        else:
-            await context.author.send(
-                embed=embed,
+        async with context.typing():
+            if node:
+                with contextlib.suppress(asyncio.TimeoutError):
+                    await node.wait_until_ready(timeout=120)
+                    await node.update_features()
+                    await node.update_disabled_sources(set(menu.disabled_sources_selector.values))
+            disabled_capabilities = set(menu.disabled_sources_selector.values).union(
+                await node.get_unsupported_features()
             )
+            embed = await self.lavalink.construct_embed(
+                description=(
+                    "Added node {name} with the following settings:\n"
+                    "Host: {host}\n"
+                    "Port: {port}\n"
+                    "Password: {password}\n"
+                    "Resume Timeout: {resume_timeout}\n"
+                    "Search Only: {search_only}\n"
+                    "SSL: {ssl}\n"
+                    "Disabled Sources: {disabled_sources}\n"
+                ).format(
+                    name=inline(menu.name),
+                    host=menu.host,
+                    port=menu.port,
+                    password=menu.password,
+                    resume_timeout=menu.resume_timeout,
+                    search_only=menu.search_only,
+                    ssl=menu.ssl,
+                    disabled_sources=humanize_list(list(disabled_capabilities)),
+                ),
+                messageable=context.channel,
+            )
+            if menu.last_interaction:
+                await menu.last_interaction.followup.send(embed=embed, ephemeral=True)
+            else:
+                await context.author.send(
+                    embed=embed,
+                )
