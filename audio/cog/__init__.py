@@ -1,9 +1,12 @@
 from __future__ import annotations
 
+import asyncio
 from abc import ABC
 from pathlib import Path
 from typing import Literal
 
+import discord
+from discord import AppCommandType
 from red_commons.logging import getLogger
 from redbot.core import Config
 from redbot.core import commands as red_commands
@@ -17,6 +20,7 @@ from pylav.utils import PyLavContext
 from audio.cog import errors
 from audio.cog.abc import MY_GUILD, MPMixin
 from audio.cog.commands.config_commands import ConfigCommands
+from audio.cog.commands.context_menus import ContextMenus
 from audio.cog.commands.hybrid_commands import HybridCommands
 from audio.cog.commands.node_commands import NodeCommands
 from audio.cog.commands.player_commands import PlayerCommands
@@ -46,6 +50,7 @@ class MediaPlayer(
     PlaylistCommands,
     ConfigCommands,
     NodeCommands,
+    ContextMenus,
     metaclass=CompositeMetaClass,
 ):
     lavalink: Client
@@ -61,13 +66,21 @@ class MediaPlayer(
             enable_context=False,
         )
         self._init_task = None
+        self.context_user_play = discord.app_commands.ContextMenu(
+            name="Play from Spotify", callback=self._context_user_play, type=AppCommandType.user
+        )
+        self.context_message_play = discord.app_commands.ContextMenu(
+            name="Play from message", callback=self._context_message_play, type=AppCommandType.message
+        )
+        self.bot.tree.add_command(self.context_user_play, guild=MY_GUILD)
+        self.bot.tree.add_command(self.context_message_play, guild=MY_GUILD)
 
     async def initialize(self) -> None:
+        await self._sync_tree()
         await self.lavalink.register(self)
         await self.lavalink.initialize()
 
     async def _sync_tree(self) -> None:
-        await self.bot.wait_until_red_ready()
         await self.bot.tree.sync(guild=MY_GUILD)
 
     async def cog_unload(self) -> None:

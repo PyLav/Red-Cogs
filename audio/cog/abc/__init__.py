@@ -47,7 +47,7 @@ class MPMixin(ABC):
 
     # COMMANDS
     @abstractmethod
-    async def command_play(self, ctx: PyLavContext, *, query: converters.QueryConverter):
+    async def command_play(self, ctx: PyLavContext, *, query: str):
         raise NotImplementedError()
 
     @abstractmethod
