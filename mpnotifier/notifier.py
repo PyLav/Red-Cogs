@@ -91,7 +91,7 @@ class MPNotifier(commands.Cog, Commands):
             node_changed=[False, False],
             websocket_closed=[False, False],
         )
-        self._embed_mappings = defaultdict(list)
+        self._message_queue = defaultdict(list)
 
     async def initialize(self) -> None:
         await self.lavalink.register(self)
@@ -101,15 +101,15 @@ class MPNotifier(commands.Cog, Commands):
     async def send_embed_batch(self) -> None:
         dispatch_mapping = {}
         LOGGER.debug("Starting MPNotifier schedule message dispatcher.")
-        for channel, embeds in self._embed_mappings.items():
+        for channel, embeds in self._message_queue.items():
             if not embeds:
                 continue
             if len(embeds) > 10:
                 to_send = embeds[:10]
-                self._embed_mappings[channel] = embeds[10:]
+                self._message_queue[channel] = embeds[10:]
             else:
                 to_send = embeds
-                self._embed_mappings[channel] = []
+                self._message_queue[channel] = []
             if not to_send:
                 continue
             dispatch_mapping[channel] = to_send
@@ -129,7 +129,7 @@ class MPNotifier(commands.Cog, Commands):
         player = event.player
         if player.notify_channel is None:
             return
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track Stuck Event"),
                 description=_("[Node={node}] {track} is stuck for {threshold} seconds, skipping.").format(
@@ -152,7 +152,7 @@ class MPNotifier(commands.Cog, Commands):
         if not notify:
             return
 
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track Exception Event"),
                 description=_("[Node={node}] There was an error while playing {track}:\n{exception}").format(
@@ -182,7 +182,7 @@ class MPNotifier(commands.Cog, Commands):
             reason = _("because the player was stopped.")
         else:  # CLEANUP
             reason = _("the node told it to stop.")
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track End Event"),
                 description=_("[Node={node}] {track} has finished playing because {reason}").format(
@@ -207,7 +207,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_("[Node={node}] {track} has started playing.\nRequested by: {requester}").format(
@@ -232,7 +232,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
@@ -259,7 +259,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
@@ -286,7 +286,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
@@ -313,7 +313,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
@@ -340,7 +340,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
@@ -367,7 +367,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
@@ -394,7 +394,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
@@ -421,7 +421,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
@@ -451,7 +451,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
@@ -481,7 +481,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
@@ -511,7 +511,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
@@ -541,7 +541,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
@@ -571,7 +571,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
@@ -601,7 +601,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
@@ -631,7 +631,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
@@ -661,7 +661,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
@@ -691,7 +691,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
@@ -721,7 +721,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
@@ -751,7 +751,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
@@ -781,7 +781,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
@@ -811,7 +811,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
@@ -841,7 +841,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track Skipped Event"),
                 description=_("{track} has been skipped.\nRequested by {requester}").format(
@@ -865,7 +865,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track Seek Event"),
                 description=_(
@@ -895,7 +895,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track Previous Requested Event"),
                 description=_("{requester} requested that the previous track {track} be played.").format(
@@ -921,7 +921,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Tracks Requested Event"),
                 description=_("{requester} added {track_count} to the queue.").format(
@@ -941,7 +941,7 @@ class MPNotifier(commands.Cog, Commands):
         )
         if not notify:
             return
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track AutoPlay Event"),
                 description=_("Auto-playing {track}.").format(
@@ -966,7 +966,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track Resumed Event"),
                 description=_("{requester} resumed {track}.").format(
@@ -991,7 +991,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Queue Shuffled Event"),
                 description=_("{requester} shuffled the queue.").format(requester=user),
@@ -1007,7 +1007,7 @@ class MPNotifier(commands.Cog, Commands):
         notify, mention = await self._config.guild(guild=event.player.guild).get_raw("queue_end", default=[True, True])
         if not notify:
             return
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Queue End Event"),
                 description=_("All tracks in the queue have been played."),
@@ -1030,7 +1030,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Tracks Removed Event"),
                 description=_("{requester} removed {track_count} tracks from the queue.").format(
@@ -1055,7 +1055,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Player Paused Event"),
                 description=_("{requester} paused the player.").format(requester=user),
@@ -1078,7 +1078,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Player Stopped Event"),
                 description=_("{requester} stopped the player.").format(requester=user),
@@ -1101,7 +1101,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Player Resumed Event"),
                 description=_("{requester} resumed the player.").format(requester=user),
@@ -1124,7 +1124,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Player Moved Event"),
                 description=_("{requester} moved the player from {before} to {after}.").format(
@@ -1149,7 +1149,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Player Disconnected Event"),
                 description=_("{requester} disconnected the player.").format(requester=user),
@@ -1172,7 +1172,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Player Connected Event"),
                 description=_("{requester} connected the player.").format(requester=user),
@@ -1195,7 +1195,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Player Volume Changed Event"),
                 description=_("{requester} changed the player's volume from {before} to {after}.").format(
@@ -1267,7 +1267,7 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.requester or self.bot.user
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Player Restored Event"),
                 description=_("{requester} restored the player.").format(requester=user),
@@ -1304,7 +1304,7 @@ class MPNotifier(commands.Cog, Commands):
         else:
             explanation = _("an interaction section")
 
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Sponsor Segment Skipped Event"),
                 description=_("Sponsorblock: Skipped {category} running from {start}s to {to}s.").format(
@@ -1361,7 +1361,7 @@ class MPNotifier(commands.Cog, Commands):
             else:
                 data_[t_values] = _("N/A")
             data.append(data_)
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Filters Applied Event"),
                 description=_(
@@ -1417,7 +1417,7 @@ class MPNotifier(commands.Cog, Commands):
         )
         if not notify:
             return
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Node Changed Event"),
                 description=_("The node which the player is connected to changed from {fro} to {to}.").format(
@@ -1437,7 +1437,7 @@ class MPNotifier(commands.Cog, Commands):
         )
         if not notify:
             return
-        self._embed_mappings[player.notify_channel].append(
+        self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("WebSocket Closed Event"),
                 description=_(
