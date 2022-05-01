@@ -6,11 +6,14 @@ from redbot.core import Config
 from redbot.core.commands import commands
 from redbot.core.data_manager import cog_data_path
 from redbot.core.i18n import Translator, cog_i18n
-from redbot.core.utils.chat_formatting import inline
+from redbot.core.utils.chat_formatting import box, inline
+from tabulate import tabulate
 
 from mpnotifier.notifier_commands import Commands
 from pylav import Client, events
+from pylav.filters import Equalizer, Volume
 from pylav.types import BotT
+from pylav.utils import format_time
 
 _ = Translator("MPNotifier", Path(__file__))
 
@@ -837,10 +840,12 @@ class MPNotifier(commands.Cog, Commands):
         await player.notify_channel.send(
             embed=await self.lavalink.construct_embed(
                 title=_("Track Seek Event"),
-                description=_("{requester} requested that {track} is sought {fro} to {after}.").format(
+                description=_(
+                    "{requester} requested that {track} is sought from position {fro} to position {after}."
+                ).format(
                     track=await event.track.get_track_display_name(with_url=True),
-                    fro=event.before,
-                    after=event.after,
+                    fro=format_time(event.before),
+                    after=format_time(event.after),
                     requester=user,
                 ),
                 messageable=player.notify_channel,
@@ -1296,23 +1301,48 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.requester or self.bot.user
+        t_effect = _("Effect")
+        t_values = _("Values")
+        data = []
+        for effect in (
+            event.volume,
+            event.equalizer,
+            event.karaoke,
+            event.timescale,
+            event.tremolo,
+            event.vibrato,
+            event.rotation,
+            event.distortion,
+            event.low_pass,
+            event.channel_mix,
+        ):
+            if not effect or isinstance(effect, Volume):
+                continue
+
+            data_ = {t_effect: effect.__class__.__name__}
+            if effect.changed:
+                values = effect.to_dict()
+                values.pop("off")
+                if not isinstance(effect, Equalizer):
+                    data_[t_values] = "\n".join(f"{k.title()}: {v}" for k, v in values.items())
+                else:
+                    values = values["equalizer"]
+                    data_[t_values] = "\n".join(
+                        [f"Band {band['band']}: {band['gain']}" for band in values if band["gain"]]
+                    )
+            else:
+                data_[t_values] = _("N/A")
+            data.append(data_)
         await player.notify_channel.send(
             embed=await self.lavalink.construct_embed(
                 title=_("Filters Applied Event"),
-                description=_("{requester} changed the player filters").format(requester=user),
+                description=_("{requester} changed the player filters.\n\n__**Currently Applied:**__\n{data}").format(
+                    requester=user,
+                    data=box(tabulate(data, headers="keys", tablefmt="fancy_grid")) if data else _("None"),
+                ),
                 messageable=player.notify_channel,
             )
         )
-        event.volume
-        event.equalizer
-        event.karaoke
-        event.timescale
-        event.tremolo
-        event.vibrato
-        event.rotation
-        event.distortion
-        event.low_pass
-        event.channel_mix
 
     @commands.Cog.listener()
     async def on_pylav_node_connected(self, event: events.NodeConnectedEvent) -> None:

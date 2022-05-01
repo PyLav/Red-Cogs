@@ -26,6 +26,32 @@ class ContextMenus(MPMixin, ABC):
             )
             return
 
+        if not context.interaction.guild:
+            await context.send(
+                embed=await self.lavalink.construct_embed(
+                    description=_("I can't play songs in DMs."),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+            return
+        if context.player:
+            config = context.player.config
+        else:
+            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
+        if config.text_channel_id and config.text_channel_id != context.channel.id:
+            await context.send(
+                embed=await self.lavalink.construct_embed(
+                    messageable=context,
+                    description=_("This command is not available in this channel. Please use {channel}").format(
+                        channel=channel.mention
+                        if (channel := context.guild.get_channel_or_thread(config.text_channel_id))
+                        else None
+                    ),
+                ),
+                ephemeral=True,
+            )
+            return
         content = message.content.strip()
         content_parts = shlex.split(content)
         valid_matches = set()
@@ -66,6 +92,32 @@ class ContextMenus(MPMixin, ABC):
     async def _context_user_play(self, interaction: discord.Interaction, member: discord.Member) -> None:
         context = await self.bot.get_context(interaction)
         await context.defer(ephemeral=True)
+        if not context.interaction.guild:
+            await context.send(
+                embed=await self.lavalink.construct_embed(
+                    description=_("I can't play songs in DMs."),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+            return
+        if context.player:
+            config = context.player.config
+        else:
+            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
+        if config.text_channel_id and config.text_channel_id != context.channel.id:
+            await context.send(
+                embed=await self.lavalink.construct_embed(
+                    messageable=context,
+                    description=_("This command is not available in this channel. Please use {channel}").format(
+                        channel=channel.mention
+                        if (channel := context.guild.get_channel_or_thread(config.text_channel_id))
+                        else None
+                    ),
+                ),
+                ephemeral=True,
+            )
+            return
         # The member returned by this interaction doesn't have any activities
         member = context.guild.get_member(member.id)
         spotify_activity = next((a for a in member.activities if isinstance(a, discord.Spotify)), None)

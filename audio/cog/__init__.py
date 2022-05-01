@@ -72,15 +72,17 @@ class MediaPlayer(
         self.context_message_play = discord.app_commands.ContextMenu(
             name="Play from message", callback=self._context_message_play, type=AppCommandType.message
         )
-        self.bot.tree.add_command(self.context_user_play, guild=MY_GUILD)
-        self.bot.tree.add_command(self.context_message_play, guild=MY_GUILD)
+        self.bot.tree.add_command(self.context_user_play)
+        self.bot.tree.add_command(self.context_message_play)
 
     async def initialize(self) -> None:
-        await self._sync_tree()
         await self.lavalink.register(self)
         await self.lavalink.initialize()
+        asyncio.create_task(self._sync_tree())
 
     async def _sync_tree(self) -> None:
+        await self.bot.wait_until_ready()
+        await self.bot.tree.sync()
         await self.bot.tree.sync(guild=MY_GUILD)
 
     async def cog_unload(self) -> None:
