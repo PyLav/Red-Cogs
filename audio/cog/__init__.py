@@ -78,12 +78,11 @@ class MediaPlayer(
     async def initialize(self) -> None:
         await self.lavalink.register(self)
         await self.lavalink.initialize()
-        asyncio.create_task(self._sync_tree())
 
     async def _sync_tree(self) -> None:
         await self.bot.wait_until_ready()
-        await self.bot.tree.sync()
         await self.bot.tree.sync(guild=MY_GUILD)
+        await self.bot.tree.sync()
 
     async def cog_unload(self) -> None:
         if self._init_task is not None:
