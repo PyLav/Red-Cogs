@@ -2,9 +2,9 @@ from __future__ import annotations
 
 import asyncio
 from collections import defaultdict
-from logging import getLogger
 from pathlib import Path
 
+from red_commons.logging import getLogger
 from redbot.core import Config
 from redbot.core.commands import commands
 from redbot.core.data_manager import cog_data_path
@@ -100,7 +100,7 @@ class MPNotifier(commands.Cog, Commands):
 
     async def send_embed_batch(self) -> None:
         dispatch_mapping = {}
-        LOGGER.debug("Starting MPNotifier schedule message dispatcher.")
+        LOGGER.trace("Starting MPNotifier schedule message dispatcher.")
         for channel, embeds in self._message_queue.items():
             if not embeds:
                 continue
@@ -116,7 +116,7 @@ class MPNotifier(commands.Cog, Commands):
         if not dispatch_mapping:
             LOGGER.debug("No embeds to dispatch.")
             return
-        LOGGER.info("Sending up to last 10 embeds to %s channels", len(dispatch_mapping))
+        LOGGER.trace("Sending up to last 10 embeds to %s channels", len(dispatch_mapping))
         await asyncio.gather(*[channel.send(embeds=embeds) for channel, embeds in dispatch_mapping.items()])
 
     async def cog_unload(self) -> None:
