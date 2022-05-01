@@ -6,7 +6,6 @@ from pathlib import Path
 from typing import Optional
 
 import discord
-from discord import app_commands
 from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator
@@ -18,7 +17,7 @@ from pylav.converters import PlaylistConverter, QueryPlaylistConverter
 from pylav.sql.models import PlaylistModel
 from pylav.utils import AsyncIter, PyLavContext
 
-from audio.cog import MY_GUILD, MPMixin
+from audio.cog import MPMixin
 from audio.cog.menus.menus import PaginatingMenu, PlaylistCreationFlow, PlaylistManageFlow
 from audio.cog.menus.sources import Base64Source, PlaylistListSource
 from audio.cog.utils import decorators, rgetattr
@@ -30,7 +29,6 @@ _ = Translator("MediaPlayer", Path(__file__))
 
 class PlaylistCommands(MPMixin, ABC):
     @commands.hybrid_group(name="playlist")
-    @app_commands.guilds(MY_GUILD)
     @commands.guild_only()
     async def command_playlist(self, context: PyLavContext):
         """Control custom playlist available in the bot."""

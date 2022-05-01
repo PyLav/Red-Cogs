@@ -3,7 +3,6 @@ from pathlib import Path
 from typing import Optional
 
 import discord
-from discord import app_commands
 from discord.app_commands import Range
 from red_commons.logging import getLogger
 from redbot.core import commands
@@ -12,7 +11,7 @@ from redbot.core.i18n import Translator
 from pylav import Query, Track
 from pylav.utils import PyLavContext
 
-from audio.cog import MY_GUILD, MPMixin
+from audio.cog import MPMixin
 from audio.cog.menus.menus import QueueMenu
 from audio.cog.menus.sources import QueueSource
 from audio.cog.utils import rgetattr
@@ -24,7 +23,6 @@ _ = Translator("MediaPlayer", Path(__file__))
 
 class HybridCommands(MPMixin, ABC):
     @commands.hybrid_command(name="play", description="Plays a specified query.", aliases=["p"])
-    @app_commands.guilds(MY_GUILD)
     @commands.guild_only()
     async def command_play(self, context: PyLavContext, *, query: str):
         """Attempt to play the queries which you provide.
@@ -157,7 +155,6 @@ class HybridCommands(MPMixin, ABC):
     @commands.hybrid_command(
         name="connect", description="Connects the Player to the specified channel or your current channel."
     )
-    @app_commands.guilds(MY_GUILD)
     @commands.guild_only()
     async def command_connect(self, context: PyLavContext, *, channel: Optional[discord.VoiceChannel] = None):
         """Connect the bot to the specified channel or your current channel."""
@@ -215,7 +212,6 @@ class HybridCommands(MPMixin, ABC):
             )
 
     @commands.hybrid_command(name="np", description="Shows the track currently being played.", aliases=["now"])
-    @app_commands.guilds(MY_GUILD)
     @commands.guild_only()
     @requires_player()
     async def command_now(self, context: PyLavContext):
@@ -243,7 +239,6 @@ class HybridCommands(MPMixin, ABC):
         await context.send(embed=current_embed, ephemeral=True)
 
     @commands.hybrid_command(name="skip", description="Skips or votes to skip the current track.")
-    @app_commands.guilds(MY_GUILD)
     @commands.guild_only()
     @requires_player()
     async def command_skip(self, context: PyLavContext):
@@ -285,7 +280,6 @@ class HybridCommands(MPMixin, ABC):
         await player.skip(requester=context.author)
 
     @commands.hybrid_command(name="stop", description="Stops the player and remove all tracks from the queue.")
-    @app_commands.guilds(MY_GUILD)
     @commands.guild_only()
     @requires_player()
     async def command_stop(self, context: PyLavContext):
@@ -318,7 +312,6 @@ class HybridCommands(MPMixin, ABC):
     @commands.hybrid_command(
         name="dc", description="Disconnects the player from the voice channel.", aliases=["disconnect"]
     )
-    @app_commands.guilds(MY_GUILD)
     @requires_player()
     async def command_disconnect(self, context: PyLavContext):
         """Disconnects the player from the voice channel."""
@@ -344,7 +337,6 @@ class HybridCommands(MPMixin, ABC):
         )
 
     @commands.hybrid_command(name="queue", description="Shows the current queue for the player.", aliases=["q"])
-    @app_commands.guilds(MY_GUILD)
     @commands.guild_only()
     @requires_player()
     async def command_queue(self, context: PyLavContext):
@@ -368,7 +360,6 @@ class HybridCommands(MPMixin, ABC):
         ).start(ctx=context)
 
     @commands.hybrid_command(name="shuffle", description="Shuffles the player's queue.")
-    @app_commands.guilds(MY_GUILD)
     @commands.guild_only()
     @requires_player()
     async def command_shuffle(self, context: PyLavContext):
@@ -403,7 +394,6 @@ class HybridCommands(MPMixin, ABC):
         )
 
     @commands.hybrid_command(name="repeat", description="Set whether to repeat current song or queue.")
-    @app_commands.guilds(MY_GUILD)
     @commands.guild_only()
     @requires_player()
     async def command_repeat(self, context: PyLavContext, queue: Optional[bool] = None):
@@ -441,7 +431,6 @@ class HybridCommands(MPMixin, ABC):
         )
 
     @commands.hybrid_command(name="pause", description="Pause the player.")
-    @app_commands.guilds(MY_GUILD)
     @commands.guild_only()
     @requires_player()
     async def command_pause(self, context: PyLavContext):
@@ -477,7 +466,6 @@ class HybridCommands(MPMixin, ABC):
         )
 
     @commands.hybrid_command(name="resume", description="Resume the player.")
-    @app_commands.guilds(MY_GUILD)
     @commands.guild_only()
     @requires_player()
     async def command_resume(self, context: PyLavContext):
@@ -513,7 +501,6 @@ class HybridCommands(MPMixin, ABC):
         )
 
     @commands.hybrid_command(name="volume", description="Set the player volume.")
-    @app_commands.guilds(MY_GUILD)
     @commands.guild_only()
     @requires_player()
     async def command_volume(self, context: PyLavContext, volume: Range[int, 0, 1000] = 100):
@@ -542,7 +529,6 @@ class HybridCommands(MPMixin, ABC):
         )
 
     @commands.hybrid_command(name="prev", description="Play the previous tracks.", aliases=["previous"])
-    @app_commands.guilds(MY_GUILD)
     @commands.guild_only()
     @requires_player()
     async def command_previous(self, context: PyLavContext):
