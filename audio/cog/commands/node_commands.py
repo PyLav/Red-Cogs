@@ -149,10 +149,17 @@ class NodeCommands(MPMixin, ABC):
             )
             return
         await self.lavalink.remove_node(node.id)
+        node_data = node.to_dict()
+        for k in ["id", "resume_key", "resume_timeout", "managed", "reconnect_attempts", "extras"]:
+            node_data.pop(k, None)
+        yaml = node_data.pop("yaml", None)
+        if yaml:
+            node_data["server"] = yaml["server"]
+            node_data["server"].update(yaml["lavalink"]["server"])
         await context.author.send(
             embed=await self.lavalink.construct_embed(
                 description=_("Removed node {}.\n\n{}").format(
-                    node.name, box(lang="json", text=json.dumps(node.to_dict(), indent=2))
+                    node.name, box(lang="json", text=json.dumps(node_data, indent=2, sort_keys=True))
                 ),
                 messageable=context.channel,
             )
