@@ -14,11 +14,11 @@ from redbot.vendored.discord.ext import menus
 from tabulate import tabulate
 
 from pylav import Player, Query, Track
-from pylav.sql.models import PlaylistModel
+from pylav.sql.models import NodeModel, PlaylistModel
 from pylav.utils import AsyncIter, get_time_string
 
 from audio.cog._types import CogT
-from audio.cog.menus.selectors import EffectsOption, PlaylistOption, QueueTrackOption, SearchTrackOption
+from audio.cog.menus.selectors import EffectsOption, NodeOption, PlaylistOption, QueueTrackOption, SearchTrackOption
 from audio.cog.utils import rgetattr
 
 LOGGER = getLogger("red.3pt.mp.ui.sources")
@@ -677,6 +677,50 @@ class Base64Source(menus.ListPageSource):
         )
         page.set_footer(text=text)
         return page
+
+    def get_max_pages(self):
+        """:class:`int`: The maximum number of pages required to paginate this sequence."""
+        return self._max_pages or 1
+
+
+class NodePickerSource(menus.ListPageSource):
+    def __init__(self, guild_id: int, cog: CogT, pages: list[NodeModel], message_str: str):
+        super().__init__(entries=pages, per_page=5)
+        self.message_str = message_str
+        self.per_page = 5
+        self.guild_id = guild_id
+        self.select_options: list[NodeOption] = []
+        self.cog = cog
+        self.select_mapping: dict[str, NodeModel] = {}
+
+    def get_starting_index_and_page_number(self, menu: BaseMenu) -> tuple[int, int]:
+        page_num = menu.current_page
+        start = page_num * self.per_page
+        return start, page_num
+
+    async def format_page(self, menu: BaseMenu, tracks: list[NodeModel]) -> discord.Embed | str:
+
+        idx_start, page_num = self.get_starting_index_and_page_number(menu)
+        page = await self.cog.lavalink.construct_embed(messageable=menu.ctx, title=self.message_str)
+        page.set_footer(
+            text=_("Page {page_num}/{total_pages} | {num} nodes.").format(
+                page_num=humanize_number(page_num + 1),
+                total_pages=humanize_number(self.get_max_pages()),
+                num=len(self.entries),
+            )
+        )
+        return page
+
+    async def get_page(self, page_number):
+        if page_number > self.get_max_pages():
+            page_number = 0
+        base = page_number * self.per_page
+        self.select_options.clear()
+        self.select_mapping.clear()
+        for i, node in enumerate(self.entries[base : base + self.per_page], start=base):  # noqa: E203
+            self.select_options.append(await NodeOption.from_node(node=node, index=i))
+            self.select_mapping[f"{node.id}"] = node
+        return self.entries[base : base + self.per_page]  # noqa: E203
 
     def get_max_pages(self):
         """:class:`int`: The maximum number of pages required to paginate this sequence."""

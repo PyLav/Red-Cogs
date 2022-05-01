@@ -1,17 +1,20 @@
 import asyncio
 import contextlib
+import json
 from abc import ABC
 from pathlib import Path
 
 import discord
 from redbot.core import commands
 from redbot.core.i18n import Translator
-from redbot.core.utils.chat_formatting import humanize_list, inline
+from redbot.core.utils.chat_formatting import box, humanize_list, inline
 
+from pylav.converters.nodes import NodeConverter
 from pylav.utils import PyLavContext
 
 from audio.cog import MPMixin
 from audio.cog.menus.menus import AddNodeFlow
+from audio.cog.utils.nodes import maybe_prompt_for_node
 
 _ = Translator("MediaPlayer", Path(__file__))
 
@@ -22,7 +25,7 @@ class NodeCommands(MPMixin, ABC):
     async def command_nodeset(self, context: PyLavContext) -> None:
         """Configure PyLav Nodes."""
 
-    @command_nodeset.command(name="add")
+    @command_nodeset.command(name="add", aliases=["create", "new"])
     async def command_nodeset_add(self, context: PyLavContext) -> None:
         """Add a node PyLav."""
         if isinstance(context, discord.Interaction):
@@ -124,3 +127,33 @@ class NodeCommands(MPMixin, ABC):
                         description="Unable to add this node.", messageable=context.channel
                     ),
                 )
+
+    @command_nodeset.command(name="remove", aliases=["delete", "del", "rm"])
+    async def command_nodeset_remove(self, context: commands.Context, *, nodes: NodeConverter):
+        """Remove a node from PyLav instance."""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+
+        node = await maybe_prompt_for_node(cog=self, nodes=nodes, context=context)
+        if not node:
+            return
+        if node.managed:
+            await context.send(
+                embed=await self.lavalink.construct_embed(
+                    description=_("This node is managed by the bot and cannot be removed."),
+                    messageable=context.channel,
+                ),
+                ephemeral=True,
+            )
+            return
+        await self.lavalink.remove_node(node.id)
+        await context.author.send(
+            embed=await self.lavalink.construct_embed(
+                description=_("Removed node {}.\n\n{}").format(
+                    node.name, box(lang="json", text=json.dumps(node.to_dict(), indent=2))
+                ),
+                messageable=context.channel,
+            )
+        )

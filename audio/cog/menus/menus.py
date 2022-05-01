@@ -13,7 +13,7 @@ from redbot.core.utils.chat_formatting import inline
 from redbot.vendored.discord.ext import menus
 
 from pylav import emojis
-from pylav.sql.models import PlaylistModel
+from pylav.sql.models import NodeModel, PlaylistModel
 from pylav.types import BotT, ContextT
 from pylav.utils import PyLavContext
 
@@ -62,6 +62,7 @@ if TYPE_CHECKING:
     from audio.cog.menus.modals import PromptForInput
     from audio.cog.menus.selectors import (
         EffectsSelector,
+        NodeSelectSelector,
         PlaylistPlaySelector,
         PlaylistSelectSelector,
         QueueSelectTrack,
@@ -69,6 +70,7 @@ if TYPE_CHECKING:
     )
     from audio.cog.menus.sources import (
         EffectsPickerSource,
+        NodePickerSource,
         PlayersSource,
         PlaylistPickerSource,
         QueuePickerSource,
@@ -1973,3 +1975,136 @@ class AddNodeFlow(discord.ui.View):
                 ),
                 ephemeral=True,
             )
+
+
+class NodePickerMenu(BaseMenu):
+    _source: NodePickerSource
+    result: NodeModel
+
+    def __init__(
+        self,
+        cog: CogT,
+        bot: BotT,
+        source: NodePickerSource,
+        selector_text: str,
+        selector_cls: type[NodeSelectSelector],  # noqa
+        original_author: discord.abc.User,
+        *,
+        clear_buttons_after: bool = False,
+        delete_after_timeout: bool = True,
+        timeout: int = 120,
+        message: discord.Message = None,
+        starting_page: int = 0,
+        **kwargs: Any,
+    ) -> None:
+        super().__init__(
+            cog,
+            bot,
+            source,
+            clear_buttons_after=clear_buttons_after,
+            delete_after_timeout=delete_after_timeout,
+            timeout=timeout,
+            message=message,
+            starting_page=starting_page,
+            **kwargs,
+        )
+        self.result: NodeModel = None  # type: ignore
+        self.selector_cls = selector_cls
+        self.selector_text = selector_text
+        self.forward_button = NavigateButton(
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK RIGHT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
+            direction=1,
+            row=4,
+            cog=cog,
+        )
+        self.backward_button = NavigateButton(
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK LEFT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
+            direction=-1,
+            row=4,
+            cog=cog,
+        )
+        self.first_button = NavigateButton(
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK LEFT-POINTING DOUBLE TRIANGLE}",
+            direction=0,
+            row=4,
+            cog=cog,
+        )
+        self.last_button = NavigateButton(
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK RIGHT-POINTING DOUBLE TRIANGLE}",
+            direction=self.source.get_max_pages,
+            row=4,
+            cog=cog,
+        )
+        self.close_button = CloseButton(
+            style=discord.ButtonStyle.red,
+            row=4,
+            cog=cog,
+        )
+        self.refresh_button = RefreshButton(
+            style=discord.ButtonStyle.grey,
+            row=4,
+            cog=cog,
+        )
+        self.select_view: NodeSelectSelector | None = None
+        self.author = original_author
+
+    @property
+    def source(self) -> NodePickerSource:
+        return self._source
+
+    async def prepare(self):
+        self.clear_items()
+        max_pages = self.source.get_max_pages()
+        self.forward_button.disabled = False
+        self.backward_button.disabled = False
+        self.first_button.disabled = False
+        self.last_button.disabled = False
+        if max_pages == 2:
+            self.first_button.disabled = True
+            self.last_button.disabled = True
+        elif max_pages == 1:
+            self.forward_button.disabled = True
+            self.backward_button.disabled = True
+            self.first_button.disabled = True
+            self.last_button.disabled = True
+        self.add_item(self.close_button)
+        self.add_item(self.first_button)
+        self.add_item(self.backward_button)
+        self.add_item(self.forward_button)
+        self.add_item(self.last_button)
+        if self.source.select_options:  # type: ignore
+            options = self.source.select_options  # type: ignore
+            self.remove_item(self.select_view)
+            self.select_view = self.selector_cls(options, self.cog, self.selector_text, self.source.select_mapping)
+            self.add_item(self.select_view)
+        if self.select_view and not self.source.select_options:  # type: ignore
+            self.remove_item(self.select_view)
+            self.select_view = None
+
+    async def start(self, ctx: PyLavContext | discord.Interaction):
+        if isinstance(ctx, discord.Interaction):
+            ctx = await self.cog.bot.get_context(ctx)
+        if ctx.interaction and not ctx.interaction.response.is_done():
+            await ctx.defer(ephemeral=True)
+        self.ctx = ctx
+        await self.send_initial_message(ctx)
+
+    async def show_page(self, page_number: int, interaction: discord.Interaction):
+        await self._source.get_page(page_number)
+        await self.prepare()
+        self.current_page = page_number
+        if not interaction.response.is_done():
+            await interaction.response.edit_message(view=self)
+        elif self.message is not None:
+            await self.message.edit(view=self)
+
+    async def wait_for_response(self):
+        from audio.cog.menus.selectors import NodeSelectSelector
+
+        if isinstance(self.select_view, NodeSelectSelector):
+            await asyncio.wait_for(self.select_view.responded.wait(), timeout=self.timeout)
+            self.result = self.select_view.node
