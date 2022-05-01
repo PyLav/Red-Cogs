@@ -142,7 +142,7 @@ class NodeCommands(MPMixin, ABC):
         if node.managed:
             await context.send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("This node is managed by the bot and cannot be removed."),
+                    description=_("{name} is managed by PyLav and cannot be removed.").format(name=node.name),
                     messageable=context.channel,
                 ),
                 ephemeral=True,
@@ -163,4 +163,13 @@ class NodeCommands(MPMixin, ABC):
                 ),
                 messageable=context.channel,
             )
+        )
+        await context.send(
+            embed=await self.lavalink.construct_embed(
+                description=_(
+                    "Removed node {name}, a DM was sent to you with the node details in case you wish to re-add it."
+                ).format(name=node.name),
+                messageable=context.channel,
+            ),
+            ephemeral=True,
         )
