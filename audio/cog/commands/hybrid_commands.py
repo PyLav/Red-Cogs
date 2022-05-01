@@ -1,4 +1,5 @@
 from abc import ABC
+from functools import partial
 from pathlib import Path
 from typing import Optional
 
@@ -49,7 +50,7 @@ class HybridCommands(MPMixin, ABC):
         """
 
         if isinstance(context, discord.Interaction):
-            send = context.followup.send
+            send = partial(context.followup.send, wait=True)
             if not context.response.is_done():
                 await context.response.defer(ephemeral=True)
             author = context.user

@@ -6,7 +6,7 @@ from typing import Literal
 import discord
 from redbot.core import Config
 
-from pylav import Client, converters
+from pylav import Client
 from pylav.types import BotT
 from pylav.utils import PyLavContext
 

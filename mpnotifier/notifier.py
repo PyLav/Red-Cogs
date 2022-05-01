@@ -402,7 +402,7 @@ class MPNotifier(commands.Cog, Commands):
                     track=await event.track.get_track_display_name(with_url=True),
                     requester=user,
                     node=event.node.name,
-                    source=event.track.query.source,
+                    source=await event.track.query_source(),
                 ),
                 messageable=player.notify_channel,
             )
@@ -432,7 +432,7 @@ class MPNotifier(commands.Cog, Commands):
                     track=await event.track.get_track_display_name(with_url=True),
                     requester=user,
                     node=event.node.name,
-                    source=event.track.query.source,
+                    source=await event.track.query_source(),
                 ),
                 messageable=player.notify_channel,
             )
@@ -462,7 +462,7 @@ class MPNotifier(commands.Cog, Commands):
                     track=await event.track.get_track_display_name(with_url=True),
                     requester=user,
                     node=event.node.name,
-                    source=event.track.query.source,
+                    source=await event.track.query_source(),
                 ),
                 messageable=player.notify_channel,
             )
@@ -491,7 +491,7 @@ class MPNotifier(commands.Cog, Commands):
                 ).format(
                     track=await event.track.get_track_display_name(with_url=True),
                     requester=user,
-                    source=event.track.query.source,
+                    source=await event.track.query_source(),
                     node=event.node.name,
                 ),
                 messageable=player.notify_channel,
@@ -521,7 +521,7 @@ class MPNotifier(commands.Cog, Commands):
                 ).format(
                     track=await event.track.get_track_display_name(with_url=True),
                     requester=user,
-                    source=event.track.query.source,
+                    source=await event.track.query_source(),
                     node=event.node.name,
                 ),
                 messageable=player.notify_channel,
@@ -551,7 +551,7 @@ class MPNotifier(commands.Cog, Commands):
                 ).format(
                     track=await event.track.get_track_display_name(with_url=True),
                     requester=user,
-                    source=event.track.query.source,
+                    source=await event.track.query_source(),
                     node=event.node.name,
                 ),
                 messageable=player.notify_channel,
@@ -581,7 +581,7 @@ class MPNotifier(commands.Cog, Commands):
                 ).format(
                     track=await event.track.get_track_display_name(with_url=True),
                     requester=user,
-                    source=event.track.query.source,
+                    source=await event.track.query_source(),
                     node=event.node.name,
                 ),
                 messageable=player.notify_channel,
@@ -611,7 +611,7 @@ class MPNotifier(commands.Cog, Commands):
                 ).format(
                     track=await event.track.get_track_display_name(with_url=True),
                     requester=user,
-                    source=event.track.query.source,
+                    source=await event.track.query_source(),
                     node=event.node.name,
                 ),
                 messageable=player.notify_channel,
@@ -641,7 +641,7 @@ class MPNotifier(commands.Cog, Commands):
                 ).format(
                     track=await event.track.get_track_display_name(with_url=True),
                     requester=user,
-                    source=event.track.query.source,
+                    source=await event.track.query_source(),
                     node=event.node.name,
                 ),
                 messageable=player.notify_channel,
@@ -671,7 +671,7 @@ class MPNotifier(commands.Cog, Commands):
                 ).format(
                     track=await event.track.get_track_display_name(with_url=True),
                     requester=user,
-                    source=event.track.query.source,
+                    source=await event.track.query_source(),
                     node=event.node.name,
                 ),
                 messageable=player.notify_channel,
@@ -701,7 +701,7 @@ class MPNotifier(commands.Cog, Commands):
                 ).format(
                     track=await event.track.get_track_display_name(with_url=True),
                     requester=user,
-                    source=event.track.query.source,
+                    source=await event.track.query_source(),
                     node=event.node.name,
                 ),
                 messageable=player.notify_channel,
@@ -731,7 +731,7 @@ class MPNotifier(commands.Cog, Commands):
                 ).format(
                     track=await event.track.get_track_display_name(with_url=True),
                     requester=user,
-                    source=event.track.query.source,
+                    source=await event.track.query_source(),
                     node=event.node.name,
                 ),
                 messageable=player.notify_channel,
@@ -761,7 +761,7 @@ class MPNotifier(commands.Cog, Commands):
                 ).format(
                     track=await event.track.get_track_display_name(with_url=True),
                     requester=user,
-                    source=event.track.query.source,
+                    source=await event.track.query_source(),
                     node=event.node.name,
                 ),
                 messageable=player.notify_channel,
@@ -791,7 +791,7 @@ class MPNotifier(commands.Cog, Commands):
                 ).format(
                     track=await event.track.get_track_display_name(with_url=True),
                     requester=user,
-                    source=event.track.query.source,
+                    source=await event.track.query_source(),
                     node=event.node.name,
                 ),
                 messageable=player.notify_channel,

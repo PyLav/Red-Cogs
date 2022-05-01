@@ -526,10 +526,6 @@ class PlaylistChangeSource(menus.ListPageSource):
         )
         return embed
 
-    def get_max_pages(self):
-        """:class:`int`: The maximum number of pages required to paginate this sequence."""
-        return self._max_pages or 1
-
 
 class PlayersSource(menus.ListPageSource):
     def __init__(self, cog: CogT):
