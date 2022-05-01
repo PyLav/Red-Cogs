@@ -1369,7 +1369,7 @@ class MPNotifier(commands.Cog, Commands):
                 ).format(
                     requester=user,
                     data=box(tabulate(data, headers="keys", tablefmt="fancy_grid")) if data else _("None"),
-                    node=event.node,
+                    node=event.node.name,
                 ),
                 messageable=player.notify_channel,
             )
