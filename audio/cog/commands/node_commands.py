@@ -158,8 +158,8 @@ class NodeCommands(MPMixin, ABC):
             node_data["server"].update(yaml["lavalink"]["server"])
         await context.author.send(
             embed=await self.lavalink.construct_embed(
-                description=_("Removed node {}.\n\n{}").format(
-                    node.name, box(lang="json", text=json.dumps(node_data, indent=2, sort_keys=True))
+                description=_("Removed node {name}.\n\n{data}").format(
+                    name=node.name, data=box(lang="json", text=json.dumps(node_data, indent=2, sort_keys=True))
                 ),
                 messageable=context.channel,
             )
