@@ -1222,16 +1222,16 @@ class MPNotifier(commands.Cog, Commands):
             user = event.requester or self.bot.user
 
         if event.type == "disable":
-            await player.notify_channel.send(
-                embed=await self.lavalink.construct_embed(
+            self._message_queue[player.notify_channel].append(
+                await self.lavalink.construct_embed(
                     title=_("Player Repeat Event"),
                     description=_("{requester} disabled repeat.").format(requester=user),
                     messageable=player.notify_channel,
                 )
             )
         elif event.type == "queue":
-            await player.notify_channel.send(
-                embed=await self.lavalink.construct_embed(
+            self._message_queue[player.notify_channel].append(
+                await self.lavalink.construct_embed(
                     title=_("Player Repeat Event"),
                     description=_("{requester} {status} repeat of the whole queue.").format(
                         requester=user, status=_("enabled") if event.queue_after else _("disabled")
@@ -1240,8 +1240,8 @@ class MPNotifier(commands.Cog, Commands):
                 )
             )
         else:
-            await player.notify_channel.send(
-                embed=await self.lavalink.construct_embed(
+            self._message_queue[player.notify_channel].append(
+                await self.lavalink.construct_embed(
                     title=_("Player Repeat Event"),
                     description=_("{requester} {status} repeat for {track}.").format(
                         requester=user,
@@ -1382,8 +1382,8 @@ class MPNotifier(commands.Cog, Commands):
             return
         if channel_id := await self._config.notify_channel_id():
             if notify_channel := self.bot.get_channel(channel_id):
-                await notify_channel.send(
-                    embed=await self.lavalink.construct_embed(
+                self._message_queue[notify_channel].append(
+                    await self.lavalink.construct_embed(
                         title=_("Node Connected Event"),
                         description=_("Node {name} has been connected.").format(name=inline(event.node.name)),
                         messageable=notify_channel,
@@ -1397,8 +1397,8 @@ class MPNotifier(commands.Cog, Commands):
             return
         if channel_id := await self._config.notify_channel_id():
             if notify_channel := self.bot.get_channel(channel_id):
-                await notify_channel.send(
-                    embed=await self.lavalink.construct_embed(
+                self._message_queue[notify_channel].append(
+                    await self.lavalink.construct_embed(
                         title=_("Node Disconnected Event"),
                         description=_(
                             "Node {name} has been disconnected with code {code} and reason: {reason}."
