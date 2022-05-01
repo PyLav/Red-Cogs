@@ -514,7 +514,7 @@ class PlaylistCommands(MPMixin, ABC):
                     ephemeral=True,
                 )
 
-    @command_playlist.command(name="__command_playlist_play", hidden=True)
+    @commands.command(name="__command_playlist_play", hidden=True)
     @decorators.always_hidden()
     async def command_playlist_play(self, context: PyLavContext, *, playlist: PlaylistConverter):
         if isinstance(context, discord.Interaction):
