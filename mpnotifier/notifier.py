@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+import asyncio
+from collections import defaultdict
+from logging import getLogger
 from pathlib import Path
 
 from redbot.core import Config
@@ -16,6 +19,8 @@ from pylav.types import BotT
 from pylav.utils import format_time
 
 _ = Translator("MPNotifier", Path(__file__))
+
+LOGGER = getLogger("red.3pt.mpnotifier.events")
 
 
 @cog_i18n(_)
@@ -86,10 +91,33 @@ class MPNotifier(commands.Cog, Commands):
             node_changed=[False, False],
             websocket_closed=[False, False],
         )
+        self._embed_mappings = defaultdict(list)
 
     async def initialize(self) -> None:
         await self.lavalink.register(self)
         await self.lavalink.initialize()
+        self.lavalink.scheduler.add_job(self.send_embed_batch, trigger="interval", seconds=5, max_instances=1)
+
+    async def send_embed_batch(self) -> None:
+        dispatch_mapping = {}
+        LOGGER.debug("Starting MPNotifier schedule message dispatcher.")
+        for channel, embeds in self._embed_mappings.items():
+            if not embeds:
+                continue
+            if len(embeds) > 10:
+                to_send = embeds[:10]
+                self._embed_mappings[channel] = embeds[10:]
+            else:
+                to_send = embeds
+                self._embed_mappings[channel] = []
+            if not to_send:
+                continue
+            dispatch_mapping[channel] = to_send
+        if not dispatch_mapping:
+            LOGGER.debug("No embeds to dispatch.")
+            return
+        LOGGER.info("Sending up to last 10 embeds to %s channels", len(dispatch_mapping))
+        await asyncio.gather(*[channel.send(embeds=embeds) for channel, embeds in dispatch_mapping.items()])
 
     async def cog_unload(self) -> None:
         if self._init_task is not None:
@@ -101,8 +129,8 @@ class MPNotifier(commands.Cog, Commands):
         player = event.player
         if player.notify_channel is None:
             return
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Track Stuck Event"),
                 description=_("[Node={node}] {track} is stuck for {threshold} seconds, skipping.").format(
                     track=await event.track.get_track_display_name(with_url=True),
@@ -124,8 +152,8 @@ class MPNotifier(commands.Cog, Commands):
         if not notify:
             return
 
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Track Exception Event"),
                 description=_("[Node={node}] There was an error while playing {track}:\n{exception}").format(
                     track=await event.track.get_track_display_name(with_url=True),
@@ -154,8 +182,8 @@ class MPNotifier(commands.Cog, Commands):
             reason = _("because the player was stopped.")
         else:  # CLEANUP
             reason = _("the node told it to stop.")
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Track End Event"),
                 description=_("[Node={node}] {track} has finished playing because {reason}").format(
                     track=await event.track.get_track_display_name(with_url=True), reason=reason, node=event.node.name
@@ -179,8 +207,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_("[Node={node}] {track} has started playing.\nRequested by: {requester}").format(
                     track=await event.track.get_track_display_name(with_url=True), requester=user, node=event.node.name
@@ -204,8 +232,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
                     "[Node={node}] YouTube Music track: {track} has started playing.\nRequested by: {requester}"
@@ -231,8 +259,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
                     "[Node={node}] Spotify track: {track} has started playing.\nRequested by: {requester}"
@@ -258,8 +286,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
                     "[Node={node}] Apple Music track: {track} has started playing.\nRequested by: {requester}"
@@ -285,8 +313,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
                     "[Node={node}] Local track: {track} has started playing.\nRequested by: {requester}"
@@ -312,8 +340,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
                     "[Node={node}] HTTP track: {track} has started playing.\nRequested by: {requester}"
@@ -339,8 +367,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
                     "[Node={node}] Text-To-Speech track: {track} has started playing.\nRequested by: {requester}"
@@ -366,8 +394,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
                     "[Node={node}] YouTube track: {track} has started playing.\nRequested by: {requester}"
@@ -393,8 +421,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
                     "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
@@ -423,8 +451,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
                     "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
@@ -453,8 +481,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
                     "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
@@ -483,8 +511,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
                     "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
@@ -513,8 +541,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
                     "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
@@ -543,8 +571,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
                     "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
@@ -573,8 +601,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
                     "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
@@ -603,8 +631,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
                     "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
@@ -633,8 +661,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
                     "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
@@ -663,8 +691,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
                     "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
@@ -693,8 +721,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
                     "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
@@ -723,8 +751,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
                     "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
@@ -753,8 +781,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
                     "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
@@ -783,8 +811,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.track.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Track Start Event"),
                 description=_(
                     "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
@@ -813,8 +841,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Track Skipped Event"),
                 description=_("{track} has been skipped.\nRequested by {requester}").format(
                     track=await event.track.get_track_display_name(with_url=True),
@@ -837,8 +865,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Track Seek Event"),
                 description=_(
                     "{requester} requested that {track} is sought from position {fro} to position {after}."
@@ -867,8 +895,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Track Previous Requested Event"),
                 description=_("{requester} requested that the previous track {track} be played.").format(
                     track=await event.track.get_track_display_name(with_url=True),
@@ -893,8 +921,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Tracks Requested Event"),
                 description=_("{requester} added {track_count} to the queue.").format(
                     track_count=len(event.tracks), requester=user
@@ -913,8 +941,8 @@ class MPNotifier(commands.Cog, Commands):
         )
         if not notify:
             return
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Track AutoPlay Event"),
                 description=_("Auto-playing {track}.").format(
                     track=await event.track.get_track_display_name(with_url=True)
@@ -938,8 +966,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Track Resumed Event"),
                 description=_("{requester} resumed {track}.").format(
                     track=await event.track.get_track_display_name(with_url=True), requester=user
@@ -963,8 +991,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Queue Shuffled Event"),
                 description=_("{requester} shuffled the queue.").format(requester=user),
                 messageable=player.notify_channel,
@@ -979,8 +1007,8 @@ class MPNotifier(commands.Cog, Commands):
         notify, mention = await self._config.guild(guild=event.player.guild).get_raw("queue_end", default=[True, True])
         if not notify:
             return
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Queue End Event"),
                 description=_("All tracks in the queue have been played."),
                 messageable=player.notify_channel,
@@ -1002,8 +1030,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Tracks Removed Event"),
                 description=_("{requester} removed {track_count} tracks from the queue.").format(
                     track_count=len(event.tracks), requester=user
@@ -1027,8 +1055,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Player Paused Event"),
                 description=_("{requester} paused the player.").format(requester=user),
                 messageable=player.notify_channel,
@@ -1050,8 +1078,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Player Stopped Event"),
                 description=_("{requester} stopped the player.").format(requester=user),
                 messageable=player.notify_channel,
@@ -1073,8 +1101,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Player Resumed Event"),
                 description=_("{requester} resumed the player.").format(requester=user),
                 messageable=player.notify_channel,
@@ -1096,8 +1124,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Player Moved Event"),
                 description=_("{requester} moved the player from {before} to {after}.").format(
                     requester=user, before=event.before, after=event.after
@@ -1121,8 +1149,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Player Disconnected Event"),
                 description=_("{requester} disconnected the player.").format(requester=user),
                 messageable=player.notify_channel,
@@ -1144,8 +1172,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Player Connected Event"),
                 description=_("{requester} connected the player.").format(requester=user),
                 messageable=player.notify_channel,
@@ -1167,8 +1195,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Player Volume Changed Event"),
                 description=_("{requester} changed the player's volume from {before} to {after}.").format(
                     requester=user, before=event.before, after=event.after
@@ -1239,8 +1267,8 @@ class MPNotifier(commands.Cog, Commands):
             user = req.mention
         else:
             user = event.requester or self.bot.user
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Player Restored Event"),
                 description=_("{requester} restored the player.").format(requester=user),
                 messageable=player.notify_channel,
@@ -1276,8 +1304,8 @@ class MPNotifier(commands.Cog, Commands):
         else:
             explanation = _("an interaction section")
 
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Sponsor Segment Skipped Event"),
                 description=_("Sponsorblock: Skipped {category} running from {start}s to {to}s.").format(
                     category=explanation, start=segment.start // 1000, to=segment.end // 1000
@@ -1333,12 +1361,15 @@ class MPNotifier(commands.Cog, Commands):
             else:
                 data_[t_values] = _("N/A")
             data.append(data_)
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Filters Applied Event"),
-                description=_("{requester} changed the player filters.\n\n__**Currently Applied:**__\n{data}").format(
+                description=_(
+                    "[Node={node}] {requester} changed the player filters.\n\n" "__**Currently Applied:**__" "\n{data}"
+                ).format(
                     requester=user,
                     data=box(tabulate(data, headers="keys", tablefmt="fancy_grid")) if data else _("None"),
+                    node=event.node,
                 ),
                 messageable=player.notify_channel,
             )
@@ -1386,8 +1417,8 @@ class MPNotifier(commands.Cog, Commands):
         )
         if not notify:
             return
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("Node Changed Event"),
                 description=_("The node which the player is connected to changed from {fro} to {to}.").format(
                     fro=event.old_node.name, to=event.new_node.name
@@ -1406,12 +1437,13 @@ class MPNotifier(commands.Cog, Commands):
         )
         if not notify:
             return
-        await player.notify_channel.send(
-            embed=await self.lavalink.construct_embed(
+        self._embed_mappings[player.notify_channel].append(
+            await self.lavalink.construct_embed(
                 title=_("WebSocket Closed Event"),
                 description=_(
-                    "The websocket connection to the Lavalink node closed with code {code} and reason {reason}."
-                ).format(code=event.code, reason=event.reason),
+                    "[Node={node}] The websocket connection to the Lavalink node closed with"
+                    " code {code} and reason {reason}."
+                ).format(code=event.code, reason=event.reason, node=event.node.name),
                 messageable=player.notify_channel,
             )
         )
