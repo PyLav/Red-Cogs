@@ -114,7 +114,7 @@ class MPNotifier(commands.Cog, Commands):
                 continue
             dispatch_mapping[channel] = to_send
         if not dispatch_mapping:
-            LOGGER.debug("No embeds to dispatch.")
+            LOGGER.trace("No embeds to dispatch.")
             return
         LOGGER.trace("Sending up to last 10 embeds to %s channels", len(dispatch_mapping))
         await asyncio.gather(*[channel.send(embeds=embeds) for channel, embeds in dispatch_mapping.items()])
