@@ -166,7 +166,7 @@ class IncreaseVolumeButton(discord.ui.Button):
     def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
-            emoji=emojis.VOLUME_UP,
+            emoji=emojis.VOLUMEUP,
             row=row,
         )
         self.cog = cog
@@ -182,7 +182,7 @@ class DecreaseVolumeButton(discord.ui.Button):
     def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
-            emoji=emojis.VOLUME_DOWN,
+            emoji=emojis.VOLUMEDOWN,
             row=row,
         )
         self.cog = cog
@@ -198,7 +198,7 @@ class ToggleRepeatButton(discord.ui.Button):
     def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
-            emoji=emojis.REPEAT_CURRENT,
+            emoji=emojis.LOOP,
             row=row,
         )
         self.cog = cog
@@ -226,7 +226,7 @@ class ToggleRepeatQueueButton(discord.ui.Button):
     def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
-            emoji=emojis.REPEAT_QUEUE,
+            emoji=emojis.REPEAT,
             row=row,
         )
         self.cog = cog
@@ -254,7 +254,7 @@ class ShuffleButton(discord.ui.Button):
     def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
-            emoji=emojis.SHUFFLE,
+            emoji=emojis.RANDOM,
             row=row,
         )
         self.cog = cog
@@ -270,7 +270,7 @@ class CloseButton(discord.ui.Button):
     def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
-            emoji=emojis.CLOSE,
+            emoji=emojis.MINIMIZE,
             row=row,
         )
         self.cog = cog
@@ -329,7 +329,7 @@ class EnqueueButton(discord.ui.Button):
         self.cog = cog
         super().__init__(
             style=style,
-            emoji=emojis.ADD,
+            emoji=emojis.PLUS,
             row=row,
         )
 
@@ -353,7 +353,7 @@ class RemoveFromQueueButton(discord.ui.Button):
         self.cog = cog
         super().__init__(
             style=style,
-            emoji=emojis.REMOVE,
+            emoji=emojis.MINUS,
             row=row,
         )
 
@@ -387,7 +387,7 @@ class PlayNowFromQueueButton(discord.ui.Button):
         self.cog = cog
         super().__init__(
             style=style,
-            emoji=emojis.PLAY_NOW,
+            emoji=emojis.MUSICALNOTE,
             row=row,
         )
 
@@ -431,7 +431,7 @@ class EnqueuePlaylistButton(discord.ui.Button):
         cog: CogT,
         style: discord.ButtonStyle,
         row: int = None,
-        emoji: Emoji | PartialEmoji = emojis.ENQUEUE,
+        emoji: Emoji | PartialEmoji = emojis.PLAYLIST,
         playlist: PlaylistModel = None,
     ):
         self.cog = cog
@@ -872,7 +872,7 @@ class PlaylistClearButton(discord.ui.Button):
     def __init__(self, cog: CogT, style: discord.ButtonStyle, row: int = None):
         super().__init__(
             style=style,
-            emoji=emojis.ERASE,
+            emoji=emojis.CLEAR,
             row=row,
         )
         self.cog = cog

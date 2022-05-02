@@ -1536,13 +1536,13 @@ class PlaylistManageFlow(discord.ui.View):
             style=discord.ButtonStyle.green,
             cog=cog,
             op="add",
-            emoji=emojis.ADD,
+            emoji=emojis.PLUS,
         )
         self.remove_button = PlaylistUpsertButton(
             style=discord.ButtonStyle.red,
             cog=cog,
             op="remove",
-            emoji=emojis.REMOVE,
+            emoji=emojis.MINUS,
         )
 
         self.done_button = DoneButton(
@@ -1575,7 +1575,7 @@ class PlaylistManageFlow(discord.ui.View):
         self.playlist_enqueue_button = EnqueuePlaylistButton(
             cog=cog,
             style=discord.ButtonStyle.blurple,
-            emoji=emojis.ENQUEUE,
+            emoji=emojis.PLAYLIST,
             playlist=playlist,
         )
         self.playlist_info_button = PlaylistInfoButton(
