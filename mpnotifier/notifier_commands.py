@@ -125,7 +125,7 @@ class Commands:
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("Invalid event, possible events are:\n\n{events}.").format(
-                        events=humanize_list(list(POSSIBLE_EVENTS))
+                        events=humanize_list(sorted(list(map(inline, POSSIBLE_EVENTS)), key=str.lower))
                     ),
                     messageable=context,
                 ),
