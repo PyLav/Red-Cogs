@@ -2,7 +2,7 @@ project_id_env: CROWDIN_PROJECT_ID
 api_token_env: CROWDIN_API_KEY
 base_path: ./
 files:
-  - source: audio/**/messages.pot
-    translation: audio/%original_path%/%locale%.po
+  - source: '**/messages.pot'
+    translation: '%original_path%/%locale%.po'
   - source: mpnotifier/**/messages.pot
     translation: mpnotifier/%original_path%/%locale%.po
