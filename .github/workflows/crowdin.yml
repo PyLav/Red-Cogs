@@ -19,7 +19,7 @@ jobs:
         pip install redgettext==3.4.2
     - name: Generate source files
       run: |
-        python3.8 -m redgettext --command-docstrings --verbose --recursive audio
+        python3.8 -m redgettext --command-docstrings --verbose --recursive .
     - name: crowdin action
       uses: crowdin/github-action@1.4.8
       with:
