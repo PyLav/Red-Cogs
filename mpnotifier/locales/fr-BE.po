@@ -1,0 +1,485 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: mediaplayer\n"
+"POT-Creation-Date: 2022-05-02 15:34+0000\n"
+"PO-Revision-Date: 2022-05-02 16:47\n"
+"Last-Translator: \n"
+"Language-Team: French, Belgium\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.4.2\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Crowdin-Project: mediaplayer\n"
+"X-Crowdin-Project-ID: 512604\n"
+"X-Crowdin-Language: fr-BE\n"
+"X-Crowdin-File: /mpnotifier/locales/messages.pot\n"
+"X-Crowdin-File-ID: 134\n"
+"Language: fr_BE\n"
+
+#: mpnotifier/notifier.py:134
+msgid "Track Stuck Event"
+msgstr "Événement de suivi bloqué"
+
+#: mpnotifier/notifier.py:135
+msgid "[Node={node}] {track} is stuck for {threshold} seconds, skipping."
+msgstr "[Node={node}] {track} est coincé pendant {threshold} secondes, ignoré."
+
+#: mpnotifier/notifier.py:157
+msgid "Track Exception Event"
+msgstr "Événement d'exception de parcours"
+
+#: mpnotifier/notifier.py:158
+msgid "[Node={node}] There was an error while playing {track}:\n"
+"{exception}"
+msgstr "[Node={node}] Il y a eu une erreur lors de la lecture de {track}:\n"
+"{exception}"
+
+#: mpnotifier/notifier.py:176
+msgid "the player reached the end of the tracks runtime."
+msgstr "le joueur a atteint la fin de l'exécution des pistes."
+
+#: mpnotifier/notifier.py:178
+msgid "a new track started playing."
+msgstr "une nouvelle piste a commencé à jouer."
+
+#: mpnotifier/notifier.py:180
+msgid "it failed to start."
+msgstr "cela n'a pas pu démarrer."
+
+#: mpnotifier/notifier.py:182
+msgid "because the player was stopped."
+msgstr "parce que le joueur a été arrêté."
+
+#: mpnotifier/notifier.py:184
+msgid "the node told it to stop."
+msgstr "le noeud lui a dit de s'arrêter."
+
+#: mpnotifier/notifier.py:187
+msgid "Track End Event"
+msgstr "Événement de fin de parcours"
+
+#: mpnotifier/notifier.py:188
+msgid "[Node={node}] {track} has finished playing because {reason}"
+msgstr "[Node={node}] {track} a fini de jouer parce que {reason}"
+
+#: mpnotifier/notifier.py:212
+msgid "Track Start Event"
+msgstr "Événement de Début de Suivi"
+
+#: mpnotifier/notifier.py:213
+msgid "[Node={node}] {track} has started playing.\n"
+"Requested by: {requester}"
+msgstr "[Node={node}] {track} a commencé à jouer.\n"
+"Demandé par: {requester}"
+
+#: mpnotifier/notifier.py:237
+msgid "YouTube Music Track Start Event"
+msgstr "Événement de début de piste de musique YouTube"
+
+#: mpnotifier/notifier.py:238
+msgid "[Node={node}] YouTube Music track: {track} has started playing.\n"
+"Requested by: {requester}"
+msgstr "[Node={node}] Musique YouTube : {track} a commencé à jouer.\n"
+"Demandé par: {requester}"
+
+#: mpnotifier/notifier.py:264
+msgid "Spotify Track Start Event"
+msgstr "Événement de début de la piste Spotify"
+
+#: mpnotifier/notifier.py:265
+msgid "[Node={node}] Spotify track: {track} has started playing.\n"
+"Requested by: {requester}"
+msgstr "[Node={node}] La piste Spotify : {track} a commencé à jouer.\n"
+"Demandé par: {requester}"
+
+#: mpnotifier/notifier.py:291
+msgid "Apple Music Track Start Event"
+msgstr "Événement de Début de l'Apple Music Track"
+
+#: mpnotifier/notifier.py:292
+msgid "[Node={node}] Apple Music track: {track} has started playing.\n"
+"Requested by: {requester}"
+msgstr "[Node={node}] La piste Apple Music : {track} a commencé à jouer.\n"
+"Demandé par: {requester}"
+
+#: mpnotifier/notifier.py:318
+msgid "Local Track Start Event"
+msgstr "Événement de début de piste locale"
+
+#: mpnotifier/notifier.py:319
+msgid "[Node={node}] Local track: {track} has started playing.\n"
+"Requested by: {requester}"
+msgstr "[Node={node}] Piste locale: {track} a commencé à jouer.\n"
+"Demandé par: {requester}"
+
+#: mpnotifier/notifier.py:345
+msgid "HTTP Track Start Event"
+msgstr "Événement de début de piste HTTP"
+
+#: mpnotifier/notifier.py:346
+msgid "[Node={node}] HTTP track: {track} has started playing.\n"
+"Requested by: {requester}"
+msgstr "[Node={node}] Piste HTTP: {track} a commencé à jouer.\n"
+"Demandé par: {requester}"
+
+#: mpnotifier/notifier.py:372
+msgid "Text-To-Speech Track Start Event"
+msgstr "Événement de début de la piste vocale Text-To-Speech"
+
+#: mpnotifier/notifier.py:373
+msgid "[Node={node}] Text-To-Speech track: {track} has started playing.\n"
+"Requested by: {requester}"
+msgstr "[Node={node}] Piste de synthèse vocale: {track} a commencé à jouer.\n"
+"Demandé par: {requester}"
+
+#: mpnotifier/notifier.py:399
+msgid "YouTube Track Start Event"
+msgstr "Événement de début de piste YouTube"
+
+#: mpnotifier/notifier.py:400
+msgid "[Node={node}] YouTube track: {track} has started playing.\n"
+"Requested by: {requester}"
+msgstr "[Node={node}] Piste YouTube : {track} a commencé à jouer.\n"
+"Demandé par: {requester}"
+
+#: mpnotifier/notifier.py:426 mpnotifier/notifier.py:456
+#: mpnotifier/notifier.py:486 mpnotifier/notifier.py:516
+#: mpnotifier/notifier.py:546 mpnotifier/notifier.py:576
+#: mpnotifier/notifier.py:606 mpnotifier/notifier.py:636
+#: mpnotifier/notifier.py:666 mpnotifier/notifier.py:696
+#: mpnotifier/notifier.py:726 mpnotifier/notifier.py:756
+#: mpnotifier/notifier.py:786 mpnotifier/notifier.py:816
+msgid "{source} Track Start Event"
+msgstr "{source} événement de début de piste"
+
+#: mpnotifier/notifier.py:427 mpnotifier/notifier.py:457
+#: mpnotifier/notifier.py:487 mpnotifier/notifier.py:517
+#: mpnotifier/notifier.py:547 mpnotifier/notifier.py:577
+#: mpnotifier/notifier.py:607 mpnotifier/notifier.py:637
+#: mpnotifier/notifier.py:667 mpnotifier/notifier.py:697
+#: mpnotifier/notifier.py:727 mpnotifier/notifier.py:757
+#: mpnotifier/notifier.py:787 mpnotifier/notifier.py:817
+msgid "[Node={node}] {source} track: {track} has started playing.\n"
+"Requested by: {requester}"
+msgstr "[Node={node}] {source} piste : {track} a commencé à jouer.\n"
+"Demandé par: {requester}"
+
+#: mpnotifier/notifier.py:846
+msgid "Track Skipped Event"
+msgstr "Événement de piste ignoré"
+
+#: mpnotifier/notifier.py:847
+msgid "{track} has been skipped.\n"
+"Requested by {requester}"
+msgstr "{track} a été ignoré.\n"
+"Demandé par {requester}"
+
+#: mpnotifier/notifier.py:870
+msgid "Track Seek Event"
+msgstr "Événement de recherche de pistes"
+
+#: mpnotifier/notifier.py:871
+msgid "{requester} requested that {track} is sought from position {fro} to position {after}."
+msgstr "{requester} a demandé que {track} soit recherché de la position {fro} à la position {after}."
+
+#: mpnotifier/notifier.py:900
+msgid "Track Previous Requested Event"
+msgstr "Suivre l'événement demandé précédemment"
+
+#: mpnotifier/notifier.py:901
+msgid "{requester} requested that the previous track {track} be played."
+msgstr "{requester} a demandé que la piste précédente {track} soit lue."
+
+#: mpnotifier/notifier.py:926
+msgid "Tracks Requested Event"
+msgstr "Événement des pistes demandées"
+
+#: mpnotifier/notifier.py:927
+msgid "{requester} added {track_count} to the queue."
+msgstr "{requester} a ajouté {track_count} à la file d'attente."
+
+#: mpnotifier/notifier.py:946
+msgid "Track AutoPlay Event"
+msgstr "Événement de lecture automatique de parcours"
+
+#: mpnotifier/notifier.py:947
+msgid "Auto-playing {track}."
+msgstr "Lecture automatique de {track}."
+
+#: mpnotifier/notifier.py:971
+msgid "Track Resumed Event"
+msgstr "Événement de suivi repris"
+
+#: mpnotifier/notifier.py:972
+msgid "{requester} resumed {track}."
+msgstr "{requester} a repris {track}."
+
+#: mpnotifier/notifier.py:996
+msgid "Queue Shuffled Event"
+msgstr "Evénement en file d'attente aléatoire"
+
+#: mpnotifier/notifier.py:997
+msgid "{requester} shuffled the queue."
+msgstr "{requester} a mélangé la file d'attente."
+
+#: mpnotifier/notifier.py:1012
+msgid "Queue End Event"
+msgstr "Événement de fin de file d'attente"
+
+#: mpnotifier/notifier.py:1013
+msgid "All tracks in the queue have been played."
+msgstr "Toutes les pistes de la file d'attente ont été lues."
+
+#: mpnotifier/notifier.py:1035
+msgid "Tracks Removed Event"
+msgstr "Événement des pistes supprimé"
+
+#: mpnotifier/notifier.py:1036
+msgid "{requester} removed {track_count} tracks from the queue."
+msgstr "{requester} a retiré {track_count} pistes de la file d'attente."
+
+#: mpnotifier/notifier.py:1060
+msgid "Player Paused Event"
+msgstr "Evénement en pause du joueur"
+
+#: mpnotifier/notifier.py:1061
+msgid "{requester} paused the player."
+msgstr "{requester} a mis le joueur en pause."
+
+#: mpnotifier/notifier.py:1083
+msgid "Player Stopped Event"
+msgstr "Evénement Arrêt du Joueur"
+
+#: mpnotifier/notifier.py:1084
+msgid "{requester} stopped the player."
+msgstr "{requester} a arrêté le joueur."
+
+#: mpnotifier/notifier.py:1106
+msgid "Player Resumed Event"
+msgstr "Événement repris par le joueur"
+
+#: mpnotifier/notifier.py:1107
+msgid "{requester} resumed the player."
+msgstr "{requester} a repris le joueur."
+
+#: mpnotifier/notifier.py:1129
+msgid "Player Moved Event"
+msgstr "Evénement du joueur déplacé"
+
+#: mpnotifier/notifier.py:1130
+msgid "{requester} moved the player from {before} to {after}."
+msgstr "{requester} a déplacé le joueur de {before} à {after}."
+
+#: mpnotifier/notifier.py:1154
+msgid "Player Disconnected Event"
+msgstr "Événement déconnecté du joueur"
+
+#: mpnotifier/notifier.py:1155
+msgid "{requester} disconnected the player."
+msgstr "{requester} a déconnecté le lecteur."
+
+#: mpnotifier/notifier.py:1177
+msgid "Player Connected Event"
+msgstr "Événement du joueur connecté"
+
+#: mpnotifier/notifier.py:1178
+msgid "{requester} connected the player."
+msgstr "{requester} a connecté le lecteur."
+
+#: mpnotifier/notifier.py:1200
+msgid "Player Volume Changed Event"
+msgstr "Événement du volume du lecteur modifié"
+
+#: mpnotifier/notifier.py:1201
+msgid "{requester} changed the player's volume from {before} to {after}."
+msgstr "{requester} a changé le volume du joueur de {before} à {after}."
+
+#: mpnotifier/notifier.py:1227 mpnotifier/notifier.py:1235
+#: mpnotifier/notifier.py:1245
+msgid "Player Repeat Event"
+msgstr "Répéter l'événement du joueur"
+
+#: mpnotifier/notifier.py:1228
+msgid "{requester} disabled repeat."
+msgstr "{requester} a désactivé la répétition."
+
+#: mpnotifier/notifier.py:1236
+msgid "{requester} {status} repeat of the whole queue."
+msgstr "{requester} {status} répétition de toute la file d'attente."
+
+#: mpnotifier/notifier.py:1237 mpnotifier/notifier.py:1248
+msgid "enabled"
+msgstr "Activé"
+
+#: mpnotifier/notifier.py:1237 mpnotifier/notifier.py:1248
+msgid "disabled"
+msgstr "désactivée"
+
+#: mpnotifier/notifier.py:1246
+msgid "{requester} {status} repeat for {track}."
+msgstr "{requester} {status} répétition pour {track}."
+
+#: mpnotifier/notifier.py:1272
+msgid "Player Restored Event"
+msgstr "Evénement du joueur restauré"
+
+#: mpnotifier/notifier.py:1273
+msgid "{requester} restored the player."
+msgstr "{requester} a restauré le joueur."
+
+#: mpnotifier/notifier.py:1291
+msgid "an intro section"
+msgstr "une section d'introduction"
+
+#: mpnotifier/notifier.py:1293
+msgid "an outro section"
+msgstr "une autre section"
+
+#: mpnotifier/notifier.py:1295
+msgid "a preview section"
+msgstr "une section d'aperçu"
+
+#: mpnotifier/notifier.py:1297
+msgid "an off-topic section"
+msgstr "une section hors sujet"
+
+#: mpnotifier/notifier.py:1299
+msgid "a filler section"
+msgstr "une section de remplissage"
+
+#: mpnotifier/notifier.py:1301
+msgid "a sponsor section"
+msgstr "une section de sponsor"
+
+#: mpnotifier/notifier.py:1303
+msgid "a self-promotion section"
+msgstr "une section d'auto-promotion"
+
+#: mpnotifier/notifier.py:1305
+msgid "an interaction section"
+msgstr "une section d'interaction"
+
+#: mpnotifier/notifier.py:1309
+msgid "Sponsor Segment Skipped Event"
+msgstr "Événement ignoré du segment du sponsor"
+
+#: mpnotifier/notifier.py:1310
+msgid "Sponsorblock: Skipped {category} running from {start}s to {to}s."
+msgstr "Bloc Sponsor: {category} passé de {start}s à {to}s."
+
+#: mpnotifier/notifier.py:1332
+msgid "Effect"
+msgstr "Effet"
+
+#: mpnotifier/notifier.py:1333
+msgid "Values"
+msgstr "Valeurs"
+
+#: mpnotifier/notifier.py:1362
+msgid "N/A"
+msgstr "N/A"
+
+#: mpnotifier/notifier.py:1366
+msgid "Filters Applied Event"
+msgstr "Filtres Événement Appliqué"
+
+#: mpnotifier/notifier.py:1367
+msgid "[Node={node}] {requester} changed the player filters.\n\n"
+"__**Currently Applied:**__\n"
+"{data}"
+msgstr "[Node={node}] {requester} a modifié les filtres du joueur.\n\n"
+"__**Actuellement Applié :**__\n"
+"{data}"
+
+#: mpnotifier/notifier.py:1371
+msgid "None"
+msgstr "Aucun"
+
+#: mpnotifier/notifier.py:1387
+msgid "Node Connected Event"
+msgstr "Événement lié au nœud"
+
+#: mpnotifier/notifier.py:1388
+msgid "Node {name} has been connected."
+msgstr "Le nœud {name} a été connecté."
+
+#: mpnotifier/notifier.py:1402
+msgid "Node Disconnected Event"
+msgstr "Événement déconnecté du nœud"
+
+#: mpnotifier/notifier.py:1403
+msgid "Node {name} has been disconnected with code {code} and reason: {reason}."
+msgstr "Le noeud {name} a été déconnecté avec le code {code} et la raison : {reason}."
+
+#: mpnotifier/notifier.py:1422
+msgid "Node Changed Event"
+msgstr "Événement modifié"
+
+#: mpnotifier/notifier.py:1423
+msgid "The node which the player is connected to changed from {fro} to {to}."
+msgstr "Le noeud auquel le joueur est connecté a changé de {fro} à {to}."
+
+#: mpnotifier/notifier.py:1442
+msgid "WebSocket Closed Event"
+msgstr "Evénement Fermé WebSocket"
+
+#: mpnotifier/notifier.py:1443
+msgid "[Node={node}] The websocket connection to the Lavalink node closed with code {code} and reason {reason}."
+msgstr "[Node={node}] La connexion websocket au nœud Lavalink s'est fermée avec le code {code} et la raison {reason}."
+
+#: mpnotifier/notifier_commands.py:81
+#, docstring
+msgid "Configure the MPNotifier cog."
+msgstr "Configurer le cog MPNotifier."
+
+#: mpnotifier/notifier_commands.py:87
+#, docstring
+msgid "Set the notify channel for the player."
+msgstr "Définit le canal de notification pour le lecteur."
+
+#: mpnotifier/notifier_commands.py:103
+msgid "MP notify channel set to {channel}"
+msgstr "MP notifier le canal à {channel}"
+
+#: mpnotifier/notifier_commands.py:112
+#, docstring
+msgid "Set whether or not to notify for the specified event.\n\n"
+"        Arguments:\n"
+"            event -- The event to set.\n"
+"            toggle -- Whether or not to notify upon receiving this event.\n"
+"            use_mention -- Whether or not to use a mention instead of the name for the action requested.\n"
+"        "
+msgstr "Définit si oui ou non il faut notifier pour l'événement spécifié.\n\n"
+"        Arguments :\n"
+"            événement -- L'événement à définir.\n"
+"            activer/désactiver -- Si oui ou non notifier lors de la réception de cet événement.\n"
+"            use_mention -- Utiliser ou non une mention au lieu du nom de l'action demandée.\n"
+"        "
+
+#: mpnotifier/notifier_commands.py:127
+msgid "Invalid event, possible events are:\n\n"
+"{events}."
+msgstr "Événement non valide, les événements possibles sont:\n\n"
+"{events}."
+
+#: mpnotifier/notifier_commands.py:141
+msgid "Event {event} set to {toggle}{extras}."
+msgstr "L'événement {event} a été mis à {toggle}{extras}."
+
+#: mpnotifier/notifier_commands.py:143
+msgid "notify"
+msgstr "notifier"
+
+#: mpnotifier/notifier_commands.py:143
+msgid "do not notify"
+msgstr "ne pas notifier"
+
+#: mpnotifier/notifier_commands.py:144
+msgid " with mentions"
+msgstr " avec mentions"
+
+#: mpnotifier/notifier_commands.py:144
+msgid " without mentions"
+msgstr " sans mentions"
+
