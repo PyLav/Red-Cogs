@@ -1,0 +1,485 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: mediaplayer\n"
+"POT-Creation-Date: 2022-05-02 15:34+0000\n"
+"PO-Revision-Date: 2022-05-02 16:47\n"
+"Last-Translator: \n"
+"Language-Team: Chinese Simplified\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.4.2\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Crowdin-Project: mediaplayer\n"
+"X-Crowdin-Project-ID: 512604\n"
+"X-Crowdin-Language: zh-CN\n"
+"X-Crowdin-File: /mpnotifier/locales/messages.pot\n"
+"X-Crowdin-File-ID: 134\n"
+"Language: zh_CN\n"
+
+#: mpnotifier/notifier.py:134
+msgid "Track Stuck Event"
+msgstr "跟踪卡住事件"
+
+#: mpnotifier/notifier.py:135
+msgid "[Node={node}] {track} is stuck for {threshold} seconds, skipping."
+msgstr "[节点={node}] {track} 被卡住了 {threshold} 秒，跳过。"
+
+#: mpnotifier/notifier.py:157
+msgid "Track Exception Event"
+msgstr "跟踪异常事件"
+
+#: mpnotifier/notifier.py:158
+msgid "[Node={node}] There was an error while playing {track}:\n"
+"{exception}"
+msgstr "[Node={node}] 在播放 {track}时出错：\n"
+"{exception}"
+
+#: mpnotifier/notifier.py:176
+msgid "the player reached the end of the tracks runtime."
+msgstr "玩家已经到达轨道运行时间的末尾。"
+
+#: mpnotifier/notifier.py:178
+msgid "a new track started playing."
+msgstr "新曲目开始播放。"
+
+#: mpnotifier/notifier.py:180
+msgid "it failed to start."
+msgstr "启动失败。"
+
+#: mpnotifier/notifier.py:182
+msgid "because the player was stopped."
+msgstr "因为玩家已经停止。"
+
+#: mpnotifier/notifier.py:184
+msgid "the node told it to stop."
+msgstr "节点告诉它要停止。"
+
+#: mpnotifier/notifier.py:187
+msgid "Track End Event"
+msgstr "跟踪结束事件"
+
+#: mpnotifier/notifier.py:188
+msgid "[Node={node}] {track} has finished playing because {reason}"
+msgstr "[节点={node}] {track} 已经完成游戏，因为 {reason}"
+
+#: mpnotifier/notifier.py:212
+msgid "Track Start Event"
+msgstr "跟踪开始事件"
+
+#: mpnotifier/notifier.py:213
+msgid "[Node={node}] {track} has started playing.\n"
+"Requested by: {requester}"
+msgstr "[Node={node}] {track} 已经开始玩。\n"
+"请求者为： {requester}"
+
+#: mpnotifier/notifier.py:237
+msgid "YouTube Music Track Start Event"
+msgstr "YouTube 音乐曲目开始事件"
+
+#: mpnotifier/notifier.py:238
+msgid "[Node={node}] YouTube Music track: {track} has started playing.\n"
+"Requested by: {requester}"
+msgstr "[Node={node}] YouTube 音乐曲目: {track} 已开始播放。\n"
+"请求者: {requester}"
+
+#: mpnotifier/notifier.py:264
+msgid "Spotify Track Start Event"
+msgstr "Spotify 曲目开始事件"
+
+#: mpnotifier/notifier.py:265
+msgid "[Node={node}] Spotify track: {track} has started playing.\n"
+"Requested by: {requester}"
+msgstr "[Node={node}] Spotify 歌曲: {track} 已经开始玩。\n"
+"请求者: {requester}"
+
+#: mpnotifier/notifier.py:291
+msgid "Apple Music Track Start Event"
+msgstr "苹果音乐曲目开始事件"
+
+#: mpnotifier/notifier.py:292
+msgid "[Node={node}] Apple Music track: {track} has started playing.\n"
+"Requested by: {requester}"
+msgstr "[Node={node}] 苹果音乐曲目: {track} 已经开始播放。\n"
+"请求者: {requester}"
+
+#: mpnotifier/notifier.py:318
+msgid "Local Track Start Event"
+msgstr "本地曲目开始事件"
+
+#: mpnotifier/notifier.py:319
+msgid "[Node={node}] Local track: {track} has started playing.\n"
+"Requested by: {requester}"
+msgstr "[节点={node}] 本地轨道: {track} 已经开始玩。\n"
+"请求者: {requester}"
+
+#: mpnotifier/notifier.py:345
+msgid "HTTP Track Start Event"
+msgstr "HTTP 曲目开始事件"
+
+#: mpnotifier/notifier.py:346
+msgid "[Node={node}] HTTP track: {track} has started playing.\n"
+"Requested by: {requester}"
+msgstr "[Node={node}] HTTP 轨道: {track} 已开始播放。\n"
+"请求者: {requester}"
+
+#: mpnotifier/notifier.py:372
+msgid "Text-To-Speech Track Start Event"
+msgstr "文字语音轨开始事件"
+
+#: mpnotifier/notifier.py:373
+msgid "[Node={node}] Text-To-Speech track: {track} has started playing.\n"
+"Requested by: {requester}"
+msgstr "[Node={node}] 文本语音轨： {track} 已经开始播放。\n"
+"请求者为： {requester}"
+
+#: mpnotifier/notifier.py:399
+msgid "YouTube Track Start Event"
+msgstr "YouTube 音轨开始事件"
+
+#: mpnotifier/notifier.py:400
+msgid "[Node={node}] YouTube track: {track} has started playing.\n"
+"Requested by: {requester}"
+msgstr "[节点={node}] YouTube 曲目: {track} 已开始播放。\n"
+"请求者: {requester}"
+
+#: mpnotifier/notifier.py:426 mpnotifier/notifier.py:456
+#: mpnotifier/notifier.py:486 mpnotifier/notifier.py:516
+#: mpnotifier/notifier.py:546 mpnotifier/notifier.py:576
+#: mpnotifier/notifier.py:606 mpnotifier/notifier.py:636
+#: mpnotifier/notifier.py:666 mpnotifier/notifier.py:696
+#: mpnotifier/notifier.py:726 mpnotifier/notifier.py:756
+#: mpnotifier/notifier.py:786 mpnotifier/notifier.py:816
+msgid "{source} Track Start Event"
+msgstr "{source} 曲目开始事件"
+
+#: mpnotifier/notifier.py:427 mpnotifier/notifier.py:457
+#: mpnotifier/notifier.py:487 mpnotifier/notifier.py:517
+#: mpnotifier/notifier.py:547 mpnotifier/notifier.py:577
+#: mpnotifier/notifier.py:607 mpnotifier/notifier.py:637
+#: mpnotifier/notifier.py:667 mpnotifier/notifier.py:697
+#: mpnotifier/notifier.py:727 mpnotifier/notifier.py:757
+#: mpnotifier/notifier.py:787 mpnotifier/notifier.py:817
+msgid "[Node={node}] {source} track: {track} has started playing.\n"
+"Requested by: {requester}"
+msgstr "[Node={node}] {source} 曲目: {track} 已经开始播放。\n"
+"请求者: {requester}"
+
+#: mpnotifier/notifier.py:846
+msgid "Track Skipped Event"
+msgstr "曲目跳过的事件"
+
+#: mpnotifier/notifier.py:847
+msgid "{track} has been skipped.\n"
+"Requested by {requester}"
+msgstr "{track} 已被跳过。\n"
+" {requester} 请求的"
+
+#: mpnotifier/notifier.py:870
+msgid "Track Seek Event"
+msgstr "跟踪查找事件"
+
+#: mpnotifier/notifier.py:871
+msgid "{requester} requested that {track} is sought from position {fro} to position {after}."
+msgstr "{requester} 请求从 {track} 的位置 {fro} 寻求位置 {after}。"
+
+#: mpnotifier/notifier.py:900
+msgid "Track Previous Requested Event"
+msgstr "跟踪上一个请求的事件"
+
+#: mpnotifier/notifier.py:901
+msgid "{requester} requested that the previous track {track} be played."
+msgstr "{requester} 请求播放上一个音轨 {track}。"
+
+#: mpnotifier/notifier.py:926
+msgid "Tracks Requested Event"
+msgstr "曲目请求事件"
+
+#: mpnotifier/notifier.py:927
+msgid "{requester} added {track_count} to the queue."
+msgstr "{requester} 将 {track_count} 添加到队列。"
+
+#: mpnotifier/notifier.py:946
+msgid "Track AutoPlay Event"
+msgstr "音轨自动播放事件"
+
+#: mpnotifier/notifier.py:947
+msgid "Auto-playing {track}."
+msgstr "自动播放 {track}。"
+
+#: mpnotifier/notifier.py:971
+msgid "Track Resumed Event"
+msgstr "曲目恢复事件"
+
+#: mpnotifier/notifier.py:972
+msgid "{requester} resumed {track}."
+msgstr "{requester} 恢复 {track}。"
+
+#: mpnotifier/notifier.py:996
+msgid "Queue Shuffled Event"
+msgstr "队列混杂事件"
+
+#: mpnotifier/notifier.py:997
+msgid "{requester} shuffled the queue."
+msgstr "{requester} 打乱了队列。"
+
+#: mpnotifier/notifier.py:1012
+msgid "Queue End Event"
+msgstr "队列结束事件"
+
+#: mpnotifier/notifier.py:1013
+msgid "All tracks in the queue have been played."
+msgstr "队列中的所有曲目都已播放。"
+
+#: mpnotifier/notifier.py:1035
+msgid "Tracks Removed Event"
+msgstr "曲目已删除事件"
+
+#: mpnotifier/notifier.py:1036
+msgid "{requester} removed {track_count} tracks from the queue."
+msgstr "{requester} 移除了队列中的 {track_count} 曲目。"
+
+#: mpnotifier/notifier.py:1060
+msgid "Player Paused Event"
+msgstr "播放器暂停事件"
+
+#: mpnotifier/notifier.py:1061
+msgid "{requester} paused the player."
+msgstr "{requester} 暂停了播放器。"
+
+#: mpnotifier/notifier.py:1083
+msgid "Player Stopped Event"
+msgstr "播放器停止事件"
+
+#: mpnotifier/notifier.py:1084
+msgid "{requester} stopped the player."
+msgstr "{requester} 停止了玩家。"
+
+#: mpnotifier/notifier.py:1106
+msgid "Player Resumed Event"
+msgstr "播放器恢复事件"
+
+#: mpnotifier/notifier.py:1107
+msgid "{requester} resumed the player."
+msgstr "{requester} 恢复了玩家。"
+
+#: mpnotifier/notifier.py:1129
+msgid "Player Moved Event"
+msgstr "播放器移动事件"
+
+#: mpnotifier/notifier.py:1130
+msgid "{requester} moved the player from {before} to {after}."
+msgstr "{requester} 将玩家从 {before} 移动到 {after}。"
+
+#: mpnotifier/notifier.py:1154
+msgid "Player Disconnected Event"
+msgstr "播放器已断开的事件"
+
+#: mpnotifier/notifier.py:1155
+msgid "{requester} disconnected the player."
+msgstr "{requester} 断开了玩家连接。"
+
+#: mpnotifier/notifier.py:1177
+msgid "Player Connected Event"
+msgstr "玩家连接事件"
+
+#: mpnotifier/notifier.py:1178
+msgid "{requester} connected the player."
+msgstr "{requester} 连接了播放器。"
+
+#: mpnotifier/notifier.py:1200
+msgid "Player Volume Changed Event"
+msgstr "播放器音量已更改事件"
+
+#: mpnotifier/notifier.py:1201
+msgid "{requester} changed the player's volume from {before} to {after}."
+msgstr "{requester} 将玩家的音量从 {before} 更改为 {after}。"
+
+#: mpnotifier/notifier.py:1227 mpnotifier/notifier.py:1235
+#: mpnotifier/notifier.py:1245
+msgid "Player Repeat Event"
+msgstr "播放器重复事件"
+
+#: mpnotifier/notifier.py:1228
+msgid "{requester} disabled repeat."
+msgstr "{requester} 禁用了重复操作。"
+
+#: mpnotifier/notifier.py:1236
+msgid "{requester} {status} repeat of the whole queue."
+msgstr "{requester} {status} 重复整个队列。"
+
+#: mpnotifier/notifier.py:1237 mpnotifier/notifier.py:1248
+msgid "enabled"
+msgstr "已启用"
+
+#: mpnotifier/notifier.py:1237 mpnotifier/notifier.py:1248
+msgid "disabled"
+msgstr "已禁用"
+
+#: mpnotifier/notifier.py:1246
+msgid "{requester} {status} repeat for {track}."
+msgstr "{requester} {status} 重复了 {track}"
+
+#: mpnotifier/notifier.py:1272
+msgid "Player Restored Event"
+msgstr "恢复播放器事件"
+
+#: mpnotifier/notifier.py:1273
+msgid "{requester} restored the player."
+msgstr "{requester} 恢复了玩家。"
+
+#: mpnotifier/notifier.py:1291
+msgid "an intro section"
+msgstr "介绍部分"
+
+#: mpnotifier/notifier.py:1293
+msgid "an outro section"
+msgstr "直接受益部分"
+
+#: mpnotifier/notifier.py:1295
+msgid "a preview section"
+msgstr "预览部分"
+
+#: mpnotifier/notifier.py:1297
+msgid "an off-topic section"
+msgstr "一个非主题部分"
+
+#: mpnotifier/notifier.py:1299
+msgid "a filler section"
+msgstr "一个填充部分"
+
+#: mpnotifier/notifier.py:1301
+msgid "a sponsor section"
+msgstr "a 提案人部分"
+
+#: mpnotifier/notifier.py:1303
+msgid "a self-promotion section"
+msgstr "a 自促销部分"
+
+#: mpnotifier/notifier.py:1305
+msgid "an interaction section"
+msgstr "交互部分"
+
+#: mpnotifier/notifier.py:1309
+msgid "Sponsor Segment Skipped Event"
+msgstr "已跳过事件的赞助者部分"
+
+#: mpnotifier/notifier.py:1310
+msgid "Sponsorblock: Skipped {category} running from {start}s to {to}s."
+msgstr "赞助方块：跳过 {category} 运行于 {start}秒到 {to}秒。"
+
+#: mpnotifier/notifier.py:1332
+msgid "Effect"
+msgstr "效果"
+
+#: mpnotifier/notifier.py:1333
+msgid "Values"
+msgstr "值"
+
+#: mpnotifier/notifier.py:1362
+msgid "N/A"
+msgstr "无"
+
+#: mpnotifier/notifier.py:1366
+msgid "Filters Applied Event"
+msgstr "筛选应用事件"
+
+#: mpnotifier/notifier.py:1367
+msgid "[Node={node}] {requester} changed the player filters.\n\n"
+"__**Currently Applied:**__\n"
+"{data}"
+msgstr "[Node={node}] {requester} 更改了玩家筛选器。\n\n"
+"__**当前应用：**_\n"
+"{data}"
+
+#: mpnotifier/notifier.py:1371
+msgid "None"
+msgstr "无"
+
+#: mpnotifier/notifier.py:1387
+msgid "Node Connected Event"
+msgstr "节点连接事件"
+
+#: mpnotifier/notifier.py:1388
+msgid "Node {name} has been connected."
+msgstr "节点 {name} 已连接。"
+
+#: mpnotifier/notifier.py:1402
+msgid "Node Disconnected Event"
+msgstr "节点断开连接的事件"
+
+#: mpnotifier/notifier.py:1403
+msgid "Node {name} has been disconnected with code {code} and reason: {reason}."
+msgstr "节点 {name} 已经断开了与代码 {code} 的连接，原因︰ {reason}。"
+
+#: mpnotifier/notifier.py:1422
+msgid "Node Changed Event"
+msgstr "节点更改事件"
+
+#: mpnotifier/notifier.py:1423
+msgid "The node which the player is connected to changed from {fro} to {to}."
+msgstr "玩家所连接的节点从 {fro} 更改为 {to}。"
+
+#: mpnotifier/notifier.py:1442
+msgid "WebSocket Closed Event"
+msgstr "WebSocket 闭合事件"
+
+#: mpnotifier/notifier.py:1443
+msgid "[Node={node}] The websocket connection to the Lavalink node closed with code {code} and reason {reason}."
+msgstr "[Node={node}] 与 Lavalink 节点的websocket 连接已关闭，代码为 {code} 和原因 {reason}。"
+
+#: mpnotifier/notifier_commands.py:81
+#, docstring
+msgid "Configure the MPNotifier cog."
+msgstr "配置 MPNotifier cog。"
+
+#: mpnotifier/notifier_commands.py:87
+#, docstring
+msgid "Set the notify channel for the player."
+msgstr "为玩家设置通知频道。"
+
+#: mpnotifier/notifier_commands.py:103
+msgid "MP notify channel set to {channel}"
+msgstr "MP 通知频道设置为 {channel}"
+
+#: mpnotifier/notifier_commands.py:112
+#, docstring
+msgid "Set whether or not to notify for the specified event.\n\n"
+"        Arguments:\n"
+"            event -- The event to set.\n"
+"            toggle -- Whether or not to notify upon receiving this event.\n"
+"            use_mention -- Whether or not to use a mention instead of the name for the action requested.\n"
+"        "
+msgstr "设置是否通知指定事件。\n\n"
+"        参数：\n"
+"            事件 -- 要设置的事件。\n"
+"            切换-收到此事件时是否发出通知。\n"
+"            使用 _reference -- 是否使用提及而不是请求的动作名称。\n"
+"        "
+
+#: mpnotifier/notifier_commands.py:127
+msgid "Invalid event, possible events are:\n\n"
+"{events}."
+msgstr "无效的事件，可能的事件为：\n\n"
+"{events}。"
+
+#: mpnotifier/notifier_commands.py:141
+msgid "Event {event} set to {toggle}{extras}."
+msgstr "事件 {event} 设置为 {toggle}{extras}."
+
+#: mpnotifier/notifier_commands.py:143
+msgid "notify"
+msgstr "通知"
+
+#: mpnotifier/notifier_commands.py:143
+msgid "do not notify"
+msgstr "不通知"
+
+#: mpnotifier/notifier_commands.py:144
+msgid " with mentions"
+msgstr " 带提到的"
+
+#: mpnotifier/notifier_commands.py:144
+msgid " without mentions"
+msgstr " 没有提及的"
+

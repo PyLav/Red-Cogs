@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-04-28 17:57+0000\n"
-"PO-Revision-Date: 2022-04-28 18:13\n"
+"POT-Creation-Date: 2022-05-02 15:34+0000\n"
+"PO-Revision-Date: 2022-05-02 16:47\n"
 "Last-Translator: \n"
 "Language-Team: Italian, Switzerland\n"
 "MIME-Version: 1.0\n"
@@ -13,148 +13,502 @@ msgstr ""
 "X-Crowdin-Project: mediaplayer\n"
 "X-Crowdin-Project-ID: 512604\n"
 "X-Crowdin-Language: it-CH\n"
-"X-Crowdin-File: /cog/commands/locales/messages.pot\n"
-"X-Crowdin-File-ID: 22\n"
+"X-Crowdin-File: /audio/cog/commands/locales/messages.pot\n"
+"X-Crowdin-File-ID: 138\n"
 "Language: it_CH\n"
 
-#: audio/cog/commands/hybrid_commands.py:59
+#: audio/cog/commands/config_commands.py:27
+#, docstring
+msgid "Player configuration commands."
+msgstr "Comandi di configurazione del giocatore."
+
+#: audio/cog/commands/config_commands.py:32
+#, docstring
+msgid "Global configuration options."
+msgstr "Opzioni di configurazione globale."
+
+#: audio/cog/commands/config_commands.py:36
+#, docstring
+msgid "Set the maximum volume server can set."
+msgstr "Impostare il server di volume massimo impostabile."
+
+#: audio/cog/commands/config_commands.py:45
+msgid "Volume must be between 0 and 1000%."
+msgstr "Il volume deve essere compreso tra 0 e 1000%."
+
+#: audio/cog/commands/config_commands.py:55
+#: audio/cog/commands/config_commands.py:232
+msgid "Max volume set to {volume}%."
+msgstr "Volume massimo impostato a {volume}%."
+
+#: audio/cog/commands/config_commands.py:63
+#: audio/cog/commands/config_commands.py:240
+#, docstring
+msgid "Set whether the bot should deafen itself when playing."
+msgstr "Imposta se il bot deve essere assordato quando si gioca."
+
+#: audio/cog/commands/config_commands.py:73
+#: audio/cog/commands/config_commands.py:267
+msgid "Deafen set to {deafen}."
+msgstr "Deafen impostato su {deafen}."
+
+#: audio/cog/commands/config_commands.py:73
+#: audio/cog/commands/config_commands.py:92
+#: audio/cog/commands/config_commands.py:110
+#: audio/cog/commands/config_commands.py:152
+#: audio/cog/commands/config_commands.py:189
+#: audio/cog/commands/config_commands.py:267
+#: audio/cog/commands/config_commands.py:303
+#: audio/cog/commands/config_commands.py:338
+#: audio/cog/commands/config_commands.py:397
+#: audio/cog/commands/config_commands.py:454
+msgid "Enabled"
+msgstr "Abilitato"
+
+#: audio/cog/commands/config_commands.py:73
+#: audio/cog/commands/config_commands.py:92
+#: audio/cog/commands/config_commands.py:110
+#: audio/cog/commands/config_commands.py:152
+#: audio/cog/commands/config_commands.py:189
+#: audio/cog/commands/config_commands.py:267
+#: audio/cog/commands/config_commands.py:303
+#: audio/cog/commands/config_commands.py:338
+#: audio/cog/commands/config_commands.py:397
+#: audio/cog/commands/config_commands.py:454
+msgid "Disabled"
+msgstr "Disabilitato"
+
+#: audio/cog/commands/config_commands.py:81
+#: audio/cog/commands/config_commands.py:275
+#, docstring
+msgid "Set whether the bot should shuffle its queue after every new song."
+msgstr "Imposta se il bot deve mescolare la sua coda dopo ogni nuova canzone."
+
+#: audio/cog/commands/config_commands.py:92
+#: audio/cog/commands/config_commands.py:303
+msgid "Shuffle set to {shuffle}."
+msgstr "Mischia impostata a {shuffle}."
+
+#: audio/cog/commands/config_commands.py:100
+#: audio/cog/commands/config_commands.py:311
+#, docstring
+msgid "Set whether the bot should automatically play songs when it's queue is empty."
+msgstr "Imposta se il bot deve riprodurre automaticamente i brani quando la coda è vuota."
+
+#: audio/cog/commands/config_commands.py:110
+#: audio/cog/commands/config_commands.py:338
+msgid "Auto-Play set to {auto}."
+msgstr "Auto-Play impostato su {auto}."
+
+#: audio/cog/commands/config_commands.py:118
+#: audio/cog/commands/config_commands.py:346
+#, docstring
+msgid "Set whether the bot should disconnect from the voice voice channel."
+msgstr "Imposta se il bot deve disconnettersi dal canale vocale"
+
+#: audio/cog/commands/config_commands.py:128
+#, docstring
+msgid "Set whether the bot should disconnect from the voice voice channel when the queue is empty.\n\n"
+"        Arguments:\n"
+"            - `<toggle>`: Whether the bot should disconnect from the voice voice channel when the queue is empty.\n"
+"            - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60 seconds.\n"
+"            Accepts: seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
+"        "
+msgstr "Imposta se il bot deve disconnettersi dal canale vocale quando la coda è vuota.\n\n"
+"        Argomenti:\n"
+"            - `<toggle>`: Se il bot dovrebbe disconnettersi dal canale vocale quando la coda è vuota.\n"
+"            - `<duration>`: Quanto tempo dopo la coda è vuoto se il giocatore viene disconnesso. Il valore predefinito è 60 secondi.\n"
+"            Accetti: secondi, minuti, ore, giorni, settimane (se non è specificata nessuna unità, si presume che la durata sia data in secondi)\n"
+"        "
+
+#: audio/cog/commands/config_commands.py:146
+#: audio/cog/commands/config_commands.py:182
+#: audio/cog/commands/config_commands.py:391
+#: audio/cog/commands/config_commands.py:447
+msgid " and players will be disconnected after {duration}."
+msgstr " e i giocatori saranno disconnessi dopo {duration}."
+
+#: audio/cog/commands/config_commands.py:151
+#: audio/cog/commands/config_commands.py:396
+msgid "Disconnect from voice channel when queue is empty set to {empty}{extras}."
+msgstr "Disconnetti dal canale vocale quando la coda è vuota impostata su {empty}{extras}."
+
+#: audio/cog/commands/config_commands.py:167
+#, docstring
+msgid "Set whether the bot should disconnect from the voice voice channel when alone.\n\n"
+"        Arguments:\n"
+"            - `<toggle>`: Whether the bot should disconnect from the voice voice channel when it detects that it is alone.\n"
+"            - `<duration>`: How longer after detecting should the player be disconnected Default is 60 seconds.\n"
+"            Accepts: seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
+"        "
+msgstr "Imposta se il bot deve disconnettersi dal canale vocale quando è solo.\n\n"
+"        Argomenti:\n"
+"            - `<toggle>`: Se il bot dovrebbe disconnettersi dal canale vocale quando rileva che è solo.\n"
+"            - `<duration>`: Quanto tempo dopo il rilevamento dovrebbe essere disconnesso il giocatore Predefinito è 60 secondi.\n"
+"            Accetti: secondi, minuti, ore, giorni, settimane (se non è specificata nessuna unità, si presume che la durata sia data in secondi)\n"
+"        "
+
+#: audio/cog/commands/config_commands.py:188
+#: audio/cog/commands/config_commands.py:453
+msgid "Disconnect from voice channel when alone set to {empty}{extras}."
+msgstr "Disconnetti dal canale vocale quando impostato da solo a {empty}{extras}."
+
+#: audio/cog/commands/config_commands.py:200
+#, docstring
+msgid "Server configuration options."
+msgstr "Opzioni configurazione server."
+
+#: audio/cog/commands/config_commands.py:204
+#, docstring
+msgid "Set the maximum volume a user can set."
+msgstr "Imposta il volume massimo che un utente può impostare."
+
+#: audio/cog/commands/config_commands.py:213
+msgid "Volume must be between 0 and {volume}%."
+msgstr "Il volume deve essere compreso tra 0 e {volume}%."
+
+#: audio/cog/commands/config_commands.py:249
+msgid "My owner told me to always deafen myself."
+msgstr "Il mio proprietario mi ha detto di assordarmi sempre."
+
+#: audio/cog/commands/config_commands.py:285
+msgid "Shuffle is globally disabled."
+msgstr "La casuale è disabilitata globalmente."
+
+#: audio/cog/commands/config_commands.py:320
+msgid "Auto-Play is globally disabled."
+msgstr "La riproduzione automatica è disabilitata globalmente."
+
+#: audio/cog/commands/config_commands.py:356
+#, docstring
+msgid "Set whether the bot should disconnect from the voice voice channel when the queue is empty.\n\n"
+"        Arguments:\n"
+"            - `<toggle>`: Whether the bot should disconnect from the voice voice channel when the queue is empty.\n"
+"            - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60\n"
+"            seconds.\n"
+"            Accepts: seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be\n"
+"            given in seconds)\n"
+"        "
+msgstr "Imposta se il bot deve disconnettersi dal canale vocale quando la coda è vuota.\n\n"
+"        Argomenti:\n"
+"            - `<toggle>`: Se il bot dovrebbe disconnettersi dal canale vocale quando la coda è vuota.\n"
+"            - `<duration>`: Quanto tempo dopo la coda è vuoto se il giocatore viene disconnesso. Il valore predefinito è 60\n"
+"            secondi.\n"
+"            Accetti: secondi, minuti, ore, giorni, settimane (se non è specificata nessuna unità, si presume che la durata sia\n"
+"            indicata in secondi)\n"
+"        "
+
+#: audio/cog/commands/config_commands.py:373
+msgid "Disconnect when the queue finished is globally enable and players will be disconnected after {delta}."
+msgstr "Disconnetti quando la coda terminata è attivata globalmente e i giocatori saranno disconnessi dopo {delta}."
+
+#: audio/cog/commands/config_commands.py:412
+#, docstring
+msgid "Set whether the bot should disconnect from the voice voice channel when alone.\n\n"
+"        Arguments:\n"
+"            - `<toggle>`: Whether the bot should disconnect from the voice voice channel when it detects that it is\n"
+"            alone.\n"
+"            - `<duration>`: How longer after detecting should the player be disconnected Default is 60 seconds.\n"
+"            Accepts: seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be\n"
+"            given in seconds)\n"
+"        "
+msgstr "Imposta se il bot deve disconnettersi dal canale vocale quando è solo.\n\n"
+"        Argomenti:\n"
+"            - `<toggle>`: Se il bot dovrebbe disconnettersi dal canale vocale quando rileva che è solo\n"
+"            .\n"
+"            - `<duration>`: Quanto tempo dopo il rilevamento dovrebbe essere disconnesso il giocatore Predefinito è 60 secondi.\n"
+"            Accetti: secondi, minuti, ore, giorni, settimane (se non è specificata nessuna unità, si presume che la durata sia\n"
+"            indicata in secondi)\n"
+"        "
+
+#: audio/cog/commands/config_commands.py:430
+msgid "Disconnect when alone is globally enable and players will be disconnected after {delta}."
+msgstr "Disconnetti solo quando è attivata globalmente e i giocatori saranno disconnessi dopo {delta}."
+
+#: audio/cog/commands/config_commands.py:463
+#, docstring
+msgid "Sets the Auto-Play playlist."
+msgstr "Imposta la playlist Riproduci automaticamente."
+
+#: audio/cog/commands/config_commands.py:481
+msgid "Auto-Play playlist set to {playlist}."
+msgstr "Playlist Auto-Play impostata a {playlist}."
+
+#: audio/cog/commands/config_commands.py:489
+#, docstring
+msgid "Set the channel locks."
+msgstr "Imposta le serrature del canale."
+
+#: audio/cog/commands/config_commands.py:495
+#, docstring
+msgid "Set the channel lock for commands."
+msgstr "Imposta il blocco del canale per i comandi."
+
+#: audio/cog/commands/config_commands.py:511
+msgid "I don't have permission to send message or send embed links or read messages in {channel}."
+msgstr "Non ho il permesso di inviare un messaggio o inviare link incorporati o leggere messaggi in {channel}."
+
+#: audio/cog/commands/config_commands.py:531
+msgid "I will only listen to commands in {channel}."
+msgstr "Ascolterò solo i comandi in {channel}."
+
+#: audio/cog/commands/config_commands.py:539
+msgid "I will listen to commands in all channels I can see."
+msgstr "Ascolterò i comandi in tutti i canali che posso vedere."
+
+#: audio/cog/commands/config_commands.py:547
+#, docstring
+msgid "Set the channel lock for voice channels."
+msgstr "Imposta il blocco del canale per i canali vocali."
+
+#: audio/cog/commands/config_commands.py:559
+#: audio/cog/commands/hybrid_commands.py:88
+#: audio/cog/commands/playlist_commands.py:543
+msgid "I don't have permission to connect or speak in {channel}."
+msgstr "Non ho il permesso di connettermi o parlare in {channel}."
+
+#: audio/cog/commands/config_commands.py:581
+msgid "I will only be allowed to join {channel}."
+msgstr "Mi sarà permesso di unirmi solo a {channel}."
+
+#: audio/cog/commands/config_commands.py:588
+msgid "I'm free to join any VC."
+msgstr "Sono libero di unirsi a qualsiasi VC."
+
+#: audio/cog/commands/context_menus.py:22
+msgid "Currently I don't support parsing content from inside an embed message."
+msgstr "Attualmente non supporto l'analisi dei contenuti dall'interno di un messaggio incorporato."
+
+#: audio/cog/commands/context_menus.py:33
+#: audio/cog/commands/context_menus.py:107
+msgid "I can't play songs in DMs."
+msgstr "Non riesco a riprodurre le canzoni in DMs."
+
+#: audio/cog/commands/context_menus.py:49
+#: audio/cog/commands/context_menus.py:123
+msgid "This command is not available in this channel. Please use {channel}"
+msgstr "Questo comando non è disponibile in questo canale. Per favore usa {channel}"
+
+#: audio/cog/commands/context_menus.py:73
+msgid "I couldn't find any valid matches in your message."
+msgstr "Non ho trovato nessuna corrispondenza valida nel tuo messaggio."
+
+#: audio/cog/commands/context_menus.py:84
+msgid "I found multiple valid matches in your message."
+msgstr "Ho trovato più corrispondenze valide nel tuo messaggio."
+
+#: audio/cog/commands/context_menus.py:93
+msgid "I found a single valid match in your message."
+msgstr "Ho trovato una singola corrispondenza valida nel tuo messaggio."
+
+#: audio/cog/commands/context_menus.py:139
+msgid "{user} is not listening to anything on Spotify."
+msgstr "{user} non sta ascoltando nulla su Spotify."
+
+#: audio/cog/commands/context_menus.py:154
+msgid "Couldn't figure out what {user} is listening to."
+msgstr "Impossibile capire cosa sta ascoltando {user}."
+
+#: audio/cog/commands/hybrid_commands.py:64
 msgid "You need to provide a query to play."
 msgstr "Devi fornire una query per giocare."
 
-#: audio/cog/commands/hybrid_commands.py:71
+#: audio/cog/commands/hybrid_commands.py:78
 #: audio/cog/commands/playlist_commands.py:535
 msgid "You must be in a voice channel to allow me to connect."
 msgstr "Devi essere in un canale vocale per permettermi di connettermi."
 
-#: audio/cog/commands/hybrid_commands.py:112
+#: audio/cog/commands/hybrid_commands.py:132
 msgid "{track_count} tracks enqueued."
 msgstr "{track_count} tracce accodate."
 
-#: audio/cog/commands/hybrid_commands.py:120
+#: audio/cog/commands/hybrid_commands.py:140
 msgid "{track} enqueued."
 msgstr "{track} in coda."
 
-#: audio/cog/commands/hybrid_commands.py:130
+#: audio/cog/commands/hybrid_commands.py:150
 msgid "No tracks were found for your query."
 msgstr "Nessuna traccia trovata per la tua interrogazione."
 
-#: audio/cog/commands/hybrid_commands.py:153
+#: audio/cog/commands/hybrid_commands.py:173
 msgid "You need to be in a voice channel if you don't specify which channel I need to connect to."
 msgstr "È necessario essere in un canale vocale se non si specifica a quale canale devo collegarmi."
 
-#: audio/cog/commands/hybrid_commands.py:163
+#: audio/cog/commands/hybrid_commands.py:183
 msgid "I don't have permission to connect to that channel."
 msgstr "Non ho il permesso di connettermi a quel canale."
 
-#: audio/cog/commands/hybrid_commands.py:165
+#: audio/cog/commands/hybrid_commands.py:185
 msgid "I don't have permission to speak in {channel}."
 msgstr "Non ho il permesso di parlare in {channel}."
 
-#: audio/cog/commands/hybrid_commands.py:168
+#: audio/cog/commands/hybrid_commands.py:188
 msgid "I don't have permission to connect to {channel}."
 msgstr "Non ho il permesso di connettermi a {channel}."
 
-#: audio/cog/commands/hybrid_commands.py:182
+#: audio/cog/commands/hybrid_commands.py:202
 msgid "I'm forced to only join {channel}."
 msgstr "Sono costretto a unirsi solo a {channel}."
 
-#: audio/cog/commands/hybrid_commands.py:190
+#: audio/cog/commands/hybrid_commands.py:210
 msgid "Connected to {channel}"
 msgstr "Connesso a {channel}"
 
-#: audio/cog/commands/hybrid_commands.py:208
-#: audio/cog/commands/hybrid_commands.py:236
-#: audio/cog/commands/hybrid_commands.py:278
-#: audio/cog/commands/hybrid_commands.py:311
-#: audio/cog/commands/hybrid_commands.py:337
-#: audio/cog/commands/hybrid_commands.py:361
-#: audio/cog/commands/hybrid_commands.py:399
-#: audio/cog/commands/hybrid_commands.py:434
-#: audio/cog/commands/hybrid_commands.py:470
-#: audio/cog/commands/hybrid_commands.py:510
-#: audio/cog/commands/hybrid_commands.py:539
+#: audio/cog/commands/hybrid_commands.py:227
+#: audio/cog/commands/hybrid_commands.py:254
+#: audio/cog/commands/hybrid_commands.py:295
+#: audio/cog/commands/hybrid_commands.py:327
+#: audio/cog/commands/hybrid_commands.py:352
+#: audio/cog/commands/hybrid_commands.py:375
+#: audio/cog/commands/hybrid_commands.py:412
+#: audio/cog/commands/hybrid_commands.py:446
+#: audio/cog/commands/hybrid_commands.py:481
+#: audio/cog/commands/hybrid_commands.py:520
+#: audio/cog/commands/hybrid_commands.py:548
 msgid "No player detected."
 msgstr "Nessun giocatore rilevato."
 
-#: audio/cog/commands/hybrid_commands.py:215
-#: audio/cog/commands/hybrid_commands.py:243
-#: audio/cog/commands/hybrid_commands.py:285
+#: audio/cog/commands/hybrid_commands.py:234
+#: audio/cog/commands/hybrid_commands.py:261
+#: audio/cog/commands/hybrid_commands.py:302
 msgid "Player is not currently playing anything."
 msgstr "Il giocatore non sta giocando nulla."
 
-#: audio/cog/commands/hybrid_commands.py:251
+#: audio/cog/commands/hybrid_commands.py:269
 msgid "Skipped - {track}"
 msgstr "Saltato - {track}"
 
-#: audio/cog/commands/hybrid_commands.py:260
+#: audio/cog/commands/hybrid_commands.py:278
 msgid "Autoplay started."
 msgstr "Autoplay avviato."
 
-#: audio/cog/commands/hybrid_commands.py:292
+#: audio/cog/commands/hybrid_commands.py:309
 msgid "Player stopped"
 msgstr "Giocatore fermato"
 
-#: audio/cog/commands/hybrid_commands.py:319
+#: audio/cog/commands/hybrid_commands.py:335
 msgid "Disconnected from {channel}"
 msgstr "Disconnesso da {channel}"
 
-#: audio/cog/commands/hybrid_commands.py:368
+#: audio/cog/commands/hybrid_commands.py:382
 msgid "There is nothing in the queue."
 msgstr "Non c'è niente in coda."
 
-#: audio/cog/commands/hybrid_commands.py:376
+#: audio/cog/commands/hybrid_commands.py:390
 msgid "{queue_size} tracks shuffled"
 msgstr "{queue_size} tracce mescolate"
 
-#: audio/cog/commands/hybrid_commands.py:405
+#: audio/cog/commands/hybrid_commands.py:418
 msgid "Repeating the queue"
 msgstr "Ripetere la coda"
 
-#: audio/cog/commands/hybrid_commands.py:409
+#: audio/cog/commands/hybrid_commands.py:422
 msgid "Repeating disabled"
 msgstr "Ripetizione disabilitata"
 
-#: audio/cog/commands/hybrid_commands.py:412
+#: audio/cog/commands/hybrid_commands.py:425
 msgid "Repeating {track}"
 msgstr "Ripetere {track}"
 
-#: audio/cog/commands/hybrid_commands.py:415
+#: audio/cog/commands/hybrid_commands.py:428
 msgid "current track"
 msgstr "traccia corrente"
 
-#: audio/cog/commands/hybrid_commands.py:440
+#: audio/cog/commands/hybrid_commands.py:452
 msgid "Player already paused did you mean to run `/resume`."
 msgstr "Il giocatore già in pausa intendeva eseguire `/resume`."
 
-#: audio/cog/commands/hybrid_commands.py:442
-#: audio/cog/commands/hybrid_commands.py:478
+#: audio/cog/commands/hybrid_commands.py:454
+#: audio/cog/commands/hybrid_commands.py:489
 msgid "Player already paused did you mean to run `{prefix}{command}`."
 msgstr "Il giocatore già in pausa ha significato eseguire `{prefix}{command}`."
 
-#: audio/cog/commands/hybrid_commands.py:453
+#: audio/cog/commands/hybrid_commands.py:465
 msgid "Player paused."
 msgstr "Giocatore in pausa."
 
-#: audio/cog/commands/hybrid_commands.py:476
+#: audio/cog/commands/hybrid_commands.py:487
 msgid "Player already paused did you mean to run `/pause`."
 msgstr "Il giocatore già in pausa intendeva eseguire `/pause`."
 
-#: audio/cog/commands/hybrid_commands.py:489
+#: audio/cog/commands/hybrid_commands.py:500
 msgid "Player resumed."
 msgstr "Giocatore ripreso."
 
-#: audio/cog/commands/hybrid_commands.py:517
-#: audio/cog/commands/utility_commands.py:46
+#: audio/cog/commands/hybrid_commands.py:527
+#: audio/cog/commands/utility_commands.py:45
 msgid "Player volume set to {volume}%."
 msgstr "Volume giocatore impostato a {volume}%."
 
-#: audio/cog/commands/hybrid_commands.py:547
+#: audio/cog/commands/hybrid_commands.py:556
 msgid "No previous in player history."
 msgstr "Nessun precedente nella cronologia giocatori."
 
-#: audio/cog/commands/hybrid_commands.py:555
+#: audio/cog/commands/hybrid_commands.py:564
 msgid "Playing previous track: {track}."
 msgstr "Riproduzione traccia precedente: {track}."
+
+#: audio/cog/commands/node_commands.py:27
+#, docstring
+msgid "Configure PyLav Nodes."
+msgstr "Configurare PyLav Nodes."
+
+#: audio/cog/commands/node_commands.py:31
+#, docstring
+msgid "Add a node PyLav."
+msgstr "Aggiungi un nodo PyLav."
+
+#: audio/cog/commands/node_commands.py:41
+msgid "Let's add a node to PyLav!"
+msgstr "Aggiungiamo un nodo a PyLav!"
+
+#: audio/cog/commands/node_commands.py:42
+msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
+"(**2**){space} - Cancel any changes made and close the menu.\n"
+"(**3**){space} - Toggle between search-only and search and playback modes.\n"
+"(**4**){space} - Toggle between SSL on and off.\n"
+"(**5**){space} - Add a name to the node.\n"
+"(**6**){space} - Add the host address of the node.\n"
+"(**7**){space} - Add the port the node uses.\n"
+"(**8**){space} - Set the password for the node.\n"
+"(**9**){space} - Set the connection timeout.\n"
+"(**10**) - Select which sources to disable for this node (Multiple can be selected).\n"
+"If you interact with a button multiple times,  only the last interaction will take effect.\n\n\n"
+msgstr "(**1**){space} - Applica le modifiche e aggiungi il nodo a PyLav.\n"
+"(**2**){space} - Annulla qualsiasi modifica apportata e chiudi il menu.\n"
+"(**3**){space} - Commuta tra le modalità di ricerca e di riproduzione.\n"
+"(**4**){space} - Attiva/disattiva SSL.\n"
+"(**5**){space} - Aggiungi un nome al nodo.\n"
+"(**6**){space} - Aggiungi l'indirizzo host del nodo.\n"
+"(**7**){space} - Aggiungi la porta che il nodo utilizza.\n"
+"(**8**){space} - Imposta la password per il nodo.\n"
+"(**9**){space} - Imposta il timeout della connessione.\n"
+"(**10**) - Seleziona quali sorgenti disabilitare per questo nodo (è possibile selezionare il multiplo).\n"
+"Se interagisci con un pulsante più volte, solo l'ultima interazione avrà effetto.\n\n\n"
+
+#: audio/cog/commands/node_commands.py:134
+#, docstring
+msgid "Remove a node from PyLav instance."
+msgstr "Rimuovere un nodo dall'istanza di PyLAV."
+
+#: audio/cog/commands/node_commands.py:146
+msgid "{name} is managed by PyLav and cannot be removed."
+msgstr "{name} è gestito da PyLav e non può essere rimosso."
+
+#: audio/cog/commands/node_commands.py:162
+msgid "Removed node {name}.\n\n"
+"{data}"
+msgstr "Nodo rimosso {name}.\n\n"
+"{data}"
+
+#: audio/cog/commands/node_commands.py:170
+msgid "Removed node {name}, a DM was sent to you with the node details in case you wish to re-add it."
+msgstr "Nodo rimosso {name}, è stato inviato un DM con i dettagli del nodo nel caso in cui si desidera ri-aggiungerlo."
+
+#: audio/cog/commands/node_commands.py:180
+#, docstring
+msgid "Manage all nodes in PyLav instance."
+msgstr "Gestisci tutti i nodi nell'istanza PyLAV."
 
 #: audio/cog/commands/player_commands.py:24
 #, docstring
@@ -219,7 +573,7 @@ msgstr "voce"
 msgid "entries"
 msgstr "voci"
 
-#: audio/cog/commands/playlist_commands.py:42
+#: audio/cog/commands/playlist_commands.py:40
 #, docstring
 msgid "Create a new playlist.\n\n"
 "        If you don't specify an URL and name, you will be shows a creation menu, which also allows you to save the current player queue as a playlist.\n\n"
@@ -232,11 +586,11 @@ msgstr "Crea una nuova playlist.\n\n"
 "        Se specifichi un URL, la scaletta verrà creata dall'URL.\n"
 "        "
 
-#: audio/cog/commands/playlist_commands.py:61
+#: audio/cog/commands/playlist_commands.py:59
 msgid "Let's create a playlist!"
 msgstr "Creiamo una playlist!"
 
-#: audio/cog/commands/playlist_commands.py:62
+#: audio/cog/commands/playlist_commands.py:60
 msgid "(**1**) - Apply changes to playlist.\n"
 "(**2**) - Cancel any changes made.\n"
 "(**3**) - Add a name to the playlist.\n"
@@ -250,11 +604,11 @@ msgstr "(**1**) - Applica le modifiche alla playlist.\n"
 "(**5**) - Aggiungi tutta la traccia dalla coda alla scaletta.\n\n"
 "Se si desidera che il nome della playlist sia come playlist originale, è sufficiente impostare l'URL ma nessun nome.\n\n"
 
-#: audio/cog/commands/playlist_commands.py:102
+#: audio/cog/commands/playlist_commands.py:100
 msgid "Playlist created"
 msgstr "Playlist creata"
 
-#: audio/cog/commands/playlist_commands.py:103
+#: audio/cog/commands/playlist_commands.py:101
 msgid "Name: `{name}`\n"
 "ID: `{id}`\n"
 "Tracks: `{track_count}`"
@@ -262,7 +616,7 @@ msgstr "Nome: `{name}`\n"
 "ID: `{id}`\n"
 "Tracce: `{track_count}`"
 
-#: audio/cog/commands/playlist_commands.py:113
+#: audio/cog/commands/playlist_commands.py:111
 #, docstring
 msgid "\n"
 "        List all playlists you have access to on the invoked context.\n\n"
@@ -273,11 +627,11 @@ msgstr "\n"
 "        Questo prende in considerazione il tuo attuale VC, canale di testo e server.\n"
 "        "
 
-#: audio/cog/commands/playlist_commands.py:134
+#: audio/cog/commands/playlist_commands.py:132
 msgid "You have no playlists."
 msgstr "Non hai nessuna playlist."
 
-#: audio/cog/commands/playlist_commands.py:153
+#: audio/cog/commands/playlist_commands.py:151
 #, docstring
 msgid "\n"
 "        Manage a playlist.\n\n"
@@ -296,11 +650,11 @@ msgstr "\n"
 "        se usi l'alias `info` le tracce della scaletta verranno visualizzate in un menu.\n"
 "        "
 
-#: audio/cog/commands/playlist_commands.py:206
+#: audio/cog/commands/playlist_commands.py:204
 msgid "{user}, playlist {playlist_name} cannot be managed by yourself."
 msgstr "{user}, la playlist {playlist_name} non può essere gestita da solo."
 
-#: audio/cog/commands/playlist_commands.py:215
+#: audio/cog/commands/playlist_commands.py:213
 msgid "(**1**){space} - Apply changes to playlist.\n"
 "(**2**){space} - Cancel any changes made and close the menu.\n"
 "(**3**){space} - Delete this playlist.\n"
@@ -342,7 +696,7 @@ msgstr "(**1**){space} - Applica le modifiche alla playlist.\n"
 "Il pulsante URL verrà sempre eseguito per l'ultima volta - Collegare una scaletta tramite l'URL sovrascriverà tutte le tracce aggiunte o rimosse a questa scaletta.\n\n"
 "Se interagisci con un pulsante più volte diverse dai pulsanti di aggiunta/rimuovi solo l'ultima interazione avrà effetto.\n\n\n"
 
-#: audio/cog/commands/playlist_commands.py:241
+#: audio/cog/commands/playlist_commands.py:239
 msgid "(**1**) - Close the menu.\n"
 "(**2**) - Update the playlist with the latest tracks.\n"
 "(**3**) - Download the playlist file.\n"
@@ -354,7 +708,7 @@ msgstr "(**1**) - Chiudi il menu.\n"
 "(**4**) - Aggiungi la scaletta attuale alla coda.\n"
 "(**5**) - Mostra le tracce nella scaletta attuale.\n\n\n"
 
-#: audio/cog/commands/playlist_commands.py:249
+#: audio/cog/commands/playlist_commands.py:247
 msgid "**__Currently managing__**:\n"
 "**Name**:{space}{space}{space}{playlist_name}\n"
 "**Scope**:{space}{space}{space}{scope}\n"
@@ -368,69 +722,69 @@ msgstr "**__Attualmente gestione__**:\n"
 "**Tracce**:{space}{space}{space}{tracks} tracce\n"
 "**URL**:{space}{space}{space}{space}{space}{url}\n"
 
-#: audio/cog/commands/playlist_commands.py:266
+#: audio/cog/commands/playlist_commands.py:264
 msgid "Let's manage: {playlist_name}"
 msgstr "Gestiamo: {playlist_name}"
 
-#: audio/cog/commands/playlist_commands.py:268
+#: audio/cog/commands/playlist_commands.py:266
 msgid "Let's take a look at: {playlist_name}"
 msgstr "Diamo un'occhiata a: {playlist_name}"
 
-#: audio/cog/commands/playlist_commands.py:275
+#: audio/cog/commands/playlist_commands.py:273
 msgid "N/A"
 msgstr "N/A"
 
-#: audio/cog/commands/playlist_commands.py:299
+#: audio/cog/commands/playlist_commands.py:297
 msgid "Playlist deleted."
 msgstr "Playlist eliminata."
 
-#: audio/cog/commands/playlist_commands.py:301
+#: audio/cog/commands/playlist_commands.py:299
 msgid "{user}, playlist {playlist_name} has been deleted."
 msgstr "{user}, la playlist {playlist_name} è stata eliminata."
 
-#: audio/cog/commands/playlist_commands.py:358
+#: audio/cog/commands/playlist_commands.py:356
 msgid "Playlist **{playlist_name}** could not be updated with URL: <{url}>."
 msgstr "La playlist **{playlist_name}** non può essere aggiornata con URL: <{url}>."
 
-#: audio/cog/commands/playlist_commands.py:394
+#: audio/cog/commands/playlist_commands.py:392
 msgid "\n"
 "{track_count} {track_plural} removed from the playlist."
 msgstr "\n"
 "{track_count} {track_plural} rimosso dalla playlist."
 
-#: audio/cog/commands/playlist_commands.py:395
-#: audio/cog/commands/playlist_commands.py:399
+#: audio/cog/commands/playlist_commands.py:393
+#: audio/cog/commands/playlist_commands.py:397
 msgid "track"
 msgstr "traccia"
 
-#: audio/cog/commands/playlist_commands.py:395
-#: audio/cog/commands/playlist_commands.py:399
+#: audio/cog/commands/playlist_commands.py:393
+#: audio/cog/commands/playlist_commands.py:397
 msgid "tracks"
 msgstr "tracce"
 
-#: audio/cog/commands/playlist_commands.py:398
+#: audio/cog/commands/playlist_commands.py:396
 msgid "\n"
 "{track_count} {track_plural} added to the playlist."
 msgstr "\n"
 "{track_count} {track_plural} aggiunto alla playlist."
 
-#: audio/cog/commands/playlist_commands.py:405
+#: audio/cog/commands/playlist_commands.py:403
 msgid "Playlist updated."
 msgstr "Playlist aggiornata."
 
-#: audio/cog/commands/playlist_commands.py:406
+#: audio/cog/commands/playlist_commands.py:404
 msgid "{user}, playlist {playlist_name} has been updated.{extras}"
 msgstr "{user}, la playlist {playlist_name} è stata aggiornata.{extras}"
 
-#: audio/cog/commands/playlist_commands.py:418
+#: audio/cog/commands/playlist_commands.py:416
 msgid "Playlist unchanged."
 msgstr "Playlist invariata."
 
-#: audio/cog/commands/playlist_commands.py:419
+#: audio/cog/commands/playlist_commands.py:417
 msgid "{user}, playlist {playlist_name} has not been updated."
 msgstr "{user}, la playlist {playlist_name} non è stata aggiornata."
 
-#: audio/cog/commands/playlist_commands.py:429
+#: audio/cog/commands/playlist_commands.py:427
 #, docstring
 msgid "\n"
 "        Upload a playlist to the bot.\n\n"
@@ -443,92 +797,127 @@ msgstr "\n"
 "        La scaletta può essere caricata dall'URL del file della scaletta o allegando il file della scaletta al messaggio.\n"
 "        "
 
-#: audio/cog/commands/playlist_commands.py:446
+#: audio/cog/commands/playlist_commands.py:444
 msgid "You must either provide a URL or attach a playlist file to upload a playlist."
 msgstr "Devi fornire un URL o allegare un file di playlist per caricare una playlist."
 
-#: audio/cog/commands/playlist_commands.py:466
+#: audio/cog/commands/playlist_commands.py:464
 msgid "No valid playlist file provided."
 msgstr "Nessun file di playlist valido fornito."
 
-#: audio/cog/commands/playlist_commands.py:475
+#: audio/cog/commands/playlist_commands.py:473
 msgid "Multiple playlist files provided - Currently only 1 per message is allowed."
 msgstr "Più file di playlist forniti - Attualmente solo 1 per messaggio è permesso."
 
-#: audio/cog/commands/playlist_commands.py:493
+#: audio/cog/commands/playlist_commands.py:491
 msgid "Failed to save any of the requested playlists."
 msgstr "Impossibile salvare una qualsiasi delle playlist richieste."
 
-#: audio/cog/commands/playlist_commands.py:502
+#: audio/cog/commands/playlist_commands.py:500
 msgid "Failed to save the following playlists:\n"
 "{invalid_playlists}"
 msgstr "Impossibile salvare le seguenti playlist:\n"
 "{invalid_playlists}"
 
-#: audio/cog/commands/playlist_commands.py:512
+#: audio/cog/commands/playlist_commands.py:510
 msgid "Successfully saved the following playlists:\n"
 "{saved_playlists}"
 msgstr "Salvato con successo le seguenti playlist:\n"
 "{saved_playlists}"
 
-#: audio/cog/commands/playlist_commands.py:549
+#: audio/cog/commands/playlist_commands.py:560
 msgid "Playlist"
 msgstr "Playlist"
 
-#: audio/cog/commands/playlist_commands.py:554
+#: audio/cog/commands/playlist_commands.py:565
 msgid "{track_count} tracks enqueued.{playlist_name}"
 msgstr "{track_count} tracce accodate.{playlist_name}"
 
-#: audio/cog/commands/utility_commands.py:53
+#: audio/cog/commands/utility_commands.py:52
 #, docstring
 msgid "Utility commands for the MediaPlayer cog."
 msgstr "Comandi di utilità per l'ingranaggio MediaPlayer"
 
-#: audio/cog/commands/utility_commands.py:58
+#: audio/cog/commands/utility_commands.py:57
 #, docstring
 msgid "Get info about specific things."
 msgstr "Ottieni informazioni su cose specifiche."
 
-#: audio/cog/commands/utility_commands.py:62
+#: audio/cog/commands/utility_commands.py:61
 #, docstring
 msgid "Get the base64 of the current track."
 msgstr "Ottieni la base64 della traccia corrente."
 
-#: audio/cog/commands/utility_commands.py:70
-#: audio/cog/commands/utility_commands.py:101
-#: audio/cog/commands/utility_commands.py:132
-#: audio/cog/commands/utility_commands.py:163
+#: audio/cog/commands/utility_commands.py:73
+#: audio/cog/commands/utility_commands.py:108
+#: audio/cog/commands/utility_commands.py:143
+#: audio/cog/commands/utility_commands.py:178
 msgid "Not connected to a voice channel."
 msgstr "Non connesso a un canale vocale."
 
-#: audio/cog/commands/utility_commands.py:78
-#: audio/cog/commands/utility_commands.py:109
-#: audio/cog/commands/utility_commands.py:140
-#: audio/cog/commands/utility_commands.py:171
+#: audio/cog/commands/utility_commands.py:81
+#: audio/cog/commands/utility_commands.py:116
+#: audio/cog/commands/utility_commands.py:151
+#: audio/cog/commands/utility_commands.py:186
 msgid "Nothing playing."
 msgstr "Niente di giocare."
 
-#: audio/cog/commands/utility_commands.py:93
+#: audio/cog/commands/utility_commands.py:96
 #, docstring
 msgid "Get the author of the current track."
 msgstr "Ottieni l'autore della traccia corrente."
 
-#: audio/cog/commands/utility_commands.py:124
+#: audio/cog/commands/utility_commands.py:131
 #, docstring
 msgid "Get the title of the current track."
 msgstr "Ottieni il titolo della traccia corrente."
 
-#: audio/cog/commands/utility_commands.py:155
+#: audio/cog/commands/utility_commands.py:166
 #, docstring
 msgid "Get the source of the current track."
 msgstr "Ottieni la sorgente della traccia corrente."
 
-#: audio/cog/commands/utility_commands.py:186
+#: audio/cog/commands/utility_commands.py:201
 #, docstring
 msgid "Decode a tracks base64 string into a JSON object."
 msgstr "Decodifica una stringa base64 delle tracce in un oggetto JSON."
 
-#: audio/cog/commands/utility_commands.py:193
+#: audio/cog/commands/utility_commands.py:212
 msgid "Invalid base64 string."
 msgstr "Stringa base64 non valida."
+
+#: audio/cog/commands/utility_commands.py:228
+#, docstring
+msgid "Manage the query cache."
+msgstr "Gestisci la cache della query."
+
+#: audio/cog/commands/utility_commands.py:232
+#, docstring
+msgid "Clear the query cache."
+msgstr "Svuota la cache della query."
+
+#: audio/cog/commands/utility_commands.py:239
+#: audio/cog/commands/utility_commands.py:252
+#: audio/cog/commands/utility_commands.py:265
+msgid "Query cache cleared."
+msgstr "Query cache cancellata."
+
+#: audio/cog/commands/utility_commands.py:245
+#, docstring
+msgid "Clear the query cache older than a number of days."
+msgstr "Cancella la cache della query più vecchia di un numero di giorni."
+
+#: audio/cog/commands/utility_commands.py:258
+#, docstring
+msgid "Clear the query cache for a query."
+msgstr "Svuota la cache della query per una query."
+
+#: audio/cog/commands/utility_commands.py:271
+#, docstring
+msgid "Get the size of the query cache."
+msgstr "Ottieni la dimensione della cache della query."
+
+#: audio/cog/commands/utility_commands.py:278
+msgid "Query cache size: `{size}`."
+msgstr "Dimensione cache query: `{size}`."
 
