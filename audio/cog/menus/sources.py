@@ -168,7 +168,7 @@ class PlaylistPickerSource(menus.ListPageSource):
         start = page_num * self.per_page
         return start, page_num
 
-    async def format_page(self, menu: BaseMenu, tracks: list[PlaylistModel]) -> discord.Embed | str:
+    async def format_page(self, menu: BaseMenu, playlists: list[PlaylistModel]) -> discord.Embed | str:
 
         idx_start, page_num = self.get_starting_index_and_page_number(menu)
         page = await self.cog.lavalink.construct_embed(messageable=menu.ctx, title=self.message_str)
@@ -222,7 +222,7 @@ class EffectsPickerSource(menus.ListPageSource):
         start = page_num * self.per_page
         return start, page_num
 
-    async def format_page(self, menu: BaseMenu, tracks: list[PlaylistModel]) -> str:
+    async def format_page(self, menu: BaseMenu, playlists: list[PlaylistModel]) -> str:
         return ""
 
     async def get_page(self, page_number):
@@ -698,7 +698,7 @@ class NodePickerSource(menus.ListPageSource):
         start = page_num * self.per_page
         return start, page_num
 
-    async def format_page(self, menu: BaseMenu, tracks: list[NodeModel]) -> discord.Embed | str:
+    async def format_page(self, menu: BaseMenu, nodes: list[NodeModel]) -> discord.Embed | str:
 
         idx_start, page_num = self.get_starting_index_and_page_number(menu)
         page = await self.cog.lavalink.construct_embed(messageable=menu.ctx, title=self.message_str)
