@@ -234,7 +234,7 @@ class MPNotifier(commands.Cog, Commands):
             user = event.track.requester or self.bot.user
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
-                title=_("Track Start Event"),
+                title=_("YouTube Music Track Start Event"),
                 description=_(
                     "[Node={node}] YouTube Music track: {track} has started playing.\nRequested by: {requester}"
                 ).format(
@@ -261,7 +261,7 @@ class MPNotifier(commands.Cog, Commands):
             user = event.track.requester or self.bot.user
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
-                title=_("Track Start Event"),
+                title=_("Spotify Track Start Event"),
                 description=_(
                     "[Node={node}] Spotify track: {track} has started playing.\nRequested by: {requester}"
                 ).format(
@@ -288,7 +288,7 @@ class MPNotifier(commands.Cog, Commands):
             user = event.track.requester or self.bot.user
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
-                title=_("Track Start Event"),
+                title=_("Apple Music Track Start Event"),
                 description=_(
                     "[Node={node}] Apple Music track: {track} has started playing.\nRequested by: {requester}"
                 ).format(
@@ -315,7 +315,7 @@ class MPNotifier(commands.Cog, Commands):
             user = event.track.requester or self.bot.user
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
-                title=_("Track Start Event"),
+                title=_("Local Track Start Event"),
                 description=_(
                     "[Node={node}] Local track: {track} has started playing.\nRequested by: {requester}"
                 ).format(
@@ -342,7 +342,7 @@ class MPNotifier(commands.Cog, Commands):
             user = event.track.requester or self.bot.user
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
-                title=_("Track Start Event"),
+                title=_("HTTP Track Start Event"),
                 description=_(
                     "[Node={node}] HTTP track: {track} has started playing.\nRequested by: {requester}"
                 ).format(
@@ -369,7 +369,7 @@ class MPNotifier(commands.Cog, Commands):
             user = event.track.requester or self.bot.user
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
-                title=_("Track Start Event"),
+                title=_("Text-To-Speech Track Start Event"),
                 description=_(
                     "[Node={node}] Text-To-Speech track: {track} has started playing.\nRequested by: {requester}"
                 ).format(
@@ -396,7 +396,7 @@ class MPNotifier(commands.Cog, Commands):
             user = event.track.requester or self.bot.user
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
-                title=_("Track Start Event"),
+                title=_("YouTube Track Start Event"),
                 description=_(
                     "[Node={node}] YouTube track: {track} has started playing.\nRequested by: {requester}"
                 ).format(
@@ -423,7 +423,7 @@ class MPNotifier(commands.Cog, Commands):
             user = event.track.requester or self.bot.user
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
-                title=_("Track Start Event"),
+                title=_("{source} Track Start Event").format(source=await event.track.query_source()),
                 description=_(
                     "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
                 ).format(
@@ -453,7 +453,7 @@ class MPNotifier(commands.Cog, Commands):
             user = event.track.requester or self.bot.user
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
-                title=_("Track Start Event"),
+                title=_("{source} Track Start Event").format(source=await event.track.query_source()),
                 description=_(
                     "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
                 ).format(
@@ -483,7 +483,7 @@ class MPNotifier(commands.Cog, Commands):
             user = event.track.requester or self.bot.user
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
-                title=_("Track Start Event"),
+                title=_("{source} Track Start Event").format(source=await event.track.query_source()),
                 description=_(
                     "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
                 ).format(
@@ -513,7 +513,7 @@ class MPNotifier(commands.Cog, Commands):
             user = event.track.requester or self.bot.user
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
-                title=_("Track Start Event"),
+                title=_("{source} Track Start Event").format(source=await event.track.query_source()),
                 description=_(
                     "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
                 ).format(
@@ -543,7 +543,7 @@ class MPNotifier(commands.Cog, Commands):
             user = event.track.requester or self.bot.user
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
-                title=_("Track Start Event"),
+                title=_("{source} Track Start Event").format(source=await event.track.query_source()),
                 description=_(
                     "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
                 ).format(
@@ -573,7 +573,7 @@ class MPNotifier(commands.Cog, Commands):
             user = event.track.requester or self.bot.user
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
-                title=_("Track Start Event"),
+                title=_("{source} Track Start Event").format(source=await event.track.query_source()),
                 description=_(
                     "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
                 ).format(
@@ -603,7 +603,7 @@ class MPNotifier(commands.Cog, Commands):
             user = event.track.requester or self.bot.user
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
-                title=_("Track Start Event"),
+                title=_("{source} Track Start Event").format(source=await event.track.query_source()),
                 description=_(
                     "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
                 ).format(
@@ -633,7 +633,7 @@ class MPNotifier(commands.Cog, Commands):
             user = event.track.requester or self.bot.user
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
-                title=_("Track Start Event"),
+                title=_("{source} Track Start Event").format(source=await event.track.query_source()),
                 description=_(
                     "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
                 ).format(
@@ -663,7 +663,7 @@ class MPNotifier(commands.Cog, Commands):
             user = event.track.requester or self.bot.user
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
-                title=_("Track Start Event"),
+                title=_("{source} Track Start Event").format(source=await event.track.query_source()),
                 description=_(
                     "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
                 ).format(
@@ -693,7 +693,7 @@ class MPNotifier(commands.Cog, Commands):
             user = event.track.requester or self.bot.user
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
-                title=_("Track Start Event"),
+                title=_("{source} Track Start Event").format(source=await event.track.query_source()),
                 description=_(
                     "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
                 ).format(
@@ -723,7 +723,7 @@ class MPNotifier(commands.Cog, Commands):
             user = event.track.requester or self.bot.user
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
-                title=_("Track Start Event"),
+                title=_("{source} Track Start Event").format(source=await event.track.query_source()),
                 description=_(
                     "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
                 ).format(
@@ -753,7 +753,7 @@ class MPNotifier(commands.Cog, Commands):
             user = event.track.requester or self.bot.user
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
-                title=_("Track Start Event"),
+                title=_("{source} Track Start Event").format(source=await event.track.query_source()),
                 description=_(
                     "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
                 ).format(
@@ -783,7 +783,7 @@ class MPNotifier(commands.Cog, Commands):
             user = event.track.requester or self.bot.user
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
-                title=_("Track Start Event"),
+                title=_("{source} Track Start Event").format(source=await event.track.query_source()),
                 description=_(
                     "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
                 ).format(
@@ -813,7 +813,7 @@ class MPNotifier(commands.Cog, Commands):
             user = event.track.requester or self.bot.user
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
-                title=_("Track Start Event"),
+                title=_("{source} Track Start Event").format(source=await event.track.query_source()),
                 description=_(
                     "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
                 ).format(
