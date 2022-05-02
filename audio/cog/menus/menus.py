@@ -70,6 +70,7 @@ if TYPE_CHECKING:
     )
     from audio.cog.menus.sources import (
         EffectsPickerSource,
+        NodeListSource,
         NodePickerSource,
         PlayersSource,
         PlaylistPickerSource,
@@ -2108,3 +2109,91 @@ class NodePickerMenu(BaseMenu):
         if isinstance(self.select_view, NodeSelectSelector):
             await asyncio.wait_for(self.select_view.responded.wait(), timeout=self.timeout)
             self.result = self.select_view.node
+
+
+class NodeManagerMenu(BaseMenu):
+    _source: NodeListSource
+
+    def __init__(
+        self,
+        cog: CogT,
+        bot: BotT,
+        source: NodeListSource,
+        original_author: discord.abc.User,
+        *,
+        delete_after_timeout: bool = True,
+        timeout: int = 120,
+        message: discord.Message = None,
+        starting_page: int = 0,
+        **kwargs: Any,
+    ) -> None:
+        super().__init__(
+            cog,
+            bot,
+            source,
+            delete_after_timeout=delete_after_timeout,
+            timeout=timeout,
+            message=message,
+            starting_page=starting_page,
+            **kwargs,
+        )
+        self.forward_button = NavigateButton(
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK RIGHT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
+            direction=1,
+            row=4,
+            cog=cog,
+        )
+        self.backward_button = NavigateButton(
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK LEFT-POINTING TRIANGLE}\N{VARIATION SELECTOR-16}",
+            direction=-1,
+            row=4,
+            cog=cog,
+        )
+        self.first_button = NavigateButton(
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK LEFT-POINTING DOUBLE TRIANGLE}",
+            direction=0,
+            row=4,
+            cog=cog,
+        )
+        self.last_button = NavigateButton(
+            style=discord.ButtonStyle.grey,
+            emoji="\N{BLACK RIGHT-POINTING DOUBLE TRIANGLE}",
+            direction=self.source.get_max_pages,
+            row=4,
+            cog=cog,
+        )
+        self.close_button = CloseButton(
+            style=discord.ButtonStyle.red,
+            row=4,
+            cog=cog,
+        )
+        self.refresh_button = RefreshButton(
+            style=discord.ButtonStyle.grey,
+            row=4,
+            cog=cog,
+        )
+        self.author = original_author
+
+    @property
+    def source(self) -> NodeListSource:
+        return self._source
+
+    async def start(self, ctx: PyLavContext | discord.Interaction):
+        if isinstance(ctx, discord.Interaction):
+            ctx = await self.cog.bot.get_context(ctx)
+        if ctx.interaction and not ctx.interaction.response.is_done():
+            await ctx.defer(ephemeral=True)
+        self.ctx = ctx
+        await self.send_initial_message(ctx)
+
+    async def show_page(self, page_number: int, interaction: discord.Interaction):
+        await self._source.get_page(page_number)
+        await self.prepare()
+        self.current_page = page_number
+        if not interaction.response.is_done():
+            await interaction.response.edit_message(view=self)
+        elif self.message is not None:
+            await self.message.edit(view=self)

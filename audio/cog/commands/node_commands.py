@@ -13,7 +13,8 @@ from pylav.converters.nodes import NodeConverter
 from pylav.utils import PyLavContext
 
 from audio.cog import MPMixin
-from audio.cog.menus.menus import AddNodeFlow
+from audio.cog.menus.menus import AddNodeFlow, NodeManagerMenu
+from audio.cog.menus.sources import NodeListSource
 from audio.cog.utils.nodes import maybe_prompt_for_node
 
 _ = Translator("MediaPlayer", Path(__file__))
@@ -173,3 +174,19 @@ class NodeCommands(MPMixin, ABC):
             ),
             ephemeral=True,
         )
+
+    @command_nodeset.command(name="manage")
+    async def command_nodeset_manage(self, context: commands.Context):
+        """Manage all nodes in PyLav instance."""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+        menu = NodeManagerMenu(
+            cog=self,
+            bot=self.bot,
+            original_author=context.author,
+            source=NodeListSource(cog=self, pages=self.lavalink.node_manager.nodes),
+            timeout=300,
+        )
+        await menu.start(context)
