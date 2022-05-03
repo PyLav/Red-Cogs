@@ -167,8 +167,8 @@ class HybridCommands(MPMixin, ABC):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
         config = await self.lavalink.player_config_manager.get_config(context.guild.id)
-        if (channel := context.guild.get_channel_or_thread(config.forced_channel_id)) is None:
-            channel = channel or rgetattr(context, "author.voice.channel", None)
+        if (_channel := context.guild.get_channel_or_thread(config.forced_channel_id)) is None:
+            channel = _channel or rgetattr(context, "author.voice.channel", None)
             if not channel:
                 await context.send(
                     embed=await context.lavalink.construct_embed(
@@ -383,9 +383,8 @@ class HybridCommands(MPMixin, ABC):
         await context.player.shuffle_queue(context.author)
         await context.send(
             embed=await context.lavalink.construct_embed(
-                description=_("{queue_size} tracks shuffled").format(
-                    queue_size=context.player.queue.size(), messageable=context
-                ),
+                description=_("{queue_size} tracks shuffled").format(queue_size=context.player.queue.size()),
+                messageable=context,
             ),
             ephemeral=True,
         )

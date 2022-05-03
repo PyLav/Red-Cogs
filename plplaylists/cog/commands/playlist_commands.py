@@ -1,7 +1,6 @@
 import collections
 import contextlib
 import itertools
-from abc import ABC
 from pathlib import Path
 from typing import Optional
 
@@ -11,23 +10,26 @@ from redbot.core import commands
 from redbot.core.i18n import Translator
 from redbot.core.utils.chat_formatting import bold, humanize_list
 
-from pylav import InvalidPlaylist, Query, Track
+from pylav import Client, InvalidPlaylist, Query, Track
 from pylav.constants import BUNDLED_PLAYLIST_IDS
 from pylav.converters import PlaylistConverter, QueryPlaylistConverter
 from pylav.sql.models import PlaylistModel
+from pylav.types import BotT
 from pylav.utils import AsyncIter, PyLavContext
 
-from audio.cog import MPMixin
-from audio.cog.menus.menus import PaginatingMenu, PlaylistCreationFlow, PlaylistManageFlow
-from audio.cog.menus.sources import Base64Source, PlaylistListSource
-from audio.cog.utils import decorators, rgetattr
-from audio.cog.utils.playlists import maybe_prompt_for_playlist
+from plplaylists.cog.menus.menus import PaginatingMenu, PlaylistCreationFlow, PlaylistManageFlow
+from plplaylists.cog.menus.sources import Base64Source, PlaylistListSource
+from plplaylists.cog.utils import decorators, rgetattr
+from plplaylists.cog.utils.playlists import maybe_prompt_for_playlist
 
-LOGGER = getLogger("red.3pt.mp.commands.playlists")
-_ = Translator("MediaPlayer", Path(__file__))
+LOGGER = getLogger("red.3pt.PyLavPlaylists.commands")
+_ = Translator("PyLavPlaylists", Path(__file__))
 
 
-class PlaylistCommands(MPMixin, ABC):
+class PlaylistCommands:
+    bot: BotT
+    lavalink: Client
+
     @commands.hybrid_group(name="playlist")
     @commands.guild_only()
     async def command_playlist(self, context: PyLavContext):

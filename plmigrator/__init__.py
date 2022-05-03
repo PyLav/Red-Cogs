@@ -4,10 +4,10 @@ import asyncio
 
 from pylav.types import BotT
 
-from mpnotifier.notifier import MPNotifier
+from plmigrator.cog import PyLavMigrator
 
 
 async def setup(bot: BotT):
-    mp = MPNotifier(bot)
+    mp = PyLavMigrator(bot)
     await bot.add_cog(mp)
     mp._init_task = asyncio.create_task(mp.initialize())

@@ -23,15 +23,15 @@ from pylav.sql.models import LibConfigModel
 from pylav.types import BotT
 from pylav.utils import AsyncIter, PyLavContext
 
-from migrator.utils import recursive_merge
+from plmigrator.utils import recursive_merge
 
-LOGGER = getLogger("red.3pt.AudioToPyLav")
+LOGGER = getLogger("red.3pt.PyLavMigrator")
 
-_ = Translator("AudioToPyLac", Path(__file__))
+_ = Translator("PyLavMigrator", Path(__file__))
 
 
 @cog_i18n(_)
-class AudioToPyLav(commands.Cog):
+class PyLavMigrator(commands.Cog):
     lavalink: Client
 
     def __init__(self, bot: BotT, *args, **kwargs):

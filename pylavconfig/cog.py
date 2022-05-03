@@ -15,7 +15,7 @@ from pylav.sql.models import LibConfigModel
 from pylav.types import BotT
 from pylav.utils import PyLavContext
 
-LOGGER = getLogger("red.3pt.pylavconfig")
+LOGGER = getLogger("red.3pt.PyLavConfigurator")
 
 _ = Translator("PyLavConfigurator", Path(__file__))
 

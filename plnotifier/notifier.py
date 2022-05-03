@@ -18,11 +18,11 @@ from pylav.filters import Equalizer, Volume
 from pylav.types import BotT
 from pylav.utils import format_time
 
-from mpnotifier.notifier_commands import Commands
+from plnotifier.notifier_commands import Commands
 
 _ = Translator("MPNotifier", Path(__file__))
 
-LOGGER = getLogger("red.3pt.mpnotifier.events")
+LOGGER = getLogger("red.3pt.plnotifier.events")
 
 
 @cog_i18n(_)

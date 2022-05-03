@@ -79,15 +79,12 @@ class UtilityCommands(MPMixin, ABC):
         """Get info about specific things."""
 
     @command_mputils_get.command(name="b64")
-    async def command_mputils_get_b64(self, context: PyLavContext, *, guild: discord.Guild = None):
+    async def command_mputils_get_b64(self, context: PyLavContext):
         """Get the base64 of the current track."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        if guild is None:
-            guild = context.guild
-
         if not context.player:
             await context.send(
                 embed=await context.lavalink.construct_embed(
@@ -113,14 +110,12 @@ class UtilityCommands(MPMixin, ABC):
         )
 
     @command_mputils_get.command(name="author")
-    async def command_mputils_get_author(self, context: PyLavContext, *, guild: discord.Guild = None):
+    async def command_mputils_get_author(self, context: PyLavContext):
         """Get the author of the current track."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        if guild is None:
-            guild = context.guild
 
         if not context.player:
             await context.send(
@@ -147,14 +142,12 @@ class UtilityCommands(MPMixin, ABC):
         )
 
     @command_mputils_get.command(name="title")
-    async def command_mputils_get_title(self, context: PyLavContext, *, guild: discord.Guild = None):
+    async def command_mputils_get_title(self, context: PyLavContext):
         """Get the title of the current track."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        if guild is None:
-            guild = context.guild
 
         if not context.player:
             await context.send(
@@ -181,15 +174,12 @@ class UtilityCommands(MPMixin, ABC):
         )
 
     @command_mputils_get.command(name="source")
-    async def command_mputils_get_source(self, context: PyLavContext, *, guild: discord.Guild = None):
+    async def command_mputils_get_source(self, context: PyLavContext):
         """Get the source of the current track."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        if guild is None:
-            guild = context.guild
-
         if not context.player:
             await context.send(
                 embed=await context.lavalink.construct_embed(
