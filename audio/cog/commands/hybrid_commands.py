@@ -1,11 +1,11 @@
+import re
 from abc import ABC
 from functools import partial
 from pathlib import Path
-from typing import Optional, Final, Pattern
+from typing import Final, Optional, Pattern
 
 import discord
 from discord.app_commands import Range
-import re
 from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator
@@ -20,8 +20,10 @@ from audio.cog.utils import rgetattr
 from audio.cog.utils.decorators import requires_player
 
 LOGGER = getLogger("red.3pt.mp.commands.hybrids")
-_RE_TIME_CONVERTER: Final[Pattern] = re.compile(r"(?:(\d+):)?([0-5]?[0-9]):([0-5][0-9])") #taken from https://github.com/Cog-Creators/Red-DiscordBot/blob/V3/develop/redbot/cogs/audio/core/utilities/miscellaneous.py#L28
 _ = Translator("MediaPlayer", Path(__file__))
+_RE_TIME_CONVERTER: Final[Pattern] = re.compile(
+    r"(?:(\d+):)?([0-5]?\d):([0-5]\d)"
+)  # taken fromhttps://github.com/Cog-Creators/Red-DiscordBot/blob/ec55622418810731e1ee2ede1569f81f9bddeeec/redbot/cogs/audio/core/utilities/miscellaneous.py#L28
 
 
 class HybridCommands(MPMixin, ABC):
@@ -549,27 +551,22 @@ class HybridCommands(MPMixin, ABC):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        player = context.lavalink.get_player(context.guild)
-        if not player:
+        if not context.player:
             await context.send(
-                embed=await context.lavalink.construct_embed(
-                    description=_("No player detected."), messageable=context
-                ),
+                embed=await context.lavalink.construct_embed(description=_("No player detected."), messageable=context),
                 ephemeral=True,
             )
             return
 
-        if not player.current:
+        if not context.player.current:
             await context.send(
-                embed=await context.lavalink.construct_embed(
-                    description=_("Nothing playing."), messageable=context
-                ),
+                embed=await context.lavalink.construct_embed(description=_("Nothing playing."), messageable=context),
                 ephemeral=True,
             )
             return
 
-        if not player.current.is_seekable:
-            if player.current.stream:
+        if not context.player.current.is_seekable:
+            if context.player.current.stream:
                 await context.send(
                     embed=await context.lavalink.construct_embed(
                         title=_("Unable to seek track"),
@@ -587,7 +584,7 @@ class HybridCommands(MPMixin, ABC):
                 )
             return
 
-        if player.paused:
+        if context.player.paused:
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("Cannot seek when the player is paused."), messageable=context
@@ -598,7 +595,7 @@ class HybridCommands(MPMixin, ABC):
 
         try:
             seek = int(seek)
-            seek_ms = player.position + seek * 1000
+            seek_ms = context.player.position + seek * 1000
 
             if seek <= 0:
                 await context.send(
@@ -611,13 +608,14 @@ class HybridCommands(MPMixin, ABC):
                 await context.send(
                     embed=await context.lavalink.construct_embed(
                         description=_("Moved {seconds}s to {time}.").format(
-                            seconds=seek, time=format_time(seek_ms),
+                            seconds=seek,
+                            time=format_time(seek_ms),
                         ),
                         messageable=context,
                     ),
                     ephemeral=True,
                 )
-        except ValueError: #taken from https://github.com/Cog-Creators/Red-DiscordBot/blob/V3/develop/redbot/cogs/audio/core/utilities/miscellaneous.py#L197
+        except ValueError:  # Taken from https://github.com/Cog-Creators/Red-DiscordBot/blob/ec55622418810731e1ee2ede1569f81f9bddeeec/redbot/cogs/audio/core/utilities/miscellaneous.py#L28
             match = _RE_TIME_CONVERTER.match(seek)
             if match is not None:
                 hr = int(match.group(1)) if match.group(1) else 0
@@ -635,7 +633,7 @@ class HybridCommands(MPMixin, ABC):
                 ephemeral=True,
             )
 
-        await player.seek(seek_ms, context.author, False)
+        await context.player.seek(seek_ms, context.author, False)
 
     @commands.hybrid_command(name="prev", description="Play the previous tracks.", aliases=["previous"])
     @commands.guild_only()
