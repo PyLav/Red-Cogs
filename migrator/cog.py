@@ -10,7 +10,6 @@ from redbot.cogs.audio.apis.playlist_wrapper import PlaylistWrapper
 from redbot.cogs.audio.utils import (
     DEFAULT_LAVALINK_SETTINGS,
     DEFAULT_LAVALINK_YAML,
-    CacheLevel,
     PlaylistScope,
     change_dict_naming_convention,
 )
@@ -67,20 +66,8 @@ class AudioToPyLav(commands.Cog):
         async with context.typing():
             audio_config = Config.get_conf(None, identifier=2711759130, cog_name="Audio")
             default_global = dict(
-                schema_version=1,  # Deprecated in Pylav
-                bundled_playlist_version=0,  # Deprecated in Pylav
-                owner_notification=0,  # Deprecated in Pylav
-                cache_level=CacheLevel.all().value,  # Deprecated in Pylav
-                cache_age=365,  # Deprecated in Pylav
-                daily_playlists=False,  # Deprecated in Pylav
-                global_db_enabled=False,  # Deprecated in Pylav
-                global_db_get_timeout=5,  # Deprecated in Pylav
-                status=False,
                 use_external_lavalink=False,  # Supported in Pylav
-                restrict=True,  # Deprecated in Pylav
                 localpath=str(cog_data_path(raw_name="Audio")),  # Supported in Pylav
-                url_keyword_blacklist=[],
-                url_keyword_whitelist=[],
                 java_exc_path="java",  # Supported in Pylav
                 **DEFAULT_LAVALINK_YAML,  # Supported in Pylav
                 **DEFAULT_LAVALINK_SETTINGS,  # Supported in Pylav
@@ -88,40 +75,19 @@ class AudioToPyLav(commands.Cog):
 
             default_guild = dict(
                 auto_play=False,  # Supported in Pylav
-                currently_auto_playing_in=None,
                 auto_deafen=True,  # Supported in Pylav
                 autoplaylist=dict(
                     enabled=True,  # Supported in Pylav
                     id=42069,  # Supported in Pylav
-                    name="Aikaterna's curated tracks",  # Deprecated in Pylav
-                    scope=PlaylistScope.GLOBAL.value,  # Deprecated in Pylav
                 ),
-                persist_queue=True,  # Deprecated in Pylav
-                disconnect=False,
-                dj_enabled=False,  # Deprecated in Pylav
-                dj_role=None,  # Deprecated in Pylav
-                daily_playlists=False,
-                emptydc_enabled=False,
-                emptydc_timer=0,
-                emptypause_enabled=False,
-                emptypause_timer=0,
-                jukebox=False,
-                jukebox_price=0,
-                maxlength=0,
-                max_volume=150,
-                notify=False,  # Deprecated in Pylav
-                prefer_lyrics=False,  # Deprecated in Pylav
-                repeat=False,  # Deprecated in Pylav
+                disconnect=False,  # Supported in Pylav
+                emptydc_enabled=False,  # Supported in Pylav
+                emptydc_timer=0,  # Supported in Pylav
+                emptypause_enabled=False,  # Supported in Pylav
+                emptypause_timer=0,  # Supported in Pylav
+                max_volume=150,  # Supported in Pylav
                 shuffle=False,  # Supported in Pylav
-                shuffle_bumped=True,  # Deprecated in Pylav
-                thumbnail=False,  # Deprecated in Pylav
-                volume=100,
-                vote_enabled=False,
-                vote_percent=0,
-                room_lock=None,  # Deprecated in Pylav
-                url_keyword_blacklist=[],
-                url_keyword_whitelist=[],
-                country_code="US",  # Deprecated in Pylav
+                volume=100,  # Supported in Pylav
             )
             _playlist = dict(id=None, author=None, name=None, playlist_url=None, tracks=[])
             audio_config.init_custom("EQUALIZER", 1)
@@ -189,6 +155,22 @@ class AudioToPyLav(commands.Cog):
                 player_config.auto_play = False
             if guild_config.get("shuffle", False):
                 player_config.shuffle = True
+            if guild_config.get("volume", 100) != 100:
+                player_config.volume = guild_config.get("volume")
+
+            if guild_config.get("max_volume", 150) != 150:
+                player_config.max_volume = guild_config.get("max_volume") / 150
+                player_config.extras["max_volume"] = int((guild_config.get("max_volume") / 150) * 1000)
+
+            if guild_config.get("emptypause_enabled"):
+                player_config.extras["alone_pause"] = [True, guild_config.get("emptypause_timer", 60)]
+
+            if guild_config.get("emptydc_enabled"):
+                player_config.extras["alone_dc"] = [True, guild_config.get("emptydc_timer", 60)]
+
+            if guild_config.get("disconnect"):
+                player_config.extras["empty_queue_dc"] = [True, 60]
+
             await player_config.save()
         query = """
         SELECT
