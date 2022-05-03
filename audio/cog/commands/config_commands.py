@@ -222,7 +222,17 @@ class ConfigCommands(MPMixin, ABC):
             config = context.player.config
         else:
             config = await self.lavalink.player_config_manager.get_config(context.guild.id)
-        config.extras["max_volume"] = volume
+        max_volume = min(await config.get_max_volume(), await self.lavalink.player_manager.global_config.fetch_volume())
+        if volume > max_volume:
+            await context.send(
+                embed=await self.lavalink.construct_embed(
+                    description=_("Volume must be between 0 and {volume}%.").format(volume=humanize_number(max_volume)),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+            return
+        config.volume = volume
         if context.player and context.player.volume > volume:
             await context.player.set_volume(volume, requester=context.author)
         else:

@@ -28,8 +28,7 @@ class UtilityCommands(MPMixin, ABC):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        player = context.lavalink.get_player(context.guild)
-        if not player:
+        if not context.player:
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description="Not connected to a voice channel.", messageable=context
@@ -37,12 +36,35 @@ class UtilityCommands(MPMixin, ABC):
                 ephemeral=True,
             )
             return
-
-        volume = player.volume + change_by
-        await player.set_volume(volume, requester=context.author)
+        if context.player:
+            config = context.player.config
+        else:
+            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
+        max_volume = min(await config.get_max_volume(), await self.lavalink.player_manager.global_config.fetch_volume())
+        new_vol = context.player.volume + change_by
+        if new_vol > max_volume:
+            context.player.volume = max_volume
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Volume limit reached, player volume set to {volume}%.").format(
+                        volume=humanize_number(context.player.volume)
+                    ),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+        elif new_vol < 0:
+            context.player.volume = 0
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Minimum volume reached, Player volume set to 0%."), messageable=context
+                ),
+                ephemeral=True,
+            )
+        await context.player.set_volume(new_vol, requester=context.author)
         await context.send(
             embed=await context.lavalink.construct_embed(
-                description=_("Player volume set to {volume}%.").format(volume=volume), messageable=context
+                description=_("Player volume set to {volume}%.").format(volume=new_vol), messageable=context
             ),
             ephemeral=True,
         )
@@ -66,8 +88,7 @@ class UtilityCommands(MPMixin, ABC):
         if guild is None:
             guild = context.guild
 
-        player = context.lavalink.get_player(guild)
-        if not player:
+        if not context.player:
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("Not connected to a voice channel."), messageable=context
@@ -76,7 +97,7 @@ class UtilityCommands(MPMixin, ABC):
             )
             return
 
-        if not player.current:
+        if not context.player.current:
             await context.send(
                 embed=await context.lavalink.construct_embed(description=_("Nothing playing."), messageable=context),
                 ephemeral=True,
@@ -85,7 +106,7 @@ class UtilityCommands(MPMixin, ABC):
 
         await context.send(
             embed=await context.lavalink.construct_embed(
-                description=inline(player.current.track),
+                description=inline(context.player.current.track),
                 messageable=context,
             ),
             ephemeral=True,
@@ -101,8 +122,7 @@ class UtilityCommands(MPMixin, ABC):
         if guild is None:
             guild = context.guild
 
-        player = context.lavalink.get_player(guild)
-        if not player:
+        if not context.player:
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("Not connected to a voice channel."), messageable=context
@@ -111,7 +131,7 @@ class UtilityCommands(MPMixin, ABC):
             )
             return
 
-        if not player.current:
+        if not context.player.current:
             await context.send(
                 embed=await context.lavalink.construct_embed(description=_("Nothing playing."), messageable=context),
                 ephemeral=True,
@@ -120,7 +140,7 @@ class UtilityCommands(MPMixin, ABC):
 
         await context.send(
             embed=await context.lavalink.construct_embed(
-                description=inline(player.current.author),
+                description=inline(context.player.current.author),
                 messageable=context,
             ),
             ephemeral=True,
@@ -136,8 +156,7 @@ class UtilityCommands(MPMixin, ABC):
         if guild is None:
             guild = context.guild
 
-        player = context.lavalink.get_player(guild)
-        if not player:
+        if not context.player:
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("Not connected to a voice channel."), messageable=context
@@ -146,7 +165,7 @@ class UtilityCommands(MPMixin, ABC):
             )
             return
 
-        if not player.current:
+        if not context.player.current:
             await context.send(
                 embed=await context.lavalink.construct_embed(description=_("Nothing playing."), messageable=context),
                 ephemeral=True,
@@ -155,7 +174,7 @@ class UtilityCommands(MPMixin, ABC):
 
         await context.send(
             embed=await context.lavalink.construct_embed(
-                description=inline(player.current.title),
+                description=inline(context.player.current.title),
                 messageable=context,
             ),
             ephemeral=True,
@@ -171,8 +190,7 @@ class UtilityCommands(MPMixin, ABC):
         if guild is None:
             guild = context.guild
 
-        player = context.lavalink.get_player(guild)
-        if not player:
+        if not context.player:
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("Not connected to a voice channel."), messageable=context
@@ -181,7 +199,7 @@ class UtilityCommands(MPMixin, ABC):
             )
             return
 
-        if not player.current:
+        if not context.player.current:
             await context.send(
                 embed=await context.lavalink.construct_embed(description=_("Nothing playing."), messageable=context),
                 ephemeral=True,
@@ -190,7 +208,7 @@ class UtilityCommands(MPMixin, ABC):
 
         await context.send(
             embed=await context.lavalink.construct_embed(
-                description=inline(player.current.source),
+                description=inline(context.player.current.source),
                 messageable=context,
             ),
             ephemeral=True,
