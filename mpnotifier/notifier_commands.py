@@ -93,7 +93,7 @@ class Commands:
             config = context.player.config
             context.player.notify_channel = channel
         else:
-            config = self.lavalink.player_config_manager.get_config(context.guild.id)
+            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
         config.notify_channel = channel.id
         await config.save()
         if await self.bot.is_owner(context.author):
