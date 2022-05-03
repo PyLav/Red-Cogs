@@ -1,16 +1,17 @@
 from abc import ABC
 from functools import partial
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Final, Pattern
 
 import discord
 from discord.app_commands import Range
+import re
 from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator
 
 from pylav import Query, Track
-from pylav.utils import PyLavContext
+from pylav.utils import PyLavContext, format_time
 
 from audio.cog import MPMixin
 from audio.cog.menus.menus import QueueMenu
@@ -19,6 +20,7 @@ from audio.cog.utils import rgetattr
 from audio.cog.utils.decorators import requires_player
 
 LOGGER = getLogger("red.3pt.mp.commands.hybrids")
+_RE_TIME_CONVERTER: Final[Pattern] = re.compile(r"(?:(\d+):)?([0-5]?[0-9]):([0-5][0-9])") #taken from https://github.com/Cog-Creators/Red-DiscordBot/blob/V3/develop/redbot/cogs/audio/core/utilities/miscellaneous.py#L28
 _ = Translator("MediaPlayer", Path(__file__))
 
 
@@ -528,6 +530,112 @@ class HybridCommands(MPMixin, ABC):
             ),
             ephemeral=True,
         )
+
+    @commands.hybrid_command(name="seek", description="Seek the current track.")
+    @commands.guild_only()
+    @requires_player()
+    async def command_seek(self, context: PyLavContext, seek: str):
+        """Seek the current track.
+
+        Seek can either be a number of seconds or a timestamp.
+
+        Examples:
+        `[p]seek 10` Seeks 10 seconds forward
+        `[p]seek -20` Seeks 20 seconds backwards
+        `[p]seek 0:30` Seeks to 0:30
+        """
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+
+        player = context.lavalink.get_player(context.guild)
+        if not player:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("No player detected."), messageable=context
+                ),
+                ephemeral=True,
+            )
+            return
+
+        if not player.current:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Nothing playing."), messageable=context
+                ),
+                ephemeral=True,
+            )
+            return
+
+        if not player.current.is_seekable:
+            if player.current.stream:
+                await context.send(
+                    embed=await context.lavalink.construct_embed(
+                        title=_("Unable to seek track"),
+                        description=_("Can't seek on a stream."),
+                        messageable=context,
+                    ),
+                    ephemeral=True,
+                )
+            else:
+                await context.send(
+                    embed=await context.lavalink.construct_embed(
+                        description=_("Unable to seek track."), messageable=context
+                    ),
+                    ephemeral=True,
+                )
+            return
+
+        if player.paused:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Cannot seek when the player is paused."), messageable=context
+                ),
+                ephemeral=True,
+            )
+            return
+
+        try:
+            seek = int(seek)
+            seek_ms = player.position + seek * 1000
+
+            if seek <= 0:
+                await context.send(
+                    embed=await context.lavalink.construct_embed(
+                        description=_("Moved {seconds}s to 00:00:00.").format(seconds=seek), messageable=context
+                    ),
+                    ephemeral=True,
+                )
+            else:
+                await context.send(
+                    embed=await context.lavalink.construct_embed(
+                        description=_("Moved {seconds}s to {time}.").format(
+                            seconds=seek, time=format_time(seek_ms),
+                        ),
+                        messageable=context,
+                    ),
+                    ephemeral=True,
+                )
+        except ValueError: #taken from https://github.com/Cog-Creators/Red-DiscordBot/blob/V3/develop/redbot/cogs/audio/core/utilities/miscellaneous.py#L197
+            match = _RE_TIME_CONVERTER.match(seek)
+            if match is not None:
+                hr = int(match.group(1)) if match.group(1) else 0
+                mn = int(match.group(2)) if match.group(2) else 0
+                sec = int(match.group(3)) if match.group(3) else 0
+                pos = sec + (mn * 60) + (hr * 3600)
+                seek_ms = pos * 1000
+            else:
+                seek_ms = 0
+
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Moved to {time}.").format(time=format_time(seek_ms)), messageable=context
+                ),
+                ephemeral=True,
+            )
+
+        await player.seek(seek_ms, context.author, False)
 
     @commands.hybrid_command(name="prev", description="Play the previous tracks.", aliases=["previous"])
     @commands.guild_only()
