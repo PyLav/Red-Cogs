@@ -4,6 +4,7 @@ import asyncio
 from collections import defaultdict
 from pathlib import Path
 
+from apscheduler.job import Job
 from red_commons.logging import getLogger
 from redbot.core import Config
 from redbot.core.commands import commands
@@ -92,11 +93,16 @@ class MPNotifier(commands.Cog, Commands):
             websocket_closed=[False, False],
         )
         self._message_queue = defaultdict(list)
+        self._scheduled_jobs: list[Job] = []
 
     async def initialize(self) -> None:
         await self.lavalink.register(self)
         await self.lavalink.initialize()
-        self.lavalink.scheduler.add_job(self.send_embed_batch, trigger="interval", seconds=5, max_instances=1)
+        self._scheduled_jobs.append(
+            self.lavalink.scheduler.add_job(
+                self.send_embed_batch, trigger="interval", seconds=5, max_instances=1, replace_existing=True
+            )
+        )
 
     async def send_embed_batch(self) -> None:
         dispatch_mapping = {}
@@ -122,6 +128,8 @@ class MPNotifier(commands.Cog, Commands):
     async def cog_unload(self) -> None:
         if self._init_task is not None:
             self._init_task.cancel()
+        for job in self._scheduled_jobs:
+            job.remove()
         await self.bot.lavalink.unregister(cog=self)
 
     @commands.Cog.listener()
