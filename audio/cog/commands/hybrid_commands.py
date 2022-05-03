@@ -537,7 +537,7 @@ class HybridCommands(MPMixin, ABC):
     async def command_seek(self, context: PyLavContext, seek: str):
         """Seek the current track.
 
-        seek can either be a number of seconds or a timestamp
+        Seek can either be a number of seconds or a timestamp.
 
         Examples:
         `[p]seek 10` Seeks 10 seconds forward
