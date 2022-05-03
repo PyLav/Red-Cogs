@@ -20,9 +20,8 @@ from audio.cog.utils.decorators import requires_player
 
 LOGGER = getLogger("red.3pt.mp.commands.hybrids")
 _ = Translator("MediaPlayer", Path(__file__))
-_RE_TIME_CONVERTER: Final[Pattern] = re.compile(
-    r"(?:(\d+):)?([0-5]?\d):([0-5]\d)"
-)  # taken fromhttps://github.com/Cog-Creators/Red-DiscordBot/blob/ec55622418810731e1ee2ede1569f81f9bddeeec/redbot/cogs/audio/core/utilities/miscellaneous.py#L28
+# taken from https://github.com/Cog-Creators/Red-DiscordBot/blob/ec55622418810731e1ee2ede1569f81f9bddeeec/redbot/cogs/audio/core/utilities/miscellaneous.py#L28
+_RE_TIME_CONVERTER: Final[Pattern] = re.compile(r"(?:(\d+):)?([0-5]?\d):([0-5]\d)")
 
 
 class HybridCommands(MPMixin, ABC):

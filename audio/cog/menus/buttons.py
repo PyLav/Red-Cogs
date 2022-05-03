@@ -471,7 +471,7 @@ class EnqueuePlaylistButton(discord.ui.Button):
                 selector_text=_("Pick a playlist"),
             ).start(interaction)
         else:
-            await self.cog.command_playlist_play.callback(self.cog, interaction, playlist=[self.playlist])  # type: ignore
+            await self.cog.command_playlist_play.callback(self.cog, interaction, playlist=[self.playlist])
         if hasattr(self.view, "prepare"):
             await self.view.prepare()
             kwargs = await self.view.get_page(self.view.current_page)
