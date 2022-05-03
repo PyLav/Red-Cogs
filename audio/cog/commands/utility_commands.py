@@ -1,8 +1,8 @@
-import json
 from abc import ABC
 from pathlib import Path
 
 import discord
+import ujson
 from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator
@@ -217,7 +217,7 @@ class UtilityCommands(MPMixin, ABC):
         else:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=box(lang="json", text=json.dumps(data["info"], indent=2, sort_keys=True)),
+                    description=box(lang="json", text=ujson.dumps(data["info"], indent=2, sort_keys=True)),
                     messageable=context,
                 ),
                 ephemeral=True,

@@ -1,10 +1,10 @@
 import asyncio
 import contextlib
-import json
 from abc import ABC
 from pathlib import Path
 
 import discord
+import ujson
 from redbot.core import commands
 from redbot.core.i18n import Translator
 from redbot.core.utils.chat_formatting import box, humanize_list, inline
@@ -160,7 +160,7 @@ class NodeCommands(MPMixin, ABC):
         await context.author.send(
             embed=await self.lavalink.construct_embed(
                 description=_("Removed node {name}.\n\n{data}").format(
-                    name=node.name, data=box(lang="json", text=json.dumps(node_data, indent=2, sort_keys=True))
+                    name=node.name, data=box(lang="json", text=ujson.dumps(node_data, indent=2, sort_keys=True))
                 ),
                 messageable=context.channel,
             )

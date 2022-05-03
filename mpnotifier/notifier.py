@@ -13,11 +13,12 @@ from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import box, inline
 from tabulate import tabulate
 
-from mpnotifier.notifier_commands import Commands
 from pylav import Client, events
 from pylav.filters import Equalizer, Volume
 from pylav.types import BotT
 from pylav.utils import format_time
+
+from mpnotifier.notifier_commands import Commands
 
 _ = Translator("MPNotifier", Path(__file__))
 
