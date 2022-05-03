@@ -552,14 +552,18 @@ class HybridCommands(MPMixin, ABC):
         player = context.lavalink.get_player(context.guild)
         if not player:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("No player detected.")),
+                embed=await context.lavalink.construct_embed(
+                    description=_("No player detected."), messageable=context
+                ),
                 ephemeral=True,
             )
             return
 
         if not player.current:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("Nothing playing.")),
+                embed=await context.lavalink.construct_embed(
+                    description=_("Nothing playing."), messageable=context
+                ),
                 ephemeral=True,
             )
             return
@@ -569,20 +573,25 @@ class HybridCommands(MPMixin, ABC):
                 await context.send(
                     embed=await context.lavalink.construct_embed(
                         title=_("Unable to seek track"),
-                        description=_("Can't seek on a stream.")
+                        description=_("Can't seek on a stream."),
+                        messageable=context,
                     ),
                     ephemeral=True,
                 )
             else:
                 await context.send(
-                    embed=await context.lavalink.construct_embed(description=_("Unable to seek track.")),
+                    embed=await context.lavalink.construct_embed(
+                        description=_("Unable to seek track."), messageable=context
+                    ),
                     ephemeral=True,
                 )
             return
 
         if player.paused:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("Cannot seek when the player is paused.")),
+                embed=await context.lavalink.construct_embed(
+                    description=_("Cannot seek when the player is paused."), messageable=context
+                ),
                 ephemeral=True,
             )
             return
@@ -594,7 +603,7 @@ class HybridCommands(MPMixin, ABC):
             if seek <= 0:
                 await context.send(
                     embed=await context.lavalink.construct_embed(
-                        description=_("Moved {seconds}s to 00:00:00.").format(seconds=seek),
+                        description=_("Moved {seconds}s to 00:00:00.").format(seconds=seek), messageable=context
                     ),
                     ephemeral=True,
                 )
@@ -602,8 +611,9 @@ class HybridCommands(MPMixin, ABC):
                 await context.send(
                     embed=await context.lavalink.construct_embed(
                         description=_("Moved {seconds}s to {time}.").format(
-                            seconds=seek, time=format_time(seek),
+                            seconds=seek, time=format_time(seek_ms),
                         ),
+                        messageable=context,
                     ),
                     ephemeral=True,
                 )
@@ -620,13 +630,10 @@ class HybridCommands(MPMixin, ABC):
 
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("Moved to {time}.").format(time=format_time(seek)),
+                    description=_("Moved to {time}.").format(time=format_time(seek_ms)), messageable=context
                 ),
                 ephemeral=True,
             )
-
-        except Exception as e:
-            print(e)
 
         await player.seek(seek_ms, context.author, False)
 
