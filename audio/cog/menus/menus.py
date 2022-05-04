@@ -68,7 +68,7 @@ if TYPE_CHECKING:
         SearchPickerSource,
     )
 
-LOGGER = getLogger("red.3pt.mp.ui.menus")
+LOGGER = getLogger("red.3pt.PyLavPlayer.ui.menus")
 
 _ = Translator("MediaPlayer", Path(__file__))
 

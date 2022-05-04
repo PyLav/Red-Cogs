@@ -26,7 +26,7 @@ LOGGER = getLogger("red.3pt.plnotifier.events")
 
 
 @cog_i18n(_)
-class MPNotifier(commands.Cog, Commands):
+class PyLavNotifier(commands.Cog, Commands):
     lavalink: Client
 
     def __init__(self, bot: BotT, *args, **kwargs):

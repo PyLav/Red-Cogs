@@ -36,11 +36,11 @@ class CompositeMetaClass(type(red_commands.Cog), type(ABC)):
 
 _ = Translator("MediaPlayer", Path(__file__))
 
-LOGGER_ERROR = getLogger("red.3pt.mp.error_handler")
+LOGGER_ERROR = getLogger("red.3pt.PyLavPlayer.error_handler")
 
 
 @cog_i18n(_)
-class MediaPlayer(
+class PyLavPlayer(
     red_commands.Cog,
     HybridCommands,
     UtilityCommands,

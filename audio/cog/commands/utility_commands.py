@@ -15,7 +15,7 @@ from pylav.utils import PyLavContext
 from audio.cog.abc import MPMixin
 from audio.cog.utils import decorators
 
-LOGGER = getLogger("red.3pt.mp.commands.utils")
+LOGGER = getLogger("red.3pt.PyLavPlayer.commands.utils")
 
 _ = Translator("MediaPlayer", Path(__file__))
 

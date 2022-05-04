@@ -9,7 +9,7 @@ from redbot.core.i18n import Translator
 
 from audio.cog._types import CogT
 
-LOGGER = getLogger("red.3pt.mp.ui.modals")
+LOGGER = getLogger("red.3pt.PyLavPlayer.ui.modals")
 
 _ = Translator("MediaPlayer", Path(__file__))
 

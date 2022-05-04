@@ -16,7 +16,7 @@ from pylav.utils import PyLavContext
 from audio.cog.abc import MPMixin
 from audio.cog.utils.playlists import maybe_prompt_for_playlist
 
-LOGGER = getLogger("red.3pt.mp.commands.config")
+LOGGER = getLogger("red.3pt.PyLavPlayer.commands.config")
 
 _ = Translator("MediaPlayer", Path(__file__))
 

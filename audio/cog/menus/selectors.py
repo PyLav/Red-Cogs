@@ -19,7 +19,7 @@ from audio.cog._types import CogT
 if TYPE_CHECKING:
     from audio.cog.menus.menus import AddNodeFlow
 
-LOGGER = getLogger("red.3pt.mp.ui.selectors")
+LOGGER = getLogger("red.3pt.PyLavPlayer.ui.selectors")
 _ = Translator("MediaPlayer", Path(__file__))
 
 

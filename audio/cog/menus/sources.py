@@ -25,7 +25,7 @@ from audio.cog._types import CogT
 from audio.cog.menus.selectors import EffectsOption, NodeOption, PlaylistOption, QueueTrackOption, SearchTrackOption
 from audio.cog.utils import rgetattr
 
-LOGGER = getLogger("red.3pt.mp.ui.sources")
+LOGGER = getLogger("red.3pt.PyLavPlayer.ui.sources")
 
 if TYPE_CHECKING:
     from audio.cog.menus.menus import BaseMenu, NodeManagerMenu, QueueMenu, QueuePickerMenu

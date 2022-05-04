@@ -13,7 +13,7 @@ from pylav.utils import PyLavContext, format_time
 
 from audio.cog.abc import MPMixin
 
-LOGGER = getLogger("red.3pt.mp.commands.player")
+LOGGER = getLogger("red.3pt.PyLavPlayer.commands.player")
 _ = Translator("MediaPlayer", Path(__file__))
 
 

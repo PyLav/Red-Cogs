@@ -12,7 +12,7 @@ if TYPE_CHECKING:
     from redbot.core.commands import Cog, CogMixin
     from audio.cog import (
         HybridCommands,
-        MediaPlayer,
+        PyLavPlayer,
         UtilityCommands,
         PlayerCommands,
         ConfigCommands,
@@ -21,7 +21,7 @@ if TYPE_CHECKING:
     from redbot.core.utils import menus  # noqa: F401
 
     Cog = Union[
-        MediaPlayer,
+        PyLavPlayer,
         HybridCommands,
         UtilityCommands,
         PlayerCommands,
