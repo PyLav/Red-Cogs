@@ -8,12 +8,12 @@ from redbot.core.i18n import Translator
 from pylav.sql.models import NodeModel
 from pylav.utils import PyLavContext
 
-from audio.cog._types import CogT
-from audio.cog.menus.menus import NodePickerMenu
-from audio.cog.menus.selectors import NodeSelectSelector
-from audio.cog.menus.sources import NodePickerSource
+from plnodes.cog._types import CogT
+from plnodes.cog.menus.menus import NodePickerMenu
+from plnodes.cog.menus.selectors import NodeSelectSelector
+from plnodes.cog.menus.sources import NodePickerSource
 
-_ = Translator("MediaPlayer", Path(__file__))
+_ = Translator("PyLavNodes", Path(__file__))
 
 
 async def maybe_prompt_for_node(cog: CogT, context: PyLavContext, nodes: list[NodeModel]) -> NodeModel:

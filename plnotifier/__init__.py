@@ -8,6 +8,6 @@ from plnotifier.cog import PyLavNotifier
 
 
 async def setup(bot: BotT):
-    mp = PyLavNotifier(bot)
-    await bot.add_cog(mp)
-    mp._init_task = asyncio.create_task(mp.initialize())
+    pl_notifier = PyLavNotifier(bot)
+    await bot.add_cog(pl_notifier)
+    pl_notifier._init_task = asyncio.create_task(pl_notifier.initialize())

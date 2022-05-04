@@ -12,6 +12,6 @@ LOGGER = getLogger("red.3pt.PyLavPlaylists")
 
 
 async def setup(bot: BotT):
-    mp = PyLavPlaylists(bot)
-    await bot.add_cog(mp)
-    mp._init_task = asyncio.create_task(mp.initialize())
+    pl_playlists = PyLavPlaylists(bot)
+    await bot.add_cog(pl_playlists)
+    pl_playlists._init_task = asyncio.create_task(pl_playlists.initialize())

@@ -1,19 +1,18 @@
-[tool.isort]
-profile = "black"
-line_length = 120
-py_version = 39
-known_third_party=["aiohttp", "mpplaylists", "ujson", "red_commons", "discord", "sqlalchemy", "cached_property","psutil", "dateutils", "appdirs", "yaml", "redbot", "tabulate", "aiopath", "humanize"]
-known_first_party=["pylav"]
-known_local_folder=["audio", "plnotifier", "pylavconfig", "plmigrator", "plplaylists"]
-
-[tool.black]
-line-length = 120
-target-version = ['py39']
-
-
 [tool.autopep8]
 max_line_length = 120
 ignore = "E203,E501,W503"
 in-place = true
 recursive = true
 aggressive = 3
+
+[tool.black]
+line-length = 120
+target-version = ['py39']
+
+[tool.isort]
+profile = "black"
+line_length = 120
+py_version = 39
+known_third_party = ["aiohttp", "mpplaylists", "ujson", "red_commons", "discord", "sqlalchemy", "cached_property","psutil", "dateutils", "appdirs", "yaml", "redbot", "tabulate", "aiopath", "humanize"]
+known_first_party = ["pylav"]
+known_local_folder = ["audio", "plnotifier", "plconfig", "plmigrator", "plplaylists", "plutils", "plnodes"]

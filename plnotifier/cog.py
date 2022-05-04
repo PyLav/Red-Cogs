@@ -20,9 +20,9 @@ from pylav.utils import format_time
 
 from plnotifier.notifier_commands import Commands
 
-_ = Translator("MPNotifier", Path(__file__))
+_ = Translator("PyLavNotifier", Path(__file__))
 
-LOGGER = getLogger("red.3pt.plnotifier.events")
+LOGGER = getLogger("red.3pt.PyLavNotifier")
 
 
 @cog_i18n(_)

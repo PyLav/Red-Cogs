@@ -9,7 +9,7 @@ from pylav.query import MERGED_REGEX
 
 from audio.cog import MPMixin
 
-_ = Translator("MediaPlayer", Path(__file__))
+_ = Translator("PyLavPlayer", Path(__file__))
 
 
 class ContextMenus(MPMixin, ABC):

@@ -21,7 +21,6 @@ from audio.cog.abc import MY_GUILD, MPMixin
 from audio.cog.commands.config_commands import ConfigCommands
 from audio.cog.commands.context_menus import ContextMenus
 from audio.cog.commands.hybrid_commands import HybridCommands
-from audio.cog.commands.node_commands import NodeCommands
 from audio.cog.commands.player_commands import PlayerCommands
 from audio.cog.commands.utility_commands import UtilityCommands
 from audio.cog.errors import UnauthorizedChannelError
@@ -34,7 +33,7 @@ class CompositeMetaClass(type(red_commands.Cog), type(ABC)):
     """
 
 
-_ = Translator("MediaPlayer", Path(__file__))
+_ = Translator("PyLavPlayer", Path(__file__))
 
 LOGGER_ERROR = getLogger("red.3pt.PyLavPlayer.error_handler")
 
@@ -46,7 +45,6 @@ class PyLavPlayer(
     UtilityCommands,
     PlayerCommands,
     ConfigCommands,
-    NodeCommands,
     ContextMenus,
     metaclass=CompositeMetaClass,
 ):
@@ -87,7 +85,7 @@ class PyLavPlayer(
         await self.bot.lavalink.unregister(cog=self)
 
     async def cog_check(self, ctx: PyLavContext) -> bool:
-        if self.command_mpset in ctx.command.parents or self.command_mpset == ctx.command:
+        if self.command_plset in ctx.command.parents or self.command_plset == ctx.command:
             return True
         if ctx.player:
             config = ctx.player.config

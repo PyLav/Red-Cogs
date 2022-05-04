@@ -15,8 +15,8 @@ from pylav.types import BotT
 from pylav.utils import PyLavContext
 
 from plplaylists.cog import errors
-from plplaylists.cog.commands.playlist_commands import PlaylistCommands
 from plplaylists.cog.errors import UnauthorizedChannelError
+from plplaylists.cog.playlist_commands import PlaylistCommands
 
 
 class CompositeMetaClass(type(red_commands.Cog), type(ABC)):

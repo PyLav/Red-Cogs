@@ -40,7 +40,7 @@ class PyLavConfigurator(commands.Cog):
         await self.bot.lavalink.unregister(cog=self)
 
     @commands.is_owner()
-    @commands.group(name="pylav", aliases=["pylavconfig"])
+    @commands.group(name="pylav", aliases=["plconfig"])
     async def pylav(self, ctx: PyLavContext) -> None:
         """Change global settings for PyLav"""
 
@@ -90,7 +90,7 @@ class PyLavConfigurator(commands.Cog):
 
         await context.send(
             embed=await context.lavalink.construct_embed(
-                description=_("Pylav's config folder has been set to {folder}.").format(
+                description=_("PyLav's config folder has been set to {folder}.").format(
                     folder=inline(f"{path.absolute()}"),
                     messageable=context,
                 )
@@ -148,7 +148,7 @@ class PyLavConfigurator(commands.Cog):
         await LocalFile.add_root_folder(path=path)
         await context.send(
             embed=await context.lavalink.construct_embed(
-                description=_("Pylav's local tracks folder has been set to {folder}.").format(
+                description=_("PyLav's local tracks folder has been set to {folder}.").format(
                     folder=inline(f"{path.absolute()}"),
                     messageable=context,
                 )
@@ -220,7 +220,7 @@ class PyLavConfigurator(commands.Cog):
         await global_config.set_java_path(str(path.absolute()))
         await context.send(
             embed=await context.lavalink.construct_embed(
-                description=_("Pylav's java executable has been set to {java}.").format(
+                description=_("PyLav's java executable has been set to {java}.").format(
                     java=inline(f"{java}"),
                     messageable=context,
                 )
@@ -249,7 +249,7 @@ class PyLavConfigurator(commands.Cog):
         if global_config.enable_managed_node:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("Pylav's managed node has been enabled."),
+                    description=_("PyLav's managed node has been enabled."),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -257,7 +257,7 @@ class PyLavConfigurator(commands.Cog):
         else:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("Pylav's managed node has been disabled."),
+                    description=_("PyLav's managed node has been disabled."),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -280,7 +280,7 @@ class PyLavConfigurator(commands.Cog):
         if global_config.auto_update_managed_nodes:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("Pylav's managed node auto updates have been enabled."),
+                    description=_("PyLav's managed node auto updates have been enabled."),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -288,7 +288,7 @@ class PyLavConfigurator(commands.Cog):
         else:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("Pylav's managed node auto updates have been disabled."),
+                    description=_("PyLav's managed node auto updates have been disabled."),
                     messageable=context,
                 ),
                 ephemeral=True,

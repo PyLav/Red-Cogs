@@ -1,6 +1,5 @@
 import asyncio
 import contextlib
-from abc import ABC
 from pathlib import Path
 
 import discord
@@ -9,18 +8,22 @@ from redbot.core import commands
 from redbot.core.i18n import Translator
 from redbot.core.utils.chat_formatting import box, humanize_list, inline
 
+from pylav import Client
 from pylav.converters.nodes import NodeConverter
+from pylav.types import BotT
 from pylav.utils import PyLavContext
 
-from audio.cog import MPMixin
-from audio.cog.menus.menus import AddNodeFlow, NodeManagerMenu
-from audio.cog.menus.sources import NodeListSource
-from audio.cog.utils.nodes import maybe_prompt_for_node
+from plnodes.cog.menus.menus import AddNodeFlow, NodeManagerMenu
+from plnodes.cog.menus.sources import NodeListSource
+from plnodes.cog.utils.nodes import maybe_prompt_for_node
 
-_ = Translator("MediaPlayer", Path(__file__))
+_ = Translator("PyLavNodes", Path(__file__))
 
 
-class NodeCommands(MPMixin, ABC):
+class NodeCommands:
+    lavalink: Client
+    bot: BotT
+
     @commands.is_owner()
     @commands.group(name="nodeset")
     async def command_nodeset(self, context: PyLavContext) -> None:

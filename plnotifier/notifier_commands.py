@@ -10,7 +10,7 @@ from pylav import Client
 from pylav.types import BotT
 from pylav.utils import PyLavContext
 
-_ = Translator("MPNotifier", Path(__file__))
+_ = Translator("PyLavNotifier", Path(__file__))
 
 POSSIBLE_EVENTS = {
     "track_stuck",
@@ -76,12 +76,12 @@ class Commands:
 
     @commands.guildowner_or_permissions(manage_guild=True)
     @commands.guild_only()
-    @commands.group(name="notifyset")
-    async def command_notifyset(self, context: PyLavContext):
-        """Configure the MPNotifier cog."""
+    @commands.group(name="plnotify")
+    async def command_plnotify(self, context: PyLavContext):
+        """Configure the PyLavNotifier cog."""
 
-    @command_notifyset.command(name="channel")
-    async def command_notifyset_channel(
+    @command_plnotify.command(name="channel")
+    async def command_plnotify_channel(
         self, context: PyLavContext, *, channel: Union[discord.Thread, discord.TextChannel]
     ) -> None:
         """Set the notify channel for the player."""
@@ -100,13 +100,14 @@ class Commands:
             await self._config.notify_channel_id.set(channel.id)
         await context.send(
             embed=await context.lavalink.construct_embed(
-                description=_("MP notify channel set to {channel}").format(channel=channel.mention), messageable=context
+                description=_("PyLavNotifier channel set to {channel}").format(channel=channel.mention),
+                messageable=context,
             ),
             ephemeral=True,
         )
 
-    @command_notifyset.command(name="event")
-    async def command_notifyset_event(
+    @command_plnotify.command(name="event")
+    async def command_plnotify_event(
         self, context: PyLavContext, event: str, toggle: bool, use_mention: bool = False
     ) -> None:
         """Set whether or not to notify for the specified event.

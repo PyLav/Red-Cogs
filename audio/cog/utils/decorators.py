@@ -9,7 +9,7 @@ from pylav.utils import PyLavContext
 
 from audio.cog import errors
 
-_ = Translator("MediaPlayer", Path(__file__))
+_ = Translator("PyLavPlayer", Path(__file__))
 
 
 def always_hidden():

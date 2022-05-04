@@ -18,21 +18,21 @@ from audio.cog.utils.playlists import maybe_prompt_for_playlist
 
 LOGGER = getLogger("red.3pt.PyLavPlayer.commands.config")
 
-_ = Translator("MediaPlayer", Path(__file__))
+_ = Translator("PyLavPlayer", Path(__file__))
 
 
 class ConfigCommands(MPMixin, ABC):
-    @commands.group(name="mpset")
-    async def command_mpset(self, context: PyLavContext) -> None:
+    @commands.group(name="plset")
+    async def command_plset(self, context: PyLavContext) -> None:
         """Player configuration commands."""
 
     @commands.is_owner()
-    @command_mpset.group(name="global", aliases=["owner"])
-    async def command_mpset_global(self, context: PyLavContext) -> None:
+    @command_plset.group(name="global", aliases=["owner"])
+    async def command_plset_global(self, context: PyLavContext) -> None:
         """Global configuration options."""
 
-    @command_mpset_global.command(name="vol", aliases=["volume"])
-    async def command_mpset_global_volume(self, context: PyLavContext, volume: int) -> None:
+    @command_plset_global.command(name="vol", aliases=["volume"])
+    async def command_plset_global_volume(self, context: PyLavContext, volume: int) -> None:
         """Set the maximum volume server can set."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -58,8 +58,8 @@ class ConfigCommands(MPMixin, ABC):
             ephemeral=True,
         )
 
-    @command_mpset_global.command(name="deafen", aliases=["deaf"])
-    async def command_mpset_global_deafen(self, context: PyLavContext, toggle: bool) -> None:
+    @command_plset_global.command(name="deafen", aliases=["deaf"])
+    async def command_plset_global_deafen(self, context: PyLavContext, toggle: bool) -> None:
         """Set whether the bot should deafen itself when playing."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -76,8 +76,8 @@ class ConfigCommands(MPMixin, ABC):
             ephemeral=True,
         )
 
-    @command_mpset_global.command(name="shuffle")
-    async def command_mpset_global_shuffle(self, context: PyLavContext, toggle: bool) -> None:
+    @command_plset_global.command(name="shuffle")
+    async def command_plset_global_shuffle(self, context: PyLavContext, toggle: bool) -> None:
         """Set whether the bot should shuffle its queue after every new song."""
 
         if isinstance(context, discord.Interaction):
@@ -95,8 +95,8 @@ class ConfigCommands(MPMixin, ABC):
             ephemeral=True,
         )
 
-    @command_mpset_global.command(name="auto")
-    async def command_mpset_global_auto(self, context: PyLavContext, toggle: bool) -> None:
+    @command_plset_global.command(name="auto")
+    async def command_plset_global_auto(self, context: PyLavContext, toggle: bool) -> None:
         """Set whether the bot should automatically play songs when it's queue is empty."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -113,12 +113,12 @@ class ConfigCommands(MPMixin, ABC):
             ephemeral=True,
         )
 
-    @command_mpset_global.group(name="dc")
-    async def command_mpset_global_dc(self, context: PyLavContext) -> None:
+    @command_plset_global.group(name="dc")
+    async def command_plset_global_dc(self, context: PyLavContext) -> None:
         """Set whether the bot should disconnect from the voice voice channel."""
 
-    @command_mpset_global_dc.command(name="empty")
-    async def command_mpset_global_dc_empty(
+    @command_plset_global_dc.command(name="empty")
+    async def command_plset_global_dc_empty(
         self,
         context: PyLavContext,  # noqa
         toggle: bool,  # noqa
@@ -156,8 +156,8 @@ class ConfigCommands(MPMixin, ABC):
             ephemeral=True,
         )
 
-    @command_mpset_global_dc.command(name="alone")
-    async def command_mpset_global_dc_alone(
+    @command_plset_global_dc.command(name="alone")
+    async def command_plset_global_dc_alone(
         self,
         context: PyLavContext,  # noqa
         toggle: bool,  # noqa
@@ -195,12 +195,12 @@ class ConfigCommands(MPMixin, ABC):
 
     @commands.guildowner_or_permissions(manage_guild=True)
     @commands.guild_only()
-    @command_mpset.group(name="server", aliases=["guild"])
-    async def command_mpset_server(self, context: PyLavContext) -> None:
+    @command_plset.group(name="server", aliases=["guild"])
+    async def command_plset_server(self, context: PyLavContext) -> None:
         """Server configuration options."""
 
-    @command_mpset_server.command(name="vol", aliases=["volume"])
-    async def command_mpset_server_volume(self, context: PyLavContext, volume: int) -> None:
+    @command_plset_server.command(name="vol", aliases=["volume"])
+    async def command_plset_server_volume(self, context: PyLavContext, volume: int) -> None:
         """Set the maximum volume a user can set."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -245,8 +245,8 @@ class ConfigCommands(MPMixin, ABC):
             ephemeral=True,
         )
 
-    @command_mpset_server.command(name="deafen", aliases=["deaf"])
-    async def command_mpset_server_deafen(self, context: PyLavContext, toggle: bool) -> None:
+    @command_plset_server.command(name="deafen", aliases=["deaf"])
+    async def command_plset_server_deafen(self, context: PyLavContext, toggle: bool) -> None:
         """Set whether the bot should deafen itself when playing."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -280,8 +280,8 @@ class ConfigCommands(MPMixin, ABC):
             ephemeral=True,
         )
 
-    @command_mpset_server.command(name="shuffle")
-    async def command_mpset_server_shuffle(self, context: PyLavContext, toggle: bool) -> None:
+    @command_plset_server.command(name="shuffle")
+    async def command_plset_server_shuffle(self, context: PyLavContext, toggle: bool) -> None:
         """Set whether the bot should shuffle its queue after every new song."""
 
         if isinstance(context, discord.Interaction):
@@ -316,8 +316,8 @@ class ConfigCommands(MPMixin, ABC):
             ephemeral=True,
         )
 
-    @command_mpset_server.command(name="auto")
-    async def command_mpset_server_auto(self, context: PyLavContext, toggle: bool) -> None:
+    @command_plset_server.command(name="auto")
+    async def command_plset_server_auto(self, context: PyLavContext, toggle: bool) -> None:
         """Set whether the bot should automatically play songs when it's queue is empty."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -351,12 +351,12 @@ class ConfigCommands(MPMixin, ABC):
             ephemeral=True,
         )
 
-    @command_mpset_server.group(name="dc")
-    async def command_mpset_server_dc(self, context: PyLavContext) -> None:
+    @command_plset_server.group(name="dc")
+    async def command_plset_server_dc(self, context: PyLavContext) -> None:
         """Set whether the bot should disconnect from the voice voice channel."""
 
-    @command_mpset_server.command(name="empty")
-    async def command_mpset_server_dc_empty(
+    @command_plset_server.command(name="empty")
+    async def command_plset_server_dc_empty(
         self,
         context: PyLavContext,  # noqa
         toggle: bool,  # noqa
@@ -411,8 +411,8 @@ class ConfigCommands(MPMixin, ABC):
             ephemeral=True,
         )
 
-    @command_mpset_server.command(name="alone")
-    async def command_mpset_server_dc_alone(
+    @command_plset_server.command(name="alone")
+    async def command_plset_server_dc_alone(
         self,
         context: PyLavContext,  # noqa
         toggle: bool,  # noqa
@@ -468,8 +468,8 @@ class ConfigCommands(MPMixin, ABC):
             ephemeral=True,
         )
 
-    @command_mpset_server.command(name="playlist")
-    async def command_mpset_server_playlist(self, context: PyLavContext, *, playlist: PlaylistConverter) -> None:
+    @command_plset_server.command(name="playlist")
+    async def command_plset_server_playlist(self, context: PyLavContext, *, playlist: PlaylistConverter) -> None:
         """Sets the Auto-Play playlist."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -494,12 +494,12 @@ class ConfigCommands(MPMixin, ABC):
             ephemeral=True,
         )
 
-    @command_mpset_server.group(name="lock")
-    async def command_mpset_server_lock(self, context: PyLavContext):
+    @command_plset_server.group(name="lock")
+    async def command_plset_server_lock(self, context: PyLavContext):
         """Set the channel locks."""
 
-    @command_mpset_server_lock.command(name="commands")
-    async def command_mpset_server_lock_commands(
+    @command_plset_server_lock.command(name="commands")
+    async def command_plset_server_lock_commands(
         self, context: PyLavContext, *, channel: Union[discord.TextChannel, discord.Thread, discord.VoiceChannel] = None
     ):
         """Set the channel lock for commands."""
@@ -552,8 +552,8 @@ class ConfigCommands(MPMixin, ABC):
             ephemeral=True,
         )
 
-    @command_mpset_server_lock.command(name="voice", aliases=["vc"])
-    async def command_mpset_server_lock_vc(self, context: PyLavContext, *, channel: discord.VoiceChannel = None):
+    @command_plset_server_lock.command(name="voice", aliases=["vc"])
+    async def command_plset_server_lock_vc(self, context: PyLavContext, *, channel: discord.VoiceChannel = None):
         """Set the channel lock for voice channels."""
 
         if isinstance(context, discord.Interaction):

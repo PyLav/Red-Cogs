@@ -5,6 +5,6 @@ from pathlib import Path
 from red_commons.logging import getLogger
 from redbot.core.i18n import Translator
 
-_ = Translator("MediaPlayer", Path(__file__))
+_ = Translator("PyLavPlayer", Path(__file__))
 
 LOGGER = getLogger("red.3pt.PyLavPlayer.error_handler")

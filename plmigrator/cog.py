@@ -52,7 +52,7 @@ class PyLavMigrator(commands.Cog):
     @commands.is_owner()
     @commands.command(name="pylavmigrate")
     async def pylavmigrate(self, context: PyLavContext, confirm: bool, /) -> None:
-        """Migrate Audio settings to Pylav
+        """Migrate Audio settings to PyLav
 
         Please note that this will replace any config already in PyLav.
 
@@ -66,28 +66,28 @@ class PyLavMigrator(commands.Cog):
         async with context.typing():
             audio_config = Config.get_conf(None, identifier=2711759130, cog_name="Audio")
             default_global = dict(
-                use_external_lavalink=False,  # Supported in Pylav
-                localpath=str(cog_data_path(raw_name="Audio")),  # Supported in Pylav
-                java_exc_path="java",  # Supported in Pylav
-                **DEFAULT_LAVALINK_YAML,  # Supported in Pylav
-                **DEFAULT_LAVALINK_SETTINGS,  # Supported in Pylav
+                use_external_lavalink=False,  # Supported in PyLav
+                localpath=str(cog_data_path(raw_name="Audio")),  # Supported in PyLav
+                java_exc_path="java",  # Supported in PyLav
+                **DEFAULT_LAVALINK_YAML,  # Supported in PyLav
+                **DEFAULT_LAVALINK_SETTINGS,  # Supported in PyLav
             )
 
             default_guild = dict(
-                auto_play=False,  # Supported in Pylav
-                auto_deafen=True,  # Supported in Pylav
+                auto_play=False,  # Supported in PyLav
+                auto_deafen=True,  # Supported in PyLav
                 autoplaylist=dict(
-                    enabled=True,  # Supported in Pylav
-                    id=42069,  # Supported in Pylav
+                    enabled=True,  # Supported in PyLav
+                    id=42069,  # Supported in PyLav
                 ),
-                disconnect=False,  # Supported in Pylav
-                emptydc_enabled=False,  # Supported in Pylav
-                emptydc_timer=0,  # Supported in Pylav
-                emptypause_enabled=False,  # Supported in Pylav
-                emptypause_timer=0,  # Supported in Pylav
-                max_volume=150,  # Supported in Pylav
-                shuffle=False,  # Supported in Pylav
-                volume=100,  # Supported in Pylav
+                disconnect=False,  # Supported in PyLav
+                emptydc_enabled=False,  # Supported in PyLav
+                emptydc_timer=0,  # Supported in PyLav
+                emptypause_enabled=False,  # Supported in PyLav
+                emptypause_timer=0,  # Supported in PyLav
+                max_volume=150,  # Supported in PyLav
+                shuffle=False,  # Supported in PyLav
+                volume=100,  # Supported in PyLav
             )
             _playlist = dict(id=None, author=None, name=None, playlist_url=None, tracks=[])
             audio_config.init_custom("EQUALIZER", 1)

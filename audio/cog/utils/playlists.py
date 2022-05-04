@@ -13,7 +13,7 @@ from audio.cog.menus.menus import PlaylistPickerMenu
 from audio.cog.menus.selectors import PlaylistSelectSelector
 from audio.cog.menus.sources import PlaylistPickerSource
 
-_ = Translator("MediaPlayer", Path(__file__))
+_ = Translator("PyLavPlayer", Path(__file__))
 
 
 async def maybe_prompt_for_playlist(cog: CogT, context: PyLavContext, playlists: list[PlaylistModel]) -> PlaylistModel:

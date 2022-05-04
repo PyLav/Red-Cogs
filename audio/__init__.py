@@ -12,6 +12,6 @@ LOGGER = getLogger("red.3pt.PyLavPlayer")
 
 
 async def setup(bot: BotT):
-    mp = PyLavPlayer(bot)
-    await bot.add_cog(mp)
-    mp._init_task = asyncio.create_task(mp.initialize())
+    plplayer = PyLavPlayer(bot)
+    await bot.add_cog(plplayer)
+    plplayer._init_task = asyncio.create_task(plplayer.initialize())
