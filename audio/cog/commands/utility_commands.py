@@ -37,7 +37,9 @@ class UtilityCommands(MPMixin, ABC):
             config = context.player.config
         else:
             config = await self.lavalink.player_config_manager.get_config(context.guild.id)
-        max_volume = min(await config.get_max_volume(), await self.lavalink.player_manager.global_config.fetch_volume())
+        max_volume = min(
+            await config.fetch_max_volume(), await self.lavalink.player_manager.global_config.fetch_max_volume()
+        )
         new_vol = context.player.volume + change_by
         if new_vol > max_volume:
             context.player.volume = max_volume
