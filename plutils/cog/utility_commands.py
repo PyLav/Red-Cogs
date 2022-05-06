@@ -31,7 +31,7 @@ class UtilityCommands:
     async def command_plutils_get(self, context: PyLavContext):
         """Get info about specific things."""
 
-    @command_plutils.command(name="b64")
+    @command_plutils_get.command(name="b64")
     async def command_plutils_get_b64(self, context: PyLavContext):
         """Get the base64 of the current track."""
         if isinstance(context, discord.Interaction):
