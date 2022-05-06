@@ -136,10 +136,8 @@ class ConfigCommands(MPMixin, ABC):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        self.lavalink.player_manager.global_config.extras["empty_queue_dc"] = [
-            toggle,
-            after.total_seconds() if after else 60,
-        ]
+        self.lavalink.player_manager.global_config.empty_queue_dc["enabled"] = toggle
+        self.lavalink.player_manager.global_config.empty_queue_dc["time"] = after.total_seconds() if after else 60
         await self.lavalink.player_manager.global_config.save()
         if after:
             timedelta_str = humanize_timedelta(timedelta=after)
@@ -175,7 +173,8 @@ class ConfigCommands(MPMixin, ABC):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        self.lavalink.player_manager.global_config.extras["alone_dc"] = [toggle, after.total_seconds() if after else 60]
+        self.lavalink.player_manager.global_config.alone_dc["enabled"] = toggle
+        self.lavalink.player_manager.global_config.alone_dc["time"] = after.total_seconds() if after else 60
         await self.lavalink.player_manager.global_config.save()
         if after:
             timedelta_str = humanize_timedelta(timedelta=after)
@@ -378,7 +377,8 @@ class ConfigCommands(MPMixin, ABC):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        global_state, global_timer = await self.lavalink.player_manager.global_config.fetch_empty_queue_dc()
+        db_value = await self.lavalink.player_manager.global_config.fetch_empty_queue_dc()
+        global_state, global_timer = db_value.enabled, db_value.time
         if global_state is True:
             await context.send(
                 embed=await self.lavalink.construct_embed(
@@ -396,7 +396,8 @@ class ConfigCommands(MPMixin, ABC):
             config = context.player.config
         else:
             config = await self.lavalink.player_config_manager.get_config(context.guild.id)
-        config.extras["empty_queue_dc"] = [toggle, after.total_seconds() if after else 60]
+        config.empty_queue_dc["enabled"] = toggle
+        config.empty_queue_dc["time"] = after.total_seconds() if after else 60
         await config.save()
         if after:
             timedelta_str = humanize_timedelta(timedelta=after)
@@ -435,7 +436,8 @@ class ConfigCommands(MPMixin, ABC):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        global_state, global_timer = await self.lavalink.player_manager.global_config.fetch_alone_dc()
+        db_value = await self.lavalink.player_manager.global_config.fetch_alone_dc()
+        global_state, global_timer = db_value.enabled, db_value.time
         if global_state is True:
             await context.send(
                 embed=await self.lavalink.construct_embed(
@@ -452,7 +454,8 @@ class ConfigCommands(MPMixin, ABC):
             config = context.player.config
         else:
             config = await self.lavalink.player_config_manager.get_config(context.guild.id)
-        config.extras["alone_dc"] = [toggle, after.total_seconds() if after else 60]
+        config.alone_dc["enabled"] = toggle
+        config.alone_dc["time"] = after.total_seconds() if after else 60
         await config.save()
         if after:
             timedelta_str = humanize_timedelta(timedelta=after)
