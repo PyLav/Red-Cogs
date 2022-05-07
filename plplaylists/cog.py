@@ -21,7 +21,7 @@ from pylav.constants import BUNDLED_PLAYLIST_IDS
 from pylav.converters import PlaylistConverter, QueryPlaylistConverter
 from pylav.sql.models import PlaylistModel
 from pylav.types import BotT
-from pylav.utils import AsyncIter, CogMixin, PyLavContext
+from pylav.utils import AsyncIter, PyLavContext
 from pylavcogs_shared.errors import MediaPlayerNotFoundError, UnauthorizedChannelError
 from pylavcogs_shared.ui.menus.generic import PaginatingMenu
 from pylavcogs_shared.ui.menus.playlist import PlaylistCreationFlow, PlaylistManageFlow
@@ -46,7 +46,6 @@ LOGGER_ERROR = getLogger("red.3pt.PyLavPlaylists.error_handler")
 @cog_i18n(_)
 class PyLavPlaylists(
     red_commands.Cog,
-    CogMixin,
     metaclass=CompositeMetaClass,
 ):
     def __init__(self, bot: BotT, *args, **kwargs):
@@ -153,7 +152,7 @@ class PyLavPlaylists(
 
     @command_playlist.command(name="create", aliases=["new"])
     async def command_playlist_create(
-        self, context: PyLavContext, url: QueryPlaylistConverter | None, *, name: str | None
+        self, context: PyLavContext, url: QueryPlaylistConverter = None, *, name: str = None
     ):
         """Create a new playlist.
 

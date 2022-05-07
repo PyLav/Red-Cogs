@@ -15,7 +15,7 @@ from redbot.core.utils.chat_formatting import box, humanize_list, inline
 from pylav import Client
 from pylav.converters.nodes import NodeConverter
 from pylav.types import BotT
-from pylav.utils import CogMixin, PyLavContext
+from pylav.utils import PyLavContext
 from pylavcogs_shared.ui.menus.generic import PaginatingMenu
 from pylavcogs_shared.ui.menus.nodes import AddNodeFlow, NodeManagerMenu
 from pylavcogs_shared.ui.prompts.nodes import maybe_prompt_for_node
@@ -28,7 +28,7 @@ _ = Translator("PyLavNodes", Path(__file__))
 
 
 @cog_i18n(_)
-class PyLavNodes(commands.Cog, CogMixin):
+class PyLavNodes(commands.Cog):
     def __init__(self, bot: BotT, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot

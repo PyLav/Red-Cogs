@@ -14,7 +14,7 @@ from redbot.core.i18n import Translator, cog_i18n
 
 from pylav import Client, exceptions
 from pylav.types import BotT
-from pylav.utils import CogMixin, PyLavContext
+from pylav.utils import PyLavContext
 from pylavcogs_shared.errors import MediaPlayerNotFoundError, UnauthorizedChannelError
 
 from audio.config_commands import ConfigCommands
@@ -44,7 +44,6 @@ class PyLavPlayer(
     PlayerCommands,
     ConfigCommands,
     ContextMenus,
-    CogMixin,
     metaclass=CompositeMetaClass,
 ):
     def __init__(self, bot: BotT, *args, **kwargs):

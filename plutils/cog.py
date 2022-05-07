@@ -14,7 +14,7 @@ from pylav import Client
 from pylav.converters import QueryConverter
 from pylav.track_encoding import decode_track
 from pylav.types import BotT
-from pylav.utils import CogMixin, PyLavContext
+from pylav.utils import PyLavContext
 
 LOGGER = getLogger("red.3pt.PyLavUtils")
 
@@ -22,7 +22,7 @@ _ = Translator("PyLavUtils", Path(__file__))
 
 
 @cog_i18n(_)
-class PyLavUtils(commands.Cog, CogMixin):
+class PyLavUtils(commands.Cog):
     def __init__(self, bot: BotT, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot

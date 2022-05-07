@@ -1,8 +1,7 @@
-from __future__ import annotations
-
 import asyncio
 from collections import defaultdict
 from pathlib import Path
+from typing import Union
 
 import discord
 from apscheduler.job import Job
@@ -16,7 +15,7 @@ from tabulate import tabulate
 from pylav import Client, events
 from pylav.filters import Equalizer, Volume
 from pylav.types import BotT
-from pylav.utils import CogMixin, PyLavContext, format_time
+from pylav.utils import PyLavContext, format_time
 
 _ = Translator("PyLavNotifier", Path(__file__))
 
@@ -80,7 +79,7 @@ POSSIBLE_EVENTS = {
 
 
 @cog_i18n(_)
-class PyLavNotifier(commands.Cog, CogMixin):
+class PyLavNotifier(commands.Cog):
     def __init__(self, bot: BotT, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot
@@ -193,7 +192,7 @@ class PyLavNotifier(commands.Cog, CogMixin):
 
     @command_plnotify.command(name="channel")
     async def command_plnotify_channel(
-        self, context: PyLavContext, *, channel: discord.Thread | discord.TextChannel
+        self, context: PyLavContext, *, channel: Union[discord.Thread, discord.TextChannel]
     ) -> None:
         """Set the notify channel for the player."""
         if isinstance(context, discord.Interaction):
