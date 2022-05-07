@@ -1,12 +1,12 @@
 name: CodeQL
 
 on:
-    push:
-        branches:
-        -   master
     pull_request:
-        branches:
-        -   master
+        branches: [master]
+        paths-ignore:
+        -   '**/*.md'
+        -   '**/*.txt'
+        -   '**/*.po'
     schedule:
     -   cron: 15 0 * * 5
 
