@@ -15,15 +15,13 @@ from redbot.core.i18n import Translator, cog_i18n
 from pylav import Client, exceptions
 from pylav.types import BotT
 from pylav.utils import PyLavContext
+from pylavcogs_shared.errors import MediaPlayerNotFoundError, UnauthorizedChannelError
 
-from audio.cog import errors
-from audio.cog.abc import MY_GUILD, MPMixin
 from audio.cog.commands.config_commands import ConfigCommands
 from audio.cog.commands.context_menus import ContextMenus
 from audio.cog.commands.hybrid_commands import HybridCommands
 from audio.cog.commands.player_commands import PlayerCommands
 from audio.cog.commands.utility_commands import UtilityCommands
-from audio.cog.errors import UnauthorizedChannelError
 
 
 class CompositeMetaClass(type(red_commands.Cog), type(ABC)):
@@ -76,7 +74,6 @@ class PyLavPlayer(
 
     async def _sync_tree(self) -> None:
         await self.bot.wait_until_ready()
-        await self.bot.tree.sync(guild=MY_GUILD)
         await self.bot.tree.sync()
 
     async def cog_unload(self) -> None:
@@ -122,7 +119,7 @@ class PyLavPlayer(
     async def cog_command_error(self, context: PyLavContext, error: Exception) -> None:
         error = getattr(error, "original", error)
         unhandled = True
-        if isinstance(error, errors.MediaPlayerNotFoundError):
+        if isinstance(error, MediaPlayerNotFoundError):
             unhandled = False
             await context.send(
                 embed=await self.lavalink.construct_embed(

@@ -1,5 +1,4 @@
 import re
-from abc import ABC
 from functools import partial
 from pathlib import Path
 from typing import Final, Optional, Pattern
@@ -9,14 +8,12 @@ from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator
 
-from pylav import Query, Track
+from pylav import Client, Query, Track
+from pylav.types import BotT
 from pylav.utils import PyLavContext, format_time
-
-from audio.cog import MPMixin
-from audio.cog.menus.menus import QueueMenu
-from audio.cog.menus.sources import QueueSource
-from audio.cog.utils import rgetattr
-from audio.cog.utils.decorators import requires_player
+from pylavcogs_shared.ui.menus.queue import QueueMenu
+from pylavcogs_shared.utils import rgetattr
+from pylavcogs_shared.utils.decorators import requires_player
 
 LOGGER = getLogger("red.3pt.PyLavPlayer.commands.hybrids")
 _ = Translator("PyLavPlayer", Path(__file__))
@@ -24,7 +21,10 @@ _ = Translator("PyLavPlayer", Path(__file__))
 _RE_TIME_CONVERTER: Final[Pattern] = re.compile(r"(?:(\d+):)?([0-5]?\d):([0-5]\d)")
 
 
-class HybridCommands(MPMixin, ABC):
+class HybridCommands:
+    bot: BotT
+    lavalink: Client
+
     @commands.hybrid_command(name="play", description="Plays a specified query.", aliases=["p"])
     @commands.guild_only()
     async def command_play(self, context: PyLavContext, *, query: str):

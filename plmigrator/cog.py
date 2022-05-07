@@ -22,8 +22,7 @@ from pylav import Client
 from pylav.sql.models import LibConfigModel
 from pylav.types import BotT
 from pylav.utils import AsyncIter, PyLavContext
-
-from plmigrator.utils import recursive_merge
+from pylavcogs_shared.utils import recursive_merge
 
 LOGGER = getLogger("red.3pt.PyLavMigrator")
 

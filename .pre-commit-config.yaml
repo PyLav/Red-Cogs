@@ -56,11 +56,6 @@ repos:
         args:
         -   --autofix
         -   --indent=4
-
--   repo: https://github.com/pycqa/isort
-    rev: 5.10.1
-    hooks:
-    -   id: isort
 -   repo: https://github.com/myint/autoflake
     rev: v1.4
     hooks:
@@ -70,6 +65,10 @@ repos:
     rev: v0.3.1
     hooks:
     -   id: absolufy-imports
+-   repo: https://github.com/pycqa/isort
+    rev: 5.10.1
+    hooks:
+    -   id: isort
 -   repo: https://github.com/pre-commit/mirrors-autopep8
     rev: v1.6.0   # Use the sha / tag you want to point at
     hooks:

@@ -16,11 +16,12 @@ from pylav.converters import PlaylistConverter, QueryPlaylistConverter
 from pylav.sql.models import PlaylistModel
 from pylav.types import BotT
 from pylav.utils import AsyncIter, PyLavContext
-
-from plplaylists.cog.menus.menus import PaginatingMenu, PlaylistCreationFlow, PlaylistManageFlow
-from plplaylists.cog.menus.sources import Base64Source, PlaylistListSource
-from plplaylists.cog.utils import decorators, rgetattr
-from plplaylists.cog.utils.playlists import maybe_prompt_for_playlist
+from pylavcogs_shared.ui.menus.generic import PaginatingMenu
+from pylavcogs_shared.ui.menus.playlist import PlaylistCreationFlow, PlaylistManageFlow
+from pylavcogs_shared.ui.prompts.playlists import maybe_prompt_for_playlist
+from pylavcogs_shared.ui.sources.playlist import Base64Source
+from pylavcogs_shared.utils import rgetattr
+from pylavcogs_shared.utils.decorators import always_hidden
 
 LOGGER = getLogger("red.3pt.PyLavPlaylists.commands")
 _ = Translator("PyLavPlaylists", Path(__file__))
@@ -517,7 +518,7 @@ class PlaylistCommands:
                 )
 
     @commands.command(name="__command_playlist_play", hidden=True)
-    @decorators.always_hidden()
+    @always_hidden()
     async def command_playlist_play(self, context: PyLavContext, *, playlist: PlaylistConverter):
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)

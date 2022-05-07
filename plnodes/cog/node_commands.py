@@ -12,10 +12,10 @@ from pylav import Client
 from pylav.converters.nodes import NodeConverter
 from pylav.types import BotT
 from pylav.utils import PyLavContext
-
-from plnodes.cog.menus.menus import AddNodeFlow, NodeManagerMenu
-from plnodes.cog.menus.sources import NodeListSource
-from plnodes.cog.utils.nodes import maybe_prompt_for_node
+from pylavcogs_shared.ui.menus.generic import PaginatingMenu
+from pylavcogs_shared.ui.menus.nodes import AddNodeFlow, NodeManagerMenu
+from pylavcogs_shared.ui.prompts.nodes import maybe_prompt_for_node
+from pylavcogs_shared.ui.sources.nodes import NodeListSource
 
 _ = Translator("PyLavNodes", Path(__file__))
 
@@ -132,7 +132,7 @@ class NodeCommands:
                     ),
                 )
 
-    @command_nodeset.command(name="remove", aliases=["delete", "del", "rm"])
+    @commands.command(name="___command_nodeset_remove", aliases=["delete", "del", "rm"])
     async def command_nodeset_remove(self, context: commands.Context, *, nodes: NodeConverter):
         """Remove a node from PyLav instance."""
         if isinstance(context, discord.Interaction):
@@ -178,18 +178,53 @@ class NodeCommands:
             ephemeral=True,
         )
 
-    @command_nodeset.command(name="manage")
-    async def command_nodeset_manage(self, context: commands.Context):
+    @command_nodeset.command(name="manage", aliases=["delete", "del", "rm", "remove"])
+    async def command_nodeset_manage(self, context: commands.Context, *, nodes: NodeConverter):
         """Manage all nodes in PyLav instance."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
+        node = await maybe_prompt_for_node(cog=self, nodes=nodes, context=context)
+        if not node:
+            return
+
+        # Could shortcut any other alias - but the issue comes with clarity and confirmation.
+        invoked_with_delete = context.invoked_with in ("delete", "del", "rm", "remove")
+        if invoked_with_delete:
+            await self.command_nodeset_remove.callback(self, context, nodes=[node])  # type: ignore
+            return
         menu = NodeManagerMenu(
             cog=self,
             bot=self.bot,
             original_author=context.author,
-            source=NodeListSource(cog=self, pages=self.lavalink.node_manager.nodes),
+            node=node,
             timeout=300,
         )
         await menu.start(context)
+
+    @command_nodeset.command(name="list")
+    async def command_nodeset_list(self, context: PyLavContext):
+        """List all nodes used by PyLav."""
+
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+
+        if not self.lavalink.node_manager.nodes:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("No Nodes added to PyLav."), messageable=context
+                ),
+                ephemeral=True,
+            )
+            return
+        await PaginatingMenu(
+            cog=self,  # type: ignore
+            bot=self.bot,
+            source=NodeListSource(cog=self, pages=self.lavalink.node_manager.nodes),
+            delete_after_timeout=True,
+            timeout=120,
+            original_author=context.author if not context.interaction else context.interaction.user,
+        ).start(context)

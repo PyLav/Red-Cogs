@@ -34,6 +34,13 @@ Getting Started
 
 Translations
 ------------------------------------
-You can help translating the project into your language using the [Crowdin platform](https://crowdin.com/project/mediaplayer).
+You can help translating the project into your language here:
+
+[![Crowdin](https://badges.crowdin.net/mediaplayer/localized.svg)](https://crowdin.com/project/mediaplayer).
+
+Shared code translation can be for here:
+
+[![Crowdin](https://badges.crowdin.net/pylavshared/localized.svg)](https://crowdin.com/project/pylavshared)
+
 
 ## Join our support server [![Support Server](https://img.shields.io/discord/970987707834720266?style=social)](https://discord.com/invite/Sjh2TSCYQB)

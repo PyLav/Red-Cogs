@@ -1,18 +1,20 @@
 import shlex
-from abc import ABC
 from pathlib import Path
 
 import discord
 from redbot.core.i18n import Translator
 
+from pylav import Client
 from pylav.query import MERGED_REGEX
-
-from audio.cog import MPMixin
+from pylav.types import BotT
 
 _ = Translator("PyLavPlayer", Path(__file__))
 
 
-class ContextMenus(MPMixin, ABC):
+class ContextMenus:
+    bot: BotT
+    lavalink: Client
+
     async def _context_message_play(self, interaction: discord.Interaction, message: discord.Message) -> None:
         await interaction.response.defer(ephemeral=True)
 

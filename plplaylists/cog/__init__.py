@@ -13,9 +13,8 @@ from redbot.core.i18n import Translator, cog_i18n
 from pylav import Client, exceptions
 from pylav.types import BotT
 from pylav.utils import PyLavContext
+from pylavcogs_shared.errors import MediaPlayerNotFoundError, UnauthorizedChannelError
 
-from plplaylists.cog import errors
-from plplaylists.cog.errors import UnauthorizedChannelError
 from plplaylists.cog.playlist_commands import PlaylistCommands
 
 
@@ -78,7 +77,7 @@ class PyLavPlaylists(
     async def cog_command_error(self, context: PyLavContext, error: Exception) -> None:
         error = getattr(error, "original", error)
         unhandled = True
-        if isinstance(error, errors.MediaPlayerNotFoundError):
+        if isinstance(error, MediaPlayerNotFoundError):
             unhandled = False
             await context.send(
                 embed=await self.lavalink.construct_embed(

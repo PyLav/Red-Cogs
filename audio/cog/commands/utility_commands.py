@@ -1,4 +1,3 @@
-from abc import ABC
 from pathlib import Path
 
 import discord
@@ -7,18 +6,21 @@ from redbot.core import commands
 from redbot.core.i18n import Translator
 from redbot.core.utils.chat_formatting import humanize_number
 
+from pylav import Client
+from pylav.types import BotT
 from pylav.utils import PyLavContext
-
-from audio.cog.abc import MPMixin
-from audio.cog.utils import decorators
+from pylavcogs_shared.utils.decorators import always_hidden
 
 LOGGER = getLogger("red.3pt.PyLavPlayer.commands.utils")
 
 _ = Translator("PyLavPlayer", Path(__file__))
 
 
-class UtilityCommands(MPMixin, ABC):
-    @decorators.always_hidden()
+class UtilityCommands:
+    bot: BotT
+    lavalink: Client
+
+    @always_hidden()
     @commands.command(name="__volume_change_by", hidden=True)
     async def command_volume_change_by(self, context: PyLavContext, change_by: int):
         if isinstance(context, discord.Interaction):
