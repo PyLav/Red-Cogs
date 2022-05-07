@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-02 15:34+0000\n"
-"PO-Revision-Date: 2022-05-02 16:47\n"
+"POT-Creation-Date: 2022-05-07 14:00+0000\n"
+"PO-Revision-Date: 2022-05-07 14:09\n"
 "Last-Translator: \n"
 "Language-Team: Greek\n"
 "MIME-Version: 1.0\n"
@@ -13,378 +13,373 @@ msgstr ""
 "X-Crowdin-Project: mediaplayer\n"
 "X-Crowdin-Project-ID: 512604\n"
 "X-Crowdin-Language: el\n"
-"X-Crowdin-File: /mpnotifier/locales/messages.pot\n"
-"X-Crowdin-File-ID: 134\n"
+"X-Crowdin-File: /plnotifier/locales/messages.pot\n"
+"X-Crowdin-File-ID: 186\n"
 "Language: el_GR\n"
 
-#: mpnotifier/notifier.py:134
+#: plnotifier/cog.py:143
 msgid "Track Stuck Event"
 msgstr "Εκδήλωση Κομματιού Stuck"
 
-#: mpnotifier/notifier.py:135
+#: plnotifier/cog.py:144
 msgid "[Node={node}] {track} is stuck for {threshold} seconds, skipping."
 msgstr "[Κόμβος={node}] {track} έχει κολλήσει για {threshold} δευτερόλεπτα, παραλείποντας."
 
-#: mpnotifier/notifier.py:157
+#: plnotifier/cog.py:166
 msgid "Track Exception Event"
 msgstr "Παρακολούθηση Συμβάντος Εξαίρεσης"
 
-#: mpnotifier/notifier.py:158
+#: plnotifier/cog.py:167
 msgid "[Node={node}] There was an error while playing {track}:\n"
 "{exception}"
 msgstr "[Κόμβος={node}] Υπήρξε σφάλμα κατά την αναπαραγωγή {track}:\n"
 "{exception}"
 
-#: mpnotifier/notifier.py:176
+#: plnotifier/cog.py:185
 msgid "the player reached the end of the tracks runtime."
 msgstr "ο παίκτης έφτασε στο τέλος του χρόνου εκτέλεσης των κομματιών."
 
-#: mpnotifier/notifier.py:178
+#: plnotifier/cog.py:187
 msgid "a new track started playing."
 msgstr "ένα νέο κομμάτι άρχισε να παίζει."
 
-#: mpnotifier/notifier.py:180
+#: plnotifier/cog.py:189
 msgid "it failed to start."
 msgstr "απέτυχε να ξεκινήσει."
 
-#: mpnotifier/notifier.py:182
+#: plnotifier/cog.py:191
 msgid "because the player was stopped."
 msgstr "επειδή ο παίκτης σταμάτησε."
 
-#: mpnotifier/notifier.py:184
+#: plnotifier/cog.py:193
 msgid "the node told it to stop."
 msgstr "ο κόμβος του είπε να σταματήσει."
 
-#: mpnotifier/notifier.py:187
+#: plnotifier/cog.py:196
 msgid "Track End Event"
 msgstr "Παρακολούθηση Τελικού Γεγονότος"
 
-#: mpnotifier/notifier.py:188
+#: plnotifier/cog.py:197
 msgid "[Node={node}] {track} has finished playing because {reason}"
 msgstr "[Κόμβος={node}] {track} ολοκλήρωσε την αναπαραγωγή επειδή {reason}"
 
-#: mpnotifier/notifier.py:212
+#: plnotifier/cog.py:221
 msgid "Track Start Event"
 msgstr "Παρακολούθηση Εκδήλωσης Έναρξης"
 
-#: mpnotifier/notifier.py:213
+#: plnotifier/cog.py:222
 msgid "[Node={node}] {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Κόμβος={node}] {track} άρχισε να παίζει.\n"
 "Ζητήθηκε από: {requester}"
 
-#: mpnotifier/notifier.py:237
+#: plnotifier/cog.py:246
 msgid "YouTube Music Track Start Event"
 msgstr "Εκδήλωση Εκκίνησης Μουσικού Κομματιού Youtube"
 
-#: mpnotifier/notifier.py:238
+#: plnotifier/cog.py:247
 msgid "[Node={node}] YouTube Music track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Κόμβος={node}] YouTube Μουσική κομμάτι: {track} άρχισε να παίζει.\n"
 "Ζητήθηκε από: {requester}"
 
-#: mpnotifier/notifier.py:264
+#: plnotifier/cog.py:273
 msgid "Spotify Track Start Event"
 msgstr "Εκκίνηση Κομματιού Spotify"
 
-#: mpnotifier/notifier.py:265
+#: plnotifier/cog.py:274
 msgid "[Node={node}] Spotify track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Κόμβος={node}] Κομμάτι Spotify: {track} άρχισε να παίζει.\n"
 "Ζητήθηκε από: {requester}"
 
-#: mpnotifier/notifier.py:291
+#: plnotifier/cog.py:300
 msgid "Apple Music Track Start Event"
 msgstr "Apple Music Track Εκδήλωση Εκκίνησης"
 
-#: mpnotifier/notifier.py:292
+#: plnotifier/cog.py:301
 msgid "[Node={node}] Apple Music track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Κόμβος ={node}] Κομμάτι Apple Music: {track} άρχισε να παίζει.\n"
 "Ζητήθηκε από: {requester}"
 
-#: mpnotifier/notifier.py:318
+#: plnotifier/cog.py:327
 msgid "Local Track Start Event"
 msgstr "Εκτέλεση Τοπικού Κομματιού"
 
-#: mpnotifier/notifier.py:319
+#: plnotifier/cog.py:328
 msgid "[Node={node}] Local track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Κόμβος={node}] Τοπικό κομμάτι: {track} ξεκίνησε να παίζει.\n"
 "Ζητήθηκε από: {requester}"
 
-#: mpnotifier/notifier.py:345
+#: plnotifier/cog.py:354
 msgid "HTTP Track Start Event"
 msgstr "Εκκίνηση Κομματιού HTTP"
 
-#: mpnotifier/notifier.py:346
+#: plnotifier/cog.py:355
 msgid "[Node={node}] HTTP track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Κόμβος ={node}] HTTP κομμάτι: {track} ξεκίνησε να παίζει.\n"
 "Ζητήθηκε από: {requester}"
 
-#: mpnotifier/notifier.py:372
+#: plnotifier/cog.py:381
 msgid "Text-To-Speech Track Start Event"
 msgstr "Κείμενο-Σε-Ομιλία Παρακολούθηση Εκδήλωση"
 
-#: mpnotifier/notifier.py:373
+#: plnotifier/cog.py:382
 msgid "[Node={node}] Text-To-Speech track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Κόμβος={node}] Κείμενο σε ομιλία κομμάτι: {track} ξεκίνησε να παίζει.\n"
 "Ζητήθηκε από: {requester}"
 
-#: mpnotifier/notifier.py:399
+#: plnotifier/cog.py:408
 msgid "YouTube Track Start Event"
 msgstr "Εκδήλωση Εκκίνησης Κομματιού Youtube"
 
-#: mpnotifier/notifier.py:400
+#: plnotifier/cog.py:409
 msgid "[Node={node}] YouTube track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Κόμβος ={node}] YouTube κομμάτι: {track} ξεκίνησε να παίζει.\n"
 "Ζητήθηκε από: {requester}"
 
-#: mpnotifier/notifier.py:426 mpnotifier/notifier.py:456
-#: mpnotifier/notifier.py:486 mpnotifier/notifier.py:516
-#: mpnotifier/notifier.py:546 mpnotifier/notifier.py:576
-#: mpnotifier/notifier.py:606 mpnotifier/notifier.py:636
-#: mpnotifier/notifier.py:666 mpnotifier/notifier.py:696
-#: mpnotifier/notifier.py:726 mpnotifier/notifier.py:756
-#: mpnotifier/notifier.py:786 mpnotifier/notifier.py:816
+#: plnotifier/cog.py:435 plnotifier/cog.py:465 plnotifier/cog.py:495
+#: plnotifier/cog.py:525 plnotifier/cog.py:555 plnotifier/cog.py:585
+#: plnotifier/cog.py:615 plnotifier/cog.py:645 plnotifier/cog.py:675
+#: plnotifier/cog.py:705 plnotifier/cog.py:735 plnotifier/cog.py:765
+#: plnotifier/cog.py:795 plnotifier/cog.py:825
 msgid "{source} Track Start Event"
 msgstr "{source} Εκκίνηση Κομματιού"
 
-#: mpnotifier/notifier.py:427 mpnotifier/notifier.py:457
-#: mpnotifier/notifier.py:487 mpnotifier/notifier.py:517
-#: mpnotifier/notifier.py:547 mpnotifier/notifier.py:577
-#: mpnotifier/notifier.py:607 mpnotifier/notifier.py:637
-#: mpnotifier/notifier.py:667 mpnotifier/notifier.py:697
-#: mpnotifier/notifier.py:727 mpnotifier/notifier.py:757
-#: mpnotifier/notifier.py:787 mpnotifier/notifier.py:817
+#: plnotifier/cog.py:436 plnotifier/cog.py:466 plnotifier/cog.py:496
+#: plnotifier/cog.py:526 plnotifier/cog.py:556 plnotifier/cog.py:586
+#: plnotifier/cog.py:616 plnotifier/cog.py:646 plnotifier/cog.py:676
+#: plnotifier/cog.py:706 plnotifier/cog.py:736 plnotifier/cog.py:766
+#: plnotifier/cog.py:796 plnotifier/cog.py:826
 msgid "[Node={node}] {source} track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Κόμβος={node}] {source} κομμάτι: {track} άρχισε να παίζει.\n"
 "Ζητήθηκε από: {requester}"
 
-#: mpnotifier/notifier.py:846
+#: plnotifier/cog.py:855
 msgid "Track Skipped Event"
 msgstr "Κομμάτι Που Παραλήφθηκε Γεγονός"
 
-#: mpnotifier/notifier.py:847
+#: plnotifier/cog.py:856
 msgid "{track} has been skipped.\n"
 "Requested by {requester}"
 msgstr "{track} παραλείφθηκε.\n"
 "Ζητήθηκε από τον {requester}"
 
-#: mpnotifier/notifier.py:870
+#: plnotifier/cog.py:879
 msgid "Track Seek Event"
 msgstr "Παρακολούθηση Αναζήτησης Γεγονότος"
 
-#: mpnotifier/notifier.py:871
+#: plnotifier/cog.py:880
 msgid "{requester} requested that {track} is sought from position {fro} to position {after}."
 msgstr "{requester} ζήτησε να αναζητήσει {track} από τη θέση {fro} στη θέση {after}."
 
-#: mpnotifier/notifier.py:900
+#: plnotifier/cog.py:909
 msgid "Track Previous Requested Event"
 msgstr "Παρακολούθηση Προηγούμενου Αιτούμενου Γεγονότος"
 
-#: mpnotifier/notifier.py:901
+#: plnotifier/cog.py:910
 msgid "{requester} requested that the previous track {track} be played."
 msgstr "{requester} ζήτησε την αναπαραγωγή του προηγούμενου κομματιού {track}."
 
-#: mpnotifier/notifier.py:926
+#: plnotifier/cog.py:935
 msgid "Tracks Requested Event"
 msgstr "Κομμάτια Που Ζητούνται Γεγονότα"
 
-#: mpnotifier/notifier.py:927
+#: plnotifier/cog.py:936
 msgid "{requester} added {track_count} to the queue."
 msgstr "{requester} πρόσθεσε {track_count} στην ουρά."
 
-#: mpnotifier/notifier.py:946
+#: plnotifier/cog.py:955
 msgid "Track AutoPlay Event"
 msgstr "Παρακολούθηση Συμβάντος Αυτόματης Αναπαραγωγής"
 
-#: mpnotifier/notifier.py:947
+#: plnotifier/cog.py:956
 msgid "Auto-playing {track}."
 msgstr "Αυτόματη αναπαραγωγή του {track}."
 
-#: mpnotifier/notifier.py:971
+#: plnotifier/cog.py:980
 msgid "Track Resumed Event"
 msgstr "Παρακολούθηση Συνέχιση Γεγονότος"
 
-#: mpnotifier/notifier.py:972
+#: plnotifier/cog.py:981
 msgid "{requester} resumed {track}."
 msgstr "{requester} συνέχισε {track}."
 
-#: mpnotifier/notifier.py:996
+#: plnotifier/cog.py:1005
 msgid "Queue Shuffled Event"
 msgstr "Ανακατευμένο Γεγονός Ουράς"
 
-#: mpnotifier/notifier.py:997
+#: plnotifier/cog.py:1006
 msgid "{requester} shuffled the queue."
 msgstr "{requester} ανακατέψαμε την ουρά."
 
-#: mpnotifier/notifier.py:1012
+#: plnotifier/cog.py:1021
 msgid "Queue End Event"
 msgstr "Τέλος Γεγονότος Ουράς"
 
-#: mpnotifier/notifier.py:1013
+#: plnotifier/cog.py:1022
 msgid "All tracks in the queue have been played."
 msgstr "Όλα τα κομμάτια στην ουρά έχουν παιχτεί."
 
-#: mpnotifier/notifier.py:1035
+#: plnotifier/cog.py:1044
 msgid "Tracks Removed Event"
 msgstr "Κομμάτια Αφαιρέθηκαν Γεγονότα"
 
-#: mpnotifier/notifier.py:1036
+#: plnotifier/cog.py:1045
 msgid "{requester} removed {track_count} tracks from the queue."
 msgstr "{requester} αφαιρέθηκαν {track_count} κομμάτια από την ουρά."
 
-#: mpnotifier/notifier.py:1060
+#: plnotifier/cog.py:1069
 msgid "Player Paused Event"
 msgstr "Γεγονός Σε Παύση Παίκτη"
 
-#: mpnotifier/notifier.py:1061
+#: plnotifier/cog.py:1070
 msgid "{requester} paused the player."
 msgstr "{requester} σταμάτησε τον παίκτη."
 
-#: mpnotifier/notifier.py:1083
+#: plnotifier/cog.py:1092
 msgid "Player Stopped Event"
 msgstr "Ο Παίκτης Σταμάτησε Το Γεγονός"
 
-#: mpnotifier/notifier.py:1084
+#: plnotifier/cog.py:1093
 msgid "{requester} stopped the player."
 msgstr "{requester} σταμάτησε τον παίκτη."
 
-#: mpnotifier/notifier.py:1106
+#: plnotifier/cog.py:1115
 msgid "Player Resumed Event"
 msgstr "Παίκτης Συνέχισε Το Γεγονός"
 
-#: mpnotifier/notifier.py:1107
+#: plnotifier/cog.py:1116
 msgid "{requester} resumed the player."
 msgstr "{requester} συνέχισε τον παίκτη."
 
-#: mpnotifier/notifier.py:1129
+#: plnotifier/cog.py:1138
 msgid "Player Moved Event"
 msgstr "Παίκτης Μετακινήθηκε Γεγονός"
 
-#: mpnotifier/notifier.py:1130
+#: plnotifier/cog.py:1139
 msgid "{requester} moved the player from {before} to {after}."
 msgstr "{requester} μετακίνησε τον παίκτη από {before} σε {after}."
 
-#: mpnotifier/notifier.py:1154
+#: plnotifier/cog.py:1163
 msgid "Player Disconnected Event"
 msgstr "Ο Παίκτης Αποσυνδέθηκε Γεγονός"
 
-#: mpnotifier/notifier.py:1155
+#: plnotifier/cog.py:1164
 msgid "{requester} disconnected the player."
 msgstr "{requester} αποσυνδέθηκε ο παίκτης."
 
-#: mpnotifier/notifier.py:1177
+#: plnotifier/cog.py:1186
 msgid "Player Connected Event"
 msgstr "Συνδεδεμένος Παίκτης Γεγονότος"
 
-#: mpnotifier/notifier.py:1178
+#: plnotifier/cog.py:1187
 msgid "{requester} connected the player."
 msgstr "{requester} συνδέθηκε με τον παίκτη."
 
-#: mpnotifier/notifier.py:1200
+#: plnotifier/cog.py:1209
 msgid "Player Volume Changed Event"
 msgstr "Η Ένταση Του Παίκτη Άλλαξε Το Γεγονός"
 
-#: mpnotifier/notifier.py:1201
+#: plnotifier/cog.py:1210
 msgid "{requester} changed the player's volume from {before} to {after}."
 msgstr "{requester} άλλαξε την ένταση του παίκτη από {before} σε {after}."
 
-#: mpnotifier/notifier.py:1227 mpnotifier/notifier.py:1235
-#: mpnotifier/notifier.py:1245
+#: plnotifier/cog.py:1236 plnotifier/cog.py:1244 plnotifier/cog.py:1254
 msgid "Player Repeat Event"
 msgstr "Επανάληψη Γεγονότος Παίκτη"
 
-#: mpnotifier/notifier.py:1228
+#: plnotifier/cog.py:1237
 msgid "{requester} disabled repeat."
 msgstr "{requester} απενεργοποιήθηκε η επανάληψη."
 
-#: mpnotifier/notifier.py:1236
+#: plnotifier/cog.py:1245
 msgid "{requester} {status} repeat of the whole queue."
 msgstr "{requester} {status} επανάληψη ολόκληρης της ουράς."
 
-#: mpnotifier/notifier.py:1237 mpnotifier/notifier.py:1248
+#: plnotifier/cog.py:1246 plnotifier/cog.py:1257
 msgid "enabled"
 msgstr "ενεργοποιημένο"
 
-#: mpnotifier/notifier.py:1237 mpnotifier/notifier.py:1248
+#: plnotifier/cog.py:1246 plnotifier/cog.py:1257
 msgid "disabled"
 msgstr "απενεργοποιημένο"
 
-#: mpnotifier/notifier.py:1246
+#: plnotifier/cog.py:1255
 msgid "{requester} {status} repeat for {track}."
 msgstr "{requester} {status} επαναλάβετε για {track}."
 
-#: mpnotifier/notifier.py:1272
+#: plnotifier/cog.py:1281
 msgid "Player Restored Event"
 msgstr "Επαναφέρετε Το Γεγονός"
 
-#: mpnotifier/notifier.py:1273
+#: plnotifier/cog.py:1282
 msgid "{requester} restored the player."
 msgstr "{requester} επανέφερε τον παίκτη."
 
-#: mpnotifier/notifier.py:1291
+#: plnotifier/cog.py:1300
 msgid "an intro section"
 msgstr "μια εισαγωγική ενότητα"
 
-#: mpnotifier/notifier.py:1293
+#: plnotifier/cog.py:1302
 msgid "an outro section"
 msgstr "μια ενότητα outro"
 
-#: mpnotifier/notifier.py:1295
+#: plnotifier/cog.py:1304
 msgid "a preview section"
 msgstr "μια ενότητα προεπισκόπησης"
 
-#: mpnotifier/notifier.py:1297
+#: plnotifier/cog.py:1306
 msgid "an off-topic section"
 msgstr "μια εκτός θέματος ενότητα"
 
-#: mpnotifier/notifier.py:1299
+#: plnotifier/cog.py:1308
 msgid "a filler section"
 msgstr "ένα τμήμα πληρώσεως"
 
-#: mpnotifier/notifier.py:1301
+#: plnotifier/cog.py:1310
 msgid "a sponsor section"
 msgstr "τμήμα χορηγού"
 
-#: mpnotifier/notifier.py:1303
+#: plnotifier/cog.py:1312
 msgid "a self-promotion section"
 msgstr "τμήμα αυτοπροώθησης"
 
-#: mpnotifier/notifier.py:1305
+#: plnotifier/cog.py:1314
 msgid "an interaction section"
 msgstr "μια ενότητα αλληλεπίδρασης"
 
-#: mpnotifier/notifier.py:1309
+#: plnotifier/cog.py:1318
 msgid "Sponsor Segment Skipped Event"
 msgstr "Τμήμα Χορηγού Παραλήφθηκε Γεγονός"
 
-#: mpnotifier/notifier.py:1310
+#: plnotifier/cog.py:1319
 msgid "Sponsorblock: Skipped {category} running from {start}s to {to}s."
 msgstr "Χορηγός: Παραλήφθηκε {category} από {start}σε {to}δευτερόλεπτα."
 
-#: mpnotifier/notifier.py:1332
+#: plnotifier/cog.py:1341
 msgid "Effect"
 msgstr "Εφέ"
 
-#: mpnotifier/notifier.py:1333
+#: plnotifier/cog.py:1342
 msgid "Values"
 msgstr "Τιμές"
 
-#: mpnotifier/notifier.py:1362
+#: plnotifier/cog.py:1371
 msgid "N/A"
 msgstr "Δ/Υ"
 
-#: mpnotifier/notifier.py:1366
+#: plnotifier/cog.py:1375
 msgid "Filters Applied Event"
 msgstr "Εφαρμοσμένο Γεγονός Φίλτρων"
 
-#: mpnotifier/notifier.py:1367
+#: plnotifier/cog.py:1376
 msgid "[Node={node}] {requester} changed the player filters.\n\n"
 "__**Currently Applied:**__\n"
 "{data}"
@@ -392,57 +387,57 @@ msgstr "[Κόμβος={node}] {requester} άλλαξε τα φίλτρα παί�
 "__**Αυτήν τη στιγμή Εφαρμόστηκε:**__\n"
 "{data}"
 
-#: mpnotifier/notifier.py:1371
+#: plnotifier/cog.py:1380
 msgid "None"
 msgstr "Κανένα"
 
-#: mpnotifier/notifier.py:1387
+#: plnotifier/cog.py:1396
 msgid "Node Connected Event"
 msgstr "Συνδεδεμένος Κόμβος Γεγονός"
 
-#: mpnotifier/notifier.py:1388
+#: plnotifier/cog.py:1397
 msgid "Node {name} has been connected."
 msgstr "Ο κόμβος {name} έχει συνδεθεί."
 
-#: mpnotifier/notifier.py:1402
+#: plnotifier/cog.py:1411
 msgid "Node Disconnected Event"
 msgstr "Αποσυνδεδεμένο Γεγονός Κόμβου"
 
-#: mpnotifier/notifier.py:1403
+#: plnotifier/cog.py:1412
 msgid "Node {name} has been disconnected with code {code} and reason: {reason}."
 msgstr "Ο κόμβος {name} έχει αποσυνδεθεί με κωδικό {code} και λόγο: {reason}."
 
-#: mpnotifier/notifier.py:1422
+#: plnotifier/cog.py:1431
 msgid "Node Changed Event"
 msgstr "Ο Κόμβος Άλλαξε Γεγονός"
 
-#: mpnotifier/notifier.py:1423
+#: plnotifier/cog.py:1432
 msgid "The node which the player is connected to changed from {fro} to {to}."
 msgstr "Ο κόμβος στον οποίο είναι συνδεδεμένος ο παίκτης από {fro} σε {to}."
 
-#: mpnotifier/notifier.py:1442
+#: plnotifier/cog.py:1451
 msgid "WebSocket Closed Event"
 msgstr "WebSocket Κλειστό Γεγονός"
 
-#: mpnotifier/notifier.py:1443
+#: plnotifier/cog.py:1452
 msgid "[Node={node}] The websocket connection to the Lavalink node closed with code {code} and reason {reason}."
 msgstr "[Κόμβος={node}] Η σύνδεση websocket στον κόμβο Lavalink έκλεισε με κωδικό {code} και λόγο {reason}."
 
-#: mpnotifier/notifier_commands.py:81
+#: plnotifier/notifier_commands.py:81
 #, docstring
-msgid "Configure the MPNotifier cog."
-msgstr "Ρύθμιση του κώδικα MPNotifier."
+msgid "Configure the PyLavNotifier cog."
+msgstr "Ρύθμιση του κώδικα PyLavNotifier"
 
-#: mpnotifier/notifier_commands.py:87
+#: plnotifier/notifier_commands.py:87
 #, docstring
 msgid "Set the notify channel for the player."
 msgstr "Ορίστε το κανάλι ειδοποίησης για τον παίκτη. (Automatic Translation)"
 
-#: mpnotifier/notifier_commands.py:103
-msgid "MP notify channel set to {channel}"
-msgstr "MP ειδοποίηση κανάλι οριστεί σε {channel}"
+#: plnotifier/notifier_commands.py:103
+msgid "PyLavNotifier channel set to {channel}"
+msgstr "Το κανάλι PyLavNotifier ορίστηκε σε {channel}"
 
-#: mpnotifier/notifier_commands.py:112
+#: plnotifier/notifier_commands.py:113
 #, docstring
 msgid "Set whether or not to notify for the specified event.\n\n"
 "        Arguments:\n"
@@ -457,29 +452,29 @@ msgstr "Ορίστε αν θα ειδοποιηθεί ή όχι για το συ
 "            use_mention -- Εάν θα χρησιμοποιηθεί ή όχι μια αναφορά αντί για το όνομα της ενέργειας που ζητήθηκε.\n"
 "        "
 
-#: mpnotifier/notifier_commands.py:127
+#: plnotifier/notifier_commands.py:128
 msgid "Invalid event, possible events are:\n\n"
 "{events}."
 msgstr "Μη έγκυρο συμβάν, πιθανές εκδηλώσεις είναι:\n\n"
 "{events}."
 
-#: mpnotifier/notifier_commands.py:141
+#: plnotifier/notifier_commands.py:142
 msgid "Event {event} set to {toggle}{extras}."
 msgstr "Η εκδήλωση {event} ορίστηκε σε {toggle}{extras}."
 
-#: mpnotifier/notifier_commands.py:143
+#: plnotifier/notifier_commands.py:144
 msgid "notify"
 msgstr "ειδοποίηση"
 
-#: mpnotifier/notifier_commands.py:143
+#: plnotifier/notifier_commands.py:144
 msgid "do not notify"
 msgstr "δεν ειδοποιούν"
 
-#: mpnotifier/notifier_commands.py:144
+#: plnotifier/notifier_commands.py:145
 msgid " with mentions"
 msgstr " με αναφορές"
 
-#: mpnotifier/notifier_commands.py:144
+#: plnotifier/notifier_commands.py:145
 msgid " without mentions"
 msgstr " χωρίς αναφορές"
 
