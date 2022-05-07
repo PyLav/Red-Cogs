@@ -66,6 +66,8 @@ class PyLavPlaylists(
         await self.bot.lavalink.unregister(cog=self)
 
     async def cog_check(self, ctx: PyLavContext) -> bool:
+        if not ctx.guild:
+            return True
         if ctx.player:
             config = ctx.player.config
         else:

@@ -81,7 +81,7 @@ class PyLavPlayer(
         await self.bot.lavalink.unregister(cog=self)
 
     async def cog_check(self, ctx: PyLavContext) -> bool:
-        if self.command_plset in ctx.command.parents or self.command_plset == ctx.command:
+        if not ctx.guild or self.command_plset in ctx.command.parents or self.command_plset == ctx.command:
             return True
         if ctx.player:
             config = ctx.player.config
