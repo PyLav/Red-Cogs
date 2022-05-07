@@ -13,7 +13,7 @@ from redbot.core.utils.chat_formatting import inline
 from pylav import Client
 from pylav.sql.models import LibConfigModel
 from pylav.types import BotT
-from pylav.utils import PyLavContext
+from pylav.utils import CogMixin, PyLavContext
 
 LOGGER = getLogger("red.3pt.PyLavConfigurator")
 
@@ -21,9 +21,7 @@ _ = Translator("PyLavConfigurator", Path(__file__))
 
 
 @cog_i18n(_)
-class PyLavConfigurator(commands.Cog):
-    lavalink: Client
-
+class PyLavConfigurator(commands.Cog, CogMixin):
     def __init__(self, bot: BotT, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot

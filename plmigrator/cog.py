@@ -21,7 +21,7 @@ from redbot.core.utils.dbtools import APSWConnectionWrapper
 from pylav import Client
 from pylav.sql.models import LibConfigModel
 from pylav.types import BotT
-from pylav.utils import AsyncIter, PyLavContext
+from pylav.utils import AsyncIter, CogMixin, PyLavContext
 from pylavcogs_shared.utils import recursive_merge
 
 LOGGER = getLogger("red.3pt.PyLavMigrator")
@@ -30,9 +30,7 @@ _ = Translator("PyLavMigrator", Path(__file__))
 
 
 @cog_i18n(_)
-class PyLavMigrator(commands.Cog):
-    lavalink: Client
-
+class PyLavMigrator(commands.Cog, CogMixin):
     def __init__(self, bot: BotT, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot
