@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-02 15:34+0000\n"
-"PO-Revision-Date: 2022-05-02 16:47\n"
+"POT-Creation-Date: 2022-05-07 14:00+0000\n"
+"PO-Revision-Date: 2022-05-07 14:12\n"
 "Last-Translator: \n"
 "Language-Team: Arabic, Egypt\n"
 "MIME-Version: 1.0\n"
@@ -13,378 +13,373 @@ msgstr ""
 "X-Crowdin-Project: mediaplayer\n"
 "X-Crowdin-Project-ID: 512604\n"
 "X-Crowdin-Language: ar-EG\n"
-"X-Crowdin-File: /mpnotifier/locales/messages.pot\n"
-"X-Crowdin-File-ID: 134\n"
+"X-Crowdin-File: /plnotifier/locales/messages.pot\n"
+"X-Crowdin-File-ID: 186\n"
 "Language: ar_EG\n"
 
-#: mpnotifier/notifier.py:134
+#: plnotifier/cog.py:143
 msgid "Track Stuck Event"
 msgstr "حدث عربة المسارات"
 
-#: mpnotifier/notifier.py:135
+#: plnotifier/cog.py:144
 msgid "[Node={node}] {track} is stuck for {threshold} seconds, skipping."
 msgstr "[العقدة/{node}] {track} عالقة لمدة {threshold} ثانية، تخطي."
 
-#: mpnotifier/notifier.py:157
+#: plnotifier/cog.py:166
 msgid "Track Exception Event"
 msgstr "حدث استثناء المسار"
 
-#: mpnotifier/notifier.py:158
+#: plnotifier/cog.py:167
 msgid "[Node={node}] There was an error while playing {track}:\n"
 "{exception}"
 msgstr "[العقدة/{node}] حدث خطأ أثناء تشغيل {track}:\n"
 "{exception}"
 
-#: mpnotifier/notifier.py:176
+#: plnotifier/cog.py:185
 msgid "the player reached the end of the tracks runtime."
 msgstr "وصل اللاعب إلى نهاية وقت تشغيل المسار."
 
-#: mpnotifier/notifier.py:178
+#: plnotifier/cog.py:187
 msgid "a new track started playing."
 msgstr "بدأ مسار جديد في اللعب."
 
-#: mpnotifier/notifier.py:180
+#: plnotifier/cog.py:189
 msgid "it failed to start."
 msgstr "فشل في البدء."
 
-#: mpnotifier/notifier.py:182
+#: plnotifier/cog.py:191
 msgid "because the player was stopped."
 msgstr "لأنه تم إيقاف اللاعب."
 
-#: mpnotifier/notifier.py:184
+#: plnotifier/cog.py:193
 msgid "the node told it to stop."
 msgstr "العقدة طلبت منها التوقف."
 
-#: mpnotifier/notifier.py:187
+#: plnotifier/cog.py:196
 msgid "Track End Event"
 msgstr "حدث نهاية المسار"
 
-#: mpnotifier/notifier.py:188
+#: plnotifier/cog.py:197
 msgid "[Node={node}] {track} has finished playing because {reason}"
 msgstr "[Node={node}] {track} انتهى التشغيل لأن {reason}"
 
-#: mpnotifier/notifier.py:212
+#: plnotifier/cog.py:221
 msgid "Track Start Event"
 msgstr "حدث بدء المسار"
 
-#: mpnotifier/notifier.py:213
+#: plnotifier/cog.py:222
 msgid "[Node={node}] {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] {track} بدأ في اللعب.\n"
 "طلب من: {requester}"
 
-#: mpnotifier/notifier.py:237
+#: plnotifier/cog.py:246
 msgid "YouTube Music Track Start Event"
 msgstr "حدث بدء مسار الموسيقى على اليوتيوب"
 
-#: mpnotifier/notifier.py:238
+#: plnotifier/cog.py:247
 msgid "[Node={node}] YouTube Music track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] مسار الموسيقى على اليوتيوب: {track} بدأ في اللعب.\n"
 "طلب من: {requester}"
 
-#: mpnotifier/notifier.py:264
+#: plnotifier/cog.py:273
 msgid "Spotify Track Start Event"
 msgstr "حدث بدء مسار Spotify"
 
-#: mpnotifier/notifier.py:265
+#: plnotifier/cog.py:274
 msgid "[Node={node}] Spotify track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[ملاحظة={node}] مسار سبوتيفي: {track} بدأ في اللعب.\n"
 "طلب من: {requester}"
 
-#: mpnotifier/notifier.py:291
+#: plnotifier/cog.py:300
 msgid "Apple Music Track Start Event"
 msgstr "حدث بدء مسار موسيقى التفاح"
 
-#: mpnotifier/notifier.py:292
+#: plnotifier/cog.py:301
 msgid "[Node={node}] Apple Music track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] مسار موسيقى التفاح: {track} بدأ في اللعب.\n"
 "طلب من: {requester}"
 
-#: mpnotifier/notifier.py:318
+#: plnotifier/cog.py:327
 msgid "Local Track Start Event"
 msgstr "حدث بدء المسار المحلي"
 
-#: mpnotifier/notifier.py:319
+#: plnotifier/cog.py:328
 msgid "[Node={node}] Local track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] المسار المحلي: {track} بدأ في اللعب.\n"
 "طلب من: {requester}"
 
-#: mpnotifier/notifier.py:345
+#: plnotifier/cog.py:354
 msgid "HTTP Track Start Event"
 msgstr "حدث بدء مسار HTTP"
 
-#: mpnotifier/notifier.py:346
+#: plnotifier/cog.py:355
 msgid "[Node={node}] HTTP track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] مسار HTTP: {track} بدأ في اللعب.\n"
 "طلب من: {requester}"
 
-#: mpnotifier/notifier.py:372
+#: plnotifier/cog.py:381
 msgid "Text-To-Speech Track Start Event"
 msgstr "حدث بدء مسار النص والنطق"
 
-#: mpnotifier/notifier.py:373
+#: plnotifier/cog.py:382
 msgid "[Node={node}] Text-To-Speech track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] مسار النص - الكلام: {track} بدأ في اللعب.\n"
 "طلب من: {requester}"
 
-#: mpnotifier/notifier.py:399
+#: plnotifier/cog.py:408
 msgid "YouTube Track Start Event"
 msgstr "حدث بدء تتبع اليوتيوب"
 
-#: mpnotifier/notifier.py:400
+#: plnotifier/cog.py:409
 msgid "[Node={node}] YouTube track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] مسار يوتيوب: {track} بدأ في اللعب.\n"
 "طلب من: {requester}"
 
-#: mpnotifier/notifier.py:426 mpnotifier/notifier.py:456
-#: mpnotifier/notifier.py:486 mpnotifier/notifier.py:516
-#: mpnotifier/notifier.py:546 mpnotifier/notifier.py:576
-#: mpnotifier/notifier.py:606 mpnotifier/notifier.py:636
-#: mpnotifier/notifier.py:666 mpnotifier/notifier.py:696
-#: mpnotifier/notifier.py:726 mpnotifier/notifier.py:756
-#: mpnotifier/notifier.py:786 mpnotifier/notifier.py:816
+#: plnotifier/cog.py:435 plnotifier/cog.py:465 plnotifier/cog.py:495
+#: plnotifier/cog.py:525 plnotifier/cog.py:555 plnotifier/cog.py:585
+#: plnotifier/cog.py:615 plnotifier/cog.py:645 plnotifier/cog.py:675
+#: plnotifier/cog.py:705 plnotifier/cog.py:735 plnotifier/cog.py:765
+#: plnotifier/cog.py:795 plnotifier/cog.py:825
 msgid "{source} Track Start Event"
 msgstr "حدث بدء المسار {source}"
 
-#: mpnotifier/notifier.py:427 mpnotifier/notifier.py:457
-#: mpnotifier/notifier.py:487 mpnotifier/notifier.py:517
-#: mpnotifier/notifier.py:547 mpnotifier/notifier.py:577
-#: mpnotifier/notifier.py:607 mpnotifier/notifier.py:637
-#: mpnotifier/notifier.py:667 mpnotifier/notifier.py:697
-#: mpnotifier/notifier.py:727 mpnotifier/notifier.py:757
-#: mpnotifier/notifier.py:787 mpnotifier/notifier.py:817
+#: plnotifier/cog.py:436 plnotifier/cog.py:466 plnotifier/cog.py:496
+#: plnotifier/cog.py:526 plnotifier/cog.py:556 plnotifier/cog.py:586
+#: plnotifier/cog.py:616 plnotifier/cog.py:646 plnotifier/cog.py:676
+#: plnotifier/cog.py:706 plnotifier/cog.py:736 plnotifier/cog.py:766
+#: plnotifier/cog.py:796 plnotifier/cog.py:826
 msgid "[Node={node}] {source} track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] {source} المسار : {track} بدأ في اللعب.\n"
 "طلب من: {requester}"
 
-#: mpnotifier/notifier.py:846
+#: plnotifier/cog.py:855
 msgid "Track Skipped Event"
 msgstr "تتبع الحدث المتخطى"
 
-#: mpnotifier/notifier.py:847
+#: plnotifier/cog.py:856
 msgid "{track} has been skipped.\n"
 "Requested by {requester}"
 msgstr "تم تخطي {track} .\n"
 "طلب من {requester}"
 
-#: mpnotifier/notifier.py:870
+#: plnotifier/cog.py:879
 msgid "Track Seek Event"
 msgstr "تتبع حدث البحث"
 
-#: mpnotifier/notifier.py:871
+#: plnotifier/cog.py:880
 msgid "{requester} requested that {track} is sought from position {fro} to position {after}."
 msgstr "طلب {requester} أن يتم البحث عن {track} من الموضع {fro} إلى الموضع {after}."
 
-#: mpnotifier/notifier.py:900
+#: plnotifier/cog.py:909
 msgid "Track Previous Requested Event"
 msgstr "تتبع الحدث السابق المطلوب"
 
-#: mpnotifier/notifier.py:901
+#: plnotifier/cog.py:910
 msgid "{requester} requested that the previous track {track} be played."
 msgstr "طلب {requester} أن يتم تشغيل المسار السابق {track}."
 
-#: mpnotifier/notifier.py:926
+#: plnotifier/cog.py:935
 msgid "Tracks Requested Event"
 msgstr "المسارات المطلوبة الحدث"
 
-#: mpnotifier/notifier.py:927
+#: plnotifier/cog.py:936
 msgid "{requester} added {track_count} to the queue."
 msgstr "أضاف {requester} {track_count} إلى قائمة الانتظار."
 
-#: mpnotifier/notifier.py:946
+#: plnotifier/cog.py:955
 msgid "Track AutoPlay Event"
 msgstr "تتبع حدث اللعب التلقائي"
 
-#: mpnotifier/notifier.py:947
+#: plnotifier/cog.py:956
 msgid "Auto-playing {track}."
 msgstr "تشغيل تلقائي {track}."
 
-#: mpnotifier/notifier.py:971
+#: plnotifier/cog.py:980
 msgid "Track Resumed Event"
 msgstr "تتبع الحدث المستأنف"
 
-#: mpnotifier/notifier.py:972
+#: plnotifier/cog.py:981
 msgid "{requester} resumed {track}."
 msgstr "{requester} استأنف {track}."
 
-#: mpnotifier/notifier.py:996
+#: plnotifier/cog.py:1005
 msgid "Queue Shuffled Event"
 msgstr "حدث التفريق في قائمة الانتظار"
 
-#: mpnotifier/notifier.py:997
+#: plnotifier/cog.py:1006
 msgid "{requester} shuffled the queue."
 msgstr "قام {requester} بخلط قائمة الانتظار."
 
-#: mpnotifier/notifier.py:1012
+#: plnotifier/cog.py:1021
 msgid "Queue End Event"
 msgstr "حدث نهاية قائمة الانتظار"
 
-#: mpnotifier/notifier.py:1013
+#: plnotifier/cog.py:1022
 msgid "All tracks in the queue have been played."
 msgstr "تم تشغيل جميع المسارات في قائمة الانتظار."
 
-#: mpnotifier/notifier.py:1035
+#: plnotifier/cog.py:1044
 msgid "Tracks Removed Event"
 msgstr "حدث إزالة المسارات"
 
-#: mpnotifier/notifier.py:1036
+#: plnotifier/cog.py:1045
 msgid "{requester} removed {track_count} tracks from the queue."
 msgstr "قام {requester} بإزالة {track_count} مسارات من قائمة الانتظار."
 
-#: mpnotifier/notifier.py:1060
+#: plnotifier/cog.py:1069
 msgid "Player Paused Event"
 msgstr "حدث إيقاف مؤقت للاعب"
 
-#: mpnotifier/notifier.py:1061
+#: plnotifier/cog.py:1070
 msgid "{requester} paused the player."
 msgstr "{requester} توقف اللاعب."
 
-#: mpnotifier/notifier.py:1083
+#: plnotifier/cog.py:1092
 msgid "Player Stopped Event"
 msgstr "حدث اللاعب توقف"
 
-#: mpnotifier/notifier.py:1084
+#: plnotifier/cog.py:1093
 msgid "{requester} stopped the player."
 msgstr "أوقف {requester} اللاعب."
 
-#: mpnotifier/notifier.py:1106
+#: plnotifier/cog.py:1115
 msgid "Player Resumed Event"
 msgstr "الحدث المستأنف للاعب"
 
-#: mpnotifier/notifier.py:1107
+#: plnotifier/cog.py:1116
 msgid "{requester} resumed the player."
 msgstr "استأنف {requester} اللاعب."
 
-#: mpnotifier/notifier.py:1129
+#: plnotifier/cog.py:1138
 msgid "Player Moved Event"
 msgstr "حدث نقل اللاعب"
 
-#: mpnotifier/notifier.py:1130
+#: plnotifier/cog.py:1139
 msgid "{requester} moved the player from {before} to {after}."
 msgstr "نقل {requester} اللاعب من {before} إلى {after}."
 
-#: mpnotifier/notifier.py:1154
+#: plnotifier/cog.py:1163
 msgid "Player Disconnected Event"
 msgstr "حدث اللاعب غير متصل"
 
-#: mpnotifier/notifier.py:1155
+#: plnotifier/cog.py:1164
 msgid "{requester} disconnected the player."
 msgstr "{requester} قطع اتصال اللاعب."
 
-#: mpnotifier/notifier.py:1177
+#: plnotifier/cog.py:1186
 msgid "Player Connected Event"
 msgstr "حدث اللاعب المتصل"
 
-#: mpnotifier/notifier.py:1178
+#: plnotifier/cog.py:1187
 msgid "{requester} connected the player."
 msgstr "{requester} اتصل باللاعب."
 
-#: mpnotifier/notifier.py:1200
+#: plnotifier/cog.py:1209
 msgid "Player Volume Changed Event"
 msgstr "حدث تغيير مستوى صوت اللاعب"
 
-#: mpnotifier/notifier.py:1201
+#: plnotifier/cog.py:1210
 msgid "{requester} changed the player's volume from {before} to {after}."
 msgstr "غيّر {requester} مستوى صوت اللاعب من {before} إلى {after}."
 
-#: mpnotifier/notifier.py:1227 mpnotifier/notifier.py:1235
-#: mpnotifier/notifier.py:1245
+#: plnotifier/cog.py:1236 plnotifier/cog.py:1244 plnotifier/cog.py:1254
 msgid "Player Repeat Event"
 msgstr "حدث تكرار اللاعب"
 
-#: mpnotifier/notifier.py:1228
+#: plnotifier/cog.py:1237
 msgid "{requester} disabled repeat."
 msgstr "{requester} قام بتعطيل التكرار."
 
-#: mpnotifier/notifier.py:1236
+#: plnotifier/cog.py:1245
 msgid "{requester} {status} repeat of the whole queue."
 msgstr "{requester} {status} تكرار لكامل قائمة الانتظار."
 
-#: mpnotifier/notifier.py:1237 mpnotifier/notifier.py:1248
+#: plnotifier/cog.py:1246 plnotifier/cog.py:1257
 msgid "enabled"
 msgstr "مفعّل"
 
-#: mpnotifier/notifier.py:1237 mpnotifier/notifier.py:1248
+#: plnotifier/cog.py:1246 plnotifier/cog.py:1257
 msgid "disabled"
 msgstr "معطل"
 
-#: mpnotifier/notifier.py:1246
+#: plnotifier/cog.py:1255
 msgid "{requester} {status} repeat for {track}."
 msgstr "{requester} {status} تكرار {track}."
 
-#: mpnotifier/notifier.py:1272
+#: plnotifier/cog.py:1281
 msgid "Player Restored Event"
 msgstr "حدث استعادة اللاعب"
 
-#: mpnotifier/notifier.py:1273
+#: plnotifier/cog.py:1282
 msgid "{requester} restored the player."
 msgstr "استعاد {requester} اللاعب."
 
-#: mpnotifier/notifier.py:1291
+#: plnotifier/cog.py:1300
 msgid "an intro section"
 msgstr "مقطع مقدمة"
 
-#: mpnotifier/notifier.py:1293
+#: plnotifier/cog.py:1302
 msgid "an outro section"
 msgstr "قسم خارجي"
 
-#: mpnotifier/notifier.py:1295
+#: plnotifier/cog.py:1304
 msgid "a preview section"
 msgstr "قسم معاينة"
 
-#: mpnotifier/notifier.py:1297
+#: plnotifier/cog.py:1306
 msgid "an off-topic section"
 msgstr "قسم خارج الموضوع"
 
-#: mpnotifier/notifier.py:1299
+#: plnotifier/cog.py:1308
 msgid "a filler section"
 msgstr "قسم عامل التصفية"
 
-#: mpnotifier/notifier.py:1301
+#: plnotifier/cog.py:1310
 msgid "a sponsor section"
 msgstr "قسم مقدم ورقة العمل"
 
-#: mpnotifier/notifier.py:1303
+#: plnotifier/cog.py:1312
 msgid "a self-promotion section"
 msgstr "قسم تعزيز الذات"
 
-#: mpnotifier/notifier.py:1305
+#: plnotifier/cog.py:1314
 msgid "an interaction section"
 msgstr "قسم تفاعلي"
 
-#: mpnotifier/notifier.py:1309
+#: plnotifier/cog.py:1318
 msgid "Sponsor Segment Skipped Event"
 msgstr "حدث تخطي شريحة الراعي"
 
-#: mpnotifier/notifier.py:1310
+#: plnotifier/cog.py:1319
 msgid "Sponsorblock: Skipped {category} running from {start}s to {to}s."
 msgstr "الراعي: تخطي {category} يعمل من {start}s إلى {to}ثانية."
 
-#: mpnotifier/notifier.py:1332
+#: plnotifier/cog.py:1341
 msgid "Effect"
 msgstr "التأثيرات"
 
-#: mpnotifier/notifier.py:1333
+#: plnotifier/cog.py:1342
 msgid "Values"
 msgstr "القيم"
 
-#: mpnotifier/notifier.py:1362
+#: plnotifier/cog.py:1371
 msgid "N/A"
 msgstr "لا"
 
-#: mpnotifier/notifier.py:1366
+#: plnotifier/cog.py:1375
 msgid "Filters Applied Event"
 msgstr "تصفية الحدث المطبق"
 
-#: mpnotifier/notifier.py:1367
+#: plnotifier/cog.py:1376
 msgid "[Node={node}] {requester} changed the player filters.\n\n"
 "__**Currently Applied:**__\n"
 "{data}"
@@ -392,57 +387,57 @@ msgstr "[Node={node}] {requester} غيّر فلاتر اللاعب.\n\n"
 "__**مطبق حاليا:**__\n"
 "{data}"
 
-#: mpnotifier/notifier.py:1371
+#: plnotifier/cog.py:1380
 msgid "None"
 msgstr "لا"
 
-#: mpnotifier/notifier.py:1387
+#: plnotifier/cog.py:1396
 msgid "Node Connected Event"
 msgstr "حدث متصل بالعقدة"
 
-#: mpnotifier/notifier.py:1388
+#: plnotifier/cog.py:1397
 msgid "Node {name} has been connected."
 msgstr "تم توصيل العقدة {name}."
 
-#: mpnotifier/notifier.py:1402
+#: plnotifier/cog.py:1411
 msgid "Node Disconnected Event"
 msgstr "حدث قطع اتصال العقدة"
 
-#: mpnotifier/notifier.py:1403
+#: plnotifier/cog.py:1412
 msgid "Node {name} has been disconnected with code {code} and reason: {reason}."
 msgstr "العقدة {name} تم فصلها مع الرمز {code} والسبب: {reason}."
 
-#: mpnotifier/notifier.py:1422
+#: plnotifier/cog.py:1431
 msgid "Node Changed Event"
 msgstr "تغيير حدث العقدة"
 
-#: mpnotifier/notifier.py:1423
+#: plnotifier/cog.py:1432
 msgid "The node which the player is connected to changed from {fro} to {to}."
 msgstr "تم تغيير العقدة التي تم توصيل اللاعب بها من {fro} إلى {to}."
 
-#: mpnotifier/notifier.py:1442
+#: plnotifier/cog.py:1451
 msgid "WebSocket Closed Event"
 msgstr "حدث إغلاق WebSocket"
 
-#: mpnotifier/notifier.py:1443
+#: plnotifier/cog.py:1452
 msgid "[Node={node}] The websocket connection to the Lavalink node closed with code {code} and reason {reason}."
 msgstr "[Node={node}] تم إغلاق اتصال موقع الويب بالعقدة Lavalink بواسطة الكود {code} والسبب {reason}."
 
-#: mpnotifier/notifier_commands.py:81
+#: plnotifier/notifier_commands.py:81
 #, docstring
-msgid "Configure the MPNotifier cog."
-msgstr "تكوين رمز MPNotifier."
+msgid "Configure the PyLavNotifier cog."
+msgstr "تكوين رمز PyLavNotifier."
 
-#: mpnotifier/notifier_commands.py:87
+#: plnotifier/notifier_commands.py:87
 #, docstring
 msgid "Set the notify channel for the player."
 msgstr "تعيين قناة إعلام للاعب."
 
-#: mpnotifier/notifier_commands.py:103
-msgid "MP notify channel set to {channel}"
-msgstr "تم تعيين قناة إعلام MP إلى {channel}"
+#: plnotifier/notifier_commands.py:103
+msgid "PyLavNotifier channel set to {channel}"
+msgstr "تم تعيين قناة PyLavNotifier إلى {channel}"
 
-#: mpnotifier/notifier_commands.py:112
+#: plnotifier/notifier_commands.py:113
 #, docstring
 msgid "Set whether or not to notify for the specified event.\n\n"
 "        Arguments:\n"
@@ -457,29 +452,29 @@ msgstr "تعيين ما إذا كان سيتم أو لا يتم إعلامك ع�
 "            use_mention -- سواء استخدم أو لا استخدم ذكر بدلاً من اسم الإجراء المطلوب.\n"
 "        "
 
-#: mpnotifier/notifier_commands.py:127
+#: plnotifier/notifier_commands.py:128
 msgid "Invalid event, possible events are:\n\n"
 "{events}."
 msgstr "حدث غير صالح، الأحداث المحتملة هي:\n\n"
 "{events}."
 
-#: mpnotifier/notifier_commands.py:141
+#: plnotifier/notifier_commands.py:142
 msgid "Event {event} set to {toggle}{extras}."
 msgstr "تم تعيين الحدث {event} إلى {toggle}{extras}."
 
-#: mpnotifier/notifier_commands.py:143
+#: plnotifier/notifier_commands.py:144
 msgid "notify"
 msgstr "إشعار"
 
-#: mpnotifier/notifier_commands.py:143
+#: plnotifier/notifier_commands.py:144
 msgid "do not notify"
 msgstr "لا تقم بالإعلام"
 
-#: mpnotifier/notifier_commands.py:144
+#: plnotifier/notifier_commands.py:145
 msgid " with mentions"
 msgstr " مع الإشارات"
 
-#: mpnotifier/notifier_commands.py:144
+#: plnotifier/notifier_commands.py:145
 msgid " without mentions"
 msgstr " بدون ذكر"
 

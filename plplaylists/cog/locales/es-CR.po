@@ -1,0 +1,311 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: mediaplayer\n"
+"POT-Creation-Date: 2022-05-07 14:00+0000\n"
+"PO-Revision-Date: 2022-05-07 14:10\n"
+"Last-Translator: \n"
+"Language-Team: Spanish, Costa Rica\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.4.2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: mediaplayer\n"
+"X-Crowdin-Project-ID: 512604\n"
+"X-Crowdin-Language: es-CR\n"
+"X-Crowdin-File: /plplaylists/cog/locales/messages.pot\n"
+"X-Crowdin-File-ID: 202\n"
+"Language: es_CR\n"
+
+#: plplaylists/cog/__init__.py:84
+msgid "This command requires an existing player to be run."
+msgstr "Este comando requiere que se ejecute un reproductor existente."
+
+#: plplaylists/cog/__init__.py:93
+msgid "MediaPlayer cog is currently temporarily unavailable due to an outage with the backend services, please try again later."
+msgstr "El módulo MediaPlayer no está disponible temporalmente debido a una interrupción con los servicios de backend, por favor inténtalo de nuevo más tarde."
+
+#: plplaylists/cog/__init__.py:97
+msgid "No Lavalink node currently available."
+msgstr "No hay nodo Lavalink actualmente disponible."
+
+#: plplaylists/cog/__init__.py:108
+msgid "MediaPlayer is currently unable to process tracks belonging to {feature}."
+msgstr "MediaPlayer es actualmente incapaz de procesar pistas pertenecientes a {feature}."
+
+#: plplaylists/cog/__init__.py:111
+msgid "No Lavalink node currently available with feature {feature}."
+msgstr "No hay nodo Lavalink actualmente disponible con la función {feature}."
+
+#: plplaylists/cog/__init__.py:124
+msgid "This command is not available in this channel. Please use {channel}"
+msgstr "Este comando no está disponible en este canal. Por favor, utilice {channel}"
+
+#: plplaylists/cog/playlist_commands.py:43
+#, docstring
+msgid "Create a new playlist.\n\n"
+"        If you don't specify an URL and name, you will be shows a creation menu, which also allows you to save the current player queue as a playlist.\n\n"
+"        If you don't specify a name, the playlist will be named the URL playlist if available otherwise the name will be the same as the ID.\n"
+"        If you specify an URL, the playlist will be created from the URL.\n"
+"        "
+msgstr "Crear una nueva lista de reproducción.\n\n"
+"        Si no especifica una URL y nombre, se mostrará un menú de creación, que también te permite guardar la cola actual del jugador como una lista de reproducción.\n\n"
+"        Si no especificas un nombre, la lista de reproducción será llamada la lista de reproducción de URL si está disponible de otra manera el nombre será el mismo que el ID.\n"
+"        Si especifica una URL, la lista de reproducción se creará a partir de la URL.\n"
+"        "
+
+#: plplaylists/cog/playlist_commands.py:62
+msgid "Let's create a playlist!"
+msgstr "¡Vamos a crear una lista de reproducción!"
+
+#: plplaylists/cog/playlist_commands.py:63
+msgid "(**1**) - Apply changes to playlist.\n"
+"(**2**) - Cancel any changes made.\n"
+"(**3**) - Add a name to the playlist.\n"
+"(**4**) - Link this playlist to an existing playlist/album.\n"
+"(**5**) - Add all track from the queue to the playlist.\n\n"
+"If you want the playlist name to be as the original playlist simply set the URL but no name.\n\n"
+msgstr "(**1**) - Aplicar cambios a la lista.\n"
+"(**2**) - Cancelar cualquier cambio realizado.\n"
+"(**3**) - Añade un nombre a la lista de reproducción.\n"
+"(**4**) - Enlace esta lista de reproducción a una lista de reproducción existente/álbum.\n"
+"(**5**) - Añadir toda la pista de la cola a la lista de reproducción.\n\n"
+"Si desea que el nombre de la lista de reproducción sea como la lista de reproducción original, simplemente establezca la URL pero sin nombre.\n\n"
+
+#: plplaylists/cog/playlist_commands.py:103
+msgid "Playlist created"
+msgstr "Lista de reproducción creada"
+
+#: plplaylists/cog/playlist_commands.py:104
+msgid "Name: `{name}`\n"
+"ID: `{id}`\n"
+"Tracks: `{track_count}`"
+msgstr "Nombre: `{name}`\n"
+"ID: `{id}`\n"
+"Pistas: `{track_count}`"
+
+#: plplaylists/cog/playlist_commands.py:114
+#, docstring
+msgid "\n"
+"        List all playlists you have access to on the invoked context.\n\n"
+"        This takes into consideration your current VC, Text channel and Server.\n"
+"        "
+msgstr "\n"
+"        Lista todas las listas a las que tiene acceso en el contexto invocado.\n\n"
+"        Esto tiene en cuenta su actual VC, canal de texto y servidor.\n"
+"        "
+
+#: plplaylists/cog/playlist_commands.py:135
+msgid "You have no playlists."
+msgstr "No tienes listas."
+
+#: plplaylists/cog/playlist_commands.py:154
+#, docstring
+msgid "\n"
+"        Manage a playlist.\n\n"
+"        This command can be used to delete, clear all tracks, add or remove tracks or play a playlist.\n\n"
+"        If you use the `start` (`play` or `enqueue`) alias the playlist will be played instead of you being shown the control menu.\n"
+"        If you use the `delete` (`del`) alias the playlist will be deleted instead of you being shown the control menu.\n"
+"        If you use the `save` (`queue`) alias the current queue will be added to the specified playlist.\n"
+"        if you use the `info` alias the playlist tracks will be displayed in a menu.\n"
+"        "
+msgstr "\n"
+"        Administrar una lista de reproducción.\n\n"
+"        Este comando puede ser usado para eliminar, borrar todas las pistas, añadir o quitar pistas o reproducir una lista de reproducción.\n\n"
+"        Si usas el alias `start` (`play` o `enqueue`) la lista de reproducción se reproducirá en lugar de mostrarte el menú de control.\n"
+"        Si utiliza el alias `delete` (`del`) la lista de reproducción se eliminará en lugar de que se le muestre el menú de control.\n"
+"        Si usas el alias `save` (`queue`) la cola actual se añadirá a la lista de reproducción especificada.\n"
+"        si utiliza el alias `info` las pistas de la lista de reproducción se mostrarán en un menú.\n"
+"        "
+
+#: plplaylists/cog/playlist_commands.py:207
+msgid "{user}, playlist {playlist_name} cannot be managed by yourself."
+msgstr "{user}, la lista de reproducción {playlist_name} no puede ser administrada por ti mismo."
+
+#: plplaylists/cog/playlist_commands.py:216
+msgid "(**1**){space} - Apply changes to playlist.\n"
+"(**2**){space} - Cancel any changes made and close the menu.\n"
+"(**3**){space} - Delete this playlist.\n"
+"(**4**){space} - Remove all tracks from this playlist.\n"
+"(**5**){space} - Update the playlist with the latest tracks.\n"
+"Please note that this action will ignore any tracks added/removed via this menu.\n"
+"(**6**){space} - Change the name of the playlist.\n"
+"(**7**){space} - Link this playlist to an existing playlist/album.\n"
+"(**8**){space} - Add a query to this playlist.\n"
+"(**9**){space} - Remove a query from this playlist.\n"
+"(**10**) - Download the playlist file.\n"
+"(**11**) - Add current playlist to the queue.\n"
+"(**12**) - Show tracks in current playlist.\n"
+"(**13**) - Add tracks from queue to this playlist.\n"
+"(**14**) - Remove duplicate entries in the playlist.\n\n"
+"The add/remove track buttons can be used multiple times to add/remove multiple tracks and playlists at once.\n\n"
+"A query is anything playable by the play command - any query can be used by the add/remove buttons\n\n"
+"The clear button will always be run first before any other operations.\n"
+"The URL button will always run last - Linking a playlist via the URL will overwrite any tracks added or removed to this playlist.\n\n"
+"If you interact with a button multiple times other than the add/remove buttons only the last interaction will take effect.\n\n\n"
+msgstr "(**1**){space} - Aplicar cambios a la lista de reproducción.\n"
+"(**2**){space} - Cancelar cualquier cambio hecho y cerrar el menú.\n"
+"(**3**){space} - Elimina esta lista.\n"
+"(**4**){space} - Quita todas las pistas de esta lista.\n"
+"(**5**){space} - Actualiza la lista de reproducción con las últimas pistas.\n"
+"Tenga en cuenta que esta acción ignorará cualquier pista añadida/eliminada a través de este menú.\n"
+"(**6**){space} - Cambia el nombre de la lista de reproducción.\n"
+"(**7**){space} - Vincula esta lista de reproducción a una lista de reproducción/álbum existente.\n"
+"(**8**){space} - Añade una consulta a esta lista de reproducción.\n"
+"(**9**){space} - Elimina una consulta de esta lista de reproducción.\n"
+"(**10**) - Descarga el archivo de la lista de reproducción.\n"
+"(**11**) - Añade la lista de reproducción actual a la cola.\n"
+"(**12**) - Mostrar pistas en la lista de reproducción actual.\n"
+"(**13**) - Añadir pistas de la cola a esta lista de reproducción.\n"
+"(**14**) - Eliminar entradas duplicadas en la lista de reproducción.\n\n"
+"Los botones de añadir/quitar pistas pueden utilizarse varias veces para añadir/eliminar múltiples pistas y listas de reproducción a la vez.\n\n"
+"Una consulta es cualquier cosa reproducible por el comando play - cualquier consulta puede ser utilizada por los botones de añadir/quitar\n\n"
+"El botón Borrar siempre se ejecutará antes de cualquier otra operación.\n"
+"El botón URL siempre se ejecutará en última instancia - El enlace de una lista de reproducción a través de la URL sobrescribirá cualquier pista añadida o eliminada a esta lista.\n\n"
+"Si interactúa con un botón varias veces aparte de los botones de añadir/quitar sólo la última interacción tendrá efecto.\n\n\n"
+
+#: plplaylists/cog/playlist_commands.py:242
+msgid "(**1**) - Close the menu.\n"
+"(**2**) - Update the playlist with the latest tracks.\n"
+"(**3**) - Download the playlist file.\n"
+"(**4**) - Add current playlist to the queue.\n"
+"(**5**) - Show tracks in current playlist.\n\n\n"
+msgstr "(**1**) - Cerrar el menú.\n"
+"(**2**) - Actualizar la lista de reproducción con las últimas pistas.\n"
+"(**3**) - Descargar el archivo de la lista de reproducción.\n"
+"(**4**) - Añadir lista de reproducción actual a la cola.\n"
+"(**5**) - Mostrar pistas en la lista de reproducción actual.\n\n\n"
+
+#: plplaylists/cog/playlist_commands.py:250
+msgid "**__Currently managing__**:\n"
+"**Name**:{space}{space}{space}{playlist_name}\n"
+"**Scope**:{space}{space}{space}{scope}\n"
+"**Author**:{space}{space}{author}\n"
+"**Tracks**:{space}{space}{space}{tracks} tracks\n"
+"**URL**:{space}{space}{space}{space}{space}{url}\n"
+msgstr "**__Actualmente gestionando__**:\n"
+"**Nombre**:{space}{space}{space}{playlist_name}\n"
+"**Alcance**:{space}{space}{space}{scope}\n"
+"**Autor**:{space}{space}{author}\n"
+"**Pistas**:{space}{space}{space}{tracks} pistas\n"
+"**URL**:{space}{space}{space}{space}{space}{url}\n"
+
+#: plplaylists/cog/playlist_commands.py:267
+msgid "Let's manage: {playlist_name}"
+msgstr "Vamos a gestionar: {playlist_name}"
+
+#: plplaylists/cog/playlist_commands.py:269
+msgid "Let's take a look at: {playlist_name}"
+msgstr "Echemos un vistazo a: {playlist_name}"
+
+#: plplaylists/cog/playlist_commands.py:276
+msgid "N/A"
+msgstr "N/A"
+
+#: plplaylists/cog/playlist_commands.py:300
+msgid "Playlist deleted."
+msgstr "Lista de reproducción eliminada."
+
+#: plplaylists/cog/playlist_commands.py:302
+msgid "{user}, playlist {playlist_name} has been deleted."
+msgstr "{user}, la lista de reproducción {playlist_name} ha sido eliminada."
+
+#: plplaylists/cog/playlist_commands.py:359
+msgid "Playlist **{playlist_name}** could not be updated with URL: <{url}>."
+msgstr "No se pudo actualizar la lista de reproducción **{playlist_name}** con la URL: <{url}>."
+
+#: plplaylists/cog/playlist_commands.py:395
+msgid "\n"
+"{track_count} {track_plural} removed from the playlist."
+msgstr "\n"
+"{track_count} {track_plural} eliminado de la lista de reproducción."
+
+#: plplaylists/cog/playlist_commands.py:396
+#: plplaylists/cog/playlist_commands.py:400
+msgid "track"
+msgstr "pista"
+
+#: plplaylists/cog/playlist_commands.py:396
+#: plplaylists/cog/playlist_commands.py:400
+msgid "tracks"
+msgstr "pistas"
+
+#: plplaylists/cog/playlist_commands.py:399
+msgid "\n"
+"{track_count} {track_plural} added to the playlist."
+msgstr "\n"
+"{track_count} {track_plural} añadido a la lista de reproducción."
+
+#: plplaylists/cog/playlist_commands.py:406
+msgid "Playlist updated."
+msgstr "Lista de reproducción actualizada."
+
+#: plplaylists/cog/playlist_commands.py:407
+msgid "{user}, playlist {playlist_name} has been updated.{extras}"
+msgstr "{user}, lista de reproducción {playlist_name} ha sido actualizada.{extras}"
+
+#: plplaylists/cog/playlist_commands.py:419
+msgid "Playlist unchanged."
+msgstr "Lista de reproducción sin cambios."
+
+#: plplaylists/cog/playlist_commands.py:420
+msgid "{user}, playlist {playlist_name} has not been updated."
+msgstr "{user}, la lista de reproducción {playlist_name} no ha sido actualizada."
+
+#: plplaylists/cog/playlist_commands.py:430
+#, docstring
+msgid "\n"
+"        Upload a playlist to the bot.\n\n"
+"        This command will upload a playlist to the bot.\n"
+"        The playlist can be uploaded by either the URL of the playlist file or by attaching the playlist file to the message.\n"
+"        "
+msgstr "\n"
+"        Sube una lista de reproducción al bot.\n\n"
+"        Este comando subirá una lista de reproducción al bot.\n"
+"        La lista de reproducción puede ser cargada por la URL del archivo de la lista de reproducción o adjuntando el archivo de la lista de reproducción al mensaje.\n"
+"        "
+
+#: plplaylists/cog/playlist_commands.py:447
+msgid "You must either provide a URL or attach a playlist file to upload a playlist."
+msgstr "Debe proporcionar una URL o adjuntar un archivo de lista de reproducción para subir una lista de reproducción."
+
+#: plplaylists/cog/playlist_commands.py:467
+msgid "No valid playlist file provided."
+msgstr "No se ha proporcionado un archivo de lista de reproducción válido."
+
+#: plplaylists/cog/playlist_commands.py:476
+msgid "Multiple playlist files provided - Currently only 1 per message is allowed."
+msgstr "Múltiples archivos de listas de reproducción proporcionados - Actualmente sólo se permite 1 por mensaje."
+
+#: plplaylists/cog/playlist_commands.py:494
+msgid "Failed to save any of the requested playlists."
+msgstr "Error al guardar cualquiera de las listas de reproducción solicitadas."
+
+#: plplaylists/cog/playlist_commands.py:503
+msgid "Failed to save the following playlists:\n"
+"{invalid_playlists}"
+msgstr "Error al guardar las siguientes listas:\n"
+"{invalid_playlists}"
+
+#: plplaylists/cog/playlist_commands.py:513
+msgid "Successfully saved the following playlists:\n"
+"{saved_playlists}"
+msgstr "Guardado con éxito las siguientes listas de reproducción:\n"
+"{saved_playlists}"
+
+#: plplaylists/cog/playlist_commands.py:538
+msgid "You must be in a voice channel to allow me to connect."
+msgstr "Debes estar en un canal de voz para permitirme conectar."
+
+#: plplaylists/cog/playlist_commands.py:546
+msgid "I don't have permission to connect or speak in {channel}."
+msgstr "No tengo permiso para conectar o hablar en {channel}."
+
+#: plplaylists/cog/playlist_commands.py:563
+msgid "Playlist"
+msgstr "Lista"
+
+#: plplaylists/cog/playlist_commands.py:568
+msgid "{track_count} tracks enqueued.{playlist_name}"
+msgstr "{track_count} pistas en cola.{playlist_name}"
+
