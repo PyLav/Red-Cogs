@@ -38,7 +38,7 @@ You can help translating the project into your language here:
 
 [![Crowdin](https://badges.crowdin.net/mediaplayer/localized.svg)](https://crowdin.com/project/mediaplayer).
 
-Shared code translation can be for here:
+Shared code translations can be found here:
 
 [![Crowdin](https://badges.crowdin.net/pylavshared/localized.svg)](https://crowdin.com/project/pylavshared)
 
