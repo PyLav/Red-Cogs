@@ -853,9 +853,10 @@ class PyLavNotifier(commands.Cog, Commands):
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track Skipped Event"),
-                description=_("{track} has been skipped.\nRequested by {requester}").format(
+                description=_("[Node={node}] {track} has been skipped.\nRequested by {requester}").format(
                     track=await event.track.get_track_display_name(with_url=True),
                     requester=user,
+                    node=event.player.node.name,
                 ),
                 messageable=player.notify_channel,
             )
@@ -878,12 +879,14 @@ class PyLavNotifier(commands.Cog, Commands):
             await self.lavalink.construct_embed(
                 title=_("Track Seek Event"),
                 description=_(
-                    "{requester} requested that {track} is sought from position {fro} to position {after}."
+                    "[Node={node}] {requester} requested that {track} "
+                    "is sought from position {fro} to position {after}."
                 ).format(
                     track=await event.track.get_track_display_name(with_url=True),
                     fro=format_time(event.before),
                     after=format_time(event.after),
                     requester=user,
+                    node=event.player.node.name,
                 ),
                 messageable=player.notify_channel,
             )
@@ -907,9 +910,10 @@ class PyLavNotifier(commands.Cog, Commands):
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track Previous Requested Event"),
-                description=_("{requester} requested that the previous track {track} be played.").format(
+                description=_("[Node={node}] {requester} requested that the previous track {track} be played.").format(
                     track=await event.track.get_track_display_name(with_url=True),
                     requester=user,
+                    node=event.player.node.name,
                 ),
                 messageable=player.notify_channel,
             )
@@ -933,8 +937,8 @@ class PyLavNotifier(commands.Cog, Commands):
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Tracks Requested Event"),
-                description=_("{requester} added {track_count} to the queue.").format(
-                    track_count=len(event.tracks), requester=user
+                description=_("[Node={node}] {requester} added {track_count} to the queue.").format(
+                    track_count=len(event.tracks), requester=user, node=event.player.node.name
                 ),
                 messageable=player.notify_channel,
             )
@@ -953,8 +957,8 @@ class PyLavNotifier(commands.Cog, Commands):
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track AutoPlay Event"),
-                description=_("Auto-playing {track}.").format(
-                    track=await event.track.get_track_display_name(with_url=True)
+                description=_("[Node={node}] Auto-playing {track}.").format(
+                    track=await event.track.get_track_display_name(with_url=True), node=event.player.node.name
                 ),
                 messageable=player.notify_channel,
             )
@@ -978,8 +982,10 @@ class PyLavNotifier(commands.Cog, Commands):
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Track Resumed Event"),
-                description=_("{requester} resumed {track}.").format(
-                    track=await event.track.get_track_display_name(with_url=True), requester=user
+                description=_("[Node={node}] {requester} resumed {track}.").format(
+                    track=await event.track.get_track_display_name(with_url=True),
+                    requester=user,
+                    node=event.player.node.name,
                 ),
                 messageable=player.notify_channel,
             )
@@ -1003,7 +1009,9 @@ class PyLavNotifier(commands.Cog, Commands):
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Queue Shuffled Event"),
-                description=_("{requester} shuffled the queue.").format(requester=user),
+                description=_("[Node={node}] {requester} shuffled the queue.").format(
+                    requester=user, node=event.player.node.name
+                ),
                 messageable=player.notify_channel,
             )
         )
@@ -1019,7 +1027,9 @@ class PyLavNotifier(commands.Cog, Commands):
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Queue End Event"),
-                description=_("All tracks in the queue have been played."),
+                description=_("[Node={node}] All tracks in the queue have been played.").format(
+                    node=event.player.node.name
+                ),
                 messageable=player.notify_channel,
             )
         )
@@ -1042,8 +1052,8 @@ class PyLavNotifier(commands.Cog, Commands):
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Tracks Removed Event"),
-                description=_("{requester} removed {track_count} tracks from the queue.").format(
-                    track_count=len(event.tracks), requester=user
+                description=_("[Node={node}] {requester} removed {track_count} tracks from the queue.").format(
+                    track_count=len(event.tracks), requester=user, node=event.player.node.name
                 ),
                 messageable=player.notify_channel,
             )
@@ -1067,7 +1077,9 @@ class PyLavNotifier(commands.Cog, Commands):
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Player Paused Event"),
-                description=_("{requester} paused the player.").format(requester=user),
+                description=_("[Node={node}] {requester} paused the player.").format(
+                    requester=user, node=event.player.node.name
+                ),
                 messageable=player.notify_channel,
             )
         )
@@ -1090,7 +1102,9 @@ class PyLavNotifier(commands.Cog, Commands):
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Player Stopped Event"),
-                description=_("{requester} stopped the player.").format(requester=user),
+                description=_("[Node={node}] {requester} stopped the player.").format(
+                    requester=user, node=event.player.node.name
+                ),
                 messageable=player.notify_channel,
             )
         )
@@ -1113,7 +1127,9 @@ class PyLavNotifier(commands.Cog, Commands):
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Player Resumed Event"),
-                description=_("{requester} resumed the player.").format(requester=user),
+                description=_("[Node={node}] {requester} resumed the player.").format(
+                    requester=user, node=event.player.node.name
+                ),
                 messageable=player.notify_channel,
             )
         )
@@ -1136,8 +1152,8 @@ class PyLavNotifier(commands.Cog, Commands):
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Player Moved Event"),
-                description=_("{requester} moved the player from {before} to {after}.").format(
-                    requester=user, before=event.before, after=event.after
+                description=_("[Node={node}] {requester} moved the player from {before} to {after}.").format(
+                    requester=user, before=event.before, after=event.after, node=event.player.node.name
                 ),
                 messageable=player.notify_channel,
             )
@@ -1161,7 +1177,9 @@ class PyLavNotifier(commands.Cog, Commands):
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Player Disconnected Event"),
-                description=_("{requester} disconnected the player.").format(requester=user),
+                description=_("[Node={node}] {requester} disconnected the player.").format(
+                    requester=user, node=event.player.node.name
+                ),
                 messageable=player.notify_channel,
             )
         )
@@ -1184,7 +1202,9 @@ class PyLavNotifier(commands.Cog, Commands):
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Player Connected Event"),
-                description=_("{requester} connected the player.").format(requester=user),
+                description=_("[Node={node}] {requester} connected the player.").format(
+                    requester=user, node=event.player.node.name
+                ),
                 messageable=player.notify_channel,
             )
         )
@@ -1207,8 +1227,8 @@ class PyLavNotifier(commands.Cog, Commands):
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Player Volume Changed Event"),
-                description=_("{requester} changed the player's volume from {before} to {after}.").format(
-                    requester=user, before=event.before, after=event.after
+                description=_("[Node={node}] {requester} changed the player's volume from {before} to {after}.").format(
+                    requester=user, before=event.before, after=event.after, node=event.player.node.name
                 ),
                 messageable=player.notify_channel,
             )
@@ -1234,7 +1254,9 @@ class PyLavNotifier(commands.Cog, Commands):
             self._message_queue[player.notify_channel].append(
                 await self.lavalink.construct_embed(
                     title=_("Player Repeat Event"),
-                    description=_("{requester} disabled repeat.").format(requester=user),
+                    description=_("[Node={node}] {requester} disabled repeat.").format(
+                        requester=user, node=event.player.node.name
+                    ),
                     messageable=player.notify_channel,
                 )
             )
@@ -1252,10 +1274,11 @@ class PyLavNotifier(commands.Cog, Commands):
             self._message_queue[player.notify_channel].append(
                 await self.lavalink.construct_embed(
                     title=_("Player Repeat Event"),
-                    description=_("{requester} {status} repeat for {track}.").format(
+                    description=_("[Node={node}] {requester} {status} repeat for {track}.").format(
                         requester=user,
                         status=_("enabled") if event.current_after else _("disabled"),
                         track=await event.player.current.get_track_display_name(with_url=True),
+                        node=event.player.node.name,
                     ),
                     messageable=player.notify_channel,
                 )
@@ -1279,7 +1302,9 @@ class PyLavNotifier(commands.Cog, Commands):
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Player Restored Event"),
-                description=_("{requester} restored the player.").format(requester=user),
+                description=_("[Node={node}] {requester} restored the player.").format(
+                    requester=user, node=event.player.node.name
+                ),
                 messageable=player.notify_channel,
             )
         )
@@ -1316,8 +1341,11 @@ class PyLavNotifier(commands.Cog, Commands):
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Sponsor Segment Skipped Event"),
-                description=_("Sponsorblock: Skipped {category} running from {start}s to {to}s.").format(
-                    category=explanation, start=segment.start // 1000, to=segment.end // 1000
+                description=_("[Node={node}] Sponsorblock: Skipped {category} running from {start}s to {to}s.").format(
+                    category=explanation,
+                    start=segment.start // 1000,
+                    to=segment.end // 1000,
+                    node=event.player.node.name,
                 ),
                 messageable=player.notify_channel,
             )
