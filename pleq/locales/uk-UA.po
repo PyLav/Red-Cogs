@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-08 15:16+0000\n"
-"PO-Revision-Date: 2022-05-08 15:23\n"
+"POT-Creation-Date: 2022-05-08 18:45+0000\n"
+"PO-Revision-Date: 2022-05-08 18:54\n"
 "Last-Translator: \n"
 "Language-Team: Ukrainian\n"
 "MIME-Version: 1.0\n"
@@ -17,8 +17,144 @@ msgstr ""
 "X-Crowdin-File-ID: 434\n"
 "Language: uk_UA\n"
 
-#: pleq/cog.py:20
+#: pleq/cog.py:27
 #, docstring
-msgid "Manage and applies equalizer profiles to the active PyLav player."
-msgstr "Керувати і застосовуйте профілі еквалайзера до активного гравця PyLav."
+msgid "Apply equalizer presets to the PyLav player."
+msgstr "Застосувати пресети еквалайзера до гравця PyLav ."
+
+#: pleq/cog.py:75
+msgid "This command requires an existing player to be run."
+msgstr "Ця команда вимагає для запуску існуючого гравця."
+
+#: pleq/cog.py:84
+msgid "MediaPlayer cog is currently temporarily unavailable due to an outage with the backend services, please try again later."
+msgstr "Програма MediaPlayer в даний час тимчасово недоступна через відключення з адміністративними послугами, будь ласка, спробуйте пізніше."
+
+#: pleq/cog.py:88
+msgid "No Lavalink node currently available."
+msgstr "На даний момент відсутній Лавалінковий вузол."
+
+#: pleq/cog.py:99
+msgid "MediaPlayer is currently unable to process tracks belonging to {feature}."
+msgstr "Наразі MediaPlayer не може обробити треки, що належать до {feature}."
+
+#: pleq/cog.py:102
+msgid "No Lavalink node currently available with feature {feature}."
+msgstr "На даний момент лаволінійний вузол не доступний за допомогою функції {feature}."
+
+#: pleq/cog.py:115
+msgid "This command is not available in this channel. Please use {channel}"
+msgstr "Ця команда недоступна у цьому каналі. Будь ласка, використовуйте {channel}"
+
+#: pleq/cog.py:131
+#, docstring
+msgid "Configure the Player behaviour when a preset is set."
+msgstr "Налаштування поведінки гравця при установці налаштувань."
+
+#: pleq/cog.py:135
+#, docstring
+msgid "Persist the last used preset."
+msgstr "Наполегливо продовжуйте останню використану пресет."
+
+#: pleq/cog.py:150
+msgid "The player will now apply the last used preset when it is created."
+msgstr "Тепер гравець застосовуватиме останнє використане пресет при створенні."
+
+#: pleq/cog.py:161
+msgid "Last used preset will no longer be saved."
+msgstr "Останній використаний пресет більше не збережеться."
+
+#: pleq/cog.py:174
+#, docstring
+msgid "Apply a Bass boost preset to the player.\n\n"
+"        The level is a value between 0 and 7.\n"
+"        "
+msgstr "Застосуйте передній план для підсвітки басу.\n\n"
+"        Рівень є значенням від 0 до 7.\n"
+"        "
+
+#: pleq/cog.py:184
+msgid "The level must be between 0 and 7."
+msgstr "Рівень має бути від 0 до 7."
+
+#: pleq/cog.py:194
+msgid "Bass boost preset has been disabled."
+msgstr "Пресет підсилення НЧ було вимкнено."
+
+#: pleq/cog.py:201
+msgid "Base boost - Maximum"
+msgstr "Базовий підбір - максимальний"
+
+#: pleq/cog.py:205
+msgid "Base boost - Insane"
+msgstr "Базове підсилення - Божевілля"
+
+#: pleq/cog.py:209
+msgid "Base boost - Extreme"
+msgstr "Базове підсилення - Екстремальне"
+
+#: pleq/cog.py:213
+msgid "Base boost - Very high"
+msgstr "Підсилення основи - дуже високий"
+
+#: pleq/cog.py:217
+msgid "Base boost - High"
+msgstr "Підсилення основи - високе"
+
+#: pleq/cog.py:221
+msgid "Base boost - Medium"
+msgstr "Підсилення основи - середній"
+
+#: pleq/cog.py:225
+msgid "Base boost - Cut-off"
+msgstr "Базове підсилення - вирізання"
+
+#: pleq/cog.py:237
+msgid "Preset has been set to {name}."
+msgstr "Шаблон був встановлений на {name}."
+
+#: pleq/cog.py:244
+#, docstring
+msgid "Apply a Piano preset to the player.\n\n"
+"        Suitable for acoustic tracks, or tacks with an emphasis on female vocals.\n\n"
+"        Can also be used as a bass cut-off.\n"
+"        "
+msgstr "Застосувати пресет піаніно до гравця.\n\n"
+"        Підходить для акустичних шляхів, або доторків з акцентом на жіночий вокал.\n\n"
+"        можна використовувати як відрізки басів.\n"
+"        "
+
+#: pleq/cog.py:268
+msgid "Piano"
+msgstr "Піаніно"
+
+#: pleq/cog.py:281
+msgid "Piano preset has been set."
+msgstr "Пресет фортепіано встановлено."
+
+#: pleq/cog.py:288
+#, docstring
+msgid "Apply an experimental Metal/Rock equalizer preset.\n\n"
+"        Expect clipping on songs with heavy bass.\n"
+"        "
+msgstr "Застосуйте експериментальний пресет Metal/Rock еквалайзера.\n\n"
+"        Очікуйте на скорочення пісень з важкими басами.\n"
+"        "
+
+#: pleq/cog.py:312
+msgid "Metal"
+msgstr "Метал"
+
+#: pleq/cog.py:324
+msgid "Rock/Metal preset has been set."
+msgstr "Пресет Rock/Metal був встановлений."
+
+#: pleq/cog.py:331
+#, docstring
+msgid "Remove any equalizer preset from the player."
+msgstr "Видалити будь-який пресет еквалайзера від гравця."
+
+#: pleq/cog.py:344
+msgid "Equalizer preset has been reset."
+msgstr "Налаштування еквалайзера були скинуті."
 

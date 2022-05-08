@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-08 15:16+0000\n"
-"PO-Revision-Date: 2022-05-08 15:21\n"
+"POT-Creation-Date: 2022-05-08 18:45+0000\n"
+"PO-Revision-Date: 2022-05-08 18:53\n"
 "Last-Translator: \n"
 "Language-Team: Arabic, Saudi Arabia\n"
 "MIME-Version: 1.0\n"
@@ -17,8 +17,144 @@ msgstr ""
 "X-Crowdin-File-ID: 434\n"
 "Language: ar_SA\n"
 
-#: pleq/cog.py:20
+#: pleq/cog.py:27
 #, docstring
-msgid "Manage and applies equalizer profiles to the active PyLav player."
-msgstr "إدارة ملفات تعريف المعادل وتطبيقها على لاعب PyLav النشط."
+msgid "Apply equalizer presets to the PyLav player."
+msgstr "تطبيق الإعداد المسبق للمعادل على لاعب بيلاف."
+
+#: pleq/cog.py:75
+msgid "This command requires an existing player to be run."
+msgstr "يتطلب هذا الأمر تشغيل مشغل موجود."
+
+#: pleq/cog.py:84
+msgid "MediaPlayer cog is currently temporarily unavailable due to an outage with the backend services, please try again later."
+msgstr "كود MediaPlayer غير متوفر حاليا بشكل مؤقت بسبب انقطاع مع خدمات الخلفية، الرجاء المحاولة مرة أخرى لاحقا."
+
+#: pleq/cog.py:88
+msgid "No Lavalink node currently available."
+msgstr "لا توجد عقدة فارغة متاحة حاليا."
+
+#: pleq/cog.py:99
+msgid "MediaPlayer is currently unable to process tracks belonging to {feature}."
+msgstr "MediaPlayer غير قادر حاليا على معالجة المسارات التي تخص {feature}."
+
+#: pleq/cog.py:102
+msgid "No Lavalink node currently available with feature {feature}."
+msgstr "لا توجد عقدة فارغة متاحة حاليا مع الميزة {feature}."
+
+#: pleq/cog.py:115
+msgid "This command is not available in this channel. Please use {channel}"
+msgstr "هذا الأمر غير متوفر في هذه القناة. الرجاء استخدام {channel}"
+
+#: pleq/cog.py:131
+#, docstring
+msgid "Configure the Player behaviour when a preset is set."
+msgstr "تكوين سلوك اللاعب عند تعيين الإعداد المسبق."
+
+#: pleq/cog.py:135
+#, docstring
+msgid "Persist the last used preset."
+msgstr "الحفاظ على آخر استخدام مسبقاً."
+
+#: pleq/cog.py:150
+msgid "The player will now apply the last used preset when it is created."
+msgstr "سيطبق اللاعب الآن آخر ضبط مسبق مستخدم عند إنشائه."
+
+#: pleq/cog.py:161
+msgid "Last used preset will no longer be saved."
+msgstr "آخر تعيين مستخدم مسبقاً لن يتم حفظه."
+
+#: pleq/cog.py:174
+#, docstring
+msgid "Apply a Bass boost preset to the player.\n\n"
+"        The level is a value between 0 and 7.\n"
+"        "
+msgstr "تطبيق التعزيز المسبق للاعب.\n\n"
+"        المستوى هو قيمة بين 0 و 7.\n"
+"        "
+
+#: pleq/cog.py:184
+msgid "The level must be between 0 and 7."
+msgstr "ويجب أن يكون المستوى بين صفر و 7."
+
+#: pleq/cog.py:194
+msgid "Bass boost preset has been disabled."
+msgstr "تم تعطيل الإعداد المسبق للتحسين العلوي."
+
+#: pleq/cog.py:201
+msgid "Base boost - Maximum"
+msgstr "تعزيز القاعدة - الحد الأقصى"
+
+#: pleq/cog.py:205
+msgid "Base boost - Insane"
+msgstr "تحسين القاعدة - غير سليم"
+
+#: pleq/cog.py:209
+msgid "Base boost - Extreme"
+msgstr "تعزيز القاعدة - متطرفة"
+
+#: pleq/cog.py:213
+msgid "Base boost - Very high"
+msgstr "تعزيز القاعدة - عالي جدا"
+
+#: pleq/cog.py:217
+msgid "Base boost - High"
+msgstr "تعزيز القاعدة - ارتفاع"
+
+#: pleq/cog.py:221
+msgid "Base boost - Medium"
+msgstr "تعزيز القاعدة - متوسط"
+
+#: pleq/cog.py:225
+msgid "Base boost - Cut-off"
+msgstr "تعزيز القاعدة - إيقاف التشغيل"
+
+#: pleq/cog.py:237
+msgid "Preset has been set to {name}."
+msgstr "تم تعيين الإعداد المسبق إلى {name}."
+
+#: pleq/cog.py:244
+#, docstring
+msgid "Apply a Piano preset to the player.\n\n"
+"        Suitable for acoustic tracks, or tacks with an emphasis on female vocals.\n\n"
+"        Can also be used as a bass cut-off.\n"
+"        "
+msgstr "تطبيق الإعداد المسبق للبيانو على اللاعب.\n\n"
+"        مناسب للمسارات الصوتية، أو السبائك مع التأكيد على صوت الإناث.\n\n"
+"        يمكن أيضا أن تستخدم كقطع باس.\n"
+"        "
+
+#: pleq/cog.py:268
+msgid "Piano"
+msgstr "بيانو"
+
+#: pleq/cog.py:281
+msgid "Piano preset has been set."
+msgstr "تم تعيين Piano مسبقاً."
+
+#: pleq/cog.py:288
+#, docstring
+msgid "Apply an experimental Metal/Rock equalizer preset.\n\n"
+"        Expect clipping on songs with heavy bass.\n"
+"        "
+msgstr "تطبيق نموذج معادل معدني/صخري تجريبي مسبقاً.\n\n"
+"        توقع القفز على الأغاني مع قواعد ثقيلة.\n"
+"        "
+
+#: pleq/cog.py:312
+msgid "Metal"
+msgstr "معدن"
+
+#: pleq/cog.py:324
+msgid "Rock/Metal preset has been set."
+msgstr "تم تعيين الصخور/المعادن مسبقاً."
+
+#: pleq/cog.py:331
+#, docstring
+msgid "Remove any equalizer preset from the player."
+msgstr "إزالة أي معامل مساواة مسبقاً من اللاعب."
+
+#: pleq/cog.py:344
+msgid "Equalizer preset has been reset."
+msgstr "تم إعادة تعيين المعادل مسبقاً."
 
