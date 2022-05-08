@@ -2,7 +2,7 @@
     "author": [
         "Draper"
     ],
-    "description": "A simple cog to migrate all compatible settings from Red's Audio cog to PyLav.\nHelp translate the project to your language by contributing to <https://crowdin.com/project/pylavshared> and <https://crowdin.com/project/mediaplayer>; Translations will be made available as an update shortly after they are translated on Crowdin.",
+    "description": "Commands to manage the players equalizer.\nHelp translate the project to your language by contributing to <https://crowdin.com/project/pylavshared> and <https://crowdin.com/project/mediaplayer>; Translations will be made available as an update shortly after they are translated on Crowdin.",
     "disabled": false,
     "end_user_data_statement": "This cog will store user info needed for its functions - for example user IDs to remember user specific settings.",
     "hidden": false,
@@ -13,23 +13,25 @@
         9,
         0
     ],
-    "name": "PyLavMigrator",
-    "permissions": [],
+    "name": "PyLavEqualizer",
+    "permissions": [
+        "embed_links"
+    ],
     "required_cogs": {},
     "requirements": [
         "pylav",
         "pylavcogs-shared"
     ],
-    "short": "Convert your Audio settings to PyLav.",
+    "short": "Commands to manage the players equalizer.",
     "tags": [
         "audio",
         "music",
         "media player",
         "lavalink",
         "pylav",
-        "settings",
-        "migration",
-        "PyLav"
+        "PyLav",
+        "eq",
+        "equalizer"
     ],
     "type": "COG"
 }
