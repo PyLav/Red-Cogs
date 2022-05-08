@@ -56,7 +56,7 @@ class PyLavPlayer(
         self.bot = bot
         self.lavalink = Client(bot=self.bot, cog=self, config_folder=cog_data_path(raw_name="PyLav"))
         self.config = Config.get_conf(self, identifier=208903205982044161)
-        self.config.register_guild(enable_slash=True, enable_context=False)
+        self.config.register_guild(enable_slash=True, enable_context=True)
         self.config.register_global(
             enable_slash=False,
             enable_context=False,
