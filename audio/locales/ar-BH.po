@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-04-28 10:58+0100\n"
-"PO-Revision-Date: 2022-04-28 10:17\n"
+"POT-Creation-Date: 2022-05-08 15:16+0000\n"
+"PO-Revision-Date: 2022-05-08 15:21\n"
 "Last-Translator: \n"
 "Language-Team: Arabic, Bahrain\n"
 "MIME-Version: 1.0\n"
@@ -13,7 +13,532 @@ msgstr ""
 "X-Crowdin-Project: mediaplayer\n"
 "X-Crowdin-Project-ID: 512604\n"
 "X-Crowdin-Language: ar-BH\n"
-"X-Crowdin-File: /locales/messages.pot\n"
-"X-Crowdin-File-ID: 18\n"
+"X-Crowdin-File: /audio/locales/messages.pot\n"
+"X-Crowdin-File-ID: 150\n"
 "Language: ar_BH\n"
+
+#: audio/cog.py:50
+#, docstring
+msgid "A Media player using the PyLav library."
+msgstr "مشغل وسائط يستخدم مكتبة بيلاف."
+
+#: audio/cog.py:127
+msgid "This command requires an existing player to be run."
+msgstr "يتطلب هذا الأمر تشغيل مشغل موجود."
+
+#: audio/cog.py:136
+msgid "MediaPlayer cog is currently temporarily unavailable due to an outage with the backend services, please try again later."
+msgstr "كود MediaPlayer غير متوفر حاليا بشكل مؤقت بسبب انقطاع مع خدمات الخلفية، الرجاء المحاولة مرة أخرى لاحقا."
+
+#: audio/cog.py:140
+msgid "No Lavalink node currently available."
+msgstr "لا توجد عقدة فارغة متاحة حاليا."
+
+#: audio/cog.py:151
+msgid "MediaPlayer is currently unable to process tracks belonging to {feature}."
+msgstr "MediaPlayer غير قادر حاليا على معالجة المسارات التي تخص {feature}."
+
+#: audio/cog.py:154
+msgid "No Lavalink node currently available with feature {feature}."
+msgstr "لا توجد عقدة فارغة متاحة حاليا مع الميزة {feature}."
+
+#: audio/cog.py:167 audio/context_menus.py:48 audio/context_menus.py:122
+msgid "This command is not available in this channel. Please use {channel}"
+msgstr "هذا الأمر غير متوفر في هذه القناة. الرجاء استخدام {channel}"
+
+#: audio/config_commands.py:25
+#, docstring
+msgid "Player configuration commands."
+msgstr "أوامر تكوين اللاعب."
+
+#: audio/config_commands.py:30
+#, docstring
+msgid "Global configuration options."
+msgstr "خيارات التكوين العالمي."
+
+#: audio/config_commands.py:34
+#, docstring
+msgid "Set the maximum volume server can set."
+msgstr "تعيين الحد الأقصى لصوت الخادم يمكن تعيينه."
+
+#: audio/config_commands.py:43
+msgid "Volume must be between 0 and 1000%."
+msgstr "يجب أن يكون الحجم بين 0 و 1000%."
+
+#: audio/config_commands.py:53 audio/config_commands.py:241
+msgid "Max volume set to {volume}%."
+msgstr "تم تعيين الحد الأقصى للصوت إلى {volume}%."
+
+#: audio/config_commands.py:61 audio/config_commands.py:249
+#, docstring
+msgid "Set whether the bot should deafen itself when playing."
+msgstr "تعيين ما إذا كان البوت يجب أن يصم نفسه عند اللعب."
+
+#: audio/config_commands.py:71 audio/config_commands.py:276
+msgid "Deafen set to {deafen}."
+msgstr "تم تعيين الصم إلى {deafen}."
+
+#: audio/config_commands.py:71 audio/config_commands.py:90
+#: audio/config_commands.py:108 audio/config_commands.py:148
+#: audio/config_commands.py:186 audio/config_commands.py:276
+#: audio/config_commands.py:312 audio/config_commands.py:347
+#: audio/config_commands.py:408 audio/config_commands.py:467
+msgid "Enabled"
+msgstr "تمكين"
+
+#: audio/config_commands.py:71 audio/config_commands.py:90
+#: audio/config_commands.py:108 audio/config_commands.py:148
+#: audio/config_commands.py:186 audio/config_commands.py:276
+#: audio/config_commands.py:312 audio/config_commands.py:347
+#: audio/config_commands.py:408 audio/config_commands.py:467
+msgid "Disabled"
+msgstr "معطل"
+
+#: audio/config_commands.py:79 audio/config_commands.py:284
+#, docstring
+msgid "Set whether the bot should shuffle its queue after every new song."
+msgstr "تعيين ما إذا كان البوت يجب أن يغير قائمة الانتظار الخاصة به بعد كل أغنية جديدة."
+
+#: audio/config_commands.py:90 audio/config_commands.py:312
+msgid "Shuffle set to {shuffle}."
+msgstr "تعيين خلط إلى {shuffle}."
+
+#: audio/config_commands.py:98 audio/config_commands.py:320
+#, docstring
+msgid "Set whether the bot should automatically play songs when it's queue is empty."
+msgstr "تعيين ما إذا كان البوت يجب أن يشغل الأغاني تلقائياً عندما يكون قائمة الانتظار فارغاً."
+
+#: audio/config_commands.py:108 audio/config_commands.py:347
+msgid "Auto-Play set to {auto}."
+msgstr "تعيين التشغيل التلقائي إلى {auto}."
+
+#: audio/config_commands.py:116 audio/config_commands.py:355
+#, docstring
+msgid "Set whether the bot should disconnect from the voice voice channel."
+msgstr "تعيين ما إذا كان يجب قطع اتصال البوت من قناة الصوت."
+
+#: audio/config_commands.py:126
+#, docstring
+msgid "Set whether the bot should disconnect from the voice voice channel when the queue is empty.\n\n"
+"        Arguments:\n"
+"            - `<toggle>`: Whether the bot should disconnect from the voice voice channel when the queue is empty.\n"
+"            - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60 seconds.\n"
+"            Accepts: seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
+"        "
+msgstr "تعيين ما إذا كان يجب قطع اتصال البوت من قناة الصوت عندما تكون قائمة الانتظار فارغة.\n\n"
+"        حجج:\n"
+"            - `<toggle>`: ما إذا كان يجب قطع اتصال البوت من القناة الصوتية عندما يكون قائمة الانتظار فارغاً.\n"
+"            -<duration>`: كم من الوقت بعد أن يكون قائمة الانتظار فارغاً إذا تم فصل اللاعب. الافتراضي هو 60 ثانية.\n"
+"            قبول: ثواني، دقائق، ساعات، أيام، أسابيع (إذا لم يتم تحديد وحدة، ويُفترض أن تكون المدة محددة في ثوانٍ)\n"
+"        "
+
+#: audio/config_commands.py:142 audio/config_commands.py:179
+#: audio/config_commands.py:402 audio/config_commands.py:460
+msgid " and players will be disconnected after {duration}."
+msgstr " وسيتم قطع اتصال اللاعبين بعد {duration}."
+
+#: audio/config_commands.py:147 audio/config_commands.py:407
+msgid "Disconnect from voice channel when queue is empty set to {empty}{extras}."
+msgstr "قطع الاتصال بالقناة الصوتية عندما يتم تعيين قائمة الانتظار فارغة إلى {empty}{extras}."
+
+#: audio/config_commands.py:163
+#, docstring
+msgid "Set whether the bot should disconnect from the voice voice channel when alone.\n\n"
+"        Arguments:\n"
+"            - `<toggle>`: Whether the bot should disconnect from the voice voice channel when it detects that it is alone.\n"
+"            - `<duration>`: How longer after detecting should the player be disconnected Default is 60 seconds.\n"
+"            Accepts: seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
+"        "
+msgstr "تعيين ما إذا كان يجب قطع اتصال البوت من قناة الصوت عندما يكون ذلك وحده.\n\n"
+"        الحججة:\n"
+"            - `<toggle>`: ما إذا كان البوت يجب أن ينفصل عن القناة الصوتية عندما يكتشف أنها وحدها.\n"
+"            -<duration>`: ما هو الوقت الذي يستغرقه الكشف عن أنه ينبغي قطع اتصال اللاعب الافتراضي هو 60 ثانية.\n"
+"            قبول: ثواني، دقائق، ساعات، أيام، أسابيع (إذا لم يتم تحديد وحدة، ويُفترض أن تكون المدة محددة في ثوانٍ)\n"
+"        "
+
+#: audio/config_commands.py:185 audio/config_commands.py:466
+msgid "Disconnect from voice channel when alone set to {empty}{extras}."
+msgstr "قطع الاتصال بالقناة الصوتية عندما يتم تعيينه بمفرده إلى {empty}{extras}."
+
+#: audio/config_commands.py:197
+#, docstring
+msgid "Server configuration options."
+msgstr "خيارات تكوين الخادم."
+
+#: audio/config_commands.py:201
+#, docstring
+msgid "Set the maximum volume a user can set."
+msgstr "تعيين الحد الأقصى للصوت الذي يمكن للمستخدم تعيينه."
+
+#: audio/config_commands.py:210 audio/config_commands.py:228
+msgid "Volume must be between 0 and {volume}%."
+msgstr "يجب أن يكون الحجم بين 0 و {volume}%."
+
+#: audio/config_commands.py:258
+msgid "My owner told me to always deafen myself."
+msgstr "أخبرني مالكي أن أصم نفسي دائما."
+
+#: audio/config_commands.py:294
+msgid "Shuffle is globally disabled."
+msgstr "الخلط معطل عالمياً."
+
+#: audio/config_commands.py:329
+msgid "Auto-Play is globally disabled."
+msgstr "اللعب التلقائي معطل عالمياً."
+
+#: audio/config_commands.py:365
+#, docstring
+msgid "Set whether the bot should disconnect from the voice voice channel when the queue is empty.\n\n"
+"        Arguments:\n"
+"            - `<toggle>`: Whether the bot should disconnect from the voice voice channel when the queue is empty.\n"
+"            - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60\n"
+"            seconds.\n"
+"            Accepts: seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be\n"
+"            given in seconds)\n"
+"        "
+msgstr "تعيين ما إذا كان يجب قطع اتصال البوت من قناة الصوت عندما تكون قائمة الانتظار فارغة.\n\n"
+"        حجج:\n"
+"            - `<toggle>`: ما إذا كان يجب قطع اتصال البوت من القناة الصوتية عندما يكون قائمة الانتظار فارغاً.\n"
+"            -<duration>`: كم من الوقت بعد أن يكون قائمة الانتظار فارغاً إذا تم فصل اللاعب. الافتراضي هو 60\n"
+"            ثانية.\n"
+"            قبول: ثواني، دقائق، ساعات، أيام، أسابيع (إذا لم يتم تحديد وحدة، يُفترض أن تكون المدة\n"
+"            في ثوانٍ)\n"
+"        "
+
+#: audio/config_commands.py:383
+msgid "Disconnect when the queue finished is globally enable and players will be disconnected after {delta}."
+msgstr "قطع الاتصال عند انتهاء قائمة الانتظار تمكين عالمي وسيتم قطع اتصال اللاعبين بعد {delta}."
+
+#: audio/config_commands.py:423
+#, docstring
+msgid "Set whether the bot should disconnect from the voice voice channel when alone.\n\n"
+"        Arguments:\n"
+"            - `<toggle>`: Whether the bot should disconnect from the voice voice channel when it detects that it is\n"
+"            alone.\n"
+"            - `<duration>`: How longer after detecting should the player be disconnected Default is 60 seconds.\n"
+"            Accepts: seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be\n"
+"            given in seconds)\n"
+"        "
+msgstr "تعيين ما إذا كان يجب قطع اتصال البوت من قناة الصوت عندما يكون ذلك وحده.\n\n"
+"        الحججة:\n"
+"            - `<toggle>`: ما إذا كان البوت يجب أن ينفصل عن القناة الصوتية عندما يكتشف أنها\n"
+"            وحدها.\n"
+"            - `<duration>`: ما هو الوقت الذي يستغرقه الكشف عن ضرورة قطع اتصال اللاعب الافتراضي هو 60 ثانية.\n"
+"            قبول: ثواني، دقائق، ساعات، أيام، أسابيع (إذا لم يتم تحديد وحدة، يُفترض أن تكون المدة\n"
+"            في ثوانٍ)\n"
+"        "
+
+#: audio/config_commands.py:442
+msgid "Disconnect when alone is globally enable and players will be disconnected after {delta}."
+msgstr "قطع الاتصال عندما يكون وحده ممكنا عالميا وسيتم قطع اتصال اللاعبين بعد {delta}."
+
+#: audio/config_commands.py:476
+#, docstring
+msgid "Sets the Auto-Play playlist."
+msgstr "تعيين قائمة التشغيل التلقائي."
+
+#: audio/config_commands.py:494
+msgid "Auto-Play playlist set to {playlist}."
+msgstr "تم تعيين قائمة التشغيل التلقائي إلى {playlist}."
+
+#: audio/config_commands.py:502
+#, docstring
+msgid "Set the channel locks."
+msgstr "تعيين قفل القناة."
+
+#: audio/config_commands.py:508
+#, docstring
+msgid "Set the channel lock for commands."
+msgstr "تعيين قفل القناة للأوامر."
+
+#: audio/config_commands.py:524
+msgid "I don't have permission to send message or send embed links or read messages in {channel}."
+msgstr "ليس لدي إذن لإرسال رسالة أو إرسال روابط مضمنة أو قراءة رسائل في {channel}."
+
+#: audio/config_commands.py:544
+msgid "I will only listen to commands in {channel}."
+msgstr "سأستمع فقط للأوامر في {channel}."
+
+#: audio/config_commands.py:552
+msgid "I will listen to commands in all channels I can see."
+msgstr "سأستمع إلى الأوامر في جميع القنوات التي أستطيع رؤيتها."
+
+#: audio/config_commands.py:560
+#, docstring
+msgid "Set the channel lock for voice channels."
+msgstr "تعيين قفل القناة للقنوات الصوتية."
+
+#: audio/config_commands.py:572 audio/hybrid_commands.py:88
+msgid "I don't have permission to connect or speak in {channel}."
+msgstr "ليس لدي إذن للاتصال أو التحدث في {channel}."
+
+#: audio/config_commands.py:594
+msgid "I will only be allowed to join {channel}."
+msgstr "سوف يسمح لي فقط بالانضمام إلى {channel}."
+
+#: audio/config_commands.py:601
+msgid "I'm free to join any VC."
+msgstr "أنا حر في الانضمام إلى أي VC."
+
+#: audio/context_menus.py:21
+msgid "Currently I don't support parsing content from inside an embed message."
+msgstr "حاليا لا أدعم تحليل المحتوى من داخل رسالة مضمنة."
+
+#: audio/context_menus.py:32 audio/context_menus.py:106
+msgid "I can't play songs in DMs."
+msgstr "لا أستطيع تشغيل الأغاني في DM."
+
+#: audio/context_menus.py:72
+msgid "I couldn't find any valid matches in your message."
+msgstr "لم أستطع العثور على أي مطابقات صالحة في رسالتك."
+
+#: audio/context_menus.py:83
+msgid "I found multiple valid matches in your message."
+msgstr "وجدت عدة مطابقات صالحة في رسالتك."
+
+#: audio/context_menus.py:92
+msgid "I found a single valid match in your message."
+msgstr "وجدت تطابق صالح واحد في رسالتك."
+
+#: audio/context_menus.py:138
+msgid "{user} is not listening to anything on Spotify."
+msgstr "{user} لا يستمع إلى أي شيء على سبوتيفي."
+
+#: audio/context_menus.py:153
+msgid "Couldn't figure out what {user} is listening to."
+msgstr "تعذر معرفة ما يستمع إليه {user}."
+
+#: audio/hybrid_commands.py:64
+msgid "You need to provide a query to play."
+msgstr "يجب عليك تقديم استعلام للعب."
+
+#: audio/hybrid_commands.py:78
+msgid "You must be in a voice channel to allow me to connect."
+msgstr "يجب أن تكون في قناة صوتية للسماح لي بالاتصال."
+
+#: audio/hybrid_commands.py:132
+msgid "{track_count} tracks enqueued."
+msgstr "{track_count} مسارات في قائمة الانتظار."
+
+#: audio/hybrid_commands.py:140
+msgid "{track} enqueued."
+msgstr "{track} في قائمة الانتظار."
+
+#: audio/hybrid_commands.py:150
+msgid "No tracks were found for your query."
+msgstr "لم يتم العثور على أي مسارات لاستفسارك."
+
+#: audio/hybrid_commands.py:173
+msgid "You need to be in a voice channel if you don't specify which channel I need to connect to."
+msgstr "يجب أن تكون في قناة صوتية إذا لم تحدد القناة التي أحتاج إلى الاتصال بها."
+
+#: audio/hybrid_commands.py:183
+msgid "I don't have permission to connect to that channel."
+msgstr "ليس لدي إذن للاتصال بتلك القناة."
+
+#: audio/hybrid_commands.py:185
+msgid "I don't have permission to speak in {channel}."
+msgstr "ليس لدي إذن للتحدث في {channel}."
+
+#: audio/hybrid_commands.py:188
+msgid "I don't have permission to connect to {channel}."
+msgstr "ليس لدي إذن للاتصال بـ {channel}."
+
+#: audio/hybrid_commands.py:202
+msgid "I'm forced to only join {channel}."
+msgstr "أجبر على الانضمام إلى {channel} فقط."
+
+#: audio/hybrid_commands.py:210
+msgid "Connected to {channel}"
+msgstr "متصل بـ {channel}"
+
+#: audio/hybrid_commands.py:226 audio/hybrid_commands.py:252
+#: audio/hybrid_commands.py:292 audio/hybrid_commands.py:323
+#: audio/hybrid_commands.py:347 audio/hybrid_commands.py:369
+#: audio/hybrid_commands.py:404 audio/hybrid_commands.py:437
+#: audio/hybrid_commands.py:471 audio/hybrid_commands.py:508
+#: audio/hybrid_commands.py:558 audio/hybrid_commands.py:655
+msgid "No player detected."
+msgstr "لم يتم اكتشاف أي لاعب."
+
+#: audio/hybrid_commands.py:233 audio/hybrid_commands.py:259
+#: audio/hybrid_commands.py:299
+msgid "Player is not currently playing anything."
+msgstr "لا يقوم اللاعب حاليا بتشغيل أي شيء."
+
+#: audio/hybrid_commands.py:267
+msgid "Skipped - {track}"
+msgstr "تخطي - {track}"
+
+#: audio/hybrid_commands.py:276
+msgid "Autoplay started."
+msgstr "بدأ التشغيل التلقائي."
+
+#: audio/hybrid_commands.py:306
+msgid "Player stopped"
+msgstr "توقف اللاعب"
+
+#: audio/hybrid_commands.py:331
+msgid "Disconnected from {channel}"
+msgstr "قطع الاتصال من {channel}"
+
+#: audio/hybrid_commands.py:376
+msgid "There is nothing in the queue."
+msgstr "لا يوجد شيء في قائمة الانتظار."
+
+#: audio/hybrid_commands.py:384
+msgid "{queue_size} tracks shuffled"
+msgstr "{queue_size} مسارات معبأة"
+
+#: audio/hybrid_commands.py:410
+msgid "Repeating the queue"
+msgstr "تكرار قائمة الانتظار"
+
+#: audio/hybrid_commands.py:414
+msgid "Repeating disabled"
+msgstr "التكرار معطل"
+
+#: audio/hybrid_commands.py:417
+msgid "Repeating {track}"
+msgstr "تكرار {track}"
+
+#: audio/hybrid_commands.py:420
+msgid "current track"
+msgstr "المسار الحالي"
+
+#: audio/hybrid_commands.py:443
+msgid "Player already paused did you mean to run `/resume`."
+msgstr "قام اللاعب بإيقاف مؤقت بالفعل بقصد تشغيل `/starme`."
+
+#: audio/hybrid_commands.py:445 audio/hybrid_commands.py:479
+msgid "Player already paused did you mean to run `{prefix}{command}`."
+msgstr "قام اللاعب بإيقاف مؤقت بالفعل بقصد تشغيل `{prefix}{command}`."
+
+#: audio/hybrid_commands.py:456
+msgid "Player paused."
+msgstr "إيقاف اللاعب مؤقتاً."
+
+#: audio/hybrid_commands.py:477
+msgid "Player already paused did you mean to run `/pause`."
+msgstr "قام اللاعب بإيقاف مؤقت بالفعل بقصد تشغيل `/توقف مؤقت`."
+
+#: audio/hybrid_commands.py:490
+msgid "Player resumed."
+msgstr "استؤنف اللاعب."
+
+#: audio/hybrid_commands.py:524
+msgid "Volume cannot be higher than {max_volume}."
+msgstr "لا يمكن أن يكون المجلد أعلى من {max_volume}."
+
+#: audio/hybrid_commands.py:533 audio/utility_commands.py:64
+msgid "Player volume set to {volume}%."
+msgstr "تم تعيين مستوى صوت اللاعب إلى {volume}%."
+
+#: audio/hybrid_commands.py:565
+msgid "Nothing playing."
+msgstr "لا شيء يلعب."
+
+#: audio/hybrid_commands.py:574
+msgid "Unable to seek track"
+msgstr "غير قادر على البحث عن المسار"
+
+#: audio/hybrid_commands.py:575
+msgid "Can't seek on a stream."
+msgstr "لا يمكن البحث عن البث"
+
+#: audio/hybrid_commands.py:583
+msgid "Unable to seek track."
+msgstr "غير قادر على البحث عن المسار."
+
+#: audio/hybrid_commands.py:592
+msgid "Cannot seek when the player is paused."
+msgstr "لا يمكن البحث عند إيقاف اللاعب مؤقتاً."
+
+#: audio/hybrid_commands.py:605
+msgid "Moved {seconds}s to 00:00:00."
+msgstr "نقل {seconds}ث إلى 00:00:00."
+
+#: audio/hybrid_commands.py:612
+msgid "Moved {seconds}s to {time}."
+msgstr "نقل {seconds}ثانية إلى {time}."
+
+#: audio/hybrid_commands.py:633
+msgid "Moved to {time}."
+msgstr "تم نقلها إلى {time}."
+
+#: audio/hybrid_commands.py:663
+msgid "No previous in player history."
+msgstr "لا سابقة في سجل اللاعب."
+
+#: audio/hybrid_commands.py:671
+msgid "Playing previous track: {track}."
+msgstr "تشغيل المسار السابق: {track}."
+
+#: audio/player_commands.py:22
+#, docstring
+msgid "\n"
+"        Plays the specified track in the queue.\n\n"
+"        If you specify the `after_current` argument, the track will be played after the current track, otherwise it will replace the current track\n"
+"        "
+msgstr "\n"
+"        يقوم بتشغيل المسار المحدد في قائمة الانتظار.\n\n"
+"        إذا قمت بتحديد حجة `after_current'، سيتم تشغيل المسار بعد المسار الحالي، خلاف ذلك سيحل محل المسار الحالي\n"
+"        "
+
+#: audio/player_commands.py:36 audio/player_commands.py:109
+msgid "Queue is empty."
+msgstr "قائمة الانتظار فارغة."
+
+#: audio/player_commands.py:43 audio/player_commands.py:125
+msgid "Track index must be between 1 and {size}."
+msgstr "يجب أن يكون فهرس المسار بين 1 و {size}."
+
+#: audio/player_commands.py:59 audio/player_commands.py:138
+msgid "There is no track in position {position}."
+msgstr "لا يوجد أي مسار في الموضع {position}."
+
+#: audio/player_commands.py:69
+msgid "{track} will play after {current} finishes (in {eta})."
+msgstr "سوف يلعب {track} بعد انتهاء {current} (ب {eta})."
+
+#: audio/player_commands.py:81
+msgid "{track} will start now\n"
+"{current} has been skipped."
+msgstr "سيبدأ {track} الآن\n"
+"{current} تم تخطيته."
+
+#: audio/player_commands.py:95
+#, docstring
+msgid "\n"
+"        Remove the specified track from the queue.\n\n"
+"        If you specify the `remove_duplicates` argument, all tracks that are the same as your URL or the index track will be removed.\n"
+"        "
+msgstr "\n"
+"        إزالة المسار المحدد من قائمة الانتظار.\n\n"
+"        إذا قمت بتحديد حجة `remove_duplicates'، سيتم إزالة جميع المسارات التي هي نفس عنوان URL الخاص بك أو مسار الفهرس.\n"
+"        "
+
+#: audio/player_commands.py:169
+msgid "{track} not found in queue."
+msgstr "{track} غير موجود في قائمة الانتظار."
+
+#: audio/player_commands.py:179
+msgid "Removed {times} {entry_plural} of {track} from the queue."
+msgstr "إزالة {times} {entry_plural} من {track} من قائمة الانتظار."
+
+#: audio/player_commands.py:182
+msgid "entry"
+msgstr "إدخال"
+
+#: audio/player_commands.py:182
+msgid "entries"
+msgstr "إدخالات"
+
+#: audio/utility_commands.py:46
+msgid "Volume limit reached, player volume set to {volume}%."
+msgstr "وصل الحد الأقصى للصوت، تم تعيين مستوى صوت اللاعب إلى {volume}%."
+
+#: audio/utility_commands.py:57
+msgid "Minimum volume reached, Player volume set to 0%."
+msgstr "تم بلوغ الحد الأدنى من الصوت، تم تعيين مستوى صوت اللاعب إلى 0%."
 

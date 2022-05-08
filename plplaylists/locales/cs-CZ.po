@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-07 15:58+0000\n"
-"PO-Revision-Date: 2022-05-07 16:07\n"
+"POT-Creation-Date: 2022-05-08 15:16+0000\n"
+"PO-Revision-Date: 2022-05-08 15:22\n"
 "Last-Translator: \n"
 "Language-Team: Czech\n"
 "MIME-Version: 1.0\n"
@@ -13,468 +13,297 @@ msgstr ""
 "X-Crowdin-Project: mediaplayer\n"
 "X-Crowdin-Project-ID: 512604\n"
 "X-Crowdin-Language: cs\n"
-"X-Crowdin-File: /plnotifier/locales/messages.pot\n"
-"X-Crowdin-File-ID: 186\n"
+"X-Crowdin-File: /plplaylists/locales/messages.pot\n"
+"X-Crowdin-File-ID: 232\n"
 "Language: cs_CZ\n"
 
-#: plnotifier/cog.py:143
-msgid "Track Stuck Event"
-msgstr "Sledovat zaseknutou událost"
-
-#: plnotifier/cog.py:144
-msgid "[Node={node}] {track} is stuck for {threshold} seconds, skipping."
-msgstr "[Node={node}] {track} uvízl na {threshold} sekund, přeskočen."
-
-#: plnotifier/cog.py:166
-msgid "Track Exception Event"
-msgstr "Událost výjimky ze skladby"
-
-#: plnotifier/cog.py:167
-msgid "[Node={node}] There was an error while playing {track}:\n"
-"{exception}"
-msgstr "[Node={node}] Při hraní {track}došlo k chybě:\n"
-"{exception}"
-
-#: plnotifier/cog.py:185
-msgid "the player reached the end of the tracks runtime."
-msgstr "hráč dosáhl konce běhu trasy."
-
-#: plnotifier/cog.py:187
-msgid "a new track started playing."
-msgstr "nová skladba začala hrát."
-
-#: plnotifier/cog.py:189
-msgid "it failed to start."
-msgstr "se nepodařilo spustit."
-
-#: plnotifier/cog.py:191
-msgid "because the player was stopped."
-msgstr "protože hráč byl zastaven."
-
-#: plnotifier/cog.py:193
-msgid "the node told it to stop."
-msgstr "uzel řekl, aby se zastavil."
-
-#: plnotifier/cog.py:196
-msgid "Track End Event"
-msgstr "Sledovat koncovou událost"
-
-#: plnotifier/cog.py:197
-msgid "[Node={node}] {track} has finished playing because {reason}"
-msgstr "[Node={node}] {track} dokončil hraní, protože {reason}"
-
-#: plnotifier/cog.py:221
-msgid "Track Start Event"
-msgstr "Sledovat počáteční událost"
-
-#: plnotifier/cog.py:222
-msgid "[Node={node}] {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr "[Node={node}] {track} začalo hrát.\n"
-"Požadováno: {requester}"
-
-#: plnotifier/cog.py:246
-msgid "YouTube Music Track Start Event"
-msgstr "Počáteční událost hudby YouTube"
-
-#: plnotifier/cog.py:247
-msgid "[Node={node}] YouTube Music track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr "[Node={node}] YouTube hudební skladba: {track} začalo hrát.\n"
-"Požadováno: {requester}"
-
-#: plnotifier/cog.py:273
-msgid "Spotify Track Start Event"
-msgstr "Spotify začátek události trasy"
-
-#: plnotifier/cog.py:274
-msgid "[Node={node}] Spotify track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr "[Node={node}] Spotify stopa: {track} začalo hrát.\n"
-"Požadováno: {requester}"
-
-#: plnotifier/cog.py:300
-msgid "Apple Music Track Start Event"
-msgstr "Počáteční událost Apple Music Track"
-
-#: plnotifier/cog.py:301
-msgid "[Node={node}] Apple Music track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr "[Node={node}] Apple Music track: {track} začal hrát.\n"
-"Požadováno: {requester}"
-
-#: plnotifier/cog.py:327
-msgid "Local Track Start Event"
-msgstr "Počáteční událost místní trasy"
-
-#: plnotifier/cog.py:328
-msgid "[Node={node}] Local track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr "[Node={node}] Místní skladba: {track} začalo hrát.\n"
-"Požadováno: {requester}"
-
-#: plnotifier/cog.py:354
-msgid "HTTP Track Start Event"
-msgstr "Začáteční událost HTTP trasy"
-
-#: plnotifier/cog.py:355
-msgid "[Node={node}] HTTP track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr "[Node={node}] HTTP skladba: {track} začalo hrát.\n"
-"Požadováno: {requester}"
-
-#: plnotifier/cog.py:381
-msgid "Text-To-Speech Track Start Event"
-msgstr "Počáteční událost text-To-Speech trasy"
-
-#: plnotifier/cog.py:382
-msgid "[Node={node}] Text-To-Speech track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr "[Node={node}] Text-To-Speech stopa: {track} začalo hrát.\n"
-"Požadováno: {requester}"
-
-#: plnotifier/cog.py:408
-msgid "YouTube Track Start Event"
-msgstr "Začáteční událost YouTube trasy"
-
-#: plnotifier/cog.py:409
-msgid "[Node={node}] YouTube track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr "[Node={node}] YouTube skladba: {track} začalo hrát.\n"
-"Požadováno: {requester}"
-
-#: plnotifier/cog.py:435 plnotifier/cog.py:465 plnotifier/cog.py:495
-#: plnotifier/cog.py:525 plnotifier/cog.py:555 plnotifier/cog.py:585
-#: plnotifier/cog.py:615 plnotifier/cog.py:645 plnotifier/cog.py:675
-#: plnotifier/cog.py:705 plnotifier/cog.py:735 plnotifier/cog.py:765
-#: plnotifier/cog.py:795 plnotifier/cog.py:825
-msgid "{source} Track Start Event"
-msgstr "Počáteční událost {source}"
-
-#: plnotifier/cog.py:436 plnotifier/cog.py:466 plnotifier/cog.py:496
-#: plnotifier/cog.py:526 plnotifier/cog.py:556 plnotifier/cog.py:586
-#: plnotifier/cog.py:616 plnotifier/cog.py:646 plnotifier/cog.py:676
-#: plnotifier/cog.py:706 plnotifier/cog.py:736 plnotifier/cog.py:766
-#: plnotifier/cog.py:796 plnotifier/cog.py:826
-msgid "[Node={node}] {source} track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr "[Node={node}] {source} skladba: {track} začalo hrát.\n"
-"Požadováno: {requester}"
-
-#: plnotifier/cog.py:855
-msgid "Track Skipped Event"
-msgstr "Sledovat přeskočenou událost"
-
-#: plnotifier/cog.py:856
-msgid "[Node={node}] {track} has been skipped.\n"
-"Requested by {requester}"
-msgstr "[Node={node}] {track} bylo přeskočeno.\n"
-"Požadováno {requester}"
-
-#: plnotifier/cog.py:880
-msgid "Track Seek Event"
-msgstr "Sledovat hledání události"
-
-#: plnotifier/cog.py:881
-msgid "[Node={node}] {requester} requested that {track} is sought from position {fro} to position {after}."
-msgstr "[Node={node}] {requester} požadoval, aby {track} bylo hledáno z pozice {fro} na pozici {after}."
-
-#: plnotifier/cog.py:912
-msgid "Track Previous Requested Event"
-msgstr "Sledovat předchozí požadovanou událost"
-
-#: plnotifier/cog.py:913
-msgid "[Node={node}] {requester} requested that the previous track {track} be played."
-msgstr "[Node={node}] {requester} požádal, aby byla přehrána předchozí trasa {track}."
-
-#: plnotifier/cog.py:939
-msgid "Tracks Requested Event"
-msgstr "Požadovaná událost trasy"
-
-#: plnotifier/cog.py:940
-msgid "[Node={node}] {requester} added {track_count} to the queue."
-msgstr "[Node={node}] {requester} přidal {track_count} do fronty."
-
-#: plnotifier/cog.py:959
-msgid "Track AutoPlay Event"
-msgstr "Sledovat událost automatického přehrávání"
-
-#: plnotifier/cog.py:960
-msgid "[Node={node}] Auto-playing {track}."
-msgstr "[Node={node}] Automatické přehrávání {track}."
-
-#: plnotifier/cog.py:984
-msgid "Track Resumed Event"
-msgstr "Trasa obnovena událost"
-
-#: plnotifier/cog.py:985
-msgid "[Node={node}] {requester} resumed {track}."
-msgstr "[Node={node}] {requester} pokračovalo {track}."
-
-#: plnotifier/cog.py:1011
-msgid "Queue Shuffled Event"
-msgstr "Fronta zamíchaná událost"
-
-#: plnotifier/cog.py:1012
-msgid "[Node={node}] {requester} shuffled the queue."
-msgstr "[Node={node}] {requester} zamíchal frontu."
-
-#: plnotifier/cog.py:1029
-msgid "Queue End Event"
-msgstr "Událost ve frontě"
-
-#: plnotifier/cog.py:1030
-msgid "[Node={node}] All tracks in the queue have been played."
-msgstr "[Node={node}] Všechny skladby ve frontě byly přehrány."
-
-#: plnotifier/cog.py:1054
-msgid "Tracks Removed Event"
-msgstr "Sledování odstraněné události"
-
-#: plnotifier/cog.py:1055
-msgid "[Node={node}] {requester} removed {track_count} tracks from the queue."
-msgstr "[Node={node}] {requester} odstranil {track_count} skladby z fronty."
-
-#: plnotifier/cog.py:1079
-msgid "Player Paused Event"
-msgstr "Hráč pozastaven"
-
-#: plnotifier/cog.py:1080
-msgid "[Node={node}] {requester} paused the player."
-msgstr "[Node={node}] {requester} pozastavil hráče."
-
-#: plnotifier/cog.py:1104
-msgid "Player Stopped Event"
-msgstr "Událost hráče zastavena"
-
-#: plnotifier/cog.py:1105
-msgid "[Node={node}] {requester} stopped the player."
-msgstr "[Node={node}] {requester} hráče zastavil."
-
-#: plnotifier/cog.py:1129
-msgid "Player Resumed Event"
-msgstr "Přehrávač obnovil událost"
-
-#: plnotifier/cog.py:1130
-msgid "[Node={node}] {requester} resumed the player."
-msgstr "[Node={node}] {requester} pokračoval(a) hráč."
-
-#: plnotifier/cog.py:1154
-msgid "Player Moved Event"
-msgstr "Hráč přesunutý událost"
-
-#: plnotifier/cog.py:1155
-msgid "[Node={node}] {requester} moved the player from {before} to {after}."
-msgstr "[Node={node}] {requester} přesunul hráče z {before} do {after}."
-
-#: plnotifier/cog.py:1179
-msgid "Player Disconnected Event"
-msgstr "Přehrávač odpojen událost"
-
-#: plnotifier/cog.py:1180
-msgid "[Node={node}] {requester} disconnected the player."
-msgstr "[Node={node}] {requester} odpojil hráče."
-
-#: plnotifier/cog.py:1204
-msgid "Player Connected Event"
-msgstr "Hráč připojený k události"
-
-#: plnotifier/cog.py:1205
-msgid "[Node={node}] {requester} connected the player."
-msgstr "[Node={node}] {requester} se připojil/a k hráči."
-
-#: plnotifier/cog.py:1229
-msgid "Player Volume Changed Event"
-msgstr "Hlasitost přehrávače změnila událost"
-
-#: plnotifier/cog.py:1230
-msgid "[Node={node}] {requester} changed the player's volume from {before} to {after}."
-msgstr "[Node={node}] {requester} změnil hlasitost hráče z {before} na {after}."
-
-#: plnotifier/cog.py:1256 plnotifier/cog.py:1266 plnotifier/cog.py:1276
-msgid "Player Repeat Event"
-msgstr "Hráč opakuje událost"
-
-#: plnotifier/cog.py:1257
-msgid "[Node={node}] {requester} disabled repeat."
-msgstr "[Node={node}] Opakování {requester} zakázáno."
-
-#: plnotifier/cog.py:1267
-msgid "{requester} {status} repeat of the whole queue."
-msgstr "{requester} {status} opakování celé fronty."
-
-#: plnotifier/cog.py:1268 plnotifier/cog.py:1279
-msgid "enabled"
-msgstr "povoleno"
-
-#: plnotifier/cog.py:1268 plnotifier/cog.py:1279
-msgid "disabled"
-msgstr "vypnuto"
-
-#: plnotifier/cog.py:1277
-msgid "[Node={node}] {requester} {status} repeat for {track}."
-msgstr "[Node={node}] {requester} {status} opakování pro {track}."
-
-#: plnotifier/cog.py:1304
-msgid "Player Restored Event"
-msgstr "Obnovená událost hráče"
-
-#: plnotifier/cog.py:1305
-msgid "[Node={node}] {requester} restored the player."
-msgstr "[Node={node}] {requester} obnovil hráče."
-
-#: plnotifier/cog.py:1325
-msgid "an intro section"
-msgstr "úvodní sekce"
-
-#: plnotifier/cog.py:1327
-msgid "an outro section"
-msgstr "outro sekce"
-
-#: plnotifier/cog.py:1329
-msgid "a preview section"
-msgstr "náhled sekce"
-
-#: plnotifier/cog.py:1331
-msgid "an off-topic section"
-msgstr "sekce mimo téma"
-
-#: plnotifier/cog.py:1333
-msgid "a filler section"
-msgstr "sekci výplňku"
-
-#: plnotifier/cog.py:1335
-msgid "a sponsor section"
-msgstr "Sekce sponzora"
-
-#: plnotifier/cog.py:1337
-msgid "a self-promotion section"
-msgstr "sekci samopropagace"
-
-#: plnotifier/cog.py:1339
-msgid "an interaction section"
-msgstr "úsek pro interakci"
-
-#: plnotifier/cog.py:1343
-msgid "Sponsor Segment Skipped Event"
-msgstr "Přeskočená událost segmentu Sponsor"
-
-#: plnotifier/cog.py:1344
-msgid "[Node={node}] Sponsorblock: Skipped {category} running from {start}s to {to}s."
-msgstr "[Node={node}] Sponsorblock: Přeskočeno {category} běží z {start}do {to}s."
-
-#: plnotifier/cog.py:1369
-msgid "Effect"
-msgstr "Efekt"
-
-#: plnotifier/cog.py:1370
-msgid "Values"
-msgstr "Hodnoty"
-
-#: plnotifier/cog.py:1399
+#: plplaylists/cog.py:51
+#, docstring
+msgid "PyLav playlist management commands"
+msgstr "PyLav playlist příkazy"
+
+#: plplaylists/cog.py:100
+msgid "This command requires an existing player to be run."
+msgstr "Tento příkaz vyžaduje spuštění existujícího přehrávače."
+
+#: plplaylists/cog.py:109
+msgid "MediaPlayer cog is currently temporarily unavailable due to an outage with the backend services, please try again later."
+msgstr "MediaPlayer cog je v současné době dočasně nedostupný z důvodu výpadku s backendovými službami, zkuste to prosím později."
+
+#: plplaylists/cog.py:113
+msgid "No Lavalink node currently available."
+msgstr "Není k dispozici žádný Lavalink uzel."
+
+#: plplaylists/cog.py:124
+msgid "MediaPlayer is currently unable to process tracks belonging to {feature}."
+msgstr "MediaPlayer momentálně není schopen zpracovávat skladby patřící k {feature}."
+
+#: plplaylists/cog.py:127
+msgid "No Lavalink node currently available with feature {feature}."
+msgstr "Žádný Lavalink uzel není momentálně k dispozici s funkcí {feature}."
+
+#: plplaylists/cog.py:140
+msgid "This command is not available in this channel. Please use {channel}"
+msgstr "Tento příkaz není v tomto kanálu k dispozici. Použijte prosím {channel}"
+
+#: plplaylists/cog.py:161
+#, docstring
+msgid "Create a new playlist.\n\n"
+"        If you don't specify an URL and name, you will be shows a creation menu, which also allows you to save the current player queue as a playlist.\n\n"
+"        If you don't specify a name, the playlist will be named the URL playlist if available otherwise the name will be the same as the ID.\n"
+"        If you specify an URL, the playlist will be created from the URL.\n"
+"        "
+msgstr "Vytvořit nový playlist.\n\n"
+"        Pokud nespecifikujete adresu URL a název, zobrazí se vám nabídka vytvoření. který vám také umožňuje uložit aktuální frontu hráčů jako playlist.\n\n"
+"        Pokud nespecifikujete název, seznam skladeb bude pojmenován jako URL playlist, pokud je k dispozici, jinak bude název stejný jako ID.\n"
+"        Pokud zadáte URL, seznam skladeb bude vytvořen z URL.\n"
+"        "
+
+#: plplaylists/cog.py:180
+msgid "Let's create a playlist!"
+msgstr "Pojďme vytvořit seznam skladeb!"
+
+#: plplaylists/cog.py:181
+msgid "(**1**) - Apply changes to playlist.\n"
+"(**2**) - Cancel any changes made.\n"
+"(**3**) - Add a name to the playlist.\n"
+"(**4**) - Link this playlist to an existing playlist/album.\n"
+"(**5**) - Add all track from the queue to the playlist.\n\n"
+"If you want the playlist name to be as the original playlist simply set the URL but no name.\n\n"
+msgstr "(**1**) - Použít změny v seznamu skladeb.\n"
+"(**2**) - Zrušit provedené změny.\n"
+"(**3**) - Přidejte jméno do seznamu skladeb.\n"
+"(**4**) - Propojte tento seznam skladeb s existujícím seznamem/albem.\n"
+"(**5**) - Přidej všechny skladby z fronty do seznamu skladeb.\n\n"
+"Pokud chcete, aby byl název playlistu jako původní playlist jednoduše nastaven URL, ale bez názvu.\n\n"
+
+#: plplaylists/cog.py:221
+msgid "Playlist created"
+msgstr "Seznam skladeb vytvořen"
+
+#: plplaylists/cog.py:222
+msgid "Name: `{name}`\n"
+"ID: `{id}`\n"
+"Tracks: `{track_count}`"
+msgstr "Název: `{name}\n"
+"ID: `{id}`\n"
+"stopy: `{track_count}`"
+
+#: plplaylists/cog.py:232
+#, docstring
+msgid "\n"
+"        List all playlists you have access to on the invoked context.\n\n"
+"        This takes into consideration your current VC, Text channel and Server.\n"
+"        "
+msgstr "\n"
+"        Seznam všech seznamů skladeb, ke kterým máte přístup v kontextu vyvolání.\n\n"
+"        Toto bere v úvahu aktuální VC, textový kanál a server.\n"
+"        "
+
+#: plplaylists/cog.py:253
+msgid "You have no playlists."
+msgstr "Nemáte žádné seznamy skladeb."
+
+#: plplaylists/cog.py:272
+#, docstring
+msgid "\n"
+"        Manage a playlist.\n\n"
+"        This command can be used to delete, clear all tracks, add or remove tracks or play a playlist.\n\n"
+"        If you use the `start` (`play` or `enqueue`) alias the playlist will be played instead of you being shown the control menu.\n"
+"        If you use the `delete` (`del`) alias the playlist will be deleted instead of you being shown the control menu.\n"
+"        If you use the `save` (`queue`) alias the current queue will be added to the specified playlist.\n"
+"        if you use the `info` alias the playlist tracks will be displayed in a menu.\n"
+"        "
+msgstr "\n"
+"        Spravujte playlist.\n\n"
+"        Tento příkaz může být použit k odstranění, vymazat všechny skladby, přidat nebo odebrat skladby nebo přehrát playlist.\n\n"
+"        Pokud použijete alias `start` (`play` nebo `enqueue`), bude přehraný playlist namísto zobrazení menu ovládání.\n"
+"        Pokud použijete alias `delete` (`del`), bude odstraněn playlist namísto zobrazení ovládacího menu.\n"
+"        Pokud použijete alias `save` (`fronta`), bude aktuální fronta přidána do zadaného seznamu skladeb.\n"
+"        pokud použijete `info` alias skladeb se zobrazí v menu.\n"
+"        "
+
+#: plplaylists/cog.py:325
+msgid "{user}, playlist {playlist_name} cannot be managed by yourself."
+msgstr "{user}, seznam skladeb {playlist_name} nemůže spravovat sám sebe."
+
+#: plplaylists/cog.py:334
+msgid "(**1**){space} - Apply changes to playlist.\n"
+"(**2**){space} - Cancel any changes made and close the menu.\n"
+"(**3**){space} - Delete this playlist.\n"
+"(**4**){space} - Remove all tracks from this playlist.\n"
+"(**5**){space} - Update the playlist with the latest tracks.\n"
+"Please note that this action will ignore any tracks added/removed via this menu.\n"
+"(**6**){space} - Change the name of the playlist.\n"
+"(**7**){space} - Link this playlist to an existing playlist/album.\n"
+"(**8**){space} - Add a query to this playlist.\n"
+"(**9**){space} - Remove a query from this playlist.\n"
+"(**10**) - Download the playlist file.\n"
+"(**11**) - Add current playlist to the queue.\n"
+"(**12**) - Show tracks in current playlist.\n"
+"(**13**) - Add tracks from queue to this playlist.\n"
+"(**14**) - Remove duplicate entries in the playlist.\n\n"
+"The add/remove track buttons can be used multiple times to add/remove multiple tracks and playlists at once.\n\n"
+"A query is anything playable by the play command - any query can be used by the add/remove buttons\n\n"
+"The clear button will always be run first before any other operations.\n"
+"The URL button will always run last - Linking a playlist via the URL will overwrite any tracks added or removed to this playlist.\n\n"
+"If you interact with a button multiple times other than the add/remove buttons only the last interaction will take effect.\n\n\n"
+msgstr "(**1**){space} - Použít změny v seznamu skladeb.\n"
+"(**2**){space} - Zrušte provedené změny a zavřete menu.\n"
+"(**3**){space} - Odstranit tento playlist.\n"
+"(**4**){space} - Odstraňte všechny skladby z tohoto seznamu skladeb.\n"
+"(**5**){space} - Aktualizujte seznam skladeb o nejnovější skladby.\n"
+"Vezměte prosím na vědomí, že tato akce bude ignorovat všechny skladby přidané nebo odebírané v této nabídce.\n"
+"(**6**){space} - Změnit jméno seznamu skladeb.\n"
+"(**7**){space} - Propojte tento seznam skladeb s existujícím seznamem skladeb/albem.\n"
+"(**8**){space} - Přidejte dotaz do tohoto seznamu skladeb.\n"
+"(**9**){space} - Odstraňte dotaz z tohoto playlistu.\n"
+"(**10**) - Stáhněte si soubor seznamu skladeb.\n"
+"(**11**) - Přidejte aktuální seznam skladeb do fronty.\n"
+"(**12**) - Zobrazit skladby v aktuálním seznamu skladeb.\n"
+"(**13**) - Přidejte skladby z fronty do tohoto seznamu skladeb.\n"
+"(**14**) - Odstranit duplicitní položky v seznamu skladeb.\n\n"
+"Tlačítka add/remove track mohou být použita vícekrát k přidání/odebrání více skladeb a skladeb najednou.\n\n"
+"Dotaz je cokoliv, co lze přehrávat pomocí příkazu play - jakýkoliv dotaz může být použit tlačítkem přidání/odebrání\n\n"
+"Tlačítko \"Vyčistit\" bude vždy spuštěno nejdříve před každou další operací.\n"
+"Tlačítko URL bude vždy trvat - Propojení playlistu přes URL přepíše všechny skladby přidané nebo odebírané do tohoto seznamu skladeb.\n\n"
+"Pokud komunikujete s tlačítkem vícekrát jiným než tlačítkem přidat/odebrat pouze poslední interakce.\n\n\n"
+
+#: plplaylists/cog.py:360
+msgid "(**1**) - Close the menu.\n"
+"(**2**) - Update the playlist with the latest tracks.\n"
+"(**3**) - Download the playlist file.\n"
+"(**4**) - Add current playlist to the queue.\n"
+"(**5**) - Show tracks in current playlist.\n\n\n"
+msgstr "(**1**) - Zavřete menu.\n"
+"(**2**) - Aktualizujte seznam skladeb s nejnovějšími skladbami.\n"
+"(**3**) - Stáhněte si soubor playlistu.\n"
+"(**4**) - Přidat aktuální seznam skladeb do fronty.\n"
+"(**5**) - Zobrazit skladby v aktuálním seznamu skladeb.\n\n\n"
+
+#: plplaylists/cog.py:368
+msgid "**__Currently managing__**:\n"
+"**Name**:{space}{space}{space}{playlist_name}\n"
+"**Scope**:{space}{space}{space}{scope}\n"
+"**Author**:{space}{space}{author}\n"
+"**Tracks**:{space}{space}{space}{tracks} tracks\n"
+"**URL**:{space}{space}{space}{space}{space}{url}\n"
+msgstr ""
+
+#: plplaylists/cog.py:385
+msgid "Let's manage: {playlist_name}"
+msgstr "Pojďme řídit: {playlist_name}"
+
+#: plplaylists/cog.py:387
+msgid "Let's take a look at: {playlist_name}"
+msgstr "Podívejme se na: {playlist_name}"
+
+#: plplaylists/cog.py:394
 msgid "N/A"
 msgstr "Nepřichází v úvahu"
 
-#: plnotifier/cog.py:1403
-msgid "Filters Applied Event"
-msgstr "Filtry použité události"
+#: plplaylists/cog.py:418
+msgid "Playlist deleted."
+msgstr "Playlist byl smazán."
 
-#: plnotifier/cog.py:1404
-msgid "[Node={node}] {requester} changed the player filters.\n\n"
-"__**Currently Applied:**__\n"
-"{data}"
-msgstr "[Node={node}] {requester} změnil filtry hráčů.\n\n"
-"__**Aktuálně aplikováno:**__\n"
-"{data}"
+#: plplaylists/cog.py:420
+msgid "{user}, playlist {playlist_name} has been deleted."
+msgstr "{user}, seznam skladeb {playlist_name} byl smazán."
 
-#: plnotifier/cog.py:1408
-msgid "None"
-msgstr "Nic"
+#: plplaylists/cog.py:477
+msgid "Playlist **{playlist_name}** could not be updated with URL: <{url}>."
+msgstr "Seznam skladeb **{playlist_name}** nelze aktualizovat s URL: <{url}>."
 
-#: plnotifier/cog.py:1424
-msgid "Node Connected Event"
-msgstr "Node připojená událost"
+#: plplaylists/cog.py:513
+msgid "\n"
+"{track_count} {track_plural} removed from the playlist."
+msgstr "\n"
+"{track_count} {track_plural} odebráno ze seznamu skladeb."
 
-#: plnotifier/cog.py:1425
-msgid "Node {name} has been connected."
-msgstr "Uzel {name} byl připojen."
+#: plplaylists/cog.py:514 plplaylists/cog.py:518
+msgid "track"
+msgstr "stopa"
 
-#: plnotifier/cog.py:1439
-msgid "Node Disconnected Event"
-msgstr "Událost Node odpojena"
+#: plplaylists/cog.py:514 plplaylists/cog.py:518
+msgid "tracks"
+msgstr "skladby"
 
-#: plnotifier/cog.py:1440
-msgid "Node {name} has been disconnected with code {code} and reason: {reason}."
-msgstr "Uzel {name} byl odpojen s kódem {code} a důvodem: {reason}."
+#: plplaylists/cog.py:517
+msgid "\n"
+"{track_count} {track_plural} added to the playlist."
+msgstr "\n"
+"{track_count} {track_plural} přidáno do seznamu skladeb."
 
-#: plnotifier/cog.py:1459
-msgid "Node Changed Event"
-msgstr "Událost změněného uzlu"
+#: plplaylists/cog.py:524
+msgid "Playlist updated."
+msgstr "Seznam skladeb aktualizován."
 
-#: plnotifier/cog.py:1460
-msgid "The node which the player is connected to changed from {fro} to {to}."
-msgstr "Uzel, ke kterému je hráč připojen na změnu z {fro} na {to}."
+#: plplaylists/cog.py:525
+msgid "{user}, playlist {playlist_name} has been updated.{extras}"
+msgstr "{user}, seznam skladeb {playlist_name} byl aktualizován.{extras}"
 
-#: plnotifier/cog.py:1479
-msgid "WebSocket Closed Event"
-msgstr "Uzavřená událost WebSocket"
+#: plplaylists/cog.py:537
+msgid "Playlist unchanged."
+msgstr "Seznam skladeb beze změny."
 
-#: plnotifier/cog.py:1480
-msgid "[Node={node}] The websocket connection to the Lavalink node closed with code {code} and reason {reason}."
-msgstr "[Node={node}] Připojení socketu k uzlu Lavalink uzavřeno kódem {code} a důvodem {reason}."
+#: plplaylists/cog.py:538
+msgid "{user}, playlist {playlist_name} has not been updated."
+msgstr "{user}, seznam skladeb {playlist_name} nebyl aktualizován."
 
-#: plnotifier/notifier_commands.py:81
+#: plplaylists/cog.py:548
 #, docstring
-msgid "Configure the PyLavNotifier cog."
-msgstr "Konfigurace ozubce PyLavNotifier"
-
-#: plnotifier/notifier_commands.py:87
-#, docstring
-msgid "Set the notify channel for the player."
-msgstr "Nastavte kanál upozornění pro hráče."
-
-#: plnotifier/notifier_commands.py:103
-msgid "PyLavNotifier channel set to {channel}"
-msgstr "PyLavNotifier kanál nastaven na {channel}"
-
-#: plnotifier/notifier_commands.py:113
-#, docstring
-msgid "Set whether or not to notify for the specified event.\n\n"
-"        Arguments:\n"
-"            event -- The event to set.\n"
-"            toggle -- Whether or not to notify upon receiving this event.\n"
-"            use_mention -- Whether or not to use a mention instead of the name for the action requested.\n"
+msgid "\n"
+"        Upload a playlist to the bot.\n\n"
+"        This command will upload a playlist to the bot.\n"
+"        The playlist can be uploaded by either the URL of the playlist file or by attaching the playlist file to the message.\n"
 "        "
-msgstr "Nastavte, zda má být oznámeno pro danou událost.\n\n"
-"        Argumenty:\n"
-"            událost -- událost k nastavení.\n"
-"            přepnout -- Zda se oznamuje po přijetí této události.\n"
-"            use_mention -- Zda použít či nepoužít namísto názvu požadované akce.\n"
+msgstr "\n"
+"        Nahrajte playlist na bota.\n\n"
+"        Tento příkaz nahraje seznam skladeb na bota.\n"
+"        Seznam stop může být nahrán buď pomocí URL souboru playlistu nebo připojením souboru playlistu ke zprávě.\n"
 "        "
 
-#: plnotifier/notifier_commands.py:128
-msgid "Invalid event, possible events are:\n\n"
-"{events}."
-msgstr "Neplatná událost, možné události jsou:\n\n"
-"{events}."
+#: plplaylists/cog.py:565
+msgid "You must either provide a URL or attach a playlist file to upload a playlist."
+msgstr "Musíte buď zadat adresu URL, nebo připojit soubor playlistu pro nahrání playlistu."
 
-#: plnotifier/notifier_commands.py:142
-msgid "Event {event} set to {toggle}{extras}."
-msgstr "Událost {event} nastavena na {toggle}{extras}."
+#: plplaylists/cog.py:585
+msgid "No valid playlist file provided."
+msgstr "Nebyl zadán žádný platný soubor playlistu."
 
-#: plnotifier/notifier_commands.py:144
-msgid "notify"
-msgstr "Upozornit"
+#: plplaylists/cog.py:594
+msgid "Multiple playlist files provided - Currently only 1 per message is allowed."
+msgstr "Je k dispozici více souborů playlistu - v současné době je povoleno pouze 1 pro každou zprávu."
 
-#: plnotifier/notifier_commands.py:144
-msgid "do not notify"
-msgstr "neoznamovat"
+#: plplaylists/cog.py:612
+msgid "Failed to save any of the requested playlists."
+msgstr "Nepodařilo se uložit žádný z požadovaných seznamů skladeb."
 
-#: plnotifier/notifier_commands.py:145
-msgid " with mentions"
-msgstr " s zmínkami"
+#: plplaylists/cog.py:621
+msgid "Failed to save the following playlists:\n"
+"{invalid_playlists}"
+msgstr "Nepodařilo se uložit následující seznamy skladeb:\n"
+"{invalid_playlists}"
 
-#: plnotifier/notifier_commands.py:145
-msgid " without mentions"
-msgstr " bez zmínek"
+#: plplaylists/cog.py:631
+msgid "Successfully saved the following playlists:\n"
+"{saved_playlists}"
+msgstr "Úspěšně uloženo následující seznamy skladeb:\n"
+"{saved_playlists}"
+
+#: plplaylists/cog.py:656
+msgid "You must be in a voice channel to allow me to connect."
+msgstr "Musíš být v hlasovém kanálu, abych se mohl připojit."
+
+#: plplaylists/cog.py:664
+msgid "I don't have permission to connect or speak in {channel}."
+msgstr "Nemám oprávnění připojit se nebo mluvit v {channel}."
+
+#: plplaylists/cog.py:681
+msgid "Playlist"
+msgstr "Seznam skladeb"
+
+#: plplaylists/cog.py:686
+msgid "{track_count} tracks enqueued.{playlist_name}"
+msgstr "{track_count} skladeb ve frontě.{playlist_name}"
 

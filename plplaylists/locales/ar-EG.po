@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-07 15:58+0000\n"
-"PO-Revision-Date: 2022-05-07 16:06\n"
+"POT-Creation-Date: 2022-05-08 15:16+0000\n"
+"PO-Revision-Date: 2022-05-08 15:21\n"
 "Last-Translator: \n"
 "Language-Team: Arabic, Egypt\n"
 "MIME-Version: 1.0\n"
@@ -13,468 +13,297 @@ msgstr ""
 "X-Crowdin-Project: mediaplayer\n"
 "X-Crowdin-Project-ID: 512604\n"
 "X-Crowdin-Language: ar-EG\n"
-"X-Crowdin-File: /plnotifier/locales/messages.pot\n"
-"X-Crowdin-File-ID: 186\n"
+"X-Crowdin-File: /plplaylists/locales/messages.pot\n"
+"X-Crowdin-File-ID: 232\n"
 "Language: ar_EG\n"
 
-#: plnotifier/cog.py:143
-msgid "Track Stuck Event"
-msgstr "حدث عربة المسارات"
-
-#: plnotifier/cog.py:144
-msgid "[Node={node}] {track} is stuck for {threshold} seconds, skipping."
-msgstr "[العقدة/{node}] {track} عالقة لمدة {threshold} ثانية، تخطي."
-
-#: plnotifier/cog.py:166
-msgid "Track Exception Event"
-msgstr "حدث استثناء المسار"
-
-#: plnotifier/cog.py:167
-msgid "[Node={node}] There was an error while playing {track}:\n"
-"{exception}"
-msgstr "[العقدة/{node}] حدث خطأ أثناء تشغيل {track}:\n"
-"{exception}"
-
-#: plnotifier/cog.py:185
-msgid "the player reached the end of the tracks runtime."
-msgstr "وصل اللاعب إلى نهاية وقت تشغيل المسار."
-
-#: plnotifier/cog.py:187
-msgid "a new track started playing."
-msgstr "بدأ مسار جديد في اللعب."
-
-#: plnotifier/cog.py:189
-msgid "it failed to start."
-msgstr "فشل في البدء."
-
-#: plnotifier/cog.py:191
-msgid "because the player was stopped."
-msgstr "لأنه تم إيقاف اللاعب."
-
-#: plnotifier/cog.py:193
-msgid "the node told it to stop."
-msgstr "العقدة طلبت منها التوقف."
-
-#: plnotifier/cog.py:196
-msgid "Track End Event"
-msgstr "حدث نهاية المسار"
-
-#: plnotifier/cog.py:197
-msgid "[Node={node}] {track} has finished playing because {reason}"
-msgstr "[Node={node}] {track} انتهى التشغيل لأن {reason}"
-
-#: plnotifier/cog.py:221
-msgid "Track Start Event"
-msgstr "حدث بدء المسار"
-
-#: plnotifier/cog.py:222
-msgid "[Node={node}] {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr "[Node={node}] {track} بدأ في اللعب.\n"
-"طلب من: {requester}"
-
-#: plnotifier/cog.py:246
-msgid "YouTube Music Track Start Event"
-msgstr "حدث بدء مسار الموسيقى على اليوتيوب"
-
-#: plnotifier/cog.py:247
-msgid "[Node={node}] YouTube Music track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr "[Node={node}] مسار الموسيقى على اليوتيوب: {track} بدأ في اللعب.\n"
-"طلب من: {requester}"
-
-#: plnotifier/cog.py:273
-msgid "Spotify Track Start Event"
-msgstr "حدث بدء مسار Spotify"
-
-#: plnotifier/cog.py:274
-msgid "[Node={node}] Spotify track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr "[ملاحظة={node}] مسار سبوتيفي: {track} بدأ في اللعب.\n"
-"طلب من: {requester}"
-
-#: plnotifier/cog.py:300
-msgid "Apple Music Track Start Event"
-msgstr "حدث بدء مسار موسيقى التفاح"
-
-#: plnotifier/cog.py:301
-msgid "[Node={node}] Apple Music track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr "[Node={node}] مسار موسيقى التفاح: {track} بدأ في اللعب.\n"
-"طلب من: {requester}"
-
-#: plnotifier/cog.py:327
-msgid "Local Track Start Event"
-msgstr "حدث بدء المسار المحلي"
-
-#: plnotifier/cog.py:328
-msgid "[Node={node}] Local track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr "[Node={node}] المسار المحلي: {track} بدأ في اللعب.\n"
-"طلب من: {requester}"
-
-#: plnotifier/cog.py:354
-msgid "HTTP Track Start Event"
-msgstr "حدث بدء مسار HTTP"
-
-#: plnotifier/cog.py:355
-msgid "[Node={node}] HTTP track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr "[Node={node}] مسار HTTP: {track} بدأ في اللعب.\n"
-"طلب من: {requester}"
-
-#: plnotifier/cog.py:381
-msgid "Text-To-Speech Track Start Event"
-msgstr "حدث بدء مسار النص والنطق"
-
-#: plnotifier/cog.py:382
-msgid "[Node={node}] Text-To-Speech track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr "[Node={node}] مسار النص - الكلام: {track} بدأ في اللعب.\n"
-"طلب من: {requester}"
-
-#: plnotifier/cog.py:408
-msgid "YouTube Track Start Event"
-msgstr "حدث بدء تتبع اليوتيوب"
-
-#: plnotifier/cog.py:409
-msgid "[Node={node}] YouTube track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr "[Node={node}] مسار يوتيوب: {track} بدأ في اللعب.\n"
-"طلب من: {requester}"
-
-#: plnotifier/cog.py:435 plnotifier/cog.py:465 plnotifier/cog.py:495
-#: plnotifier/cog.py:525 plnotifier/cog.py:555 plnotifier/cog.py:585
-#: plnotifier/cog.py:615 plnotifier/cog.py:645 plnotifier/cog.py:675
-#: plnotifier/cog.py:705 plnotifier/cog.py:735 plnotifier/cog.py:765
-#: plnotifier/cog.py:795 plnotifier/cog.py:825
-msgid "{source} Track Start Event"
-msgstr "حدث بدء المسار {source}"
-
-#: plnotifier/cog.py:436 plnotifier/cog.py:466 plnotifier/cog.py:496
-#: plnotifier/cog.py:526 plnotifier/cog.py:556 plnotifier/cog.py:586
-#: plnotifier/cog.py:616 plnotifier/cog.py:646 plnotifier/cog.py:676
-#: plnotifier/cog.py:706 plnotifier/cog.py:736 plnotifier/cog.py:766
-#: plnotifier/cog.py:796 plnotifier/cog.py:826
-msgid "[Node={node}] {source} track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr "[Node={node}] {source} المسار : {track} بدأ في اللعب.\n"
-"طلب من: {requester}"
-
-#: plnotifier/cog.py:855
-msgid "Track Skipped Event"
-msgstr "تتبع الحدث المتخطى"
-
-#: plnotifier/cog.py:856
-msgid "[Node={node}] {track} has been skipped.\n"
-"Requested by {requester}"
-msgstr "[العقدة/{node}] {track} تم تخطيته.\n"
-"طلب من {requester}"
-
-#: plnotifier/cog.py:880
-msgid "Track Seek Event"
-msgstr "تتبع حدث البحث"
-
-#: plnotifier/cog.py:881
-msgid "[Node={node}] {requester} requested that {track} is sought from position {fro} to position {after}."
-msgstr "[Node={node}] {requester} طلب أن {track} مطلوب من الموضع {fro} إلى الموضع {after}."
-
-#: plnotifier/cog.py:912
-msgid "Track Previous Requested Event"
-msgstr "تتبع الحدث السابق المطلوب"
-
-#: plnotifier/cog.py:913
-msgid "[Node={node}] {requester} requested that the previous track {track} be played."
-msgstr "[Node={node}] {requester} طلب تشغيل المسار السابق {track}."
-
-#: plnotifier/cog.py:939
-msgid "Tracks Requested Event"
-msgstr "المسارات المطلوبة الحدث"
-
-#: plnotifier/cog.py:940
-msgid "[Node={node}] {requester} added {track_count} to the queue."
-msgstr "[العقدة/{node}] {requester} أضاف {track_count} إلى قائمة الانتظار."
-
-#: plnotifier/cog.py:959
-msgid "Track AutoPlay Event"
-msgstr "تتبع حدث اللعب التلقائي"
-
-#: plnotifier/cog.py:960
-msgid "[Node={node}] Auto-playing {track}."
-msgstr "[Node={node}] تشغيل تلقائي {track}."
-
-#: plnotifier/cog.py:984
-msgid "Track Resumed Event"
-msgstr "تتبع الحدث المستأنف"
-
-#: plnotifier/cog.py:985
-msgid "[Node={node}] {requester} resumed {track}."
-msgstr "[العقدة/{node}] {requester} استؤنفت {track}."
-
-#: plnotifier/cog.py:1011
-msgid "Queue Shuffled Event"
-msgstr "حدث التفريق في قائمة الانتظار"
-
-#: plnotifier/cog.py:1012
-msgid "[Node={node}] {requester} shuffled the queue."
-msgstr "[Node={node}] {requester} قام بخلط قائمة الانتظار."
-
-#: plnotifier/cog.py:1029
-msgid "Queue End Event"
-msgstr "حدث نهاية قائمة الانتظار"
-
-#: plnotifier/cog.py:1030
-msgid "[Node={node}] All tracks in the queue have been played."
-msgstr "[Node={node}] تم تشغيل جميع المسارات في قائمة الانتظار."
-
-#: plnotifier/cog.py:1054
-msgid "Tracks Removed Event"
-msgstr "حدث إزالة المسارات"
-
-#: plnotifier/cog.py:1055
-msgid "[Node={node}] {requester} removed {track_count} tracks from the queue."
-msgstr "[العقدة/{node}] {requester} قام بإزالة {track_count} مسارات من قائمة الانتظار."
-
-#: plnotifier/cog.py:1079
-msgid "Player Paused Event"
-msgstr "حدث إيقاف مؤقت للاعب"
-
-#: plnotifier/cog.py:1080
-msgid "[Node={node}] {requester} paused the player."
-msgstr "[Node={node}] {requester} توقف اللاعب مؤقتاً."
-
-#: plnotifier/cog.py:1104
-msgid "Player Stopped Event"
-msgstr "حدث اللاعب توقف"
-
-#: plnotifier/cog.py:1105
-msgid "[Node={node}] {requester} stopped the player."
-msgstr "[Node={node}] {requester} أوقف اللاعب."
-
-#: plnotifier/cog.py:1129
-msgid "Player Resumed Event"
-msgstr "الحدث المستأنف للاعب"
-
-#: plnotifier/cog.py:1130
-msgid "[Node={node}] {requester} resumed the player."
-msgstr "[Node={node}] {requester} استأنف اللاعب."
-
-#: plnotifier/cog.py:1154
-msgid "Player Moved Event"
-msgstr "حدث نقل اللاعب"
-
-#: plnotifier/cog.py:1155
-msgid "[Node={node}] {requester} moved the player from {before} to {after}."
-msgstr "[Node={node}] {requester} نقل اللاعب من {before} إلى {after}."
-
-#: plnotifier/cog.py:1179
-msgid "Player Disconnected Event"
-msgstr "حدث اللاعب غير متصل"
-
-#: plnotifier/cog.py:1180
-msgid "[Node={node}] {requester} disconnected the player."
-msgstr "[Node={node}] {requester} قطع اتصال اللاعب."
-
-#: plnotifier/cog.py:1204
-msgid "Player Connected Event"
-msgstr "حدث اللاعب المتصل"
-
-#: plnotifier/cog.py:1205
-msgid "[Node={node}] {requester} connected the player."
-msgstr "[Node={node}] {requester} اتصل باللاعب."
-
-#: plnotifier/cog.py:1229
-msgid "Player Volume Changed Event"
-msgstr "حدث تغيير مستوى صوت اللاعب"
-
-#: plnotifier/cog.py:1230
-msgid "[Node={node}] {requester} changed the player's volume from {before} to {after}."
-msgstr "[Node={node}] {requester} غيّر مستوى صوت اللاعب من {before} إلى {after}."
-
-#: plnotifier/cog.py:1256 plnotifier/cog.py:1266 plnotifier/cog.py:1276
-msgid "Player Repeat Event"
-msgstr "حدث تكرار اللاعب"
-
-#: plnotifier/cog.py:1257
-msgid "[Node={node}] {requester} disabled repeat."
-msgstr "[العقدة/{node}] {requester} قام بتعطيل التكرار."
-
-#: plnotifier/cog.py:1267
-msgid "{requester} {status} repeat of the whole queue."
-msgstr "{requester} {status} تكرار لكامل قائمة الانتظار."
-
-#: plnotifier/cog.py:1268 plnotifier/cog.py:1279
-msgid "enabled"
-msgstr "مفعّل"
-
-#: plnotifier/cog.py:1268 plnotifier/cog.py:1279
-msgid "disabled"
-msgstr "معطل"
-
-#: plnotifier/cog.py:1277
-msgid "[Node={node}] {requester} {status} repeat for {track}."
-msgstr "[العقدة/{node}] {requester} {status} تكرار {track}."
-
-#: plnotifier/cog.py:1304
-msgid "Player Restored Event"
-msgstr "حدث استعادة اللاعب"
-
-#: plnotifier/cog.py:1305
-msgid "[Node={node}] {requester} restored the player."
-msgstr "[Node={node}] {requester} استعاد اللاعب."
-
-#: plnotifier/cog.py:1325
-msgid "an intro section"
-msgstr "مقطع مقدمة"
-
-#: plnotifier/cog.py:1327
-msgid "an outro section"
-msgstr "قسم خارجي"
-
-#: plnotifier/cog.py:1329
-msgid "a preview section"
-msgstr "قسم معاينة"
-
-#: plnotifier/cog.py:1331
-msgid "an off-topic section"
-msgstr "قسم خارج الموضوع"
-
-#: plnotifier/cog.py:1333
-msgid "a filler section"
-msgstr "قسم عامل التصفية"
-
-#: plnotifier/cog.py:1335
-msgid "a sponsor section"
-msgstr "قسم مقدم ورقة العمل"
-
-#: plnotifier/cog.py:1337
-msgid "a self-promotion section"
-msgstr "قسم تعزيز الذات"
-
-#: plnotifier/cog.py:1339
-msgid "an interaction section"
-msgstr "قسم تفاعلي"
-
-#: plnotifier/cog.py:1343
-msgid "Sponsor Segment Skipped Event"
-msgstr "حدث تخطي شريحة الراعي"
-
-#: plnotifier/cog.py:1344
-msgid "[Node={node}] Sponsorblock: Skipped {category} running from {start}s to {to}s."
-msgstr "[Node={node}] الراعي: تخطي {category} قيد من {start}s إلى {to}ثوان."
-
-#: plnotifier/cog.py:1369
-msgid "Effect"
-msgstr "التأثيرات"
-
-#: plnotifier/cog.py:1370
-msgid "Values"
-msgstr "القيم"
-
-#: plnotifier/cog.py:1399
+#: plplaylists/cog.py:51
+#, docstring
+msgid "PyLav playlist management commands"
+msgstr "أوامر إدارة قائمة التشغيل PyLav"
+
+#: plplaylists/cog.py:100
+msgid "This command requires an existing player to be run."
+msgstr "يتطلب هذا الأمر تشغيل مشغل موجود."
+
+#: plplaylists/cog.py:109
+msgid "MediaPlayer cog is currently temporarily unavailable due to an outage with the backend services, please try again later."
+msgstr "كود MediaPlayer غير متوفر حاليا بشكل مؤقت بسبب انقطاع مع خدمات الخلفية، الرجاء المحاولة مرة أخرى لاحقا."
+
+#: plplaylists/cog.py:113
+msgid "No Lavalink node currently available."
+msgstr "لا توجد عقدة فارغة متاحة حاليا."
+
+#: plplaylists/cog.py:124
+msgid "MediaPlayer is currently unable to process tracks belonging to {feature}."
+msgstr "MediaPlayer غير قادر حاليا على معالجة المسارات التي تخص {feature}."
+
+#: plplaylists/cog.py:127
+msgid "No Lavalink node currently available with feature {feature}."
+msgstr "لا توجد عقدة فارغة متاحة حاليا مع الميزة {feature}."
+
+#: plplaylists/cog.py:140
+msgid "This command is not available in this channel. Please use {channel}"
+msgstr "هذا الأمر غير متوفر في هذه القناة. الرجاء استخدام {channel}"
+
+#: plplaylists/cog.py:161
+#, docstring
+msgid "Create a new playlist.\n\n"
+"        If you don't specify an URL and name, you will be shows a creation menu, which also allows you to save the current player queue as a playlist.\n\n"
+"        If you don't specify a name, the playlist will be named the URL playlist if available otherwise the name will be the same as the ID.\n"
+"        If you specify an URL, the playlist will be created from the URL.\n"
+"        "
+msgstr "إنشاء قائمة تشغيل جديدة.\n\n"
+"        إذا لم تقم بتحديد عنوان URL والاسم، فستظهر قائمة إنشاء، والذي يسمح لك أيضا بحفظ قائمة انتظار اللاعب الحالية كقائمة تشغيل.\n\n"
+"        إذا لم تقم بتحديد اسم، سيتم تسمية قائمة التشغيل بقائمة تشغيل عنوان URL إذا كانت متوفرة خلاف ذلك فإن الاسم سيكون نفس المعرف\n"
+"        إذا قمت بتحديد عنوان URL، سيتم إنشاء قائمة التشغيل من عنوان URL.\n"
+"        "
+
+#: plplaylists/cog.py:180
+msgid "Let's create a playlist!"
+msgstr "دعونا ننشئ قائمة تشغيل!"
+
+#: plplaylists/cog.py:181
+msgid "(**1**) - Apply changes to playlist.\n"
+"(**2**) - Cancel any changes made.\n"
+"(**3**) - Add a name to the playlist.\n"
+"(**4**) - Link this playlist to an existing playlist/album.\n"
+"(**5**) - Add all track from the queue to the playlist.\n\n"
+"If you want the playlist name to be as the original playlist simply set the URL but no name.\n\n"
+msgstr "(**1**) - تطبيق التغييرات على قائمة التشغيل.\n"
+"(**2**) - إلغاء أي تغييرات أجريت.\n"
+"(**3**) - إضافة اسم إلى قائمة التشغيل.\n"
+"(**4**) - ربط قائمة التشغيل هذه بقائمة تشغيل/ألبوم موجودة.\n"
+"(**5**) - إضافة جميع المسارات من قائمة الانتظار إلى قائمة التشغيل.\n\n"
+"إذا كنت تريد أن يكون اسم قائمة التشغيل كقائمة التشغيل الأصلية ببساطة قم بتعيين عنوان URL ولكن بدون اسم.\n\n"
+
+#: plplaylists/cog.py:221
+msgid "Playlist created"
+msgstr "تم إنشاء قائمة التشغيل"
+
+#: plplaylists/cog.py:222
+msgid "Name: `{name}`\n"
+"ID: `{id}`\n"
+"Tracks: `{track_count}`"
+msgstr "الاسم: `{name}`\n"
+"المعرف: `{id}`\n"
+"المسارات: `{track_count}`"
+
+#: plplaylists/cog.py:232
+#, docstring
+msgid "\n"
+"        List all playlists you have access to on the invoked context.\n\n"
+"        This takes into consideration your current VC, Text channel and Server.\n"
+"        "
+msgstr "\n"
+"        قائمة جميع قوائم التشغيل التي لديك حق الوصول إليها في السياق الذي تم الاستدعاء.\n\n"
+"        هذا يأخذ في الاعتبار VC وقناة النص والخادم\n"
+"        "
+
+#: plplaylists/cog.py:253
+msgid "You have no playlists."
+msgstr "ليس لديك قوائم تشغيل."
+
+#: plplaylists/cog.py:272
+#, docstring
+msgid "\n"
+"        Manage a playlist.\n\n"
+"        This command can be used to delete, clear all tracks, add or remove tracks or play a playlist.\n\n"
+"        If you use the `start` (`play` or `enqueue`) alias the playlist will be played instead of you being shown the control menu.\n"
+"        If you use the `delete` (`del`) alias the playlist will be deleted instead of you being shown the control menu.\n"
+"        If you use the `save` (`queue`) alias the current queue will be added to the specified playlist.\n"
+"        if you use the `info` alias the playlist tracks will be displayed in a menu.\n"
+"        "
+msgstr "\n"
+"        إدارة قائمة التشغيل.\n\n"
+"        يمكن استخدام هذا الأمر للحذف، مسح جميع المسارات، وإضافة المسارات أو إزالتها أو تشغيل قائمة تشغيل.\n\n"
+"        إذا كنت تستخدم 'start' ('play' أو 'enqueue') الاسم المستعار لقائمة التشغيل سيتم تشغيله بدلا من عرض قائمة التحكم.\n"
+"        إذا كنت تستخدم 'حذف` ('del`) الاسم المستعار لقائمة التشغيل سيتم حذفه بدلا من عرض قائمة التحكم.\n"
+"        إذا كنت تستخدم \"حفظ\" (`قائمة`) الاسم المستعار، سيتم إضافة قائمة الانتظار الحالية إلى قائمة التشغيل المحددة.\n"
+"        إذا كنت تستخدم الاسم المستعار \"info\" سيتم عرض مسارات قائمة التشغيل في القائمة.\n"
+"        "
+
+#: plplaylists/cog.py:325
+msgid "{user}, playlist {playlist_name} cannot be managed by yourself."
+msgstr "{user}، قائمة التشغيل {playlist_name} لا يمكن إدارتها بنفسك."
+
+#: plplaylists/cog.py:334
+msgid "(**1**){space} - Apply changes to playlist.\n"
+"(**2**){space} - Cancel any changes made and close the menu.\n"
+"(**3**){space} - Delete this playlist.\n"
+"(**4**){space} - Remove all tracks from this playlist.\n"
+"(**5**){space} - Update the playlist with the latest tracks.\n"
+"Please note that this action will ignore any tracks added/removed via this menu.\n"
+"(**6**){space} - Change the name of the playlist.\n"
+"(**7**){space} - Link this playlist to an existing playlist/album.\n"
+"(**8**){space} - Add a query to this playlist.\n"
+"(**9**){space} - Remove a query from this playlist.\n"
+"(**10**) - Download the playlist file.\n"
+"(**11**) - Add current playlist to the queue.\n"
+"(**12**) - Show tracks in current playlist.\n"
+"(**13**) - Add tracks from queue to this playlist.\n"
+"(**14**) - Remove duplicate entries in the playlist.\n\n"
+"The add/remove track buttons can be used multiple times to add/remove multiple tracks and playlists at once.\n\n"
+"A query is anything playable by the play command - any query can be used by the add/remove buttons\n\n"
+"The clear button will always be run first before any other operations.\n"
+"The URL button will always run last - Linking a playlist via the URL will overwrite any tracks added or removed to this playlist.\n\n"
+"If you interact with a button multiple times other than the add/remove buttons only the last interaction will take effect.\n\n\n"
+msgstr "(**1**){space} - تطبيق التغييرات على قائمة التشغيل.\n"
+"(**2**){space} - إلغاء أي تغييرات أجريت وإغلاق القائمة.\n"
+"(**3**){space} - حذف قائمة التشغيل هذه.\n"
+"(**4**){space} - إزالة جميع المسارات من قائمة التشغيل هذه\n"
+"(**5**){space} - تحديث قائمة التشغيل بأحدث المسارات.\n"
+"يرجى ملاحظة أن هذا الإجراء سوف يتجاهل أي مسارات تمت إضافتها أو إزالتها عبر هذه القائمة.\n"
+"(**6**){space} - تغيير اسم قائمة التشغيل.\n"
+"(**7**){space} - ربط قائمة التشغيل هذه بقائمة تشغيل/ألبوم موجودة.\n"
+"(**8**){space} - إضافة استعلام إلى قائمة التشغيل هذه.\n"
+"(**9**){space} - إزالة استعلام من قائمة التشغيل هذه.\n"
+"(**10**) - تحميل ملف قائمة التشغيل.\n"
+"(**11**) - إضافة قائمة التشغيل الحالية إلى قائمة الانتظار.\n"
+"(**12**) - إظهار المسارات في قائمة التشغيل الحالية\n"
+"(**13**) - إضافة المسارات من قائمة الانتظار إلى قائمة التشغيل هذه.\n"
+"(**14**) - إزالة المواد المكررة في قائمة التشغيل.\n\n"
+"أزرار الإضافة/إزالة المسار يمكن استخدامها عدة مرات لإضافة/إزالة مسارات متعددة وقوائم تشغيل في وقت واحد.\n\n"
+"الاستعلام هو أي شيء يمكن تشغيله بواسطة أمر التشغيل - أي استعلام يمكن استخدامه بواسطة أزرار إضافة/إزالة\n\n"
+"زر المسح سوف يتم تشغيله دائماً قبل أي عمليات أخرى.\n"
+"سيتم تشغيل زر URL دائمًا - سيؤدي ربط قائمة التشغيل عبر عنوان URL إلى الكتابة فوق أي مسارات تمت إضافتها أو إزالتها إلى قائمة التشغيل هذه.\n\n"
+"إذا كنت تتفاعل مع زر عدة مرات غير أزرار إضافة/إزالة فقط سيصبح التفاعل الأخير ساري المفعول\n\n\n"
+
+#: plplaylists/cog.py:360
+msgid "(**1**) - Close the menu.\n"
+"(**2**) - Update the playlist with the latest tracks.\n"
+"(**3**) - Download the playlist file.\n"
+"(**4**) - Add current playlist to the queue.\n"
+"(**5**) - Show tracks in current playlist.\n\n\n"
+msgstr "(**1**) - إغلاق القائمة.\n"
+"(**2**) - تحديث قائمة التشغيل بأحدث المسارات.\n"
+"(**3**) - تحميل ملف قائمة التشغيل.\n"
+"(**4**) - إضافة قائمة التشغيل الحالية إلى قائمة الانتظار.\n"
+"(**5**) - إظهار المسارات في قائمة التشغيل الحالية\n\n\n"
+
+#: plplaylists/cog.py:368
+msgid "**__Currently managing__**:\n"
+"**Name**:{space}{space}{space}{playlist_name}\n"
+"**Scope**:{space}{space}{space}{scope}\n"
+"**Author**:{space}{space}{author}\n"
+"**Tracks**:{space}{space}{space}{tracks} tracks\n"
+"**URL**:{space}{space}{space}{space}{space}{url}\n"
+msgstr ""
+
+#: plplaylists/cog.py:385
+msgid "Let's manage: {playlist_name}"
+msgstr "لنقوم بالإدارة: {playlist_name}"
+
+#: plplaylists/cog.py:387
+msgid "Let's take a look at: {playlist_name}"
+msgstr "دعونا نلقي نظرة في: {playlist_name}"
+
+#: plplaylists/cog.py:394
 msgid "N/A"
 msgstr "لا"
 
-#: plnotifier/cog.py:1403
-msgid "Filters Applied Event"
-msgstr "تصفية الحدث المطبق"
+#: plplaylists/cog.py:418
+msgid "Playlist deleted."
+msgstr "تم حذف قائمة التشغيل."
 
-#: plnotifier/cog.py:1404
-msgid "[Node={node}] {requester} changed the player filters.\n\n"
-"__**Currently Applied:**__\n"
-"{data}"
-msgstr "[Node={node}] {requester} غيّر فلاتر اللاعب.\n\n"
-"__**مطبق حاليا:**__\n"
-"{data}"
+#: plplaylists/cog.py:420
+msgid "{user}, playlist {playlist_name} has been deleted."
+msgstr "{user}، تم حذف قائمة التشغيل {playlist_name}."
 
-#: plnotifier/cog.py:1408
-msgid "None"
-msgstr "لا"
+#: plplaylists/cog.py:477
+msgid "Playlist **{playlist_name}** could not be updated with URL: <{url}>."
+msgstr "لا يمكن تحديث قائمة التشغيل **{playlist_name}** باستخدام URL: <{url}>."
 
-#: plnotifier/cog.py:1424
-msgid "Node Connected Event"
-msgstr "حدث متصل بالعقدة"
+#: plplaylists/cog.py:513
+msgid "\n"
+"{track_count} {track_plural} removed from the playlist."
+msgstr "\n"
+"{track_count} {track_plural} حذف من قائمة التشغيل."
 
-#: plnotifier/cog.py:1425
-msgid "Node {name} has been connected."
-msgstr "تم توصيل العقدة {name}."
+#: plplaylists/cog.py:514 plplaylists/cog.py:518
+msgid "track"
+msgstr "مقطع"
 
-#: plnotifier/cog.py:1439
-msgid "Node Disconnected Event"
-msgstr "حدث قطع اتصال العقدة"
+#: plplaylists/cog.py:514 plplaylists/cog.py:518
+msgid "tracks"
+msgstr "مسارات"
 
-#: plnotifier/cog.py:1440
-msgid "Node {name} has been disconnected with code {code} and reason: {reason}."
-msgstr "العقدة {name} تم فصلها مع الرمز {code} والسبب: {reason}."
+#: plplaylists/cog.py:517
+msgid "\n"
+"{track_count} {track_plural} added to the playlist."
+msgstr "\n"
+"{track_count} {track_plural} أضيف إلى قائمة التشغيل."
 
-#: plnotifier/cog.py:1459
-msgid "Node Changed Event"
-msgstr "تغيير حدث العقدة"
+#: plplaylists/cog.py:524
+msgid "Playlist updated."
+msgstr "تم تحديث قائمة التشغيل."
 
-#: plnotifier/cog.py:1460
-msgid "The node which the player is connected to changed from {fro} to {to}."
-msgstr "تم تغيير العقدة التي تم توصيل اللاعب بها من {fro} إلى {to}."
+#: plplaylists/cog.py:525
+msgid "{user}, playlist {playlist_name} has been updated.{extras}"
+msgstr "{user}، تم تحديث قائمة التشغيل {playlist_name} .{extras}"
 
-#: plnotifier/cog.py:1479
-msgid "WebSocket Closed Event"
-msgstr "حدث إغلاق WebSocket"
+#: plplaylists/cog.py:537
+msgid "Playlist unchanged."
+msgstr "قائمة التشغيل بدون تغيير."
 
-#: plnotifier/cog.py:1480
-msgid "[Node={node}] The websocket connection to the Lavalink node closed with code {code} and reason {reason}."
-msgstr "[Node={node}] تم إغلاق اتصال موقع الويب بالعقدة Lavalink بواسطة الكود {code} والسبب {reason}."
+#: plplaylists/cog.py:538
+msgid "{user}, playlist {playlist_name} has not been updated."
+msgstr "{user}، لم يتم تحديث قائمة التشغيل {playlist_name}."
 
-#: plnotifier/notifier_commands.py:81
+#: plplaylists/cog.py:548
 #, docstring
-msgid "Configure the PyLavNotifier cog."
-msgstr "تكوين رمز PyLavNotifier."
-
-#: plnotifier/notifier_commands.py:87
-#, docstring
-msgid "Set the notify channel for the player."
-msgstr "تعيين قناة إعلام للاعب."
-
-#: plnotifier/notifier_commands.py:103
-msgid "PyLavNotifier channel set to {channel}"
-msgstr "تم تعيين قناة PyLavNotifier إلى {channel}"
-
-#: plnotifier/notifier_commands.py:113
-#, docstring
-msgid "Set whether or not to notify for the specified event.\n\n"
-"        Arguments:\n"
-"            event -- The event to set.\n"
-"            toggle -- Whether or not to notify upon receiving this event.\n"
-"            use_mention -- Whether or not to use a mention instead of the name for the action requested.\n"
+msgid "\n"
+"        Upload a playlist to the bot.\n\n"
+"        This command will upload a playlist to the bot.\n"
+"        The playlist can be uploaded by either the URL of the playlist file or by attaching the playlist file to the message.\n"
 "        "
-msgstr "تعيين ما إذا كان سيتم أو لا يتم إعلامك عن الحدث المحدد.\n\n"
-"        الحججج:\n"
-"            الحدث -- الحدث المراد تحديده.\n"
-"            تبديل -- ما إذا كان سيتم الإخطار أم لا عند تلقي هذا الحدث.\n"
-"            use_mention -- سواء استخدم أو لا استخدم ذكر بدلاً من اسم الإجراء المطلوب.\n"
+msgstr "\n"
+"        قم بتحميل قائمة تشغيل إلى البوت.\n\n"
+"        سيقوم هذا الأمر برفع قائمة تشغيل إلى البوت.\n"
+"        يمكن تحميل قائمة التشغيل بواسطة عنوان URL لملف قائمة التشغيل أو بإرفاق ملف قائمة التشغيل إلى الرسالة.\n"
 "        "
 
-#: plnotifier/notifier_commands.py:128
-msgid "Invalid event, possible events are:\n\n"
-"{events}."
-msgstr "حدث غير صالح، الأحداث المحتملة هي:\n\n"
-"{events}."
+#: plplaylists/cog.py:565
+msgid "You must either provide a URL or attach a playlist file to upload a playlist."
+msgstr "يجب عليك إما تقديم عنوان URL أو إرفاق ملف قائمة تشغيل لتحميل قائمة التشغيل."
 
-#: plnotifier/notifier_commands.py:142
-msgid "Event {event} set to {toggle}{extras}."
-msgstr "تم تعيين الحدث {event} إلى {toggle}{extras}."
+#: plplaylists/cog.py:585
+msgid "No valid playlist file provided."
+msgstr "لم يتم توفير ملف قائمة التشغيل صالح."
 
-#: plnotifier/notifier_commands.py:144
-msgid "notify"
-msgstr "إشعار"
+#: plplaylists/cog.py:594
+msgid "Multiple playlist files provided - Currently only 1 per message is allowed."
+msgstr "ملفات قائمة تشغيل متعددة تم توفيرها - يسمح حاليا بواحد فقط لكل رسالة."
 
-#: plnotifier/notifier_commands.py:144
-msgid "do not notify"
-msgstr "لا تقم بالإعلام"
+#: plplaylists/cog.py:612
+msgid "Failed to save any of the requested playlists."
+msgstr "فشل في حفظ أي من قوائم التشغيل المطلوبة."
 
-#: plnotifier/notifier_commands.py:145
-msgid " with mentions"
-msgstr " مع الإشارات"
+#: plplaylists/cog.py:621
+msgid "Failed to save the following playlists:\n"
+"{invalid_playlists}"
+msgstr "فشل في حفظ قوائم التشغيل التالية:\n"
+"{invalid_playlists}"
 
-#: plnotifier/notifier_commands.py:145
-msgid " without mentions"
-msgstr " بدون ذكر"
+#: plplaylists/cog.py:631
+msgid "Successfully saved the following playlists:\n"
+"{saved_playlists}"
+msgstr "حفظ قوائم التشغيل التالية بنجاح:\n"
+"{saved_playlists}"
+
+#: plplaylists/cog.py:656
+msgid "You must be in a voice channel to allow me to connect."
+msgstr "يجب أن تكون في قناة صوتية للسماح لي بالاتصال."
+
+#: plplaylists/cog.py:664
+msgid "I don't have permission to connect or speak in {channel}."
+msgstr "ليس لدي إذن للاتصال أو التحدث في {channel}."
+
+#: plplaylists/cog.py:681
+msgid "Playlist"
+msgstr "قائمة التشغيل"
+
+#: plplaylists/cog.py:686
+msgid "{track_count} tracks enqueued.{playlist_name}"
+msgstr "{track_count} مسارات في قائمة الانتظار.{playlist_name}"
 
