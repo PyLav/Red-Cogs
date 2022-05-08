@@ -31,10 +31,7 @@ class UtilityCommands(CogMixin, ABC):
                 ephemeral=True,
             )
             return
-        if context.player:
-            config = context.player.config
-        else:
-            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
+        config = context.player.config
         max_volume = min(
             await config.fetch_max_volume(), await self.lavalink.player_manager.global_config.fetch_max_volume()
         )

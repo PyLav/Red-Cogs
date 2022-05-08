@@ -179,8 +179,7 @@ class PyLavNodes(commands.Cog):
         node_data = node.to_dict()
         for k in ["id", "resume_key", "resume_timeout", "managed", "reconnect_attempts", "extras"]:
             node_data.pop(k, None)
-        yaml = node_data.pop("yaml", None)
-        if yaml:
+        if yaml := node_data.pop("yaml", None):
             node_data["server"] = yaml["server"]
             node_data["server"].update(yaml["lavalink"]["server"])
         await context.author.send(
@@ -335,8 +334,12 @@ class PyLavNodes(commands.Cog):
         await PaginatingMenu(
             cog=self,
             bot=self.bot,
-            source=NodeListSource(cog=self, pages=self.lavalink.node_manager.nodes),
+            source=NodeListSource(
+                cog=self, pages=self.lavalink.node_manager.nodes
+            ),
             delete_after_timeout=True,
             timeout=120,
-            original_author=context.author if not context.interaction else context.interaction.user,
+            original_author=context.interaction.user
+            if context.interaction
+            else context.author,
         ).start(context)
