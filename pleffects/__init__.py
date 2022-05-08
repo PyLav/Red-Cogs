@@ -6,12 +6,12 @@ from redbot.core.utils import get_end_user_data_statement
 
 from pylav.types import BotT
 
-from plutils.cog import PyLavUtils
+from pleffects.cog import PyLavEffects
 
 __red_end_user_data_statement__ = get_end_user_data_statement(__file__)
 
 
 async def setup(bot: BotT):
-    pl_utils = PyLavUtils(bot)
+    pl_utils = PyLavEffects(bot)
     await bot.add_cog(pl_utils)
     pl_utils._init_task = asyncio.create_task(pl_utils.initialize())

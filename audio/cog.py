@@ -47,6 +47,10 @@ class PyLavPlayer(
     ContextMenus,
     metaclass=CompositeMetaClass,
 ):
+    """A Media player using the PyLav library."""
+
+    __version__ = "1.0.0.0rc0"
+
     def __init__(self, bot: BotT, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot

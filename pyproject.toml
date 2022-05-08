@@ -7,12 +7,12 @@ aggressive = 3
 
 [tool.black]
 line-length = 120
-target-version = ['py39']
+target-version = ['py310']
 
 [tool.isort]
 profile = "black"
 line_length = 120
-py_version = 39
+py_version = 310
 known_third_party = ["aiohttp", "mpplaylists", "ujson", "red_commons", "discord", "sqlalchemy", "cached_property","psutil", "dateutils", "appdirs", "yaml", "redbot", "tabulate", "aiopath", "humanize"]
 known_first_party = ["pylav", "pylavcogs_shared"]
-known_local_folder = ["audio", "plnotifier", "plconfig", "plmigrator", "plplaylists", "plutils", "plnodes"]
+known_local_folder = ["audio", "plconfig", "plmigrator", "plnodes", "plnotifier", "plplaylists", "plutils", "pllocal", "pleffects", "pleq", "plspotify", "plmanagednode"]

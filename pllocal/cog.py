@@ -17,6 +17,10 @@ _ = Translator("PyLavLocalFiles", Path(__file__))
 
 @cog_i18n(_)
 class PyLavLocalFiles(commands.Cog):
+    """Manage and apply equalizer profiles to the active player."""
+
+    __version__ = "0.0.0.1a"
+
     def __init__(self, bot: BotT, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot

@@ -10,14 +10,14 @@ from redbot.core.i18n import Translator, cog_i18n
 from pylav import Client
 from pylav.types import BotT
 
-LOGGER = getLogger("red.3pt.PyLavSpotify")
+LOGGER = getLogger("red.3pt.PyLavManagedNode")
 
-_ = Translator("PyLavSpotify", Path(__file__))
+_ = Translator("PyLavManagedNode", Path(__file__))
 
 
 @cog_i18n(_)
-class PyLavSpotify(commands.Cog):
-    """Use the Spotify API to find content to play with PyLav."""
+class PyLavManagedNode(commands.Cog):
+    """Configure the managed Lavalink node used by PyLav."""
 
     __version__ = "0.0.0.1a"
 

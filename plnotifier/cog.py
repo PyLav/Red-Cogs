@@ -80,6 +80,10 @@ POSSIBLE_EVENTS = {
 
 @cog_i18n(_)
 class PyLavNotifier(commands.Cog):
+    """Listen to events from the PyLav player and sent them as messages to the specified channel."""
+
+    __version__ = "1.0.0.0rc0"
+
     def __init__(self, bot: BotT, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot

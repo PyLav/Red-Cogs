@@ -17,6 +17,10 @@ _ = Translator("PyLavEffects", Path(__file__))
 
 @cog_i18n(_)
 class PyLavEffects(commands.Cog):
+    """Apply filters and effects to the PyLav player."""
+
+    __version__ = "0.0.0.1a"
+
     def __init__(self, bot: BotT, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot

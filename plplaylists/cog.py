@@ -48,6 +48,10 @@ class PyLavPlaylists(
     red_commands.Cog,
     metaclass=CompositeMetaClass,
 ):
+    """PyLav playlist management commands"""
+
+    __version__ = "1.0.0.0rc0"
+
     def __init__(self, bot: BotT, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot

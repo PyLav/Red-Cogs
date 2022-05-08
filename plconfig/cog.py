@@ -23,6 +23,10 @@ _ = Translator("PyLavConfigurator", Path(__file__))
 
 @cog_i18n(_)
 class PyLavConfigurator(commands.Cog):
+    """Configure PyLav library settings."""
+
+    __version__ = "1.0.0.0rc0"
+
     def __init__(self, bot: BotT, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot
