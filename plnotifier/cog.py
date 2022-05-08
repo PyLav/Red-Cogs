@@ -91,62 +91,64 @@ class PyLavNotifier(commands.Cog):
         self.lavalink = Client(bot=self.bot, cog=self, config_folder=cog_data_path(raw_name="PyLav"))
         self._config = Config.get_conf(self, identifier=208903205982044161)
         self._config.register_global(
-            notify_channel_id=None, node_connected=[True, True], node_disconnected=[True, True]
+            notify_channel_id=None,
+            node_connected=dict(enabled=True, mention=True),
+            node_disconnected=dict(enabled=True, mention=True),
         )
         self._config.register_guild(
-            track_stuck=[True, True],
-            track_exception=[True, True],
-            track_end=[True, True],
-            track_start_youtube_music=[True, True],
-            track_start_spotify=[True, True],
-            track_start_apple_music=[True, True],
-            track_start_localfile=[True, True],
-            track_start_http=[True, True],
-            track_start_speak=[True, True],
-            track_start_youtube=[True, True],
-            track_start_clypit=[True, True],
-            track_start_getyarn=[True, True],
-            track_start_mixcloud=[True, True],
-            track_start_ocrmix=[True, True],
-            track_start_pornhub=[True, True],
-            track_start_reddit=[True, True],
-            track_start_soundgasm=[True, True],
-            track_start_tiktok=[True, True],
-            track_start_bandcamp=[True, True],
-            track_start_soundcloud=[True, True],
-            track_start_twitch=[True, True],
-            track_start_vimeo=[True, True],
-            track_start_gctts=[True, True],
-            track_start_niconico=[True, True],
-            track_start=[True, True],
-            track_skipped=[True, True],
-            track_seek=[True, True],
-            track_replaced=[True, True],
-            track_previous_requested=[True, True],
-            tracks_requested=[True, True],
-            track_autoplay=[True, True],
-            track_resumed=[True, True],
-            queue_shuffled=[True, True],
-            queue_end=[True, True],
-            queue_track_position_changed=[True, True],
-            queue_tracks_removed=[True, True],
-            player_update=[False, False],
-            player_paused=[True, True],
-            player_stopped=[True, True],
-            player_resumed=[True, True],
-            player_moved=[True, True],
-            player_disconnected=[True, True],
-            player_connected=[True, True],
-            volume_changed=[True, True],
-            player_repeat=[True, True],
-            player_restored=[True, True],
-            segment_skipped=[True, True],
-            segments_loaded=[False, False],
-            filters_applied=[True, True],
-            node_connected=[False, False],
-            node_disconnected=[False, False],
-            node_changed=[False, False],
-            websocket_closed=[False, False],
+            track_stuck=dict(enabled=True, mention=True),
+            track_exception=dict(enabled=True, mention=True),
+            track_end=dict(enabled=True, mention=True),
+            track_start_youtube_music=dict(enabled=True, mention=True),
+            track_start_spotify=dict(enabled=True, mention=True),
+            track_start_apple_music=dict(enabled=True, mention=True),
+            track_start_localfile=dict(enabled=True, mention=True),
+            track_start_http=dict(enabled=True, mention=True),
+            track_start_speak=dict(enabled=True, mention=True),
+            track_start_youtube=dict(enabled=True, mention=True),
+            track_start_clypit=dict(enabled=True, mention=True),
+            track_start_getyarn=dict(enabled=True, mention=True),
+            track_start_mixcloud=dict(enabled=True, mention=True),
+            track_start_ocrmix=dict(enabled=True, mention=True),
+            track_start_pornhub=dict(enabled=True, mention=True),
+            track_start_reddit=dict(enabled=True, mention=True),
+            track_start_soundgasm=dict(enabled=True, mention=True),
+            track_start_tiktok=dict(enabled=True, mention=True),
+            track_start_bandcamp=dict(enabled=True, mention=True),
+            track_start_soundcloud=dict(enabled=True, mention=True),
+            track_start_twitch=dict(enabled=True, mention=True),
+            track_start_vimeo=dict(enabled=True, mention=True),
+            track_start_gctts=dict(enabled=True, mention=True),
+            track_start_niconico=dict(enabled=True, mention=True),
+            track_start=dict(enabled=True, mention=True),
+            track_skipped=dict(enabled=True, mention=True),
+            track_seek=dict(enabled=True, mention=True),
+            track_replaced=dict(enabled=True, mention=True),
+            track_previous_requested=dict(enabled=True, mention=True),
+            tracks_requested=dict(enabled=True, mention=True),
+            track_autoplay=dict(enabled=True, mention=True),
+            track_resumed=dict(enabled=True, mention=True),
+            queue_shuffled=dict(enabled=True, mention=True),
+            queue_end=dict(enabled=True, mention=True),
+            queue_track_position_changed=dict(enabled=True, mention=True),
+            queue_tracks_removed=dict(enabled=True, mention=True),
+            player_update=dict(enabled=False, mention=True),
+            player_paused=dict(enabled=True, mention=True),
+            player_stopped=dict(enabled=True, mention=True),
+            player_resumed=dict(enabled=True, mention=True),
+            player_moved=dict(enabled=True, mention=True),
+            player_disconnected=dict(enabled=True, mention=True),
+            player_connected=dict(enabled=True, mention=True),
+            volume_changed=dict(enabled=True, mention=True),
+            player_repeat=dict(enabled=True, mention=True),
+            player_restored=dict(enabled=True, mention=True),
+            segment_skipped=dict(enabled=True, mention=True),
+            segments_loaded=dict(enabled=False, mention=True),
+            filters_applied=dict(enabled=True, mention=True),
+            node_connected=dict(enabled=False, mention=True),
+            node_disconnected=dict(enabled=False, mention=True),
+            node_changed=dict(enabled=False, mention=True),
+            websocket_closed=dict(enabled=False, mention=True),
         )
         self._message_queue = defaultdict(list)
         self._scheduled_jobs: list[Job] = []
@@ -156,7 +158,7 @@ class PyLavNotifier(commands.Cog):
         await self.lavalink.initialize()
         self._scheduled_jobs.append(
             self.lavalink.scheduler.add_job(
-                self.send_embed_batch, trigger="interval", seconds=5, max_instances=1, replace_existing=True
+                self.send_embed_batch, trigger="interval", seconds=10, max_instances=1, replace_existing=True
             )
         )
 
@@ -247,9 +249,9 @@ class PyLavNotifier(commands.Cog):
                 ephemeral=True,
             )
             return
-        await self._config.guild(guild=context.guild).set_raw(event, value=[toggle, use_mention])
+        await self._config.guild(guild=context.guild).set_raw(event, value={"enabled": toggle, "mention": use_mention})
         if event in ["node_connected", "node_disconnected"] and await self.bot.is_owner(context.author):
-            await self._config.set_raw(event, value=[toggle, use_mention])
+            await self._config.set_raw(event, value={"enabled": toggle, "mention": use_mention})
 
         await context.send(
             embed=await context.lavalink.construct_embed(
@@ -285,9 +287,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "track_exception", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_exception", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
 
@@ -308,7 +311,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw("track_end", default=[True, True])
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_end", default={"enabled": True, "mention": True}
+        )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if event.reason == "FINISHED":
@@ -336,9 +342,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "track_start", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_start", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -361,9 +368,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "track_start_youtube_music", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_start_youtube_music", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -388,9 +396,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "track_start_spotify", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_start_spotify", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -415,9 +424,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "track_start_apple_music", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_start_apple_music", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -442,9 +452,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "track_start_localfile", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_start_localfile", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -469,9 +480,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "track_start_http", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_start_http", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -496,9 +508,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "track_start_speak", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_start_speak", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -523,9 +536,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "track_start_youtube", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_start_youtube", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -550,9 +564,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "track_start_clypit", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_start_clypit", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -580,9 +595,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "track_start_getyarn", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_start_getyarn", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -610,9 +626,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "track_start_mixcloud", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_start_mixcloud", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -640,9 +657,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "track_start_ocrmix", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_start_ocrmix", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -670,9 +688,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "track_start_pornhub", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_start_pornhub", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -700,9 +719,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "track_start_reddit", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_start_reddit", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -730,9 +750,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "track_start_soundgasm", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_start_soundgasm", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -760,9 +781,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "track_start_tiktok", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_start_tiktok", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -790,9 +812,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "track_start_bandcamp", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_start_bandcamp", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -820,9 +843,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "track_start_soundcloud", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_start_soundcloud", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -850,9 +874,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "track_start_twitch", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_start_twitch", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -880,9 +905,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "track_start_vimeo", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_start_vimeo", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -910,9 +936,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "track_start_gctts", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_start_gctts", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -940,9 +967,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "track_start_niconico", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_start_niconico", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -970,9 +998,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "track_skipped", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_skipped", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -997,7 +1026,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw("track_seek", default=[True, True])
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_seek", default={"enabled": True, "mention": True}
+        )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -1027,9 +1059,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "previous_requested", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "previous_requested", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -1054,9 +1087,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "tracks_requested", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "tracks_requested", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -1079,9 +1113,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "track_autoplay", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_autoplay", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         self._message_queue[player.notify_channel].append(
@@ -1099,9 +1134,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "track_resumed", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_resumed", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -1126,9 +1162,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "queue_shuffled", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "queue_shuffled", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -1151,7 +1188,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw("queue_end", default=[True, True])
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "queue_end", default={"enabled": True, "mention": True}
+        )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         self._message_queue[player.notify_channel].append(
@@ -1169,9 +1209,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "tracks_removed", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "tracks_removed", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -1194,9 +1235,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "player_paused", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "player_paused", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -1219,9 +1261,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "player_stopped", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "player_stopped", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -1244,9 +1287,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "player_resumed", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "player_resumed", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -1269,9 +1313,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "player_moved", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "player_moved", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -1294,9 +1339,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "player_disconnected", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "player_disconnected", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -1319,9 +1365,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "player_connected", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "player_connected", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -1344,9 +1391,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "volume_changed", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "volume_changed", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -1369,9 +1417,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "player_repeat", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "player_repeat", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -1419,9 +1468,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "player_restored", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "player_restored", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -1444,9 +1494,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "segment_skipped", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "segment_skipped", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         segment = event.segment
@@ -1486,9 +1537,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "filters_applied", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "filters_applied", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if mention:
@@ -1544,7 +1596,8 @@ class PyLavNotifier(commands.Cog):
 
     @commands.Cog.listener()
     async def on_pylav_node_connected(self, event: events.NodeConnectedEvent) -> None:
-        notify, mention = await self._config.get_raw("node_connected", default=[True, True])
+        data = await self._config.get_raw("node_connected", default={"enabled": True, "mention": True})
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if channel_id := await self._config.notify_channel_id():
@@ -1559,7 +1612,8 @@ class PyLavNotifier(commands.Cog):
 
     @commands.Cog.listener()
     async def on_pylav_node_disconnected(self, event: events.NodeDisconnectedEvent) -> None:
-        notify, mention = await self._config.get_raw("node_disconnected", default=[True, True])
+        data = await self._config.get_raw("node_disconnected", default={"enabled": True, "mention": True})
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         if channel_id := await self._config.notify_channel_id():
@@ -1579,9 +1633,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "node_changed", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "node_changed", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         self._message_queue[player.notify_channel].append(
@@ -1599,9 +1654,10 @@ class PyLavNotifier(commands.Cog):
         player = event.player
         if player.notify_channel is None:
             return
-        notify, mention = await self._config.guild(guild=event.player.guild).get_raw(
-            "websocket_closed", default=[True, True]
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "websocket_closed", default={"enabled": True, "mention": True}
         )
+        notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
         self._message_queue[player.notify_channel].append(
