@@ -12,6 +12,7 @@ from redbot.core.i18n import Translator
 from pylav import Query, Track
 from pylav.utils import CogMixin, PyLavContext, format_time
 from pylavcogs_shared.ui.menus.queue import QueueMenu
+from pylavcogs_shared.ui.sources.queue import QueueSource
 from pylavcogs_shared.utils import rgetattr
 from pylavcogs_shared.utils.decorators import requires_player
 
@@ -348,9 +349,9 @@ class HybridCommands(CogMixin, ABC):
             )
             return
         await QueueMenu(
-            cog=self,  # type: ignore
+            cog=self,
             bot=self.bot,
-            source=QueueSource(guild_id=context.guild.id, cog=self),  # type: ignore
+            source=QueueSource(guild_id=context.guild.id, cog=self),
             original_author=context.author if not context.interaction else context.interaction.user,
         ).start(ctx=context)
 

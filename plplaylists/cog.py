@@ -26,7 +26,7 @@ from pylavcogs_shared.errors import MediaPlayerNotFoundError, UnauthorizedChanne
 from pylavcogs_shared.ui.menus.generic import PaginatingMenu
 from pylavcogs_shared.ui.menus.playlist import PlaylistCreationFlow, PlaylistManageFlow
 from pylavcogs_shared.ui.prompts.playlists import maybe_prompt_for_playlist
-from pylavcogs_shared.ui.sources.playlist import Base64Source
+from pylavcogs_shared.ui.sources.playlist import Base64Source, PlaylistListSource
 from pylavcogs_shared.utils import rgetattr
 from pylavcogs_shared.utils.decorators import always_hidden
 
@@ -252,9 +252,9 @@ class PyLavPlaylists(
             )
             return
         await PaginatingMenu(
-            cog=self,  # type: ignore
+            cog=self,
             bot=self.bot,
-            source=PlaylistListSource(cog=self, pages=playlists),  # type: ignore
+            source=PlaylistListSource(cog=self, pages=playlists),
             delete_after_timeout=True,
             timeout=120,
             original_author=context.author if not context.interaction else context.interaction.user,

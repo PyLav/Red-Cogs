@@ -243,7 +243,7 @@ class PyLavNotifier(commands.Cog):
                 ephemeral=True,
             )
             return
-        await self._config.guild(guild=context.guild).set_raw(event, value=[toggle, use_mention])  # type: ignore
+        await self._config.guild(guild=context.guild).set_raw(event, value=[toggle, use_mention])
         if event in ["node_connected", "node_disconnected"] and await self.bot.is_owner(context.author):
             await self._config.set_raw(event, value=[toggle, use_mention])
 
