@@ -110,11 +110,8 @@ class PlayerCommands(CogMixin, ABC):
                 ephemeral=True,
             )
             return
-        try:
+        with contextlib.suppress(ValueError):
             queue_number = int(track_url_or_index)
-        except ValueError:
-            pass
-
         # noinspection PyUnusedLocal
         track = None
         number_removed = 0

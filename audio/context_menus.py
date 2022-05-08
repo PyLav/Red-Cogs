@@ -36,8 +36,7 @@ class ContextMenus(CogMixin, ABC):
                 wait=True,
             )
             return
-        player = self.lavalink.get_player(interaction.guild.id)
-        if player:
+        if player := self.lavalink.get_player(interaction.guild.id):
             config = player.config
         else:
             config = await self.lavalink.player_config_manager.get_config(interaction.guild.id)
@@ -110,8 +109,7 @@ class ContextMenus(CogMixin, ABC):
                 wait=True,
             )
             return
-        player = self.lavalink.get_player(interaction.guild.id)
-        if player:
+        if player := self.lavalink.get_player(interaction.guild.id):
             config = player.config
         else:
             config = await self.lavalink.player_config_manager.get_config(interaction.guild.id)

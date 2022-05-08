@@ -99,10 +99,9 @@ class HybridCommands(CogMixin, ABC):
         search_queries = [q for q in queries if q.is_search]
         non_search_queries = [q for q in queries if not q.is_search]
         total_tracks_enqueue = 0
-        total_tracks_from_search = 0
-        failed_queries = []
         single_track = None
         if search_queries:
+            total_tracks_from_search = 0
             for query in search_queries:
                 single_track = track = Track(node=player.node, data=None, query=query, requester=author.id)
                 await player.add(requester=author.id, track=track)
@@ -117,6 +116,7 @@ class HybridCommands(CogMixin, ABC):
             if successful:
                 single_track = successful[0]
             total_tracks_enqueue += count
+            failed_queries = []
             failed_queries.extend(failed)
             if count:
                 if count == 1:
@@ -271,7 +271,7 @@ class HybridCommands(CogMixin, ABC):
                 ),
                 ephemeral=True,
             )
-        elif context.player.autoplay_enabled:
+        else:
             await context.send(
                 embed=await context.lavalink.construct_embed(description=_("Autoplay started."), messageable=context),
                 ephemeral=True,
@@ -352,7 +352,9 @@ class HybridCommands(CogMixin, ABC):
             cog=self,
             bot=self.bot,
             source=QueueSource(guild_id=context.guild.id, cog=self),
-            original_author=context.author if not context.interaction else context.interaction.user,
+            original_author=context.interaction.user
+            if context.interaction
+            else context.author,
         ).start(ctx=context)
 
     @commands.hybrid_command(name="shuffle", description="Shuffles the player's queue.")
@@ -408,17 +410,16 @@ class HybridCommands(CogMixin, ABC):
         if queue:
             await context.player.set_repeat("queue", True, context.author)
             msg = _("Repeating the queue")
+        elif context.player.config.repeat_queue or context.player.config.repeat_current:
+            await context.player.set_repeat("disable", False, context.author)
+            msg = _("Repeating disabled")
         else:
-            if context.player.config.repeat_queue or context.player.config.repeat_current:
-                await context.player.set_repeat("disable", False, context.author)
-                msg = _("Repeating disabled")
-            else:
-                await context.player.set_repeat("current", True, context.author)
-                msg = _("Repeating {track}").format(
-                    track=await context.player.current.get_track_display_name(with_url=True)
-                    if context.player.current
-                    else _("current track")
-                )
+            await context.player.set_repeat("current", True, context.author)
+            msg = _("Repeating {track}").format(
+                track=await context.player.current.get_track_display_name(with_url=True)
+                if context.player.current
+                else _("current track")
+            )
         await context.send(
             embed=await context.lavalink.construct_embed(description=msg, messageable=context), ephemeral=True
         )
@@ -509,12 +510,8 @@ class HybridCommands(CogMixin, ABC):
                 ephemeral=True,
             )
             return
-        if volume < 0:
-            volume = 0
-        if context.player:
-            config = context.player.config
-        else:
-            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
+        volume = max(volume, 0)
+        config = context.player.config
         max_volume = min(
             await config.fetch_max_volume(), await self.lavalink.player_manager.global_config.fetch_max_volume()
         )

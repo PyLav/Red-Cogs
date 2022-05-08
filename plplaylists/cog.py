@@ -174,9 +174,12 @@ class PyLavPlaylists(
         if not (name or url):
             playlist_prompt = PlaylistCreationFlow(
                 cog=self,
-                original_author=context.author if not context.interaction else context.interaction.user,
+                original_author=context.interaction.user
+                if context.interaction
+                else context.author,
                 timeout=120,
             )
+
             title = _("Let's create a playlist!")
             description = _(
                 "(**1**) - Apply changes to playlist.\n"
@@ -204,10 +207,7 @@ class PyLavPlaylists(
             else:
                 if add_queue and context.player:
                     tracks = context.player.queue.raw_queue
-                    if tracks:
-                        tracks = [track.track for track in tracks if track.track]
-                    else:
-                        tracks = []
+                    tracks = [track.track for track in tracks if track.track] if tracks else []
                 else:
                     tracks = []
                 url = None
@@ -261,7 +261,9 @@ class PyLavPlaylists(
             source=PlaylistListSource(cog=self, pages=playlists),
             delete_after_timeout=True,
             timeout=120,
-            original_author=context.author if not context.interaction else context.interaction.user,
+            original_author=context.interaction.user
+            if context.interaction
+            else context.author,
         ).start(context)
 
     @command_playlist.command(
