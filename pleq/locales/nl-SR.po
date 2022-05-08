@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-08 15:16+0000\n"
-"PO-Revision-Date: 2022-05-08 15:22\n"
+"POT-Creation-Date: 2022-05-08 18:45+0000\n"
+"PO-Revision-Date: 2022-05-08 18:53\n"
 "Last-Translator: \n"
 "Language-Team: Dutch, Suriname\n"
 "MIME-Version: 1.0\n"
@@ -17,8 +17,144 @@ msgstr ""
 "X-Crowdin-File-ID: 434\n"
 "Language: nl_SR\n"
 
-#: pleq/cog.py:20
+#: pleq/cog.py:27
 #, docstring
-msgid "Manage and applies equalizer profiles to the active PyLav player."
-msgstr "Beheer en pas Equalizer profielen toe aan de actieve PyLav speler."
+msgid "Apply equalizer presets to the PyLav player."
+msgstr "Pas equalizer presets toe aan de PyLav speler."
+
+#: pleq/cog.py:75
+msgid "This command requires an existing player to be run."
+msgstr "Deze opdracht vereist dat een bestaande speler wordt uitgevoerd."
+
+#: pleq/cog.py:84
+msgid "MediaPlayer cog is currently temporarily unavailable due to an outage with the backend services, please try again later."
+msgstr "MediaPlayer cog is momenteel tijdelijk niet beschikbaar vanwege een storing met de backend diensten, probeer het later alstublieft opnieuw."
+
+#: pleq/cog.py:88
+msgid "No Lavalink node currently available."
+msgstr "Er is geen Lavalink node momenteel beschikbaar."
+
+#: pleq/cog.py:99
+msgid "MediaPlayer is currently unable to process tracks belonging to {feature}."
+msgstr "MediaPlayer kan momenteel geen tracks van {feature} verwerken."
+
+#: pleq/cog.py:102
+msgid "No Lavalink node currently available with feature {feature}."
+msgstr "Er is geen Lavalink node beschikbaar met feature {feature}."
+
+#: pleq/cog.py:115
+msgid "This command is not available in this channel. Please use {channel}"
+msgstr "Deze opdracht is niet beschikbaar in dit kanaal. Gebruik {channel}"
+
+#: pleq/cog.py:131
+#, docstring
+msgid "Configure the Player behaviour when a preset is set."
+msgstr "Het gedrag van de speler configureren wanneer een voorinstelling is ingesteld."
+
+#: pleq/cog.py:135
+#, docstring
+msgid "Persist the last used preset."
+msgstr "Houd de laatst gebruikte voorinstelling aan."
+
+#: pleq/cog.py:150
+msgid "The player will now apply the last used preset when it is created."
+msgstr "De speler zal nu de laatst gebruikte voorinstelling toepassen wanneer deze is gemaakt."
+
+#: pleq/cog.py:161
+msgid "Last used preset will no longer be saved."
+msgstr "Laatst gebruikte voorinstelling zal niet langer worden opgeslagen."
+
+#: pleq/cog.py:174
+#, docstring
+msgid "Apply a Bass boost preset to the player.\n\n"
+"        The level is a value between 0 and 7.\n"
+"        "
+msgstr "Pas een Bass boost voorinstelling toe aan de speler.\n\n"
+"        Het level is een waarde tussen 0 en 7.\n"
+"        "
+
+#: pleq/cog.py:184
+msgid "The level must be between 0 and 7."
+msgstr "Het niveau moet tussen 0 en 7 liggen."
+
+#: pleq/cog.py:194
+msgid "Bass boost preset has been disabled."
+msgstr "Voorkeursinstelling basversterker is uitgeschakeld."
+
+#: pleq/cog.py:201
+msgid "Base boost - Maximum"
+msgstr "Basis boost - Maximaal"
+
+#: pleq/cog.py:205
+msgid "Base boost - Insane"
+msgstr "Basis boost - Chaos"
+
+#: pleq/cog.py:209
+msgid "Base boost - Extreme"
+msgstr "Basis boost - Extreme"
+
+#: pleq/cog.py:213
+msgid "Base boost - Very high"
+msgstr "Basis boost - zeer hoog"
+
+#: pleq/cog.py:217
+msgid "Base boost - High"
+msgstr "Basis boost - Hoog"
+
+#: pleq/cog.py:221
+msgid "Base boost - Medium"
+msgstr "Basis boost - Gemiddeld"
+
+#: pleq/cog.py:225
+msgid "Base boost - Cut-off"
+msgstr "Basis boost - Uitkap"
+
+#: pleq/cog.py:237
+msgid "Preset has been set to {name}."
+msgstr "Voorkeursinstelling is ingesteld op {name}."
+
+#: pleq/cog.py:244
+#, docstring
+msgid "Apply a Piano preset to the player.\n\n"
+"        Suitable for acoustic tracks, or tacks with an emphasis on female vocals.\n\n"
+"        Can also be used as a bass cut-off.\n"
+"        "
+msgstr "Een Piana-voorinstelling toepassen op de speler.\n\n"
+"        Ideaal voor akoestische cellen, of doet het met de nadruk op vrouwelijke stemmetjes.\n\n"
+"        Kan ook gebruikt worden als een afgesneden bass.\n"
+"        "
+
+#: pleq/cog.py:268
+msgid "Piano"
+msgstr "Piano"
+
+#: pleq/cog.py:281
+msgid "Piano preset has been set."
+msgstr "Piano preset is ingesteld."
+
+#: pleq/cog.py:288
+#, docstring
+msgid "Apply an experimental Metal/Rock equalizer preset.\n\n"
+"        Expect clipping on songs with heavy bass.\n"
+"        "
+msgstr "Pas een experimentele Metale/Rock equalizer voorinstelling toe.\n\n"
+"        Verwacht muziek met zware basaalstand.\n"
+"        "
+
+#: pleq/cog.py:312
+msgid "Metal"
+msgstr "Metalen"
+
+#: pleq/cog.py:324
+msgid "Rock/Metal preset has been set."
+msgstr "Rock/Metalen voorinstelling is ingesteld."
+
+#: pleq/cog.py:331
+#, docstring
+msgid "Remove any equalizer preset from the player."
+msgstr "Verwijder een Equalizer voorinstelling van de speler."
+
+#: pleq/cog.py:344
+msgid "Equalizer preset has been reset."
+msgstr "Voorkeursinstelling Equalizer is gereset."
 
