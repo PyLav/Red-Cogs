@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-07 14:00+0000\n"
-"PO-Revision-Date: 2022-05-07 14:12\n"
+"POT-Creation-Date: 2022-05-08 15:16+0000\n"
+"PO-Revision-Date: 2022-05-08 15:22\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -13,468 +13,297 @@ msgstr ""
 "X-Crowdin-Project: mediaplayer\n"
 "X-Crowdin-Project-ID: 512604\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /plnotifier/locales/messages.pot\n"
-"X-Crowdin-File-ID: 186\n"
+"X-Crowdin-File: /plplaylists/locales/messages.pot\n"
+"X-Crowdin-File-ID: 232\n"
 "Language: zh_CN\n"
 
-#: plnotifier/cog.py:143
-msgid "Track Stuck Event"
-msgstr "跟踪卡住事件"
-
-#: plnotifier/cog.py:144
-msgid "[Node={node}] {track} is stuck for {threshold} seconds, skipping."
-msgstr "[节点={node}] {track} 被卡住了 {threshold} 秒，跳过。"
-
-#: plnotifier/cog.py:166
-msgid "Track Exception Event"
-msgstr "跟踪异常事件"
-
-#: plnotifier/cog.py:167
-msgid "[Node={node}] There was an error while playing {track}:\n"
-"{exception}"
-msgstr "[Node={node}] 在播放 {track}时出错：\n"
-"{exception}"
-
-#: plnotifier/cog.py:185
-msgid "the player reached the end of the tracks runtime."
-msgstr "玩家已经到达轨道运行时间的末尾。"
-
-#: plnotifier/cog.py:187
-msgid "a new track started playing."
-msgstr "新曲目开始播放。"
-
-#: plnotifier/cog.py:189
-msgid "it failed to start."
-msgstr "启动失败。"
-
-#: plnotifier/cog.py:191
-msgid "because the player was stopped."
-msgstr "因为玩家已经停止。"
-
-#: plnotifier/cog.py:193
-msgid "the node told it to stop."
-msgstr "节点告诉它要停止。"
-
-#: plnotifier/cog.py:196
-msgid "Track End Event"
-msgstr "跟踪结束事件"
-
-#: plnotifier/cog.py:197
-msgid "[Node={node}] {track} has finished playing because {reason}"
-msgstr "[节点={node}] {track} 已经完成游戏，因为 {reason}"
-
-#: plnotifier/cog.py:221
-msgid "Track Start Event"
-msgstr "跟踪开始事件"
-
-#: plnotifier/cog.py:222
-msgid "[Node={node}] {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr "[Node={node}] {track} 已经开始玩。\n"
-"请求者为： {requester}"
-
-#: plnotifier/cog.py:246
-msgid "YouTube Music Track Start Event"
-msgstr "YouTube 音乐曲目开始事件"
-
-#: plnotifier/cog.py:247
-msgid "[Node={node}] YouTube Music track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr "[Node={node}] YouTube 音乐曲目: {track} 已开始播放。\n"
-"请求者: {requester}"
-
-#: plnotifier/cog.py:273
-msgid "Spotify Track Start Event"
-msgstr "Spotify 曲目开始事件"
-
-#: plnotifier/cog.py:274
-msgid "[Node={node}] Spotify track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr "[Node={node}] Spotify 歌曲: {track} 已经开始玩。\n"
-"请求者: {requester}"
-
-#: plnotifier/cog.py:300
-msgid "Apple Music Track Start Event"
-msgstr "苹果音乐曲目开始事件"
-
-#: plnotifier/cog.py:301
-msgid "[Node={node}] Apple Music track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr "[Node={node}] 苹果音乐曲目: {track} 已经开始播放。\n"
-"请求者: {requester}"
-
-#: plnotifier/cog.py:327
-msgid "Local Track Start Event"
-msgstr "本地曲目开始事件"
-
-#: plnotifier/cog.py:328
-msgid "[Node={node}] Local track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr "[节点={node}] 本地轨道: {track} 已经开始玩。\n"
-"请求者: {requester}"
-
-#: plnotifier/cog.py:354
-msgid "HTTP Track Start Event"
-msgstr "HTTP 曲目开始事件"
-
-#: plnotifier/cog.py:355
-msgid "[Node={node}] HTTP track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr "[Node={node}] HTTP 轨道: {track} 已开始播放。\n"
-"请求者: {requester}"
-
-#: plnotifier/cog.py:381
-msgid "Text-To-Speech Track Start Event"
-msgstr "文字语音轨开始事件"
-
-#: plnotifier/cog.py:382
-msgid "[Node={node}] Text-To-Speech track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr "[Node={node}] 文本语音轨： {track} 已经开始播放。\n"
-"请求者为： {requester}"
-
-#: plnotifier/cog.py:408
-msgid "YouTube Track Start Event"
-msgstr "YouTube 音轨开始事件"
-
-#: plnotifier/cog.py:409
-msgid "[Node={node}] YouTube track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr "[节点={node}] YouTube 曲目: {track} 已开始播放。\n"
-"请求者: {requester}"
-
-#: plnotifier/cog.py:435 plnotifier/cog.py:465 plnotifier/cog.py:495
-#: plnotifier/cog.py:525 plnotifier/cog.py:555 plnotifier/cog.py:585
-#: plnotifier/cog.py:615 plnotifier/cog.py:645 plnotifier/cog.py:675
-#: plnotifier/cog.py:705 plnotifier/cog.py:735 plnotifier/cog.py:765
-#: plnotifier/cog.py:795 plnotifier/cog.py:825
-msgid "{source} Track Start Event"
-msgstr "{source} 曲目开始事件"
-
-#: plnotifier/cog.py:436 plnotifier/cog.py:466 plnotifier/cog.py:496
-#: plnotifier/cog.py:526 plnotifier/cog.py:556 plnotifier/cog.py:586
-#: plnotifier/cog.py:616 plnotifier/cog.py:646 plnotifier/cog.py:676
-#: plnotifier/cog.py:706 plnotifier/cog.py:736 plnotifier/cog.py:766
-#: plnotifier/cog.py:796 plnotifier/cog.py:826
-msgid "[Node={node}] {source} track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr "[Node={node}] {source} 曲目: {track} 已经开始播放。\n"
-"请求者: {requester}"
-
-#: plnotifier/cog.py:855
-msgid "Track Skipped Event"
-msgstr "曲目跳过的事件"
-
-#: plnotifier/cog.py:856
-msgid "{track} has been skipped.\n"
-"Requested by {requester}"
-msgstr "{track} 已被跳过。\n"
-" {requester} 请求的"
-
-#: plnotifier/cog.py:879
-msgid "Track Seek Event"
-msgstr "跟踪查找事件"
-
-#: plnotifier/cog.py:880
-msgid "{requester} requested that {track} is sought from position {fro} to position {after}."
-msgstr "{requester} 请求从 {track} 的位置 {fro} 寻求位置 {after}。"
-
-#: plnotifier/cog.py:909
-msgid "Track Previous Requested Event"
-msgstr "跟踪上一个请求的事件"
-
-#: plnotifier/cog.py:910
-msgid "{requester} requested that the previous track {track} be played."
-msgstr "{requester} 请求播放上一个音轨 {track}。"
-
-#: plnotifier/cog.py:935
-msgid "Tracks Requested Event"
-msgstr "曲目请求事件"
-
-#: plnotifier/cog.py:936
-msgid "{requester} added {track_count} to the queue."
-msgstr "{requester} 将 {track_count} 添加到队列。"
-
-#: plnotifier/cog.py:955
-msgid "Track AutoPlay Event"
-msgstr "音轨自动播放事件"
-
-#: plnotifier/cog.py:956
-msgid "Auto-playing {track}."
-msgstr "自动播放 {track}。"
-
-#: plnotifier/cog.py:980
-msgid "Track Resumed Event"
-msgstr "曲目恢复事件"
-
-#: plnotifier/cog.py:981
-msgid "{requester} resumed {track}."
-msgstr "{requester} 恢复 {track}。"
-
-#: plnotifier/cog.py:1005
-msgid "Queue Shuffled Event"
-msgstr "队列混杂事件"
-
-#: plnotifier/cog.py:1006
-msgid "{requester} shuffled the queue."
-msgstr "{requester} 打乱了队列。"
-
-#: plnotifier/cog.py:1021
-msgid "Queue End Event"
-msgstr "队列结束事件"
-
-#: plnotifier/cog.py:1022
-msgid "All tracks in the queue have been played."
-msgstr "队列中的所有曲目都已播放。"
-
-#: plnotifier/cog.py:1044
-msgid "Tracks Removed Event"
-msgstr "曲目已删除事件"
-
-#: plnotifier/cog.py:1045
-msgid "{requester} removed {track_count} tracks from the queue."
-msgstr "{requester} 移除了队列中的 {track_count} 曲目。"
-
-#: plnotifier/cog.py:1069
-msgid "Player Paused Event"
-msgstr "播放器暂停事件"
-
-#: plnotifier/cog.py:1070
-msgid "{requester} paused the player."
-msgstr "{requester} 暂停了播放器。"
-
-#: plnotifier/cog.py:1092
-msgid "Player Stopped Event"
-msgstr "播放器停止事件"
-
-#: plnotifier/cog.py:1093
-msgid "{requester} stopped the player."
-msgstr "{requester} 停止了玩家。"
-
-#: plnotifier/cog.py:1115
-msgid "Player Resumed Event"
-msgstr "播放器恢复事件"
-
-#: plnotifier/cog.py:1116
-msgid "{requester} resumed the player."
-msgstr "{requester} 恢复了玩家。"
-
-#: plnotifier/cog.py:1138
-msgid "Player Moved Event"
-msgstr "播放器移动事件"
-
-#: plnotifier/cog.py:1139
-msgid "{requester} moved the player from {before} to {after}."
-msgstr "{requester} 将玩家从 {before} 移动到 {after}。"
-
-#: plnotifier/cog.py:1163
-msgid "Player Disconnected Event"
-msgstr "播放器已断开的事件"
-
-#: plnotifier/cog.py:1164
-msgid "{requester} disconnected the player."
-msgstr "{requester} 断开了玩家连接。"
-
-#: plnotifier/cog.py:1186
-msgid "Player Connected Event"
-msgstr "玩家连接事件"
-
-#: plnotifier/cog.py:1187
-msgid "{requester} connected the player."
-msgstr "{requester} 连接了播放器。"
-
-#: plnotifier/cog.py:1209
-msgid "Player Volume Changed Event"
-msgstr "播放器音量已更改事件"
-
-#: plnotifier/cog.py:1210
-msgid "{requester} changed the player's volume from {before} to {after}."
-msgstr "{requester} 将玩家的音量从 {before} 更改为 {after}。"
-
-#: plnotifier/cog.py:1236 plnotifier/cog.py:1244 plnotifier/cog.py:1254
-msgid "Player Repeat Event"
-msgstr "播放器重复事件"
-
-#: plnotifier/cog.py:1237
-msgid "{requester} disabled repeat."
-msgstr "{requester} 禁用了重复操作。"
-
-#: plnotifier/cog.py:1245
-msgid "{requester} {status} repeat of the whole queue."
-msgstr "{requester} {status} 重复整个队列。"
-
-#: plnotifier/cog.py:1246 plnotifier/cog.py:1257
-msgid "enabled"
-msgstr "已启用"
-
-#: plnotifier/cog.py:1246 plnotifier/cog.py:1257
-msgid "disabled"
-msgstr "已禁用"
-
-#: plnotifier/cog.py:1255
-msgid "{requester} {status} repeat for {track}."
-msgstr "{requester} {status} 重复了 {track}"
-
-#: plnotifier/cog.py:1281
-msgid "Player Restored Event"
-msgstr "恢复播放器事件"
-
-#: plnotifier/cog.py:1282
-msgid "{requester} restored the player."
-msgstr "{requester} 恢复了玩家。"
-
-#: plnotifier/cog.py:1300
-msgid "an intro section"
-msgstr "介绍部分"
-
-#: plnotifier/cog.py:1302
-msgid "an outro section"
-msgstr "直接受益部分"
-
-#: plnotifier/cog.py:1304
-msgid "a preview section"
-msgstr "预览部分"
-
-#: plnotifier/cog.py:1306
-msgid "an off-topic section"
-msgstr "一个非主题部分"
-
-#: plnotifier/cog.py:1308
-msgid "a filler section"
-msgstr "一个填充部分"
-
-#: plnotifier/cog.py:1310
-msgid "a sponsor section"
-msgstr "a 提案人部分"
-
-#: plnotifier/cog.py:1312
-msgid "a self-promotion section"
-msgstr "a 自促销部分"
-
-#: plnotifier/cog.py:1314
-msgid "an interaction section"
-msgstr "交互部分"
-
-#: plnotifier/cog.py:1318
-msgid "Sponsor Segment Skipped Event"
-msgstr "已跳过事件的赞助者部分"
-
-#: plnotifier/cog.py:1319
-msgid "Sponsorblock: Skipped {category} running from {start}s to {to}s."
-msgstr "赞助方块：跳过 {category} 运行于 {start}秒到 {to}秒。"
-
-#: plnotifier/cog.py:1341
-msgid "Effect"
-msgstr "效果"
-
-#: plnotifier/cog.py:1342
-msgid "Values"
-msgstr "值"
-
-#: plnotifier/cog.py:1371
+#: plplaylists/cog.py:51
+#, docstring
+msgid "PyLav playlist management commands"
+msgstr "PyLav 播放列表管理命令"
+
+#: plplaylists/cog.py:100
+msgid "This command requires an existing player to be run."
+msgstr "此命令需要运行一个现有的播放器。"
+
+#: plplaylists/cog.py:109
+msgid "MediaPlayer cog is currently temporarily unavailable due to an outage with the backend services, please try again later."
+msgstr "由于后端服务中断，MediaPlayer cog目前暂时不可用，请稍后再试。"
+
+#: plplaylists/cog.py:113
+msgid "No Lavalink node currently available."
+msgstr "无可用的 Lavalink 节点。"
+
+#: plplaylists/cog.py:124
+msgid "MediaPlayer is currently unable to process tracks belonging to {feature}."
+msgstr "MediaPlayer 目前无法处理属于 {feature} 的曲目。"
+
+#: plplaylists/cog.py:127
+msgid "No Lavalink node currently available with feature {feature}."
+msgstr "目前没有带有功能 {feature} 的Lavallink 节点。"
+
+#: plplaylists/cog.py:140
+msgid "This command is not available in this channel. Please use {channel}"
+msgstr "此命令在此频道不可用。请使用 {channel}"
+
+#: plplaylists/cog.py:161
+#, docstring
+msgid "Create a new playlist.\n\n"
+"        If you don't specify an URL and name, you will be shows a creation menu, which also allows you to save the current player queue as a playlist.\n\n"
+"        If you don't specify a name, the playlist will be named the URL playlist if available otherwise the name will be the same as the ID.\n"
+"        If you specify an URL, the playlist will be created from the URL.\n"
+"        "
+msgstr "创建新播放列表。\n\n"
+"        如果您没有指定一个网址和名称，您将会显示一个创建菜单， 这也允许您将当前播放队列保存为播放列表。\n\n"
+"        如果您没有指定一个名称， 播放列表将被命名为URL播放列表，如果不然的话，其名称将与ID相同。\n"
+"        如果您指定了一个 URL，播放列表将从URL创建。\n"
+"        "
+
+#: plplaylists/cog.py:180
+msgid "Let's create a playlist!"
+msgstr "让我们创建一个播放列表！"
+
+#: plplaylists/cog.py:181
+msgid "(**1**) - Apply changes to playlist.\n"
+"(**2**) - Cancel any changes made.\n"
+"(**3**) - Add a name to the playlist.\n"
+"(**4**) - Link this playlist to an existing playlist/album.\n"
+"(**5**) - Add all track from the queue to the playlist.\n\n"
+"If you want the playlist name to be as the original playlist simply set the URL but no name.\n\n"
+msgstr "(**1**) - 对播放列表应用更改。\n"
+"(**2**) - 取消所做的任何更改。\n"
+"(**3**) - 将一个名称添加到播放列表。\n"
+"(**4**) - 将这个播放列表链接到一个现有的播放列表/相册。\n"
+"(**5**) - 从队列中添加所有曲目到播放列表。\n\n"
+"如果您希望播放列表名称为原始播放列表只是设置URL但没有名称。\n\n"
+
+#: plplaylists/cog.py:221
+msgid "Playlist created"
+msgstr "播放列表已创建"
+
+#: plplaylists/cog.py:222
+msgid "Name: `{name}`\n"
+"ID: `{id}`\n"
+"Tracks: `{track_count}`"
+msgstr "名称：`{name}`\n"
+"ID: `{id}`\n"
+"曲目：`{track_count}`"
+
+#: plplaylists/cog.py:232
+#, docstring
+msgid "\n"
+"        List all playlists you have access to on the invoked context.\n\n"
+"        This takes into consideration your current VC, Text channel and Server.\n"
+"        "
+msgstr "\n"
+"        列出您在被调用上下文中拥有访问权限的所有播放列表\n\n"
+"        这考虑到您当前的 VC、文本频道和服务器。\n"
+"        "
+
+#: plplaylists/cog.py:253
+msgid "You have no playlists."
+msgstr "您没有播放列表。"
+
+#: plplaylists/cog.py:272
+#, docstring
+msgid "\n"
+"        Manage a playlist.\n\n"
+"        This command can be used to delete, clear all tracks, add or remove tracks or play a playlist.\n\n"
+"        If you use the `start` (`play` or `enqueue`) alias the playlist will be played instead of you being shown the control menu.\n"
+"        If you use the `delete` (`del`) alias the playlist will be deleted instead of you being shown the control menu.\n"
+"        If you use the `save` (`queue`) alias the current queue will be added to the specified playlist.\n"
+"        if you use the `info` alias the playlist tracks will be displayed in a menu.\n"
+"        "
+msgstr "\n"
+"        管理播放列表。\n\n"
+"        此命令可以用于删除， 清除所有音轨，添加或删除音轨或播放播放列表。\n\n"
+"        如果您使用 \"start\" (`play` 或 `enqueue`) 别名，将会播放播放列表而不是显示控制菜单。\n"
+"        如果您使用 `del` (`del`) 别名，播放列表将被删除，而不是显示控制菜单。\n"
+"        如果您使用 \"save\" (\"队列\") 别名，当前队列将被添加到指定的播放列表中。\n"
+"        如果您使用 `info` 别名，播放列表曲目将显示在菜单中。\n"
+"        "
+
+#: plplaylists/cog.py:325
+msgid "{user}, playlist {playlist_name} cannot be managed by yourself."
+msgstr "{user}, 播放列表 {playlist_name} 无法由您自己管理。"
+
+#: plplaylists/cog.py:334
+msgid "(**1**){space} - Apply changes to playlist.\n"
+"(**2**){space} - Cancel any changes made and close the menu.\n"
+"(**3**){space} - Delete this playlist.\n"
+"(**4**){space} - Remove all tracks from this playlist.\n"
+"(**5**){space} - Update the playlist with the latest tracks.\n"
+"Please note that this action will ignore any tracks added/removed via this menu.\n"
+"(**6**){space} - Change the name of the playlist.\n"
+"(**7**){space} - Link this playlist to an existing playlist/album.\n"
+"(**8**){space} - Add a query to this playlist.\n"
+"(**9**){space} - Remove a query from this playlist.\n"
+"(**10**) - Download the playlist file.\n"
+"(**11**) - Add current playlist to the queue.\n"
+"(**12**) - Show tracks in current playlist.\n"
+"(**13**) - Add tracks from queue to this playlist.\n"
+"(**14**) - Remove duplicate entries in the playlist.\n\n"
+"The add/remove track buttons can be used multiple times to add/remove multiple tracks and playlists at once.\n\n"
+"A query is anything playable by the play command - any query can be used by the add/remove buttons\n\n"
+"The clear button will always be run first before any other operations.\n"
+"The URL button will always run last - Linking a playlist via the URL will overwrite any tracks added or removed to this playlist.\n\n"
+"If you interact with a button multiple times other than the add/remove buttons only the last interaction will take effect.\n\n\n"
+msgstr "(**1**){space} - 对播放列表应用更改。\n"
+"(**2**){space} - 取消所做的任何更改并关闭菜单。\n"
+"(**3**){space} - 删除此播放列表。\n"
+"(**4**){space} - 从播放列表中删除所有曲目。\n"
+"(**5**){space} - 更新播放列表。\n"
+"请注意此操作将忽略通过此菜单添加/删除的任何曲目。\n"
+"(**6**){space} - 更改播放列表名称。\n"
+"(**7**){space} - 将此播放列表链接到现有播放列表/专辑。\n"
+"(**8**){space} - 添加查询到此播放列表中。\n"
+"(**9**){space} - 从播放列表中删除一个查询。\n"
+"(**10**) - 下载播放列表文件。\n"
+"(**11**) - 将当前播放列表添加到队列。\n"
+"(**12**) - 在当前播放列表中显示曲目。\n"
+"(**13**) - 从队列中添加曲目到此播放列表。\n"
+"(**14**) - 删除播放列表中重复的条目。\n\n"
+"添加/删除音轨按钮可以多次用来添加/删除多首音轨和播放列表。\n\n"
+"任何查询都可以由播放命令播放——任何查询都可以被添加/移除按钮\n\n"
+"清除按钮在任何其他操作之前总是首先运行。\n"
+"URL 按钮将会运行最后的 - 通过 URL 链接播放列表将覆盖添加或删除到此播放列表的任何曲目。\n\n"
+"如果您与一个按钮多次交互，而不是添加/移除按钮，仅最后一次交互将生效。\n\n\n"
+
+#: plplaylists/cog.py:360
+msgid "(**1**) - Close the menu.\n"
+"(**2**) - Update the playlist with the latest tracks.\n"
+"(**3**) - Download the playlist file.\n"
+"(**4**) - Add current playlist to the queue.\n"
+"(**5**) - Show tracks in current playlist.\n\n\n"
+msgstr "(**1**) - 关闭菜单。\n"
+"(**2**) - 使用最新曲目更新播放列表。\n"
+"(**3**) - 下载播放列表文件。\n"
+"(**4**) - 将当前播放列表添加到队列。\n"
+"(**5**) - 在当前播放列表中显示曲目。\n\n\n"
+
+#: plplaylists/cog.py:368
+msgid "**__Currently managing__**:\n"
+"**Name**:{space}{space}{space}{playlist_name}\n"
+"**Scope**:{space}{space}{space}{scope}\n"
+"**Author**:{space}{space}{author}\n"
+"**Tracks**:{space}{space}{space}{tracks} tracks\n"
+"**URL**:{space}{space}{space}{space}{space}{url}\n"
+msgstr ""
+
+#: plplaylists/cog.py:385
+msgid "Let's manage: {playlist_name}"
+msgstr "让我们管理: {playlist_name}"
+
+#: plplaylists/cog.py:387
+msgid "Let's take a look at: {playlist_name}"
+msgstr "让我们看一下： {playlist_name}"
+
+#: plplaylists/cog.py:394
 msgid "N/A"
 msgstr "无"
 
-#: plnotifier/cog.py:1375
-msgid "Filters Applied Event"
-msgstr "筛选应用事件"
+#: plplaylists/cog.py:418
+msgid "Playlist deleted."
+msgstr "播放列表已删除。"
 
-#: plnotifier/cog.py:1376
-msgid "[Node={node}] {requester} changed the player filters.\n\n"
-"__**Currently Applied:**__\n"
-"{data}"
-msgstr "[Node={node}] {requester} 更改了玩家筛选器。\n\n"
-"__**当前应用：**_\n"
-"{data}"
+#: plplaylists/cog.py:420
+msgid "{user}, playlist {playlist_name} has been deleted."
+msgstr "{user}, 播放列表 {playlist_name} 已删除。"
 
-#: plnotifier/cog.py:1380
-msgid "None"
-msgstr "无"
+#: plplaylists/cog.py:477
+msgid "Playlist **{playlist_name}** could not be updated with URL: <{url}>."
+msgstr "播放列表**{playlist_name}** 无法更新 URL: <{url}>。"
 
-#: plnotifier/cog.py:1396
-msgid "Node Connected Event"
-msgstr "节点连接事件"
+#: plplaylists/cog.py:513
+msgid "\n"
+"{track_count} {track_plural} removed from the playlist."
+msgstr "\n"
+"{track_count} {track_plural} 已从播放列表中删除。"
 
-#: plnotifier/cog.py:1397
-msgid "Node {name} has been connected."
-msgstr "节点 {name} 已连接。"
+#: plplaylists/cog.py:514 plplaylists/cog.py:518
+msgid "track"
+msgstr "曲目"
 
-#: plnotifier/cog.py:1411
-msgid "Node Disconnected Event"
-msgstr "节点断开连接的事件"
+#: plplaylists/cog.py:514 plplaylists/cog.py:518
+msgid "tracks"
+msgstr "曲目"
 
-#: plnotifier/cog.py:1412
-msgid "Node {name} has been disconnected with code {code} and reason: {reason}."
-msgstr "节点 {name} 已经断开了与代码 {code} 的连接，原因︰ {reason}。"
+#: plplaylists/cog.py:517
+msgid "\n"
+"{track_count} {track_plural} added to the playlist."
+msgstr "\n"
+"{track_count} {track_plural} 已添加到播放列表。"
 
-#: plnotifier/cog.py:1431
-msgid "Node Changed Event"
-msgstr "节点更改事件"
+#: plplaylists/cog.py:524
+msgid "Playlist updated."
+msgstr "播放列表已更新。"
 
-#: plnotifier/cog.py:1432
-msgid "The node which the player is connected to changed from {fro} to {to}."
-msgstr "玩家所连接的节点从 {fro} 更改为 {to}。"
+#: plplaylists/cog.py:525
+msgid "{user}, playlist {playlist_name} has been updated.{extras}"
+msgstr "{user}，播放列表 {playlist_name} 已更新。{extras}"
 
-#: plnotifier/cog.py:1451
-msgid "WebSocket Closed Event"
-msgstr "WebSocket 闭合事件"
+#: plplaylists/cog.py:537
+msgid "Playlist unchanged."
+msgstr "播放列表未更改。"
 
-#: plnotifier/cog.py:1452
-msgid "[Node={node}] The websocket connection to the Lavalink node closed with code {code} and reason {reason}."
-msgstr "[Node={node}] 与 Lavalink 节点的websocket 连接已关闭，代码为 {code} 和原因 {reason}。"
+#: plplaylists/cog.py:538
+msgid "{user}, playlist {playlist_name} has not been updated."
+msgstr "{user}, 播放列表 {playlist_name} 尚未更新。"
 
-#: plnotifier/notifier_commands.py:81
+#: plplaylists/cog.py:548
 #, docstring
-msgid "Configure the PyLavNotifier cog."
-msgstr "配置 PyLavNotifier cog。"
-
-#: plnotifier/notifier_commands.py:87
-#, docstring
-msgid "Set the notify channel for the player."
-msgstr "为玩家设置通知频道。"
-
-#: plnotifier/notifier_commands.py:103
-msgid "PyLavNotifier channel set to {channel}"
-msgstr "PyLavNotifier 频道设置为 {channel}"
-
-#: plnotifier/notifier_commands.py:113
-#, docstring
-msgid "Set whether or not to notify for the specified event.\n\n"
-"        Arguments:\n"
-"            event -- The event to set.\n"
-"            toggle -- Whether or not to notify upon receiving this event.\n"
-"            use_mention -- Whether or not to use a mention instead of the name for the action requested.\n"
+msgid "\n"
+"        Upload a playlist to the bot.\n\n"
+"        This command will upload a playlist to the bot.\n"
+"        The playlist can be uploaded by either the URL of the playlist file or by attaching the playlist file to the message.\n"
 "        "
-msgstr "设置是否通知指定事件。\n\n"
-"        参数：\n"
-"            事件 -- 要设置的事件。\n"
-"            切换-收到此事件时是否发出通知。\n"
-"            使用 _reference -- 是否使用提及而不是请求的动作名称。\n"
+msgstr "\n"
+"        上传播放列表到机器人。\n\n"
+"        此命令将上传播放列表到机器人。\n"
+"        播放列表可以通过播放列表文件的 URL 或者通过将播放列表文件附加到消息中来上传。\n"
 "        "
 
-#: plnotifier/notifier_commands.py:128
-msgid "Invalid event, possible events are:\n\n"
-"{events}."
-msgstr "无效的事件，可能的事件为：\n\n"
-"{events}。"
+#: plplaylists/cog.py:565
+msgid "You must either provide a URL or attach a playlist file to upload a playlist."
+msgstr "您必须提供一个 URL 或附加一个播放列表文件才能上传播放列表。"
 
-#: plnotifier/notifier_commands.py:142
-msgid "Event {event} set to {toggle}{extras}."
-msgstr "事件 {event} 设置为 {toggle}{extras}."
+#: plplaylists/cog.py:585
+msgid "No valid playlist file provided."
+msgstr "未提供有效的播放列表文件。"
 
-#: plnotifier/notifier_commands.py:144
-msgid "notify"
-msgstr "通知"
+#: plplaylists/cog.py:594
+msgid "Multiple playlist files provided - Currently only 1 per message is allowed."
+msgstr "提供了多个播放列表文件 - 目前每条消息只允许1个。"
 
-#: plnotifier/notifier_commands.py:144
-msgid "do not notify"
-msgstr "不通知"
+#: plplaylists/cog.py:612
+msgid "Failed to save any of the requested playlists."
+msgstr "保存请求播放列表失败。"
 
-#: plnotifier/notifier_commands.py:145
-msgid " with mentions"
-msgstr " 带提到的"
+#: plplaylists/cog.py:621
+msgid "Failed to save the following playlists:\n"
+"{invalid_playlists}"
+msgstr "保存以下播放列表失败：\n"
+"{invalid_playlists}"
 
-#: plnotifier/notifier_commands.py:145
-msgid " without mentions"
-msgstr " 没有提及的"
+#: plplaylists/cog.py:631
+msgid "Successfully saved the following playlists:\n"
+"{saved_playlists}"
+msgstr "成功保存以下播放列表：\n"
+"{saved_playlists}"
+
+#: plplaylists/cog.py:656
+msgid "You must be in a voice channel to allow me to connect."
+msgstr "您必须在一个语音频道中才能允许我连接。"
+
+#: plplaylists/cog.py:664
+msgid "I don't have permission to connect or speak in {channel}."
+msgstr "我没有权限在 {channel} 中连接或说话。"
+
+#: plplaylists/cog.py:681
+msgid "Playlist"
+msgstr "播放列表"
+
+#: plplaylists/cog.py:686
+msgid "{track_count} tracks enqueued.{playlist_name}"
+msgstr "{track_count} 曲目已排队。{playlist_name}"
 

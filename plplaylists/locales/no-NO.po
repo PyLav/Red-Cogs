@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-07 14:00+0000\n"
-"PO-Revision-Date: 2022-05-07 14:10\n"
+"POT-Creation-Date: 2022-05-08 15:16+0000\n"
+"PO-Revision-Date: 2022-05-08 15:22\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian\n"
 "MIME-Version: 1.0\n"
@@ -13,459 +13,302 @@ msgstr ""
 "X-Crowdin-Project: mediaplayer\n"
 "X-Crowdin-Project-ID: 512604\n"
 "X-Crowdin-Language: no\n"
-"X-Crowdin-File: /plnotifier/locales/messages.pot\n"
-"X-Crowdin-File-ID: 186\n"
+"X-Crowdin-File: /plplaylists/locales/messages.pot\n"
+"X-Crowdin-File-ID: 232\n"
 "Language: no_NO\n"
 
-#: plnotifier/cog.py:143
-msgid "Track Stuck Event"
-msgstr "Spor taus hendelse"
-
-#: plnotifier/cog.py:144
-msgid "[Node={node}] {track} is stuck for {threshold} seconds, skipping."
-msgstr "[Node={node}] {track} er sittende fast i {threshold} sekunder, hoppet over."
-
-#: plnotifier/cog.py:166
-msgid "Track Exception Event"
-msgstr "Spor unntak arrangement"
-
-#: plnotifier/cog.py:167
-msgid "[Node={node}] There was an error while playing {track}:\n"
-"{exception}"
-msgstr ""
-
-#: plnotifier/cog.py:185
-msgid "the player reached the end of the tracks runtime."
-msgstr "spilleren nådde slutten av sporet rulletid."
-
-#: plnotifier/cog.py:187
-msgid "a new track started playing."
-msgstr "et nytt spor startet å spille."
-
-#: plnotifier/cog.py:189
-msgid "it failed to start."
-msgstr "ble ikke startet."
-
-#: plnotifier/cog.py:191
-msgid "because the player was stopped."
-msgstr "fordi spilleren ble stoppet."
-
-#: plnotifier/cog.py:193
-msgid "the node told it to stop."
-msgstr "noden ba den om å stoppe."
-
-#: plnotifier/cog.py:196
-msgid "Track End Event"
-msgstr "Spor slutt hendelse"
-
-#: plnotifier/cog.py:197
-msgid "[Node={node}] {track} has finished playing because {reason}"
-msgstr "[Node={node}] {track} har spilt fordi {reason}"
-
-#: plnotifier/cog.py:221
-msgid "Track Start Event"
-msgstr "Spor start hendelse"
-
-#: plnotifier/cog.py:222
-msgid "[Node={node}] {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr ""
-
-#: plnotifier/cog.py:246
-msgid "YouTube Music Track Start Event"
-msgstr "YouTube Musikkspor Start Arrangement"
-
-#: plnotifier/cog.py:247
-msgid "[Node={node}] YouTube Music track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr ""
-
-#: plnotifier/cog.py:273
-msgid "Spotify Track Start Event"
-msgstr "Spotify Slepestrek Start hendelse"
-
-#: plnotifier/cog.py:274
-msgid "[Node={node}] Spotify track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr ""
-
-#: plnotifier/cog.py:300
-msgid "Apple Music Track Start Event"
-msgstr "Apple Music Track Start event"
-
-#: plnotifier/cog.py:301
-msgid "[Node={node}] Apple Music track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr "[Node={node}] Apple Music track: {track} har begynt å spille.\n"
-"Forespurt av: {requester}"
-
-#: plnotifier/cog.py:327
-msgid "Local Track Start Event"
-msgstr "Start Start lokale spor"
-
-#: plnotifier/cog.py:328
-msgid "[Node={node}] Local track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr ""
-
-#: plnotifier/cog.py:354
-msgid "HTTP Track Start Event"
-msgstr "HTTP-spor start hendelse"
-
-#: plnotifier/cog.py:355
-msgid "[Node={node}] HTTP track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr ""
-
-#: plnotifier/cog.py:381
-msgid "Text-To-Speech Track Start Event"
-msgstr "Tekst-Til-Tale Spor Start hendelse"
-
-#: plnotifier/cog.py:382
-msgid "[Node={node}] Text-To-Speech track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr "[Merk={node}] Text-To-Speech track: {track} har startet å spille.\n"
-"Forespurt av: {requester}"
-
-#: plnotifier/cog.py:408
-msgid "YouTube Track Start Event"
-msgstr "YouTube Spor Start hendelse"
-
-#: plnotifier/cog.py:409
-msgid "[Node={node}] YouTube track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr ""
-
-#: plnotifier/cog.py:435 plnotifier/cog.py:465 plnotifier/cog.py:495
-#: plnotifier/cog.py:525 plnotifier/cog.py:555 plnotifier/cog.py:585
-#: plnotifier/cog.py:615 plnotifier/cog.py:645 plnotifier/cog.py:675
-#: plnotifier/cog.py:705 plnotifier/cog.py:735 plnotifier/cog.py:765
-#: plnotifier/cog.py:795 plnotifier/cog.py:825
-msgid "{source} Track Start Event"
-msgstr "{source} Spor Start hendelse"
-
-#: plnotifier/cog.py:436 plnotifier/cog.py:466 plnotifier/cog.py:496
-#: plnotifier/cog.py:526 plnotifier/cog.py:556 plnotifier/cog.py:586
-#: plnotifier/cog.py:616 plnotifier/cog.py:646 plnotifier/cog.py:676
-#: plnotifier/cog.py:706 plnotifier/cog.py:736 plnotifier/cog.py:766
-#: plnotifier/cog.py:796 plnotifier/cog.py:826
-msgid "[Node={node}] {source} track: {track} has started playing.\n"
-"Requested by: {requester}"
-msgstr "[Node={node}] {source} spor: {track} har begynt å spille.\n"
-"Forespurt av: {requester}"
-
-#: plnotifier/cog.py:855
-msgid "Track Skipped Event"
-msgstr "Spor hoppet over arrangementet"
-
-#: plnotifier/cog.py:856
-msgid "{track} has been skipped.\n"
-"Requested by {requester}"
-msgstr "{track} har blitt hoppet over.\n"
-"forespurt av {requester}"
-
-#: plnotifier/cog.py:879
-msgid "Track Seek Event"
-msgstr "Spor søk-event"
-
-#: plnotifier/cog.py:880
-msgid "{requester} requested that {track} is sought from position {fro} to position {after}."
-msgstr "{requester} ba om at {track} er søkt fra posisjon {fro} for å plassere {after}."
-
-#: plnotifier/cog.py:909
-msgid "Track Previous Requested Event"
-msgstr "Spor forrige forespurte hendelse"
-
-#: plnotifier/cog.py:910
-msgid "{requester} requested that the previous track {track} be played."
-msgstr "{requester} ba om at det forrige sporet {track} ble spilt."
-
-#: plnotifier/cog.py:935
-msgid "Tracks Requested Event"
-msgstr "Spor forespurt hendelse"
-
-#: plnotifier/cog.py:936
-msgid "{requester} added {track_count} to the queue."
-msgstr "{requester} la til {track_count} i avspillingskøen."
-
-#: plnotifier/cog.py:955
-msgid "Track AutoPlay Event"
-msgstr "Spor AutoPlay hendelse"
-
-#: plnotifier/cog.py:956
-msgid "Auto-playing {track}."
-msgstr "Spiller {track} automatisk."
-
-#: plnotifier/cog.py:980
-msgid "Track Resumed Event"
-msgstr "Spor gjenopptatt hendelse"
-
-#: plnotifier/cog.py:981
-msgid "{requester} resumed {track}."
-msgstr "{requester} gjenopptatt {track}."
-
-#: plnotifier/cog.py:1005
-msgid "Queue Shuffled Event"
-msgstr "Kø vekslet begivenhet"
-
-#: plnotifier/cog.py:1006
-msgid "{requester} shuffled the queue."
-msgstr "{requester} stakk i køen."
-
-#: plnotifier/cog.py:1021
-msgid "Queue End Event"
-msgstr "Avslutt kø event"
-
-#: plnotifier/cog.py:1022
-msgid "All tracks in the queue have been played."
-msgstr "Alle sporene i køen har blitt spilt."
-
-#: plnotifier/cog.py:1044
-msgid "Tracks Removed Event"
-msgstr "Spor fjernet hendelse"
-
-#: plnotifier/cog.py:1045
-msgid "{requester} removed {track_count} tracks from the queue."
-msgstr "{requester} fjernet {track_count} spor fra køen."
-
-#: plnotifier/cog.py:1069
-msgid "Player Paused Event"
-msgstr "Spilleren pauset hendelse"
-
-#: plnotifier/cog.py:1070
-msgid "{requester} paused the player."
-msgstr "{requester} har satt spilleren på pause."
-
-#: plnotifier/cog.py:1092
-msgid "Player Stopped Event"
-msgstr "Spilleren stoppet hendelse"
-
-#: plnotifier/cog.py:1093
-msgid "{requester} stopped the player."
-msgstr "{requester} stoppet spilleren."
-
-#: plnotifier/cog.py:1115
-msgid "Player Resumed Event"
-msgstr "Spilleren gjenopptatt hendelse"
-
-#: plnotifier/cog.py:1116
-msgid "{requester} resumed the player."
-msgstr "{requester} gjenopptok spilleren."
-
-#: plnotifier/cog.py:1138
-msgid "Player Moved Event"
-msgstr "Avspiller Flyttet Hendelse"
-
-#: plnotifier/cog.py:1139
-msgid "{requester} moved the player from {before} to {after}."
-msgstr "{requester} flyttet spilleren fra {before} til {after}."
-
-#: plnotifier/cog.py:1163
-msgid "Player Disconnected Event"
-msgstr "Spilleren frakoblet hendelse"
-
-#: plnotifier/cog.py:1164
-msgid "{requester} disconnected the player."
-msgstr "{requester} koblet fra spilleren."
-
-#: plnotifier/cog.py:1186
-msgid "Player Connected Event"
-msgstr "Spillertilkoblet hendelse"
-
-#: plnotifier/cog.py:1187
-msgid "{requester} connected the player."
-msgstr "{requester} koblet spilleren."
-
-#: plnotifier/cog.py:1209
-msgid "Player Volume Changed Event"
-msgstr "Spillervolum endret hendelse"
-
-#: plnotifier/cog.py:1210
-msgid "{requester} changed the player's volume from {before} to {after}."
-msgstr "{requester} endret spillerens volum fra {before} til {after}."
-
-#: plnotifier/cog.py:1236 plnotifier/cog.py:1244 plnotifier/cog.py:1254
-msgid "Player Repeat Event"
-msgstr "Spilleren gjenta-hendelse"
-
-#: plnotifier/cog.py:1237
-msgid "{requester} disabled repeat."
-msgstr "{requester} deaktivert repetisjon."
-
-#: plnotifier/cog.py:1245
-msgid "{requester} {status} repeat of the whole queue."
-msgstr "{requester} {status} gjenta hele køen."
-
-#: plnotifier/cog.py:1246 plnotifier/cog.py:1257
-msgid "enabled"
-msgstr "aktivert"
-
-#: plnotifier/cog.py:1246 plnotifier/cog.py:1257
-msgid "disabled"
-msgstr "deaktivert"
-
-#: plnotifier/cog.py:1255
-msgid "{requester} {status} repeat for {track}."
-msgstr "{requester} {status} gjenta for {track}."
-
-#: plnotifier/cog.py:1281
-msgid "Player Restored Event"
-msgstr "Spilleren gjenopprettet hendelse"
-
-#: plnotifier/cog.py:1282
-msgid "{requester} restored the player."
-msgstr "{requester} gjenopprettet spilleren."
-
-#: plnotifier/cog.py:1300
-msgid "an intro section"
-msgstr "en intro inneksjon"
-
-#: plnotifier/cog.py:1302
-msgid "an outro section"
-msgstr "en outro seksjon"
-
-#: plnotifier/cog.py:1304
-msgid "a preview section"
-msgstr "en forhåndsvisningsdel"
-
-#: plnotifier/cog.py:1306
-msgid "an off-topic section"
-msgstr "en off-topic seksjon"
-
-#: plnotifier/cog.py:1308
-msgid "a filler section"
-msgstr "en fyllprofil"
-
-#: plnotifier/cog.py:1310
-msgid "a sponsor section"
-msgstr "en sponsor seksjon"
-
-#: plnotifier/cog.py:1312
-msgid "a self-promotion section"
-msgstr "en selvforfremmende seksjon"
-
-#: plnotifier/cog.py:1314
-msgid "an interaction section"
-msgstr "et samspill"
-
-#: plnotifier/cog.py:1318
-msgid "Sponsor Segment Skipped Event"
-msgstr "Sponsor Segment Hoppet over arrangementet"
-
-#: plnotifier/cog.py:1319
-msgid "Sponsorblock: Skipped {category} running from {start}s to {to}s."
-msgstr "Sponsorblokk: Hoppet over {category} som kjørte fra {start}s til {to}s."
-
-#: plnotifier/cog.py:1341
-msgid "Effect"
-msgstr "Effekt"
-
-#: plnotifier/cog.py:1342
-msgid "Values"
-msgstr "Verdier"
-
-#: plnotifier/cog.py:1371
+#: plplaylists/cog.py:51
+#, docstring
+msgid "PyLav playlist management commands"
+msgstr "PyLav spilleliste behandlingskommandoer"
+
+#: plplaylists/cog.py:100
+msgid "This command requires an existing player to be run."
+msgstr "Denne kommandoen krever at en eksisterende spiller kjøres."
+
+#: plplaylists/cog.py:109
+msgid "MediaPlayer cog is currently temporarily unavailable due to an outage with the backend services, please try again later."
+msgstr "MediaPlayer cog er for tiden midlertidig utilgjengelig på grunn av et avbrudd i backend tjenestene, prøv igjen senere."
+
+#: plplaylists/cog.py:113
+msgid "No Lavalink node currently available."
+msgstr "Ingen Lavalink node tilgjengelig for øyeblikket."
+
+#: plplaylists/cog.py:124
+msgid "MediaPlayer is currently unable to process tracks belonging to {feature}."
+msgstr "MediaPlayer kan ikke behandle spor som tilhører {feature}."
+
+#: plplaylists/cog.py:127
+msgid "No Lavalink node currently available with feature {feature}."
+msgstr "Ingen Lavalink node tilgjengelig for øyeblikket med funksjon {feature}."
+
+#: plplaylists/cog.py:140
+msgid "This command is not available in this channel. Please use {channel}"
+msgstr "Kommandoen er ikke tilgjengelig i denne kanalen. Vennligst bruk {channel}"
+
+#: plplaylists/cog.py:161
+#, docstring
+msgid "Create a new playlist.\n\n"
+"        If you don't specify an URL and name, you will be shows a creation menu, which also allows you to save the current player queue as a playlist.\n\n"
+"        If you don't specify a name, the playlist will be named the URL playlist if available otherwise the name will be the same as the ID.\n"
+"        If you specify an URL, the playlist will be created from the URL.\n"
+"        "
+msgstr "Lag en ny spilleliste.\n\n"
+"        Hvis du ikke angir en URL og navn, vil du bli vist en opprettelsesmeny, hvilket også lar deg lagre gjeldende spiller køen som en spilleliste.\n\n"
+"        Hvis du ikke spesifiserer et navn, spillelisten vil være navngitt URL spillelisten hvis tilgjengelig, ellers vil navnet være det samme som IDen.\n"
+"        Hvis du angir en URL vil spillelisten opprettes fra nettadressen.\n"
+"        "
+
+#: plplaylists/cog.py:180
+msgid "Let's create a playlist!"
+msgstr "La oss lage en spilleliste!"
+
+#: plplaylists/cog.py:181
+msgid "(**1**) - Apply changes to playlist.\n"
+"(**2**) - Cancel any changes made.\n"
+"(**3**) - Add a name to the playlist.\n"
+"(**4**) - Link this playlist to an existing playlist/album.\n"
+"(**5**) - Add all track from the queue to the playlist.\n\n"
+"If you want the playlist name to be as the original playlist simply set the URL but no name.\n\n"
+msgstr "(**1**) - Bruk endringer i spillelisten.\n"
+"(**2**) - Avbryt eventuelle endringer.\n"
+"(**3**) - Legg til et navn til spillelisten.\n"
+"(**4**) - Koble denne spillelisten til en eksisterende spilleliste/album.\n"
+"(**5**) - Legg til alle spor fra køen til spillelisten.\n\n"
+"Hvis du vil at spillelistens navn skal være som originalspillelisten, setter du bare URL-adressen uten navn\n\n"
+
+#: plplaylists/cog.py:221
+msgid "Playlist created"
+msgstr "Spilleliste opprettet"
+
+#: plplaylists/cog.py:222
+msgid "Name: `{name}`\n"
+"ID: `{id}`\n"
+"Tracks: `{track_count}`"
+msgstr "Navn: `{name}`\n"
+"ID: `{id}`\n"
+"Tracks: `{track_count}`"
+
+#: plplaylists/cog.py:232
+#, docstring
+msgid "\n"
+"        List all playlists you have access to on the invoked context.\n\n"
+"        This takes into consideration your current VC, Text channel and Server.\n"
+"        "
+msgstr "\n"
+"        List alle spillelister du har tilgang til i den påberopte konteksten.\n\n"
+"        Dette tar hensyn til din nåværende VC, tekstkanal og server.\n"
+"        "
+
+#: plplaylists/cog.py:253
+msgid "You have no playlists."
+msgstr "Du har ingen spillelister."
+
+#: plplaylists/cog.py:272
+#, docstring
+msgid "\n"
+"        Manage a playlist.\n\n"
+"        This command can be used to delete, clear all tracks, add or remove tracks or play a playlist.\n\n"
+"        If you use the `start` (`play` or `enqueue`) alias the playlist will be played instead of you being shown the control menu.\n"
+"        If you use the `delete` (`del`) alias the playlist will be deleted instead of you being shown the control menu.\n"
+"        If you use the `save` (`queue`) alias the current queue will be added to the specified playlist.\n"
+"        if you use the `info` alias the playlist tracks will be displayed in a menu.\n"
+"        "
+msgstr "\n"
+"        Administrer en spilleliste.\n\n"
+"        Denne kommandoen kan brukes til å slette, fjern alle spor, legg til eller fjern spor eller spill en spilleliste.\n\n"
+"        Hvis du bruker `start` (`play` eller `kø`) alias spillelisten vil vises i stedet for at du vises på kontrollmenyen.\n"
+"        Hvis du bruker aliaset `delete` (`del`) vil spillelisten slettes i stedet for du blir vist i kontrollmenyen.\n"
+"        Hvis du bruker 'save' ('kø') alias spillelisten vil bli lagt til i den angitte spillelisten.\n"
+"        hvis du bruker 'info' aliaset, spillelistens spor vil bli vist i en meny.\n"
+"        "
+
+#: plplaylists/cog.py:325
+msgid "{user}, playlist {playlist_name} cannot be managed by yourself."
+msgstr "{user}, spilleliste {playlist_name} kan ikke administreres av deg selv."
+
+#: plplaylists/cog.py:334
+msgid "(**1**){space} - Apply changes to playlist.\n"
+"(**2**){space} - Cancel any changes made and close the menu.\n"
+"(**3**){space} - Delete this playlist.\n"
+"(**4**){space} - Remove all tracks from this playlist.\n"
+"(**5**){space} - Update the playlist with the latest tracks.\n"
+"Please note that this action will ignore any tracks added/removed via this menu.\n"
+"(**6**){space} - Change the name of the playlist.\n"
+"(**7**){space} - Link this playlist to an existing playlist/album.\n"
+"(**8**){space} - Add a query to this playlist.\n"
+"(**9**){space} - Remove a query from this playlist.\n"
+"(**10**) - Download the playlist file.\n"
+"(**11**) - Add current playlist to the queue.\n"
+"(**12**) - Show tracks in current playlist.\n"
+"(**13**) - Add tracks from queue to this playlist.\n"
+"(**14**) - Remove duplicate entries in the playlist.\n\n"
+"The add/remove track buttons can be used multiple times to add/remove multiple tracks and playlists at once.\n\n"
+"A query is anything playable by the play command - any query can be used by the add/remove buttons\n\n"
+"The clear button will always be run first before any other operations.\n"
+"The URL button will always run last - Linking a playlist via the URL will overwrite any tracks added or removed to this playlist.\n\n"
+"If you interact with a button multiple times other than the add/remove buttons only the last interaction will take effect.\n\n\n"
+msgstr "(**1**){space} - Bruk endringer på spillelisten.\n"
+"(**2**){space} - Avbryt eventuelle endringer som er gjort og lukk menyen.\n"
+"(**3**){space} - Slett denne spillelisten.\n"
+"(**4**){space} - Fjern alle sporene fra denne spillelisten.\n"
+"(**5**){space} - Oppdater spillelisten med de siste sporene.\n"
+"Vær oppmerksom på at denne handlingen vil ignorere sporene som legges til/fjernes via denne menyen.\n"
+"(**6**){space} - Endre navnet på spillelisten.\n"
+"(**7**){space} - Koble denne spillelisten til en eksisterende spilleliste/album.\n"
+"(**8**){space} - Legg til en spørring til denne spillelisten.\n"
+"(**9**){space} - Fjern en spørring fra denne spillelisten.\n"
+"(**10**) - Last ned spillelistefilen.\n"
+"(**11**) - Legg til gjeldende spilleliste i køen.\n"
+"(**12**) - Vis spor i gjeldende spilleliste.\n"
+"(**13**) - Legg til spor fra køen til denne spillelisten.\n"
+"(**14**) - Fjern dupliserte oppføringer i spillelisten.\n\n"
+"Legg til/fjern sporknappene kan brukes flere ganger for å legge til/fjerne flere spor og spillelister på en gang.\n\n"
+"En spørring er hva som helst spillbar av kommandoen avspiller. Spørringen kan brukes av knappene add/remove\n\n"
+"Tøm-knappen vil alltid kjøres før andre operasjoner.\n"
+"URL-knappen vil alltid kjøre sist - Lenke en spilleliste via URL vil overskrive eventuelle spor som er lagt til eller fjernet fra denne spillelisten.\n\n"
+"Hvis du samhandler med en knapp flere ganger enn tillegg/fjerningsknappene bare vil den siste interaksjonen tre i kraft.\n\n\n"
+
+#: plplaylists/cog.py:360
+msgid "(**1**) - Close the menu.\n"
+"(**2**) - Update the playlist with the latest tracks.\n"
+"(**3**) - Download the playlist file.\n"
+"(**4**) - Add current playlist to the queue.\n"
+"(**5**) - Show tracks in current playlist.\n\n\n"
+msgstr "(**1**) - Lukk menyen.\n"
+"(**2**) - Oppdater spillelisten med de siste sporene.\n"
+"(**3**) - Last ned spillelistefilen.\n"
+"(**4**) - Legg til gjeldende spilleliste i køen.\n"
+"(**5**) - Vis spor i gjeldende spilleliste.\n\n\n"
+
+#: plplaylists/cog.py:368
+msgid "**__Currently managing__**:\n"
+"**Name**:{space}{space}{space}{playlist_name}\n"
+"**Scope**:{space}{space}{space}{scope}\n"
+"**Author**:{space}{space}{author}\n"
+"**Tracks**:{space}{space}{space}{tracks} tracks\n"
+"**URL**:{space}{space}{space}{space}{space}{url}\n"
+msgstr "**__Currently managing__**:\n"
+"**Navn**:{space}{space}{space}{playlist_name}\n"
+"**Kopi**:{space}{space}{space}{scope}\n"
+"**Forfatter**:{space}{space}{author}\n"
+"**Spor**:{space}{space}{space}{tracks} spor\n"
+"**URL**:{space}{space}{space}{space}{space}{url}\n"
+
+#: plplaylists/cog.py:385
+msgid "Let's manage: {playlist_name}"
+msgstr "La oss lede: {playlist_name}"
+
+#: plplaylists/cog.py:387
+msgid "Let's take a look at: {playlist_name}"
+msgstr "La oss ta en titt på: {playlist_name}"
+
+#: plplaylists/cog.py:394
 msgid "N/A"
 msgstr "N/A"
 
-#: plnotifier/cog.py:1375
-msgid "Filters Applied Event"
-msgstr "Filtre anvendt hendelse"
+#: plplaylists/cog.py:418
+msgid "Playlist deleted."
+msgstr "Spilleliste slettet."
 
-#: plnotifier/cog.py:1376
-msgid "[Node={node}] {requester} changed the player filters.\n\n"
-"__**Currently Applied:**__\n"
-"{data}"
-msgstr ""
+#: plplaylists/cog.py:420
+msgid "{user}, playlist {playlist_name} has been deleted."
+msgstr "{user}, spilleliste {playlist_name} har blitt slettet."
 
-#: plnotifier/cog.py:1380
-msgid "None"
-msgstr "Ingen"
+#: plplaylists/cog.py:477
+msgid "Playlist **{playlist_name}** could not be updated with URL: <{url}>."
+msgstr "Spilleliste **{playlist_name}** kunne ikke oppdateres med URL: <{url}>."
 
-#: plnotifier/cog.py:1396
-msgid "Node Connected Event"
-msgstr "Node-tilkoblet hendelse"
+#: plplaylists/cog.py:513
+msgid "\n"
+"{track_count} {track_plural} removed from the playlist."
+msgstr "\n"
+"{track_count} {track_plural} ble fjernet fra spillelisten."
 
-#: plnotifier/cog.py:1397
-msgid "Node {name} has been connected."
-msgstr "Node {name} har blitt tilkoblet."
+#: plplaylists/cog.py:514 plplaylists/cog.py:518
+msgid "track"
+msgstr "spor"
 
-#: plnotifier/cog.py:1411
-msgid "Node Disconnected Event"
-msgstr "Noden frakoblet hendelse"
+#: plplaylists/cog.py:514 plplaylists/cog.py:518
+msgid "tracks"
+msgstr "spor"
 
-#: plnotifier/cog.py:1412
-msgid "Node {name} has been disconnected with code {code} and reason: {reason}."
-msgstr "Node {name} har blitt koblet fra koden {code} og grunnen: {reason}."
+#: plplaylists/cog.py:517
+msgid "\n"
+"{track_count} {track_plural} added to the playlist."
+msgstr "\n"
+"{track_count} {track_plural} lagt til i spillelisten."
 
-#: plnotifier/cog.py:1431
-msgid "Node Changed Event"
-msgstr "Noden endret hendelse"
+#: plplaylists/cog.py:524
+msgid "Playlist updated."
+msgstr "Spilleliste oppdatert."
 
-#: plnotifier/cog.py:1432
-msgid "The node which the player is connected to changed from {fro} to {to}."
-msgstr "Noden som spilleren er koblet til har blitt endret fra {fro} til {to}."
+#: plplaylists/cog.py:525
+msgid "{user}, playlist {playlist_name} has been updated.{extras}"
+msgstr "{user}, spillelisten {playlist_name} har blitt oppdatert.{extras}"
 
-#: plnotifier/cog.py:1451
-msgid "WebSocket Closed Event"
-msgstr "WebSocket lukket hendelse"
+#: plplaylists/cog.py:537
+msgid "Playlist unchanged."
+msgstr "Spillelisten er uendret."
 
-#: plnotifier/cog.py:1452
-msgid "[Node={node}] The websocket connection to the Lavalink node closed with code {code} and reason {reason}."
-msgstr "[Node={node}] Websocket tilkoblingen til Lavalink noden lukket med koden {code} og årsak {reason}."
+#: plplaylists/cog.py:538
+msgid "{user}, playlist {playlist_name} has not been updated."
+msgstr "{user}, spilleliste {playlist_name} er ikke oppdatert."
 
-#: plnotifier/notifier_commands.py:81
+#: plplaylists/cog.py:548
 #, docstring
-msgid "Configure the PyLavNotifier cog."
-msgstr "Konfigurer PyLavNotifier cog."
-
-#: plnotifier/notifier_commands.py:87
-#, docstring
-msgid "Set the notify channel for the player."
-msgstr "Sett varslingskanal for spilleren."
-
-#: plnotifier/notifier_commands.py:103
-msgid "PyLavNotifier channel set to {channel}"
-msgstr "PyLavNotifier kanal satt til {channel}"
-
-#: plnotifier/notifier_commands.py:113
-#, docstring
-msgid "Set whether or not to notify for the specified event.\n\n"
-"        Arguments:\n"
-"            event -- The event to set.\n"
-"            toggle -- Whether or not to notify upon receiving this event.\n"
-"            use_mention -- Whether or not to use a mention instead of the name for the action requested.\n"
+msgid "\n"
+"        Upload a playlist to the bot.\n\n"
+"        This command will upload a playlist to the bot.\n"
+"        The playlist can be uploaded by either the URL of the playlist file or by attaching the playlist file to the message.\n"
 "        "
-msgstr "Angi om du skal varsle for den angitte hendelsen eller ikke.\n\n"
-"        Arguments:\n"
-"            event -- The event to set.\n"
-"            veksle -- Om du vil varsle når du mottar denne hendelsen eller ikke.\n"
-"            brukere_mention -- Om du vil bruke en omtale i stedet for navnet på handlingen forespurt.\n"
+msgstr "\n"
+"        Last opp en spilleliste til boten.\n\n"
+"        Denne kommandoen vil laste opp en spilleliste til boten.\n"
+"        Spillelisten kan lastes opp enten av URL til spillelistefilen eller ved å legge ved spillelisten i meldingen.\n"
 "        "
 
-#: plnotifier/notifier_commands.py:128
-msgid "Invalid event, possible events are:\n\n"
-"{events}."
-msgstr "Ugyldige hendelser, mulige hendelser er:\n\n"
-"{events}."
+#: plplaylists/cog.py:565
+msgid "You must either provide a URL or attach a playlist file to upload a playlist."
+msgstr "Du må enten oppgi en URL eller legge til en spilleliste fil for å laste opp en spilleliste."
 
-#: plnotifier/notifier_commands.py:142
-msgid "Event {event} set to {toggle}{extras}."
-msgstr "Hendelse {event} satt til {toggle}{extras}."
+#: plplaylists/cog.py:585
+msgid "No valid playlist file provided."
+msgstr "Ingen gyldig spilleliste fil oppgitt."
 
-#: plnotifier/notifier_commands.py:144
-msgid "notify"
-msgstr "notifikasjon"
+#: plplaylists/cog.py:594
+msgid "Multiple playlist files provided - Currently only 1 per message is allowed."
+msgstr "Flere spillelistefiler angitt - for tiden bare 1 per melding er tillatt."
 
-#: plnotifier/notifier_commands.py:144
-msgid "do not notify"
-msgstr "ikke varsle"
+#: plplaylists/cog.py:612
+msgid "Failed to save any of the requested playlists."
+msgstr "Kan ikke lagre noen av de forespurte spillelistene."
 
-#: plnotifier/notifier_commands.py:145
-msgid " with mentions"
-msgstr " med omtaler"
+#: plplaylists/cog.py:621
+msgid "Failed to save the following playlists:\n"
+"{invalid_playlists}"
+msgstr "Kan ikke lagre følgende spillelister:\n"
+"{invalid_playlists}"
 
-#: plnotifier/notifier_commands.py:145
-msgid " without mentions"
-msgstr " uten nevner"
+#: plplaylists/cog.py:631
+msgid "Successfully saved the following playlists:\n"
+"{saved_playlists}"
+msgstr "Følgende spillelister ble lagret.\n"
+"{saved_playlists}"
+
+#: plplaylists/cog.py:656
+msgid "You must be in a voice channel to allow me to connect."
+msgstr "Du må være i en talekanal for å tillate meg å koble til."
+
+#: plplaylists/cog.py:664
+msgid "I don't have permission to connect or speak in {channel}."
+msgstr "Jeg har ikke tillatelse til å koble til eller snakke i {channel}."
+
+#: plplaylists/cog.py:681
+msgid "Playlist"
+msgstr "Spilleliste"
+
+#: plplaylists/cog.py:686
+msgid "{track_count} tracks enqueued.{playlist_name}"
+msgstr "{track_count} spor lagt i kø.{playlist_name}"
 
