@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-08 15:16+0000\n"
-"PO-Revision-Date: 2022-05-08 15:22\n"
+"POT-Creation-Date: 2022-05-08 16:39+0000\n"
+"PO-Revision-Date: 2022-05-08 16:47\n"
 "Last-Translator: \n"
 "Language-Team: Czech\n"
 "MIME-Version: 1.0\n"
@@ -22,21 +22,21 @@ msgstr ""
 msgid "Listen to events from the PyLav player and sent them as messages to the specified channel."
 msgstr "Poslouchejte události od hráče PyLav a posílejte je jako zprávy do určeného kanálu."
 
-#: plnotifier/cog.py:195
+#: plnotifier/cog.py:197
 #, docstring
 msgid "Configure the PyLavNotifier cog."
 msgstr "Konfigurace ozubce PyLavNotifier"
 
-#: plnotifier/cog.py:201
+#: plnotifier/cog.py:203
 #, docstring
 msgid "Set the notify channel for the player."
 msgstr "Nastavte kanál upozornění pro hráče."
 
-#: plnotifier/cog.py:217
+#: plnotifier/cog.py:219
 msgid "PyLavNotifier channel set to {channel}"
 msgstr "PyLavNotifier kanál nastaven na {channel}"
 
-#: plnotifier/cog.py:227
+#: plnotifier/cog.py:229
 #, docstring
 msgid "Set whether or not to notify for the specified event.\n\n"
 "        Arguments:\n"
@@ -51,395 +51,395 @@ msgstr "Nastavte, zda má být oznámeno pro danou událost.\n\n"
 "            use_mention -- Zda použít či nepoužít namísto názvu požadované akce.\n"
 "        "
 
-#: plnotifier/cog.py:242
+#: plnotifier/cog.py:244
 msgid "Invalid event, possible events are:\n\n"
 "{events}."
 msgstr "Neplatná událost, možné události jsou:\n\n"
 "{events}."
 
-#: plnotifier/cog.py:256
+#: plnotifier/cog.py:258
 msgid "Event {event} set to {toggle}{extras}."
 msgstr "Událost {event} nastavena na {toggle}{extras}."
 
-#: plnotifier/cog.py:258
+#: plnotifier/cog.py:260
 msgid "notify"
 msgstr "Upozornit"
 
-#: plnotifier/cog.py:258
+#: plnotifier/cog.py:260
 msgid "do not notify"
 msgstr "neoznamovat"
 
-#: plnotifier/cog.py:259
+#: plnotifier/cog.py:261
 msgid " with mentions"
 msgstr " s zmínkami"
 
-#: plnotifier/cog.py:259
+#: plnotifier/cog.py:261
 msgid " without mentions"
 msgstr " bez zmínek"
 
-#: plnotifier/cog.py:273
+#: plnotifier/cog.py:275
 msgid "Track Stuck Event"
 msgstr "Sledovat zaseknutou událost"
 
-#: plnotifier/cog.py:274
+#: plnotifier/cog.py:276
 msgid "[Node={node}] {track} is stuck for {threshold} seconds, skipping."
 msgstr "[Node={node}] {track} uvízl na {threshold} sekund, přeskočen."
 
-#: plnotifier/cog.py:296
+#: plnotifier/cog.py:299
 msgid "Track Exception Event"
 msgstr "Událost výjimky ze skladby"
 
-#: plnotifier/cog.py:297
+#: plnotifier/cog.py:300
 msgid "[Node={node}] There was an error while playing {track}:\n"
 "{exception}"
 msgstr "[Node={node}] Při hraní {track}došlo k chybě:\n"
 "{exception}"
 
-#: plnotifier/cog.py:315
+#: plnotifier/cog.py:321
 msgid "the player reached the end of the tracks runtime."
 msgstr "hráč dosáhl konce běhu trasy."
 
-#: plnotifier/cog.py:317
+#: plnotifier/cog.py:323
 msgid "a new track started playing."
 msgstr "nová skladba začala hrát."
 
-#: plnotifier/cog.py:319
+#: plnotifier/cog.py:325
 msgid "it failed to start."
 msgstr "se nepodařilo spustit."
 
-#: plnotifier/cog.py:321
+#: plnotifier/cog.py:327
 msgid "because the player was stopped."
 msgstr "protože hráč byl zastaven."
 
-#: plnotifier/cog.py:323
+#: plnotifier/cog.py:329
 msgid "the node told it to stop."
 msgstr "uzel řekl, aby se zastavil."
 
-#: plnotifier/cog.py:326
+#: plnotifier/cog.py:332
 msgid "Track End Event"
 msgstr "Sledovat koncovou událost"
 
-#: plnotifier/cog.py:327
+#: plnotifier/cog.py:333
 msgid "[Node={node}] {track} has finished playing because {reason}"
 msgstr "[Node={node}] {track} dokončil hraní, protože {reason}"
 
-#: plnotifier/cog.py:351
+#: plnotifier/cog.py:358
 msgid "Track Start Event"
 msgstr "Sledovat počáteční událost"
 
-#: plnotifier/cog.py:352
+#: plnotifier/cog.py:359
 msgid "[Node={node}] {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] {track} začalo hrát.\n"
 "Požadováno: {requester}"
 
-#: plnotifier/cog.py:376
+#: plnotifier/cog.py:384
 msgid "YouTube Music Track Start Event"
 msgstr "Počáteční událost hudby YouTube"
 
-#: plnotifier/cog.py:377
+#: plnotifier/cog.py:385
 msgid "[Node={node}] YouTube Music track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] YouTube hudební skladba: {track} začalo hrát.\n"
 "Požadováno: {requester}"
 
-#: plnotifier/cog.py:403
+#: plnotifier/cog.py:412
 msgid "Spotify Track Start Event"
 msgstr "Spotify začátek události trasy"
 
-#: plnotifier/cog.py:404
+#: plnotifier/cog.py:413
 msgid "[Node={node}] Spotify track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] Spotify stopa: {track} začalo hrát.\n"
 "Požadováno: {requester}"
 
-#: plnotifier/cog.py:430
+#: plnotifier/cog.py:440
 msgid "Apple Music Track Start Event"
 msgstr "Počáteční událost Apple Music Track"
 
-#: plnotifier/cog.py:431
+#: plnotifier/cog.py:441
 msgid "[Node={node}] Apple Music track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] Apple Music track: {track} začal hrát.\n"
 "Požadováno: {requester}"
 
-#: plnotifier/cog.py:457
+#: plnotifier/cog.py:468
 msgid "Local Track Start Event"
 msgstr "Počáteční událost místní trasy"
 
-#: plnotifier/cog.py:458
+#: plnotifier/cog.py:469
 msgid "[Node={node}] Local track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] Místní skladba: {track} začalo hrát.\n"
 "Požadováno: {requester}"
 
-#: plnotifier/cog.py:484
+#: plnotifier/cog.py:496
 msgid "HTTP Track Start Event"
 msgstr "Začáteční událost HTTP trasy"
 
-#: plnotifier/cog.py:485
+#: plnotifier/cog.py:497
 msgid "[Node={node}] HTTP track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] HTTP skladba: {track} začalo hrát.\n"
 "Požadováno: {requester}"
 
-#: plnotifier/cog.py:511
+#: plnotifier/cog.py:524
 msgid "Text-To-Speech Track Start Event"
 msgstr "Počáteční událost text-To-Speech trasy"
 
-#: plnotifier/cog.py:512
+#: plnotifier/cog.py:525
 msgid "[Node={node}] Text-To-Speech track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] Text-To-Speech stopa: {track} začalo hrát.\n"
 "Požadováno: {requester}"
 
-#: plnotifier/cog.py:538
+#: plnotifier/cog.py:552
 msgid "YouTube Track Start Event"
 msgstr "Začáteční událost YouTube trasy"
 
-#: plnotifier/cog.py:539
+#: plnotifier/cog.py:553
 msgid "[Node={node}] YouTube track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] YouTube skladba: {track} začalo hrát.\n"
 "Požadováno: {requester}"
 
-#: plnotifier/cog.py:565 plnotifier/cog.py:595 plnotifier/cog.py:625
-#: plnotifier/cog.py:655 plnotifier/cog.py:685 plnotifier/cog.py:715
-#: plnotifier/cog.py:745 plnotifier/cog.py:775 plnotifier/cog.py:805
-#: plnotifier/cog.py:835 plnotifier/cog.py:865 plnotifier/cog.py:895
-#: plnotifier/cog.py:925 plnotifier/cog.py:955
+#: plnotifier/cog.py:580 plnotifier/cog.py:611 plnotifier/cog.py:642
+#: plnotifier/cog.py:673 plnotifier/cog.py:704 plnotifier/cog.py:735
+#: plnotifier/cog.py:766 plnotifier/cog.py:797 plnotifier/cog.py:828
+#: plnotifier/cog.py:859 plnotifier/cog.py:890 plnotifier/cog.py:921
+#: plnotifier/cog.py:952 plnotifier/cog.py:983
 msgid "{source} Track Start Event"
 msgstr "Počáteční událost {source}"
 
-#: plnotifier/cog.py:566 plnotifier/cog.py:596 plnotifier/cog.py:626
-#: plnotifier/cog.py:656 plnotifier/cog.py:686 plnotifier/cog.py:716
-#: plnotifier/cog.py:746 plnotifier/cog.py:776 plnotifier/cog.py:806
-#: plnotifier/cog.py:836 plnotifier/cog.py:866 plnotifier/cog.py:896
-#: plnotifier/cog.py:926 plnotifier/cog.py:956
+#: plnotifier/cog.py:581 plnotifier/cog.py:612 plnotifier/cog.py:643
+#: plnotifier/cog.py:674 plnotifier/cog.py:705 plnotifier/cog.py:736
+#: plnotifier/cog.py:767 plnotifier/cog.py:798 plnotifier/cog.py:829
+#: plnotifier/cog.py:860 plnotifier/cog.py:891 plnotifier/cog.py:922
+#: plnotifier/cog.py:953 plnotifier/cog.py:984
 msgid "[Node={node}] {source} track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] {source} skladba: {track} začalo hrát.\n"
 "Požadováno: {requester}"
 
-#: plnotifier/cog.py:985
+#: plnotifier/cog.py:1014
 msgid "Track Skipped Event"
 msgstr "Sledovat přeskočenou událost"
 
-#: plnotifier/cog.py:986
+#: plnotifier/cog.py:1015
 msgid "[Node={node}] {track} has been skipped.\n"
 "Requested by {requester}"
 msgstr "[Node={node}] {track} bylo přeskočeno.\n"
 "Požadováno {requester}"
 
-#: plnotifier/cog.py:1010
+#: plnotifier/cog.py:1042
 msgid "Track Seek Event"
 msgstr "Sledovat hledání události"
 
-#: plnotifier/cog.py:1011
+#: plnotifier/cog.py:1043
 msgid "[Node={node}] {requester} requested that {track} is sought from position {fro} to position {after}."
 msgstr "[Node={node}] {requester} požadoval, aby {track} bylo hledáno z pozice {fro} na pozici {after}."
 
-#: plnotifier/cog.py:1042
+#: plnotifier/cog.py:1075
 msgid "Track Previous Requested Event"
 msgstr "Sledovat předchozí požadovanou událost"
 
-#: plnotifier/cog.py:1043
+#: plnotifier/cog.py:1076
 msgid "[Node={node}] {requester} requested that the previous track {track} be played."
 msgstr "[Node={node}] {requester} požádal, aby byla přehrána předchozí trasa {track}."
 
-#: plnotifier/cog.py:1069
+#: plnotifier/cog.py:1103
 msgid "Tracks Requested Event"
 msgstr "Požadovaná událost trasy"
 
-#: plnotifier/cog.py:1070
+#: plnotifier/cog.py:1104
 msgid "[Node={node}] {requester} added {track_count} to the queue."
 msgstr "[Node={node}] {requester} přidal {track_count} do fronty."
 
-#: plnotifier/cog.py:1089
+#: plnotifier/cog.py:1124
 msgid "Track AutoPlay Event"
 msgstr "Sledovat událost automatického přehrávání"
 
-#: plnotifier/cog.py:1090
+#: plnotifier/cog.py:1125
 msgid "[Node={node}] Auto-playing {track}."
 msgstr "[Node={node}] Automatické přehrávání {track}."
 
-#: plnotifier/cog.py:1114
+#: plnotifier/cog.py:1150
 msgid "Track Resumed Event"
 msgstr "Trasa obnovena událost"
 
-#: plnotifier/cog.py:1115
+#: plnotifier/cog.py:1151
 msgid "[Node={node}] {requester} resumed {track}."
 msgstr "[Node={node}] {requester} pokračovalo {track}."
 
-#: plnotifier/cog.py:1141
+#: plnotifier/cog.py:1178
 msgid "Queue Shuffled Event"
 msgstr "Fronta zamíchaná událost"
 
-#: plnotifier/cog.py:1142
+#: plnotifier/cog.py:1179
 msgid "[Node={node}] {requester} shuffled the queue."
 msgstr "[Node={node}] {requester} zamíchal frontu."
 
-#: plnotifier/cog.py:1159
+#: plnotifier/cog.py:1199
 msgid "Queue End Event"
 msgstr "Událost ve frontě"
 
-#: plnotifier/cog.py:1160
+#: plnotifier/cog.py:1200
 msgid "[Node={node}] All tracks in the queue have been played."
 msgstr "[Node={node}] Všechny skladby ve frontě byly přehrány."
 
-#: plnotifier/cog.py:1184
+#: plnotifier/cog.py:1225
 msgid "Tracks Removed Event"
 msgstr "Sledování odstraněné události"
 
-#: plnotifier/cog.py:1185
+#: plnotifier/cog.py:1226
 msgid "[Node={node}] {requester} removed {track_count} tracks from the queue."
 msgstr "[Node={node}] {requester} odstranil {track_count} skladby z fronty."
 
-#: plnotifier/cog.py:1209
+#: plnotifier/cog.py:1251
 msgid "Player Paused Event"
 msgstr "Hráč pozastaven"
 
-#: plnotifier/cog.py:1210
+#: plnotifier/cog.py:1252
 msgid "[Node={node}] {requester} paused the player."
 msgstr "[Node={node}] {requester} pozastavil hráče."
 
-#: plnotifier/cog.py:1234
+#: plnotifier/cog.py:1277
 msgid "Player Stopped Event"
 msgstr "Událost hráče zastavena"
 
-#: plnotifier/cog.py:1235
+#: plnotifier/cog.py:1278
 msgid "[Node={node}] {requester} stopped the player."
 msgstr "[Node={node}] {requester} hráče zastavil."
 
-#: plnotifier/cog.py:1259
+#: plnotifier/cog.py:1303
 msgid "Player Resumed Event"
 msgstr "Přehrávač obnovil událost"
 
-#: plnotifier/cog.py:1260
+#: plnotifier/cog.py:1304
 msgid "[Node={node}] {requester} resumed the player."
 msgstr "[Node={node}] {requester} pokračoval(a) hráč."
 
-#: plnotifier/cog.py:1284
+#: plnotifier/cog.py:1329
 msgid "Player Moved Event"
 msgstr "Hráč přesunutý událost"
 
-#: plnotifier/cog.py:1285
+#: plnotifier/cog.py:1330
 msgid "[Node={node}] {requester} moved the player from {before} to {after}."
 msgstr "[Node={node}] {requester} přesunul hráče z {before} do {after}."
 
-#: plnotifier/cog.py:1309
+#: plnotifier/cog.py:1355
 msgid "Player Disconnected Event"
 msgstr "Přehrávač odpojen událost"
 
-#: plnotifier/cog.py:1310
+#: plnotifier/cog.py:1356
 msgid "[Node={node}] {requester} disconnected the player."
 msgstr "[Node={node}] {requester} odpojil hráče."
 
-#: plnotifier/cog.py:1334
+#: plnotifier/cog.py:1381
 msgid "Player Connected Event"
 msgstr "Hráč připojený k události"
 
-#: plnotifier/cog.py:1335
+#: plnotifier/cog.py:1382
 msgid "[Node={node}] {requester} connected the player."
 msgstr "[Node={node}] {requester} se připojil/a k hráči."
 
-#: plnotifier/cog.py:1359
+#: plnotifier/cog.py:1407
 msgid "Player Volume Changed Event"
 msgstr "Hlasitost přehrávače změnila událost"
 
-#: plnotifier/cog.py:1360
+#: plnotifier/cog.py:1408
 msgid "[Node={node}] {requester} changed the player's volume from {before} to {after}."
 msgstr "[Node={node}] {requester} změnil hlasitost hráče z {before} na {after}."
 
-#: plnotifier/cog.py:1386 plnotifier/cog.py:1396 plnotifier/cog.py:1406
+#: plnotifier/cog.py:1435 plnotifier/cog.py:1445 plnotifier/cog.py:1455
 msgid "Player Repeat Event"
 msgstr "Hráč opakuje událost"
 
-#: plnotifier/cog.py:1387
+#: plnotifier/cog.py:1436
 msgid "[Node={node}] {requester} disabled repeat."
 msgstr "[Node={node}] Opakování {requester} zakázáno."
 
-#: plnotifier/cog.py:1397
+#: plnotifier/cog.py:1446
 msgid "{requester} {status} repeat of the whole queue."
 msgstr "{requester} {status} opakování celé fronty."
 
-#: plnotifier/cog.py:1398 plnotifier/cog.py:1409
+#: plnotifier/cog.py:1447 plnotifier/cog.py:1458
 msgid "enabled"
 msgstr "povoleno"
 
-#: plnotifier/cog.py:1398 plnotifier/cog.py:1409
+#: plnotifier/cog.py:1447 plnotifier/cog.py:1458
 msgid "disabled"
 msgstr "vypnuto"
 
-#: plnotifier/cog.py:1407
+#: plnotifier/cog.py:1456
 msgid "[Node={node}] {requester} {status} repeat for {track}."
 msgstr "[Node={node}] {requester} {status} opakování pro {track}."
 
-#: plnotifier/cog.py:1434
+#: plnotifier/cog.py:1484
 msgid "Player Restored Event"
 msgstr "Obnovená událost hráče"
 
-#: plnotifier/cog.py:1435
+#: plnotifier/cog.py:1485
 msgid "[Node={node}] {requester} restored the player."
 msgstr "[Node={node}] {requester} obnovil hráče."
 
-#: plnotifier/cog.py:1455
+#: plnotifier/cog.py:1506
 msgid "an intro section"
 msgstr "úvodní sekce"
 
-#: plnotifier/cog.py:1457
+#: plnotifier/cog.py:1508
 msgid "an outro section"
 msgstr "outro sekce"
 
-#: plnotifier/cog.py:1459
+#: plnotifier/cog.py:1510
 msgid "a preview section"
 msgstr "náhled sekce"
 
-#: plnotifier/cog.py:1461
+#: plnotifier/cog.py:1512
 msgid "an off-topic section"
 msgstr "sekce mimo téma"
 
-#: plnotifier/cog.py:1463
+#: plnotifier/cog.py:1514
 msgid "a filler section"
 msgstr "sekci výplňku"
 
-#: plnotifier/cog.py:1465
+#: plnotifier/cog.py:1516
 msgid "a sponsor section"
 msgstr "Sekce sponzora"
 
-#: plnotifier/cog.py:1467
+#: plnotifier/cog.py:1518
 msgid "a self-promotion section"
 msgstr "sekci samopropagace"
 
-#: plnotifier/cog.py:1469
+#: plnotifier/cog.py:1520
 msgid "an interaction section"
 msgstr "úsek pro interakci"
 
-#: plnotifier/cog.py:1473
+#: plnotifier/cog.py:1524
 msgid "Sponsor Segment Skipped Event"
 msgstr "Přeskočená událost segmentu Sponsor"
 
-#: plnotifier/cog.py:1474
+#: plnotifier/cog.py:1525
 msgid "[Node={node}] Sponsorblock: Skipped {category} running from {start}s to {to}s."
 msgstr "[Node={node}] Sponsorblock: Přeskočeno {category} běží z {start}do {to}s."
 
-#: plnotifier/cog.py:1499
+#: plnotifier/cog.py:1551
 msgid "Effect"
 msgstr "Efekt"
 
-#: plnotifier/cog.py:1500
+#: plnotifier/cog.py:1552
 msgid "Values"
 msgstr "Hodnoty"
 
-#: plnotifier/cog.py:1529
+#: plnotifier/cog.py:1581
 msgid "N/A"
 msgstr "Nepřichází v úvahu"
 
-#: plnotifier/cog.py:1533
+#: plnotifier/cog.py:1585
 msgid "Filters Applied Event"
 msgstr "Filtry použité události"
 
-#: plnotifier/cog.py:1534
+#: plnotifier/cog.py:1586
 msgid "[Node={node}] {requester} changed the player filters.\n\n"
 "__**Currently Applied:**__\n"
 "{data}"
@@ -447,39 +447,39 @@ msgstr "[Node={node}] {requester} změnil filtry hráčů.\n\n"
 "__**Aktuálně aplikováno:**__\n"
 "{data}"
 
-#: plnotifier/cog.py:1538
+#: plnotifier/cog.py:1590
 msgid "None"
 msgstr "Nic"
 
-#: plnotifier/cog.py:1554
+#: plnotifier/cog.py:1607
 msgid "Node Connected Event"
 msgstr "Node připojená událost"
 
-#: plnotifier/cog.py:1555
+#: plnotifier/cog.py:1608
 msgid "Node {name} has been connected."
 msgstr "Uzel {name} byl připojen."
 
-#: plnotifier/cog.py:1569
+#: plnotifier/cog.py:1623
 msgid "Node Disconnected Event"
 msgstr "Událost Node odpojena"
 
-#: plnotifier/cog.py:1570
+#: plnotifier/cog.py:1624
 msgid "Node {name} has been disconnected with code {code} and reason: {reason}."
 msgstr "Uzel {name} byl odpojen s kódem {code} a důvodem: {reason}."
 
-#: plnotifier/cog.py:1589
+#: plnotifier/cog.py:1644
 msgid "Node Changed Event"
 msgstr "Událost změněného uzlu"
 
-#: plnotifier/cog.py:1590
+#: plnotifier/cog.py:1645
 msgid "The node which the player is connected to changed from {fro} to {to}."
 msgstr "Uzel, ke kterému je hráč připojen na změnu z {fro} na {to}."
 
-#: plnotifier/cog.py:1609
+#: plnotifier/cog.py:1665
 msgid "WebSocket Closed Event"
 msgstr "Uzavřená událost WebSocket"
 
-#: plnotifier/cog.py:1610
+#: plnotifier/cog.py:1666
 msgid "[Node={node}] The websocket connection to the Lavalink node closed with code {code} and reason {reason}."
 msgstr "[Node={node}] Připojení socketu k uzlu Lavalink uzavřeno kódem {code} a důvodem {reason}."
 
