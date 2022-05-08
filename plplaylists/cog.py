@@ -481,11 +481,7 @@ class PyLavPlaylists(
                                 ephemeral=True,
                             )
                             return
-                        if tracks := [
-                            track["track"]
-                            for track in tracks["tracks"]
-                            if "track" in track
-                        ]:
+                        if tracks := [track["track"] for track in tracks["tracks"] if "track" in track]:
                             changed = True
                             playlist.tracks = tracks
                 elif playlist.id in BUNDLED_PLAYLIST_IDS:
@@ -567,9 +563,7 @@ class PyLavPlaylists(
                 await context.send(
                     embed=await context.lavalink.construct_embed(
                         messageable=context,
-                        description=_(
-                            "You must either provide a URL or attach a playlist file to upload a playlist."
-                        ),
+                        description=_("You must either provide a URL or attach a playlist file to upload a playlist."),
                     ),
                     ephemeral=True,
                 )
