@@ -481,8 +481,11 @@ class PyLavPlaylists(
                                 ephemeral=True,
                             )
                             return
-                        tracks = [track["track"] for track in tracks["tracks"] if "track" in track]  # type: ignore
-                        if tracks:
+                        if tracks := [
+                            track["track"]
+                            for track in tracks["tracks"]
+                            if "track" in track
+                        ]:
                             changed = True
                             playlist.tracks = tracks
                 elif playlist.id in BUNDLED_PLAYLIST_IDS:
@@ -491,8 +494,7 @@ class PyLavPlaylists(
             if manageable:
                 if playlist_prompt.dedupe:
                     new_tracks = list(dict.fromkeys(playlist.tracks))
-                    diff = len(playlist.tracks) - len(new_tracks)
-                    if diff:
+                    if diff := len(playlist.tracks) - len(new_tracks):
                         changed = True
                         playlist.tracks = new_tracks
                         tracks_removed += diff
@@ -555,24 +557,23 @@ class PyLavPlaylists(
             await context.defer(ephemeral=True)
         valid_playlist_urls = set()
         async with context.typing():
-            if not url:
-                if not context.message.attachments:
-                    await context.send(
-                        embed=await context.lavalink.construct_embed(
-                            messageable=context,
-                            description=_(
-                                "You must either provide a URL or attach a playlist file to upload a playlist."
-                            ),
-                        ),
-                        ephemeral=True,
-                    )
-                    return
-            else:
+            if url:
                 if isinstance(url, str):
                     url = url.strip("<>")
                     valid_playlist_urls.add(url)
                 else:
                     valid_playlist_urls.update([r.strip("<>") for r in url])
+            elif not context.message.attachments:
+                await context.send(
+                    embed=await context.lavalink.construct_embed(
+                        messageable=context,
+                        description=_(
+                            "You must either provide a URL or attach a playlist file to upload a playlist."
+                        ),
+                    ),
+                    ephemeral=True,
+                )
+                return
             if context.message.attachments:
                 for file in context.message.attachments:
                     if file.filename.endswith(".yaml"):
@@ -622,16 +623,15 @@ class PyLavPlaylists(
                     ),
                     ephemeral=True,
                 )
-            if saved_playlists:
-                await context.send(
-                    embed=await context.lavalink.construct_embed(
-                        messageable=context,
-                        description=_("Successfully saved the following playlists:\n{saved_playlists}").format(
-                            saved_playlists=humanize_list(saved_playlists)
-                        ),
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    messageable=context,
+                    description=_("Successfully saved the following playlists:\n{saved_playlists}").format(
+                        saved_playlists=humanize_list(saved_playlists)
                     ),
-                    ephemeral=True,
-                )
+                ),
+                ephemeral=True,
+            )
 
     @commands.command(name="__command_playlist_play", hidden=True)
     @always_hidden()
