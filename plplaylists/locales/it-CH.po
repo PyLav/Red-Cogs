@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-08 15:16+0000\n"
-"PO-Revision-Date: 2022-05-08 18:54\n"
+"POT-Creation-Date: 2022-05-08 19:53+0000\n"
+"PO-Revision-Date: 2022-05-08 20:00\n"
 "Last-Translator: \n"
 "Language-Team: Italian, Switzerland\n"
 "MIME-Version: 1.0\n"
@@ -59,11 +59,11 @@ msgstr "Crea una nuova playlist.\n\n"
 "        Se specifichi un URL, la scaletta verrà creata dall'URL.\n"
 "        "
 
-#: plplaylists/cog.py:180
+#: plplaylists/cog.py:181
 msgid "Let's create a playlist!"
 msgstr "Creiamo una playlist!"
 
-#: plplaylists/cog.py:181
+#: plplaylists/cog.py:182
 msgid "(**1**) - Apply changes to playlist.\n"
 "(**2**) - Cancel any changes made.\n"
 "(**3**) - Add a name to the playlist.\n"
@@ -77,11 +77,11 @@ msgstr "(**1**) - Applica le modifiche alla playlist.\n"
 "(**5**) - Aggiungi tutta la traccia dalla coda alla scaletta.\n\n"
 "Se si desidera che il nome della playlist sia come playlist originale, è sufficiente impostare l'URL ma nessun nome.\n\n"
 
-#: plplaylists/cog.py:221
+#: plplaylists/cog.py:219
 msgid "Playlist created"
 msgstr "Playlist creata"
 
-#: plplaylists/cog.py:222
+#: plplaylists/cog.py:220
 msgid "Name: `{name}`\n"
 "ID: `{id}`\n"
 "Tracks: `{track_count}`"
@@ -89,7 +89,7 @@ msgstr "Nome: `{name}`\n"
 "ID: `{id}`\n"
 "Tracce: `{track_count}`"
 
-#: plplaylists/cog.py:232
+#: plplaylists/cog.py:230
 #, docstring
 msgid "\n"
 "        List all playlists you have access to on the invoked context.\n\n"
@@ -100,11 +100,11 @@ msgstr "\n"
 "        Questo prende in considerazione il tuo attuale VC, canale di testo e server.\n"
 "        "
 
-#: plplaylists/cog.py:253
+#: plplaylists/cog.py:251
 msgid "You have no playlists."
 msgstr "Non hai nessuna playlist."
 
-#: plplaylists/cog.py:272
+#: plplaylists/cog.py:270
 #, docstring
 msgid "\n"
 "        Manage a playlist.\n\n"
@@ -123,11 +123,11 @@ msgstr "\n"
 "        se usi l'alias `info` le tracce della scaletta verranno visualizzate in un menu.\n"
 "        "
 
-#: plplaylists/cog.py:325
+#: plplaylists/cog.py:323
 msgid "{user}, playlist {playlist_name} cannot be managed by yourself."
 msgstr "{user}, la playlist {playlist_name} non può essere gestita da solo."
 
-#: plplaylists/cog.py:334
+#: plplaylists/cog.py:332
 msgid "(**1**){space} - Apply changes to playlist.\n"
 "(**2**){space} - Cancel any changes made and close the menu.\n"
 "(**3**){space} - Delete this playlist.\n"
@@ -169,7 +169,7 @@ msgstr "(**1**){space} - Applica le modifiche alla playlist.\n"
 "Il pulsante URL verrà sempre eseguito per l'ultima volta - Collegare una scaletta tramite l'URL sovrascriverà tutte le tracce aggiunte o rimosse a questa scaletta.\n\n"
 "Se interagisci con un pulsante più volte diverse dai pulsanti di aggiunta/rimuovi solo l'ultima interazione avrà effetto.\n\n\n"
 
-#: plplaylists/cog.py:360
+#: plplaylists/cog.py:358
 msgid "(**1**) - Close the menu.\n"
 "(**2**) - Update the playlist with the latest tracks.\n"
 "(**3**) - Download the playlist file.\n"
@@ -181,7 +181,7 @@ msgstr "(**1**) - Chiudi il menu.\n"
 "(**4**) - Aggiungi la scaletta attuale alla coda.\n"
 "(**5**) - Mostra le tracce nella scaletta attuale.\n\n\n"
 
-#: plplaylists/cog.py:368
+#: plplaylists/cog.py:366
 msgid "**__Currently managing__**:\n"
 "**Name**:{space}{space}{space}{playlist_name}\n"
 "**Scope**:{space}{space}{space}{scope}\n"
@@ -195,67 +195,67 @@ msgstr "**__Attualmente gestione__**:\n"
 "**Tracce**:{space}{space}{space}{tracks} tracce\n"
 "**URL**:{space}{space}{space}{space}{space}{url}\n"
 
-#: plplaylists/cog.py:385
+#: plplaylists/cog.py:383
 msgid "Let's manage: {playlist_name}"
 msgstr "Gestiamo: {playlist_name}"
 
-#: plplaylists/cog.py:387
+#: plplaylists/cog.py:385
 msgid "Let's take a look at: {playlist_name}"
 msgstr "Diamo un'occhiata a: {playlist_name}"
 
-#: plplaylists/cog.py:394
+#: plplaylists/cog.py:392
 msgid "N/A"
 msgstr "N/A"
 
-#: plplaylists/cog.py:418
+#: plplaylists/cog.py:416
 msgid "Playlist deleted."
 msgstr "Playlist eliminata."
 
-#: plplaylists/cog.py:420
+#: plplaylists/cog.py:418
 msgid "{user}, playlist {playlist_name} has been deleted."
 msgstr "{user}, la playlist {playlist_name} è stata eliminata."
 
-#: plplaylists/cog.py:477
+#: plplaylists/cog.py:475
 msgid "Playlist **{playlist_name}** could not be updated with URL: <{url}>."
 msgstr "La playlist **{playlist_name}** non può essere aggiornata con URL: <{url}>."
 
-#: plplaylists/cog.py:513
+#: plplaylists/cog.py:511
 msgid "\n"
 "{track_count} {track_plural} removed from the playlist."
 msgstr "\n"
 "{track_count} {track_plural} rimosso dalla playlist."
 
-#: plplaylists/cog.py:514 plplaylists/cog.py:518
+#: plplaylists/cog.py:512 plplaylists/cog.py:516
 msgid "track"
 msgstr "traccia"
 
-#: plplaylists/cog.py:514 plplaylists/cog.py:518
+#: plplaylists/cog.py:512 plplaylists/cog.py:516
 msgid "tracks"
 msgstr "tracce"
 
-#: plplaylists/cog.py:517
+#: plplaylists/cog.py:515
 msgid "\n"
 "{track_count} {track_plural} added to the playlist."
 msgstr "\n"
 "{track_count} {track_plural} aggiunto alla playlist."
 
-#: plplaylists/cog.py:524
+#: plplaylists/cog.py:522
 msgid "Playlist updated."
 msgstr "Playlist aggiornata."
 
-#: plplaylists/cog.py:525
+#: plplaylists/cog.py:523
 msgid "{user}, playlist {playlist_name} has been updated.{extras}"
 msgstr "{user}, la playlist {playlist_name} è stata aggiornata.{extras}"
 
-#: plplaylists/cog.py:537
+#: plplaylists/cog.py:535
 msgid "Playlist unchanged."
 msgstr "Playlist invariata."
 
-#: plplaylists/cog.py:538
+#: plplaylists/cog.py:536
 msgid "{user}, playlist {playlist_name} has not been updated."
 msgstr "{user}, la playlist {playlist_name} non è stata aggiornata."
 
-#: plplaylists/cog.py:548
+#: plplaylists/cog.py:546
 #, docstring
 msgid "\n"
 "        Upload a playlist to the bot.\n\n"
@@ -268,47 +268,47 @@ msgstr "\n"
 "        La scaletta può essere caricata dall'URL del file della scaletta o allegando il file della scaletta al messaggio.\n"
 "        "
 
-#: plplaylists/cog.py:565
+#: plplaylists/cog.py:563
 msgid "You must either provide a URL or attach a playlist file to upload a playlist."
 msgstr "Devi fornire un URL o allegare un file di playlist per caricare una playlist."
 
-#: plplaylists/cog.py:585
+#: plplaylists/cog.py:583
 msgid "No valid playlist file provided."
 msgstr "Nessun file di playlist valido fornito."
 
-#: plplaylists/cog.py:594
+#: plplaylists/cog.py:592
 msgid "Multiple playlist files provided - Currently only 1 per message is allowed."
 msgstr "Più file di playlist forniti - Attualmente solo 1 per messaggio è permesso."
 
-#: plplaylists/cog.py:612
+#: plplaylists/cog.py:610
 msgid "Failed to save any of the requested playlists."
 msgstr "Impossibile salvare una qualsiasi delle playlist richieste."
 
-#: plplaylists/cog.py:621
+#: plplaylists/cog.py:619
 msgid "Failed to save the following playlists:\n"
 "{invalid_playlists}"
 msgstr "Impossibile salvare le seguenti playlist:\n"
 "{invalid_playlists}"
 
-#: plplaylists/cog.py:631
+#: plplaylists/cog.py:629
 msgid "Successfully saved the following playlists:\n"
 "{saved_playlists}"
 msgstr "Salvato con successo le seguenti playlist:\n"
 "{saved_playlists}"
 
-#: plplaylists/cog.py:656
+#: plplaylists/cog.py:654
 msgid "You must be in a voice channel to allow me to connect."
 msgstr "Devi essere in un canale vocale per permettermi di connettermi."
 
-#: plplaylists/cog.py:664
+#: plplaylists/cog.py:662
 msgid "I don't have permission to connect or speak in {channel}."
 msgstr "Non ho il permesso di connettermi o parlare in {channel}."
 
-#: plplaylists/cog.py:681
+#: plplaylists/cog.py:679
 msgid "Playlist"
 msgstr "Playlist"
 
-#: plplaylists/cog.py:686
+#: plplaylists/cog.py:684
 msgid "{track_count} tracks enqueued.{playlist_name}"
 msgstr "{track_count} tracce accodate.{playlist_name}"
 
