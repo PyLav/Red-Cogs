@@ -142,9 +142,12 @@ class ContextMenus(CogMixin, ABC):
 
             return
         if spotify_activity.track_id:
-            await self.command_play.callback(  # type: ignore
-                self, interaction, query="https://open.spotify.com/track/" + spotify_activity.track_id
+            await self.command_play.callback(
+                self,
+                interaction,
+                query=f"https://open.spotify.com/track/{spotify_activity.track_id}",
             )
+
         else:
             await interaction.followup.send(
                 embed=await self.lavalink.construct_embed(
