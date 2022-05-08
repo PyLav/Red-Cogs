@@ -44,12 +44,12 @@ class PyLavNodes(commands.Cog):
         await self.bot.lavalink.unregister(cog=self)
 
     @commands.is_owner()
-    @commands.group(name="nodeset")
-    async def command_nodeset(self, context: PyLavContext) -> None:
+    @commands.group(name="plnode")
+    async def command_plnode(self, context: PyLavContext) -> None:
         """Configure PyLav Nodes."""
 
-    @command_nodeset.command(name="add", aliases=["create", "new"])
-    async def command_nodeset_add(self, context: PyLavContext) -> None:
+    @command_plnode.command(name="add", aliases=["create", "new"])
+    async def command_plnode_add(self, context: PyLavContext) -> None:
         """Add a node PyLav."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -151,8 +151,8 @@ class PyLavNodes(commands.Cog):
                     ),
                 )
 
-    @commands.command(name="remove", aliases=["delete", "del", "rm"])
-    async def command_nodeset_remove(self, context: commands.Context, *, nodes: NodeConverter):
+    @command_plnode.command(name="remove", aliases=["delete", "del", "rm"])
+    async def command_plnode_remove(self, context: commands.Context, *, nodes: NodeConverter):
         """Remove a node from PyLav instance."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -197,8 +197,8 @@ class PyLavNodes(commands.Cog):
             ephemeral=True,
         )
 
-    @command_nodeset.command(name="manage")
-    async def command_nodeset_manage(self, context: commands.Context):
+    @command_plnode.command(name="manage")
+    async def command_plnode_manage(self, context: commands.Context):
         """Manage all nodes in PyLav instance."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -311,8 +311,8 @@ class PyLavNodes(commands.Cog):
             embed=embed,
         )
 
-    @command_nodeset.command(name="list")
-    async def command_nodeset_list(self, context: PyLavContext):
+    @command_plnode.command(name="list")
+    async def command_plnode_list(self, context: PyLavContext):
         """List all nodes used by PyLav."""
 
         if isinstance(context, discord.Interaction):

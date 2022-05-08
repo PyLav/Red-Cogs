@@ -200,6 +200,7 @@ class PyLavUtils(commands.Cog):
                 ephemeral=True,
             )
 
+    @commands.is_owner()
     @command_plutils.group(name="cache")
     async def command_plutils_cache(self, context: PyLavContext):
         """Manage the query cache."""

@@ -11,6 +11,7 @@ from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import inline
 
 from pylav import Client
+from pylav.localfiles import LocalFile
 from pylav.sql.models import LibConfigModel
 from pylav.types import BotT
 from pylav.utils import PyLavContext
@@ -38,12 +39,12 @@ class PyLavConfigurator(commands.Cog):
         await self.bot.lavalink.unregister(cog=self)
 
     @commands.is_owner()
-    @commands.group(name="pylav", aliases=["plconfig"])
-    async def pylav(self, ctx: PyLavContext) -> None:
+    @commands.group(name="plset", aliases=["plconfig"])
+    async def command_plset(self, ctx: PyLavContext) -> None:
         """Change global settings for PyLav"""
 
-    @pylav.command(name="folder")
-    async def pylav_folder(self, context: PyLavContext, create: bool, *, folder: str) -> None:
+    @command_plset.command(name="folder")
+    async def command_plset_folder(self, context: PyLavContext, create: bool, *, folder: str) -> None:
         """Set the folder for PyLav's config files
 
         Changes will be applied after restarting the bot.
@@ -96,8 +97,8 @@ class PyLavConfigurator(commands.Cog):
             ephemeral=True,
         )
 
-    @pylav.command(name="tracks")
-    async def pylav_tracks(self, context: PyLavContext, create: bool, *, folder: str) -> None:
+    @command_plset.command(name="tracks")
+    async def command_plset_tracks(self, context: PyLavContext, create: bool, *, folder: str) -> None:
         """Set the local tracks folder for PyLav.
 
         Changes will be applied after restarting the bot.
@@ -141,7 +142,6 @@ class PyLavConfigurator(commands.Cog):
 
         global_config = await LibConfigModel(bot=self.bot.user.id, id=1).get_all()
         await global_config.set_localtrack_folder(str(path.absolute()))
-        from pylav.localfiles import LocalFile
 
         await LocalFile.add_root_folder(path=path)
         await context.send(
@@ -154,8 +154,8 @@ class PyLavConfigurator(commands.Cog):
             ephemeral=True,
         )
 
-    @pylav.command(name="java")
-    async def pylav_java(self, context: PyLavContext, *, java: str) -> None:
+    @command_plset.command(name="java")
+    async def command_plset_java(self, context: PyLavContext, *, java: str) -> None:
         """Set the java executable for PyLav.
 
         Default is "java"
@@ -226,12 +226,12 @@ class PyLavConfigurator(commands.Cog):
             ephemeral=True,
         )
 
-    @pylav.group(name="node")
-    async def pylav_node(self, context: PyLavContext) -> None:
+    @command_plset.group(name="node")
+    async def command_plset_node(self, context: PyLavContext) -> None:
         """Change the managed node configuration."""
 
-    @pylav_node.command(name="toggle")
-    async def pylav_node_toggle(self, context: PyLavContext) -> None:
+    @command_plset_node.command(name="toggle")
+    async def command_plset_node_toggle(self, context: PyLavContext) -> None:
         """Toggle the managed node on/off.
 
         Changes will be applied after restarting the bot.
@@ -261,8 +261,8 @@ class PyLavConfigurator(commands.Cog):
                 ephemeral=True,
             )
 
-    @pylav_node.command(name="updates")
-    async def pylav_node_updates(self, context: PyLavContext) -> None:
+    @command_plset_node.command(name="updates")
+    async def command_plset_node_updates(self, context: PyLavContext) -> None:
         """Toggle the managed node auto updates on/off.
 
         Changes will be applied after restarting the bot.

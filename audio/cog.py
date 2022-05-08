@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import asyncio
 from abc import ABC
 from pathlib import Path
 from typing import Literal
@@ -56,7 +57,6 @@ class PyLavPlayer(
             enable_slash=False,
             enable_context=False,
         )
-        self._init_task = None
         self.context_user_play = discord.app_commands.ContextMenu(
             name="Play from Spotify", callback=self._context_user_play, type=AppCommandType.user
         )
@@ -65,10 +65,13 @@ class PyLavPlayer(
         )
         self.bot.tree.add_command(self.context_user_play)
         self.bot.tree.add_command(self.context_message_play)
+        self._init_task = None
+        self._slash_sync_task = None
 
     async def initialize(self) -> None:
         await self.lavalink.register(self)
         await self.lavalink.initialize()
+        self._slash_sync_task = asyncio.create_task(self._sync_tree())
 
     async def _sync_tree(self) -> None:
         await self.bot.wait_until_ready()
@@ -77,10 +80,14 @@ class PyLavPlayer(
     async def cog_unload(self) -> None:
         if self._init_task is not None:
             self._init_task.cancel()
+        if self._slash_sync_task is not None:
+            self._slash_sync_task.cancel()
+        self.bot.tree.remove_command(self.context_user_play, type=AppCommandType.user)
+        self.bot.tree.remove_command(self.context_message_play, type=AppCommandType.message)
         await self.bot.lavalink.unregister(cog=self)
 
     async def cog_check(self, ctx: PyLavContext) -> bool:
-        if not ctx.guild or self.command_plset in ctx.command.parents or self.command_plset == ctx.command:
+        if not ctx.guild or self.command_playerset in ctx.command.parents or self.command_playerset == ctx.command:
             return True
         if ctx.player:
             config = ctx.player.config
@@ -89,14 +96,6 @@ class PyLavPlayer(
         if config.text_channel_id and config.text_channel_id != ctx.channel.id:
             raise UnauthorizedChannelError(channel=config.text_channel_id)
         return True
-
-    @red_commands.command(name="sync")
-    @red_commands.guild_only()
-    @red_commands.is_owner()
-    async def command_sync(self, context: PyLavContext) -> None:
-        """Sync the tree with the current guild."""
-        await self._sync_tree()
-        await context.send("Synced tree with guild")
 
     @red_commands.Cog.listener()
     async def on_red_api_tokens_update(self, service_name: str, api_tokens: dict[str, str]) -> None:

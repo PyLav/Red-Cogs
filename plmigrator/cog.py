@@ -47,8 +47,8 @@ class PyLavMigrator(commands.Cog):
         await self.bot.lavalink.unregister(cog=self)
 
     @commands.is_owner()
-    @commands.command(name="pylavmigrate")
-    async def pylavmigrate(self, context: PyLavContext, confirm: bool, /) -> None:
+    @commands.command(name="plmigrate")
+    async def command_pylavmigrate(self, context: PyLavContext, confirm: bool, /) -> None:
         """Migrate Audio settings to PyLav
 
         Please note that this will replace any config already in PyLav.
