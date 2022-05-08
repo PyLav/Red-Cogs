@@ -352,9 +352,7 @@ class HybridCommands(CogMixin, ABC):
             cog=self,
             bot=self.bot,
             source=QueueSource(guild_id=context.guild.id, cog=self),
-            original_author=context.interaction.user
-            if context.interaction
-            else context.author,
+            original_author=context.interaction.user if context.interaction else context.author,
         ).start(ctx=context)
 
     @commands.hybrid_command(name="shuffle", description="Shuffles the player's queue.")

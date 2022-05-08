@@ -334,12 +334,8 @@ class PyLavNodes(commands.Cog):
         await PaginatingMenu(
             cog=self,
             bot=self.bot,
-            source=NodeListSource(
-                cog=self, pages=self.lavalink.node_manager.nodes
-            ),
+            source=NodeListSource(cog=self, pages=self.lavalink.node_manager.nodes),
             delete_after_timeout=True,
             timeout=120,
-            original_author=context.interaction.user
-            if context.interaction
-            else context.author,
+            original_author=context.interaction.user if context.interaction else context.author,
         ).start(context)

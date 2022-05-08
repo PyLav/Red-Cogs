@@ -174,9 +174,7 @@ class PyLavPlaylists(
         if not (name or url):
             playlist_prompt = PlaylistCreationFlow(
                 cog=self,
-                original_author=context.interaction.user
-                if context.interaction
-                else context.author,
+                original_author=context.interaction.user if context.interaction else context.author,
                 timeout=120,
             )
 
@@ -261,9 +259,7 @@ class PyLavPlaylists(
             source=PlaylistListSource(cog=self, pages=playlists),
             delete_after_timeout=True,
             timeout=120,
-            original_author=context.interaction.user
-            if context.interaction
-            else context.author,
+            original_author=context.interaction.user if context.interaction else context.author,
         ).start(context)
 
     @command_playlist.command(
