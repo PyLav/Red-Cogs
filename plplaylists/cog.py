@@ -184,6 +184,7 @@ class PyLavPlaylists(
         aliases=["delete", "remove", "rm", "del", "clear", "add", "play", "start", "enqueue", "info", "save", "queue"],
     )
     async def command_playlist_manage(self, context: PyLavContext, *, playlist: PlaylistConverter):
+        # sourcery no-metrics
         """
         Manage a playlist.
 

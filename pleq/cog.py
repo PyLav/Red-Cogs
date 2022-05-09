@@ -11,6 +11,7 @@ from redbot.core.i18n import Translator, cog_i18n
 from pylav.filters import Equalizer
 from pylav.types import BotT
 from pylav.utils import PyLavContext
+from pylavcogs_shared.converters.numeric import RangeConverter
 from pylavcogs_shared.utils.decorators import can_run_command_in_channel, requires_player
 
 LOGGER = getLogger("red.3pt.PyLavEqualizer")
@@ -90,7 +91,7 @@ class PyLavEqualizer(commands.Cog):
         """Apply an Equalizer preset to the player."""
 
     @command_eq.command(name="bassboost", aliases=["bb"])
-    async def command_eq_bassboost(self, context: PyLavContext, level: int = 2) -> None:
+    async def command_eq_bassboost(self, context: PyLavContext, level: RangeConverter[int, 0, 7]) -> None:
         """Apply a Bass boost preset to the player.
 
         The level is a value between 0 and 7.
@@ -99,9 +100,6 @@ class PyLavEqualizer(commands.Cog):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-
-        if level < 0 or level > 7:
-            raise commands.BadArgument(_("The level must be between 0 and 7."))
 
         if level == 0:
             await context.player.set_equalizer(requester=context.author, equalizer=Equalizer.default())

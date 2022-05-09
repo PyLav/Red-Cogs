@@ -12,6 +12,7 @@ from redbot.core.utils.chat_formatting import bold, humanize_number, humanize_ti
 
 from pylav.converters import PlaylistConverter
 from pylav.utils import CogMixin, PyLavContext
+from pylavcogs_shared.converters.numeric import RangeConverter
 from pylavcogs_shared.ui.prompts.playlists import maybe_prompt_for_playlist
 
 LOGGER = getLogger("red.3pt.PyLavPlayer.commands.config")
@@ -30,22 +31,14 @@ class ConfigCommands(CogMixin, ABC):
         """Global configuration options."""
 
     @command_playerset_global.command(name="vol", aliases=["volume"])
-    async def command_playerset_global_volume(self, context: PyLavContext, volume: int) -> None:
+    async def command_playerset_global_volume(
+        self, context: PyLavContext, volume: RangeConverter[int, 0, 1000]
+    ) -> None:
         """Set the maximum volume server can set."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-
-        if volume < 1 or volume > 1000:
-            await context.send(
-                embed=await self.lavalink.construct_embed(
-                    description=_("Volume must be between 0 and 1000%."),
-                    messageable=context,
-                ),
-                ephemeral=True,
-            )
-            return
         self.lavalink.player_manager.global_config.max_volume = volume
         await self.lavalink.player_manager.global_config.save()
         await context.send(
@@ -197,14 +190,16 @@ class ConfigCommands(CogMixin, ABC):
         """Server configuration options."""
 
     @command_playerset_server.command(name="vol", aliases=["volume"])
-    async def command_playerset_server_volume(self, context: PyLavContext, volume: int) -> None:
+    async def command_playerset_server_volume(
+        self, context: PyLavContext, volume: RangeConverter[int, 0, 1000]
+    ) -> None:
         """Set the maximum volume a user can set."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        if volume < 1 or volume > await self.lavalink.player_manager.global_config.fetch_max_volume():
+        if volume > await self.lavalink.player_manager.global_config.fetch_max_volume():
             await context.send(
                 embed=await self.lavalink.construct_embed(
                     description=_("Volume must be between 0 and {volume}%.").format(

@@ -11,6 +11,7 @@ from redbot.core.i18n import Translator
 
 from pylav import Query, Track
 from pylav.utils import CogMixin, PyLavContext, format_time
+from pylavcogs_shared.converters.numeric import RangeConverter
 from pylavcogs_shared.ui.menus.queue import QueueMenu
 from pylavcogs_shared.ui.sources.queue import QueueSource
 from pylavcogs_shared.utils import rgetattr
@@ -493,7 +494,7 @@ class HybridCommands(CogMixin, ABC):
     @commands.hybrid_command(name="volume", description="Set the player volume.")
     @commands.guild_only()
     @requires_player()
-    async def command_volume(self, context: PyLavContext, volume: int = 100):
+    async def command_volume(self, context: PyLavContext, volume: RangeConverter[int, 0, 1000]):
         """Set the player volume.
 
         The volume is a value from 0-1000.
@@ -508,7 +509,6 @@ class HybridCommands(CogMixin, ABC):
                 ephemeral=True,
             )
             return
-        volume = max(volume, 0)
         config = context.player.config
         max_volume = min(
             await config.fetch_max_volume(), await self.lavalink.player_manager.global_config.fetch_max_volume()
