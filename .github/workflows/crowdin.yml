@@ -21,7 +21,7 @@ jobs:
             run: |
                 python3.8 -m redgettext --command-docstrings --verbose --recursive .
         -   name: crowdin action
-            uses: crowdin/github-action@1.4.8
+            uses: crowdin/github-action@1.4.9
             with:
                 upload_translations: true
                 download_translations: true
