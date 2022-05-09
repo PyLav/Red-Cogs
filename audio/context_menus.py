@@ -3,16 +3,20 @@ from abc import ABC
 from pathlib import Path
 
 import discord
+from discord.ext.commands import HybridCommand
 from redbot.core.i18n import Translator
 
 from pylav.query import MERGED_REGEX
+from pylav.types import Interaction
 from pylav.utils import CogMixin
 
 _ = Translator("PyLavPlayer", Path(__file__))
 
 
 class ContextMenus(CogMixin, ABC):
-    async def _context_message_play(self, interaction: discord.Interaction, message: discord.Message) -> None:
+    command_play: HybridCommand
+
+    async def _context_message_play(self, interaction: Interaction, message: discord.Message) -> None:
         await interaction.response.defer(ephemeral=True)
 
         if message.embeds and not message.content:
@@ -97,7 +101,7 @@ class ContextMenus(CogMixin, ABC):
 
         await self.command_play.callback(self, interaction, query="\n".join(valid_matches))  # type: ignore
 
-    async def _context_user_play(self, interaction: discord.Interaction, member: discord.Member) -> None:
+    async def _context_user_play(self, interaction: Interaction, member: discord.Member) -> None:
         await interaction.response.defer(ephemeral=True)
         if not interaction.guild:
             await interaction.followup.send(

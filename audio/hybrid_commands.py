@@ -25,7 +25,7 @@ _RE_TIME_CONVERTER: Final[Pattern] = re.compile(r"(?:(\d+):)?([0-5]?\d):([0-5]\d
 class HybridCommands(CogMixin, ABC):
     @commands.hybrid_command(name="play", description="Plays a specified query.", aliases=["p"])
     @commands.guild_only()
-    async def command_play(self, context: PyLavContext, *, query: str):
+    async def command_play(self, context: PyLavContext, *, query: str):  # sourcery no-metrics
         """Attempt to play the queries which you provide.
 
         Separate multiple queries with a new line (`shift + enter`).
