@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-09 11:50+0000\n"
-"PO-Revision-Date: 2022-05-09 14:13\n"
+"POT-Creation-Date: 2022-05-09 20:26+0000\n"
+"PO-Revision-Date: 2022-05-09 20:35\n"
 "Last-Translator: \n"
 "Language-Team: Swedish, Finland\n"
 "MIME-Version: 1.0\n"
@@ -80,30 +80,11 @@ msgstr "\n"
 msgid "You have no playlists."
 msgstr "Du har inga spellistor."
 
-#: plplaylists/cog.py:187
-#, docstring
-msgid "\n"
-"        Manage a playlist.\n\n"
-"        This command can be used to delete, clear all tracks, add or remove tracks or play a playlist.\n\n"
-"        If you use the `start` (`play` or `enqueue`) alias the playlist will be played instead of you being shown the control menu.\n"
-"        If you use the `delete` (`del`) alias the playlist will be deleted instead of you being shown the control menu.\n"
-"        If you use the `save` (`queue`) alias the current queue will be added to the specified playlist.\n"
-"        if you use the `info` alias the playlist tracks will be displayed in a menu.\n"
-"        "
-msgstr "\n"
-"        Hantera en spellista.\n\n"
-"        Detta kommando kan användas för att ta bort, rensa alla spår, lägga till eller ta bort spår eller spela upp en spellista.\n\n"
-"        Om du använder `start` (`play` eller `enqueue`) alias kommer spellistan att spelas istället för att du visas kontrollmenyn.\n"
-"        Om du använder `delete` (`del`) alias kommer spellistan att tas bort istället för att du visas i kontrollmenyn.\n"
-"        Om du använder `save` (`queue`) alias kommer den aktuella kön att läggas till i den angivna spellistan.\n"
-"        om du använder `info` alias kommer spellistans spår att visas i en meny.\n"
-"        "
-
-#: plplaylists/cog.py:240
+#: plplaylists/cog.py:241
 msgid "{user}, playlist {playlist_name} cannot be managed by yourself."
 msgstr "{user}, spellista {playlist_name} kan inte hanteras av dig själv."
 
-#: plplaylists/cog.py:249
+#: plplaylists/cog.py:250
 msgid "(**1**){space} - Apply changes to playlist.\n"
 "(**2**){space} - Cancel any changes made and close the menu.\n"
 "(**3**){space} - Delete this playlist.\n"
@@ -145,7 +126,7 @@ msgstr "(**1**){space} - Tillämpa ändringar i spellistan.\n"
 "URL-knappen kommer alltid att köras senast - Länka en spellista via URL:en kommer att skriva över alla låtar som lagts till eller tagits bort till denna spellista.\n\n"
 "Om du interagerar med en knapp flera gånger annat än lägga till/ta bort knapparna kommer endast den sista interaktionen att träda i kraft.\n\n\n"
 
-#: plplaylists/cog.py:275
+#: plplaylists/cog.py:276
 msgid "(**1**) - Close the menu.\n"
 "(**2**) - Update the playlist with the latest tracks.\n"
 "(**3**) - Download the playlist file.\n"
@@ -157,7 +138,7 @@ msgstr "(**1**) - Stäng menyn.\n"
 "(**4**) - Lägg till aktuell spellista i kön.\n"
 "(**5**) - Visa spår i aktuell spellista.\n\n\n"
 
-#: plplaylists/cog.py:283
+#: plplaylists/cog.py:284
 msgid "**__Currently managing__**:\n"
 "**Name**:{space}{space}{space}{playlist_name}\n"
 "**Scope**:{space}{space}{space}{scope}\n"
@@ -171,67 +152,67 @@ msgstr "**__Hanterar__**:\n"
 "**Spårning**:{space}{space}{space}{tracks} spår\n"
 "**URL**:{space}{space}{space}{space}{space}{url}\n"
 
-#: plplaylists/cog.py:300
+#: plplaylists/cog.py:301
 msgid "Let's manage: {playlist_name}"
 msgstr "Låt oss hantera: {playlist_name}"
 
-#: plplaylists/cog.py:302
+#: plplaylists/cog.py:303
 msgid "Let's take a look at: {playlist_name}"
 msgstr "Vi tittar på: {playlist_name}"
 
-#: plplaylists/cog.py:309
+#: plplaylists/cog.py:310
 msgid "N/A"
 msgstr "N/A"
 
-#: plplaylists/cog.py:333
+#: plplaylists/cog.py:334
 msgid "Playlist deleted."
 msgstr "Spellista borttagen."
 
-#: plplaylists/cog.py:335
+#: plplaylists/cog.py:336
 msgid "{user}, playlist {playlist_name} has been deleted."
 msgstr "{user}, spellista {playlist_name} har tagits bort."
 
-#: plplaylists/cog.py:392
+#: plplaylists/cog.py:393
 msgid "Playlist **{playlist_name}** could not be updated with URL: <{url}>."
 msgstr "Spellista **{playlist_name}** kunde inte uppdateras med URL: <{url}>."
 
-#: plplaylists/cog.py:426
+#: plplaylists/cog.py:427
 msgid "\n"
 "{track_count} {track_plural} removed from the playlist."
 msgstr "\n"
 "{track_count} {track_plural} togs bort från spellistan."
 
-#: plplaylists/cog.py:427 plplaylists/cog.py:431
+#: plplaylists/cog.py:428 plplaylists/cog.py:432
 msgid "track"
 msgstr "spår"
 
-#: plplaylists/cog.py:427 plplaylists/cog.py:431
+#: plplaylists/cog.py:428 plplaylists/cog.py:432
 msgid "tracks"
 msgstr "spår"
 
-#: plplaylists/cog.py:430
+#: plplaylists/cog.py:431
 msgid "\n"
 "{track_count} {track_plural} added to the playlist."
 msgstr "\n"
 "{track_count} {track_plural} lades till i spellistan."
 
-#: plplaylists/cog.py:437
+#: plplaylists/cog.py:438
 msgid "Playlist updated."
 msgstr "Spellistan uppdaterad."
 
-#: plplaylists/cog.py:438
+#: plplaylists/cog.py:439
 msgid "{user}, playlist {playlist_name} has been updated.{extras}"
 msgstr "{user}, spellista {playlist_name} har uppdaterats.{extras}"
 
-#: plplaylists/cog.py:450
+#: plplaylists/cog.py:451
 msgid "Playlist unchanged."
 msgstr "Spellistan oförändrad."
 
-#: plplaylists/cog.py:451
+#: plplaylists/cog.py:452
 msgid "{user}, playlist {playlist_name} has not been updated."
 msgstr "{user}, spellista {playlist_name} har inte uppdaterats."
 
-#: plplaylists/cog.py:461
+#: plplaylists/cog.py:462
 #, docstring
 msgid "\n"
 "        Upload a playlist to the bot.\n\n"
@@ -244,47 +225,47 @@ msgstr "\n"
 "        Spellistan kan laddas upp antingen av URL:en till spellistefilen eller genom att bifoga spellistefilen till meddelandet.\n"
 "        "
 
-#: plplaylists/cog.py:483
+#: plplaylists/cog.py:484
 msgid "You must either provide a URL or attach a playlist file to upload a playlist."
 msgstr "Du måste antingen ange en URL eller bifoga en spellistfil för att ladda upp en spellista."
 
-#: plplaylists/cog.py:495
+#: plplaylists/cog.py:496
 msgid "No valid playlist file provided."
 msgstr "Ingen giltig spellistfil angiven."
 
-#: plplaylists/cog.py:504
+#: plplaylists/cog.py:505
 msgid "Multiple playlist files provided - Currently only 1 per message is allowed."
 msgstr "Flera spellista filer som tillhandahålls - För närvarande endast 1 per meddelande är tillåtet."
 
-#: plplaylists/cog.py:522
+#: plplaylists/cog.py:523
 msgid "Failed to save any of the requested playlists."
 msgstr "Det gick inte att spara någon av de begärda spellistorna."
 
-#: plplaylists/cog.py:531
+#: plplaylists/cog.py:532
 msgid "Failed to save the following playlists:\n"
 "{invalid_playlists}"
 msgstr "Det gick inte att spara följande spellistor:\n"
 "{invalid_playlists}"
 
-#: plplaylists/cog.py:540
+#: plplaylists/cog.py:541
 msgid "Successfully saved the following playlists:\n"
 "{saved_playlists}"
 msgstr "Har sparat följande spellistor:\n"
 "{saved_playlists}"
 
-#: plplaylists/cog.py:565
+#: plplaylists/cog.py:566
 msgid "You must be in a voice channel to allow me to connect."
 msgstr "Du måste vara i en röstkanal för att jag ska kunna ansluta."
 
-#: plplaylists/cog.py:573
+#: plplaylists/cog.py:574
 msgid "I don't have permission to connect or speak in {channel}."
 msgstr "Jag har inte behörighet att ansluta eller tala i {channel}."
 
-#: plplaylists/cog.py:590
+#: plplaylists/cog.py:591
 msgid "Playlist"
 msgstr "Spellista"
 
-#: plplaylists/cog.py:595
+#: plplaylists/cog.py:596
 msgid "{track_count} tracks enqueued.{playlist_name}"
 msgstr "{track_count} spår köade.{playlist_name}"
 
