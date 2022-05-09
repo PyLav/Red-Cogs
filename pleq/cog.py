@@ -6,16 +6,12 @@ from pathlib import Path
 import discord
 from red_commons.logging import getLogger
 from redbot.core import Config, commands
-from redbot.core.data_manager import cog_data_path
 from redbot.core.i18n import Translator, cog_i18n
 
-from pylav import Client
-from pylav.exceptions import NoNodeAvailable, NoNodeWithRequestFunctionalityAvailable
 from pylav.filters import Equalizer
 from pylav.types import BotT
 from pylav.utils import PyLavContext
-from pylavcogs_shared.errors import MediaPlayerNotFoundError, UnauthorizedChannelError
-from pylavcogs_shared.utils.decorators import requires_player
+from pylavcogs_shared.utils.decorators import can_run_command_in_channel, requires_player
 
 LOGGER = getLogger("red.3pt.PyLavEqualizer")
 
@@ -31,16 +27,12 @@ class PyLavEqualizer(commands.Cog):
     def __init__(self, bot: BotT, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot
-        self._init_task = None
         self._slash_sync_task = None
-        self.lavalink = Client(bot=self.bot, cog=self, config_folder=cog_data_path(raw_name="PyLav"))
-        self.config = Config.get_conf(self, identifier=208903205982044161)
-        self.config.register_global(enable_slash=True)
-        self.config.register_guild(persist_eq=False)
+        self._config = Config.get_conf(self, identifier=208903205982044161)
+        self._config.register_global(enable_slash=True)
+        self._config.register_guild(persist_eq=False)
 
-    async def initialize(self) -> None:
-        await self.lavalink.register(self)
-        await self.lavalink.initialize()
+    async def initialize(self, *args, **kwargs) -> None:
         self._slash_sync_task = asyncio.create_task(self._sync_tree())
 
     async def _sync_tree(self) -> None:
@@ -48,81 +40,8 @@ class PyLavEqualizer(commands.Cog):
         await self.bot.tree.sync()
 
     async def cog_unload(self) -> None:
-        if self._init_task is not None:
-            self._init_task.cancel()
         if self._slash_sync_task is not None:
             self._slash_sync_task.cancel()
-        await self.bot.lavalink.unregister(cog=self)
-
-    async def cog_check(self, ctx: PyLavContext) -> bool:
-        if not ctx.guild or self.command_eqset in ctx.command.parents or self.command_eqset == ctx.command:
-            return True
-        if ctx.player:
-            config = ctx.player.config
-        else:
-            config = await self.lavalink.player_config_manager.get_config(ctx.guild.id)
-        if config.text_channel_id and config.text_channel_id != ctx.channel.id:
-            raise UnauthorizedChannelError(channel=config.text_channel_id)
-        return True
-
-    async def cog_command_error(self, context: PyLavContext, error: Exception) -> None:
-        error = getattr(error, "original", error)
-        unhandled = True
-        if isinstance(error, MediaPlayerNotFoundError):
-            unhandled = False
-            await context.send(
-                embed=await self.lavalink.construct_embed(
-                    messageable=context, description=_("This command requires an existing player to be run.")
-                ),
-                ephemeral=True,
-            )
-        elif isinstance(error, NoNodeAvailable):
-            unhandled = False
-            await context.send(
-                embed=await self.lavalink.construct_embed(
-                    messageable=context,
-                    description=_(
-                        "MediaPlayer cog is currently temporarily unavailable due to an outage with "
-                        "the backend services, please try again later."
-                    ),
-                    footer=_("No Lavalink node currently available.")
-                    if await self.bot.is_owner(context.author)
-                    else None,
-                ),
-                ephemeral=True,
-            )
-        elif isinstance(error, NoNodeWithRequestFunctionalityAvailable):
-            unhandled = False
-            await context.send(
-                embed=await self.lavalink.construct_embed(
-                    messageable=context,
-                    description=_("MediaPlayer is currently unable to process tracks belonging to {feature}.").format(
-                        feature=error.feature
-                    ),
-                    footer=_("No Lavalink node currently available with feature {feature}.").format(
-                        feature=error.feature
-                    )
-                    if await self.bot.is_owner(context.author)
-                    else None,
-                ),
-                ephemeral=True,
-            )
-        elif isinstance(error, UnauthorizedChannelError):
-            unhandled = False
-            await context.send(
-                embed=await self.lavalink.construct_embed(
-                    messageable=context,
-                    description=_("This command is not available in this channel. Please use {channel}").format(
-                        channel=channel.mention
-                        if (channel := context.guild.get_channel_or_thread(error.channel))
-                        else None
-                    ),
-                ),
-                ephemeral=True,
-                delete_after=10,
-            )
-        if unhandled:
-            await self.bot.on_command_error(context, error, unhandled_by_cog=True)  # type: ignore
 
     @commands.group(name="eqset")
     @commands.guild_only()
@@ -137,7 +56,7 @@ class PyLavEqualizer(commands.Cog):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        async with self.config.guild(context.guild).all() as guild_config:
+        async with self._config.guild(context.guild).all() as guild_config:
             guild_config["persist_eq"] = state = not guild_config["persist_eq"]
 
         if state:
@@ -166,6 +85,7 @@ class PyLavEqualizer(commands.Cog):
     @commands.hybrid_group(name="eq", description="Apply an Equalizer preset to the player.", aliases=["equalizer"])
     @commands.guild_only()
     @requires_player()
+    @can_run_command_in_channel()
     async def command_eq(self, ctx: PyLavContext) -> None:
         """Apply an Equalizer preset to the player."""
 
@@ -185,7 +105,7 @@ class PyLavEqualizer(commands.Cog):
 
         if level == 0:
             await context.player.set_equalizer(requester=context.author, equalizer=Equalizer.default())
-            if await self.config.guild(context.guild).persist_eq():
+            if await self._config.guild(context.guild).persist_eq():
                 context.player.config.effects["equalizer"] = {}
                 await context.player.config.save()
             await context.send(
@@ -228,7 +148,7 @@ class PyLavEqualizer(commands.Cog):
             requester=context.author,
             equalizer=equalizer,
         )
-        if await self.config.guild(context.guild).persist_eq():
+        if await self._config.guild(context.guild).persist_eq():
             context.player.config.effects["equalizer"] = equalizer.to_dict()
             await context.player.config.save()
         await context.send(
@@ -271,7 +191,7 @@ class PyLavEqualizer(commands.Cog):
             requester=context.author,
             equalizer=equalizer,
         )
-        if await self.config.guild(context.guild).persist_eq():
+        if await self._config.guild(context.guild).persist_eq():
             context.player.config.effects["equalizer"] = equalizer.to_dict()
             await context.player.config.save()
 
@@ -315,7 +235,7 @@ class PyLavEqualizer(commands.Cog):
             requester=context.author,
             equalizer=equalizer,
         )
-        if await self.config.guild(context.guild).persist_eq():
+        if await self._config.guild(context.guild).persist_eq():
             context.player.config.effects["equalizer"] = equalizer.to_dict()
             await context.player.config.save()
         await context.send(
@@ -335,7 +255,7 @@ class PyLavEqualizer(commands.Cog):
             await context.defer(ephemeral=True)
 
         await context.player.set_equalizer(requester=context.author, equalizer=Equalizer.default())
-        if await self.config.guild(context.guild).persist_eq():
+        if await self._config.guild(context.guild).persist_eq():
             context.player.config.effects["equalizer"] = {}
             await context.player.config.save()
         await context.send(

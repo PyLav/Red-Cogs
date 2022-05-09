@@ -18,7 +18,6 @@ from redbot.core.data_manager import cog_data_path
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.dbtools import APSWConnectionWrapper
 
-from pylav import Client
 from pylav.sql.models import LibConfigModel
 from pylav.types import BotT
 from pylav.utils import AsyncIter, PyLavContext
@@ -38,17 +37,6 @@ class PyLavMigrator(commands.Cog):
     def __init__(self, bot: BotT, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot
-        self._init_task = None
-        self.lavalink = Client(bot=self.bot, cog=self, config_folder=cog_data_path(raw_name="PyLav"))
-
-    async def initialize(self) -> None:
-        await self.lavalink.register(self)
-        await self.lavalink.initialize()
-
-    async def cog_unload(self) -> None:
-        if self._init_task is not None:
-            self._init_task.cancel()
-        await self.bot.lavalink.unregister(cog=self)
 
     @commands.is_owner()
     @commands.command(name="plmigrate")

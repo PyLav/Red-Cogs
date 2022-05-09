@@ -7,12 +7,11 @@ import discord
 from apscheduler.job import Job
 from red_commons.logging import getLogger
 from redbot.core import Config, commands
-from redbot.core.data_manager import cog_data_path
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import box, humanize_list, inline
 from tabulate import tabulate
 
-from pylav import Client, events
+from pylav import events
 from pylav.filters import Equalizer, Volume
 from pylav.types import BotT
 from pylav.utils import PyLavContext, format_time
@@ -87,8 +86,6 @@ class PyLavNotifier(commands.Cog):
     def __init__(self, bot: BotT, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot
-        self._init_task = None
-        self.lavalink = Client(bot=self.bot, cog=self, config_folder=cog_data_path(raw_name="PyLav"))
         self._config = Config.get_conf(self, identifier=208903205982044161)
         self._config.register_global(
             notify_channel_id=None,
@@ -153,9 +150,10 @@ class PyLavNotifier(commands.Cog):
         self._message_queue = defaultdict(list)
         self._scheduled_jobs: list[Job] = []
 
-    async def initialize(self) -> None:
-        await self.lavalink.register(self)
-        await self.lavalink.initialize()
+    async def initialize(
+        self,
+        *args,
+    ) -> None:
         self._scheduled_jobs.append(
             self.lavalink.scheduler.add_job(
                 self.send_embed_batch, trigger="interval", seconds=10, max_instances=1, replace_existing=True
@@ -163,11 +161,8 @@ class PyLavNotifier(commands.Cog):
         )
 
     async def cog_unload(self) -> None:
-        if self._init_task is not None:
-            self._init_task.cancel()
         for job in self._scheduled_jobs:
             job.remove()
-        await self.bot.lavalink.unregister(cog=self)
 
     async def send_embed_batch(self) -> None:
         dispatch_mapping = {}
