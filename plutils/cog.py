@@ -32,7 +32,7 @@ class PyLavUtils(commands.Cog):
 
     @commands.group(name="plutils")
     async def command_plutils(self, context: PyLavContext):
-        """Utility commands for the MediaPlayer cog."""
+        """Utility commands for PyLav."""
 
     @command_plutils.group(name="get")
     @requires_player()

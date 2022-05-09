@@ -187,7 +187,7 @@ class PyLavMigrator(commands.Cog):
             )
         await context.send(
             content=_(
-                "Migration of Audio cog settings to MediaPlayer cog complete. "
+                "Migration of Audio cog settings to PyLav complete. "
                 "Restart the bot for it to take effect.\n{requester}"
             ).format(requester=context.author.mention),
             ephemeral=True,
