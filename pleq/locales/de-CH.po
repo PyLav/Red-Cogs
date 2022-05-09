@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-08 18:45+0000\n"
-"PO-Revision-Date: 2022-05-08 18:54\n"
+"POT-Creation-Date: 2022-05-09 11:50+0000\n"
+"PO-Revision-Date: 2022-05-09 11:58\n"
 "Last-Translator: \n"
 "Language-Team: German, Switzerland\n"
 "MIME-Version: 1.0\n"
@@ -17,54 +17,30 @@ msgstr ""
 "X-Crowdin-File-ID: 434\n"
 "Language: de_CH\n"
 
-#: pleq/cog.py:27
+#: pleq/cog.py:23
 #, docstring
 msgid "Apply equalizer presets to the PyLav player."
 msgstr "Equalizer Presets auf den PyLav Player anwenden."
 
-#: pleq/cog.py:75
-msgid "This command requires an existing player to be run."
-msgstr "Für diesen Befehl muss ein existierender Spieler ausgeführt werden."
-
-#: pleq/cog.py:84
-msgid "MediaPlayer cog is currently temporarily unavailable due to an outage with the backend services, please try again later."
-msgstr "MediaPlayer-Cog ist aufgrund eines Ausfalls der Backend-Dienste vorübergehend nicht verfügbar. Bitte versuchen Sie es später erneut."
-
-#: pleq/cog.py:88
-msgid "No Lavalink node currently available."
-msgstr "Derzeit ist kein Lavalink-Knoten verfügbar."
-
-#: pleq/cog.py:99
-msgid "MediaPlayer is currently unable to process tracks belonging to {feature}."
-msgstr "MediaPlayer ist derzeit nicht in der Lage, die zu {feature} gehörenden Tracks zu verarbeiten."
-
-#: pleq/cog.py:102
-msgid "No Lavalink node currently available with feature {feature}."
-msgstr "Derzeit ist kein Lavalink-Knoten mit der Funktion {feature} verfügbar."
-
-#: pleq/cog.py:115
-msgid "This command is not available in this channel. Please use {channel}"
-msgstr "Dieser Befehl ist in diesem Kanal nicht verfügbar. Bitte verwende {channel}"
-
-#: pleq/cog.py:131
+#: pleq/cog.py:50
 #, docstring
 msgid "Configure the Player behaviour when a preset is set."
 msgstr "Konfigurieren Sie das Verhalten des Spielers, wenn eine Voreinstellung gesetzt ist."
 
-#: pleq/cog.py:135
+#: pleq/cog.py:54
 #, docstring
 msgid "Persist the last used preset."
 msgstr "Die zuletzt verwendete Voreinstellung fortsetzen."
 
-#: pleq/cog.py:150
+#: pleq/cog.py:69
 msgid "The player will now apply the last used preset when it is created."
 msgstr "Der Spieler wird nun die zuletzt verwendete Voreinstellung anwenden, wenn sie erstellt wird."
 
-#: pleq/cog.py:161
+#: pleq/cog.py:80
 msgid "Last used preset will no longer be saved."
 msgstr "Zuletzt benutzte Voreinstellung wird nicht mehr gespeichert."
 
-#: pleq/cog.py:174
+#: pleq/cog.py:94
 #, docstring
 msgid "Apply a Bass boost preset to the player.\n\n"
 "        The level is a value between 0 and 7.\n"
@@ -73,47 +49,47 @@ msgstr "Verwende eine Bass Boost Voreinstellung auf den Spieler.\n\n"
 "        Das Level ist ein Wert zwischen 0 und 7.\n"
 "        "
 
-#: pleq/cog.py:184
+#: pleq/cog.py:104
 msgid "The level must be between 0 and 7."
 msgstr "Das Level muss zwischen 0 und 7 liegen."
 
-#: pleq/cog.py:194
+#: pleq/cog.py:114
 msgid "Bass boost preset has been disabled."
 msgstr "Bass Boost Preset wurde deaktiviert."
 
-#: pleq/cog.py:201
+#: pleq/cog.py:121
 msgid "Base boost - Maximum"
 msgstr "Basis-Boost - Maximum"
 
-#: pleq/cog.py:205
+#: pleq/cog.py:125
 msgid "Base boost - Insane"
 msgstr "Basis-Boost - Verrückt"
 
-#: pleq/cog.py:209
+#: pleq/cog.py:129
 msgid "Base boost - Extreme"
 msgstr "Basis-Boost - Extrem"
 
-#: pleq/cog.py:213
+#: pleq/cog.py:133
 msgid "Base boost - Very high"
 msgstr "Basis-Boost - Sehr hoch"
 
-#: pleq/cog.py:217
+#: pleq/cog.py:137
 msgid "Base boost - High"
 msgstr "Basis-Boost - Hoch"
 
-#: pleq/cog.py:221
+#: pleq/cog.py:141
 msgid "Base boost - Medium"
 msgstr "Basis-Boost - Medium"
 
-#: pleq/cog.py:225
+#: pleq/cog.py:145
 msgid "Base boost - Cut-off"
 msgstr "Basis-Boost - Abschneiden"
 
-#: pleq/cog.py:237
+#: pleq/cog.py:157
 msgid "Preset has been set to {name}."
 msgstr "Preset wurde auf {name} gesetzt."
 
-#: pleq/cog.py:244
+#: pleq/cog.py:164
 #, docstring
 msgid "Apply a Piano preset to the player.\n\n"
 "        Suitable for acoustic tracks, or tacks with an emphasis on female vocals.\n\n"
@@ -124,15 +100,15 @@ msgstr "Wenden Sie eine Piano Voreinstellung auf den Spieler an.\n\n"
 "        Kann auch als Bass Cut-off verwendet werden.\n"
 "        "
 
-#: pleq/cog.py:268
+#: pleq/cog.py:188
 msgid "Piano"
 msgstr "Klavier"
 
-#: pleq/cog.py:281
+#: pleq/cog.py:201
 msgid "Piano preset has been set."
 msgstr "Piano Preset wurde gesetzt."
 
-#: pleq/cog.py:288
+#: pleq/cog.py:208
 #, docstring
 msgid "Apply an experimental Metal/Rock equalizer preset.\n\n"
 "        Expect clipping on songs with heavy bass.\n"
@@ -141,20 +117,20 @@ msgstr "Verwende eine experimentelle Voreinstellung für Metal/Rock Equalizer.\n
 "        Erwarte ein Clipping auf Songs mit starkem Bass.\n"
 "        "
 
-#: pleq/cog.py:312
+#: pleq/cog.py:232
 msgid "Metal"
 msgstr "Metall"
 
-#: pleq/cog.py:324
+#: pleq/cog.py:244
 msgid "Rock/Metal preset has been set."
 msgstr "Rock/Metal Preset wurde gesetzt."
 
-#: pleq/cog.py:331
+#: pleq/cog.py:251
 #, docstring
 msgid "Remove any equalizer preset from the player."
 msgstr "Entferne jede Equalizer-Voreinstellung vom Player."
 
-#: pleq/cog.py:344
+#: pleq/cog.py:264
 msgid "Equalizer preset has been reset."
 msgstr "Equalizer Preset wurde zurückgesetzt."
 
