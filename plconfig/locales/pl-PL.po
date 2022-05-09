@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-08 15:16+0000\n"
-"PO-Revision-Date: 2022-05-08 18:54\n"
+"POT-Creation-Date: 2022-05-09 11:50+0000\n"
+"PO-Revision-Date: 2022-05-09 11:59\n"
 "Last-Translator: \n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -17,17 +17,17 @@ msgstr ""
 "X-Crowdin-File-ID: 200\n"
 "Language: pl_PL\n"
 
-#: plconfig/cog.py:26
+#: plconfig/cog.py:24
 #, docstring
 msgid "Configure PyLav library settings."
 msgstr "Konfiguruj ustawienia biblioteki PyLav."
 
-#: plconfig/cog.py:48
+#: plconfig/cog.py:35
 #, docstring
 msgid "Change global settings for PyLav"
 msgstr "Zmień ustawienia globalne dla PyLav"
 
-#: plconfig/cog.py:52
+#: plconfig/cog.py:39
 #, docstring
 msgid "Set the folder for PyLav's config files\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -36,19 +36,19 @@ msgstr "Ustaw folder dla plików konfiguracyjnych PyLava\n\n"
 "        Zmiany zostaną zastosowane po ponownym uruchomieniu bota.\n"
 "        "
 
-#: plconfig/cog.py:64 plconfig/cog.py:118
+#: plconfig/cog.py:51 plconfig/cog.py:105
 msgid "{folder} is not a folder."
 msgstr "{folder} nie jest katalogiem."
 
-#: plconfig/cog.py:78 plconfig/cog.py:132
+#: plconfig/cog.py:65 plconfig/cog.py:119
 msgid "{folder} does not exist, run the command again with the create argument set to 1 to automatically create this folder."
 msgstr "{folder} nie istnieje, uruchom ponownie polecenie z argumentem utworzenia ustawionym na 1, aby automatycznie utworzyć ten folder."
 
-#: plconfig/cog.py:96
+#: plconfig/cog.py:83
 msgid "PyLav's config folder has been set to {folder}."
 msgstr "Katalog konfiguracji PyLava został ustawiony na {folder}."
 
-#: plconfig/cog.py:106
+#: plconfig/cog.py:93
 #, docstring
 msgid "Set the local tracks folder for PyLav.\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -57,11 +57,11 @@ msgstr "Ustaw folder ścieżek lokalnych dla PyLav.\n\n"
 "        Zmiany zostaną zastosowane po ponownym uruchomieniu bota.\n"
 "        "
 
-#: plconfig/cog.py:153
+#: plconfig/cog.py:140
 msgid "PyLav's local tracks folder has been set to {folder}."
 msgstr "Lokalny folder ścieżek PyLava został ustawiony na {folder}."
 
-#: plconfig/cog.py:163
+#: plconfig/cog.py:150
 #, docstring
 msgid "Set the java executable for PyLav.\n\n"
 "        Default is \"java\"\n"
@@ -72,28 +72,28 @@ msgstr "Ustaw plik wykonywalny java dla PyLav.\n\n"
 "        Zmiany zostaną zastosowane po ponownym uruchomieniu bota.\n"
 "        "
 
-#: plconfig/cog.py:179
+#: plconfig/cog.py:166
 msgid "{java} does not exist, run the command again with the java argument set to the correct path."
 msgstr "{java} nie istnieje, uruchom ponownie polecenie z argumentem java ustawionym na właściwą ścieżkę."
 
-#: plconfig/cog.py:195
+#: plconfig/cog.py:182
 msgid "{java} is not an executable file."
 msgstr "{java} nie jest plikiem wykonywalnym."
 
-#: plconfig/cog.py:207
+#: plconfig/cog.py:194
 msgid "{java} is not an executable, run the command again with the java argument set to the correct path."
 msgstr "{java} nie jest wykonywalny, uruchom ponownie polecenie z argumentem java ustawionym na właściwą ścieżkę."
 
-#: plconfig/cog.py:225
+#: plconfig/cog.py:212
 msgid "PyLav's java executable has been set to {java}."
 msgstr "Plik wykonywalny PyLava został ustawiony na {java}."
 
-#: plconfig/cog.py:235
+#: plconfig/cog.py:222
 #, docstring
 msgid "Change the managed node configuration."
 msgstr "Zmień konfigurację zarządzanego węzła."
 
-#: plconfig/cog.py:239
+#: plconfig/cog.py:226
 #, docstring
 msgid "Toggle the managed node on/off.\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -102,15 +102,15 @@ msgstr "Włącz/wyłącz zarządzany węzeł.\n\n"
 "        Zmiany zostaną zastosowane po ponownym uruchomieniu bota.\n"
 "        "
 
-#: plconfig/cog.py:254
+#: plconfig/cog.py:241
 msgid "PyLav's managed node has been enabled."
 msgstr "Węzeł zarządzany przez PyLava został włączony."
 
-#: plconfig/cog.py:262
+#: plconfig/cog.py:249
 msgid "PyLav's managed node has been disabled."
 msgstr "Węzeł zarządzany przez PyLava został wyłączony."
 
-#: plconfig/cog.py:270
+#: plconfig/cog.py:257
 #, docstring
 msgid "Toggle the managed node auto updates on/off.\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -119,11 +119,11 @@ msgstr "Włącz/wyłącz automatyczne aktualizacje zarządzanego węzła.\n\n"
 "        Zmiany zostaną zastosowane po ponownym uruchomieniu bota.\n"
 "        "
 
-#: plconfig/cog.py:285
+#: plconfig/cog.py:272
 msgid "PyLav's managed node auto updates have been enabled."
 msgstr "Automatyczna aktualizacja węzła zarządzanego przez PyLava została włączona."
 
-#: plconfig/cog.py:293
+#: plconfig/cog.py:280
 msgid "PyLav's managed node auto updates have been disabled."
 msgstr "Automatyczne aktualizacje węzła zarządzanego przez PyLava zostały wyłączone."
 

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-08 21:05+0000\n"
-"PO-Revision-Date: 2022-05-08 21:12\n"
+"POT-Creation-Date: 2022-05-09 11:50+0000\n"
+"PO-Revision-Date: 2022-05-09 11:59\n"
 "Last-Translator: \n"
 "Language-Team: Russian, Ukraine\n"
 "MIME-Version: 1.0\n"
@@ -17,36 +17,12 @@ msgstr ""
 "X-Crowdin-File-ID: 232\n"
 "Language: ru_UA\n"
 
-#: plplaylists/cog.py:51
+#: plplaylists/cog.py:49
 #, docstring
 msgid "PyLav playlist management commands"
 msgstr "Команды управления плейлистом PyLav"
 
-#: plplaylists/cog.py:100
-msgid "This command requires an existing player to be run."
-msgstr "Эта команда требует запуска существующего игрока."
-
-#: plplaylists/cog.py:109
-msgid "MediaPlayer cog is currently temporarily unavailable due to an outage with the backend services, please try again later."
-msgstr "В настоящее время ког MediaPlayer временно недоступен из-за невозможности работы с бэкэндом, пожалуйста, повторите попытку позже."
-
-#: plplaylists/cog.py:113
-msgid "No Lavalink node currently available."
-msgstr "В настоящее время узел Lavalink недоступен."
-
-#: plplaylists/cog.py:124
-msgid "MediaPlayer is currently unable to process tracks belonging to {feature}."
-msgstr "MediaPlayer в настоящее время не может обрабатывать треки, принадлежащие к {feature}."
-
-#: plplaylists/cog.py:127
-msgid "No Lavalink node currently available with feature {feature}."
-msgstr "В настоящее время нет доступных узлов Lavalink с функцией {feature}."
-
-#: plplaylists/cog.py:140
-msgid "This command is not available in this channel. Please use {channel}"
-msgstr "Эта команда не доступна на этом канале. Пожалуйста, используйте {channel}"
-
-#: plplaylists/cog.py:161
+#: plplaylists/cog.py:78
 #, docstring
 msgid "Create a new playlist.\n\n"
 "        If you don't specify an URL and name, you will be shows a creation menu, which also allows you to save the current player queue as a playlist.\n\n"
@@ -59,11 +35,11 @@ msgstr "Создать новый плейлист.\n\n"
 "        При указании URL, плейлист будет создан по URL.\n"
 "        "
 
-#: plplaylists/cog.py:181
+#: plplaylists/cog.py:98
 msgid "Let's create a playlist!"
 msgstr "Давайте создадим плейлист!"
 
-#: plplaylists/cog.py:182
+#: plplaylists/cog.py:99
 msgid "(**1**) - Apply changes to playlist.\n"
 "(**2**) - Cancel any changes made.\n"
 "(**3**) - Add a name to the playlist.\n"
@@ -77,11 +53,11 @@ msgstr "(**1**) - Применить изменения в плейлист.\n"
 "(**5**) - добавить весь трек из очереди в плейлист.\n\n"
 "Если вы хотите, чтобы имя плейлиста было оригинальным плейлистом просто установите URL-адрес, но без имени\n\n"
 
-#: plplaylists/cog.py:219
+#: plplaylists/cog.py:136
 msgid "Playlist created"
 msgstr "Плейлист создан"
 
-#: plplaylists/cog.py:220
+#: plplaylists/cog.py:137
 msgid "Name: `{name}`\n"
 "ID: `{id}`\n"
 "Tracks: `{track_count}`"
@@ -89,7 +65,7 @@ msgstr "Имя: `{name}`\n"
 "ID: `{id}`\n"
 "Треки: `{track_count}`"
 
-#: plplaylists/cog.py:230
+#: plplaylists/cog.py:147
 #, docstring
 msgid "\n"
 "        List all playlists you have access to on the invoked context.\n\n"
@@ -100,11 +76,11 @@ msgstr "\n"
 "        Это учитывает ваши текущие VC, текстовый канал и сервер.\n"
 "        "
 
-#: plplaylists/cog.py:251
+#: plplaylists/cog.py:168
 msgid "You have no playlists."
 msgstr "У вас нет плейлистов."
 
-#: plplaylists/cog.py:270
+#: plplaylists/cog.py:187
 #, docstring
 msgid "\n"
 "        Manage a playlist.\n\n"
@@ -123,11 +99,11 @@ msgstr "\n"
 "        если вы используете `info` псевдонимы, дорожки плейлиста будут отображаться в меню.\n"
 "        "
 
-#: plplaylists/cog.py:323
+#: plplaylists/cog.py:240
 msgid "{user}, playlist {playlist_name} cannot be managed by yourself."
 msgstr "{user}, плейлист {playlist_name} не может управляться самим."
 
-#: plplaylists/cog.py:332
+#: plplaylists/cog.py:249
 msgid "(**1**){space} - Apply changes to playlist.\n"
 "(**2**){space} - Cancel any changes made and close the menu.\n"
 "(**3**){space} - Delete this playlist.\n"
@@ -169,7 +145,7 @@ msgstr "(**1**){space} - Применить изменения в плейлис
 "Кнопка URL всегда будет запущена в последний раз - привязка плейлиста по URL-адресу перезапишет все треки, добавленные или удаленные в этот плейлист.\n\n"
 "Если вы взаимодействуете с кнопкой несколько раз, кроме добавления/удаления кнопок только последнее взаимодействие вступит в силу.\n\n\n"
 
-#: plplaylists/cog.py:358
+#: plplaylists/cog.py:275
 msgid "(**1**) - Close the menu.\n"
 "(**2**) - Update the playlist with the latest tracks.\n"
 "(**3**) - Download the playlist file.\n"
@@ -181,7 +157,7 @@ msgstr "(**1**) - Закройте меню.\n"
 "(**4**) - Добавить текущий список воспроизведения в очередь.\n"
 "(**5**) - Показать треки в текущем плейлистере.\n\n\n"
 
-#: plplaylists/cog.py:366
+#: plplaylists/cog.py:283
 msgid "**__Currently managing__**:\n"
 "**Name**:{space}{space}{space}{playlist_name}\n"
 "**Scope**:{space}{space}{space}{scope}\n"
@@ -190,67 +166,67 @@ msgid "**__Currently managing__**:\n"
 "**URL**:{space}{space}{space}{space}{space}{url}\n"
 msgstr ""
 
-#: plplaylists/cog.py:383
+#: plplaylists/cog.py:300
 msgid "Let's manage: {playlist_name}"
 msgstr "Давайте управляем: {playlist_name}"
 
-#: plplaylists/cog.py:385
+#: plplaylists/cog.py:302
 msgid "Let's take a look at: {playlist_name}"
 msgstr "Давайте посмотрим на: {playlist_name}"
 
-#: plplaylists/cog.py:392
+#: plplaylists/cog.py:309
 msgid "N/A"
 msgstr "Н/Д"
 
-#: plplaylists/cog.py:416
+#: plplaylists/cog.py:333
 msgid "Playlist deleted."
 msgstr "Плейлист удалён."
 
-#: plplaylists/cog.py:418
+#: plplaylists/cog.py:335
 msgid "{user}, playlist {playlist_name} has been deleted."
 msgstr "{user}, плейлист {playlist_name} был удален."
 
-#: plplaylists/cog.py:475
+#: plplaylists/cog.py:392
 msgid "Playlist **{playlist_name}** could not be updated with URL: <{url}>."
 msgstr "Плейлист **{playlist_name}** не может быть обновлен с URL: <{url}>."
 
-#: plplaylists/cog.py:509
+#: plplaylists/cog.py:426
 msgid "\n"
 "{track_count} {track_plural} removed from the playlist."
 msgstr "\n"
 "{track_count} {track_plural} удален из плейлиста."
 
-#: plplaylists/cog.py:510 plplaylists/cog.py:514
+#: plplaylists/cog.py:427 plplaylists/cog.py:431
 msgid "track"
 msgstr "трек"
 
-#: plplaylists/cog.py:510 plplaylists/cog.py:514
+#: plplaylists/cog.py:427 plplaylists/cog.py:431
 msgid "tracks"
 msgstr "треки"
 
-#: plplaylists/cog.py:513
+#: plplaylists/cog.py:430
 msgid "\n"
 "{track_count} {track_plural} added to the playlist."
 msgstr "\n"
 "{track_count} {track_plural} добавлен в плейлист."
 
-#: plplaylists/cog.py:520
+#: plplaylists/cog.py:437
 msgid "Playlist updated."
 msgstr "Плейлист обновлён."
 
-#: plplaylists/cog.py:521
+#: plplaylists/cog.py:438
 msgid "{user}, playlist {playlist_name} has been updated.{extras}"
 msgstr "{user}, плейлист {playlist_name} был обновлен.{extras}"
 
-#: plplaylists/cog.py:533
+#: plplaylists/cog.py:450
 msgid "Playlist unchanged."
 msgstr "Плейлист не изменен."
 
-#: plplaylists/cog.py:534
+#: plplaylists/cog.py:451
 msgid "{user}, playlist {playlist_name} has not been updated."
 msgstr "{user}, плейлист {playlist_name} не был обновлен."
 
-#: plplaylists/cog.py:544
+#: plplaylists/cog.py:461
 #, docstring
 msgid "\n"
 "        Upload a playlist to the bot.\n\n"
@@ -263,47 +239,47 @@ msgstr "\n"
 "        Плейлист может быть загружен по URL файла плейлиста или прикреплен к сообщению файл плейлиста.\n"
 "        "
 
-#: plplaylists/cog.py:566
+#: plplaylists/cog.py:483
 msgid "You must either provide a URL or attach a playlist file to upload a playlist."
 msgstr "Для загрузки плейлиста вы должны либо указать URL-адрес, либо прикрепить файл плейлиста."
 
-#: plplaylists/cog.py:578
+#: plplaylists/cog.py:495
 msgid "No valid playlist file provided."
 msgstr "Нет допустимого файла плейлиста."
 
-#: plplaylists/cog.py:587
+#: plplaylists/cog.py:504
 msgid "Multiple playlist files provided - Currently only 1 per message is allowed."
 msgstr "Введено несколько файлов плейлиста - В настоящее время допускается только 1 на каждое сообщение."
 
-#: plplaylists/cog.py:605
+#: plplaylists/cog.py:522
 msgid "Failed to save any of the requested playlists."
 msgstr "Не удалось сохранить любой из запрашиваемых плейлистов."
 
-#: plplaylists/cog.py:614
+#: plplaylists/cog.py:531
 msgid "Failed to save the following playlists:\n"
 "{invalid_playlists}"
 msgstr "Не удалось сохранить следующие плейлисты:\n"
 "{invalid_playlists}"
 
-#: plplaylists/cog.py:623
+#: plplaylists/cog.py:540
 msgid "Successfully saved the following playlists:\n"
 "{saved_playlists}"
 msgstr "Следующие плейлисты успешно сохранены:\n"
 "{saved_playlists}"
 
-#: plplaylists/cog.py:648
+#: plplaylists/cog.py:565
 msgid "You must be in a voice channel to allow me to connect."
 msgstr "Вы должны быть в голосовом канале, чтобы позволить мне подключиться."
 
-#: plplaylists/cog.py:656
+#: plplaylists/cog.py:573
 msgid "I don't have permission to connect or speak in {channel}."
 msgstr "У меня нет разрешения подключаться или говорить в {channel}."
 
-#: plplaylists/cog.py:673
+#: plplaylists/cog.py:590
 msgid "Playlist"
 msgstr "Плейлист"
 
-#: plplaylists/cog.py:678
+#: plplaylists/cog.py:595
 msgid "{track_count} tracks enqueued.{playlist_name}"
 msgstr "{track_count} треков в очереди{playlist_name}."
 
