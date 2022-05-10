@@ -11,7 +11,8 @@ from redbot.core.i18n import Translator
 from redbot.core.utils.chat_formatting import bold, humanize_number, humanize_timedelta
 
 from pylav.converters import PlaylistConverter
-from pylav.utils import CogMixin, PyLavContext
+from pylav.types import PyLavCogMixin
+from pylav.utils import PyLavContext
 from pylavcogs_shared.converters.numeric import RangeConverter
 from pylavcogs_shared.ui.prompts.playlists import maybe_prompt_for_playlist
 
@@ -20,7 +21,7 @@ LOGGER = getLogger("red.3pt.PyLavPlayer.commands.config")
 _ = Translator("PyLavPlayer", Path(__file__))
 
 
-class ConfigCommands(CogMixin, ABC):
+class ConfigCommands(PyLavCogMixin, ABC):
     @commands.group(name="playerset")
     async def command_playerset(self, context: PyLavContext) -> None:
         """Player configuration commands."""

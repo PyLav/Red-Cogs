@@ -66,7 +66,7 @@ class PyLavPlayer(
         self.bot.tree.add_command(self.context_message_play)
         self._slash_sync_task = None
 
-    async def initialize(self) -> None:
+    async def initialize(self, *args, **kwargs) -> None:
         self._slash_sync_task = asyncio.create_task(self._sync_tree())
 
     async def _sync_tree(self) -> None:

@@ -7,13 +7,12 @@ from discord.ext.commands import HybridCommand
 from redbot.core.i18n import Translator
 
 from pylav.query import MERGED_REGEX
-from pylav.types import InteractionT
-from pylav.utils import CogMixin
+from pylav.types import InteractionT, PyLavCogMixin
 
 _ = Translator("PyLavPlayer", Path(__file__))
 
 
-class ContextMenus(CogMixin, ABC):
+class ContextMenus(PyLavCogMixin, ABC):
     command_play: HybridCommand
 
     async def _context_message_play(self, interaction: InteractionT, message: discord.Message) -> None:

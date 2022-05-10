@@ -10,7 +10,8 @@ from redbot.core import commands
 from redbot.core.i18n import Translator
 
 from pylav import Query, Track
-from pylav.utils import CogMixin, PyLavContext, format_time
+from pylav.types import PyLavCogMixin
+from pylav.utils import PyLavContext, format_time
 from pylavcogs_shared.converters.numeric import RangeConverter
 from pylavcogs_shared.ui.menus.queue import QueueMenu
 from pylavcogs_shared.ui.sources.queue import QueueSource
@@ -23,7 +24,7 @@ _ = Translator("PyLavPlayer", Path(__file__))
 _RE_TIME_CONVERTER: Final[Pattern] = re.compile(r"(?:(\d+):)?([0-5]?\d):([0-5]\d)")
 
 
-class HybridCommands(CogMixin, ABC):
+class HybridCommands(PyLavCogMixin, ABC):
     @commands.hybrid_command(name="play", description="Plays a specified query.", aliases=["p"])
     @commands.guild_only()
     async def command_play(self, context: PyLavContext, *, query: str):  # sourcery no-metrics

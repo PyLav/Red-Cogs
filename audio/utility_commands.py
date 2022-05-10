@@ -7,7 +7,8 @@ from redbot.core import commands
 from redbot.core.i18n import Translator
 from redbot.core.utils.chat_formatting import humanize_number
 
-from pylav.utils import CogMixin, PyLavContext
+from pylav.types import PyLavCogMixin
+from pylav.utils import PyLavContext
 from pylavcogs_shared.utils.decorators import always_hidden
 
 LOGGER = getLogger("red.3pt.PyLavPlayer.commands.utils")
@@ -15,7 +16,7 @@ LOGGER = getLogger("red.3pt.PyLavPlayer.commands.utils")
 _ = Translator("PyLavPlayer", Path(__file__))
 
 
-class UtilityCommands(CogMixin, ABC):
+class UtilityCommands(PyLavCogMixin, ABC):
     @always_hidden()
     @commands.command(name="__volume_change_by", hidden=True)
     async def command_volume_change_by(self, context: PyLavContext, change_by: int):
