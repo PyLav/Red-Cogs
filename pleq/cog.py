@@ -11,7 +11,7 @@ from redbot.core.i18n import Translator, cog_i18n
 from pylav.filters import Equalizer
 from pylav.types import BotT
 from pylav.utils import PyLavContext
-from pylavcogs_shared.converters.numeric import RangeConverter
+from pylavcogs_shared.converters.equalzer import BassBoostConverter
 from pylavcogs_shared.utils.decorators import can_run_command_in_channel, requires_player
 
 LOGGER = getLogger("red.3pt.PyLavEqualizer")
@@ -91,17 +91,25 @@ class PyLavEqualizer(commands.Cog):
         """Apply an Equalizer preset to the player."""
 
     @command_eq.command(name="bassboost", aliases=["bb"])
-    async def command_eq_bassboost(self, context: PyLavContext, level: RangeConverter[int, 0, 7]) -> None:
+    async def command_eq_bassboost(self, context: PyLavContext, level: BassBoostConverter) -> None:
         """Apply a Bass boost preset to the player.
 
-        The level is a value between 0 and 7.
+        Arguments:
+            - Maximum
+            - Insane
+            - Extreme
+            - High
+            - Very High
+            - Medium
+            - Cut-off
+            - Off
         """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        if level == 0:
+        if level == "Off":
             await context.player.set_equalizer(requester=context.author, equalizer=Equalizer.default())
             if await self._config.guild(context.guild).persist_eq():
                 context.player.config.effects["equalizer"] = {}
@@ -114,33 +122,33 @@ class PyLavEqualizer(commands.Cog):
                 ephemeral=True,
             )
             return
-        if level == 7:
+        if level == "Maximum":
             equalizer = Equalizer(
-                levels=[{"band": 0, "gain": 1.0}, {"band": 1, "gain": 1.0}], name=_("Base boost - Maximum")
+                levels=[{"band": 0, "gain": 1.0}, {"band": 1, "gain": 1.0}], name=_("Bass boost - Maximum")
             )
-        elif level == 6:
+        elif level == "Insane":
             equalizer = Equalizer(
-                levels=[{"band": 0, "gain": 1.0}, {"band": 1, "gain": 0.75}], name=_("Base boost - Insane")
+                levels=[{"band": 0, "gain": 1.0}, {"band": 1, "gain": 0.75}], name=_("Bass boost - Insane")
             )
-        elif level == 5:
+        elif level == "Extreme":
             equalizer = Equalizer(
-                levels=[{"band": 0, "gain": 0.75}, {"band": 1, "gain": 0.75}], name=_("Base boost - Extreme")
+                levels=[{"band": 0, "gain": 0.75}, {"band": 1, "gain": 0.75}], name=_("Bass boost - Extreme")
             )
-        elif level == 4:
+        elif level == "Very High":
             equalizer = Equalizer(
-                levels=[{"band": 0, "gain": 0.75}, {"band": 1, "gain": 0.5}], name=_("Base boost - Very high")
+                levels=[{"band": 0, "gain": 0.75}, {"band": 1, "gain": 0.5}], name=_("Bass boost - Very High")
             )
-        elif level == 3:
+        elif level == "High":
             equalizer = Equalizer(
-                levels=[{"band": 0, "gain": 0.5}, {"band": 1, "gain": 0.25}], name=_("Base boost - High")
+                levels=[{"band": 0, "gain": 0.5}, {"band": 1, "gain": 0.25}], name=_("Bass boost - High")
             )
-        elif level == 2:
+        elif level == "Medium":
             equalizer = Equalizer(
-                levels=[{"band": 0, "gain": 0.25}, {"band": 1, "gain": 0.15}], name=_("Base boost - Medium")
+                levels=[{"band": 0, "gain": 0.25}, {"band": 1, "gain": 0.15}], name=_("Bass boost - Medium")
             )
         else:
             equalizer = Equalizer(
-                levels=[{"band": 0, "gain": -0.25}, {"band": 1, "gain": -0.25}], name=_("Base boost - Cut-off")
+                levels=[{"band": 0, "gain": -0.25}, {"band": 1, "gain": -0.25}], name=_("Bass boost - Cut-off")
             )
         await context.player.set_equalizer(
             requester=context.author,
