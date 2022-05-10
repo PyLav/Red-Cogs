@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-09 20:26+0000\n"
-"PO-Revision-Date: 2022-05-09 20:35\n"
+"POT-Creation-Date: 2022-05-10 19:00+0000\n"
+"PO-Revision-Date: 2022-05-10 19:09\n"
 "Last-Translator: \n"
 "Language-Team: Ukrainian\n"
 "MIME-Version: 1.0\n"
@@ -43,49 +43,65 @@ msgstr "Останній використаний пресет більше не
 #: pleq/cog.py:95
 #, docstring
 msgid "Apply a Bass boost preset to the player.\n\n"
-"        The level is a value between 0 and 7.\n"
+"        Arguments:\n"
+"            - Maximum\n"
+"            - Insane\n"
+"            - Extreme\n"
+"            - High\n"
+"            - Very High\n"
+"            - Medium\n"
+"            - Cut-off\n"
+"            - Off\n"
 "        "
-msgstr "Застосуйте передній план для підсвітки басу.\n\n"
-"        Рівень є значенням від 0 до 7.\n"
+msgstr "Застосувати пресет посилення басів до гравця.\n\n"
+"        Аргументи:\n"
+"            - Максимум\n"
+"            - Insane\n"
+"            - Екстрем\n"
+"            - Високий\n"
+"            - Дуже високий\n"
+"            - середній\n"
+"            - Вимкнення виписки\n"
+"            -\n"
 "        "
 
-#: pleq/cog.py:112
+#: pleq/cog.py:120
 msgid "Bass boost preset has been disabled."
 msgstr "Пресет підсилення НЧ було вимкнено."
 
-#: pleq/cog.py:119
-msgid "Base boost - Maximum"
-msgstr "Базовий підбір - максимальний"
-
-#: pleq/cog.py:123
-msgid "Base boost - Insane"
-msgstr "Базове підсилення - Божевілля"
-
 #: pleq/cog.py:127
-msgid "Base boost - Extreme"
-msgstr "Базове підсилення - Екстремальне"
+msgid "Bass boost - Maximum"
+msgstr "Підсилення НЧ - Максимальний"
 
 #: pleq/cog.py:131
-msgid "Base boost - Very high"
-msgstr "Підсилення основи - дуже високий"
+msgid "Bass boost - Insane"
+msgstr "Підсилення НЧ - Повітря"
 
 #: pleq/cog.py:135
-msgid "Base boost - High"
-msgstr "Підсилення основи - високе"
+msgid "Bass boost - Extreme"
+msgstr "Підсилення НЧ - Екстремальний"
 
 #: pleq/cog.py:139
-msgid "Base boost - Medium"
-msgstr "Підсилення основи - середній"
+msgid "Bass boost - Very High"
+msgstr "Підсилення НЧ - Дуже високий"
 
 #: pleq/cog.py:143
-msgid "Base boost - Cut-off"
-msgstr "Базове підсилення - вирізання"
+msgid "Bass boost - High"
+msgstr "Підсилення НЧ - Високий"
 
-#: pleq/cog.py:155
+#: pleq/cog.py:147
+msgid "Bass boost - Medium"
+msgstr "Підсилення НЧ - Середній"
+
+#: pleq/cog.py:151
+msgid "Bass boost - Cut-off"
+msgstr "Підсилення НЧ - виймання"
+
+#: pleq/cog.py:163
 msgid "Preset has been set to {name}."
 msgstr "Шаблон був встановлений на {name}."
 
-#: pleq/cog.py:162
+#: pleq/cog.py:170
 #, docstring
 msgid "Apply a Piano preset to the player.\n\n"
 "        Suitable for acoustic tracks, or tacks with an emphasis on female vocals.\n\n"
@@ -96,15 +112,15 @@ msgstr "Застосувати пресет піаніно до гравця.\n\
 "        можна використовувати як відрізки басів.\n"
 "        "
 
-#: pleq/cog.py:186
+#: pleq/cog.py:194
 msgid "Piano"
 msgstr "Піаніно"
 
-#: pleq/cog.py:199
+#: pleq/cog.py:207
 msgid "Piano preset has been set."
 msgstr "Пресет фортепіано встановлено."
 
-#: pleq/cog.py:206
+#: pleq/cog.py:214
 #, docstring
 msgid "Apply an experimental Metal/Rock equalizer preset.\n\n"
 "        Expect clipping on songs with heavy bass.\n"
@@ -113,20 +129,20 @@ msgstr "Застосуйте експериментальний пресет Met
 "        Очікуйте на скорочення пісень з важкими басами.\n"
 "        "
 
-#: pleq/cog.py:230
+#: pleq/cog.py:238
 msgid "Metal"
 msgstr "Метал"
 
-#: pleq/cog.py:242
+#: pleq/cog.py:250
 msgid "Rock/Metal preset has been set."
 msgstr "Пресет Rock/Metal був встановлений."
 
-#: pleq/cog.py:249
+#: pleq/cog.py:257
 #, docstring
 msgid "Remove any equalizer preset from the player."
 msgstr "Видалити будь-який пресет еквалайзера від гравця."
 
-#: pleq/cog.py:262
+#: pleq/cog.py:270
 msgid "Equalizer preset has been reset."
 msgstr "Налаштування еквалайзера були скинуті."
 

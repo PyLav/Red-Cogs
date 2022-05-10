@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-09 20:26+0000\n"
-"PO-Revision-Date: 2022-05-09 20:34\n"
+"POT-Creation-Date: 2022-05-10 19:00+0000\n"
+"PO-Revision-Date: 2022-05-10 19:08\n"
 "Last-Translator: \n"
 "Language-Team: French, Luxembourg\n"
 "MIME-Version: 1.0\n"
@@ -43,49 +43,65 @@ msgstr "Le dernier préréglage utilisé ne sera plus enregistré."
 #: pleq/cog.py:95
 #, docstring
 msgid "Apply a Bass boost preset to the player.\n\n"
-"        The level is a value between 0 and 7.\n"
+"        Arguments:\n"
+"            - Maximum\n"
+"            - Insane\n"
+"            - Extreme\n"
+"            - High\n"
+"            - Very High\n"
+"            - Medium\n"
+"            - Cut-off\n"
+"            - Off\n"
 "        "
-msgstr "Applique un boost de Bass au joueur.\n\n"
-"        Le niveau est une valeur comprise entre 0 et 7.\n"
+msgstr "Applique un préréglage de l'amplification de la basse au joueur.\n\n"
+"        Arguments :\n"
+"            - Maximum\n"
+"            - Insane\n"
+"            - Extrême\n"
+"            - Haute\n"
+"            - Très élevé\n"
+"            - Moyen\n"
+"            - Coupé\n"
+"            - Désactivé\n"
 "        "
 
-#: pleq/cog.py:112
+#: pleq/cog.py:120
 msgid "Bass boost preset has been disabled."
 msgstr "Le préréglage de l'amplification des basses a été désactivé."
 
-#: pleq/cog.py:119
-msgid "Base boost - Maximum"
-msgstr "Amplification de base - Maximum"
-
-#: pleq/cog.py:123
-msgid "Base boost - Insane"
-msgstr "Amplification de base - Insane"
-
 #: pleq/cog.py:127
-msgid "Base boost - Extreme"
-msgstr "Amplification de base - Extrême"
+msgid "Bass boost - Maximum"
+msgstr "Amplification des basses - Maximum"
 
 #: pleq/cog.py:131
-msgid "Base boost - Very high"
-msgstr "Amplification de base - Très élevé"
+msgid "Bass boost - Insane"
+msgstr "Amplification des basses - Insane"
 
 #: pleq/cog.py:135
-msgid "Base boost - High"
-msgstr "Amplification de base - Haut"
+msgid "Bass boost - Extreme"
+msgstr "Amplification des basses - Extrême"
 
 #: pleq/cog.py:139
-msgid "Base boost - Medium"
-msgstr "Amplification de base - Moyenne"
+msgid "Bass boost - Very High"
+msgstr "Amplification des basses - Très élevée"
 
 #: pleq/cog.py:143
-msgid "Base boost - Cut-off"
-msgstr "Amplification de base - Coupé"
+msgid "Bass boost - High"
+msgstr "Amplification des basses - Haut"
 
-#: pleq/cog.py:155
+#: pleq/cog.py:147
+msgid "Bass boost - Medium"
+msgstr "Amplification des basses - Moyenne"
+
+#: pleq/cog.py:151
+msgid "Bass boost - Cut-off"
+msgstr "Amplification des basses - Coupé"
+
+#: pleq/cog.py:163
 msgid "Preset has been set to {name}."
 msgstr "Le préréglage a été réglé sur {name}."
 
-#: pleq/cog.py:162
+#: pleq/cog.py:170
 #, docstring
 msgid "Apply a Piano preset to the player.\n\n"
 "        Suitable for acoustic tracks, or tacks with an emphasis on female vocals.\n\n"
@@ -96,15 +112,15 @@ msgstr "Appliquer un préréglage Piano au lecteur.\n\n"
 "        Peut également être utilisé comme coupure de basses.\n"
 "        "
 
-#: pleq/cog.py:186
+#: pleq/cog.py:194
 msgid "Piano"
 msgstr "Piano"
 
-#: pleq/cog.py:199
+#: pleq/cog.py:207
 msgid "Piano preset has been set."
 msgstr "Le préréglage pour piano a été défini."
 
-#: pleq/cog.py:206
+#: pleq/cog.py:214
 #, docstring
 msgid "Apply an experimental Metal/Rock equalizer preset.\n\n"
 "        Expect clipping on songs with heavy bass.\n"
@@ -113,20 +129,20 @@ msgstr "Appliquez un préréglage expérimental d'égaliseur Metal/Roc.\n\n"
 "        Attendez-vous à des extraits sur des chansons à basse lourde.\n"
 "        "
 
-#: pleq/cog.py:230
+#: pleq/cog.py:238
 msgid "Metal"
 msgstr "Métal"
 
-#: pleq/cog.py:242
+#: pleq/cog.py:250
 msgid "Rock/Metal preset has been set."
 msgstr "Le préréglage Rock/Métal a été défini."
 
-#: pleq/cog.py:249
+#: pleq/cog.py:257
 #, docstring
 msgid "Remove any equalizer preset from the player."
 msgstr "Retirez le préréglage de l'égaliseur du joueur."
 
-#: pleq/cog.py:262
+#: pleq/cog.py:270
 msgid "Equalizer preset has been reset."
 msgstr "Le préréglage de l'égaliseur a été réinitialisé."
 

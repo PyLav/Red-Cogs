@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-09 20:26+0000\n"
-"PO-Revision-Date: 2022-05-09 20:34\n"
+"POT-Creation-Date: 2022-05-10 19:00+0000\n"
+"PO-Revision-Date: 2022-05-10 19:08\n"
 "Last-Translator: \n"
 "Language-Team: Czech\n"
 "MIME-Version: 1.0\n"
@@ -43,49 +43,65 @@ msgstr "Poslední použitá předvolba již nebude uložena."
 #: pleq/cog.py:95
 #, docstring
 msgid "Apply a Bass boost preset to the player.\n\n"
-"        The level is a value between 0 and 7.\n"
+"        Arguments:\n"
+"            - Maximum\n"
+"            - Insane\n"
+"            - Extreme\n"
+"            - High\n"
+"            - Very High\n"
+"            - Medium\n"
+"            - Cut-off\n"
+"            - Off\n"
 "        "
-msgstr "Použít předvolbu zesílení basů na hráče.\n\n"
-"        Úroveň je hodnota mezi 0 a 7.\n"
+msgstr "Použít předvolbu zvýraznění basů na hráče.\n\n"
+"        Argumenty:\n"
+"            - Maximum\n"
+"            - Šílený\n"
+"            - Extreme\n"
+"            - Vysoká\n"
+"            , velmi vysoká\n"
+"            - Střední\n"
+"            - Vypnutí\n"
+"            - Vypnuto\n"
 "        "
 
-#: pleq/cog.py:112
+#: pleq/cog.py:120
 msgid "Bass boost preset has been disabled."
 msgstr "Předvolba zvýraznění basů byla zakázána."
 
-#: pleq/cog.py:119
-msgid "Base boost - Maximum"
-msgstr "Zesílení základny - maximum"
-
-#: pleq/cog.py:123
-msgid "Base boost - Insane"
-msgstr "Zvýšení základny - šílené"
-
 #: pleq/cog.py:127
-msgid "Base boost - Extreme"
-msgstr "Zesílení základny - extrémní"
+msgid "Bass boost - Maximum"
+msgstr "Zesílení basů - maximum"
 
 #: pleq/cog.py:131
-msgid "Base boost - Very high"
-msgstr "Zvýšení základny - velmi vysoké"
+msgid "Bass boost - Insane"
+msgstr "Zvýraznění basů - šílený"
 
 #: pleq/cog.py:135
-msgid "Base boost - High"
-msgstr "Zesílení základny - Vysoká"
+msgid "Bass boost - Extreme"
+msgstr "Zesílení basů - extrémní"
 
 #: pleq/cog.py:139
-msgid "Base boost - Medium"
-msgstr "Zesílení základny - střední"
+msgid "Bass boost - Very High"
+msgstr "Zvýšení basů - velmi vysoké"
 
 #: pleq/cog.py:143
-msgid "Base boost - Cut-off"
-msgstr "Zvýšení základny - Ukončení"
+msgid "Bass boost - High"
+msgstr "Zesílení basů - vysoká"
 
-#: pleq/cog.py:155
+#: pleq/cog.py:147
+msgid "Bass boost - Medium"
+msgstr "Zvýraznění basů - střední"
+
+#: pleq/cog.py:151
+msgid "Bass boost - Cut-off"
+msgstr "Zesílení basů - odříznutí"
+
+#: pleq/cog.py:163
 msgid "Preset has been set to {name}."
 msgstr "Předvolba byla nastavena na {name}."
 
-#: pleq/cog.py:162
+#: pleq/cog.py:170
 #, docstring
 msgid "Apply a Piano preset to the player.\n\n"
 "        Suitable for acoustic tracks, or tacks with an emphasis on female vocals.\n\n"
@@ -96,15 +112,15 @@ msgstr "Použít předvolbu Piano na hráče.\n\n"
 "        Může být také použito jako vyříznutí základů.\n"
 "        "
 
-#: pleq/cog.py:186
+#: pleq/cog.py:194
 msgid "Piano"
 msgstr "Piano"
 
-#: pleq/cog.py:199
+#: pleq/cog.py:207
 msgid "Piano preset has been set."
 msgstr "Byla nastavena předvolba Piano."
 
-#: pleq/cog.py:206
+#: pleq/cog.py:214
 #, docstring
 msgid "Apply an experimental Metal/Rock equalizer preset.\n\n"
 "        Expect clipping on songs with heavy bass.\n"
@@ -113,20 +129,20 @@ msgstr "Použít experimentální předvolbu kovového/kamenného ekvalizéru.\n
 "        Očekávejte stříhání písní s těžkými základnami.\n"
 "        "
 
-#: pleq/cog.py:230
+#: pleq/cog.py:238
 msgid "Metal"
 msgstr "Kovové"
 
-#: pleq/cog.py:242
+#: pleq/cog.py:250
 msgid "Rock/Metal preset has been set."
 msgstr "Byla nastavena předvolba Rock/kovu."
 
-#: pleq/cog.py:249
+#: pleq/cog.py:257
 #, docstring
 msgid "Remove any equalizer preset from the player."
 msgstr "Odebrat jakoukoli předvolbu ekvalizéru z hráče."
 
-#: pleq/cog.py:262
+#: pleq/cog.py:270
 msgid "Equalizer preset has been reset."
 msgstr "Předvolba ekvalizéru byla resetována."
 
