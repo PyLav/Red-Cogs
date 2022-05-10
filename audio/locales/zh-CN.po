@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-09 20:26+0000\n"
-"PO-Revision-Date: 2022-05-09 20:34\n"
+"POT-Creation-Date: 2022-05-10 18:29+0000\n"
+"PO-Revision-Date: 2022-05-10 18:37\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -22,74 +22,74 @@ msgstr ""
 msgid "A Media player using the PyLav library."
 msgstr "使用 PyLav 库的媒体播放器。"
 
-#: audio/config_commands.py:26
+#: audio/config_commands.py:27
 #, docstring
 msgid "Player configuration commands."
 msgstr "播放器配置命令。"
 
-#: audio/config_commands.py:31
+#: audio/config_commands.py:32
 #, docstring
 msgid "Global configuration options."
 msgstr "全局配置选项。"
 
-#: audio/config_commands.py:37
+#: audio/config_commands.py:38
 #, docstring
 msgid "Set the maximum volume server can set."
 msgstr "设置最大音量服务器。"
 
-#: audio/config_commands.py:46 audio/config_commands.py:236
+#: audio/config_commands.py:47 audio/config_commands.py:237
 msgid "Max volume set to {volume}%."
 msgstr "最大音量设置为 {volume}%。"
 
-#: audio/config_commands.py:54 audio/config_commands.py:244
+#: audio/config_commands.py:55 audio/config_commands.py:245
 #, docstring
 msgid "Set whether the bot should deafen itself when playing."
 msgstr "设置机器人在玩时是否应该自己耳光。"
 
-#: audio/config_commands.py:64 audio/config_commands.py:271
+#: audio/config_commands.py:65 audio/config_commands.py:272
 msgid "Deafen set to {deafen}."
 msgstr "Deafen 设置为 {deafen}。"
 
-#: audio/config_commands.py:64 audio/config_commands.py:83
-#: audio/config_commands.py:101 audio/config_commands.py:141
-#: audio/config_commands.py:179 audio/config_commands.py:271
-#: audio/config_commands.py:307 audio/config_commands.py:342
-#: audio/config_commands.py:403 audio/config_commands.py:462
+#: audio/config_commands.py:65 audio/config_commands.py:84
+#: audio/config_commands.py:102 audio/config_commands.py:142
+#: audio/config_commands.py:180 audio/config_commands.py:272
+#: audio/config_commands.py:308 audio/config_commands.py:343
+#: audio/config_commands.py:404 audio/config_commands.py:463
 msgid "Enabled"
 msgstr "已启用"
 
-#: audio/config_commands.py:64 audio/config_commands.py:83
-#: audio/config_commands.py:101 audio/config_commands.py:141
-#: audio/config_commands.py:179 audio/config_commands.py:271
-#: audio/config_commands.py:307 audio/config_commands.py:342
-#: audio/config_commands.py:403 audio/config_commands.py:462
+#: audio/config_commands.py:65 audio/config_commands.py:84
+#: audio/config_commands.py:102 audio/config_commands.py:142
+#: audio/config_commands.py:180 audio/config_commands.py:272
+#: audio/config_commands.py:308 audio/config_commands.py:343
+#: audio/config_commands.py:404 audio/config_commands.py:463
 msgid "Disabled"
 msgstr "已禁用"
 
-#: audio/config_commands.py:72 audio/config_commands.py:279
+#: audio/config_commands.py:73 audio/config_commands.py:280
 #, docstring
 msgid "Set whether the bot should shuffle its queue after every new song."
 msgstr "设置机器人是否应该在每个新歌曲之后随机播放队列。"
 
-#: audio/config_commands.py:83 audio/config_commands.py:307
+#: audio/config_commands.py:84 audio/config_commands.py:308
 msgid "Shuffle set to {shuffle}."
 msgstr "随机播放设置为 {shuffle}。"
 
-#: audio/config_commands.py:91 audio/config_commands.py:315
+#: audio/config_commands.py:92 audio/config_commands.py:316
 #, docstring
 msgid "Set whether the bot should automatically play songs when it's queue is empty."
 msgstr "设置当排队为空时，机器人是否应自动播放歌曲。"
 
-#: audio/config_commands.py:101 audio/config_commands.py:342
+#: audio/config_commands.py:102 audio/config_commands.py:343
 msgid "Auto-Play set to {auto}."
 msgstr "自动播放设置为 {auto}。"
 
-#: audio/config_commands.py:109 audio/config_commands.py:350
+#: audio/config_commands.py:110 audio/config_commands.py:351
 #, docstring
 msgid "Set whether the bot should disconnect from the voice voice channel."
 msgstr "设置机器人是否应断开语音频道连接。"
 
-#: audio/config_commands.py:119
+#: audio/config_commands.py:120
 #, docstring
 msgid "Set whether the bot should disconnect from the voice voice channel when the queue is empty.\n\n"
 "        Arguments:\n"
@@ -104,16 +104,16 @@ msgstr "设置当队列为空时，机器人是否应断开语音频道连接。
 "            接受：秒、 分钟、 小时、 天、 周(如果没有指定单位) 假定持续时间以秒为单位\n"
 "        "
 
-#: audio/config_commands.py:135 audio/config_commands.py:172
-#: audio/config_commands.py:397 audio/config_commands.py:455
+#: audio/config_commands.py:136 audio/config_commands.py:173
+#: audio/config_commands.py:398 audio/config_commands.py:456
 msgid " and players will be disconnected after {duration}."
 msgstr " 和 {duration} 后玩家将断开连接。"
 
-#: audio/config_commands.py:140 audio/config_commands.py:402
+#: audio/config_commands.py:141 audio/config_commands.py:403
 msgid "Disconnect from voice channel when queue is empty set to {empty}{extras}."
 msgstr "当队列空时断开语音频道连接到 {empty}{extras}。"
 
-#: audio/config_commands.py:156
+#: audio/config_commands.py:157
 #, docstring
 msgid "Set whether the bot should disconnect from the voice voice channel when alone.\n\n"
 "        Arguments:\n"
@@ -128,37 +128,37 @@ msgstr "设置机器人是否在单独时断开语音频道连接。\n\n"
 "            接受：秒、 分钟、 小时、 天、 周(如果没有指定单位) 假定持续时间以秒为单位\n"
 "        "
 
-#: audio/config_commands.py:178 audio/config_commands.py:461
+#: audio/config_commands.py:179 audio/config_commands.py:462
 msgid "Disconnect from voice channel when alone set to {empty}{extras}."
 msgstr "单独设置为 {empty}{extras} 时断开语音频道连接。"
 
-#: audio/config_commands.py:190
+#: audio/config_commands.py:191
 #, docstring
 msgid "Server configuration options."
 msgstr "服务器配置选项。"
 
-#: audio/config_commands.py:196
+#: audio/config_commands.py:197
 #, docstring
 msgid "Set the maximum volume a user can set."
 msgstr "设置用户可以设置的最大音量。"
 
-#: audio/config_commands.py:205 audio/config_commands.py:223
+#: audio/config_commands.py:206 audio/config_commands.py:224
 msgid "Volume must be between 0 and {volume}%."
 msgstr "音量必须介于 0 和 {volume}%。"
 
-#: audio/config_commands.py:253
+#: audio/config_commands.py:254
 msgid "My owner told me to always deafen myself."
 msgstr "我的主人告诉我永远不要自己戴面纱。"
 
-#: audio/config_commands.py:289
+#: audio/config_commands.py:290
 msgid "Shuffle is globally disabled."
 msgstr "随机播放已全局禁用。"
 
-#: audio/config_commands.py:324
+#: audio/config_commands.py:325
 msgid "Auto-Play is globally disabled."
 msgstr "自动播放已全局禁用。"
 
-#: audio/config_commands.py:360
+#: audio/config_commands.py:361
 #, docstring
 msgid "Set whether the bot should disconnect from the voice voice channel when the queue is empty.\n\n"
 "        Arguments:\n"
@@ -177,11 +177,11 @@ msgstr "设置当队列为空时，机器人是否应断开语音频道连接。
 "            以秒为单位\n"
 "        "
 
-#: audio/config_commands.py:378
+#: audio/config_commands.py:379
 msgid "Disconnect when the queue finished is globally enable and players will be disconnected after {delta}."
 msgstr "当队列完成后全局启用，玩家将在 {delta} 后断开连接。"
 
-#: audio/config_commands.py:418
+#: audio/config_commands.py:419
 #, docstring
 msgid "Set whether the bot should disconnect from the voice voice channel when alone.\n\n"
 "        Arguments:\n"
@@ -200,257 +200,257 @@ msgstr "设置机器人是否在单独时断开语音频道连接。\n\n"
 "            以秒为单位\n"
 "        "
 
-#: audio/config_commands.py:437
+#: audio/config_commands.py:438
 msgid "Disconnect when alone is globally enable and players will be disconnected after {delta}."
 msgstr "仅在全局启用时断开连接，玩家将在 {delta} 后断开。"
 
-#: audio/config_commands.py:471
+#: audio/config_commands.py:472
 #, docstring
 msgid "Sets the Auto-Play playlist."
 msgstr "设置自动播放播放播放列表。"
 
-#: audio/config_commands.py:489
+#: audio/config_commands.py:490
 msgid "Auto-Play playlist set to {playlist}."
 msgstr "自动播放播放列表设置为 {playlist}。"
 
-#: audio/config_commands.py:497
+#: audio/config_commands.py:498
 #, docstring
 msgid "Set the channel locks."
 msgstr "设置频道锁定。"
 
-#: audio/config_commands.py:503
+#: audio/config_commands.py:504
 #, docstring
 msgid "Set the channel lock for commands."
 msgstr "设置命令的频道锁定。"
 
-#: audio/config_commands.py:519
+#: audio/config_commands.py:520
 msgid "I don't have permission to send message or send embed links or read messages in {channel}."
 msgstr "我没有权限在 {channel} 发送消息或发送嵌入链接或阅读消息。"
 
-#: audio/config_commands.py:539
+#: audio/config_commands.py:540
 msgid "I will only listen to commands in {channel}."
 msgstr "我只会在 {channel} 中聆听命令。"
 
-#: audio/config_commands.py:547
+#: audio/config_commands.py:548
 msgid "I will listen to commands in all channels I can see."
 msgstr "我将在我看到的所有频道中聆听命令。"
 
-#: audio/config_commands.py:555
+#: audio/config_commands.py:556
 #, docstring
 msgid "Set the channel lock for voice channels."
 msgstr "设置频道锁定语音频道。"
 
-#: audio/config_commands.py:567 audio/hybrid_commands.py:89
+#: audio/config_commands.py:568 audio/hybrid_commands.py:90
 msgid "I don't have permission to connect or speak in {channel}."
 msgstr "我没有权限在 {channel} 中连接或说话。"
 
-#: audio/config_commands.py:589
+#: audio/config_commands.py:590
 msgid "I will only be allowed to join {channel}."
 msgstr "我只能加入 {channel}。"
 
-#: audio/config_commands.py:596
+#: audio/config_commands.py:597
 msgid "I'm free to join any VC."
 msgstr "我可以随时加入任何虚拟机."
 
-#: audio/context_menus.py:25
+#: audio/context_menus.py:24
 msgid "Currently I don't support parsing content from inside an embed message."
 msgstr "目前我不支持从嵌入消息中解析内容。"
 
-#: audio/context_menus.py:36 audio/context_menus.py:109
+#: audio/context_menus.py:35 audio/context_menus.py:108
 msgid "I can't play songs in DMs."
 msgstr "我不能在 DME 中播放歌曲"
 
-#: audio/context_menus.py:51 audio/context_menus.py:124
+#: audio/context_menus.py:50 audio/context_menus.py:123
 msgid "This command is not available in this channel. Please use {channel}"
 msgstr "此命令在此频道不可用。请使用 {channel}"
 
-#: audio/context_menus.py:75
+#: audio/context_menus.py:74
 msgid "I couldn't find any valid matches in your message."
 msgstr "我在您的消息中找不到任何有效的匹配项。"
 
-#: audio/context_menus.py:86
+#: audio/context_menus.py:85
 msgid "I found multiple valid matches in your message."
 msgstr "我在您的消息中找到了多个有效的匹配项。"
 
-#: audio/context_menus.py:95
+#: audio/context_menus.py:94
 msgid "I found a single valid match in your message."
 msgstr "我在您的消息中找到了一个有效的比赛。"
 
-#: audio/context_menus.py:140
+#: audio/context_menus.py:139
 msgid "{user} is not listening to anything on Spotify."
 msgstr "{user} 没有在 Spotify 上聆听任何信息。"
 
-#: audio/context_menus.py:158
+#: audio/context_menus.py:157
 msgid "Couldn't figure out what {user} is listening to."
 msgstr "无法找到 {user} 正在收听的内容。"
 
-#: audio/hybrid_commands.py:65
+#: audio/hybrid_commands.py:66
 msgid "You need to provide a query to play."
 msgstr "您需要提供要播放的查询。"
 
-#: audio/hybrid_commands.py:79
+#: audio/hybrid_commands.py:80
 msgid "You must be in a voice channel to allow me to connect."
 msgstr "您必须在一个语音频道中才能允许我连接。"
 
-#: audio/hybrid_commands.py:133
+#: audio/hybrid_commands.py:134
 msgid "{track_count} tracks enqueued."
 msgstr "{track_count} 曲目已排队."
 
-#: audio/hybrid_commands.py:141
+#: audio/hybrid_commands.py:142
 msgid "{track} enqueued."
 msgstr "{track} 已加入队列。"
 
-#: audio/hybrid_commands.py:151
+#: audio/hybrid_commands.py:152
 msgid "No tracks were found for your query."
 msgstr "没有找到您查询的曲目。"
 
-#: audio/hybrid_commands.py:174
+#: audio/hybrid_commands.py:175
 msgid "You need to be in a voice channel if you don't specify which channel I need to connect to."
 msgstr "如果您没有指定我需要连接到哪个频道，您需要在一个语音频道中。"
 
-#: audio/hybrid_commands.py:184
+#: audio/hybrid_commands.py:185
 msgid "I don't have permission to connect to that channel."
 msgstr "我没有连接到该频道的权限。"
 
-#: audio/hybrid_commands.py:186
+#: audio/hybrid_commands.py:187
 msgid "I don't have permission to speak in {channel}."
 msgstr "我没有权限在 {channel} 发言。"
 
-#: audio/hybrid_commands.py:189
+#: audio/hybrid_commands.py:190
 msgid "I don't have permission to connect to {channel}."
 msgstr "我没有连接到 {channel} 的权限。"
 
-#: audio/hybrid_commands.py:203
+#: audio/hybrid_commands.py:204
 msgid "I'm forced to only join {channel}."
 msgstr "我被迫只加入 {channel}。"
 
-#: audio/hybrid_commands.py:211
+#: audio/hybrid_commands.py:212
 msgid "Connected to {channel}"
 msgstr "已连接到 {channel}"
 
-#: audio/hybrid_commands.py:227 audio/hybrid_commands.py:253
-#: audio/hybrid_commands.py:293 audio/hybrid_commands.py:324
-#: audio/hybrid_commands.py:348 audio/hybrid_commands.py:370
-#: audio/hybrid_commands.py:405 audio/hybrid_commands.py:437
-#: audio/hybrid_commands.py:471 audio/hybrid_commands.py:508
-#: audio/hybrid_commands.py:553 audio/hybrid_commands.py:650
+#: audio/hybrid_commands.py:228 audio/hybrid_commands.py:254
+#: audio/hybrid_commands.py:294 audio/hybrid_commands.py:325
+#: audio/hybrid_commands.py:349 audio/hybrid_commands.py:371
+#: audio/hybrid_commands.py:406 audio/hybrid_commands.py:438
+#: audio/hybrid_commands.py:472 audio/hybrid_commands.py:509
+#: audio/hybrid_commands.py:554 audio/hybrid_commands.py:651
 msgid "No player detected."
 msgstr "没有检测到玩家。"
 
-#: audio/hybrid_commands.py:234 audio/hybrid_commands.py:260
-#: audio/hybrid_commands.py:300
+#: audio/hybrid_commands.py:235 audio/hybrid_commands.py:261
+#: audio/hybrid_commands.py:301
 msgid "Player is not currently playing anything."
 msgstr "玩家目前没有玩任何游戏。"
 
-#: audio/hybrid_commands.py:268
+#: audio/hybrid_commands.py:269
 msgid "Skipped - {track}"
 msgstr "跳过 - {track}"
 
-#: audio/hybrid_commands.py:277
+#: audio/hybrid_commands.py:278
 msgid "Autoplay started."
 msgstr "自动播放已开始。"
 
-#: audio/hybrid_commands.py:307
+#: audio/hybrid_commands.py:308
 msgid "Player stopped"
 msgstr "播放器已停止"
 
-#: audio/hybrid_commands.py:332
+#: audio/hybrid_commands.py:333
 msgid "Disconnected from {channel}"
 msgstr "断开连接 {channel}"
 
-#: audio/hybrid_commands.py:377
+#: audio/hybrid_commands.py:378
 msgid "There is nothing in the queue."
 msgstr "队列中没有任何内容。"
 
-#: audio/hybrid_commands.py:385
+#: audio/hybrid_commands.py:386
 msgid "{queue_size} tracks shuffled"
 msgstr "{queue_size} 条曲目已排序"
 
-#: audio/hybrid_commands.py:411
+#: audio/hybrid_commands.py:412
 msgid "Repeating the queue"
 msgstr "重复队列"
 
-#: audio/hybrid_commands.py:414
+#: audio/hybrid_commands.py:415
 msgid "Repeating disabled"
 msgstr "已禁用重复"
 
-#: audio/hybrid_commands.py:417
+#: audio/hybrid_commands.py:418
 msgid "Repeating {track}"
 msgstr "正在重复 {track}"
 
-#: audio/hybrid_commands.py:420
+#: audio/hybrid_commands.py:421
 msgid "current track"
 msgstr "当前曲目"
 
-#: audio/hybrid_commands.py:443
+#: audio/hybrid_commands.py:444
 msgid "Player already paused did you mean to run `/resume`."
 msgstr "玩家已暂停，你是要运行 `/resume` 。"
 
-#: audio/hybrid_commands.py:445 audio/hybrid_commands.py:479
+#: audio/hybrid_commands.py:446 audio/hybrid_commands.py:480
 msgid "Player already paused did you mean to run `{prefix}{command}`."
 msgstr "玩家已暂停，你是要运行{prefix}{command}`。"
 
-#: audio/hybrid_commands.py:456
+#: audio/hybrid_commands.py:457
 msgid "Player paused."
 msgstr "播放器已暂停"
 
-#: audio/hybrid_commands.py:477
+#: audio/hybrid_commands.py:478
 msgid "Player already paused did you mean to run `/pause`."
 msgstr "玩家已暂停，你是要运行 `/暂停` 。"
 
-#: audio/hybrid_commands.py:490
+#: audio/hybrid_commands.py:491
 msgid "Player resumed."
 msgstr "播放器已恢复。"
 
-#: audio/hybrid_commands.py:519
+#: audio/hybrid_commands.py:520
 msgid "Volume cannot be higher than {max_volume}."
 msgstr "音量不能大于 {max_volume}。"
 
-#: audio/hybrid_commands.py:528 audio/utility_commands.py:61
+#: audio/hybrid_commands.py:529 audio/utility_commands.py:62
 msgid "Player volume set to {volume}%."
 msgstr "播放器音量设置为 {volume}%。"
 
-#: audio/hybrid_commands.py:560
+#: audio/hybrid_commands.py:561
 msgid "Nothing playing."
 msgstr "没有播放。"
 
-#: audio/hybrid_commands.py:569
+#: audio/hybrid_commands.py:570
 msgid "Unable to seek track"
 msgstr "无法寻找曲目"
 
-#: audio/hybrid_commands.py:570
+#: audio/hybrid_commands.py:571
 msgid "Can't seek on a stream."
 msgstr "无法在一个流中寻找。"
 
-#: audio/hybrid_commands.py:578
+#: audio/hybrid_commands.py:579
 msgid "Unable to seek track."
 msgstr "无法寻找曲目。"
 
-#: audio/hybrid_commands.py:587
+#: audio/hybrid_commands.py:588
 msgid "Cannot seek when the player is paused."
 msgstr "当玩家暂停时无法寻找。"
 
-#: audio/hybrid_commands.py:600
+#: audio/hybrid_commands.py:601
 msgid "Moved {seconds}s to 00:00:00."
 msgstr "移动 {seconds}到 00:00:00。"
 
-#: audio/hybrid_commands.py:607
+#: audio/hybrid_commands.py:608
 msgid "Moved {seconds}s to {time}."
 msgstr "已将 {seconds}s 移动到 {time}。"
 
-#: audio/hybrid_commands.py:628
+#: audio/hybrid_commands.py:629
 msgid "Moved to {time}."
 msgstr "已移动到 {time}。"
 
-#: audio/hybrid_commands.py:658
+#: audio/hybrid_commands.py:659
 msgid "No previous in player history."
 msgstr "在玩家历史中没有以前的记录。"
 
-#: audio/hybrid_commands.py:666
+#: audio/hybrid_commands.py:667
 msgid "Playing previous track: {track}."
 msgstr "正在播放上一首曲目: {track}。"
 
-#: audio/player_commands.py:22
+#: audio/player_commands.py:23
 #, docstring
 msgid "\n"
 "        Plays the specified track in the queue.\n\n"
@@ -461,29 +461,29 @@ msgstr "\n"
 "        如果您指定了 \"After _current\" 参数，曲目将会在当前曲目之后播放， 否则它将替换当前曲目\n"
 "        "
 
-#: audio/player_commands.py:36 audio/player_commands.py:109
+#: audio/player_commands.py:37 audio/player_commands.py:110
 msgid "Queue is empty."
 msgstr "队列是空的。"
 
-#: audio/player_commands.py:43 audio/player_commands.py:122
+#: audio/player_commands.py:44 audio/player_commands.py:123
 msgid "Track index must be between 1 and {size}."
 msgstr "曲目索引必须介于 1 和 {size} 之间。"
 
-#: audio/player_commands.py:59 audio/player_commands.py:135
+#: audio/player_commands.py:60 audio/player_commands.py:136
 msgid "There is no track in position {position}."
 msgstr "位置 {position} 中没有曲目"
 
-#: audio/player_commands.py:69
+#: audio/player_commands.py:70
 msgid "{track} will play after {current} finishes (in {eta})."
 msgstr "{track} 将在 {current} 完成后播放 (在 {eta})"
 
-#: audio/player_commands.py:81
+#: audio/player_commands.py:82
 msgid "{track} will start now\n"
 "{current} has been skipped."
 msgstr "{track} 现在就会开始\n"
 "{current} 已被跳过。"
 
-#: audio/player_commands.py:95
+#: audio/player_commands.py:96
 #, docstring
 msgid "\n"
 "        Remove the specified track from the queue.\n\n"
@@ -494,27 +494,27 @@ msgstr "\n"
 "        如果您指定了 `remove_durate` 参数， 所有与您的 URL 或索引曲目相同的曲目将被删除。\n"
 "        "
 
-#: audio/player_commands.py:166
+#: audio/player_commands.py:167
 msgid "{track} not found in queue."
 msgstr "队列中找不到 {track}。"
 
-#: audio/player_commands.py:176
+#: audio/player_commands.py:177
 msgid "Removed {times} {entry_plural} of {track} from the queue."
 msgstr "已从队列中移除 {times} 中的 {entry_plural} {track}。"
 
-#: audio/player_commands.py:179
+#: audio/player_commands.py:180
 msgid "entry"
 msgstr "条目"
 
-#: audio/player_commands.py:179
+#: audio/player_commands.py:180
 msgid "entries"
 msgstr "条目"
 
-#: audio/utility_commands.py:43
+#: audio/utility_commands.py:44
 msgid "Volume limit reached, player volume set to {volume}%."
 msgstr "达到音量上限，播放器音量设置为 {volume}%。"
 
-#: audio/utility_commands.py:54
+#: audio/utility_commands.py:55
 msgid "Minimum volume reached, Player volume set to 0%."
 msgstr "达到最小音量，播放器音量设置为0%。"
 

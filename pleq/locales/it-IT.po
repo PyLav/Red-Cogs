@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-09 20:26+0000\n"
-"PO-Revision-Date: 2022-05-09 20:34\n"
+"POT-Creation-Date: 2022-05-10 19:00+0000\n"
+"PO-Revision-Date: 2022-05-10 19:08\n"
 "Last-Translator: \n"
 "Language-Team: Italian\n"
 "MIME-Version: 1.0\n"
@@ -43,49 +43,65 @@ msgstr "L'ultima preimpostazione usata non sarà più salvata."
 #: pleq/cog.py:95
 #, docstring
 msgid "Apply a Bass boost preset to the player.\n\n"
-"        The level is a value between 0 and 7.\n"
+"        Arguments:\n"
+"            - Maximum\n"
+"            - Insane\n"
+"            - Extreme\n"
+"            - High\n"
+"            - Very High\n"
+"            - Medium\n"
+"            - Cut-off\n"
+"            - Off\n"
 "        "
 msgstr "Applica una preimpostazione Bass boost al giocatore.\n\n"
-"        Il livello è un valore compreso tra 0 e 7.\n"
+"        Argomenti:\n"
+"            - Massimo\n"
+"            - Insane\n"
+"            - Extreme\n"
+"            - Alto\n"
+"            - Molto Alto\n"
+"            - Medium\n"
+"            - Cut-off\n"
+"            - Off\n"
 "        "
 
-#: pleq/cog.py:112
+#: pleq/cog.py:120
 msgid "Bass boost preset has been disabled."
 msgstr "La preimpostazione amplificazione bassi è stata disabilitata."
 
-#: pleq/cog.py:119
-msgid "Base boost - Maximum"
-msgstr "Potenziamento di base - Massimo"
-
-#: pleq/cog.py:123
-msgid "Base boost - Insane"
-msgstr "Potenziamento base - Insane"
-
 #: pleq/cog.py:127
-msgid "Base boost - Extreme"
-msgstr "Potenziamento di base - Estremità"
+msgid "Bass boost - Maximum"
+msgstr "Ampliamento bassi - Massimo"
 
 #: pleq/cog.py:131
-msgid "Base boost - Very high"
-msgstr "Potenziamento base - Molto alto"
+msgid "Bass boost - Insane"
+msgstr "Amplificazione bassi - Insane"
 
 #: pleq/cog.py:135
-msgid "Base boost - High"
-msgstr "Potenziamento di base - Alto"
+msgid "Bass boost - Extreme"
+msgstr "Amplificazione bassi - Estrema"
 
 #: pleq/cog.py:139
-msgid "Base boost - Medium"
-msgstr "Potenziamento base - Media"
+msgid "Bass boost - Very High"
+msgstr "Ampliamento bassi - Molto alto"
 
 #: pleq/cog.py:143
-msgid "Base boost - Cut-off"
-msgstr "Potenziamento di base - Taglio"
+msgid "Bass boost - High"
+msgstr "Amplificazione bassi - Alto"
 
-#: pleq/cog.py:155
+#: pleq/cog.py:147
+msgid "Bass boost - Medium"
+msgstr "Amplificazione bassi - Media"
+
+#: pleq/cog.py:151
+msgid "Bass boost - Cut-off"
+msgstr "Ampliamento bassi - Taglio off"
+
+#: pleq/cog.py:163
 msgid "Preset has been set to {name}."
 msgstr "La preimpostazione è stata impostata a {name}."
 
-#: pleq/cog.py:162
+#: pleq/cog.py:170
 #, docstring
 msgid "Apply a Piano preset to the player.\n\n"
 "        Suitable for acoustic tracks, or tacks with an emphasis on female vocals.\n\n"
@@ -96,15 +112,15 @@ msgstr "Applica una preimpostazione Pianoforte al giocatore.\n\n"
 "        Può essere utilizzato anche come cut-off dei bassi.\n"
 "        "
 
-#: pleq/cog.py:186
+#: pleq/cog.py:194
 msgid "Piano"
 msgstr "Pianoforte"
 
-#: pleq/cog.py:199
+#: pleq/cog.py:207
 msgid "Piano preset has been set."
 msgstr "Il pianoforte è stato impostato."
 
-#: pleq/cog.py:206
+#: pleq/cog.py:214
 #, docstring
 msgid "Apply an experimental Metal/Rock equalizer preset.\n\n"
 "        Expect clipping on songs with heavy bass.\n"
@@ -113,20 +129,20 @@ msgstr "Applica una preimpostazione sperimentale di equalizzatore Metal/Rock.\n\
 "        Aspettatevi di ritagliare i brani con bassi pesanti.\n"
 "        "
 
-#: pleq/cog.py:230
+#: pleq/cog.py:238
 msgid "Metal"
 msgstr "Metallo"
 
-#: pleq/cog.py:242
+#: pleq/cog.py:250
 msgid "Rock/Metal preset has been set."
 msgstr "La preimpostazione Rock/Metal è stata impostata."
 
-#: pleq/cog.py:249
+#: pleq/cog.py:257
 #, docstring
 msgid "Remove any equalizer preset from the player."
 msgstr "Rimuovere qualsiasi equalizzatore preimpostato dal giocatore."
 
-#: pleq/cog.py:262
+#: pleq/cog.py:270
 msgid "Equalizer preset has been reset."
 msgstr "Il preset Equalizzatore è stato resettato."
 

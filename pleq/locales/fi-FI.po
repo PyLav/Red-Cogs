@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-09 20:26+0000\n"
-"PO-Revision-Date: 2022-05-09 20:34\n"
+"POT-Creation-Date: 2022-05-10 19:00+0000\n"
+"PO-Revision-Date: 2022-05-10 19:08\n"
 "Last-Translator: \n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
@@ -43,49 +43,65 @@ msgstr "Viimeksi käytettyä esiasetusta ei enää tallenneta."
 #: pleq/cog.py:95
 #, docstring
 msgid "Apply a Bass boost preset to the player.\n\n"
-"        The level is a value between 0 and 7.\n"
+"        Arguments:\n"
+"            - Maximum\n"
+"            - Insane\n"
+"            - Extreme\n"
+"            - High\n"
+"            - Very High\n"
+"            - Medium\n"
+"            - Cut-off\n"
+"            - Off\n"
 "        "
-msgstr "Käytä basso korostuksen esiasetusta soittimeen.\n\n"
-"        Taso on arvo välillä 0 ja 7.\n"
+msgstr "Soita bassotehostimen esiasetus soittimelle. @ action: button\n\n"
+"        Argumentit:\n"
+"            - Enimmäismäärä\n"
+"            - Insane\n"
+"            - Äärimmäinen\n"
+"            - Korkea\n"
+"            - Erittäin korkea\n"
+"            - Keskisuuri\n"
+"            - Leikkaus\n"
+"            - pois käytöstä\n"
 "        "
 
-#: pleq/cog.py:112
+#: pleq/cog.py:120
 msgid "Bass boost preset has been disabled."
 msgstr "Basson korostuksen esiasetus on poistettu käytöstä."
 
-#: pleq/cog.py:119
-msgid "Base boost - Maximum"
-msgstr "Perustehostus - maksimi"
-
-#: pleq/cog.py:123
-msgid "Base boost - Insane"
-msgstr "Perustehostus - hullu"
-
 #: pleq/cog.py:127
-msgid "Base boost - Extreme"
-msgstr "Perustehostus - äärimmäinen"
+msgid "Bass boost - Maximum"
+msgstr "Basson korostus - maksimi"
 
 #: pleq/cog.py:131
-msgid "Base boost - Very high"
-msgstr "Perustehostus - Erittäin korkea"
+msgid "Bass boost - Insane"
+msgstr "Basson korostus - hullu"
 
 #: pleq/cog.py:135
-msgid "Base boost - High"
-msgstr "Perustehostus - korkea"
+msgid "Bass boost - Extreme"
+msgstr "Basson korostus - äärimmäinen"
 
 #: pleq/cog.py:139
-msgid "Base boost - Medium"
-msgstr "Perustehostus - Keskikokoinen"
+msgid "Bass boost - Very High"
+msgstr "Basson korostus - Erittäin korkea"
 
 #: pleq/cog.py:143
-msgid "Base boost - Cut-off"
-msgstr "Perustehostus - katkaisu"
+msgid "Bass boost - High"
+msgstr "Basson korostus - Korkea"
 
-#: pleq/cog.py:155
+#: pleq/cog.py:147
+msgid "Bass boost - Medium"
+msgstr "Basson korostus - Keskikokoinen"
+
+#: pleq/cog.py:151
+msgid "Bass boost - Cut-off"
+msgstr "Basson korostus - katkaisu"
+
+#: pleq/cog.py:163
 msgid "Preset has been set to {name}."
 msgstr "Esiasetus on asetettu {name}."
 
-#: pleq/cog.py:162
+#: pleq/cog.py:170
 #, docstring
 msgid "Apply a Piano preset to the player.\n\n"
 "        Suitable for acoustic tracks, or tacks with an emphasis on female vocals.\n\n"
@@ -96,15 +112,15 @@ msgstr "Soita pianon esiasetus pelaajalle.\n\n"
 "        Voidaan käyttää myös basson katkaisuna.\n"
 "        "
 
-#: pleq/cog.py:186
+#: pleq/cog.py:194
 msgid "Piano"
 msgstr "Piano"
 
-#: pleq/cog.py:199
+#: pleq/cog.py:207
 msgid "Piano preset has been set."
 msgstr "Piano esiasetus on asetettu."
 
-#: pleq/cog.py:206
+#: pleq/cog.py:214
 #, docstring
 msgid "Apply an experimental Metal/Rock equalizer preset.\n\n"
 "        Expect clipping on songs with heavy bass.\n"
@@ -113,20 +129,20 @@ msgstr "Toteuta kokeellinen Metal/Rock taajuuskorjain esiasetus.\n\n"
 "        Odota kappaleiden leikkaamista raskaalla bassolla.\n"
 "        "
 
-#: pleq/cog.py:230
+#: pleq/cog.py:238
 msgid "Metal"
 msgstr "Metalli"
 
-#: pleq/cog.py:242
+#: pleq/cog.py:250
 msgid "Rock/Metal preset has been set."
 msgstr "Rock/Metal esiasetus on asetettu."
 
-#: pleq/cog.py:249
+#: pleq/cog.py:257
 #, docstring
 msgid "Remove any equalizer preset from the player."
 msgstr "Poista mikä tahansa taajuuskorjaimen esiasetus pelaajalta."
 
-#: pleq/cog.py:262
+#: pleq/cog.py:270
 msgid "Equalizer preset has been reset."
 msgstr "Taajuuskorjaimen esiasetus on nollattu."
 
