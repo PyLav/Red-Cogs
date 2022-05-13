@@ -1,9 +1,11 @@
 from __future__ import annotations
 
+import shutil
 from pathlib import Path
 
 import aiopath
 import discord
+from discord.utils import maybe_coroutine
 from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
@@ -49,7 +51,7 @@ class PyLavConfigurator(commands.Cog):
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("{folder} is not a folder.").format(
-                        folder=inline(f"{path.absolute()}"),
+                        folder=inline(f"{await maybe_coroutine(path.absolute)}"),
                         messageable=context,
                     )
                 ),
@@ -67,7 +69,7 @@ class PyLavConfigurator(commands.Cog):
                         "run the command again with the create argument "
                         "set to 1 to automatically create this folder."
                     ).format(
-                        folder=inline(f"{path.absolute()}"),
+                        folder=inline(f"{await maybe_coroutine(path.absolute)}"),
                         messageable=context,
                     )
                 ),
@@ -76,12 +78,12 @@ class PyLavConfigurator(commands.Cog):
             return
 
         global_config = await LibConfigModel(bot=self.bot.user.id, id=1).get_all()
-        await global_config.set_config_folder(str(path.absolute()))
+        await global_config.set_config_folder(str(await maybe_coroutine(path.absolute)))
 
         await context.send(
             embed=await context.lavalink.construct_embed(
                 description=_("PyLav's config folder has been set to {folder}.").format(
-                    folder=inline(f"{path.absolute()}"),
+                    folder=inline(f"{await maybe_coroutine(path.absolute)}"),
                     messageable=context,
                 )
             ),
@@ -103,7 +105,7 @@ class PyLavConfigurator(commands.Cog):
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("{folder} is not a folder.").format(
-                        folder=inline(f"{path.absolute()}"),
+                        folder=inline(f"{await maybe_coroutine(path.absolute)}"),
                         messageable=context,
                     )
                 ),
@@ -123,7 +125,7 @@ class PyLavConfigurator(commands.Cog):
                         "set to 1 to automatically "
                         "create this folder."
                     ).format(
-                        folder=inline(f"{path.absolute()}"),
+                        folder=inline(f"{await maybe_coroutine(path.absolute)}"),
                         messageable=context,
                     )
                 ),
@@ -132,13 +134,13 @@ class PyLavConfigurator(commands.Cog):
             return
 
         global_config = await LibConfigModel(bot=self.bot.user.id, id=1).get_all()
-        await global_config.set_localtrack_folder(str(path.absolute()))
+        await global_config.set_localtrack_folder(str(await maybe_coroutine(path.absolute)))
 
         await LocalFile.add_root_folder(path=path)
         await context.send(
             embed=await context.lavalink.construct_embed(
                 description=_("PyLav's local tracks folder has been set to {folder}.").format(
-                    folder=inline(f"{path.absolute()}"),
+                    folder=inline(f"{await maybe_coroutine(path.absolute)}"),
                     messageable=context,
                 )
             ),
@@ -159,6 +161,7 @@ class PyLavConfigurator(commands.Cog):
 
         from stat import S_IXGRP, S_IXOTH, S_IXUSR
 
+        java = shutil.which(java)
         path = aiopath.AsyncPath(java)
         if not await path.exists():
             await context.send(
@@ -169,7 +172,7 @@ class PyLavConfigurator(commands.Cog):
                         "the java argument "
                         "set to the correct path."
                     ).format(
-                        java=inline(f"{path.absolute()}"),
+                        java=inline(f"{await maybe_coroutine(path.absolute)}"),
                         messageable=context,
                     )
                 ),
@@ -180,7 +183,7 @@ class PyLavConfigurator(commands.Cog):
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("{java} is not an executable file.").format(
-                        java=inline(f"{path.absolute()}"),
+                        java=inline(f"{await maybe_coroutine(path.absolute)}"),
                         messageable=context,
                     )
                 ),
@@ -197,7 +200,7 @@ class PyLavConfigurator(commands.Cog):
                         "the java argument "
                         "set to the correct path."
                     ).format(
-                        java=inline(f"{path.absolute()}"),
+                        java=inline(f"{await maybe_coroutine(path.absolute)}"),
                         messageable=context,
                     )
                 ),
@@ -206,7 +209,7 @@ class PyLavConfigurator(commands.Cog):
             return
 
         global_config = await LibConfigModel(bot=self.bot.user.id, id=1).get_all()
-        await global_config.set_java_path(str(path.absolute()))
+        await global_config.set_java_path(str(await maybe_coroutine(path.absolute)))
         await context.send(
             embed=await context.lavalink.construct_embed(
                 description=_("PyLav's java executable has been set to {java}.").format(
