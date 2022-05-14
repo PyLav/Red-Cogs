@@ -11,7 +11,7 @@ from redbot.core.i18n import Translator, cog_i18n
 from pylav.filters import Equalizer
 from pylav.types import BotT
 from pylav.utils import PyLavContext
-from pylavcogs_shared.converters.equalzer import BassBoostConverter
+from pylavcogs_shared.converters.equalizer import BassBoostConverter
 from pylavcogs_shared.utils.decorators import can_run_command_in_channel, requires_player
 
 LOGGER = getLogger("red.3pt.PyLavEqualizer")
@@ -23,7 +23,7 @@ _ = Translator("PyLavEqualizer", Path(__file__))
 class PyLavEqualizer(commands.Cog):
     """Apply equalizer presets to the PyLav player."""
 
-    __version__ = "0.0.0.1a"
+    __version__ = "1.0.0.0rc0"
 
     def __init__(self, bot: BotT, *args, **kwargs):
         super().__init__(*args, **kwargs)

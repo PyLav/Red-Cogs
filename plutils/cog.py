@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from io import StringIO
 from pathlib import Path
 
 import discord
@@ -7,7 +8,9 @@ import ujson
 from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
-from redbot.core.utils.chat_formatting import box, humanize_number, inline
+from redbot.core.utils.chat_formatting import box, humanize_number, inline, pagify
+from rich.console import Console
+from rich.tree import Tree
 
 from pylav.converters import QueryConverter
 from pylav.track_encoding import decode_track
@@ -34,6 +37,36 @@ class PyLavUtils(commands.Cog):
     @commands.group(name="plutils")
     async def command_plutils(self, context: PyLavContext):
         """Utility commands for PyLav."""
+
+    @command_plutils.command(name="slashes")
+    async def command_plutils_slashes(self, context: PyLavContext):
+        """Show the slashes available in the bot.
+
+        Author: TrustyJAID#0001 via Code block on Discord channel.
+        """
+
+        def rich_walk_commands(group: list, tree: Tree):
+            for command in group:
+                if isinstance(command, discord.app_commands.Group):
+                    branch = tree.add(command.name)
+                    rich_walk_commands(command.commands, branch)
+                else:
+                    tree.add(command.name)
+
+        commands = self.bot.tree.get_commands()
+        rich_tree = Tree("Slash Commands")
+
+        rich_walk_commands(commands, rich_tree)
+        temp_console = Console(  # Prevent messing with STDOUT's console
+            color_system="standard",  # Discord only supports 8-bit in colors
+            file=StringIO(),
+            force_terminal=True,
+            force_interactive=False,
+            width=40,
+        )
+        temp_console.print(rich_tree)
+        msg = "\n".join(line.rstrip() for line in temp_console.file.getvalue().split("\n"))
+        await context.send_interactive(messages=pagify(msg), box_lang="")
 
     @command_plutils.group(name="get")
     @requires_player()

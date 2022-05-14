@@ -3,7 +3,6 @@ from __future__ import annotations
 import shutil
 from pathlib import Path
 
-import aiopath
 import discord
 from discord.utils import maybe_coroutine
 from red_commons.logging import getLogger
@@ -15,6 +14,7 @@ from pylav.localfiles import LocalFile
 from pylav.sql.models import LibConfigModel
 from pylav.types import BotT
 from pylav.utils import PyLavContext
+from pylav.vendored import aiopath
 
 LOGGER = getLogger("red.3pt.PyLavConfigurator")
 
