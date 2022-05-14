@@ -17,6 +17,7 @@ from pylavcogs_shared.ui.menus.queue import QueueMenu
 from pylavcogs_shared.ui.sources.queue import QueueSource
 from pylavcogs_shared.utils import rgetattr
 from pylavcogs_shared.utils.decorators import requires_player
+from pylavcogs_shared.utils.validators import valid_query_attachment
 
 LOGGER = getLogger("red.3pt.PyLavPlayer.commands.hybrids")
 _ = Translator("PyLavPlayer", Path(__file__))
@@ -27,7 +28,7 @@ _RE_TIME_CONVERTER: Final[Pattern] = re.compile(r"(?:(\d+):)?([0-5]?\d):([0-5]\d
 class HybridCommands(PyLavCogMixin, ABC):
     @commands.hybrid_command(name="play", description="Plays a specified query.", aliases=["p"])
     @commands.guild_only()
-    async def command_play(self, context: PyLavContext, *, query: str):  # sourcery no-metrics
+    async def command_play(self, context: PyLavContext, *, query: str = None):  # sourcery no-metrics
         """Attempt to play the queries which you provide.
 
         Separate multiple queries with a new line (`shift + enter`).
@@ -59,7 +60,11 @@ class HybridCommands(PyLavCogMixin, ABC):
         else:
             send = context.send
             author = context.author
-
+        if query is None:
+            if attachments := context.message.attachments:
+                query = "\n".join(
+                    attachment.url for attachment in attachments if valid_query_attachment(attachment.filename)
+                )
         if not query:
             await send(
                 embed=await self.lavalink.construct_embed(

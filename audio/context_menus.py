@@ -8,6 +8,7 @@ from redbot.core.i18n import Translator
 
 from pylav.query import MERGED_REGEX
 from pylav.types import InteractionT, PyLavCogMixin
+from pylavcogs_shared.utils.validators import valid_query_attachment
 
 _ = Translator("PyLavPlayer", Path(__file__))
 
@@ -18,7 +19,7 @@ class ContextMenus(PyLavCogMixin, ABC):
     async def _context_message_play(self, interaction: InteractionT, message: discord.Message) -> None:
         await interaction.response.defer(ephemeral=True)
 
-        if message.embeds and not message.content:
+        if message.embeds and not message.content and not message.attachments:
             await interaction.followup.send(
                 embed=await self.lavalink.construct_embed(
                     description=_("Currently I don't support parsing content from inside an embed message."),
@@ -68,6 +69,9 @@ class ContextMenus(PyLavCogMixin, ABC):
             part = part.strip()
             for __ in MERGED_REGEX.finditer(part):
                 valid_matches.add(part)
+        for attachment in message.attachments:
+            if valid_query_attachment(attachment.filename):
+                valid_matches.add(attachment.url)
         if not valid_matches:
             await interaction.followup.send(
                 embed=await self.lavalink.construct_embed(
