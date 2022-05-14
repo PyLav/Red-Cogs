@@ -600,7 +600,7 @@ class HybridCommands(PyLavCogMixin, ABC):
             seek = int(seek)
             seek_ms = context.player.position + seek * 1000
 
-            if seek <= 0:
+            if seek_ms <= 0:
                 await context.send(
                     embed=await context.lavalink.construct_embed(
                         description=_("Moved {seconds}s to 00:00:00.").format(seconds=seek), messageable=context
