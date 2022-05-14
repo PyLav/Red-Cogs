@@ -30,7 +30,6 @@ class PyLavLocalFiles(commands.Cog):
         super().__init__(*args, **kwargs)
         self.bot = bot
         self._localtrack_entries: dict[str, Query] = {}
-        self._root_folder_entries: dict[str, Query] = {}
         self.ready_event = asyncio.Event()
 
     async def initialize(self):
@@ -41,8 +40,6 @@ class PyLavLocalFiles(commands.Cog):
         assert LocalFile._ROOT_FOLDER is not None
         async for file in LocalFile(LocalFile._ROOT_FOLDER).files_in_tree(show_folders=True):
             self._localtrack_entries[hashlib.md5(f"{file._query.path}".encode()).hexdigest()] = file
-        async for file in LocalFile(LocalFile._ROOT_FOLDER).files_in_folder(show_folders=True):
-            self._root_folder_entries[hashlib.md5(f"{file._query.path}".encode()).hexdigest()] = file
         self.ready_event.set()
 
     async def cog_check(self, ctx: PyLavContext):
@@ -53,8 +50,8 @@ class PyLavLocalFiles(commands.Cog):
     async def slash_local(
         self,
         interaction: InteractionT,
+        entry: str,
         recursive: Optional[bool] = False,
-        entry: Optional[str] = None,
     ):  # sourcery no-metrics
         """Play a local file or folder, supports partial searching."""
         send = partial(interaction.followup.send, wait=True)
@@ -62,14 +59,6 @@ class PyLavLocalFiles(commands.Cog):
             await interaction.response.defer(ephemeral=True)
         author = interaction.user
 
-        if not entry:
-            await send(
-                embed=await self.lavalink.construct_embed(
-                    description=_("Specify a file or folder to play."), messageable=interaction
-                ),
-                ephemeral=True,
-            )
-            return
         entry = self._localtrack_entries[entry]
         entry._recursive = recursive
         player = self.lavalink.get_player(interaction.guild.id)
@@ -143,26 +132,16 @@ class PyLavLocalFiles(commands.Cog):
             )
 
     @slash_local.autocomplete("entry")
-    async def slash_local_autocomplete(self, interaction: InteractionT, current: str):
+    async def slash_local_autocomplete_entry(self, interaction: InteractionT, current: str):
         entries = []
-        if current:
-            async for md5, folder in AsyncIter(self._localtrack_entries.items()).filter(
-                lambda x: current.lower() in f"{x[1]._query.path}".lower()
-            ):
-                choice = Choice(
-                    name=await folder.query_to_string(max_length=99),
-                    value=md5,
-                )
-                entries.append(choice)
-                if len(entries) == 25:
-                    break
-        else:
-            async for md5, folder in AsyncIter(self._root_folder_entries.items()):
-                choice = Choice(
-                    name=await folder.query_to_string(max_length=99),
-                    value=md5,
-                )
-                entries.append(choice)
-                if len(entries) == 25:
-                    break
+        async for md5, folder in AsyncIter(self._localtrack_entries.items()).filter(
+            lambda x: current.lower() in f"{x[1]._query.path}".lower()
+        ):
+            choice = Choice(
+                name=await folder.query_to_string(max_length=99),
+                value=md5,
+            )
+            entries.append(choice)
+            if len(entries) == 25:
+                break
         return entries
