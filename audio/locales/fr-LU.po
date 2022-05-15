@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-15 14:44+0000\n"
-"PO-Revision-Date: 2022-05-15 14:53\n"
+"POT-Creation-Date: 2022-05-15 20:17+0000\n"
+"PO-Revision-Date: 2022-05-15 20:25\n"
 "Last-Translator: \n"
 "Language-Team: French, Luxembourg\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Crowdin-File-ID: 150\n"
 "Language: fr_LU\n"
 
-#: audio/cog.py:46
+#: audio/cog.py:47
 #, docstring
 msgid "A Media player using the PyLav library."
 msgstr "Un lecteur multimédia utilisant la bibliothèque PyLav."
@@ -240,7 +240,7 @@ msgstr "Je vais écouter les commandes dans tous les canaux que je peux voir."
 msgid "Set the channel lock for voice channels."
 msgstr "Définir le verrou de la chaîne pour les salons vocaux."
 
-#: audio/config_commands.py:568 audio/hybrid_commands.py:95
+#: audio/config_commands.py:568 audio/hybrid_commands.py:102
 msgid "I don't have permission to connect or speak in {channel}."
 msgstr "Je n'ai pas la permission de me connecter ou de parler dans {channel}."
 
@@ -288,169 +288,208 @@ msgstr "Impossible de trouver des pistes correspondant à {query}"
 msgid "Couldn't figure out what {user} is listening to."
 msgstr "Impossible de comprendre ce que {user} écoute."
 
-#: audio/hybrid_commands.py:71
+#: audio/hybrid_commands.py:78
 msgid "You need to provide a query to play."
 msgstr "Vous devez fournir une requête pour jouer."
 
-#: audio/hybrid_commands.py:85
+#: audio/hybrid_commands.py:92
 msgid "You must be in a voice channel to allow me to connect."
 msgstr "Vous devez être dans un salon vocal pour me permettre de me connecter."
 
-#: audio/hybrid_commands.py:139
+#: audio/hybrid_commands.py:146
 msgid "{track_count} tracks enqueued."
 msgstr "{track_count} pistes mises en attente."
 
-#: audio/hybrid_commands.py:147
+#: audio/hybrid_commands.py:154
 msgid "{track} enqueued."
 msgstr "{track} mis en attente."
 
-#: audio/hybrid_commands.py:157
+#: audio/hybrid_commands.py:164
 msgid "No tracks were found for your query."
 msgstr "Aucune piste n'a été trouvée pour votre requête."
 
-#: audio/hybrid_commands.py:180
+#: audio/hybrid_commands.py:173
+#, docstring
+msgid "Search for a track then play the selected response.\n\n"
+"        If a prefix is not used it will default to search on YouTube Music.\n\n"
+"        You can search specify services by using the following prefixes (dependant on service availability):\n"
+"        `ytmsearch:` - Will search YouTube Music\n"
+"        `spsearch:` - Will search Spotify\n"
+"        `amsearch:` - Will search Apple Music\n"
+"        `scsearch:` - Will search SoundCloud\n"
+"        `ytsearch:` - Will search YouTube\n\n"
+"        You can trigger text-to-speech by using the following prefixes (dependant on service availability):\n"
+"        `speak:` - The bot will speak the query  (limited to 200 characters)\n"
+"        `tts://` - The bot will speak the query\n"
+"        "
+msgstr "Recherchez une piste puis jouez la réponse sélectionnée.\n\n"
+"        Si un préfixe n'est pas utilisé, il cherchera par défaut sur YouTube Music.\n\n"
+"        Vous pouvez rechercher des services de précision en utilisant les préfixes suivants (dépendant de la disponibilité du service):\n"
+"        `ytmsearch:` - Recherche dans YouTube Music\n"
+"        `spsearch:` - Recherche Spotify\n"
+"        `amsearch:` - Recherche dans Apple Music\n"
+"        `scsearch:` - Recherche SoundCloud\n"
+"        `ytsearch:` - Recherche dans YouTube\n\n"
+"        Vous pouvez déclencher la synthèse vocale en utilisant les préfixes suivants (dépendant de la disponibilité du service):\n"
+"        `speak:` - Le bot parlera la requête (limitée à 200 caractères)\n"
+"        `tts://` - Le bot parlera la requête\n"
+"        "
+
+#: audio/hybrid_commands.py:189
+msgid "You haven't select something to play."
+msgstr "Vous n'avez pas sélectionné quelque chose à jouer."
+
+#: audio/hybrid_commands.py:200
+msgid "Search must start with ytmsearch:, spsearch:, amsearch:, scsearch:, ytsearch:"
+msgstr "La recherche doit commencer par ytmsearch:, spsearch:, amsearch:, scsearch:, ytsearch:"
+
+#: audio/hybrid_commands.py:242
+msgid "You haven't select something to play, search must start with `ytmsearch:`, `spsearch:`, `amsearch:`, `scsearch:`, `ytsearch:`"
+msgstr "Vous n'avez pas sélectionné quelque chose à jouer, la recherche doit commencer par `ytmsearch:`, `spsearch:`, `amsearch:`, `scsearch:`, `ytsearch:`"
+
+#: audio/hybrid_commands.py:268
 msgid "You need to be in a voice channel if you don't specify which channel I need to connect to."
 msgstr "Vous devez être dans un salon vocal si vous ne spécifiez pas le canal auquel je dois me connecter."
 
-#: audio/hybrid_commands.py:190
+#: audio/hybrid_commands.py:278
 msgid "I don't have permission to connect to that channel."
 msgstr "Je n'ai pas la permission de me connecter à ce canal."
 
-#: audio/hybrid_commands.py:192
+#: audio/hybrid_commands.py:280
 msgid "I don't have permission to speak in {channel}."
 msgstr "Je n'ai pas la permission de parler en {channel}."
 
-#: audio/hybrid_commands.py:195
+#: audio/hybrid_commands.py:283
 msgid "I don't have permission to connect to {channel}."
 msgstr "Je n'ai pas la permission de me connecter à {channel}."
 
-#: audio/hybrid_commands.py:209
+#: audio/hybrid_commands.py:297
 msgid "I'm forced to only join {channel}."
 msgstr "Je suis forcé de rejoindre seulement {channel}."
 
-#: audio/hybrid_commands.py:217
+#: audio/hybrid_commands.py:305
 msgid "Connected to {channel}"
 msgstr "Connecté à {channel}"
 
-#: audio/hybrid_commands.py:233 audio/hybrid_commands.py:259
-#: audio/hybrid_commands.py:299 audio/hybrid_commands.py:330
-#: audio/hybrid_commands.py:354 audio/hybrid_commands.py:376
-#: audio/hybrid_commands.py:411 audio/hybrid_commands.py:443
-#: audio/hybrid_commands.py:477 audio/hybrid_commands.py:514
-#: audio/hybrid_commands.py:559 audio/hybrid_commands.py:656
+#: audio/hybrid_commands.py:321 audio/hybrid_commands.py:347
+#: audio/hybrid_commands.py:387 audio/hybrid_commands.py:418
+#: audio/hybrid_commands.py:442 audio/hybrid_commands.py:464
+#: audio/hybrid_commands.py:499 audio/hybrid_commands.py:531
+#: audio/hybrid_commands.py:565 audio/hybrid_commands.py:602
+#: audio/hybrid_commands.py:647 audio/hybrid_commands.py:744
 msgid "No player detected."
 msgstr "Aucun joueur détecté."
 
-#: audio/hybrid_commands.py:240 audio/hybrid_commands.py:266
-#: audio/hybrid_commands.py:306
+#: audio/hybrid_commands.py:328 audio/hybrid_commands.py:354
+#: audio/hybrid_commands.py:394
 msgid "Player is not currently playing anything."
 msgstr "Le lecteur ne joue actuellement rien."
 
-#: audio/hybrid_commands.py:274
+#: audio/hybrid_commands.py:362
 msgid "Skipped - {track}"
 msgstr "Ignoré - {track}"
 
-#: audio/hybrid_commands.py:283
+#: audio/hybrid_commands.py:371
 msgid "Autoplay started."
 msgstr "Lecture automatique démarrée."
 
-#: audio/hybrid_commands.py:313
+#: audio/hybrid_commands.py:401
 msgid "Player stopped"
 msgstr "Lecteur arrêté"
 
-#: audio/hybrid_commands.py:338
+#: audio/hybrid_commands.py:426
 msgid "Disconnected from {channel}"
 msgstr "Déconnecté de {channel}"
 
-#: audio/hybrid_commands.py:383
+#: audio/hybrid_commands.py:471
 msgid "There is nothing in the queue."
 msgstr "Il n'y a rien dans la file d'attente."
 
-#: audio/hybrid_commands.py:391
+#: audio/hybrid_commands.py:479
 msgid "{queue_size} tracks shuffled"
 msgstr "{queue_size} pistes mélangées"
 
-#: audio/hybrid_commands.py:417
+#: audio/hybrid_commands.py:505
 msgid "Repeating the queue"
 msgstr "Répétition de la file d'attente"
 
-#: audio/hybrid_commands.py:420
+#: audio/hybrid_commands.py:508
 msgid "Repeating disabled"
 msgstr "Répétition désactivée"
 
-#: audio/hybrid_commands.py:423
+#: audio/hybrid_commands.py:511
 msgid "Repeating {track}"
 msgstr "Répétition de {track}"
 
-#: audio/hybrid_commands.py:426
+#: audio/hybrid_commands.py:514
 msgid "current track"
 msgstr "piste en cours"
 
-#: audio/hybrid_commands.py:449
+#: audio/hybrid_commands.py:537
 msgid "Player already paused did you mean to run `/resume`."
 msgstr "Le joueur déjà mis en pause était que vous vouliez exécuter `/resume`."
 
-#: audio/hybrid_commands.py:451 audio/hybrid_commands.py:485
+#: audio/hybrid_commands.py:539 audio/hybrid_commands.py:573
 msgid "Player already paused did you mean to run `{prefix}{command}`."
 msgstr "Joueur déjà mis en pause était que vous vouliez exécuter `{prefix}{command}`."
 
-#: audio/hybrid_commands.py:462
+#: audio/hybrid_commands.py:550
 msgid "Player paused."
 msgstr "Lecteur mis en pause."
 
-#: audio/hybrid_commands.py:483
+#: audio/hybrid_commands.py:571
 msgid "Player already paused did you mean to run `/pause`."
 msgstr "Le joueur déjà mis en pause était que vous vouliez exécuter `/pause`."
 
-#: audio/hybrid_commands.py:496
+#: audio/hybrid_commands.py:584
 msgid "Player resumed."
 msgstr "Reprise du joueur."
 
-#: audio/hybrid_commands.py:525
+#: audio/hybrid_commands.py:613
 msgid "Volume cannot be higher than {max_volume}."
 msgstr "Le volume ne peut pas être supérieur à {max_volume}."
 
-#: audio/hybrid_commands.py:534 audio/utility_commands.py:62
+#: audio/hybrid_commands.py:622 audio/utility_commands.py:62
 msgid "Player volume set to {volume}%."
 msgstr "Volume du joueur défini à {volume}%."
 
-#: audio/hybrid_commands.py:566
+#: audio/hybrid_commands.py:654
 msgid "Nothing playing."
 msgstr "Rien ne joue."
 
-#: audio/hybrid_commands.py:575
+#: audio/hybrid_commands.py:663
 msgid "Unable to seek track"
 msgstr "Impossible de trouver la trace"
 
-#: audio/hybrid_commands.py:576
+#: audio/hybrid_commands.py:664
 msgid "Can't seek on a stream."
 msgstr "Impossible de se déplacer sur un flux."
 
-#: audio/hybrid_commands.py:584
+#: audio/hybrid_commands.py:672
 msgid "Unable to seek track."
 msgstr "Impossible de trouver la piste."
 
-#: audio/hybrid_commands.py:593
+#: audio/hybrid_commands.py:681
 msgid "Cannot seek when the player is paused."
 msgstr "Impossible de rechercher quand le joueur est en pause."
 
-#: audio/hybrid_commands.py:606
+#: audio/hybrid_commands.py:694
 msgid "Moved {seconds}s to 00:00:00."
 msgstr "{seconds}s ont été déplacées à 00:00:00."
 
-#: audio/hybrid_commands.py:613
+#: audio/hybrid_commands.py:701
 msgid "Moved {seconds}s to {time}."
 msgstr "{seconds}s ont été déplacées vers {time}."
 
-#: audio/hybrid_commands.py:634
+#: audio/hybrid_commands.py:722
 msgid "Moved to {time}."
 msgstr "Déplacé vers {time}."
 
-#: audio/hybrid_commands.py:664
+#: audio/hybrid_commands.py:752
 msgid "No previous in player history."
 msgstr "Aucun précédent dans l'historique du joueur."
 
-#: audio/hybrid_commands.py:672
+#: audio/hybrid_commands.py:760
 msgid "Playing previous track: {track}."
 msgstr "Lecture de la piste précédente : {track}."
 
