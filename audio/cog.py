@@ -66,7 +66,7 @@ class PyLavPlayer(
         self.bot.tree.add_command(self.context_user_play)
         self.bot.tree.add_command(self.context_message_play)
         self._slash_sync_task = None
-        self._track_cache = ExpiringDict(max_len=None, max_age_seconds=60)
+        self._track_cache = ExpiringDict(max_len=float("inf"), max_age_seconds=60)  # type: ignore
 
     async def initialize(self, *args, **kwargs) -> None:
         self._slash_sync_task = asyncio.create_task(self._sync_tree())
