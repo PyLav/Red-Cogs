@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-15 14:44+0000\n"
-"PO-Revision-Date: 2022-05-15 14:53\n"
+"POT-Creation-Date: 2022-05-15 20:17+0000\n"
+"PO-Revision-Date: 2022-05-15 20:25\n"
 "Last-Translator: \n"
 "Language-Team: Danish\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Crowdin-File-ID: 150\n"
 "Language: da_DK\n"
 
-#: audio/cog.py:46
+#: audio/cog.py:47
 #, docstring
 msgid "A Media player using the PyLav library."
 msgstr "En medieafspiller der bruger PyLav biblioteket."
@@ -240,7 +240,7 @@ msgstr "Jeg vil lytte til kommandoer i alle kanaler, jeg kan se."
 msgid "Set the channel lock for voice channels."
 msgstr "Angiv kanallåsen for stemmekanaler."
 
-#: audio/config_commands.py:568 audio/hybrid_commands.py:95
+#: audio/config_commands.py:568 audio/hybrid_commands.py:102
 msgid "I don't have permission to connect or speak in {channel}."
 msgstr "Jeg har ikke tilladelse til at oprette forbindelse eller tale i {channel}."
 
@@ -288,169 +288,208 @@ msgstr "Kunne ikke finde spor, der matcher {query}"
 msgid "Couldn't figure out what {user} is listening to."
 msgstr "Kunne ikke finde ud af, hvad {user} lytter til."
 
-#: audio/hybrid_commands.py:71
+#: audio/hybrid_commands.py:78
 msgid "You need to provide a query to play."
 msgstr "Du skal give en forespørgsel for at spille."
 
-#: audio/hybrid_commands.py:85
+#: audio/hybrid_commands.py:92
 msgid "You must be in a voice channel to allow me to connect."
 msgstr "Du skal være i en stemmekanal for at tillade mig at forbinde."
 
-#: audio/hybrid_commands.py:139
+#: audio/hybrid_commands.py:146
 msgid "{track_count} tracks enqueued."
 msgstr "{track_count} spor sat i kø."
 
-#: audio/hybrid_commands.py:147
+#: audio/hybrid_commands.py:154
 msgid "{track} enqueued."
 msgstr "{track} sat i kø"
 
-#: audio/hybrid_commands.py:157
+#: audio/hybrid_commands.py:164
 msgid "No tracks were found for your query."
 msgstr "Der blev ikke fundet spor til din forespørgsel."
 
-#: audio/hybrid_commands.py:180
+#: audio/hybrid_commands.py:173
+#, docstring
+msgid "Search for a track then play the selected response.\n\n"
+"        If a prefix is not used it will default to search on YouTube Music.\n\n"
+"        You can search specify services by using the following prefixes (dependant on service availability):\n"
+"        `ytmsearch:` - Will search YouTube Music\n"
+"        `spsearch:` - Will search Spotify\n"
+"        `amsearch:` - Will search Apple Music\n"
+"        `scsearch:` - Will search SoundCloud\n"
+"        `ytsearch:` - Will search YouTube\n\n"
+"        You can trigger text-to-speech by using the following prefixes (dependant on service availability):\n"
+"        `speak:` - The bot will speak the query  (limited to 200 characters)\n"
+"        `tts://` - The bot will speak the query\n"
+"        "
+msgstr "Søg efter et spor og afspil derefter det valgte svar.\n\n"
+"        Hvis et præfiks ikke bruges, vil det som standard søge på YouTube Music.\n\n"
+"        Du kan søge efter bestemte tjenester ved at bruge følgende præfikser (afhængig af tjenestens tilgængelighed):\n"
+"        `ytmsearch:` - Vil søge i YouTube Music\n"
+"        `spsearch:` - Vil søge i Spotify\n"
+"        `amsearch:` - Vil søge i Apple Music\n"
+"        `scsearch:` - Vil søge i SoundCloud\n"
+"        `ytsearch:` - Vil søge i YouTube\n\n"
+"        Du kan udløse tekst-til-tale ved at bruge følgende præfikser (afhængig af tjenestens tilgængelighed):\n"
+"        `speak:` - Botten vil tale forespørgslen (begrænset til 200 tegn)\n"
+"        `tts://` - The bot vil læse forespørgslen\n"
+"        "
+
+#: audio/hybrid_commands.py:189
+msgid "You haven't select something to play."
+msgstr "Du har ikke valgt noget at spille."
+
+#: audio/hybrid_commands.py:200
+msgid "Search must start with ytmsearch:, spsearch:, amsearch:, scsearch:, ytsearch:"
+msgstr "Søg skal starte med ytmsearch:, spsearch:, amsearch:, scsearch:, ytsearch:"
+
+#: audio/hybrid_commands.py:242
+msgid "You haven't select something to play, search must start with `ytmsearch:`, `spsearch:`, `amsearch:`, `scsearch:`, `ytsearch:`"
+msgstr "Du har ikke valgt noget at spille, søgningen skal starte med `ytmsearch:`, `spsearch:`, `amsearch:`, `scsearch:`, `ytsearch:`"
+
+#: audio/hybrid_commands.py:268
 msgid "You need to be in a voice channel if you don't specify which channel I need to connect to."
 msgstr "Du skal være i en stemmekanal hvis du ikke angiver hvilken kanal jeg har brug for at forbinde til."
 
-#: audio/hybrid_commands.py:190
+#: audio/hybrid_commands.py:278
 msgid "I don't have permission to connect to that channel."
 msgstr "Jeg har ikke tilladelse til at oprette forbindelse til den kanal."
 
-#: audio/hybrid_commands.py:192
+#: audio/hybrid_commands.py:280
 msgid "I don't have permission to speak in {channel}."
 msgstr "Jeg har ikke tilladelse til at tale i {channel}."
 
-#: audio/hybrid_commands.py:195
+#: audio/hybrid_commands.py:283
 msgid "I don't have permission to connect to {channel}."
 msgstr "Jeg har ikke tilladelse til at oprette forbindelse til {channel}."
 
-#: audio/hybrid_commands.py:209
+#: audio/hybrid_commands.py:297
 msgid "I'm forced to only join {channel}."
 msgstr "Jeg er tvunget til kun at deltage i {channel}."
 
-#: audio/hybrid_commands.py:217
+#: audio/hybrid_commands.py:305
 msgid "Connected to {channel}"
 msgstr "Forbundet til {channel}"
 
-#: audio/hybrid_commands.py:233 audio/hybrid_commands.py:259
-#: audio/hybrid_commands.py:299 audio/hybrid_commands.py:330
-#: audio/hybrid_commands.py:354 audio/hybrid_commands.py:376
-#: audio/hybrid_commands.py:411 audio/hybrid_commands.py:443
-#: audio/hybrid_commands.py:477 audio/hybrid_commands.py:514
-#: audio/hybrid_commands.py:559 audio/hybrid_commands.py:656
+#: audio/hybrid_commands.py:321 audio/hybrid_commands.py:347
+#: audio/hybrid_commands.py:387 audio/hybrid_commands.py:418
+#: audio/hybrid_commands.py:442 audio/hybrid_commands.py:464
+#: audio/hybrid_commands.py:499 audio/hybrid_commands.py:531
+#: audio/hybrid_commands.py:565 audio/hybrid_commands.py:602
+#: audio/hybrid_commands.py:647 audio/hybrid_commands.py:744
 msgid "No player detected."
 msgstr "Ingen spiller fundet."
 
-#: audio/hybrid_commands.py:240 audio/hybrid_commands.py:266
-#: audio/hybrid_commands.py:306
+#: audio/hybrid_commands.py:328 audio/hybrid_commands.py:354
+#: audio/hybrid_commands.py:394
 msgid "Player is not currently playing anything."
 msgstr "Spilleren spiller ikke noget i øjeblikket."
 
-#: audio/hybrid_commands.py:274
+#: audio/hybrid_commands.py:362
 msgid "Skipped - {track}"
 msgstr "Sprunget over - {track}"
 
-#: audio/hybrid_commands.py:283
+#: audio/hybrid_commands.py:371
 msgid "Autoplay started."
 msgstr "Autoplay startet."
 
-#: audio/hybrid_commands.py:313
+#: audio/hybrid_commands.py:401
 msgid "Player stopped"
 msgstr "Afspiller stoppet"
 
-#: audio/hybrid_commands.py:338
+#: audio/hybrid_commands.py:426
 msgid "Disconnected from {channel}"
 msgstr "Forbindelsen er afbrudt fra {channel}"
 
-#: audio/hybrid_commands.py:383
+#: audio/hybrid_commands.py:471
 msgid "There is nothing in the queue."
 msgstr "Der er intet i køen."
 
-#: audio/hybrid_commands.py:391
+#: audio/hybrid_commands.py:479
 msgid "{queue_size} tracks shuffled"
 msgstr "{queue_size} numre blandet"
 
-#: audio/hybrid_commands.py:417
+#: audio/hybrid_commands.py:505
 msgid "Repeating the queue"
 msgstr "Gentag køen"
 
-#: audio/hybrid_commands.py:420
+#: audio/hybrid_commands.py:508
 msgid "Repeating disabled"
 msgstr "Gentagelse deaktiveret"
 
-#: audio/hybrid_commands.py:423
+#: audio/hybrid_commands.py:511
 msgid "Repeating {track}"
 msgstr "Gentag {track}"
 
-#: audio/hybrid_commands.py:426
+#: audio/hybrid_commands.py:514
 msgid "current track"
 msgstr "nuværende spor"
 
-#: audio/hybrid_commands.py:449
+#: audio/hybrid_commands.py:537
 msgid "Player already paused did you mean to run `/resume`."
 msgstr "Spiller allerede sat på pause mente du at køre `/resume`."
 
-#: audio/hybrid_commands.py:451 audio/hybrid_commands.py:485
+#: audio/hybrid_commands.py:539 audio/hybrid_commands.py:573
 msgid "Player already paused did you mean to run `{prefix}{command}`."
 msgstr "Spiller allerede sat på pause mente du at køre `{prefix}{command}`."
 
-#: audio/hybrid_commands.py:462
+#: audio/hybrid_commands.py:550
 msgid "Player paused."
 msgstr "Spiller sat på pause."
 
-#: audio/hybrid_commands.py:483
+#: audio/hybrid_commands.py:571
 msgid "Player already paused did you mean to run `/pause`."
 msgstr "Spiller allerede sat på pause mente du at køre `/pause`."
 
-#: audio/hybrid_commands.py:496
+#: audio/hybrid_commands.py:584
 msgid "Player resumed."
 msgstr "Spilleren genoptaget."
 
-#: audio/hybrid_commands.py:525
+#: audio/hybrid_commands.py:613
 msgid "Volume cannot be higher than {max_volume}."
 msgstr "Volumen kan ikke være højere end {max_volume}."
 
-#: audio/hybrid_commands.py:534 audio/utility_commands.py:62
+#: audio/hybrid_commands.py:622 audio/utility_commands.py:62
 msgid "Player volume set to {volume}%."
 msgstr "Spillerlydstyrke indstillet til {volume}%."
 
-#: audio/hybrid_commands.py:566
+#: audio/hybrid_commands.py:654
 msgid "Nothing playing."
 msgstr "Intet spiller."
 
-#: audio/hybrid_commands.py:575
+#: audio/hybrid_commands.py:663
 msgid "Unable to seek track"
 msgstr "Kan ikke søge spor"
 
-#: audio/hybrid_commands.py:576
+#: audio/hybrid_commands.py:664
 msgid "Can't seek on a stream."
 msgstr "Kan ikke søge på en stream."
 
-#: audio/hybrid_commands.py:584
+#: audio/hybrid_commands.py:672
 msgid "Unable to seek track."
 msgstr "Kan ikke søge spor."
 
-#: audio/hybrid_commands.py:593
+#: audio/hybrid_commands.py:681
 msgid "Cannot seek when the player is paused."
 msgstr "Kan ikke søge når spilleren er sat på pause."
 
-#: audio/hybrid_commands.py:606
+#: audio/hybrid_commands.py:694
 msgid "Moved {seconds}s to 00:00:00."
 msgstr "Flyttede {seconds}s til 00:00:00."
 
-#: audio/hybrid_commands.py:613
+#: audio/hybrid_commands.py:701
 msgid "Moved {seconds}s to {time}."
 msgstr "Flyttede {seconds}s til {time}."
 
-#: audio/hybrid_commands.py:634
+#: audio/hybrid_commands.py:722
 msgid "Moved to {time}."
 msgstr "Flyttet til {time}."
 
-#: audio/hybrid_commands.py:664
+#: audio/hybrid_commands.py:752
 msgid "No previous in player history."
 msgstr "Ingen tidligere i spillerens historik."
 
-#: audio/hybrid_commands.py:672
+#: audio/hybrid_commands.py:760
 msgid "Playing previous track: {track}."
 msgstr "Afspiller forrige spor: {track}."
 
