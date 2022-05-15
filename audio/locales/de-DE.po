@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-14 00:14+0000\n"
-"PO-Revision-Date: 2022-05-14 20:31\n"
+"POT-Creation-Date: 2022-05-15 14:44+0000\n"
+"PO-Revision-Date: 2022-05-15 14:53\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -252,35 +252,39 @@ msgstr "Ich darf nur {channel} beitreten."
 msgid "I'm free to join any VC."
 msgstr "Ich bin frei, jedem VC beizutreten."
 
-#: audio/context_menus.py:25
-msgid "Currently I don't support parsing content from inside an embed message."
-msgstr "Momentan unterstütze ich das Parsen von Inhalten aus einer eingebetteten Nachricht nicht."
-
-#: audio/context_menus.py:36 audio/context_menus.py:112
+#: audio/context_menus.py:24 audio/context_menus.py:121
 msgid "I can't play songs in DMs."
 msgstr "Ich kann Lieder in DM nicht abspielen."
 
-#: audio/context_menus.py:51 audio/context_menus.py:127
+#: audio/context_menus.py:39 audio/context_menus.py:136
 msgid "This command is not available in this channel. Please use {channel}"
 msgstr "Dieser Befehl ist in diesem Kanal nicht verfügbar. Bitte verwende {channel}"
 
-#: audio/context_menus.py:78
+#: audio/context_menus.py:86
 msgid "I couldn't find any valid matches in your message."
 msgstr "Ich konnte keine gültigen Treffer in deiner Nachricht finden."
 
-#: audio/context_menus.py:89
+#: audio/context_menus.py:97
 msgid "I found multiple valid matches in your message."
 msgstr "Ich habe mehrere gültige Spiele in deiner Nachricht gefunden."
 
-#: audio/context_menus.py:98
+#: audio/context_menus.py:106
 msgid "I found a single valid match in your message."
 msgstr "Ich habe ein einziges gültiges Spiel in deiner Nachricht gefunden."
 
-#: audio/context_menus.py:143
-msgid "{user} is not listening to anything on Spotify."
-msgstr "{user} hört nichts auf Spotify."
+#: audio/context_menus.py:153
+msgid "I couldn't find any supported activity {user} is taking part in."
+msgstr "Es konnte keine unterstützte Aktivität gefunden werden, an der {user} teilnimmt."
 
-#: audio/context_menus.py:161
+#: audio/context_menus.py:185
+msgid "Couldn't map {user} Apple Music track to a valid query."
+msgstr "Konnte {user} Apple Music Titel nicht einer gültigen Abfrage zuordnen."
+
+#: audio/context_menus.py:198
+msgid "Couldn't find any tracks matching {query}"
+msgstr "Es konnten keine Tracks gefunden werden, die {query} entsprechen"
+
+#: audio/context_menus.py:214
 msgid "Couldn't figure out what {user} is listening to."
 msgstr "Konnte nicht herausfinden, worauf {user} zuhört."
 

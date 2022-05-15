@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-14 00:14+0000\n"
-"PO-Revision-Date: 2022-05-14 20:31\n"
+"POT-Creation-Date: 2022-05-15 14:44+0000\n"
+"PO-Revision-Date: 2022-05-15 14:53\n"
 "Last-Translator: \n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -252,35 +252,39 @@ msgstr "Je ne serai autorisé qu'à rejoindre {channel}."
 msgid "I'm free to join any VC."
 msgstr "Je suis libre de rejoindre n'importe quel VC."
 
-#: audio/context_menus.py:25
-msgid "Currently I don't support parsing content from inside an embed message."
-msgstr "Actuellement, je ne supporte pas l'analyse du contenu à l'intérieur d'un message intégré."
-
-#: audio/context_menus.py:36 audio/context_menus.py:112
+#: audio/context_menus.py:24 audio/context_menus.py:121
 msgid "I can't play songs in DMs."
 msgstr "Je ne peux pas jouer de chansons en MP."
 
-#: audio/context_menus.py:51 audio/context_menus.py:127
+#: audio/context_menus.py:39 audio/context_menus.py:136
 msgid "This command is not available in this channel. Please use {channel}"
 msgstr "Cette commande n'est pas disponible dans ce salon. Veuillez utiliser {channel}"
 
-#: audio/context_menus.py:78
+#: audio/context_menus.py:86
 msgid "I couldn't find any valid matches in your message."
 msgstr "Je n'ai trouvé aucune correspondance valide dans votre message."
 
-#: audio/context_menus.py:89
+#: audio/context_menus.py:97
 msgid "I found multiple valid matches in your message."
 msgstr "J'ai trouvé plusieurs correspondances valides dans votre message."
 
-#: audio/context_menus.py:98
+#: audio/context_menus.py:106
 msgid "I found a single valid match in your message."
 msgstr "J'ai trouvé une seule correspondance valide dans votre message."
 
-#: audio/context_menus.py:143
-msgid "{user} is not listening to anything on Spotify."
-msgstr "{user} n'écoute rien sur Spotify."
+#: audio/context_menus.py:153
+msgid "I couldn't find any supported activity {user} is taking part in."
+msgstr "Je n'ai trouvé aucune activité prise en charge dans laquelle {user} participe."
 
-#: audio/context_menus.py:161
+#: audio/context_menus.py:185
+msgid "Couldn't map {user} Apple Music track to a valid query."
+msgstr "Impossible de lier {user} piste Apple Music à une requête valide."
+
+#: audio/context_menus.py:198
+msgid "Couldn't find any tracks matching {query}"
+msgstr "Impossible de trouver des pistes correspondant à {query}"
+
+#: audio/context_menus.py:214
 msgid "Couldn't figure out what {user} is listening to."
 msgstr "Impossible de comprendre ce que {user} écoute."
 

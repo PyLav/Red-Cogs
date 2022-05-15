@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-14 00:14+0000\n"
-"PO-Revision-Date: 2022-05-14 20:32\n"
+"POT-Creation-Date: 2022-05-15 14:44+0000\n"
+"PO-Revision-Date: 2022-05-15 14:54\n"
 "Last-Translator: \n"
 "Language-Team: Ukrainian\n"
 "MIME-Version: 1.0\n"
@@ -252,35 +252,39 @@ msgstr "Мені дозволять приєднатися до {channel}."
 msgid "I'm free to join any VC."
 msgstr "Я вільний приєднатися до будь-якого ВК."
 
-#: audio/context_menus.py:25
-msgid "Currently I don't support parsing content from inside an embed message."
-msgstr "Наразі я не підтримую обробку вмісту зсередини вбудованого повідомлення."
-
-#: audio/context_menus.py:36 audio/context_menus.py:112
+#: audio/context_menus.py:24 audio/context_menus.py:121
 msgid "I can't play songs in DMs."
 msgstr "Я не вмію грати пісні в особистих повідомленнях."
 
-#: audio/context_menus.py:51 audio/context_menus.py:127
+#: audio/context_menus.py:39 audio/context_menus.py:136
 msgid "This command is not available in this channel. Please use {channel}"
 msgstr "Ця команда недоступна у цьому каналі. Будь ласка, використовуйте {channel}"
 
-#: audio/context_menus.py:78
+#: audio/context_menus.py:86
 msgid "I couldn't find any valid matches in your message."
 msgstr "Я не зміг знайти правильних збігів у вашому повідомленні."
 
-#: audio/context_menus.py:89
+#: audio/context_menus.py:97
 msgid "I found multiple valid matches in your message."
 msgstr "Я знайшов кілька дійсних збігів у вашому повідомленні."
 
-#: audio/context_menus.py:98
+#: audio/context_menus.py:106
 msgid "I found a single valid match in your message."
 msgstr "Я знайшов один дійсний збіг у вашому повідомленні."
 
-#: audio/context_menus.py:143
-msgid "{user} is not listening to anything on Spotify."
-msgstr "{user} не слухає нічого на Spotify."
+#: audio/context_menus.py:153
+msgid "I couldn't find any supported activity {user} is taking part in."
+msgstr "Я не зміг знайти підтримуваної активності в {user}."
 
-#: audio/context_menus.py:161
+#: audio/context_menus.py:185
+msgid "Couldn't map {user} Apple Music track to a valid query."
+msgstr "Не вдалося перетворити мову {user} з Apple Music на дійсний запит."
+
+#: audio/context_menus.py:198
+msgid "Couldn't find any tracks matching {query}"
+msgstr "Не вдалося знайти жодного треку, який відповідає {query}"
+
+#: audio/context_menus.py:214
 msgid "Couldn't figure out what {user} is listening to."
 msgstr "Не вдалося зрозуміти, що {user} слухає."
 

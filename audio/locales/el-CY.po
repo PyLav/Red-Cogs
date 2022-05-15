@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-14 00:14+0000\n"
-"PO-Revision-Date: 2022-05-14 20:31\n"
+"POT-Creation-Date: 2022-05-15 14:44+0000\n"
+"PO-Revision-Date: 2022-05-15 14:53\n"
 "Last-Translator: \n"
 "Language-Team: Greek, Cyprus\n"
 "MIME-Version: 1.0\n"
@@ -252,35 +252,39 @@ msgstr "Θα μου επιτραπεί μόνο να συμμετάσχω στο
 msgid "I'm free to join any VC."
 msgstr "Είμαι ελεύθερος να συμμετάσχω σε οποιοδήποτε VC."
 
-#: audio/context_menus.py:25
-msgid "Currently I don't support parsing content from inside an embed message."
-msgstr "Προς το παρόν δεν υποστηρίζω την ανάλυση περιεχομένου μέσα σε ένα ενσωματωμένο μήνυμα."
-
-#: audio/context_menus.py:36 audio/context_menus.py:112
+#: audio/context_menus.py:24 audio/context_menus.py:121
 msgid "I can't play songs in DMs."
 msgstr "Δεν μπορώ να παίξω τραγούδια σε DMs."
 
-#: audio/context_menus.py:51 audio/context_menus.py:127
+#: audio/context_menus.py:39 audio/context_menus.py:136
 msgid "This command is not available in this channel. Please use {channel}"
 msgstr "Αυτή η εντολή δεν είναι διαθέσιμη σε αυτό το κανάλι. Παρακαλούμε χρησιμοποιήστε {channel}"
 
-#: audio/context_menus.py:78
+#: audio/context_menus.py:86
 msgid "I couldn't find any valid matches in your message."
 msgstr "Δεν μπόρεσα να βρω έγκυρους αγώνες στο μήνυμά σας."
 
-#: audio/context_menus.py:89
+#: audio/context_menus.py:97
 msgid "I found multiple valid matches in your message."
 msgstr "Βρήκα πολλαπλές έγκυρες αντιστοιχίες στο μήνυμά σας."
 
-#: audio/context_menus.py:98
+#: audio/context_menus.py:106
 msgid "I found a single valid match in your message."
 msgstr "Βρήκα ένα μόνο έγκυρο ταίριασμα στο μήνυμά σας."
 
-#: audio/context_menus.py:143
-msgid "{user} is not listening to anything on Spotify."
-msgstr "{user} δεν ακούει τίποτα στο Spotify."
+#: audio/context_menus.py:153
+msgid "I couldn't find any supported activity {user} is taking part in."
+msgstr "Δεν μπόρεσα να βρω καμία υποστηριζόμενη δραστηριότητα {user} συμμετέχει στο."
 
-#: audio/context_menus.py:161
+#: audio/context_menus.py:185
+msgid "Couldn't map {user} Apple Music track to a valid query."
+msgstr "Δεν ήταν δυνατή η αντιστοίχιση {user} κομματιού Apple Music σε έγκυρο ερώτημα."
+
+#: audio/context_menus.py:198
+msgid "Couldn't find any tracks matching {query}"
+msgstr "Δεν βρέθηκαν κομμάτια που να ταιριάζουν με {query}"
+
+#: audio/context_menus.py:214
 msgid "Couldn't figure out what {user} is listening to."
 msgstr "Δεν μπόρεσε να καταλάβει τι ακούει ο {user}."
 
