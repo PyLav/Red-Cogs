@@ -6,7 +6,7 @@ import discord
 from discord.ext.commands import HybridCommand
 from redbot.core.i18n import Translator
 
-from pylav.query import MERGED_REGEX
+from pylav.query import MERGED_REGEX, Query
 from pylav.types import InteractionT, PyLavCogMixin
 from pylavcogs_shared.utils.validators import valid_query_attachment
 
@@ -18,18 +18,6 @@ class ContextMenus(PyLavCogMixin, ABC):
 
     async def _context_message_play(self, interaction: InteractionT, message: discord.Message) -> None:
         await interaction.response.defer(ephemeral=True)
-
-        if message.embeds and not message.content and not message.attachments:
-            await interaction.followup.send(
-                embed=await self.lavalink.construct_embed(
-                    description=_("Currently I don't support parsing content from inside an embed message."),
-                    messageable=interaction,
-                ),
-                ephemeral=True,
-                wait=True,
-            )
-            return
-
         if not interaction.guild:
             await interaction.followup.send(
                 embed=await self.lavalink.construct_embed(
@@ -59,6 +47,26 @@ class ContextMenus(PyLavCogMixin, ABC):
             )
             return
         content = message.content.strip()
+        for embed in message.embeds:
+            if embed.description:
+                content += f" {embed.description}"
+            if embed.title:
+                content += f" {embed.title}"
+            if embed.url and valid_query_attachment(embed.url):
+                content += f" {embed.url}"
+            if embed.footer:
+                if embed.footer.text:
+                    content += f" {embed.footer.text}"
+                if embed.footer.icon_url and valid_query_attachment(embed.footer.icon_url):
+                    content += f" {embed.footer.icon_url}"
+            if hasattr(embed, "video") and embed.video and embed.video.url:
+                content += f" {embed.video.url}"
+            for field in embed.fields:
+                if field.value:
+                    content += f" {field.value}"
+                if field.name:
+                    content += f" {field.name}"
+
         try:
             content_parts = shlex.split(content)
         except ValueError:
@@ -105,6 +113,7 @@ class ContextMenus(PyLavCogMixin, ABC):
         await self.command_play.callback(self, interaction, query="\n".join(valid_matches))  # type: ignore
 
     async def _context_user_play(self, interaction: InteractionT, member: discord.Member) -> None:
+        # sourcery no-metrics
         await interaction.response.defer(ephemeral=True)
         if not interaction.guild:
             await interaction.followup.send(
@@ -137,24 +146,68 @@ class ContextMenus(PyLavCogMixin, ABC):
         # The member returned by this interaction doesn't have any activities
         member = interaction.guild.get_member(member.id)
         spotify_activity = next((a for a in member.activities if isinstance(a, discord.Spotify)), None)
-        if not spotify_activity:
+        apple_music_activity = next((a for a in member.activities if a.name in ["Apple Music", "Cider"]), None)
+        if not apple_music_activity and not spotify_activity:
             await interaction.followup.send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("{user} is not listening to anything on Spotify.").format(user=member.mention),
+                    description=_("I couldn't find any supported activity {user} is taking part in.").format(
+                        user=member.mention
+                    ),
                     messageable=interaction,
                 ),
                 ephemeral=True,
                 wait=True,
             )
-
             return
-        if spotify_activity.track_id:
+        if spotify_activity and spotify_activity.track_id:
             await self.command_play.callback(
                 self,
                 interaction,
                 query=f"https://open.spotify.com/track/{spotify_activity.track_id}",
             )
-
+        elif apple_music_activity:
+            assert isinstance(apple_music_activity, discord.activity.Activity)
+            album = apple_music_activity.assets.get("large_text")
+            artist = apple_music_activity.state
+            track = apple_music_activity.details
+            # TODO: This should use the button URL instead of a search for 100% accuracy
+            #   Currently discord.py doesnt provide the button URLs, the day the do this can be updated
+            search_string = "amsearch:" if album or artist or track else None
+            if album:
+                search_string += f"{album} "
+            if artist:
+                search_string += f"{artist} "
+            if track:
+                search_string += f"{track}"
+            if not search_string:
+                await interaction.followup.send(
+                    embed=await self.lavalink.construct_embed(
+                        description=_("Couldn't map {user} Apple Music track to a valid query.").format(
+                            user=member.mention
+                        ),
+                        messageable=interaction,
+                    ),
+                    ephemeral=True,
+                    wait=True,
+                )
+                return
+            response = await self.lavalink.get_tracks(await Query.from_string(search_string))
+            if not response.get("tracks"):
+                await interaction.followup.send(
+                    embed=await self.lavalink.construct_embed(
+                        description=_("Couldn't find any tracks matching {query}").format(query=search_string),
+                        messageable=interaction,
+                    ),
+                    ephemeral=True,
+                    wait=True,
+                )
+                return
+            track_url = response["tracks"][0]["info"]["uri"]
+            await self.command_play.callback(
+                self,
+                interaction,
+                query=track_url,
+            )
         else:
             await interaction.followup.send(
                 embed=await self.lavalink.construct_embed(

@@ -57,7 +57,7 @@ class PyLavPlayer(
             enable_context=False,
         )
         self.context_user_play = discord.app_commands.ContextMenu(
-            name="Play from Spotify", callback=self._context_user_play, type=AppCommandType.user
+            name="Play from Spotify/Apple Music", callback=self._context_user_play, type=AppCommandType.user
         )
         self.context_message_play = discord.app_commands.ContextMenu(
             name="Play from message", callback=self._context_message_play, type=AppCommandType.message
