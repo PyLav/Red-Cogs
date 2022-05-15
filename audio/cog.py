@@ -7,6 +7,7 @@ from typing import Literal
 
 import discord
 from discord import AppCommandType
+from expiringdict import ExpiringDict
 from red_commons.logging import getLogger
 from redbot.core import Config
 from redbot.core import commands as red_commands
@@ -65,6 +66,7 @@ class PyLavPlayer(
         self.bot.tree.add_command(self.context_user_play)
         self.bot.tree.add_command(self.context_message_play)
         self._slash_sync_task = None
+        self._track_cache = ExpiringDict(max_len=None, max_age_seconds=60)
 
     async def initialize(self, *args, **kwargs) -> None:
         self._slash_sync_task = asyncio.create_task(self._sync_tree())

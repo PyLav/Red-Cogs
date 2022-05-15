@@ -1,3 +1,4 @@
+import hashlib
 import re
 from abc import ABC
 from functools import partial
@@ -5,12 +6,16 @@ from pathlib import Path
 from typing import Final, Optional, Pattern
 
 import discord
+from discord import app_commands
+from discord.app_commands import Choice
+from expiringdict import ExpiringDict
 from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator
 
 from pylav import Query, Track
-from pylav.types import PyLavCogMixin
+from pylav.query import SEARCH_REGEX
+from pylav.types import InteractionT, PyLavCogMixin
 from pylav.utils import PyLavContext, format_time
 from pylavcogs_shared.converters.numeric import RangeConverter
 from pylavcogs_shared.ui.menus.queue import QueueMenu
@@ -26,6 +31,8 @@ _RE_TIME_CONVERTER: Final[Pattern] = re.compile(r"(?:(\d+):)?([0-5]?\d):([0-5]\d
 
 
 class HybridCommands(PyLavCogMixin, ABC):
+    _track_cache: ExpiringDict
+
     @commands.hybrid_command(name="play", description="Plays a specified query.", aliases=["p"])
     @commands.guild_only()
     async def command_play(self, context: PyLavContext, *, query: str = None):  # sourcery no-metrics
@@ -156,6 +163,87 @@ class HybridCommands(PyLavCogMixin, ABC):
                 embed=await self.lavalink.construct_embed(
                     description=_("No tracks were found for your query."),
                     messageable=context,
+                ),
+                ephemeral=True,
+            )
+
+    @app_commands.command(name="search", description="Search for a track then play the selected response.")
+    @app_commands.guild_only()
+    async def slash_search(self, interaction: InteractionT, *, query: str):
+        """Search for a track then play the selected response.
+
+        If a prefix is not used it will default to search on YouTube Music.
+
+        You can search specify services by using the following prefixes (dependant on service availability):
+        `ytmsearch:` - Will search YouTube Music
+        `spsearch:` - Will search Spotify
+        `amsearch:` - Will search Apple Music
+        `scsearch:` - Will search SoundCloud
+        `ytsearch:` - Will search YouTube
+
+        You can trigger text-to-speech by using the following prefixes (dependant on service availability):
+        `speak:` - The bot will speak the query  (limited to 200 characters)
+        `tts://` - The bot will speak the query
+        """
+        if query == "000":
+            raise commands.BadArgument(_("You haven't select something to play."))
+        _track = self._track_cache.get(query)
+        track = query if _track is None else await _track.query_identifier()
+        await self.command_play.callback(self, interaction, query=track)
+
+    @slash_search.autocomplete("query")
+    async def slash_searchl_autocomplete_query(self, interaction: InteractionT, current: str):
+
+        if not (match := SEARCH_REGEX.match(current)) or not match.group("search_query"):
+            return [
+                Choice(
+                    name=_("Search must start with ytmsearch:, spsearch:, amsearch:, scsearch:, ytsearch:"),
+                    value="000",
+                )
+            ]
+        tracks = await interaction.client.lavalink.get_tracks(await Query.from_string(current), fullsearch=True)
+        if not tracks:
+            return [
+                Choice(
+                    name="No results found.",
+                    value="000",
+                )
+            ]
+        tracks = tracks["tracks"][:25]
+        if not tracks:
+            return [
+                Choice(
+                    name="No results found.",
+                    value="000",
+                )
+            ]
+        choices = []
+        node = interaction.client.lavalink.node_manager.available_nodes[0]
+        for track in tracks:
+            track = Track(
+                node=node, data=track, query=await Query.from_base64(track["track"]), requester=interaction.user.id
+            )
+            track_id = hashlib.md5(track["track"].encode()).hexdigest()
+            self._track_cache[track_id] = track
+            choices.append(
+                Choice(
+                    name=await track.get_track_display_name(max_length=95, unformatted=True, with_url=False),
+                    value=track_id,
+                )
+            )
+        return choices
+
+    @slash_search.error
+    async def slash_search_error(self, interaction: InteractionT, error: Exception):
+        error = getattr(error, "original", error)
+        if isinstance(error, commands.BadArgument):
+            await interaction.response.send_message(
+                embed=await self.lavalink.construct_embed(
+                    description=_(
+                        "You haven't select something to play, "
+                        "search must start with `ytmsearch:`, `spsearch:`, `amsearch:`, `scsearch:`, `ytsearch:`"
+                    ),
+                    messageable=interaction,
                 ),
                 ephemeral=True,
             )
