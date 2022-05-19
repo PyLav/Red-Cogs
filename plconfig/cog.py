@@ -12,6 +12,7 @@ from redbot.core.utils.chat_formatting import box, inline
 from tabulate import tabulate
 
 import pylavcogs_shared
+from pylav import Client
 from pylav.localfiles import LocalFile
 from pylav.sql.models import LibConfigModel
 from pylav.types import BotT
@@ -26,6 +27,8 @@ _ = Translator("PyLavConfigurator", Path(__file__))
 @cog_i18n(_)
 class PyLavConfigurator(commands.Cog):
     """Configure PyLav library settings."""
+
+    lavalink: Client
 
     __version__ = "1.0.0.0rc0"
 
@@ -304,6 +307,40 @@ class PyLavConfigurator(commands.Cog):
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("PyLav's managed node auto updates have been disabled."),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+
+    @command_plset_node.command(name="external")
+    async def command_plset_node_external(self, context: PyLavContext) -> None:
+        """Toggle the managed external node on/off."""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+
+        global_config = await LibConfigModel(bot=self.bot.user.id, id=1).get_all()
+        current_state = global_config.extras.get("use_bundled_external", True)
+        await global_config.set_managed_external_node(not current_state)
+        if current_state:
+            await self.lavalink.remove_node(1)
+        else:
+            node_config = await self.lavalink.node_db_manager.get_node_config(1)
+            await self.lavalink.add_node(**(node_config.get_connection_args()))
+
+        if global_config.extras["use_bundled_external"]:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("PyLav's managed external node has been enabled."),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+        else:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("PyLav's managed external node has been disabled."),
                     messageable=context,
                 ),
                 ephemeral=True,
