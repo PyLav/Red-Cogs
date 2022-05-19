@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-09 11:50+0000\n"
-"PO-Revision-Date: 2022-05-15 20:25\n"
+"POT-Creation-Date: 2022-05-19 18:31+0000\n"
+"PO-Revision-Date: 2022-05-19 18:39\n"
 "Last-Translator: \n"
 "Language-Team: Danish\n"
 "MIME-Version: 1.0\n"
@@ -17,26 +17,39 @@ msgstr ""
 "X-Crowdin-File-ID: 210\n"
 "Language: da_DK\n"
 
-#: plnodes/cog.py:29
+#: plnodes/cog.py:31
 #, docstring
 msgid "Manage the nodes used by PyLav."
 msgstr "Håndtér de indholdselementer, der bruges af PyLav."
 
-#: plnodes/cog.py:40
+#: plnodes/cog.py:42
 #, docstring
 msgid "Configure PyLav Nodes."
 msgstr "Konfigurer PyLav Nodes."
 
-#: plnodes/cog.py:44
+#: plnodes/cog.py:46
+#, docstring
+msgid "Show the version of the Cog and it's PyLav dependencies."
+msgstr "Vis versionen af Cog og det er PyLav afhængigheder."
+
+#: plnodes/cog.py:59
+msgid "Library/Cog"
+msgstr "Bibliotek/Tåge"
+
+#: plnodes/cog.py:59
+msgid "Version"
+msgstr "Version"
+
+#: plnodes/cog.py:67
 #, docstring
 msgid "Add a node PyLav."
 msgstr "Tilføj en node PyLav."
 
-#: plnodes/cog.py:54
+#: plnodes/cog.py:77
 msgid "Let's add a node to PyLav!"
 msgstr "Lad os tilføje en node til PyLav!"
 
-#: plnodes/cog.py:55
+#: plnodes/cog.py:78
 msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
 "(**2**){space} - Cancel any changes made and close the menu.\n"
 "(**3**){space} - Toggle between search-only and search and playback modes.\n"
@@ -60,35 +73,35 @@ msgstr "(**1**){space} - Anvend ændringer og tilføj indholdselementet til PyLa
 "(**10**) - Vælg hvilke kilder der skal deaktiveres for denne node (Multiple kan vælges).\n"
 "Hvis du interagerer med en knap flere gange, vil kun den sidste interaktion træde i kraft.\n\n\n"
 
-#: plnodes/cog.py:147
+#: plnodes/cog.py:170
 #, docstring
 msgid "Remove a node from PyLav instance."
 msgstr "Fjern en node fra PyLav instans."
 
-#: plnodes/cog.py:159
+#: plnodes/cog.py:182
 msgid "{name} is managed by PyLav and cannot be removed."
 msgstr "{name} administreres af PyLav og kan ikke fjernes."
 
-#: plnodes/cog.py:174
+#: plnodes/cog.py:197
 msgid "Removed node {name}.\n\n"
 "{data}"
 msgstr "Fjernet node {name}.\n\n"
 "{data}"
 
-#: plnodes/cog.py:182
+#: plnodes/cog.py:205
 msgid "Removed node {name}, a DM was sent to you with the node details in case you wish to re-add it."
 msgstr "Fjernet node {name}, en DM blev sendt til dig med node detaljer i tilfælde af at du ønsker at tilføje det igen."
 
-#: plnodes/cog.py:192
+#: plnodes/cog.py:215
 #, docstring
 msgid "Manage all nodes in PyLav instance."
 msgstr "Administrer alle noder i PyLav instans."
 
-#: plnodes/cog.py:204
+#: plnodes/cog.py:227
 msgid "Let's manage some nodes!"
 msgstr "Lad os styre nogle noder!"
 
-#: plnodes/cog.py:205
+#: plnodes/cog.py:228
 msgid "(**1**){space} - Cancel any changes made and close the menu.\n"
 "(**6**){space} - Show sources enabled for this node.\n"
 "(**7**){space} - Apply changes and add the node to PyLav.\n"
@@ -116,20 +129,20 @@ msgstr "(**1**){space} - Annuller ændringer og luk menuen.\n"
 "(**16**) - Vælg hvilke kilder der skal deaktiveres for denne node (Multiple kan vælges).\n"
 "Hvis du interagerer med en knap flere gange, vil kun den sidste interaktion træde i kraft.\n\n\n"
 
-#: plnodes/cog.py:234
+#: plnodes/cog.py:257
 msgid "{name} is managed by PyLav and cannot be modified with this command."
 msgstr "{name} administreres af PyLav og kan ikke ændres med denne kommando."
 
-#: plnodes/cog.py:246
+#: plnodes/cog.py:269
 msgid "Removed node {name}."
 msgstr "Fjernet indholdselement {name}."
 
-#: plnodes/cog.py:306
+#: plnodes/cog.py:329
 #, docstring
 msgid "List all nodes used by PyLav."
 msgstr "Liste over alle indholdselementer brugt af PyLav."
 
-#: plnodes/cog.py:316
+#: plnodes/cog.py:339
 msgid "No Nodes added to PyLav."
 msgstr "Ingen noder tilføjet til PyLav."
 

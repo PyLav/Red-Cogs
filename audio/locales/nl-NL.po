@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-15 20:17+0000\n"
-"PO-Revision-Date: 2022-05-15 20:25\n"
+"POT-Creation-Date: 2022-05-19 18:31+0000\n"
+"PO-Revision-Date: 2022-05-19 18:39\n"
 "Last-Translator: \n"
 "Language-Team: Dutch\n"
 "MIME-Version: 1.0\n"
@@ -22,74 +22,87 @@ msgstr ""
 msgid "A Media player using the PyLav library."
 msgstr "Een mediaspeler met behulp van de PyLav bibliotheek."
 
-#: audio/config_commands.py:27
+#: audio/config_commands.py:29
 #, docstring
 msgid "Player configuration commands."
 msgstr "Speler configuratie commando's."
 
-#: audio/config_commands.py:32
+#: audio/config_commands.py:33
+#, docstring
+msgid "Show the version of the Cog and it's PyLav dependencies."
+msgstr "Toon de versie van de Cog en de PyLav afhankelijkheden."
+
+#: audio/config_commands.py:46
+msgid "Library/Cog"
+msgstr "Bibliotheek/Cog"
+
+#: audio/config_commands.py:46
+msgid "Version"
+msgstr "Versie"
+
+#: audio/config_commands.py:55
 #, docstring
 msgid "Global configuration options."
 msgstr "Algemene configuratieopties."
 
-#: audio/config_commands.py:38
+#: audio/config_commands.py:61
 #, docstring
 msgid "Set the maximum volume server can set."
 msgstr "Stel de maximale volume server in"
 
-#: audio/config_commands.py:47 audio/config_commands.py:237
+#: audio/config_commands.py:70 audio/config_commands.py:260
 msgid "Max volume set to {volume}%."
 msgstr "Max volume ingesteld op {volume}%."
 
-#: audio/config_commands.py:55 audio/config_commands.py:245
+#: audio/config_commands.py:78 audio/config_commands.py:268
 #, docstring
 msgid "Set whether the bot should deafen itself when playing."
 msgstr "Stel in of de bot zichzelf moet doven tijdens het spelen."
 
-#: audio/config_commands.py:65 audio/config_commands.py:272
+#: audio/config_commands.py:88 audio/config_commands.py:295
 msgid "Deafen set to {deafen}."
 msgstr "Doven ingesteld op {deafen}."
 
-#: audio/config_commands.py:65 audio/config_commands.py:84
-#: audio/config_commands.py:102 audio/config_commands.py:142
-#: audio/config_commands.py:180 audio/config_commands.py:272
-#: audio/config_commands.py:308 audio/config_commands.py:343
-#: audio/config_commands.py:404 audio/config_commands.py:463
+#: audio/config_commands.py:88 audio/config_commands.py:107
+#: audio/config_commands.py:125 audio/config_commands.py:165
+#: audio/config_commands.py:203 audio/config_commands.py:295
+#: audio/config_commands.py:331 audio/config_commands.py:366
+#: audio/config_commands.py:427 audio/config_commands.py:486
 msgid "Enabled"
 msgstr "Ingeschakeld"
 
-#: audio/config_commands.py:65 audio/config_commands.py:84
-#: audio/config_commands.py:102 audio/config_commands.py:142
-#: audio/config_commands.py:180 audio/config_commands.py:272
-#: audio/config_commands.py:308 audio/config_commands.py:343
-#: audio/config_commands.py:404 audio/config_commands.py:463
+#: audio/config_commands.py:88 audio/config_commands.py:107
+#: audio/config_commands.py:125 audio/config_commands.py:165
+#: audio/config_commands.py:203 audio/config_commands.py:295
+#: audio/config_commands.py:331 audio/config_commands.py:366
+#: audio/config_commands.py:427 audio/config_commands.py:486
 msgid "Disabled"
 msgstr "Uitgeschakeld"
 
-#: audio/config_commands.py:73 audio/config_commands.py:280
+#: audio/config_commands.py:96 audio/config_commands.py:303
 #, docstring
 msgid "Set whether the bot should shuffle its queue after every new song."
 msgstr "Instellen of de bot zijn wachtrij moet verschuiven na elk nieuw nummer."
 
-#: audio/config_commands.py:84 audio/config_commands.py:308
+#: audio/config_commands.py:107 audio/config_commands.py:331
 msgid "Shuffle set to {shuffle}."
 msgstr "Shuffle ingesteld op {shuffle}."
 
-#: audio/config_commands.py:92 audio/config_commands.py:316
+#: audio/config_commands.py:115 audio/config_commands.py:339
 #, docstring
 msgid "Set whether the bot should automatically play songs when it's queue is empty."
 msgstr "Stel in of de bot automatisch nummers afspeelt wanneer de wachtrij leeg is."
 
-#: audio/config_commands.py:102 audio/config_commands.py:343
+#: audio/config_commands.py:125 audio/config_commands.py:366
 msgid "Auto-Play set to {auto}."
 msgstr "Automatisch spelen ingesteld op {auto}."
 
-#: audio/config_commands.py:110 audio/config_commands.py:351
+#: audio/config_commands.py:133 audio/config_commands.py:374
 #, docstring
 msgid "Set whether the bot should disconnect from the voice voice channel."
 msgstr "Stel in of de bot de verbinding met het spraakkanaal moet verbreken."
 
-#: audio/config_commands.py:120
+#: audio/config_commands.py:143
 #, docstring
 msgid "Set whether the bot should disconnect from the voice voice channel when the queue is empty.\n\n"
 "        Arguments:\n"
@@ -104,16 +117,16 @@ msgstr "Stel in of de bot de verbinding moet verbreken met het spraakkanaal als 
 "            Accepteren: seconden, minuten, uren, dagen, weken (als geen eenheid is opgegeven, de duur wordt aangenomen in seconden)\n"
 "        "
 
-#: audio/config_commands.py:136 audio/config_commands.py:173
-#: audio/config_commands.py:398 audio/config_commands.py:456
+#: audio/config_commands.py:159 audio/config_commands.py:196
+#: audio/config_commands.py:421 audio/config_commands.py:479
 msgid " and players will be disconnected after {duration}."
 msgstr " en spelers zullen na {duration} worden losgekoppeld."
 
-#: audio/config_commands.py:141 audio/config_commands.py:403
+#: audio/config_commands.py:164 audio/config_commands.py:426
 msgid "Disconnect from voice channel when queue is empty set to {empty}{extras}."
 msgstr "Verbinding verbreken met spraakkanaal wanneer wachtrij leeg is gezet op {empty}{extras}."
 
-#: audio/config_commands.py:157
+#: audio/config_commands.py:180
 #, docstring
 msgid "Set whether the bot should disconnect from the voice voice channel when alone.\n\n"
 "        Arguments:\n"
@@ -128,37 +141,37 @@ msgstr "Stel in of de bot de verbinding met het spraakkanaal moet verbreken wann
 "            Accepteren: seconden, minuten, uren, dagen, weken (als geen eenheid is opgegeven, de duur wordt aangenomen in seconden)\n"
 "        "
 
-#: audio/config_commands.py:179 audio/config_commands.py:462
+#: audio/config_commands.py:202 audio/config_commands.py:485
 msgid "Disconnect from voice channel when alone set to {empty}{extras}."
 msgstr "Verbinding verbreken met spraakkanaal wanneer alleen ingesteld op {empty}{extras}."
 
-#: audio/config_commands.py:191
+#: audio/config_commands.py:214
 #, docstring
 msgid "Server configuration options."
 msgstr "Server configuratie opties."
 
-#: audio/config_commands.py:197
+#: audio/config_commands.py:220
 #, docstring
 msgid "Set the maximum volume a user can set."
 msgstr "Stel het maximale volume in dat een gebruiker kan instellen."
 
-#: audio/config_commands.py:206 audio/config_commands.py:224
+#: audio/config_commands.py:229 audio/config_commands.py:247
 msgid "Volume must be between 0 and {volume}%."
 msgstr "Het volume moet tussen 0 en {volume} % zijn."
 
-#: audio/config_commands.py:254
+#: audio/config_commands.py:277
 msgid "My owner told me to always deafen myself."
 msgstr "Mijn eigenaar zei me dat ik altijd doof moest zijn."
 
-#: audio/config_commands.py:290
+#: audio/config_commands.py:313
 msgid "Shuffle is globally disabled."
 msgstr "Shuffle is globaal uitgeschakeld."
 
-#: audio/config_commands.py:325
+#: audio/config_commands.py:348
 msgid "Auto-Play is globally disabled."
 msgstr "Auto-Play is globaal uitgeschakeld."
 
-#: audio/config_commands.py:361
+#: audio/config_commands.py:384
 #, docstring
 msgid "Set whether the bot should disconnect from the voice voice channel when the queue is empty.\n\n"
 "        Arguments:\n"
@@ -177,11 +190,11 @@ msgstr "Stel in of de bot de verbinding moet verbreken met het spraakkanaal als 
 "            gegeven in seconden)\n"
 "        "
 
-#: audio/config_commands.py:379
+#: audio/config_commands.py:402
 msgid "Disconnect when the queue finished is globally enable and players will be disconnected after {delta}."
 msgstr "Verbreek de verbinding wanneer de wachtrij voltooid is globaal ingeschakeld en spelers worden verbroken na {delta}."
 
-#: audio/config_commands.py:419
+#: audio/config_commands.py:442
 #, docstring
 msgid "Set whether the bot should disconnect from the voice voice channel when alone.\n\n"
 "        Arguments:\n"
@@ -200,55 +213,55 @@ msgstr "Stel in of de bot de verbinding met het spraakkanaal moet verbreken wann
 "            gegeven in seconden)\n"
 "        "
 
-#: audio/config_commands.py:438
+#: audio/config_commands.py:461
 msgid "Disconnect when alone is globally enable and players will be disconnected after {delta}."
 msgstr "Verbreek verbinding wanneer alleen ingeschakeld is en spelers zullen na {delta} ontkoppeld worden."
 
-#: audio/config_commands.py:472
+#: audio/config_commands.py:495
 #, docstring
 msgid "Sets the Auto-Play playlist."
 msgstr "Stelt de Auto-Play afspeellijst in."
 
-#: audio/config_commands.py:490
+#: audio/config_commands.py:513
 msgid "Auto-Play playlist set to {playlist}."
 msgstr "Automatisch afspeellijst ingesteld op {playlist}."
 
-#: audio/config_commands.py:498
+#: audio/config_commands.py:521
 #, docstring
 msgid "Set the channel locks."
 msgstr "Kanaalvergrendelingen instellen."
 
-#: audio/config_commands.py:504
+#: audio/config_commands.py:527
 #, docstring
 msgid "Set the channel lock for commands."
 msgstr "Stel het kanaalvergrendeling in voor commando's."
 
-#: audio/config_commands.py:520
+#: audio/config_commands.py:543
 msgid "I don't have permission to send message or send embed links or read messages in {channel}."
 msgstr "Ik heb geen toestemming om berichten te verzenden of ingesloten links of berichten te lezen in {channel}."
 
-#: audio/config_commands.py:540
+#: audio/config_commands.py:563
 msgid "I will only listen to commands in {channel}."
 msgstr "Ik zal alleen luisteren naar commando's in {channel}."
 
-#: audio/config_commands.py:548
+#: audio/config_commands.py:571
 msgid "I will listen to commands in all channels I can see."
 msgstr "Ik zal naar commando's luisteren in alle kanalen die ik kan zien."
 
-#: audio/config_commands.py:556
+#: audio/config_commands.py:579
 #, docstring
 msgid "Set the channel lock for voice channels."
 msgstr "Stel het kanaal vergrendeling in voor spraakkanalen."
 
-#: audio/config_commands.py:568 audio/hybrid_commands.py:102
+#: audio/config_commands.py:591 audio/hybrid_commands.py:102
 msgid "I don't have permission to connect or speak in {channel}."
 msgstr "Ik heb geen toestemming om te verbinden of te spreken in {channel}."
 
-#: audio/config_commands.py:590
+#: audio/config_commands.py:613
 msgid "I will only be allowed to join {channel}."
 msgstr "Ik mag mij alleen bij {channel} aansluiten."
 
-#: audio/config_commands.py:597
+#: audio/config_commands.py:620
 msgid "I'm free to join any VC."
 msgstr "Ik ben vrij om lid te worden van een VC."
 

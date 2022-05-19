@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-13 22:34+0000\n"
-"PO-Revision-Date: 2022-05-15 20:25\n"
+"POT-Creation-Date: 2022-05-19 18:31+0000\n"
+"PO-Revision-Date: 2022-05-19 18:40\n"
 "Last-Translator: \n"
 "Language-Team: German, Switzerland\n"
 "MIME-Version: 1.0\n"
@@ -17,17 +17,30 @@ msgstr ""
 "X-Crowdin-File-ID: 200\n"
 "Language: de_CH\n"
 
-#: plconfig/cog.py:26
+#: plconfig/cog.py:28
 #, docstring
 msgid "Configure PyLav library settings."
 msgstr "PyLav Bibliothekseinstellungen konfigurieren."
 
-#: plconfig/cog.py:37
+#: plconfig/cog.py:39
 #, docstring
 msgid "Change global settings for PyLav"
 msgstr "Globale Einstellungen für PyLav ändern"
 
-#: plconfig/cog.py:41
+#: plconfig/cog.py:43
+#, docstring
+msgid "Show the version of the Cog and it's PyLav dependencies."
+msgstr "Zeigt die Version des Cog und seine PyLav Abhängigkeiten an."
+
+#: plconfig/cog.py:56
+msgid "Library/Cog"
+msgstr "Bibliothek/Cog"
+
+#: plconfig/cog.py:56
+msgid "Version"
+msgstr "Version"
+
+#: plconfig/cog.py:64
 #, docstring
 msgid "Set the folder for PyLav's config files\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -36,19 +49,19 @@ msgstr "Legen Sie den Ordner für PyLavs Konfigurationsdateien fest\n\n"
 "        Änderungen werden nach dem Neustart des Bots angewendet.\n"
 "        "
 
-#: plconfig/cog.py:53 plconfig/cog.py:107
+#: plconfig/cog.py:76 plconfig/cog.py:130
 msgid "{folder} is not a folder."
 msgstr "{folder} ist kein Ordner."
 
-#: plconfig/cog.py:67 plconfig/cog.py:121
+#: plconfig/cog.py:90 plconfig/cog.py:144
 msgid "{folder} does not exist, run the command again with the create argument set to 1 to automatically create this folder."
 msgstr "{folder} existiert nicht, führen Sie den Befehl erneut mit dem Erstellungsargument 1 aus, um diesen Ordner automatisch zu erstellen."
 
-#: plconfig/cog.py:85
+#: plconfig/cog.py:108
 msgid "PyLav's config folder has been set to {folder}."
 msgstr "PyLavs Konfigurationsordner wurde auf {folder} gesetzt."
 
-#: plconfig/cog.py:95
+#: plconfig/cog.py:118
 #, docstring
 msgid "Set the local tracks folder for PyLav.\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -57,11 +70,11 @@ msgstr "Legen Sie den lokalen Track-Ordner für Pylak fest.\n\n"
 "        Änderungen werden nach einem Neustart des Bots angewendet.\n"
 "        "
 
-#: plconfig/cog.py:142
+#: plconfig/cog.py:165
 msgid "PyLav's local tracks folder has been set to {folder}."
 msgstr "Der Ordner der lokalen Tracks von Pylav wurde auf {folder} gesetzt."
 
-#: plconfig/cog.py:152
+#: plconfig/cog.py:175
 #, docstring
 msgid "Set the java executable for PyLav.\n\n"
 "        Default is \"java\"\n"
@@ -72,28 +85,28 @@ msgstr "Legen Sie die Java ausführbare Datei für Pylav fest.\n\n"
 "        Änderungen werden nach dem Neustart des Bots angewendet.\n"
 "        "
 
-#: plconfig/cog.py:169
+#: plconfig/cog.py:192
 msgid "{java} does not exist, run the command again with the java argument set to the correct path."
 msgstr "{java} existiert nicht, führen Sie den Befehl erneut aus, wobei das Java-Argument auf den korrekten Pfad gesetzt ist."
 
-#: plconfig/cog.py:185
+#: plconfig/cog.py:208
 msgid "{java} is not an executable file."
 msgstr "{java} ist keine ausführbare Datei."
 
-#: plconfig/cog.py:197
+#: plconfig/cog.py:220
 msgid "{java} is not an executable, run the command again with the java argument set to the correct path."
 msgstr "{java} ist keine ausführbare Datei, führen Sie den Befehl erneut mit dem Java-Argument, das auf den korrekten Pfad gesetzt ist."
 
-#: plconfig/cog.py:215
+#: plconfig/cog.py:238
 msgid "PyLav's java executable has been set to {java}."
 msgstr "PyLavs Java ausführbare Datei wurde auf {java} gesetzt."
 
-#: plconfig/cog.py:225
+#: plconfig/cog.py:248
 #, docstring
 msgid "Change the managed node configuration."
 msgstr "Verwaltete Knotenkonfiguration ändern."
 
-#: plconfig/cog.py:229
+#: plconfig/cog.py:252
 #, docstring
 msgid "Toggle the managed node on/off.\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -102,15 +115,15 @@ msgstr "Schaltet den verwalteten Knoten ein/aus.\n\n"
 "        Änderungen werden nach einem Neustart des Bots angewendet.\n"
 "        "
 
-#: plconfig/cog.py:244
+#: plconfig/cog.py:267
 msgid "PyLav's managed node has been enabled."
 msgstr "PyLavs verwalteter Knoten wurde aktiviert."
 
-#: plconfig/cog.py:252
+#: plconfig/cog.py:275
 msgid "PyLav's managed node has been disabled."
 msgstr "PyLavs verwalteter Knoten wurde deaktiviert."
 
-#: plconfig/cog.py:260
+#: plconfig/cog.py:283
 #, docstring
 msgid "Toggle the managed node auto updates on/off.\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -119,11 +132,11 @@ msgstr "Automatische Updates ein-/ausschalten.\n\n"
 "        Änderungen werden nach dem Neustart des Bots angewendet.\n"
 "        "
 
-#: plconfig/cog.py:275
+#: plconfig/cog.py:298
 msgid "PyLav's managed node auto updates have been enabled."
 msgstr "PyLavs verwaltete Knoten Auto-Aktualisierungen wurden aktiviert."
 
-#: plconfig/cog.py:283
+#: plconfig/cog.py:306
 msgid "PyLav's managed node auto updates have been disabled."
 msgstr "PyLavs verwaltete Knoten automatische Aktualisierungen wurden deaktiviert."
 

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-09 11:50+0000\n"
-"PO-Revision-Date: 2022-05-15 20:25\n"
+"POT-Creation-Date: 2022-05-19 18:31+0000\n"
+"PO-Revision-Date: 2022-05-19 18:39\n"
 "Last-Translator: \n"
 "Language-Team: French, Quebec\n"
 "MIME-Version: 1.0\n"
@@ -17,8 +17,212 @@ msgstr ""
 "X-Crowdin-File-ID: 442\n"
 "Language: fr_QC\n"
 
-#: plmanagednode/cog.py:18
+#: plmanagednode/cog.py:34 plmanagednode/cog.py:46
 #, docstring
 msgid "Configure the managed Lavalink node used by PyLav."
 msgstr "Configurer le nœud Lavalink géré utilisé par PyLav."
+
+#: plmanagednode/cog.py:50
+#, docstring
+msgid "Show the version of the Cog and it's PyLav dependencies."
+msgstr "Affiche la version du Cog et ses dépendances PyLav."
+
+#: plmanagednode/cog.py:63
+msgid "Library/Cog"
+msgstr "Bibliothèque/Cog"
+
+#: plmanagednode/cog.py:63
+msgid "Version"
+msgstr "Version"
+
+#: plmanagednode/cog.py:71
+#, docstring
+msgid "Restart the managed Lavalink node."
+msgstr "Redémarrez le nœud Lavalink géré."
+
+#: plmanagednode/cog.py:80
+msgid "The managed node is not enabled, run `[p]{command}` to first enable the managed node."
+msgstr "Le noeud géré n'est pas activé, exécutez `[p]{command}` pour d'abord activer le noeud géré."
+
+#: plmanagednode/cog.py:132
+msgid "Restarted the managed Lavalink node."
+msgstr "Le noeud Lavalink géré a été redémarré."
+
+#: plmanagednode/cog.py:140
+#, docstring
+msgid "Set the java executable for PyLav.\n\n"
+"        Default is \"java\"\n"
+"        Changes will be applied after restarting the bot.\n"
+"        "
+msgstr "Définit l'exécutable java pour PyLav.\n\n"
+"        La valeur par défaut est \"java\"\n"
+"        Les changements seront appliqués après le redémarrage du bot.\n"
+"        "
+
+#: plmanagednode/cog.py:157
+msgid "{java} does not exist, run the command again with the java argument set to the correct path."
+msgstr "{java} n'existe pas, exécutez la commande à nouveau avec l'argument java défini au bon chemin."
+
+#: plmanagednode/cog.py:174
+msgid "{java} is not an executable file."
+msgstr "{java} n'est pas un fichier exécutable."
+
+#: plmanagednode/cog.py:186
+msgid "{java} is not an executable, run the command again with the java argument set to the correct path."
+msgstr "{java} n'est pas un exécutable, exécutez à nouveau la commande avec l'argument java défini au bon chemin."
+
+#: plmanagednode/cog.py:204
+msgid "PyLav's java executable has been set to {java}.\n\n"
+"Restart the bot for it to take effect."
+msgstr "L'exécutable java de PyLave a été réglé sur {java}.\n\n"
+"Redémarrez le bot pour qu'il prenne effet."
+
+#: plmanagednode/cog.py:216
+#, docstring
+msgid "Toggle the managed node on/off.\n\n"
+"        Changes will be applied after restarting the bot.\n"
+"        "
+msgstr "Activer/désactiver le noeud géré.\n\n"
+"        Les modifications seront appliquées après le redémarrage du bot.\n"
+"        "
+
+#: plmanagednode/cog.py:231
+msgid "PyLav's managed node has been enabled.\n\n"
+"Restart the bot for it to take effect."
+msgstr "Le noeud géré par PyLave a été activé.\n\n"
+"Redémarrez le bot pour qu'il prenne effet."
+
+#: plmanagednode/cog.py:239
+msgid "PyLav's managed node has been disabled.\n\n"
+"Restart the bot for it to take effect."
+msgstr "Le noeud géré par PyLave a été désactivé.\n\n"
+"Redémarrez le bot pour qu'il prenne effet."
+
+#: plmanagednode/cog.py:247
+#, docstring
+msgid "Toggle the managed node auto updates on/off.\n\n"
+"        Changes will be applied after restarting the bot.\n"
+"        "
+msgstr "Activer/désactiver les mises à jour automatiques des nœuds gérés.\n\n"
+"        Les modifications seront appliquées après le redémarrage du bot.\n"
+"        "
+
+#: plmanagednode/cog.py:262
+msgid "PyLav's managed node auto updates have been enabled.\n\n"
+"Restart the bot for it to take effect."
+msgstr "Les mises à jour automatiques de nœuds gérées par PyLav.\n\n"
+"Redémarrez le bot pour qu'il prenne effet."
+
+#: plmanagednode/cog.py:273
+msgid "PyLav's managed node auto updates have been disabled.\n\n"
+"Restart the bot for it to take effect."
+msgstr "Les mises à jour automatiques de nœuds gérées par PyLave ont été désactivées.\n\n"
+"Redémarrez le bot pour qu'il prenne effet."
+
+#: plmanagednode/cog.py:284
+#, docstring
+msgid "Set the managed Lavalink node maximum heap-size.\n\n"
+"        By default, this value is 50% of available RAM in the host machine represented by [1-1024][M|G] (256M,\n"
+"        256G for example)\n\n"
+"        This value only represents the maximum amount of RAM allowed to be used at any given point, and does not mean\n"
+"        that the managed Lavalink node will always use this amount of RAM.\n"
+"        "
+msgstr "Définit la taille maximale du tas du nœud Lavalink géré.\n\n"
+"        Par défaut, cette valeur est de 50% de la RAM disponible dans la machine hôte représentée par [1-1024][M|G] (256M, 256M,\n"
+"        256G par exemple)\n\n"
+"        Cette valeur ne représente que la quantité maximale de RAM autorisée à être utilisée à n'importe quel point donné, et ne veut pas dire\n"
+"        que le noeud Lavalink géré utilisera toujours cette quantité de RAM.\n"
+"        "
+
+#: plmanagednode/cog.py:302
+msgid "Heap-size must be a valid measure of size, e.g. 256M, 256G"
+msgstr "La taille du tas doit être une mesure valide de la taille, par exemple 256M, 256G"
+
+#: plmanagednode/cog.py:312
+msgid "Heap-size must be at least 64M, however it is recommended to have it set to at least 1G."
+msgstr "La taille du tas doit être d'au moins 64 Mo, mais il est recommandé de le définir à au moins 1G."
+
+#: plmanagednode/cog.py:324
+msgid "Heap-size must be less than your system RAM, You currently have {ram_in_bytes} of RAM available."
+msgstr "La taille du tas doit être inférieure à la mémoire vive de votre système. Vous avez actuellement {ram_in_bytes} de RAM disponible."
+
+#: plmanagednode/cog.py:336
+msgid "Heap-size must be less than {limit} due to your system limitations."
+msgstr "La taille du tas doit être inférieure à {limit} en raison des limitations de votre système."
+
+#: plmanagednode/cog.py:353
+msgid "Managed node's heap-size set to {bytes}.\n\n"
+"Restart the bot for it to take effect."
+msgstr "Taille du nœud géré définie à {bytes}.\n\n"
+"Redémarrez le bot pour qu'il prenne effet."
+
+#: plmanagednode/cog.py:363
+#, docstring
+msgid "Change the managed node start up configs."
+msgstr "Modifier les configurations de démarrage des nœuds gérés."
+
+#: plmanagednode/cog.py:367
+#, docstring
+msgid "Set the managed node host."
+msgstr "Définit l'hôte du noeud géré."
+
+#: plmanagednode/cog.py:376
+msgid "Managed node's host set to {host}.\n\n"
+"Restart the bot for it to take effect."
+msgstr "Hôte d'un nœud géré défini à {host}.\n\n"
+"Redémarrez le bot pour qu'il prenne effet."
+
+#: plmanagednode/cog.py:386
+#, docstring
+msgid "`Dangerous command` Set the managed Lavalink node's connection port.\n\n"
+"        This port is the port the managed Lavalink node binds to, you should only change this if there is a\n"
+"        conflict with the default port because you already have an application using port 2154 on this device.\n\n"
+"        The value by default is `2154`.\n"
+"        "
+msgstr "`Commande dangereuse` Définit le port de connexion du noeud Lavalink géré.\n\n"
+"        Ce port est le port auquel se lie le noeud Lavalink géré, vous ne devriez changer cela que s'il y a un conflit\n"
+"        avec le port par défaut car vous avez déjà une application utilisant le port 2154 sur ce périphérique.\n\n"
+"        La valeur par défaut est `2154`.\n"
+"        "
+
+#: plmanagednode/cog.py:397
+msgid "The port must be between 1024 and 49151."
+msgstr "Le port doit être compris entre 1024 et 49151."
+
+#: plmanagednode/cog.py:407
+msgid "Managed node's port set to {port}.\n\n"
+"Restart the bot for it to take effect."
+msgstr "Port du nœud géré défini à {port}.\n\n"
+"Redémarrez le bot pour qu'il prenne effet."
+
+#: plmanagednode/cog.py:417
+#, docstring
+msgid "Change the managed node plugins."
+msgstr "Changer les plugins de nœuds gérés."
+
+#: plmanagednode/cog.py:421
+#, docstring
+msgid "Update the managed node plugins."
+msgstr "Mettre à jour les plugins de nœuds gérés."
+
+#: plmanagednode/cog.py:459
+msgid "Managed node's plugins updated.\n\n"
+"Restart the bot for it to take effect."
+msgstr "Les plugins du nœud géré ont été mis à jour.\n\n"
+"Redémarrez le bot pour qu'il prenne effet."
+
+#: plmanagednode/cog.py:467
+#, docstring
+msgid "Toggle the managed node sources."
+msgstr "Basculer les sources du noeud géré."
+
+#: plmanagednode/cog.py:481
+msgid "Invalid source, {valid_list} are valid sources."
+msgstr "Source non valide, {valid_list} sont des sources valides."
+
+#: plmanagednode/cog.py:497
+msgid "Managed node's source set to {source}.\n\n"
+"Restart the bot for it to take effect."
+msgstr "La source du nœud géré a été définie à {source}.\n\n"
+"Redémarrez le bot pour qu'il prenne effet."
 
