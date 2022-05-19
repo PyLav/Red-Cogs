@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-10 19:00+0000\n"
-"PO-Revision-Date: 2022-05-15 20:25\n"
+"POT-Creation-Date: 2022-05-19 18:31+0000\n"
+"PO-Revision-Date: 2022-05-19 18:39\n"
 "Last-Translator: \n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
@@ -17,30 +17,43 @@ msgstr ""
 "X-Crowdin-File-ID: 434\n"
 "Language: fi_FI\n"
 
-#: pleq/cog.py:24
+#: pleq/cog.py:27
 #, docstring
 msgid "Apply equalizer presets to the PyLav player."
 msgstr "Käytä taajuuskorjaimen esiasetuksia PyLav soittimeen."
 
-#: pleq/cog.py:51
+#: pleq/cog.py:54
 #, docstring
 msgid "Configure the Player behaviour when a preset is set."
 msgstr "Määritä soittimen käyttäytyminen, kun esiasetus on asetettu."
 
-#: pleq/cog.py:55
+#: pleq/cog.py:58
+#, docstring
+msgid "Show the version of the Cog and it's PyLav dependencies."
+msgstr "Näytä versio Cog ja se on PyLav riippuvuudet."
+
+#: pleq/cog.py:71
+msgid "Library/Cog"
+msgstr "Kirjasto/Kokki"
+
+#: pleq/cog.py:71
+msgid "Version"
+msgstr "Versio"
+
+#: pleq/cog.py:79
 #, docstring
 msgid "Persist the last used preset."
 msgstr "Pidä viimeksi käytetty esiasetus."
 
-#: pleq/cog.py:70
+#: pleq/cog.py:94
 msgid "The player will now apply the last used preset when it is created."
 msgstr "Pelaaja käyttää nyt viimeksi käytettyä esiasetusta kun se on luotu."
 
-#: pleq/cog.py:81
+#: pleq/cog.py:105
 msgid "Last used preset will no longer be saved."
 msgstr "Viimeksi käytettyä esiasetusta ei enää tallenneta."
 
-#: pleq/cog.py:95
+#: pleq/cog.py:119
 #, docstring
 msgid "Apply a Bass boost preset to the player.\n\n"
 "        Arguments:\n"
@@ -65,43 +78,43 @@ msgstr "Soita bassotehostimen esiasetus soittimelle. @ action: button\n\n"
 "            - pois käytöstä\n"
 "        "
 
-#: pleq/cog.py:120
+#: pleq/cog.py:144
 msgid "Bass boost preset has been disabled."
 msgstr "Basson korostuksen esiasetus on poistettu käytöstä."
 
-#: pleq/cog.py:127
+#: pleq/cog.py:151
 msgid "Bass boost - Maximum"
 msgstr "Basson korostus - maksimi"
 
-#: pleq/cog.py:131
+#: pleq/cog.py:155
 msgid "Bass boost - Insane"
 msgstr "Basson korostus - hullu"
 
-#: pleq/cog.py:135
+#: pleq/cog.py:159
 msgid "Bass boost - Extreme"
 msgstr "Basson korostus - äärimmäinen"
 
-#: pleq/cog.py:139
+#: pleq/cog.py:163
 msgid "Bass boost - Very High"
 msgstr "Basson korostus - Erittäin korkea"
 
-#: pleq/cog.py:143
+#: pleq/cog.py:167
 msgid "Bass boost - High"
 msgstr "Basson korostus - Korkea"
 
-#: pleq/cog.py:147
+#: pleq/cog.py:171
 msgid "Bass boost - Medium"
 msgstr "Basson korostus - Keskikokoinen"
 
-#: pleq/cog.py:151
+#: pleq/cog.py:175
 msgid "Bass boost - Cut-off"
 msgstr "Basson korostus - katkaisu"
 
-#: pleq/cog.py:163
+#: pleq/cog.py:187
 msgid "Preset has been set to {name}."
 msgstr "Esiasetus on asetettu {name}."
 
-#: pleq/cog.py:170
+#: pleq/cog.py:194
 #, docstring
 msgid "Apply a Piano preset to the player.\n\n"
 "        Suitable for acoustic tracks, or tacks with an emphasis on female vocals.\n\n"
@@ -112,15 +125,15 @@ msgstr "Soita pianon esiasetus pelaajalle.\n\n"
 "        Voidaan käyttää myös basson katkaisuna.\n"
 "        "
 
-#: pleq/cog.py:194
+#: pleq/cog.py:218
 msgid "Piano"
 msgstr "Piano"
 
-#: pleq/cog.py:207
+#: pleq/cog.py:231
 msgid "Piano preset has been set."
 msgstr "Piano esiasetus on asetettu."
 
-#: pleq/cog.py:214
+#: pleq/cog.py:238
 #, docstring
 msgid "Apply an experimental Metal/Rock equalizer preset.\n\n"
 "        Expect clipping on songs with heavy bass.\n"
@@ -129,20 +142,20 @@ msgstr "Toteuta kokeellinen Metal/Rock taajuuskorjain esiasetus.\n\n"
 "        Odota kappaleiden leikkaamista raskaalla bassolla.\n"
 "        "
 
-#: pleq/cog.py:238
+#: pleq/cog.py:262
 msgid "Metal"
 msgstr "Metalli"
 
-#: pleq/cog.py:250
+#: pleq/cog.py:274
 msgid "Rock/Metal preset has been set."
 msgstr "Rock/Metal esiasetus on asetettu."
 
-#: pleq/cog.py:257
+#: pleq/cog.py:281
 #, docstring
 msgid "Remove any equalizer preset from the player."
 msgstr "Poista mikä tahansa taajuuskorjaimen esiasetus pelaajalta."
 
-#: pleq/cog.py:270
+#: pleq/cog.py:294
 msgid "Equalizer preset has been reset."
 msgstr "Taajuuskorjaimen esiasetus on nollattu."
 

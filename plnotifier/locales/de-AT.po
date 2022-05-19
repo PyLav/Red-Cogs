@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-10 18:29+0000\n"
-"PO-Revision-Date: 2022-05-15 20:25\n"
+"POT-Creation-Date: 2022-05-19 18:31+0000\n"
+"PO-Revision-Date: 2022-05-19 18:40\n"
 "Last-Translator: \n"
 "Language-Team: German, Austria\n"
 "MIME-Version: 1.0\n"
@@ -17,26 +17,39 @@ msgstr ""
 "X-Crowdin-File-ID: 186\n"
 "Language: de_AT\n"
 
-#: plnotifier/cog.py:82
+#: plnotifier/cog.py:83
 #, docstring
 msgid "Listen to events from the PyLav player and sent them as messages to the specified channel."
 msgstr "Höre Ereignisse des PyLav Spielers an und schickte sie als Nachrichten an den angegebenen Kanal."
 
-#: plnotifier/cog.py:189
+#: plnotifier/cog.py:190
 #, docstring
 msgid "Configure the PyLavNotifier cog."
 msgstr "Konfiguriere den PyLavNotifier Cog."
 
-#: plnotifier/cog.py:195
+#: plnotifier/cog.py:194
+#, docstring
+msgid "Show the version of the Cog and it's PyLav dependencies."
+msgstr "Zeigt die Version des Cog und seine PyLav Abhängigkeiten an."
+
+#: plnotifier/cog.py:207
+msgid "Library/Cog"
+msgstr "Bibliothek/Cog"
+
+#: plnotifier/cog.py:207
+msgid "Version"
+msgstr "Version"
+
+#: plnotifier/cog.py:217
 #, docstring
 msgid "Set the notify channel for the player."
 msgstr "Legen Sie den Benachrichtigungskanal für den Player fest."
 
-#: plnotifier/cog.py:211
+#: plnotifier/cog.py:233
 msgid "PyLavNotifier channel set to {channel}"
 msgstr "PyLavNotifier Kanal auf {channel} gesetzt"
 
-#: plnotifier/cog.py:221
+#: plnotifier/cog.py:243
 #, docstring
 msgid "Set whether or not to notify for the specified event.\n\n"
 "        Arguments:\n"
@@ -51,395 +64,395 @@ msgstr "Legen Sie fest, ob für das angegebene Ereignis benachrichtigt werden so
 "            use_mention -- Gibt an, ob anstelle des Namens für die angeforderte Aktion eine Erwähnung verwendet werden soll oder nicht.\n"
 "        "
 
-#: plnotifier/cog.py:236
+#: plnotifier/cog.py:258
 msgid "Invalid event, possible events are:\n\n"
 "{events}."
 msgstr "Ungültiges Ereignis, mögliche Ereignisse sind:\n\n"
 "{events}."
 
-#: plnotifier/cog.py:253
+#: plnotifier/cog.py:275
 msgid "Event {event} set to {toggle}{extras}."
 msgstr "Event {event} auf {toggle}{extras} gesetzt."
 
-#: plnotifier/cog.py:255
+#: plnotifier/cog.py:277
 msgid "notify"
 msgstr "benachrichtigen"
 
-#: plnotifier/cog.py:255
+#: plnotifier/cog.py:277
 msgid "do not notify"
 msgstr "nicht benachrichtigen"
 
-#: plnotifier/cog.py:256
+#: plnotifier/cog.py:278
 msgid " with mentions"
 msgstr " mit Erwähnungen"
 
-#: plnotifier/cog.py:256
+#: plnotifier/cog.py:278
 msgid " without mentions"
 msgstr " ohne Erwähnungen"
 
-#: plnotifier/cog.py:270
+#: plnotifier/cog.py:292
 msgid "Track Stuck Event"
 msgstr "Verbleibendes Ereignis verfolgen"
 
-#: plnotifier/cog.py:271
+#: plnotifier/cog.py:293
 msgid "[Node={node}] {track} is stuck for {threshold} seconds, skipping."
 msgstr "[Node={node}] {track} ist für {threshold} Sekunden festgehalten, überspringt."
 
-#: plnotifier/cog.py:294
+#: plnotifier/cog.py:316
 msgid "Track Exception Event"
 msgstr "Ausnahme-Ereignis verfolgen"
 
-#: plnotifier/cog.py:295
+#: plnotifier/cog.py:317
 msgid "[Node={node}] There was an error while playing {track}:\n"
 "{exception}"
 msgstr "[Node={node}] Es gab einen Fehler bei der Wiedergabe von {track}:\n"
 "{exception}"
 
-#: plnotifier/cog.py:316
+#: plnotifier/cog.py:338
 msgid "the player reached the end of the tracks runtime."
 msgstr "der Spieler erreichte das Ende der Laufzeit der Strecken."
 
-#: plnotifier/cog.py:318
+#: plnotifier/cog.py:340
 msgid "a new track started playing."
 msgstr "ein neuer Track begann zu spielen."
 
-#: plnotifier/cog.py:320
+#: plnotifier/cog.py:342
 msgid "it failed to start."
 msgstr "es konnte nicht gestartet werden."
 
-#: plnotifier/cog.py:322
+#: plnotifier/cog.py:344
 msgid "because the player was stopped."
 msgstr "weil der Spieler gestoppt wurde."
 
-#: plnotifier/cog.py:324
+#: plnotifier/cog.py:346
 msgid "the node told it to stop."
 msgstr "der Knoten sagte ihm zu stoppen."
 
-#: plnotifier/cog.py:327
+#: plnotifier/cog.py:349
 msgid "Track End Event"
 msgstr "Endereignis verfolgen"
 
-#: plnotifier/cog.py:328
+#: plnotifier/cog.py:350
 msgid "[Node={node}] {track} has finished playing because {reason}"
 msgstr "[Knoten={node}] {track} hat das Spiel beendet weil {reason}"
 
-#: plnotifier/cog.py:353
+#: plnotifier/cog.py:375
 msgid "Track Start Event"
 msgstr "Track Startereignis"
 
-#: plnotifier/cog.py:354
+#: plnotifier/cog.py:376
 msgid "[Node={node}] {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] {track} hat mit dem Spielen begonnen.\n"
 "Angefordert von: {requester}"
 
-#: plnotifier/cog.py:379
+#: plnotifier/cog.py:401
 msgid "YouTube Music Track Start Event"
 msgstr "YouTube Musik-Track Start Event"
 
-#: plnotifier/cog.py:380
+#: plnotifier/cog.py:402
 msgid "[Node={node}] YouTube Music track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] YouTube-Musiktitel: {track} hat mit der Wiedergabe begonnen.\n"
 "Angefordert von: {requester}"
 
-#: plnotifier/cog.py:407
+#: plnotifier/cog.py:429
 msgid "Spotify Track Start Event"
 msgstr "Spotify Track Start Event"
 
-#: plnotifier/cog.py:408
+#: plnotifier/cog.py:430
 msgid "[Node={node}] Spotify track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] Spotify-Track: {track} hat begonnen zu spielen.\n"
 "Angefordert von: {requester}"
 
-#: plnotifier/cog.py:435
+#: plnotifier/cog.py:457
 msgid "Apple Music Track Start Event"
 msgstr "Apple Music Track Start Event"
 
-#: plnotifier/cog.py:436
+#: plnotifier/cog.py:458
 msgid "[Node={node}] Apple Music track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] Apple Music Track: {track} hat mit der Wiedergabe begonnen.\n"
 "Angefordert von: {requester}"
 
-#: plnotifier/cog.py:463
+#: plnotifier/cog.py:485
 msgid "Local Track Start Event"
 msgstr "Lokaler Track-Startereignis"
 
-#: plnotifier/cog.py:464
+#: plnotifier/cog.py:486
 msgid "[Node={node}] Local track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] Lokaler Track: {track} hat begonnen.\n"
 "Angefordert von: {requester}"
 
-#: plnotifier/cog.py:491
+#: plnotifier/cog.py:513
 msgid "HTTP Track Start Event"
 msgstr "HTTP Track Start Ereignis"
 
-#: plnotifier/cog.py:492
+#: plnotifier/cog.py:514
 msgid "[Node={node}] HTTP track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] HTTP-Track: {track} hat mit der Wiedergabe begonnen.\n"
 "Angefordert von: {requester}"
 
-#: plnotifier/cog.py:519
+#: plnotifier/cog.py:541
 msgid "Text-To-Speech Track Start Event"
 msgstr "Start des Text-zu-Sprache-Tracks"
 
-#: plnotifier/cog.py:520
+#: plnotifier/cog.py:542
 msgid "[Node={node}] Text-To-Speech track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] Text-To-Speech Track: {track} hat angefangen zu spielen.\n"
 "Angefordert von: {requester}"
 
-#: plnotifier/cog.py:547
+#: plnotifier/cog.py:569
 msgid "YouTube Track Start Event"
 msgstr "YouTube-Track Start Ereignis"
 
-#: plnotifier/cog.py:548
+#: plnotifier/cog.py:570
 msgid "[Node={node}] YouTube track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] YouTube-Track: {track} hat begonnen zu spielen.\n"
 "Angefordert von: {requester}"
 
-#: plnotifier/cog.py:575 plnotifier/cog.py:606 plnotifier/cog.py:637
-#: plnotifier/cog.py:668 plnotifier/cog.py:699 plnotifier/cog.py:730
-#: plnotifier/cog.py:761 plnotifier/cog.py:792 plnotifier/cog.py:823
-#: plnotifier/cog.py:854 plnotifier/cog.py:885 plnotifier/cog.py:916
-#: plnotifier/cog.py:947 plnotifier/cog.py:978
+#: plnotifier/cog.py:597 plnotifier/cog.py:628 plnotifier/cog.py:659
+#: plnotifier/cog.py:690 plnotifier/cog.py:721 plnotifier/cog.py:752
+#: plnotifier/cog.py:783 plnotifier/cog.py:814 plnotifier/cog.py:845
+#: plnotifier/cog.py:876 plnotifier/cog.py:907 plnotifier/cog.py:938
+#: plnotifier/cog.py:969 plnotifier/cog.py:1000
 msgid "{source} Track Start Event"
 msgstr "{source} Track Start Ereignis"
 
-#: plnotifier/cog.py:576 plnotifier/cog.py:607 plnotifier/cog.py:638
-#: plnotifier/cog.py:669 plnotifier/cog.py:700 plnotifier/cog.py:731
-#: plnotifier/cog.py:762 plnotifier/cog.py:793 plnotifier/cog.py:824
-#: plnotifier/cog.py:855 plnotifier/cog.py:886 plnotifier/cog.py:917
-#: plnotifier/cog.py:948 plnotifier/cog.py:979
+#: plnotifier/cog.py:598 plnotifier/cog.py:629 plnotifier/cog.py:660
+#: plnotifier/cog.py:691 plnotifier/cog.py:722 plnotifier/cog.py:753
+#: plnotifier/cog.py:784 plnotifier/cog.py:815 plnotifier/cog.py:846
+#: plnotifier/cog.py:877 plnotifier/cog.py:908 plnotifier/cog.py:939
+#: plnotifier/cog.py:970 plnotifier/cog.py:1001
 msgid "[Node={node}] {source} track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] {source} Track: {track} hat begonnen zu spielen.\n"
 "Angefordert von: {requester}"
 
-#: plnotifier/cog.py:1009
+#: plnotifier/cog.py:1031
 msgid "Track Skipped Event"
 msgstr "Track übersprungen Event"
 
-#: plnotifier/cog.py:1010
+#: plnotifier/cog.py:1032
 msgid "[Node={node}] {track} has been skipped.\n"
 "Requested by {requester}"
 msgstr "[Knoten={node}] {track} wurde übersprungen.\n"
 "Angefordert von {requester}"
 
-#: plnotifier/cog.py:1037
+#: plnotifier/cog.py:1059
 msgid "Track Seek Event"
 msgstr "Spurensuche Event"
 
-#: plnotifier/cog.py:1038
+#: plnotifier/cog.py:1060
 msgid "[Node={node}] {requester} requested that {track} is sought from position {fro} to position {after}."
 msgstr "[Knoten ={node}] {requester} hat angefragt, dass {track} von Position {fro} an Position {after} gesucht wird."
 
-#: plnotifier/cog.py:1070
+#: plnotifier/cog.py:1092
 msgid "Track Previous Requested Event"
 msgstr "Vorheriges angefordertes Ereignis verfolgen"
 
-#: plnotifier/cog.py:1071
+#: plnotifier/cog.py:1093
 msgid "[Node={node}] {requester} requested that the previous track {track} be played."
 msgstr "[Node={node}] {requester} hat die Wiedergabe des vorherigen Titels {track} angefordert."
 
-#: plnotifier/cog.py:1098
+#: plnotifier/cog.py:1120
 msgid "Tracks Requested Event"
 msgstr "Angeforderte Tracks"
 
-#: plnotifier/cog.py:1099
+#: plnotifier/cog.py:1121
 msgid "[Node={node}] {requester} added {track_count} to the queue."
 msgstr "[Knoten={node}] {requester} hat {track_count} zur Warteschlange hinzugefügt."
 
-#: plnotifier/cog.py:1119
+#: plnotifier/cog.py:1141
 msgid "Track AutoPlay Event"
 msgstr "AutoPlay Ereignis verfolgen"
 
-#: plnotifier/cog.py:1120
+#: plnotifier/cog.py:1142
 msgid "[Node={node}] Auto-playing {track}."
 msgstr "[Node={node}] Auto-Abspielen {track}."
 
-#: plnotifier/cog.py:1145
+#: plnotifier/cog.py:1167
 msgid "Track Resumed Event"
 msgstr "Wiederaufgenommenes Ereignis verfolgen"
 
-#: plnotifier/cog.py:1146
+#: plnotifier/cog.py:1168
 msgid "[Node={node}] {requester} resumed {track}."
 msgstr "[Knoten={node}] {requester} hat {track} wieder aufgenommen."
 
-#: plnotifier/cog.py:1173
+#: plnotifier/cog.py:1195
 msgid "Queue Shuffled Event"
 msgstr "Warteschlange gemischt Event"
 
-#: plnotifier/cog.py:1174
+#: plnotifier/cog.py:1196
 msgid "[Node={node}] {requester} shuffled the queue."
 msgstr "[Knoten={node}] {requester} hat die Warteschlange gemischt."
 
-#: plnotifier/cog.py:1194
+#: plnotifier/cog.py:1216
 msgid "Queue End Event"
 msgstr "Warteschlange Ende Event"
 
-#: plnotifier/cog.py:1195
+#: plnotifier/cog.py:1217
 msgid "[Node={node}] All tracks in the queue have been played."
 msgstr "[Node={node}] Alle Tracks in der Warteschlange wurden abgespielt."
 
-#: plnotifier/cog.py:1220
+#: plnotifier/cog.py:1242
 msgid "Tracks Removed Event"
 msgstr "Tracks entfernt Event"
 
-#: plnotifier/cog.py:1221
+#: plnotifier/cog.py:1243
 msgid "[Node={node}] {requester} removed {track_count} tracks from the queue."
 msgstr "[Knoten={node}] {requester} hat {track_count} Tracks aus der Warteschlange entfernt."
 
-#: plnotifier/cog.py:1246
+#: plnotifier/cog.py:1268
 msgid "Player Paused Event"
 msgstr "Spieler pausierte Ereignis"
 
-#: plnotifier/cog.py:1247
+#: plnotifier/cog.py:1269
 msgid "[Node={node}] {requester} paused the player."
 msgstr "[Node={node}] {requester} pausierte den Spieler."
 
-#: plnotifier/cog.py:1272
+#: plnotifier/cog.py:1294
 msgid "Player Stopped Event"
 msgstr "Spieler hat Event gestoppt"
 
-#: plnotifier/cog.py:1273
+#: plnotifier/cog.py:1295
 msgid "[Node={node}] {requester} stopped the player."
 msgstr "[Knoten={node}] {requester} hat den Spieler gestoppt."
 
-#: plnotifier/cog.py:1298
+#: plnotifier/cog.py:1320
 msgid "Player Resumed Event"
 msgstr "Spieler hat Ereignis fortgeführt"
 
-#: plnotifier/cog.py:1299
+#: plnotifier/cog.py:1321
 msgid "[Node={node}] {requester} resumed the player."
 msgstr "[Knoten={node}] {requester} hat den Spieler fortgesetzt."
 
-#: plnotifier/cog.py:1324
+#: plnotifier/cog.py:1346
 msgid "Player Moved Event"
 msgstr "Spieler verschobenes Ereignis"
 
-#: plnotifier/cog.py:1325
+#: plnotifier/cog.py:1347
 msgid "[Node={node}] {requester} moved the player from {before} to {after}."
 msgstr "[Knoten={node}] {requester} hat den Spieler von {before} auf {after} verschoben."
 
-#: plnotifier/cog.py:1350
+#: plnotifier/cog.py:1372
 msgid "Player Disconnected Event"
 msgstr "Spieler-Ereignis getrennt"
 
-#: plnotifier/cog.py:1351
+#: plnotifier/cog.py:1373
 msgid "[Node={node}] {requester} disconnected the player."
 msgstr "[Knoten={node}] {requester} hat den Spieler getrennt."
 
-#: plnotifier/cog.py:1376
+#: plnotifier/cog.py:1398
 msgid "Player Connected Event"
 msgstr "Spieler verbundenes Ereignis"
 
-#: plnotifier/cog.py:1377
+#: plnotifier/cog.py:1399
 msgid "[Node={node}] {requester} connected the player."
 msgstr "[Knoten={node}] {requester} hat den Spieler verbunden."
 
-#: plnotifier/cog.py:1402
+#: plnotifier/cog.py:1424
 msgid "Player Volume Changed Event"
 msgstr "Spielerlautstärke geändert Event"
 
-#: plnotifier/cog.py:1403
+#: plnotifier/cog.py:1425
 msgid "[Node={node}] {requester} changed the player's volume from {before} to {after}."
 msgstr "[Knoten={node}] {requester} hat die Lautstärke des Spielers von {before} auf {after} geändert."
 
-#: plnotifier/cog.py:1430 plnotifier/cog.py:1440 plnotifier/cog.py:1450
+#: plnotifier/cog.py:1452 plnotifier/cog.py:1462 plnotifier/cog.py:1472
 msgid "Player Repeat Event"
 msgstr "Spieler wiederholen Event"
 
-#: plnotifier/cog.py:1431
+#: plnotifier/cog.py:1453
 msgid "[Node={node}] {requester} disabled repeat."
 msgstr "[Knoten={node}] {requester} Wiederholung deaktiviert."
 
-#: plnotifier/cog.py:1441
+#: plnotifier/cog.py:1463
 msgid "{requester} {status} repeat of the whole queue."
 msgstr "{requester} {status} Wiederholung der gesamten Warteschlange."
 
-#: plnotifier/cog.py:1442 plnotifier/cog.py:1453
+#: plnotifier/cog.py:1464 plnotifier/cog.py:1475
 msgid "enabled"
 msgstr "aktiviert"
 
-#: plnotifier/cog.py:1442 plnotifier/cog.py:1453
+#: plnotifier/cog.py:1464 plnotifier/cog.py:1475
 msgid "disabled"
 msgstr "deaktiviert"
 
-#: plnotifier/cog.py:1451
+#: plnotifier/cog.py:1473
 msgid "[Node={node}] {requester} {status} repeat for {track}."
 msgstr "[Knoten={node}] {requester} {status} wiederholen für {track}."
 
-#: plnotifier/cog.py:1479
+#: plnotifier/cog.py:1501
 msgid "Player Restored Event"
 msgstr "Spieler-Ereignis wiederhergestellt"
 
-#: plnotifier/cog.py:1480
+#: plnotifier/cog.py:1502
 msgid "[Node={node}] {requester} restored the player."
 msgstr "[Knoten={node}] {requester} hat den Spieler wiederhergestellt."
 
-#: plnotifier/cog.py:1501
+#: plnotifier/cog.py:1523
 msgid "an intro section"
 msgstr "ein Intro Abschnitt"
 
-#: plnotifier/cog.py:1503
+#: plnotifier/cog.py:1525
 msgid "an outro section"
 msgstr "ein Outtro Abschnitt"
 
-#: plnotifier/cog.py:1505
+#: plnotifier/cog.py:1527
 msgid "a preview section"
 msgstr "ein Vorschau-Abschnitt"
 
-#: plnotifier/cog.py:1507
+#: plnotifier/cog.py:1529
 msgid "an off-topic section"
 msgstr "ein Offtopic Abschnitt"
 
-#: plnotifier/cog.py:1509
+#: plnotifier/cog.py:1531
 msgid "a filler section"
 msgstr "ein Füller-Abschnitt"
 
-#: plnotifier/cog.py:1511
+#: plnotifier/cog.py:1533
 msgid "a sponsor section"
 msgstr "ein Sponsor Abschnitt"
 
-#: plnotifier/cog.py:1513
+#: plnotifier/cog.py:1535
 msgid "a self-promotion section"
 msgstr "ein Self-Promotion-Abschnitt"
 
-#: plnotifier/cog.py:1515
+#: plnotifier/cog.py:1537
 msgid "an interaction section"
 msgstr "ein Interaktionsbereich"
 
-#: plnotifier/cog.py:1519
+#: plnotifier/cog.py:1541
 msgid "Sponsor Segment Skipped Event"
 msgstr "Sponsor Segment übersprungen Event"
 
-#: plnotifier/cog.py:1520
+#: plnotifier/cog.py:1542
 msgid "[Node={node}] Sponsorblock: Skipped {category} running from {start}s to {to}s."
 msgstr "[Node={node}] Sponsorblock: {category} übersprungen, die von {start}s auf {to}s laufen."
 
-#: plnotifier/cog.py:1546
+#: plnotifier/cog.py:1568
 msgid "Effect"
 msgstr "Effekt"
 
-#: plnotifier/cog.py:1547
+#: plnotifier/cog.py:1569
 msgid "Values"
 msgstr "Werte"
 
-#: plnotifier/cog.py:1576
+#: plnotifier/cog.py:1598
 msgid "N/A"
 msgstr "N/A"
 
-#: plnotifier/cog.py:1580
+#: plnotifier/cog.py:1602
 msgid "Filters Applied Event"
 msgstr "Filter angewendeter Termin"
 
-#: plnotifier/cog.py:1581
+#: plnotifier/cog.py:1603
 msgid "[Node={node}] {requester} changed the player filters.\n\n"
 "__**Currently Applied:**__\n"
 "{data}"
@@ -447,39 +460,39 @@ msgstr "[Knoten={node}] {requester} änderte den Spielerfilter.\n\n"
 "__**Derzeit angewendet:**__\n"
 "{data}"
 
-#: plnotifier/cog.py:1585
+#: plnotifier/cog.py:1607
 msgid "None"
 msgstr "Keine"
 
-#: plnotifier/cog.py:1602
+#: plnotifier/cog.py:1624
 msgid "Node Connected Event"
 msgstr "Knoten-Verbundenes Ereignis"
 
-#: plnotifier/cog.py:1603
+#: plnotifier/cog.py:1625
 msgid "Node {name} has been connected."
 msgstr "Knoten {name} wurde verbunden."
 
-#: plnotifier/cog.py:1618
+#: plnotifier/cog.py:1640
 msgid "Node Disconnected Event"
 msgstr "Knotentrennung Ereignis"
 
-#: plnotifier/cog.py:1619
+#: plnotifier/cog.py:1641
 msgid "Node {name} has been disconnected with code {code} and reason: {reason}."
 msgstr "Knoten {name} wurde mit Code {code} und Grund getrennt: {reason}."
 
-#: plnotifier/cog.py:1639
+#: plnotifier/cog.py:1661
 msgid "Node Changed Event"
 msgstr "Knotenveränderung Event"
 
-#: plnotifier/cog.py:1640
+#: plnotifier/cog.py:1662
 msgid "The node which the player is connected to changed from {fro} to {to}."
 msgstr "Der Knoten, zu dem der Spieler verbunden ist, wurde von {fro} zu {to} geändert."
 
-#: plnotifier/cog.py:1660
+#: plnotifier/cog.py:1682
 msgid "WebSocket Closed Event"
 msgstr "WebSocket Geschlossen Event"
 
-#: plnotifier/cog.py:1661
+#: plnotifier/cog.py:1683
 msgid "[Node={node}] The websocket connection to the Lavalink node closed with code {code} and reason {reason}."
 msgstr "[Node={node}] Die Websocket-Verbindung zum Lavalink-Knoten wurde mit dem Code {code} und dem Grund {reason} geschlossen."
 

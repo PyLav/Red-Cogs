@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-09 11:50+0000\n"
-"PO-Revision-Date: 2022-05-15 20:25\n"
+"POT-Creation-Date: 2022-05-19 18:31+0000\n"
+"PO-Revision-Date: 2022-05-19 18:40\n"
 "Last-Translator: \n"
 "Language-Team: Dutch, Suriname\n"
 "MIME-Version: 1.0\n"
@@ -17,26 +17,39 @@ msgstr ""
 "X-Crowdin-File-ID: 210\n"
 "Language: nl_SR\n"
 
-#: plnodes/cog.py:29
+#: plnodes/cog.py:31
 #, docstring
 msgid "Manage the nodes used by PyLav."
 msgstr "Beheer de nodes gebruikt door PyLav."
 
-#: plnodes/cog.py:40
+#: plnodes/cog.py:42
 #, docstring
 msgid "Configure PyLav Nodes."
 msgstr "PyLav Nodes configureren."
 
-#: plnodes/cog.py:44
+#: plnodes/cog.py:46
+#, docstring
+msgid "Show the version of the Cog and it's PyLav dependencies."
+msgstr "Toon de versie van de Cog en de PyLav afhankelijkheden."
+
+#: plnodes/cog.py:59
+msgid "Library/Cog"
+msgstr "Bibliotheek/Cog"
+
+#: plnodes/cog.py:59
+msgid "Version"
+msgstr "Versie"
+
+#: plnodes/cog.py:67
 #, docstring
 msgid "Add a node PyLav."
 msgstr "Voeg een node PyLav."
 
-#: plnodes/cog.py:54
+#: plnodes/cog.py:77
 msgid "Let's add a node to PyLav!"
 msgstr "Laten we een node toevoegen aan PyLav!"
 
-#: plnodes/cog.py:55
+#: plnodes/cog.py:78
 msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
 "(**2**){space} - Cancel any changes made and close the menu.\n"
 "(**3**){space} - Toggle between search-only and search and playback modes.\n"
@@ -60,35 +73,35 @@ msgstr "(**1**){space} - Pas wijzigingen toe en voeg de node toe aan PyLav.\n"
 "(**10**) - Selecteer welke bronnen u wilt uitschakelen voor deze node (Meerdere kunnen worden geselecteerd).\n"
 "Als je meerdere keren met een knop communiceert, zal alleen de laatste interactie van kracht worden\n\n\n"
 
-#: plnodes/cog.py:147
+#: plnodes/cog.py:170
 #, docstring
 msgid "Remove a node from PyLav instance."
 msgstr "Verwijder een node van PyLav instantie."
 
-#: plnodes/cog.py:159
+#: plnodes/cog.py:182
 msgid "{name} is managed by PyLav and cannot be removed."
 msgstr "{name} wordt beheerd door PyLav en kan niet worden verwijderd."
 
-#: plnodes/cog.py:174
+#: plnodes/cog.py:197
 msgid "Removed node {name}.\n\n"
 "{data}"
 msgstr "Node {name}.\n\n"
 "{data} verwijderd"
 
-#: plnodes/cog.py:182
+#: plnodes/cog.py:205
 msgid "Removed node {name}, a DM was sent to you with the node details in case you wish to re-add it."
 msgstr "node {name}is verwijderd, er is een DM naar u verzonden met de details van het knooppunt in het geval u het opnieuw wilt toevoegen."
 
-#: plnodes/cog.py:192
+#: plnodes/cog.py:215
 #, docstring
 msgid "Manage all nodes in PyLav instance."
 msgstr "Beheer alle nodes in PyLav instantie."
 
-#: plnodes/cog.py:204
+#: plnodes/cog.py:227
 msgid "Let's manage some nodes!"
 msgstr "Laten we wat knooppunten beheren!"
 
-#: plnodes/cog.py:205
+#: plnodes/cog.py:228
 msgid "(**1**){space} - Cancel any changes made and close the menu.\n"
 "(**6**){space} - Show sources enabled for this node.\n"
 "(**7**){space} - Apply changes and add the node to PyLav.\n"
@@ -116,20 +129,20 @@ msgstr "(**1**){space} - Annuleer alle wijzigingen die zijn aangebracht en sluit
 "(**16**) - Selecteer welke bronnen u wilt uitschakelen voor deze node (Meerdere kunnen worden geselecteerd).\n"
 "Als je meerdere keren met een knop werkt, zal alleen de laatste interactie van kracht worden\n\n\n"
 
-#: plnodes/cog.py:234
+#: plnodes/cog.py:257
 msgid "{name} is managed by PyLav and cannot be modified with this command."
 msgstr "{name} wordt beheerd door PyLav en kan niet worden gewijzigd met dit commando."
 
-#: plnodes/cog.py:246
+#: plnodes/cog.py:269
 msgid "Removed node {name}."
 msgstr "Node {name} verwijderd."
 
-#: plnodes/cog.py:306
+#: plnodes/cog.py:329
 #, docstring
 msgid "List all nodes used by PyLav."
 msgstr "Toon alle nodes die gebruikt worden door PyLav."
 
-#: plnodes/cog.py:316
+#: plnodes/cog.py:339
 msgid "No Nodes added to PyLav."
 msgstr "Geen Nodes toegevoegd aan PyLav."
 

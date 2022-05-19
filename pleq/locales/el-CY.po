@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-10 19:00+0000\n"
-"PO-Revision-Date: 2022-05-15 20:25\n"
+"POT-Creation-Date: 2022-05-19 18:31+0000\n"
+"PO-Revision-Date: 2022-05-19 18:40\n"
 "Last-Translator: \n"
 "Language-Team: Greek, Cyprus\n"
 "MIME-Version: 1.0\n"
@@ -17,30 +17,43 @@ msgstr ""
 "X-Crowdin-File-ID: 434\n"
 "Language: el_CY\n"
 
-#: pleq/cog.py:24
+#: pleq/cog.py:27
 #, docstring
 msgid "Apply equalizer presets to the PyLav player."
 msgstr "Εφαρμογή προεπιλογών ισοσταθμιστή στο PyLav player."
 
-#: pleq/cog.py:51
+#: pleq/cog.py:54
 #, docstring
 msgid "Configure the Player behaviour when a preset is set."
 msgstr "Ρύθμιση της συμπεριφοράς του παίκτη όταν έχει οριστεί μια προκαθορισμένη ρύθμιση."
 
-#: pleq/cog.py:55
+#: pleq/cog.py:58
+#, docstring
+msgid "Show the version of the Cog and it's PyLav dependencies."
+msgstr "Εμφάνιση της έκδοσης του Cog και είναι PyLav εξαρτήσεις."
+
+#: pleq/cog.py:71
+msgid "Library/Cog"
+msgstr "Βιβλιοθήκη/Σόργο"
+
+#: pleq/cog.py:71
+msgid "Version"
+msgstr "Έκδοση"
+
+#: pleq/cog.py:79
 #, docstring
 msgid "Persist the last used preset."
 msgstr "Επιμένετε στην τελευταία προκαθορισμένη ρύθμιση."
 
-#: pleq/cog.py:70
+#: pleq/cog.py:94
 msgid "The player will now apply the last used preset when it is created."
 msgstr "Ο παίκτης θα εφαρμόσει τώρα την τελευταία προκαθορισμένη ρύθμιση όταν δημιουργηθεί."
 
-#: pleq/cog.py:81
+#: pleq/cog.py:105
 msgid "Last used preset will no longer be saved."
 msgstr "Η τελευταία χρησιμοποιημένη προεπιλογή δεν θα αποθηκεύεται πλέον."
 
-#: pleq/cog.py:95
+#: pleq/cog.py:119
 #, docstring
 msgid "Apply a Bass boost preset to the player.\n\n"
 "        Arguments:\n"
@@ -65,43 +78,43 @@ msgstr "Εφαρμόστε μια προκαθορισμένη ενίσχυση 
 "            - Απενεργοποιημένη\n"
 "        "
 
-#: pleq/cog.py:120
+#: pleq/cog.py:144
 msgid "Bass boost preset has been disabled."
 msgstr "Η προκαθορισμένη ενίσχυση μπάσου έχει απενεργοποιηθεί."
 
-#: pleq/cog.py:127
+#: pleq/cog.py:151
 msgid "Bass boost - Maximum"
 msgstr "Ενίσχυση μπάσου - Μέγιστο"
 
-#: pleq/cog.py:131
+#: pleq/cog.py:155
 msgid "Bass boost - Insane"
 msgstr "Ενίσχυση μπάσου - παράλογο"
 
-#: pleq/cog.py:135
+#: pleq/cog.py:159
 msgid "Bass boost - Extreme"
 msgstr "Ενίσχυση μπάσου - Ακραία"
 
-#: pleq/cog.py:139
+#: pleq/cog.py:163
 msgid "Bass boost - Very High"
 msgstr "Ενίσχυση μπάσου - Πολύ υψηλή"
 
-#: pleq/cog.py:143
+#: pleq/cog.py:167
 msgid "Bass boost - High"
 msgstr "Ενίσχυση μπάσου - Υψηλή"
 
-#: pleq/cog.py:147
+#: pleq/cog.py:171
 msgid "Bass boost - Medium"
 msgstr "Ενίσχυση μπάσου - Μέτρια"
 
-#: pleq/cog.py:151
+#: pleq/cog.py:175
 msgid "Bass boost - Cut-off"
 msgstr "Ενίσχυση μπάσου - Αποκοπή"
 
-#: pleq/cog.py:163
+#: pleq/cog.py:187
 msgid "Preset has been set to {name}."
 msgstr "Η προκαθορισμένη ρύθμιση έχει οριστεί σε {name}."
 
-#: pleq/cog.py:170
+#: pleq/cog.py:194
 #, docstring
 msgid "Apply a Piano preset to the player.\n\n"
 "        Suitable for acoustic tracks, or tacks with an emphasis on female vocals.\n\n"
@@ -112,15 +125,15 @@ msgstr "Εφαρμόστε μια προεπιλογή πιάνο στον πα�
 "        Μπορεί επίσης να χρησιμοποιηθεί ως περικοπή μπάσων.\n"
 "        "
 
-#: pleq/cog.py:194
+#: pleq/cog.py:218
 msgid "Piano"
 msgstr "Πιάνο"
 
-#: pleq/cog.py:207
+#: pleq/cog.py:231
 msgid "Piano preset has been set."
 msgstr "Η προκαθορισμένη ρύθμιση πιάνου έχει οριστεί."
 
-#: pleq/cog.py:214
+#: pleq/cog.py:238
 #, docstring
 msgid "Apply an experimental Metal/Rock equalizer preset.\n\n"
 "        Expect clipping on songs with heavy bass.\n"
@@ -129,20 +142,20 @@ msgstr "Εφαρμόστε μια προεπιλογή πειραματικού 
 "        Περιμένετε απόκομμα σε τραγούδια με βαρύ μπάσο\n"
 "        "
 
-#: pleq/cog.py:238
+#: pleq/cog.py:262
 msgid "Metal"
 msgstr "Μέταλλο"
 
-#: pleq/cog.py:250
+#: pleq/cog.py:274
 msgid "Rock/Metal preset has been set."
 msgstr "Η προκαθορισμένη ρύθμιση Rock/Metal έχει ρυθμιστεί."
 
-#: pleq/cog.py:257
+#: pleq/cog.py:281
 #, docstring
 msgid "Remove any equalizer preset from the player."
 msgstr "Αφαίρεση προεπιλογής ισοσταθμιστή από τον παίκτη."
 
-#: pleq/cog.py:270
+#: pleq/cog.py:294
 msgid "Equalizer preset has been reset."
 msgstr "Η προκαθορισμένη ρύθμιση ισοσταθμιστή έχει επαναφερθεί."
 
