@@ -251,7 +251,9 @@ class PyLavNodes(commands.Cog):
         node = menu.source.target
         if not node:
             return
-        if node.managed:
+        if node.managed or node.identifier in {
+            1,
+        }:
             await context.send(
                 embed=await self.lavalink.construct_embed(
                     description=_("{name} is managed by PyLav and cannot be modified with this command.").format(
