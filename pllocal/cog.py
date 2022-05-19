@@ -4,12 +4,16 @@ from functools import partial
 from pathlib import Path
 from typing import Optional
 
+import discord
 from discord import app_commands
 from discord.app_commands import Choice
 from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
+from redbot.core.utils.chat_formatting import box
+from tabulate import tabulate
 
+import pylavcogs_shared
 from pylav import Query
 from pylav.types import BotT, InteractionT
 from pylav.utils import AsyncIter, PyLavContext
@@ -44,6 +48,31 @@ class PyLavLocalFiles(commands.Cog):
 
     async def cog_check(self, ctx: PyLavContext):
         return bool(self.ready_event.is_set())
+
+    @commands.group(name="localset")
+    async def command_localset(self, ctx: PyLavContext):
+        """Configure cog settings."""
+
+    @command_localset.command(name="version")
+    async def command_localset_version(self, context: PyLavContext) -> None:
+        """Show the version of the Cog and it's PyLav dependencies."""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+        data = [
+            (self.__class__.__name__, self.__version__),
+            ("PyLavCogs-Shared", pylavcogs_shared.__VERSION__),
+            ("PyLav", self.bot.lavalink.lib_version),
+        ]
+
+        await context.send(
+            embed=await self.lavalink.construct_embed(
+                description=box(tabulate(data, headers=(_("Library/Cog"), _("Version")), tablefmt="fancy_grid")),
+                messageable=context,
+            ),
+            ephemeral=True,
+        )
 
     @app_commands.command(name="local")
     @app_commands.guild_only()

@@ -8,8 +8,10 @@ from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.commands import TimedeltaConverter
 from redbot.core.i18n import Translator
-from redbot.core.utils.chat_formatting import bold, humanize_number, humanize_timedelta
+from redbot.core.utils.chat_formatting import bold, box, humanize_number, humanize_timedelta
+from tabulate import tabulate
 
+import pylavcogs_shared
 from pylav.converters import PlaylistConverter
 from pylav.types import PyLavCogMixin
 from pylav.utils import PyLavContext
@@ -25,6 +27,27 @@ class ConfigCommands(PyLavCogMixin, ABC):
     @commands.group(name="playerset")
     async def command_playerset(self, context: PyLavContext) -> None:
         """Player configuration commands."""
+
+    @command_playerset.command(name="version")
+    async def command_playerset_version(self, context: PyLavContext) -> None:
+        """Show the version of the Cog and it's PyLav dependencies."""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+        data = [
+            (self.__class__.__name__, self.__version__),
+            ("PyLavCogs-Shared", pylavcogs_shared.__VERSION__),
+            ("PyLav", self.bot.lavalink.lib_version),
+        ]
+
+        await context.send(
+            embed=await self.lavalink.construct_embed(
+                description=box(tabulate(data, headers=(_("Library/Cog"), _("Version")), tablefmt="fancy_grid")),
+                messageable=context,
+            ),
+            ephemeral=True,
+        )
 
     @commands.is_owner()
     @command_playerset.group(name="global", aliases=["owner"])

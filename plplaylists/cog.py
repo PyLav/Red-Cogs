@@ -13,8 +13,10 @@ from redbot.core import Config
 from redbot.core import commands
 from redbot.core import commands as red_commands
 from redbot.core.i18n import Translator, cog_i18n
-from redbot.core.utils.chat_formatting import bold, humanize_list
+from redbot.core.utils.chat_formatting import bold, box, humanize_list
+from tabulate import tabulate
 
+import pylavcogs_shared
 from pylav import InvalidPlaylist, Query, Track
 from pylav.constants import BUNDLED_PLAYLIST_IDS
 from pylav.converters import PlaylistConverter, QueryPlaylistConverter
@@ -70,6 +72,27 @@ class PyLavPlaylists(
     @commands.guild_only()
     async def command_playlist(self, context: PyLavContext):
         """Control custom playlist available in the bot."""
+
+    @command_playlist.command(name="version")
+    async def command_playlist_version(self, context: PyLavContext) -> None:
+        """Show the version of the Cog and it's PyLav dependencies."""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+        data = [
+            (self.__class__.__name__, self.__version__),
+            ("PyLavCogs-Shared", pylavcogs_shared.__VERSION__),
+            ("PyLav", self.bot.lavalink.lib_version),
+        ]
+
+        await context.send(
+            embed=await self.lavalink.construct_embed(
+                description=box(tabulate(data, headers=(_("Library/Cog"), _("Version")), tablefmt="fancy_grid")),
+                messageable=context,
+            ),
+            ephemeral=True,
+        )
 
     @command_playlist.command(name="create", aliases=["new"])
     async def command_playlist_create(
@@ -458,7 +481,7 @@ class PyLavPlaylists(
 
     @command_playlist.command(name="upload")
     @commands.guild_only()
-    async def command_playlist_upload(self, context: commands.Context, url: str = None):
+    async def command_playlist_upload(self, context: PyLavContext, url: str = None):
         """
         Upload a playlist to the bot.
 

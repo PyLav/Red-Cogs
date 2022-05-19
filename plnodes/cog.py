@@ -10,7 +10,9 @@ from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import box, humanize_list, inline
+from tabulate import tabulate
 
+import pylavcogs_shared
 from pylav.converters.nodes import NodeConverter
 from pylav.types import BotT
 from pylav.utils import PyLavContext
@@ -38,6 +40,27 @@ class PyLavNodes(commands.Cog):
     @commands.group(name="plnode")
     async def command_plnode(self, context: PyLavContext) -> None:
         """Configure PyLav Nodes."""
+
+    @command_plnode.command(name="version")
+    async def command_plnode_version(self, context: PyLavContext) -> None:
+        """Show the version of the Cog and it's PyLav dependencies."""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+        data = [
+            (self.__class__.__name__, self.__version__),
+            ("PyLavCogs-Shared", pylavcogs_shared.__VERSION__),
+            ("PyLav", self.bot.lavalink.lib_version),
+        ]
+
+        await context.send(
+            embed=await self.lavalink.construct_embed(
+                description=box(tabulate(data, headers=(_("Library/Cog"), _("Version")), tablefmt="fancy_grid")),
+                messageable=context,
+            ),
+            ephemeral=True,
+        )
 
     @command_plnode.command(name="add", aliases=["create", "new"])
     async def command_plnode_add(self, context: PyLavContext) -> None:
@@ -143,7 +166,7 @@ class PyLavNodes(commands.Cog):
                 )
 
     @command_plnode.command(name="remove", aliases=["delete", "del", "rm"])
-    async def command_plnode_remove(self, context: commands.Context, *, nodes: NodeConverter):
+    async def command_plnode_remove(self, context: PyLavContext, *, nodes: NodeConverter):
         """Remove a node from PyLav instance."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -188,7 +211,7 @@ class PyLavNodes(commands.Cog):
         )
 
     @command_plnode.command(name="manage")
-    async def command_plnode_manage(self, context: commands.Context):
+    async def command_plnode_manage(self, context: PyLavContext):
         """Manage all nodes in PyLav instance."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)

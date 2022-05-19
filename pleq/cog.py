@@ -7,7 +7,10 @@ import discord
 from red_commons.logging import getLogger
 from redbot.core import Config, commands
 from redbot.core.i18n import Translator, cog_i18n
+from redbot.core.utils.chat_formatting import box
+from tabulate import tabulate
 
+import pylavcogs_shared
 from pylav.filters import Equalizer
 from pylav.types import BotT
 from pylav.utils import PyLavContext
@@ -49,6 +52,27 @@ class PyLavEqualizer(commands.Cog):
     @commands.guildowner_or_permissions(manage_guild=True)
     async def command_eqset(self, ctx: PyLavContext) -> None:
         """Configure the Player behaviour when a preset is set."""
+
+    @command_eqset.command(name="version")
+    async def command_eqset_version(self, context: PyLavContext) -> None:
+        """Show the version of the Cog and it's PyLav dependencies."""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+        data = [
+            (self.__class__.__name__, self.__version__),
+            ("PyLavCogs-Shared", pylavcogs_shared.__VERSION__),
+            ("PyLav", self.bot.lavalink.lib_version),
+        ]
+
+        await context.send(
+            embed=await self.lavalink.construct_embed(
+                description=box(tabulate(data, headers=(_("Library/Cog"), _("Version")), tablefmt="fancy_grid")),
+                messageable=context,
+            ),
+            ephemeral=True,
+        )
 
     @command_eqset.command(name="persist")
     async def command_eqset_persist(self, context: PyLavContext) -> None:

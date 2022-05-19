@@ -8,8 +8,10 @@ from discord.utils import maybe_coroutine
 from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
-from redbot.core.utils.chat_formatting import inline
+from redbot.core.utils.chat_formatting import box, inline
+from tabulate import tabulate
 
+import pylavcogs_shared
 from pylav.localfiles import LocalFile
 from pylav.sql.models import LibConfigModel
 from pylav.types import BotT
@@ -35,6 +37,27 @@ class PyLavConfigurator(commands.Cog):
     @commands.group(name="plset", aliases=["plconfig"])
     async def command_plset(self, ctx: PyLavContext) -> None:
         """Change global settings for PyLav"""
+
+    @command_plset.command(name="version")
+    async def command_plset_version(self, context: PyLavContext) -> None:
+        """Show the version of the Cog and it's PyLav dependencies."""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+        data = [
+            (self.__class__.__name__, self.__version__),
+            ("PyLavCogs-Shared", pylavcogs_shared.__VERSION__),
+            ("PyLav", self.bot.lavalink.lib_version),
+        ]
+
+        await context.send(
+            embed=await self.lavalink.construct_embed(
+                description=box(tabulate(data, headers=(_("Library/Cog"), _("Version")), tablefmt="fancy_grid")),
+                messageable=context,
+            ),
+            ephemeral=True,
+        )
 
     @command_plset.command(name="folder")
     async def command_plset_folder(self, context: PyLavContext, create: bool, *, folder: str) -> None:

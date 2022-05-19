@@ -11,7 +11,9 @@ from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import box, humanize_number, inline, pagify
 from rich.console import Console
 from rich.tree import Tree
+from tabulate import tabulate
 
+import pylavcogs_shared
 from pylav.converters import QueryConverter
 from pylav.track_encoding import decode_track
 from pylav.types import BotT
@@ -37,6 +39,27 @@ class PyLavUtils(commands.Cog):
     @commands.group(name="plutils")
     async def command_plutils(self, context: PyLavContext):
         """Utility commands for PyLav."""
+
+    @command_plutils.command(name="version")
+    async def command_plutils_version(self, context: PyLavContext) -> None:
+        """Show the version of the Cog and it's PyLav dependencies."""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+        data = [
+            (self.__class__.__name__, self.__version__),
+            ("PyLavCogs-Shared", pylavcogs_shared.__VERSION__),
+            ("PyLav", self.bot.lavalink.lib_version),
+        ]
+
+        await context.send(
+            embed=await self.lavalink.construct_embed(
+                description=box(tabulate(data, headers=(_("Library/Cog"), _("Version")), tablefmt="fancy_grid")),
+                messageable=context,
+            ),
+            ephemeral=True,
+        )
 
     @command_plutils.command(name="slashes")
     async def command_plutils_slashes(self, context: PyLavContext):
