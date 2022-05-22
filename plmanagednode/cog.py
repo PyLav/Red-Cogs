@@ -4,7 +4,6 @@ import re
 import shutil
 from pathlib import Path
 
-import aiopath
 import discord
 import humanize
 import ujson
@@ -23,6 +22,7 @@ from pylav.sql.models import LibConfigModel
 from pylav.types import BotT, CogT
 from pylav.utils import PyLavContext
 from pylav.utils.built_in_node import NODE_DEFAULT_SETTINGS
+from pylav.vendored import aiopath
 
 LOGGER = getLogger("red.3pt.PyLavManagedNode")
 
