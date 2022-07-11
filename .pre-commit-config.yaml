@@ -5,7 +5,7 @@ repos:
 -   repo: https://github.com/psf/black
     # The `refs/tags/<tag>:refs/tags/<tag>` is needed for black's required-version to work:
     # https://github.com/psf/black/issues/2493#issuecomment-1081987650
-    rev: 22.3.0
+    rev: 22.6.0
     hooks:
     -   id: black
 -   repo: https://github.com/Pierre-Sassoulas/black-disable-checker
@@ -47,7 +47,7 @@ repos:
         -   --autofix
         -   --indent=4
 -   repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
-    rev: v2.3.0
+    rev: v2.4.0
     hooks:
     -   id: pretty-format-toml
         args:
@@ -74,7 +74,7 @@ repos:
     hooks:
     -   id: autopep8
 -   repo: https://github.com/asottile/pyupgrade
-    rev: v2.34.0
+    rev: v2.37.1
     hooks:
     -   id: pyupgrade
         args: [--py39-plus]
