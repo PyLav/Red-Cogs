@@ -3,8 +3,8 @@ import re
 from abc import ABC
 from functools import partial
 from pathlib import Path
-from typing import Final, Optional
 from re import Pattern
+from typing import Final, Optional
 
 import discord
 from discord import app_commands
