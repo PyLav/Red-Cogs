@@ -345,3 +345,24 @@ class PyLavConfigurator(commands.Cog):
                 ),
                 ephemeral=True,
             )
+
+    @command_plset.command(name="spotifyapi")
+    async def command_plset_spotifyapi(self, context: PyLavContext) -> None:
+        """Instructions on how to set the Spotify API Tokens."""
+        message = _(
+            "1. Go to Spotify developers and log in with your Spotify account.\n"
+            "(https://developer.spotify.com/dashboard/applications)\n"
+            '2. Click "Create An App".\n'
+            "3. Fill out the form provided with your app name, etc.\n"
+            '4. When asked if you\'re developing commercial integration select "No".\n'
+            "5. Accept the terms and conditions.\n"
+            "6. Copy your client ID and your client secret into:\n"
+            "`{prefix}set api spotify client_id <your_client_id_here> "
+            "client_secret <your_client_secret_here>`"
+        ).format(prefix=context.prefix)
+        await context.send(
+            embed=await context.lavalink.construct_embed(
+                description=message,
+                messageable=context,
+            )
+        )
