@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-19 19:47+0000\n"
-"PO-Revision-Date: 2022-07-13 20:16\n"
+"POT-Creation-Date: 2022-07-26 17:22+0000\n"
+"PO-Revision-Date: 2022-08-01 16:30\n"
 "Last-Translator: \n"
 "Language-Team: Greek\n"
 "MIME-Version: 1.0\n"
@@ -152,4 +152,27 @@ msgstr "Ο διαχειριζόμενος εξωτερικός κόμβος τη
 #: plconfig/cog.py:343
 msgid "PyLav's managed external node has been disabled."
 msgstr "Ο διαχειριζόμενος εξωτερικός κόμβος της PyLav έχει απενεργοποιηθεί."
+
+#: plconfig/cog.py:351
+#, docstring
+msgid "Instructions on how to set the Spotify API Tokens."
+msgstr "Οδηγίες για το πώς να ορίσετε το Spotify API Tokens."
+
+#: plconfig/cog.py:352
+msgid "1. Go to Spotify developers and log in with your Spotify account.\n"
+"(https://developer.spotify.com/dashboard/applications)\n"
+"2. Click \"Create An App\".\n"
+"3. Fill out the form provided with your app name, etc.\n"
+"4. When asked if you're developing commercial integration select \"No\".\n"
+"5. Accept the terms and conditions.\n"
+"6. Copy your client ID and your client secret into:\n"
+"`{prefix}set api spotify client_id <your_client_id_here> client_secret <your_client_secret_here>`"
+msgstr "1. Πηγαίνετε στους προγραμματιστές του Spotify και συνδεθείτε με το λογαριασμό σας στο Spotify.\n"
+"(https://developer.spotify. om/dashboard/applications)\n"
+"2. Κάντε κλικ στο κουμπί \"Create An App\".\n"
+"3. Συμπληρώστε τη φόρμα που παρέχεται με το όνομα της εφαρμογής σας, κλπ.\n"
+"4. Όταν ερωτηθείτε αν αναπτύσσετε εμπορική ενσωμάτωση επιλέξτε \"Όχι\".\n"
+"5. Αποδεχτείτε τους όρους και τις προϋποθέσεις.\n"
+"6. Αντιγράψτε το ID πελάτη και το μυστικό του πελάτη σας:\n"
+"`{prefix}set api spotify client_id <your_client_id_here> client_secret <your_client_secret_here>`"
 

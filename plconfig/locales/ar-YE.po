@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-19 19:47+0000\n"
-"PO-Revision-Date: 2022-07-22 20:02\n"
+"POT-Creation-Date: 2022-07-26 17:22+0000\n"
+"PO-Revision-Date: 2022-08-01 16:31\n"
 "Last-Translator: \n"
 "Language-Team: Arabic, Yemen\n"
 "MIME-Version: 1.0\n"
@@ -152,4 +152,27 @@ msgstr "تم تمكين العقدة الخارجية التي تديرها PyLa
 #: plconfig/cog.py:343
 msgid "PyLav's managed external node has been disabled."
 msgstr "تم تعطيل العقدة الخارجية التي تديرها PyLav."
+
+#: plconfig/cog.py:351
+#, docstring
+msgid "Instructions on how to set the Spotify API Tokens."
+msgstr "تعليمات حول كيفية تعيين رمز API Spotify"
+
+#: plconfig/cog.py:352
+msgid "1. Go to Spotify developers and log in with your Spotify account.\n"
+"(https://developer.spotify.com/dashboard/applications)\n"
+"2. Click \"Create An App\".\n"
+"3. Fill out the form provided with your app name, etc.\n"
+"4. When asked if you're developing commercial integration select \"No\".\n"
+"5. Accept the terms and conditions.\n"
+"6. Copy your client ID and your client secret into:\n"
+"`{prefix}set api spotify client_id <your_client_id_here> client_secret <your_client_secret_here>`"
+msgstr "1. انتقل إلى مطوري Spotify وقم بتسجيل الدخول باستخدام حساب Spotify الخاص بك.\n"
+"(https://developer.spotify. om/dashboard/applications)\n"
+"2. انقر فوق \"إنشاء تطبيق\".\n"
+"3. ملء النموذج المقدم باسم التطبيق الخاص بك، إلخ.\n"
+"4. عند السؤال عما إذا كنت تطور التكامل التجاري اختر \"لا\".\n"
+"5. قبول الأحكام والشروط\n"
+"6. نسخ معرف العميل وسرية العميل في:\n"
+"{prefix}تعيين api spotify client_id <your_client_id_here> client_secret <your_client_secret_here>`"
 
