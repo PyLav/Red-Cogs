@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-19 19:47+0000\n"
-"PO-Revision-Date: 2022-07-13 20:16\n"
+"POT-Creation-Date: 2022-07-26 17:22+0000\n"
+"PO-Revision-Date: 2022-08-01 16:30\n"
 "Last-Translator: \n"
 "Language-Team: Danish\n"
 "MIME-Version: 1.0\n"
@@ -152,4 +152,27 @@ msgstr "PyLavs administrerede eksterne node er blevet aktiveret."
 #: plconfig/cog.py:343
 msgid "PyLav's managed external node has been disabled."
 msgstr "PyLavs administrerede eksterne node er blevet deaktiveret."
+
+#: plconfig/cog.py:351
+#, docstring
+msgid "Instructions on how to set the Spotify API Tokens."
+msgstr "Instruktioner om hvordan Spotify API Tokens indstilles."
+
+#: plconfig/cog.py:352
+msgid "1. Go to Spotify developers and log in with your Spotify account.\n"
+"(https://developer.spotify.com/dashboard/applications)\n"
+"2. Click \"Create An App\".\n"
+"3. Fill out the form provided with your app name, etc.\n"
+"4. When asked if you're developing commercial integration select \"No\".\n"
+"5. Accept the terms and conditions.\n"
+"6. Copy your client ID and your client secret into:\n"
+"`{prefix}set api spotify client_id <your_client_id_here> client_secret <your_client_secret_here>`"
+msgstr "1. Gå til Spotify-udviklere og log ind med din Spotify-konto.\n"
+"(https://developer.spotify. om/dashboard/applications)\n"
+"2. Klik på \"Opret en App\".\n"
+"3. Udfyld formularen med dit appnavn mv.\n"
+"4. Når du bliver spurgt, om du udvikler kommerciel integration, skal du vælge \"Nej\".\n"
+"5. Accepter vilkår og betingelser.\n"
+"6. Kopier dit klient ID og din klient hemmeligt i:\n"
+"`{prefix}sæt api spotify client_id <your_client_id_here> client_secret <your_client_secret_here>`"
 

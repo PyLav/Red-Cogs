@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-19 19:47+0000\n"
-"PO-Revision-Date: 2022-07-13 20:16\n"
+"POT-Creation-Date: 2022-07-26 17:22+0000\n"
+"PO-Revision-Date: 2022-08-01 16:30\n"
 "Last-Translator: \n"
 "Language-Team: Czech\n"
 "MIME-Version: 1.0\n"
@@ -152,4 +152,27 @@ msgstr "PyLav's spravovaný externí uzel byl povolen."
 #: plconfig/cog.py:343
 msgid "PyLav's managed external node has been disabled."
 msgstr "PyLav's spravovaný externí uzel byl zakázán."
+
+#: plconfig/cog.py:351
+#, docstring
+msgid "Instructions on how to set the Spotify API Tokens."
+msgstr "Pokyny k nastavení Spotify API toens."
+
+#: plconfig/cog.py:352
+msgid "1. Go to Spotify developers and log in with your Spotify account.\n"
+"(https://developer.spotify.com/dashboard/applications)\n"
+"2. Click \"Create An App\".\n"
+"3. Fill out the form provided with your app name, etc.\n"
+"4. When asked if you're developing commercial integration select \"No\".\n"
+"5. Accept the terms and conditions.\n"
+"6. Copy your client ID and your client secret into:\n"
+"`{prefix}set api spotify client_id <your_client_id_here> client_secret <your_client_secret_here>`"
+msgstr "1. Přejděte na Spotify vývojáře a přihlaste se pomocí svého účtu Spotif.\n"
+"(https://developer.spotify. om/dashboard/applications)\n"
+"2. Klikněte na \"Vytvořit aplikaci\".\n"
+"3. Vyplňte formulář s názvem aplikace atd.\n"
+"4. Při dotazu, zda rozvíjíte komerční integraci, vyberte \"Ne\".\n"
+"5. Přijměte podmínky a podmínky\n"
+"6. Zkopírujte své ID klienta a tajný klíč do:\n"
+"{prefix}nastavte api spotify client_id <your_client_id_here> client_secret <your_client_secret_here>`"
 

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-19 19:47+0000\n"
-"PO-Revision-Date: 2022-07-22 20:01\n"
+"POT-Creation-Date: 2022-07-26 17:22+0000\n"
+"PO-Revision-Date: 2022-08-01 16:31\n"
 "Last-Translator: \n"
 "Language-Team: Spanish, Mexico\n"
 "MIME-Version: 1.0\n"
@@ -152,4 +152,27 @@ msgstr "Se ha habilitado el nodo externo administrado por PyLav."
 #: plconfig/cog.py:343
 msgid "PyLav's managed external node has been disabled."
 msgstr "Se ha desactivado el nodo externo administrado por PyLav."
+
+#: plconfig/cog.py:351
+#, docstring
+msgid "Instructions on how to set the Spotify API Tokens."
+msgstr "Instrucciones sobre cómo configurar las fichas API de Spotify."
+
+#: plconfig/cog.py:352
+msgid "1. Go to Spotify developers and log in with your Spotify account.\n"
+"(https://developer.spotify.com/dashboard/applications)\n"
+"2. Click \"Create An App\".\n"
+"3. Fill out the form provided with your app name, etc.\n"
+"4. When asked if you're developing commercial integration select \"No\".\n"
+"5. Accept the terms and conditions.\n"
+"6. Copy your client ID and your client secret into:\n"
+"`{prefix}set api spotify client_id <your_client_id_here> client_secret <your_client_secret_here>`"
+msgstr "1. Ve a los desarrolladores de Spotify e inicia sesión con tu cuenta de Spotify.\n"
+"(https://developer.spotify. om/dashboard/applications)\n"
+"2. Haga clic en \"Crear una aplicación\".\n"
+"3. Rellene el formulario proporcionado con su nombre de aplicación, etc.\n"
+"4. Cuando se le pregunte si está desarrollando la integración comercial, seleccione \"No\".\n"
+"5. Acepte los términos y condiciones.\n"
+"6. Copia tu ID de cliente y tu secreto de cliente:\n"
+"`{prefix}set api spotify client_id <your_client_id_here> client_secret <your_client_secret_here>`"
 

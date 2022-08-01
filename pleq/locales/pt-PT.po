@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-19 18:31+0000\n"
-"PO-Revision-Date: 2022-05-19 18:39\n"
+"POT-Creation-Date: 2022-08-01 16:23+0000\n"
+"PO-Revision-Date: 2022-08-01 16:30\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese\n"
 "MIME-Version: 1.0\n"
@@ -63,6 +63,7 @@ msgid "Apply a Bass boost preset to the player.\n\n"
 "            - High\n"
 "            - Very High\n"
 "            - Medium\n"
+"            - Fined Tuned\n"
 "            - Cut-off\n"
 "            - Off\n"
 "        "
@@ -72,49 +73,54 @@ msgstr "Aplicar uma predefinição de aumento de graves ao jogador.\n\n"
 "            - Insano\n"
 "            - Extremo\n"
 "            - Alto\n"
-"            - Muito alto\n"
+"            - Muito alto - Muito médio\n"
 "            - Médio\n"
+"            - Ajustado\n"
 "            - Corte\n"
-"            - Off\n"
+"            - Desligar\n"
 "        "
 
-#: pleq/cog.py:144
+#: pleq/cog.py:145
 msgid "Bass boost preset has been disabled."
 msgstr "A predefinição de reforço de graves foi desativada."
 
-#: pleq/cog.py:151
+#: pleq/cog.py:152
 msgid "Bass boost - Maximum"
 msgstr "Reforço de graves - Máximo"
 
-#: pleq/cog.py:155
+#: pleq/cog.py:156
 msgid "Bass boost - Insane"
 msgstr "Aumento de graves - Insano"
 
-#: pleq/cog.py:159
+#: pleq/cog.py:160
 msgid "Bass boost - Extreme"
 msgstr "Aumento de graves - Extremo"
 
-#: pleq/cog.py:163
+#: pleq/cog.py:164
 msgid "Bass boost - Very High"
 msgstr "Aumento de graves - Muito alto"
 
-#: pleq/cog.py:167
+#: pleq/cog.py:168
 msgid "Bass boost - High"
 msgstr "Reforço de graves - Alto"
 
-#: pleq/cog.py:171
+#: pleq/cog.py:172
 msgid "Bass boost - Medium"
 msgstr "Aumento de graves - Médio"
 
-#: pleq/cog.py:175
+#: pleq/cog.py:194
+msgid "Bass boost - Fined Tuned"
+msgstr "Aumento de graves - Ajuste finalizado"
+
+#: pleq/cog.py:198
 msgid "Bass boost - Cut-off"
 msgstr "Reforço de graves - Recorte"
 
-#: pleq/cog.py:187
+#: pleq/cog.py:210
 msgid "Preset has been set to {name}."
 msgstr "Predefinição foi definida para {name}."
 
-#: pleq/cog.py:194
+#: pleq/cog.py:217
 #, docstring
 msgid "Apply a Piano preset to the player.\n\n"
 "        Suitable for acoustic tracks, or tacks with an emphasis on female vocals.\n\n"
@@ -125,15 +131,15 @@ msgstr "Aplicar uma predefinição Piano ao jogador.\n\n"
 "        Também pode ser usado como um corte de graves falhas.\n"
 "        "
 
-#: pleq/cog.py:218
+#: pleq/cog.py:241
 msgid "Piano"
 msgstr "Piano"
 
-#: pleq/cog.py:231
+#: pleq/cog.py:254
 msgid "Piano preset has been set."
 msgstr "Predefinição de Piano foi definida."
 
-#: pleq/cog.py:238
+#: pleq/cog.py:261
 #, docstring
 msgid "Apply an experimental Metal/Rock equalizer preset.\n\n"
 "        Expect clipping on songs with heavy bass.\n"
@@ -142,20 +148,20 @@ msgstr "Aplique uma predefinição experimental de Metal/Rocha.\n\n"
 "        Espere o clipping em músicas com base pesada.\n"
 "        "
 
-#: pleq/cog.py:262
+#: pleq/cog.py:285
 msgid "Metal"
 msgstr "Metal"
 
-#: pleq/cog.py:274
+#: pleq/cog.py:297
 msgid "Rock/Metal preset has been set."
 msgstr "Predefinição de Pedra/Metal foi definida."
 
-#: pleq/cog.py:281
+#: pleq/cog.py:304
 #, docstring
 msgid "Remove any equalizer preset from the player."
 msgstr "Remova qualquer predefinição do equalizador do jogador."
 
-#: pleq/cog.py:294
+#: pleq/cog.py:317
 msgid "Equalizer preset has been reset."
 msgstr "A predefinição do equalizador foi redefinida."
 

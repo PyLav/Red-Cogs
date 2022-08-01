@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-19 19:47+0000\n"
-"PO-Revision-Date: 2022-07-13 20:16\n"
+"POT-Creation-Date: 2022-07-26 17:22+0000\n"
+"PO-Revision-Date: 2022-08-01 16:30\n"
 "Last-Translator: \n"
 "Language-Team: Romanian\n"
 "MIME-Version: 1.0\n"
@@ -152,4 +152,27 @@ msgstr "Nodul extern gestionat de PyLavs a fost activat."
 #: plconfig/cog.py:343
 msgid "PyLav's managed external node has been disabled."
 msgstr "Nodul extern gestionat de PyLavs a fost dezactivat."
+
+#: plconfig/cog.py:351
+#, docstring
+msgid "Instructions on how to set the Spotify API Tokens."
+msgstr "Instrucțiuni despre cum să setați jetoanele Spotify API."
+
+#: plconfig/cog.py:352
+msgid "1. Go to Spotify developers and log in with your Spotify account.\n"
+"(https://developer.spotify.com/dashboard/applications)\n"
+"2. Click \"Create An App\".\n"
+"3. Fill out the form provided with your app name, etc.\n"
+"4. When asked if you're developing commercial integration select \"No\".\n"
+"5. Accept the terms and conditions.\n"
+"6. Copy your client ID and your client secret into:\n"
+"`{prefix}set api spotify client_id <your_client_id_here> client_secret <your_client_secret_here>`"
+msgstr "1. Mergeți la dezvoltatorii Spotify și conectați-vă cu contul dvs. Spotify.\n"
+"(https://developer.spotify. om/dashboard/aplicații)\n"
+"2. Faceți clic pe \"Creați o aplicație\".\n"
+"3. Completați formularul furnizat cu numele aplicației dvs etc.\n"
+"4. Atunci când vă întrebați dacă dezvoltați integrarea comercială, selectați \"Nu\".\n"
+"5. Acceptați termenii și condițiile\n"
+"6. Copiați ID-ul clientului și clientul secret în:\n"
+"`{prefix}set api spotify client_id <your_client_id_here> client_secret <your_client_secret_here>`"
 
