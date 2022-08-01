@@ -18,7 +18,6 @@ from pylav import Query, Track
 from pylav.query import SEARCH_REGEX
 from pylav.types import InteractionT, PyLavCogMixin
 from pylav.utils import PyLavContext, format_time
-from pylavcogs_shared.converters.numeric import RangeConverter
 from pylavcogs_shared.ui.menus.queue import QueueMenu
 from pylavcogs_shared.ui.sources.queue import QueueSource
 from pylavcogs_shared.utils import rgetattr
@@ -589,7 +588,7 @@ class HybridCommands(PyLavCogMixin, ABC):
     @commands.hybrid_command(name="volume", description="Set the player volume.")
     @commands.guild_only()
     @requires_player()
-    async def command_volume(self, context: PyLavContext, volume: RangeConverter[int, 0, 1000]):
+    async def command_volume(self, context: PyLavContext, volume: int):
         """Set the player volume.
 
         The volume is a value from 0-1000.
@@ -598,6 +597,22 @@ class HybridCommands(PyLavCogMixin, ABC):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
+        if volume > 1000:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Volume must be less than 1000."), messageable=context
+                ),
+                ephemeral=True,
+            )
+            return
+        elif volume < 0:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Volume must be greater than 0."), messageable=context
+                ),
+                ephemeral=True,
+            )
+            return
         if not context.player:
             await context.send(
                 embed=await context.lavalink.construct_embed(description=_("No player detected."), messageable=context),

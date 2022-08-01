@@ -18,7 +18,6 @@ from pylav.converters import QueryConverter
 from pylav.track_encoding import decode_track
 from pylav.types import BotT
 from pylav.utils import PyLavContext
-from pylavcogs_shared.converters.numeric import RangeConverter
 from pylavcogs_shared.utils.decorators import requires_player
 
 LOGGER = getLogger("red.3pt.PyLavUtils")
@@ -268,12 +267,28 @@ class PyLavUtils(commands.Cog):
         )
 
     @command_plutils_cache.command(name="older")
-    async def command_plutils_cache_older(self, context: PyLavContext, days: RangeConverter[int, 0, 31]):
+    async def command_plutils_cache_older(self, context: PyLavContext, days: int):
         """Clear the query cache older than a number of days."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
+        if days > 31:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Days must be less than 31."), messageable=context
+                ),
+                ephemeral=True,
+            )
+            return
+        elif days < 1:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Days must be greater than 1."), messageable=context
+                ),
+                ephemeral=True,
+            )
+            return
         await self.lavalink.query_cache_manager.delete_older_than(days=days)
         await context.send(
             embed=await context.lavalink.construct_embed(description=_("Query cache cleared."), messageable=context),
