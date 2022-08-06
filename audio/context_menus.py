@@ -8,6 +8,7 @@ from redbot.core.i18n import Translator
 
 from pylav.query import MERGED_REGEX, Query
 from pylav.types import InteractionT, PyLavCogMixin
+from pylavcogs_shared.utils.decorators import is_dj_logic
 from pylavcogs_shared.utils.validators import valid_query_attachment
 
 _ = Translator("PyLavPlayer", Path(__file__))
@@ -28,6 +29,18 @@ class ContextMenus(PyLavCogMixin, ABC):
                 wait=True,
             )
             return
+        is_dj = await is_dj_logic(interaction)
+        if not is_dj:
+            await interaction.followup.send(
+                embed=await self.lavalink.construct_embed(
+                    description=_("You need to be a DJ to play tracks."),
+                    messageable=interaction,
+                ),
+                ephemeral=True,
+                wait=True,
+            )
+            return
+
         if player := self.lavalink.get_player(interaction.guild.id):
             config = player.config
         else:
@@ -119,6 +132,17 @@ class ContextMenus(PyLavCogMixin, ABC):
             await interaction.followup.send(
                 embed=await self.lavalink.construct_embed(
                     description=_("I can't play songs in DMs."),
+                    messageable=interaction,
+                ),
+                ephemeral=True,
+                wait=True,
+            )
+            return
+        is_dj = await is_dj_logic(interaction)
+        if not is_dj:
+            await interaction.followup.send(
+                embed=await self.lavalink.construct_embed(
+                    description=_("You need to be a DJ to play tracks."),
                     messageable=interaction,
                 ),
                 ephemeral=True,

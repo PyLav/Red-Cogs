@@ -28,7 +28,7 @@ from pylavcogs_shared.ui.menus.playlist import PlaylistCreationFlow, PlaylistMan
 from pylavcogs_shared.ui.prompts.playlists import maybe_prompt_for_playlist
 from pylavcogs_shared.ui.sources.playlist import Base64Source, PlaylistListSource
 from pylavcogs_shared.utils import rgetattr
-from pylavcogs_shared.utils.decorators import always_hidden
+from pylavcogs_shared.utils.decorators import always_hidden, invoker_is_dj
 
 
 class CompositeMetaClass(type(red_commands.Cog), type(ABC)):
@@ -70,6 +70,7 @@ class PyLavPlaylists(
 
     @commands.hybrid_group(name="playlist")
     @commands.guild_only()
+    @invoker_is_dj()
     async def command_playlist(self, context: PyLavContext):
         """Control custom playlist available in the bot."""
 

@@ -13,7 +13,7 @@ from tabulate import tabulate
 import pylavcogs_shared
 from pylav.types import BotT
 from pylav.utils import PyLavContext
-from pylavcogs_shared.utils.decorators import can_run_command_in_channel, requires_player
+from pylavcogs_shared.utils.decorators import can_run_command_in_channel, invoker_is_dj, requires_player
 
 LOGGER = getLogger("red.3pt.PyLavEffects")
 
@@ -76,6 +76,7 @@ class PyLavEffects(commands.Cog):
     @commands.guild_only()
     @requires_player()
     @can_run_command_in_channel()
+    @invoker_is_dj()
     async def command_fx(self, ctx: PyLavContext) -> None:
         """Apply an Effect preset to the player."""
 

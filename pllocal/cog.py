@@ -18,6 +18,7 @@ from pylav import Query
 from pylav.types import BotT, InteractionT
 from pylav.utils import AsyncIter, PyLavContext
 from pylavcogs_shared.utils import rgetattr
+from pylavcogs_shared.utils.decorators import is_dj_logic
 
 LOGGER = getLogger("red.3pt.PyLavLocalFiles")
 
@@ -87,6 +88,17 @@ class PyLavLocalFiles(commands.Cog):
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         author = interaction.user
+        is_dj = await is_dj_logic(interaction)
+        if not is_dj:
+            await send(
+                embed=await self.lavalink.construct_embed(
+                    description=_("You need to be a DJ to play tracks."),
+                    messageable=interaction,
+                ),
+                ephemeral=True,
+                wait=True,
+            )
+            return
 
         entry = self._localtrack_entries[entry]
         entry._recursive = recursive
@@ -163,6 +175,9 @@ class PyLavLocalFiles(commands.Cog):
     @slash_local.autocomplete("entry")
     async def slash_local_autocomplete_entry(self, interaction: InteractionT, current: str):
         entries = []
+        is_dj = await is_dj_logic(interaction)
+        if not is_dj:
+            return []
         async for md5, folder in AsyncIter(self._localtrack_entries.items()).filter(
             lambda x: current.lower() in f"{x[1]._query.path}".lower()
         ):

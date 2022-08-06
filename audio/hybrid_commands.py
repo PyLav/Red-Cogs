@@ -21,7 +21,7 @@ from pylav.utils import PyLavContext, format_time
 from pylavcogs_shared.ui.menus.queue import QueueMenu
 from pylavcogs_shared.ui.sources.queue import QueueSource
 from pylavcogs_shared.utils import rgetattr
-from pylavcogs_shared.utils.decorators import requires_player
+from pylavcogs_shared.utils.decorators import invoker_is_dj, is_dj_logic, requires_player
 from pylavcogs_shared.utils.validators import valid_query_attachment
 
 LOGGER = getLogger("red.3pt.PyLavPlayer.commands.hybrids")
@@ -35,6 +35,7 @@ class HybridCommands(PyLavCogMixin, ABC):
 
     @commands.hybrid_command(name="play", description="Plays a specified query.", aliases=["p"])
     @commands.guild_only()
+    @invoker_is_dj()
     async def command_play(self, context: PyLavContext, *, query: str = None):  # sourcery no-metrics
         """Attempt to play the queries which you provide.
 
@@ -185,6 +186,17 @@ class HybridCommands(PyLavCogMixin, ABC):
         `speak:` - The bot will speak the query  (limited to 200 characters)
         `tts://` - The bot will speak the query
         """
+        is_dj = await is_dj_logic(interaction)
+        if not is_dj:
+            await interaction.followup.send(
+                embed=await self.lavalink.construct_embed(
+                    description=_("You need to be a DJ to play tracks."),
+                    messageable=interaction,
+                ),
+                ephemeral=True,
+                wait=True,
+            )
+            return
         if query == "000":
             raise commands.BadArgument(_("You haven't select something to play."))
         _track = self._track_cache.get(query)
@@ -192,8 +204,10 @@ class HybridCommands(PyLavCogMixin, ABC):
         await self.command_play.callback(self, interaction, query=track)
 
     @slash_search.autocomplete("query")
-    async def slash_searchl_autocomplete_query(self, interaction: InteractionT, current: str):
-
+    async def slash_search_autocomplete_query(self, interaction: InteractionT, current: str):
+        is_dj = await is_dj_logic(interaction)
+        if not is_dj:
+            return []
         if not (match := SEARCH_REGEX.match(current)) or not match.group("search_query"):
             return [
                 Choice(
@@ -252,6 +266,7 @@ class HybridCommands(PyLavCogMixin, ABC):
         name="connect", description="Connects the Player to the specified channel or your current channel."
     )
     @commands.guild_only()
+    @invoker_is_dj()
     async def command_connect(self, context: PyLavContext, *, channel: Optional[discord.VoiceChannel] = None):
         """Connect the bot to the specified channel or your current channel."""
 
@@ -336,6 +351,7 @@ class HybridCommands(PyLavCogMixin, ABC):
     @commands.hybrid_command(name="skip", description="Skips or votes to skip the current track.")
     @commands.guild_only()
     @requires_player()
+    @invoker_is_dj()
     async def command_skip(self, context: PyLavContext):
         """Skips the current track."""
         if isinstance(context, discord.Interaction):
@@ -376,6 +392,7 @@ class HybridCommands(PyLavCogMixin, ABC):
     @commands.hybrid_command(name="stop", description="Stops the player and remove all tracks from the queue.")
     @commands.guild_only()
     @requires_player()
+    @invoker_is_dj()
     async def command_stop(self, context: PyLavContext):
         """Stops the player."""
         if isinstance(context, discord.Interaction):
@@ -406,6 +423,7 @@ class HybridCommands(PyLavCogMixin, ABC):
         name="dc", description="Disconnects the player from the voice channel.", aliases=["disconnect"]
     )
     @requires_player()
+    @invoker_is_dj()
     async def command_disconnect(self, context: PyLavContext):
         """Disconnects the player from the voice channel."""
         if isinstance(context, discord.Interaction):
@@ -453,6 +471,7 @@ class HybridCommands(PyLavCogMixin, ABC):
     @commands.hybrid_command(name="shuffle", description="Shuffles the player's queue.")
     @commands.guild_only()
     @requires_player()
+    @invoker_is_dj()
     async def command_shuffle(self, context: PyLavContext):
         """Shuffles the player's queue."""
         if isinstance(context, discord.Interaction):
@@ -485,6 +504,7 @@ class HybridCommands(PyLavCogMixin, ABC):
     @commands.hybrid_command(name="repeat", description="Set whether to repeat current song or queue.")
     @commands.guild_only()
     @requires_player()
+    @invoker_is_dj()
     async def command_repeat(self, context: PyLavContext, queue: Optional[bool] = None):
         """Set whether to repeat current song or queue.
 
@@ -520,6 +540,7 @@ class HybridCommands(PyLavCogMixin, ABC):
     @commands.hybrid_command(name="pause", description="Pause the player.")
     @commands.guild_only()
     @requires_player()
+    @invoker_is_dj()
     async def command_pause(self, context: PyLavContext):
         """Pause the player."""
         if isinstance(context, discord.Interaction):
@@ -554,6 +575,7 @@ class HybridCommands(PyLavCogMixin, ABC):
     @commands.hybrid_command(name="resume", description="Resume the player.")
     @commands.guild_only()
     @requires_player()
+    @invoker_is_dj()
     async def command_resume(self, context: PyLavContext):
         """Resume the player."""
         if isinstance(context, discord.Interaction):
@@ -588,6 +610,7 @@ class HybridCommands(PyLavCogMixin, ABC):
     @commands.hybrid_command(name="volume", description="Set the player volume.")
     @commands.guild_only()
     @requires_player()
+    @invoker_is_dj()
     async def command_volume(self, context: PyLavContext, volume: int):
         """Set the player volume.
 
@@ -643,6 +666,7 @@ class HybridCommands(PyLavCogMixin, ABC):
     @commands.hybrid_command(name="seek", description="Seek the current track.")
     @commands.guild_only()
     @requires_player()
+    @invoker_is_dj()
     async def command_seek(self, context: PyLavContext, seek: str):
         """Seek the current track.
 
@@ -745,6 +769,7 @@ class HybridCommands(PyLavCogMixin, ABC):
     @commands.hybrid_command(name="prev", description="Play the previous tracks.", aliases=["previous"])
     @commands.guild_only()
     @requires_player()
+    @invoker_is_dj()
     async def command_previous(self, context: PyLavContext):
         """Play the previous tracks.
 

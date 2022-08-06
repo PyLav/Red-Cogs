@@ -11,6 +11,7 @@ from pylav import Query, Track
 from pylav.tracks import decode_track
 from pylav.types import PyLavCogMixin
 from pylav.utils import PyLavContext, format_time
+from pylavcogs_shared.utils.decorators import invoker_is_dj
 
 LOGGER = getLogger("red.3pt.PyLavPlayer.commands.player")
 _ = Translator("PyLavPlayer", Path(__file__))
@@ -19,6 +20,7 @@ _ = Translator("PyLavPlayer", Path(__file__))
 class PlayerCommands(PyLavCogMixin, ABC):
     @commands.command(name="playnow", description="Plays the specified track in the queue.", aliases=["pn"])
     @commands.guild_only()
+    @invoker_is_dj()
     async def command_playnow(self, context: PyLavContext, queue_number: int, after_current: bool = False):
         """
         Plays the specified track in the queue.
@@ -92,6 +94,7 @@ class PlayerCommands(PyLavCogMixin, ABC):
 
     @commands.command(name="remove", description="Remove the specified track from the queue.")
     @commands.guild_only()
+    @invoker_is_dj()
     async def command_remove(self, context: PyLavContext, track_url_or_index: str, remove_duplicates: bool = False):
         """
         Remove the specified track from the queue.
