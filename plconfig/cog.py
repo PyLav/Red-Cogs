@@ -8,7 +8,7 @@ from discord.utils import maybe_coroutine
 from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
-from redbot.core.utils.chat_formatting import box, inline
+from redbot.core.utils.chat_formatting import bold, box, inline
 from tabulate import tabulate
 
 import pylavcogs_shared
@@ -18,6 +18,8 @@ from pylav.sql.models import LibConfigModel
 from pylav.types import BotT
 from pylav.utils import PyLavContext
 from pylav.vendored import aiopath
+from pylavcogs_shared.ui.menus.player import StatsMenu
+from pylavcogs_shared.ui.sources.player import PlayersSource
 
 LOGGER = getLogger("red.3pt.PyLavConfigurator")
 
@@ -366,3 +368,37 @@ class PyLavConfigurator(commands.Cog):
                 messageable=context,
             )
         )
+
+    @command_plset.command(name="stats")
+    async def command_plset_stats(self, context: PyLavContext, *, server: discord.Guild = None) -> None:
+        """Manage active players"""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+
+        if server and (self.lavalink.player_manager.get(server.id) is None):
+            await context.send(
+                embed=await self.lavalink.construct_embed(
+                    description=_("No active player in {}.").format(bold(server.name)),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+            return
+        elif not self.lavalink.player_manager.connected_players:
+            await context.send(
+                embed=await self.lavalink.construct_embed(
+                    description=_("No connected players."),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+            return
+
+        await StatsMenu(
+            cog=self,
+            bot=self.bot,
+            source=PlayersSource(cog=self, specified_guild=server.id if server else None),
+            original_author=context.author,
+        ).start(ctx=context)
