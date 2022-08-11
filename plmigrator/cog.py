@@ -17,7 +17,7 @@ from redbot.core.data_manager import cog_data_path
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.dbtools import APSWConnectionWrapper
 
-from pylav.sql.models import LibConfigModel
+from pylav.sql.models import LibConfigModel, PlayerModel
 from pylav.types import BotT
 from pylav.utils import AsyncIter, PyLavContext
 from pylav.vendored import aiopath
@@ -133,7 +133,7 @@ class PyLavMigrator(commands.Cog):
                 await bundled_node_config.save()
 
         async for guild, guild_config in AsyncIter((await audio_config.all_guilds()).items()):
-            player_config = await self.lavalink.player_config_manager.get_config(guild)
+            player_config: PlayerModel = await self.lavalink.player_config_manager.get_config(guild)
             if not guild_config.get("auto_deafen", True):
                 player_config.self_deaf = False
             if guild_config.get("autoplaylist", {}).get("enabled", False):
@@ -148,17 +148,16 @@ class PyLavMigrator(commands.Cog):
                 player_config.volume = guild_config.get("volume")
 
             if guild_config.get("max_volume", 150) != 150:
-                player_config.max_volume = guild_config.get("max_volume") / 150
-                player_config.extras["max_volume"] = int((guild_config.get("max_volume") / 150) * 1000)
+                player_config.max_volume = int((guild_config.get("max_volume") / 150) * 1000)
 
             if guild_config.get("emptypause_enabled"):
-                player_config.extras["alone_pause"] = [True, guild_config.get("emptypause_timer", 60)]
+                player_config.alone_pause = {"enabled": True, "time": guild_config.get("emptypause_timer", 60)}
 
             if guild_config.get("emptydc_enabled"):
-                player_config.extras["alone_dc"] = [True, guild_config.get("emptydc_timer", 60)]
+                player_config.alone_dc = {"enabled": True, "time": guild_config.get("emptydc_timer", 60)}
 
             if guild_config.get("disconnect"):
-                player_config.extras["empty_queue_dc"] = [True, 60]
+                player_config.empty_queue_dc = {"enabled": True, "time": 60}
 
             await player_config.save()
         query = """
