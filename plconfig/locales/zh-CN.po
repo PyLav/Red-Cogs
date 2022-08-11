@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-19 19:47+0000\n"
-"PO-Revision-Date: 2022-05-19 20:36\n"
+"POT-Creation-Date: 2022-08-07 19:26+0000\n"
+"PO-Revision-Date: 2022-08-07 19:34\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -17,30 +17,30 @@ msgstr ""
 "X-Crowdin-File-ID: 200\n"
 "Language: zh_CN\n"
 
-#: plconfig/cog.py:29
+#: plconfig/cog.py:31
 #, docstring
 msgid "Configure PyLav library settings."
 msgstr "配置 PyLav 库设置。"
 
-#: plconfig/cog.py:42
+#: plconfig/cog.py:44
 #, docstring
 msgid "Change global settings for PyLav"
 msgstr "更改 PyLav 的全局设置"
 
-#: plconfig/cog.py:46
+#: plconfig/cog.py:48
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies."
 msgstr "显示Cog版本和它的 PyLav 依赖关系。"
 
-#: plconfig/cog.py:59
+#: plconfig/cog.py:61
 msgid "Library/Cog"
 msgstr "库 / COG"
 
-#: plconfig/cog.py:59
+#: plconfig/cog.py:61
 msgid "Version"
 msgstr "版本"
 
-#: plconfig/cog.py:67
+#: plconfig/cog.py:69
 #, docstring
 msgid "Set the folder for PyLav's config files\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -49,19 +49,19 @@ msgstr "为PyLav的配置文件设置文件夹\n\n"
 "        更改将在重启机器人后应用。\n"
 "        "
 
-#: plconfig/cog.py:79 plconfig/cog.py:133
+#: plconfig/cog.py:81 plconfig/cog.py:135
 msgid "{folder} is not a folder."
 msgstr "{folder} 不是一个文件夹。"
 
-#: plconfig/cog.py:93 plconfig/cog.py:147
+#: plconfig/cog.py:95 plconfig/cog.py:149
 msgid "{folder} does not exist, run the command again with the create argument set to 1 to automatically create this folder."
 msgstr "{folder} 不存在，使用创建参数设置为 1 以自动创建此文件夹，再次运行命令。"
 
-#: plconfig/cog.py:111
+#: plconfig/cog.py:113
 msgid "PyLav's config folder has been set to {folder}."
 msgstr "PyLav的配置文件夹已设置为 {folder}。"
 
-#: plconfig/cog.py:121
+#: plconfig/cog.py:123
 #, docstring
 msgid "Set the local tracks folder for PyLav.\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -70,11 +70,11 @@ msgstr "为PyLav设置本地曲目文件夹。\n\n"
 "        更改将在重启机器人后应用。\n"
 "        "
 
-#: plconfig/cog.py:168
+#: plconfig/cog.py:170
 msgid "PyLav's local tracks folder has been set to {folder}."
 msgstr "PyLav的本地曲目文件夹已设置为 {folder}。"
 
-#: plconfig/cog.py:178
+#: plconfig/cog.py:180
 #, docstring
 msgid "Set the java executable for PyLav.\n\n"
 "        Default is \"java\"\n"
@@ -85,28 +85,28 @@ msgstr "为 PyLava 设置java 可执行文件。\n\n"
 "        更改将在重启机器人后应用。\n"
 "        "
 
-#: plconfig/cog.py:195
+#: plconfig/cog.py:197
 msgid "{java} does not exist, run the command again with the java argument set to the correct path."
 msgstr "{java} 不存在，使用java参数设置为正确路径再次运行命令。"
 
-#: plconfig/cog.py:211
+#: plconfig/cog.py:213
 msgid "{java} is not an executable file."
 msgstr "{java} 不是可执行文件。"
 
-#: plconfig/cog.py:223
+#: plconfig/cog.py:225
 msgid "{java} is not an executable, run the command again with the java argument set to the correct path."
 msgstr "{java} 不是可执行的，使用java参数设置为正确的路径再次运行命令。"
 
-#: plconfig/cog.py:241
+#: plconfig/cog.py:243
 msgid "PyLav's java executable has been set to {java}."
 msgstr "PyLava 可执行文件已设置为 {java}。"
 
-#: plconfig/cog.py:251
+#: plconfig/cog.py:253
 #, docstring
 msgid "Change the managed node configuration."
 msgstr "更改管理的节点配置。"
 
-#: plconfig/cog.py:255
+#: plconfig/cog.py:257
 #, docstring
 msgid "Toggle the managed node on/off.\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -115,15 +115,15 @@ msgstr "切换管理节点开关。\n\n"
 "        更改将在重启机器人后应用。\n"
 "        "
 
-#: plconfig/cog.py:270
+#: plconfig/cog.py:272
 msgid "PyLav's managed node has been enabled."
 msgstr "PyLav的管理节点已启用。"
 
-#: plconfig/cog.py:278
+#: plconfig/cog.py:280
 msgid "PyLav's managed node has been disabled."
 msgstr "PyLav的管理节点已被禁用。"
 
-#: plconfig/cog.py:286
+#: plconfig/cog.py:288
 #, docstring
 msgid "Toggle the managed node auto updates on/off.\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -132,24 +132,60 @@ msgstr "切换管理节点自动更新开关。\n\n"
 "        更改将在重启机器人后应用。\n"
 "        "
 
-#: plconfig/cog.py:301
+#: plconfig/cog.py:303
 msgid "PyLav's managed node auto updates have been enabled."
 msgstr "PyLav的管理节点自动更新已启用。"
 
-#: plconfig/cog.py:309
+#: plconfig/cog.py:311
 msgid "PyLav's managed node auto updates have been disabled."
 msgstr "PyLav的管理节点自动更新已被禁用。"
 
-#: plconfig/cog.py:317
+#: plconfig/cog.py:319
 #, docstring
 msgid "Toggle the managed external node on/off."
 msgstr "切换管理的外部节点开关。"
 
-#: plconfig/cog.py:335
+#: plconfig/cog.py:337
 msgid "PyLav's managed external node has been enabled."
 msgstr "PyLav管理的外部节点已启用。"
 
-#: plconfig/cog.py:343
+#: plconfig/cog.py:345
 msgid "PyLav's managed external node has been disabled."
 msgstr "PyLav管理的外部节点已被禁用。"
+
+#: plconfig/cog.py:353
+#, docstring
+msgid "Instructions on how to set the Spotify API Tokens."
+msgstr "如何设置 Spotify API 令牌的说明。"
+
+#: plconfig/cog.py:354
+msgid "1. Go to Spotify developers and log in with your Spotify account.\n"
+"(https://developer.spotify.com/dashboard/applications)\n"
+"2. Click \"Create An App\".\n"
+"3. Fill out the form provided with your app name, etc.\n"
+"4. When asked if you're developing commercial integration select \"No\".\n"
+"5. Accept the terms and conditions.\n"
+"6. Copy your client ID and your client secret into:\n"
+"`{prefix}set api spotify client_id <your_client_id_here> client_secret <your_client_secret_here>`"
+msgstr "1. 前往Spotify开发者并使用您的 Spotify 帐户登录。\n"
+"(https://developer.spotify)。 om/dashboard/applications)\n"
+"2. 单击\"创建一个应用程序\"。\n"
+"3. 填写提供的表单中包含您的应用程序名称等\n"
+"4。 当您是否正在开发商业集成时，请选择“否”。\n"
+"5. 接受条款和条件。\n"
+"6。 将您的客户端 ID 和客户端的秘密复制到:\n"
+"{prefix}设置 api 破坏客户端id <your_client_id_here> client_secret <your_client_secret_here>"
+
+#: plconfig/cog.py:374
+#, docstring
+msgid "Manage active players"
+msgstr "管理活跃玩家"
+
+#: plconfig/cog.py:383
+msgid "No active player in {}."
+msgstr "{}中没有活跃的玩家。"
+
+#: plconfig/cog.py:392
+msgid "No connected players."
+msgstr "没有已连接的玩家。"
 

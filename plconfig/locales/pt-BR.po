@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-19 19:47+0000\n"
-"PO-Revision-Date: 2022-05-19 20:36\n"
+"POT-Creation-Date: 2022-08-07 19:26+0000\n"
+"PO-Revision-Date: 2022-08-07 19:34\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese, Brazilian\n"
 "MIME-Version: 1.0\n"
@@ -17,30 +17,30 @@ msgstr ""
 "X-Crowdin-File-ID: 200\n"
 "Language: pt_BR\n"
 
-#: plconfig/cog.py:29
+#: plconfig/cog.py:31
 #, docstring
 msgid "Configure PyLav library settings."
 msgstr "Configurar definições da biblioteca PyLav."
 
-#: plconfig/cog.py:42
+#: plconfig/cog.py:44
 #, docstring
 msgid "Change global settings for PyLav"
 msgstr "Alterar configurações globais para PyLav"
 
-#: plconfig/cog.py:46
+#: plconfig/cog.py:48
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies."
 msgstr "Mostra a versão do Cog e suas dependências PyLav."
 
-#: plconfig/cog.py:59
+#: plconfig/cog.py:61
 msgid "Library/Cog"
 msgstr "Biblioteca/Cog"
 
-#: plconfig/cog.py:59
+#: plconfig/cog.py:61
 msgid "Version"
 msgstr "Versão"
 
-#: plconfig/cog.py:67
+#: plconfig/cog.py:69
 #, docstring
 msgid "Set the folder for PyLav's config files\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -49,19 +49,19 @@ msgstr "Defina a pasta para os arquivos de configuração do PyLav,\n\n"
 "        As alterações serão aplicadas após reiniciar o bot.\n"
 "        "
 
-#: plconfig/cog.py:79 plconfig/cog.py:133
+#: plconfig/cog.py:81 plconfig/cog.py:135
 msgid "{folder} is not a folder."
 msgstr "{folder} não é uma pasta."
 
-#: plconfig/cog.py:93 plconfig/cog.py:147
+#: plconfig/cog.py:95 plconfig/cog.py:149
 msgid "{folder} does not exist, run the command again with the create argument set to 1 to automatically create this folder."
 msgstr "{folder} não existe, execute o comando novamente com o argumento criar definido para 1 para criar automaticamente essa pasta."
 
-#: plconfig/cog.py:111
+#: plconfig/cog.py:113
 msgid "PyLav's config folder has been set to {folder}."
 msgstr "A pasta de configuração do PyLaves foi definida para {folder}."
 
-#: plconfig/cog.py:121
+#: plconfig/cog.py:123
 #, docstring
 msgid "Set the local tracks folder for PyLav.\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -70,11 +70,11 @@ msgstr "Defina a pasta de faixas locais para PyLav.\n\n"
 "        As alterações serão aplicadas após reiniciar o bot.\n"
 "        "
 
-#: plconfig/cog.py:168
+#: plconfig/cog.py:170
 msgid "PyLav's local tracks folder has been set to {folder}."
 msgstr "A pasta de faixas locais do PyLaves foi definida para {folder}."
 
-#: plconfig/cog.py:178
+#: plconfig/cog.py:180
 #, docstring
 msgid "Set the java executable for PyLav.\n\n"
 "        Default is \"java\"\n"
@@ -85,28 +85,28 @@ msgstr "Defina o executável do java para PyLav.\n\n"
 "        As alterações serão aplicadas após reiniciar o bot.\n"
 "        "
 
-#: plconfig/cog.py:195
+#: plconfig/cog.py:197
 msgid "{java} does not exist, run the command again with the java argument set to the correct path."
 msgstr "{java} não existe, execute o comando novamente com o argumento Java definido para o caminho correto."
 
-#: plconfig/cog.py:211
+#: plconfig/cog.py:213
 msgid "{java} is not an executable file."
 msgstr "{java} não é um arquivo executável."
 
-#: plconfig/cog.py:223
+#: plconfig/cog.py:225
 msgid "{java} is not an executable, run the command again with the java argument set to the correct path."
 msgstr "{java} não é um executável, execute o comando novamente com o argumento Java definido para o caminho correto."
 
-#: plconfig/cog.py:241
+#: plconfig/cog.py:243
 msgid "PyLav's java executable has been set to {java}."
 msgstr "O executável java do PyLava foi definido para {java}."
 
-#: plconfig/cog.py:251
+#: plconfig/cog.py:253
 #, docstring
 msgid "Change the managed node configuration."
 msgstr "Alterar a configuração de nó gerenciado."
 
-#: plconfig/cog.py:255
+#: plconfig/cog.py:257
 #, docstring
 msgid "Toggle the managed node on/off.\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -115,15 +115,15 @@ msgstr "Ativa/desativa o nó gerenciado.\n\n"
 "        As alterações serão aplicadas após reiniciar o bot.\n"
 "        "
 
-#: plconfig/cog.py:270
+#: plconfig/cog.py:272
 msgid "PyLav's managed node has been enabled."
 msgstr "O nó gerenciado do PyLav's foi ativado."
 
-#: plconfig/cog.py:278
+#: plconfig/cog.py:280
 msgid "PyLav's managed node has been disabled."
 msgstr "O nó gerenciado do PyLave foi desativado."
 
-#: plconfig/cog.py:286
+#: plconfig/cog.py:288
 #, docstring
 msgid "Toggle the managed node auto updates on/off.\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -132,24 +132,60 @@ msgstr "Liga/desliga a atualização automática do nó gerenciado.\n\n"
 "        As alterações serão aplicadas após reiniciar o bot.\n"
 "        "
 
-#: plconfig/cog.py:301
+#: plconfig/cog.py:303
 msgid "PyLav's managed node auto updates have been enabled."
 msgstr "As atualizações automáticas de nós gerenciadas pela PyLave foram ativadas."
 
-#: plconfig/cog.py:309
+#: plconfig/cog.py:311
 msgid "PyLav's managed node auto updates have been disabled."
 msgstr "As atualizações automáticas dos nós gerenciados pela PyLave foram desabilitadas."
 
-#: plconfig/cog.py:317
+#: plconfig/cog.py:319
 #, docstring
 msgid "Toggle the managed external node on/off."
 msgstr "Liga/desliga o nó externo gerenciado"
 
-#: plconfig/cog.py:335
+#: plconfig/cog.py:337
 msgid "PyLav's managed external node has been enabled."
 msgstr "O nó externo gerenciado do PyLav's foi ativado."
 
-#: plconfig/cog.py:343
+#: plconfig/cog.py:345
 msgid "PyLav's managed external node has been disabled."
 msgstr "O nó externo gerenciado do PyLave foi desativado."
+
+#: plconfig/cog.py:353
+#, docstring
+msgid "Instructions on how to set the Spotify API Tokens."
+msgstr "Instruções sobre como configurar os Tokens da API do Spotify."
+
+#: plconfig/cog.py:354
+msgid "1. Go to Spotify developers and log in with your Spotify account.\n"
+"(https://developer.spotify.com/dashboard/applications)\n"
+"2. Click \"Create An App\".\n"
+"3. Fill out the form provided with your app name, etc.\n"
+"4. When asked if you're developing commercial integration select \"No\".\n"
+"5. Accept the terms and conditions.\n"
+"6. Copy your client ID and your client secret into:\n"
+"`{prefix}set api spotify client_id <your_client_id_here> client_secret <your_client_secret_here>`"
+msgstr "1. Acesse desenvolvedores do Spotify e faça login com sua conta do Spotify.\n"
+"(https://developer.spotify. um/painel/aplicativos)\n"
+"2. Clique em \"Criar um aplicativo\".\n"
+"3. Preencha o formulário fornecido com o nome do seu aplicativo, etc.\n"
+"4. Quando perguntado se você está desenvolvendo integração comercial, selecione \"Não\".\n"
+"5. Aceite os termos e condições.\n"
+"6. Copie seu ID de cliente e seu segredo de cliente em:\n"
+"`{prefix}set api spotify client_id <your_client_id_here> cliente_secret <your_client_secret_here>`"
+
+#: plconfig/cog.py:374
+#, docstring
+msgid "Manage active players"
+msgstr "Gerenciar jogadores ativos"
+
+#: plconfig/cog.py:383
+msgid "No active player in {}."
+msgstr "Nenhum jogador ativo em {}."
+
+#: plconfig/cog.py:392
+msgid "No connected players."
+msgstr "Nenhum jogador conectado."
 
