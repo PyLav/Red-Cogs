@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-08-06 15:24+0000\n"
-"PO-Revision-Date: 2022-08-07 19:34\n"
+"POT-Creation-Date: 2022-08-12 18:00+0000\n"
+"PO-Revision-Date: 2022-08-12 18:07\n"
 "Last-Translator: \n"
 "Language-Team: Romanian\n"
 "MIME-Version: 1.0\n"
@@ -51,12 +51,12 @@ msgid "Set the maximum volume server can set."
 msgstr "Setarea volumului maxim de server poate seta. (Automatic Translation)"
 
 #: audio/config_commands.py:66 audio/config_commands.py:240
-#: audio/hybrid_commands.py:626
+#: audio/hybrid_commands.py:638
 msgid "Volume must be less than 1000."
 msgstr "Volumul trebuie să fie mai mic de 1000."
 
 #: audio/config_commands.py:74 audio/config_commands.py:248
-#: audio/hybrid_commands.py:634
+#: audio/hybrid_commands.py:646
 msgid "Volume must be greater than 0."
 msgstr "Volumul trebuie să fie mai mare decât 0."
 
@@ -280,7 +280,7 @@ msgid "I can't play songs in DMs."
 msgstr "Nu pot cânta cântece în DM-uri."
 
 #: audio/context_menus.py:36 audio/context_menus.py:145
-#: audio/hybrid_commands.py:193
+#: audio/hybrid_commands.py:194
 msgid "You need to be a DJ to play tracks."
 msgstr "Trebuie să fii un DJ pentru a juca piese."
 
@@ -332,11 +332,11 @@ msgstr "{track_count} piese puse în așteptare."
 msgid "{track} enqueued."
 msgstr "{track} puse în așteptare."
 
-#: audio/hybrid_commands.py:165
+#: audio/hybrid_commands.py:166
 msgid "No tracks were found for your query."
 msgstr "Nu au fost găsite melodii pentru interogarea ta."
 
-#: audio/hybrid_commands.py:174
+#: audio/hybrid_commands.py:175
 #, docstring
 msgid "Search for a track then play the selected response.\n\n"
 "        If a prefix is not used it will default to search on YouTube Music.\n\n"
@@ -363,161 +363,165 @@ msgstr "Caută o piesă și apoi redă răspunsul selectat.\n\n"
 "        bottp va vorbi despre quer-ul\n"
 "        "
 
-#: audio/hybrid_commands.py:201
+#: audio/hybrid_commands.py:202
 msgid "You haven't select something to play."
 msgstr "Nu ai selectat ceva de jucat."
 
-#: audio/hybrid_commands.py:214
+#: audio/hybrid_commands.py:215
 msgid "Search must start with ytmsearch:, spsearch:, amsearch:, scsearch:, ytsearch:"
 msgstr "Căutarea trebuie să înceapă cu ytmsearch:, spsearch:, amsearch:, scsearch:, ytsearch:"
 
-#: audio/hybrid_commands.py:256
+#: audio/hybrid_commands.py:257
 msgid "You haven't select something to play, search must start with `ytmsearch:`, `spsearch:`, `amsearch:`, `scsearch:`, `ytsearch:`"
 msgstr "Nu ai selectat ceva de jucat, căutarea trebuie să înceapă cu `ytmsearch:`, `spsearch:`, `amsearch:`, `scsearch:`, `scsearch:`, `ytsearch:`"
 
-#: audio/hybrid_commands.py:283
+#: audio/hybrid_commands.py:284
 msgid "You need to be in a voice channel if you don't specify which channel I need to connect to."
 msgstr "Trebuie să fiți într-un canal de voce dacă nu specificați la ce canal trebuie să mă conectez."
 
-#: audio/hybrid_commands.py:293
+#: audio/hybrid_commands.py:294
 msgid "I don't have permission to connect to that channel."
 msgstr "Nu am permisiunea de a mă conecta la acel canal."
 
-#: audio/hybrid_commands.py:295
+#: audio/hybrid_commands.py:298
 msgid "I don't have permission to speak in {channel}."
 msgstr "Nu am permisiunea de a vorbi în {channel}."
 
-#: audio/hybrid_commands.py:298
+#: audio/hybrid_commands.py:301
 msgid "I don't have permission to connect to {channel}."
 msgstr "Nu am permisiunea de a mă conecta la {channel}."
 
-#: audio/hybrid_commands.py:312
+#: audio/hybrid_commands.py:315
 msgid "I'm forced to only join {channel}."
 msgstr "Sunt forțat doar să mă alătur {channel}."
 
-#: audio/hybrid_commands.py:320
+#: audio/hybrid_commands.py:323
 msgid "Connected to {channel}"
 msgstr "Conectat la {channel}"
 
-#: audio/hybrid_commands.py:336 audio/hybrid_commands.py:363
-#: audio/hybrid_commands.py:404 audio/hybrid_commands.py:436
-#: audio/hybrid_commands.py:460 audio/hybrid_commands.py:483
-#: audio/hybrid_commands.py:519 audio/hybrid_commands.py:552
-#: audio/hybrid_commands.py:587 audio/hybrid_commands.py:641
-#: audio/hybrid_commands.py:687 audio/hybrid_commands.py:785
+#: audio/hybrid_commands.py:339 audio/hybrid_commands.py:366
+#: audio/hybrid_commands.py:408 audio/hybrid_commands.py:440
+#: audio/hybrid_commands.py:464 audio/hybrid_commands.py:487
+#: audio/hybrid_commands.py:531 audio/hybrid_commands.py:564
+#: audio/hybrid_commands.py:599 audio/hybrid_commands.py:653
+#: audio/hybrid_commands.py:699 audio/hybrid_commands.py:797
 msgid "No player detected."
 msgstr "Niciun jucător detectat."
 
-#: audio/hybrid_commands.py:343 audio/hybrid_commands.py:370
-#: audio/hybrid_commands.py:411
+#: audio/hybrid_commands.py:346 audio/hybrid_commands.py:373
+#: audio/hybrid_commands.py:415
 msgid "Player is not currently playing anything."
 msgstr "Jucătorul nu redă nimic în prezent."
 
-#: audio/hybrid_commands.py:378
+#: audio/hybrid_commands.py:381
 msgid "Skipped - {track}"
 msgstr "Salt - {track}"
 
-#: audio/hybrid_commands.py:387
+#: audio/hybrid_commands.py:391
 msgid "Autoplay started."
 msgstr "Auto-redare a început."
 
-#: audio/hybrid_commands.py:418
+#: audio/hybrid_commands.py:422
 msgid "Player stopped"
 msgstr "Jucător oprit"
 
-#: audio/hybrid_commands.py:444
+#: audio/hybrid_commands.py:448
 msgid "Disconnected from {channel}"
 msgstr "Deconectat de la {channel}"
 
-#: audio/hybrid_commands.py:490
+#: audio/hybrid_commands.py:494
 msgid "There is nothing in the queue."
 msgstr "Nu există nimic în coadă."
 
-#: audio/hybrid_commands.py:498
+#: audio/hybrid_commands.py:502
+msgid "You are not allowed to shuffle the queue."
+msgstr "Nu aveţi permisiunea să amestecaţi coada de aşteptare."
+
+#: audio/hybrid_commands.py:510
 msgid "{queue_size} tracks shuffled"
 msgstr "{queue_size} piese amestecate"
 
-#: audio/hybrid_commands.py:525
+#: audio/hybrid_commands.py:537
 msgid "Repeating the queue"
 msgstr "Se repetă coada"
 
-#: audio/hybrid_commands.py:528
+#: audio/hybrid_commands.py:540
 msgid "Repeating disabled"
 msgstr "Repetare dezactivată"
 
-#: audio/hybrid_commands.py:531
+#: audio/hybrid_commands.py:543
 msgid "Repeating {track}"
 msgstr "Se repetă {track}"
 
-#: audio/hybrid_commands.py:534
+#: audio/hybrid_commands.py:546
 msgid "current track"
 msgstr "piesa curentă"
 
-#: audio/hybrid_commands.py:558
+#: audio/hybrid_commands.py:570
 msgid "Player already paused did you mean to run `/resume`."
 msgstr "Jucătorul deja pus pe pauză a vrut să ruleze `/resume`."
 
-#: audio/hybrid_commands.py:560 audio/hybrid_commands.py:595
+#: audio/hybrid_commands.py:572 audio/hybrid_commands.py:607
 msgid "Player already paused did you mean to run `{prefix}{command}`."
 msgstr "Jucătorul deja pus pe pauză a vrut să rulezi `{prefix}{command}`."
 
-#: audio/hybrid_commands.py:571
+#: audio/hybrid_commands.py:583
 msgid "Player paused."
 msgstr "Jucătorul a fost întrerupt."
 
-#: audio/hybrid_commands.py:593
+#: audio/hybrid_commands.py:605
 msgid "Player already paused did you mean to run `/pause`."
 msgstr "Jucătorul deja pus pe pauză a vrut să rulezi `/pause`."
 
-#: audio/hybrid_commands.py:606
+#: audio/hybrid_commands.py:618
 msgid "Player resumed."
 msgstr "Jucătorul a fost reluat."
 
-#: audio/hybrid_commands.py:652
+#: audio/hybrid_commands.py:664
 msgid "Volume cannot be higher than {max_volume}."
 msgstr "Volumul nu poate fi mai mare de {max_volume}."
 
-#: audio/hybrid_commands.py:661 audio/utility_commands.py:62
+#: audio/hybrid_commands.py:673 audio/utility_commands.py:62
 msgid "Player volume set to {volume}%."
 msgstr "Volumul jucătorului este setat la {volume}%."
 
-#: audio/hybrid_commands.py:694
+#: audio/hybrid_commands.py:706
 msgid "Nothing playing."
 msgstr "Nimic nu se joacă."
 
-#: audio/hybrid_commands.py:703
+#: audio/hybrid_commands.py:715
 msgid "Unable to seek track"
 msgstr "Imposibil de căutat piesa"
 
-#: audio/hybrid_commands.py:704
+#: audio/hybrid_commands.py:716
 msgid "Can't seek on a stream."
 msgstr "Nu se poate căuta pe un stream."
 
-#: audio/hybrid_commands.py:712
+#: audio/hybrid_commands.py:724
 msgid "Unable to seek track."
 msgstr "Imposibil de căutat piesa."
 
-#: audio/hybrid_commands.py:721
+#: audio/hybrid_commands.py:733
 msgid "Cannot seek when the player is paused."
 msgstr "Nu se poate căuta când jucătorul este pauzat."
 
-#: audio/hybrid_commands.py:734
+#: audio/hybrid_commands.py:746
 msgid "Moved {seconds}s to 00:00:00."
 msgstr "Am mutat {seconds}s la 00:00:00."
 
-#: audio/hybrid_commands.py:741
+#: audio/hybrid_commands.py:753
 msgid "Moved {seconds}s to {time}."
 msgstr "Mutat {seconds}s la {time}."
 
-#: audio/hybrid_commands.py:762
+#: audio/hybrid_commands.py:774
 msgid "Moved to {time}."
 msgstr "Mutat în {time}."
 
-#: audio/hybrid_commands.py:793
+#: audio/hybrid_commands.py:805
 msgid "No previous in player history."
 msgstr "Nici un istoric anterior în istoricul jucătorilor."
 
-#: audio/hybrid_commands.py:801
+#: audio/hybrid_commands.py:813
 msgid "Playing previous track: {track}."
 msgstr "Redare piesa anterioară: {track}."
 
