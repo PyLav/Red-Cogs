@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-08-06 15:24+0000\n"
-"PO-Revision-Date: 2022-08-07 19:34\n"
+"POT-Creation-Date: 2022-08-12 18:00+0000\n"
+"PO-Revision-Date: 2022-08-12 18:08\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -51,12 +51,12 @@ msgid "Set the maximum volume server can set."
 msgstr "设置最大音量服务器。"
 
 #: audio/config_commands.py:66 audio/config_commands.py:240
-#: audio/hybrid_commands.py:626
+#: audio/hybrid_commands.py:638
 msgid "Volume must be less than 1000."
 msgstr "卷必须小于 1000。"
 
 #: audio/config_commands.py:74 audio/config_commands.py:248
-#: audio/hybrid_commands.py:634
+#: audio/hybrid_commands.py:646
 msgid "Volume must be greater than 0."
 msgstr "音量必须大于 0。"
 
@@ -280,7 +280,7 @@ msgid "I can't play songs in DMs."
 msgstr "我不能在 DME 中播放歌曲"
 
 #: audio/context_menus.py:36 audio/context_menus.py:145
-#: audio/hybrid_commands.py:193
+#: audio/hybrid_commands.py:194
 msgid "You need to be a DJ to play tracks."
 msgstr "您需要是 DJ 才能播放曲目。"
 
@@ -332,11 +332,11 @@ msgstr "{track_count} 曲目已排队."
 msgid "{track} enqueued."
 msgstr "{track} 已加入队列。"
 
-#: audio/hybrid_commands.py:165
+#: audio/hybrid_commands.py:166
 msgid "No tracks were found for your query."
 msgstr "没有找到您查询的曲目。"
 
-#: audio/hybrid_commands.py:174
+#: audio/hybrid_commands.py:175
 #, docstring
 msgid "Search for a track then play the selected response.\n\n"
 "        If a prefix is not used it will default to search on YouTube Music.\n\n"
@@ -363,161 +363,165 @@ msgstr "搜索轨迹，然后播放选中的响应。\n\n"
 "        `tts://` - 机器人将会说查询\n"
 "        "
 
-#: audio/hybrid_commands.py:201
+#: audio/hybrid_commands.py:202
 msgid "You haven't select something to play."
 msgstr "您还没有选择要播放的内容。"
 
-#: audio/hybrid_commands.py:214
+#: audio/hybrid_commands.py:215
 msgid "Search must start with ytmsearch:, spsearch:, amsearch:, scsearch:, ytsearch:"
 msgstr "搜索必须以 ytmsearch:, spsearch:, amsearch:, scsearch:, ytsearch:"
 
-#: audio/hybrid_commands.py:256
+#: audio/hybrid_commands.py:257
 msgid "You haven't select something to play, search must start with `ytmsearch:`, `spsearch:`, `amsearch:`, `scsearch:`, `ytsearch:`"
 msgstr "您还没有选择要播放的内容，搜索必须以 `ytmsearch:`, `spsearch:`, `amsearch:`, `scsearch:`, `ytsearch:` 开始"
 
-#: audio/hybrid_commands.py:283
+#: audio/hybrid_commands.py:284
 msgid "You need to be in a voice channel if you don't specify which channel I need to connect to."
 msgstr "如果您没有指定我需要连接到哪个频道，您需要在一个语音频道中。"
 
-#: audio/hybrid_commands.py:293
+#: audio/hybrid_commands.py:294
 msgid "I don't have permission to connect to that channel."
 msgstr "我没有连接到该频道的权限。"
 
-#: audio/hybrid_commands.py:295
+#: audio/hybrid_commands.py:298
 msgid "I don't have permission to speak in {channel}."
 msgstr "我没有权限在 {channel} 发言。"
 
-#: audio/hybrid_commands.py:298
+#: audio/hybrid_commands.py:301
 msgid "I don't have permission to connect to {channel}."
 msgstr "我没有连接到 {channel} 的权限。"
 
-#: audio/hybrid_commands.py:312
+#: audio/hybrid_commands.py:315
 msgid "I'm forced to only join {channel}."
 msgstr "我被迫只加入 {channel}。"
 
-#: audio/hybrid_commands.py:320
+#: audio/hybrid_commands.py:323
 msgid "Connected to {channel}"
 msgstr "已连接到 {channel}"
 
-#: audio/hybrid_commands.py:336 audio/hybrid_commands.py:363
-#: audio/hybrid_commands.py:404 audio/hybrid_commands.py:436
-#: audio/hybrid_commands.py:460 audio/hybrid_commands.py:483
-#: audio/hybrid_commands.py:519 audio/hybrid_commands.py:552
-#: audio/hybrid_commands.py:587 audio/hybrid_commands.py:641
-#: audio/hybrid_commands.py:687 audio/hybrid_commands.py:785
+#: audio/hybrid_commands.py:339 audio/hybrid_commands.py:366
+#: audio/hybrid_commands.py:408 audio/hybrid_commands.py:440
+#: audio/hybrid_commands.py:464 audio/hybrid_commands.py:487
+#: audio/hybrid_commands.py:531 audio/hybrid_commands.py:564
+#: audio/hybrid_commands.py:599 audio/hybrid_commands.py:653
+#: audio/hybrid_commands.py:699 audio/hybrid_commands.py:797
 msgid "No player detected."
 msgstr "没有检测到玩家。"
 
-#: audio/hybrid_commands.py:343 audio/hybrid_commands.py:370
-#: audio/hybrid_commands.py:411
+#: audio/hybrid_commands.py:346 audio/hybrid_commands.py:373
+#: audio/hybrid_commands.py:415
 msgid "Player is not currently playing anything."
 msgstr "玩家目前没有玩任何游戏。"
 
-#: audio/hybrid_commands.py:378
+#: audio/hybrid_commands.py:381
 msgid "Skipped - {track}"
 msgstr "跳过 - {track}"
 
-#: audio/hybrid_commands.py:387
+#: audio/hybrid_commands.py:391
 msgid "Autoplay started."
 msgstr "自动播放已开始。"
 
-#: audio/hybrid_commands.py:418
+#: audio/hybrid_commands.py:422
 msgid "Player stopped"
 msgstr "播放器已停止"
 
-#: audio/hybrid_commands.py:444
+#: audio/hybrid_commands.py:448
 msgid "Disconnected from {channel}"
 msgstr "断开连接 {channel}"
 
-#: audio/hybrid_commands.py:490
+#: audio/hybrid_commands.py:494
 msgid "There is nothing in the queue."
 msgstr "队列中没有任何内容。"
 
-#: audio/hybrid_commands.py:498
+#: audio/hybrid_commands.py:502
+msgid "You are not allowed to shuffle the queue."
+msgstr "您无权随机播放队列。"
+
+#: audio/hybrid_commands.py:510
 msgid "{queue_size} tracks shuffled"
 msgstr "{queue_size} 条曲目已排序"
 
-#: audio/hybrid_commands.py:525
+#: audio/hybrid_commands.py:537
 msgid "Repeating the queue"
 msgstr "重复队列"
 
-#: audio/hybrid_commands.py:528
+#: audio/hybrid_commands.py:540
 msgid "Repeating disabled"
 msgstr "已禁用重复"
 
-#: audio/hybrid_commands.py:531
+#: audio/hybrid_commands.py:543
 msgid "Repeating {track}"
 msgstr "正在重复 {track}"
 
-#: audio/hybrid_commands.py:534
+#: audio/hybrid_commands.py:546
 msgid "current track"
 msgstr "当前曲目"
 
-#: audio/hybrid_commands.py:558
+#: audio/hybrid_commands.py:570
 msgid "Player already paused did you mean to run `/resume`."
 msgstr "玩家已暂停，你是要运行 `/resume` 。"
 
-#: audio/hybrid_commands.py:560 audio/hybrid_commands.py:595
+#: audio/hybrid_commands.py:572 audio/hybrid_commands.py:607
 msgid "Player already paused did you mean to run `{prefix}{command}`."
 msgstr "玩家已暂停，你是要运行{prefix}{command}`。"
 
-#: audio/hybrid_commands.py:571
+#: audio/hybrid_commands.py:583
 msgid "Player paused."
 msgstr "播放器已暂停"
 
-#: audio/hybrid_commands.py:593
+#: audio/hybrid_commands.py:605
 msgid "Player already paused did you mean to run `/pause`."
 msgstr "玩家已暂停，你是要运行 `/暂停` 。"
 
-#: audio/hybrid_commands.py:606
+#: audio/hybrid_commands.py:618
 msgid "Player resumed."
 msgstr "播放器已恢复。"
 
-#: audio/hybrid_commands.py:652
+#: audio/hybrid_commands.py:664
 msgid "Volume cannot be higher than {max_volume}."
 msgstr "音量不能大于 {max_volume}。"
 
-#: audio/hybrid_commands.py:661 audio/utility_commands.py:62
+#: audio/hybrid_commands.py:673 audio/utility_commands.py:62
 msgid "Player volume set to {volume}%."
 msgstr "播放器音量设置为 {volume}%。"
 
-#: audio/hybrid_commands.py:694
+#: audio/hybrid_commands.py:706
 msgid "Nothing playing."
 msgstr "没有播放。"
 
-#: audio/hybrid_commands.py:703
+#: audio/hybrid_commands.py:715
 msgid "Unable to seek track"
 msgstr "无法寻找曲目"
 
-#: audio/hybrid_commands.py:704
+#: audio/hybrid_commands.py:716
 msgid "Can't seek on a stream."
 msgstr "无法在一个流中寻找。"
 
-#: audio/hybrid_commands.py:712
+#: audio/hybrid_commands.py:724
 msgid "Unable to seek track."
 msgstr "无法寻找曲目。"
 
-#: audio/hybrid_commands.py:721
+#: audio/hybrid_commands.py:733
 msgid "Cannot seek when the player is paused."
 msgstr "当玩家暂停时无法寻找。"
 
-#: audio/hybrid_commands.py:734
+#: audio/hybrid_commands.py:746
 msgid "Moved {seconds}s to 00:00:00."
 msgstr "移动 {seconds}到 00:00:00。"
 
-#: audio/hybrid_commands.py:741
+#: audio/hybrid_commands.py:753
 msgid "Moved {seconds}s to {time}."
 msgstr "已将 {seconds}s 移动到 {time}。"
 
-#: audio/hybrid_commands.py:762
+#: audio/hybrid_commands.py:774
 msgid "Moved to {time}."
 msgstr "已移动到 {time}。"
 
-#: audio/hybrid_commands.py:793
+#: audio/hybrid_commands.py:805
 msgid "No previous in player history."
 msgstr "在玩家历史中没有以前的记录。"
 
-#: audio/hybrid_commands.py:801
+#: audio/hybrid_commands.py:813
 msgid "Playing previous track: {track}."
 msgstr "正在播放上一首曲目: {track}。"
 
