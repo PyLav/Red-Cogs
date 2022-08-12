@@ -196,7 +196,7 @@ class ContextMenus(PyLavCogMixin, ABC):
             track = apple_music_activity.details
             # TODO: This should use the button URL instead of a search for 100% accuracy
             #   Currently discord.py doesnt provide the button URLs, the day the do this can be updated
-            search_string = "amsearch:" if album or artist or track else None
+            search_string = "amsearch:" if (album or artist or track) else None
             if album:
                 search_string += f"{album} "
             if artist:
