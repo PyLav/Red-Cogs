@@ -276,9 +276,9 @@ class HybridCommands(PyLavCogMixin, ABC):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
         config = await self.lavalink.player_config_manager.get_config(context.guild.id)
-        if (channel := context.guild.get_channel_or_thread(config.forced_channel_id)) is None:
-            channel = channel or rgetattr(context, "author.voice.channel", None)
-            if not channel:
+        if (actual_channel := context.guild.get_channel_or_thread(config.forced_channel_id)) is None:
+            actual_channel = channel or rgetattr(context, "author.voice.channel", None)
+            if not actual_channel:
                 await context.send(
                     embed=await context.lavalink.construct_embed(
                         description=_(
@@ -289,11 +289,13 @@ class HybridCommands(PyLavCogMixin, ABC):
                     ephemeral=True,
                 )
                 return
-        if not ((permission := channel.permissions_for(context.me)) and permission.connect and permission.speak):
+        if not ((permission := actual_channel.permissions_for(context.me)) and permission.connect and permission.speak):
             if permission.connect:
-                description = _("I don't have permission to connect to that channel.").format(channel=channel.mention)
+                description = _("I don't have permission to connect to that channel.").format(
+                    channel=actual_channel.mention
+                )
             else:
-                description = _("I don't have permission to speak in {channel}.").format(channel=channel.mention)
+                description = _("I don't have permission to speak in {channel}.").format(channel=actual_channel.mention)
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("I don't have permission to connect to {channel}.").format(channel=description),
@@ -303,11 +305,11 @@ class HybridCommands(PyLavCogMixin, ABC):
             )
             return
         if (player := context.player) is None:
-            player = await context.lavalink.connect_player(context.author, channel=channel, self_deaf=True)
+            player = await context.lavalink.connect_player(context.author, channel=actual_channel, self_deaf=True)
         else:
-            await player.move_to(context.author, channel, self_deaf=True)
+            await player.move_to(context.author, channel=actual_channel, self_deaf=True)
 
-        if player.forced_vc:
+        if player.forced_vc and channel != actual_channel:
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("I'm forced to only join {channel}.").format(channel=player.forced_vc.mention),
