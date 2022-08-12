@@ -423,7 +423,7 @@ class PyLavPlaylists(
                                 ephemeral=True,
                             )
                             return
-                        if tracks := [track["track"] for track in tracks["tracks"] if "track" in track]:
+                        if tracks := [track["track"] for track in tracks["tracks"] if "track" in track]:  # type: ignore
                             changed = True
                             playlist.tracks = tracks
                 elif playlist.id in BUNDLED_PLAYLIST_IDS:
