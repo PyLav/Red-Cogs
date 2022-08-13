@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-19 18:31+0000\n"
-"PO-Revision-Date: 2022-08-12 18:08\n"
+"POT-Creation-Date: 2022-08-13 12:00+0000\n"
+"PO-Revision-Date: 2022-08-13 12:07\n"
 "Last-Translator: \n"
 "Language-Team: German, Luxembourg\n"
 "MIME-Version: 1.0\n"
@@ -225,4 +225,105 @@ msgid "Managed node's source set to {source}.\n\n"
 "Restart the bot for it to take effect."
 msgstr "Quelle für verwaltete Knoten auf {source}gesetzt.\n\n"
 "Starten Sie den Bot neu, damit er wirksam wird."
+
+#: plmanagednode/cog.py:507
+#, docstring
+msgid "Configure multiple settings for the managed node.\n\n"
+"        Run `[p]plmanaged config server <setting> info` to show info about the settings and what they do.\n\n"
+"        **Setting names**:\n"
+"        `bufferDurationMs` : Integer i.e 400 (Default 400)\n"
+"        `frameBufferDurationMs` : Integer i.e 1000 (Default 1000)\n"
+"        `trackStuckThresholdMs` : Integer i.e 1000 (Default 1000)\n"
+"        `youtubePlaylistLoadLimit` : Integer i.e 1000 (Default 1000)\n"
+"        `opusEncodingQuality` : Integer i.e 10 (Default 10)\n"
+"        `resamplingQuality` : String i.e LOW (Default LOW)\n"
+"        `useSeekGhosting` : Boolean i.e True (Default True)\n"
+"        `playerUpdateInterval` : Integer i.e 1 (Default 1)\n"
+"        `youtubeSearchEnabled` : Boolean i.e True (Default True)\n"
+"        `soundcloudSearchEnabled` : Boolean i.e True (Default True)\n"
+"        "
+msgstr "Konfigurieren Sie mehrere Einstellungen für den verwalteten Knoten.\n\n"
+"        Führen Sie `[p]plmanaged config server <setting> info` aus, um Informationen über die Einstellungen und was sie tun.\n\n"
+"        **Namen einstellen**:\n"
+"        `bufferDurationMs` : Integer i. 400 (Standard 400)\n"
+"        `frameBufferDurationMs` : Integer i. 1000 (Default 1000)\n"
+"        `trackStuckThresholdMs` : Integer i. 1000 (Standard 1000)\n"
+"        `youtubePlaylistLoadLimit` : Integer i. 1000 (Standard 1000)\n"
+"        `opusEncodingQuality` : Integer i. 10 (Standard 10)\n"
+"        `resamplingQuality` : String i. LOW (Standard LOW)\n"
+"        `useSeekGhosting` : Boolean i. True (Default True)\n"
+"        `playerUpdateInterval` : Integer i. 1 (Standard 1)\n"
+"        `youtubeSearchEnabled` : Boolean i. True (Default True)\n"
+"        `soundcloudSearchEnabled` : Boolean i. True (Standard wahr)\n"
+"        "
+
+#: plmanagednode/cog.py:547
+msgid "{Setting} is not a valid Setting; Options are: \n\n"
+"{setting_list}."
+msgstr "{Setting} ist keine gültige Einstellung; Optionen sind: \n\n"
+"{setting_list}."
+
+#: plmanagednode/cog.py:558
+msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses. Minimum of 40ms, lower values may introduce pauses. Accepted values: Range: 40 - 2,000."
+msgstr "Die Dauer des NAS-Puffers in Millisekunden. Höhere Werte gehen besser gegen längere GC-Pausen vor. Mindestens 40ms, niedrigere Werte können Pausen einführen. Akzeptierte Werte: 40 - 2.000."
+
+#: plmanagednode/cog.py:563
+msgid "How many milliseconds of audio to keep buffered. Accepted values: Range: 1,000 - 10,000."
+msgstr "Wie viele Millisekunden Audio gepuffert werden sollen. Akzeptierte Werte: Bereich: 1.000 - 10.000."
+
+#: plmanagednode/cog.py:566
+msgid "The threshold in milliseconds for how long a track can be stuck. A track is stuck if does not return any audio data. Accepted values: Range: 5,000 - 20,000."
+msgstr "Der Schwellenwert in Millisekunden für die Dauer einer Strecke. Eine Spur steckt fest, wenn keine Audiodaten zurückgegeben werden. Akzeptierte Werte: 5.000 - 20.000."
+
+#: plmanagednode/cog.py:570
+msgid "Number of pages to return for a YouTube Playlist - Each page contains 100 songs. Accepted values: Range: 5 - 100."
+msgstr "Anzahl der Seiten, die für eine YouTube Playlist zurückgegeben werden sollen - Jede Seite enthält 100 Songs. Akzeptierte Werte: Bereich: 5 - 100."
+
+#: plmanagednode/cog.py:574
+msgid "Opus encoder quality. Valid values range from 0 to 10, where 10 is best quality but is the most expensive on the CPU."
+msgstr "Opus Encoder Qualität. Gültige Werte liegen zwischen 0 und 10, wobei 10 die beste Qualität ist, aber der teuerste Wert auf der CPU ist."
+
+#: plmanagednode/cog.py:578
+msgid "Quality of resampling operations. Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU."
+msgstr "Die Qualität der Resampling Operationen. Gültige Werte sind LOW, MEDIUM und HIGH, wobei HIGH die meisten CPU nutzt."
+
+#: plmanagednode/cog.py:582
+msgid "Seek ghosting is the effect where whilst a seek is in progress, the audio buffer is read from until empty, or until seek is ready. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`."
+msgstr "Spulen ist der Effekt, bei dem während eines Suchvorgangs der Audio-Puffer von bis zu leer, oder bis die Suche fertig ist, gelesen wird. Akzeptierte Werte für True: `True`, `t`, `1`, Akzeptierte Werte für False: `False`, `f`, `0`."
+
+#: plmanagednode/cog.py:587
+msgid "How frequently in seconds to send player updates to clients, affects the current position accuracy. Accepted values: Range: 1 - 10."
+msgstr "Wie oft in Sekunden Spieler-Updates an Clients gesendet werden, beeinflusst die aktuelle Positionsgenauigkeit. Akzeptierte Werte: Bereich: 1 - 10."
+
+#: plmanagednode/cog.py:591
+msgid "Enable or disable YouTube searches within the node, this will affect AppleMusic, Spotify and any functionality dependant on YouTube. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`."
+msgstr "Aktivieren oder deaktivieren Sie YouTube-Suchanfragen innerhalb des Knotens, dies wirkt sich auf AppleMusic, Spotify und jegliche von YouTube abhängige Funktionalität aus. Akzeptierte Werte für True: `True`, `t`, `1`, Akzeptierte Werte für False: `False`, `f`, `0`."
+
+#: plmanagednode/cog.py:596
+msgid "Enable or disable SoundCloud searches within the node, this will affect any functionality dependant on SoundCloud. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`."
+msgstr "Aktivieren oder deaktivieren Sie SoundCloud-Suchen innerhalb des Knotens, dies wirkt sich auf alle Funktionen aus, die von SoundCloud abhängig sind. Akzeptierte Werte für True: `True`, `t`, `1`, Akzeptierte Werte für False: `False`, `f`, `0`."
+
+#: plmanagednode/cog.py:605
+msgid "{Setting} info.\n\n"
+"{info}."
+msgstr "{Setting} Info.\n\n"
+"{info}."
+
+#: plmanagednode/cog.py:633
+msgid "{Setting} valid inputs are:\n\n"
+"Range between: {start} - {end}."
+msgstr "{Setting} gültige Eingaben sind:\n\n"
+"Bereich zwischen: {start} - {end}."
+
+#: plmanagednode/cog.py:644
+msgid "{Setting} valid inputs are:\n\n"
+"{setting_list}."
+msgstr "{Setting} gültige Eingaben sind:\n\n"
+"{setting_list}."
+
+#: plmanagednode/cog.py:662
+msgid "{Setting} set to {value}.\n\n"
+"Restart the bot for it to take effect."
+msgstr "{Setting} wurde auf {value}gesetzt.\n\n"
+"Starte den Bot neu, damit er wirksam wird."
 
