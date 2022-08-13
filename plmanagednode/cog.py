@@ -501,3 +501,168 @@ class PyLavManagedNode(commands.Cog):
             ),
             ephemeral=True,
         )
+
+    @command_plmanaged_config.command(name="server")
+    async def command_plmanaged_config_server(self, context: PyLavContext, setting: str, value: str):
+        """Configure multiple settings for the managed node.
+
+        Run `[p]plmanaged config server <setting> info` to show info about the settings and what they do.
+
+        **Setting names**:
+        `bufferDurationMs` : Integer i.e 400 (Default 400)
+        `frameBufferDurationMs` : Integer i.e 1000 (Default 1000)
+        `trackStuckThresholdMs` : Integer i.e 1000 (Default 1000)
+        `youtubePlaylistLoadLimit` : Integer i.e 1000 (Default 1000)
+        `opusEncodingQuality` : Integer i.e 10 (Default 10)
+        `resamplingQuality` : String i.e LOW (Default LOW)
+        `useSeekGhosting` : Boolean i.e True (Default True)
+        `playerUpdateInterval` : Integer i.e 1 (Default 1)
+        `youtubeSearchEnabled` : Boolean i.e True (Default True)
+        `soundcloudSearchEnabled` : Boolean i.e True (Default True)
+        """
+
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+
+        user_input = setting.lower()
+        value = value.lower()
+        setting_case_map = {
+            "bufferdurationms": "bufferDurationMs",
+            "framebufferdurationms": "frameBufferDurationMs",
+            "trackstuckthresholdms": "trackStuckThresholdMs",
+            "youtubeplaylistloadlimit": "youtubePlaylistLoadLimit",
+            "opusencodingquality": "opusEncodingQuality",
+            "resamplingquality": "resamplingQuality",
+            "useseekghosting": "useSeekGhosting",
+            "playerupdateinterval": "playerUpdateInterval",
+            "youtubesearchenabled": "youtubeSearchEnabled",
+            "soundcloudsearchenabled": "soundcloudSearchEnabled",
+        }
+        setting = setting_case_map.get(user_input)
+        if setting is None:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("{Setting} is not a valid Setting; Options are: \n\n{setting_list}.").format(
+                        setting=user_input, setting_list=humanize_list(list(setting_case_map.values()))
+                    ),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+            return
+
+        if value.lower() == "info":
+            setting_description_map = {
+                "bufferDurationMs": _(
+                    "The duration of the NAS buffer in milliseconds. "
+                    "Higher values fare better against longer GC pauses. "
+                    "Minimum of 40ms, lower values may introduce pauses. Accepted values: Range: 40 - 2,000."
+                ),
+                "frameBufferDurationMs": _(
+                    "How many milliseconds of audio to keep buffered. Accepted values: Range: 1,000 - 10,000."
+                ),
+                "trackStuckThresholdMs": _(
+                    "The threshold in milliseconds for how long a track can be stuck. "
+                    "A track is stuck if does not return any audio data. Accepted values: Range: 5,000 - 20,000."
+                ),
+                "youtubePlaylistLoadLimit": _(
+                    "Number of pages to return for a YouTube Playlist - Each page contains 100 songs. "
+                    "Accepted values: Range: 5 - 100."
+                ),
+                "opusEncodingQuality": _(
+                    "Opus encoder quality. "
+                    "Valid values range from 0 to 10, where 10 is best quality but is the most expensive on the CPU."
+                ),
+                "resamplingQuality": _(
+                    "Quality of resampling operations. "
+                    "Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU."
+                ),
+                "useSeekGhosting": _(
+                    "Seek ghosting is the effect where whilst a seek is in progress, "
+                    "the audio buffer is read from until empty, or until seek is ready. "
+                    "Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`."
+                ),
+                "playerUpdateInterval": _(
+                    "How frequently in seconds to send player updates to clients, "
+                    "affects the current position accuracy. Accepted values: Range: 1 - 10."
+                ),
+                "youtubeSearchEnabled": _(
+                    "Enable or disable YouTube searches within the node, "
+                    "this will affect AppleMusic, Spotify and any functionality dependant on YouTube. "
+                    "Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`."
+                ),
+                "soundcloudSearchEnabled": _(
+                    "Enable or disable SoundCloud searches within the node, "
+                    "this will affect any functionality dependant on SoundCloud. "
+                    "Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`."
+                ),
+            }
+
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("{Setting} info.\n\n{info}.").format(
+                        setting=setting, info=setting_description_map.get(setting)
+                    ),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+            return
+
+        setting_values_map = {
+            "bufferDurationMs": (40, 2000),
+            "frameBufferDurationMs": (1000, 10000),
+            "trackStuckThresholdMs": (5000, 20000),
+            "youtubePlaylistLoadLimit": (5, 100),
+            "opusEncodingQuality": (0, 10),
+            "resamplingQuality": ("low", "medium", "high"),
+            "useSeekGhosting": ("0", "1", "true", "false", "t", "f"),
+            "playerUpdateInterval": (1, 10),
+            "youtubeSearchEnabled": ("0", "1", "true", "false", "t", "f"),
+            "soundcloudSearchEnabled": ("0", "1", "true", "false", "t", "f"),
+        }
+        possible_values = setting_values_map.get(setting)
+
+        if isinstance(possible_values[0], int):
+            value = int(value)
+            if value not in range(possible_values[0], possible_values[0] + 1):
+                await context.send(
+                    embed=await context.lavalink.construct_embed(
+                        description=_("{Setting} valid inputs are:\n\nRange between: {start} - {end}.").format(
+                            setting=setting, start=possible_values[0], end=possible_values[1]
+                        ),
+                        messageable=context,
+                    ),
+                    ephemeral=True,
+                )
+                return
+        elif value not in possible_values:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("{Setting} valid inputs are:\n\n{setting_list}.").format(
+                        setting=setting, setting_list=humanize_list(possible_values)
+                    ),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+            return
+        elif possible_values == ("0", "1", "true", "false", "t", "f"):
+            value = value in ("0", "1", "true")
+        elif possible_values == ("low", "medium", "high"):
+            value = value.upper()
+        data = await self.lavalink._node_config_manager.get_bundled_node_config()
+        data.yaml["lavalink"]["server"][setting] = value
+        await data.save()
+
+        await context.send(
+            embed=await context.lavalink.construct_embed(
+                description=_("{Setting} set to {value}.\n\nRestart the bot for it to take effect.").format(
+                    setting=setting, value=value
+                ),
+                messageable=context,
+            ),
+            ephemeral=True,
+        )
