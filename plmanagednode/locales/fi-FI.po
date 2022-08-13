@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-05-19 18:31+0000\n"
-"PO-Revision-Date: 2022-08-12 18:07\n"
+"POT-Creation-Date: 2022-08-13 12:00+0000\n"
+"PO-Revision-Date: 2022-08-13 12:06\n"
 "Last-Translator: \n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
@@ -225,5 +225,106 @@ msgstr "Virheellinen lähde, {valid_list} ovat kelvollisia lähteitä."
 msgid "Managed node's source set to {source}.\n\n"
 "Restart the bot for it to take effect."
 msgstr "Hallinnoitu solmun lähde on asetettu {source}.\n\n"
+"Käynnistä botti uudelleen, jotta se tulee voimaan."
+
+#: plmanagednode/cog.py:507
+#, docstring
+msgid "Configure multiple settings for the managed node.\n\n"
+"        Run `[p]plmanaged config server <setting> info` to show info about the settings and what they do.\n\n"
+"        **Setting names**:\n"
+"        `bufferDurationMs` : Integer i.e 400 (Default 400)\n"
+"        `frameBufferDurationMs` : Integer i.e 1000 (Default 1000)\n"
+"        `trackStuckThresholdMs` : Integer i.e 1000 (Default 1000)\n"
+"        `youtubePlaylistLoadLimit` : Integer i.e 1000 (Default 1000)\n"
+"        `opusEncodingQuality` : Integer i.e 10 (Default 10)\n"
+"        `resamplingQuality` : String i.e LOW (Default LOW)\n"
+"        `useSeekGhosting` : Boolean i.e True (Default True)\n"
+"        `playerUpdateInterval` : Integer i.e 1 (Default 1)\n"
+"        `youtubeSearchEnabled` : Boolean i.e True (Default True)\n"
+"        `soundcloudSearchEnabled` : Boolean i.e True (Default True)\n"
+"        "
+msgstr "Määritä hallitun solmun useita asetuksia.\n\n"
+"        Suorita `[p]plmanaged config-palvelin <setting> info` näyttääksesi tiedot asetuksista ja siitä, mitä he tekevät.\n\n"
+"        **Asetetaan nimiä**:\n"
+"        `bufferDurationMs` : Kokonaisluku i. 400 (Oletus 400)\n"
+"        `frameBufferDurationMs` : Kokonaisluku i. 1000 (Oletus 1000)\n"
+"        `trackStuckThresholdMs` : Kokonaisluku i. 1000 (Oletus 1000)\n"
+"        `youtubePlaylistLoadLimit` : Kokonaisluku i. 1000 (Oletus 1000)\n"
+"        `opusEncodingQuality` : Kokonaisluku i. 10 (oletus 10)\n"
+"        `resamplingQuality` : String i. LOW (Default LOW)\n"
+"        `useSeekGhosting` : Boolean i. True (Default True)\n"
+"        `playerUpdateInterval` : Kokonaisluku i. 1 (oletus 1)\n"
+"        `youtubeSearchEnabled` : Boolean i. True (Default True)\n"
+"        `soundcloudSearchEnabled` : Boolean i. Tosi (oletus totta)\n"
+"        "
+
+#: plmanagednode/cog.py:547
+msgid "{Setting} is not a valid Setting; Options are: \n\n"
+"{setting_list}."
+msgstr "{Setting} ei ole kelvollinen Asetus; Valinnat ovat: \n\n"
+"{setting_list}."
+
+#: plmanagednode/cog.py:558
+msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses. Minimum of 40ms, lower values may introduce pauses. Accepted values: Range: 40 - 2,000."
+msgstr "NAS-puskurin kesto millisekunteina. Korkeammat arvot pärjäävät paremmin pidempiä GC-taukoja vastaan. Vähintään 40 ms, pienemmät arvot voivat tuoda taukoja. Hyväksytyt arvot: vaihteluväli 40 – 2 000."
+
+#: plmanagednode/cog.py:563
+msgid "How many milliseconds of audio to keep buffered. Accepted values: Range: 1,000 - 10,000."
+msgstr "Kuinka monta millisekuntia äänen pitää puskuroida. Hyväksytyt arvot: alue: 1000 - 10,000."
+
+#: plmanagednode/cog.py:566
+msgid "The threshold in milliseconds for how long a track can be stuck. A track is stuck if does not return any audio data. Accepted values: Range: 5,000 - 20,000."
+msgstr "Kynnys millisekunteina kuinka kauan raita voidaan jumiutua. Raita on jumissa, jos ei palauta äänitietoja. Hyväksytyt arvot: alue: 5,000 - 20,000."
+
+#: plmanagednode/cog.py:570
+msgid "Number of pages to return for a YouTube Playlist - Each page contains 100 songs. Accepted values: Range: 5 - 100."
+msgstr "YouTube-soittolistalle palautettavien sivujen määrä - Jokainen sivu sisältää 100 kappaletta. Hyväksytyt arvot: alue: 5 - 100."
+
+#: plmanagednode/cog.py:574
+msgid "Opus encoder quality. Valid values range from 0 to 10, where 10 is best quality but is the most expensive on the CPU."
+msgstr "Opus encoder laatu. Voimassa arvot vaihtelevat 0 - 10, jossa 10 on paras laatu, mutta on kallein CPU."
+
+#: plmanagednode/cog.py:578
+msgid "Quality of resampling operations. Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU."
+msgstr "Resampling toiminnan laatu. Kelvolliset arvot ovat LOW, MEDIUM ja HIGH, jossa HIGH käyttää eniten CPU."
+
+#: plmanagednode/cog.py:582
+msgid "Seek ghosting is the effect where whilst a seek is in progress, the audio buffer is read from until empty, or until seek is ready. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`."
+msgstr "Etsii haamua on se vaikutus, jossa etsintä on käynnissä, äänipuskuria luetaan tyhjään asti, tai kunnes etsintä on valmis. Hyväksytyt arvot True: `True`, `t`, `1`, Hyväksytyt arvot False: `False`, `f`, `0`."
+
+#: plmanagednode/cog.py:587
+msgid "How frequently in seconds to send player updates to clients, affects the current position accuracy. Accepted values: Range: 1 - 10."
+msgstr "Kuinka usein pelaaja lähettää päivityksiä asiakkaille, vaikuttaa nykyisen sijainnin tarkkuutta. Hyväksytyt arvot: alue: 1 - 10."
+
+#: plmanagednode/cog.py:591
+msgid "Enable or disable YouTube searches within the node, this will affect AppleMusic, Spotify and any functionality dependant on YouTube. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`."
+msgstr "Ota käyttöön tai poista käytöstä YouTube-haut solmun sisällä, tämä vaikuttaa AppleMusicin, Spotifyn ja kaikkiin YouTubesta riippuviin toimintoihin. Hyväksytyt arvot True: `True`, `t`, `1`, Hyväksytyt arvot False: `False`, `f`, `0`."
+
+#: plmanagednode/cog.py:596
+msgid "Enable or disable SoundCloud searches within the node, this will affect any functionality dependant on SoundCloud. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`."
+msgstr "Ota käyttöön tai poista käytöstä SoundCloud -haut solmun sisällä, tämä vaikuttaa kaikkiin SoundCloudista riippuviin toimintoihin. Hyväksytyt arvot True: `True`, `t`, `1`, Hyväksytyt arvot False: `False`, `f`, `0`."
+
+#: plmanagednode/cog.py:605
+msgid "{Setting} info.\n\n"
+"{info}."
+msgstr "{Setting} tiedot.\n\n"
+"{info}."
+
+#: plmanagednode/cog.py:633
+msgid "{Setting} valid inputs are:\n\n"
+"Range between: {start} - {end}."
+msgstr "{Setting} kelvollista syötettä ovat:\n\n"
+"Vaihteluväli: {start} - {end}."
+
+#: plmanagednode/cog.py:644
+msgid "{Setting} valid inputs are:\n\n"
+"{setting_list}."
+msgstr "{Setting} kelvollista syötettä ovat:\n\n"
+"{setting_list}."
+
+#: plmanagednode/cog.py:662
+msgid "{Setting} set to {value}.\n\n"
+"Restart the bot for it to take effect."
+msgstr "{Setting} asetettu arvoon {value}.\n\n"
 "Käynnistä botti uudelleen, jotta se tulee voimaan."
 
