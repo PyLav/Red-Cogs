@@ -75,7 +75,7 @@ class PyLavMigrator(commands.Cog):
                 emptypause_enabled=False,  # Supported in PyLav
                 emptypause_timer=0,  # Supported in PyLav
                 max_volume=150,  # Supported in PyLav
-                shuffle=False,  # Supported in PyLav
+                shuffle=None,  # Supported in PyLav
                 volume=100,  # Supported in PyLav
             )
             _playlist = dict(id=None, author=None, name=None, playlist_url=None, tracks=[])
@@ -136,6 +136,11 @@ class PyLavMigrator(commands.Cog):
             player_config: PlayerModel = await self.lavalink.player_config_manager.get_config(guild)
             if not guild_config.get("auto_deafen", True):
                 player_config.self_deaf = False
+            if guild_config.get("dj_enabled", False) is True:
+                if dj_role := guild_config.get("dj_role"):
+                    if guild_obj := self.bot.get_guild(guild):
+                        if role := guild_obj.get_role(dj_role):
+                            await player_config.dj_roles_add(role)
             if guild_config.get("autoplaylist", {}).get("enabled", False):
                 player_config.auto_play = True
                 saved_id = guild_config.get("autoplaylist", {}).get("id", 42069)

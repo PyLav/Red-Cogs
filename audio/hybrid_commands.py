@@ -496,7 +496,7 @@ class HybridCommands(PyLavCogMixin, ABC):
                 ephemeral=True,
             )
             return
-        if not (await self.lavalink.player_config_manager.get_shuffle(context.guild.id)):
+        if (await self.lavalink.player_config_manager.get_shuffle(context.guild.id)) is False:
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("You are not allowed to shuffle the queue."), messageable=context
