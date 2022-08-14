@@ -504,7 +504,7 @@ class HybridCommands(PyLavCogMixin, ABC):
                 ephemeral=True,
             )
             return
-        await context.player.shuffle_queue(context.author)
+        await context.player.shuffle_queue(context.author.id)
         await context.send(
             embed=await context.lavalink.construct_embed(
                 description=_("{queue_size} tracks shuffled").format(queue_size=context.player.queue.size()),
