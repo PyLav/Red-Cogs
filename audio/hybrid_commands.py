@@ -602,9 +602,9 @@ class HybridCommands(PyLavCogMixin, ABC):
             return
         if not context.player.paused:
             if context.interaction:
-                description = _("Player already paused did you mean to run `/pause`.")
+                description = _("Player already resumed did you mean to run `/pause`.")
             else:
-                description = _("Player already paused did you mean to run `{prefix}{command}`.").format(
+                description = _("Player already resumed did you mean to run `{prefix}{command}`.").format(
                     prefix=context.prefix, command=self.command_pause.qualified_name
                 )
             await context.send(
