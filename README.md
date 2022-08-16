@@ -37,11 +37,11 @@ Documentation
 
 Getting Started
 -------------------------------------
-Follow [PyLav Setup](https://github.com/Drapersniper/PyLav#installation) then in your venv run the following
-```bash
-python -m pip install --force-reinstall git+https://github.com/Drapersniper/Red-DiscordBot@hybrid#egg=Red-DiscordBot
-```
-Start the bot
+Follow [PyLav Setup](https://github.com/Drapersniper/PyLav/blob/master/SETUP.md)
+
+
+
+If you already have a Red instance with PyLav setup then you can do the following
 ```
 [p]load downloader
 [p]repo add PyLav https://github.com/Drapersniper/PyLav-Cogs
