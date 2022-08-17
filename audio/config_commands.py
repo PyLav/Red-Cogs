@@ -130,9 +130,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
         )
 
     @command_playerset_global.command(name="shuffle")
-    async def command_playerset_global_shuffle(
-        self, context: PyLavContext, toggle: typing.Optional[bool] = None
-    ) -> None:
+    async def command_playerset_global_shuffle(self, context: PyLavContext, toggle: bool) -> None:
         """Set whether the bot should allow users to shuffle the queue."""
 
         if isinstance(context, discord.Interaction):
@@ -393,9 +391,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
         )
 
     @command_playerset_server.command(name="shuffle")
-    async def command_playerset_server_shuffle(
-        self, context: PyLavContext, toggle: typing.Optional[bool] = None
-    ) -> None:
+    async def command_playerset_server_shuffle(self, context: PyLavContext, toggle: bool) -> None:
         """Set whether the bot should allow users to shuffle the queue."""
 
         if isinstance(context, discord.Interaction):
