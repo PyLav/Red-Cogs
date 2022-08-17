@@ -533,6 +533,7 @@ class HybridCommands(PyLavCogMixin, ABC):
                 ephemeral=True,
             )
             return
+        await context.player.config.update()
         if queue:
             await context.player.set_repeat("queue", True, context.author)
             msg = _("Repeating the queue")
