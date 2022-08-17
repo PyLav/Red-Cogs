@@ -168,8 +168,8 @@ class ConfigCommands(PyLavCogMixin, ABC):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        self.lavalink.player_manager.global_config.empty_queue_dc["enabled"] = toggle
-        self.lavalink.player_manager.global_config.empty_queue_dc["time"] = after.total_seconds() if after else 60
+        self.lavalink.player_manager.global_config.empty_queue_dc.enabled = toggle
+        self.lavalink.player_manager.global_config.empty_queue_dc.time = after.total_seconds() if after else 60
         await self.lavalink.player_manager.global_config.save()
         if after:
             timedelta_str = humanize_timedelta(timedelta=after)
@@ -205,8 +205,8 @@ class ConfigCommands(PyLavCogMixin, ABC):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        self.lavalink.player_manager.global_config.alone_dc["enabled"] = toggle
-        self.lavalink.player_manager.global_config.alone_dc["time"] = after.total_seconds() if after else 60
+        self.lavalink.player_manager.global_config.alone_dc.enabled = toggle
+        self.lavalink.player_manager.global_config.alone_dc.time = after.total_seconds() if after else 60
         await self.lavalink.player_manager.global_config.save()
         if after:
             timedelta_str = humanize_timedelta(timedelta=after)
@@ -446,8 +446,8 @@ class ConfigCommands(PyLavCogMixin, ABC):
             config = context.player.config
         else:
             config = await self.lavalink.player_config_manager.get_config(context.guild.id)
-        config.empty_queue_dc["enabled"] = toggle
-        config.empty_queue_dc["time"] = after.total_seconds() if after else 60
+        config.empty_queue_dc.enabled = toggle
+        config.empty_queue_dc.time = after.total_seconds() if after else 60
         await config.save()
         if after:
             timedelta_str = humanize_timedelta(timedelta=after)
@@ -504,8 +504,8 @@ class ConfigCommands(PyLavCogMixin, ABC):
             config = context.player.config
         else:
             config = await self.lavalink.player_config_manager.get_config(context.guild.id)
-        config.alone_dc["enabled"] = toggle
-        config.alone_dc["time"] = after.total_seconds() if after else 60
+        config.alone_dc.enabled = toggle
+        config.alone_dc.time = after.total_seconds() if after else 60
         await config.save()
         if after:
             timedelta_str = humanize_timedelta(timedelta=after)
