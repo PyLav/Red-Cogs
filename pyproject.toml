@@ -13,6 +13,53 @@ target-version = ['py310']
 profile = "black"
 line_length = 120
 py_version = 310
-known_third_party = ["aiohttp", "mpplaylists", "ujson", "red_commons", "discord", "sqlalchemy", "cached_property","psutil", "dateutils", "appdirs", "yaml", "redbot", "tabulate", "aiopath", "humanize"]
-known_first_party = ["pylav", "pylavcogs_shared"]
-known_local_folder = ["audio", "plconfig", "plmigrator", "plnodes", "plnotifier", "plplaylists", "plutils", "pllocal", "pleffects", "pleq", "plspotify", "plmanagednode"]
+known_third_party = [
+    "aiofile",
+    "aiohttp",
+    "aiohttp_client_cache",
+    "aiopath",
+    "anyio",
+    "apscheduler",
+    "apsw",
+    "asyncpg",
+    "asyncspotify",
+    "asyncstdlib",
+    "cached_property",
+    "discord",
+    "deepdiff",
+    "expiringdict",
+    "humanize",
+    "iso8601",
+    "packaging",
+    "piccolo",
+    "platformdirs",
+    "psutil",
+    "pytz",
+    "yaml",
+    "red_commons",
+    "redis",
+    "rich",
+    "tabulate",
+    "typing_extensions",
+    "ujson",
+    "uvloop"
+
+]
+known_first_party = [
+    "pylav",
+    "pylavcogs_shared"
+]
+known_local_folder = [
+    "audio",
+    "plconfig",
+    "pleffects",
+    "pleq",
+    "pllocal",
+    "plmanagednode",
+    "plmigrator",
+    "plnodes",
+    "plnotifier",
+    "plplaylists",
+    "plspotify",
+    "plutils"
+]
