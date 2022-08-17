@@ -147,7 +147,7 @@ class PyLavMigrator(commands.Cog):
             else:
                 player_config.auto_play = False
             if guild_config.get("shuffle", False):
-                player_config.shuffle = True
+                player_config.auto_shuffle = True
             if guild_config.get("volume", 100) != 100:
                 player_config.volume = guild_config.get("volume")
 

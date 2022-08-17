@@ -106,11 +106,34 @@ class ConfigCommands(PyLavCogMixin, ABC):
             ephemeral=True,
         )
 
+    @command_playerset_global.command(name="autoshuffle")
+    async def command_playerset_global_autoshuffle(
+        self, context: PyLavContext, toggle: typing.Optional[bool] = None
+    ) -> None:
+        """Set whether the bot should shuffle its queue after every new song added."""
+
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+
+        self.lavalink.player_manager.global_config.auto_shuffle = toggle
+        await self.lavalink.player_manager.global_config.save()
+        await context.send(
+            embed=await self.lavalink.construct_embed(
+                description=_("Auto-Shuffle set to {shuffle}.").format(
+                    shuffle=_("Enabled") if toggle else _("Disabled")
+                ),
+                messageable=context,
+            ),
+            ephemeral=True,
+        )
+
     @command_playerset_global.command(name="shuffle")
     async def command_playerset_global_shuffle(
         self, context: PyLavContext, toggle: typing.Optional[bool] = None
     ) -> None:
-        """Set whether the bot should shuffle its queue after every new song added."""
+        """Set whether the bot should allow users to shuffle the queue."""
 
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -330,11 +353,50 @@ class ConfigCommands(PyLavCogMixin, ABC):
             ephemeral=True,
         )
 
+    @command_playerset_server.command(name="autoshuffle")
+    async def command_playerset_server_autoshuffle(
+        self, context: PyLavContext, toggle: typing.Optional[bool] = None
+    ) -> None:
+        """Set whether the bot should shuffle its queue after every new song added."""
+
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+
+        if (await self.lavalink.player_manager.global_config.fetch_auto_shuffle()) is False:
+            await context.send(
+                embed=await self.lavalink.construct_embed(
+                    description=_("Auto-Shuffle is globally disabled."),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+            return
+        if context.player:
+            await context.player.set_auto_shuffle(toggle)
+        else:
+            if context.player:
+                config = context.player.config
+            else:
+                config = await self.lavalink.player_config_manager.get_config(context.guild.id)
+            config.auto_shuffle = toggle
+            await config.save()
+        await context.send(
+            embed=await self.lavalink.construct_embed(
+                description=_("Auto-Shuffle set to {shuffle}.").format(
+                    shuffle=_("Enabled") if toggle else _("Disabled")
+                ),
+                messageable=context,
+            ),
+            ephemeral=True,
+        )
+
     @command_playerset_server.command(name="shuffle")
     async def command_playerset_server_shuffle(
         self, context: PyLavContext, toggle: typing.Optional[bool] = None
     ) -> None:
-        """Set whether the bot should shuffle its queue after every new song added."""
+        """Set whether the bot should allow users to shuffle the queue."""
 
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
