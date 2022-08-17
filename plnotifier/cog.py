@@ -154,7 +154,12 @@ class PyLavNotifier(commands.Cog):
     async def initialize(self, *args, **kwargs) -> None:
         self._scheduled_jobs.append(
             self.lavalink.scheduler.add_job(
-                self.send_embed_batch, trigger="interval", seconds=10, max_instances=1, replace_existing=True
+                self.send_embed_batch,
+                trigger="interval",
+                seconds=10,
+                max_instances=1,
+                replace_existing=True,
+                coalesce=True,
             )
         )
 
