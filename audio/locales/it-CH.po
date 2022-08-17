@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-08-17 12:25+0000\n"
-"PO-Revision-Date: 2022-08-17 12:35\n"
+"POT-Creation-Date: 2022-08-17 14:03+0000\n"
+"PO-Revision-Date: 2022-08-17 14:11\n"
 "Last-Translator: \n"
 "Language-Team: Italian, Switzerland\n"
 "MIME-Version: 1.0\n"
@@ -50,69 +50,80 @@ msgstr "Opzioni di configurazione globale."
 msgid "Set the maximum volume server can set."
 msgstr "Impostare il server di volume massimo impostabile."
 
-#: audio/config_commands.py:68 audio/config_commands.py:244
+#: audio/config_commands.py:68 audio/config_commands.py:265
 #: audio/hybrid_commands.py:639
 msgid "Volume must be less than 1000."
 msgstr "Il volume deve essere inferiore a 1000."
 
-#: audio/config_commands.py:76 audio/config_commands.py:252
+#: audio/config_commands.py:76 audio/config_commands.py:273
 #: audio/hybrid_commands.py:647
 msgid "Volume must be greater than 0."
 msgstr "Il volume deve essere maggiore di 0."
 
-#: audio/config_commands.py:85 audio/config_commands.py:292
+#: audio/config_commands.py:85 audio/config_commands.py:313
 msgid "Max volume set to {volume}%."
 msgstr "Volume massimo impostato a {volume}%."
 
-#: audio/config_commands.py:93 audio/config_commands.py:300
+#: audio/config_commands.py:93 audio/config_commands.py:321
 #, docstring
 msgid "Set whether the bot should deafen itself when playing."
 msgstr "Imposta se il bot deve essere assordato quando si gioca."
 
-#: audio/config_commands.py:103 audio/config_commands.py:327
+#: audio/config_commands.py:103 audio/config_commands.py:348
 msgid "Deafen set to {deafen}."
 msgstr "Deafen impostato su {deafen}."
 
-#: audio/config_commands.py:103 audio/config_commands.py:124
-#: audio/config_commands.py:142 audio/config_commands.py:182
-#: audio/config_commands.py:220 audio/config_commands.py:327
-#: audio/config_commands.py:364 audio/config_commands.py:399
-#: audio/config_commands.py:460 audio/config_commands.py:519
+#: audio/config_commands.py:103 audio/config_commands.py:125
+#: audio/config_commands.py:145 audio/config_commands.py:163
+#: audio/config_commands.py:203 audio/config_commands.py:241
+#: audio/config_commands.py:348 audio/config_commands.py:386
+#: audio/config_commands.py:422 audio/config_commands.py:457
+#: audio/config_commands.py:518 audio/config_commands.py:577
 msgid "Enabled"
 msgstr "Abilitato"
 
-#: audio/config_commands.py:103 audio/config_commands.py:124
-#: audio/config_commands.py:142 audio/config_commands.py:182
-#: audio/config_commands.py:220 audio/config_commands.py:327
-#: audio/config_commands.py:364 audio/config_commands.py:399
-#: audio/config_commands.py:460 audio/config_commands.py:519
+#: audio/config_commands.py:103 audio/config_commands.py:125
+#: audio/config_commands.py:145 audio/config_commands.py:163
+#: audio/config_commands.py:203 audio/config_commands.py:241
+#: audio/config_commands.py:348 audio/config_commands.py:386
+#: audio/config_commands.py:422 audio/config_commands.py:457
+#: audio/config_commands.py:518 audio/config_commands.py:577
 msgid "Disabled"
 msgstr "Disabilitato"
 
-#: audio/config_commands.py:113 audio/config_commands.py:337
+#: audio/config_commands.py:113 audio/config_commands.py:358
 #, docstring
 msgid "Set whether the bot should shuffle its queue after every new song added."
 msgstr "Imposta se il bot deve mescolare la sua coda dopo ogni nuovo brano aggiunto."
 
-#: audio/config_commands.py:124 audio/config_commands.py:364
+#: audio/config_commands.py:124 audio/config_commands.py:385
+msgid "Auto-Shuffle set to {shuffle}."
+msgstr "Casuale automatico impostato a {shuffle}."
+
+#: audio/config_commands.py:134 audio/config_commands.py:395
+#, docstring
+msgid "Set whether the bot should allow users to shuffle the queue."
+msgstr "Imposta se il bot deve permettere agli utenti di mischiare la coda."
+
+#: audio/config_commands.py:145 audio/config_commands.py:422
 msgid "Shuffle set to {shuffle}."
 msgstr "Mischia impostata a {shuffle}."
 
-#: audio/config_commands.py:132 audio/config_commands.py:372
+#: audio/config_commands.py:153 audio/config_commands.py:430
 #, docstring
 msgid "Set whether the bot should automatically play songs when it's queue is empty."
 msgstr "Imposta se il bot deve riprodurre automaticamente i brani quando la coda è vuota."
 
-#: audio/config_commands.py:142 audio/config_commands.py:399
+#: audio/config_commands.py:163 audio/config_commands.py:457
 msgid "Auto-Play set to {auto}."
 msgstr "Auto-Play impostato su {auto}."
 
-#: audio/config_commands.py:150 audio/config_commands.py:407
+#: audio/config_commands.py:171 audio/config_commands.py:465
 #, docstring
 msgid "Set whether the bot should disconnect from the voice voice channel."
 msgstr "Imposta se il bot deve disconnettersi dal canale vocale"
 
-#: audio/config_commands.py:160
+#: audio/config_commands.py:181
 #, docstring
 msgid "Set whether the bot should disconnect from the voice voice channel when the queue is empty.\n\n"
 "        Arguments:\n"
@@ -127,16 +138,16 @@ msgstr "Imposta se il bot deve disconnettersi dal canale vocale quando la coda �
 "            Accetti: secondi, minuti, ore, giorni, settimane (se non è specificata nessuna unità, si presume che la durata sia data in secondi)\n"
 "        "
 
-#: audio/config_commands.py:176 audio/config_commands.py:213
-#: audio/config_commands.py:454 audio/config_commands.py:512
+#: audio/config_commands.py:197 audio/config_commands.py:234
+#: audio/config_commands.py:512 audio/config_commands.py:570
 msgid " and players will be disconnected after {duration}."
 msgstr " e i giocatori saranno disconnessi dopo {duration}."
 
-#: audio/config_commands.py:181 audio/config_commands.py:459
+#: audio/config_commands.py:202 audio/config_commands.py:517
 msgid "Disconnect from voice channel when queue is empty set to {empty}{extras}."
 msgstr "Disconnetti dal canale vocale quando la coda è vuota impostata su {empty}{extras}."
 
-#: audio/config_commands.py:197
+#: audio/config_commands.py:218
 #, docstring
 msgid "Set whether the bot should disconnect from the voice voice channel when alone.\n\n"
 "        Arguments:\n"
@@ -151,37 +162,41 @@ msgstr "Imposta se il bot deve disconnettersi dal canale vocale quando è solo.\
 "            Accetti: secondi, minuti, ore, giorni, settimane (se non è specificata nessuna unità, si presume che la durata sia data in secondi)\n"
 "        "
 
-#: audio/config_commands.py:219 audio/config_commands.py:518
+#: audio/config_commands.py:240 audio/config_commands.py:576
 msgid "Disconnect from voice channel when alone set to {empty}{extras}."
 msgstr "Disconnetti dal canale vocale quando impostato da solo a {empty}{extras}."
 
-#: audio/config_commands.py:231
+#: audio/config_commands.py:252
 #, docstring
 msgid "Server configuration options."
 msgstr "Opzioni configurazione server."
 
-#: audio/config_commands.py:235
+#: audio/config_commands.py:256
 #, docstring
 msgid "Set the maximum volume a user can set."
 msgstr "Imposta il volume massimo che un utente può impostare."
 
-#: audio/config_commands.py:261 audio/config_commands.py:279
+#: audio/config_commands.py:282 audio/config_commands.py:300
 msgid "Volume must be between 0 and {volume}%."
 msgstr "Il volume deve essere compreso tra 0 e {volume}%."
 
-#: audio/config_commands.py:309
+#: audio/config_commands.py:330
 msgid "My owner told me to always deafen myself."
 msgstr "Il mio proprietario mi ha detto di assordarmi sempre."
 
-#: audio/config_commands.py:347
+#: audio/config_commands.py:368
+msgid "Auto-Shuffle is globally disabled."
+msgstr "Il casuale automatico è disabilitato globalmente."
+
+#: audio/config_commands.py:405
 msgid "Shuffle is globally disabled."
 msgstr "La casuale è disabilitata globalmente."
 
-#: audio/config_commands.py:381
+#: audio/config_commands.py:439
 msgid "Auto-Play is globally disabled."
 msgstr "La riproduzione automatica è disabilitata globalmente."
 
-#: audio/config_commands.py:417
+#: audio/config_commands.py:475
 #, docstring
 msgid "Set whether the bot should disconnect from the voice voice channel when the queue is empty.\n\n"
 "        Arguments:\n"
@@ -200,11 +215,11 @@ msgstr "Imposta se il bot deve disconnettersi dal canale vocale quando la coda �
 "            indicata in secondi)\n"
 "        "
 
-#: audio/config_commands.py:435
+#: audio/config_commands.py:493
 msgid "Disconnect when the queue finished is globally enable and players will be disconnected after {delta}."
 msgstr "Disconnetti quando la coda terminata è attivata globalmente e i giocatori saranno disconnessi dopo {delta}."
 
-#: audio/config_commands.py:475
+#: audio/config_commands.py:533
 #, docstring
 msgid "Set whether the bot should disconnect from the voice voice channel when alone.\n\n"
 "        Arguments:\n"
@@ -223,56 +238,56 @@ msgstr "Imposta se il bot deve disconnettersi dal canale vocale quando è solo.\
 "            indicata in secondi)\n"
 "        "
 
-#: audio/config_commands.py:494
+#: audio/config_commands.py:552
 msgid "Disconnect when alone is globally enable and players will be disconnected after {delta}."
 msgstr "Disconnetti solo quando è attivata globalmente e i giocatori saranno disconnessi dopo {delta}."
 
-#: audio/config_commands.py:528
+#: audio/config_commands.py:586
 #, docstring
 msgid "Sets the Auto-Play playlist."
 msgstr "Imposta la playlist Riproduci automaticamente."
 
-#: audio/config_commands.py:546
+#: audio/config_commands.py:604
 msgid "Auto-Play playlist set to {playlist}."
 msgstr "Playlist Auto-Play impostata a {playlist}."
 
-#: audio/config_commands.py:554
+#: audio/config_commands.py:612
 #, docstring
 msgid "Set the channel locks."
 msgstr "Imposta le serrature del canale."
 
-#: audio/config_commands.py:560
+#: audio/config_commands.py:618
 #, docstring
 msgid "Set the channel lock for commands."
 msgstr "Imposta il blocco del canale per i comandi."
 
-#: audio/config_commands.py:576
+#: audio/config_commands.py:634
 msgid "I don't have permission to send message or send embed links or read messages in {channel}."
 msgstr "Non ho il permesso di inviare un messaggio o inviare link incorporati o leggere messaggi in {channel}."
 
-#: audio/config_commands.py:596
+#: audio/config_commands.py:654
 msgid "I will only listen to commands in {channel}."
 msgstr "Ascolterò solo i comandi in {channel}."
 
-#: audio/config_commands.py:604
+#: audio/config_commands.py:662
 msgid "I will listen to commands in all channels I can see."
 msgstr "Ascolterò i comandi in tutti i canali che posso vedere."
 
-#: audio/config_commands.py:612
+#: audio/config_commands.py:670
 #, docstring
 msgid "Set the channel lock for voice channels."
 msgstr "Imposta il blocco del canale per i canali vocali."
 
-#: audio/config_commands.py:624 audio/hybrid_commands.py:104
+#: audio/config_commands.py:682 audio/hybrid_commands.py:104
 #: audio/player_commands.py:130
 msgid "I don't have permission to connect or speak in {channel}."
 msgstr "Non ho il permesso di connettermi o parlare in {channel}."
 
-#: audio/config_commands.py:646
+#: audio/config_commands.py:704
 msgid "I will only be allowed to join {channel}."
 msgstr "Mi sarà permesso di unirmi solo a {channel}."
 
-#: audio/config_commands.py:653
+#: audio/config_commands.py:711
 msgid "I'm free to join any VC."
 msgstr "Sono libero di unirsi a qualsiasi VC."
 
