@@ -4,6 +4,7 @@ import re
 import shutil
 from pathlib import Path
 
+import asyncstdlib
 import discord
 import humanize
 import ujson
@@ -96,11 +97,11 @@ class PyLavManagedNode(commands.Cog):
             client_id = None
             client_secret = None
         data = await self.lavalink._node_config_manager.get_bundled_node_config()
-        if not all([client_id, client_secret]):
+        if not await asyncstdlib.all([client_id, client_secret]):
             spotify_data = data.yaml["plugins"]["topissourcemanagers"]["spotify"]
             client_id = spotify_data["clientId"]
             client_secret = spotify_data["clientSecret"]
-        elif all([client_id, client_secret]):
+        elif await asyncstdlib.all([client_id, client_secret]):
             if (
                 data.yaml["plugins"]["topissourcemanagers"]["spotify"]["clientId"] != client_id
                 or data.yaml["plugins"]["topissourcemanagers"]["spotify"]["clientSecret"] != client_secret

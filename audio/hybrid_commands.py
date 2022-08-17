@@ -6,6 +6,7 @@ from pathlib import Path
 from re import Pattern
 from typing import Final, Optional
 
+import asyncstdlib
 import discord
 from discord import app_commands
 from discord.app_commands import Choice
@@ -655,8 +656,8 @@ class HybridCommands(PyLavCogMixin, ABC):
             )
             return
         config = context.player.config
-        max_volume = min(
-            await config.fetch_max_volume(), await self.lavalink.player_manager.global_config.fetch_max_volume()
+        max_volume = await asyncstdlib.min(
+            [await config.fetch_max_volume(), await self.lavalink.player_manager.global_config.fetch_max_volume()]
         )
         if volume > max_volume:
             await context.send(

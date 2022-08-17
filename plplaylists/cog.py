@@ -7,6 +7,7 @@ from abc import ABC
 from pathlib import Path
 from typing import Literal
 
+import asyncstdlib
 import discord
 from red_commons.logging import getLogger
 from redbot.core import Config
@@ -342,13 +343,21 @@ class PyLavPlaylists(
             playlist_prompt.delete = True
             playlist_prompt.cancelled = False
 
-        if manageable and invoked_with_queue and not all([playlist_prompt.update, playlist_prompt.url]):
+        if (
+            manageable
+            and invoked_with_queue
+            and not await asyncstdlib.all([playlist_prompt.update, playlist_prompt.url])
+        ):
             playlist_prompt.queue = True
             playlist_prompt.cancelled = False
 
         if playlist_prompt.cancelled:
             return
-        if manageable and playlist_prompt.queue and any([playlist_prompt.update, playlist_prompt.url]):
+        if (
+            manageable
+            and playlist_prompt.queue
+            and await asyncstdlib.any([playlist_prompt.update, playlist_prompt.url])
+        ):
             playlist_prompt.queue = False
         if manageable and playlist_prompt.delete:
             await playlist.delete()

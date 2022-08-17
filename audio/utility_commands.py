@@ -1,6 +1,7 @@
 from abc import ABC
 from pathlib import Path
 
+import asyncstdlib
 import discord
 from red_commons.logging import getLogger
 from redbot.core import commands
@@ -33,8 +34,8 @@ class UtilityCommands(PyLavCogMixin, ABC):
             )
             return
         config = context.player.config
-        max_volume = min(
-            await config.fetch_max_volume(), await self.lavalink.player_manager.global_config.fetch_max_volume()
+        max_volume = await asyncstdlib.min(
+            [await config.fetch_max_volume(), await self.lavalink.player_manager.global_config.fetch_max_volume()]
         )
         new_vol = context.player.volume + change_by
         if new_vol > max_volume:

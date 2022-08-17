@@ -4,6 +4,7 @@ from abc import ABC
 from pathlib import Path
 from typing import Union
 
+import asyncstdlib
 import discord
 from red_commons.logging import getLogger
 from redbot.core import commands
@@ -269,8 +270,8 @@ class ConfigCommands(PyLavCogMixin, ABC):
             config = context.player.config
         else:
             config = await self.lavalink.player_config_manager.get_config(context.guild.id)
-        max_volume = min(
-            await config.fetch_max_volume(), await self.lavalink.player_manager.global_config.fetch_max_volume()
+        max_volume = await asyncstdlib.min(
+            [await config.fetch_max_volume(), await self.lavalink.player_manager.global_config.fetch_max_volume()]
         )
         if volume > max_volume:
             await context.send(

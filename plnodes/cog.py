@@ -4,6 +4,7 @@ import asyncio
 import contextlib
 from pathlib import Path
 
+import asyncstdlib
 import discord
 import ujson
 from red_commons.logging import getLogger
@@ -96,7 +97,9 @@ class PyLavNodes(commands.Cog):
             await menu.wait_until_complete()
         if menu.cancelled:
             return
-        if not all([menu.host, menu.password, menu.unique_identifier, menu.port, menu.name, menu.resume_timeout]):
+        if not await asyncstdlib.all(
+            [menu.host, menu.password, menu.unique_identifier, menu.port, menu.name, menu.resume_timeout]
+        ):
             return
         node = await self.lavalink.add_node(
             host=menu.host,
