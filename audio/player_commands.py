@@ -260,7 +260,7 @@ class PlayerCommands(PyLavCogMixin, ABC):
                     node=player.node,
                     data=None,
                     query=await Query.from_string(track_url_or_index),
-                    requester=context.author.i,
+                    requester=context.author.id,
                 )
                 await track.search(player)
         try:

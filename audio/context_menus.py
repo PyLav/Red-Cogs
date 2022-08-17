@@ -43,6 +43,7 @@ class ContextMenus(PyLavCogMixin, ABC):
 
         if player := self.lavalink.get_player(interaction.guild.id):
             config = player.config
+            await config.update()
         else:
             config = await self.lavalink.player_config_manager.get_config(interaction.guild.id)
         if config.text_channel_id and config.text_channel_id != interaction.channel.id:
