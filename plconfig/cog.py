@@ -402,3 +402,30 @@ class PyLavConfigurator(commands.Cog):
             source=PlayersSource(cog=self, specified_guild=server.id if server else None),
             original_author=context.author,
         ).start(ctx=context)
+
+    @command_plset.command(name="activity")
+    async def command_plset_activity(self, context: PyLavContext) -> None:
+        """Toggle whether or not to change the bot's activity."""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+
+        current = await LibConfigModel(bot=self.bot.user.id, id=1).get_update_bot_activity()
+        await LibConfigModel(bot=self.bot.user.id, id=1).set_update_bot_activity(not current)
+        if not current:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("PyLav will change bot activity."),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+        else:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("PyLav will no longer change the bot activity."),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
