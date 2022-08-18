@@ -40,7 +40,6 @@ Getting Started
 Follow [PyLav Setup](https://github.com/Drapersniper/PyLav/blob/master/SETUP.md)
 
 
-
 If you already have a Red instance with PyLav setup then you can do the following
 ```
 [p]load downloader
@@ -48,7 +47,29 @@ If you already have a Red instance with PyLav setup then you can do the followin
 [p]cog install PyLav audio
 [p]load audio
 ```
+------------------------------------
+System Requirements
+------------------------------------
+With locally hosted Postgres server and locally hosted/managed lavalink node (**recommended - Best performance**):
+- CPU: 3 cores or more
+- RAM: 4GB or more
+- Disk Space: 10GB or more
 
+With locally hosted Postgres server and externally hosted lavalink node (Okay performance):
+- CPU: 2 cores or more
+- RAM: 3GB or more
+- Disk Space: 10GB or more
+
+With externally hosted Postgres server and locally hosted/managed lavalink node (Poor performance):
+- CPU: 2 cores or more
+- RAM: 2GB or more
+- Disk Space: 10GB or more
+
+With externally hosted Postgres server and externally hosted lavalink node (Worst performance):
+- CPU: 1 cores or more
+- RAM: 1GB or more
+- Disk Space: 10GB or more
+------------------------------------
 Translations
 ------------------------------------
 You can help translating the project into your language here:
@@ -59,5 +80,6 @@ Shared code translations can be found here:
 
 [![Crowdin](https://badges.crowdin.net/pylavshared/localized.svg)](https://crowdin.com/project/pylavshared)
 
+------------------------------------
 
 ## Join our support server [![Support Server](https://img.shields.io/discord/970987707834720266?style=social)](https://discord.com/invite/Sjh2TSCYQB)
