@@ -55,6 +55,7 @@ class PyLavMigrator(commands.Cog):
         audio_config = Config.get_conf(None, identifier=2711759130, cog_name="Audio")
         default_global = dict(
             use_external_lavalink=False,  # Supported in PyLav
+            status=False,  # Supported in PyLav
             localpath=str(cog_data_path(raw_name="Audio")),  # Supported in PyLav
             java_exc_path="java",  # Supported in PyLav
             **DEFAULT_LAVALINK_YAML,  # Supported in PyLav
@@ -76,6 +77,8 @@ class PyLavMigrator(commands.Cog):
             max_volume=150,  # Supported in PyLav
             shuffle=None,  # Supported in PyLav
             volume=100,  # Supported in PyLav
+            dj_enabled=False,  # Supported in PyLav
+            dj_role=None,  # Supported in PyLav
         )
         _playlist = dict(id=None, author=None, name=None, playlist_url=None, tracks=[])
         audio_config.init_custom("EQUALIZER", 1)
@@ -108,6 +111,8 @@ class PyLavMigrator(commands.Cog):
                         description=_("I don't have permission to access {folder}.").format(folder=localtracks_path)
                     )
                 )
+        if await audio_config.status():
+            await global_config.set_update_bot_activity(True)
         if __ := await audio_config.use_external_lavalink():
             await global_config.set_enable_managed_node(False)
             await self.lavalink.add_node(
@@ -165,15 +170,16 @@ class PyLavMigrator(commands.Cog):
 
             await player_config.save()
         query = """
-        SELECT
-            playlist_id,
-            playlist_name,
-            scope_id,
-            author_id,
-            playlist_url,
-            tracks
-        FROM
-            playlists"""
+                    SELECT
+                        playlist_id,
+                        playlist_name,
+                        scope_id,
+                        author_id,
+                        playlist_url,
+                        tracks
+                    FROM
+                        playlists
+                """
         row_results = await asyncio.to_thread(playlist_api.database.cursor().execute, query)
         async for row in AsyncIter(row_results):
             pl = PlaylistFetchResult(*row)
