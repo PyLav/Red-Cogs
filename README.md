@@ -53,22 +53,22 @@ System Requirements
 With locally hosted Postgres server and locally hosted/managed lavalink node (**recommended - Best performance**):
 - CPU: 3 cores or more
 - RAM: 4GB or more
-- Disk Space: 10GB or more
+- Disk Space: 10GB or more (NVME Ideally, SSD OK)
 
 With locally hosted Postgres server and externally hosted lavalink node (Okay performance):
 - CPU: 2 cores or more
 - RAM: 3GB or more
-- Disk Space: 10GB or more
+- Disk Space: 10GB or more (NVME Ideally, SSD OK)
 
 With externally hosted Postgres server and locally hosted/managed lavalink node (Poor performance):
 - CPU: 2 cores or more
 - RAM: 2GB or more
-- Disk Space: 10GB or more
+- Disk Space: 10GB or more (SSD)
 
 With externally hosted Postgres server and externally hosted lavalink node (Worst performance):
 - CPU: 1 cores or more
 - RAM: 1GB or more
-- Disk Space: 10GB or more
+- Disk Space: 10GB or more (SSD)
 ------------------------------------
 Translations
 ------------------------------------
