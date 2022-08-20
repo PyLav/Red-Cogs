@@ -9,11 +9,12 @@ import discord
 import humanize
 import ujson
 from asyncspotify import ClientCredentialsFlow
+from deepdiff import DeepDiff
 from discord.utils import maybe_coroutine
 from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
-from redbot.core.utils.chat_formatting import box, humanize_list, inline
+from redbot.core.utils.chat_formatting import bold, box, humanize_list, inline
 from tabulate import tabulate
 
 import pylavcogs_shared
@@ -453,15 +454,44 @@ class PyLavManagedNode(commands.Cog):
                     "repository": repository,
                 }
             )
-        data.yaml["lavalink"]["plugins"] = new_plugin_data
-        await data.save()
-        await context.send(
-            embed=await context.lavalink.construct_embed(
-                description=_("Managed node's plugins updated.\n\nRestart the bot for it to take effect.").format(),
-                messageable=context,
-            ),
-            ephemeral=True,
-        )
+
+        if diff := DeepDiff(data.yaml["lavalink"]["plugins"], new_plugin_data, ignore_order=True):
+            data.yaml["lavalink"]["plugins"] = new_plugin_data
+            update_string = ""
+            if "values_changed" in diff:
+                values_changed = diff["values_changed"]
+                for __, root_value in values_changed.items():
+                    old_value = None
+                    new_value = None
+                    for key, value in root_value.items():
+                        if key == "old_value":
+                            old_value = value["dependency"]
+                        elif key == "new_value":
+                            new_value = value["dependency"]
+                    if all([old_value, new_value]):
+                        update_string += _("{name} was updated from {old_value} to {new_value}\n").format(
+                            old_value=old_value.split(":")[-1],
+                            new_value=bold(new_value.split(":")[-1]),
+                            name=bold(old_value.split(":")[-2]),
+                        )
+            await data.save()
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_(
+                        "Managed node's plugins updated.\n\n" "{updates}\n\nRestart the bot for it to take effect."
+                    ).format(updates=update_string),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+        else:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Managed node's plugins already up to date."),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
 
     @command_plmanaged_config.command(name="source")
     async def command_plmanaged_config_source(self, context: PyLavContext, source: str, state: bool):
