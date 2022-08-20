@@ -26,6 +26,8 @@ from pylav.utils import PyLavContext
 from pylav.utils.built_in_node import NODE_DEFAULT_SETTINGS
 from pylav.vendored import aiopath
 
+from plmanagednode.view import ConfigureGoogleAccountView, ConfigureHTTPProxyView, ConfigureIPRotationView
+
 LOGGER = getLogger("red.3pt.PyLavManagedNode")
 
 _ = Translator("PyLavManagedNode", Path(__file__))
@@ -44,7 +46,7 @@ class PyLavManagedNode(commands.Cog):
 
     @commands.group(name="plmanaged")
     @commands.is_owner()
-    async def command_plmanaged(self, ctx: PyLavContext):
+    async def command_plmanaged(self, context: PyLavContext):
         """Configure the managed Lavalink node used by PyLav."""
 
     @command_plmanaged.command(name="version")
@@ -697,3 +699,94 @@ class PyLavManagedNode(commands.Cog):
             ),
             ephemeral=True,
         )
+
+    @command_plmanaged_config.command(name="iprotation", aliases=["ir"])
+    async def command_plmanaged_config_iprotation(self, context: PyLavContext, *, reset: bool = False):
+        """Configure Lavalink IP Rotation for ratelimits.
+
+        if reset is True, remove the ratelimit config.
+        """
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+        if not reset:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Click the button below to configure the IP rotation for your node."),
+                    messageable=context,
+                ),
+                view=ConfigureIPRotationView(self.bot),
+                ephemeral=True,
+            )
+        else:
+            full_data = await self.bot.lavalink.node_db_manager.get_bundled_node_config()
+            full_data.yaml["lavalink"]["server"]["ratelimit"] = NODE_DEFAULT_SETTINGS["lavalink"]["server"]["ratelimit"]
+            await full_data.save()
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Removing the IP rotation from your node.\n\nRestart the bot for it to take effect."),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+
+    @command_plmanaged_config.command(name="googleaccount", aliases=["ga"])
+    async def command_plmanaged_config_googleaccount(self, context: PyLavContext, *, reset: bool = False):
+        """Link a Google account to Lavalink to bypass YouTube's age restriction."""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+        if not reset:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Click the button below to link a Google account to your node."),
+                    messageable=context,
+                ),
+                view=ConfigureGoogleAccountView(self.bot),
+                ephemeral=True,
+            )
+        else:
+            full_data = await self.bot.lavalink.node_db_manager.get_bundled_node_config()
+            full_data.yaml["lavalink"]["server"]["youtubeConfig"] = NODE_DEFAULT_SETTINGS["lavalink"]["server"][
+                "youtubeConfig"
+            ]
+            await full_data.save()
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Unlinking Google account from your node.\n\nRestart the bot for it to take effect."),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+
+    @command_plmanaged_config.command(name="httpproxy", aliases=["hp"])
+    async def command_plmanaged_config_httpproxy(self, context: PyLavContext, *, reset: bool = False):
+        """Configure a HTTP proxy for Lavalink."""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+        if not reset:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Click the button below to configure a HTTP proxy for your node."),
+                    messageable=context,
+                ),
+                view=ConfigureHTTPProxyView(self.bot),
+                ephemeral=True,
+            )
+        else:
+            full_data = await self.bot.lavalink.node_db_manager.get_bundled_node_config()
+            full_data.yaml["lavalink"]["server"]["httpConfig"] = NODE_DEFAULT_SETTINGS["lavalink"]["server"][
+                "httpConfig"
+            ]
+            await full_data.save()
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Unlinking HTTP proxy from your node.\n\nRestart the bot for it to take effect."),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
