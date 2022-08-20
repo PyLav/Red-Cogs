@@ -314,27 +314,30 @@ class PyLavConfigurator(commands.Cog):
                 ephemeral=True,
             )
 
-    @command_plset_node.command(name="external")
+    @command_plset_node.group(name="external")
     async def command_plset_node_external(self, context: PyLavContext) -> None:
-        """Toggle the managed external node on/off."""
+        """Change the bundled external nodes state."""
+
+    @command_plset_node_external.command(name="pylav")
+    async def command_plset_node_external_pylav(self, context: PyLavContext) -> None:
+        """Toggle the managed external pylav node on/off."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-
         global_config = await LibConfigModel(bot=self.bot.user.id, id=1).get_all()
-        current_state = global_config.extras.get("use_bundled_external", True)
-        await global_config.set_managed_external_node(not current_state)
+        current_state = global_config.extras.get("use_bundled_pylav_external", True)
+        await global_config.set_managed_pylav_external_node(not current_state)
         if current_state:
             await self.lavalink.remove_node(1)
         else:
             node_config = await self.lavalink.node_db_manager.get_node_config(1)
             await self.lavalink.add_node(**(node_config.get_connection_args()))
 
-        if global_config.extras["use_bundled_external"]:
+        if global_config.extras["use_bundled_pylav_external"]:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("PyLav's managed external node has been enabled."),
+                    description=_("PyLav's managed pylav external node has been enabled."),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -342,7 +345,40 @@ class PyLavConfigurator(commands.Cog):
         else:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("PyLav's managed external node has been disabled."),
+                    description=_("PyLav's managed pylav external node has been disabled."),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+
+    @command_plset_node_external.command(name="lavalink")
+    async def command_plset_node_lavalink(self, context: PyLavContext) -> None:
+        """Toggle the managed external lava.link node on/off."""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+        global_config = await LibConfigModel(bot=self.bot.user.id, id=1).get_all()
+        current_state = global_config.extras.get("use_bundled_lava_link_external", False)
+        await global_config.set_managed_lava_link_external_node(not current_state)
+        if current_state:
+            await self.lavalink.remove_node(2)
+        else:
+            node_config = await self.lavalink.node_db_manager.get_node_config(2)
+            await self.lavalink.add_node(**(node_config.get_connection_args()))
+
+        if global_config.extras["use_bundled_lava_link_external"]:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("PyLav's managed lava.link external node has been enabled."),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+        else:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("PyLav's managed lava.link external node has been disabled."),
                     messageable=context,
                 ),
                 ephemeral=True,
