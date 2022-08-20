@@ -713,7 +713,9 @@ class PyLavManagedNode(commands.Cog):
         if not reset:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("Click the button below to configure the IP rotation for your node."),
+                    description=_(
+                        "Click the button below to configure the IP rotation for your node.\nMore info at: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> and <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
+                    ),
                     messageable=context,
                 ),
                 view=ConfigureIPRotationView(self.bot),
@@ -741,7 +743,11 @@ class PyLavManagedNode(commands.Cog):
         if not reset:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("Click the button below to link a Google account to your node."),
+                    description=_(
+                        "Click the button below to link a Google account to your node, "
+                        "if you have 2FA setup on this account you will need an app password instead."
+                        "\nMore info at: <https://support.google.com/accounts/answer/185833>"
+                    ),
                     messageable=context,
                 ),
                 view=ConfigureGoogleAccountView(self.bot),
