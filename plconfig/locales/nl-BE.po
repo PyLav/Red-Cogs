@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-08-18 21:33+0000\n"
-"PO-Revision-Date: 2022-08-20 12:45\n"
+"POT-Creation-Date: 2022-08-20 21:32+0000\n"
+"PO-Revision-Date: 2022-08-20 21:40\n"
 "Last-Translator: \n"
 "Language-Team: Dutch, Belgium\n"
 "MIME-Version: 1.0\n"
@@ -142,23 +142,41 @@ msgstr "PyLav's beheerde automatische node updates zijn uitgeschakeld."
 
 #: plconfig/cog.py:319
 #, docstring
-msgid "Toggle the managed external node on/off."
-msgstr "Zet de beheerde externe node aan/uit."
+msgid "Change the bundled external nodes state."
+msgstr "Verander de status van de gebundelde externe knooppunten."
 
-#: plconfig/cog.py:337
-msgid "PyLav's managed external node has been enabled."
-msgstr "PyLav's beheerde externe node is ingeschakeld."
+#: plconfig/cog.py:323
+#, docstring
+msgid "Toggle the managed external pylav node on/off."
+msgstr "Zet het beheerde externe pylav knooppunt aan/uit."
 
-#: plconfig/cog.py:345
-msgid "PyLav's managed external node has been disabled."
-msgstr "PyLav's beheerde externe node is uitgeschakeld."
+#: plconfig/cog.py:340
+msgid "PyLav's managed pylav external node has been enabled."
+msgstr "PyLav's beheerde pylav externe node is ingeschakeld."
 
-#: plconfig/cog.py:353
+#: plconfig/cog.py:348
+msgid "PyLav's managed pylav external node has been disabled."
+msgstr "PyLav's beheerde pylav externe node is uitgeschakeld."
+
+#: plconfig/cog.py:356
+#, docstring
+msgid "Toggle the managed external lava.link node on/off."
+msgstr "Schakel het beheerde externe lava.link-knooppunt aan/uit."
+
+#: plconfig/cog.py:373
+msgid "PyLav's managed lava.link external node has been enabled."
+msgstr "PyLav's managed lava.link externe node is ingeschakeld."
+
+#: plconfig/cog.py:381
+msgid "PyLav's managed lava.link external node has been disabled."
+msgstr "PyLav's managed lava.link externe node is uitgeschakeld."
+
+#: plconfig/cog.py:389
 #, docstring
 msgid "Instructions on how to set the Spotify API Tokens."
 msgstr "Instructies voor het instellen van Spotify API Tokens."
 
-#: plconfig/cog.py:354
+#: plconfig/cog.py:390
 msgid "1. Go to Spotify developers and log in with your Spotify account.\n"
 "(https://developer.spotify.com/dashboard/applications)\n"
 "2. Click \"Create An App\".\n"
@@ -176,29 +194,29 @@ msgstr "1. Ga naar Spotify-ontwikkelaars en log in met uw Spotify-account.\n"
 "6. Kopieer uw client-ID en uw clientgeheim in:\n"
 "`{prefix}set api spotify client_id <your_client_id_here> client_secret <your_client_secret_here>`"
 
-#: plconfig/cog.py:374
+#: plconfig/cog.py:410
 #, docstring
 msgid "Manage active players"
 msgstr "Actieve spelers beheren"
 
-#: plconfig/cog.py:383
+#: plconfig/cog.py:419
 msgid "No active player in {}."
 msgstr "Geen actieve speler in {}."
 
-#: plconfig/cog.py:392
+#: plconfig/cog.py:428
 msgid "No connected players."
 msgstr "Geen verbonden spelers."
 
-#: plconfig/cog.py:408
+#: plconfig/cog.py:444
 #, docstring
 msgid "Toggle whether or not to change the bot's activity."
 msgstr "Schakel of de bot-activiteit wel of niet moet worden gewijzigd."
 
-#: plconfig/cog.py:419
+#: plconfig/cog.py:455
 msgid "PyLav will change bot activity."
 msgstr "PyLav zal bot-activiteit veranderen."
 
-#: plconfig/cog.py:427
+#: plconfig/cog.py:463
 msgid "PyLav will no longer change the bot activity."
 msgstr "PyLav zal de bot activiteit niet langer veranderen."
 
