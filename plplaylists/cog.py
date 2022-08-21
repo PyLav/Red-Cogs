@@ -139,7 +139,7 @@ class PyLavPlaylists(
                 add_queue = False
                 url = await Query.from_string(url)
         if url:
-            tracks_response = await context.lavalink.get_tracks(url)
+            tracks_response = await context.lavalink.get_tracks(url, player=context.player)
             tracks = [track["track"] async for track in AsyncIter(tracks_response["tracks"])]
             url = url.query_identifier
             name = name or tracks_response.get("playlistInfo", {}).get("name", f"{context.message.id}")
@@ -388,7 +388,7 @@ class PyLavPlaylists(
             if (playlist_prompt.add_tracks or playlist_prompt.remove_prompt) and not playlist_prompt.update:
                 if playlist_prompt.remove_tracks:
                     response = await self.lavalink.get_tracks(
-                        *[await Query.from_string(at) for at in playlist_prompt.remove_tracks],
+                        *[await Query.from_string(at) for at in playlist_prompt.remove_tracks], player=context.player
                     )
                     if not response.get("tracks"):
                         pass
@@ -402,6 +402,7 @@ class PyLavPlaylists(
                 if playlist_prompt.add_tracks:
                     response = await self.lavalink.get_tracks(
                         *[await Query.from_string(at) for at in playlist_prompt.add_tracks],
+                        player=context.player,
                     )
                     if not response.get("tracks"):
                         pass
@@ -415,7 +416,7 @@ class PyLavPlaylists(
             if playlist.url:
                 with contextlib.suppress(Exception):
                     tracks: dict = await self.lavalink.get_tracks(
-                        await Query.from_string(playlist.url), bypass_cache=True
+                        await Query.from_string(playlist.url), bypass_cache=True, player=context.player
                     )
                     if not tracks.get("tracks"):
                         await context.send(

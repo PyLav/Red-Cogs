@@ -217,7 +217,11 @@ class HybridCommands(PyLavCogMixin, ABC):
                     value="000",
                 )
             ]
-        tracks = await interaction.client.lavalink.get_tracks(await Query.from_string(current), fullsearch=True)
+        tracks = await interaction.client.lavalink.get_tracks(
+            await Query.from_string(current),
+            fullsearch=True,
+            player=interaction.client.lavalink.get_player(interaction.guild.id),
+        )
         if not tracks:
             return [
                 Choice(

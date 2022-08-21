@@ -217,7 +217,10 @@ class ContextMenus(PyLavCogMixin, ABC):
                     wait=True,
                 )
                 return
-            response = await self.lavalink.get_tracks(await Query.from_string(search_string))
+            response = await self.lavalink.get_tracks(
+                await Query.from_string(search_string),
+                player=interaction.client.lavalink.get_player(interaction.guild.id),
+            )
             if not response.get("tracks"):
                 await interaction.followup.send(
                     embed=await self.lavalink.construct_embed(
