@@ -320,7 +320,7 @@ class PyLavConfigurator(commands.Cog):
 
     @command_plset_node_external.command(name="pylav")
     async def command_plset_node_external_pylav(self, context: PyLavContext) -> None:
-        """Toggle the managed external ll.draper.wtf node on/off."""
+        """Toggle the managed external draper.wtf nodes on/off."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
