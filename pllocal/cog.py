@@ -75,7 +75,7 @@ class PyLavLocalFiles(commands.Cog):
             ephemeral=True,
         )
 
-    @app_commands.command(name="local")
+    @app_commands.command(name="local", description=_("Play a local file or folder, supports partial searching."))
     @app_commands.guild_only()
     async def slash_local(
         self,
