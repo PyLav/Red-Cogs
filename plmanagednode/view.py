@@ -10,7 +10,7 @@ from netaddr import IPAddress, IPNetwork
 from redbot.core.i18n import Translator
 from redbot.core.utils.chat_formatting import humanize_list
 
-from pylav.types import BotT
+from pylav.types import BotT, InteractionT
 
 _ = Translator("PyLavManagedNode", Path(__file__))
 
@@ -28,7 +28,7 @@ class ConfigureIPRotationView(discord.ui.View):
         self.bot = bot
         super().__init__(timeout=timeout)
 
-    async def interaction_check(self, interaction: discord.Interaction) -> bool:
+    async def interaction_check(self, interaction: InteractionT) -> bool:
         if not await self.bot.is_owner(interaction.user):
             await interaction.response.send_message(_("You are not authorized to interact with this."), ephemeral=True)
             return False
@@ -38,7 +38,7 @@ class ConfigureIPRotationView(discord.ui.View):
         label=_("Configure IP Rotation"),
         style=discord.ButtonStyle.grey,
     )
-    async def add_ip_block(self, interaction: discord.Interaction, button: discord.ui.Button):
+    async def add_ip_block(self, interaction: InteractionT, button: discord.ui.Button):
         return await interaction.response.send_modal(ConfigureIPRotationModal(bot=self.bot))
 
 
@@ -55,7 +55,7 @@ class ConfigureGoogleAccountView(discord.ui.View):
         self.bot = bot
         super().__init__(timeout=timeout)
 
-    async def interaction_check(self, interaction: discord.Interaction) -> bool:
+    async def interaction_check(self, interaction: InteractionT) -> bool:
         if not await self.bot.is_owner(interaction.user):
             await interaction.response.send_message(_("You are not authorized to interact with this."), ephemeral=True)
             return False
@@ -65,7 +65,7 @@ class ConfigureGoogleAccountView(discord.ui.View):
         label=_("Link Google Account"),
         style=discord.ButtonStyle.grey,
     )
-    async def link_account(self, interaction: discord.Interaction, button: discord.ui.Button):
+    async def link_account(self, interaction: InteractionT, button: discord.ui.Button):
         return await interaction.response.send_modal(ConfigureGoogleAccountModal(bot=self.bot))
 
 
@@ -82,7 +82,7 @@ class ConfigureHTTPProxyView(discord.ui.View):
         self.bot = bot
         super().__init__(timeout=timeout)
 
-    async def interaction_check(self, interaction: discord.Interaction) -> bool:
+    async def interaction_check(self, interaction: InteractionT) -> bool:
         if not await self.bot.is_owner(interaction.user):
             await interaction.response.send_message(_("You are not authorized to interact with this."), ephemeral=True)
             return False
@@ -92,7 +92,7 @@ class ConfigureHTTPProxyView(discord.ui.View):
         label=_("Configure HTTP Proxy"),
         style=discord.ButtonStyle.grey,
     )
-    async def configure_proxy(self, interaction: discord.Interaction, button: discord.ui.Button):
+    async def configure_proxy(self, interaction: InteractionT, button: discord.ui.Button):
         return await interaction.response.send_modal(ConfigureHTTPProxyModal(bot=self.bot))
 
 
@@ -152,7 +152,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
         self.add_item(self.search_trigger)
         self.add_item(self.excluded_ips)
 
-    async def on_submit(self, interaction: discord.Interaction):
+    async def on_submit(self, interaction: InteractionT):
         if not await self.bot.is_owner(
             interaction.user
         ):  # Prevent non-bot owners from somehow acquiring and saving the modal.
@@ -305,7 +305,7 @@ class ConfigureGoogleAccountModal(discord.ui.Modal):
         self.add_item(self.email)
         self.add_item(self.password)
 
-    async def on_submit(self, interaction: discord.Interaction):
+    async def on_submit(self, interaction: InteractionT):
         if not await self.bot.is_owner(
             interaction.user
         ):  # Prevent non-bot owners from somehow acquiring and saving the modal.
@@ -381,7 +381,7 @@ class ConfigureHTTPProxyModal(discord.ui.Modal):
         self.add_item(self.user)
         self.add_item(self.password)
 
-    async def on_submit(self, interaction: discord.Interaction):
+    async def on_submit(self, interaction: InteractionT):
         if not await self.bot.is_owner(
             interaction.user
         ):  # Prevent non-bot owners from somehow acquiring and saving the modal.

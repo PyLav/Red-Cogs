@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import asyncio
 from pathlib import Path
 
 import discord
@@ -29,21 +28,9 @@ class PyLavEffects(commands.Cog):
     def __init__(self, bot: BotT, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot
-        self._slash_sync_task = None
         self._config = Config.get_conf(self, identifier=208903205982044161)
         self._config.register_global(enable_slash=True)
         self._config.register_guild(persist_fx=False)
-
-    async def initialize(self, *args, **kwargs) -> None:
-        self._slash_sync_task = asyncio.create_task(self._sync_tree())
-
-    async def _sync_tree(self) -> None:
-        await self.bot.wait_until_ready()
-        await self.bot.tree.sync()
-
-    async def cog_unload(self) -> None:
-        if self._slash_sync_task is not None:
-            self._slash_sync_task.cancel()
 
     @commands.group(name="fxset")
     @commands.guild_only()

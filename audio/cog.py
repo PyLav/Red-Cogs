@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import asyncio
 from abc import ABC
 from pathlib import Path
 from typing import Literal
@@ -65,19 +64,9 @@ class PyLavPlayer(
         )
         self.bot.tree.add_command(self.context_user_play)
         self.bot.tree.add_command(self.context_message_play)
-        self._slash_sync_task = None
         self._track_cache = ExpiringDict(max_len=float("inf"), max_age_seconds=60)  # type: ignore
 
-    async def initialize(self, *args, **kwargs) -> None:
-        self._slash_sync_task = asyncio.create_task(self._sync_tree())
-
-    async def _sync_tree(self) -> None:
-        await self.bot.wait_until_ready()
-        await self.bot.tree.sync()
-
     async def cog_unload(self) -> None:
-        if self._slash_sync_task is not None:
-            self._slash_sync_task.cancel()
         self.bot.tree.remove_command(self.context_user_play, type=AppCommandType.user)
         self.bot.tree.remove_command(self.context_message_play, type=AppCommandType.message)
 
