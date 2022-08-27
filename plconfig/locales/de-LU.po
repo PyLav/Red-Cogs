@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer\n"
-"POT-Creation-Date: 2022-08-21 12:19+0000\n"
-"PO-Revision-Date: 2022-08-21 12:28\n"
+"POT-Creation-Date: 2022-08-27 11:43+0000\n"
+"PO-Revision-Date: 2022-08-27 11:53\n"
 "Last-Translator: \n"
 "Language-Team: German, Luxembourg\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Crowdin-File-ID: 200\n"
 "Language: de_LU\n"
 
-#: plconfig/cog.py:31
+#: plconfig/cog.py:32
 #, docstring
 msgid "Configure PyLav library settings."
 msgstr "PyLav Bibliothekseinstellungen konfigurieren."
@@ -42,6 +42,193 @@ msgstr "Version"
 
 #: plconfig/cog.py:69
 #, docstring
+msgid "Show the config values."
+msgstr "Zeige die Konfigurationswerte."
+
+#: plconfig/cog.py:77
+msgid "Enabled"
+msgstr "Aktiviert"
+
+#: plconfig/cog.py:78
+msgid "Disabled"
+msgstr "Deaktiviert"
+
+#: plconfig/cog.py:82
+msgid "Use Managed Node"
+msgstr "Verwalteter Knoten verwenden"
+
+#: plconfig/cog.py:83
+msgid "Auto Update\n"
+"Managed Node"
+msgstr "Automatische Aktualisierung\n"
+"verwalteter Knoten"
+
+#: plconfig/cog.py:84
+msgid "Change Bot activity"
+msgstr "Bot-Aktivität ändern"
+
+#: plconfig/cog.py:85
+msgid "Use Bundled\n"
+"PyLav Nodes"
+msgstr "Benutze gebündelte\n"
+"PyLav Knoten"
+
+#: plconfig/cog.py:87
+msgid "Use Bundled\n"
+"lava.link Nodes"
+msgstr "Verwende gebündelte\n"
+"lava.link Knoten"
+
+#: plconfig/cog.py:94
+msgid "PyLav Config"
+msgstr "PyLav Config"
+
+#: plconfig/cog.py:94
+msgid "State"
+msgstr "Bundesland"
+
+#: plconfig/cog.py:100 plconfig/cog.py:135 plconfig/cog.py:191
+msgid "Volume"
+msgstr "Lautstärke"
+
+#: plconfig/cog.py:101 plconfig/cog.py:136 plconfig/cog.py:192
+msgid "Maximum Volume"
+msgstr "Maximale Lautstärke"
+
+#: plconfig/cog.py:102 plconfig/cog.py:137 plconfig/cog.py:193
+msgid "AutoPlay"
+msgstr "AutoPlay"
+
+#: plconfig/cog.py:103 plconfig/cog.py:141 plconfig/cog.py:194
+msgid "Shuffling"
+msgstr "Shuffling"
+
+#: plconfig/cog.py:104 plconfig/cog.py:142 plconfig/cog.py:195
+msgid "Auto Shuffle"
+msgstr "Auto Shuffle"
+
+#: plconfig/cog.py:105 plconfig/cog.py:143 plconfig/cog.py:196
+msgid "Auto Deafen"
+msgstr "Auto Deafen"
+
+#: plconfig/cog.py:107 plconfig/cog.py:145 plconfig/cog.py:198
+msgid "Auto Disconnect"
+msgstr "Automatisch trennen"
+
+#: plconfig/cog.py:113 plconfig/cog.py:151 plconfig/cog.py:204
+msgid "Auto Alone Pause"
+msgstr "Automatische Alleinpause"
+
+#: plconfig/cog.py:119 plconfig/cog.py:157 plconfig/cog.py:210
+msgid "Auto Alone Disconnect"
+msgstr "Automatisch allein trennen"
+
+#: plconfig/cog.py:128
+msgid "Global Player Config"
+msgstr "Globale Spieler-Konfiguration"
+
+#: plconfig/cog.py:128 plconfig/cog.py:172 plconfig/cog.py:219
+msgid "Value"
+msgstr "Wert"
+
+#: plconfig/cog.py:138
+msgid "AutoPlay Playlist"
+msgstr "Auto-Wiedergabeliste"
+
+#: plconfig/cog.py:139
+msgid "Loop track"
+msgstr "Loop-Track"
+
+#: plconfig/cog.py:140
+msgid "Loop Queue"
+msgstr "Schleifen-Warteschlange"
+
+#: plconfig/cog.py:146 plconfig/cog.py:152 plconfig/cog.py:158
+msgid "{enabled}\n"
+"{timer} seconds"
+msgstr "{enabled}\n"
+"{timer} Sekunden"
+
+#: plconfig/cog.py:162
+msgid "Forced Voice Channel"
+msgstr "Erzwungener Sprachkanal"
+
+#: plconfig/cog.py:162 plconfig/cog.py:163 plconfig/cog.py:164
+msgid "None"
+msgstr "Keine"
+
+#: plconfig/cog.py:163
+msgid "Forced Command Channel"
+msgstr "Erzwungener Befehlskanal"
+
+#: plconfig/cog.py:164
+msgid "Forced Notification Channel"
+msgstr "Erzwungener Benachrichtigungskanal"
+
+#: plconfig/cog.py:165
+msgid "DJ Users"
+msgstr "DJ Users"
+
+#: plconfig/cog.py:166
+msgid "DJ Roles"
+msgstr "DJ-Rollen"
+
+#: plconfig/cog.py:172
+msgid "Server Player Config"
+msgstr "Server-Player-Konfiguration"
+
+#: plconfig/cog.py:219
+msgid "Context Player Config"
+msgstr "Kontext-Spieler-Konfiguration"
+
+#: plconfig/cog.py:227
+msgid "Next Bundled\n"
+"Playlist Update"
+msgstr "Nächstes\n"
+"Playlist-Update"
+
+#: plconfig/cog.py:231
+msgid "Next Bundled External\n"
+"Playlist Update"
+msgstr "Nächstes externes Paket\n"
+"Playlist-Update"
+
+#: plconfig/cog.py:235
+msgid "Next External\n"
+"Playlist Update"
+msgstr "Nächstes externes\n"
+"Playlist-Update"
+
+#: plconfig/cog.py:242
+msgid "Playlist Tasks"
+msgstr "Wiedergabelisten Aufgaben"
+
+#: plconfig/cog.py:242
+msgid "Date and Time (UTC)"
+msgstr "Datum und Uhrzeit (UTC)"
+
+#: plconfig/cog.py:249
+msgid "Config Folder"
+msgstr "Konfigurationsordner"
+
+#: plconfig/cog.py:250
+msgid "Local Tracks"
+msgstr "Lokale Tracks"
+
+#: plconfig/cog.py:251
+msgid "Java Executable"
+msgstr "Java Executable"
+
+#: plconfig/cog.py:255
+msgid "Paths"
+msgstr "Pfade"
+
+#: plconfig/cog.py:255
+msgid "Path"
+msgstr "Pfad"
+
+#: plconfig/cog.py:268
+#, docstring
 msgid "Set the folder for PyLav's config files\n\n"
 "        Changes will be applied after restarting the bot.\n"
 "        "
@@ -49,19 +236,19 @@ msgstr "Legen Sie den Ordner für PyLavs Konfigurationsdateien fest\n\n"
 "        Änderungen werden nach dem Neustart des Bots angewendet.\n"
 "        "
 
-#: plconfig/cog.py:81 plconfig/cog.py:135
+#: plconfig/cog.py:280 plconfig/cog.py:335
 msgid "{folder} is not a folder."
 msgstr "{folder} ist kein Ordner."
 
-#: plconfig/cog.py:95 plconfig/cog.py:149
+#: plconfig/cog.py:294 plconfig/cog.py:349
 msgid "{folder} does not exist, run the command again with the create argument set to 1 to automatically create this folder."
 msgstr "{folder} existiert nicht, führen Sie den Befehl erneut mit dem Erstellungsargument 1 aus, um diesen Ordner automatisch zu erstellen."
 
-#: plconfig/cog.py:113
+#: plconfig/cog.py:312
 msgid "PyLav's config folder has been set to {folder}."
 msgstr "PyLavs Konfigurationsordner wurde auf {folder} gesetzt."
 
-#: plconfig/cog.py:123
+#: plconfig/cog.py:323
 #, docstring
 msgid "Set the local tracks folder for PyLav.\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -70,11 +257,11 @@ msgstr "Legen Sie den lokalen Track-Ordner für Pylak fest.\n\n"
 "        Änderungen werden nach einem Neustart des Bots angewendet.\n"
 "        "
 
-#: plconfig/cog.py:170
+#: plconfig/cog.py:370
 msgid "PyLav's local tracks folder has been set to {folder}."
 msgstr "Der Ordner der lokalen Tracks von Pylav wurde auf {folder} gesetzt."
 
-#: plconfig/cog.py:180
+#: plconfig/cog.py:381
 #, docstring
 msgid "Set the java executable for PyLav.\n\n"
 "        Default is \"java\"\n"
@@ -85,28 +272,28 @@ msgstr "Legen Sie die Java ausführbare Datei für Pylav fest.\n\n"
 "        Änderungen werden nach dem Neustart des Bots angewendet.\n"
 "        "
 
-#: plconfig/cog.py:197
+#: plconfig/cog.py:398
 msgid "{java} does not exist, run the command again with the java argument set to the correct path."
 msgstr "{java} existiert nicht, führen Sie den Befehl erneut aus, wobei das Java-Argument auf den korrekten Pfad gesetzt ist."
 
-#: plconfig/cog.py:213
+#: plconfig/cog.py:414
 msgid "{java} is not an executable file."
 msgstr "{java} ist keine ausführbare Datei."
 
-#: plconfig/cog.py:225
+#: plconfig/cog.py:426
 msgid "{java} is not an executable, run the command again with the java argument set to the correct path."
 msgstr "{java} ist keine ausführbare Datei, führen Sie den Befehl erneut mit dem Java-Argument, das auf den korrekten Pfad gesetzt ist."
 
-#: plconfig/cog.py:243
+#: plconfig/cog.py:444
 msgid "PyLav's java executable has been set to {java}."
 msgstr "PyLavs Java ausführbare Datei wurde auf {java} gesetzt."
 
-#: plconfig/cog.py:253
+#: plconfig/cog.py:455
 #, docstring
 msgid "Change the managed node configuration."
 msgstr "Verwaltete Knotenkonfiguration ändern."
 
-#: plconfig/cog.py:257
+#: plconfig/cog.py:459
 #, docstring
 msgid "Toggle the managed node on/off.\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -115,15 +302,15 @@ msgstr "Schaltet den verwalteten Knoten ein/aus.\n\n"
 "        Änderungen werden nach einem Neustart des Bots angewendet.\n"
 "        "
 
-#: plconfig/cog.py:272
+#: plconfig/cog.py:474
 msgid "PyLav's managed node has been enabled."
 msgstr "PyLavs verwalteter Knoten wurde aktiviert."
 
-#: plconfig/cog.py:280
+#: plconfig/cog.py:482
 msgid "PyLav's managed node has been disabled."
 msgstr "PyLavs verwalteter Knoten wurde deaktiviert."
 
-#: plconfig/cog.py:288
+#: plconfig/cog.py:490
 #, docstring
 msgid "Toggle the managed node auto updates on/off.\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -132,51 +319,51 @@ msgstr "Automatische Updates ein-/ausschalten.\n\n"
 "        Änderungen werden nach dem Neustart des Bots angewendet.\n"
 "        "
 
-#: plconfig/cog.py:303
+#: plconfig/cog.py:505
 msgid "PyLav's managed node auto updates have been enabled."
 msgstr "PyLavs verwaltete Knoten Auto-Aktualisierungen wurden aktiviert."
 
-#: plconfig/cog.py:311
+#: plconfig/cog.py:513
 msgid "PyLav's managed node auto updates have been disabled."
 msgstr "PyLavs verwaltete Knoten automatische Aktualisierungen wurden deaktiviert."
 
-#: plconfig/cog.py:319
+#: plconfig/cog.py:521
 #, docstring
 msgid "Change the bundled external nodes state."
 msgstr "Ändern Sie den Zustand der gebündelten externen Knoten."
 
-#: plconfig/cog.py:323
+#: plconfig/cog.py:525
 #, docstring
 msgid "Toggle the managed external draper.wtf nodes on/off."
 msgstr "Schaltet die verwalteten externen draper.wtf-Knoten ein/aus."
 
-#: plconfig/cog.py:340
+#: plconfig/cog.py:542
 msgid "PyLav's managed pylav external node has been enabled."
 msgstr "PyLavs verwalteter pylav externer Knoten wurde aktiviert."
 
-#: plconfig/cog.py:348
+#: plconfig/cog.py:550
 msgid "PyLav's managed pylav external node has been disabled."
 msgstr "PyLavs verwalteter Pylav-Knoten wurde deaktiviert."
 
-#: plconfig/cog.py:356
+#: plconfig/cog.py:558
 #, docstring
 msgid "Toggle the managed external lava.link node on/off."
 msgstr "Schaltet den Knoten \"verwaltete\" externe lava.link an/aus ein."
 
-#: plconfig/cog.py:373
+#: plconfig/cog.py:575
 msgid "PyLav's managed lava.link external node has been enabled."
 msgstr "PyLavs verwalteter lava.link externer Knoten wurde aktiviert."
 
-#: plconfig/cog.py:381
+#: plconfig/cog.py:583
 msgid "PyLav's managed lava.link external node has been disabled."
 msgstr "PyLavs verwalteter lava.link externer Knoten wurde deaktiviert."
 
-#: plconfig/cog.py:389
+#: plconfig/cog.py:592
 #, docstring
 msgid "Instructions on how to set the Spotify API Tokens."
 msgstr "Anleitung zum Setzen der Spotify-API-Token."
 
-#: plconfig/cog.py:390
+#: plconfig/cog.py:593
 msgid "1. Go to Spotify developers and log in with your Spotify account.\n"
 "(https://developer.spotify.com/dashboard/applications)\n"
 "2. Click \"Create An App\".\n"
@@ -194,29 +381,29 @@ msgstr "1. Gehen Sie zu Spotify-Entwicklern und melden Sie sich mit Ihrem Spotif
 "6. Kopiere deine Client-ID und dein Client-Geheimnis in:\n"
 "`{prefix}setze api spotify client_id <your_client_id_here> client_secret <your_client_secret_here>`"
 
-#: plconfig/cog.py:410
+#: plconfig/cog.py:614
 #, docstring
 msgid "Manage active players"
 msgstr "Aktive Spieler verwalten"
 
-#: plconfig/cog.py:419
+#: plconfig/cog.py:623
 msgid "No active player in {}."
 msgstr "Kein aktiver Spieler in {}."
 
-#: plconfig/cog.py:428
+#: plconfig/cog.py:632
 msgid "No connected players."
 msgstr "Keine verbundenen Spieler."
 
-#: plconfig/cog.py:444
+#: plconfig/cog.py:649
 #, docstring
 msgid "Toggle whether or not to change the bot's activity."
 msgstr "Umschalten, ob die Aktivität des Bots geändert werden soll oder nicht."
 
-#: plconfig/cog.py:455
+#: plconfig/cog.py:660
 msgid "PyLav will change bot activity."
 msgstr "PyLav wird die Bot-Aktivität ändern."
 
-#: plconfig/cog.py:463
+#: plconfig/cog.py:668
 msgid "PyLav will no longer change the bot activity."
 msgstr "PyLav wird die Bot-Aktivität nicht mehr ändern."
 
