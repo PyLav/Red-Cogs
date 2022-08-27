@@ -19,6 +19,7 @@ from tabulate import tabulate
 
 import pylavcogs_shared
 from pylav import Client
+from pylav.envvars import JAVA_EXECUTABLE
 from pylav.managed_node import get_max_allocation_size
 from pylav.sql.models import LibConfigModel
 from pylav.types import BotT, CogT
@@ -120,7 +121,7 @@ class PyLavManagedNode(commands.Cog):
 
         config_data = await self.lavalink._lib_config_manager.get_config(
             config_folder=self.lavalink._config_folder,
-            java_path="java",
+            java_path=JAVA_EXECUTABLE,
             enable_managed_node=True,
             auto_update_managed_nodes=True,
             localtrack_folder=self.lavalink._config_folder / "music",
