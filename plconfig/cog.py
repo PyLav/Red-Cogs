@@ -14,7 +14,7 @@ from tabulate import tabulate
 import pylavcogs_shared
 from pylav import Client
 from pylav.localfiles import LocalFile
-from pylav.sql.models import LibConfigModel
+from pylav.sql.models import LibConfigModel, PlayerModel
 from pylav.types import BotT
 from pylav.utils import PyLavContext
 from pylav.vendored import aiopath
@@ -61,6 +61,140 @@ class PyLavConfigurator(commands.Cog):
                 description=box(tabulate(data, headers=(_("Library/Cog"), _("Version")), tablefmt="fancy_grid")),
                 messageable=context,
             ),
+            ephemeral=True,
+        )
+
+    @command_plset.command(name="info")
+    async def command_plset_info(self, context: PyLavContext) -> None:
+        """Show the config values."""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+
+        pylav_config = await LibConfigModel(bot=self.bot.user.id, id=1).get_all()
+
+        enabled = _("Enabled")
+        disabled = _("Disabled")
+
+        data = [
+            (_("Use Managed Node"), enabled if pylav_config.enable_managed_node else disabled),
+            (_("Auto Update\nManaged Node"), enabled if pylav_config.auto_update_managed_nodes else disabled),
+            (_("Change Bot activity"), enabled if pylav_config.update_bot_activity else disabled),
+            (_("Use Bundled\nPyLav Nodes"), enabled if pylav_config.use_bundled_pylav_external else disabled),
+            (_("Use Bundled\nlava.link Nodes"), enabled if pylav_config.use_bundled_lava_link_external else disabled),
+        ]
+        config = await context.bot.lavalink.player_config_manager.get_config(context.guild.id)
+        global_config = await PlayerModel(bot=self.bot.user.id, id=0).get_or_create()
+
+        data2 = [
+            (_("Volume"), global_config.volume),
+            (_("Maximum Volume"), global_config.max_volume),
+            (_("AutoPlay"), global_config.auto_play),
+            (_("Shuffling"), enabled if global_config.shuffle else disabled),
+            (_("Auto Shuffle"), enabled if global_config.auto_shuffle else disabled),
+            (_("Auto Deafen"), global_config.self_deaf),
+            (
+                _("Auto Disconnect"),
+                ("{enabled}\n{timer}s").format(enabled=enabled, timer=global_config.empty_queue_dc.time)
+                if global_config.empty_queue_dc.enabled
+                else disabled,
+            ),
+            (
+                _("Auto Alone Pause"),
+                ("{enabled}\n{timer}s").format(enabled=enabled, timer=global_config.alone_pause.time)
+                if global_config.alone_pause.enabled
+                else disabled,
+            ),
+            (
+                _("Auto Alone Disconnect"),
+                ("{enabled}\n{timer}s").format(enabled=enabled, timer=global_config.alone_dc.time)
+                if global_config.alone_dc.enabled
+                else disabled,
+            ),
+        ]
+
+        data3 = [
+            (_("Volume"), config.volume),
+            (_("Maximum Volume"), config.max_volume),
+            (_("AutoPlay"), config.auto_play),
+            (_("AutoPlay Playlist"), config.auto_play_playlist_id),
+            (_("Loop track"), enabled if config.repeat_current else disabled),
+            (_("Loop Queue"), enabled if config.repeat_queue else disabled),
+            (_("Shuffling"), enabled if config.shuffle else disabled),
+            (_("Auto Shuffle"), enabled if config.auto_shuffle else disabled),
+            (_("Auto Deafen"), config.self_deaf),
+            (
+                _("Auto Disconnect"),
+                _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=config.empty_queue_dc.time)
+                if config.empty_queue_dc.enabled
+                else disabled,
+            ),
+            (
+                _("Auto Alone Pause"),
+                _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=config.alone_pause.time)
+                if config.alone_pause.enabled
+                else disabled,
+            ),
+            (
+                _("Auto Alone Disconnect"),
+                _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=config.alone_dc.time)
+                if config.alone_dc.enabled
+                else disabled,
+            ),
+            (_("DJ Users"), "\n".join(map(str, config.dj_users))),
+            (_("DJ Roles"), "\n".join(map(str, config.dj_roles))),
+        ]
+        data4 = [
+            (
+                _("Next Bundled\nPlaylist Update"),
+                pylav_config.next_execution_update_bundled_playlists.strftime("%Y/%m/%d\n%H:%M:%S UTC"),
+            ),
+            (
+                _("Next Bundled External\nPlaylist Update"),
+                pylav_config.next_execution_update_bundled_external_playlists.strftime("%Y/%m/%d\n%H:%M:%S UTC"),
+            ),
+            (
+                _("Next External\nPlaylist Update"),
+                pylav_config.next_execution_update_external_playlists.strftime("%Y/%m/%d\n%H:%M:%S UTC"),
+            ),
+        ]
+
+        data5 = [
+            (_("Config Folder"), pylav_config.config_folder),
+            (_("Local Tracks"), pylav_config.localtrack_folder),
+            (_("Java"), shutil.which(pylav_config.java_path)),
+        ]
+
+        await context.send(
+            embeds=[
+                await self.lavalink.construct_embed(
+                    description=box(tabulate(data, headers=(_("PyLav Config"), _("State")), tablefmt="fancy_grid")),
+                    messageable=context,
+                ),
+                await self.lavalink.construct_embed(
+                    description=box(
+                        tabulate(data2, headers=(_("Global Player Config"), _("Value")), tablefmt="fancy_grid")
+                    ),
+                    messageable=context,
+                ),
+                await self.lavalink.construct_embed(
+                    description=box(
+                        tabulate(data3, headers=(_("Server Player Config"), _("Value")), tablefmt="fancy_grid")
+                    ),
+                    messageable=context,
+                ),
+                await self.lavalink.construct_embed(
+                    description=box(
+                        tabulate(data4, headers=(_("Playlist Tasks"), _("Date and Time (UTC)")), tablefmt="fancy_grid")
+                    ),
+                    messageable=context,
+                ),
+                await self.lavalink.construct_embed(
+                    description=box(tabulate(data5, headers=(_("Directories"), _("Path")), tablefmt="plain")),
+                    messageable=context,
+                ),
+            ],
             ephemeral=True,
         )
 
