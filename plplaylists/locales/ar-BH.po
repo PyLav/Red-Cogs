@@ -1,0 +1,254 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: mediaplayer\n"
+"POT-Creation-Date: 2022-08-28 00:29+0000\n"
+"PO-Revision-Date: 2022-08-28 00:36\n"
+"Last-Translator: \n"
+"Language-Team: Arabic, Bahrain\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.4.2\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+"X-Crowdin-Project: mediaplayer\n"
+"X-Crowdin-Project-ID: 512604\n"
+"X-Crowdin-Language: ar-BH\n"
+"X-Crowdin-File: /plplaylists/locales/messages.pot\n"
+"X-Crowdin-File-ID: 232\n"
+"Language: ar_BH\n"
+
+#: plplaylists/cog.py:53
+#, docstring
+msgid "PyLav playlist management commands"
+msgstr "أوامر إدارة قائمة التشغيل PyLav"
+
+#: plplaylists/cog.py:59
+msgid "Control PyLav playlists"
+msgstr "التحكم بقوائم تشغيل PyLav"
+
+#: plplaylists/cog.py:82
+#, docstring
+msgid "Show the version of the Cog and it's PyLav dependencies."
+msgstr "إظهار نسخة من الكتلة وهي تبعيات PyLav ."
+
+#: plplaylists/cog.py:94
+msgid "Library/Cog"
+msgstr "المكتبة/الكلب"
+
+#: plplaylists/cog.py:94
+msgid "Version"
+msgstr "الإصدار"
+
+#: plplaylists/cog.py:121
+msgid "Let's create a playlist!"
+msgstr "دعونا ننشئ قائمة تشغيل!"
+
+#: plplaylists/cog.py:122
+msgid "(**1**) - Apply changes to playlist.\n"
+"(**2**) - Cancel any changes made.\n"
+"(**3**) - Add a name to the playlist.\n"
+"(**4**) - Link this playlist to an existing playlist/album.\n"
+"(**5**) - Add all track from the queue to the playlist.\n\n"
+"If you want the playlist name to be as the original playlist simply set the URL but no name.\n\n"
+msgstr "(**1**) - تطبيق التغييرات على قائمة التشغيل.\n"
+"(**2**) - إلغاء أي تغييرات أجريت.\n"
+"(**3**) - إضافة اسم إلى قائمة التشغيل.\n"
+"(**4**) - ربط قائمة التشغيل هذه بقائمة تشغيل/ألبوم موجودة.\n"
+"(**5**) - إضافة جميع المسارات من قائمة الانتظار إلى قائمة التشغيل.\n\n"
+"إذا كنت تريد أن يكون اسم قائمة التشغيل كقائمة التشغيل الأصلية ببساطة قم بتعيين عنوان URL ولكن بدون اسم.\n\n"
+
+#: plplaylists/cog.py:158
+msgid "Playlist created"
+msgstr "تم إنشاء قائمة التشغيل"
+
+#: plplaylists/cog.py:159
+msgid "Name: `{name}`\n"
+"ID: `{id}`\n"
+"Tracks: `{track_count}`"
+msgstr "الاسم: `{name}`\n"
+"المعرف: `{id}`\n"
+"المسارات: `{track_count}`"
+
+#: plplaylists/cog.py:184
+msgid "You have no playlists."
+msgstr "ليس لديك قوائم تشغيل."
+
+#: plplaylists/cog.py:227 plplaylists/cog.py:594
+msgid "Nothing to save."
+msgstr "لا شيء للحفظ."
+
+#: plplaylists/cog.py:228 plplaylists/cog.py:595
+msgid "There is nothing in the queue to save."
+msgstr "لا يوجد شيء في قائمة الانتظار لحفظه."
+
+#: plplaylists/cog.py:265 plplaylists/cog.py:532 plplaylists/cog.py:612
+msgid "{user}, playlist {playlist_name} cannot be managed by yourself."
+msgstr "{user}، قائمة التشغيل {playlist_name} لا يمكن إدارتها بنفسك."
+
+#: plplaylists/cog.py:274
+msgid "(**1**){space} - Apply changes to playlist.\n"
+"(**2**){space} - Cancel any changes made and close the menu.\n"
+"(**3**){space} - Delete this playlist.\n"
+"(**4**){space} - Remove all tracks from this playlist.\n"
+"(**5**){space} - Update the playlist with the latest tracks.\n"
+"Please note that this action will ignore any tracks added/removed via this menu.\n"
+"(**6**){space} - Change the name of the playlist.\n"
+"(**7**){space} - Link this playlist to an existing playlist/album.\n"
+"(**8**){space} - Add a query to this playlist.\n"
+"(**9**){space} - Remove a query from this playlist.\n"
+"(**10**) - Download the playlist file.\n"
+"(**11**) - Add current playlist to the queue.\n"
+"(**12**) - Show tracks in current playlist.\n"
+"(**13**) - Add tracks from queue to this playlist.\n"
+"(**14**) - Remove duplicate entries in the playlist.\n\n"
+"The add/remove track buttons can be used multiple times to add/remove multiple tracks and playlists at once.\n\n"
+"A query is anything playable by the play command - any query can be used by the add/remove buttons\n\n"
+"The clear button will always be run first before any other operations.\n"
+"The URL button will always run last - Linking a playlist via the URL will overwrite any tracks added or removed to this playlist.\n\n"
+"If you interact with a button multiple times other than the add/remove buttons only the last interaction will take effect.\n\n\n"
+msgstr "(**1**){space} - تطبيق التغييرات على قائمة التشغيل.\n"
+"(**2**){space} - إلغاء أي تغييرات أجريت وإغلاق القائمة.\n"
+"(**3**){space} - حذف قائمة التشغيل هذه.\n"
+"(**4**){space} - إزالة جميع المسارات من قائمة التشغيل هذه\n"
+"(**5**){space} - تحديث قائمة التشغيل بأحدث المسارات.\n"
+"يرجى ملاحظة أن هذا الإجراء سوف يتجاهل أي مسارات تمت إضافتها أو إزالتها عبر هذه القائمة.\n"
+"(**6**){space} - تغيير اسم قائمة التشغيل.\n"
+"(**7**){space} - ربط قائمة التشغيل هذه بقائمة تشغيل/ألبوم موجودة.\n"
+"(**8**){space} - إضافة استعلام إلى قائمة التشغيل هذه.\n"
+"(**9**){space} - إزالة استعلام من قائمة التشغيل هذه.\n"
+"(**10**) - تحميل ملف قائمة التشغيل.\n"
+"(**11**) - إضافة قائمة التشغيل الحالية إلى قائمة الانتظار.\n"
+"(**12**) - إظهار المسارات في قائمة التشغيل الحالية\n"
+"(**13**) - إضافة المسارات من قائمة الانتظار إلى قائمة التشغيل هذه.\n"
+"(**14**) - إزالة المواد المكررة في قائمة التشغيل.\n\n"
+"أزرار الإضافة/إزالة المسار يمكن استخدامها عدة مرات لإضافة/إزالة مسارات متعددة وقوائم تشغيل في وقت واحد.\n\n"
+"الاستعلام هو أي شيء يمكن تشغيله بواسطة أمر التشغيل - أي استعلام يمكن استخدامه بواسطة أزرار إضافة/إزالة\n\n"
+"زر المسح سوف يتم تشغيله دائماً قبل أي عمليات أخرى.\n"
+"سيتم تشغيل زر URL دائمًا - سيؤدي ربط قائمة التشغيل عبر عنوان URL إلى الكتابة فوق أي مسارات تمت إضافتها أو إزالتها إلى قائمة التشغيل هذه.\n\n"
+"إذا كنت تتفاعل مع زر عدة مرات غير أزرار إضافة/إزالة فقط سيصبح التفاعل الأخير ساري المفعول\n\n\n"
+
+#: plplaylists/cog.py:300
+msgid "(**1**) - Close the menu.\n"
+"(**2**) - Update the playlist with the latest tracks.\n"
+"(**3**) - Download the playlist file.\n"
+"(**4**) - Add current playlist to the queue.\n"
+"(**5**) - Show tracks in current playlist.\n\n\n"
+msgstr "(**1**) - إغلاق القائمة.\n"
+"(**2**) - تحديث قائمة التشغيل بأحدث المسارات.\n"
+"(**3**) - تحميل ملف قائمة التشغيل.\n"
+"(**4**) - إضافة قائمة التشغيل الحالية إلى قائمة الانتظار.\n"
+"(**5**) - إظهار المسارات في قائمة التشغيل الحالية\n\n\n"
+
+#: plplaylists/cog.py:308
+msgid "**__Currently managing__**:\n"
+"**Name**:{space}{space}{space}{playlist_name}\n"
+"**Scope**:{space}{space}{space}{scope}\n"
+"**Author**:{space}{space}{author}\n"
+"**Tracks**:{space}{space}{space}{tracks} tracks\n"
+"**URL**:{space}{space}{space}{space}{space}{url}\n"
+msgstr ""
+
+#: plplaylists/cog.py:325
+msgid "Let's manage: {playlist_name}"
+msgstr "لنقوم بالإدارة: {playlist_name}"
+
+#: plplaylists/cog.py:327
+msgid "Let's take a look at: {playlist_name}"
+msgstr "دعونا نلقي نظرة في: {playlist_name}"
+
+#: plplaylists/cog.py:334
+msgid "N/A"
+msgstr "لا"
+
+#: plplaylists/cog.py:366 plplaylists/cog.py:542
+msgid "Playlist deleted."
+msgstr "تم حذف قائمة التشغيل."
+
+#: plplaylists/cog.py:368 plplaylists/cog.py:544
+msgid "{user}, playlist {playlist_name} has been deleted."
+msgstr "{user}، تم حذف قائمة التشغيل {playlist_name}."
+
+#: plplaylists/cog.py:425
+msgid "Playlist **{playlist_name}** could not be updated with URL: <{url}>."
+msgstr "لا يمكن تحديث قائمة التشغيل **{playlist_name}** باستخدام URL: <{url}>."
+
+#: plplaylists/cog.py:459
+msgid "\n"
+"{track_count} {track_plural} removed from the playlist."
+msgstr "\n"
+"{track_count} {track_plural} حذف من قائمة التشغيل."
+
+#: plplaylists/cog.py:460 plplaylists/cog.py:464 plplaylists/cog.py:631
+msgid "track"
+msgstr "مقطع"
+
+#: plplaylists/cog.py:460 plplaylists/cog.py:464 plplaylists/cog.py:631
+msgid "tracks"
+msgstr "مسارات"
+
+#: plplaylists/cog.py:463 plplaylists/cog.py:630
+msgid "\n"
+"{track_count} {track_plural} added to the playlist."
+msgstr "\n"
+"{track_count} {track_plural} أضيف إلى قائمة التشغيل."
+
+#: plplaylists/cog.py:470 plplaylists/cog.py:638
+msgid "Playlist updated."
+msgstr "تم تحديث قائمة التشغيل."
+
+#: plplaylists/cog.py:471 plplaylists/cog.py:639
+msgid "{user}, playlist {playlist_name} has been updated.{extras}"
+msgstr "{user}، تم تحديث قائمة التشغيل {playlist_name} .{extras}"
+
+#: plplaylists/cog.py:483 plplaylists/cog.py:652
+msgid "Playlist unchanged."
+msgstr "قائمة التشغيل بدون تغيير."
+
+#: plplaylists/cog.py:484 plplaylists/cog.py:653
+msgid "{user}, playlist {playlist_name} has not been updated."
+msgstr "{user}، لم يتم تحديث قائمة التشغيل {playlist_name}."
+
+#: plplaylists/cog.py:681
+msgid "You must either provide a URL or attach a playlist file to upload a playlist."
+msgstr "يجب عليك إما تقديم عنوان URL أو إرفاق ملف قائمة تشغيل لتحميل قائمة التشغيل."
+
+#: plplaylists/cog.py:693
+msgid "No valid playlist file provided."
+msgstr "لم يتم توفير ملف قائمة التشغيل صالح."
+
+#: plplaylists/cog.py:702
+msgid "Multiple playlist files provided - Currently only 1 per message is allowed."
+msgstr "ملفات قائمة تشغيل متعددة تم توفيرها - يسمح حاليا بواحد فقط لكل رسالة."
+
+#: plplaylists/cog.py:720
+msgid "Failed to save any of the requested playlists."
+msgstr "فشل في حفظ أي من قوائم التشغيل المطلوبة."
+
+#: plplaylists/cog.py:729
+msgid "Failed to save the following playlists:\n"
+"{invalid_playlists}"
+msgstr "فشل في حفظ قوائم التشغيل التالية:\n"
+"{invalid_playlists}"
+
+#: plplaylists/cog.py:738
+msgid "Successfully saved the following playlists:\n"
+"{saved_playlists}"
+msgstr "حفظ قوائم التشغيل التالية بنجاح:\n"
+"{saved_playlists}"
+
+#: plplaylists/cog.py:763
+msgid "You must be in a voice channel to allow me to connect."
+msgstr "يجب أن تكون في قناة صوتية للسماح لي بالاتصال."
+
+#: plplaylists/cog.py:771
+msgid "I don't have permission to connect or speak in {channel}."
+msgstr "ليس لدي إذن للاتصال أو التحدث في {channel}."
+
+#: plplaylists/cog.py:788
+msgid "Playlist"
+msgstr "قائمة التشغيل"
+
+#: plplaylists/cog.py:793
+msgid "{track_count} tracks enqueued.{playlist_name}"
+msgstr "{track_count} مسارات في قائمة الانتظار.{playlist_name}"
+
