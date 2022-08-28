@@ -9,6 +9,7 @@ from typing import Literal
 
 import asyncstdlib
 import discord
+from discord import app_commands
 from red_commons.logging import getLogger
 from redbot.core import Config
 from redbot.core import commands
@@ -22,14 +23,14 @@ from pylav import InvalidPlaylist, Query, Track
 from pylav.constants import BUNDLED_PLAYLIST_IDS
 from pylav.converters import PlaylistConverter, QueryPlaylistConverter
 from pylav.sql.models import PlaylistModel
-from pylav.types import BotT
+from pylav.types import BotT, InteractionT
 from pylav.utils import AsyncIter, PyLavContext
 from pylavcogs_shared.ui.menus.generic import PaginatingMenu
 from pylavcogs_shared.ui.menus.playlist import PlaylistCreationFlow, PlaylistManageFlow
 from pylavcogs_shared.ui.prompts.playlists import maybe_prompt_for_playlist
 from pylavcogs_shared.ui.sources.playlist import Base64Source, PlaylistListSource
 from pylavcogs_shared.utils import rgetattr
-from pylavcogs_shared.utils.decorators import always_hidden, invoker_is_dj
+from pylavcogs_shared.utils.decorators import always_hidden, invoker_is_dj, requires_player
 
 
 class CompositeMetaClass(type(red_commands.Cog), type(ABC)):
@@ -53,6 +54,11 @@ class PyLavPlaylists(
 
     __version__ = "1.0.0.0rc0"
 
+    slash_playlist = app_commands.Group(
+        name="playlist",
+        description=_("Control PyLav playlists"),
+    )
+
     def __init__(self, bot: BotT, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot
@@ -69,19 +75,14 @@ class PyLavPlaylists(
         """
         await self._config.user_from_id(user_id).clear()
 
-    @commands.hybrid_group(name="playlist")
-    @commands.guild_only()
+    @slash_playlist.command(name="version")
+    @app_commands.guild_only()
     @invoker_is_dj()
-    async def command_playlist(self, context: PyLavContext):
-        """Control custom playlist available in the bot."""
-
-    @command_playlist.command(name="version")
-    async def command_playlist_version(self, context: PyLavContext) -> None:
+    async def slash_playlist_version(self, interaction: InteractionT) -> None:
         """Show the version of the Cog and it's PyLav dependencies."""
-        if isinstance(context, discord.Interaction):
-            context = await self.bot.get_context(context)
-        if context.interaction and not context.interaction.response.is_done():
-            await context.defer(ephemeral=True)
+        if not interaction.response.is_done():
+            await interaction.response.defer(ephemeral=True)
+        context = await self.bot.get_context(interaction)
         data = [
             (self.__class__.__name__, self.__version__),
             ("PyLavCogs-Shared", pylavcogs_shared.__VERSION__),
@@ -96,22 +97,19 @@ class PyLavPlaylists(
             ephemeral=True,
         )
 
-    @command_playlist.command(name="create", aliases=["new"])
-    async def command_playlist_create(
-        self, context: PyLavContext, url: QueryPlaylistConverter = None, *, name: str = None
+    @slash_playlist.command(name="create", description=_("Create a playlist"))
+    @app_commands.describe(
+        url=_("The URL of the playlist to create. YouTube, Spotify, SoundCloud, Apple Music playlists or albums"),
+        name=_("The name of the playlist"),
+    )
+    @app_commands.guild_only()
+    @invoker_is_dj()
+    async def slash_playlist_create(
+        self, interaction: InteractionT, url: QueryPlaylistConverter = None, *, name: str = None
     ):
-        """Create a new playlist.
-
-        If you don't specify an URL and name, you will be shows a creation menu, which also allows you to save the current player queue as a playlist.
-
-        If you don't specify a name, the playlist will be named the URL playlist if available otherwise the name will be the same as the ID.
-        If you specify an URL, the playlist will be created from the URL.
-        """
-
-        if isinstance(context, discord.Interaction):
-            context = await self.bot.get_context(context)
-        if context.interaction and not context.interaction.response.is_done():
-            await context.defer(ephemeral=True)
+        if not interaction.response.is_done():
+            await interaction.response.defer(ephemeral=True)
+        context = await self.bot.get_context(interaction)
         add_queue = False
         if not (name or url):
             playlist_prompt = PlaylistCreationFlow(
@@ -166,19 +164,13 @@ class PyLavPlaylists(
             ephemeral=True,
         )
 
-    @command_playlist.command(name="list")
-    async def command_playlist_list(self, context: PyLavContext):
-        """
-        List all playlists you have access to on the invoked context.
-
-        This takes into consideration your current VC, Text channel and Server.
-        """
-
-        if isinstance(context, discord.Interaction):
-            context = await self.bot.get_context(context)
-        if context.interaction and not context.interaction.response.is_done():
-            await context.defer(ephemeral=True)
-
+    @slash_playlist.command(name="list", description=_("List all playlists you have access to on the invoked context"))
+    @app_commands.guild_only()
+    @invoker_is_dj()
+    async def slash_playlist_list(self, interaction: InteractionT):
+        if not interaction.response.is_done():
+            await interaction.response.defer(ephemeral=True)
+        context = await self.bot.get_context(interaction)
         playlists = await context.lavalink.playlist_db_manager.get_all_for_user(
             requester=context.author.id,
             vc=rgetattr(context.author, "voice.channel", None),
@@ -203,33 +195,41 @@ class PyLavPlaylists(
             original_author=context.interaction.user if context.interaction else context.author,
         ).start(context)
 
-    @command_playlist.command(
+    @slash_playlist.command(
         name="manage",
-        aliases=["delete", "remove", "rm", "del", "clear", "add", "play", "start", "enqueue", "info", "save", "queue"],
+        description=_("Manage a playlist"),
     )
-    async def command_playlist_manage(self, context: PyLavContext, *, playlist: PlaylistConverter):
-        # sourcery no-metrics
-        """
-        Manage a playlist.
-
-        This command can be used to delete, clear all tracks, add or remove tracks or play a playlist.
-
-        If you use the `start` (`play` or `enqueue`) alias the playlist will be played instead of you being shown the control menu.
-        If you use the `delete` (`del`) alias the playlist will be deleted instead of you being shown the control menu.
-        If you use the `save` (`queue`) alias the current queue will be added to the specified playlist.
-        if you use the `info` alias the playlist tracks will be displayed in a menu.
-        """
-
-        if isinstance(context, discord.Interaction):
-            context = await self.bot.get_context(context)
-        if context.interaction and not context.interaction.response.is_done():
-            await context.defer(ephemeral=True)
+    @app_commands.describe(
+        operation=_("The operation to perform on the playlist, if not specified a menu will be shown for full control"),
+        playlist=_("The playlist to perform the operation on"),
+    )
+    @app_commands.guild_only()
+    async def slash_playlist_manage(
+        self,
+        interaction: InteractionT,
+        playlist: PlaylistConverter,
+        operation: Literal["Info", "Save", "Play", "Delete"] = None,
+    ):
+        if not interaction.response.is_done():
+            await interaction.response.defer(ephemeral=True)
+        context = await self.bot.get_context(interaction)
 
         # Could shortcut any other alias - but the issue comes with clarity and confirmation.
-        invoked_with_start = context.invoked_with in ("start", "play", "enqueue")
-        invoked_with_delete = context.invoked_with in ("delete", "del")
-        invoked_with_queue = context.invoked_with in ("queue", "save")
-        invoked_with_info = context.invoked_with in ("info",)
+        invoked_with_start = operation == "Play"
+        invoked_with_delete = operation == "Delete"
+        invoked_with_queue = operation == "Save"
+        invoked_with_info = operation == "Info"
+
+        if invoked_with_queue and not context.player.queue.size():
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    messageable=context,
+                    title=_("Nothing to save."),
+                    description=_("There is nothing in the queue to save."),
+                ),
+                ephemeral=True,
+            )
+            return
 
         playlists: list[PlaylistModel] = playlist  # type: ignore
         playlist = await maybe_prompt_for_playlist(cog=self, playlists=playlists, context=context)
@@ -488,19 +488,185 @@ class PyLavPlaylists(
                 ephemeral=True,
             )
 
-    @command_playlist.command(name="upload")
-    @commands.guild_only()
-    async def command_playlist_upload(self, context: PyLavContext, url: str = None):
-        """
-        Upload a playlist to the bot.
+    @slash_playlist.command(
+        name="play",
+        description=_("Enqueue a playlist"),
+    )
+    @app_commands.describe(playlist=_("The playlist to enqueue"))
+    @app_commands.guild_only()
+    @invoker_is_dj()
+    async def slash_playlist_play(self, interaction: InteractionT, playlist: PlaylistConverter):
+        if not interaction.response.is_done():
+            await interaction.response.defer(ephemeral=True)
+        context = await self.bot.get_context(interaction)
 
-        This command will upload a playlist to the bot.
-        The playlist can be uploaded by either the URL of the playlist file or by attaching the playlist file to the message.
-        """
-        if isinstance(context, discord.Interaction):
-            context = await self.bot.get_context(context)
-        if context.interaction and not context.interaction.response.is_done():
-            await context.defer(ephemeral=True)
+        playlists: list[PlaylistModel] = playlist  # type: ignore
+        playlist = await maybe_prompt_for_playlist(cog=self, playlists=playlists, context=context)
+        if not playlist:
+            return
+        await self.command_playlist_play.callback(self, context, playlist=[playlist])  # type: ignore
+
+    @slash_playlist.command(
+        name="delete",
+        description=_("Delete a playlist"),
+    )
+    @app_commands.describe(playlist=_("The playlist to delete"))
+    @app_commands.guild_only()
+    async def slash_playlist_delete(self, interaction: InteractionT, playlist: PlaylistConverter):
+        if not interaction.response.is_done():
+            await interaction.response.defer(ephemeral=True)
+        context = await self.bot.get_context(interaction)
+
+        playlists: list[PlaylistModel] = playlist  # type: ignore
+        playlist = await maybe_prompt_for_playlist(cog=self, playlists=playlists, context=context)
+        if not playlist:
+            return
+        if playlist.id not in BUNDLED_PLAYLIST_IDS:
+            manageable = await playlist.can_manage(bot=self.bot, requester=context.author, guild=context.guild)
+        else:
+            manageable = False
+        if not manageable:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    messageable=context,
+                    description=_("{user}, playlist {playlist_name} cannot be managed by yourself.").format(
+                        user=context.author.mention, playlist_name=await playlist.get_name_formatted(with_url=True)
+                    ),
+                ),
+                ephemeral=True,
+            )
+            return
+        await playlist.delete()
+        await context.send(
+            embed=await context.lavalink.construct_embed(
+                title=_("Playlist deleted."),
+                messageable=context,
+                description=_("{user}, playlist {playlist_name} has been deleted.").format(
+                    user=context.author.mention, playlist_name=await playlist.get_name_formatted(with_url=True)
+                ),
+            ),
+            ephemeral=True,
+        )
+
+    @slash_playlist.command(
+        name="info",
+        description=_("Display info about a playlist"),
+    )
+    @app_commands.describe(playlist=_("The playlist show info about"))
+    @app_commands.guild_only()
+    async def slash_playlist_info(self, interaction: InteractionT, playlist: PlaylistConverter):
+        if not interaction.response.is_done():
+            await interaction.response.defer(ephemeral=True)
+        context = await self.bot.get_context(interaction)
+
+        playlists: list[PlaylistModel] = playlist  # type: ignore
+        playlist = await maybe_prompt_for_playlist(cog=self, playlists=playlists, context=context)
+        if not playlist:
+            return
+
+        await PaginatingMenu(
+            bot=self.bot,
+            cog=self,
+            source=Base64Source(
+                guild_id=context.guild.id,
+                cog=self,
+                author=context.author,
+                entries=playlist.tracks,
+                playlist=playlist,
+            ),
+            delete_after_timeout=True,
+            starting_page=0,
+            original_author=context.author,
+        ).start(context)
+
+    @slash_playlist.command(name="save", description=_("Add the currently player queue to a playlist"))
+    @app_commands.describe(playlist=_("The playlist append the queue to"))
+    @app_commands.guild_only()
+    @requires_player()
+    async def slash_playlist_save(self, interaction: InteractionT, playlist: PlaylistConverter):
+        if not interaction.response.is_done():
+            await interaction.response.defer(ephemeral=True)
+        context = await self.bot.get_context(interaction)
+        if not context.player.queue.size():
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    messageable=context,
+                    title=_("Nothing to save."),
+                    description=_("There is nothing in the queue to save."),
+                ),
+                ephemeral=True,
+            )
+            return
+        playlists: list[PlaylistModel] = playlist
+        playlist = await maybe_prompt_for_playlist(cog=self, playlists=playlists, context=context)
+        if not playlist:
+            return
+        if playlist.id not in BUNDLED_PLAYLIST_IDS:
+            manageable = await playlist.can_manage(bot=self.bot, requester=context.author, guild=context.guild)
+        else:
+            manageable = False
+        if not manageable:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    messageable=context,
+                    description=_("{user}, playlist {playlist_name} cannot be managed by yourself.").format(
+                        user=context.author.mention, playlist_name=await playlist.get_name_formatted(with_url=True)
+                    ),
+                ),
+                ephemeral=True,
+            )
+            return
+        tracks_added = 0
+        changed = False
+        if context.player:
+            if tracks := context.player.queue.raw_queue:
+                queue_tracks = [track.track for track in tracks if track.track]
+                playlist.tracks.extend(queue_tracks)
+                tracks_added += len(queue_tracks)
+                changed = True
+        if changed:
+            extras = ""
+            if tracks_added:
+                extras += _("\n{track_count} {track_plural} added to the playlist.").format(
+                    track_count=tracks_added, track_plural=_("track") if tracks_added == 1 else _("tracks")
+                )
+
+            await playlist.save()
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    messageable=context,
+                    title=_("Playlist updated."),
+                    description=_("{user}, playlist {playlist_name} has been updated.{extras}").format(
+                        user=context.author.mention,
+                        playlist_name=await playlist.get_name_formatted(with_url=True),
+                        extras=extras,
+                    ),
+                ),
+                ephemeral=True,
+            )
+
+        else:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    messageable=context,
+                    title=_("Playlist unchanged."),
+                    description=_("{user}, playlist {playlist_name} has not been updated.").format(
+                        user=context.author.mention, playlist_name=await playlist.get_name_formatted(with_url=True)
+                    ),
+                ),
+                ephemeral=True,
+            )
+
+    @slash_playlist.command(name="upload", description=_("Upload a playlist to the bot"))
+    @app_commands.describe(
+        url=_("The URL of the playlist to upload. If the URL is not a supported playlist, the command will fail"),
+    )
+    @app_commands.guild_only()
+    @invoker_is_dj()
+    async def slash_playlist_upload(self, interaction: InteractionT, url: str = None):
+        if not interaction.response.is_done():
+            await interaction.response.defer(ephemeral=True)
+        context = await self.bot.get_context(interaction)
         valid_playlist_urls = set()
         if url:
             if isinstance(url, str):

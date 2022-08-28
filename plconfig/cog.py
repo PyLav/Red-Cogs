@@ -239,7 +239,7 @@ class PyLavConfigurator(commands.Cog):
         embed_list.append(
             await self.lavalink.construct_embed(
                 description=box(
-                    tabulate(data, headers=(_("Playlist Tasks"), _("Date and Time (UTC)")), tablefmt="plain")
+                    tabulate(data, headers=(_("Playlist Tasks"), _("Date and Time (UTC)")), tablefmt="fancy_grid")
                 ),
                 messageable=context,
             )

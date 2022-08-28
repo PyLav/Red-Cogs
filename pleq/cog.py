@@ -3,6 +3,8 @@ from __future__ import annotations
 from pathlib import Path
 
 import discord
+from discord import app_commands
+from discord.app_commands import Range
 from red_commons.logging import getLogger
 from redbot.core import Config, commands
 from redbot.core.i18n import Translator, cog_i18n
@@ -11,10 +13,11 @@ from tabulate import tabulate
 
 import pylavcogs_shared
 from pylav.filters import Equalizer
-from pylav.types import BotT
+from pylav.sql.models import EqualizerModel
+from pylav.types import BotT, InteractionT
 from pylav.utils import PyLavContext
 from pylavcogs_shared.converters.equalizer import BassBoostConverter
-from pylavcogs_shared.utils.decorators import can_run_command_in_channel, invoker_is_dj, requires_player
+from pylavcogs_shared.utils.decorators import invoker_is_dj, requires_player
 
 LOGGER = getLogger("red.3pt.PyLavEqualizer")
 
@@ -26,6 +29,8 @@ class PyLavEqualizer(commands.Cog):
     """Apply equalizer presets to the PyLav player."""
 
     __version__ = "1.0.0.0rc0"
+
+    slash_eq = app_commands.Group(name="eq", description=_("Apply an Equalizer preset to the player."))
 
     def __init__(self, bot: BotT, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -94,16 +99,11 @@ class PyLavEqualizer(commands.Cog):
                 ephemeral=True,
             )
 
-    @commands.hybrid_group(name="eq", description="Apply an Equalizer preset to the player.", aliases=["equalizer"])
-    @commands.guild_only()
+    @slash_eq.command(name="bassboost")
+    @app_commands.guild_only()
     @requires_player()
-    @can_run_command_in_channel()
     @invoker_is_dj()
-    async def command_eq(self, ctx: PyLavContext) -> None:
-        """Apply an Equalizer preset to the player."""
-
-    @command_eq.command(name="bassboost", aliases=["bb"])
-    async def command_eq_bassboost(self, context: PyLavContext, level: BassBoostConverter) -> None:
+    async def slash_eq_bassboost(self, interaction: InteractionT, level: BassBoostConverter) -> None:
         """Apply a Bass boost preset to the player.
 
         Arguments:
@@ -117,11 +117,9 @@ class PyLavEqualizer(commands.Cog):
             - Cut-off
             - Off
         """
-        if isinstance(context, discord.Interaction):
-            context = await self.bot.get_context(context)
-        if context.interaction and not context.interaction.response.is_done():
-            await context.defer(ephemeral=True)
-
+        if not interaction.response.is_done():
+            await interaction.response.defer(ephemeral=True)
+        context = await self.bot.get_context(interaction)
         if level == "Off":
             await context.player.set_equalizer(requester=context.author, equalizer=Equalizer.default())
             if await self._config.guild(context.guild).persist_eq():
@@ -200,18 +198,20 @@ class PyLavEqualizer(commands.Cog):
             ephemeral=True,
         )
 
-    @command_eq.command(name="piano")
-    async def command_eq_piano(self, context: PyLavContext) -> None:
+    @slash_eq.command(name="piano")
+    @app_commands.guild_only()
+    @requires_player()
+    @invoker_is_dj()
+    async def slash_eq_piano(self, interaction: InteractionT) -> None:
         """Apply a Piano preset to the player.
 
         Suitable for acoustic tracks, or tacks with an emphasis on female vocals.
 
         Can also be used as a bass cut-off.
         """
-        if isinstance(context, discord.Interaction):
-            context = await self.bot.get_context(context)
-        if context.interaction and not context.interaction.response.is_done():
-            await context.defer(ephemeral=True)
+        if not interaction.response.is_done():
+            await interaction.response.defer(ephemeral=True)
+        context = await self.bot.get_context(interaction)
 
         equalizer = Equalizer(
             levels=[
@@ -244,16 +244,18 @@ class PyLavEqualizer(commands.Cog):
             ephemeral=True,
         )
 
-    @command_eq.command(name="rock", aliases=["metal"])
-    async def command_eq_rock(self, context: PyLavContext) -> None:
+    @slash_eq.command(name="rock")
+    @app_commands.guild_only()
+    @requires_player()
+    @invoker_is_dj()
+    async def slash_eq_rock(self, interaction: InteractionT) -> None:
         """Apply an experimental Metal/Rock equalizer preset.
 
         Expect clipping on songs with heavy bass.
         """
-        if isinstance(context, discord.Interaction):
-            context = await self.bot.get_context(context)
-        if context.interaction and not context.interaction.response.is_done():
-            await context.defer(ephemeral=True)
+        if not interaction.response.is_done():
+            await interaction.response.defer(ephemeral=True)
+        context = await self.bot.get_context(interaction)
 
         equalizer = Equalizer(
             levels=[
@@ -287,13 +289,15 @@ class PyLavEqualizer(commands.Cog):
             ephemeral=True,
         )
 
-    @command_eq.command(name="remove", aliases=["reset"])
-    async def command_eq_remove(self, context: PyLavContext) -> None:
+    @slash_eq.command(name="reset")
+    @app_commands.guild_only()
+    @requires_player()
+    @invoker_is_dj()
+    async def slash_eq_remove(self, interaction: InteractionT) -> None:
         """Remove any equalizer preset from the player."""
-        if isinstance(context, discord.Interaction):
-            context = await self.bot.get_context(context)
-        if context.interaction and not context.interaction.response.is_done():
-            await context.defer(ephemeral=True)
+        if not interaction.response.is_done():
+            await interaction.response.defer(ephemeral=True)
+        context = await self.bot.get_context(interaction)
 
         await context.player.set_equalizer(requester=context.author, equalizer=Equalizer.default())
         if await self._config.guild(context.guild).persist_eq():
@@ -306,3 +310,98 @@ class PyLavEqualizer(commands.Cog):
             ),
             ephemeral=True,
         )
+
+    @slash_eq.command(name="custom", description=_("Apply and/or save a custom equalizer equalizer"))
+    @app_commands.guild_only()
+    @requires_player()
+    @invoker_is_dj()
+    async def slash_eq_custom(
+        self,
+        interaction: InteractionT,
+        name: str,
+        description: str = None,
+        band_25: Range[float, -0.25, 1.0] = None,
+        band_40: Range[float, -0.25, 1.0] = None,
+        band_63: Range[float, -0.25, 1.0] = None,
+        band_100: Range[float, -0.25, 1.0] = None,
+        band_160: Range[float, -0.25, 1.0] = None,
+        band_250: Range[float, -0.25, 1.0] = None,
+        band_400: Range[float, -0.25, 1.0] = None,
+        band_630: Range[float, -0.25, 1.0] = None,
+        band_1000: Range[float, -0.25, 1.0] = None,
+        band_1600: Range[float, -0.25, 1.0] = None,
+        band_2500: Range[float, -0.25, 1.0] = None,
+        band_4000: Range[float, -0.25, 1.0] = None,
+        band_6300: Range[float, -0.25, 1.0] = None,
+        band_10000: Range[float, -0.25, 1.0] = None,
+        band_16000: Range[float, -0.25, 1.0] = None,
+        save: bool = False,
+    ) -> None:
+        if not interaction.response.is_done():
+            await interaction.response.defer(ephemeral=True)
+        context = await self.bot.get_context(interaction)
+
+        eq_model = EqualizerModel(
+            name=name,
+            description=description,
+            author=context.author.id,
+            scope=context.guild.id,
+            id=context.message.id,
+            band_25=band_25 or 0.0,
+            band_40=band_40 or 0.0,
+            band_63=band_63 or 0.0,
+            band_100=band_100 or 0.0,
+            band_160=band_160 or 0.0,
+            band_250=band_250 or 0.0,
+            band_400=band_400 or 0.0,
+            band_630=band_630 or 0.0,
+            band_1000=band_1000 or 0.0,
+            band_1600=band_1600 or 0.0,
+            band_2500=band_2500 or 0.0,
+            band_4000=band_4000 or 0.0,
+            band_6300=band_6300 or 0.0,
+            band_10000=band_10000 or 0.0,
+            band_16000=band_16000 or 0.0,
+        )
+        filter = eq_model.to_filter()
+        if filter.changed:
+            if save:
+                await eq_model.save()
+
+            await context.player.set_equalizer(requester=context.author, equalizer=filter)
+
+        else:
+            await context.send(
+                embed=await self.lavalink.construct_embed(
+                    messageable=context,
+                    description=_("No changes were made to the equalizer, discarding request."),
+                ),
+                ephemeral=True,
+            )
+
+    @slash_eq.command(name="save", description=_("Save the current applied EQ"))
+    @app_commands.guild_only()
+    @requires_player()
+    @invoker_is_dj()
+    async def slash_eq_save(self, interaction: InteractionT, name: str, description: str = None):
+        if not interaction.response.is_done():
+            await interaction.response.defer(ephemeral=True)
+        context = await self.bot.get_context(interaction)
+
+        if not context.player.equalizer.changed:
+            await context.send(
+                embed=await self.lavalink.construct_embed(
+                    messageable=context,
+                    description=_("No changes were made to the equalizer, discarding request."),
+                ),
+                ephemeral=True,
+            )
+            return
+
+        data = context.player.equalizer.to_dict()
+        data["name"] = name
+        eq = context.player.equalizer.from_dict(data)
+        eq_model = EqualizerModel.from_filter(
+            equalizer=eq, context=context, scope=context.guild.id, description=description
+        )
+        await eq_model.save()
