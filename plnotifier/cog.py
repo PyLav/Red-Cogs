@@ -3,7 +3,9 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Union
 
+import aiohttp
 import discord
+import ujson
 from apscheduler.job import Job
 from red_commons.logging import getLogger
 from redbot.core import Config, commands
@@ -46,7 +48,6 @@ POSSIBLE_EVENTS = {
     "track_start_vimeo",
     "track_start_gctts",
     "track_start_niconico",
-    "track_start",
     "track_skipped",
     "track_seek",
     "track_replaced",
@@ -58,7 +59,6 @@ POSSIBLE_EVENTS = {
     "queue_end",
     "queue_track_position_changed",
     "queue_tracks_removed",
-    "player_update",
     "player_paused",
     "player_stopped",
     "player_resumed",
@@ -118,7 +118,6 @@ class PyLavNotifier(commands.Cog):
             track_start_vimeo=dict(enabled=True, mention=True),
             track_start_gctts=dict(enabled=True, mention=True),
             track_start_niconico=dict(enabled=True, mention=True),
-            track_start=dict(enabled=True, mention=True),
             track_skipped=dict(enabled=True, mention=True),
             track_seek=dict(enabled=True, mention=True),
             track_replaced=dict(enabled=True, mention=True),
@@ -130,7 +129,6 @@ class PyLavNotifier(commands.Cog):
             queue_end=dict(enabled=True, mention=True),
             queue_track_position_changed=dict(enabled=True, mention=True),
             queue_tracks_removed=dict(enabled=True, mention=True),
-            player_update=dict(enabled=False, mention=True),
             player_paused=dict(enabled=True, mention=True),
             player_stopped=dict(enabled=True, mention=True),
             player_resumed=dict(enabled=True, mention=True),
@@ -147,14 +145,22 @@ class PyLavNotifier(commands.Cog):
             node_disconnected=dict(enabled=False, mention=True),
             node_changed=dict(enabled=False, mention=True),
             websocket_closed=dict(enabled=False, mention=True),
+            webhook_url=None,
         )
-        self._message_queue = defaultdict(list)
+        self._message_queue: dict[
+            Union[discord.TextChannel, discord.VoiceChannel, discord.Thread], list[discord.Embed]
+        ] = defaultdict(list)
         self._scheduled_jobs: list[Job] = []
+        self._webhook_cache: dict[int, discord.Webhook] = {}
+        self._session = aiohttp.ClientSession(json_serialize=ujson.dumps, auto_decompress=False)
 
     async def initialize(self, *args, **kwargs) -> None:
+        for guild_id, guild_data in (await self._config.all_guilds()).items():
+            if url := guild_data.get("webhook_url"):
+                self._webhook_cache[guild_id] = discord.Webhook.from_url(url=url, session=self._session)
         self._scheduled_jobs.append(
             self.lavalink.scheduler.add_job(
-                self.send_embed_batch,
+                self.chunk_embed_task,
                 trigger="interval",
                 seconds=10,
                 max_instances=1,
@@ -166,31 +172,46 @@ class PyLavNotifier(commands.Cog):
     async def cog_unload(self) -> None:
         for job in self._scheduled_jobs:
             job.remove()
+        if not self._session.closed:
+            await self._session.close()
 
-    async def send_embed_batch(self) -> None:
-        dispatch_mapping = {}
-        LOGGER.trace("Starting MPNotifier schedule message dispatcher.")
-        for channel, embeds in self._message_queue.items():
-            if not embeds:
-                continue
-            if len(embeds) > 10:
-                to_send = embeds[:10]
-                self._message_queue[channel] = embeds[10:]
-            else:
-                to_send = embeds
-                self._message_queue[channel] = []
-            if not to_send:
-                continue
-            dispatch_mapping[channel] = to_send
+    async def chunk_embed_task(self) -> None:
+        await asyncio.gather(
+            *[
+                self.send_embed_batch(channel=channel, embed_list=embed_list)
+                for channel, embed_list in self._message_queue.items()
+                if embed_list
+            ]
+        )
+
+    async def send_embed_batch(
+        self, channel: Union[discord.TextChannel, discord.VoiceChannel, discord.Thread], embed_list: list[discord.Embed]
+    ) -> None:
+        if not embed_list:
+            return
+        LOGGER.trace("Starting MPNotifier schedule message dispatcher for %s.", channel)
+
+        if channel.guild.id in self._webhook_cache and self._webhook_cache[channel.guild.id].channel_id == channel.id:
+            send = self._webhook_cache[channel.guild.id].send
+        else:
+            send = channel.send
+
+        embeds = embed_list[:10]
+        if not embeds:
+            return
+        self._message_queue[channel] = embed_list[10:]
+        dispatch_mapping = {send: embeds}
         if not dispatch_mapping:
             LOGGER.trace("No embeds to dispatch.")
             return
+
         LOGGER.trace("Sending up to last 10 embeds to %s channels", len(dispatch_mapping))
-        await asyncio.gather(*[channel.send(embeds=embeds) for channel, embeds in dispatch_mapping.items()])
+
+        await asyncio.gather(*[send(embeds=embeds) for send, embeds in dispatch_mapping.items()])
 
     @commands.guildowner_or_permissions(manage_guild=True)
     @commands.guild_only()
-    @commands.group(name="plnotify")
+    @commands.group(name="plnotifier")
     async def command_plnotify(self, context: PyLavContext):
         """Configure the PyLavNotifier cog."""
 
@@ -215,15 +236,33 @@ class PyLavNotifier(commands.Cog):
             ephemeral=True,
         )
 
-    @command_plnotify.command(name="channel")
-    async def command_plnotify_channel(
-        self, context: PyLavContext, *, channel: Union[discord.Thread, discord.TextChannel]
+    @command_plnotify.command(name="webhook")
+    async def command_plnotify_webhook(
+        self, context: PyLavContext, *, channel: Union[discord.TextChannel, discord.VoiceChannel, discord.Thread]
     ) -> None:
         """Set the notify channel for the player."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
+        if not isinstance(channel, discord.Thread):
+            if not channel.permissions_for(context.guild.me).manage_webhooks:
+                await context.send(
+                    embed=await self.lavalink.construct_embed(
+                        description=_("I do not have permission to manage webhooks in {channel}.").format(
+                            channel=channel.mention
+                        ),
+                        messageable=context,
+                    ),
+                    ephemeral=True,
+                )
+                return
+            webhook = await channel.create_webhook(
+                name=_("PyLavNotifier"),
+                reason=_("PyLav Notifier - Requested by {author}").format(author=context.author),
+            )
+            await self._config.webhook_url.set(webhook.url)
+            self._webhook_cache[context.guild.id] = webhook
         if context.player:
             config = context.player.config
             context.player.notify_channel = channel
@@ -354,32 +393,6 @@ class PyLavNotifier(commands.Cog):
                 title=_("Track End Event"),
                 description=_("[Node={node}] {track} has finished playing because {reason}").format(
                     track=await event.track.get_track_display_name(with_url=True), reason=reason, node=event.node.name
-                ),
-                messageable=player.notify_channel,
-            )
-        )
-
-    @commands.Cog.listener()
-    async def on_pylav_track_start(self, event: events.TrackStartEvent) -> None:
-        player = event.player
-        if player.notify_channel is None:
-            return
-        data = await self._config.guild(guild=event.player.guild).get_raw(
-            "track_start", default={"enabled": True, "mention": True}
-        )
-        notify, mention = data["enabled"], data["mention"]
-        if not notify:
-            return
-        if mention:
-            req = event.track.requester or self.bot.user
-            user = req.mention
-        else:
-            user = event.track.requester or self.bot.user
-        self._message_queue[player.notify_channel].append(
-            await self.lavalink.construct_embed(
-                title=_("Track Start Event"),
-                description=_("[Node={node}] {track} has started playing.\nRequested by: {requester}").format(
-                    track=await event.track.get_track_display_name(with_url=True), requester=user, node=event.node.name
                 ),
                 messageable=player.notify_channel,
             )
@@ -1123,8 +1136,12 @@ class PyLavNotifier(commands.Cog):
         self._message_queue[player.notify_channel].append(
             await self.lavalink.construct_embed(
                 title=_("Tracks Requested Event"),
-                description=_("[Node={node}] {requester} added {track_count} to the queue.").format(
-                    track_count=len(event.tracks), requester=user, node=event.player.node.name
+                description=_("[Node={node}] {requester} added {track_count}  to the queue.").format(
+                    track_count=_("{count} track").format(count=count)
+                    if (count := len(event.tracks)) > 1
+                    else await event.tracks[0].get_track_display_name(with_url=True),
+                    requester=user,
+                    node=event.player.node.name,
                 ),
                 messageable=player.notify_channel,
             )
@@ -1232,7 +1249,7 @@ class PyLavNotifier(commands.Cog):
         if player.notify_channel is None:
             return
         data = await self._config.guild(guild=event.player.guild).get_raw(
-            "tracks_removed", default={"enabled": True, "mention": True}
+            "queue_tracks_removed", default={"enabled": True, "mention": True}
         )
         notify, mention = data["enabled"], data["mention"]
         if not notify:

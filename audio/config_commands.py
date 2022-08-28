@@ -1,5 +1,4 @@
 import datetime
-import typing
 from abc import ABC
 from pathlib import Path
 from typing import Union
@@ -107,9 +106,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
         )
 
     @command_playerset_global.command(name="autoshuffle")
-    async def command_playerset_global_autoshuffle(
-        self, context: PyLavContext, toggle: typing.Optional[bool] = None
-    ) -> None:
+    async def command_playerset_global_autoshuffle(self, context: PyLavContext, toggle: bool) -> None:
         """Set whether the bot should shuffle its queue after every new song added."""
 
         if isinstance(context, discord.Interaction):
@@ -352,32 +349,25 @@ class ConfigCommands(PyLavCogMixin, ABC):
         )
 
     @command_playerset_server.command(name="autoshuffle")
-    async def command_playerset_server_autoshuffle(
-        self, context: PyLavContext, toggle: typing.Optional[bool] = None
-    ) -> None:
+    async def command_playerset_server_autoshuffle(self, context: PyLavContext, toggle: bool) -> None:
         """Set whether the bot should shuffle its queue after every new song added."""
-
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-
-        if (await self.lavalink.player_manager.global_config.fetch_auto_shuffle()) is False:
+        if await self.lavalink.player_manager.global_config.fetch_auto_shuffle() is False:
             await context.send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("Auto-Shuffle is globally disabled."),
-                    messageable=context,
+                    description=_("Auto-Shuffle is globally disabled."), messageable=context
                 ),
                 ephemeral=True,
             )
+
             return
         if context.player:
             await context.player.set_auto_shuffle(toggle)
         else:
-            if context.player:
-                config = context.player.config
-            else:
-                config = await self.lavalink.player_config_manager.get_config(context.guild.id)
+            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
             config.auto_shuffle = toggle
             await config.save()
         await context.send(
