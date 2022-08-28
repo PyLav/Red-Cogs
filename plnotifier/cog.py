@@ -1,5 +1,7 @@
 import asyncio
+import contextlib
 from collections import defaultdict
+from functools import partial
 from pathlib import Path
 from typing import Union
 
@@ -192,7 +194,10 @@ class PyLavNotifier(commands.Cog):
         LOGGER.trace("Starting MPNotifier schedule message dispatcher for %s.", channel)
 
         if channel.guild.id in self._webhook_cache and self._webhook_cache[channel.guild.id].channel_id == channel.id:
-            send = self._webhook_cache[channel.guild.id].send
+            send = partial(
+                self._webhook_cache[channel.guild.id].send,
+                thread=channel if isinstance(channel, discord.Thread) else discord.utils.MISSING,
+            )
         else:
             send = channel.send
 
@@ -239,7 +244,7 @@ class PyLavNotifier(commands.Cog):
     @command_plnotify.command(name="webhook")
     async def command_plnotify_webhook(
         self, context: PyLavContext, *, channel: Union[discord.TextChannel, discord.VoiceChannel, discord.Thread]
-    ) -> None:
+    ) -> None:  # sourcery skip: low-code-quality
         """Set the notify channel for the player."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -257,7 +262,62 @@ class PyLavNotifier(commands.Cog):
                     ephemeral=True,
                 )
                 return
+            if not (
+                (permission := channel.permissions_for(context.guild.me)).create_public_threads
+                and permission.send_messages_in_threads
+            ):
+                await context.send(
+                    embed=await self.lavalink.construct_embed(
+                        description=_("I do not have permission to create a thread in {channel}.").format(
+                            channel=channel.mention
+                        ),
+                        messageable=context,
+                    ),
+                    ephemeral=True,
+                )
+                return
             webhook = await channel.create_webhook(
+                name=_("PyLavNotifier"),
+                reason=_("PyLav Notifier - Requested by {author}").format(author=context.author),
+            )
+            existing_thread = None
+            if isinstance(channel, discord.VoiceChannel):
+                existing_thread = channel
+            else:
+                for thread in channel.guild.threads:
+                    if thread.parent.id == channel.id:
+                        existing_thread = thread
+            if not existing_thread:
+                message = await channel.send(
+                    _("This thread will be used by PyLav to post notification about the player")
+                )
+                existing_thread = await channel.create_thread(
+                    invitable=False,
+                    name=_("PyLavNotifier"),
+                    message=message,
+                    auto_archive_duration=10080,
+                    reason=_("PyLav Notifier - Requested by {author}").format(author=context.author),
+                )
+            if old_url := await self._config.webhook_url():
+                with contextlib.suppress(discord.HTTPException):
+                    await discord.Webhook.from_url(url=old_url, session=self._session).delete()
+
+            await self._config.webhook_url.set(webhook.url)
+            self._webhook_cache[context.guild.id] = webhook
+            channel = existing_thread
+        else:
+            if not channel.parent.permissions_for(context.guild.me).manage_webhooks:
+                await context.send(
+                    embed=await self.lavalink.construct_embed(
+                        description=_("I do not have permission to manage webhooks in {channel}.").format(
+                            channel=channel.parent.mention
+                        ),
+                        messageable=context,
+                    ),
+                    ephemeral=True,
+                )
+                return
+            webhook = await channel.parent.create_webhook(
                 name=_("PyLavNotifier"),
                 reason=_("PyLav Notifier - Requested by {author}").format(author=context.author),
             )
