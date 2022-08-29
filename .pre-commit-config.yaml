@@ -57,7 +57,7 @@ repos:
         -   --autofix
         -   --indent=4
 -   repo: https://github.com/myint/autoflake
-    rev: v1.4
+    rev: v1.5.1
     hooks:
     -   id: autoflake
         args: [--remove-all-unused-imports, --recursive, --in-place, --remove-unused-variables, --ignore-init-module-imports, --remove-duplicate-keys]
