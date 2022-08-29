@@ -100,8 +100,10 @@ class PyLavRadio(commands.Cog):
 
         total_tracks_enqueue = 0
         url = station.url_resolved or station.url
+        query = await Query.from_string(url)
+        LOGGER.debug(f"Query: {query.requires_capability}")
         successful, count, failed = await self.lavalink.get_all_tracks_for_queries(
-            await Query.from_string(url), requester=author, player=player, bypass_cache=True
+            query, requester=author, player=player, bypass_cache=True
         )
         single_track = successful[0] if successful else None
         total_tracks_enqueue += count
@@ -127,7 +129,7 @@ class PyLavRadio(commands.Cog):
         else:
             await send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("Unable to play **[{station_name}](station_url)**.").format(
+                    description=_("Unable to play **[{station_name}]({station_url})**.").format(
                         station_name=station.name, station_url=url
                     ),
                     messageable=context,
