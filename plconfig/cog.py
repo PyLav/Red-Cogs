@@ -95,7 +95,7 @@ class PyLavConfigurator(commands.Cog):
                     messageable=context,
                 )
             )
-        global_config = await PlayerModel(bot=self.bot.user.id, id=0).get_or_create()
+        global_config = await PlayerModel.get_or_create(bot=self.lavalink.bot.user.id, id=0)
         data = [
             (_("Volume"), global_config.volume),
             (_("Maximum Volume"), global_config.max_volume),
