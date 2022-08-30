@@ -35,6 +35,7 @@ class HybridCommands(PyLavCogMixin, ABC):
     _track_cache: ExpiringDict
 
     @commands.hybrid_command(name="play", description=_("Plays a specified query"), aliases=["p"])
+    @app_commands.describe(query=_("The query to play, either a link or a search query"))
     @commands.guild_only()
     @invoker_is_dj()
     async def command_play(self, context: PyLavContext, *, query: str = None):  # sourcery no-metrics
@@ -171,6 +172,7 @@ class HybridCommands(PyLavCogMixin, ABC):
             )
 
     @app_commands.command(name="search", description=_("Search for a track then play the selected response"))
+    @app_commands.describe(query=_("The query to search for search query"))
     @app_commands.guild_only()
     async def slash_search(self, interaction: InteractionT, *, query: str):
         """Search for a track then play the selected response.
@@ -271,6 +273,7 @@ class HybridCommands(PyLavCogMixin, ABC):
     @commands.hybrid_command(
         name="connect", description=_("Connects the Player to the specified channel or your current channel")
     )
+    @app_commands.describe(channel=_("The voice channel to connect to"))
     @commands.guild_only()
     @invoker_is_dj()
     async def command_connect(self, context: PyLavContext, *, channel: Optional[discord.VoiceChannel] = None):
@@ -519,6 +522,7 @@ class HybridCommands(PyLavCogMixin, ABC):
         )
 
     @commands.hybrid_command(name="repeat", description=_("Set whether to repeat current song or queue"))
+    @app_commands.describe(queue=_("Should the whole queue be repeated"))
     @commands.guild_only()
     @requires_player()
     @invoker_is_dj()
@@ -626,6 +630,7 @@ class HybridCommands(PyLavCogMixin, ABC):
         )
 
     @commands.hybrid_command(name="volume", description=_("Set the player volume."))
+    @app_commands.describe(volume=_("The volume to set"))
     @commands.guild_only()
     @requires_player()
     @invoker_is_dj()
@@ -682,6 +687,7 @@ class HybridCommands(PyLavCogMixin, ABC):
         )
 
     @commands.hybrid_command(name="seek", description=_("Seek the current track."))
+    @app_commands.describe(seek=_("The player position to seek to"))
     @commands.guild_only()
     @requires_player()
     @invoker_is_dj()
@@ -784,7 +790,7 @@ class HybridCommands(PyLavCogMixin, ABC):
 
         await context.player.seek(seek_ms, context.author, False)
 
-    @commands.hybrid_command(name="prev", description=_("Play the previous tracks."), aliases=["previous"])
+    @commands.hybrid_command(name="prev", description=_("Play the previous tracks"), aliases=["previous"])
     @commands.guild_only()
     @requires_player()
     @invoker_is_dj()

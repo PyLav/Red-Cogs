@@ -19,11 +19,10 @@ from pylavcogs_shared.ui.prompts.playlists import maybe_prompt_for_playlist
 
 LOGGER = getLogger("red.3pt.PyLavPlayer.commands.config")
 
-T_ = Translator("PyLavPlayer", __file__)
-_ = lambda s: s
+_ = Translator("PyLavPlayer", __file__)
 
 
-@cog_i18n(T_)
+@cog_i18n(_)
 class ConfigCommands(PyLavCogMixin, ABC):
     @commands.group(name="playerset")
     async def command_playerset(self, context: PyLavContext) -> None:
@@ -699,6 +698,3 @@ class ConfigCommands(PyLavCogMixin, ABC):
             embed=await self.lavalink.construct_embed(description=_("I'm free to join any VC."), messageable=context),
             ephemeral=True,
         )
-
-
-_ = T_

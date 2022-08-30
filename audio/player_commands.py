@@ -16,11 +16,10 @@ from pylavcogs_shared.utils import rgetattr
 from pylavcogs_shared.utils.decorators import invoker_is_dj
 
 LOGGER = getLogger("red.3pt.PyLavPlayer.commands.player")
-T_ = Translator("PyLavPlayer", Path(__file__))
-_ = lambda s: s
+_ = Translator("PyLavPlayer", Path(__file__))
 
 
-@cog_i18n(T_)
+@cog_i18n(_)
 class PlayerCommands(PyLavCogMixin, ABC):
     @commands.command(name="bump", description=_("Plays the specified track in the queue."))
     @commands.guild_only()
@@ -292,6 +291,3 @@ class PlayerCommands(PyLavCogMixin, ABC):
             ),
             ephemeral=True,
         )
-
-
-_ = T_

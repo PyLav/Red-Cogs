@@ -40,13 +40,12 @@ class CompositeMetaClass(type(red_commands.Cog), type(ABC)):
     """
 
 
-T_ = Translator("PyLavPlaylists", Path(__file__))
-_ = lambda s: s
+_ = Translator("PyLavPlaylists", Path(__file__))
 
 LOGGER_ERROR = getLogger("red.3pt.PyLavPlaylists.error_handler")
 
 
-@cog_i18n(T_)
+@cog_i18n(_)
 class PyLavPlaylists(
     red_commands.Cog,
     metaclass=CompositeMetaClass,
@@ -660,7 +659,7 @@ class PyLavPlaylists(
 
     @slash_playlist.command(name="upload", description=_("Upload a playlist to the bot"))
     @app_commands.describe(
-        url=_("The URL of the playlist to upload. If the URL is not a supported playlist, the command will fail"),
+        url=_("The URL of the playlist to upload"),
     )
     @app_commands.guild_only()
     @invoker_is_dj()
@@ -800,6 +799,3 @@ class PyLavPlaylists(
 
         if not player.is_playing:
             await player.next(requester=context.author)
-
-
-_ = T_

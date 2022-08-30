@@ -25,11 +25,10 @@ from pylavcogs_shared.utils import rgetattr
 LOGGER = getLogger("red.3pt.PyLavRadio")
 
 
-T_ = Translator("PyLavRadio", Path(__file__))
-_ = lambda s: s
+_ = Translator("PyLavRadio", Path(__file__))
 
 
-@cog_i18n(T_)
+@cog_i18n(_)
 class PyLavRadio(commands.Cog):
     lavalink: Client
 
@@ -40,7 +39,20 @@ class PyLavRadio(commands.Cog):
         self.bot = bot
 
     @app_commands.command(
-        name="radio", description=_("Enqueue a radio station. Use the arguments to filter for possible station..")
+        name="radio", description=_("Enqueue a radio station. Use the arguments to filter for possible station")
+    )
+    @app_commands.describe(
+        stations=_("The radio station to enqueue"),
+        language=_("The language code to filter stations by"),
+        countrycode=_("The country code to filter stations and countries by"),
+        country=_("The country filter to filter stations and states by"),
+        state=_("The state filter to filter stations by"),
+        codec=_("The codec filter to filter stations by"),
+        tag1=_("The tag filter to filter stations by"),
+        tag2=_("The tag filter to filter stations by"),
+        tag3=_("The tag filter to filter stations by"),
+        tag4=_("The tag filter to filter stations by"),
+        tag5=_("The tag filter to filter stations by"),
     )
     @app_commands.guild_only()
     async def radio(
@@ -137,6 +149,3 @@ class PyLavRadio(commands.Cog):
                 ),
                 ephemeral=True,
             )
-
-
-_ = T_

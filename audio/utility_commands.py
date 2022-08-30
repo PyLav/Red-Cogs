@@ -14,11 +14,10 @@ from pylavcogs_shared.utils.decorators import always_hidden
 
 LOGGER = getLogger("red.3pt.PyLavPlayer.commands.utils")
 
-T_ = Translator("PyLavPlayer", Path(__file__))
-_ = lambda s: s
+_ = Translator("PyLavPlayer", Path(__file__))
 
 
-@cog_i18n(T_)
+@cog_i18n(_)
 class UtilityCommands(PyLavCogMixin, ABC):
     @always_hidden()
     @commands.command(name="__volume_change_by", hidden=True)
@@ -66,6 +65,3 @@ class UtilityCommands(PyLavCogMixin, ABC):
             ),
             ephemeral=True,
         )
-
-
-_ = T_

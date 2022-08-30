@@ -18,11 +18,10 @@ from pylavcogs_shared.utils.decorators import invoker_is_dj, requires_player
 
 LOGGER = getLogger("red.3pt.PyLavEffects")
 
-T_ = Translator("PyLavEffects", Path(__file__))
-_ = lambda s: s
+_ = Translator("PyLavEffects", Path(__file__))
 
 
-@cog_i18n(T_)
+@cog_i18n(_)
 class PyLavEffects(commands.Cog):
     """Apply filters and effects to the PyLav player."""
 
@@ -64,7 +63,7 @@ class PyLavEffects(commands.Cog):
             ephemeral=True,
         )
 
-    @slash_fx.command(name="nightcore", description=_("Apply a Nightcore preset to the player."))
+    @slash_fx.command(name="nightcore", description=_("Apply a Nightcore preset to the player"))
     @app_commands.guild_only()
     @requires_player()
     @invoker_is_dj()
@@ -94,11 +93,11 @@ class PyLavEffects(commands.Cog):
                 ephemeral=True,
             )
 
-    @slash_fx.command(name="vibrato", description=_("Apply a vibrato filter to the player."))
+    @slash_fx.command(name="vibrato", description=_("Apply a vibrato filter to the player"))
     @app_commands.describe(
         frequency=_("The vibrato frequency"),
-        depth=_("The vibrato depth"),
-        reset=_("Reset any existing effects currently applied to the player."),
+        depth=_("The vibrato depth value"),
+        reset=_("Reset any existing effects currently applied to the player"),
     )
     @app_commands.guild_only()
     @requires_player()
@@ -131,11 +130,11 @@ class PyLavEffects(commands.Cog):
             ephemeral=True,
         )
 
-    @slash_fx.command(name="tremolo", description=_("Apply a tremolo filter to the player."))
+    @slash_fx.command(name="tremolo", description=_("Apply a tremolo filter to the player"))
     @app_commands.describe(
         frequency=_("The tremolo frequency"),
-        depth=_("The tremolo depth"),
-        reset=_("Reset any existing effects currently applied to the player."),
+        depth=_("The tremolo depth value"),
+        reset=_("Reset any existing effects currently applied to the player"),
     )
     @app_commands.guild_only()
     @requires_player()
@@ -168,12 +167,12 @@ class PyLavEffects(commands.Cog):
             ephemeral=True,
         )
 
-    @slash_fx.command(name="timescale", description=_("Apply a timescale filter to the player."))
+    @slash_fx.command(name="timescale", description=_("Apply a timescale filter to the player"))
     @app_commands.describe(
-        speed=_("The timescale speed"),
-        pitch=_("The timescale pitch"),
-        rate=_("The timescale rate"),
-        reset=_("Reset any existing effects currently applied to the player."),
+        speed=_("The timescale speed value"),
+        pitch=_("The timescale pitch value"),
+        rate=_("The timescale rate value"),
+        reset=_("Reset any existing effects currently applied to the player"),
     )
     @app_commands.guild_only()
     @requires_player()
@@ -209,9 +208,9 @@ class PyLavEffects(commands.Cog):
             ephemeral=True,
         )
 
-    @slash_fx.command(name="rotation", description=_("Apply a rotation filter to the player."))
+    @slash_fx.command(name="rotation", description=_("Apply a rotation filter to the player"))
     @app_commands.describe(
-        hertz=_("The rotation hertz frequency"), reset=_("Reset any existing effects currently applied to the player.")
+        hertz=_("The rotation hertz frequency"), reset=_("Reset any existing effects currently applied to the player")
     )
     @app_commands.guild_only()
     @requires_player()
@@ -238,10 +237,10 @@ class PyLavEffects(commands.Cog):
             ephemeral=True,
         )
 
-    @slash_fx.command(name="lowpass", description=_("Apply a low pass filter to the player."))
+    @slash_fx.command(name="lowpass", description=_("Apply a low pass filter to the player"))
     @app_commands.describe(
-        smoothing=_("The low pass hertz frequency"),
-        reset=_("Reset any existing effects currently applied to the player."),
+        smoothing=_("The low pass smoothing value"),
+        reset=_("Reset any existing effects currently applied to the player"),
     )
     @app_commands.guild_only()
     @requires_player()
@@ -268,13 +267,13 @@ class PyLavEffects(commands.Cog):
             ephemeral=True,
         )
 
-    @slash_fx.command(name="karaoke", description=_("Apply a karaoke filter to the player."))
+    @slash_fx.command(name="karaoke", description=_("Apply a karaoke filter to the player"))
     @app_commands.describe(
-        level=_("The karaoke speed"),
-        mono_level=_("The karaoke speed"),
-        filter_band=_("The karaoke pitch"),
-        filter_width=_("The karaoke rate"),
-        reset=_("Reset any existing effects currently applied to the player."),
+        level=_("The level value"),
+        mono_level=_("The mono level value"),
+        filter_band=_("The filter band"),
+        filter_width=_("The filter width value"),
+        reset=_("Reset any existing effects currently applied to the player"),
     )
     @app_commands.guild_only()
     @requires_player()
@@ -313,13 +312,13 @@ class PyLavEffects(commands.Cog):
             ephemeral=True,
         )
 
-    @slash_fx.command(name="channelmix", description=_("Apply a channel mix filter to the player."))
+    @slash_fx.command(name="channelmix", description=_("Apply a channel mix filter to the player"))
     @app_commands.describe(
         left_to_left=_("The channel mix left to left weight"),
         left_to_right=_("The channel mix left to left weight"),
         right_to_left=_("The channel mix right to left weight"),
         right_to_right=_("The channel mix right to right weight"),
-        reset=_("Reset any existing effects currently applied to the player."),
+        reset=_("Reset any existing effects currently applied to the player"),
     )
     @app_commands.guild_only()
     @requires_player()
@@ -360,7 +359,7 @@ class PyLavEffects(commands.Cog):
             ephemeral=True,
         )
 
-    @slash_fx.command(name="distortion", description=_("Apply a distortion filter to the player."))
+    @slash_fx.command(name="distortion", description=_("Apply a distortion filter to the player"))
     @app_commands.describe(
         sin_offset=_("The distortion Sine offset"),
         sin_scale=_("The distortion Sine scale"),
@@ -370,7 +369,7 @@ class PyLavEffects(commands.Cog):
         tan_scale=_("The distortion Tangent scale"),
         offset=_("The distortion offset"),
         scale=_("The distortion scale"),
-        reset=_("Reset any existing effects currently applied to the player."),
+        reset=_("Reset any existing effects currently applied to the player"),
     )
     @app_commands.guild_only()
     @requires_player()
@@ -423,7 +422,7 @@ class PyLavEffects(commands.Cog):
             ephemeral=True,
         )
 
-    @slash_fx.command(name="show", description=_("Show the current filters applied to the player."))
+    @slash_fx.command(name="show", description=_("Show the current filters applied to the player"))
     @app_commands.guild_only()
     @requires_player()
     @invoker_is_dj()
@@ -469,7 +468,7 @@ class PyLavEffects(commands.Cog):
             ephemeral=True,
         )
 
-    @slash_fx.command(name="reset", description=_("Reset any existing filters currently applied to the player."))
+    @slash_fx.command(name="reset", description=_("Reset any existing filters currently applied to the player"))
     @app_commands.guild_only()
     @requires_player()
     @invoker_is_dj()
@@ -486,6 +485,3 @@ class PyLavEffects(commands.Cog):
             ),
             ephemeral=True,
         )
-
-
-_ = T_

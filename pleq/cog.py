@@ -21,11 +21,10 @@ from pylavcogs_shared.utils.decorators import invoker_is_dj, requires_player
 
 LOGGER = getLogger("red.3pt.PyLavEqualizer")
 
-T_ = Translator("PyLavEqualizer", Path(__file__))
-_ = lambda s: s
+_ = Translator("PyLavEqualizer", Path(__file__))
 
 
-@cog_i18n(T_)
+@cog_i18n(_)
 class PyLavEqualizer(commands.Cog):
     """Apply equalizer presets to the PyLav player."""
 
@@ -101,6 +100,7 @@ class PyLavEqualizer(commands.Cog):
             )
 
     @slash_eq.command(name="bassboost")
+    @app_commands.describe(level=_("The bass boost level to apply"))
     @app_commands.guild_only()
     @requires_player()
     @invoker_is_dj()
@@ -313,6 +313,26 @@ class PyLavEqualizer(commands.Cog):
         )
 
     @slash_eq.command(name="custom", description=_("Apply and/or save a custom equalizer equalizer"))
+    @app_commands.describe(
+        name=_("The name of the specified equalizer"),
+        description=_("A brief description of the equalizer"),
+        band_25=_("Control the 25Hz band of this equalizer"),
+        band_40=_("Control the 40Hz band of this equalizer"),
+        band_63=_("Control the 63Hz band of this equalizer"),
+        band_100=_("Control the 100Hz band of this equalizer"),
+        band_160=_("Control the 160Hz band of this equalizer"),
+        band_250=_("Control the 250Hz band of this equalizer"),
+        band_400=_("Control the 400Hz band of this equalizer"),
+        band_630=_("Control the 630Hz band of this equalizer"),
+        band_1000=_("Control the 1kHz band of this equalizer"),
+        band_1600=_("Control the 1.6kHz band of this equalizer"),
+        band_2500=_("Control the 2.5kHz band of this equalizer"),
+        band_4000=_("Control the 4kHz band of this equalizer"),
+        band_6300=_("Control the 6.3kHz band of this equalizer"),
+        band_10000=_("Control the 10kHz band of this equalizer"),
+        band_16000=_("Control the 16kHz band of this equalizer"),
+        save=_("Should the equalizer you specified be saved?"),
+    )
     @app_commands.guild_only()
     @requires_player()
     @invoker_is_dj()
@@ -381,6 +401,10 @@ class PyLavEqualizer(commands.Cog):
             )
 
     @slash_eq.command(name="save", description=_("Save the current applied EQ"))
+    @app_commands.describe(
+        name=_("The name of the equalizer"),
+        description=_("A brief description of the equalizer"),
+    )
     @app_commands.guild_only()
     @requires_player()
     @invoker_is_dj()
@@ -406,6 +430,3 @@ class PyLavEqualizer(commands.Cog):
             equalizer=eq, context=context, scope=context.guild.id, description=description
         )
         await eq_model.save()
-
-
-_ = T_

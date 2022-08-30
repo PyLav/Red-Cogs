@@ -10,11 +10,10 @@ from pylav.types import InteractionT, PyLavCogMixin
 from pylavcogs_shared.utils.decorators import is_dj_logic
 from pylavcogs_shared.utils.validators import valid_query_attachment
 
-T_ = Translator("PyLavPlayer", __file__)
-_ = lambda s: s
+_ = Translator("PyLavPlayer", __file__)
 
 
-@cog_i18n(T_)
+@cog_i18n(_)
 class ContextMenus(PyLavCogMixin, ABC):
     command_play: HybridCommand
 
@@ -247,6 +246,3 @@ class ContextMenus(PyLavCogMixin, ABC):
                 ephemeral=True,
                 wait=True,
             )
-
-
-_ = T_

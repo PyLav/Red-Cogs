@@ -22,11 +22,10 @@ from pylavcogs_shared.utils.decorators import is_dj_logic
 
 LOGGER = getLogger("red.3pt.PyLavLocalFiles")
 
-T_ = Translator("PyLavLocalFiles", Path(__file__))
-_ = lambda s: s
+_ = Translator("PyLavLocalFiles", Path(__file__))
 
 
-@cog_i18n(T_)
+@cog_i18n(_)
 class PyLavLocalFiles(commands.Cog):
     """Play local files and folders from the owner configured location."""
 
@@ -76,7 +75,11 @@ class PyLavLocalFiles(commands.Cog):
             ephemeral=True,
         )
 
-    @app_commands.command(name="local", description=_("Play a local file or folder, supports partial searching."))
+    @app_commands.command(name="local", description=_("Play a local file or folder, supports partial searching"))
+    @app_commands.describe(
+        entry=_("The local file or folder to play"),
+        recursive=_("If entry is a folder, play everything inside of it recursively"),
+    )
     @app_commands.guild_only()
     async def slash_local(
         self,
@@ -190,6 +193,3 @@ class PyLavLocalFiles(commands.Cog):
             if len(entries) == 25:
                 break
         return entries
-
-
-_ = T_
