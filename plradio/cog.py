@@ -25,10 +25,11 @@ from pylavcogs_shared.utils import rgetattr
 LOGGER = getLogger("red.3pt.PyLavRadio")
 
 
-_ = Translator("PyLavRadio", Path(__file__))
+T_ = Translator("PyLavRadio", Path(__file__))
+_ = lambda s: s
 
 
-@cog_i18n(_)
+@cog_i18n(T_)
 class PyLavRadio(commands.Cog):
     lavalink: Client
 
@@ -136,3 +137,6 @@ class PyLavRadio(commands.Cog):
                 ),
                 ephemeral=True,
             )
+
+
+_ = T_

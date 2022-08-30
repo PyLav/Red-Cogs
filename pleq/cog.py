@@ -21,10 +21,11 @@ from pylavcogs_shared.utils.decorators import invoker_is_dj, requires_player
 
 LOGGER = getLogger("red.3pt.PyLavEqualizer")
 
-_ = Translator("PyLavEqualizer", Path(__file__))
+T_ = Translator("PyLavEqualizer", Path(__file__))
+_ = lambda s: s
 
 
-@cog_i18n(_)
+@cog_i18n(T_)
 class PyLavEqualizer(commands.Cog):
     """Apply equalizer presets to the PyLav player."""
 
@@ -405,3 +406,6 @@ class PyLavEqualizer(commands.Cog):
             equalizer=eq, context=context, scope=context.guild.id, description=description
         )
         await eq_model.save()
+
+
+_ = T_

@@ -1,19 +1,20 @@
 import shlex
 from abc import ABC
-from pathlib import Path
 
 import discord
 from discord.ext.commands import HybridCommand
-from redbot.core.i18n import Translator
+from redbot.core.i18n import Translator, cog_i18n
 
 from pylav.query import MERGED_REGEX, Query
 from pylav.types import InteractionT, PyLavCogMixin
 from pylavcogs_shared.utils.decorators import is_dj_logic
 from pylavcogs_shared.utils.validators import valid_query_attachment
 
-_ = Translator("PyLavPlayer", Path(__file__))
+T_ = Translator("PyLavPlayer", __file__)
+_ = lambda s: s
 
 
+@cog_i18n(T_)
 class ContextMenus(PyLavCogMixin, ABC):
     command_play: HybridCommand
 
@@ -246,3 +247,6 @@ class ContextMenus(PyLavCogMixin, ABC):
                 ephemeral=True,
                 wait=True,
             )
+
+
+_ = T_

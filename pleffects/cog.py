@@ -18,10 +18,11 @@ from pylavcogs_shared.utils.decorators import invoker_is_dj, requires_player
 
 LOGGER = getLogger("red.3pt.PyLavEffects")
 
-_ = Translator("PyLavEffects", Path(__file__))
+T_ = Translator("PyLavEffects", Path(__file__))
+_ = lambda s: s
 
 
-@cog_i18n(_)
+@cog_i18n(T_)
 class PyLavEffects(commands.Cog):
     """Apply filters and effects to the PyLav player."""
 
@@ -485,3 +486,6 @@ class PyLavEffects(commands.Cog):
             ),
             ephemeral=True,
         )
+
+
+_ = T_

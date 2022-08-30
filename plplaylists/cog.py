@@ -40,12 +40,13 @@ class CompositeMetaClass(type(red_commands.Cog), type(ABC)):
     """
 
 
-_ = Translator("PyLavPlaylists", Path(__file__))
+T_ = Translator("PyLavPlaylists", Path(__file__))
+_ = lambda s: s
 
 LOGGER_ERROR = getLogger("red.3pt.PyLavPlaylists.error_handler")
 
 
-@cog_i18n(_)
+@cog_i18n(T_)
 class PyLavPlaylists(
     red_commands.Cog,
     metaclass=CompositeMetaClass,
@@ -799,3 +800,6 @@ class PyLavPlaylists(
 
         if not player.is_playing:
             await player.next(requester=context.author)
+
+
+_ = T_

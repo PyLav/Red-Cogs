@@ -1,6 +1,5 @@
 import datetime
 from abc import ABC
-from pathlib import Path
 from typing import Union
 
 import asyncstdlib
@@ -8,7 +7,7 @@ import discord
 from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.commands import TimedeltaConverter
-from redbot.core.i18n import Translator
+from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import bold, box, humanize_number, humanize_timedelta
 from tabulate import tabulate
 
@@ -20,9 +19,11 @@ from pylavcogs_shared.ui.prompts.playlists import maybe_prompt_for_playlist
 
 LOGGER = getLogger("red.3pt.PyLavPlayer.commands.config")
 
-_ = Translator("PyLavPlayer", Path(__file__))
+T_ = Translator("PyLavPlayer", __file__)
+_ = lambda s: s
 
 
+@cog_i18n(T_)
 class ConfigCommands(PyLavCogMixin, ABC):
     @commands.group(name="playerset")
     async def command_playerset(self, context: PyLavContext) -> None:
@@ -698,3 +699,6 @@ class ConfigCommands(PyLavCogMixin, ABC):
             embed=await self.lavalink.construct_embed(description=_("I'm free to join any VC."), messageable=context),
             ephemeral=True,
         )
+
+
+_ = T_

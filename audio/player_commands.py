@@ -6,7 +6,7 @@ from pathlib import Path
 import discord
 from red_commons.logging import getLogger
 from redbot.core import commands
-from redbot.core.i18n import Translator
+from redbot.core.i18n import Translator, cog_i18n
 
 from pylav import Query, Track
 from pylav.tracks import decode_track
@@ -16,9 +16,11 @@ from pylavcogs_shared.utils import rgetattr
 from pylavcogs_shared.utils.decorators import invoker_is_dj
 
 LOGGER = getLogger("red.3pt.PyLavPlayer.commands.player")
-_ = Translator("PyLavPlayer", Path(__file__))
+T_ = Translator("PyLavPlayer", Path(__file__))
+_ = lambda s: s
 
 
+@cog_i18n(T_)
 class PlayerCommands(PyLavCogMixin, ABC):
     @commands.command(name="bump", description=_("Plays the specified track in the queue."))
     @commands.guild_only()
@@ -290,3 +292,6 @@ class PlayerCommands(PyLavCogMixin, ABC):
             ),
             ephemeral=True,
         )
+
+
+_ = T_

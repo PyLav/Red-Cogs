@@ -5,7 +5,7 @@ import asyncstdlib
 import discord
 from red_commons.logging import getLogger
 from redbot.core import commands
-from redbot.core.i18n import Translator
+from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import humanize_number
 
 from pylav.types import PyLavCogMixin
@@ -14,9 +14,11 @@ from pylavcogs_shared.utils.decorators import always_hidden
 
 LOGGER = getLogger("red.3pt.PyLavPlayer.commands.utils")
 
-_ = Translator("PyLavPlayer", Path(__file__))
+T_ = Translator("PyLavPlayer", Path(__file__))
+_ = lambda s: s
 
 
+@cog_i18n(T_)
 class UtilityCommands(PyLavCogMixin, ABC):
     @always_hidden()
     @commands.command(name="__volume_change_by", hidden=True)
@@ -64,3 +66,6 @@ class UtilityCommands(PyLavCogMixin, ABC):
             ),
             ephemeral=True,
         )
+
+
+_ = T_

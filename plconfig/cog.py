@@ -600,7 +600,7 @@ class PyLavConfigurator(commands.Cog):
             "6. Copy your client ID and your client secret into:\n"
             "`{prefix}set api spotify client_id <your_client_id_here> "
             "client_secret <your_client_secret_here>`"
-        ).format(prefix=context.prefix)
+        ).format(prefix=context.clean_prefix)
         await context.send(
             embed=await context.lavalink.construct_embed(
                 description=message,

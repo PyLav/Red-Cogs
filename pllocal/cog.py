@@ -22,10 +22,11 @@ from pylavcogs_shared.utils.decorators import is_dj_logic
 
 LOGGER = getLogger("red.3pt.PyLavLocalFiles")
 
-_ = Translator("PyLavLocalFiles", Path(__file__))
+T_ = Translator("PyLavLocalFiles", Path(__file__))
+_ = lambda s: s
 
 
-@cog_i18n(_)
+@cog_i18n(T_)
 class PyLavLocalFiles(commands.Cog):
     """Play local files and folders from the owner configured location."""
 
@@ -189,3 +190,6 @@ class PyLavLocalFiles(commands.Cog):
             if len(entries) == 25:
                 break
         return entries
+
+
+_ = T_
