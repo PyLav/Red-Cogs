@@ -37,7 +37,7 @@ Documentation
 
 Getting Started
 -------------------------------------
-Follow [PyLav Setup](https://github.com/Drapersniper/PyLav/blob/master/SETUP.md)
+Follow [PyLav Setup](<https://github.com/Drapersniper/PyLav/blob/master/SETUP.md>)
 
 
 If you already have a Red instance with PyLav setup then you can do the following
