@@ -20,7 +20,7 @@ _ = Translator("PyLavPlayer", Path(__file__))
 
 
 class PlayerCommands(PyLavCogMixin, ABC):
-    @commands.command(name="bump", description="Plays the specified track in the queue.")
+    @commands.command(name="bump", description=_("Plays the specified track in the queue."))
     @commands.guild_only()
     @invoker_is_dj()
     async def command_bump(self, context: PyLavContext, queue_number: int, after_current: bool = False):
@@ -94,7 +94,7 @@ class PlayerCommands(PyLavCogMixin, ABC):
             )
             await player.play(track=track, requester=context.author, query=await track.query())
 
-    @commands.command(name="playnext", description="Enqueue a track a song to the top of the queue.", aliases=["pn"])
+    @commands.command(name="playnext", description=_("Enqueue a track a song to the top of the queue."), aliases=["pn"])
     @commands.guild_only()
     @invoker_is_dj()
     async def command_playnext(self, context: PyLavContext, *, query: str):
@@ -196,7 +196,7 @@ class PlayerCommands(PyLavCogMixin, ABC):
                 ephemeral=True,
             )
 
-    @commands.command(name="remove", description="Remove the specified track from the queue.")
+    @commands.command(name="remove", description=_("Remove the specified track from the queue."))
     @commands.guild_only()
     @invoker_is_dj()
     async def command_remove(self, context: PyLavContext, track_url_or_index: str, remove_duplicates: bool = False):

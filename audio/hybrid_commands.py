@@ -34,7 +34,7 @@ _RE_TIME_CONVERTER: Final[Pattern] = re.compile(r"(?:(\d+):)?([0-5]?\d):([0-5]\d
 class HybridCommands(PyLavCogMixin, ABC):
     _track_cache: ExpiringDict
 
-    @commands.hybrid_command(name="play", description="Plays a specified query.", aliases=["p"])
+    @commands.hybrid_command(name="play", description=_("Plays a specified query"), aliases=["p"])
     @commands.guild_only()
     @invoker_is_dj()
     async def command_play(self, context: PyLavContext, *, query: str = None):  # sourcery no-metrics
@@ -170,7 +170,7 @@ class HybridCommands(PyLavCogMixin, ABC):
                 ephemeral=True,
             )
 
-    @app_commands.command(name="search", description="Search for a track then play the selected response.")
+    @app_commands.command(name="search", description=_("Search for a track then play the selected response"))
     @app_commands.guild_only()
     async def slash_search(self, interaction: InteractionT, *, query: str):
         """Search for a track then play the selected response.
@@ -269,7 +269,7 @@ class HybridCommands(PyLavCogMixin, ABC):
             )
 
     @commands.hybrid_command(
-        name="connect", description="Connects the Player to the specified channel or your current channel."
+        name="connect", description=_("Connects the Player to the specified channel or your current channel")
     )
     @commands.guild_only()
     @invoker_is_dj()
@@ -330,7 +330,7 @@ class HybridCommands(PyLavCogMixin, ABC):
                 ephemeral=True,
             )
 
-    @commands.hybrid_command(name="np", description="Shows the track currently being played.", aliases=["now"])
+    @commands.hybrid_command(name="np", description=_("Shows the track currently being played"), aliases=["now"])
     @commands.guild_only()
     @requires_player()
     async def command_now(self, context: PyLavContext):
@@ -356,7 +356,7 @@ class HybridCommands(PyLavCogMixin, ABC):
         current_embed = await context.player.get_currently_playing_message(messageable=context)
         await context.send(embed=current_embed, ephemeral=True)
 
-    @commands.hybrid_command(name="skip", description="Skips or votes to skip the current track.")
+    @commands.hybrid_command(name="skip", description=_("Skips or votes to skip the current track"))
     @commands.guild_only()
     @requires_player()
     @invoker_is_dj()
@@ -398,7 +398,7 @@ class HybridCommands(PyLavCogMixin, ABC):
             )
         await context.player.skip(requester=context.author)
 
-    @commands.hybrid_command(name="stop", description="Stops the player and remove all tracks from the queue.")
+    @commands.hybrid_command(name="stop", description=_("Stops the player and remove all tracks from the queue"))
     @commands.guild_only()
     @requires_player()
     @invoker_is_dj()
@@ -429,7 +429,7 @@ class HybridCommands(PyLavCogMixin, ABC):
         )
 
     @commands.hybrid_command(
-        name="dc", description="Disconnects the player from the voice channel.", aliases=["disconnect"]
+        name="dc", description=_("Disconnects the player from the voice channel"), aliases=["disconnect"]
     )
     @requires_player()
     @invoker_is_dj()
@@ -455,7 +455,7 @@ class HybridCommands(PyLavCogMixin, ABC):
             ephemeral=True,
         )
 
-    @commands.hybrid_command(name="queue", description="Shows the current queue for the player.", aliases=["q"])
+    @commands.hybrid_command(name="queue", description=_("Shows the current queue for the player"), aliases=["q"])
     @commands.guild_only()
     @requires_player()
     async def command_queue(self, context: PyLavContext):
@@ -477,7 +477,7 @@ class HybridCommands(PyLavCogMixin, ABC):
             original_author=context.interaction.user if context.interaction else context.author,
         ).start(ctx=context)
 
-    @commands.hybrid_command(name="shuffle", description="Shuffles the player's queue.")
+    @commands.hybrid_command(name="shuffle", description=_("Shuffles the player's queue"))
     @commands.guild_only()
     @requires_player()
     @invoker_is_dj()
@@ -518,7 +518,7 @@ class HybridCommands(PyLavCogMixin, ABC):
             ephemeral=True,
         )
 
-    @commands.hybrid_command(name="repeat", description="Set whether to repeat current song or queue.")
+    @commands.hybrid_command(name="repeat", description=_("Set whether to repeat current song or queue"))
     @commands.guild_only()
     @requires_player()
     @invoker_is_dj()
@@ -555,7 +555,7 @@ class HybridCommands(PyLavCogMixin, ABC):
             embed=await context.lavalink.construct_embed(description=msg, messageable=context), ephemeral=True
         )
 
-    @commands.hybrid_command(name="pause", description="Pause the player.")
+    @commands.hybrid_command(name="pause", description=_("Pause the player"))
     @commands.guild_only()
     @requires_player()
     @invoker_is_dj()
@@ -590,7 +590,7 @@ class HybridCommands(PyLavCogMixin, ABC):
             ephemeral=True,
         )
 
-    @commands.hybrid_command(name="resume", description="Resume the player.")
+    @commands.hybrid_command(name="resume", description=_("Resume the player"))
     @commands.guild_only()
     @requires_player()
     @invoker_is_dj()
@@ -625,7 +625,7 @@ class HybridCommands(PyLavCogMixin, ABC):
             ephemeral=True,
         )
 
-    @commands.hybrid_command(name="volume", description="Set the player volume.")
+    @commands.hybrid_command(name="volume", description=_("Set the player volume."))
     @commands.guild_only()
     @requires_player()
     @invoker_is_dj()
@@ -681,7 +681,7 @@ class HybridCommands(PyLavCogMixin, ABC):
             ephemeral=True,
         )
 
-    @commands.hybrid_command(name="seek", description="Seek the current track.")
+    @commands.hybrid_command(name="seek", description=_("Seek the current track."))
     @commands.guild_only()
     @requires_player()
     @invoker_is_dj()
@@ -784,7 +784,7 @@ class HybridCommands(PyLavCogMixin, ABC):
 
         await context.player.seek(seek_ms, context.author, False)
 
-    @commands.hybrid_command(name="prev", description="Play the previous tracks.", aliases=["previous"])
+    @commands.hybrid_command(name="prev", description=_("Play the previous tracks."), aliases=["previous"])
     @commands.guild_only()
     @requires_player()
     @invoker_is_dj()

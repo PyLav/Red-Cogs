@@ -401,10 +401,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.player:
             await context.player.set_shuffle(toggle)
         else:
-            if context.player:
-                config = context.player.config
-            else:
-                config = await self.lavalink.player_config_manager.get_config(context.guild.id)
+            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
             config.shuffle = toggle
             await config.save()
         await context.send(
