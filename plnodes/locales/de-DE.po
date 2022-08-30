@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
 "POT-Creation-Date: 2022-08-30 19:02+0000\n"
-"PO-Revision-Date: 2022-08-30 19:03\n"
+"PO-Revision-Date: 2022-08-30 19:42\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -20,34 +20,34 @@ msgstr ""
 #: plnodes/cog.py:32
 #, docstring
 msgid "Manage the nodes used by PyLav."
-msgstr ""
+msgstr "Verwalten Sie die Knoten die von PyLav."
 
 #: plnodes/cog.py:43
 #, docstring
 msgid "Configure PyLav Nodes."
-msgstr ""
+msgstr "Konfiguriere PyLav Knoten."
 
 #: plnodes/cog.py:47
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies."
-msgstr ""
+msgstr "Zeigt die Version des Cog und seine PyLav Abhängigkeiten an."
 
 #: plnodes/cog.py:60
 msgid "Library/Cog"
-msgstr ""
+msgstr "Bibliothek/Cog"
 
 #: plnodes/cog.py:60
 msgid "Version"
-msgstr ""
+msgstr "Version"
 
 #: plnodes/cog.py:68
 #, docstring
 msgid "Add a node PyLav."
-msgstr ""
+msgstr "Füge einen Knoten PyLav."
 
 #: plnodes/cog.py:78
 msgid "Let's add a node to PyLav!"
-msgstr ""
+msgstr "Lass uns einen Knoten zu PyLav!"
 
 #: plnodes/cog.py:79
 msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
@@ -61,34 +61,45 @@ msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
 "(**9**){space} - Set the connection timeout.\n"
 "(**10**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times,  only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - Änderungen übernehmen und den Knoten zu Pylav hinzufügen.\n"
+"(**2**){space} - Änderungen abbrechen und das Menü schließen.\n"
+"(**3**){space} - Wechseln Sie zwischen Such- und Wiedergabe-Modi um.\n"
+"(**4**){space} - Schalten Sie zwischen SSL ein und aus.\n"
+"(**5**){space} - Fügen Sie dem Knoten einen Namen hinzu.\n"
+"(**6**){space} - Füge die Host-Adresse des Knotens hinzu.\n"
+"(**7**){space} - Füge den Port hinzu, den der Knoten benutzt.\n"
+"(**8**){space} - Lege das Passwort für den Knoten fest.\n"
+"(**9**){space} - Setze die Verbindungs-Timeout.\n"
+"(**10**) - Wählen Sie aus, welche Quellen für diesen Knoten deaktiviert werden sollen (Mehrere können ausgewählt werden).\n"
+"Wenn Sie mehrmals mit einem Knopf interagieren, wird nur die letzte Interaktion wirksam.\n\n\n"
 
 #: plnodes/cog.py:172
 #, docstring
 msgid "Remove a node from PyLav instance."
-msgstr ""
+msgstr "Entferne einen Knoten von der PyLav Instanz."
 
 #: plnodes/cog.py:184
 msgid "{name} is managed by PyLav and cannot be removed."
-msgstr ""
+msgstr "{name} wird von PyLav verwaltet und kann nicht entfernt werden."
 
 #: plnodes/cog.py:199
 msgid "Removed node {name}.\n\n"
 "{data}"
-msgstr ""
+msgstr "Knoten {name}entfernt.\n\n"
+"{data}"
 
 #: plnodes/cog.py:207
 msgid "Removed node {name}, a DM was sent to you with the node details in case you wish to re-add it."
-msgstr ""
+msgstr "Knoten {name}entfernt, ein DM mit den Knotendetails wurde an Sie gesendet, falls Sie es erneut hinzufügen möchten."
 
 #: plnodes/cog.py:217
 #, docstring
 msgid "Manage all nodes in PyLav instance."
-msgstr ""
+msgstr "Verwalte alle Knoten in PyLav Instanz."
 
 #: plnodes/cog.py:229
 msgid "Let's manage some nodes!"
-msgstr ""
+msgstr "Lass uns einige Knoten verwalten!"
 
 #: plnodes/cog.py:230
 msgid "(**1**){space} - Cancel any changes made and close the menu.\n"
@@ -104,22 +115,34 @@ msgid "(**1**){space} - Cancel any changes made and close the menu.\n"
 "(**15**) - Remove this node.\n"
 "(**16**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times,  only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - Änderungen abbrechen und das Menü schließen.\n"
+"(**6**){space} - Zeige Quellen, die für diesen Knoten aktiviert sind.\n"
+"(**7**){space} - Änderungen anwenden und den Knoten zu Pylau hinzufügen.\n"
+"(**8**){space} - Umschalten zwischen Such- und Such- und Wiedergabemodi.\n"
+"(**9**){space} - Schaltet zwischen SSL ein und aus.\n"
+"(**10**) - Füge einen Namen zum Knoten hinzu.\n"
+"(**11**) - Füge die Host-Adresse des Knotens hinzu.\n"
+"(**12**) - Füge den Port hinzu, den der Knoten benutzt.\n"
+"(**13**) - Lege das Passwort für den Knoten fest.\n"
+"(**14**) - Setze die Verbindungs-Timeout.\n"
+"(**15**) - Entferne diesen Knoten.\n"
+"(**16**) - Wählen Sie aus, welche Quellen für diesen Knoten deaktiviert werden sollen (Mehrere können ausgewählt werden).\n"
+"Wenn Sie mehrmals mit einem Knopf interagieren, wird nur die letzte Interaktion wirksam.\n\n\n"
 
 #: plnodes/cog.py:261
 msgid "{name} is managed by PyLav and cannot be modified with this command."
-msgstr ""
+msgstr "{name} wird von PyLav verwaltet und kann nicht mit diesem Befehl geändert werden."
 
 #: plnodes/cog.py:273
 msgid "Removed node {name}."
-msgstr ""
+msgstr "Knoten {name} entfernt."
 
 #: plnodes/cog.py:333
 #, docstring
 msgid "List all nodes used by PyLav."
-msgstr ""
+msgstr "Listet alle von Pylav verwendeten Knoten auf."
 
 #: plnodes/cog.py:343
 msgid "No Nodes added to PyLav."
-msgstr ""
+msgstr "Keine Knoten zu Pylav hinzugefügt."
 

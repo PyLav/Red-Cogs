@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
 "POT-Creation-Date: 2022-08-30 19:02+0000\n"
-"PO-Revision-Date: 2022-08-30 19:03\n"
+"PO-Revision-Date: 2022-08-30 19:42\n"
 "Last-Translator: \n"
 "Language-Team: Danish\n"
 "MIME-Version: 1.0\n"
@@ -20,34 +20,34 @@ msgstr ""
 #: plnodes/cog.py:32
 #, docstring
 msgid "Manage the nodes used by PyLav."
-msgstr ""
+msgstr "Håndtér de indholdselementer, der bruges af PyLav."
 
 #: plnodes/cog.py:43
 #, docstring
 msgid "Configure PyLav Nodes."
-msgstr ""
+msgstr "Konfigurer PyLav Nodes."
 
 #: plnodes/cog.py:47
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies."
-msgstr ""
+msgstr "Vis versionen af Cog og det er PyLav afhængigheder."
 
 #: plnodes/cog.py:60
 msgid "Library/Cog"
-msgstr ""
+msgstr "Bibliotek/Tåge"
 
 #: plnodes/cog.py:60
 msgid "Version"
-msgstr ""
+msgstr "Version"
 
 #: plnodes/cog.py:68
 #, docstring
 msgid "Add a node PyLav."
-msgstr ""
+msgstr "Tilføj en node PyLav."
 
 #: plnodes/cog.py:78
 msgid "Let's add a node to PyLav!"
-msgstr ""
+msgstr "Lad os tilføje en node til PyLav!"
 
 #: plnodes/cog.py:79
 msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
@@ -61,34 +61,45 @@ msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
 "(**9**){space} - Set the connection timeout.\n"
 "(**10**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times,  only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - Anvend ændringer og tilføj indholdselementet til PyLav.\n"
+"(**2**){space} - Annuller eventuelle ændringer, der er foretaget, og luk menuen.\n"
+"(**3**){space} - Skift mellem søgnings- og afspilningstilstande.\n"
+"(**4**){space} - Skift mellem SSL til og fra.\n"
+"(**5**){space} - Tilføj et navn til indholdselementet.\n"
+"(**6**){space} - Tilføj værtadressen på indholdselementet.\n"
+"(**7**){space} - Tilføj porten som indholdselementet bruger.\n"
+"(**8**){space} - Indstil adgangskoden til indholdselementet.\n"
+"(**9**){space} - Indstil forbindelsens timeout.\n"
+"(**10**) - Vælg hvilke kilder der skal deaktiveres for denne node (Multiple kan vælges).\n"
+"Hvis du interagerer med en knap flere gange, vil kun den sidste interaktion træde i kraft.\n\n\n"
 
 #: plnodes/cog.py:172
 #, docstring
 msgid "Remove a node from PyLav instance."
-msgstr ""
+msgstr "Fjern en node fra PyLav instans."
 
 #: plnodes/cog.py:184
 msgid "{name} is managed by PyLav and cannot be removed."
-msgstr ""
+msgstr "{name} administreres af PyLav og kan ikke fjernes."
 
 #: plnodes/cog.py:199
 msgid "Removed node {name}.\n\n"
 "{data}"
-msgstr ""
+msgstr "Fjernet node {name}.\n\n"
+"{data}"
 
 #: plnodes/cog.py:207
 msgid "Removed node {name}, a DM was sent to you with the node details in case you wish to re-add it."
-msgstr ""
+msgstr "Fjernet node {name}, en DM blev sendt til dig med node detaljer i tilfælde af at du ønsker at tilføje det igen."
 
 #: plnodes/cog.py:217
 #, docstring
 msgid "Manage all nodes in PyLav instance."
-msgstr ""
+msgstr "Administrer alle noder i PyLav instans."
 
 #: plnodes/cog.py:229
 msgid "Let's manage some nodes!"
-msgstr ""
+msgstr "Lad os styre nogle noder!"
 
 #: plnodes/cog.py:230
 msgid "(**1**){space} - Cancel any changes made and close the menu.\n"
@@ -104,22 +115,34 @@ msgid "(**1**){space} - Cancel any changes made and close the menu.\n"
 "(**15**) - Remove this node.\n"
 "(**16**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times,  only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - Annuller ændringer og luk menuen.\n"
+"(**6**){space} - Vis kilder aktiveret for denne node.\n"
+"(**7**){space} - Anvend ændringer og tilføj indholdselementet til PyLav.\n"
+"(**8**){space} - Skift mellem søgnings- og afspilningstilstande.\n"
+"(**9**){space} - Skift mellem SSL til og fra.\n"
+"(**10**) - Tilføj et navn til indholdselementet.\n"
+"(**11**) - Tilføj værtsadressen på indholdselementet.\n"
+"(**12**) - Tilføj porten som indholdselementet bruger.\n"
+"(**13**) - Indstil adgangskoden til indholdselementet.\n"
+"(**14**) - Indstil forbindelsens timeout.\n"
+"(**15**) - Fjern denne node.\n"
+"(**16**) - Vælg hvilke kilder der skal deaktiveres for denne node (Multiple kan vælges).\n"
+"Hvis du interagerer med en knap flere gange, vil kun den sidste interaktion træde i kraft.\n\n\n"
 
 #: plnodes/cog.py:261
 msgid "{name} is managed by PyLav and cannot be modified with this command."
-msgstr ""
+msgstr "{name} administreres af PyLav og kan ikke ændres med denne kommando."
 
 #: plnodes/cog.py:273
 msgid "Removed node {name}."
-msgstr ""
+msgstr "Fjernet indholdselement {name}."
 
 #: plnodes/cog.py:333
 #, docstring
 msgid "List all nodes used by PyLav."
-msgstr ""
+msgstr "Liste over alle indholdselementer brugt af PyLav."
 
 #: plnodes/cog.py:343
 msgid "No Nodes added to PyLav."
-msgstr ""
+msgstr "Ingen noder tilføjet til PyLav."
 

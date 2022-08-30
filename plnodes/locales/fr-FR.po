@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
 "POT-Creation-Date: 2022-08-30 19:02+0000\n"
-"PO-Revision-Date: 2022-08-30 19:03\n"
+"PO-Revision-Date: 2022-08-30 19:42\n"
 "Last-Translator: \n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -20,34 +20,34 @@ msgstr ""
 #: plnodes/cog.py:32
 #, docstring
 msgid "Manage the nodes used by PyLav."
-msgstr ""
+msgstr "Gérer les nœuds utilisés par PyLav."
 
 #: plnodes/cog.py:43
 #, docstring
 msgid "Configure PyLav Nodes."
-msgstr ""
+msgstr "Configurer les nœuds PyLav."
 
 #: plnodes/cog.py:47
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies."
-msgstr ""
+msgstr "Affiche la version du Cog et ses dépendances PyLav."
 
 #: plnodes/cog.py:60
 msgid "Library/Cog"
-msgstr ""
+msgstr "Bibliothèque/Cog"
 
 #: plnodes/cog.py:60
 msgid "Version"
-msgstr ""
+msgstr "Version"
 
 #: plnodes/cog.py:68
 #, docstring
 msgid "Add a node PyLav."
-msgstr ""
+msgstr "Ajouter un noeud PyLav."
 
 #: plnodes/cog.py:78
 msgid "Let's add a node to PyLav!"
-msgstr ""
+msgstr "Ajoutons un nœud à Pylave !"
 
 #: plnodes/cog.py:79
 msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
@@ -61,34 +61,45 @@ msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
 "(**9**){space} - Set the connection timeout.\n"
 "(**10**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times,  only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - Appliquer les modifications et ajouter le noeud à PyLav.\n"
+"(**2**){space} - Annuler toutes les modifications apportées et fermer le menu.\n"
+"(**3**){space} - Basculer entre les modes de recherche et de recherche et de lecture.\n"
+"(**4**){space} - Bascule entre SSL allumée et désactivée.\n"
+"(**5**){space} - Ajoute un nom au noeud.\n"
+"(**6**){space} - Ajoute l'adresse hôte du noeud.\n"
+"(**7**){space} - Ajoute le port que le noeud utilise.\n"
+"(**8**){space} - Définit le mot de passe pour le noeud.\n"
+"(**9**){space} - Définit le délai de connexion expiré.\n"
+"(**10**) - Sélectionnez les sources à désactiver pour ce noeud (Multiple peut être sélectionné).\n"
+"Si vous interagissez avec un bouton plusieurs fois, seule la dernière interaction prendra effet.\n\n\n"
 
 #: plnodes/cog.py:172
 #, docstring
 msgid "Remove a node from PyLav instance."
-msgstr ""
+msgstr "Supprimer un noeud de l'instance PyLav."
 
 #: plnodes/cog.py:184
 msgid "{name} is managed by PyLav and cannot be removed."
-msgstr ""
+msgstr "{name} est géré par PyLav et ne peut pas être supprimé."
 
 #: plnodes/cog.py:199
 msgid "Removed node {name}.\n\n"
 "{data}"
-msgstr ""
+msgstr "Noeud {name}supprimé.\n\n"
+"{data}"
 
 #: plnodes/cog.py:207
 msgid "Removed node {name}, a DM was sent to you with the node details in case you wish to re-add it."
-msgstr ""
+msgstr "Le noeud {name}a été supprimé, un DM vous a été envoyé avec les détails du noeud si vous souhaitez le ré-ajouter."
 
 #: plnodes/cog.py:217
 #, docstring
 msgid "Manage all nodes in PyLav instance."
-msgstr ""
+msgstr "Gérer tous les nœuds de l'instance PyLav."
 
 #: plnodes/cog.py:229
 msgid "Let's manage some nodes!"
-msgstr ""
+msgstr "Nous allons gérer quelques nœuds !"
 
 #: plnodes/cog.py:230
 msgid "(**1**){space} - Cancel any changes made and close the menu.\n"
@@ -104,22 +115,34 @@ msgid "(**1**){space} - Cancel any changes made and close the menu.\n"
 "(**15**) - Remove this node.\n"
 "(**16**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times,  only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - Annuler toutes les modifications apportées et fermer le menu.\n"
+"(**6**){space} - Afficher les sources activées pour ce noeud.\n"
+"(**7**){space} - applique les modifications et ajoute le noeud à PyLav.\n"
+"(**8**){space} - Bascule entre les modes de recherche et de recherche et de lecture.\n"
+"(**9**){space} - Bascule entre SSL sur et désactivé.\n"
+"(**10**) - Ajoute un nom au noeud.\n"
+"(**11**) - Ajoute l'adresse hôte du noeud.\n"
+"(**12**) - Ajoute le port utilisé par le nœud.\n"
+"(**13**) - Définit le mot de passe pour le nœud.\n"
+"(**14**) - Définit le délai de connexion.\n"
+"(**15**) - Supprime ce noeud.\n"
+"(**16**) - Sélectionnez les sources à désactiver pour ce noeud (Multiple peut être sélectionné).\n"
+"Si vous interagissez avec un bouton plusieurs fois, seule la dernière interaction prendra effet.\n\n\n"
 
 #: plnodes/cog.py:261
 msgid "{name} is managed by PyLav and cannot be modified with this command."
-msgstr ""
+msgstr "{name} est géré par PyLav et ne peut pas être modifié avec cette commande."
 
 #: plnodes/cog.py:273
 msgid "Removed node {name}."
-msgstr ""
+msgstr "Le noeud {name} a été supprimé."
 
 #: plnodes/cog.py:333
 #, docstring
 msgid "List all nodes used by PyLav."
-msgstr ""
+msgstr "Liste tous les nœuds utilisés par PyLav."
 
 #: plnodes/cog.py:343
 msgid "No Nodes added to PyLav."
-msgstr ""
+msgstr "Aucun noeud ajouté à PyLav."
 

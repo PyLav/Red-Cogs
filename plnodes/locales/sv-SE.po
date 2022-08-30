@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
 "POT-Creation-Date: 2022-08-30 19:02+0000\n"
-"PO-Revision-Date: 2022-08-30 19:03\n"
+"PO-Revision-Date: 2022-08-30 19:42\n"
 "Last-Translator: \n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -20,34 +20,34 @@ msgstr ""
 #: plnodes/cog.py:32
 #, docstring
 msgid "Manage the nodes used by PyLav."
-msgstr ""
+msgstr "Hantera noderna som används av PyLav."
 
 #: plnodes/cog.py:43
 #, docstring
 msgid "Configure PyLav Nodes."
-msgstr ""
+msgstr "Konfigurera PyLav noder."
 
 #: plnodes/cog.py:47
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies."
-msgstr ""
+msgstr "Visa versionen av Cog och dess PyLav beroenden."
 
 #: plnodes/cog.py:60
 msgid "Library/Cog"
-msgstr ""
+msgstr "Bibliotek/Kugga"
 
 #: plnodes/cog.py:60
 msgid "Version"
-msgstr ""
+msgstr "Version"
 
 #: plnodes/cog.py:68
 #, docstring
 msgid "Add a node PyLav."
-msgstr ""
+msgstr "Lägg till en nod PyLav."
 
 #: plnodes/cog.py:78
 msgid "Let's add a node to PyLav!"
-msgstr ""
+msgstr "Låt oss lägga till en nod till PyLav!"
 
 #: plnodes/cog.py:79
 msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
@@ -61,34 +61,45 @@ msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
 "(**9**){space} - Set the connection timeout.\n"
 "(**10**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times,  only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - Tillämpa ändringar och lägg till noden till PyLav.\n"
+"(**2**){space} - Avbryt eventuella ändringar gjorda och stäng menyn.\n"
+"(**3**){space} - Växla mellan sök- och sök- och uppspelningslägen.\n"
+"(**4**){space} - Växla mellan SSL på och av.\n"
+"(**5**){space} - Lägg till ett namn till noden.\n"
+"(**6**){space} - Lägg till värdadressen för noden.\n"
+"(**7**){space} - Lägg till den port noden använder.\n"
+"(**8**){space} - Ange lösenordet för noden.\n"
+"(**9**){space} - Ange tidsgräns för anslutningen.\n"
+"(**10**) - Välj vilka källor som ska inaktiveras för den här noden (flera kan väljas).\n"
+"Om du interagerar med en knapp flera gånger, kommer endast den sista interaktionen att träda i kraft.\n\n\n"
 
 #: plnodes/cog.py:172
 #, docstring
 msgid "Remove a node from PyLav instance."
-msgstr ""
+msgstr "Ta bort en nod från PyLav instans."
 
 #: plnodes/cog.py:184
 msgid "{name} is managed by PyLav and cannot be removed."
-msgstr ""
+msgstr "{name} hanteras av PyLav och kan inte tas bort."
 
 #: plnodes/cog.py:199
 msgid "Removed node {name}.\n\n"
 "{data}"
-msgstr ""
+msgstr "Tog bort noden {name}.\n\n"
+"{data}"
 
 #: plnodes/cog.py:207
 msgid "Removed node {name}, a DM was sent to you with the node details in case you wish to re-add it."
-msgstr ""
+msgstr "Tog bort nod {name}, en DM skickades till dig med nod detaljer om du vill lägga till den igen."
 
 #: plnodes/cog.py:217
 #, docstring
 msgid "Manage all nodes in PyLav instance."
-msgstr ""
+msgstr "Hantera alla noder i PyLav instans."
 
 #: plnodes/cog.py:229
 msgid "Let's manage some nodes!"
-msgstr ""
+msgstr "Låt oss hantera några noder!"
 
 #: plnodes/cog.py:230
 msgid "(**1**){space} - Cancel any changes made and close the menu.\n"
@@ -104,22 +115,34 @@ msgid "(**1**){space} - Cancel any changes made and close the menu.\n"
 "(**15**) - Remove this node.\n"
 "(**16**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times,  only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - Avbryt alla ändringar gjorda och stäng menyn.\n"
+"(**6**){space} - Visa källor aktiverade för den här noden.\n"
+"(**7**){space} - Tillämpa ändringar och lägg till noden till PyLav.\n"
+"(**8**){space} - Växla mellan sök- och sök- och uppspelningsläge.\n"
+"(**9**){space} - Växla mellan SSL på och av.\n"
+"(**10**) - Lägg till ett namn till noden.\n"
+"(**11**) - Lägg till värdadressen för noden.\n"
+"(**12**) - Lägg till den port noden använder.\n"
+"(**13**) - Ange lösenordet för noden.\n"
+"(**14**) - Ställ in tidsgränsen för anslutningen.\n"
+"(**15**) - Ta bort denna nod.\n"
+"(**16**) - Välj vilka källor som ska inaktiveras för den här noden (flera kan väljas).\n"
+"Om du interagerar med en knapp flera gånger, kommer endast den sista interaktionen att träda i kraft.\n\n\n"
 
 #: plnodes/cog.py:261
 msgid "{name} is managed by PyLav and cannot be modified with this command."
-msgstr ""
+msgstr "{name} hanteras av PyLav och kan inte ändras med detta kommando."
 
 #: plnodes/cog.py:273
 msgid "Removed node {name}."
-msgstr ""
+msgstr "Tog bort nod {name}."
 
 #: plnodes/cog.py:333
 #, docstring
 msgid "List all nodes used by PyLav."
-msgstr ""
+msgstr "Lista alla noder som används av PyLav."
 
 #: plnodes/cog.py:343
 msgid "No Nodes added to PyLav."
-msgstr ""
+msgstr "Inga noder tillagda i PyLav."
 

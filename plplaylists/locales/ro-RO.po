@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
 "POT-Creation-Date: 2022-08-30 19:02+0000\n"
-"PO-Revision-Date: 2022-08-30 19:03\n"
+"PO-Revision-Date: 2022-08-30 19:42\n"
 "Last-Translator: \n"
 "Language-Team: Romanian\n"
 "MIME-Version: 1.0\n"
@@ -20,28 +20,28 @@ msgstr ""
 #: plplaylists/cog.py:53
 #, docstring
 msgid "PyLav playlist management commands"
-msgstr ""
+msgstr "Comenzi de gestionare listă de redare PyLav"
 
 #: plplaylists/cog.py:59
 msgid "Control PyLav playlists"
-msgstr ""
+msgstr "Controlează listele de redare PyLav"
 
 #: plplaylists/cog.py:82
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies."
-msgstr ""
+msgstr "Arată versiunea Cog şi este dependenţe PyLav."
 
 #: plplaylists/cog.py:94
 msgid "Library/Cog"
-msgstr ""
+msgstr "Bibliotecă/Cog"
 
 #: plplaylists/cog.py:94
 msgid "Version"
-msgstr ""
+msgstr "Versiune"
 
 #: plplaylists/cog.py:121
 msgid "Let's create a playlist!"
-msgstr ""
+msgstr "Să creăm o listă de redare!"
 
 #: plplaylists/cog.py:122
 msgid "(**1**) - Apply changes to playlist.\n"
@@ -50,33 +50,40 @@ msgid "(**1**) - Apply changes to playlist.\n"
 "(**4**) - Link this playlist to an existing playlist/album.\n"
 "(**5**) - Add all track from the queue to the playlist.\n\n"
 "If you want the playlist name to be as the original playlist simply set the URL but no name.\n\n"
-msgstr ""
+msgstr "(**1**) - Aplică modificări la lista de redare.\n"
+"(**2**) - Anulează orice modificare făcută.\n"
+"(**3**) - Adaugă un nume în lista de redare.\n"
+"(**4**) - Link această listă de redare la o listă de redare/album existentă.\n"
+"(**5**) - Adaugă toate piesele din coada de redare.\n\n"
+"Dacă doriți ca numele listei de redare să fie ca lista originală de redare setează adresa URL dar fără nume.\n\n"
 
 #: plplaylists/cog.py:158
 msgid "Playlist created"
-msgstr ""
+msgstr "Playlist creat"
 
 #: plplaylists/cog.py:159
 msgid "Name: `{name}`\n"
 "ID: `{id}`\n"
 "Tracks: `{track_count}`"
-msgstr ""
+msgstr "Nume: `{name}`\n"
+"ID: `{id}`\n"
+"Tracks: `{track_count}`"
 
 #: plplaylists/cog.py:184
 msgid "You have no playlists."
-msgstr ""
+msgstr "Nu ai liste de redare."
 
 #: plplaylists/cog.py:227 plplaylists/cog.py:594
 msgid "Nothing to save."
-msgstr ""
+msgstr "Nimic de salvat."
 
 #: plplaylists/cog.py:228 plplaylists/cog.py:595
 msgid "There is nothing in the queue to save."
-msgstr ""
+msgstr "Nu există nimic în coadă de salvat."
 
 #: plplaylists/cog.py:265 plplaylists/cog.py:532 plplaylists/cog.py:612
 msgid "{user}, playlist {playlist_name} cannot be managed by yourself."
-msgstr ""
+msgstr "{user}, lista de redare {playlist_name} nu poate fi gestionată de tine."
 
 #: plplaylists/cog.py:274
 msgid "(**1**){space} - Apply changes to playlist.\n"
@@ -99,7 +106,26 @@ msgid "(**1**){space} - Apply changes to playlist.\n"
 "The clear button will always be run first before any other operations.\n"
 "The URL button will always run last - Linking a playlist via the URL will overwrite any tracks added or removed to this playlist.\n\n"
 "If you interact with a button multiple times other than the add/remove buttons only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - Aplică modificări la lista de redare.\n"
+"(**2**){space} - Anulează orice modificări făcute și închide meniul.\n"
+"(**3**){space} - Șterge această listă de redare.\n"
+"(**4**){space} - Elimină toate piesele din această listă de redare.\n"
+"(**5**){space} - Actualizează lista de redare cu cele mai recente piese.\n"
+"Vă rugăm să rețineți că această acțiune va ignora orice piese adăugate/eliminate prin acest meniu.\n"
+"(**6**){space} - Schimbă numele listei de redare.\n"
+"(**7**){space} - Leagă această listă de redare la o listă de redare/album existentă.\n"
+"(**8**){space} - Adaugă o interogare la această listă de redare.\n"
+"(**9**){space} - Șterge o interogare din această listă de redare.\n"
+"(**10**) - Descarcă fișierul de redare.\n"
+"(**11**) - Adaugă lista de redare curentă la coadă.\n"
+"(**12**) - Arată melodiile în lista de redare curentă.\n"
+"(**13**) - Adaugă piese din coada de redare la această listă de redare.\n"
+"(**14**) - Elimină intrările duplicate din lista de redare.\n\n"
+"Butoanele de adăugare/eliminare a piesei pot fi utilizate de mai multe ori pentru a adăuga/elimina piesele multiple și listele de redare simultan.\n\n"
+"O interogare este orice poate fi redată de comanda de redare - orice interogare poate fi folosită de butoanele de adăugare/ștergere\n\n"
+"Butonul de ștergere va fi întotdeauna rulat mai întâi înainte de orice alte operațiuni.\n"
+"Butonul URL va rula întotdeauna - Legarea unei liste de redare prin URL va suprascrie orice melodii adăugate sau eliminate în această listă de redare.\n\n"
+"Dacă interacționați cu un buton de mai multe ori în afară de butonul de adăugare/ștergere doar ultima interacțiune va avea efect.\n\n\n"
 
 #: plplaylists/cog.py:300
 msgid "(**1**) - Close the menu.\n"
@@ -107,7 +133,11 @@ msgid "(**1**) - Close the menu.\n"
 "(**3**) - Download the playlist file.\n"
 "(**4**) - Add current playlist to the queue.\n"
 "(**5**) - Show tracks in current playlist.\n\n\n"
-msgstr ""
+msgstr "(**1**) - Închide meniul.\n"
+"(**2**) - Actualizează lista de redare cu cele mai recente piese.\n"
+"(**3**) - Descarcă fișierul de redare.\n"
+"(**4**) - Adaugă lista curentă de redare la coadă.\n"
+"(**5**) - Arată melodiile în lista de redare curentă.\n\n\n"
 
 #: plplaylists/cog.py:308
 msgid "**__Currently managing__**:\n"
@@ -120,101 +150,105 @@ msgstr ""
 
 #: plplaylists/cog.py:325
 msgid "Let's manage: {playlist_name}"
-msgstr ""
+msgstr "Hai să gestionăm: {playlist_name}"
 
 #: plplaylists/cog.py:327
 msgid "Let's take a look at: {playlist_name}"
-msgstr ""
+msgstr "Să aruncăm o privire la: {playlist_name}"
 
 #: plplaylists/cog.py:334
 msgid "N/A"
-msgstr ""
+msgstr "N/A"
 
 #: plplaylists/cog.py:366 plplaylists/cog.py:542
 msgid "Playlist deleted."
-msgstr ""
+msgstr "Playlist șters."
 
 #: plplaylists/cog.py:368 plplaylists/cog.py:544
 msgid "{user}, playlist {playlist_name} has been deleted."
-msgstr ""
+msgstr "{user}, lista de redare {playlist_name} a fost ștearsă."
 
 #: plplaylists/cog.py:425
 msgid "Playlist **{playlist_name}** could not be updated with URL: <{url}>."
-msgstr ""
+msgstr "Lista de redare **{playlist_name}** nu a putut fi actualizată cu URL: <{url}>."
 
 #: plplaylists/cog.py:459
 msgid "\n"
 "{track_count} {track_plural} removed from the playlist."
-msgstr ""
+msgstr "\n"
+"{track_count} {track_plural} eliminat din lista de redare."
 
 #: plplaylists/cog.py:460 plplaylists/cog.py:464 plplaylists/cog.py:631
 msgid "track"
-msgstr ""
+msgstr "piesa"
 
 #: plplaylists/cog.py:460 plplaylists/cog.py:464 plplaylists/cog.py:631
 msgid "tracks"
-msgstr ""
+msgstr "piese"
 
 #: plplaylists/cog.py:463 plplaylists/cog.py:630
 msgid "\n"
 "{track_count} {track_plural} added to the playlist."
-msgstr ""
+msgstr "\n"
+"{track_count} {track_plural} adăugat la lista de redare."
 
 #: plplaylists/cog.py:470 plplaylists/cog.py:638
 msgid "Playlist updated."
-msgstr ""
+msgstr "Playlist actualizat."
 
 #: plplaylists/cog.py:471 plplaylists/cog.py:639
 msgid "{user}, playlist {playlist_name} has been updated.{extras}"
-msgstr ""
+msgstr "{user}, lista de redare {playlist_name} a fost actualizată.{extras}"
 
 #: plplaylists/cog.py:483 plplaylists/cog.py:652
 msgid "Playlist unchanged."
-msgstr ""
+msgstr "Playlist neschimbat."
 
 #: plplaylists/cog.py:484 plplaylists/cog.py:653
 msgid "{user}, playlist {playlist_name} has not been updated."
-msgstr ""
+msgstr "{user}, lista de redare {playlist_name} nu a fost actualizată."
 
 #: plplaylists/cog.py:681
 msgid "You must either provide a URL or attach a playlist file to upload a playlist."
-msgstr ""
+msgstr "Trebuie fie să furnizați o adresă URL fie să atașați un fișier din lista de redare pentru a încărca o listă de redare."
 
 #: plplaylists/cog.py:693
 msgid "No valid playlist file provided."
-msgstr ""
+msgstr "Nu a fost furnizat niciun fișier valid din lista de redare."
 
 #: plplaylists/cog.py:702
 msgid "Multiple playlist files provided - Currently only 1 per message is allowed."
-msgstr ""
+msgstr "Mai multe fișiere din lista de redare furnizată- În prezent este permis doar 1 per mesaj."
 
 #: plplaylists/cog.py:720
 msgid "Failed to save any of the requested playlists."
-msgstr ""
+msgstr "Salvarea niciuneia dintre listele de redare solicitate nu a reușit."
 
 #: plplaylists/cog.py:729
 msgid "Failed to save the following playlists:\n"
 "{invalid_playlists}"
-msgstr ""
+msgstr "Salvarea următoarelor liste de redare nu a reușit:\n"
+"{invalid_playlists}"
 
 #: plplaylists/cog.py:738
 msgid "Successfully saved the following playlists:\n"
 "{saved_playlists}"
-msgstr ""
+msgstr "Salvat cu succes următoarele liste de redare:\n"
+"{saved_playlists}"
 
 #: plplaylists/cog.py:763
 msgid "You must be in a voice channel to allow me to connect."
-msgstr ""
+msgstr "Trebuie să fiți într-un canal de voce pentru a mă putea conecta."
 
 #: plplaylists/cog.py:771
 msgid "I don't have permission to connect or speak in {channel}."
-msgstr ""
+msgstr "Nu am permisiunea să mă conectez sau să vorbesc în {channel}."
 
 #: plplaylists/cog.py:788
 msgid "Playlist"
-msgstr ""
+msgstr "Playlist"
 
 #: plplaylists/cog.py:793
 msgid "{track_count} tracks enqueued.{playlist_name}"
-msgstr ""
+msgstr "{track_count} piese în așteptare.{playlist_name}"
 

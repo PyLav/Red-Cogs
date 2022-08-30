@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
 "POT-Creation-Date: 2022-08-30 19:02+0000\n"
-"PO-Revision-Date: 2022-08-30 19:03\n"
+"PO-Revision-Date: 2022-08-30 19:42\n"
 "Last-Translator: \n"
 "Language-Team: Czech\n"
 "MIME-Version: 1.0\n"
@@ -20,33 +20,33 @@ msgstr ""
 #: plmanagednode/cog.py:39 plmanagednode/cog.py:51
 #, docstring
 msgid "Configure the managed Lavalink node used by PyLav."
-msgstr ""
+msgstr "Nakonfigurujte spravovaný Lavalink uzel používaný PyLavem."
 
 #: plmanagednode/cog.py:55
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies."
-msgstr ""
+msgstr "Ukaž verzi Cog a jsou to PyLav závislosti."
 
 #: plmanagednode/cog.py:68
 msgid "Library/Cog"
-msgstr ""
+msgstr "Knihovna/Cog"
 
 #: plmanagednode/cog.py:68
 msgid "Version"
-msgstr ""
+msgstr "Verze"
 
 #: plmanagednode/cog.py:76
 #, docstring
 msgid "Restart the managed Lavalink node."
-msgstr ""
+msgstr "Restartujte spravovaný Lavalink node."
 
 #: plmanagednode/cog.py:85
 msgid "The managed node is not enabled, run `[p]{command}` to first enable the managed node."
-msgstr ""
+msgstr "Spravovaný uzel není povolen, spusťte `[p]{command}` pro první povolení spravovaného uzlu."
 
 #: plmanagednode/cog.py:137
 msgid "Restarted the managed Lavalink node."
-msgstr ""
+msgstr "Restartoval spravovaný Lavalink uze."
 
 #: plmanagednode/cog.py:145
 #, docstring
@@ -54,58 +54,70 @@ msgid "Set the java executable for PyLav.\n\n"
 "        Default is \"java\"\n"
 "        Changes will be applied after restarting the bot.\n"
 "        "
-msgstr ""
+msgstr "Nastavte spustitelný soubor pro PyLav.\n\n"
+"        Výchozí hodnota je \"java\"\n"
+"        Změny budou aplikovány po restartování bota.\n"
+"        "
 
 #: plmanagednode/cog.py:162
 msgid "{java} does not exist, run the command again with the java argument set to the correct path."
-msgstr ""
+msgstr "{java} neexistuje, spusťte příkaz znovu s argumentem java nastaveným na správnou cestu."
 
 #: plmanagednode/cog.py:179
 msgid "{java} is not an executable file."
-msgstr ""
+msgstr "{java} není spustitelný soubor."
 
 #: plmanagednode/cog.py:191
 msgid "{java} is not an executable, run the command again with the java argument set to the correct path."
-msgstr ""
+msgstr "{java} není spustitelný soubor, spusťte příkaz znovu s argumentem java nastaveným na správnou cestu."
 
 #: plmanagednode/cog.py:209
 msgid "PyLav's java executable has been set to {java}.\n\n"
 "Restart the bot for it to take effect."
-msgstr ""
+msgstr "Spouštěč PyLavovy javy byl nastaven na {java}.\n\n"
+"Aby se tento bota projevil, restartujte jej."
 
 #: plmanagednode/cog.py:221
 #, docstring
 msgid "Toggle the managed node on/off.\n\n"
 "        Changes will be applied after restarting the bot.\n"
 "        "
-msgstr ""
+msgstr "Zapnout/vypnout spravovaný uzel.\n\n"
+"        Změny budou aplikovány po restartu bota.\n"
+"        "
 
 #: plmanagednode/cog.py:236
 msgid "PyLav's managed node has been enabled.\n\n"
 "Restart the bot for it to take effect."
-msgstr ""
+msgstr "PyLavův spravovaný uzel byl povolen.\n\n"
+"Restartujte bot, aby se mohl projevit."
 
 #: plmanagednode/cog.py:244
 msgid "PyLav's managed node has been disabled.\n\n"
 "Restart the bot for it to take effect."
-msgstr ""
+msgstr "PyLavův spravovaný uzel byl zakázán.\n\n"
+"Restartujte bot, aby se mohl projevit."
 
 #: plmanagednode/cog.py:252
 #, docstring
 msgid "Toggle the managed node auto updates on/off.\n\n"
 "        Changes will be applied after restarting the bot.\n"
 "        "
-msgstr ""
+msgstr "Zapnout/vypnout spravované aktualizace uzlu.\n\n"
+"        Změny budou aplikovány po restartování botu.\n"
+"        "
 
 #: plmanagednode/cog.py:267
 msgid "PyLav's managed node auto updates have been enabled.\n\n"
 "Restart the bot for it to take effect."
-msgstr ""
+msgstr "Automatická aktualizace spravovaných Nodů v PyLavu byla povolena.\n\n"
+"Restartujte bot, aby se mohl projevit."
 
 #: plmanagednode/cog.py:278
 msgid "PyLav's managed node auto updates have been disabled.\n\n"
 "Restart the bot for it to take effect."
-msgstr ""
+msgstr "Automatické aktualizace spravovaných Nodů v PyLavu byly zakázány.\n\n"
+"Restartujte bot, aby se mohl projevit."
 
 #: plmanagednode/cog.py:289
 #, docstring
@@ -115,43 +127,50 @@ msgid "Set the managed Lavalink node maximum heap-size.\n\n"
 "        This value only represents the maximum amount of RAM allowed to be used at any given point, and does not mean\n"
 "        that the managed Lavalink node will always use this amount of RAM.\n"
 "        "
-msgstr ""
+msgstr "Nastavte maximální velikost spravovaného uzlu Lavalinku.\n\n"
+"        Ve výchozím nastavení tato hodnota je 50 % dostupné RAM v hostitelském zařízení reprezentovaném [1-1024][M|G] (256M,\n"
+"        256G například)\n\n"
+"        Tato hodnota představuje pouze maximální povolené množství RAM v daném bodě, a neznamená\n"
+"        , že spravovaný uzel Lavalink bude vždy používat toto množství RAM.\n"
+"        "
 
 #: plmanagednode/cog.py:307
 msgid "Heap-size must be a valid measure of size, e.g. 256M, 256G"
-msgstr ""
+msgstr "Velikost hlavy musí být platná stupnice velikosti, např. 256M, 256G"
 
 #: plmanagednode/cog.py:317
 msgid "Heap-size must be at least 64M, however it is recommended to have it set to at least 1G."
-msgstr ""
+msgstr "Velikost hlavy musí být nejméně 64M, doporučuje se však nastavit na hodnotu nejméně 1G."
 
 #: plmanagednode/cog.py:329
 msgid "Heap-size must be less than your system RAM, You currently have {ram_in_bytes} of RAM available."
-msgstr ""
+msgstr "Velikost skříně musí být menší než velikost vašeho systému RAM, aktuálně máte k dispozici {ram_in_bytes} RAM."
 
 #: plmanagednode/cog.py:341
 msgid "Heap-size must be less than {limit} due to your system limitations."
-msgstr ""
+msgstr "Velikost skříně musí být menší než {limit} z důvodu omezení systému."
 
 #: plmanagednode/cog.py:358
 msgid "Managed node's heap-size set to {bytes}.\n\n"
 "Restart the bot for it to take effect."
-msgstr ""
+msgstr "Spravovaný uzel je nastaven na {bytes}.\n\n"
+"Restartujte bota, aby se mohl projevit."
 
 #: plmanagednode/cog.py:368
 #, docstring
 msgid "Change the managed node start up configs."
-msgstr ""
+msgstr "Změna konfigurací startu spravovaného uzlu."
 
 #: plmanagednode/cog.py:372
 #, docstring
 msgid "Set the managed node host."
-msgstr ""
+msgstr "Nastavte spravovaného hostitele uzlu."
 
 #: plmanagednode/cog.py:381
 msgid "Managed node's host set to {host}.\n\n"
 "Restart the bot for it to take effect."
-msgstr ""
+msgstr "Spravovaný uzel byl nastaven na {host}.\n\n"
+"Restartujte bota, aby se mohl projevit."
 
 #: plmanagednode/cog.py:391
 #, docstring
@@ -160,54 +179,62 @@ msgid "`Dangerous command` Set the managed Lavalink node's connection port.\n\n"
 "        conflict with the default port because you already have an application using port 2154 on this device.\n\n"
 "        The value by default is `2154`.\n"
 "        "
-msgstr ""
+msgstr "`Nebezpečné příkazy` Nastavte připojovací port spravovaného Lavalink uzu.\n\n"
+"        Tento port je portem, do kterého se spouští spravovaný uzel Lavalinku toto byste měli změnit pouze v případě, že existuje\n"
+"        konflikt s výchozím portem, protože již máte aplikaci používající port 2154 na tomto zařízení.\n\n"
+"        Výchozí hodnota je `2154`.\n"
+"        "
 
 #: plmanagednode/cog.py:402
 msgid "The port must be between 1024 and 49151."
-msgstr ""
+msgstr "Přístav musí být mezi 1024 a 49151."
 
 #: plmanagednode/cog.py:412
 msgid "Managed node's port set to {port}.\n\n"
 "Restart the bot for it to take effect."
-msgstr ""
+msgstr "Spravovaný port uzlu nastaven na {port}.\n\n"
+"Restartujte bota, aby se mohl projevit."
 
 #: plmanagednode/cog.py:422
 #, docstring
 msgid "Change the managed node plugins."
-msgstr ""
+msgstr "Změnit spravované moduly Nods."
 
 #: plmanagednode/cog.py:426
 #, docstring
 msgid "Update the managed node plugins."
-msgstr ""
+msgstr "Aktualizujte spravované zásuvné moduly uzlu."
 
 #: plmanagednode/cog.py:475
 msgid "{name} was updated from {old_value} to {new_value}\n"
-msgstr ""
+msgstr "{name} byl aktualizován z {old_value} na {new_value}\n"
 
 #: plmanagednode/cog.py:483
 msgid "Managed node's plugins updated.\n\n"
 "{updates}\n\n"
 "Restart the bot for it to take effect."
-msgstr ""
+msgstr "Pluginy spravovaného uzlu byly aktualizovány.\n\n"
+"{updates}\n\n"
+"Restartujte bot, aby se mohl projevit."
 
 #: plmanagednode/cog.py:493
 msgid "Managed node's plugins already up to date."
-msgstr ""
+msgstr "Pluginy spravovaného uzlu jsou již aktuální."
 
 #: plmanagednode/cog.py:501
 #, docstring
 msgid "Toggle the managed node sources."
-msgstr ""
+msgstr "Přepnout spravované zdroje uzlu."
 
 #: plmanagednode/cog.py:515
 msgid "Invalid source, {valid_list} are valid sources."
-msgstr ""
+msgstr "Neplatný zdroj, {valid_list} jsou platné zdroje."
 
 #: plmanagednode/cog.py:531
 msgid "Managed node's source set to {source}.\n\n"
 "Restart the bot for it to take effect."
-msgstr ""
+msgstr "Zdroj Spravovaného uzlu je nastaven na {source}.\n\n"
+"Restartujte bot, aby se mohl projevit."
 
 #: plmanagednode/cog.py:541
 #, docstring
@@ -225,265 +252,293 @@ msgid "Configure multiple settings for the managed node.\n\n"
 "        `youtubeSearchEnabled` : Boolean i.e True (Default True)\n"
 "        `soundcloudSearchEnabled` : Boolean i.e True (Default True)\n"
 "        "
-msgstr ""
+msgstr "Nastavení více nastavení pro spravovaný uzel.\n\n"
+"        Spusťte `[p]plmanaged config server <setting> info` pro zobrazení informací o nastavení a co dělají.\n\n"
+"        **Nastavování názvů**:\n"
+"        `bufferDurationMs` : Integer i. 400 (výchozí 400)\n"
+"        `frameBufferDurationMs` : Integer i. 1000 (výchozí 1000)\n"
+"        `trackStuckThresholdMs` : Integer i. 1000 (výchozí 1000)\n"
+"        `youtubePlaylistLoadLimit` : Integer i. 1000 (výchozí 1000)\n"
+"        `opusEncodingQuality` : Integer i. 10 (výchozí 10)\n"
+"        `resamplingQuality` : String i. LOW (výchozí LOW)\n"
+"        `useSeekGhosting` : Boolean i. True (Default True)\n"
+"        `playerUpdateInterval` : Integer i. 1 (výchozí 1)\n"
+"        `youtubeSearchEnabled` : Boolean i. True (Default True)\n"
+"        `soundcloudSearchEenabled` : Boolean i. True (Default True)\n"
+"        "
 
 #: plmanagednode/cog.py:581
 msgid "{Setting} is not a valid Setting; Options are: \n\n"
 "{setting_list}."
-msgstr ""
+msgstr "{Setting} není platné nastavení. Možnosti jsou: \n\n"
+"{setting_list}."
 
 #: plmanagednode/cog.py:592
 msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses. Minimum of 40ms, lower values may introduce pauses. Accepted values: Range: 40 - 2,000."
-msgstr ""
+msgstr "Doba trvání NAS bufferu v milisekundách. Vyšší hodnoty jsou lepší vůči delším pozastavením GC. Minimálně 40 ms, nižší hodnoty mohou způsobit pauzy. Přijaté hodnoty: rozsah: 40 - 2,000."
 
 #: plmanagednode/cog.py:597
 msgid "How many milliseconds of audio to keep buffered. Accepted values: Range: 1,000 - 10,000."
-msgstr ""
+msgstr "Kolik milisekund zvuku, aby zůstal zachován v vyrovnávací paměti. Přijaté hodnoty: rozsah: 1,000 - 10,000."
 
 #: plmanagednode/cog.py:600
 msgid "The threshold in milliseconds for how long a track can be stuck. A track is stuck if does not return any audio data. Accepted values: Range: 5,000 - 20,000."
-msgstr ""
+msgstr "Prahová hodnota v milisekundách, jak dlouho lze uvíznout stopu. Trasa je uvězněna, pokud nevrací žádná zvuková data. Přijaté hodnoty: rozsah: 5,000 - 20 000."
 
 #: plmanagednode/cog.py:604
 msgid "Number of pages to return for a YouTube Playlist - Each page contains 100 songs. Accepted values: Range: 5 - 100."
-msgstr ""
+msgstr "Počet stránek pro návrat na YouTube Playlist - Každá stránka obsahuje 100 skladeb. Přijaté hodnoty: rozsah: 5 - 100."
 
 #: plmanagednode/cog.py:608
 msgid "Opus encoder quality. Valid values range from 0 to 10, where 10 is best quality but is the most expensive on the CPU."
-msgstr ""
+msgstr "Opus kvalita enkodéru. Platné hodnoty se pohybují od 0 do 10, kde 10 je nejlepší kvalita, ale je nejdražší na CPU."
 
 #: plmanagednode/cog.py:612
 msgid "Quality of resampling operations. Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU."
-msgstr ""
+msgstr "Kvalita operací při převrácení. Platnými hodnotami jsou LOW, MEDIUM a VYSOKO, kde VYSOKÉ používá nejvíce CPU."
 
 #: plmanagednode/cog.py:616
 msgid "Seek ghosting is the effect where whilst a seek is in progress, the audio buffer is read from until empty, or until seek is ready. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`."
-msgstr ""
+msgstr "Vyhledej ghosting je efekt, kde probíhá vyhledávání, zvukový vyrovnávací paměť je přečtena do prázdné, nebo dokud není připraven vyhledat. Přijaté hodnoty pro True`, `t`, `1`, Přijaté hodnoty pro False: `False`, `f`, `0`."
 
 #: plmanagednode/cog.py:621
 msgid "How frequently in seconds to send player updates to clients, affects the current position accuracy. Accepted values: Range: 1 - 10."
-msgstr ""
+msgstr "Jak často v sekundách zasílání aktualizací hráčů klientům, ovlivňuje aktuální přesnost polohy. Přijaté hodnoty: rozsah: 1 - 10."
 
 #: plmanagednode/cog.py:625
 msgid "Enable or disable YouTube searches within the node, this will affect AppleMusic, Spotify and any functionality dependant on YouTube. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`."
-msgstr ""
+msgstr "Povolit nebo zakázat YouTube vyhledávání v uzlu, to ovlivní AppleMusic, Spotify a všechny funkce závislé na YouTube. Přijaté hodnoty pro True`, `t`, `1`, Přijaté hodnoty pro False: `False`, `f`, `0`."
 
 #: plmanagednode/cog.py:630
 msgid "Enable or disable SoundCloud searches within the node, this will affect any functionality dependant on SoundCloud. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`."
-msgstr ""
+msgstr "Povolit nebo zakázat prohledávání SoundCloud v uzlu, to ovlivní všechny funkce závislé na SoundCloudu. Přijaté hodnoty pro True`, `t`, `1`, Přijaté hodnoty pro False: `False`, `f`, `0`."
 
 #: plmanagednode/cog.py:639
 msgid "{Setting} info.\n\n"
 "{info}."
-msgstr ""
+msgstr "{Setting} info.\n\n"
+"{info}."
 
 #: plmanagednode/cog.py:667
 msgid "{Setting} valid inputs are:\n\n"
 "Range between: {start} - {end}."
-msgstr ""
+msgstr "{Setting} platné vstupy jsou:\n\n"
+"Rozsah mezi: {start} - {end}."
 
 #: plmanagednode/cog.py:678
 msgid "{Setting} valid inputs are:\n\n"
 "{setting_list}."
-msgstr ""
+msgstr "{Setting} platné vstupy jsou:\n\n"
+"{setting_list}."
 
 #: plmanagednode/cog.py:696
 msgid "{Setting} set to {value}.\n\n"
 "Restart the bot for it to take effect."
-msgstr ""
+msgstr "{Setting} nastaven na {value}.\n\n"
+"Restartujte bota, aby se projevil."
 
 #: plmanagednode/cog.py:706
 #, docstring
 msgid "Configure Lavalink IP Rotation for ratelimits.\n\n"
 "        if reset is True, remove the ratelimit config.\n"
 "        "
-msgstr ""
+msgstr "Konfigurace rotace Lavalink pro ratelimity.\n\n"
+"        Pokud je obnovení pravda, odeberte konfiguraci ratelimit.\n"
+"        "
 
 #: plmanagednode/cog.py:717
 msgid "Click the button below to configure the IP rotation for your node.\n"
 "More info at: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> and <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
-msgstr ""
+msgstr "Klikněte na tlačítko níže pro nastavení rotace IP pro váš uzel.\n"
+"Více informací v: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> a <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
 
 #: plmanagednode/cog.py:731
 msgid "Removing the IP rotation from your node.\n\n"
 "Restart the bot for it to take effect."
-msgstr ""
+msgstr "Odstranění IP otáčení z vašeho uzlu.\n\n"
+"Restartujte bota, aby se mohl projevit."
 
 #: plmanagednode/cog.py:739
 #, docstring
 msgid "Link a Google account to Lavalink to bypass YouTube's age restriction."
-msgstr ""
+msgstr "Propojte účet Google s Lavalinkem pro obejití věkového omezení YouTube."
 
 #: plmanagednode/cog.py:747
 msgid "Click the button below to link a Google account to your node, if you have 2FA setup on this account you will need an app password instead.\n"
 "More info at: <https://support.google.com/accounts/answer/185833>"
-msgstr ""
+msgstr "Klikněte na tlačítko níže pro propojení účtu Google s vaším uzlem, pokud máte na tomto účtu 2FA nastavení, budete potřebovat místo toho heslo aplikace.\n"
+"Více informací v: <https://support.google.com/accounts/answer/185833>"
 
 #: plmanagednode/cog.py:765
 msgid "Unlinking Google account from your node.\n\n"
 "Restart the bot for it to take effect."
-msgstr ""
+msgstr "Odpojování účtu Google od vašeho uzlu.\n\n"
+"Restartujte bota, aby se projevil."
 
 #: plmanagednode/cog.py:773
 #, docstring
 msgid "Configure a HTTP proxy for Lavalink."
-msgstr ""
+msgstr "Nastavte HTTP proxy pro Lavalink."
 
 #: plmanagednode/cog.py:781
 msgid "Click the button below to configure a HTTP proxy for your node."
-msgstr ""
+msgstr "Klikněte na tlačítko níže pro nastavení HTTP proxy pro váš uzel."
 
 #: plmanagednode/cog.py:795
 msgid "Unlinking HTTP proxy from your node.\n\n"
 "Restart the bot for it to take effect."
-msgstr ""
+msgstr "Odpojování HTTP proxy od vašeho uzlu.\n\n"
+"Restartujte bota, aby se mohl projevit."
 
 #: plmanagednode/view.py:33 plmanagednode/view.py:60 plmanagednode/view.py:87
 #: plmanagednode/view.py:160 plmanagednode/view.py:313
 #: plmanagednode/view.py:389
 msgid "You are not authorized to interact with this."
-msgstr ""
+msgstr "Nemáte oprávnění komunikovat s tím."
 
 #: plmanagednode/view.py:108
 msgid "IP Rotation Configurator"
-msgstr ""
+msgstr "Konfigurátor rotace IP"
 
 #: plmanagednode/view.py:111
 msgid "IP Blocks"
-msgstr ""
+msgstr "IP bloky"
 
 #: plmanagednode/view.py:114
 msgid "1.0.0.0/8,...,... - Comma separated list of IP blocks"
-msgstr ""
+msgstr "1.0.0.0/8,...,... - čárkou oddělený seznam IP bloků"
 
 #: plmanagednode/view.py:118
 msgid "Rotation strategy"
-msgstr ""
+msgstr "Strategie rotace"
 
 #: plmanagednode/view.py:127
 msgid "Retry limit"
-msgstr ""
+msgstr "Opakovat limit"
 
 #: plmanagednode/view.py:130
 msgid "-1 = default, 0 = infinity, >0 = number of retries"
-msgstr ""
+msgstr "-1 = výchozí hodnota, 0 = nekonečná, >0 = počet opakování"
 
 #: plmanagednode/view.py:135
 msgid "IPs to exclude"
-msgstr ""
+msgstr "IP adresy k vyloučení"
 
 #: plmanagednode/view.py:138
 msgid "Comma separated list of IP to exclude from rotation"
-msgstr ""
+msgstr "Čárkami oddělený seznam IP pro vyloučení z rotace"
 
 #: plmanagednode/view.py:142
 msgid "Search trigger rotation"
-msgstr ""
+msgstr "Otočení spouštěče hledání"
 
 #: plmanagednode/view.py:145
 msgid "0 or 1 (0 = disabled, 1 = enabled)"
-msgstr ""
+msgstr "0 nebo 1 (0 = zakázáno, 1 = povoleno)"
 
 #: plmanagednode/view.py:173
 msgid "Invalid IP block - {error}"
-msgstr ""
+msgstr "Neplatný IP blok - {error}"
 
 #: plmanagednode/view.py:186
 msgid "No IP blocks were provided."
-msgstr ""
+msgstr "Nebyly poskytnuty žádné IP bloky."
 
 #: plmanagednode/view.py:201
 msgid "Invalid IP address - {error}"
-msgstr ""
+msgstr "Neplatná IP adresa - {error}"
 
 #: plmanagednode/view.py:220
 msgid "Invalid strategy, must be one of: {options}"
-msgstr ""
+msgstr "Neplatná strategie, musí být jedna z: {options}"
 
 #: plmanagednode/view.py:236
 msgid "Invalid retry limit, must be a number greater than or equals to -1."
-msgstr ""
+msgstr "Neplatný limit opakování musí být větší nebo roven -1."
 
 #: plmanagednode/view.py:251
 msgid "Invalid search trigger, must be 0 or 1."
-msgstr ""
+msgstr "Neplatný spouštěč vyhledávání, musí být 0 nebo 1."
 
 #: plmanagednode/view.py:269
 msgid "IP rotation configuration saved.\n\n"
 "Restart the bot for it to take effect."
-msgstr ""
+msgstr "Konfigurace rotace IP byla uložena.\n\n"
+"Restartujte bot, aby se mohl projevit."
 
 #: plmanagednode/view.py:286
 msgid "Google Account Configurator"
-msgstr ""
+msgstr "Konfigurátor účtu Google"
 
 #: plmanagednode/view.py:289
 msgid "Email address"
-msgstr ""
+msgstr "E-mailová adresa"
 
 #: plmanagednode/view.py:292
 msgid "Your Google account email"
-msgstr ""
+msgstr "E-mail vašeho účtu Google"
 
 #: plmanagednode/view.py:297
 msgid "password"
-msgstr ""
+msgstr "heslo"
 
 #: plmanagednode/view.py:300
 msgid "If you have 2FA you will need an app password"
-msgstr ""
+msgstr "Pokud máte 2FA, budete potřebovat heslo aplikace"
 
 #: plmanagednode/view.py:321
 msgid "Invalid email address."
-msgstr ""
+msgstr "Neplatná e-mailová adresa."
 
 #: plmanagednode/view.py:332
 msgid "Google account linked.\n\n"
 "Restart the bot for it to take effect."
-msgstr ""
+msgstr "Účet Google je propojen.\n\n"
+"Restartujte bot, aby se mohl projevit."
 
 #: plmanagednode/view.py:349
 msgid "HTTP Proxy Configurator"
-msgstr ""
+msgstr "Konfigurátor HTTP Proxy"
 
 #: plmanagednode/view.py:352
 msgid "Hostname"
-msgstr ""
+msgstr "Hostname"
 
 #: plmanagednode/view.py:355
 msgid "Hostname of the proxy, (ip or domain or localhost)"
-msgstr ""
+msgstr "Název hostitele proxy (IP nebo doména nebo localhost)"
 
 #: plmanagednode/view.py:359
 msgid "Proxy port"
-msgstr ""
+msgstr "Port proxy serveru"
 
 #: plmanagednode/view.py:362
 msgid "Proxy port, 3128 is the default for squidProxy"
-msgstr ""
+msgstr "Proxy port, 3128 je výchozí pro squidProxy"
 
 #: plmanagednode/view.py:368
 msgid "User"
-msgstr ""
+msgstr "Uživatel"
 
 #: plmanagednode/view.py:371
 msgid "Optional user for basic authentication fields, leave blank if you don't use basic auth"
-msgstr ""
+msgstr "Volitelný uživatel pro základní pole ověřování, ponechte prázdné, pokud nepoužíváte základní ověření"
 
 #: plmanagednode/view.py:374
 msgid "Password"
-msgstr ""
+msgstr "Heslo"
 
 #: plmanagednode/view.py:377
 msgid "Optional password for basic authentication fields, leave blank if you don't use basic auth"
-msgstr ""
+msgstr "Volitelné heslo pro základní pole ověření, ponechte prázdné, pokud nepoužíváte základní ověření"
 
 #: plmanagednode/view.py:400
 msgid "Invalid port, must be a number between 0 and 65536."
-msgstr ""
+msgstr "Neplatný přístav musí být číslo mezi 0 a 65536."
 
 #: plmanagednode/view.py:416
 msgid "HTTP proxy configuration saved.\n\n"
 "Restart the bot for it to take effect."
-msgstr ""
+msgstr "Nastavení HTTP proxy bylo uloženo.\n\n"
+"Restartujte bot, aby se mohl projevit."
 

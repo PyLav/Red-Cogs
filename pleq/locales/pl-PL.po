@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
 "POT-Creation-Date: 2022-08-30 19:02+0000\n"
-"PO-Revision-Date: 2022-08-30 19:03\n"
+"PO-Revision-Date: 2022-08-30 19:42\n"
 "Last-Translator: \n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -20,42 +20,42 @@ msgstr ""
 #: pleq/cog.py:29
 #, docstring
 msgid "Apply equalizer presets to the PyLav player."
-msgstr ""
+msgstr "Zastosuj ustawienia korektora do odtwarzacza PyLav."
 
 #: pleq/cog.py:33
 msgid "Apply an Equalizer preset to the player."
-msgstr ""
+msgstr "Zastosuj ustawienie korektora do gracza."
 
 #: pleq/cog.py:46
 #, docstring
 msgid "Configure the Player behaviour when a preset is set."
-msgstr ""
+msgstr "Skonfiguruj zachowanie gracza, gdy ustawienie jest ustawione."
 
 #: pleq/cog.py:50
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies."
-msgstr ""
+msgstr "Pokaż wersję Cog i jego zależności PyLav."
 
 #: pleq/cog.py:63
 msgid "Library/Cog"
-msgstr ""
+msgstr "Biblioteka/Cog"
 
 #: pleq/cog.py:63
 msgid "Version"
-msgstr ""
+msgstr "Wersja"
 
 #: pleq/cog.py:71
 #, docstring
 msgid "Persist the last used preset."
-msgstr ""
+msgstr "Zachowaj ostatnio używane ustawienia."
 
 #: pleq/cog.py:86
 msgid "The player will now apply the last used preset when it is created."
-msgstr ""
+msgstr "Gracz zastosuje ostatnio używane ustawienia po utworzeniu."
 
 #: pleq/cog.py:97
 msgid "Last used preset will no longer be saved."
-msgstr ""
+msgstr "Ostatnio używane ustawienia nie będą już zapisywane."
 
 #: pleq/cog.py:107
 #, docstring
@@ -71,47 +71,58 @@ msgid "Apply a Bass boost preset to the player.\n\n"
 "            - Cut-off\n"
 "            - Off\n"
 "        "
-msgstr ""
+msgstr "Zastosuj ustawienia podbicia basu do gracza.\n\n"
+"        Arguments:\n"
+"            - Maksymalnie\n"
+"            - Insane\n"
+"            - Ekstremalne\n"
+"            - Wysokie\n"
+"            - Bardzo Wysokie\n"
+"            - Średnie\n"
+"            - Poprawione tunele\n"
+"            - Wycięcie\n"
+"            - Wyłączone\n"
+"        "
 
 #: pleq/cog.py:131
 msgid "Bass boost preset has been disabled."
-msgstr ""
+msgstr "Ustawienia podbicia basu zostały wyłączone."
 
 #: pleq/cog.py:138
 msgid "Bass boost - Maximum"
-msgstr ""
+msgstr "Podbicie basu - Maksimum"
 
 #: pleq/cog.py:142
 msgid "Bass boost - Insane"
-msgstr ""
+msgstr "Podbicie basu - Insane"
 
 #: pleq/cog.py:146
 msgid "Bass boost - Extreme"
-msgstr ""
+msgstr "Podbicie basu - Ekstremalne"
 
 #: pleq/cog.py:150
 msgid "Bass boost - Very High"
-msgstr ""
+msgstr "Podbicie basu - Bardzo wysoka"
 
 #: pleq/cog.py:154
 msgid "Bass boost - High"
-msgstr ""
+msgstr "Podbicie basów - Wysokie"
 
 #: pleq/cog.py:158
 msgid "Bass boost - Medium"
-msgstr ""
+msgstr "Podbicie basu - Średni"
 
 #: pleq/cog.py:180
 msgid "Bass boost - Fined Tuned"
-msgstr ""
+msgstr "Podbicie basu - Mocne zaciski"
 
 #: pleq/cog.py:184
 msgid "Bass boost - Cut-off"
-msgstr ""
+msgstr "Podbicie basu - odcięcie"
 
 #: pleq/cog.py:196
 msgid "Preset has been set to {name}."
-msgstr ""
+msgstr "Ustawienie zostało ustawione na {name}."
 
 #: pleq/cog.py:206
 #, docstring
@@ -119,41 +130,46 @@ msgid "Apply a Piano preset to the player.\n\n"
 "        Suitable for acoustic tracks, or tacks with an emphasis on female vocals.\n\n"
 "        Can also be used as a bass cut-off.\n"
 "        "
-msgstr ""
+msgstr "Zastosuj ustawienia Piano do gracza.\n\n"
+"        Struktura danych sd_sd_sd_sd_sd_sd_sd_sd\n\n"
+"        Może być również używany jako bas.\n"
+"        "
 
 #: pleq/cog.py:229
 msgid "Piano"
-msgstr ""
+msgstr "Pianina"
 
 #: pleq/cog.py:242
 msgid "Piano preset has been set."
-msgstr ""
+msgstr "Ustawienia Piano zostały ustawione."
 
 #: pleq/cog.py:252
 #, docstring
 msgid "Apply an experimental Metal/Rock equalizer preset.\n\n"
 "        Expect clipping on songs with heavy bass.\n"
 "        "
-msgstr ""
+msgstr "Zastosuj eksperymentalne ustawienie korektora metalowego/skalistego.\n\n"
+"        Oczekiwane przycinanie na piosenkach z ciężkimi bazy.\n"
+"        "
 
 #: pleq/cog.py:275
 msgid "Metal"
-msgstr ""
+msgstr "Metale"
 
 #: pleq/cog.py:287
 msgid "Rock/Metal preset has been set."
-msgstr ""
+msgstr "Ustawienie Rock/Metal zostało ustawione."
 
 #: pleq/cog.py:297
 #, docstring
 msgid "Remove any equalizer preset from the player."
-msgstr ""
+msgstr "Usuń ustawienie korektora z gracza."
 
 #: pleq/cog.py:309
 msgid "Equalizer preset has been reset."
-msgstr ""
+msgstr "Ustawienie korektora zostało zresetowane."
 
 #: pleq/cog.py:377 pleq/cog.py:395
 msgid "No changes were made to the equalizer, discarding request."
-msgstr ""
+msgstr "Nie wprowadzono żadnych zmian do korektora, wniosek o odrzucenie."
 
