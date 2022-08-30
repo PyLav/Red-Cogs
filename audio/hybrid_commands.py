@@ -13,7 +13,7 @@ from discord.app_commands import Choice
 from expiringdict import ExpiringDict
 from red_commons.logging import getLogger
 from redbot.core import commands
-from redbot.core.i18n import Translator, cog_i18n
+from redbot.core.i18n import Translator
 
 from pylav import Query, Track
 from pylav.query import SEARCH_REGEX
@@ -26,14 +26,11 @@ from pylavcogs_shared.utils.decorators import invoker_is_dj, is_dj_logic, requir
 from pylavcogs_shared.utils.validators import valid_query_attachment
 
 LOGGER = getLogger("red.3pt.PyLavPlayer.commands.hybrids")
-T_ = Translator("PyLavPlayer", Path(__file__))
-_ = lambda s: s
-
+_ = Translator("PyLavPlayer", Path(__file__))
 # taken from https://github.com/Cog-Creators/Red-DiscordBot/blob/ec55622418810731e1ee2ede1569f81f9bddeeec/redbot/cogs/audio/core/utilities/miscellaneous.py#L28
 _RE_TIME_CONVERTER: Final[Pattern] = re.compile(r"(?:(\d+):)?([0-5]?\d):([0-5]\d)")
 
 
-@cog_i18n(T_)
 class HybridCommands(PyLavCogMixin, ABC):
     _track_cache: ExpiringDict
 
@@ -827,6 +824,3 @@ class HybridCommands(PyLavCogMixin, ABC):
             ),
             ephemeral=True,
         )
-
-
-_ = T_
