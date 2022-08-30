@@ -1,7 +1,6 @@
 # Official [PyLav](https://github.com/Drapersniper/Py-Lav) Cogs for [Red-DiscordBot](https://github.com/Cog-Creators/Red-DiscordBot)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/Drapersniper/Audio/master.svg)](https://results.pre-commit.ci/latest/github/Drapersniper/Audio/master)
-[![Crowdin](https://badges.crowdin.net/mediaplayer/localized.svg)](https://crowdin.com/project/mediaplayer)
-[![GitHub license](https://img.shields.io/github/license/Drapersniper/Py-Lav.svg)](https://github.com/Drapersniper/Py-Lav/blob/master/LICENSE)
+[![Crowdin](https://badges.crowdin.net/pylavcogs/localized.svg)](https://crowdin.com/project/pylavcogs)[![GitHub license](https://img.shields.io/github/license/Drapersniper/Py-Lav.svg)](https://github.com/Drapersniper/Py-Lav/blob/master/LICENSE)
 [![Support Server](https://img.shields.io/discord/970987707834720266)](https://discord.com/invite/Sjh2TSCYQB)
 
 About Cogs
@@ -74,13 +73,15 @@ With externally hosted Postgres server and externally hosted lavalink node (Wors
 Translations
 ------------------------------------
 You can help translating the project into your language here:
-
-[![Crowdin](https://badges.crowdin.net/mediaplayer/localized.svg)](https://crowdin.com/project/mediaplayer).
+[![Crowdin](https://badges.crowdin.net/pylav/localized.svg)](https://crowdin.com/project/pylav)
 
 Shared code translations can be found here:
 
-[![Crowdin](https://badges.crowdin.net/pylavshared/localized.svg)](https://crowdin.com/project/pylavshared)
+[![Crowdin](https://badges.crowdin.net/pylavcogs-shared/localized.svg)](https://crowdin.com/project/pylavcogs-shared)
 
-------------------------------------
+PyLav translations can be found here:
+
+[![Crowdin](https://badges.crowdin.net/pylavcogs/localized.svg)](https://crowdin.com/project/pylavcogs)
+------------------------------
 
 ## Join our support server [![Support Server](https://img.shields.io/discord/970987707834720266?style=social)](https://discord.com/invite/Sjh2TSCYQB)

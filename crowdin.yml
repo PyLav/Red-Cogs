@@ -3,5 +3,29 @@ api_token_env: CROWDIN_API_KEY
 base_path: ./
 preserve_hierarchy: true
 files:
--   source: '**/messages.pot'
-    translation: '%original_path%/%locale%.po'
+-   source: audio/**/messages.pot
+    translation: /%original_path%/%locale%.po
+-   source: plconfig/**/messages.pot
+    translation: /%original_path%/%locale%.po
+-   source: pleffects/**/messages.pot
+    translation: /%original_path%/%locale%.po
+-   source: pleq/**/messages.pot
+    translation: /%original_path%/%locale%.po
+-   source: pllocal/**/messages.pot
+    translation: /%original_path%/%locale%.po
+-   source: plmanagednode/**/messages.pot
+    translation: /%original_path%/%locale%.po
+-   source: plmigrator/**/messages.pot
+    translation: /%original_path%/%locale%.po
+-   source: plnodes/**/messages.pot
+    translation: /%original_path%/%locale%.po
+-   source: plnotifier/**/messages.pot
+    translation: /%original_path%/%locale%.po
+-   source: plplaylists/**/messages.pot
+    translation: /%original_path%/%locale%.po
+-   source: plradio/**/messages.pot
+    translation: /%original_path%/%locale%.po
+-   source: plspotify/**/messages.pot
+    translation: /%original_path%/%locale%.po
+-   source: plutils/**/messages.pot
+    translation: /%original_path%/%locale%.po
