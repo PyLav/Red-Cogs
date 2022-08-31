@@ -4,6 +4,7 @@ from functools import partial
 from pathlib import Path
 from typing import Optional
 
+import asyncstdlib
 import discord
 from discord import app_commands
 from discord.app_commands import Choice
@@ -184,11 +185,11 @@ class PyLavLocalFiles(commands.Cog):
         is_dj = await is_dj_logic(interaction)
         if not is_dj:
             return []
-        async for md5, folder in AsyncIter(self._localtrack_entries.items()).filter(
-            lambda x: current.lower() in f"{getattr(x[1]._query, 'path', x[1]._query)}".lower()
-        ):
+        async for md5, query in AsyncIter(
+            await asyncstdlib.sorted(self._localtrack_entries.items(), key=lambda x: str(x[1]._query).lower())
+        ).filter(lambda x: current.lower() in f"{getattr(x[1]._query, 'path', x[1]._query)}".lower()):
             choice = Choice(
-                name=await folder.query_to_string(max_length=99),
+                name=await query.query_to_string(max_length=99, ellipsis=True),
                 value=md5,
             )
             entries.append(choice)
