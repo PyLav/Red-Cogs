@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2022-08-30 19:02+0000\n"
-"PO-Revision-Date: 2022-08-31 11:31\n"
+"POT-Creation-Date: 2022-08-31 13:15+0000\n"
+"PO-Revision-Date: 2022-08-31 13:20\n"
 "Last-Translator: \n"
 "Language-Team: Greek\n"
 "MIME-Version: 1.0\n"
@@ -19,18 +19,18 @@ msgstr ""
 
 #: plnodes/cog.py:32
 #, docstring
-msgid "Manage the nodes used by PyLav."
-msgstr "Διαχείριση των κόμβων που χρησιμοποιούνται από την PyLav."
+msgid "Manage the nodes used by PyLav"
+msgstr ""
 
 #: plnodes/cog.py:43
 #, docstring
-msgid "Configure PyLav Nodes."
-msgstr "Ρύθμιση Κόμβων PyLav."
+msgid "Configure PyLav Nodes"
+msgstr ""
 
 #: plnodes/cog.py:47
 #, docstring
-msgid "Show the version of the Cog and it's PyLav dependencies."
-msgstr "Εμφάνιση της έκδοσης του Cog και είναι PyLav εξαρτήσεις."
+msgid "Show the version of the Cog and it's PyLav dependencies"
+msgstr ""
 
 #: plnodes/cog.py:60
 msgid "Library/Cog"
@@ -42,8 +42,8 @@ msgstr "Έκδοση"
 
 #: plnodes/cog.py:68
 #, docstring
-msgid "Add a node PyLav."
-msgstr "Προσθήκη ενός κόμβου PyLav."
+msgid "Add a node PyLav"
+msgstr ""
 
 #: plnodes/cog.py:78
 msgid "Let's add a node to PyLav!"
@@ -73,14 +73,29 @@ msgstr "(**1**){space} - Εφαρμογή αλλαγών και προσθήκη
 "(**10**) - Επιλέξτε ποιες πηγές θα απενεργοποιήσετε για αυτόν τον κόμβο (μπορεί να επιλεγεί πολλαπλάσιο).\n"
 "Εάν αλληλεπιδράσετε με ένα κουμπί πολλές φορές, μόνο η τελευταία αλληλεπίδραση θα τεθεί σε ισχύ.\n\n\n"
 
+#: plnodes/cog.py:128
+msgid "Added node {name} with the following settings:\n"
+"Host: {host}\n"
+"Port: {port}\n"
+"Password: {password}\n"
+"Resume Timeout: {resume_timeout}\n"
+"Search Only: {search_only}\n"
+"SSL: {ssl}\n"
+"Disabled Sources: {disabled_sources}\n"
+msgstr ""
+
+#: plnodes/cog.py:159 plnodes/cog.py:166
+msgid "Unable to add this node"
+msgstr ""
+
 #: plnodes/cog.py:172
 #, docstring
-msgid "Remove a node from PyLav instance."
-msgstr "Αφαίρεση ενός κόμβου από το παράδειγμα PyLav."
+msgid "Remove a node from PyLav instance"
+msgstr ""
 
 #: plnodes/cog.py:184
-msgid "{name} is managed by PyLav and cannot be removed."
-msgstr "{name} διαχειρίζεται η PyLav και δεν μπορεί να αφαιρεθεί."
+msgid "{name} is managed by PyLav and cannot be removed"
+msgstr ""
 
 #: plnodes/cog.py:199
 msgid "Removed node {name}.\n\n"
@@ -89,13 +104,13 @@ msgstr "Αφαιρέθηκε κόμβος {name}.\n\n"
 "{data}"
 
 #: plnodes/cog.py:207
-msgid "Removed node {name}, a DM was sent to you with the node details in case you wish to re-add it."
-msgstr "Αφαιρέθηκε ο κόμβος {name}, ένα DM σας στάλθηκε με τις λεπτομέρειες του κόμβου σε περίπτωση που θέλετε να τον επαναπροσθέσετε."
+msgid "Removed node {name}, a DM was sent to you with the node details in case you wish to re-add it"
+msgstr ""
 
 #: plnodes/cog.py:217
 #, docstring
-msgid "Manage all nodes in PyLav instance."
-msgstr "Διαχείριση όλων των κόμβων σε PyLav instance."
+msgid "Manage all nodes in PyLav instance"
+msgstr ""
 
 #: plnodes/cog.py:229
 msgid "Let's manage some nodes!"
@@ -130,19 +145,30 @@ msgstr "(**1**){space} - Ακύρωση τυχόν αλλαγών που έγι�
 "Εάν αλληλεπιδράσετε με ένα κουμπί πολλές φορές, μόνο η τελευταία αλληλεπίδραση θα τεθεί σε ισχύ.\n\n\n"
 
 #: plnodes/cog.py:261
-msgid "{name} is managed by PyLav and cannot be modified with this command."
-msgstr "Η διαχείριση του {name} γίνεται από την PyLav και δεν μπορεί να τροποποιηθεί με αυτή την εντολή."
+msgid "{name} is managed by PyLav and cannot be modified with this command"
+msgstr ""
 
 #: plnodes/cog.py:273
-msgid "Removed node {name}."
-msgstr "Αφαιρέθηκε κόμβος {name}."
+msgid "Removed node {name}"
+msgstr ""
+
+#: plnodes/cog.py:306
+msgid "Changed node {name} to the following settings:\n"
+"Host: {host}\n"
+"Port: {port}\n"
+"Password: {password}\n"
+"Resume Timeout: {resume_timeout}\n"
+"Search Only: {search_only}\n"
+"SSL: {ssl}\n"
+"Disabled Sources: {disabled_sources}\n"
+msgstr ""
 
 #: plnodes/cog.py:333
 #, docstring
-msgid "List all nodes used by PyLav."
-msgstr "Λίστα όλων των κόμβων που χρησιμοποιούνται από την PyLav."
+msgid "List all nodes used by PyLav"
+msgstr ""
 
 #: plnodes/cog.py:343
-msgid "No Nodes added to PyLav."
-msgstr "Δεν προστέθηκαν κόμβοι στο PyLav."
+msgid "No Nodes added to PyLav"
+msgstr ""
 
