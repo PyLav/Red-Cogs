@@ -26,6 +26,14 @@ LOGGER = getLogger("red.3pt.PyLavLocalFiles")
 _ = Translator("PyLavLocalFiles", Path(__file__))
 
 
+def cache_filled(interaction: InteractionT) -> bool:
+    if not interaction.response.is_done():
+        await interaction.response.defer(ephemeral=True)
+    context = await interaction.client.get_context(interaction)
+    cog: PyLavLocalFiles = context.bot.get_cog("PyLavLocalFiles")  # type: ignore
+    return bool(cog.ready_event.is_set())
+
+
 @cog_i18n(_)
 class PyLavLocalFiles(commands.Cog):
     """Play local files and folders from the owner configured location"""
@@ -108,6 +116,7 @@ class PyLavLocalFiles(commands.Cog):
         recursive=_("If entry is a folder, play everything inside of it recursively"),
     )
     @app_commands.guild_only()
+    @app_commands.check(cache_filled)
     async def slash_local(
         self,
         interaction: InteractionT,

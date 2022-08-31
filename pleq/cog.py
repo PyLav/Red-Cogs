@@ -102,8 +102,8 @@ class PyLavEqualizer(commands.Cog):
     @slash_eq.command(name="bassboost")
     @app_commands.describe(level=_("The bass boost level to apply"))
     @app_commands.guild_only()
-    @requires_player()
-    @invoker_is_dj()
+    @requires_player(slash=True)
+    @invoker_is_dj(slash=True)
     async def slash_eq_bassboost(self, interaction: InteractionT, level: BassBoostConverter) -> None:
         """Apply a Bass boost preset to the player.
 
@@ -201,8 +201,8 @@ class PyLavEqualizer(commands.Cog):
 
     @slash_eq.command(name="piano")
     @app_commands.guild_only()
-    @requires_player()
-    @invoker_is_dj()
+    @requires_player(slash=True)
+    @invoker_is_dj(slash=True)
     async def slash_eq_piano(self, interaction: InteractionT) -> None:
         """Apply a Piano preset to the player.
 
@@ -247,8 +247,8 @@ class PyLavEqualizer(commands.Cog):
 
     @slash_eq.command(name="rock")
     @app_commands.guild_only()
-    @requires_player()
-    @invoker_is_dj()
+    @requires_player(slash=True)
+    @invoker_is_dj(slash=True)
     async def slash_eq_rock(self, interaction: InteractionT) -> None:
         """Apply an experimental Metal/Rock equalizer preset.
 
@@ -292,8 +292,8 @@ class PyLavEqualizer(commands.Cog):
 
     @slash_eq.command(name="reset")
     @app_commands.guild_only()
-    @requires_player()
-    @invoker_is_dj()
+    @requires_player(slash=True)
+    @invoker_is_dj(slash=True)
     async def slash_eq_remove(self, interaction: InteractionT) -> None:
         """Remove any equalizer preset from the player"""
         if not interaction.response.is_done():
@@ -334,8 +334,8 @@ class PyLavEqualizer(commands.Cog):
         save=_("Should the equalizer you specified be saved?"),
     )
     @app_commands.guild_only()
-    @requires_player()
-    @invoker_is_dj()
+    @requires_player(slash=True)
+    @invoker_is_dj(slash=True)
     async def slash_eq_custom(
         self,
         interaction: InteractionT,
@@ -406,8 +406,8 @@ class PyLavEqualizer(commands.Cog):
         description=_("A brief description of the equalizer"),
     )
     @app_commands.guild_only()
-    @requires_player()
-    @invoker_is_dj()
+    @requires_player(slash=True)
+    @invoker_is_dj(slash=True)
     async def slash_eq_save(self, interaction: InteractionT, name: str, description: str = None):
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)

@@ -65,8 +65,8 @@ class PyLavEffects(commands.Cog):
 
     @slash_fx.command(name="nightcore", description=_("Apply a Nightcore preset to the player"))
     @app_commands.guild_only()
-    @requires_player()
-    @invoker_is_dj()
+    @requires_player(slash=True)
+    @invoker_is_dj(slash=True)
     async def slash_fx_nightcore(self, interaction: InteractionT) -> None:
         """Apply a Nightcore filter to the player"""
 
@@ -100,8 +100,8 @@ class PyLavEffects(commands.Cog):
         reset=_("Reset any existing effects currently applied to the player"),
     )
     @app_commands.guild_only()
-    @requires_player()
-    @invoker_is_dj()
+    @requires_player(slash=True)
+    @invoker_is_dj(slash=True)
     async def slash_fx_vibrato(
         self,
         interaction: InteractionT,
@@ -137,8 +137,8 @@ class PyLavEffects(commands.Cog):
         reset=_("Reset any existing effects currently applied to the player"),
     )
     @app_commands.guild_only()
-    @requires_player()
-    @invoker_is_dj()
+    @requires_player(slash=True)
+    @invoker_is_dj(slash=True)
     async def slash_fx_tremolo(
         self,
         interaction: InteractionT,
@@ -175,8 +175,8 @@ class PyLavEffects(commands.Cog):
         reset=_("Reset any existing effects currently applied to the player"),
     )
     @app_commands.guild_only()
-    @requires_player()
-    @invoker_is_dj()
+    @requires_player(slash=True)
+    @invoker_is_dj(slash=True)
     async def slash_fx_timescale(
         self,
         interaction: InteractionT,
@@ -213,8 +213,8 @@ class PyLavEffects(commands.Cog):
         hertz=_("The rotation hertz frequency"), reset=_("Reset any existing effects currently applied to the player")
     )
     @app_commands.guild_only()
-    @requires_player()
-    @invoker_is_dj()
+    @requires_player(slash=True)
+    @invoker_is_dj(slash=True)
     async def slash_fx_rotation(
         self, interaction: InteractionT, hertz: Range[float, 0.0, None] = None, reset: bool = False
     ) -> None:
@@ -243,8 +243,8 @@ class PyLavEffects(commands.Cog):
         reset=_("Reset any existing effects currently applied to the player"),
     )
     @app_commands.guild_only()
-    @requires_player()
-    @invoker_is_dj()
+    @requires_player(slash=True)
+    @invoker_is_dj(slash=True)
     async def slash_fx_lowpass(
         self, interaction: InteractionT, smoothing: Range[float, 0.0, None] = None, reset: bool = False
     ) -> None:
@@ -276,8 +276,8 @@ class PyLavEffects(commands.Cog):
         reset=_("Reset any existing effects currently applied to the player"),
     )
     @app_commands.guild_only()
-    @requires_player()
-    @invoker_is_dj()
+    @requires_player(slash=True)
+    @invoker_is_dj(slash=True)
     async def slash_fx_karaoke(
         self,
         interaction: InteractionT,
@@ -321,8 +321,8 @@ class PyLavEffects(commands.Cog):
         reset=_("Reset any existing effects currently applied to the player"),
     )
     @app_commands.guild_only()
-    @requires_player()
-    @invoker_is_dj()
+    @requires_player(slash=True)
+    @invoker_is_dj(slash=True)
     async def slash_fx_channelmix(
         self,
         interaction: InteractionT,
@@ -372,8 +372,8 @@ class PyLavEffects(commands.Cog):
         reset=_("Reset any existing effects currently applied to the player"),
     )
     @app_commands.guild_only()
-    @requires_player()
-    @invoker_is_dj()
+    @requires_player(slash=True)
+    @invoker_is_dj(slash=True)
     async def slash_fx_distortion(
         self,
         interaction: InteractionT,
@@ -424,8 +424,7 @@ class PyLavEffects(commands.Cog):
 
     @slash_fx.command(name="show", description=_("Show the current filters applied to the player"))
     @app_commands.guild_only()
-    @requires_player()
-    @invoker_is_dj()
+    @requires_player(slash=True)
     async def slash_fx_show(self, interaction: InteractionT) -> None:
         """Show the current filters applied to the player"""
         if not interaction.response.is_done():
@@ -471,8 +470,8 @@ class PyLavEffects(commands.Cog):
 
     @slash_fx.command(name="reset", description=_("Reset any existing filters currently applied to the player"))
     @app_commands.guild_only()
-    @requires_player()
-    @invoker_is_dj()
+    @requires_player(slash=True)
+    @invoker_is_dj(slash=True)
     async def slash_fx_reset(self, interaction: InteractionT) -> None:
         """Reset any existing filters currently applied to the player"""
         if not interaction.response.is_done():

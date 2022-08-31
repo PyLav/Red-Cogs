@@ -4,7 +4,7 @@ from abc import ABC
 from functools import partial
 from pathlib import Path
 from re import Pattern
-from typing import Final, Optional
+from typing import Final, Literal, Optional
 
 import asyncstdlib
 import discord
@@ -172,27 +172,21 @@ class HybridCommands(PyLavCogMixin, ABC):
             )
 
     @app_commands.command(name="search", description=_("Search for a track then play the selected response"))
-    @app_commands.describe(query=_("The query to search for search query"))
+    @app_commands.describe(source=_("Where to search in"), query=_("The query to search for search query"))
     @app_commands.guild_only()
-    async def slash_search(self, interaction: InteractionT, *, query: str):
-        """Search for a track then play the selected response.
-
-        If a prefix is not used it will default to search on YouTube Music.
-
-        You can search specify services by using the following prefixes (dependant on service availability):
-        `ytmsearch:` - Will search YouTube Music
-        `spsearch:` - Will search Spotify
-        `amsearch:` - Will search Apple Music
-        `scsearch:` - Will search SoundCloud
-        `ytsearch:` - Will search YouTube
-
-        You can trigger text-to-speech by using the following prefixes (dependant on service availability):
-        `speak:` - The bot will speak the query  (limited to 200 characters)
-        `tts://` - The bot will speak the query
-        """
+    @invoker_is_dj(slash=True)
+    async def slash_search(
+        self,
+        interaction: InteractionT,
+        query: str,
+        source: Literal["YouTube Music", "Spotify", "Apple Music", "SoundCloud", "YouTube"] = None,
+    ):
+        """Search for a track then play the selected response"""
+        if not interaction.response.is_done():
+            await interaction.response.defer(ephemeral=True)
         is_dj = await is_dj_logic(interaction)
         if not is_dj:
-            await interaction.followup.send(
+            return await interaction.followup.send(
                 embed=await self.lavalink.construct_embed(
                     description=_("You need to be a DJ to play tracks"),
                     messageable=interaction,
@@ -200,23 +194,52 @@ class HybridCommands(PyLavCogMixin, ABC):
                 ephemeral=True,
                 wait=True,
             )
-            return
-        if query == "000":
-            raise commands.BadArgument(_("You haven't select something to play"))
+        if query == "FqgqQW21tQ@#1g2fasf2":
+            return await interaction.followup.send(
+                embed=await self.lavalink.construct_embed(
+                    description=_("You haven't select something to play"),
+                    messageable=interaction,
+                ),
+                ephemeral=True,
+            )
         _track = self._track_cache.get(query)
         track = query if _track is None else await _track.query_identifier()
         await self.command_play.callback(self, interaction, query=track)
 
     @slash_search.autocomplete("query")
     async def slash_search_autocomplete_query(self, interaction: InteractionT, current: str):
+        if not interaction.response.is_done():
+            await interaction.response.defer(ephemeral=True)
+        data = interaction.data
+        prefix_mapping = {
+            "YouTube Music": "ytmsearch:",
+            "Spotify": "spsearch:",
+            "Apple Music": "amsearch:",
+            "SoundCloud": "scsearch:",
+            "YouTube": "ytsearch:",
+        }
+        inv_map = {v: k for k, v in prefix_mapping.items()}
+        if options := data.get("options", []):
+            value_list = [v for v in options if v.get("name") == "source"]
+            if value_list and (value := value_list[0].get("value")):
+                prefix = prefix_mapping.get(value, "ytmsearch:")
+            else:
+                prefix = "ytmsearch:"
+        else:
+            prefix = "ytmsearch:"
         is_dj = await is_dj_logic(interaction)
         if not is_dj:
             return []
+        match = SEARCH_REGEX.match(current)
+        service = match.group("search_source") if match else None
+        if not service:
+            current = prefix + current
+
         if not (match := SEARCH_REGEX.match(current)) or not match.group("search_query"):
             return [
                 Choice(
-                    name=_("Search must start with ytmsearch:, spsearch:, amsearch:, scsearch:, ytsearch:"),
-                    value="000",
+                    name=_("Searching {service}").format(service=inv_map.get(prefix, "YouTube Music")),
+                    value="FqgqQW21tQ@#1g2fasf2",
                 )
             ]
         tracks = await interaction.client.lavalink.get_tracks(
@@ -227,16 +250,16 @@ class HybridCommands(PyLavCogMixin, ABC):
         if not tracks:
             return [
                 Choice(
-                    name="No results found",
-                    value="000",
+                    name=_("No results found on {service}").format(service=inv_map.get(prefix, "YouTube Music")),
+                    value="FqgqQW21tQ@#1g2fasf2",
                 )
             ]
         tracks = tracks["tracks"][:25]
         if not tracks:
             return [
                 Choice(
-                    name="No results found",
-                    value="000",
+                    name=_("No results found on {service}").format(service=inv_map.get(prefix, "YouTube Music")),
+                    value="FqgqQW21tQ@#1g2fasf2",
                 )
             ]
         choices = []

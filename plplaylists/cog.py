@@ -77,7 +77,6 @@ class PyLavPlaylists(
 
     @slash_playlist.command(name="version")
     @app_commands.guild_only()
-    @invoker_is_dj()
     async def slash_playlist_version(self, interaction: InteractionT) -> None:
         """Show the version of the Cog and it's PyLav dependencies"""
         if not interaction.response.is_done():
@@ -103,7 +102,6 @@ class PyLavPlaylists(
         name=_("The name of the playlist"),
     )
     @app_commands.guild_only()
-    @invoker_is_dj()
     async def slash_playlist_create(
         self, interaction: InteractionT, url: QueryPlaylistConverter = None, *, name: str = None
     ):
@@ -166,7 +164,6 @@ class PyLavPlaylists(
 
     @slash_playlist.command(name="list", description=_("List all playlists you have access to on the invoked context"))
     @app_commands.guild_only()
-    @invoker_is_dj()
     async def slash_playlist_list(self, interaction: InteractionT):
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
@@ -494,7 +491,7 @@ class PyLavPlaylists(
     )
     @app_commands.describe(playlist=_("The playlist to enqueue"))
     @app_commands.guild_only()
-    @invoker_is_dj()
+    @invoker_is_dj(slash=True)
     async def slash_playlist_play(self, interaction: InteractionT, playlist: PlaylistConverter):
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
@@ -580,9 +577,9 @@ class PyLavPlaylists(
         ).start(context)
 
     @slash_playlist.command(name="save", description=_("Add the currently player queue to a playlist"))
-    @app_commands.describe(playlist=_("The playlist append the queue to"))
+    @app_commands.describe(playlist=_("The playlist to append the queue to"))
     @app_commands.guild_only()
-    @requires_player()
+    @requires_player(slash=True)
     async def slash_playlist_save(self, interaction: InteractionT, playlist: PlaylistConverter):
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
@@ -662,7 +659,7 @@ class PyLavPlaylists(
         url=_("The URL of the playlist to upload"),
     )
     @app_commands.guild_only()
-    @invoker_is_dj()
+    @invoker_is_dj(slash=True)
     async def slash_playlist_upload(self, interaction: InteractionT, url: str = None):
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
