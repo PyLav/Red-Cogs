@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
 "POT-Creation-Date: 2022-08-31 13:15+0000\n"
-"PO-Revision-Date: 2022-08-31 13:20\n"
+"PO-Revision-Date: 2022-08-31 14:14\n"
 "Last-Translator: \n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -20,12 +20,12 @@ msgstr ""
 #: plmanagednode/cog.py:39 plmanagednode/cog.py:51
 #, docstring
 msgid "Configure the managed Lavalink node used by PyLav"
-msgstr ""
+msgstr "Konfigurera den hanterade Lavalink-noden som används av PyLav"
 
 #: plmanagednode/cog.py:55
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies"
-msgstr ""
+msgstr "Visa versionen av Cog och dess PyLav beroenden"
 
 #: plmanagednode/cog.py:68
 msgid "Library/Cog"
@@ -38,15 +38,15 @@ msgstr "Version"
 #: plmanagednode/cog.py:76
 #, docstring
 msgid "Restart the managed Lavalink node"
-msgstr ""
+msgstr "Starta om den hanterade Lavalink-noden"
 
 #: plmanagednode/cog.py:85
 msgid "The managed node is not enabled, run `[p]{command}` to first enable the managed node"
-msgstr ""
+msgstr "Den hanterade noden är inte aktiverad, kör `[p]{command}` för att först aktivera den hanterade noden"
 
 #: plmanagednode/cog.py:137
 msgid "Restarted the managed Lavalink node"
-msgstr ""
+msgstr "Starta om den hanterade Lavalink-noden"
 
 #: plmanagednode/cog.py:145
 #, docstring
@@ -61,20 +61,21 @@ msgstr "Set the java executable for PyLav.\n\n"
 
 #: plmanagednode/cog.py:162
 msgid "{java} does not exist, run the command again with the java argument set to the correct path"
-msgstr ""
+msgstr "{java} finns inte, kör kommandot igen med java-argumentet inställt på rätt sökväg"
 
 #: plmanagednode/cog.py:179
 msgid "{java} is not an executable file"
-msgstr ""
+msgstr "{java} är inte en körbar fil"
 
 #: plmanagednode/cog.py:191
 msgid "{java} is not an executable, run the command again with the java argument set to the correct path"
-msgstr ""
+msgstr "{java} är inte en körbar, kör kommandot igen med java-argumentet inställt på rätt sökväg"
 
 #: plmanagednode/cog.py:209
 msgid "PyLav's java executable has been set to {java}\n\n"
 "Restart the bot for it to take effect"
-msgstr ""
+msgstr "PyLavs java körbar har satts till {java}\n\n"
+"Starta om botten för att den ska träda i kraft"
 
 #: plmanagednode/cog.py:221
 #, docstring
@@ -88,12 +89,14 @@ msgstr "Växla den hanterade noden på/av.\n\n"
 #: plmanagednode/cog.py:236
 msgid "PyLav's managed node has been enabled.\n\n"
 "Restart the bot for it to take effect"
-msgstr ""
+msgstr "PyLavs hanterade nod har aktiverats.\n\n"
+"Starta om botten för att den ska träda i kraft"
 
 #: plmanagednode/cog.py:244
 msgid "PyLav's managed node has been disabled.\n\n"
 "Restart the bot for it to take effect"
-msgstr ""
+msgstr "PyLavs hanterade nod har inaktiverats.\n\n"
+"Starta om boten för att den ska träda i kraft"
 
 #: plmanagednode/cog.py:252
 #, docstring
@@ -107,12 +110,14 @@ msgstr "Växla den hanterade noden automatisk uppdateringar på/av.\n\n"
 #: plmanagednode/cog.py:267
 msgid "PyLav's managed node auto updates have been enabled\n\n"
 "Restart the bot for it to take effect"
-msgstr ""
+msgstr "PyLavs hanterade noduppdateringar har aktiverats\n\n"
+"Starta om botten för att den ska träda i kraft"
 
 #: plmanagednode/cog.py:278
 msgid "PyLav's managed node auto updates have been disabled\n\n"
 "Restart the bot for it to take effect"
-msgstr ""
+msgstr "PyLavs hanterade noduppdateringar har inaktiverats\n\n"
+"Starta om boten för att den ska träda i kraft"
 
 #: plmanagednode/cog.py:289
 #, docstring
@@ -135,35 +140,37 @@ msgstr "Heap-size måste vara ett giltigt mått av storlek, t.ex. 256M, 256G"
 
 #: plmanagednode/cog.py:317
 msgid "Heap-size must be at least 64M, however it is recommended to have it set to at least 1G"
-msgstr ""
+msgstr "Heap-size måste vara minst 64M, men det rekommenderas att ha den inställd på minst 1G"
 
 #: plmanagednode/cog.py:329
 msgid "Heap-size must be less than your system RAM, You currently have {ram_in_bytes} of RAM available"
-msgstr ""
+msgstr "Heap-size måste vara mindre än ditt system-RAM, du har för närvarande {ram_in_bytes} RAM tillgängligt"
 
 #: plmanagednode/cog.py:341
 msgid "Heap-size must be less than {limit} due to your system limitations"
-msgstr ""
+msgstr "Heap-size måste vara mindre än {limit} på grund av dina systembegränsningar"
 
 #: plmanagednode/cog.py:358
 msgid "Managed node's heap-size set to {bytes}.\n\n"
 "Restart the bot for it to take effect"
-msgstr ""
+msgstr "Hanterade nodens heap-size inställd på {bytes}.\n\n"
+"Starta om boten för att den ska träda i kraft"
 
 #: plmanagednode/cog.py:368
 #, docstring
 msgid "Change the managed node start up configs"
-msgstr ""
+msgstr "Ändra den hanterade noden starta konfigurationer"
 
 #: plmanagednode/cog.py:372
 #, docstring
 msgid "Set the managed node host"
-msgstr ""
+msgstr "Ställ in den hanterade noden värd"
 
 #: plmanagednode/cog.py:381
 msgid "Managed node's host set to {host}.\n\n"
 "Restart the bot for it to take effect"
-msgstr ""
+msgstr "Hanterade nodens värd satt till {host}.\n\n"
+"Starta om botten för att den ska träda i kraft"
 
 #: plmanagednode/cog.py:391
 #, docstring
@@ -180,22 +187,23 @@ msgstr "`Farligt kommando` Ange den hanterade Lavalinknodens anslutningsport.\n\
 
 #: plmanagednode/cog.py:402
 msgid "The port must be between 1024 and 49151"
-msgstr ""
+msgstr "Hamnen måste vara mellan 1024 och 49151"
 
 #: plmanagednode/cog.py:412
 msgid "Managed node's port set to {port}.\n\n"
 "Restart the bot for it to take effect"
-msgstr ""
+msgstr "Hanterade nodens port satt till {port}.\n\n"
+"Starta om boten för att den ska träda i kraft"
 
 #: plmanagednode/cog.py:422
 #, docstring
 msgid "Change the managed node plugins"
-msgstr ""
+msgstr "Ändra hanterade insticksprogram för noden"
 
 #: plmanagednode/cog.py:426
 #, docstring
 msgid "Update the managed node plugins"
-msgstr ""
+msgstr "Uppdatera hanterade nodplugins"
 
 #: plmanagednode/cog.py:475
 msgid "{name} was updated from {old_value} to {new_value}\n"
@@ -205,25 +213,28 @@ msgstr "{name} uppdaterades från {old_value} till {new_value}\n"
 msgid "Managed node's plugins updated.\n\n"
 "{updates}\n\n"
 "Restart the bot for it to take effect"
-msgstr ""
+msgstr "Hanterade nodens plugins uppdaterade.\n\n"
+"{updates}\n\n"
+"Starta om boten för att den ska träda i kraft"
 
 #: plmanagednode/cog.py:493
 msgid "Managed node's plugins already up to date"
-msgstr ""
+msgstr "Insticksprogram för hanterade noder redan uppdaterade"
 
 #: plmanagednode/cog.py:501
 #, docstring
 msgid "Toggle the managed node sources"
-msgstr ""
+msgstr "Växla hanterade nodkällor"
 
 #: plmanagednode/cog.py:515
 msgid "Invalid source, {valid_list} are valid sources"
-msgstr ""
+msgstr "Ogiltig källa, {valid_list} är giltiga källor"
 
 #: plmanagednode/cog.py:531
 msgid "Managed node's source set to {source}.\n\n"
 "Restart the bot for it to take effect"
-msgstr ""
+msgstr "Hanterade nodens källa satt till {source}.\n\n"
+"Starta om boten för att den ska träda i kraft"
 
 #: plmanagednode/cog.py:541
 #, docstring
@@ -259,67 +270,72 @@ msgstr "Konfigurera flera inställningar för den hanterade noden.\n\n"
 #: plmanagednode/cog.py:581
 msgid "{Setting} is not a valid Setting; Options are: \n\n"
 "{setting_list}"
-msgstr ""
+msgstr "{Setting} är inte en giltig inställning; Alternativ är: \n\n"
+"{setting_list}"
 
 #: plmanagednode/cog.py:592
 msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses. Minimum of 40ms, lower values may introduce pauses. Accepted values: Range: 40 - 2,000"
-msgstr ""
+msgstr "Varaktigheten av NAS-bufferten i millisekunder. Högre värden klarar sig bättre mot längre GC-pauser. Minimum 40ms, lägre värden kan införa pauser. Accepterade värden: Intervall: 40 - 2000"
 
 #: plmanagednode/cog.py:597
 msgid "How many milliseconds of audio to keep buffered. Accepted values: Range: 1,000 - 10,000"
-msgstr ""
+msgstr "Hur många millisekunder ljud för att hålla buffrad. Accepterade värden: intervall: 1.00-10.000"
 
 #: plmanagednode/cog.py:600
 msgid "The threshold in milliseconds for how long a track can be stuck. A track is stuck if does not return any audio data. Accepted values: Range: 5,000 - 20,000"
-msgstr ""
+msgstr "Tröskeln i millisekunder för hur länge ett spår kan fastna. Ett spår har fastnat om inte returnera någon ljuddata. Accepterade värden: intervall: 5.000 - 20.000"
 
 #: plmanagednode/cog.py:604
 msgid "Number of pages to return for a YouTube Playlist - Each page contains 100 songs. Accepted values: Range: 5 - 100"
-msgstr ""
+msgstr "Antal sidor att återvända för en YouTube Spellista - Varje sida innehåller 100 låtar. Accepterade värden: Intervall: 5 - 100"
 
 #: plmanagednode/cog.py:608
 msgid "Opus encoder quality. Valid values range from 0 to 10, where 10 is best quality but is the most expensive on the CPU"
-msgstr ""
+msgstr "Opus kodarens kvalitet. Giltiga värden varierar från 0 till 10, där 10 är den bästa kvaliteten men är den dyraste på CPU"
 
 #: plmanagednode/cog.py:612
 msgid "Quality of resampling operations. Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU"
-msgstr ""
+msgstr "Kvaliteten på omsamplingsverksamheten. Giltiga värden är LOW, MEDIUM och HIGH, där HIGH använder mest CPU"
 
 #: plmanagednode/cog.py:616
 msgid "Seek ghosting is the effect where whilst a seek is in progress, the audio buffer is read from until empty, or until seek is ready. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
-msgstr ""
+msgstr "Sök spöke är effekten där medan en sökning pågår, ljudbufferten läses från tills tom, eller tills sökandet är klar. Godkända värden för True: `True`, `t`, `1`, Godkända värden för False: `False`, `f`, `0`"
 
 #: plmanagednode/cog.py:621
 msgid "How frequently in seconds to send player updates to clients, affects the current position accuracy. Accepted values: Range: 1 - 10"
-msgstr ""
+msgstr "Hur ofta i sekunder för att skicka spelaruppdateringar till kunder, påverkar nuvarande position noggrannhet. Accepterade värden: Intervall: 1 - 10"
 
 #: plmanagednode/cog.py:625
 msgid "Enable or disable YouTube searches within the node, this will affect AppleMusic, Spotify and any functionality dependant on YouTube. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
-msgstr ""
+msgstr "Aktivera eller inaktivera YouTube-sökningar inom noden, detta påverkar AppleMusic, Spotify och alla funktioner som är beroende av YouTube. Godkända värden för True: `True`, `t`, `1`, Godkända värden för False: `False`, `f`, `0`"
 
 #: plmanagednode/cog.py:630
 msgid "Enable or disable SoundCloud searches within the node, this will affect any functionality dependant on SoundCloud. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
-msgstr ""
+msgstr "Aktivera eller inaktivera SoundCloud sökningar inom noden, detta kommer att påverka alla funktioner som är beroende av SoundCloud. Godkända värden för True: `True`, `t`, `1`, Godkända värden för False: `False`, `f`, `0`"
 
 #: plmanagednode/cog.py:639
 msgid "{Setting} info.\n\n"
 "{info}"
-msgstr ""
+msgstr "{Setting} info.\n\n"
+"{info}"
 
 #: plmanagednode/cog.py:667
 msgid "{Setting} valid inputs are:\n\n"
 "Range between: {start} - {end}"
-msgstr ""
+msgstr "{Setting} giltiga ingångar är:\n\n"
+"Räckvidd mellan: {start} - {end}"
 
 #: plmanagednode/cog.py:678
 msgid "{Setting} valid inputs are:\n\n"
 "{setting_list}"
-msgstr ""
+msgstr "{Setting} giltiga ingångar är:\n\n"
+"{setting_list}"
 
 #: plmanagednode/cog.py:696
 msgid "{Setting} set to {value}.\n\n"
 "Restart the bot for it to take effect"
-msgstr ""
+msgstr "{Setting} satt till {value}.\n\n"
+"Starta om botten för att den ska träda i kraft"
 
 #: plmanagednode/cog.py:706
 #, docstring
@@ -339,42 +355,46 @@ msgstr "Klicka på knappen nedan för att konfigurera IP-rotationen för din nod
 #: plmanagednode/cog.py:731
 msgid "Removing the IP rotation from your node.\n\n"
 "Restart the bot for it to take effect"
-msgstr ""
+msgstr "Tar bort IP-rotationen från din nod.\n\n"
+"Starta om botten för att den ska börja gälla"
 
 #: plmanagednode/cog.py:739
 #, docstring
 msgid "Link a Google account to Lavalink to bypass YouTube's age restriction"
-msgstr ""
+msgstr "Länka ett Google-konto till Lavalink för att kringgå YouTubes åldersgräns"
 
 #: plmanagednode/cog.py:747
 msgid "Click the button below to link a Google account to your node, if you have 2FA setup on this account you will need an app password instead\n"
 "More info at: <https://support.google.com/accounts/answer/185833>"
-msgstr ""
+msgstr "Klicka på knappen nedan för att länka ett Google-konto till din nod, Om du har 2FA inställt på detta konto behöver du ett applösenord istället\n"
+"Mer information på: <https://support.google.com/accounts/answer/185833>"
 
 #: plmanagednode/cog.py:765
 msgid "Unlinking Google account from your node.\n\n"
 "Restart the bot for it to take effect"
-msgstr ""
+msgstr "Avlänka Google-konto från din nod.\n\n"
+"Starta om botten för att den ska träda i kraft"
 
 #: plmanagednode/cog.py:773
 #, docstring
 msgid "Configure a HTTP proxy for Lavalink"
-msgstr ""
+msgstr "Konfigurera en HTTP-proxy för Lavalink"
 
 #: plmanagednode/cog.py:781
 msgid "Click the button below to configure a HTTP proxy for your node"
-msgstr ""
+msgstr "Klicka på knappen nedan för att konfigurera en HTTP-proxy för din nod"
 
 #: plmanagednode/cog.py:795
 msgid "Unlinking HTTP proxy from your node.\n\n"
 "Restart the bot for it to take effect"
-msgstr ""
+msgstr "Kopplar från HTTP-proxy från din nod.\n\n"
+"Starta om boten för att den ska träda i kraft"
 
 #: plmanagednode/view.py:33 plmanagednode/view.py:60 plmanagednode/view.py:87
 #: plmanagednode/view.py:160 plmanagednode/view.py:313
 #: plmanagednode/view.py:389
 msgid "You are not authorized to interact with this"
-msgstr ""
+msgstr "Du har inte behörighet att interagera med detta"
 
 #: plmanagednode/view.py:108
 msgid "IP Rotation Configurator"
@@ -422,7 +442,7 @@ msgstr "Ogiltigt IP-block - {error}"
 
 #: plmanagednode/view.py:186
 msgid "No IP blocks were provided"
-msgstr ""
+msgstr "Inga IP-block har angetts"
 
 #: plmanagednode/view.py:201
 msgid "Invalid IP address - {error}"
@@ -434,16 +454,17 @@ msgstr "Ogiltig strategi, måste vara en av: {options}"
 
 #: plmanagednode/view.py:236
 msgid "Invalid retry limit, must be a number greater than or equals to -1"
-msgstr ""
+msgstr "Ogiltig återbetalningsgräns, måste vara ett tal större än eller lika med -1"
 
 #: plmanagednode/view.py:251
 msgid "Invalid search trigger, must be 0 or 1"
-msgstr ""
+msgstr "Ogiltig sökutlösare, måste vara 0 eller 1"
 
 #: plmanagednode/view.py:269
 msgid "IP rotation configuration saved.\n\n"
 "Restart the bot for it to take effect"
-msgstr ""
+msgstr "IP-rotationskonfiguration sparad.\n\n"
+"Starta om botten för att den ska börja gälla"
 
 #: plmanagednode/view.py:286
 msgid "Google Account Configurator"
@@ -467,12 +488,13 @@ msgstr "Om du har 2FA behöver du ett app-lösenord"
 
 #: plmanagednode/view.py:321
 msgid "Invalid email address"
-msgstr ""
+msgstr "Ogiltig e-postadress"
 
 #: plmanagednode/view.py:332
 msgid "Google account linked.\n\n"
 "Restart the bot for it to take effect"
-msgstr ""
+msgstr "Google-konto länkat.\n\n"
+"Starta om botten för att den ska träda i kraft"
 
 #: plmanagednode/view.py:349
 msgid "HTTP Proxy Configurator"
@@ -512,10 +534,11 @@ msgstr "Valfritt lösenord för grundläggande autentiseringsfält, lämna tomt 
 
 #: plmanagednode/view.py:400
 msgid "Invalid port, must be a number between 0 and 65536"
-msgstr ""
+msgstr "Ogiltig port, måste vara ett nummer mellan 0 och 65536"
 
 #: plmanagednode/view.py:416
 msgid "HTTP proxy configuration saved.\n\n"
 "Restart the bot for it to take effect"
-msgstr ""
+msgstr "Konfiguration för HTTP-proxy sparad.\n\n"
+"Starta om boten för att den ska börja gälla"
 
