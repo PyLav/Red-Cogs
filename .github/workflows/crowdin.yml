@@ -25,7 +25,7 @@ jobs:
             with:
                 upload_translations: true
                 download_translations: true
-                commit_message: Update translations
+                commit_message: '[skip-ci] Update translations'
                 download_translations_args: --all
             env:
                 CROWDIN_API_KEY: ${{ secrets.crowdin_token}}
