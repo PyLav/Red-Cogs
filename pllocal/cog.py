@@ -38,7 +38,7 @@ class PyLavLocalFiles(commands.Cog):
         self._localtrack_entries: dict[str, Query] = {}
         self.ready_event = asyncio.Event()
 
-    async def initialize(self):
+    async def _update_cache(self):
         from pylav.localfiles import LocalFile
 
         while LocalFile._ROOT_FOLDER is None:
@@ -50,6 +50,9 @@ class PyLavLocalFiles(commands.Cog):
 
         temp = await asyncstdlib.sorted(temp.items(), key=lambda x: str(x[1]._query).lower())  # type: ignore
         self._localtrack_entries = dict(temp)
+
+    async def initialize(self):
+        await self._update_cache()
         self.ready_event.set()
 
     async def cog_check(self, ctx: PyLavContext):
@@ -88,18 +91,7 @@ class PyLavLocalFiles(commands.Cog):
             context = await self.cog.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-
-        from pylav.localfiles import LocalFile
-
-        while LocalFile._ROOT_FOLDER is None:
-            await asyncio.sleep(1)
-        assert LocalFile._ROOT_FOLDER is not None
-        temp: dict[str, Query] = {}
-        async for file in LocalFile(LocalFile._ROOT_FOLDER).files_in_tree(show_folders=True):
-            temp[hashlib.md5(f"{getattr(file._query, 'path', file._query)}".encode()).hexdigest()] = file
-
-        temp = await asyncstdlib.sorted(temp.items(), key=lambda x: str(x[1]._query).lower())  # type: ignore
-        self._localtrack_entries = dict(temp)
+        await self._update_cache()
         await context.send(
             embed=await self.lavalink.construct_embed(
                 description=_("Local track list updated {number} currently present").format(
