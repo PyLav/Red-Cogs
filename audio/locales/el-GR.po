@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2022-08-31 18:42+0000\n"
-"PO-Revision-Date: 2022-08-31 18:45\n"
+"POT-Creation-Date: 2022-08-31 21:23+0000\n"
+"PO-Revision-Date: 2022-08-31 21:26\n"
 "Last-Translator: \n"
 "Language-Team: Greek\n"
 "MIME-Version: 1.0\n"
@@ -46,12 +46,12 @@ msgid "Set the maximum volume server can set"
 msgstr "Ορίστε τη μέγιστη ένταση διακομιστή μπορεί να οριστεί"
 
 #: audio/config_commands.py:67 audio/config_commands.py:262
-#: audio/hybrid_commands.py:672
+#: audio/hybrid_commands.py:659
 msgid "Volume must be less than 1000"
 msgstr "Ο όγκος πρέπει να είναι μικρότερος από 1000"
 
 #: audio/config_commands.py:75 audio/config_commands.py:270
-#: audio/hybrid_commands.py:680
+#: audio/hybrid_commands.py:667
 msgid "Volume must be greater than 0"
 msgstr "Η ένταση πρέπει να είναι μεγαλύτερη από 0"
 
@@ -291,7 +291,6 @@ msgid "I can't play songs in DMs"
 msgstr "Δεν μπορώ να παίξω τραγούδια σε DMs"
 
 #: audio/context_menus.py:36 audio/context_menus.py:146
-#: audio/hybrid_commands.py:191
 msgid "You need to be a DJ to play tracks"
 msgstr "Πρέπει να είσαι DJ για να παίξεις κομμάτια"
 
@@ -352,169 +351,169 @@ msgstr "Δεν βρέθηκαν κομμάτια για το ερώτημά σα
 msgid "Search for a track then play the selected response"
 msgstr ""
 
-#: audio/hybrid_commands.py:200
+#: audio/hybrid_commands.py:190
 msgid "You haven't select something to play"
 msgstr "Δεν έχετε επιλέξει κάτι για να παίξετε"
 
-#: audio/hybrid_commands.py:241
+#: audio/hybrid_commands.py:228
 msgid "Searching {service}"
 msgstr ""
 
-#: audio/hybrid_commands.py:253 audio/hybrid_commands.py:261
+#: audio/hybrid_commands.py:240 audio/hybrid_commands.py:248
 msgid "No results found on {service}"
 msgstr ""
 
-#: audio/hybrid_commands.py:287
+#: audio/hybrid_commands.py:274
 msgid "You haven't select something to play, search must start with `ytmsearch:`, `spsearch:`, `amsearch:`, `scsearch:`, `ytsearch:`"
 msgstr "Δεν έχετε επιλέξει κάτι για αναπαραγωγή, η αναζήτηση πρέπει να ξεκινήσει με `ytmsearch:`, `spsearch:`, `amsearch:`, `scsearch:`, `ytsearch:`"
 
-#: audio/hybrid_commands.py:315
+#: audio/hybrid_commands.py:302
 msgid "You need to be in a voice channel if you don't specify which channel I need to connect to"
 msgstr "Θα πρέπει να είστε σε ένα κανάλι φωνής αν δεν καθορίσετε ποιο κανάλι πρέπει να συνδεθείτε"
 
-#: audio/hybrid_commands.py:325
+#: audio/hybrid_commands.py:312
 msgid "I don't have permission to connect to that channel"
 msgstr "Δεν έχω άδεια να συνδεθώ με αυτό το κανάλι"
 
-#: audio/hybrid_commands.py:329
+#: audio/hybrid_commands.py:316
 msgid "I don't have permission to speak in {channel}"
 msgstr "Δεν έχω άδεια να μιλήσω στο {channel}"
 
-#: audio/hybrid_commands.py:332
+#: audio/hybrid_commands.py:319
 msgid "I don't have permission to connect to {channel}"
 msgstr "Δεν έχω άδεια να συνδεθώ στο {channel}"
 
-#: audio/hybrid_commands.py:346
+#: audio/hybrid_commands.py:333
 msgid "I'm forced to only join {channel}"
 msgstr "Είμαι αναγκασμένος να συμμετάσχω μόνο στο {channel}"
 
-#: audio/hybrid_commands.py:354
+#: audio/hybrid_commands.py:341
 msgid "Connected to {channel}"
 msgstr "Συνδέθηκε στο {channel}"
 
-#: audio/hybrid_commands.py:370 audio/hybrid_commands.py:397
-#: audio/hybrid_commands.py:439 audio/hybrid_commands.py:471
-#: audio/hybrid_commands.py:495 audio/hybrid_commands.py:518
-#: audio/hybrid_commands.py:563 audio/hybrid_commands.py:597
-#: audio/hybrid_commands.py:632 audio/hybrid_commands.py:687
-#: audio/hybrid_commands.py:734 audio/hybrid_commands.py:832
+#: audio/hybrid_commands.py:357 audio/hybrid_commands.py:384
+#: audio/hybrid_commands.py:426 audio/hybrid_commands.py:458
+#: audio/hybrid_commands.py:482 audio/hybrid_commands.py:505
+#: audio/hybrid_commands.py:550 audio/hybrid_commands.py:584
+#: audio/hybrid_commands.py:619 audio/hybrid_commands.py:674
+#: audio/hybrid_commands.py:721 audio/hybrid_commands.py:819
 msgid "No player detected"
 msgstr "Δεν εντοπίστηκε παίκτης"
 
-#: audio/hybrid_commands.py:377 audio/hybrid_commands.py:404
-#: audio/hybrid_commands.py:446
+#: audio/hybrid_commands.py:364 audio/hybrid_commands.py:391
+#: audio/hybrid_commands.py:433
 msgid "Player is not currently playing anything"
 msgstr "Ο παίκτης δεν παίζει προς το παρόν"
 
-#: audio/hybrid_commands.py:412
+#: audio/hybrid_commands.py:399
 msgid "Skipped - {track}"
 msgstr "Παράλειψη - {track}"
 
-#: audio/hybrid_commands.py:422
+#: audio/hybrid_commands.py:409
 msgid "Autoplay started"
 msgstr "Η αυτόματη αναπαραγωγή ξεκίνησε"
 
-#: audio/hybrid_commands.py:453
+#: audio/hybrid_commands.py:440
 msgid "Player stopped"
 msgstr "Η αναπαραγωγή σταμάτησε"
 
-#: audio/hybrid_commands.py:479
+#: audio/hybrid_commands.py:466
 msgid "Disconnected from {channel}"
 msgstr "Αποσυνδέθηκε από {channel}"
 
-#: audio/hybrid_commands.py:525
+#: audio/hybrid_commands.py:512
 msgid "There is nothing in the queue"
 msgstr "Δεν υπάρχει τίποτα στην ουρά"
 
-#: audio/hybrid_commands.py:533
+#: audio/hybrid_commands.py:520
 msgid "You are not allowed to shuffle the queue"
 msgstr "Δεν σας επιτρέπεται να ανακατέψετε την ουρά"
 
-#: audio/hybrid_commands.py:541
+#: audio/hybrid_commands.py:528
 msgid "{queue_size} tracks shuffled"
 msgstr "{queue_size} κομμάτια ανακατεύονται"
 
-#: audio/hybrid_commands.py:570
+#: audio/hybrid_commands.py:557
 msgid "Repeating the queue"
 msgstr "Επανάληψη της ουράς"
 
-#: audio/hybrid_commands.py:573
+#: audio/hybrid_commands.py:560
 msgid "Repeating disabled"
 msgstr "Επανάληψη απενεργοποιημένη"
 
-#: audio/hybrid_commands.py:576
+#: audio/hybrid_commands.py:563
 msgid "Repeating {track}"
 msgstr "Επανάληψη {track}"
 
-#: audio/hybrid_commands.py:579
+#: audio/hybrid_commands.py:566
 msgid "current track"
 msgstr "τρέχον κομμάτι"
 
-#: audio/hybrid_commands.py:603
+#: audio/hybrid_commands.py:590
 msgid "Player already paused did you mean to run `/resume`"
 msgstr "Ο παίκτης ήδη σε παύση εννοείτε να τρέξει το `/βιογραφικό`"
 
-#: audio/hybrid_commands.py:605
+#: audio/hybrid_commands.py:592
 msgid "Player already paused did you mean to run `{prefix}{command}`"
 msgstr "Ο παίκτης ήδη σε παύση εννοούσε να τρέξει το `{prefix}{command}`"
 
-#: audio/hybrid_commands.py:616
+#: audio/hybrid_commands.py:603
 msgid "Player paused"
 msgstr "Παίκτης σε παύση"
 
-#: audio/hybrid_commands.py:638
+#: audio/hybrid_commands.py:625
 msgid "Player already resumed did you mean to run `/pause`"
 msgstr "Ο παίκτης ήδη συνεχίστηκε εννοώντας να τρέξει το `/pause`"
 
-#: audio/hybrid_commands.py:640
+#: audio/hybrid_commands.py:627
 msgid "Player already resumed did you mean to run `{prefix}{command}`"
 msgstr "Ο παίκτης ήδη συνεχίστηκε εννοώντας να τρέξει το `{prefix}{command}`"
 
-#: audio/hybrid_commands.py:651
+#: audio/hybrid_commands.py:638
 msgid "Player resumed"
 msgstr "Ο παίκτης συνεχίστηκε"
 
-#: audio/hybrid_commands.py:698
+#: audio/hybrid_commands.py:685
 msgid "Volume cannot be higher than {max_volume}"
 msgstr "Ο τόμος δεν μπορεί να είναι μεγαλύτερος από {max_volume}"
 
-#: audio/hybrid_commands.py:707 audio/utility_commands.py:64
+#: audio/hybrid_commands.py:694 audio/utility_commands.py:64
 msgid "Player volume set to {volume}%"
 msgstr "Η ένταση του παίκτη ορίστηκε σε {volume}%"
 
-#: audio/hybrid_commands.py:741
+#: audio/hybrid_commands.py:728
 msgid "Nothing playing"
 msgstr "Τίποτα δεν παίζει"
 
-#: audio/hybrid_commands.py:750 audio/hybrid_commands.py:759
+#: audio/hybrid_commands.py:737 audio/hybrid_commands.py:746
 msgid "Unable to seek track"
 msgstr "Δεν είναι δυνατή η αναζήτηση ίχνους"
 
-#: audio/hybrid_commands.py:751
+#: audio/hybrid_commands.py:738
 msgid "Can't seek on a stream"
 msgstr "Αδυναμία αναζήτησης σε μια ροή"
 
-#: audio/hybrid_commands.py:768
+#: audio/hybrid_commands.py:755
 msgid "Cannot seek when the player is paused"
 msgstr "Δεν είναι δυνατή η αναζήτηση κατά την παύση του παίκτη"
 
-#: audio/hybrid_commands.py:781
+#: audio/hybrid_commands.py:768
 msgid "Moved {seconds}s to 00:00:00"
 msgstr "Μετακινήθηκαν {seconds}s στις 00:00:00"
 
-#: audio/hybrid_commands.py:788
+#: audio/hybrid_commands.py:775
 msgid "Moved {seconds}s to {time}"
 msgstr "Μετακινήθηκαν {seconds}s σε {time}"
 
-#: audio/hybrid_commands.py:809
+#: audio/hybrid_commands.py:796
 msgid "Moved to {time}"
 msgstr "Μεταφέρθηκε στο {time}"
 
-#: audio/hybrid_commands.py:840
+#: audio/hybrid_commands.py:827
 msgid "No previous in player history"
 msgstr "Δεν υπάρχει προηγούμενο στο ιστορικό του παίκτη"
 
-#: audio/hybrid_commands.py:848
+#: audio/hybrid_commands.py:835
 msgid "Playing previous track: {track}"
 msgstr "Παίζοντας προηγούμενο κομμάτι: {track}"
 
