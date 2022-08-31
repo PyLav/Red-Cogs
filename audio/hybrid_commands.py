@@ -22,7 +22,7 @@ from pylav.utils import PyLavContext, format_time
 from pylavcogs_shared.ui.menus.queue import QueueMenu
 from pylavcogs_shared.ui.sources.queue import QueueSource
 from pylavcogs_shared.utils import rgetattr
-from pylavcogs_shared.utils.decorators import invoker_is_dj, is_dj_logic, requires_player
+from pylavcogs_shared.utils.decorators import invoker_is_dj, requires_player
 from pylavcogs_shared.utils.validators import valid_query_attachment
 
 LOGGER = getLogger("red.3pt.PyLavPlayer.commands.hybrids")
@@ -184,16 +184,6 @@ class HybridCommands(PyLavCogMixin, ABC):
         """Search for a track then play the selected response"""
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
-        is_dj = await is_dj_logic(interaction)
-        if not is_dj:
-            return await interaction.followup.send(
-                embed=await self.lavalink.construct_embed(
-                    description=_("You need to be a DJ to play tracks"),
-                    messageable=interaction,
-                ),
-                ephemeral=True,
-                wait=True,
-            )
         if query == "FqgqQW21tQ@#1g2fasf2":
             return await interaction.followup.send(
                 embed=await self.lavalink.construct_embed(
@@ -227,9 +217,6 @@ class HybridCommands(PyLavCogMixin, ABC):
                 prefix = "ytmsearch:"
         else:
             prefix = "ytmsearch:"
-        is_dj = await is_dj_logic(interaction)
-        if not is_dj:
-            return []
         match = SEARCH_REGEX.match(current)
         service = match.group("search_source") if match else None
         if not service:

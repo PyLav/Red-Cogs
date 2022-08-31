@@ -1,13 +1,16 @@
 import asyncio
 import hashlib
+import random
 from functools import partial
 from pathlib import Path
 from typing import Optional
 
 import asyncstdlib
 import discord
+from asyncstdlib import heapq
 from discord import app_commands
 from discord.app_commands import Choice
+from rapidfuzz import fuzz
 from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
@@ -19,14 +22,13 @@ from pylav import Query
 from pylav.types import BotT, InteractionT
 from pylav.utils import AsyncIter, PyLavContext
 from pylavcogs_shared.utils import rgetattr
-from pylavcogs_shared.utils.decorators import is_dj_logic
 
 LOGGER = getLogger("red.3pt.PyLavLocalFiles")
 
 _ = Translator("PyLavLocalFiles", Path(__file__))
 
 
-def cache_filled(interaction: InteractionT) -> bool:
+async def cache_filled(interaction: InteractionT) -> bool:
     if not interaction.response.is_done():
         await interaction.response.defer(ephemeral=True)
     context = await interaction.client.get_context(interaction)
@@ -128,18 +130,6 @@ class PyLavLocalFiles(commands.Cog):
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         author = interaction.user
-        is_dj = await is_dj_logic(interaction)
-        if not is_dj:
-            await send(
-                embed=await self.lavalink.construct_embed(
-                    description=_("You need to be a DJ to play tracks"),
-                    messageable=interaction,
-                ),
-                ephemeral=True,
-                wait=True,
-            )
-            return
-
         entry = self._localtrack_entries[entry]
         entry._recursive = recursive
         player = self.lavalink.get_player(interaction.guild.id)
@@ -215,17 +205,20 @@ class PyLavLocalFiles(commands.Cog):
     @slash_local.autocomplete("entry")
     async def slash_local_autocomplete_entry(self, interaction: InteractionT, current: str):
         entries = []
-        is_dj = await is_dj_logic(interaction)
-        if not is_dj:
-            return []
-        async for md5, query in AsyncIter(self._localtrack_entries.items()).filter(
-            lambda x: current.lower() in f"{getattr(x[1]._query, 'path', x[1]._query)}".lower()
-        ):
-            choice = Choice(
-                name=await query.query_to_string(max_length=99, ellipsis=True),
-                value=md5,
+        if not current:
+            extracted = random.choices(list(self._localtrack_entries.items()), k=25)
+        else:
+
+            async def _filter(x):
+                return await asyncio.to_thread(
+                    fuzz.partial_ratio, current, f"{getattr(x[1]._query, 'path', x[1]._query)}"
+                )
+
+            extracted = await heapq.nlargest(asyncstdlib.iter(self._localtrack_entries.items()), n=25, key=_filter)
+
+        async for md5, query in AsyncIter(extracted if current else extracted[::-1]):
+            entries.append(
+                Choice(name=await query.query_to_string(max_length=99, with_emoji=True, no_extension=True), value=md5)
             )
-            entries.append(choice)
-            if len(entries) == 25:
-                break
+
         return entries
