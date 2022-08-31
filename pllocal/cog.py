@@ -27,7 +27,7 @@ _ = Translator("PyLavLocalFiles", Path(__file__))
 
 @cog_i18n(_)
 class PyLavLocalFiles(commands.Cog):
-    """Play local files and folders from the owner configured location."""
+    """Play local files and folders from the owner configured location"""
 
     __version__ = "1.0.0.0rc0"
 
@@ -52,11 +52,11 @@ class PyLavLocalFiles(commands.Cog):
 
     @commands.group(name="localset")
     async def command_localset(self, ctx: PyLavContext):
-        """Configure cog settings."""
+        """Configure cog settings"""
 
     @command_localset.command(name="version")
     async def command_localset_version(self, context: PyLavContext) -> None:
-        """Show the version of the Cog and it's PyLav dependencies."""
+        """Show the version of the Cog and it's PyLav dependencies"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -87,7 +87,7 @@ class PyLavLocalFiles(commands.Cog):
         entry: str,
         recursive: Optional[bool] = False,
     ):  # sourcery no-metrics
-        """Play a local file or folder, supports partial searching."""
+        """Play a local file or folder, supports partial searching"""
         send = partial(interaction.followup.send, wait=True)
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
@@ -96,7 +96,7 @@ class PyLavLocalFiles(commands.Cog):
         if not is_dj:
             await send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("You need to be a DJ to play tracks."),
+                    description=_("You need to be a DJ to play tracks"),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -114,7 +114,7 @@ class PyLavLocalFiles(commands.Cog):
                 if not channel:
                     await send(
                         embed=await self.lavalink.construct_embed(
-                            description=_("You must be in a voice channel to allow me to connect."),
+                            description=_("You must be in a voice channel to allow me to connect"),
                             messageable=interaction,
                         ),
                         ephemeral=True,
@@ -127,7 +127,7 @@ class PyLavLocalFiles(commands.Cog):
             ):
                 await send(
                     embed=await self.lavalink.construct_embed(
-                        description=_("I don't have permission to connect or speak in {channel}.").format(
+                        description=_("I don't have permission to connect or speak in {channel}").format(
                             channel=channel.mention
                         ),
                         messageable=interaction,
@@ -152,7 +152,7 @@ class PyLavLocalFiles(commands.Cog):
         if count > 1:
             await send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("{track_count} tracks enqueued.").format(track_count=count),
+                    description=_("{track_count} tracks enqueued").format(track_count=count),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -160,7 +160,7 @@ class PyLavLocalFiles(commands.Cog):
         elif count == 1:
             await send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("{track} enqueued.").format(
+                    description=_("{track} enqueued").format(
                         track=await single_track.get_track_display_name(with_url=True)
                     ),
                     messageable=interaction,
@@ -170,7 +170,7 @@ class PyLavLocalFiles(commands.Cog):
         else:
             await send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("No tracks were found for your query."),
+                    description=_("No tracks were found for your query"),
                     messageable=interaction,
                 ),
                 ephemeral=True,

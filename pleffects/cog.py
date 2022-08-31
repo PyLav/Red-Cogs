@@ -23,11 +23,11 @@ _ = Translator("PyLavEffects", Path(__file__))
 
 @cog_i18n(_)
 class PyLavEffects(commands.Cog):
-    """Apply filters and effects to the PyLav player."""
+    """Apply filters and effects to the PyLav player"""
 
     __version__ = "0.0.1.0a"
 
-    slash_fx = app_commands.Group(name="fx", description="Apply or remove bundled filters.")
+    slash_fx = app_commands.Group(name="fx", description="Apply or remove bundled filters")
 
     def __init__(self, bot: BotT, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -40,11 +40,11 @@ class PyLavEffects(commands.Cog):
     @commands.guild_only()
     @commands.guildowner_or_permissions(manage_guild=True)
     async def command_fxset(self, ctx: PyLavContext) -> None:
-        """Configure the Player behaviour when an effect is set."""
+        """Configure the Player behaviour when an effect is set"""
 
     @command_fxset.command(name="version")
     async def command_fxset_version(self, context: PyLavContext) -> None:
-        """Show the version of the Cog and it's PyLav dependencies."""
+        """Show the version of the Cog and it's PyLav dependencies"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -68,7 +68,7 @@ class PyLavEffects(commands.Cog):
     @requires_player()
     @invoker_is_dj()
     async def slash_fx_nightcore(self, interaction: InteractionT) -> None:
-        """Apply a Nightcore filter to the player."""
+        """Apply a Nightcore filter to the player"""
 
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
@@ -79,7 +79,7 @@ class PyLavEffects(commands.Cog):
             await context.send(
                 embed=await self.lavalink.construct_embed(
                     messageable=context,
-                    description=_("Nightcore effect has been disabled."),
+                    description=_("Nightcore effect has been disabled"),
                 ),
                 ephemeral=True,
             )
@@ -88,7 +88,7 @@ class PyLavEffects(commands.Cog):
             await context.send(
                 embed=await self.lavalink.construct_embed(
                     messageable=context,
-                    description=_("Nightcore effect has been enabled."),
+                    description=_("Nightcore effect has been enabled"),
                 ),
                 ephemeral=True,
             )
@@ -109,7 +109,7 @@ class PyLavEffects(commands.Cog):
         depth: Range[float, 0.01, 1.0] = None,
         reset: bool = False,
     ) -> None:
-        """Apply a vibrato filter to the player."""
+        """Apply a vibrato filter to the player"""
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
@@ -124,7 +124,7 @@ class PyLavEffects(commands.Cog):
         await context.send(
             embed=await self.lavalink.construct_embed(
                 messageable=context,
-                title=_("New vibrato effect applied to the player."),
+                title=_("New vibrato effect applied to the player"),
                 description=tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid"),
             ),
             ephemeral=True,
@@ -146,7 +146,7 @@ class PyLavEffects(commands.Cog):
         depth: Range[float, 0.01, 1.0] = None,
         reset: bool = False,
     ) -> None:
-        """Apply a tremolo filter to the player."""
+        """Apply a tremolo filter to the player"""
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
@@ -161,7 +161,7 @@ class PyLavEffects(commands.Cog):
         await context.send(
             embed=await self.lavalink.construct_embed(
                 messageable=context,
-                title=_("New tremolo effect applied to the player."),
+                title=_("New tremolo effect applied to the player"),
                 description=tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid"),
             ),
             ephemeral=True,
@@ -185,7 +185,7 @@ class PyLavEffects(commands.Cog):
         rate: Range[float, 0.0, None] = None,
         reset: bool = False,
     ) -> None:
-        """Apply a timescale filter to the player."""
+        """Apply a timescale filter to the player"""
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
@@ -202,7 +202,7 @@ class PyLavEffects(commands.Cog):
         await context.send(
             embed=await self.lavalink.construct_embed(
                 messageable=context,
-                title=_("New timescale effect applied to the player."),
+                title=_("New timescale effect applied to the player"),
                 description=tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid"),
             ),
             ephemeral=True,
@@ -218,7 +218,7 @@ class PyLavEffects(commands.Cog):
     async def slash_fx_rotation(
         self, interaction: InteractionT, hertz: Range[float, 0.0, None] = None, reset: bool = False
     ) -> None:
-        """Apply a rotation filter to the player."""
+        """Apply a rotation filter to the player"""
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
@@ -231,7 +231,7 @@ class PyLavEffects(commands.Cog):
         await context.send(
             embed=await self.lavalink.construct_embed(
                 messageable=context,
-                title=_("New rotation effect applied to the player."),
+                title=_("New rotation effect applied to the player"),
                 description=tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid"),
             ),
             ephemeral=True,
@@ -248,7 +248,7 @@ class PyLavEffects(commands.Cog):
     async def slash_fx_lowpass(
         self, interaction: InteractionT, smoothing: Range[float, 0.0, None] = None, reset: bool = False
     ) -> None:
-        """Apply a low pass filter to the player."""
+        """Apply a low pass filter to the player"""
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
@@ -261,7 +261,7 @@ class PyLavEffects(commands.Cog):
         await context.send(
             embed=await self.lavalink.construct_embed(
                 messageable=context,
-                title=_("New low pass effect applied to the player."),
+                title=_("New low pass effect applied to the player"),
                 description=tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid"),
             ),
             ephemeral=True,
@@ -287,7 +287,7 @@ class PyLavEffects(commands.Cog):
         filter_width: Range[float, 0.0, None] = None,
         reset: bool = False,
     ) -> None:
-        """Apply a karaoke filter to the player."""
+        """Apply a karaoke filter to the player"""
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
@@ -306,7 +306,7 @@ class PyLavEffects(commands.Cog):
         await context.send(
             embed=await self.lavalink.construct_embed(
                 messageable=context,
-                title=_("New karaoke effect applied to the player."),
+                title=_("New karaoke effect applied to the player"),
                 description=tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid"),
             ),
             ephemeral=True,
@@ -332,7 +332,7 @@ class PyLavEffects(commands.Cog):
         right_to_right: Range[float, 0.0, None] = None,
         reset: bool = False,
     ) -> None:
-        """Apply a channel mix filter to the player."""
+        """Apply a channel mix filter to the player"""
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
@@ -353,7 +353,7 @@ class PyLavEffects(commands.Cog):
         await context.send(
             embed=await self.lavalink.construct_embed(
                 messageable=context,
-                title=_("New channel mix effect applied to the player."),
+                title=_("New channel mix effect applied to the player"),
                 description=tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid"),
             ),
             ephemeral=True,
@@ -387,7 +387,7 @@ class PyLavEffects(commands.Cog):
         scale: Range[float, 0.0, None] = None,
         reset: bool = False,
     ) -> None:
-        """Apply a distortion filter to the player."""
+        """Apply a distortion filter to the player"""
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
@@ -416,7 +416,7 @@ class PyLavEffects(commands.Cog):
         await context.send(
             embed=await self.lavalink.construct_embed(
                 messageable=context,
-                title=_("New distortion effect applied to the player."),
+                title=_("New distortion effect applied to the player"),
                 description=tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid"),
             ),
             ephemeral=True,
@@ -427,7 +427,7 @@ class PyLavEffects(commands.Cog):
     @requires_player()
     @invoker_is_dj()
     async def slash_fx_show(self, interaction: InteractionT) -> None:
-        """Show the current filters applied to the player."""
+        """Show the current filters applied to the player"""
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
@@ -457,11 +457,12 @@ class PyLavEffects(commands.Cog):
 
         await context.send(
             embed=await self.lavalink.construct_embed(
-                title=_("Current filters applied to the player."),
-                description=_("__**Currently Applied:**__\n{data}").format(
+                title=_("Current filters applied to the player"),
+                description="__**{translation}:**__\n{data}".format(
                     data=box(tabulate(data, headers="keys", tablefmt="fancy_grid", maxcolwidths=[10, 18]))
                     if data
                     else _("None"),
+                    translation=discord.utils.escape_markdown(_("Currently Applied")),
                 ),
                 messageable=context,
             ),
@@ -473,7 +474,7 @@ class PyLavEffects(commands.Cog):
     @requires_player()
     @invoker_is_dj()
     async def slash_fx_reset(self, interaction: InteractionT) -> None:
-        """Reset any existing filters currently applied to the player."""
+        """Reset any existing filters currently applied to the player"""
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
@@ -481,7 +482,7 @@ class PyLavEffects(commands.Cog):
         await context.player.set_filters(requester=context.author, reset_not_set=True)
         await context.send(
             embed=await self.lavalink.construct_embed(
-                messageable=context, description=_("Reset any existing filters currently applied to the player.")
+                messageable=context, description=_("Reset any existing filters currently applied to the player")
             ),
             ephemeral=True,
         )

@@ -30,7 +30,7 @@ class ConfigureIPRotationView(discord.ui.View):
 
     async def interaction_check(self, interaction: InteractionT) -> bool:
         if not await self.bot.is_owner(interaction.user):
-            await interaction.response.send_message(_("You are not authorized to interact with this."), ephemeral=True)
+            await interaction.response.send_message(_("You are not authorized to interact with this"), ephemeral=True)
             return False
         return True
 
@@ -57,7 +57,7 @@ class ConfigureGoogleAccountView(discord.ui.View):
 
     async def interaction_check(self, interaction: InteractionT) -> bool:
         if not await self.bot.is_owner(interaction.user):
-            await interaction.response.send_message(_("You are not authorized to interact with this."), ephemeral=True)
+            await interaction.response.send_message(_("You are not authorized to interact with this"), ephemeral=True)
             return False
         return True
 
@@ -84,7 +84,7 @@ class ConfigureHTTPProxyView(discord.ui.View):
 
     async def interaction_check(self, interaction: InteractionT) -> bool:
         if not await self.bot.is_owner(interaction.user):
-            await interaction.response.send_message(_("You are not authorized to interact with this."), ephemeral=True)
+            await interaction.response.send_message(_("You are not authorized to interact with this"), ephemeral=True)
             return False
         return True
 
@@ -97,7 +97,7 @@ class ConfigureHTTPProxyView(discord.ui.View):
 
 
 class ConfigureIPRotationModal(discord.ui.Modal):
-    """A secure ``discord.ui.Modal`` used to configure the managed nodes IP Rotation."""
+    """A secure ``discord.ui.Modal`` used to configure the managed nodes IP Rotation"""
 
     def __init__(
         self,
@@ -157,7 +157,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
             interaction.user
         ):  # Prevent non-bot owners from somehow acquiring and saving the modal.
             return await interaction.response.send_message(
-                _("You are not authorized to interact with this."), ephemeral=True
+                _("You are not authorized to interact with this"), ephemeral=True
             )
         await interaction.response.defer(ephemeral=True)
 
@@ -183,7 +183,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
 
             return await send_method(
                 embed=await self.bot.lavalink.construct_embed(
-                    description=_("No IP blocks were provided."),
+                    description=_("No IP blocks were provided"),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -233,7 +233,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
         except ValueError:
             return await send_method(
                 embed=await self.bot.lavalink.construct_embed(
-                    description=_("Invalid retry limit, must be a number greater than or equals to -1."),
+                    description=_("Invalid retry limit, must be a number greater than or equals to -1"),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -248,7 +248,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
         except ValueError:
             return await send_method(
                 embed=await self.bot.lavalink.construct_embed(
-                    description=_("Invalid search trigger, must be 0 or 1."),
+                    description=_("Invalid search trigger, must be 0 or 1"),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -266,7 +266,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
         await full_data.save()
         return await send_method(
             embed=await self.bot.lavalink.construct_embed(
-                description=_("IP rotation configuration saved.\n\nRestart the bot for it to take effect."),
+                description=_("IP rotation configuration saved.\n\nRestart the bot for it to take effect"),
                 messageable=interaction,
             ),
             ephemeral=True,
@@ -275,7 +275,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
 
 
 class ConfigureGoogleAccountModal(discord.ui.Modal):
-    """A secure ``discord.ui.Modal`` used to add a Google account to the node."""
+    """A secure ``discord.ui.Modal`` used to add a Google account to the node"""
 
     def __init__(
         self,
@@ -310,7 +310,7 @@ class ConfigureGoogleAccountModal(discord.ui.Modal):
             interaction.user
         ):  # Prevent non-bot owners from somehow acquiring and saving the modal.
             return await interaction.response.send_message(
-                _("You are not authorized to interact with this."), ephemeral=True
+                _("You are not authorized to interact with this"), ephemeral=True
             )
         await interaction.response.defer(ephemeral=True)
 
@@ -318,7 +318,7 @@ class ConfigureGoogleAccountModal(discord.ui.Modal):
         if re.match(r"[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+", self.email.value) is None:
             return await send_method(
                 embed=await self.bot.lavalink.construct_embed(
-                    description=_("Invalid email address."),
+                    description=_("Invalid email address"),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -329,7 +329,7 @@ class ConfigureGoogleAccountModal(discord.ui.Modal):
         full_data.yaml["youtubeConfig"] = {"email": self.email.value, "password": self.password.value}
         return await send_method(
             embed=await self.bot.lavalink.construct_embed(
-                description=_("Google account linked.\n\nRestart the bot for it to take effect."),
+                description=_("Google account linked.\n\nRestart the bot for it to take effect"),
                 messageable=interaction,
             ),
             ephemeral=True,
@@ -338,7 +338,7 @@ class ConfigureGoogleAccountModal(discord.ui.Modal):
 
 
 class ConfigureHTTPProxyModal(discord.ui.Modal):
-    """A secure ``discord.ui.Modal`` used to configure a HTTP Proxy for the node."""
+    """A secure ``discord.ui.Modal`` used to configure a HTTP Proxy for the node"""
 
     def __init__(
         self,
@@ -386,7 +386,7 @@ class ConfigureHTTPProxyModal(discord.ui.Modal):
             interaction.user
         ):  # Prevent non-bot owners from somehow acquiring and saving the modal.
             return await interaction.response.send_message(
-                _("You are not authorized to interact with this."), ephemeral=True
+                _("You are not authorized to interact with this"), ephemeral=True
             )
         await interaction.response.defer(ephemeral=True)
         send_method = interaction.followup.send
@@ -397,7 +397,7 @@ class ConfigureHTTPProxyModal(discord.ui.Modal):
         except ValueError:
             return await send_method(
                 embed=await self.bot.lavalink.construct_embed(
-                    description=_("Invalid port, must be a number between 0 and 65536."),
+                    description=_("Invalid port, must be a number between 0 and 65536"),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -413,7 +413,7 @@ class ConfigureHTTPProxyModal(discord.ui.Modal):
         await full_data.save()
         return await send_method(
             embed=await self.bot.lavalink.construct_embed(
-                description=_("HTTP proxy configuration saved.\n\nRestart the bot for it to take effect."),
+                description=_("HTTP proxy configuration saved.\n\nRestart the bot for it to take effect"),
                 messageable=interaction,
             ),
             ephemeral=True,

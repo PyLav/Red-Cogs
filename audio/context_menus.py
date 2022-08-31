@@ -22,7 +22,7 @@ class ContextMenus(PyLavCogMixin, ABC):
         if not interaction.guild:
             await interaction.followup.send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("I can't play songs in DMs."),
+                    description=_("I can't play songs in DMs"),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -33,7 +33,7 @@ class ContextMenus(PyLavCogMixin, ABC):
         if not is_dj:
             await interaction.followup.send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("You need to be a DJ to play tracks."),
+                    description=_("You need to be a DJ to play tracks"),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -97,7 +97,7 @@ class ContextMenus(PyLavCogMixin, ABC):
         if not valid_matches:
             await interaction.followup.send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("I couldn't find any valid matches in your message."),
+                    description=_("I couldn't find any valid matches in your message"),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -108,7 +108,7 @@ class ContextMenus(PyLavCogMixin, ABC):
         if len(valid_matches) > 1:
             await interaction.followup.send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("I found multiple valid matches in your message."),
+                    description=_("I found multiple valid matches in your message"),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -117,7 +117,7 @@ class ContextMenus(PyLavCogMixin, ABC):
         else:
             await interaction.followup.send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("I found a single valid match in your message."),
+                    description=_("I found a single valid match in your message"),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -132,7 +132,7 @@ class ContextMenus(PyLavCogMixin, ABC):
         if not interaction.guild:
             await interaction.followup.send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("I can't play songs in DMs."),
+                    description=_("I can't play songs in DMs"),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -143,7 +143,7 @@ class ContextMenus(PyLavCogMixin, ABC):
         if not is_dj:
             await interaction.followup.send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("You need to be a DJ to play tracks."),
+                    description=_("You need to be a DJ to play tracks"),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -176,7 +176,7 @@ class ContextMenus(PyLavCogMixin, ABC):
         if not apple_music_activity and not spotify_activity:
             await interaction.followup.send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("I couldn't find any supported activity {user} is taking part in.").format(
+                    description=_("I couldn't find any supported activity {user} is taking part in").format(
                         user=member.mention
                     ),
                     messageable=interaction,
@@ -208,7 +208,7 @@ class ContextMenus(PyLavCogMixin, ABC):
             if not search_string:
                 await interaction.followup.send(
                     embed=await self.lavalink.construct_embed(
-                        description=_("Couldn't map {user} Apple Music track to a valid query.").format(
+                        description=_("Couldn't map {user} Apple Music track to a valid query").format(
                             user=member.mention
                         ),
                         messageable=interaction,
@@ -240,7 +240,7 @@ class ContextMenus(PyLavCogMixin, ABC):
         else:
             await interaction.followup.send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("Couldn't figure out what {user} is listening to.").format(user=member.mention),
+                    description=_("Couldn't figure out what {user} is listening to").format(user=member.mention),
                     messageable=interaction,
                 ),
                 ephemeral=True,

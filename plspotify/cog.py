@@ -15,7 +15,7 @@ _ = Translator("PyLavSpotify", Path(__file__))
 
 @cog_i18n(_)
 class PyLavSpotify(commands.Cog):
-    """Use the Spotify API to find content to play with PyLav."""
+    """Use the Spotify API to find content to play with PyLav"""
 
     __version__ = "0.0.0.1a"
 

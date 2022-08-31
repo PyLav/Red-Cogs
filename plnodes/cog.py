@@ -29,7 +29,7 @@ _ = Translator("PyLavNodes", Path(__file__))
 
 @cog_i18n(_)
 class PyLavNodes(commands.Cog):
-    """Manage the nodes used by PyLav."""
+    """Manage the nodes used by PyLav"""
 
     __version__ = "1.0.0.0rc0"
 
@@ -40,11 +40,11 @@ class PyLavNodes(commands.Cog):
     @commands.is_owner()
     @commands.group(name="plnode")
     async def command_plnode(self, context: PyLavContext) -> None:
-        """Configure PyLav Nodes."""
+        """Configure PyLav Nodes"""
 
     @command_plnode.command(name="version")
     async def command_plnode_version(self, context: PyLavContext) -> None:
-        """Show the version of the Cog and it's PyLav dependencies."""
+        """Show the version of the Cog and it's PyLav dependencies"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -65,7 +65,7 @@ class PyLavNodes(commands.Cog):
 
     @command_plnode.command(name="add", aliases=["create", "new"])
     async def command_plnode_add(self, context: PyLavContext) -> None:
-        """Add a node PyLav."""
+        """Add a node PyLav"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -125,7 +125,7 @@ class PyLavNodes(commands.Cog):
                 await node.get_unsupported_features()
             )
             embed = await self.lavalink.construct_embed(
-                description=(
+                description=_(
                     "Added node {name} with the following settings:\n"
                     "Host: {host}\n"
                     "Port: {port}\n"
@@ -156,20 +156,20 @@ class PyLavNodes(commands.Cog):
             if menu.last_interaction:
                 await menu.last_interaction.followup.send(
                     embed=await self.lavalink.construct_embed(
-                        description="Unable to add this node.", messageable=context.channel
+                        description=_("Unable to add this node"), messageable=context.channel
                     ),
                     ephemeral=True,
                 )
             else:
                 await context.author.send(
                     embed=await self.lavalink.construct_embed(
-                        description="Unable to add this node.", messageable=context.channel
+                        description=_("Unable to add this node"), messageable=context.channel
                     ),
                 )
 
     @command_plnode.command(name="remove", aliases=["delete", "del", "rm"])
     async def command_plnode_remove(self, context: PyLavContext, *, nodes: NodeConverter):
-        """Remove a node from PyLav instance."""
+        """Remove a node from PyLav instance"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -181,7 +181,7 @@ class PyLavNodes(commands.Cog):
         if node.managed:
             await context.send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("{name} is managed by PyLav and cannot be removed.").format(name=node.name),
+                    description=_("{name} is managed by PyLav and cannot be removed").format(name=node.name),
                     messageable=context.channel,
                 ),
                 ephemeral=True,
@@ -205,7 +205,7 @@ class PyLavNodes(commands.Cog):
         await context.send(
             embed=await self.lavalink.construct_embed(
                 description=_(
-                    "Removed node {name}, a DM was sent to you with the node details in case you wish to re-add it."
+                    "Removed node {name}, a DM was sent to you with the node details in case you wish to re-add it"
                 ).format(name=node.name),
                 messageable=context.channel,
             ),
@@ -214,7 +214,7 @@ class PyLavNodes(commands.Cog):
 
     @command_plnode.command(name="manage")
     async def command_plnode_manage(self, context: PyLavContext):
-        """Manage all nodes in PyLav instance."""
+        """Manage all nodes in PyLav instance"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -258,7 +258,7 @@ class PyLavNodes(commands.Cog):
         }:
             await context.send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("{name} is managed by PyLav and cannot be modified with this command.").format(
+                    description=_("{name} is managed by PyLav and cannot be modified with this command").format(
                         name=node.name
                     ),
                     messageable=context.channel,
@@ -270,7 +270,7 @@ class PyLavNodes(commands.Cog):
             await self.lavalink.remove_node(node.identifier)
             await context.send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("Removed node {name}.").format(name=node.name),
+                    description=_("Removed node {name}").format(name=node.name),
                     messageable=context.channel,
                 ),
                 ephemeral=True,
@@ -303,7 +303,7 @@ class PyLavNodes(commands.Cog):
         await self.lavalink.remove_node(node.identifier)
         await self.lavalink.add_node(**(node.config.get_connection_args()))
         embed = await self.lavalink.construct_embed(
-            description=(
+            description=_(
                 "Changed node {name} to the following settings:\n"
                 "Host: {host}\n"
                 "Port: {port}\n"
@@ -330,7 +330,7 @@ class PyLavNodes(commands.Cog):
 
     @command_plnode.command(name="list")
     async def command_plnode_list(self, context: PyLavContext):
-        """List all nodes used by PyLav."""
+        """List all nodes used by PyLav"""
 
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -340,7 +340,7 @@ class PyLavNodes(commands.Cog):
         if not self.lavalink.node_manager.nodes:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("No Nodes added to PyLav."), messageable=context
+                    description=_("No Nodes added to PyLav"), messageable=context
                 ),
                 ephemeral=True,
             )

@@ -29,7 +29,7 @@ _ = Translator("PyLavConfigurator", Path(__file__))
 
 @cog_i18n(_)
 class PyLavConfigurator(commands.Cog):
-    """Configure PyLav library settings."""
+    """Configure PyLav library settings"""
 
     lavalink: Client
 
@@ -45,7 +45,7 @@ class PyLavConfigurator(commands.Cog):
 
     @command_plset.command(name="version")
     async def command_plset_version(self, context: PyLavContext) -> None:
-        """Show the version of the Cog and it's PyLav dependencies."""
+        """Show the version of the Cog and it's PyLav dependencies"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -66,7 +66,7 @@ class PyLavConfigurator(commands.Cog):
 
     @command_plset.command(name="info")
     async def command_plset_info(self, context: PyLavContext) -> None:
-        """Show the config values."""
+        """Show the config values"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -277,7 +277,7 @@ class PyLavConfigurator(commands.Cog):
         if await path.is_file():
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("{folder} is not a folder.").format(
+                    description=_("{folder} is not a folder").format(
                         folder=inline(f"{await maybe_coroutine(path.absolute)}"),
                         messageable=context,
                     )
@@ -294,7 +294,7 @@ class PyLavConfigurator(commands.Cog):
                     description=_(
                         "{folder} does not exist, "
                         "run the command again with the create argument "
-                        "set to 1 to automatically create this folder."
+                        "set to 1 to automatically create this folder"
                     ).format(
                         folder=inline(f"{await maybe_coroutine(path.absolute)}"),
                         messageable=context,
@@ -309,7 +309,7 @@ class PyLavConfigurator(commands.Cog):
 
         await context.send(
             embed=await context.lavalink.construct_embed(
-                description=_("PyLav's config folder has been set to {folder}.").format(
+                description=_("PyLav's config folder has been set to {folder}").format(
                     folder=inline(f"{await maybe_coroutine(path.absolute)}"),
                     messageable=context,
                 )
@@ -332,7 +332,7 @@ class PyLavConfigurator(commands.Cog):
         if await path.is_file():
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("{folder} is not a folder.").format(
+                    description=_("{folder} is not a folder").format(
                         folder=inline(f"{await maybe_coroutine(path.absolute)}"),
                         messageable=context,
                     )
@@ -351,7 +351,7 @@ class PyLavConfigurator(commands.Cog):
                         "run the command again with "
                         "the create argument "
                         "set to 1 to automatically "
-                        "create this folder."
+                        "create this folder"
                     ).format(
                         folder=inline(f"{await maybe_coroutine(path.absolute)}"),
                         messageable=context,
@@ -367,7 +367,7 @@ class PyLavConfigurator(commands.Cog):
         await LocalFile.add_root_folder(path=path)
         await context.send(
             embed=await context.lavalink.construct_embed(
-                description=_("PyLav's local tracks folder has been set to {folder}.").format(
+                description=_("PyLav's local tracks folder has been set to {folder}").format(
                     folder=inline(f"{await maybe_coroutine(path.absolute)}"),
                     messageable=context,
                 )
@@ -399,7 +399,7 @@ class PyLavConfigurator(commands.Cog):
                         "{java} does not exist, "
                         "run the command again with "
                         "the java argument "
-                        "set to the correct path."
+                        "set to the correct path"
                     ).format(
                         java=inline(f"{await maybe_coroutine(path.absolute)}"),
                         messageable=context,
@@ -411,7 +411,7 @@ class PyLavConfigurator(commands.Cog):
         elif not await path.is_file():
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("{java} is not an executable file.").format(
+                    description=_("{java} is not an executable file").format(
                         java=inline(f"{await maybe_coroutine(path.absolute)}"),
                         messageable=context,
                     )
@@ -427,7 +427,7 @@ class PyLavConfigurator(commands.Cog):
                         "{java} is not an executable, "
                         "run the command again with "
                         "the java argument "
-                        "set to the correct path."
+                        "set to the correct path"
                     ).format(
                         java=inline(f"{await maybe_coroutine(path.absolute)}"),
                         messageable=context,
@@ -441,7 +441,7 @@ class PyLavConfigurator(commands.Cog):
         await global_config.set_java_path(str(await maybe_coroutine(path.absolute)))
         await context.send(
             embed=await context.lavalink.construct_embed(
-                description=_("PyLav's java executable has been set to {java}.").format(
+                description=_("PyLav's java executable has been set to {java}").format(
                     java=inline(f"{java}"),
                     messageable=context,
                 )
@@ -452,7 +452,7 @@ class PyLavConfigurator(commands.Cog):
     @command_plset.group(name="node")
     @commands.is_owner()
     async def command_plset_node(self, context: PyLavContext) -> None:
-        """Change the managed node configuration."""
+        """Change the managed node configuration"""
 
     @command_plset_node.command(name="toggle")
     async def command_plset_node_toggle(self, context: PyLavContext) -> None:
@@ -471,7 +471,7 @@ class PyLavConfigurator(commands.Cog):
         if global_config.enable_managed_node:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("PyLav's managed node has been enabled."),
+                    description=_("PyLav's managed node has been enabled"),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -479,7 +479,7 @@ class PyLavConfigurator(commands.Cog):
         else:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("PyLav's managed node has been disabled."),
+                    description=_("PyLav's managed node has been disabled"),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -502,7 +502,7 @@ class PyLavConfigurator(commands.Cog):
         if global_config.auto_update_managed_nodes:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("PyLav's managed node auto updates have been enabled."),
+                    description=_("PyLav's managed node auto updates have been enabled"),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -510,7 +510,7 @@ class PyLavConfigurator(commands.Cog):
         else:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("PyLav's managed node auto updates have been disabled."),
+                    description=_("PyLav's managed node auto updates have been disabled"),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -518,11 +518,11 @@ class PyLavConfigurator(commands.Cog):
 
     @command_plset_node.group(name="external")
     async def command_plset_node_external(self, context: PyLavContext) -> None:
-        """Change the bundled external nodes state."""
+        """Change the bundled external nodes state"""
 
     @command_plset_node_external.command(name="pylav")
     async def command_plset_node_external_pylav(self, context: PyLavContext) -> None:
-        """Toggle the managed external draper.wtf nodes on/off."""
+        """Toggle the managed external draper.wtf nodes on/off"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -539,7 +539,7 @@ class PyLavConfigurator(commands.Cog):
         if global_config.extras["use_bundled_pylav_external"]:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("PyLav's managed pylav external node has been enabled."),
+                    description=_("PyLav's managed pylav external node has been enabled"),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -547,7 +547,7 @@ class PyLavConfigurator(commands.Cog):
         else:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("PyLav's managed pylav external node has been disabled."),
+                    description=_("PyLav's managed pylav external node has been disabled"),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -555,7 +555,7 @@ class PyLavConfigurator(commands.Cog):
 
     @command_plset_node_external.command(name="lavalink")
     async def command_plset_node_lavalink(self, context: PyLavContext) -> None:
-        """Toggle the managed external lava.link node on/off."""
+        """Toggle the managed external lava.link node on/off"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -572,7 +572,7 @@ class PyLavConfigurator(commands.Cog):
         if global_config.extras["use_bundled_lava_link_external"]:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("PyLav's managed lava.link external node has been enabled."),
+                    description=_("PyLav's managed lava.link external node has been enabled"),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -580,7 +580,7 @@ class PyLavConfigurator(commands.Cog):
         else:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("PyLav's managed lava.link external node has been disabled."),
+                    description=_("PyLav's managed lava.link external node has been disabled"),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -589,7 +589,7 @@ class PyLavConfigurator(commands.Cog):
     @command_plset.command(name="spotifyapi")
     @commands.is_owner()
     async def command_plset_spotifyapi(self, context: PyLavContext) -> None:
-        """Instructions on how to set the Spotify API Tokens."""
+        """Instructions on how to set the Spotify API Tokens"""
         message = _(
             "1. Go to Spotify developers and log in with your Spotify account.\n"
             "(https://developer.spotify.com/dashboard/applications)\n"
@@ -620,7 +620,7 @@ class PyLavConfigurator(commands.Cog):
         if server and (self.lavalink.player_manager.get(server.id) is None):
             await context.send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("No active player in {}.").format(bold(server.name)),
+                    description=_("No active player in {}").format(bold(server.name)),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -629,7 +629,7 @@ class PyLavConfigurator(commands.Cog):
         elif not self.lavalink.player_manager.connected_players:
             await context.send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("No connected players."),
+                    description=_("No connected players"),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -646,7 +646,7 @@ class PyLavConfigurator(commands.Cog):
     @command_plset.command(name="activity")
     @commands.is_owner()
     async def command_plset_activity(self, context: PyLavContext) -> None:
-        """Toggle whether or not to change the bot's activity."""
+        """Toggle whether or not to change the bot's activity"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -657,7 +657,7 @@ class PyLavConfigurator(commands.Cog):
         if not current:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("PyLav will change bot activity."),
+                    description=_("PyLav will change bot activity"),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -665,7 +665,7 @@ class PyLavConfigurator(commands.Cog):
         else:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("PyLav will no longer change the bot activity."),
+                    description=_("PyLav will no longer change the bot activity"),
                     messageable=context,
                 ),
                 ephemeral=True,

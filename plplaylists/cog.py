@@ -79,7 +79,7 @@ class PyLavPlaylists(
     @app_commands.guild_only()
     @invoker_is_dj()
     async def slash_playlist_version(self, interaction: InteractionT) -> None:
-        """Show the version of the Cog and it's PyLav dependencies."""
+        """Show the version of the Cog and it's PyLav dependencies"""
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
@@ -181,7 +181,7 @@ class PyLavPlaylists(
         if not playlists:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("You have no playlists."), messageable=context
+                    description=_("You have no playlists"), messageable=context
                 ),
                 ephemeral=True,
             )
@@ -224,8 +224,8 @@ class PyLavPlaylists(
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     messageable=context,
-                    title=_("Nothing to save."),
-                    description=_("There is nothing in the queue to save."),
+                    title=_("Nothing to save"),
+                    description=_("There is nothing in the queue to save"),
                 ),
                 ephemeral=True,
             )
@@ -262,7 +262,7 @@ class PyLavPlaylists(
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     messageable=context,
-                    description=_("{user}, playlist {playlist_name} cannot be managed by yourself.").format(
+                    description=_("{user}, playlist {playlist_name} cannot be managed by yourself").format(
                         user=context.author.mention, playlist_name=await playlist.get_name_formatted(with_url=True)
                     ),
                 ),
@@ -363,9 +363,9 @@ class PyLavPlaylists(
             await playlist.delete()
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    title=_("Playlist deleted."),
+                    title=_("Playlist deleted"),
                     messageable=context,
-                    description=_("{user}, playlist {playlist_name} has been deleted.").format(
+                    description=_("{user}, playlist {playlist_name} has been deleted").format(
                         user=context.author.mention, playlist_name=await playlist.get_name_formatted(with_url=True)
                     ),
                 ),
@@ -423,7 +423,7 @@ class PyLavPlaylists(
                             embed=await context.lavalink.construct_embed(
                                 messageable=context,
                                 description=_(
-                                    "Playlist **{playlist_name}** could not be updated with URL: <{url}>."
+                                    "Playlist **{playlist_name}** could not be updated with URL: <{url}>"
                                 ).format(
                                     playlist_name=await playlist.get_name_formatted(with_url=True), url=playlist.url
                                 ),
@@ -456,18 +456,18 @@ class PyLavPlaylists(
         if changed:
             extras = ""
             if tracks_removed:
-                extras += _("\n{track_count} {track_plural} removed from the playlist.").format(
+                extras += _("\n{track_count} {track_plural} removed from the playlist").format(
                     track_count=tracks_removed, track_plural=_("track") if tracks_removed == 1 else _("tracks")
                 )
             if tracks_added:
-                extras += _("\n{track_count} {track_plural} added to the playlist.").format(
+                extras += _("\n{track_count} {track_plural} added to the playlist").format(
                     track_count=tracks_added, track_plural=_("track") if tracks_added == 1 else _("tracks")
                 )
             await playlist.save()
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     messageable=context,
-                    title=_("Playlist updated."),
+                    title=_("Playlist updated"),
                     description=_("{user}, playlist {playlist_name} has been updated.{extras}").format(
                         user=context.author.mention,
                         playlist_name=await playlist.get_name_formatted(with_url=True),
@@ -480,8 +480,8 @@ class PyLavPlaylists(
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     messageable=context,
-                    title=_("Playlist unchanged."),
-                    description=_("{user}, playlist {playlist_name} has not been updated.").format(
+                    title=_("Playlist unchanged"),
+                    description=_("{user}, playlist {playlist_name} has not been updated").format(
                         user=context.author.mention, playlist_name=await playlist.get_name_formatted(with_url=True)
                     ),
                 ),
@@ -529,7 +529,7 @@ class PyLavPlaylists(
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     messageable=context,
-                    description=_("{user}, playlist {playlist_name} cannot be managed by yourself.").format(
+                    description=_("{user}, playlist {playlist_name} cannot be managed by yourself").format(
                         user=context.author.mention, playlist_name=await playlist.get_name_formatted(with_url=True)
                     ),
                 ),
@@ -539,9 +539,9 @@ class PyLavPlaylists(
         await playlist.delete()
         await context.send(
             embed=await context.lavalink.construct_embed(
-                title=_("Playlist deleted."),
+                title=_("Playlist deleted"),
                 messageable=context,
-                description=_("{user}, playlist {playlist_name} has been deleted.").format(
+                description=_("{user}, playlist {playlist_name} has been deleted").format(
                     user=context.author.mention, playlist_name=await playlist.get_name_formatted(with_url=True)
                 ),
             ),
@@ -591,8 +591,8 @@ class PyLavPlaylists(
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     messageable=context,
-                    title=_("Nothing to save."),
-                    description=_("There is nothing in the queue to save."),
+                    title=_("Nothing to save"),
+                    description=_("There is nothing in the queue to save"),
                 ),
                 ephemeral=True,
             )
@@ -609,7 +609,7 @@ class PyLavPlaylists(
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     messageable=context,
-                    description=_("{user}, playlist {playlist_name} cannot be managed by yourself.").format(
+                    description=_("{user}, playlist {playlist_name} cannot be managed by yourself").format(
                         user=context.author.mention, playlist_name=await playlist.get_name_formatted(with_url=True)
                     ),
                 ),
@@ -627,7 +627,7 @@ class PyLavPlaylists(
         if changed:
             extras = ""
             if tracks_added:
-                extras += _("\n{track_count} {track_plural} added to the playlist.").format(
+                extras += _("\n{track_count} {track_plural} added to the playlist").format(
                     track_count=tracks_added, track_plural=_("track") if tracks_added == 1 else _("tracks")
                 )
 
@@ -635,7 +635,7 @@ class PyLavPlaylists(
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     messageable=context,
-                    title=_("Playlist updated."),
+                    title=_("Playlist updated"),
                     description=_("{user}, playlist {playlist_name} has been updated.{extras}").format(
                         user=context.author.mention,
                         playlist_name=await playlist.get_name_formatted(with_url=True),
@@ -649,8 +649,8 @@ class PyLavPlaylists(
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     messageable=context,
-                    title=_("Playlist unchanged."),
-                    description=_("{user}, playlist {playlist_name} has not been updated.").format(
+                    title=_("Playlist unchanged"),
+                    description=_("{user}, playlist {playlist_name} has not been updated").format(
                         user=context.author.mention, playlist_name=await playlist.get_name_formatted(with_url=True)
                     ),
                 ),
@@ -678,7 +678,7 @@ class PyLavPlaylists(
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     messageable=context,
-                    description=_("You must either provide a URL or attach a playlist file to upload a playlist."),
+                    description=_("You must either provide a URL or attach a playlist file to upload a playlist"),
                 ),
                 ephemeral=True,
             )
@@ -690,7 +690,7 @@ class PyLavPlaylists(
         if not valid_playlist_urls:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    messageable=context, description=_("No valid playlist file provided.")
+                    messageable=context, description=_("No valid playlist file provided")
                 ),
                 ephemeral=True,
             )
@@ -699,7 +699,7 @@ class PyLavPlaylists(
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     messageable=context,
-                    description=_("Multiple playlist files provided - Currently only 1 per message is allowed."),
+                    description=_("Multiple playlist files provided - Currently only 1 per message is allowed"),
                 ),
                 ephemeral=True,
             )
@@ -717,7 +717,7 @@ class PyLavPlaylists(
         if not saved_playlists:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    messageable=context, description=_("Failed to save any of the requested playlists.")
+                    messageable=context, description=_("Failed to save any of the requested playlists")
                 ),
                 ephemeral=True,
             )
@@ -760,7 +760,7 @@ class PyLavPlaylists(
                 if not channel:
                     await context.send(
                         embed=await context.lavalink.construct_embed(
-                            messageable=context, description=_("You must be in a voice channel to allow me to connect.")
+                            messageable=context, description=_("You must be in a voice channel to allow me to connect")
                         ),
                         ephemeral=True,
                     )
@@ -768,7 +768,7 @@ class PyLavPlaylists(
             if not ((permission := channel.permissions_for(context.me)) and permission.connect and permission.speak):
                 await context.send(
                     embed=await context.lavalink.construct_embed(
-                        description=_("I don't have permission to connect or speak in {channel}.").format(
+                        description=_("I don't have permission to connect or speak in {channel}").format(
                             channel=channel.mention
                         ),
                         messageable=context,

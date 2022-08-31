@@ -70,7 +70,7 @@ class PyLavRadio(commands.Cog):
         tag4: TagConverter = None,
         tag5: TagConverter = None,
     ):
-        """Enqueue a radio station."""
+        """Enqueue a radio station"""
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
@@ -78,7 +78,7 @@ class PyLavRadio(commands.Cog):
             cog=self,
             context=context,
             entries=stations,
-            message_str=_("Multiple stations matched, pick the one which you meant."),
+            message_str=_("Multiple stations matched, pick the one which you meant"),
             selector_text=_("Pick a station"),
         )
         send = context.send
@@ -91,7 +91,7 @@ class PyLavRadio(commands.Cog):
                 if not channel:
                     await send(
                         embed=await self.lavalink.construct_embed(
-                            description=_("You must be in a voice channel to allow me to connect."), messageable=context
+                            description=_("You must be in a voice channel to allow me to connect"), messageable=context
                         ),
                         ephemeral=True,
                     )
@@ -101,7 +101,7 @@ class PyLavRadio(commands.Cog):
             ):
                 await send(
                     embed=await self.lavalink.construct_embed(
-                        description=_("I don't have permission to connect or speak in {channel}.").format(
+                        description=_("I don't have permission to connect or speak in {channel}").format(
                             channel=channel.mention
                         ),
                         messageable=context,
@@ -114,7 +114,6 @@ class PyLavRadio(commands.Cog):
         total_tracks_enqueue = 0
         url = station.url_resolved or station.url
         query = await Query.from_string(url)
-        LOGGER.debug(f"Query: {query.requires_capability}")
         successful, count, failed = await self.lavalink.get_all_tracks_for_queries(
             query, requester=author, player=player, bypass_cache=True
         )
@@ -130,8 +129,8 @@ class PyLavRadio(commands.Cog):
         if total_tracks_enqueue == 1:
             await send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("Enqueued **[{station_name}]({station_url})**.").format(
-                        station_name=station.name, station_url=url
+                    description="{translation} **[{station_name}]({station_url})**".format(
+                        station_name=station.name, station_url=url, translation=_("Enqueued")
                     ),
                     thumbnail=await single_track.thumbnail(),
                     messageable=context,
@@ -142,8 +141,8 @@ class PyLavRadio(commands.Cog):
         else:
             await send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("Unable to play **[{station_name}]({station_url})**.").format(
-                        station_name=station.name, station_url=url
+                    description="**[{station_name}]({station_url})**".format(
+                        station_name=station.name, station_url=url, translation=_("Unable to play")
                     ),
                     messageable=context,
                 ),

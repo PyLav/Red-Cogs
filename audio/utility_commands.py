@@ -29,7 +29,7 @@ class UtilityCommands(PyLavCogMixin, ABC):
         if not context.player:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description="Not connected to a voice channel.", messageable=context
+                    description=_("Not connected to a voice channel"), messageable=context
                 ),
                 ephemeral=True,
             )
@@ -43,7 +43,7 @@ class UtilityCommands(PyLavCogMixin, ABC):
             context.player.volume = max_volume
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("Volume limit reached, player volume set to {volume}%.").format(
+                    description=_("Volume limit reached, player volume set to {volume}%").format(
                         volume=humanize_number(context.player.volume)
                     ),
                     messageable=context,
@@ -54,14 +54,14 @@ class UtilityCommands(PyLavCogMixin, ABC):
             context.player.volume = 0
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("Minimum volume reached, Player volume set to 0%."), messageable=context
+                    description=_("Minimum volume reached, Player volume set to 0%"), messageable=context
                 ),
                 ephemeral=True,
             )
         await context.player.set_volume(new_vol, requester=context.author)
         await context.send(
             embed=await context.lavalink.construct_embed(
-                description=_("Player volume set to {volume}%.").format(volume=new_vol), messageable=context
+                description=_("Player volume set to {volume}%").format(volume=new_vol), messageable=context
             ),
             ephemeral=True,
         )

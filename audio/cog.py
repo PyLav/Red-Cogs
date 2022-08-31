@@ -43,7 +43,7 @@ class PyLavPlayer(
     ContextMenus,
     metaclass=CompositeMetaClass,
 ):
-    """A Media player using the PyLav library."""
+    """A Media player using the PyLav library"""
 
     __version__ = "1.0.0.0rc0"
 

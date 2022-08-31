@@ -30,7 +30,7 @@ _ = Translator("PyLavMigrator", Path(__file__))
 
 @cog_i18n(_)
 class PyLavMigrator(commands.Cog):
-    """Copy Red's Audio settings over to PyLav."""
+    """Copy Red's Audio settings over to PyLav"""
 
     __version__ = "1.0.0.0rc0"
 
@@ -108,7 +108,7 @@ class PyLavMigrator(commands.Cog):
             except PermissionError:
                 await context.send(
                     embed=await self.lavalink.construct_embed(
-                        description=_("I don't have permission to access {folder}.").format(folder=localtracks_path)
+                        description=_("I don't have permission to access {folder}").format(folder=localtracks_path)
                     )
                 )
         if await audio_config.status():

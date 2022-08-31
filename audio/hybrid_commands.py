@@ -78,7 +78,7 @@ class HybridCommands(PyLavCogMixin, ABC):
         if not query:
             await send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("You need to provide a query to play."),
+                    description=_("You need to provide a query to play"),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -92,7 +92,7 @@ class HybridCommands(PyLavCogMixin, ABC):
                 if not channel:
                     await send(
                         embed=await self.lavalink.construct_embed(
-                            description=_("You must be in a voice channel to allow me to connect."), messageable=context
+                            description=_("You must be in a voice channel to allow me to connect"), messageable=context
                         ),
                         ephemeral=True,
                     )
@@ -102,7 +102,7 @@ class HybridCommands(PyLavCogMixin, ABC):
             ):
                 await send(
                     embed=await self.lavalink.construct_embed(
-                        description=_("I don't have permission to connect or speak in {channel}.").format(
+                        description=_("I don't have permission to connect or speak in {channel}").format(
                             channel=channel.mention
                         ),
                         messageable=context,
@@ -146,7 +146,7 @@ class HybridCommands(PyLavCogMixin, ABC):
         if total_tracks_enqueue > 1:
             await send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("{track_count} tracks enqueued.").format(track_count=total_tracks_enqueue),
+                    description=_("{track_count} tracks enqueued").format(track_count=total_tracks_enqueue),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -154,7 +154,7 @@ class HybridCommands(PyLavCogMixin, ABC):
         elif total_tracks_enqueue == 1:
             await send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("{track} enqueued.").format(
+                    description=_("{track} enqueued").format(
                         track=await single_track.get_track_display_name(with_url=True)
                     ),
                     thumbnail=await single_track.thumbnail(),
@@ -165,7 +165,7 @@ class HybridCommands(PyLavCogMixin, ABC):
         else:
             await send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("No tracks were found for your query."),
+                    description=_("No tracks were found for your query"),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -194,7 +194,7 @@ class HybridCommands(PyLavCogMixin, ABC):
         if not is_dj:
             await interaction.followup.send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("You need to be a DJ to play tracks."),
+                    description=_("You need to be a DJ to play tracks"),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -202,7 +202,7 @@ class HybridCommands(PyLavCogMixin, ABC):
             )
             return
         if query == "000":
-            raise commands.BadArgument(_("You haven't select something to play."))
+            raise commands.BadArgument(_("You haven't select something to play"))
         _track = self._track_cache.get(query)
         track = query if _track is None else await _track.query_identifier()
         await self.command_play.callback(self, interaction, query=track)
@@ -227,7 +227,7 @@ class HybridCommands(PyLavCogMixin, ABC):
         if not tracks:
             return [
                 Choice(
-                    name="No results found.",
+                    name="No results found",
                     value="000",
                 )
             ]
@@ -235,7 +235,7 @@ class HybridCommands(PyLavCogMixin, ABC):
         if not tracks:
             return [
                 Choice(
-                    name="No results found.",
+                    name="No results found",
                     value="000",
                 )
             ]
@@ -277,7 +277,7 @@ class HybridCommands(PyLavCogMixin, ABC):
     @commands.guild_only()
     @invoker_is_dj()
     async def command_connect(self, context: PyLavContext, *, channel: Optional[discord.VoiceChannel] = None):
-        """Connect the bot to the specified channel or your current channel."""
+        """Connect the bot to the specified channel or your current channel"""
 
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -290,7 +290,7 @@ class HybridCommands(PyLavCogMixin, ABC):
                 await context.send(
                     embed=await context.lavalink.construct_embed(
                         description=_(
-                            "You need to be in a voice channel if you don't specify which channel I need to connect to."
+                            "You need to be in a voice channel if you don't specify which channel I need to connect to"
                         ),
                         messageable=context,
                     ),
@@ -299,14 +299,14 @@ class HybridCommands(PyLavCogMixin, ABC):
                 return
         if not ((permission := actual_channel.permissions_for(context.me)) and permission.connect and permission.speak):
             if permission.connect:
-                description = _("I don't have permission to connect to that channel.").format(
+                description = _("I don't have permission to connect to that channel").format(
                     channel=actual_channel.mention
                 )
             else:
-                description = _("I don't have permission to speak in {channel}.").format(channel=actual_channel.mention)
+                description = _("I don't have permission to speak in {channel}").format(channel=actual_channel.mention)
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("I don't have permission to connect to {channel}.").format(channel=description),
+                    description=_("I don't have permission to connect to {channel}").format(channel=description),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -320,7 +320,7 @@ class HybridCommands(PyLavCogMixin, ABC):
         if player.forced_vc and channel != actual_channel:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("I'm forced to only join {channel}.").format(channel=player.forced_vc.mention),
+                    description=_("I'm forced to only join {channel}").format(channel=player.forced_vc.mention),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -337,21 +337,21 @@ class HybridCommands(PyLavCogMixin, ABC):
     @commands.guild_only()
     @requires_player()
     async def command_now(self, context: PyLavContext):
-        """Shows the track currently being played."""
+        """Shows the track currently being played"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
         if not context.player:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("No player detected."), messageable=context),
+                embed=await context.lavalink.construct_embed(description=_("No player detected"), messageable=context),
                 ephemeral=True,
             )
             return
         if not context.player.current:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("Player is not currently playing anything."), messageable=context
+                    description=_("Player is not currently playing anything"), messageable=context
                 ),
                 ephemeral=True,
             )
@@ -364,21 +364,21 @@ class HybridCommands(PyLavCogMixin, ABC):
     @requires_player()
     @invoker_is_dj()
     async def command_skip(self, context: PyLavContext):
-        """Skips the current track."""
+        """Skips the current track"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
         if not context.player:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("No player detected."), messageable=context),
+                embed=await context.lavalink.construct_embed(description=_("No player detected"), messageable=context),
                 ephemeral=True,
             )
             return
         if not context.player.current and not context.player.autoplay_enabled:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("Player is not currently playing anything."), messageable=context
+                    description=_("Player is not currently playing anything"), messageable=context
                 ),
                 ephemeral=True,
             )
@@ -396,7 +396,7 @@ class HybridCommands(PyLavCogMixin, ABC):
             )
         else:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("Autoplay started."), messageable=context),
+                embed=await context.lavalink.construct_embed(description=_("Autoplay started"), messageable=context),
                 ephemeral=True,
             )
         await context.player.skip(requester=context.author)
@@ -406,21 +406,21 @@ class HybridCommands(PyLavCogMixin, ABC):
     @requires_player()
     @invoker_is_dj()
     async def command_stop(self, context: PyLavContext):
-        """Stops the player."""
+        """Stops the player"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
         if not context.player:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("No player detected."), messageable=context),
+                embed=await context.lavalink.construct_embed(description=_("No player detected"), messageable=context),
                 ephemeral=True,
             )
             return
         if not context.player.current:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("Player is not currently playing anything."), messageable=context
+                    description=_("Player is not currently playing anything"), messageable=context
                 ),
                 ephemeral=True,
             )
@@ -437,7 +437,7 @@ class HybridCommands(PyLavCogMixin, ABC):
     @requires_player()
     @invoker_is_dj()
     async def command_disconnect(self, context: PyLavContext):
-        """Disconnects the player from the voice channel."""
+        """Disconnects the player from the voice channel"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -445,7 +445,7 @@ class HybridCommands(PyLavCogMixin, ABC):
         LOGGER.info("Disconnecting from voice channel - %s", context.author)
         if not context.player:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("No player detected."), messageable=context),
+                embed=await context.lavalink.construct_embed(description=_("No player detected"), messageable=context),
                 ephemeral=True,
             )
             return
@@ -462,14 +462,14 @@ class HybridCommands(PyLavCogMixin, ABC):
     @commands.guild_only()
     @requires_player()
     async def command_queue(self, context: PyLavContext):
-        """Shows the current queue for the player."""
+        """Shows the current queue for the player"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
         if not context.player:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("No player detected."), messageable=context),
+                embed=await context.lavalink.construct_embed(description=_("No player detected"), messageable=context),
                 ephemeral=True,
             )
             return
@@ -485,21 +485,21 @@ class HybridCommands(PyLavCogMixin, ABC):
     @requires_player()
     @invoker_is_dj()
     async def command_shuffle(self, context: PyLavContext):
-        """Shuffles the player's queue."""
+        """Shuffles the player's queue"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
         if not context.player:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("No player detected."), messageable=context),
+                embed=await context.lavalink.construct_embed(description=_("No player detected"), messageable=context),
                 ephemeral=True,
             )
             return
         if context.player.queue.empty():
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("There is nothing in the queue."), messageable=context
+                    description=_("There is nothing in the queue"), messageable=context
                 ),
                 ephemeral=True,
             )
@@ -507,7 +507,7 @@ class HybridCommands(PyLavCogMixin, ABC):
         if (await self.lavalink.player_config_manager.get_shuffle(context.guild.id)) is False:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("You are not allowed to shuffle the queue."), messageable=context
+                    description=_("You are not allowed to shuffle the queue"), messageable=context
                 ),
                 ephemeral=True,
             )
@@ -537,7 +537,7 @@ class HybridCommands(PyLavCogMixin, ABC):
             await context.defer(ephemeral=True)
         if not context.player:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("No player detected."), messageable=context),
+                embed=await context.lavalink.construct_embed(description=_("No player detected"), messageable=context),
                 ephemeral=True,
             )
             return
@@ -564,22 +564,22 @@ class HybridCommands(PyLavCogMixin, ABC):
     @requires_player()
     @invoker_is_dj()
     async def command_pause(self, context: PyLavContext):
-        """Pause the player."""
+        """Pause the player"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
         if not context.player:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("No player detected."), messageable=context),
+                embed=await context.lavalink.construct_embed(description=_("No player detected"), messageable=context),
                 ephemeral=True,
             )
             return
         if context.player.paused:
             if context.interaction:
-                description = _("Player already paused did you mean to run `/resume`.")
+                description = _("Player already paused did you mean to run `/resume`")
             else:
-                description = _("Player already paused did you mean to run `{prefix}{command}`.").format(
+                description = _("Player already paused did you mean to run `{prefix}{command}`").format(
                     prefix=context.clean_prefix, command=self.command_resume.qualified_name
                 )
             await context.send(
@@ -590,7 +590,7 @@ class HybridCommands(PyLavCogMixin, ABC):
 
         await context.player.set_pause(True, requester=context.author)
         await context.send(
-            embed=await context.lavalink.construct_embed(description=_("Player paused."), messageable=context),
+            embed=await context.lavalink.construct_embed(description=_("Player paused"), messageable=context),
             ephemeral=True,
         )
 
@@ -599,22 +599,22 @@ class HybridCommands(PyLavCogMixin, ABC):
     @requires_player()
     @invoker_is_dj()
     async def command_resume(self, context: PyLavContext):
-        """Resume the player."""
+        """Resume the player"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
         if not context.player:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("No player detected."), messageable=context),
+                embed=await context.lavalink.construct_embed(description=_("No player detected"), messageable=context),
                 ephemeral=True,
             )
             return
         if not context.player.paused:
             if context.interaction:
-                description = _("Player already resumed did you mean to run `/pause`.")
+                description = _("Player already resumed did you mean to run `/pause`")
             else:
-                description = _("Player already resumed did you mean to run `{prefix}{command}`.").format(
+                description = _("Player already resumed did you mean to run `{prefix}{command}`").format(
                     prefix=context.clean_prefix, command=self.command_pause.qualified_name
                 )
             await context.send(
@@ -625,11 +625,11 @@ class HybridCommands(PyLavCogMixin, ABC):
 
         await context.player.set_pause(False, context.author)
         await context.send(
-            embed=await context.lavalink.construct_embed(description=_("Player resumed."), messageable=context),
+            embed=await context.lavalink.construct_embed(description=_("Player resumed"), messageable=context),
             ephemeral=True,
         )
 
-    @commands.hybrid_command(name="volume", description=_("Set the player volume."))
+    @commands.hybrid_command(name="volume", description=_("Set the player volume"))
     @app_commands.describe(volume=_("The volume to set"))
     @commands.guild_only()
     @requires_player()
@@ -646,7 +646,7 @@ class HybridCommands(PyLavCogMixin, ABC):
         if volume > 1000:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("Volume must be less than 1000."), messageable=context
+                    description=_("Volume must be less than 1000"), messageable=context
                 ),
                 ephemeral=True,
             )
@@ -654,14 +654,14 @@ class HybridCommands(PyLavCogMixin, ABC):
         elif volume < 0:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("Volume must be greater than 0."), messageable=context
+                    description=_("Volume must be greater than 0"), messageable=context
                 ),
                 ephemeral=True,
             )
             return
         if not context.player:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("No player detected."), messageable=context),
+                embed=await context.lavalink.construct_embed(description=_("No player detected"), messageable=context),
                 ephemeral=True,
             )
             return
@@ -672,7 +672,7 @@ class HybridCommands(PyLavCogMixin, ABC):
         if volume > max_volume:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("Volume cannot be higher than {max_volume}.").format(max_volume=max_volume),
+                    description=_("Volume cannot be higher than {max_volume}").format(max_volume=max_volume),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -681,12 +681,12 @@ class HybridCommands(PyLavCogMixin, ABC):
         await context.player.set_volume(volume, requester=context.author)
         await context.send(
             embed=await context.lavalink.construct_embed(
-                description=_("Player volume set to {volume}%.").format(volume=volume), messageable=context
+                description=_("Player volume set to {volume}%").format(volume=volume), messageable=context
             ),
             ephemeral=True,
         )
 
-    @commands.hybrid_command(name="seek", description=_("Seek the current track."))
+    @commands.hybrid_command(name="seek", description=_("Seek the current track"))
     @app_commands.describe(seek=_("The player position to seek to"))
     @commands.guild_only()
     @requires_player()
@@ -708,14 +708,14 @@ class HybridCommands(PyLavCogMixin, ABC):
 
         if not context.player:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("No player detected."), messageable=context),
+                embed=await context.lavalink.construct_embed(description=_("No player detected"), messageable=context),
                 ephemeral=True,
             )
             return
 
         if not context.player.current:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("Nothing playing."), messageable=context),
+                embed=await context.lavalink.construct_embed(description=_("Nothing playing"), messageable=context),
                 ephemeral=True,
             )
             return
@@ -725,7 +725,7 @@ class HybridCommands(PyLavCogMixin, ABC):
                 await context.send(
                     embed=await context.lavalink.construct_embed(
                         title=_("Unable to seek track"),
-                        description=_("Can't seek on a stream."),
+                        description=_("Can't seek on a stream"),
                         messageable=context,
                     ),
                     ephemeral=True,
@@ -733,7 +733,7 @@ class HybridCommands(PyLavCogMixin, ABC):
             else:
                 await context.send(
                     embed=await context.lavalink.construct_embed(
-                        description=_("Unable to seek track."), messageable=context
+                        description=_("Unable to seek track"), messageable=context
                     ),
                     ephemeral=True,
                 )
@@ -742,7 +742,7 @@ class HybridCommands(PyLavCogMixin, ABC):
         if context.player.paused:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("Cannot seek when the player is paused."), messageable=context
+                    description=_("Cannot seek when the player is paused"), messageable=context
                 ),
                 ephemeral=True,
             )
@@ -755,14 +755,14 @@ class HybridCommands(PyLavCogMixin, ABC):
             if seek_ms <= 0:
                 await context.send(
                     embed=await context.lavalink.construct_embed(
-                        description=_("Moved {seconds}s to 00:00:00.").format(seconds=seek), messageable=context
+                        description=_("Moved {seconds}s to 00:00:00").format(seconds=seek), messageable=context
                     ),
                     ephemeral=True,
                 )
             else:
                 await context.send(
                     embed=await context.lavalink.construct_embed(
-                        description=_("Moved {seconds}s to {time}.").format(
+                        description=_("Moved {seconds}s to {time}").format(
                             seconds=seek,
                             time=format_time(seek_ms),
                         ),
@@ -783,7 +783,7 @@ class HybridCommands(PyLavCogMixin, ABC):
 
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("Moved to {time}.").format(time=format_time(seek_ms)), messageable=context
+                    description=_("Moved to {time}").format(time=format_time(seek_ms)), messageable=context
                 ),
                 ephemeral=True,
             )
@@ -806,7 +806,7 @@ class HybridCommands(PyLavCogMixin, ABC):
 
         if not context.player:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("No player detected."), messageable=context),
+                embed=await context.lavalink.construct_embed(description=_("No player detected"), messageable=context),
                 ephemeral=True,
             )
             return
@@ -814,7 +814,7 @@ class HybridCommands(PyLavCogMixin, ABC):
         if context.player.history.empty():
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("No previous in player history."), messageable=context
+                    description=_("No previous in player history"), messageable=context
                 ),
                 ephemeral=True,
             )
@@ -822,7 +822,7 @@ class HybridCommands(PyLavCogMixin, ABC):
         await context.player.previous(requester=context.author)
         await context.send(
             embed=await context.lavalink.construct_embed(
-                description=_("Playing previous track: {track}.").format(
+                description=_("Playing previous track: {track}").format(
                     track=await context.player.current.get_track_display_name(with_url=True)
                 ),
                 thumbnail=await context.player.current.thumbnail(),
