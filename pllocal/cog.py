@@ -44,7 +44,9 @@ class PyLavLocalFiles(commands.Cog):
             await asyncio.sleep(1)
         assert LocalFile._ROOT_FOLDER is not None
         async for file in LocalFile(LocalFile._ROOT_FOLDER).files_in_tree(show_folders=True):
-            self._localtrack_entries[hashlib.md5(f"{file._query.path}".encode()).hexdigest()] = file
+            self._localtrack_entries[
+                hashlib.md5(f"{getattr(file._query, 'path', file._query)}".encode()).hexdigest()
+            ] = file
         self.ready_event.set()
 
     async def cog_check(self, ctx: PyLavContext):
@@ -183,7 +185,7 @@ class PyLavLocalFiles(commands.Cog):
         if not is_dj:
             return []
         async for md5, folder in AsyncIter(self._localtrack_entries.items()).filter(
-            lambda x: current.lower() in f"{x[1]._query.path}".lower()
+            lambda x: current.lower() in f"{getattr(x[1]._query, 'path', x[1]._query)}".lower()
         ):
             choice = Choice(
                 name=await folder.query_to_string(max_length=99),
