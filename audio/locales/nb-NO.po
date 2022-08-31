@@ -1,0 +1,590 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: pylavcogs\n"
+"POT-Creation-Date: 2022-08-31 18:42+0000\n"
+"PO-Revision-Date: 2022-08-31 18:45\n"
+"Last-Translator: \n"
+"Language-Team: Norwegian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.4.2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: pylavcogs\n"
+"X-Crowdin-Project-ID: 535246\n"
+"X-Crowdin-Language: no\n"
+"X-Crowdin-File: /audio/locales/messages.pot\n"
+"X-Crowdin-File-ID: 544\n"
+"Language: no_NO\n"
+
+#: audio/cog.py:46
+#, docstring
+msgid "A Media player using the PyLav library"
+msgstr "En mediespiller ved hjelp av PyLav bibliotek"
+
+#: audio/config_commands.py:33
+#, docstring
+msgid "Show the version of the Cog and it's PyLav dependencies"
+msgstr "Vis versjonen av Cog dens PyLav avhengigheter"
+
+#: audio/config_commands.py:46
+msgid "Library/Cog"
+msgstr "Bibliotek/Hund"
+
+#: audio/config_commands.py:46
+msgid "Version"
+msgstr "Versjon"
+
+#: audio/config_commands.py:55
+#, docstring
+msgid "Global configuration options"
+msgstr "Globale konfigurasjonsalternativer"
+
+#: audio/config_commands.py:59
+#, docstring
+msgid "Set the maximum volume server can set"
+msgstr "Angi maksimalt volum server kan sette"
+
+#: audio/config_commands.py:67 audio/config_commands.py:262
+#: audio/hybrid_commands.py:672
+msgid "Volume must be less than 1000"
+msgstr "Volumet må være mindre enn 1000"
+
+#: audio/config_commands.py:75 audio/config_commands.py:270
+#: audio/hybrid_commands.py:680
+msgid "Volume must be greater than 0"
+msgstr "Volumet må være større enn 0"
+
+#: audio/config_commands.py:84 audio/config_commands.py:310
+msgid "Max volume set to {volume}%"
+msgstr "Maks volumsett til {volume}%"
+
+#: audio/config_commands.py:92 audio/config_commands.py:318
+#, docstring
+msgid "Set whether the bot should deafen itself when playing"
+msgstr "Still om botten skal slå seg selv når den spilles"
+
+#: audio/config_commands.py:102 audio/config_commands.py:345
+msgid "Deafen set to {deafen}"
+msgstr "Deafen satt til {deafen}"
+
+#: audio/config_commands.py:102 audio/config_commands.py:122
+#: audio/config_commands.py:142 audio/config_commands.py:160
+#: audio/config_commands.py:200 audio/config_commands.py:238
+#: audio/config_commands.py:345 audio/config_commands.py:376
+#: audio/config_commands.py:409 audio/config_commands.py:444
+#: audio/config_commands.py:505 audio/config_commands.py:564
+msgid "Enabled"
+msgstr "Aktivert"
+
+#: audio/config_commands.py:102 audio/config_commands.py:122
+#: audio/config_commands.py:142 audio/config_commands.py:160
+#: audio/config_commands.py:200 audio/config_commands.py:238
+#: audio/config_commands.py:345 audio/config_commands.py:376
+#: audio/config_commands.py:409 audio/config_commands.py:444
+#: audio/config_commands.py:505 audio/config_commands.py:564
+msgid "Disabled"
+msgstr "Deaktivert"
+
+#: audio/config_commands.py:110 audio/config_commands.py:353
+#, docstring
+msgid "Set whether the bot should shuffle its queue after every new song added"
+msgstr "Angi om botten skal stokke køen etter hver nye sang lagt til"
+
+#: audio/config_commands.py:121 audio/config_commands.py:375
+msgid "Auto-Shuffle set to {shuffle}"
+msgstr "Automatisk bytte satt til {shuffle}"
+
+#: audio/config_commands.py:131 audio/config_commands.py:385
+#, docstring
+msgid "Set whether the bot should allow users to shuffle the queue"
+msgstr "Angi om botten skal tillate brukere å stokke køen"
+
+#: audio/config_commands.py:142 audio/config_commands.py:409
+msgid "Shuffle set to {shuffle}"
+msgstr "Bland satt til {shuffle}"
+
+#: audio/config_commands.py:150 audio/config_commands.py:417
+#, docstring
+msgid "Set whether the bot should automatically play songs when it's queue is empty"
+msgstr "Angi om boten skal automatisk spille sanger når køen er tom"
+
+#: audio/config_commands.py:160 audio/config_commands.py:444
+msgid "Auto-Play set to {auto}"
+msgstr "Auto-avspilling satt til {auto}"
+
+#: audio/config_commands.py:168 audio/config_commands.py:452
+#, docstring
+msgid "Set whether the bot should disconnect from the voice voice channel"
+msgstr "Still inn om botten skal koble fra talekanalen"
+
+#: audio/config_commands.py:178
+#, docstring
+msgid "Set whether the bot should disconnect from the voice voice channel when the queue is empty.\n\n"
+"        Arguments:\n"
+"            - `<toggle>`: Whether the bot should disconnect from the voice voice channel when the queue is empty.\n"
+"            - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60 seconds.\n"
+"            Accepts: seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
+"        "
+msgstr "Angi om botten skal koble fra talekanalen når køen er tom.\n\n"
+"        Argumenter:\n"
+"            - `<toggle>`: Om botten skal koble fra talekanalen når køen er tom.\n"
+"            - `<duration>`: Hvor lengre etter at køen er tom skal spilleren bli frakoblet. Standard er 60 sekunder.\n"
+"            akseptere: sekunder, minutter, timer, dager, uker (hvis ingen enhet er angitt, varigheten antas å være angitt i sekunder)\n"
+"        "
+
+#: audio/config_commands.py:194 audio/config_commands.py:231
+#: audio/config_commands.py:499 audio/config_commands.py:557
+msgid " and players will be disconnected after {duration}"
+msgstr " og spillere vil bli koblet fra etter {duration}"
+
+#: audio/config_commands.py:199 audio/config_commands.py:504
+msgid "Disconnect from voice channel when queue is empty set to {empty}{extras}"
+msgstr "Koble fra talekanalen når køen er tom satt til {empty}{extras}"
+
+#: audio/config_commands.py:215
+#, docstring
+msgid "Set whether the bot should disconnect from the voice voice channel when alone.\n\n"
+"        Arguments:\n"
+"            - `<toggle>`: Whether the bot should disconnect from the voice voice channel when it detects that it is alone.\n"
+"            - `<duration>`: How longer after detecting should the player be disconnected Default is 60 seconds.\n"
+"            Accepts: seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
+"        "
+msgstr "Angir om botten skal koble fra talekanalen når den er alene.\n\n"
+"        Argumenter:\n"
+"            - `<toggle>`: Om boten skal koble fra talekanalen når den oppdager at den er alene.\n"
+"            - `<duration>`: Hvor lenger etter å ha oppdaget hvis spilleren er frakoblet standard er 60 sekunder.\n"
+"            akseptere: sekunder, minutter, timer, dager, uker (hvis ingen enhet er angitt, varigheten antas å være angitt i sekunder)\n"
+"        "
+
+#: audio/config_commands.py:237 audio/config_commands.py:563
+msgid "Disconnect from voice channel when alone set to {empty}{extras}"
+msgstr "Koble fra talekanalen når alene satt til {empty}{extras}"
+
+#: audio/config_commands.py:249
+#, docstring
+msgid "Server configuration options"
+msgstr "Server konfigurasjonsvalg"
+
+#: audio/config_commands.py:253
+#, docstring
+msgid "Set the maximum volume a user can set"
+msgstr "Angi maksimalt volum en bruker kan angi"
+
+#: audio/config_commands.py:279 audio/config_commands.py:297
+msgid "Volume must be between 0 and {volume}%"
+msgstr "Volumet må være mellom 0 og {volume}"
+
+#: audio/config_commands.py:327
+msgid "My owner told me to always deafen myself"
+msgstr "Min eier ba meg alltid å slå meg selv"
+
+#: audio/config_commands.py:361
+msgid "Auto-Shuffle is globally disabled"
+msgstr "Auto-Shuffle er globalt deaktivert"
+
+#: audio/config_commands.py:395
+msgid "Shuffle is globally disabled"
+msgstr "Shuffle er globalt deaktivert"
+
+#: audio/config_commands.py:426
+msgid "Auto-Play is globally disabled"
+msgstr "Auto-Play er aktivert globalt"
+
+#: audio/config_commands.py:462
+#, docstring
+msgid "Set whether the bot should disconnect from the voice voice channel when the queue is empty.\n\n"
+"        Arguments:\n"
+"            - `<toggle>`: Whether the bot should disconnect from the voice voice channel when the queue is empty.\n"
+"            - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60\n"
+"            seconds.\n"
+"            Accepts: seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be\n"
+"            given in seconds)\n"
+"        "
+msgstr "Angi om bot skal koble fra talekanalen når køen er tom.\n\n"
+"        Argumenter:\n"
+"            - `<toggle>`: Om botten skal koble fra talekanalen når køen er tom.\n"
+"            - `<duration>`: Hvor lenger etter at køen er tom skal spilleren bli frakoblet. Standard er 60\n"
+"            sekunder.\n"
+"            akseptere: sekunder, minutter, timer, dager, uker (hvis ingen enhet er spesifisert, varigheten antas å være\n"
+"            gitt i sekunder)\n"
+"        "
+
+#: audio/config_commands.py:480
+msgid "Disconnect when the queue finished is globally enable and players will be disconnected after {delta}"
+msgstr "Koble fra når køen som er ferdig globalt er aktivert og spillere vil bli koblet fra etter {delta}"
+
+#: audio/config_commands.py:520
+#, docstring
+msgid "Set whether the bot should disconnect from the voice voice channel when alone.\n\n"
+"        Arguments:\n"
+"            - `<toggle>`: Whether the bot should disconnect from the voice voice channel when it detects that it is\n"
+"            alone.\n"
+"            - `<duration>`: How longer after detecting should the player be disconnected Default is 60 seconds.\n"
+"            Accepts: seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be\n"
+"            given in seconds)\n"
+"        "
+msgstr "Angir om botten skal koble fra talekanalen når den er alene.\n\n"
+"        Argumenter:\n"
+"            - `<toggle>`: Om boten skal koble fra talekanalen når den oppdager at den er\n"
+"            alene.\n"
+"            - `<duration>`: Hvor lengre etter at spilleren har oppdaget er frakoblet standard er 60 sekunder.\n"
+"            akseptere: sekunder, minutter, timer, dager, uker (hvis ingen enhet er angitt, varigheten antas å være\n"
+"            gitt i løpet av sekunder)\n"
+"        "
+
+#: audio/config_commands.py:539
+msgid "Disconnect when alone is globally enable and players will be disconnected after {delta}"
+msgstr "Koble fra når alene er aktivert globalt og spillere vil bli koblet fra etter {delta}"
+
+#: audio/config_commands.py:573
+#, docstring
+msgid "Sets the Auto-Play playlist"
+msgstr "Setter automatisk avspilling"
+
+#: audio/config_commands.py:591
+msgid "Auto-Play playlist set to {playlist}"
+msgstr "Auto-avspilling av spilleliste satt til {playlist}"
+
+#: audio/config_commands.py:599
+#, docstring
+msgid "Set the channel locks"
+msgstr "Angi kanallåser"
+
+#: audio/config_commands.py:605
+#, docstring
+msgid "Set the channel lock for commands"
+msgstr "Angi kanallås for kommandoer"
+
+#: audio/config_commands.py:621
+msgid "I don't have permission to send message or send embed links or read messages in {channel}"
+msgstr "Jeg har ikke tillatelse til å sende melding eller sende innebygde linker eller lese meldinger i {channel}"
+
+#: audio/config_commands.py:641
+msgid "I will only listen to commands in {channel}"
+msgstr "Jeg vil bare høre på kommandoer i {channel}"
+
+#: audio/config_commands.py:649
+msgid "I will listen to commands in all channels I can see"
+msgstr "Jeg hører på kommandoer i alle kanaler jeg kan se"
+
+#: audio/config_commands.py:657
+#, docstring
+msgid "Set the channel lock for voice channels"
+msgstr "Angi kanallås for talekanaler"
+
+#: audio/config_commands.py:669 audio/hybrid_commands.py:105
+#: audio/player_commands.py:131
+msgid "I don't have permission to connect or speak in {channel}"
+msgstr "Jeg har ikke tillatelse til å koble til eller snakke i {channel}"
+
+#: audio/config_commands.py:691
+msgid "I will only be allowed to join {channel}"
+msgstr "Jeg får bare lov til å bli med i {channel}"
+
+#: audio/config_commands.py:698
+msgid "I'm free to join any VC"
+msgstr "Jeg er gratis med hvilket som helst VC"
+
+#: audio/context_menus.py:25 audio/context_menus.py:135
+msgid "I can't play songs in DMs"
+msgstr "Jeg kan ikke spille sanger i direktemeldinger"
+
+#: audio/context_menus.py:36 audio/context_menus.py:146
+#: audio/hybrid_commands.py:191
+msgid "You need to be a DJ to play tracks"
+msgstr "Du må være en DJ for å spille spor"
+
+#: audio/context_menus.py:53 audio/context_menus.py:162
+msgid "This command is not available in this channel. Please use {channel}"
+msgstr "Kommandoen er ikke tilgjengelig i denne kanalen. Vennligst bruk {channel}"
+
+#: audio/context_menus.py:100
+msgid "I couldn't find any valid matches in your message"
+msgstr "Jeg kunne ikke finne noen gyldige partnerforslag i meldingen din"
+
+#: audio/context_menus.py:111
+msgid "I found multiple valid matches in your message"
+msgstr "Jeg fant flere gyldige treff i meldingen din"
+
+#: audio/context_menus.py:120
+msgid "I found a single valid match in your message"
+msgstr "Jeg fant et gyldig enkelttreff i meldingen din"
+
+#: audio/context_menus.py:179
+msgid "I couldn't find any supported activity {user} is taking part in"
+msgstr "Jeg kunne ikke finne noen støttede aktiviteter {user} tar del i"
+
+#: audio/context_menus.py:211
+msgid "Couldn't map {user} Apple Music track to a valid query"
+msgstr "Kunne ikke tilordne {user} Apple Music track til en gyldig spørring"
+
+#: audio/context_menus.py:227
+msgid "Couldn't find any tracks matching {query}"
+msgstr "Kunne ikke finne noen spor som samsvarer med {query}"
+
+#: audio/context_menus.py:243
+msgid "Couldn't figure out what {user} is listening to"
+msgstr "Kunne ikke finne ut hva {user} lytter til"
+
+#: audio/hybrid_commands.py:81
+msgid "You need to provide a query to play"
+msgstr "Du må angi en spørring for å spille"
+
+#: audio/hybrid_commands.py:95 audio/player_commands.py:121
+msgid "You must be in a voice channel to allow me to connect"
+msgstr "Du må være i en talekanal for at jeg skal kunne koble til"
+
+#: audio/hybrid_commands.py:149 audio/player_commands.py:175
+msgid "{track_count} tracks enqueued"
+msgstr "{track_count} spor lagt i kø"
+
+#: audio/hybrid_commands.py:157 audio/player_commands.py:183
+msgid "{track} enqueued"
+msgstr "{track} kø i køen"
+
+#: audio/hybrid_commands.py:168 audio/player_commands.py:194
+msgid "No tracks were found for your query"
+msgstr "Ingen spor ble funnet for din spørring"
+
+#: audio/hybrid_commands.py:184
+#, docstring
+msgid "Search for a track then play the selected response"
+msgstr ""
+
+#: audio/hybrid_commands.py:200
+msgid "You haven't select something to play"
+msgstr "Du har ikke valgt noe å spille på"
+
+#: audio/hybrid_commands.py:241
+msgid "Searching {service}"
+msgstr ""
+
+#: audio/hybrid_commands.py:253 audio/hybrid_commands.py:261
+msgid "No results found on {service}"
+msgstr ""
+
+#: audio/hybrid_commands.py:287
+msgid "You haven't select something to play, search must start with `ytmsearch:`, `spsearch:`, `amsearch:`, `scsearch:`, `ytsearch:`"
+msgstr "Du har ikke valgt noe å spille, søk må starte med `ytmsearch:`, `spsearch:`, `amsearch:`, `scsearch:`, `ytsearch:`"
+
+#: audio/hybrid_commands.py:315
+msgid "You need to be in a voice channel if you don't specify which channel I need to connect to"
+msgstr "Du må være i en talekanal hvis du ikke angir hvilken kanal jeg må koble til"
+
+#: audio/hybrid_commands.py:325
+msgid "I don't have permission to connect to that channel"
+msgstr "Jeg har ikke tillatelse til å koble til den kanalen"
+
+#: audio/hybrid_commands.py:329
+msgid "I don't have permission to speak in {channel}"
+msgstr "Jeg har ikke tillatelse til å snakke i {channel}"
+
+#: audio/hybrid_commands.py:332
+msgid "I don't have permission to connect to {channel}"
+msgstr "Jeg har ikke tillatelse til å koble til {channel}"
+
+#: audio/hybrid_commands.py:346
+msgid "I'm forced to only join {channel}"
+msgstr "Jeg er tvunget til å bare bli med på {channel}"
+
+#: audio/hybrid_commands.py:354
+msgid "Connected to {channel}"
+msgstr "Koblet til {channel}"
+
+#: audio/hybrid_commands.py:370 audio/hybrid_commands.py:397
+#: audio/hybrid_commands.py:439 audio/hybrid_commands.py:471
+#: audio/hybrid_commands.py:495 audio/hybrid_commands.py:518
+#: audio/hybrid_commands.py:563 audio/hybrid_commands.py:597
+#: audio/hybrid_commands.py:632 audio/hybrid_commands.py:687
+#: audio/hybrid_commands.py:734 audio/hybrid_commands.py:832
+msgid "No player detected"
+msgstr "Ingen spiller oppdaget"
+
+#: audio/hybrid_commands.py:377 audio/hybrid_commands.py:404
+#: audio/hybrid_commands.py:446
+msgid "Player is not currently playing anything"
+msgstr "Spiller spiller ingen ting for øyeblikket"
+
+#: audio/hybrid_commands.py:412
+msgid "Skipped - {track}"
+msgstr "Hoppet over - {track}"
+
+#: audio/hybrid_commands.py:422
+msgid "Autoplay started"
+msgstr "Autokjør startet"
+
+#: audio/hybrid_commands.py:453
+msgid "Player stopped"
+msgstr "Avspiller stoppet"
+
+#: audio/hybrid_commands.py:479
+msgid "Disconnected from {channel}"
+msgstr "Koblet fra {channel}"
+
+#: audio/hybrid_commands.py:525
+msgid "There is nothing in the queue"
+msgstr "Det er ingenting i køen"
+
+#: audio/hybrid_commands.py:533
+msgid "You are not allowed to shuffle the queue"
+msgstr "Du har ikke tillatelse til å stokke i køen"
+
+#: audio/hybrid_commands.py:541
+msgid "{queue_size} tracks shuffled"
+msgstr "{queue_size} spor blandet"
+
+#: audio/hybrid_commands.py:570
+msgid "Repeating the queue"
+msgstr "Gjentakelse av køen"
+
+#: audio/hybrid_commands.py:573
+msgid "Repeating disabled"
+msgstr "Gjentakelse deaktivert"
+
+#: audio/hybrid_commands.py:576
+msgid "Repeating {track}"
+msgstr "Gjentakende {track}"
+
+#: audio/hybrid_commands.py:579
+msgid "current track"
+msgstr "nåværende spor"
+
+#: audio/hybrid_commands.py:603
+msgid "Player already paused did you mean to run `/resume`"
+msgstr "Spilleren pauset mente du å kjøre `/resume`"
+
+#: audio/hybrid_commands.py:605
+msgid "Player already paused did you mean to run `{prefix}{command}`"
+msgstr "Spilleren pauset mente du å kjøre `{prefix}{command}`"
+
+#: audio/hybrid_commands.py:616
+msgid "Player paused"
+msgstr "Spiller pauset"
+
+#: audio/hybrid_commands.py:638
+msgid "Player already resumed did you mean to run `/pause`"
+msgstr "Spiller allerede gjenopptatt mente du å kjøre `/pause`"
+
+#: audio/hybrid_commands.py:640
+msgid "Player already resumed did you mean to run `{prefix}{command}`"
+msgstr "Spiller allerede gjenopptatt mente du å kjøre `{prefix}{command}`"
+
+#: audio/hybrid_commands.py:651
+msgid "Player resumed"
+msgstr "Spilleren gjenopptatt"
+
+#: audio/hybrid_commands.py:698
+msgid "Volume cannot be higher than {max_volume}"
+msgstr "Volumet kan ikke være høyere enn {max_volume}"
+
+#: audio/hybrid_commands.py:707 audio/utility_commands.py:64
+msgid "Player volume set to {volume}%"
+msgstr "Spillervolum satt til {volume}%"
+
+#: audio/hybrid_commands.py:741
+msgid "Nothing playing"
+msgstr "Ingenting spiller"
+
+#: audio/hybrid_commands.py:750 audio/hybrid_commands.py:759
+msgid "Unable to seek track"
+msgstr "Kan ikke søke spor"
+
+#: audio/hybrid_commands.py:751
+msgid "Can't seek on a stream"
+msgstr "Kan ikke søke i en strøm"
+
+#: audio/hybrid_commands.py:768
+msgid "Cannot seek when the player is paused"
+msgstr "Kan ikke søke når spilleren er pauset"
+
+#: audio/hybrid_commands.py:781
+msgid "Moved {seconds}s to 00:00:00"
+msgstr "Flyttet {seconds}s til 00:00:00"
+
+#: audio/hybrid_commands.py:788
+msgid "Moved {seconds}s to {time}"
+msgstr "Flyttet {seconds}til {time}"
+
+#: audio/hybrid_commands.py:809
+msgid "Moved to {time}"
+msgstr "Flyttet til {time}"
+
+#: audio/hybrid_commands.py:840
+msgid "No previous in player history"
+msgstr "Ingen tidligere i spiller historien"
+
+#: audio/hybrid_commands.py:848
+msgid "Playing previous track: {track}"
+msgstr "Spiller av forrige spor: {track}"
+
+#: audio/player_commands.py:24
+msgid "Plays the specified track in the queue"
+msgstr "Spiller det spesifiserte sporet i køen"
+
+#: audio/player_commands.py:42 audio/player_commands.py:218
+msgid "Queue is empty"
+msgstr "Køen er tom"
+
+#: audio/player_commands.py:49 audio/player_commands.py:231
+msgid "Track index must be between 1 and {size}"
+msgstr "Sporindeksen må være mellom 1 og {size}"
+
+#: audio/player_commands.py:65 audio/player_commands.py:244
+msgid "There is no track in position {position}"
+msgstr "Det er ingen spor i posisjon {position}"
+
+#: audio/player_commands.py:75
+msgid "{track} will play after {current} finishes (in {eta})"
+msgstr "{track} vil spille etter {current} er ferdig (i {eta})"
+
+#: audio/player_commands.py:87
+msgid "{track} will start now\n"
+"{current} has been skipped"
+msgstr "{track} vil starte nå\n"
+"{current} har blitt hoppet over"
+
+#: audio/player_commands.py:102
+#, docstring
+msgid "Enqueue a track a song to the top of the queue"
+msgstr "Sett i gang en sang til toppen av avspillingskøen"
+
+#: audio/player_commands.py:204
+#, docstring
+msgid "\n"
+"        Remove the specified track from the queue.\n\n"
+"        If you specify the `remove_duplicates` argument, all tracks that are the same as your URL or the index track will be removed.\n"
+"        "
+msgstr "\n"
+"        Fjern det spesifiserte sporet fra køen.\n\n"
+"        Hvis du spesifiserer `remove_duplicates` argument, alle sporene som er de samme som din nettadresse eller indekssporet vil bli fjernet.\n"
+"        "
+
+#: audio/player_commands.py:275
+msgid "{track} not found in queue"
+msgstr "{track} finnes ikke i køen"
+
+#: audio/player_commands.py:285
+msgid "Removed {times} {entry_plural} of {track} from the queue"
+msgstr "Fjernet {times} {entry_plural} av {track} fra køen"
+
+#: audio/player_commands.py:288
+msgid "entry"
+msgstr "oppføring"
+
+#: audio/player_commands.py:288
+msgid "entries"
+msgstr "oppføringer"
+
+#: audio/utility_commands.py:32
+msgid "Not connected to a voice channel"
+msgstr "Ikke koblet til en talekanal"
+
+#: audio/utility_commands.py:46
+msgid "Volume limit reached, player volume set to {volume}%"
+msgstr "Volumgrense nådd, spillervolum satt til {volume}%"
+
+#: audio/utility_commands.py:57
+msgid "Minimum volume reached, Player volume set to 0%"
+msgstr "Minste volum nådd, spillervolum satt til 0%"
+
