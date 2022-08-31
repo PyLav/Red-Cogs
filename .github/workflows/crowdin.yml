@@ -3,9 +3,12 @@ on:
     push:
         branches:
         -   master
+    schedule:
+    -   cron: 0 * * * *
+
 
 jobs:
-    deploy:
+    crowdin:
         if: github.repository == 'Drapersniper/PyLav-Cogs'
         runs-on: ubuntu-latest
         steps:
