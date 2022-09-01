@@ -267,18 +267,7 @@ class HybridCommands(PyLavCogMixin, ABC):
 
     @slash_search.error
     async def slash_search_error(self, interaction: InteractionT, error: Exception):
-        error = getattr(error, "original", error)
-        if isinstance(error, commands.BadArgument):
-            await interaction.response.send_message(
-                embed=await self.lavalink.construct_embed(
-                    description=_(
-                        "You haven't select something to play, "
-                        "search must start with `ytmsearch:`, `spsearch:`, `amsearch:`, `scsearch:`, `ytsearch:`"
-                    ),
-                    messageable=interaction,
-                ),
-                ephemeral=True,
-            )
+        pass
 
     @commands.hybrid_command(
         name="connect", description=_("Connects the Player to the specified channel or your current channel")

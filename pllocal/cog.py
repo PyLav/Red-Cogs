@@ -211,7 +211,7 @@ class PyLavLocalFiles(commands.Cog):
 
             async def _filter(x):
                 return await asyncio.to_thread(
-                    fuzz.partial_ratio, current, f"{getattr(x[1]._query, 'path', x[1]._query)}"
+                    fuzz.token_set_ratio, current, f"{getattr(x[1]._query, 'path', x[1]._query)}"
                 )
 
             extracted = await heapq.nlargest(asyncstdlib.iter(self._localtrack_entries.items()), n=25, key=_filter)
