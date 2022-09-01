@@ -1,6 +1,7 @@
 import asyncio
 import hashlib
 import random
+import typing
 from functools import partial
 from pathlib import Path
 from typing import Optional
@@ -19,6 +20,7 @@ from tabulate import tabulate
 
 import pylavcogs_shared
 from pylav import Query
+from pylav.sql.models import PlayerModel
 from pylav.types import BotT, InteractionT
 from pylav.utils import AsyncIter, PyLavContext
 from pylavcogs_shared.utils import rgetattr
@@ -134,8 +136,10 @@ class PyLavLocalFiles(commands.Cog):
         entry._recursive = recursive
         player = self.lavalink.get_player(interaction.guild.id)
         if player is None:
-            config = await self.lavalink.player_config_manager.get_config(interaction.guild.id)
-            if (channel := interaction.guild.get_channel_or_thread(config.forced_channel_id)) is None:
+            config = typing.cast(
+                PlayerModel, await self.lavalink.player_config_manager.get_config(interaction.guild.id)
+            )
+            if (channel := interaction.guild.get_channel_or_thread(await config.fetch_forced_channel_id())) is None:
                 channel = rgetattr(author, "voice.channel", None)
                 if not channel:
                     await send(

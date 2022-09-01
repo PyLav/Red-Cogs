@@ -255,15 +255,16 @@ class ConfigureIPRotationModal(discord.ui.Modal):
                 wait=True,
             )
 
-        full_data = await self.bot.lavalink.node_db_manager.get_bundled_node_config()
-        full_data.yaml["ratelimit"] = {
+        config = self.bot.lavalink.node_db_manager.bundled_node_config()
+        yaml_data = await config.fetch_yaml()
+        yaml_data["ratelimit"] = {
             "ipBlocks": ip_blocks,
             "strategy": strategy,
             "retryLimit": retry_limit,
             "excludedIps": excluded_ips,
             "searchTriggersFail": search_trigger,
         }
-        await full_data.save()
+        await config.update_yaml(yaml_data)
         return await send_method(
             embed=await self.bot.lavalink.construct_embed(
                 description=_("IP rotation configuration saved.\n\nRestart the bot for it to take effect"),
@@ -325,8 +326,10 @@ class ConfigureGoogleAccountModal(discord.ui.Modal):
                 wait=True,
             )
 
-        full_data = await self.bot.lavalink.node_db_manager.get_bundled_node_config()
-        full_data.yaml["youtubeConfig"] = {"email": self.email.value, "password": self.password.value}
+        config = self.bot.lavalink.node_db_manager.bundled_node_config()
+        yaml_data = await config.fetch_yaml()
+        yaml_data["youtubeConfig"] = {"email": self.email.value, "password": self.password.value}
+        await config.update_yaml(yaml_data)
         return await send_method(
             embed=await self.bot.lavalink.construct_embed(
                 description=_("Google account linked.\n\nRestart the bot for it to take effect"),
@@ -403,14 +406,15 @@ class ConfigureHTTPProxyModal(discord.ui.Modal):
                 ephemeral=True,
                 wait=True,
             )
-        full_data = await self.bot.lavalink.node_db_manager.get_bundled_node_config()
-        full_data.yaml["httpConfig"] = {
+        config = self.bot.lavalink.node_db_manager.bundled_node_config()
+        yaml_data = await config.fetch_yaml()
+        yaml_data["httpConfig"] = {
             "proxyHost": self.host.value,
             "proxyPort": port,
             "proxyUser": self.user.value,
             "proxyPassword": self.password.value,
         }
-        await full_data.save()
+        await config.update_yaml(yaml_data)
         return await send_method(
             embed=await self.bot.lavalink.construct_embed(
                 description=_("HTTP proxy configuration saved.\n\nRestart the bot for it to take effect"),

@@ -75,10 +75,10 @@ class PyLavUtils(commands.Cog):
                 else:
                     tree.add(command.name)
 
-        commands = self.bot.tree.get_commands()
+        all_commands = self.bot.tree.get_commands()
         rich_tree = Tree("Slash Commands")
 
-        rich_walk_commands(commands, rich_tree)
+        rich_walk_commands(all_commands, rich_tree)
         temp_console = Console(  # Prevent messing with STDOUT's console
             color_system="standard",  # Discord only supports 8-bit in colors
             file=StringIO(),

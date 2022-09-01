@@ -21,7 +21,6 @@ import pylavcogs_shared
 from pylav import Client
 from pylav.envvars import JAVA_EXECUTABLE
 from pylav.managed_node import get_max_allocation_size
-from pylav.sql.models import LibConfigModel
 from pylav.types import BotT, CogT
 from pylav.utils import PyLavContext
 from pylav.utils.built_in_node import NODE_DEFAULT_SETTINGS
@@ -100,19 +99,20 @@ class PyLavManagedNode(commands.Cog):
         else:
             client_id = None
             client_secret = None
-        data = await self.lavalink._node_config_manager.get_bundled_node_config()
+        config = self.lavalink._node_config_manager.bundled_node_config()
+        yaml_data = await config.fetch_yaml()
         if not await asyncstdlib.all([client_id, client_secret]):
-            spotify_data = data.yaml["plugins"]["topissourcemanagers"]["spotify"]
+            spotify_data = yaml_data["plugins"]["topissourcemanagers"]["spotify"]
             client_id = spotify_data["clientId"]
             client_secret = spotify_data["clientSecret"]
         elif await asyncstdlib.all([client_id, client_secret]):
             if (
-                data.yaml["plugins"]["topissourcemanagers"]["spotify"]["clientId"] != client_id
-                or data.yaml["plugins"]["topissourcemanagers"]["spotify"]["clientSecret"] != client_secret
+                yaml_data["plugins"]["topissourcemanagers"]["spotify"]["clientId"] != client_id
+                or yaml_data["plugins"]["topissourcemanagers"]["spotify"]["clientSecret"] != client_secret
             ):
-                data.yaml["plugins"]["topissourcemanagers"]["spotify"]["clientId"] = client_id
-                data.yaml["plugins"]["topissourcemanagers"]["spotify"]["clientSecret"] = client_secret
-            await data.save()
+                yaml_data["plugins"]["topissourcemanagers"]["spotify"]["clientId"] = client_id
+                yaml_data["plugins"]["topissourcemanagers"]["spotify"]["clientSecret"] = client_secret
+                await config.save_yaml(yaml_data)
         self.lavalink._spotify_client_id = client_id
         self.lavalink._spotify_client_secret = client_secret
         self.lavalink._spotify_auth = ClientCredentialsFlow(
@@ -202,12 +202,12 @@ class PyLavManagedNode(commands.Cog):
             )
             return
 
-        global_config = await LibConfigModel(bot=self.bot.user.id, id=1).get_all()
-        await global_config.set_java_path(str(await maybe_coroutine(path.absolute)))
+        global_config = self.lavalink.lib_db_manager.get_config()
+        await global_config.update_java_path(str(await maybe_coroutine(path.absolute)))
         await context.send(
             embed=await context.lavalink.construct_embed(
                 description=_(
-                    "PyLav's java executable has been set to {java}" "\n\nRestart the bot for it to take effect"
+                    "PyLav's java executable has been set to {java}\n\nRestart the bot for it to take effect"
                 ).format(
                     java=inline(f"{java}"),
                     messageable=context,
@@ -227,10 +227,10 @@ class PyLavManagedNode(commands.Cog):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        global_config = await LibConfigModel(bot=self.bot.user.id, id=1).get_all()
-        await global_config.set_enable_managed_node(not global_config.enable_managed_node)
-
-        if global_config.enable_managed_node:
+        global_config = self.lavalink.lib_db_manager.get_config()
+        current = await global_config.fetch_enable_managed_node()
+        await global_config.update_enable_managed_node(not current)
+        if current:
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("PyLav's managed node has been enabled.\n\nRestart the bot for it to take effect"),
@@ -258,10 +258,11 @@ class PyLavManagedNode(commands.Cog):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        global_config = await LibConfigModel(bot=self.bot.user.id, id=1).get_all()
-        await global_config.set_auto_update_managed_nodes(not global_config.auto_update_managed_nodes)
+        global_config = self.lavalink.lib_db_manager.get_config()
+        current = await global_config.fetch_auto_update_managed_nodes()
+        await global_config.update_auto_update_managed_nodes(not current)
 
-        if global_config.auto_update_managed_nodes:
+        if current:
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_(
@@ -350,9 +351,10 @@ class PyLavManagedNode(commands.Cog):
         if not (await validate_input(self, size)):
             return
         size = size.upper()
-        data = await self.lavalink._node_config_manager.get_bundled_node_config()
-        data.extras["max_ram"] = size
-        await data.save()
+        global_config = self.lavalink.lib_db_manager.get_config()
+        extras = await global_config.fetch_extras()
+        extras["max_ram"] = size
+        await global_config.update_extras(extras)
         await context.send(
             embed=await context.lavalink.construct_embed(
                 description=_(
@@ -374,8 +376,10 @@ class PyLavManagedNode(commands.Cog):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        data = await self.lavalink._node_config_manager.get_bundled_node_config()
-        data.yaml["server"]["host"] = host
+        config = self.lavalink._node_config_manager.bundled_node_config()
+        data = await config.fetch_yaml()
+        data["server"]["host"] = host
+        await config.update_yaml(data)
         await context.send(
             embed=await context.lavalink.construct_embed(
                 description=_("Managed node's host set to {host}.\n\nRestart the bot for it to take effect").format(
@@ -396,7 +400,6 @@ class PyLavManagedNode(commands.Cog):
         The value by default is `2154`.
         """
         if port < 1024 or port > 49151:
-
             return await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("The port must be between 1024 and 49151"),
@@ -404,9 +407,10 @@ class PyLavManagedNode(commands.Cog):
                 ),
                 ephemeral=True,
             )
-        data = await self.lavalink._node_config_manager.get_bundled_node_config()
-        data.yaml["server"]["port"] = port
-        await data.save()
+        config = self.lavalink._node_config_manager.bundled_node_config()
+        data = await config.fetch_yaml()
+        data["server"]["port"] = port
+        await config.update_yaml(data)
         await context.send(
             embed=await context.lavalink.construct_embed(
                 description=_("Managed node's port set to {port}.\n\nRestart the bot for it to take effect").format(
@@ -428,9 +432,10 @@ class PyLavManagedNode(commands.Cog):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        data = await self.lavalink._node_config_manager.get_bundled_node_config()
+        config = self.lavalink._node_config_manager.bundled_node_config()
+        data = await config.fetch_yaml()
         new_plugin_data = []
-        for plugin in data.yaml["lavalink"]["plugins"].copy():
+        for plugin in data["lavalink"]["plugins"].copy():
             if plugin["dependency"].startswith("com.github.Topis-Lavalink-Plugins:Topis-Source-Managers-Plugin:"):
                 org = "Topis-Lavalink-Plugins"
                 repo = "Topis-Source-Managers-Plugin"
@@ -458,8 +463,8 @@ class PyLavManagedNode(commands.Cog):
                 }
             )
 
-        if diff := DeepDiff(data.yaml["lavalink"]["plugins"], new_plugin_data, ignore_order=True):
-            data.yaml["lavalink"]["plugins"] = new_plugin_data
+        if diff := DeepDiff(data["lavalink"]["plugins"], new_plugin_data, ignore_order=True):
+            data["lavalink"]["plugins"] = new_plugin_data
             update_string = ""
             if "values_changed" in diff:
                 values_changed = diff["values_changed"]
@@ -477,7 +482,7 @@ class PyLavManagedNode(commands.Cog):
                             new_value=bold(new_value.split(":")[-1]),
                             name=bold(old_value.split(":")[-2]),
                         )
-            await data.save()
+            await config.update_yaml(data)
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_(
@@ -503,7 +508,8 @@ class PyLavManagedNode(commands.Cog):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        data = await self.lavalink._node_config_manager.get_bundled_node_config()
+        config = self.lavalink._node_config_manager.bundled_node_config()
+        data = await config.fetch_yaml()
         source = source.lower().strip()
         valid_sources = NODE_DEFAULT_SETTINGS["lavalink"]["server"]["sources"]
 
@@ -519,13 +525,13 @@ class PyLavManagedNode(commands.Cog):
                 ),
                 ephemeral=True,
             )
-        if source in data.yaml["lavalink"]["server"]["sources"]:
-            data.yaml["lavalink"]["server"]["sources"][source] = state
-        elif source in data.yaml["plugins"]["topissourcemanagers"]["sources"]:
-            data.yaml["plugins"]["topissourcemanagers"]["sources"][source] = state
-        elif source in data.yaml["plugins"]["dunctebot"]["sources"]:
-            data.yaml["plugins"]["dunctebot"]["sources"][source] = state
-        await data.save()
+        if source in data["lavalink"]["server"]["sources"]:
+            data["lavalink"]["server"]["sources"][source] = state
+        elif source in data["plugins"]["topissourcemanagers"]["sources"]:
+            data["plugins"]["topissourcemanagers"]["sources"][source] = state
+        elif source in data["plugins"]["dunctebot"]["sources"]:
+            data["plugins"]["dunctebot"]["sources"][source] = state
+        await config.update_yaml(data)
         await context.send(
             embed=await context.lavalink.construct_embed(
                 description=_("Managed node's source set to {source}.\n\nRestart the bot for it to take effect").format(
@@ -687,10 +693,10 @@ class PyLavManagedNode(commands.Cog):
             value = value in ("0", "1", "true")
         elif possible_values == ("low", "medium", "high"):
             value = value.upper()
-        data = await self.lavalink._node_config_manager.get_bundled_node_config()
-        data.yaml["lavalink"]["server"][setting] = value
-        await data.save()
-
+        config = self.lavalink._node_config_manager.bundled_node_config()
+        data = await config.fetch_yaml()
+        data["lavalink"]["server"][setting] = value
+        await config.save_yaml(data)
         await context.send(
             embed=await context.lavalink.construct_embed(
                 description=_("{Setting} set to {value}.\n\nRestart the bot for it to take effect").format(
@@ -723,9 +729,10 @@ class PyLavManagedNode(commands.Cog):
                 ephemeral=True,
             )
         else:
-            full_data = await self.bot.lavalink.node_db_manager.get_bundled_node_config()
-            full_data.yaml["lavalink"]["server"]["ratelimit"] = NODE_DEFAULT_SETTINGS["lavalink"]["server"]["ratelimit"]
-            await full_data.save()
+            config = self.lavalink._node_config_manager.bundled_node_config()
+            data = await config.fetch_yaml()
+            data["lavalink"]["server"]["ratelimit"] = NODE_DEFAULT_SETTINGS["lavalink"]["server"]["ratelimit"]
+            await config.save_yaml(data)
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("Removing the IP rotation from your node.\n\nRestart the bot for it to take effect"),
@@ -755,11 +762,10 @@ class PyLavManagedNode(commands.Cog):
                 ephemeral=True,
             )
         else:
-            full_data = await self.bot.lavalink.node_db_manager.get_bundled_node_config()
-            full_data.yaml["lavalink"]["server"]["youtubeConfig"] = NODE_DEFAULT_SETTINGS["lavalink"]["server"][
-                "youtubeConfig"
-            ]
-            await full_data.save()
+            config = self.lavalink._node_config_manager.bundled_node_config()
+            data = await config.fetch_yaml()
+            data["lavalink"]["server"]["youtubeConfig"] = NODE_DEFAULT_SETTINGS["lavalink"]["server"]["youtubeConfig"]
+            await config.save_yaml(data)
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("Unlinking Google account from your node.\n\nRestart the bot for it to take effect"),
@@ -785,11 +791,10 @@ class PyLavManagedNode(commands.Cog):
                 ephemeral=True,
             )
         else:
-            full_data = await self.bot.lavalink.node_db_manager.get_bundled_node_config()
-            full_data.yaml["lavalink"]["server"]["httpConfig"] = NODE_DEFAULT_SETTINGS["lavalink"]["server"][
-                "httpConfig"
-            ]
-            await full_data.save()
+            config = self.lavalink._node_config_manager.bundled_node_config()
+            data = await config.fetch_yaml()
+            data["lavalink"]["server"]["httpConfig"] = NODE_DEFAULT_SETTINGS["lavalink"]["server"]["httpConfig"]
+            await config.save_yaml(data)
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("Unlinking HTTP proxy from your node.\n\nRestart the bot for it to take effect"),

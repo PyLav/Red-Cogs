@@ -178,17 +178,17 @@ class PyLavNodes(commands.Cog):
         node = await maybe_prompt_for_node(cog=self, nodes=nodes, context=context)
         if not node:
             return
-        if node.managed:
+        node_data = await node.fetch_all()
+        if node_data["managed"]:
             await context.send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("{name} is managed by PyLav and cannot be removed").format(name=node.name),
+                    description=_("{name} is managed by PyLav and cannot be removed").format(name=node_data["name"]),
                     messageable=context.channel,
                 ),
                 ephemeral=True,
             )
             return
         await self.lavalink.remove_node(node.id)
-        node_data = node.to_dict()
         for k in ["id", "resume_key", "resume_timeout", "managed", "reconnect_attempts", "extras"]:
             node_data.pop(k, None)
         if yaml := node_data.pop("yaml", None):
@@ -197,7 +197,7 @@ class PyLavNodes(commands.Cog):
         await context.author.send(
             embed=await self.lavalink.construct_embed(
                 description=_("Removed node {name}.\n\n{data}").format(
-                    name=node.name, data=box(lang="json", text=ujson.dumps(node_data, indent=2, sort_keys=True))
+                    name=node_data["name"], data=box(lang="json", text=ujson.dumps(node_data, indent=2, sort_keys=True))
                 ),
                 messageable=context.channel,
             )
@@ -206,7 +206,7 @@ class PyLavNodes(commands.Cog):
             embed=await self.lavalink.construct_embed(
                 description=_(
                     "Removed node {name}, a DM was sent to you with the node details in case you wish to re-add it"
-                ).format(name=node.name),
+                ).format(name=node_data["name"]),
                 messageable=context.channel,
             ),
             ephemeral=True,
@@ -282,26 +282,29 @@ class PyLavNodes(commands.Cog):
             await node.update_features()
             await node.update_disabled_sources(set(menu.disabled_sources_selector.values))
         disabled_capabilities = set(menu.disabled_sources_selector.values).union(await node.get_unsupported_features())
+
         if menu.search_only is not None:
-            node.config.search_only = menu.search_only
+            await node.config.update_search_only(menu.search_only)
         if menu.ssl is not None:
-            node.config.ssl = menu.ssl
+            await node.config.update_ssl(menu.ssl)
         if menu.name:
-            node.config.name = menu.name
+            await node.config.update_name(menu.name)
+        yaml_data = await node.config.fetch_yaml()
         if menu.host:
-            node.config.host = menu.host
+            yaml_data["server"]["host"] = menu.host
         if menu.port:
-            node.config.port = menu.port
+            yaml_data["server"]["port"] = menu.port
         if menu.password:
-            node.config.password = menu.password
+            yaml_data["lavalink"]["server"]["password"] = menu.password
+        await node.config.update_yaml(yaml_data)
+
         if menu.timeout:
-            node.config.timeout = menu.timeout
+            await node.config.update_resume_timeout(int(menu.timeout))
         if menu.disabled_sources_selector:
-            await node.config.add_bulk_source_to_exclusion_list(*disabled_capabilities)
-        else:
-            await node.config.save()
+            await node.config.bulk_add_to_disabled_sources(*disabled_capabilities)
+
         await self.lavalink.remove_node(node.identifier)
-        await self.lavalink.add_node(**(node.config.get_connection_args()))
+        await self.lavalink.add_node(**(await node.config.get_connection_args()))
         embed = await self.lavalink.construct_embed(
             description=_(
                 "Changed node {name} to the following settings:\n"

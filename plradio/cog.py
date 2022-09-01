@@ -85,8 +85,8 @@ class PyLavRadio(commands.Cog):
         author = context.author
         player = self.lavalink.get_player(context.guild.id)
         if player is None:
-            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
-            if (channel := context.guild.get_channel_or_thread(config.forced_channel_id)) is None:
+            config = self.lavalink.player_config_manager.get_config(context.guild.id)
+            if (channel := context.guild.get_channel_or_thread(await config.fetch_forced_channel_id())) is None:
                 channel = rgetattr(author, "voice.channel", None)
                 if not channel:
                     await send(

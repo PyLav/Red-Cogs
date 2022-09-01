@@ -78,8 +78,9 @@ class PyLavEqualizer(commands.Cog):
 
         if state:
             if context.player:
-                context.player.config.effects["equalizer"] = {}
-                await context.player.config.save()
+                effects = await context.player.config.fetch_effects()
+                effects["equalizer"] = {}
+                await context.player.config.update_effects(effects)
             await context.send(
                 embed=await self.lavalink.construct_embed(
                     messageable=context,
@@ -89,8 +90,9 @@ class PyLavEqualizer(commands.Cog):
             )
         else:
             if context.player:
-                context.player.config.effects["equalizer"] = context.player.equalizer.to_dict()
-                await context.player.config.save()
+                effects = await context.player.config.fetch_effects()
+                effects["equalizer"] = context.player.equalizer.to_dict()
+                await context.player.config.update_effects(effects)
             await context.send(
                 embed=await self.lavalink.construct_embed(
                     messageable=context,
@@ -124,8 +126,9 @@ class PyLavEqualizer(commands.Cog):
         if level == "Off":
             await context.player.set_equalizer(requester=context.author, equalizer=Equalizer.default())
             if await self._config.guild(context.guild).persist_eq():
-                context.player.config.effects["equalizer"] = {}
-                await context.player.config.save()
+                effects = await context.player.config.fetch_effects()
+                effects["equalizer"] = {}
+                await context.player.config.update_effects(effects)
             await context.send(
                 embed=await self.lavalink.construct_embed(
                     messageable=context,
@@ -189,8 +192,9 @@ class PyLavEqualizer(commands.Cog):
             equalizer=equalizer,
         )
         if await self._config.guild(context.guild).persist_eq():
-            context.player.config.effects["equalizer"] = equalizer.to_dict()
-            await context.player.config.save()
+            effects = await context.player.config.fetch_effects()
+            effects["equalizer"] = context.player.equalizer.to_dict()
+            await context.player.config.update_effects(effects)
         await context.send(
             embed=await self.lavalink.construct_embed(
                 messageable=context,
@@ -234,8 +238,9 @@ class PyLavEqualizer(commands.Cog):
             equalizer=equalizer,
         )
         if await self._config.guild(context.guild).persist_eq():
-            context.player.config.effects["equalizer"] = equalizer.to_dict()
-            await context.player.config.save()
+            effects = await context.player.config.fetch_effects()
+            effects["equalizer"] = equalizer.to_dict()
+            await context.player.config.update_effects(effects)
 
         await context.send(
             embed=await self.lavalink.construct_embed(
@@ -280,8 +285,9 @@ class PyLavEqualizer(commands.Cog):
             equalizer=equalizer,
         )
         if await self._config.guild(context.guild).persist_eq():
-            context.player.config.effects["equalizer"] = equalizer.to_dict()
-            await context.player.config.save()
+            effects = await context.player.config.fetch_effects()
+            effects["equalizer"] = equalizer.to_dict()
+            await context.player.config.update_effects(effects)
         await context.send(
             embed=await self.lavalink.construct_embed(
                 messageable=context,
@@ -302,8 +308,9 @@ class PyLavEqualizer(commands.Cog):
 
         await context.player.set_equalizer(requester=context.author, equalizer=Equalizer.default())
         if await self._config.guild(context.guild).persist_eq():
-            context.player.config.effects["equalizer"] = {}
-            await context.player.config.save()
+            effects = await context.player.config.fetch_effects()
+            effects["equalizer"] = {}
+            await context.player.config.update_effects(effects)
         await context.send(
             embed=await self.lavalink.construct_embed(
                 messageable=context,

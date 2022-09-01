@@ -3,7 +3,6 @@ from __future__ import annotations
 import shutil
 from pathlib import Path
 
-import asyncstdlib
 import discord
 from discord.utils import maybe_coroutine
 from red_commons.logging import getLogger
@@ -15,7 +14,6 @@ from tabulate import tabulate
 import pylavcogs_shared
 from pylav import Client
 from pylav.localfiles import LocalFile
-from pylav.sql.models import LibConfigModel, PlayerModel
 from pylav.types import BotT
 from pylav.utils import PyLavContext
 from pylav.vendored import aiopath
@@ -72,20 +70,20 @@ class PyLavConfigurator(commands.Cog):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        pylav_config = await LibConfigModel(bot=self.bot.user.id, id=1).get_all()
         is_owner = await self.bot.is_owner(context.author)
         enabled = _("Enabled")
         disabled = _("Disabled")
         embed_list = []
+        pylav_config = await self.lavalink.lib_db_manager.get_config().fetch_all()
         if is_owner:
             data = [
-                (_("Use Managed Node"), enabled if pylav_config.enable_managed_node else disabled),
-                (_("Auto Update\nManaged Node"), enabled if pylav_config.auto_update_managed_nodes else disabled),
-                (_("Change Bot activity"), enabled if pylav_config.update_bot_activity else disabled),
-                (_("Use Bundled\nPyLav Nodes"), enabled if pylav_config.use_bundled_pylav_external else disabled),
+                (_("Use Managed Node"), enabled if pylav_config["enable_managed_node"] else disabled),
+                (_("Auto Update\nManaged Node"), enabled if pylav_config["auto_update_managed_nodes"] else disabled),
+                (_("Change Bot activity"), enabled if pylav_config["update_bot_activity"] else disabled),
+                (_("Use Bundled\nPyLav Nodes"), enabled if pylav_config["use_bundled_pylav_external"] else disabled),
                 (
                     _("Use Bundled\nlava.link Nodes"),
-                    enabled if pylav_config.use_bundled_lava_link_external else disabled,
+                    enabled if pylav_config["use_bundled_lava_link_external"] else disabled,
                 ),
             ]
 
@@ -95,30 +93,30 @@ class PyLavConfigurator(commands.Cog):
                     messageable=context,
                 )
             )
-        global_config = await PlayerModel.get_or_create(bot=self.lavalink.bot.user.id, id=0)
+        global_config = await self.lavalink.player_config_manager.get_global_config().fetch_all()
         data = [
-            (_("Volume"), global_config.volume),
-            (_("Maximum Volume"), global_config.max_volume),
-            (_("AutoPlay"), enabled if global_config.auto_play else disabled),
-            (_("Shuffling"), enabled if global_config.shuffle else disabled),
-            (_("Auto Shuffle"), enabled if global_config.auto_shuffle else disabled),
-            (_("Auto Deafen"), enabled if global_config.self_deaf else disabled),
+            (_("Volume"), global_config["volume"]),
+            (_("Maximum Volume"), global_config["max_volume"]),
+            (_("AutoPlay"), enabled if global_config["auto_play"] else disabled),
+            (_("Shuffling"), enabled if global_config["shuffle"] else disabled),
+            (_("Auto Shuffle"), enabled if global_config["auto_shuffle"] else disabled),
+            (_("Auto Deafen"), enabled if global_config["self_deaf"] else disabled),
             (
                 _("Auto Disconnect"),
-                ("{enabled}\n{timer}s").format(enabled=enabled, timer=global_config.empty_queue_dc.time)
-                if global_config.empty_queue_dc.enabled
+                "{enabled}\n{timer}s".format(enabled=enabled, timer=global_config["empty_queue_dc"]["time"])
+                if global_config["empty_queue_dc"].enabled
                 else disabled,
             ),
             (
                 _("Auto Alone Pause"),
-                ("{enabled}\n{timer}s").format(enabled=enabled, timer=global_config.alone_pause.time)
-                if global_config.alone_pause.enabled
+                "{enabled}\n{timer}s".format(enabled=enabled, timer=global_config["alone_pause"]["time"])
+                if global_config["alone_pause"]["enabled"]
                 else disabled,
             ),
             (
                 _("Auto Alone Disconnect"),
-                ("{enabled}\n{timer}s").format(enabled=enabled, timer=global_config.alone_dc.time)
-                if global_config.alone_dc.enabled
+                "{enabled}\n{timer}s".format(enabled=enabled, timer=global_config["alone_dc"]["time"])
+                if global_config["alone_dc"]["enabled"]
                 else disabled,
             ),
         ]
@@ -130,40 +128,40 @@ class PyLavConfigurator(commands.Cog):
             )
         )
         if context.guild:
-            config = await context.bot.lavalink.player_config_manager.get_config(context.guild.id)
+            config = await self.bot.lavalink.player_config_manager.get_config(context.guild.id).fetch_all()
             data = [
-                (_("Volume"), config.volume),
-                (_("Maximum Volume"), config.max_volume),
-                (_("AutoPlay"), enabled if config.auto_play else disabled),
-                (_("AutoPlay Playlist"), config.auto_play_playlist_id),
-                (_("Loop track"), enabled if config.repeat_current else disabled),
-                (_("Loop Queue"), enabled if config.repeat_queue else disabled),
-                (_("Shuffling"), enabled if config.shuffle else disabled),
-                (_("Auto Shuffle"), enabled if config.auto_shuffle else disabled),
-                (_("Auto Deafen"), enabled if config.self_deaf else disabled),
+                (_("Volume"), config["volume"]),
+                (_("Maximum Volume"), config["max_volume"]),
+                (_("AutoPlay"), enabled if config["auto_play"] else disabled),
+                (_("AutoPlay Playlist"), config["auto_play_playlist_id"]),
+                (_("Loop track"), enabled if config["repeat_current"] else disabled),
+                (_("Loop Queue"), enabled if config["repeat_queue"] else disabled),
+                (_("Shuffling"), enabled if config["shuffle"] else disabled),
+                (_("Auto Shuffle"), enabled if config["auto_shuffle"] else disabled),
+                (_("Auto Deafen"), enabled if config["self_deaf"] else disabled),
                 (
                     _("Auto Disconnect"),
-                    _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=config.empty_queue_dc.time)
-                    if config.empty_queue_dc.enabled
+                    _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=config["empty_queue_dc"]["time"])
+                    if config["empty_queue_dc"]["enabled"]
                     else disabled,
                 ),
                 (
                     _("Auto Alone Pause"),
-                    _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=config.alone_pause.time)
-                    if config.alone_pause.enabled
+                    _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=config["alone_pause"]["time"])
+                    if config["alone_pause"]["enabled"]
                     else disabled,
                 ),
                 (
                     _("Auto Alone Disconnect"),
-                    _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=config.alone_dc.time)
-                    if config.alone_dc.enabled
+                    _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=config["alone_dc"]["time"])
+                    if config["alone_dc"]["enabled"]
                     else disabled,
                 ),
-                (_("Forced Voice Channel"), config.forced_channel_id or _("None")),
-                (_("Forced Command Channel"), config.text_channel_id or _("None")),
-                (_("Forced Notification Channel"), config.notify_channel_id or _("None")),
-                (_("DJ Users"), "\n".join(map(str, config.dj_users))),
-                (_("DJ Roles"), "\n".join(map(str, config.dj_roles))),
+                (_("Forced Voice Channel"), config["forced_channel_id"] or _("None")),
+                (_("Forced Command Channel"), config["text_channel_id"] or _("None")),
+                (_("Forced Notification Channel"), config["notify_channel_id"] or _("None")),
+                (_("DJ Users"), "\n".join(map(str, config["dj_users"]))),
+                (_("DJ Roles"), "\n".join(map(str, config["dj_roles"]))),
             ]
 
             embed_list.append(
@@ -175,17 +173,15 @@ class PyLavConfigurator(commands.Cog):
                 )
             )
 
-            ac_max_volume = await asyncstdlib.min(
-                [await config.fetch_max_volume(), await global_config.fetch_max_volume()]
-            )
-            ac_volume = await context.bot.lavalink.player_config_manager.get_volume(context.guild.id)
-            ac_alone_dc = await context.bot.lavalink.player_config_manager.get_alone_dc(context.guild.id)
-            ac_alone_pause = await context.bot.lavalink.player_config_manager.get_alone_pause(context.guild.id)
-            ac_empty_queue_dc = await context.bot.lavalink.player_config_manager.get_empty_queue_dc(context.guild.id)
-            ac_shuffle = await context.bot.lavalink.player_config_manager.get_shuffle(context.guild.id)
-            ac_auto_shuffle = await context.bot.lavalink.player_config_manager.get_auto_shuffle(context.guild.id)
-            ac_self_deaf = await context.bot.lavalink.player_config_manager.get_self_deaf(context.guild.id)
-            ac_auto_play = await context.bot.lavalink.player_config_manager.get_auto_play(context.guild.id)
+            ac_max_volume = await self.bot.lavalink.player_config_manager.get_max_volume(context.guild.id)
+            ac_volume = await self.bot.lavalink.player_config_manager.get_volume(context.guild.id)
+            ac_alone_dc = await self.bot.lavalink.player_config_manager.get_alone_dc(context.guild.id)
+            ac_alone_pause = await self.bot.lavalink.player_config_manager.get_alone_pause(context.guild.id)
+            ac_empty_queue_dc = await self.bot.lavalink.player_config_manager.get_empty_queue_dc(context.guild.id)
+            ac_shuffle = await self.bot.lavalink.player_config_manager.get_shuffle(context.guild.id)
+            ac_auto_shuffle = await self.bot.lavalink.player_config_manager.get_auto_shuffle(context.guild.id)
+            ac_self_deaf = await self.bot.lavalink.player_config_manager.get_self_deaf(context.guild.id)
+            ac_auto_play = await self.bot.lavalink.player_config_manager.get_auto_play(context.guild.id)
 
             data = [
                 (_("Volume"), ac_volume),
@@ -196,21 +192,15 @@ class PyLavConfigurator(commands.Cog):
                 (_("Auto Deafen"), enabled if ac_self_deaf else disabled),
                 (
                     _("Auto Disconnect"),
-                    ("{enabled}\n{timer}s").format(enabled=enabled, timer=ac_empty_queue_dc.time)
-                    if ac_empty_queue_dc.enabled
-                    else disabled,
+                    f"{enabled}\n{ac_empty_queue_dc.time}s" if ac_empty_queue_dc.enabled else disabled,
                 ),
                 (
                     _("Auto Alone Pause"),
-                    ("{enabled}\n{timer}s").format(enabled=enabled, timer=ac_alone_pause.time)
-                    if ac_alone_pause.enabled
-                    else disabled,
+                    f"{enabled}\n{ac_alone_pause.time}s" if ac_alone_pause.enabled else disabled,
                 ),
                 (
                     _("Auto Alone Disconnect"),
-                    ("{enabled}\n{timer}s").format(enabled=enabled, timer=ac_alone_dc.time)
-                    if ac_alone_dc.enabled
-                    else disabled,
+                    f"{enabled}\n{ac_alone_dc.time}s" if ac_alone_dc.enabled else disabled,
                 ),
             ]
             embed_list.append(
@@ -225,15 +215,15 @@ class PyLavConfigurator(commands.Cog):
         data = [
             (
                 _("Next Bundled\nPlaylist Update"),
-                pylav_config.next_execution_update_bundled_playlists.strftime("%Y/%m/%d\n%H:%M:%S UTC"),
+                pylav_config["next_execution_update_bundled_playlists"].strftime("%Y/%m/%d\n%H:%M:%S UTC"),
             ),
             (
                 _("Next Bundled External\nPlaylist Update"),
-                pylav_config.next_execution_update_bundled_external_playlists.strftime("%Y/%m/%d\n%H:%M:%S UTC"),
+                pylav_config["next_execution_update_bundled_external_playlists"].strftime("%Y/%m/%d\n%H:%M:%S UTC"),
             ),
             (
                 _("Next External\nPlaylist Update"),
-                pylav_config.next_execution_update_external_playlists.strftime("%Y/%m/%d\n%H:%M:%S UTC"),
+                pylav_config["next_execution_update_external_playlists"].strftime("%Y/%m/%d\n%H:%M:%S UTC"),
             ),
         ]
         embed_list.append(
@@ -246,9 +236,9 @@ class PyLavConfigurator(commands.Cog):
         )
         if is_owner:
             data = [
-                (_("Config Folder"), pylav_config.config_folder),
-                (_("Local Tracks"), pylav_config.localtrack_folder),
-                (_("Java Executable"), shutil.which(pylav_config.java_path)),
+                (_("Config Folder"), pylav_config["config_folder"]),
+                (_("Local Tracks"), pylav_config["localtrack_folder"]),
+                (_("Java Executable"), shutil.which(pylav_config["java_path"])),
             ]
             embed_list.append(
                 await self.lavalink.construct_embed(
@@ -304,8 +294,8 @@ class PyLavConfigurator(commands.Cog):
             )
             return
 
-        global_config = await LibConfigModel(bot=self.bot.user.id, id=1).get_all()
-        await global_config.set_config_folder(str(await maybe_coroutine(path.absolute)))
+        global_config = self.lavalink.lib_db_manager.get_config()
+        await global_config.update_config_folder(str(await maybe_coroutine(path.absolute)))
 
         await context.send(
             embed=await context.lavalink.construct_embed(
@@ -361,8 +351,8 @@ class PyLavConfigurator(commands.Cog):
             )
             return
 
-        global_config = await LibConfigModel(bot=self.bot.user.id, id=1).get_all()
-        await global_config.set_localtrack_folder(str(await maybe_coroutine(path.absolute)))
+        global_config = self.lavalink.lib_db_manager.get_config()
+        await global_config.update_localtrack_folder(str(await maybe_coroutine(path.absolute)))
 
         await LocalFile.add_root_folder(path=path)
         await context.send(
@@ -437,8 +427,8 @@ class PyLavConfigurator(commands.Cog):
             )
             return
 
-        global_config = await LibConfigModel(bot=self.bot.user.id, id=1).get_all()
-        await global_config.set_java_path(str(await maybe_coroutine(path.absolute)))
+        global_config = self.lavalink.lib_db_manager.get_config()
+        await global_config.update_java_path(str(await maybe_coroutine(path.absolute)))
         await context.send(
             embed=await context.lavalink.construct_embed(
                 description=_("PyLav's java executable has been set to {java}").format(
@@ -465,10 +455,11 @@ class PyLavConfigurator(commands.Cog):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        global_config = await LibConfigModel(bot=self.bot.user.id, id=1).get_all()
-        await global_config.set_enable_managed_node(not global_config.enable_managed_node)
+        global_config = self.lavalink.lib_db_manager.get_config()
+        current = await global_config.fetch_enable_managed_node()
+        await global_config.update_enable_managed_node(not current)
 
-        if global_config.enable_managed_node:
+        if current:
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("PyLav's managed node has been enabled"),
@@ -496,10 +487,11 @@ class PyLavConfigurator(commands.Cog):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        global_config = await LibConfigModel(bot=self.bot.user.id, id=1).get_all()
-        await global_config.set_auto_update_managed_nodes(not global_config.auto_update_managed_nodes)
+        global_config = self.lavalink.lib_db_manager.get_config()
+        current = await global_config.fetch_auto_update_managed_nodes()
+        await global_config.update_auto_update_managed_nodes(not current)
 
-        if global_config.auto_update_managed_nodes:
+        if current:
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("PyLav's managed node auto updates have been enabled"),
@@ -527,16 +519,16 @@ class PyLavConfigurator(commands.Cog):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        global_config = await LibConfigModel(bot=self.bot.user.id, id=1).get_all()
-        current_state = global_config.extras.get("use_bundled_pylav_external", True)
-        await global_config.set_managed_pylav_external_node(not current_state)
+        global_config = self.lavalink.lib_db_manager.get_config()
+        current_state = global_config.fetch_use_bundled_pylav_external()
+        await global_config.update_use_bundled_pylav_external(not current_state)
         if current_state:
             await self.lavalink.remove_node(1)
         else:
-            node_config = await self.lavalink.node_db_manager.get_node_config(1)
-            await self.lavalink.add_node(**(node_config.get_connection_args()))
+            node_config = self.lavalink.node_db_manager.get_node_config(1)
+            await self.lavalink.add_node(**(await node_config.get_connection_args()))
 
-        if global_config.extras["use_bundled_pylav_external"]:
+        if current_state:
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("PyLav's managed pylav external node has been enabled"),
@@ -560,16 +552,16 @@ class PyLavConfigurator(commands.Cog):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        global_config = await LibConfigModel(bot=self.bot.user.id, id=1).get_all()
-        current_state = global_config.extras.get("use_bundled_lava_link_external", False)
-        await global_config.set_managed_lava_link_external_node(not current_state)
+        global_config = self.lavalink.lib_db_manager.get_config()
+        current_state = await global_config.fetch_use_bundled_lava_link_external()
+        await global_config.update_use_bundled_lava_link_external(not current_state)
         if current_state:
             await self.lavalink.remove_node(2)
         else:
-            node_config = await self.lavalink.node_db_manager.get_node_config(2)
-            await self.lavalink.add_node(**(node_config.get_connection_args()))
+            node_config = self.lavalink.node_db_manager.get_node_config(2)
+            await self.lavalink.add_node(**(await node_config.get_connection_args()))
 
-        if global_config.extras["use_bundled_lava_link_external"]:
+        if current_state:
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("PyLav's managed lava.link external node has been enabled"),
@@ -651,9 +643,9 @@ class PyLavConfigurator(commands.Cog):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-
-        current = await LibConfigModel(bot=self.bot.user.id, id=1).get_update_bot_activity()
-        await LibConfigModel(bot=self.bot.user.id, id=1).set_update_bot_activity(not current)
+        global_config = self.lavalink.lib_db_manager.get_config()
+        current = await global_config.fetch_update_bot_activity()
+        await global_config.update_update_bot_activity(not current)
         if not current:
             await context.send(
                 embed=await context.lavalink.construct_embed(

@@ -2,7 +2,6 @@ import datetime
 from abc import ABC
 from typing import Union
 
-import asyncstdlib
 import discord
 from red_commons.logging import getLogger
 from redbot.core import commands
@@ -77,8 +76,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
                 ephemeral=True,
             )
             return
-        self.lavalink.player_manager.global_config.max_volume = volume
-        await self.lavalink.player_manager.global_config.save()
+        await self.lavalink.player_manager.global_config.update_max_volume(volume)
         await context.send(
             embed=await self.lavalink.construct_embed(
                 description=_("Max volume set to {volume}%").format(volume=humanize_number(volume)),
@@ -95,8 +93,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        self.lavalink.player_manager.global_config.self_deaf = toggle
-        await self.lavalink.player_manager.global_config.save()
+        await self.lavalink.player_manager.global_config.update_self_deaf(toggle)
         await context.send(
             embed=await self.lavalink.construct_embed(
                 description=_("Deafen set to {deafen}").format(deafen=_("Enabled") if toggle else _("Disabled")),
@@ -114,8 +111,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        self.lavalink.player_manager.global_config.auto_shuffle = toggle
-        await self.lavalink.player_manager.global_config.save()
+        await self.lavalink.player_manager.global_config.update_auto_shuffle(toggle)
         await context.send(
             embed=await self.lavalink.construct_embed(
                 description=_("Auto-Shuffle set to {shuffle}").format(
@@ -135,8 +131,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        self.lavalink.player_manager.global_config.shuffle = toggle
-        await self.lavalink.player_manager.global_config.save()
+        await self.lavalink.player_manager.global_config.update_shuffle(toggle)
         await context.send(
             embed=await self.lavalink.construct_embed(
                 description=_("Shuffle set to {shuffle}").format(shuffle=_("Enabled") if toggle else _("Disabled")),
@@ -153,8 +148,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        self.lavalink.player_manager.global_config.auto_play = toggle
-        await self.lavalink.player_manager.global_config.save()
+        await self.lavalink.player_manager.global_config.update_auto_play(toggle)
         await context.send(
             embed=await self.lavalink.construct_embed(
                 description=_("Auto-Play set to {auto}").format(auto=_("Enabled") if toggle else _("Disabled")),
@@ -180,15 +174,19 @@ class ConfigCommands(PyLavCogMixin, ABC):
         Arguments:
             - `<toggle>`: Whether the bot should disconnect from the voice voice channel when the queue is empty.
             - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60 seconds.
-            Accepts: seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)
+            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)
         """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        self.lavalink.player_manager.global_config.empty_queue_dc.enabled = toggle
-        self.lavalink.player_manager.global_config.empty_queue_dc.time = after.total_seconds() if after else 60
-        await self.lavalink.player_manager.global_config.save()
+
+        await self.lavalink.player_manager.global_config.update_empty_queue_dc(
+            {
+                "enabled": toggle,
+                "time": after.total_seconds() if after else 60,
+            }
+        )
         if after:
             timedelta_str = humanize_timedelta(timedelta=after)
             extras = _(" and players will be disconnected after {duration}").format(duration=timedelta_str)
@@ -217,15 +215,18 @@ class ConfigCommands(PyLavCogMixin, ABC):
         Arguments:
             - `<toggle>`: Whether the bot should disconnect from the voice voice channel when it detects that it is alone.
             - `<duration>`: How longer after detecting should the player be disconnected Default is 60 seconds.
-            Accepts: seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)
+            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)
         """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        self.lavalink.player_manager.global_config.alone_dc.enabled = toggle
-        self.lavalink.player_manager.global_config.alone_dc.time = after.total_seconds() if after else 60
-        await self.lavalink.player_manager.global_config.save()
+        await self.lavalink.player_manager.global_config.update_alone_dc(
+            {
+                "enabled": toggle,
+                "time": after.total_seconds() if after else 60,
+            }
+        )
         if after:
             timedelta_str = humanize_timedelta(timedelta=after)
             extras = _(" and players will be disconnected after {duration}").format(duration=timedelta_str)
@@ -277,7 +278,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
             await context.send(
                 embed=await self.lavalink.construct_embed(
                     description=_("Volume must be between 0 and {volume}%").format(
-                        volume=humanize_number(self.lavalink.player_manager.global_config.max_volume)
+                        volume=humanize_number(await self.lavalink.player_manager.global_config.fetch_max_volume())
                     ),
                     messageable=context,
                 ),
@@ -287,10 +288,8 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.player:
             config = context.player.config
         else:
-            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
-        max_volume = await asyncstdlib.min(
-            [await config.fetch_max_volume(), await self.lavalink.player_manager.global_config.fetch_max_volume()]
-        )
+            config = self.lavalink.player_config_manager.get_config(context.guild.id)
+        max_volume = await self.lavalink.player_config_manager.get_max_volume(context.guild.id)
         if volume > max_volume:
             await context.send(
                 embed=await self.lavalink.construct_embed(
@@ -300,11 +299,10 @@ class ConfigCommands(PyLavCogMixin, ABC):
                 ephemeral=True,
             )
             return
-        config.volume = volume
-        config.max_volume = volume
+
+        await config.update_max_volume(volume)
         if context.player and context.player.volume > volume:
             await context.player.set_volume(volume, requester=context.author)
-        await config.save()
         await context.send(
             embed=await self.lavalink.construct_embed(
                 description=_("Max volume set to {volume}%").format(volume=humanize_number(volume)),
@@ -334,12 +332,11 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.player:
             config = context.player.config
         else:
-            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
+            config = self.lavalink.player_config_manager.get_config(context.guild.id)
         if context.player and context.me.voice.self_deaf != toggle:
             await context.player.self_deafen(toggle)
         else:
-            config.self_deaf = toggle
-            await config.save()
+            await config.update_self_deaf(toggle)
         await context.send(
             embed=await self.lavalink.construct_embed(
                 description=_("Deafen set to {deafen}").format(deafen=_("Enabled") if toggle else _("Disabled")),
@@ -367,9 +364,8 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.player:
             await context.player.set_auto_shuffle(toggle)
         else:
-            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
-            config.auto_shuffle = toggle
-            await config.save()
+            config = self.lavalink.player_config_manager.get_config(context.guild.id)
+            await config.update_auto_shuffle(toggle)
         await context.send(
             embed=await self.lavalink.construct_embed(
                 description=_("Auto-Shuffle set to {shuffle}").format(
@@ -401,9 +397,8 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.player:
             await context.player.set_shuffle(toggle)
         else:
-            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
-            config.shuffle = toggle
-            await config.save()
+            config = self.lavalink.player_config_manager.get_config(context.guild.id)
+            await config.update_shuffle(toggle)
         await context.send(
             embed=await self.lavalink.construct_embed(
                 description=_("Shuffle set to {shuffle}").format(shuffle=_("Enabled") if toggle else _("Disabled")),
@@ -433,12 +428,11 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.player:
             config = context.player.config
         else:
-            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
+            config = self.lavalink.player_config_manager.get_config(context.guild.id)
         if context.player:
             await context.player.set_autoplay(toggle)
         else:
-            config.auto_play = toggle
-            await config.save()
+            await config.update_auto_play(toggle)
         await context.send(
             embed=await self.lavalink.construct_embed(
                 description=_("Auto-Play set to {auto}").format(auto=_("Enabled") if toggle else _("Disabled")),
@@ -465,7 +459,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
             - `<toggle>`: Whether the bot should disconnect from the voice voice channel when the queue is empty.
             - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60
             seconds.
-            Accepts: seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be
+            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be
             given in seconds)
         """
         if isinstance(context, discord.Interaction):
@@ -490,10 +484,13 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.player:
             config = context.player.config
         else:
-            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
-        config.empty_queue_dc.enabled = toggle
-        config.empty_queue_dc.time = after.total_seconds() if after else 60
-        await config.save()
+            config = self.lavalink.player_config_manager.get_config(context.guild.id)
+        await config.update_empty_queue_dc(
+            {
+                "enabled": toggle,
+                "time": after.total_seconds() if after else 60,
+            }
+        )
         if after:
             timedelta_str = humanize_timedelta(timedelta=after)
             extras = _(" and players will be disconnected after {duration}").format(duration=timedelta_str)
@@ -523,7 +520,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
             - `<toggle>`: Whether the bot should disconnect from the voice voice channel when it detects that it is
             alone.
             - `<duration>`: How longer after detecting should the player be disconnected Default is 60 seconds.
-            Accepts: seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be
+            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be
             given in seconds)
         """
         if isinstance(context, discord.Interaction):
@@ -548,10 +545,14 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.player:
             config = context.player.config
         else:
-            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
-        config.alone_dc.enabled = toggle
-        config.alone_dc.time = after.total_seconds() if after else 60
-        await config.save()
+            config = self.lavalink.player_config_manager.get_config(context.guild.id)
+
+        await config.update_alone_dc(
+            {
+                "enabled": toggle,
+                "time": after.total_seconds() if after else 60,
+            }
+        )
         if after:
             timedelta_str = humanize_timedelta(timedelta=after)
             extras = _(" and players will be disconnected after {duration}").format(duration=timedelta_str)
@@ -582,9 +583,8 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.player:
             await context.player.set_autoplay_playlist(playlist)
         else:
-            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
-            config.auto_play_playlist_id = playlist.id
-            await config.save()
+            config = self.lavalink.player_config_manager.get_config(context.guild.id)
+            await config.update_auto_play_playlist_id(playlist.id)
 
         await context.send(
             embed=await self.lavalink.construct_embed(
@@ -630,11 +630,12 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.player:
             config = context.player.config
         else:
-            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
-        config.text_channel_id = channel.id if channel else None
+            config = self.lavalink.player_config_manager.get_config(context.guild.id)
+
         if context.player:
-            context.player.text_channel = channel
-        await config.save()
+            await context.player.set_text_channel(channel)
+        else:
+            await config.update_text_channel_id(channel.id)
         if channel:
             await context.send(
                 embed=await self.lavalink.construct_embed(
@@ -678,13 +679,13 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.player:
             config = context.player.config
         else:
-            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
-        config.forced_channel_id = channel.id if channel else None
+            config = self.lavalink.player_config_manager.get_config(context.guild.id)
         if context.player:
-            context.player.forced_vc = channel
             if channel and context.player.channel.id != channel.id:
                 await context.player.move_to(channel=channel, requester=context.author)
-        await config.save()
+            await context.player.set_forced_vc(channel)
+        else:
+            await config.update_forced_channel_id(channel.id if channel else 0)
         if channel:
             await context.send(
                 embed=await self.lavalink.construct_embed(

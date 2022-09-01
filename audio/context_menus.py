@@ -43,16 +43,16 @@ class ContextMenus(PyLavCogMixin, ABC):
 
         if player := self.lavalink.get_player(interaction.guild.id):
             config = player.config
-            await config.update()
         else:
-            config = await self.lavalink.player_config_manager.get_config(interaction.guild.id)
-        if config.text_channel_id and config.text_channel_id != interaction.channel.id:
+            config = self.lavalink.player_config_manager.get_config(interaction.guild.id)
+
+        if (channel_id := await config.fetch_text_channel_id()) and channel_id != interaction.channel.id:
             await interaction.followup.send(
                 embed=await self.lavalink.construct_embed(
                     messageable=interaction,
                     description=_("This command is not available in this channel. Please use {channel}").format(
                         channel=channel.mention
-                        if (channel := interaction.guild.get_channel_or_thread(config.text_channel_id))
+                        if (channel := interaction.guild.get_channel_or_thread(channel_id))
                         else None
                     ),
                 ),
@@ -152,16 +152,15 @@ class ContextMenus(PyLavCogMixin, ABC):
             return
         if player := self.lavalink.get_player(interaction.guild.id):
             config = player.config
-            await config.update()
         else:
-            config = await self.lavalink.player_config_manager.get_config(interaction.guild.id)
-        if config.text_channel_id and config.text_channel_id != interaction.channel.id:
+            config = self.lavalink.player_config_manager.get_config(interaction.guild.id)
+        if (channel_id := await config.fetch_text_channel_id()) and channel_id != interaction.channel.id:
             await interaction.followup.send(
                 embed=await self.lavalink.construct_embed(
                     messageable=interaction,
                     description=_("This command is not available in this channel. Please use {channel}").format(
                         channel=channel.mention
-                        if (channel := interaction.guild.get_channel_or_thread(config.text_channel_id))
+                        if (channel := interaction.guild.get_channel_or_thread(channel_id))
                         else None
                     ),
                 ),

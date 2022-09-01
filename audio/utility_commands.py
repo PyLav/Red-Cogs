@@ -1,7 +1,6 @@
 from abc import ABC
 from pathlib import Path
 
-import asyncstdlib
 import discord
 from red_commons.logging import getLogger
 from redbot.core import commands
@@ -34,13 +33,10 @@ class UtilityCommands(PyLavCogMixin, ABC):
                 ephemeral=True,
             )
             return
-        config = context.player.config
-        max_volume = await asyncstdlib.min(
-            [await config.fetch_max_volume(), await self.lavalink.player_manager.global_config.fetch_max_volume()]
-        )
+        max_volume = await self.lavalink.player_config_manager.get_max_volume(context.guild.id)
         new_vol = context.player.volume + change_by
         if new_vol > max_volume:
-            context.player.volume = max_volume
+            await context.player.set_volume(max_volume, requester=context.author)
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("Volume limit reached, player volume set to {volume}%").format(
@@ -51,17 +47,18 @@ class UtilityCommands(PyLavCogMixin, ABC):
                 ephemeral=True,
             )
         elif new_vol < 0:
-            context.player.volume = 0
+            await context.player.set_volume(0, requester=context.author)
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("Minimum volume reached, Player volume set to 0%"), messageable=context
                 ),
                 ephemeral=True,
             )
-        await context.player.set_volume(new_vol, requester=context.author)
-        await context.send(
-            embed=await context.lavalink.construct_embed(
-                description=_("Player volume set to {volume}%").format(volume=new_vol), messageable=context
-            ),
-            ephemeral=True,
-        )
+        else:
+            await context.player.set_volume(new_vol, requester=context.author)
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Player volume set to {volume}%").format(volume=new_vol), messageable=context
+                ),
+                ephemeral=True,
+            )

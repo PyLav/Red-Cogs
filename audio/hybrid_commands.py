@@ -6,7 +6,6 @@ from pathlib import Path
 from re import Pattern
 from typing import Final, Literal, Optional
 
-import asyncstdlib
 import discord
 from discord import app_commands
 from discord.app_commands import Choice
@@ -86,8 +85,8 @@ class HybridCommands(PyLavCogMixin, ABC):
             return
         player = self.lavalink.get_player(context.guild.id)
         if player is None:
-            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
-            if (channel := context.guild.get_channel_or_thread(config.forced_channel_id)) is None:
+            config = self.lavalink.player_config_manager.get_config(context.guild.id)
+            if (channel := context.guild.get_channel_or_thread(await config.fetch_forced_channel_id())) is None:
                 channel = rgetattr(author, "voice.channel", None)
                 if not channel:
                     await send(
@@ -282,8 +281,8 @@ class HybridCommands(PyLavCogMixin, ABC):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        config = await self.lavalink.player_config_manager.get_config(context.guild.id)
-        if (actual_channel := context.guild.get_channel_or_thread(config.forced_channel_id)) is None:
+        config = self.lavalink.player_config_manager.get_config(context.guild.id)
+        if (channel_ := context.guild.get_channel_or_thread(await config.fetch_forced_channel_id())) is None:
             actual_channel = channel or rgetattr(context, "author.voice.channel", None)
             if not actual_channel:
                 await context.send(
@@ -296,6 +295,8 @@ class HybridCommands(PyLavCogMixin, ABC):
                     ephemeral=True,
                 )
                 return
+        else:
+            actual_channel = channel_
         if not ((permission := actual_channel.permissions_for(context.me)) and permission.connect and permission.speak):
             if permission.connect:
                 description = _("I don't have permission to connect to that channel").format(
@@ -316,10 +317,10 @@ class HybridCommands(PyLavCogMixin, ABC):
         else:
             await player.move_to(context.author, channel=actual_channel, self_deaf=True)
 
-        if player.forced_vc and channel != actual_channel:
+        if (vc := await player.forced_vc()) and channel != actual_channel:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("I'm forced to only join {channel}").format(channel=player.forced_vc.mention),
+                    description=_("I'm forced to only join {channel}").format(channel=vc.mention),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -540,11 +541,11 @@ class HybridCommands(PyLavCogMixin, ABC):
                 ephemeral=True,
             )
             return
-        await context.player.config.update()
+
         if queue:
             await context.player.set_repeat("queue", True, context.author)
             msg = _("Repeating the queue")
-        elif context.player.config.repeat_queue or context.player.config.repeat_current:
+        elif context.player.is_repeating():
             await context.player.set_repeat("disable", False, context.author)
             msg = _("Repeating disabled")
         else:
@@ -664,10 +665,7 @@ class HybridCommands(PyLavCogMixin, ABC):
                 ephemeral=True,
             )
             return
-        config = context.player.config
-        max_volume = await asyncstdlib.min(
-            [await config.fetch_max_volume(), await self.lavalink.player_manager.global_config.fetch_max_volume()]
-        )
+        max_volume = await self.lavalink.player_config_manager.get_max_volume(context.guild.id)
         if volume > max_volume:
             await context.send(
                 embed=await context.lavalink.construct_embed(

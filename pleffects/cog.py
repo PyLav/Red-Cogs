@@ -458,7 +458,7 @@ class PyLavEffects(commands.Cog):
             embed=await self.lavalink.construct_embed(
                 title=_("Current filters applied to the player"),
                 description="__**{translation}:**__\n{data}".format(
-                    data=box(tabulate(data, headers="keys", tablefmt="fancy_grid", maxcolwidths=[10, 18]))
+                    data=box(tabulate(data, headers="keys", tablefmt="fancy_grid", maxcolwidths=[10, 18]))  # type: ignore
                     if data
                     else _("None"),
                     translation=discord.utils.escape_markdown(_("Currently Applied")),

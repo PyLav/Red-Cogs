@@ -19,7 +19,7 @@ from redbot.core.utils.chat_formatting import bold, box, humanize_list
 from tabulate import tabulate
 
 import pylavcogs_shared
-from pylav import InvalidPlaylist, Query, Track
+from pylav import Client, InvalidPlaylist, Query, Track
 from pylav.constants import BUNDLED_PLAYLIST_IDS
 from pylav.converters import PlaylistConverter, QueryPlaylistConverter
 from pylav.sql.models import PlaylistModel
@@ -51,6 +51,8 @@ class PyLavPlaylists(
     metaclass=CompositeMetaClass,
 ):
     """PyLav playlist management commands"""
+
+    lavalink: Client
 
     __version__ = "1.0.0.0rc0"
 
@@ -751,8 +753,8 @@ class PyLavPlaylists(
         if not playlist:
             return
         if (player := context.player) is None:
-            config = await self.lavalink.player_config_manager.get_config(context.guild.id)
-            if (channel := context.guild.get_channel_or_thread(config.forced_channel_id)) is None:
+            config = self.lavalink.player_config_manager.get_config(context.guild.id)
+            if (channel := context.guild.get_channel_or_thread(await config.fetch_forced_channel_id())) is None:
                 channel = rgetattr(context, "author.voice.channel", None)
                 if not channel:
                     await context.send(
