@@ -35,7 +35,7 @@ async def cache_filled(interaction: InteractionT) -> bool:
         await interaction.response.defer(ephemeral=True)
     context = await interaction.client.get_context(interaction)
     cog: PyLavLocalFiles = context.bot.get_cog("PyLavLocalFiles")  # type: ignore
-    return bool(cog.ready_event.is_set())
+    return bool(cog.ready_event.is_set()) and len(cog.cache) > 0
 
 
 @cog_i18n(_)
@@ -47,7 +47,7 @@ class PyLavLocalFiles(commands.Cog):
     def __init__(self, bot: BotT, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot
-        self._localtrack_entries: dict[str, Query] = {}
+        self.cache: dict[str, Query] = {}
         self.ready_event = asyncio.Event()
 
     async def _update_cache(self):
@@ -61,7 +61,7 @@ class PyLavLocalFiles(commands.Cog):
             temp[hashlib.md5(f"{getattr(file._query, 'path', file._query)}".encode()).hexdigest()] = file
 
         temp = await asyncstdlib.sorted(temp.items(), key=lambda x: str(x[1]._query).lower())  # type: ignore
-        self._localtrack_entries = dict(temp)
+        self.cache = dict(temp)
 
     async def initialize(self):
         await self._update_cache()
@@ -106,9 +106,7 @@ class PyLavLocalFiles(commands.Cog):
         await self._update_cache()
         await context.send(
             embed=await self.lavalink.construct_embed(
-                description=_("Local track list updated {number} currently present").format(
-                    number=len(self._localtrack_entries)
-                ),
+                description=_("Local track list updated {number} currently present").format(number=len(self.cache)),
                 messageable=context,
             ),
             ephemeral=True,
@@ -132,7 +130,7 @@ class PyLavLocalFiles(commands.Cog):
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         author = interaction.user
-        entry = self._localtrack_entries[entry]
+        entry = self.cache[entry]
         entry._recursive = recursive
         player = self.lavalink.get_player(interaction.guild.id)
         if player is None:
@@ -209,8 +207,10 @@ class PyLavLocalFiles(commands.Cog):
     @slash_local.autocomplete("entry")
     async def slash_local_autocomplete_entry(self, interaction: InteractionT, current: str):
         entries = []
+        if not self.cache:
+            return []
         if not current:
-            extracted = random.choices(list(self._localtrack_entries.items()), k=25)
+            extracted = random.choices(list(self.cache.items()), k=25)
         else:
 
             async def _filter(x):
@@ -218,7 +218,7 @@ class PyLavLocalFiles(commands.Cog):
                     fuzz.token_set_ratio, current, f"{getattr(x[1]._query, 'path', x[1]._query)}"
                 )
 
-            extracted = await heapq.nlargest(asyncstdlib.iter(self._localtrack_entries.items()), n=25, key=_filter)
+            extracted = await heapq.nlargest(asyncstdlib.iter(self.cache.items()), n=25, key=_filter)
 
         async for md5, query in AsyncIter(extracted if current else extracted[::-1]):
             entries.append(
