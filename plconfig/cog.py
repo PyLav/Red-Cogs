@@ -15,6 +15,7 @@ from tabulate import tabulate
 
 import pylavcogs_shared
 from pylav import Client
+from pylav.constants import PYLAV_BUNDLED_NODES_SETTINGS
 from pylav.localfiles import LocalFile
 from pylav.types import BotT
 from pylav.utils import PyLavContext
@@ -728,7 +729,7 @@ class PyLavConfigurator(commands.Cog):
         current = await global_config.fetch_enable_managed_node()
         await global_config.update_enable_managed_node(not current)
 
-        if current:
+        if not current:
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("PyLav's managed node has been enabled"),
@@ -760,7 +761,7 @@ class PyLavConfigurator(commands.Cog):
         current = await global_config.fetch_auto_update_managed_nodes()
         await global_config.update_auto_update_managed_nodes(not current)
 
-        if current:
+        if not current:
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("PyLav's managed node auto updates have been enabled"),
@@ -791,13 +792,16 @@ class PyLavConfigurator(commands.Cog):
         global_config = self.lavalink.lib_db_manager.get_config()
         current_state = await global_config.fetch_use_bundled_pylav_external()
         await global_config.update_use_bundled_pylav_external(not current_state)
-        if current_state:
-            await self.lavalink.remove_node(1)
-        else:
-            node_config = self.lavalink.node_db_manager.get_node_config(1)
-            await self.lavalink.add_node(**(await node_config.get_connection_args()))
 
         if not current_state:
+            node_config = self.lavalink.node_db_manager.get_node_config(
+                PYLAV_BUNDLED_NODES_SETTINGS["ll-gb.draper.wt"]["unique_identifier"]
+            )
+            await self.lavalink.add_node(**(await node_config.get_connection_args()))
+            node_config = self.lavalink.node_db_manager.get_node_config(
+                PYLAV_BUNDLED_NODES_SETTINGS["ll-us-ny.draper.wt"]["unique_identifier"]
+            )
+            await self.lavalink.add_node(**(await node_config.get_connection_args()))
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("PyLav's managed pylav external node has been enabled"),
@@ -806,6 +810,8 @@ class PyLavConfigurator(commands.Cog):
                 ephemeral=True,
             )
         else:
+            await self.lavalink.remove_node(PYLAV_BUNDLED_NODES_SETTINGS["ll-gb.draper.wtf"]["unique_identifier"])
+            await self.lavalink.remove_node(PYLAV_BUNDLED_NODES_SETTINGS["ll-us-ny.draper.wtf"]["unique_identifier"])
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("PyLav's managed pylav external node has been disabled"),
@@ -827,10 +833,16 @@ class PyLavConfigurator(commands.Cog):
         if current_state:
             await self.lavalink.remove_node(2)
         else:
-            node_config = self.lavalink.node_db_manager.get_node_config(2)
+            node_config = self.lavalink.node_db_manager.get_node_config(
+                PYLAV_BUNDLED_NODES_SETTINGS["lava.link"]["unique_identifier"]
+            )
             await self.lavalink.add_node(**(await node_config.get_connection_args()))
 
         if not current_state:
+            node_config = self.lavalink.node_db_manager.get_node_config(
+                PYLAV_BUNDLED_NODES_SETTINGS["lava.link"]["unique_identifier"]
+            )
+            await self.lavalink.add_node(**(await node_config.get_connection_args()))
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("PyLav's managed lava.link external node has been enabled"),
@@ -839,6 +851,7 @@ class PyLavConfigurator(commands.Cog):
                 ephemeral=True,
             )
         else:
+            await self.lavalink.remove_node(2)
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("PyLav's managed lava.link external node has been disabled"),
