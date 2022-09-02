@@ -87,6 +87,7 @@ class PyLavConfigurator(commands.Cog):
             markup=True,
             width=53,
         )
+
         if is_owner:
             table = rich.table.Table()
             table.add_column(_("PyLav Config"), justify="left")
@@ -124,10 +125,7 @@ class PyLavConfigurator(commands.Cog):
             embed_length = len(description) + 15
             embed_list.append(
                 (
-                    await self.lavalink.construct_embed(
-                        description=box(description, lang="ansi"),
-                        messageable=context,
-                    ),
+                    await self.lavalink.construct_embed(description=box(description, lang="ansi"), messageable=context),
                     embed_length,
                 )
             )
@@ -179,7 +177,6 @@ class PyLavConfigurator(commands.Cog):
             else disabled,
             style="green" if global_config["alone_dc"].enabled else "red",
         )
-
         temp_console.clear()
         temp_console.file.truncate(0)
         temp_console.file.seek(0)
@@ -188,10 +185,7 @@ class PyLavConfigurator(commands.Cog):
         embed_length = len(description) + 15
         embed_list.append(
             (
-                await self.lavalink.construct_embed(
-                    description=box(description, lang="ansi"),
-                    messageable=context,
-                ),
+                await self.lavalink.construct_embed(description=box(description, lang="ansi"), messageable=context),
                 embed_length,
             )
         )
@@ -221,7 +215,6 @@ class PyLavConfigurator(commands.Cog):
                 if len(config["dj_roles"]) <= 5
                 else _("Too many to show ({count})").format(count=len(config["dj_roles"]))
             )
-
             table.add_row(_("Volume"), str(config["volume"]), style="cyan")
             table.add_row(_("Maximum Volume"), str(config["max_volume"]), style="cyan")
             table.add_row(
@@ -233,7 +226,7 @@ class PyLavConfigurator(commands.Cog):
                 _("AutoPlay Playlist"),
                 str(config["auto_play_playlist_id"]),
                 style="green" if config["auto_play"] else "red",
-            ),
+            )
             table.add_row(
                 _("Loop track"),
                 enabled if config["repeat_current"] else disabled,
@@ -295,8 +288,8 @@ class PyLavConfigurator(commands.Cog):
                 str(config["notify_channel_id"]) if config["notify_channel_id"] != 0 else _("None"),
                 style="green" if config["notify_channel_id"] != 0 else "red",
             )
-            table.add_row(_("DJ Users"), dj_user_str, style="red" if not config["dj_users"] else "green")
-            table.add_row(_("DJ Roles"), dj_role_str, style="red" if not config["dj_roles"] else "green")
+            table.add_row(_("DJ Users"), dj_user_str, style="green" if config["dj_users"] else "red")
+            table.add_row(_("DJ Roles"), dj_role_str, style="green" if config["dj_roles"] else "red")
             temp_console.clear()
             temp_console.file.truncate(0)
             temp_console.file.seek(0)
@@ -305,10 +298,7 @@ class PyLavConfigurator(commands.Cog):
             embed_length = len(description) + 15
             embed_list.append(
                 (
-                    await self.lavalink.construct_embed(
-                        description=box(description, lang="ansi"),
-                        messageable=context,
-                    ),
+                    await self.lavalink.construct_embed(description=box(description, lang="ansi"), messageable=context),
                     embed_length,
                 )
             )
@@ -325,8 +315,8 @@ class PyLavConfigurator(commands.Cog):
             table = rich.table.Table()
             table.add_column(_("Context Player Config"), justify="left")
             table.add_column(_("Value"), justify="left")
-            table.add_row(_("Volume"), str(ac_volume), style="cyan"),
-            table.add_row(_("Maximum Volume"), str(ac_max_volume), style="cyan"),
+            table.add_row(_("Volume"), str(ac_volume), style="cyan")
+            table.add_row(_("Maximum Volume"), str(ac_max_volume), style="cyan")
             table.add_row(
                 _("AutoPlay"), enabled if ac_auto_play else disabled, style="green" if ac_auto_play else "red"
             )
@@ -366,10 +356,7 @@ class PyLavConfigurator(commands.Cog):
             embed_length = len(description) + 15
             embed_list.append(
                 (
-                    await self.lavalink.construct_embed(
-                        description=box(description, lang="ansi"),
-                        messageable=context,
-                    ),
+                    await self.lavalink.construct_embed(description=box(description, lang="ansi"), messageable=context),
                     embed_length,
                 )
             )
@@ -400,13 +387,11 @@ class PyLavConfigurator(commands.Cog):
         embed_length = len(description) + 15
         embed_list.append(
             (
-                await self.lavalink.construct_embed(
-                    description=box(description, lang="ansi"),
-                    messageable=context,
-                ),
+                await self.lavalink.construct_embed(description=box(description, lang="ansi"), messageable=context),
                 embed_length,
             )
         )
+
         if is_owner:
             table = rich.table.Table()
             table.add_column(_("Paths"), justify="left")
@@ -422,13 +407,11 @@ class PyLavConfigurator(commands.Cog):
             embed_length = len(description) + 15
             embed_list.append(
                 (
-                    await self.lavalink.construct_embed(
-                        description=box(description, lang="ansi"),
-                        messageable=context,
-                    ),
+                    await self.lavalink.construct_embed(description=box(description, lang="ansi"), messageable=context),
                     embed_length,
                 )
             )
+
             if self.lavalink.enable_managed_node:
                 build_date, build_time = self.lavalink.managed_node_controller._buildtime.split(" ", 1)
                 build_data = build_date.split("/")
@@ -452,7 +435,6 @@ class PyLavConfigurator(commands.Cog):
                     enabled if self.lavalink.managed_node_controller._auto_update else disabled,
                     style="green" if self.lavalink.managed_node_controller._auto_update else "red",
                 )
-
                 temp_console.clear()
                 temp_console.file.truncate(0)
                 temp_console.file.seek(0)
@@ -462,8 +444,7 @@ class PyLavConfigurator(commands.Cog):
                 embed_list.append(
                     (
                         await self.lavalink.construct_embed(
-                            description=box(description, lang="ansi"),
-                            messageable=context,
+                            description=box(description, lang="ansi"), messageable=context
                         ),
                         embed_length,
                     )
@@ -474,20 +455,16 @@ class PyLavConfigurator(commands.Cog):
         count = 0
         for embed, length in embed_list:
             if (count + length) < 6000:
-                chunk.append(embed)
                 count += length
             else:
                 embed_chunks.append(chunk)
                 chunk = []
-                chunk.append(embed)
                 count = length
+            chunk.append(embed)
         if chunk:
             embed_chunks.append(chunk)
         for chunk in embed_chunks:
-            await context.send(
-                embeds=chunk,
-                ephemeral=True,
-            )
+            await context.send(embeds=chunk, ephemeral=True)
 
     @command_plset.command(name="dj")
     @commands.guild_only()
