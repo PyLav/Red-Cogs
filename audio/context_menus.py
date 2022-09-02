@@ -46,7 +46,7 @@ class ContextMenus(PyLavCogMixin, ABC):
         else:
             config = self.lavalink.player_config_manager.get_config(interaction.guild.id)
 
-        if (channel_id := await config.fetch_text_channel_id()) and channel_id != interaction.channel.id:
+        if (channel_id := await config.fetch_text_channel_id()) != 0 and channel_id != interaction.channel.id:
             await interaction.followup.send(
                 embed=await self.lavalink.construct_embed(
                     messageable=interaction,
@@ -154,7 +154,7 @@ class ContextMenus(PyLavCogMixin, ABC):
             config = player.config
         else:
             config = self.lavalink.player_config_manager.get_config(interaction.guild.id)
-        if (channel_id := await config.fetch_text_channel_id()) and channel_id != interaction.channel.id:
+        if (channel_id := await config.fetch_text_channel_id()) != 0 and channel_id != interaction.channel.id:
             await interaction.followup.send(
                 embed=await self.lavalink.construct_embed(
                     messageable=interaction,

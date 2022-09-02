@@ -635,7 +635,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.player:
             await context.player.set_text_channel(channel)
         else:
-            await config.update_text_channel_id(channel.id)
+            await config.update_text_channel_id(channel.id if channel else 0)
         if channel:
             await context.send(
                 embed=await self.lavalink.construct_embed(

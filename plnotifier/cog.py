@@ -330,7 +330,7 @@ class PyLavNotifier(commands.Cog):
             context.channel = channel
         else:
             config = self.lavalink.player_config_manager.get_config(context.guild.id)
-        await config.update_notify_channel_id(channel.id)
+        await config.update_notify_channel_id(channel.id if channel else 0)
         if await self.bot.is_owner(context.author):
             await self._config.notify_channel_id.set(channel.id)
         await context.send(
