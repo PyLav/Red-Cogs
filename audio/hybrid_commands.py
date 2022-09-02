@@ -556,7 +556,7 @@ class HybridCommands(PyLavCogMixin, ABC):
         if queue:
             await context.player.set_repeat("queue", True, context.author)
             msg = _("Repeating the queue")
-        elif context.player.is_repeating():
+        elif await context.player.is_repeating():
             await context.player.set_repeat("disable", False, context.author)
             msg = _("Repeating disabled")
         else:
