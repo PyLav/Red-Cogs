@@ -103,20 +103,20 @@ class PyLavConfigurator(commands.Cog):
             (_("Auto Deafen"), enabled if global_config["self_deaf"] else disabled),
             (
                 _("Auto Disconnect"),
-                "{enabled}\n{timer}s".format(enabled=enabled, timer=global_config["empty_queue_dc"]["time"])
+                "{enabled}\n{timer}s".format(enabled=enabled, timer=global_config["empty_queue_dc"].time)
                 if global_config["empty_queue_dc"].enabled
                 else disabled,
             ),
             (
                 _("Auto Alone Pause"),
-                "{enabled}\n{timer}s".format(enabled=enabled, timer=global_config["alone_pause"]["time"])
-                if global_config["alone_pause"]["enabled"]
+                "{enabled}\n{timer}s".format(enabled=enabled, timer=global_config["alone_pause"].time)
+                if global_config["alone_pause"].enabled
                 else disabled,
             ),
             (
                 _("Auto Alone Disconnect"),
-                "{enabled}\n{timer}s".format(enabled=enabled, timer=global_config["alone_dc"]["time"])
-                if global_config["alone_dc"]["enabled"]
+                "{enabled}\n{timer}s".format(enabled=enabled, timer=global_config["alone_dc"].time)
+                if global_config["alone_dc"].enabled
                 else disabled,
             ),
         ]
@@ -141,20 +141,20 @@ class PyLavConfigurator(commands.Cog):
                 (_("Auto Deafen"), enabled if config["self_deaf"] else disabled),
                 (
                     _("Auto Disconnect"),
-                    _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=config["empty_queue_dc"]["time"])
-                    if config["empty_queue_dc"]["enabled"]
+                    _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=config["empty_queue_dc"].time)
+                    if config["empty_queue_dc"].enabled
                     else disabled,
                 ),
                 (
                     _("Auto Alone Pause"),
-                    _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=config["alone_pause"]["time"])
-                    if config["alone_pause"]["enabled"]
+                    _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=config["alone_pause"].time)
+                    if config["alone_pause"].enabled
                     else disabled,
                 ),
                 (
                     _("Auto Alone Disconnect"),
-                    _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=config["alone_dc"]["time"])
-                    if config["alone_dc"]["enabled"]
+                    _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=config["alone_dc"].time)
+                    if config["alone_dc"].enabled
                     else disabled,
                 ),
                 (_("Forced Voice Channel"), config["forced_channel_id"] or _("None")),
