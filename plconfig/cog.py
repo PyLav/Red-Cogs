@@ -129,6 +129,27 @@ class PyLavConfigurator(commands.Cog):
         )
         if context.guild:
             config = await self.bot.lavalink.player_config_manager.get_config(context.guild.id).fetch_all()
+            dj_user_str = (
+                "\n".join(
+                    [
+                        discord.utils.escape_markdown(str(context.guild.get_member(user) or user))
+                        for user in config["dj_users"]
+                    ]
+                )
+                if len(config["dj_users"]) <= 5
+                else _("Too many to show {count}").format(count=len(config["dj_users"]))
+            )
+            dj_role_str = (
+                "\n".join(
+                    [
+                        discord.utils.escape_markdown(str(context.guild.get_role(role) or role))
+                        for role in config["dj_roles"]
+                    ]
+                )
+                if len(config["dj_roles"]) <= 5
+                else _("Too many to show {count}").format(count=len(config["dj_roles"]))
+            )
+
             data = [
                 (_("Volume"), config["volume"]),
                 (_("Maximum Volume"), config["max_volume"]),
@@ -160,8 +181,8 @@ class PyLavConfigurator(commands.Cog):
                 (_("Forced Voice Channel"), config["forced_channel_id"] or _("None")),
                 (_("Forced Command Channel"), config["text_channel_id"] or _("None")),
                 (_("Forced Notification Channel"), config["notify_channel_id"] or _("None")),
-                (_("DJ Users"), "\n".join(map(str, config["dj_users"]))),
-                (_("DJ Roles"), "\n".join(map(str, config["dj_roles"]))),
+                (_("DJ Users"), dj_user_str),
+                (_("DJ Roles"), dj_role_str),
             ]
 
             embed_list.append(
@@ -249,6 +270,38 @@ class PyLavConfigurator(commands.Cog):
 
         await context.send(
             embeds=embed_list,
+            ephemeral=True,
+        )
+
+    @command_plset.command(name="dj")
+    @commands.guild_only()
+    async def command_plset_dj(self, context: PyLavContext, *, role_or_member: discord.Role | discord.Member):
+        """Checks if a user or role is considered a DJ"""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+        if isinstance(role_or_member, discord.Role):
+            config = self.bot.lavalink.player_config_manager.get_config(context.guild.id)
+            dj_roles = await config.fetch_dj_roles()
+            is_dj = role_or_member.id in dj_roles if dj_roles else True
+            message = (
+                _("The role {role} is a DJ role").format(role=role_or_member.mention)
+                if is_dj
+                else _("The role {role} is not a DJ").format(role=role_or_member.mention)
+            )
+        else:
+            is_dj = await self.bot.lavalink.is_dj(user=role_or_member, guild=context.guild, bot=self.bot)
+            message = (
+                _("The user {user} is a DJ").format(user=role_or_member.mention)
+                if is_dj
+                else _("The user {user} is not a DJ").format(user=role_or_member.mention)
+            )
+        await context.send(
+            embed=await self.lavalink.construct_embed(
+                description=message,
+                messageable=context,
+            ),
             ephemeral=True,
         )
 
