@@ -1,9 +1,11 @@
 from __future__ import annotations
 
 import shutil
+from io import StringIO
 from pathlib import Path
 
 import discord
+import rich
 from discord.utils import maybe_coroutine
 from red_commons.logging import getLogger
 from redbot.core import commands
@@ -69,66 +71,135 @@ class PyLavConfigurator(commands.Cog):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-
         is_owner = await self.bot.is_owner(context.author)
         enabled = _("Enabled")
         disabled = _("Disabled")
         embed_list = []
         pylav_config = await self.lavalink.lib_db_manager.get_config().fetch_all()
+        temp_console = rich.console.Console(
+            color_system="standard",
+            emoji=True,
+            file=StringIO(),
+            force_terminal=True,
+            force_interactive=False,
+            highlight=True,
+            markup=True,
+            width=53,
+        )
         if is_owner:
-            data = [
-                (_("Use Managed Node"), enabled if pylav_config["enable_managed_node"] else disabled),
-                (_("Auto Update\nManaged Node"), enabled if pylav_config["auto_update_managed_nodes"] else disabled),
-                (_("Change Bot activity"), enabled if pylav_config["update_bot_activity"] else disabled),
-                (_("Use Bundled\nPyLav Nodes"), enabled if pylav_config["use_bundled_pylav_external"] else disabled),
-                (
-                    _("Use Bundled\nlava.link Nodes"),
-                    enabled if pylav_config["use_bundled_lava_link_external"] else disabled,
-                ),
-            ]
-
+            table = rich.table.Table()
+            table.add_column(_("PyLav Config"), justify="left")
+            table.add_column(_("Value"), justify="left")
+            table.add_row(
+                _("Use Managed Node"),
+                enabled if pylav_config["enable_managed_node"] else disabled,
+                style="green" if pylav_config["enable_managed_node"] else "red",
+            )
+            table.add_row(
+                _("Auto Update\nManaged Node"),
+                enabled if pylav_config["auto_update_managed_nodes"] else disabled,
+                style="green" if pylav_config["auto_update_managed_nodes"] else "red",
+            )
+            table.add_row(
+                _("Change Bot activity"),
+                enabled if pylav_config["update_bot_activity"] else disabled,
+                style="green" if pylav_config["update_bot_activity"] else "red",
+            )
+            table.add_row(
+                _("Use Bundled\nPyLav Nodes"),
+                enabled if pylav_config["use_bundled_pylav_external"] else disabled,
+                style="green" if pylav_config["use_bundled_pylav_external"] else "red",
+            )
+            table.add_row(
+                _("Use Bundled\nlava.link Nodes"),
+                enabled if pylav_config["use_bundled_lava_link_external"] else disabled,
+                style="green" if pylav_config["use_bundled_lava_link_external"] else "red",
+            )
+            temp_console.clear()
+            temp_console.file.truncate(0)
+            temp_console.file.seek(0)
+            temp_console.print(table, overflow="fold", crop=True)
+            description = temp_console.file.getvalue()
+            embed_length = len(description) + 15
             embed_list.append(
-                await self.lavalink.construct_embed(
-                    description=box(tabulate(data, headers=(_("PyLav Config"), _("State")), tablefmt="fancy_grid")),
-                    messageable=context,
+                (
+                    await self.lavalink.construct_embed(
+                        description=box(description, lang="ansi"),
+                        messageable=context,
+                    ),
+                    embed_length,
                 )
             )
-        global_config = await self.lavalink.player_config_manager.get_global_config().fetch_all()
-        data = [
-            (_("Volume"), global_config["volume"]),
-            (_("Maximum Volume"), global_config["max_volume"]),
-            (_("AutoPlay"), enabled if global_config["auto_play"] else disabled),
-            (_("Shuffling"), enabled if global_config["shuffle"] else disabled),
-            (_("Auto Shuffle"), enabled if global_config["auto_shuffle"] else disabled),
-            (_("Auto Deafen"), enabled if global_config["self_deaf"] else disabled),
-            (
-                _("Auto Disconnect"),
-                "{enabled}\n{timer}s".format(enabled=enabled, timer=global_config["empty_queue_dc"].time)
-                if global_config["empty_queue_dc"].enabled
-                else disabled,
-            ),
-            (
-                _("Auto Alone Pause"),
-                "{enabled}\n{timer}s".format(enabled=enabled, timer=global_config["alone_pause"].time)
-                if global_config["alone_pause"].enabled
-                else disabled,
-            ),
-            (
-                _("Auto Alone Disconnect"),
-                "{enabled}\n{timer}s".format(enabled=enabled, timer=global_config["alone_dc"].time)
-                if global_config["alone_dc"].enabled
-                else disabled,
-            ),
-        ]
 
+        global_config = await self.lavalink.player_config_manager.get_global_config().fetch_all()
+        table = rich.table.Table()
+        table.add_column(_("Global Player Config"), justify="left")
+        table.add_column(_("Value"), justify="left")
+        table.add_row(_("Volume"), str(global_config["volume"]), style="cyan")
+        table.add_row(_("Maximum Volume"), str(global_config["max_volume"]), style="cyan")
+        table.add_row(
+            _("AutoPlay"),
+            enabled if global_config["auto_play"] else disabled,
+            style="green" if global_config["auto_play"] else "red",
+        )
+        table.add_row(
+            _("Shuffling"),
+            enabled if global_config["shuffle"] else disabled,
+            style="green" if global_config["shuffle"] else "red",
+        )
+        table.add_row(
+            _("Auto Shuffle"),
+            enabled if global_config["auto_shuffle"] else disabled,
+            style="green" if global_config["auto_shuffle"] else "red",
+        )
+        table.add_row(
+            _("Auto Deafen"),
+            enabled if global_config["self_deaf"] else disabled,
+            style="green" if global_config["self_deaf"] else "red",
+        )
+        table.add_row(
+            _("Auto Disconnect"),
+            _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=global_config["empty_queue_dc"].time)
+            if global_config["empty_queue_dc"].enabled
+            else disabled,
+            style="green" if global_config["empty_queue_dc"].enabled else "red",
+        )
+        table.add_row(
+            _("Auto Alone Pause"),
+            _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=global_config["alone_pause"].time)
+            if global_config["alone_pause"].enabled
+            else disabled,
+            style="green" if global_config["alone_pause"].enabled else "red",
+        )
+        table.add_row(
+            _("Auto Alone Disconnect"),
+            _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=global_config["alone_dc"].time)
+            if global_config["alone_dc"].enabled
+            else disabled,
+            style="green" if global_config["alone_dc"].enabled else "red",
+        )
+
+        temp_console.clear()
+        temp_console.file.truncate(0)
+        temp_console.file.seek(0)
+        temp_console.print(table, overflow="fold", crop=True)
+        description = temp_console.file.getvalue()
+        embed_length = len(description) + 15
         embed_list.append(
-            await self.lavalink.construct_embed(
-                description=box(tabulate(data, headers=(_("Global Player Config"), _("Value")), tablefmt="fancy_grid")),
-                messageable=context,
+            (
+                await self.lavalink.construct_embed(
+                    description=box(description, lang="ansi"),
+                    messageable=context,
+                ),
+                embed_length,
             )
         )
+
         if context.guild:
             config = await self.bot.lavalink.player_config_manager.get_config(context.guild.id).fetch_all()
+            table = rich.table.Table()
+            table.add_column(_("Server Player Config"), justify="left")
+            table.add_column(_("Value"), justify="left")
             dj_user_str = (
                 "\n".join(
                     [
@@ -137,7 +208,7 @@ class PyLavConfigurator(commands.Cog):
                     ]
                 )
                 if len(config["dj_users"]) <= 5
-                else _("Too many to show {count}").format(count=len(config["dj_users"]))
+                else _("Too many to show ({count})").format(count=len(config["dj_users"]))
             )
             dj_role_str = (
                 "\n".join(
@@ -147,50 +218,97 @@ class PyLavConfigurator(commands.Cog):
                     ]
                 )
                 if len(config["dj_roles"]) <= 5
-                else _("Too many to show {count}").format(count=len(config["dj_roles"]))
+                else _("Too many to show ({count})").format(count=len(config["dj_roles"]))
             )
 
-            data = [
-                (_("Volume"), config["volume"]),
-                (_("Maximum Volume"), config["max_volume"]),
-                (_("AutoPlay"), enabled if config["auto_play"] else disabled),
-                (_("AutoPlay Playlist"), config["auto_play_playlist_id"]),
-                (_("Loop track"), enabled if config["repeat_current"] else disabled),
-                (_("Loop Queue"), enabled if config["repeat_queue"] else disabled),
-                (_("Shuffling"), enabled if config["shuffle"] else disabled),
-                (_("Auto Shuffle"), enabled if config["auto_shuffle"] else disabled),
-                (_("Auto Deafen"), enabled if config["self_deaf"] else disabled),
-                (
-                    _("Auto Disconnect"),
-                    _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=config["empty_queue_dc"].time)
-                    if config["empty_queue_dc"].enabled
-                    else disabled,
-                ),
-                (
-                    _("Auto Alone Pause"),
-                    _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=config["alone_pause"].time)
-                    if config["alone_pause"].enabled
-                    else disabled,
-                ),
-                (
-                    _("Auto Alone Disconnect"),
-                    _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=config["alone_dc"].time)
-                    if config["alone_dc"].enabled
-                    else disabled,
-                ),
-                (_("Forced Voice Channel"), config["forced_channel_id"] or _("None")),
-                (_("Forced Command Channel"), config["text_channel_id"] or _("None")),
-                (_("Forced Notification Channel"), config["notify_channel_id"] or _("None")),
-                (_("DJ Users"), dj_user_str),
-                (_("DJ Roles"), dj_role_str),
-            ]
-
+            table.add_row(_("Volume"), str(config["volume"]), style="cyan")
+            table.add_row(_("Maximum Volume"), str(config["max_volume"]), style="cyan")
+            table.add_row(
+                _("AutoPlay"),
+                enabled if config["auto_play"] else disabled,
+                style="green" if config["auto_play"] else "red",
+            )
+            table.add_row(
+                _("AutoPlay Playlist"),
+                str(config["auto_play_playlist_id"]),
+                style="green" if config["auto_play"] else "red",
+            ),
+            table.add_row(
+                _("Loop track"),
+                enabled if config["repeat_current"] else disabled,
+                style="green" if config["repeat_current"] else "red",
+            )
+            table.add_row(
+                _("Loop Queue"),
+                enabled if config["repeat_queue"] else disabled,
+                style="green" if config["repeat_queue"] else "red",
+            )
+            table.add_row(
+                _("Shuffling"),
+                enabled if config["shuffle"] else disabled,
+                style="green" if config["shuffle"] else "red",
+            )
+            table.add_row(
+                _("Auto Shuffle"),
+                enabled if config["auto_shuffle"] else disabled,
+                style="green" if config["auto_shuffle"] else "red",
+            )
+            table.add_row(
+                _("Auto Deafen"),
+                enabled if config["self_deaf"] else disabled,
+                style="green" if config["self_deaf"] else "red",
+            )
+            table.add_row(
+                _("Auto Disconnect"),
+                _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=config["empty_queue_dc"].time)
+                if config["empty_queue_dc"].enabled
+                else disabled,
+                style="green" if config["empty_queue_dc"].enabled else "red",
+            )
+            table.add_row(
+                _("Auto Alone Pause"),
+                _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=config["alone_pause"].time)
+                if config["alone_pause"].enabled
+                else disabled,
+                style="green" if config["alone_pause"].enabled else "red",
+            )
+            table.add_row(
+                _("Auto Alone Disconnect"),
+                _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=config["alone_dc"].time)
+                if config["alone_dc"].enabled
+                else disabled,
+                style="green" if config["alone_dc"].enabled else "red",
+            )
+            table.add_row(
+                _("Forced Voice Channel"),
+                str(config["forced_channel_id"]) if config["forced_channel_id"] != 0 else _("None"),
+                style="green" if config["forced_channel_id"] != 0 else "red",
+            )
+            table.add_row(
+                _("Forced Command Channel"),
+                str(config["text_channel_id"]) if config["text_channel_id"] != 0 else _("None"),
+                style="green" if config["text_channel_id"] != 0 else "red",
+            )
+            table.add_row(
+                _("Forced Notification Channel"),
+                str(config["notify_channel_id"]) if config["notify_channel_id"] != 0 else _("None"),
+                style="green" if config["notify_channel_id"] != 0 else "red",
+            )
+            table.add_row(_("DJ Users"), dj_user_str, style="red" if not config["dj_users"] else "green")
+            table.add_row(_("DJ Roles"), dj_role_str, style="red" if not config["dj_roles"] else "green")
+            temp_console.clear()
+            temp_console.file.truncate(0)
+            temp_console.file.seek(0)
+            temp_console.print(table, overflow="fold", crop=True)
+            description = temp_console.file.getvalue()
+            embed_length = len(description) + 15
             embed_list.append(
-                await self.lavalink.construct_embed(
-                    description=box(
-                        tabulate(data, headers=(_("Server Player Config"), _("Value")), tablefmt="fancy_grid")
+                (
+                    await self.lavalink.construct_embed(
+                        description=box(description, lang="ansi"),
+                        messageable=context,
                     ),
-                    messageable=context,
+                    embed_length,
                 )
             )
 
@@ -203,75 +321,172 @@ class PyLavConfigurator(commands.Cog):
             ac_auto_shuffle = await self.bot.lavalink.player_config_manager.get_auto_shuffle(context.guild.id)
             ac_self_deaf = await self.bot.lavalink.player_config_manager.get_self_deaf(context.guild.id)
             ac_auto_play = await self.bot.lavalink.player_config_manager.get_auto_play(context.guild.id)
-
-            data = [
-                (_("Volume"), ac_volume),
-                (_("Maximum Volume"), ac_max_volume),
-                (_("AutoPlay"), enabled if ac_auto_play else disabled),
-                (_("Shuffling"), enabled if ac_shuffle else disabled),
-                (_("Auto Shuffle"), enabled if ac_auto_shuffle else disabled),
-                (_("Auto Deafen"), enabled if ac_self_deaf else disabled),
-                (
-                    _("Auto Disconnect"),
-                    f"{enabled}\n{ac_empty_queue_dc.time}s" if ac_empty_queue_dc.enabled else disabled,
-                ),
-                (
-                    _("Auto Alone Pause"),
-                    f"{enabled}\n{ac_alone_pause.time}s" if ac_alone_pause.enabled else disabled,
-                ),
-                (
-                    _("Auto Alone Disconnect"),
-                    f"{enabled}\n{ac_alone_dc.time}s" if ac_alone_dc.enabled else disabled,
-                ),
-            ]
+            table = rich.table.Table()
+            table.add_column(_("Context Player Config"), justify="left")
+            table.add_column(_("Value"), justify="left")
+            table.add_row(_("Volume"), str(ac_volume), style="cyan"),
+            table.add_row(_("Maximum Volume"), str(ac_max_volume), style="cyan"),
+            table.add_row(
+                _("AutoPlay"), enabled if ac_auto_play else disabled, style="green" if ac_auto_play else "red"
+            )
+            table.add_row(_("Shuffling"), enabled if ac_shuffle else disabled, style="green" if ac_shuffle else "red")
+            table.add_row(
+                _("Auto Shuffle"), enabled if ac_auto_shuffle else disabled, style="green" if ac_auto_shuffle else "red"
+            )
+            table.add_row(
+                _("Auto Deafen"), enabled if ac_self_deaf else disabled, style="green" if ac_self_deaf else "red"
+            )
+            table.add_row(
+                _("Auto Disconnect"),
+                _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=ac_empty_queue_dc.time)
+                if ac_empty_queue_dc.enabled
+                else disabled,
+                style="green" if ac_empty_queue_dc.enabled else "red",
+            )
+            table.add_row(
+                _("Auto Alone Pause"),
+                _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=ac_alone_pause.time)
+                if ac_alone_pause.enabled
+                else disabled,
+                style="green" if ac_alone_pause.enabled else "red",
+            )
+            table.add_row(
+                _("Auto Alone Disconnect"),
+                _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=ac_alone_dc.time)
+                if ac_alone_dc.enabled
+                else disabled,
+                style="green" if ac_alone_dc.enabled else "red",
+            )
+            temp_console.clear()
+            temp_console.file.truncate(0)
+            temp_console.file.seek(0)
+            temp_console.print(table, overflow="fold", crop=True)
+            description = temp_console.file.getvalue()
+            embed_length = len(description) + 15
             embed_list.append(
-                await self.lavalink.construct_embed(
-                    description=box(
-                        tabulate(data, headers=(_("Context Player Config"), _("Value")), tablefmt="fancy_grid")
+                (
+                    await self.lavalink.construct_embed(
+                        description=box(description, lang="ansi"),
+                        messageable=context,
                     ),
-                    messageable=context,
+                    embed_length,
                 )
             )
 
-        data = [
-            (
-                _("Next Bundled\nPlaylist Update"),
-                pylav_config["next_execution_update_bundled_playlists"].strftime("%Y/%m/%d\n%H:%M:%S UTC"),
-            ),
-            (
-                _("Next Bundled External\nPlaylist Update"),
-                pylav_config["next_execution_update_bundled_external_playlists"].strftime("%Y/%m/%d\n%H:%M:%S UTC"),
-            ),
-            (
-                _("Next External\nPlaylist Update"),
-                pylav_config["next_execution_update_external_playlists"].strftime("%Y/%m/%d\n%H:%M:%S UTC"),
-            ),
-        ]
+        table = rich.table.Table()
+        table.add_column(_("Playlist Tasks"), justify="left")
+        table.add_column(_("Date and Time (UTC)"), justify="left")
+        table.add_row(
+            _("Next Bundled\nPlaylist Update"),
+            pylav_config["next_execution_update_bundled_playlists"].strftime("%Y/%m/%d\n%H:%M:%S UTC"),
+            style="blue",
+        )
+        table.add_row(
+            _("Next Bundled External\nPlaylist Update"),
+            pylav_config["next_execution_update_bundled_external_playlists"].strftime("%Y/%m/%d\n%H:%M:%S UTC"),
+            style="blue",
+        )
+        table.add_row(
+            _("Next External\nPlaylist Update"),
+            pylav_config["next_execution_update_external_playlists"].strftime("%Y/%m/%d\n%H:%M:%S UTC"),
+            style="blue",
+        )
+        temp_console.clear()
+        temp_console.file.truncate(0)
+        temp_console.file.seek(0)
+        temp_console.print(table, overflow="fold", crop=True)
+        description = temp_console.file.getvalue()
+        embed_length = len(description) + 15
         embed_list.append(
-            await self.lavalink.construct_embed(
-                description=box(
-                    tabulate(data, headers=(_("Playlist Tasks"), _("Date and Time (UTC)")), tablefmt="fancy_grid")
+            (
+                await self.lavalink.construct_embed(
+                    description=box(description, lang="ansi"),
+                    messageable=context,
                 ),
-                messageable=context,
+                embed_length,
             )
         )
         if is_owner:
-            data = [
-                (_("Config Folder"), pylav_config["config_folder"]),
-                (_("Local Tracks"), pylav_config["localtrack_folder"]),
-                (_("Java Executable"), shutil.which(pylav_config["java_path"])),
-            ]
+            table = rich.table.Table()
+            table.add_column(_("Paths"), justify="left")
+            table.add_column(_("Path"), justify="left")
+            table.add_row(_("Config Folder"), pylav_config["config_folder"])
+            table.add_row(_("Local Tracks"), pylav_config["localtrack_folder"])
+            table.add_row(_("Java Executable"), shutil.which(pylav_config["java_path"]))
+            temp_console.clear()
+            temp_console.file.truncate(0)
+            temp_console.file.seek(0)
+            temp_console.print(table, overflow="fold", crop=False)
+            description = temp_console.file.getvalue()
+            embed_length = len(description) + 15
             embed_list.append(
-                await self.lavalink.construct_embed(
-                    description=box(tabulate(data, headers=(_("Paths"), _("Path")), tablefmt="plain")),
-                    messageable=context,
+                (
+                    await self.lavalink.construct_embed(
+                        description=box(description, lang="ansi"),
+                        messageable=context,
+                    ),
+                    embed_length,
                 )
             )
+            if self.lavalink.enable_managed_node:
+                build_date, build_time = self.lavalink.managed_node_controller._buildtime.split(" ", 1)
+                build_data = build_date.split("/")
+                build_date = f"{build_data[2]}/{build_data[1]}/{build_data[0]}\n{build_time}"
+                table = rich.table.Table()
+                table.add_column(_("Managed Node Config"), justify="left", style="green")
+                table.add_column(_("Value"), justify="left")
+                table.add_row(_("Java"), self.lavalink.managed_node_controller._jvm, style="blue")
+                table.add_row(_("Lavaplayer"), self.lavalink.managed_node_controller._lavaplayer, style="blue")
+                table.add_row(
+                    _("Lavalink Branch"), self.lavalink.managed_node_controller._lavalink_branch, style="blue"
+                )
+                table.add_row(_("Lavalink Version"), self.lavalink.managed_node_controller._version, style="blue")
+                table.add_row(
+                    _("Lavalink Build"), str(self.lavalink.managed_node_controller._lavalink_build), style="blue"
+                )
+                table.add_row(_("Build Time"), build_date, style="blue")
+                table.add_row(_("Commit"), self.lavalink.managed_node_controller._commit, style="blue")
+                table.add_row(
+                    _("Auto Update"),
+                    enabled if self.lavalink.managed_node_controller._auto_update else disabled,
+                    style="green" if self.lavalink.managed_node_controller._auto_update else "red",
+                )
 
-        await context.send(
-            embeds=embed_list,
-            ephemeral=True,
-        )
+                temp_console.clear()
+                temp_console.file.truncate(0)
+                temp_console.file.seek(0)
+                temp_console.print(table, overflow="fold", crop=True)
+                description = temp_console.file.getvalue()
+                embed_length = len(description) + 15
+                embed_list.append(
+                    (
+                        await self.lavalink.construct_embed(
+                            description=box(description, lang="ansi"),
+                            messageable=context,
+                        ),
+                        embed_length,
+                    )
+                )
+
+        embed_chunks = []
+        chunk = []
+        count = 0
+        for embed, length in embed_list:
+            if (count + length) < 6000:
+                chunk.append(embed)
+                count += length
+            else:
+                embed_chunks.append(chunk)
+                chunk = []
+                chunk.append(embed)
+                count = length
+        if chunk:
+            embed_chunks.append(chunk)
+        for chunk in embed_chunks:
+            await context.send(
+                embeds=chunk,
+                ephemeral=True,
+            )
 
     @command_plset.command(name="dj")
     @commands.guild_only()
