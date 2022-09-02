@@ -797,7 +797,7 @@ class PyLavConfigurator(commands.Cog):
             node_config = self.lavalink.node_db_manager.get_node_config(1)
             await self.lavalink.add_node(**(await node_config.get_connection_args()))
 
-        if current_state:
+        if not current_state:
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("PyLav's managed pylav external node has been enabled"),
@@ -830,7 +830,7 @@ class PyLavConfigurator(commands.Cog):
             node_config = self.lavalink.node_db_manager.get_node_config(2)
             await self.lavalink.add_node(**(await node_config.get_connection_args()))
 
-        if current_state:
+        if not current_state:
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("PyLav's managed lava.link external node has been enabled"),
