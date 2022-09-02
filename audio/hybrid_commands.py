@@ -207,6 +207,14 @@ class HybridCommands(PyLavCogMixin, ABC):
             "SoundCloud": "scsearch:",
             "YouTube": "ytsearch:",
         }
+
+        feature_mapping = {
+            "ytmsearch:": "youtube",
+            "spsearch:": "spotify",
+            "amsearch:": "applemusic",
+            "scsearch:": "soundcloud",
+            "ytsearch:": "youtube",
+        }
         inv_map = {v: k for k, v in prefix_mapping.items()}
         if options := data.get("options", []):
             value_list = [v for v in options if v.get("name") == "source"]
@@ -220,7 +228,7 @@ class HybridCommands(PyLavCogMixin, ABC):
         service = match.group("search_source") if match else None
         if not service:
             current = prefix + current
-
+        feature = feature_mapping.get(prefix, "youtube")
         if not (match := SEARCH_REGEX.match(current)) or not match.group("search_query"):
             return [
                 Choice(
@@ -249,7 +257,10 @@ class HybridCommands(PyLavCogMixin, ABC):
                 )
             ]
         choices = []
-        node = interaction.client.lavalink.node_manager.available_nodes[0]
+        node = await interaction.client.lavalink.get_managed_node()
+        if node is None:
+            node = interaction.client.lavalink.node_manager.find_best_node(feature=feature)
+
         for track in tracks:
             track = Track(
                 node=node, data=track, query=await Query.from_base64(track["track"]), requester=interaction.user.id
