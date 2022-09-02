@@ -709,6 +709,7 @@ class PyLavConfigurator(commands.Cog):
                 ephemeral=True,
             )
         else:
+            await self.bot.change_presence(activity=None)
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("PyLav will no longer change the bot activity"),
