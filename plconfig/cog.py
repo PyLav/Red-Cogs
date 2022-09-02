@@ -269,8 +269,8 @@ class PyLavConfigurator(commands.Cog):
                 embed=await context.lavalink.construct_embed(
                     description=_("{folder} is not a folder").format(
                         folder=inline(f"{await maybe_coroutine(path.absolute)}"),
-                        messageable=context,
-                    )
+                    ),
+                    messageable=context,
                 ),
                 ephemeral=True,
             )
@@ -287,8 +287,8 @@ class PyLavConfigurator(commands.Cog):
                         "set to 1 to automatically create this folder"
                     ).format(
                         folder=inline(f"{await maybe_coroutine(path.absolute)}"),
-                        messageable=context,
-                    )
+                    ),
+                    messageable=context,
                 ),
                 ephemeral=True,
             )
@@ -301,8 +301,8 @@ class PyLavConfigurator(commands.Cog):
             embed=await context.lavalink.construct_embed(
                 description=_("PyLav's config folder has been set to {folder}").format(
                     folder=inline(f"{await maybe_coroutine(path.absolute)}"),
-                    messageable=context,
-                )
+                ),
+                messageable=context,
             ),
             ephemeral=True,
         )
@@ -324,8 +324,8 @@ class PyLavConfigurator(commands.Cog):
                 embed=await context.lavalink.construct_embed(
                     description=_("{folder} is not a folder").format(
                         folder=inline(f"{await maybe_coroutine(path.absolute)}"),
-                        messageable=context,
-                    )
+                    ),
+                    messageable=context,
                 ),
                 ephemeral=True,
             )
@@ -344,8 +344,8 @@ class PyLavConfigurator(commands.Cog):
                         "create this folder"
                     ).format(
                         folder=inline(f"{await maybe_coroutine(path.absolute)}"),
-                        messageable=context,
-                    )
+                    ),
+                    messageable=context,
                 ),
                 ephemeral=True,
             )
@@ -359,8 +359,8 @@ class PyLavConfigurator(commands.Cog):
             embed=await context.lavalink.construct_embed(
                 description=_("PyLav's local tracks folder has been set to {folder}").format(
                     folder=inline(f"{await maybe_coroutine(path.absolute)}"),
-                    messageable=context,
-                )
+                ),
+                messageable=context,
             ),
             ephemeral=True,
         )
@@ -392,8 +392,8 @@ class PyLavConfigurator(commands.Cog):
                         "set to the correct path"
                     ).format(
                         java=inline(f"{await maybe_coroutine(path.absolute)}"),
-                        messageable=context,
-                    )
+                    ),
+                    messageable=context,
                 ),
                 ephemeral=True,
             )
@@ -403,8 +403,8 @@ class PyLavConfigurator(commands.Cog):
                 embed=await context.lavalink.construct_embed(
                     description=_("{java} is not an executable file").format(
                         java=inline(f"{await maybe_coroutine(path.absolute)}"),
-                        messageable=context,
-                    )
+                    ),
+                    messageable=context,
                 ),
                 ephemeral=True,
             )
@@ -420,8 +420,8 @@ class PyLavConfigurator(commands.Cog):
                         "set to the correct path"
                     ).format(
                         java=inline(f"{await maybe_coroutine(path.absolute)}"),
-                        messageable=context,
-                    )
+                    ),
+                    messageable=context,
                 ),
                 ephemeral=True,
             )
@@ -433,8 +433,8 @@ class PyLavConfigurator(commands.Cog):
             embed=await context.lavalink.construct_embed(
                 description=_("PyLav's java executable has been set to {java}").format(
                     java=inline(f"{java}"),
-                    messageable=context,
-                )
+                ),
+                messageable=context,
             ),
             ephemeral=True,
         )
@@ -612,7 +612,7 @@ class PyLavConfigurator(commands.Cog):
         if server and (self.lavalink.player_manager.get(server.id) is None):
             await context.send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("No active player in {}").format(bold(server.name)),
+                    description=_("No active player in {name}").format(bold(server.name)),
                     messageable=context,
                 ),
                 ephemeral=True,
