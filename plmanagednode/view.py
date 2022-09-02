@@ -257,7 +257,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
 
         config = self.bot.lavalink.node_db_manager.bundled_node_config()
         yaml_data = await config.fetch_yaml()
-        yaml_data["ratelimit"] = {
+        yaml_data["lavalink"]["server"]["ratelimit"] = {
             "ipBlocks": ip_blocks,
             "strategy": strategy,
             "retryLimit": retry_limit,
@@ -328,7 +328,7 @@ class ConfigureGoogleAccountModal(discord.ui.Modal):
 
         config = self.bot.lavalink.node_db_manager.bundled_node_config()
         yaml_data = await config.fetch_yaml()
-        yaml_data["youtubeConfig"] = {"email": self.email.value, "password": self.password.value}
+        yaml_data["lavalink"]["server"]["youtubeConfig"] = {"email": self.email.value, "password": self.password.value}
         await config.update_yaml(yaml_data)
         return await send_method(
             embed=await self.bot.lavalink.construct_embed(
@@ -408,7 +408,7 @@ class ConfigureHTTPProxyModal(discord.ui.Modal):
             )
         config = self.bot.lavalink.node_db_manager.bundled_node_config()
         yaml_data = await config.fetch_yaml()
-        yaml_data["httpConfig"] = {
+        yaml_data["lavalink"]["server"]["httpConfig"] = {
             "proxyHost": self.host.value,
             "proxyPort": port,
             "proxyUser": self.user.value,
