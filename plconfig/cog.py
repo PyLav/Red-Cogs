@@ -284,18 +284,19 @@ class PyLavConfigurator(commands.Cog):
         if isinstance(role_or_member, discord.Role):
             config = self.bot.lavalink.player_config_manager.get_config(context.guild.id)
             dj_roles = await config.fetch_dj_roles()
+            dj_roles = dj_roles.union(await config.fetch_dj_users())
             is_dj = role_or_member.id in dj_roles if dj_roles else True
             message = (
-                _("The role {role} is a DJ role").format(role=role_or_member.mention)
+                _("{role} is a DJ role").format(role=role_or_member.mention)
                 if is_dj
-                else _("The role {role} is not a DJ").format(role=role_or_member.mention)
+                else _("{role} is not a DJ role").format(role=role_or_member.mention)
             )
         else:
             is_dj = await self.bot.lavalink.is_dj(user=role_or_member, guild=context.guild, bot=self.bot)
             message = (
-                _("The user {user} is a DJ").format(user=role_or_member.mention)
+                _("{user} is a DJ").format(user=role_or_member.mention)
                 if is_dj
-                else _("The user {user} is not a DJ").format(user=role_or_member.mention)
+                else _("{user} is not a DJ").format(user=role_or_member.mention)
             )
         await context.send(
             embed=await self.lavalink.construct_embed(
