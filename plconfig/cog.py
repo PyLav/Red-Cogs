@@ -789,7 +789,7 @@ class PyLavConfigurator(commands.Cog):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
         global_config = self.lavalink.lib_db_manager.get_config()
-        current_state = global_config.fetch_use_bundled_pylav_external()
+        current_state = await global_config.fetch_use_bundled_pylav_external()
         await global_config.update_use_bundled_pylav_external(not current_state)
         if current_state:
             await self.lavalink.remove_node(1)
