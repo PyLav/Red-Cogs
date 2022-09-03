@@ -370,13 +370,20 @@ class EmbedGenerator:
         pylav_config = await self.cog.lavalink.lib_db_manager.get_config().fetch_all()
 
         data = [
-            (_("Config Folder"), pylav_config["config_folder"]),
-            (_("Local Tracks"), pylav_config["localtrack_folder"]),
-            (_("Java Executable"), shutil.which(pylav_config["java_path"])),
+            (_("Config Folder"), "\u001b[35m" + pylav_config["config_folder"] + "\u001b[0m"),
+            (_("Local Tracks"), "\u001b[35m" + pylav_config["localtrack_folder"] + "\u001b[0m"),
+            (
+                _("Java Executable"),
+                (
+                    "\u001b[35m" + jpath
+                    if (jpath := shutil.which(pylav_config["java_path"]))
+                    else "\u001b[31m" + _("Not Found") + "\u001b[0m"
+                ),
+            ),
         ]
 
         return await self.cog.lavalink.construct_embed(
-            description=box(tabulate(data, headers=(_("Paths"), _("Path")), tablefmt="fancy_grid")),
+            description=box(tabulate(data, headers=(_("Paths"), _("Path")), tablefmt="plain"), lang="ansi"),
             messageable=self.context,
         )
 
