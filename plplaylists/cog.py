@@ -25,6 +25,7 @@ from pylav.converters import PlaylistConverter, QueryPlaylistConverter
 from pylav.sql.models import PlaylistModel
 from pylav.types import BotT, InteractionT
 from pylav.utils import AsyncIter, PyLavContext
+from pylav.utils.theme import EightBitANSI
 from pylavcogs_shared.ui.menus.generic import PaginatingMenu
 from pylavcogs_shared.ui.menus.playlist import PlaylistCreationFlow, PlaylistManageFlow
 from pylavcogs_shared.ui.prompts.playlists import maybe_prompt_for_playlist
@@ -85,14 +86,24 @@ class PyLavPlaylists(
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
         data = [
-            (self.__class__.__name__, self.__version__),
-            ("PyLavCogs-Shared", pylavcogs_shared.__VERSION__),
-            ("PyLav", self.bot.lavalink.lib_version),
+            (EightBitANSI.paint_white(self.__class__.__name__), EightBitANSI.paint_blue(self.__version__)),
+            (EightBitANSI.paint_white("PyLavCogs-Shared"), EightBitANSI.paint_blue(pylavcogs_shared.__VERSION__)),
+            (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.lavalink.lib_version)),
         ]
 
         await context.send(
-            embed=await self.lavalink.construct_embed(
-                description=box(tabulate(data, headers=(_("Library/Cog"), _("Version")), tablefmt="fancy_grid")),
+            embed=await context.lavalink.construct_embed(
+                description=box(
+                    tabulate(
+                        data,
+                        headers=(
+                            EightBitANSI.paint_yellow(_("Library/Cog"), bold=True, underline=True),
+                            EightBitANSI.paint_yellow(_("Version"), bold=True, underline=True),
+                        ),
+                        tablefmt="fancy_grid",
+                    ),
+                    lang="ansi",
+                ),
                 messageable=context,
             ),
             ephemeral=True,

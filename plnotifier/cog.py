@@ -20,6 +20,7 @@ from pylav import Client, events
 from pylav.filters import Equalizer, Volume
 from pylav.types import BotT
 from pylav.utils import PyLavContext, format_time
+from pylav.utils.theme import EightBitANSI
 
 _ = Translator("PyLavNotifier", Path(__file__))
 
@@ -230,14 +231,24 @@ class PyLavNotifier(commands.Cog):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
         data = [
-            (self.__class__.__name__, self.__version__),
-            ("PyLavCogs-Shared", pylavcogs_shared.__VERSION__),
-            ("PyLav", self.bot.lavalink.lib_version),
+            (EightBitANSI.paint_white(self.__class__.__name__), EightBitANSI.paint_blue(self.__version__)),
+            (EightBitANSI.paint_white("PyLavCogs-Shared"), EightBitANSI.paint_blue(pylavcogs_shared.__VERSION__)),
+            (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.lavalink.lib_version)),
         ]
 
         await context.send(
-            embed=await self.lavalink.construct_embed(
-                description=box(tabulate(data, headers=(_("Library/Cog"), _("Version")), tablefmt="fancy_grid")),
+            embed=await context.lavalink.construct_embed(
+                description=box(
+                    tabulate(
+                        data,
+                        headers=(
+                            EightBitANSI.paint_yellow(_("Library/Cog"), bold=True, underline=True),
+                            EightBitANSI.paint_yellow(_("Version"), bold=True, underline=True),
+                        ),
+                        tablefmt="fancy_grid",
+                    ),
+                    lang="ansi",
+                ),
                 messageable=context,
             ),
             ephemeral=True,
@@ -1692,8 +1703,8 @@ class PyLavNotifier(commands.Cog):
             user = req.mention
         else:
             user = event.requester or self.bot.user
-        t_effect = _("Effect")
-        t_values = _("Values")
+        t_effect = EightBitANSI.paint_yellow(_("Effect"), bold=True, underline=True)
+        t_values = EightBitANSI.paint_yellow(_("Values"), bold=True, underline=True)
         data = []
         for effect in (
             event.volume,
@@ -1712,24 +1723,30 @@ class PyLavNotifier(commands.Cog):
 
             data_ = {t_effect: effect.__class__.__name__}
             if effect.changed:
-                values = effect.to_dict()
-                values.pop("off")
+                values = effect.to_json()
                 if not isinstance(effect, Equalizer):
-                    data_[t_values] = "\n".join(f"{k.title()}: {v}" for k, v in values.items())
+                    data_[t_values] = "\n".join(
+                        f"{EightBitANSI.paint_white(k.title())}: {EightBitANSI.paint_green(v)}"
+                        for k, v in values.items()
+                    )
                 else:
                     values = values["equalizer"]
                     data_[t_values] = "\n".join(
-                        [f"Band {band['band']}: {band['gain']}" for band in values if band["gain"]]
+                        [
+                            f"{EightBitANSI.paint_white('Band '+band['band']) }: {EightBitANSI.paint_green(band['gain'])}"
+                            for band in values
+                            if band["gain"]
+                        ]
                     )
             else:
-                data_[t_values] = _("N/A")
+                data_[t_values] = EightBitANSI.paint_blue(_("N/A"))
             data.append(data_)
         self._message_queue[channel].append(
             await self.lavalink.construct_embed(
                 title=_("Filters Applied Event"),
                 description="{translation1}\n\n__**{translation2}:**__"
                 "\n{data}".format(
-                    data=box(tabulate(data, headers="keys", tablefmt="fancy_grid")) if data else _("None"),
+                    data=box(tabulate(data, headers="keys", tablefmt="fancy_grid"), lang="ansi") if data else _("None"),
                     translation2=discord.utils.escape_markdown(_("Currently Applied")),
                     translation1=discord.utils.escape_markdown(
                         _("[Node={node}] {requester} changed the player filters").format(

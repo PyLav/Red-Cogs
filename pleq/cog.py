@@ -16,6 +16,7 @@ from pylav.filters import Equalizer
 from pylav.sql.models import EqualizerModel
 from pylav.types import BotT, InteractionT
 from pylav.utils import PyLavContext
+from pylav.utils.theme import EightBitANSI
 from pylavcogs_shared.converters.equalizer import BassBoostConverter
 from pylavcogs_shared.utils.decorators import invoker_is_dj, requires_player
 
@@ -53,14 +54,24 @@ class PyLavEqualizer(commands.Cog):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
         data = [
-            (self.__class__.__name__, self.__version__),
-            ("PyLavCogs-Shared", pylavcogs_shared.__VERSION__),
-            ("PyLav", self.bot.lavalink.lib_version),
+            (EightBitANSI.paint_white(self.__class__.__name__), EightBitANSI.paint_blue(self.__version__)),
+            (EightBitANSI.paint_white("PyLavCogs-Shared"), EightBitANSI.paint_blue(pylavcogs_shared.__VERSION__)),
+            (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.lavalink.lib_version)),
         ]
 
         await context.send(
-            embed=await self.lavalink.construct_embed(
-                description=box(tabulate(data, headers=(_("Library/Cog"), _("Version")), tablefmt="fancy_grid")),
+            embed=await context.lavalink.construct_embed(
+                description=box(
+                    tabulate(
+                        data,
+                        headers=(
+                            EightBitANSI.paint_yellow(_("Library/Cog"), bold=True, underline=True),
+                            EightBitANSI.paint_yellow(_("Version"), bold=True, underline=True),
+                        ),
+                        tablefmt="fancy_grid",
+                    ),
+                    lang="ansi",
+                ),
                 messageable=context,
             ),
             ephemeral=True,

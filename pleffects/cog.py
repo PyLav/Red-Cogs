@@ -14,6 +14,7 @@ from tabulate import tabulate
 import pylavcogs_shared
 from pylav.types import BotT, InteractionT
 from pylav.utils import PyLavContext
+from pylav.utils.theme import EightBitANSI
 from pylavcogs_shared.utils.decorators import invoker_is_dj, requires_player
 
 LOGGER = getLogger("red.3pt.PyLavEffects")
@@ -50,14 +51,24 @@ class PyLavEffects(commands.Cog):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
         data = [
-            (self.__class__.__name__, self.__version__),
-            ("PyLavCogs-Shared", pylavcogs_shared.__VERSION__),
-            ("PyLav", self.bot.lavalink.lib_version),
+            (EightBitANSI.paint_white(self.__class__.__name__), EightBitANSI.paint_blue(self.__version__)),
+            (EightBitANSI.paint_white("PyLavCogs-Shared"), EightBitANSI.paint_blue(pylavcogs_shared.__VERSION__)),
+            (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.lavalink.lib_version)),
         ]
 
         await context.send(
-            embed=await self.lavalink.construct_embed(
-                description=box(tabulate(data, headers=(_("Library/Cog"), _("Version")), tablefmt="fancy_grid")),
+            embed=await context.lavalink.construct_embed(
+                description=box(
+                    tabulate(
+                        data,
+                        headers=(
+                            EightBitANSI.paint_yellow(_("Library/Cog"), bold=True, underline=True),
+                            EightBitANSI.paint_yellow(_("Version"), bold=True, underline=True),
+                        ),
+                        tablefmt="fancy_grid",
+                    ),
+                    lang="ansi",
+                ),
                 messageable=context,
             ),
             ephemeral=True,
@@ -116,16 +127,30 @@ class PyLavEffects(commands.Cog):
         context.player.vibrato.frequency = frequency or context.player.vibrato.frequency
         context.player.vibrato.depth = depth or context.player.vibrato.depth
         await context.player.set_vibrato(vibrato=context.player.vibrato, requester=context.author, forced=reset)
+
         data = [
-            (_("Frequency"), context.player.vibrato.frequency),
-            (_("Depth"), context.player.vibrato.depth),
-            (_("Reset previous filters"), _("Yes") if reset else _("No")),
+            (EightBitANSI.paint_white(_("Frequency")), EightBitANSI.paint_blue(context.player.vibrato.frequency)),
+            (EightBitANSI.paint_white(_("Depth")), EightBitANSI.paint_blue(context.player.vibrato.depth)),
+            (
+                EightBitANSI.paint_white(_("Reset previous filters")),
+                EightBitANSI.paint_red(_("Yes")) if reset else EightBitANSI.paint_green(_("No")),
+            ),
         ]
         await context.send(
             embed=await self.lavalink.construct_embed(
                 messageable=context,
                 title=_("New vibrato effect applied to the player"),
-                description=box(tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid")),
+                description=box(
+                    tabulate(
+                        data,
+                        headers=(
+                            EightBitANSI.paint_yellow(_("Setting"), bold=True, underline=True),
+                            EightBitANSI.paint_yellow(_("Value"), bold=True, underline=True),
+                        ),
+                        tablefmt="fancy_grid",
+                    ),
+                    lang="ansi",
+                ),
             ),
             ephemeral=True,
         )
@@ -154,15 +179,28 @@ class PyLavEffects(commands.Cog):
         context.player.tremolo.depth = depth or context.player.tremolo.depth
         await context.player.set_tremolo(tremolo=context.player.tremolo, requester=context.author, forced=reset)
         data = [
-            (_("Frequency"), context.player.tremolo.frequency),
-            (_("Depth"), context.player.tremolo.depth),
-            (_("Reset previous filters"), _("Yes") if reset else _("No")),
+            (EightBitANSI.paint_white(_("Frequency")), EightBitANSI.paint_blue(context.player.tremolo.frequency)),
+            (EightBitANSI.paint_white(_("Depth")), EightBitANSI.paint_blue(context.player.tremolo.depth)),
+            (
+                EightBitANSI.paint_white(_("Reset previous filters")),
+                EightBitANSI.paint_red(_("Yes")) if reset else EightBitANSI.paint_green(_("No")),
+            ),
         ]
         await context.send(
             embed=await self.lavalink.construct_embed(
                 messageable=context,
                 title=_("New tremolo effect applied to the player"),
-                description=box(box(tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid"))),
+                description=box(
+                    tabulate(
+                        data,
+                        headers=(
+                            EightBitANSI.paint_yellow(_("Setting"), bold=True, underline=True),
+                            EightBitANSI.paint_yellow(_("Value"), bold=True, underline=True),
+                        ),
+                        tablefmt="fancy_grid",
+                    ),
+                    lang="ansi",
+                ),
             ),
             ephemeral=True,
         )
@@ -194,16 +232,29 @@ class PyLavEffects(commands.Cog):
         context.player.timescale.rate = rate or context.player.timescale.rate
         await context.player.set_timescale(timescale=context.player.timescale, requester=context.author, forced=reset)
         data = [
-            (_("Speed"), context.player.timescale.speed),
-            (_("Pitch"), context.player.timescale.pitch),
-            (_("Rate"), context.player.timescale.rate),
-            (_("Reset previous filters"), _("Yes") if reset else _("No")),
+            (EightBitANSI.paint_white(_("Speed")), EightBitANSI.paint_blue(context.player.timescale.speed)),
+            (EightBitANSI.paint_white(_("Pitch")), EightBitANSI.paint_blue(context.player.timescale.pitch)),
+            (EightBitANSI.paint_white(_("Rate")), EightBitANSI.paint_blue(context.player.timescale.rate)),
+            (
+                EightBitANSI.paint_white(_("Reset previous filters")),
+                EightBitANSI.paint_red(_("Yes")) if reset else EightBitANSI.paint_green(_("No")),
+            ),
         ]
         await context.send(
             embed=await self.lavalink.construct_embed(
                 messageable=context,
                 title=_("New timescale effect applied to the player"),
-                description=box(tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid")),
+                description=box(
+                    tabulate(
+                        data,
+                        headers=(
+                            EightBitANSI.paint_yellow(_("Setting"), bold=True, underline=True),
+                            EightBitANSI.paint_yellow(_("Value"), bold=True, underline=True),
+                        ),
+                        tablefmt="fancy_grid",
+                    ),
+                    lang="ansi",
+                ),
             ),
             ephemeral=True,
         )
@@ -225,14 +276,27 @@ class PyLavEffects(commands.Cog):
         context.player.rotation.speed = hertz or context.player.rotation.hertz
         await context.player.set_rotation(rotation=context.player.rotation, requester=context.author, forced=reset)
         data = [
-            (_("Frequency hertz"), context.player.rotation.speed),
-            (_("Reset previous filters"), _("Yes") if reset else _("No")),
+            (EightBitANSI.paint_white(_("Frequency hertz")), EightBitANSI.paint_blue(context.player.rotation.speed)),
+            (
+                EightBitANSI.paint_white(_("Reset previous filters")),
+                EightBitANSI.paint_red(_("Yes")) if reset else EightBitANSI.paint_green(_("No")),
+            ),
         ]
         await context.send(
             embed=await self.lavalink.construct_embed(
                 messageable=context,
                 title=_("New rotation effect applied to the player"),
-                description=box(tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid")),
+                description=box(
+                    tabulate(
+                        data,
+                        headers=(
+                            EightBitANSI.paint_yellow(_("Setting"), bold=True, underline=True),
+                            EightBitANSI.paint_yellow(_("Value"), bold=True, underline=True),
+                        ),
+                        tablefmt="fancy_grid",
+                    ),
+                    lang="ansi",
+                ),
             ),
             ephemeral=True,
         )
@@ -255,14 +319,27 @@ class PyLavEffects(commands.Cog):
         context.player.low_pass.speed = smoothing or context.player.low_pass.smoothing
         await context.player.set_low_pass(low_pass=context.player.low_pass, requester=context.author, forced=reset)
         data = [
-            (_("Smoothing factor"), context.player.low_pass.speed),
-            (_("Reset previous filters"), _("Yes") if reset else _("No")),
+            (EightBitANSI.paint_white(_("Smoothing factor")), EightBitANSI.paint_blue(context.player.low_pass.speed)),
+            (
+                EightBitANSI.paint_white(_("Reset previous filters")),
+                EightBitANSI.paint_red(_("Yes")) if reset else EightBitANSI.paint_green(_("No")),
+            ),
         ]
         await context.send(
             embed=await self.lavalink.construct_embed(
                 messageable=context,
                 title=_("New low pass effect applied to the player"),
-                description=box(tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid")),
+                description=box(
+                    tabulate(
+                        data,
+                        headers=(
+                            EightBitANSI.paint_yellow(_("Setting"), bold=True, underline=True),
+                            EightBitANSI.paint_yellow(_("Value"), bold=True, underline=True),
+                        ),
+                        tablefmt="fancy_grid",
+                    ),
+                    lang="ansi",
+                ),
             ),
             ephemeral=True,
         )
@@ -297,17 +374,30 @@ class PyLavEffects(commands.Cog):
         context.player.karaoke.filter_width = filter_width or context.player.karaoke.filter_width
         await context.player.set_karaoke(karaoke=context.player.karaoke, requester=context.author, forced=reset)
         data = [
-            (_("Level"), context.player.karaoke.level),
-            (_("Mono Level"), context.player.karaoke.mono_level),
-            (_("Filter Band"), context.player.karaoke.filter_band),
-            (_("Filter Width"), context.player.karaoke.filter_width),
-            (_("Reset previous filters"), _("Yes") if reset else _("No")),
+            (EightBitANSI.paint_white(_("Level")), EightBitANSI.paint_blue(context.player.karaoke.level)),
+            (EightBitANSI.paint_white(_("Mono Level")), EightBitANSI.paint_blue(context.player.karaoke.mono_level)),
+            (EightBitANSI.paint_white(_("Filter Band")), EightBitANSI.paint_blue(context.player.karaoke.filter_band)),
+            (EightBitANSI.paint_white(_("Filter Width")), EightBitANSI.paint_blue(context.player.karaoke.filter_width)),
+            (
+                EightBitANSI.paint_white(_("Reset previous filters")),
+                EightBitANSI.paint_red(_("Yes")) if reset else EightBitANSI.paint_green(_("No")),
+            ),
         ]
         await context.send(
             embed=await self.lavalink.construct_embed(
                 messageable=context,
                 title=_("New karaoke effect applied to the player"),
-                description=box(tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid")),
+                description=box(
+                    tabulate(
+                        data,
+                        headers=(
+                            EightBitANSI.paint_yellow(_("Setting"), bold=True, underline=True),
+                            EightBitANSI.paint_yellow(_("Value"), bold=True, underline=True),
+                        ),
+                        tablefmt="fancy_grid",
+                    ),
+                    lang="ansi",
+                ),
             ),
             ephemeral=True,
         )
@@ -344,17 +434,42 @@ class PyLavEffects(commands.Cog):
             channel_mix=context.player.channel_mix, requester=context.author, forced=reset
         )
         data = [
-            (_("Left to Left"), context.player.channel_mix.left_to_left),
-            (_("Left to Right "), context.player.channel_mix.left_to_right),
-            (_("Right to Left"), context.player.channel_mix.right_to_left),
-            (_("Right to Right"), context.player.channel_mix.right_to_right),
-            (_("Reset previous filters"), _("Yes") if reset else _("No")),
+            (
+                EightBitANSI.paint_white(_("Left to Left")),
+                EightBitANSI.paint_blue(context.player.channel_mix.left_to_left),
+            ),
+            (
+                EightBitANSI.paint_white(_("Left to Right ")),
+                EightBitANSI.paint_blue(context.player.channel_mix.left_to_right),
+            ),
+            (
+                EightBitANSI.paint_white(_("Right to Left")),
+                EightBitANSI.paint_blue(context.player.channel_mix.right_to_left),
+            ),
+            (
+                EightBitANSI.paint_white(_("Right to Right")),
+                EightBitANSI.paint_blue(context.player.channel_mix.right_to_right),
+            ),
+            (
+                EightBitANSI.paint_white(_("Reset previous filters")),
+                EightBitANSI.paint_red(_("Yes")) if reset else EightBitANSI.paint_green(_("No")),
+            ),
         ]
         await context.send(
             embed=await self.lavalink.construct_embed(
                 messageable=context,
                 title=_("New channel mix effect applied to the player"),
-                description=box(tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid")),
+                description=box(
+                    tabulate(
+                        data,
+                        headers=(
+                            EightBitANSI.paint_yellow(_("Setting"), bold=True, underline=True),
+                            EightBitANSI.paint_yellow(_("Value"), bold=True, underline=True),
+                        ),
+                        tablefmt="fancy_grid",
+                    ),
+                    lang="ansi",
+                ),
             ),
             ephemeral=True,
         )
@@ -403,21 +518,43 @@ class PyLavEffects(commands.Cog):
             distortion=context.player.distortion, requester=context.author, forced=reset
         )
         data = [
-            (_("Sine Offset"), context.player.distortion.sin_offset),
-            (_("Sine Scale"), context.player.distortion.sin_scale),
-            (_("Cosine Offset"), context.player.distortion.cos_offset),
-            (_("Cosine Scale"), context.player.distortion.cos_scale),
-            (_("Tangent Offset"), context.player.distortion.tan_offset),
-            (_("Tangent Scale"), context.player.distortion.tan_scale),
-            (_("Offset"), context.player.distortion.offset),
-            (_("Scale"), context.player.distortion.scale),
-            (_("Reset previous filters"), _("Yes") if reset else _("No")),
+            (EightBitANSI.paint_white(_("Sine Offset")), EightBitANSI.paint_blue(context.player.distortion.sin_offset)),
+            (EightBitANSI.paint_white(_("Sine Scale")), EightBitANSI.paint_blue(context.player.distortion.sin_scale)),
+            (
+                EightBitANSI.paint_white(_("Cosine Offset")),
+                EightBitANSI.paint_blue(context.player.distortion.cos_offset),
+            ),
+            (EightBitANSI.paint_white(_("Cosine Scale")), EightBitANSI.paint_blue(context.player.distortion.cos_scale)),
+            (
+                EightBitANSI.paint_white(_("Tangent Offset")),
+                EightBitANSI.paint_blue(context.player.distortion.tan_offset),
+            ),
+            (
+                EightBitANSI.paint_white(_("Tangent Scale")),
+                EightBitANSI.paint_blue(context.player.distortion.tan_scale),
+            ),
+            (EightBitANSI.paint_white(_("Offset")), EightBitANSI.paint_blue(context.player.distortion.offset)),
+            (EightBitANSI.paint_white(_("Scale")), EightBitANSI.paint_blue(context.player.distortion.scale)),
+            (
+                EightBitANSI.paint_white(_("Reset previous filters")),
+                EightBitANSI.paint_red(_("Yes")) if reset else EightBitANSI.paint_green(_("No")),
+            ),
         ]
         await context.send(
             embed=await self.lavalink.construct_embed(
                 messageable=context,
                 title=_("New distortion effect applied to the player"),
-                description=box(tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid")),
+                description=box(
+                    tabulate(
+                        data,
+                        headers=(
+                            EightBitANSI.paint_yellow(_("Setting"), bold=True, underline=True),
+                            EightBitANSI.paint_yellow(_("Value"), bold=True, underline=True),
+                        ),
+                        tablefmt="fancy_grid",
+                    ),
+                    lang="ansi",
+                ),
             ),
             ephemeral=True,
         )
@@ -431,8 +568,8 @@ class PyLavEffects(commands.Cog):
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
 
-        t_effect = _("Effect")
-        t_values = _("Values")
+        t_effect = EightBitANSI.paint_yellow(_("Effect"), bold=True, underline=True)
+        t_values = EightBitANSI.paint_yellow(_("Values"), bold=True, underline=True)
         data = []
         for effect in (
             context.player.karaoke,
@@ -447,18 +584,19 @@ class PyLavEffects(commands.Cog):
             data_ = {t_effect: effect.__class__.__name__}
 
             if effect.changed:
-                values = effect.to_dict()
-                values.pop("off")
-                data_[t_values] = "\n".join(f"{k.title()}: {v}" for k, v in values.items())
+                values = effect.to_json()
+                data_[t_values] = "\n".join(
+                    f"{EightBitANSI.paint_white(k.title())}: {EightBitANSI.paint_green(v)}" for k, v in values.items()
+                )
             else:
-                data_[t_values] = _("N/A")
+                data_[t_values] = EightBitANSI.paint_blue(_("N/A"))
             data.append(data_)
 
         await context.send(
             embed=await self.lavalink.construct_embed(
                 title=_("Current filters applied to the player"),
                 description="__**{translation}:**__\n{data}".format(
-                    data=box(tabulate(data, headers="keys", tablefmt="fancy_grid", maxcolwidths=[10, 18]))  # type: ignore
+                    data=box(tabulate(data, headers="keys", tablefmt="fancy_grid", maxcolwidths=[10, 18]), lang="ansi")  # type: ignore
                     if data
                     else _("None"),
                     translation=discord.utils.escape_markdown(_("Currently Applied")),
