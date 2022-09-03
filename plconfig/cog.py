@@ -92,7 +92,8 @@ class PyLavConfigurator(commands.Cog):
                         label=_("Context Player Config"),
                         value="context_player_config",
                         description=_(
-                            "Get information about contextual settings for the player, accounting for the global settings"
+                            "Get information about contextual settings for the player, "
+                            "accounting for the global settings"
                         ),
                     ),
                     SelectOption(
@@ -100,13 +101,16 @@ class PyLavConfigurator(commands.Cog):
                         value="server_player_config",
                         description=_("Get information about server configured settings for the player"),
                     ),
-                    SelectOption(
-                        label=_("Playlist Tasks"),
-                        value="playlist_tasks",
-                        description=_("Get information Playlist auto update schedule"),
-                    ),
                 ]
             )
+
+        options.append(
+            SelectOption(
+                label=_("Playlist Tasks"),
+                value="playlist_tasks",
+                description=_("Get information Playlist auto update schedule"),
+            )
+        )
 
         if await self.bot.is_owner(context.author):
             options.extend(
