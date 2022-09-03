@@ -120,7 +120,7 @@ class PyLavNodes(commands.Cog):
             port=menu.port,
             name=menu.name,
             resume_timeout=menu.resume_timeout,
-            resume_key=f"{menu.name}-{menu.unique_identifier}",
+            resume_key=f"PyLav/{menu.name}-{menu.unique_identifier}",
             ssl=menu.ssl,
             reconnect_attempts=-1,
             search_only=menu.search_only,
@@ -353,7 +353,7 @@ class PyLavNodes(commands.Cog):
         if not self.lavalink.node_manager.nodes:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("No Nodes added to PyLav"), messageable=context
+                    description=_("No nodes added to PyLav"), messageable=context
                 ),
                 ephemeral=True,
             )
