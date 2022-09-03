@@ -14,6 +14,7 @@ from redbot.core.utils.chat_formatting import box, humanize_list, inline
 from tabulate import tabulate
 
 import pylavcogs_shared
+from pylav.constants import BUNDLED_NODES_IDS
 from pylav.converters.nodes import NodeConverter
 from pylav.types import BotT
 from pylav.utils import PyLavContext
@@ -190,7 +191,7 @@ class PyLavNodes(commands.Cog):
         if not node:
             return
         node_data = await node.fetch_all()
-        if node_data["managed"]:
+        if node_data["id"] in BUNDLED_NODES_IDS:
             await context.send(
                 embed=await self.lavalink.construct_embed(
                     description=_("{name} is managed by PyLav and cannot be removed").format(name=node_data["name"]),
@@ -264,9 +265,7 @@ class PyLavNodes(commands.Cog):
         node = menu.source.target
         if not node:
             return
-        if node.managed or node.identifier in {
-            1,
-        }:
+        if node.managed or node.identifier in BUNDLED_NODES_IDS:
             await context.send(
                 embed=await self.lavalink.construct_embed(
                     description=_("{name} is managed by PyLav and cannot be modified with this command").format(
