@@ -9,6 +9,7 @@ import discord
 import rich
 from redbot.core.i18n import Translator
 from redbot.core.utils.chat_formatting import box
+from tabulate import tabulate
 
 from pylav.types import CogT, InteractionT
 from pylav.utils import PyLavContext
@@ -368,18 +369,15 @@ class EmbedGenerator:
 
         pylav_config = await self.cog.lavalink.lib_db_manager.get_config().fetch_all()
 
-        table = rich.table.Table()
+        data = [
+            (_("Config Folder"), pylav_config["config_folder"]),
+            (_("Local Tracks"), pylav_config["localtrack_folder"]),
+            (_("Java Executable"), shutil.which(pylav_config["java_path"])),
+        ]
 
-        table.add_column(_("Paths"), justify="left")
-        table.add_column(_("Path"), justify="left")
-        table.add_row(_("Config Folder"), pylav_config["config_folder"])
-        table.add_row(_("Local Tracks"), pylav_config["localtrack_folder"])
-        table.add_row(_("Java Executable"), shutil.which(pylav_config["java_path"]))
-
-        self.console.print(table, overflow="fold", crop=True)
-        description = self.console.file.getvalue()
         return await self.cog.lavalink.construct_embed(
-            description=box(description, lang="ansi"), messageable=self.context
+            description=box(tabulate(data, headers=(_("Paths"), _("Path")), tablefmt="fancy_grid")),
+            messageable=self.context,
         )
 
     async def generate_managed_node_config_embed(self) -> discord.Embed:
