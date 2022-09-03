@@ -400,15 +400,25 @@ class ConfigCommands(PyLavCogMixin, ABC):
         ]
         dj_roles_chunks = [dj_roles[i : i + 3] for i in range(0, len(dj_roles), 3)]
         dj_roles_string = "\n".join(
-            " || ".join([discord.utils.escape_markdown(str(role)) for role in chunk]) for chunk in dj_roles_chunks
+            " || ".join(
+                [
+                    EightBitANSI.colorize(
+                        discord.utils.escape_markdown(str(role)), color=EightBitANSI.closest_color(*role.color.to_rgb())
+                    )
+                    for role in chunk
+                ]
+            )
+            for chunk in dj_roles_chunks
         )
+        discord.Role.color
         dj_user = [
             (member_object if (member_object := context.guild.get_member(member)) else member)
             for member in await config.fetch_dj_users()
         ]
         dj_user_chunks = [dj_user[i : i + 3] for i in range(0, len(dj_user), 3)]
         dj_user_string = "\n".join(
-            " || ".join([discord.utils.escape_markdown(str(user)) for user in chunk]) for chunk in dj_user_chunks
+            " || ".join([EightBitANSI.paint_green(discord.utils.escape_markdown(str(user))) for user in chunk])
+            for chunk in dj_user_chunks
         )
 
         if not dj_roles and not dj_user:
@@ -423,15 +433,15 @@ class ConfigCommands(PyLavCogMixin, ABC):
 
         string = ""
         if dj_roles_string:
-            string += _("DJ Roles")
+            string += EightBitANSI.paint_yellow(_("DJ Roles"), bold=True, underline=True)
             string += f"\n{dj_roles_string}"
         if dj_user_string:
             if string:
                 string += "\n\n"
-            string += _("DJ Users")
+            string += EightBitANSI.paint_yellow(_("DJ Users"), bold=True, underline=True)
             string += f"\n{dj_user_string}"
 
-        await context.send_interactive(messages=pagify(string), box_lang="")
+        await context.send_interactive(messages=pagify(string), box_lang="ansi")
 
     @command_playerset_server_dj.command(name="clear")
     async def command_playerset_server_dj_clear(self, context: PyLavContext) -> None:

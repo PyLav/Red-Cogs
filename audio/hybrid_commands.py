@@ -27,7 +27,8 @@ from pylavcogs_shared.utils.validators import valid_query_attachment
 LOGGER = getLogger("red.3pt.PyLavPlayer.commands.hybrids")
 _ = Translator("PyLavPlayer", Path(__file__))
 # taken from https://github.com/Cog-Creators/Red-DiscordBot/blob/ec55622418810731e1ee2ede1569f81f9bddeeec/redbot/cogs/audio/core/utilities/miscellaneous.py#L28
-_RE_TIME_CONVERTER: Final[Pattern] = re.compile(r"(?:(\d+):)?([0-5]?\d):([0-5]\d)")
+_RE_TIME_CONVERTER: Final[Pattern] = re.compile(r"(?:(\d+):)?(\d+):(\d+)")
+# The above was updated to allow for any `(\d+)?\d+:\d+` combination to include unusual time formats such as `1:75`
 
 
 class HybridCommands(PyLavCogMixin, ABC):
@@ -782,6 +783,7 @@ class HybridCommands(PyLavCogMixin, ABC):
                 )
         except ValueError:  # Taken from https://github.com/Cog-Creators/Red-DiscordBot/blob/ec55622418810731e1ee2ede1569f81f9bddeeec/redbot/cogs/audio/core/utilities/miscellaneous.py#L28
             match = _RE_TIME_CONVERTER.match(seek)
+            LOGGER.critical(f"Match: {match}")
             if match is not None:
                 hr = int(match.group(1)) if match.group(1) else 0
                 mn = int(match.group(2)) if match.group(2) else 0
