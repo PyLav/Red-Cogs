@@ -161,7 +161,7 @@ class PyLavEqualizer(commands.Cog):
             equalizer = Equalizer(
                 levels=[{"band": 0, "gain": 0.25}, {"band": 1, "gain": 0.15}], name=_("Bass boost - Medium")
             )
-        elif level == "Fined Tuned":
+        elif level == "Fine Tuned":
             # Credits goes to toπ#3141,  https://discord.com/channels/125227483518861312/418817098278764544/1003697316529709216
             equalizer = Equalizer(
                 levels=[
