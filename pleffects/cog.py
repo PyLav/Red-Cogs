@@ -125,7 +125,7 @@ class PyLavEffects(commands.Cog):
             embed=await self.lavalink.construct_embed(
                 messageable=context,
                 title=_("New vibrato effect applied to the player"),
-                description=tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid"),
+                description=box(tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid")),
             ),
             ephemeral=True,
         )
@@ -162,7 +162,7 @@ class PyLavEffects(commands.Cog):
             embed=await self.lavalink.construct_embed(
                 messageable=context,
                 title=_("New tremolo effect applied to the player"),
-                description=tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid"),
+                description=box(box(tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid"))),
             ),
             ephemeral=True,
         )
@@ -203,7 +203,7 @@ class PyLavEffects(commands.Cog):
             embed=await self.lavalink.construct_embed(
                 messageable=context,
                 title=_("New timescale effect applied to the player"),
-                description=tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid"),
+                description=box(tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid")),
             ),
             ephemeral=True,
         )
@@ -232,7 +232,7 @@ class PyLavEffects(commands.Cog):
             embed=await self.lavalink.construct_embed(
                 messageable=context,
                 title=_("New rotation effect applied to the player"),
-                description=tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid"),
+                description=box(tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid")),
             ),
             ephemeral=True,
         )
@@ -262,7 +262,7 @@ class PyLavEffects(commands.Cog):
             embed=await self.lavalink.construct_embed(
                 messageable=context,
                 title=_("New low pass effect applied to the player"),
-                description=tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid"),
+                description=box(tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid")),
             ),
             ephemeral=True,
         )
@@ -307,7 +307,7 @@ class PyLavEffects(commands.Cog):
             embed=await self.lavalink.construct_embed(
                 messageable=context,
                 title=_("New karaoke effect applied to the player"),
-                description=tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid"),
+                description=box(tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid")),
             ),
             ephemeral=True,
         )
@@ -354,7 +354,7 @@ class PyLavEffects(commands.Cog):
             embed=await self.lavalink.construct_embed(
                 messageable=context,
                 title=_("New channel mix effect applied to the player"),
-                description=tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid"),
+                description=box(tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid")),
             ),
             ephemeral=True,
         )
@@ -417,7 +417,7 @@ class PyLavEffects(commands.Cog):
             embed=await self.lavalink.construct_embed(
                 messageable=context,
                 title=_("New distortion effect applied to the player"),
-                description=tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid"),
+                description=box(tabulate(data, headers=(_("Setting"), _("Value")), tablefmt="fancy_grid")),
             ),
             ephemeral=True,
         )
