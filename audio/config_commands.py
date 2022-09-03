@@ -417,7 +417,14 @@ class ConfigCommands(PyLavCogMixin, ABC):
         ]
         dj_user_chunks = [dj_user[i : i + 3] for i in range(0, len(dj_user), 3)]
         dj_user_string = "\n".join(
-            " || ".join([EightBitANSI.paint_green(discord.utils.escape_markdown(str(user))) for user in chunk])
+            " || ".join(
+                [
+                    EightBitANSI.colorize(
+                        discord.utils.escape_markdown(str(user)), color=EightBitANSI.closest_color(*user.color.to_rgb())
+                    )
+                    for user in chunk
+                ]
+            )
             for chunk in dj_user_chunks
         )
 

@@ -214,7 +214,12 @@ class EmbedGenerator:
         dj_user_str = (
             "\n".join(
                 [
-                    discord.utils.escape_markdown(str(self.context.guild.get_member(user) or user))
+                    EightBitANSI.colorize(
+                        discord.utils.escape_markdown(str(member_obj)),
+                        color=EightBitANSI.closest_color(*member_obj.color.to_rgb()),
+                    )
+                    if (member_obj := self.context.guild.get_member(user))
+                    else EightBitANSI.paint_green(user)
                     for user in config["dj_users"]
                 ]
             )
@@ -225,7 +230,12 @@ class EmbedGenerator:
         dj_role_str = (
             "\n".join(
                 [
-                    discord.utils.escape_markdown(str(self.context.guild.get_role(role) or role))
+                    EightBitANSI.colorize(
+                        discord.utils.escape_markdown(str(role_obj)),
+                        color=EightBitANSI.closest_color(*role_obj.color.to_rgb()),
+                    )
+                    if (role_obj := self.context.guild.get_role(role))
+                    else EightBitANSI.paint_green(role)
                     for role in config["dj_roles"]
                 ]
             )
