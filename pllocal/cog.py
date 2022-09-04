@@ -231,6 +231,11 @@ class PyLavLocalFiles(commands.Cog):
 
             extracted = await heapq.nlargest(asyncstdlib.iter(self.cache.items()), n=25, key=_filter)
 
+            async def alphabetical(x):
+                return x.name or "Ω"
+
+            extracted = await heapq.nsmallest(asyncstdlib.iter(extracted), n=25, key=alphabetical)
+
         async for md5, query in AsyncIter(extracted if current else extracted[::-1]):
             entries.append(
                 Choice(name=await query.query_to_string(max_length=99, with_emoji=True, no_extension=True), value=md5)
