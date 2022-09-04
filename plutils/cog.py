@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import asyncio
 from io import StringIO
 from pathlib import Path
 
@@ -241,7 +242,7 @@ class PyLavUtils(commands.Cog):
             await context.defer(ephemeral=True)
 
         try:
-            data, __ = decode_track(base64)
+            data, __ = await asyncio.to_thread(decode_track, base64)
         except Exception:
             await context.send(
                 embed=await context.lavalink.construct_embed(

@@ -1,3 +1,4 @@
+import asyncio
 import contextlib
 from abc import ABC
 from functools import partial
@@ -252,7 +253,7 @@ class PlayerCommands(PyLavCogMixin, ABC):
                 return
         else:
             try:
-                data, __ = decode_track(track_url_or_index)
+                data, __ = await asyncio.to_thread(decode_track, track_url_or_index)
                 track = Track(
                     node=player.node,
                     data=data,
