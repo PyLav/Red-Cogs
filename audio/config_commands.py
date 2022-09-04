@@ -410,7 +410,6 @@ class ConfigCommands(PyLavCogMixin, ABC):
             )
             for chunk in dj_roles_chunks
         )
-        discord.Role.color
         dj_user = [
             (member_object if (member_object := context.guild.get_member(member)) else member)
             for member in await config.fetch_dj_users()
@@ -448,7 +447,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
             string += EightBitANSI.paint_yellow(_("DJ Users"), bold=True, underline=True)
             string += f"\n{dj_user_string}"
 
-        await context.send_interactive(messages=pagify(string), box_lang="ansi")
+        await context.send_interactive(messages=pagify(string), box_lang="ansi")  # type: ignore
 
     @command_playerset_server_dj.command(name="clear")
     async def command_playerset_server_dj_clear(self, context: PyLavContext) -> None:

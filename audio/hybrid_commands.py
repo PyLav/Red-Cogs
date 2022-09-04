@@ -408,11 +408,6 @@ class HybridCommands(PyLavCogMixin, ABC):
                 ),
                 ephemeral=True,
             )
-        else:
-            await context.send(
-                embed=await context.lavalink.construct_embed(description=_("Autoplay started"), messageable=context),
-                ephemeral=True,
-            )
         await context.player.skip(requester=context.author)
 
     @commands.hybrid_command(name="stop", description=_("Stops the player and remove all tracks from the queue"))

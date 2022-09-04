@@ -20,9 +20,8 @@ from tabulate import tabulate
 import pylavcogs_shared
 from pylav import Client
 from pylav.envvars import JAVA_EXECUTABLE
-from pylav.managed_node import get_max_allocation_size
-from pylav.types import BotT, CogT
-from pylav.utils import PyLavContext
+from pylav.types import BotT
+from pylav.utils import PyLavContext, get_jar_ram_actual, get_max_allocation_size
 from pylav.utils.built_in_node import NODE_DEFAULT_SETTINGS
 from pylav.utils.theme import EightBitANSI
 from pylav.vendored import aiopath
@@ -300,7 +299,7 @@ class PyLavManagedNode(commands.Cog):
     async def command_plmanaged_heapsize(self, context: PyLavContext, size: str):
         """Set the managed Lavalink node maximum heap-size.
 
-        By default, this value is 50% of available RAM in the host machine represented by [1-1024][M|G] (256M,
+        By default, this value is 2G of available RAM in the host machine represented by (65-1023M|1+G) (256M,
         256G for example)
 
         This value only represents the maximum amount of RAM allowed to be used at any given point, and does not mean
@@ -311,7 +310,10 @@ class PyLavManagedNode(commands.Cog):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        async def validate_input(cog: CogT, arg: str):
+        async def validate_input(arg: str):
+            executable = await self.lavalink.lib_db_manager.get_config().fetch_java_path()
+            total_ram, is_64bit = get_max_allocation_size(executable)
+            __, __, min_allocation_size, max_allocation_size = get_jar_ram_actual(executable)
             match = re.match(r"^(\d+)([MG])$", arg, flags=re.IGNORECASE)
             if not match:
                 await context.send(
@@ -323,7 +325,7 @@ class PyLavManagedNode(commands.Cog):
                 )
                 return 0
             input_in_bytes = int(match[1]) * 1024 ** (2 if match[2].lower() == "m" else 3)
-            if input_in_bytes < 64 * 1024**2:
+            if input_in_bytes < min_allocation_size:
                 await context.send(
                     embed=await context.lavalink.construct_embed(
                         description=_(
@@ -334,14 +336,14 @@ class PyLavManagedNode(commands.Cog):
                     ephemeral=True,
                 )
                 return 0
-            elif input_in_bytes > (meta := get_max_allocation_size(cog.managed_node_controller._java_exc))[0]:
-                if meta[1]:
+            elif input_in_bytes > max_allocation_size:
+                if is_64bit:
                     await context.send(
                         embed=await context.lavalink.construct_embed(
                             description=_(
                                 "Heap-size must be less than your system RAM, "
                                 "You currently have {ram_in_bytes} of RAM available"
-                            ).format(ram_in_bytes=inline(humanize.naturalsize(meta[0]))),
+                            ).format(ram_in_bytes=inline(humanize.naturalsize(total_ram))),
                             messageable=context,
                         ),
                         ephemeral=True,
@@ -351,7 +353,7 @@ class PyLavManagedNode(commands.Cog):
                     await context.send(
                         embed=await context.lavalink.construct_embed(
                             description=_("Heap-size must be less than {limit} due to your system limitations").format(
-                                limit=inline(humanize.naturalsize(meta[0]))
+                                limit=inline(humanize.naturalsize(total_ram))
                             )
                         ),
                         ephemeral=True,
@@ -359,7 +361,7 @@ class PyLavManagedNode(commands.Cog):
                 return 0
             return 1
 
-        if not (await validate_input(self, size)):
+        if not (await validate_input(size)):
             return
         size = size.upper()
         global_config = self.lavalink.lib_db_manager.get_config()
@@ -522,7 +524,7 @@ class PyLavManagedNode(commands.Cog):
         config = self.lavalink._node_config_manager.bundled_node_config()
         data = await config.fetch_yaml()
         source = source.lower().strip()
-        valid_sources = NODE_DEFAULT_SETTINGS["lavalink"]["server"]["sources"]
+        valid_sources = NODE_DEFAULT_SETTINGS["lavalink"]["server"]["sources"].copy()
 
         valid_sources |= NODE_DEFAULT_SETTINGS["plugins"]["topissourcemanagers"]["sources"]
         valid_sources |= NODE_DEFAULT_SETTINGS["plugins"]["dunctebot"]["sources"]
@@ -595,7 +597,7 @@ class PyLavManagedNode(commands.Cog):
         if setting is None:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("{Setting} is not a valid Setting; Options are: \n\n{setting_list}").format(
+                    description=_("{Setting} is not a valid Setting; Options are:\n\n{setting_list}").format(
                         setting=user_input, setting_list=humanize_list(list(setting_case_map.values()))
                     ),
                     messageable=context,
@@ -722,7 +724,7 @@ class PyLavManagedNode(commands.Cog):
     async def command_plmanaged_config_iprotation(self, context: PyLavContext, *, reset: bool = False):
         """Configure Lavalink IP Rotation for ratelimits.
 
-        if reset is True, remove the ratelimit config.
+        Run `[p]plmanaged config iprotation 1` to remove the ip rotation
         """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -732,7 +734,9 @@ class PyLavManagedNode(commands.Cog):
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_(
-                        "Click the button below to configure the IP rotation for your node.\nMore info at: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> and <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
+                        "Click the button below to configure the IP rotation for your node.\n"
+                        "More info at: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> and "
+                        "<https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
                     ),
                     messageable=context,
                 ),
@@ -754,7 +758,10 @@ class PyLavManagedNode(commands.Cog):
 
     @command_plmanaged_config.command(name="googleaccount", aliases=["ga"])
     async def command_plmanaged_config_googleaccount(self, context: PyLavContext, *, reset: bool = False):
-        """Link a Google account to Lavalink to bypass YouTube's age restriction"""
+        """Link a Google account to Lavalink to bypass YouTube's age restriction
+
+        Run `[p]plmanaged config googleaccount 1` to remove the linked account.
+        """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -787,7 +794,10 @@ class PyLavManagedNode(commands.Cog):
 
     @command_plmanaged_config.command(name="httpproxy", aliases=["hp"])
     async def command_plmanaged_config_httpproxy(self, context: PyLavContext, *, reset: bool = False):
-        """Configure a HTTP proxy for Lavalink"""
+        """Configure a HTTP proxy for Lavalink
+
+        Run `[p]plmanaged config httpproxy 1` to remove the proxy.
+        """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
