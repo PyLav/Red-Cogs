@@ -30,6 +30,7 @@ jobs:
                 download_translations: true
                 commit_message: '[skip-ci] Update translations'
                 download_translations_args: --all
+                pull_request_labels: i18n, translations, automerge
             env:
                 CROWDIN_API_KEY: ${{ secrets.crowdin_token}}
                 CROWDIN_PROJECT_ID: ${{ secrets.crowdin_identifier }}
