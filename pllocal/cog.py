@@ -54,7 +54,7 @@ class PyLavLocalFiles(commands.Cog):
 
     @staticmethod
     async def _filter_is_folder_alphabetical(x):
-        string = f"{getattr(x[1]._query, 'path', x[1]._query)}"
+        string = f"{x[1]._query}"
         return -1 if os.path.isdir(string) else 2, string
 
     async def _update_cache(self):
@@ -65,7 +65,7 @@ class PyLavLocalFiles(commands.Cog):
         assert LocalFile._ROOT_FOLDER is not None
         temp: dict[str, Query] = {}
         async for file in LocalFile(LocalFile._ROOT_FOLDER).files_in_tree(show_folders=True):
-            temp[hashlib.md5(f"{getattr(file._query, 'path', file._query)}".encode()).hexdigest()] = file
+            temp[hashlib.md5(f"{file._query}".encode()).hexdigest()] = file
 
         extracted: typing.Iterable[tuple[str, Query]] = await heapq.nsmallest(asyncstdlib.iter(temp.items()), n=len(temp.items()), key=self._filter_is_folder_alphabetical)  # type: ignore
         self.cache = dict(extracted)
@@ -232,13 +232,14 @@ class PyLavLocalFiles(commands.Cog):
         else:
             current = re.sub(r"[/\\]", r" ", current)
 
-            async def _filter_partial_ratio(x):
+            async def _filter_partial_ratio(x: tuple[str, Query]):
+                path = f"{x[1]._query}"
                 return (
                     await asyncio.to_thread(
-                        fuzz.partial_ratio, re.sub(r"[/\\]", r" ", f"{x[1]._query.path}"), current, score_cutoff=75
+                        fuzz.partial_ratio, re.sub(r"[.\-_/\\]", r" ", path), current, score_cutoff=75
                     ),
                     10 if await x[1]._query.path.is_dir() else 0,
-                    [-ord(i) for i in str(x[1]._query.path)],
+                    [-ord(i) for i in path],
                 )
 
             extracted = await heapq.nlargest(asyncstdlib.iter(self.cache.items()), n=25, key=_filter_partial_ratio)
