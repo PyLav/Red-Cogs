@@ -37,7 +37,3 @@ jobs:
                 MERGE_FILTER_AUTHOR: github-actions
                 MERGE_METHOD_LABEL_REQUIRED: true
                 MERGE_DELETE_BRANCH: true
-        -   name: feedback
-            if: steps.automerge.outputs.mergeResult == "merged"
-            run: |
-                echo "Pull request ${{ steps.automerge.outputs.pullRequestNumber }} merged!"
