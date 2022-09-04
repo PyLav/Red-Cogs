@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import shutil
 from pathlib import Path
 
 import discord
@@ -17,7 +16,7 @@ from pylav import Client
 from pylav.constants import PYLAV_BUNDLED_NODES_SETTINGS
 from pylav.localfiles import LocalFile
 from pylav.types import BotT
-from pylav.utils import PyLavContext
+from pylav.utils import PyLavContext, get_true_path
 from pylav.utils.theme import EightBitANSI
 from pylav.vendored import aiopath
 from pylavcogs_shared.ui.menus.player import StatsMenu
@@ -302,7 +301,7 @@ class PyLavConfigurator(commands.Cog):
 
         from stat import S_IXGRP, S_IXOTH, S_IXUSR
 
-        java = shutil.which(java)
+        java = get_true_path(java, "PyLav-1295u8125125y1825")
         path = aiopath.AsyncPath(java)
         if not await path.exists():
             await context.send(

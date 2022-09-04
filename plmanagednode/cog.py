@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import re
-import shutil
 from pathlib import Path
 
 import asyncstdlib
@@ -21,7 +20,7 @@ import pylavcogs_shared
 from pylav import Client
 from pylav.envvars import JAVA_EXECUTABLE
 from pylav.types import BotT
-from pylav.utils import PyLavContext, get_jar_ram_actual, get_max_allocation_size
+from pylav.utils import PyLavContext, get_jar_ram_actual, get_max_allocation_size, get_true_path
 from pylav.utils.built_in_node import NODE_DEFAULT_SETTINGS
 from pylav.utils.theme import EightBitANSI
 from pylav.vendored import aiopath
@@ -164,7 +163,7 @@ class PyLavManagedNode(commands.Cog):
 
         from stat import S_IXGRP, S_IXOTH, S_IXUSR
 
-        java = shutil.which(java)
+        java = get_true_path(java, "PyLav-31242515125")
         path = aiopath.AsyncPath(java)
         if not await path.exists():
             await context.send(

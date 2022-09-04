@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import contextlib
-import shutil
 from pathlib import Path
 
 import discord
@@ -10,7 +9,7 @@ from redbot.core.utils.chat_formatting import box
 from tabulate import tabulate
 
 from pylav.types import CogT, InteractionT
-from pylav.utils import PyLavContext
+from pylav.utils import PyLavContext, get_true_path
 from pylav.utils.theme import EightBitANSI
 
 _ = Translator("PyLavConfigurator", Path(__file__))
@@ -393,13 +392,16 @@ class EmbedGenerator:
         pylav_config = await self.cog.lavalink.lib_db_manager.get_config().fetch_all()
 
         data = [
-            (_("Config Folder"), EightBitANSI.paint_magenta(pylav_config["config_folder"])),
-            (_("Local Tracks"), EightBitANSI.paint_magenta(pylav_config["localtrack_folder"])),
+            (EightBitANSI.paint_white(_("Config Folder")), EightBitANSI.paint_magenta(pylav_config["config_folder"])),
             (
-                _("Java Executable"),
+                EightBitANSI.paint_white(_("Local Tracks")),
+                EightBitANSI.paint_magenta(pylav_config["localtrack_folder"]),
+            ),
+            (
+                EightBitANSI.paint_white(_("Java Executable")),
                 (
                     EightBitANSI.paint_magenta(jpath)
-                    if (jpath := shutil.which(pylav_config["java_path"]))
+                    if (jpath := get_true_path(pylav_config["java_path"]))
                     else EightBitANSI.paint_red(_("Not Found"))
                 ),
             ),
