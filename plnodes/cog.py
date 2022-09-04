@@ -99,7 +99,7 @@ class PyLavNodes(commands.Cog):
             "(**8**){space} - Set the password for the node.\n"
             "(**9**){space} - Set the connection timeout.\n"
             "(**10**) - Select which sources to disable for this node (Multiple can be selected).\n"
-            "If you interact with a button multiple times,  "
+            "If you interact with a button multiple times, "
             "only the last interaction will take effect.\n\n\n"
         ).format(
             space="\N{EN SPACE}",
@@ -252,7 +252,7 @@ class PyLavNodes(commands.Cog):
             "(**14**) - Set the connection timeout.\n"
             "(**15**) - Remove this node.\n"
             "(**16**) - Select which sources to disable for this node (Multiple can be selected).\n"
-            "If you interact with a button multiple times,  "
+            "If you interact with a button multiple times, "
             "only the last interaction will take effect.\n\n\n"
         ).format(
             space="\N{EN SPACE}",

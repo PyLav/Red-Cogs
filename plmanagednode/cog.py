@@ -498,7 +498,7 @@ class PyLavManagedNode(commands.Cog):
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_(
-                        "Managed node's plugins updated.\n\n" "{updates}\n\nRestart the bot for it to take effect"
+                        "Managed node's plugins updated.\n\n{updates}\n\nRestart the bot for it to take effect"
                     ).format(updates=update_string),
                     messageable=context,
                 ),
