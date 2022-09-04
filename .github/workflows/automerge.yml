@@ -27,9 +27,17 @@ jobs:
             env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                 MERGE_FORKS: 'false'
-                MERGE_METHOD: rebase
+                MERGE_METHOD: squash
                 UPDATE_METHOD: rebase
                 MERGE_REQUIRED_APPROVALS: '0'
-                MERGE_COMMIT_MESSAGE: pull-request-description
+                MERGE_METHOD_LABELS: automerge=merge,autosquash=automerge
+                MERGE_COMMIT_MESSAGE: '[skip-ci] chore: update translations'
                 MERGE_REMOVE_LABELS: automerge
                 MERGE_LABELS: automerge
+                MERGE_FILTER_AUTHOR: github-actions
+                MERGE_METHOD_LABEL_REQUIRED: true
+                MERGE_DELETE_BRANCH: true
+        -   name: feedback
+            if: steps.automerge.outputs.mergeResult == "merged"
+            run: |
+                echo "Pull request ${{ steps.automerge.outputs.pullRequestNumber }} merged!"
