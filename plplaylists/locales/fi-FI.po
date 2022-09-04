@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2022-08-31 18:42+0000\n"
-"PO-Revision-Date: 2022-08-31 18:45\n"
+"POT-Creation-Date: 2022-09-04 12:40+0000\n"
+"PO-Revision-Date: 2022-09-04 20:35\n"
 "Last-Translator: \n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
@@ -17,33 +17,33 @@ msgstr ""
 "X-Crowdin-File-ID: 666\n"
 "Language: fi_FI\n"
 
-#: plplaylists/cog.py:53
+#: plplaylists/cog.py:54
 #, docstring
 msgid "PyLav playlist management commands"
 msgstr "Pylav soittolistan hallinta"
 
-#: plplaylists/cog.py:59
+#: plplaylists/cog.py:62
 msgid "Control PyLav playlists"
 msgstr "Hallitse Pylav-soittolistoja"
 
-#: plplaylists/cog.py:81
+#: plplaylists/cog.py:84
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies"
 msgstr "Näytä versio Cog ja se on PyLav riippuvuudet"
 
-#: plplaylists/cog.py:93
+#: plplaylists/cog.py:100
 msgid "Library/Cog"
 msgstr "Kirjasto/Kokki"
 
-#: plplaylists/cog.py:93
+#: plplaylists/cog.py:101
 msgid "Version"
 msgstr "Versio"
 
-#: plplaylists/cog.py:119
+#: plplaylists/cog.py:132
 msgid "Let's create a playlist!"
 msgstr "Luodaan soittolista!"
 
-#: plplaylists/cog.py:120
+#: plplaylists/cog.py:133
 msgid "(**1**) - Apply changes to playlist.\n"
 "(**2**) - Cancel any changes made.\n"
 "(**3**) - Add a name to the playlist.\n"
@@ -57,11 +57,11 @@ msgstr "(**1**) - Soittolistaan tehdyt muutokset.\n"
 "(**5**) - Lisää kaikki kappale jonosta soittolistalle.\n\n"
 "Jos haluat soittolistan nimen olevan kuin alkuperäinen soittolista asettaa vain URL-osoitteen, mutta ei nimeä.\n\n"
 
-#: plplaylists/cog.py:156
+#: plplaylists/cog.py:169
 msgid "Playlist created"
 msgstr "Soittolista luotu"
 
-#: plplaylists/cog.py:157
+#: plplaylists/cog.py:170
 msgid "Name: `{name}`\n"
 "ID: `{id}`\n"
 "Tracks: `{track_count}`"
@@ -69,23 +69,23 @@ msgstr "Nimi: `{name}`\n"
 "ID: `{id}`\n"
 "Kappaleet: `{track_count}`"
 
-#: plplaylists/cog.py:181
+#: plplaylists/cog.py:194
 msgid "You have no playlists"
 msgstr "Sinulla ei ole soittolistoja"
 
-#: plplaylists/cog.py:224 plplaylists/cog.py:591
+#: plplaylists/cog.py:237 plplaylists/cog.py:604
 msgid "Nothing to save"
 msgstr "Ei tallennettavaa"
 
-#: plplaylists/cog.py:225 plplaylists/cog.py:592
+#: plplaylists/cog.py:238 plplaylists/cog.py:605
 msgid "There is nothing in the queue to save"
 msgstr "Jonossa ei ole mitään tallennettavaa"
 
-#: plplaylists/cog.py:262 plplaylists/cog.py:529 plplaylists/cog.py:609
+#: plplaylists/cog.py:275 plplaylists/cog.py:542 plplaylists/cog.py:622
 msgid "{user}, playlist {playlist_name} cannot be managed by yourself"
 msgstr "{user}, soittolistaa {playlist_name} ei voi hallita itse"
 
-#: plplaylists/cog.py:271
+#: plplaylists/cog.py:284
 msgid "(**1**){space} - Apply changes to playlist.\n"
 "(**2**){space} - Cancel any changes made and close the menu.\n"
 "(**3**){space} - Delete this playlist.\n"
@@ -127,7 +127,7 @@ msgstr "(**1**){space} - Muuta soittolistaa.\n"
 "URL-painike toimii aina viimeksi - Soittolistan yhdistäminen URL-osoitteen kautta korvaa kaikki kappaleet, jotka on lisätty tai poistettu tähän soittolistaan.\n\n"
 "Jos olet vuorovaikutuksessa painikkeen kanssa useita kertoja kuin add/remove painikkeet, vain viimeinen vuorovaikutus tulee voimaan.\n\n\n"
 
-#: plplaylists/cog.py:297
+#: plplaylists/cog.py:310
 msgid "(**1**) - Close the menu.\n"
 "(**2**) - Update the playlist with the latest tracks.\n"
 "(**3**) - Download the playlist file.\n"
@@ -139,7 +139,7 @@ msgstr "(**1**) - Sulje valikko.\n"
 "(**4**) - Lisää nykyinen soittolista jonoon.\n"
 "(**5**) - Näytä kappaleet nykyisessä soittolistassa.\n\n\n"
 
-#: plplaylists/cog.py:305
+#: plplaylists/cog.py:318
 msgid "**__Currently managing__**:\n"
 "**Name**:{space}{space}{space}{playlist_name}\n"
 "**Scope**:{space}{space}{space}{scope}\n"
@@ -153,107 +153,107 @@ msgstr "**__Hallitsee__**:\n"
 "**Kappaleja**:{space}{space}{space}{tracks} kappaletta\n"
 "**URL**:{space}{space}{space}{space}{space}{url}\n"
 
-#: plplaylists/cog.py:322
+#: plplaylists/cog.py:335
 msgid "Let's manage: {playlist_name}"
 msgstr "Onnistutaan: {playlist_name}"
 
-#: plplaylists/cog.py:324
+#: plplaylists/cog.py:337
 msgid "Let's take a look at: {playlist_name}"
 msgstr "Katsotaan seuraavia: {playlist_name}"
 
-#: plplaylists/cog.py:331
+#: plplaylists/cog.py:344
 msgid "N/A"
 msgstr "E/A"
 
-#: plplaylists/cog.py:363 plplaylists/cog.py:539
+#: plplaylists/cog.py:376 plplaylists/cog.py:552
 msgid "Playlist deleted"
 msgstr "Soittolista poistettu"
 
-#: plplaylists/cog.py:365 plplaylists/cog.py:541
+#: plplaylists/cog.py:378 plplaylists/cog.py:554
 msgid "{user}, playlist {playlist_name} has been deleted"
 msgstr "{user}, soittolista {playlist_name} on poistettu"
 
-#: plplaylists/cog.py:422
+#: plplaylists/cog.py:435
 msgid "Playlist **{playlist_name}** could not be updated with URL: <{url}>"
 msgstr "Soittolistaa **{playlist_name}** ei voitu päivittää URL-osoitteella: <{url}>"
 
-#: plplaylists/cog.py:456
+#: plplaylists/cog.py:469
 msgid "\n"
 "{track_count} {track_plural} removed from the playlist"
 msgstr "\n"
 "{track_count} {track_plural} poistettu soittolistalta"
 
-#: plplaylists/cog.py:457 plplaylists/cog.py:461 plplaylists/cog.py:628
+#: plplaylists/cog.py:470 plplaylists/cog.py:474 plplaylists/cog.py:641
 msgid "track"
 msgstr "kappale"
 
-#: plplaylists/cog.py:457 plplaylists/cog.py:461 plplaylists/cog.py:628
+#: plplaylists/cog.py:470 plplaylists/cog.py:474 plplaylists/cog.py:641
 msgid "tracks"
 msgstr "kappaleet"
 
-#: plplaylists/cog.py:460 plplaylists/cog.py:627
+#: plplaylists/cog.py:473 plplaylists/cog.py:640
 msgid "\n"
 "{track_count} {track_plural} added to the playlist"
 msgstr "\n"
 "{track_count} {track_plural} lisätty soittolistalle"
 
-#: plplaylists/cog.py:467 plplaylists/cog.py:635
+#: plplaylists/cog.py:480 plplaylists/cog.py:648
 msgid "Playlist updated"
 msgstr "Soittolista päivitetty"
 
-#: plplaylists/cog.py:468 plplaylists/cog.py:636
+#: plplaylists/cog.py:481 plplaylists/cog.py:649
 msgid "{user}, playlist {playlist_name} has been updated.{extras}"
 msgstr "{user}, soittolista {playlist_name} on päivitetty.{extras}"
 
-#: plplaylists/cog.py:480 plplaylists/cog.py:649
+#: plplaylists/cog.py:493 plplaylists/cog.py:662
 msgid "Playlist unchanged"
 msgstr "Soittolista ennallaan"
 
-#: plplaylists/cog.py:481 plplaylists/cog.py:650
+#: plplaylists/cog.py:494 plplaylists/cog.py:663
 msgid "{user}, playlist {playlist_name} has not been updated"
 msgstr "{user}, soittolistaa {playlist_name} ei ole päivitetty"
 
-#: plplaylists/cog.py:678
+#: plplaylists/cog.py:691
 msgid "You must either provide a URL or attach a playlist file to upload a playlist"
 msgstr "Sinun on joko annettava URL-osoite tai liitettävä soittolistatiedosto ladataksesi soittolistan"
 
-#: plplaylists/cog.py:690
+#: plplaylists/cog.py:703
 msgid "No valid playlist file provided"
 msgstr "Ei kelvollista soittolistatiedostoa annettu"
 
-#: plplaylists/cog.py:699
+#: plplaylists/cog.py:712
 msgid "Multiple playlist files provided - Currently only 1 per message is allowed"
 msgstr "Useita soittolistan tiedostoja - Tällä hetkellä vain 1 per viesti on sallittu"
 
-#: plplaylists/cog.py:717
+#: plplaylists/cog.py:730
 msgid "Failed to save any of the requested playlists"
 msgstr "Jotain pyydettyä soittolistaa ei voitu tallentaa"
 
-#: plplaylists/cog.py:726
+#: plplaylists/cog.py:739
 msgid "Failed to save the following playlists:\n"
 "{invalid_playlists}"
 msgstr "Seuraavien soittolistojen tallentaminen epäonnistui:\n"
 "{invalid_playlists}"
 
-#: plplaylists/cog.py:735
+#: plplaylists/cog.py:748
 msgid "Successfully saved the following playlists:\n"
 "{saved_playlists}"
 msgstr "Seuraavat soittolistat tallennettu onnistuneesti:\n"
 "{saved_playlists}"
 
-#: plplaylists/cog.py:760
+#: plplaylists/cog.py:773
 msgid "You must be in a voice channel to allow me to connect"
 msgstr "Sinun täytyy olla äänikanavalla, jotta voin muodostaa yhteyden"
 
-#: plplaylists/cog.py:768
+#: plplaylists/cog.py:781
 msgid "I don't have permission to connect or speak in {channel}"
 msgstr "Minulla ei ole oikeuksia muodostaa yhteyttä tai puhua {channel}"
 
-#: plplaylists/cog.py:785
+#: plplaylists/cog.py:798
 msgid "Playlist"
 msgstr "Soittolista"
 
-#: plplaylists/cog.py:790
+#: plplaylists/cog.py:803
 msgid "{track_count} tracks enqueued.{playlist_name}"
 msgstr "{track_count} kappaletta asetettu jonoon.{playlist_name}"
 

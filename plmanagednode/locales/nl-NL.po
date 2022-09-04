@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2022-08-31 13:15+0000\n"
-"PO-Revision-Date: 2022-08-31 14:14\n"
+"POT-Creation-Date: 2022-09-04 12:40+0000\n"
+"PO-Revision-Date: 2022-09-04 20:35\n"
 "Last-Translator: \n"
 "Language-Team: Dutch\n"
 "MIME-Version: 1.0\n"
@@ -17,38 +17,38 @@ msgstr ""
 "X-Crowdin-File-ID: 610\n"
 "Language: nl_NL\n"
 
-#: plmanagednode/cog.py:39 plmanagednode/cog.py:51
+#: plmanagednode/cog.py:37 plmanagednode/cog.py:49
 #, docstring
 msgid "Configure the managed Lavalink node used by PyLav"
 msgstr "Configureer de beheerde Lavalink node gebruikt door PyLav"
 
-#: plmanagednode/cog.py:55
+#: plmanagednode/cog.py:53
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies"
 msgstr "Toon de versie van de Cog en de PyLav afhankelijkheden"
 
-#: plmanagednode/cog.py:68
+#: plmanagednode/cog.py:70
 msgid "Library/Cog"
 msgstr "Bibliotheek/Cog"
 
-#: plmanagednode/cog.py:68
+#: plmanagednode/cog.py:71
 msgid "Version"
 msgstr "Versie"
 
-#: plmanagednode/cog.py:76
+#: plmanagednode/cog.py:84
 #, docstring
 msgid "Restart the managed Lavalink node"
 msgstr "Herstart de beheerde Lavalink node"
 
-#: plmanagednode/cog.py:85
+#: plmanagednode/cog.py:93
 msgid "The managed node is not enabled, run `[p]{command}` to first enable the managed node"
 msgstr "The managed node is not enabled, run `[p]{command}` om eerst het beheerde node in te schakelen"
 
-#: plmanagednode/cog.py:137
+#: plmanagednode/cog.py:146
 msgid "Restarted the managed Lavalink node"
 msgstr "Herstart de beheerde Lavalink node"
 
-#: plmanagednode/cog.py:145
+#: plmanagednode/cog.py:154
 #, docstring
 msgid "Set the java executable for PyLav.\n\n"
 "        Default is \"java\"\n"
@@ -59,25 +59,25 @@ msgstr "Stel het uitvoerbare java in voor PyLav.\n\n"
 "        Wijzigingen zullen worden toegepast na het herstarten van de bot.\n"
 "        "
 
-#: plmanagednode/cog.py:162
+#: plmanagednode/cog.py:171
 msgid "{java} does not exist, run the command again with the java argument set to the correct path"
 msgstr "{java} bestaat niet, voer de opdracht opnieuw uit met het argument van de java op het juiste pad"
 
-#: plmanagednode/cog.py:179
+#: plmanagednode/cog.py:188
 msgid "{java} is not an executable file"
 msgstr "{java} is geen uitvoerbaar bestand"
 
-#: plmanagednode/cog.py:191
+#: plmanagednode/cog.py:200
 msgid "{java} is not an executable, run the command again with the java argument set to the correct path"
 msgstr "{java} is geen uitvoerbaar, voer de opdracht opnieuw uit met het argument dat is ingesteld op het juiste pad"
 
-#: plmanagednode/cog.py:209
+#: plmanagednode/cog.py:218
 msgid "PyLav's java executable has been set to {java}\n\n"
 "Restart the bot for it to take effect"
 msgstr "PyLav's java uitvoerbaar is ingesteld op {java}\n\n"
 "Start de bot opnieuw om het toe te passen"
 
-#: plmanagednode/cog.py:221
+#: plmanagednode/cog.py:230
 #, docstring
 msgid "Toggle the managed node on/off.\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -86,19 +86,19 @@ msgstr "Zet de beheerde node aan/uit.\n\n"
 "        Wijzigingen worden toegepast na het herstarten van de bot.\n"
 "        "
 
-#: plmanagednode/cog.py:236
+#: plmanagednode/cog.py:245
 msgid "PyLav's managed node has been enabled.\n\n"
 "Restart the bot for it to take effect"
 msgstr "PyLav's beheerde node is ingeschakeld.\n\n"
 "Start de bot opnieuw op om het effectief te maken"
 
-#: plmanagednode/cog.py:244
+#: plmanagednode/cog.py:253
 msgid "PyLav's managed node has been disabled.\n\n"
 "Restart the bot for it to take effect"
 msgstr "PyLav's beheerde node is uitgeschakeld.\n\n"
 "Start de bot opnieuw op om het effectief te maken"
 
-#: plmanagednode/cog.py:252
+#: plmanagednode/cog.py:261
 #, docstring
 msgid "Toggle the managed node auto updates on/off.\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -107,72 +107,67 @@ msgstr "Schakel de beheerde node automatisch updates aan/uit.\n\n"
 "        Wijzigingen worden toegepast na het herstarten van de bot.\n"
 "        "
 
-#: plmanagednode/cog.py:267
+#: plmanagednode/cog.py:277
 msgid "PyLav's managed node auto updates have been enabled\n\n"
 "Restart the bot for it to take effect"
 msgstr "PyLav's beheerde automatische updates zijn ingeschakeld\n\n"
 "Start de bot opnieuw om het effectief te maken"
 
-#: plmanagednode/cog.py:278
+#: plmanagednode/cog.py:288
 msgid "PyLav's managed node auto updates have been disabled\n\n"
 "Restart the bot for it to take effect"
 msgstr "PyLav's beheerde automatische updates zijn uitgeschakeld\n\n"
 "Start de bot opnieuw om het te activeren."
 
-#: plmanagednode/cog.py:289
+#: plmanagednode/cog.py:299
 #, docstring
 msgid "Set the managed Lavalink node maximum heap-size.\n\n"
-"        By default, this value is 50% of available RAM in the host machine represented by [1-1024][M|G] (256M,\n"
+"        By default, this value is 2G of available RAM in the host machine represented by (65-1023M|1+G) (256M,\n"
 "        256G for example)\n\n"
 "        This value only represents the maximum amount of RAM allowed to be used at any given point, and does not mean\n"
 "        that the managed Lavalink node will always use this amount of RAM.\n"
 "        "
-msgstr "Zet de beheerde Lavalink node maximale heap-size.\n\n"
-"        Standaard deze waarde is 50% van de beschikbare RAM in de gastheermachine vertegenwoordigd door [1-1024][Mmit G] (256M,\n"
-"        256G bijvoorbeeld)\n\n"
-"        Deze waarde geeft alleen het maximale aantal RAM dat mag worden gebruikt op een bepaald punt en betekent niet\n"
-"        dat de beheerde Lavalink node deze hoeveelheid RAM altijd zal gebruiken.\n"
-"        "
+msgstr ""
 
-#: plmanagednode/cog.py:307
+#: plmanagednode/cog.py:320
 msgid "Heap-size must be a valid measure of size, e.g. 256M, 256G"
 msgstr "Heap-grootte moet een geldige maat zijn, b.v. 256M, 256G"
 
-#: plmanagednode/cog.py:317
+#: plmanagednode/cog.py:330
 msgid "Heap-size must be at least 64M, however it is recommended to have it set to at least 1G"
 msgstr "Heap-grootte moet ten minste 64M zijn, maar wordt aangeraden om het op ten minste 1G te zetten"
 
-#: plmanagednode/cog.py:329
+#: plmanagednode/cog.py:342
 msgid "Heap-size must be less than your system RAM, You currently have {ram_in_bytes} of RAM available"
 msgstr "Heap-grootte moet kleiner zijn dan uw systeem RAM, u heeft momenteel {ram_in_bytes} RAM beschikbaar"
 
-#: plmanagednode/cog.py:341
+#: plmanagednode/cog.py:354
 msgid "Heap-size must be less than {limit} due to your system limitations"
 msgstr "Heap-grootte moet kleiner zijn dan {limit} als gevolg van uw systeem beperkingen"
 
-#: plmanagednode/cog.py:358
+#: plmanagednode/cog.py:372
 msgid "Managed node's heap-size set to {bytes}.\n\n"
 "Restart the bot for it to take effect"
 msgstr "Managed node 's heap-size ingesteld op {bytes}.\n\n"
 "Start de bot opnieuw zodat het effect heeft"
 
-#: plmanagednode/cog.py:368
+#: plmanagednode/cog.py:382
 #, docstring
 msgid "Change the managed node start up configs"
 msgstr "Wijzig de beheerde node start configuratie"
 
-#: plmanagednode/cog.py:372
+#: plmanagednode/cog.py:386
 #, docstring
 msgid "Set the managed node host"
 msgstr "Stel de beheerde node host in"
 
-#: plmanagednode/cog.py:381
+#: plmanagednode/cog.py:397
 msgid "Managed node's host set to {host}.\n\n"
 "Restart the bot for it to take effect"
 msgstr "Beheerde node is host ingesteld op {host}.\n\n"
 "Start de bot opnieuw om het effectief te maken"
 
-#: plmanagednode/cog.py:391
+#: plmanagednode/cog.py:407
 #, docstring
 msgid "`Dangerous command` Set the managed Lavalink node's connection port.\n\n"
 "        This port is the port the managed Lavalink node binds to, you should only change this if there is a\n"
@@ -185,31 +180,31 @@ msgstr "`Gevaarlijk commando` Stel de beheerde Lavalink knooppunt in.\n\n"
 "        De waarde is standaard `2154`.\n"
 "        "
 
-#: plmanagednode/cog.py:402
+#: plmanagednode/cog.py:417
 msgid "The port must be between 1024 and 49151"
 msgstr "De poort moet tussen 1024 en 49151 zijn"
 
-#: plmanagednode/cog.py:412
+#: plmanagednode/cog.py:428
 msgid "Managed node's port set to {port}.\n\n"
 "Restart the bot for it to take effect"
 msgstr "Beheerde node poort ingesteld op {port}.\n\n"
 "Start de bot opnieuw om van kracht te worden"
 
-#: plmanagednode/cog.py:422
+#: plmanagednode/cog.py:438
 #, docstring
 msgid "Change the managed node plugins"
 msgstr "De beheerde node plugins wijzigen"
 
-#: plmanagednode/cog.py:426
+#: plmanagednode/cog.py:442
 #, docstring
 msgid "Update the managed node plugins"
 msgstr "Werk de beheerde node plugins bij"
 
-#: plmanagednode/cog.py:475
+#: plmanagednode/cog.py:492
 msgid "{name} was updated from {old_value} to {new_value}\n"
 msgstr "{name} is bijgewerkt van {old_value} naar {new_value}\n"
 
-#: plmanagednode/cog.py:483
+#: plmanagednode/cog.py:500
 msgid "Managed node's plugins updated.\n\n"
 "{updates}\n\n"
 "Restart the bot for it to take effect"
@@ -217,26 +212,26 @@ msgstr "Beheerde node plugins geupdate.\n\n"
 "{updates}\n\n"
 "Start de bot opnieuw om het effectief te maken"
 
-#: plmanagednode/cog.py:493
+#: plmanagednode/cog.py:510
 msgid "Managed node's plugins already up to date"
 msgstr "Beheerde node plugins zijn al bijgewerkt"
 
-#: plmanagednode/cog.py:501
+#: plmanagednode/cog.py:518
 #, docstring
 msgid "Toggle the managed node sources"
 msgstr "De beheerde node bronnen in-/uitschakelen"
 
-#: plmanagednode/cog.py:515
+#: plmanagednode/cog.py:533
 msgid "Invalid source, {valid_list} are valid sources"
 msgstr "Ongeldige bron, {valid_list} zijn geldige bronnen"
 
-#: plmanagednode/cog.py:531
+#: plmanagednode/cog.py:549
 msgid "Managed node's source set to {source}.\n\n"
 "Restart the bot for it to take effect"
 msgstr "Beheerde node zijn bron ingesteld op {source}.\n\n"
 "Start de bot opnieuw om het effectief te maken"
 
-#: plmanagednode/cog.py:541
+#: plmanagednode/cog.py:559
 #, docstring
 msgid "Configure multiple settings for the managed node.\n\n"
 "        Run `[p]plmanaged config server <setting> info` to show info about the settings and what they do.\n\n"
@@ -267,132 +262,140 @@ msgstr "Configureer meerdere instellingen voor de beheerde node.\n\n"
 "        `soundcloudSearchEnabled`: Boolean i. Waar (standaard waar)\n"
 "        "
 
-#: plmanagednode/cog.py:581
-msgid "{Setting} is not a valid Setting; Options are: \n\n"
+#: plmanagednode/cog.py:599
+msgid "{Setting} is not a valid Setting; Options are:\n\n"
 "{setting_list}"
-msgstr "{Setting} is geen geldige instelling; Opties zijn: \n\n"
+msgstr "{Setting} is geen geldige instelling; Opties zijn:\n\n"
 "{setting_list}"
 
-#: plmanagednode/cog.py:592
+#: plmanagednode/cog.py:610
 msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses. Minimum of 40ms, lower values may introduce pauses. Accepted values: Range: 40 - 2,000"
 msgstr "De duur van de NAS buffer in milliseconden. Hogere waarden zijn beter tegen langere GC pauze. Minimum van 40 ms, lagere waarden kunnen pauzes introduceren. Geaccepteerde waarden: Bereik: 40 - 2.000"
 
-#: plmanagednode/cog.py:597
+#: plmanagednode/cog.py:615
 msgid "How many milliseconds of audio to keep buffered. Accepted values: Range: 1,000 - 10,000"
 msgstr "Hoeveel milliseconden audio om bufferd te houden. Geaccepteerde waarden: bereik: 1.000 - 10.000"
 
-#: plmanagednode/cog.py:600
+#: plmanagednode/cog.py:618
 msgid "The threshold in milliseconds for how long a track can be stuck. A track is stuck if does not return any audio data. Accepted values: Range: 5,000 - 20,000"
 msgstr "De drempel in milliseconden voor hoe lang een spoor vast kan worden gehouden. Een spoor zit vast als er geen audio-gegevens worden geretourneerd. Geaccepteerde waarden: Bereik: 5.000 - 20.000"
 
-#: plmanagednode/cog.py:604
+#: plmanagednode/cog.py:622
 msgid "Number of pages to return for a YouTube Playlist - Each page contains 100 songs. Accepted values: Range: 5 - 100"
 msgstr "Aantal terug te sturen pagina's voor een YouTube Afspeellijst - Elke pagina bevat 100 nummers. Geaccepteerde waarden: Bereik: 5 tot 100"
 
-#: plmanagednode/cog.py:608
+#: plmanagednode/cog.py:626
 msgid "Opus encoder quality. Valid values range from 0 to 10, where 10 is best quality but is the most expensive on the CPU"
 msgstr "Opus encoder kwaliteit. Geldige waarden variëren van 0 tot 10, waar 10 de beste kwaliteit is maar de duurste op de CPU is"
 
-#: plmanagednode/cog.py:612
+#: plmanagednode/cog.py:630
 msgid "Quality of resampling operations. Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU"
 msgstr "Kwaliteit van resampling operaties. Geldige waarden zijn LOW, MEDIUM en HIGH, waar HIGH de meeste CPU gebruikt"
 
-#: plmanagednode/cog.py:616
+#: plmanagednode/cog.py:634
 msgid "Seek ghosting is the effect where whilst a seek is in progress, the audio buffer is read from until empty, or until seek is ready. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "Seek ghosting is het effect waar terwijl een zoekactie wordt uitgevoerd, de audiobuffer wordt voorgelezen van totdat leeg is, of totdat het zoeken klaar is. Geaccepteerde waarden voor waar: `True`, `t`, `1`, Geaccepteerde waarden voor False: `False`, `f`, `0`"
 
-#: plmanagednode/cog.py:621
+#: plmanagednode/cog.py:639
 msgid "How frequently in seconds to send player updates to clients, affects the current position accuracy. Accepted values: Range: 1 - 10"
 msgstr "Hoe vaak in seconden het sturen van speler updates aan klanten, heeft invloed op de huidige nauwkeurigheid van de positie. Geaccepteerde waarden: Bereik: 1 - 10"
 
-#: plmanagednode/cog.py:625
+#: plmanagednode/cog.py:643
 msgid "Enable or disable YouTube searches within the node, this will affect AppleMusic, Spotify and any functionality dependant on YouTube. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "YouTube-zoekopdrachten binnen de node in- of uitschakelen zal invloed hebben op AppleMusic, Spotify en eventuele functionaliteit die afhankelijk is van YouTube. Geaccepteerde waarden voor waar: `True`, `t`, `1`, Geaccepteerde waarden voor False: `False`, `f`, `0`"
 
-#: plmanagednode/cog.py:630
+#: plmanagednode/cog.py:648
 msgid "Enable or disable SoundCloud searches within the node, this will affect any functionality dependant on SoundCloud. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "SoundCloud zoekopdrachten binnen de node in- of uitschakelen, dit zal invloed hebben op alle functionaliteiten die afhankelijk zijn van SoundCloud. Geaccepteerde waarden voor waar: `True`, `t`, `1`, Geaccepteerde waarden voor False: `False`, `f`, `0`"
 
-#: plmanagednode/cog.py:639
+#: plmanagednode/cog.py:657
 msgid "{Setting} info.\n\n"
 "{info}"
 msgstr "{Setting} info.\n\n"
 "{info}"
 
-#: plmanagednode/cog.py:667
+#: plmanagednode/cog.py:685
 msgid "{Setting} valid inputs are:\n\n"
 "Range between: {start} - {end}"
 msgstr "{Setting} geldige invoer zijn:\n\n"
 "Bereik tussen: {start} - {end}"
 
-#: plmanagednode/cog.py:678
+#: plmanagednode/cog.py:696
 msgid "{Setting} valid inputs are:\n\n"
 "{setting_list}"
 msgstr "{Setting} geldige invoer zijn:\n\n"
 "{setting_list}"
 
-#: plmanagednode/cog.py:696
+#: plmanagednode/cog.py:714
 msgid "{Setting} set to {value}.\n\n"
 "Restart the bot for it to take effect"
 msgstr "{Setting} is ingesteld op {value}.\n\n"
 "Start de bot opnieuw op om van kracht te worden"
 
-#: plmanagednode/cog.py:706
+#: plmanagednode/cog.py:724
 #, docstring
 msgid "Configure Lavalink IP Rotation for ratelimits.\n\n"
-"        if reset is True, remove the ratelimit config.\n"
+"        Run `[p]plmanaged config iprotation 1` to remove the ip rotation\n"
 "        "
 msgstr "Configureer Lavalink IP Rotatie voor ratelimits.\n\n"
-"        als reset waar is, verwijder de ratelimit config.\n"
-"        "
+"        Voer `[p]plmanaged config iprotation 1 uit om de ip rotatie\n"
+"        te verwijderen        "
 
-#: plmanagednode/cog.py:717
+#: plmanagednode/cog.py:735
 msgid "Click the button below to configure the IP rotation for your node.\n"
 "More info at: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> and <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
 msgstr "Klik op de knop hieronder om de IP rotatie voor uw node te configureren.\n"
 "Meer info op: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> en <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
 
-#: plmanagednode/cog.py:731
+#: plmanagednode/cog.py:752
 msgid "Removing the IP rotation from your node.\n\n"
 "Restart the bot for it to take effect"
 msgstr "Verwijder de IP rotatie van uw node.\n\n"
 "Start de bot opnieuw om het effectief te maken"
 
-#: plmanagednode/cog.py:739
+#: plmanagednode/cog.py:760
 #, docstring
-msgid "Link a Google account to Lavalink to bypass YouTube's age restriction"
-msgstr "Koppel een Google-account aan Lavalink om de leeftijdsbeperking van YouTube te omzeilen"
+msgid "Link a Google account to Lavalink to bypass YouTube's age restriction\n\n"
+"        Run `[p]plmanaged config googleaccount 1` to remove the linked account.\n"
+"        "
+msgstr "Een Google-account koppelen aan Lavalink om YouTube's leeftijdsrestrictie te omzeilen\n\n"
+"        Voer uit[p]plmanaged config googleaccount 1` om het gekoppelde account te verwijderen.\n"
+"        "
 
-#: plmanagednode/cog.py:747
+#: plmanagednode/cog.py:771
 msgid "Click the button below to link a Google account to your node, if you have 2FA setup on this account you will need an app password instead\n"
 "More info at: <https://support.google.com/accounts/answer/185833>"
 msgstr "Klik op de knop hieronder om een Google-account aan uw node te koppelen, als je 2FA hebt ingesteld op dit account heb je een app-wachtwoord nodig\n"
 "Meer informatie op: <https://support.google.com/accounts/answer/185833>"
 
-#: plmanagednode/cog.py:765
+#: plmanagednode/cog.py:788
 msgid "Unlinking Google account from your node.\n\n"
 "Restart the bot for it to take effect"
 msgstr "Ontkoppelen van Google account van je node.\n\n"
 "Start de bot opnieuw om het effectief te maken"
 
-#: plmanagednode/cog.py:773
+#: plmanagednode/cog.py:796
 #, docstring
-msgid "Configure a HTTP proxy for Lavalink"
-msgstr "Een HTTP-proxy voor Lavalink configureren"
+msgid "Configure a HTTP proxy for Lavalink\n\n"
+"        Run `[p]plmanaged config httpproxy 1` to remove the proxy.\n"
+"        "
+msgstr "Configureer een HTTP-proxy voor Lavalink\n\n"
+"        Voer `[p]plmanaged config httpproxy 1` in om de proxy te verwijderen.\n"
+"        "
 
-#: plmanagednode/cog.py:781
+#: plmanagednode/cog.py:807
 msgid "Click the button below to configure a HTTP proxy for your node"
 msgstr "Klik op de knop hieronder om een HTTP-proxy voor uw node te configureren"
 
-#: plmanagednode/cog.py:795
+#: plmanagednode/cog.py:820
 msgid "Unlinking HTTP proxy from your node.\n\n"
 "Restart the bot for it to take effect"
 msgstr "Ontkoppelen van HTTP-proxy van uw node.\n\n"
 "Start de bot opnieuw om deze effectief te maken"
 
 #: plmanagednode/view.py:33 plmanagednode/view.py:60 plmanagednode/view.py:87
-#: plmanagednode/view.py:160 plmanagednode/view.py:313
-#: plmanagednode/view.py:389
+#: plmanagednode/view.py:160 plmanagednode/view.py:314
+#: plmanagednode/view.py:392
 msgid "You are not authorized to interact with this"
 msgstr "Je bent niet gemachtigd om hier mee te communiceren"
 
@@ -460,83 +463,83 @@ msgstr "Ongeldige probeer limiet, moet een getal groter zijn dan of gelijk aan -
 msgid "Invalid search trigger, must be 0 or 1"
 msgstr "Ongeldige zoektrigger, moet 0 of 1 zijn"
 
-#: plmanagednode/view.py:269
+#: plmanagednode/view.py:270
 msgid "IP rotation configuration saved.\n\n"
 "Restart the bot for it to take effect"
 msgstr "IP rotatie configuratie opgeslagen.\n\n"
 "Start de bot opnieuw om het te activeren."
 
-#: plmanagednode/view.py:286
+#: plmanagednode/view.py:287
 msgid "Google Account Configurator"
 msgstr "Google Account Configurator"
 
-#: plmanagednode/view.py:289
+#: plmanagednode/view.py:290
 msgid "Email address"
 msgstr "E-mail adres"
 
-#: plmanagednode/view.py:292
+#: plmanagednode/view.py:293
 msgid "Your Google account email"
 msgstr "Uw Google account e-mail"
 
-#: plmanagednode/view.py:297
+#: plmanagednode/view.py:298
 msgid "password"
 msgstr "Wachtwoord"
 
-#: plmanagednode/view.py:300
+#: plmanagednode/view.py:301
 msgid "If you have 2FA you will need an app password"
 msgstr "Als je 2FA hebt, heb je een app-wachtwoord nodig"
 
-#: plmanagednode/view.py:321
+#: plmanagednode/view.py:322
 msgid "Invalid email address"
 msgstr "Ongeldig e-mailadres"
 
-#: plmanagednode/view.py:332
+#: plmanagednode/view.py:335
 msgid "Google account linked.\n\n"
 "Restart the bot for it to take effect"
 msgstr "Google-account gekoppeld.\n\n"
 "Start de bot opnieuw om het effectief te maken"
 
-#: plmanagednode/view.py:349
+#: plmanagednode/view.py:352
 msgid "HTTP Proxy Configurator"
 msgstr "HTTP Proxy Configurator"
 
-#: plmanagednode/view.py:352
+#: plmanagednode/view.py:355
 msgid "Hostname"
 msgstr "Hostname"
 
-#: plmanagednode/view.py:355
+#: plmanagednode/view.py:358
 msgid "Hostname of the proxy, (ip or domain or localhost)"
 msgstr "Hostnaam van de proxy, (ip of domein of localhost)"
 
-#: plmanagednode/view.py:359
+#: plmanagednode/view.py:362
 msgid "Proxy port"
 msgstr "Proxy poort"
 
-#: plmanagednode/view.py:362
+#: plmanagednode/view.py:365
 msgid "Proxy port, 3128 is the default for squidProxy"
 msgstr "Proxy port, 3128 is de standaard voor squidProxy"
 
-#: plmanagednode/view.py:368
+#: plmanagednode/view.py:371
 msgid "User"
 msgstr "Gebruiker"
 
-#: plmanagednode/view.py:371
+#: plmanagednode/view.py:374
 msgid "Optional user for basic authentication fields, leave blank if you don't use basic auth"
 msgstr "Optionele gebruiker voor basis authenticatie velden, laat leeg als u geen gebruik maakt van de standaard authenticatie"
 
-#: plmanagednode/view.py:374
+#: plmanagednode/view.py:377
 msgid "Password"
 msgstr "Wachtwoord"
 
-#: plmanagednode/view.py:377
+#: plmanagednode/view.py:380
 msgid "Optional password for basic authentication fields, leave blank if you don't use basic auth"
 msgstr "Optioneel wachtwoord voor basis authenticatie velden, laat leeg als u geen gebruik maakt van de standaard authenticatie"
 
-#: plmanagednode/view.py:400
+#: plmanagednode/view.py:403
 msgid "Invalid port, must be a number between 0 and 65536"
 msgstr "Ongeldige poort, moet een getal zijn tussen 0 en 65536"
 
-#: plmanagednode/view.py:416
+#: plmanagednode/view.py:420
 msgid "HTTP proxy configuration saved.\n\n"
 "Restart the bot for it to take effect"
 msgstr "HTTP-proxyconfiguratie opgeslagen.\n\n"

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2022-08-31 13:15+0000\n"
-"PO-Revision-Date: 2022-08-31 13:42\n"
+"POT-Creation-Date: 2022-09-04 12:40+0000\n"
+"PO-Revision-Date: 2022-09-04 20:35\n"
 "Last-Translator: \n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -17,217 +17,112 @@ msgstr ""
 "X-Crowdin-File-ID: 552\n"
 "Language: ja_JP\n"
 
-#: plconfig/cog.py:32
+#: plconfig/cog.py:34
 #, docstring
 msgid "Configure PyLav library settings"
 msgstr "PyLav ライブラリ設定の構成"
 
-#: plconfig/cog.py:44
+#: plconfig/cog.py:46
 #, docstring
 msgid "Change global settings for PyLav"
 msgstr "PyLav のグローバル設定を変更する"
 
-#: plconfig/cog.py:48
+#: plconfig/cog.py:50
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies"
 msgstr "Cog のバージョンと PyLav の依存関係を表示する"
 
-#: plconfig/cog.py:61
+#: plconfig/cog.py:67
 msgid "Library/Cog"
 msgstr "ライブラリ/Cog"
 
-#: plconfig/cog.py:61
+#: plconfig/cog.py:68
 msgid "Version"
 msgstr "バージョン"
 
-#: plconfig/cog.py:69
+#: plconfig/cog.py:81
 #, docstring
 msgid "Show the config values"
 msgstr "設定値を表示"
 
-#: plconfig/cog.py:77
-msgid "Enabled"
-msgstr "有効"
-
-#: plconfig/cog.py:78
-msgid "Disabled"
-msgstr "無効"
-
-#: plconfig/cog.py:82
-msgid "Use Managed Node"
-msgstr "マネージドノードを使用"
-
-#: plconfig/cog.py:83
-msgid "Auto Update\n"
-"Managed Node"
-msgstr "管理対象ノードを\n"
-"自動更新"
-
-#: plconfig/cog.py:84
-msgid "Change Bot activity"
-msgstr "ボットアクティビティを変更"
-
-#: plconfig/cog.py:85
-msgid "Use Bundled\n"
-"PyLav Nodes"
-msgstr "バンドルされた\n"
-"の PyLav ノードを使用する"
-
-#: plconfig/cog.py:87
-msgid "Use Bundled\n"
-"lava.link Nodes"
-msgstr "バンドルされた\n"
-"lava.link ノードを使用する"
-
-#: plconfig/cog.py:94
+#: plconfig/cog.py:88 plconfig/view.py:54
 msgid "PyLav Config"
 msgstr "PyLav Config"
 
-#: plconfig/cog.py:94
-msgid "State"
-msgstr "都道府県："
+#: plconfig/cog.py:90
+msgid "Get information about the PyLav library settings"
+msgstr "PyLav ライブラリの設定に関する情報を取得します。"
 
-#: plconfig/cog.py:100 plconfig/cog.py:135 plconfig/cog.py:191
-msgid "Volume"
-msgstr "音量"
-
-#: plconfig/cog.py:101 plconfig/cog.py:136 plconfig/cog.py:192
-msgid "Maximum Volume"
-msgstr "最大ボリューム"
-
-#: plconfig/cog.py:102 plconfig/cog.py:137 plconfig/cog.py:193
-msgid "AutoPlay"
-msgstr "自動再生"
-
-#: plconfig/cog.py:103 plconfig/cog.py:141 plconfig/cog.py:194
-msgid "Shuffling"
-msgstr "Shuffling"
-
-#: plconfig/cog.py:104 plconfig/cog.py:142 plconfig/cog.py:195
-msgid "Auto Shuffle"
-msgstr "Auto Shuffle"
-
-#: plconfig/cog.py:105 plconfig/cog.py:143 plconfig/cog.py:196
-msgid "Auto Deafen"
-msgstr "Auto Deafen"
-
-#: plconfig/cog.py:107 plconfig/cog.py:145 plconfig/cog.py:198
-msgid "Auto Disconnect"
-msgstr "自動的に切断"
-
-#: plconfig/cog.py:113 plconfig/cog.py:151 plconfig/cog.py:204
-msgid "Auto Alone Pause"
-msgstr "自動で一時停止する"
-
-#: plconfig/cog.py:119 plconfig/cog.py:157 plconfig/cog.py:210
-msgid "Auto Alone Disconnect"
-msgstr "自動的に一人で切断する"
-
-#: plconfig/cog.py:128
+#: plconfig/cog.py:93 plconfig/view.py:120
 msgid "Global Player Config"
 msgstr "グローバルプレイヤー設定"
 
-#: plconfig/cog.py:128 plconfig/cog.py:172 plconfig/cog.py:219
-msgid "Value"
-msgstr "値"
+#: plconfig/cog.py:95
+msgid "Get information about bot owner configured settings for the players"
+msgstr "プレイヤーのボット所有者設定に関する情報を取得します"
 
-#: plconfig/cog.py:138
-msgid "AutoPlay Playlist"
-msgstr "自動プレイリスト"
-
-#: plconfig/cog.py:139
-msgid "Loop track"
-msgstr "トラックをループ"
-
-#: plconfig/cog.py:140
-msgid "Loop Queue"
-msgstr "ループキュー"
-
-#: plconfig/cog.py:146 plconfig/cog.py:152 plconfig/cog.py:158
-msgid "{enabled}\n"
-"{timer} seconds"
-msgstr "{enabled}\n"
-"{timer} 秒"
-
-#: plconfig/cog.py:162
-msgid "Forced Voice Channel"
-msgstr "強制ボイスチャンネル"
-
-#: plconfig/cog.py:162 plconfig/cog.py:163 plconfig/cog.py:164
-msgid "None"
-msgstr "なし"
-
-#: plconfig/cog.py:163
-msgid "Forced Command Channel"
-msgstr "強制コマンドチャンネル"
-
-#: plconfig/cog.py:164
-msgid "Forced Notification Channel"
-msgstr "強制通知チャンネル"
-
-#: plconfig/cog.py:165
-msgid "DJ Users"
-msgstr "DJ Users"
-
-#: plconfig/cog.py:166
-msgid "DJ Roles"
-msgstr "DJ ロール"
-
-#: plconfig/cog.py:172
-msgid "Server Player Config"
-msgstr "サーバープレイヤーの設定"
-
-#: plconfig/cog.py:219
+#: plconfig/cog.py:102 plconfig/view.py:191
 msgid "Context Player Config"
 msgstr "Context Playerの設定"
 
-#: plconfig/cog.py:227
-msgid "Next Bundled\n"
-"Playlist Update"
-msgstr "次のバンドルされた\n"
-"プレイリストの更新"
+#: plconfig/cog.py:104
+msgid "Get information about contextual settings for the player, accounting for the global settings"
+msgstr "グローバル設定を占めるプレイヤーのコンテキスト設定に関する情報を取得する"
 
-#: plconfig/cog.py:231
-msgid "Next Bundled External\n"
-"Playlist Update"
-msgstr "次のバンドルされた外部\n"
-"プレイリストの更新"
+#: plconfig/cog.py:110 plconfig/view.py:336
+msgid "Server Player Config"
+msgstr "サーバープレイヤーの設定"
 
-#: plconfig/cog.py:235
-msgid "Next External\n"
-"Playlist Update"
-msgstr "次の外部\n"
-"プレイリストの更新"
+#: plconfig/cog.py:112
+msgid "Get information about server configured settings for the player"
+msgstr "プレイヤーのサーバー構成設定に関する情報を取得する"
 
-#: plconfig/cog.py:242
+#: plconfig/cog.py:119 plconfig/view.py:375
 msgid "Playlist Tasks"
 msgstr "プレイリストタスク"
 
-#: plconfig/cog.py:242
-msgid "Date and Time (UTC)"
-msgstr "日時 (UTC)"
+#: plconfig/cog.py:121
+msgid "Get information Playlist auto update schedule"
+msgstr "プレイリストの自動更新スケジュールを取得する"
 
-#: plconfig/cog.py:249
-msgid "Config Folder"
-msgstr "設定フォルダ"
+#: plconfig/cog.py:129
+msgid "PyLav Paths"
+msgstr "PyLav Paths"
 
-#: plconfig/cog.py:250
-msgid "Local Tracks"
-msgstr "ローカルトラック"
+#: plconfig/cog.py:131
+msgid "Get information about PyLav paths"
+msgstr "PyLav パスについての情報を取得する"
 
-#: plconfig/cog.py:251
-msgid "Java Executable"
-msgstr "Java Executable"
+#: plconfig/cog.py:134 plconfig/view.py:469
+msgid "Managed Node Config"
+msgstr "マネージドノード設定"
 
-#: plconfig/cog.py:255
-msgid "Paths"
-msgstr "パス"
+#: plconfig/cog.py:136
+msgid "Get information about Managed PyLav Lavalink node"
+msgstr "Managed PyLav Lavalinkノードについての情報を取得する"
 
-#: plconfig/cog.py:255
-msgid "Path"
-msgstr "パス"
+#: plconfig/cog.py:146
+#, docstring
+msgid "Checks if a user or role is considered a DJ"
+msgstr "ユーザーまたはロールがDJと見なされているかを確認します"
 
-#: plconfig/cog.py:268
+#: plconfig/cog.py:157
+msgid "{role} is a DJ role"
+msgstr "{role} は DJ ロールです"
+
+#: plconfig/cog.py:159
+msgid "{role} is not a DJ role"
+msgstr "{role} はDJロールではありません"
+
+#: plconfig/cog.py:164
+msgid "{user} is a DJ"
+msgstr "{user} は DJ です"
+
+#: plconfig/cog.py:166
+msgid "{user} is not a DJ"
+msgstr "{user} は DJ ではありません"
+
+#: plconfig/cog.py:179
 #, docstring
 msgid "Set the folder for PyLav's config files\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -236,19 +131,19 @@ msgstr "PyLavの設定ファイルのフォルダを設定してください\n\n
 "        ボットを再起動すると変更が適用されます。\n"
 "        "
 
-#: plconfig/cog.py:280 plconfig/cog.py:335
+#: plconfig/cog.py:191 plconfig/cog.py:246
 msgid "{folder} is not a folder"
 msgstr "{folder} はフォルダではありません"
 
-#: plconfig/cog.py:294 plconfig/cog.py:349
+#: plconfig/cog.py:205 plconfig/cog.py:260
 msgid "{folder} does not exist, run the command again with the create argument set to 1 to automatically create this folder"
 msgstr "{folder} は存在しません。create 引数を 1 に設定してこのフォルダを自動的に作成します。"
 
-#: plconfig/cog.py:312
+#: plconfig/cog.py:223
 msgid "PyLav's config folder has been set to {folder}"
 msgstr "PyLavの設定フォルダが {folder}に設定されました"
 
-#: plconfig/cog.py:323
+#: plconfig/cog.py:234
 #, docstring
 msgid "Set the local tracks folder for PyLav.\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -257,11 +152,11 @@ msgstr "PyLavのローカルトラックフォルダを設定します。\n\n"
 "        ボットを再起動した後に変更が適用されます。\n"
 "        "
 
-#: plconfig/cog.py:370
+#: plconfig/cog.py:281
 msgid "PyLav's local tracks folder has been set to {folder}"
 msgstr "PyLavのローカルトラックフォルダが {folder}に設定されました"
 
-#: plconfig/cog.py:381
+#: plconfig/cog.py:292
 #, docstring
 msgid "Set the java executable for PyLav.\n\n"
 "        Default is \"java\"\n"
@@ -272,28 +167,28 @@ msgstr "PyLavのJava実行可能ファイルを設定してください。\n\n"
 "        ボットを再起動した後に変更が適用されます。\n"
 "        "
 
-#: plconfig/cog.py:398
+#: plconfig/cog.py:309
 msgid "{java} does not exist, run the command again with the java argument set to the correct path"
 msgstr "{java} は存在しません。正しいパスに設定された Java 引数でコマンドをもう一度実行してください。"
 
-#: plconfig/cog.py:414
+#: plconfig/cog.py:325
 msgid "{java} is not an executable file"
 msgstr "{java} は実行可能ファイルではありません"
 
-#: plconfig/cog.py:426
+#: plconfig/cog.py:337
 msgid "{java} is not an executable, run the command again with the java argument set to the correct path"
 msgstr "{java} は実行可能ファイルではありません。正しいパスに設定された Java 引数でコマンドを再実行してください。"
 
-#: plconfig/cog.py:444
+#: plconfig/cog.py:355
 msgid "PyLav's java executable has been set to {java}"
 msgstr "PyLavのJava実行ファイルが {java}に設定されました"
 
-#: plconfig/cog.py:455
+#: plconfig/cog.py:366
 #, docstring
 msgid "Change the managed node configuration"
 msgstr "管理ノードの設定を変更する"
 
-#: plconfig/cog.py:459
+#: plconfig/cog.py:370
 #, docstring
 msgid "Toggle the managed node on/off.\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -302,15 +197,15 @@ msgstr "管理ノードのオン/オフを切り替えます。\n\n"
 "        ボットを再起動した後に変更が適用されます。\n"
 "        "
 
-#: plconfig/cog.py:474
+#: plconfig/cog.py:386
 msgid "PyLav's managed node has been enabled"
 msgstr "PyLavの管理ノードが有効になりました"
 
-#: plconfig/cog.py:482
+#: plconfig/cog.py:394
 msgid "PyLav's managed node has been disabled"
 msgstr "PyLavの管理ノードは無効になっています"
 
-#: plconfig/cog.py:490
+#: plconfig/cog.py:402
 #, docstring
 msgid "Toggle the managed node auto updates on/off.\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -319,51 +214,51 @@ msgstr "管理ノードの自動更新のオン/オフを切り替えます。\n
 "        ボットを再起動した後に変更が適用されます。\n"
 "        "
 
-#: plconfig/cog.py:505
+#: plconfig/cog.py:418
 msgid "PyLav's managed node auto updates have been enabled"
 msgstr "PyLavの管理ノードの自動更新が有効になりました"
 
-#: plconfig/cog.py:513
+#: plconfig/cog.py:426
 msgid "PyLav's managed node auto updates have been disabled"
 msgstr "PyLavの管理ノードの自動更新は無効になっています"
 
-#: plconfig/cog.py:521
+#: plconfig/cog.py:434
 #, docstring
 msgid "Change the bundled external nodes state"
 msgstr "バンドルされている外部ノードの状態を変更する"
 
-#: plconfig/cog.py:525
+#: plconfig/cog.py:438
 #, docstring
 msgid "Toggle the managed external draper.wtf nodes on/off"
 msgstr "管理された外部ドレーパーを切り替えます。wtfノードのオン/オフ"
 
-#: plconfig/cog.py:542
+#: plconfig/cog.py:458
 msgid "PyLav's managed pylav external node has been enabled"
 msgstr "PyLavの管理された外部ノードは有効になっています"
 
-#: plconfig/cog.py:550
+#: plconfig/cog.py:468
 msgid "PyLav's managed pylav external node has been disabled"
 msgstr "PyLavの管理された外部ノードは無効になっています"
 
-#: plconfig/cog.py:558
+#: plconfig/cog.py:476
 #, docstring
 msgid "Toggle the managed external lava.link node on/off"
 msgstr "管理されている外部 lava.link ノードのオン/オフを切り替えます"
 
-#: plconfig/cog.py:575
+#: plconfig/cog.py:499
 msgid "PyLav's managed lava.link external node has been enabled"
 msgstr "PyLavの管理対象lava.link外部ノードが有効になりました"
 
-#: plconfig/cog.py:583
+#: plconfig/cog.py:508
 msgid "PyLav's managed lava.link external node has been disabled"
 msgstr "PyLavの管理されているlava.link外部ノードが無効になりました"
 
-#: plconfig/cog.py:592
+#: plconfig/cog.py:517
 #, docstring
 msgid "Instructions on how to set the Spotify API Tokens"
 msgstr "Spotify API トークンの設定方法"
 
-#: plconfig/cog.py:593
+#: plconfig/cog.py:518
 msgid "1. Go to Spotify developers and log in with your Spotify account.\n"
 "(https://developer.spotify.com/dashboard/applications)\n"
 "2. Click \"Create An App\".\n"
@@ -374,29 +269,257 @@ msgid "1. Go to Spotify developers and log in with your Spotify account.\n"
 "`{prefix}set api spotify client_id <your_client_id_here> client_secret <your_client_secret_here>`"
 msgstr ""
 
-#: plconfig/cog.py:614
+#: plconfig/cog.py:539
 #, docstring
 msgid "Manage active players"
 msgstr "アクティブなプレイヤーを管理"
 
-#: plconfig/cog.py:623
-msgid "No active player in {}"
-msgstr "{} にアクティブなプレイヤーがいません。"
+#: plconfig/cog.py:548
+msgid "No active player in {name}"
+msgstr "{name} にアクティブなプレイヤーがいません。"
 
-#: plconfig/cog.py:632
+#: plconfig/cog.py:557
 msgid "No connected players"
 msgstr "接続されているプレイヤーがありません"
 
-#: plconfig/cog.py:649
+#: plconfig/cog.py:574
 #, docstring
 msgid "Toggle whether or not to change the bot's activity"
 msgstr "ボットのアクティビティを変更するかどうかを切り替えます"
 
-#: plconfig/cog.py:660
+#: plconfig/cog.py:585
 msgid "PyLav will change bot activity"
 msgstr "PyLav はボットのアクティビティを変更します"
 
-#: plconfig/cog.py:668
+#: plconfig/cog.py:594
 msgid "PyLav will no longer change the bot activity"
 msgstr "PyLav はもはやボットのアクティビティを変更しません"
+
+#: plconfig/view.py:24 plconfig/view.py:66 plconfig/view.py:137
+#: plconfig/view.py:208 plconfig/view.py:426
+msgid "Enabled"
+msgstr "有効"
+
+#: plconfig/view.py:25 plconfig/view.py:67 plconfig/view.py:138
+#: plconfig/view.py:209 plconfig/view.py:427
+msgid "Disabled"
+msgstr "無効"
+
+#: plconfig/view.py:29
+msgid "Use Managed Node"
+msgstr "マネージドノードを使用"
+
+#: plconfig/view.py:33
+msgid "Auto Update\n"
+"Managed Node"
+msgstr "管理対象ノードを\n"
+"自動更新"
+
+#: plconfig/view.py:37
+msgid "Change Bot activity"
+msgstr "ボットアクティビティを変更"
+
+#: plconfig/view.py:41
+msgid "Use Bundled\n"
+"PyLav Nodes"
+msgstr "バンドルされた\n"
+"の PyLav ノードを使用する"
+
+#: plconfig/view.py:45
+msgid "Use Bundled\n"
+"lava.link Nodes"
+msgstr "バンドルされた\n"
+"lava.link ノードを使用する"
+
+#: plconfig/view.py:55 plconfig/view.py:121 plconfig/view.py:192
+#: plconfig/view.py:337 plconfig/view.py:470
+msgid "Value"
+msgstr "値"
+
+#: plconfig/view.py:70 plconfig/view.py:151 plconfig/view.py:255
+msgid "Volume"
+msgstr "音量"
+
+#: plconfig/view.py:72 plconfig/view.py:152 plconfig/view.py:256
+msgid "Maximum Volume"
+msgstr "最大ボリューム"
+
+#: plconfig/view.py:74 plconfig/view.py:154 plconfig/view.py:258
+msgid "AutoPlay"
+msgstr "自動再生"
+
+#: plconfig/view.py:78 plconfig/view.py:157 plconfig/view.py:274
+msgid "Shuffling"
+msgstr "Shuffling"
+
+#: plconfig/view.py:82 plconfig/view.py:158 plconfig/view.py:278
+msgid "Auto Shuffle"
+msgstr "Auto Shuffle"
+
+#: plconfig/view.py:86 plconfig/view.py:159 plconfig/view.py:282
+msgid "Auto Deafen"
+msgstr "Auto Deafen"
+
+#: plconfig/view.py:90 plconfig/view.py:161 plconfig/view.py:286
+msgid "Auto Disconnect"
+msgstr "自動的に切断"
+
+#: plconfig/view.py:92 plconfig/view.py:100 plconfig/view.py:108
+#: plconfig/view.py:163 plconfig/view.py:171 plconfig/view.py:179
+#: plconfig/view.py:288 plconfig/view.py:296 plconfig/view.py:304
+msgid "{enabled}\n"
+"{timer} seconds"
+msgstr "{enabled}\n"
+"{timer} 秒"
+
+#: plconfig/view.py:98 plconfig/view.py:169 plconfig/view.py:294
+msgid "Auto Alone Pause"
+msgstr "自動で一時停止する"
+
+#: plconfig/view.py:106 plconfig/view.py:177 plconfig/view.py:302
+msgid "Auto Alone Disconnect"
+msgstr "自動的に一人で切断する"
+
+#: plconfig/view.py:134 plconfig/view.py:205
+msgid "You need to be in a server to be able to show this page."
+msgstr "このページを表示するにはサーバーにいる必要があります。"
+
+#: plconfig/view.py:226 plconfig/view.py:242
+msgid "Too many to show ({count})"
+msgstr "表示が多すぎます ({count})"
+
+#: plconfig/view.py:245 plconfig/view.py:250 plconfig/view.py:313
+#: plconfig/view.py:319 plconfig/view.py:325
+msgid "None"
+msgstr "なし"
+
+#: plconfig/view.py:262
+msgid "AutoPlay Playlist"
+msgstr "自動プレイリスト"
+
+#: plconfig/view.py:266
+msgid "Loop track"
+msgstr "トラックをループ"
+
+#: plconfig/view.py:270
+msgid "Loop Queue"
+msgstr "ループキュー"
+
+#: plconfig/view.py:310
+msgid "Forced Voice Channel"
+msgstr "強制ボイスチャンネル"
+
+#: plconfig/view.py:316
+msgid "Forced Command Channel"
+msgstr "強制コマンドチャンネル"
+
+#: plconfig/view.py:322
+msgid "Forced Notification Channel"
+msgstr "強制通知チャンネル"
+
+#: plconfig/view.py:327
+msgid "DJ Users"
+msgstr "DJ Users"
+
+#: plconfig/view.py:328
+msgid "DJ Roles"
+msgstr "DJ ロール"
+
+#: plconfig/view.py:351
+msgid "Next Bundled\n"
+"Playlist Update"
+msgstr "次のバンドルされた\n"
+"プレイリストの更新"
+
+#: plconfig/view.py:357
+msgid "Next Bundled External\n"
+"Playlist Update"
+msgstr "次のバンドルされた外部\n"
+"プレイリストの更新"
+
+#: plconfig/view.py:363
+msgid "Next External\n"
+"Playlist Update"
+msgstr "次の外部\n"
+"プレイリストの更新"
+
+#: plconfig/view.py:376
+msgid "Date and Time (UTC)"
+msgstr "日時 (UTC)"
+
+#: plconfig/view.py:389
+msgid "You need to be the bot owner to be able to show this page."
+msgstr "このページを表示するには、ボット所有者である必要があります。"
+
+#: plconfig/view.py:395
+msgid "Config Folder"
+msgstr "設定フォルダ"
+
+#: plconfig/view.py:397
+msgid "Local Tracks"
+msgstr "ローカルトラック"
+
+#: plconfig/view.py:401
+msgid "Java Executable"
+msgstr "Java Executable"
+
+#: plconfig/view.py:405
+msgid "Not Found"
+msgstr "見つかりませんでした"
+
+#: plconfig/view.py:415
+msgid "Paths"
+msgstr "パス"
+
+#: plconfig/view.py:416
+msgid "Path"
+msgstr "パス"
+
+#: plconfig/view.py:434
+msgid "Java"
+msgstr "Java"
+
+#: plconfig/view.py:438
+msgid "Lavaplayer"
+msgstr "Lavaplayer"
+
+#: plconfig/view.py:442
+msgid "Lavalink Branch"
+msgstr "Lavalinkブランチ"
+
+#: plconfig/view.py:446
+msgid "Lavalink Version"
+msgstr "Lavalinkバージョン"
+
+#: plconfig/view.py:450
+msgid "Lavalink Build"
+msgstr "Lavalinkビルド"
+
+#: plconfig/view.py:453
+msgid "Build Time"
+msgstr "ビルド時間"
+
+#: plconfig/view.py:455
+msgid "Commit"
+msgstr "コミット"
+
+#: plconfig/view.py:459
+msgid "Auto Update"
+msgstr "自動アップデート"
+
+#: plconfig/view.py:497
+msgid "Select an option from the dropdown menu below."
+msgstr "下のドロップダウンメニューからオプションを選択します。"
+
+#: plconfig/view.py:509
+msgid "Pick an option to view"
+msgstr "表示するオプションを選択"
+
+#: plconfig/view.py:518
+msgid "You are not authorized to interact with this option"
+msgstr "このオプションを操作する権限がありません。"
+
+#: plconfig/view.py:550
+msgid "You are not authorized to interact with this"
+msgstr "これとやり取りする権限がありません"
 
