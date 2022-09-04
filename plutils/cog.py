@@ -30,7 +30,7 @@ _ = Translator("PyLavUtils", Path(__file__))
 class PyLavUtils(commands.Cog):
     """Utility commands for PyLav"""
 
-    __version__ = "1.0.0.0rc0"
+    __version__ = "1.0.0.0rc1"
 
     def __init__(self, bot: BotT, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -81,13 +81,13 @@ class PyLavUtils(commands.Cog):
         def rich_walk_commands(group: list, tree: Tree):
             for command in group:
                 if isinstance(command, discord.app_commands.Group):
-                    branch = tree.add(command.name)
+                    branch = tree.add(command.name, style="cyan")
                     rich_walk_commands(command.commands, branch)
                 else:
-                    tree.add(command.name)
+                    tree.add(command.name, style="not bold white")
 
         all_commands = self.bot.tree.get_commands()
-        rich_tree = Tree("Slash Commands")
+        rich_tree = Tree("Slash Commands", style="bold yellow")
 
         rich_walk_commands(all_commands, rich_tree)
         temp_console = Console(  # Prevent messing with STDOUT's console
@@ -99,7 +99,7 @@ class PyLavUtils(commands.Cog):
         )
         temp_console.print(rich_tree)
         msg = "\n".join(line.rstrip() for line in temp_console.file.getvalue().split("\n"))
-        await context.send_interactive(messages=pagify(msg), box_lang="")
+        await context.send_interactive(messages=pagify(msg), box_lang="ansi")
 
     @command_plutils.group(name="get")
     @requires_player()

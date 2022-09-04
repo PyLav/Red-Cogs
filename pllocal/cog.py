@@ -43,7 +43,7 @@ async def cache_filled(interaction: InteractionT) -> bool:
 class PyLavLocalFiles(commands.Cog):
     """Play local files and folders from the owner configured location"""
 
-    __version__ = "1.0.0.0rc0"
+    __version__ = "1.0.0.0rc1"
 
     def __init__(self, bot: BotT, *args, **kwargs):
         super().__init__(*args, **kwargs)

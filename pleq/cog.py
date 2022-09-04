@@ -29,7 +29,7 @@ _ = Translator("PyLavEqualizer", Path(__file__))
 class PyLavEqualizer(commands.Cog):
     """Apply equalizer presets to the PyLav player"""
 
-    __version__ = "1.0.0.0rc0"
+    __version__ = "1.0.0.0rc1"
 
     slash_eq = app_commands.Group(name="eq", description=_("Apply an Equalizer preset to the player"))
 

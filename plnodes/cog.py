@@ -33,7 +33,7 @@ _ = Translator("PyLavNodes", Path(__file__))
 class PyLavNodes(commands.Cog):
     """Manage the nodes used by PyLav"""
 
-    __version__ = "1.0.0.0rc0"
+    __version__ = "1.0.0.0rc1"
 
     def __init__(self, bot: BotT, *args, **kwargs):
         super().__init__(*args, **kwargs)
