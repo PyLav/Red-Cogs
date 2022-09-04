@@ -1,6 +1,7 @@
 import asyncio
 import hashlib
-import random
+import os.path
+import re
 import typing
 from functools import partial
 from pathlib import Path
@@ -51,6 +52,11 @@ class PyLavLocalFiles(commands.Cog):
         self.cache: dict[str, Query] = {}
         self.ready_event = asyncio.Event()
 
+    @staticmethod
+    async def _filter_is_folder_alphabetical(x):
+        string = f"{getattr(x[1]._query, 'path', x[1]._query)}"
+        return -1 if os.path.isdir(string) else 2, string
+
     async def _update_cache(self):
         from pylav.localfiles import LocalFile
 
@@ -61,8 +67,8 @@ class PyLavLocalFiles(commands.Cog):
         async for file in LocalFile(LocalFile._ROOT_FOLDER).files_in_tree(show_folders=True):
             temp[hashlib.md5(f"{getattr(file._query, 'path', file._query)}".encode()).hexdigest()] = file
 
-        temp = await asyncstdlib.sorted(temp.items(), key=lambda x: str(x[1]._query).lower())  # type: ignore
-        self.cache = dict(temp)
+        extracted: typing.Iterable[tuple[str, Query]] = await heapq.nsmallest(asyncstdlib.iter(temp.items()), n=len(temp.items()), key=self._filter_is_folder_alphabetical)  # type: ignore
+        self.cache = dict(extracted)
 
     async def initialize(self):
         await self._update_cache()
@@ -220,23 +226,24 @@ class PyLavLocalFiles(commands.Cog):
         entries = []
         if not self.cache:
             return []
-        if not current:
-            extracted = random.choices(list(self.cache.items()), k=25)
-        else:
 
-            async def _filter(x):
-                return await asyncio.to_thread(
-                    fuzz.token_set_ratio, current, f"{getattr(x[1]._query, 'path', x[1]._query)}"
+        if not current:
+            extracted = await asyncstdlib.list(asyncstdlib.itertools.islice(self.cache.items(), 0, 25))
+        else:
+            current = re.sub(r"[/\\]", r" ", current)
+
+            async def _filter_partial_ratio(x):
+                return (
+                    await asyncio.to_thread(
+                        fuzz.partial_ratio, re.sub(r"[/\\]", r" ", f"{x[1]._query.path}"), current, score_cutoff=75
+                    ),
+                    10 if await x[1]._query.path.is_dir() else 0,
+                    [-ord(i) for i in str(x[1]._query.path)],
                 )
 
-            extracted = await heapq.nlargest(asyncstdlib.iter(self.cache.items()), n=25, key=_filter)
+            extracted = await heapq.nlargest(asyncstdlib.iter(self.cache.items()), n=25, key=_filter_partial_ratio)
 
-            async def alphabetical(x):
-                return x.name or "Ω"
-
-            extracted = await heapq.nsmallest(asyncstdlib.iter(extracted), n=25, key=alphabetical)
-
-        async for md5, query in AsyncIter(extracted if current else extracted[::-1]):
+        async for md5, query in AsyncIter(extracted):
             entries.append(
                 Choice(name=await query.query_to_string(max_length=99, with_emoji=True, no_extension=True), value=md5)
             )
