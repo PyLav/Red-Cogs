@@ -3,12 +3,14 @@ import typing
 from abc import ABC
 from typing import Union
 
+import asyncstdlib
 import discord
+from asyncstdlib import heapq
 from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.commands import TimedeltaConverter
 from redbot.core.i18n import Translator, cog_i18n
-from redbot.core.utils.chat_formatting import bold, box, humanize_list, humanize_number, humanize_timedelta, pagify
+from redbot.core.utils.chat_formatting import bold, box, humanize_list, humanize_number, humanize_timedelta
 from tabulate import tabulate
 
 import pylavcogs_shared
@@ -393,13 +395,20 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
+        async def role_sorter(role: discord.Role | int) -> float:
+            return float("-inf") if isinstance(role, int) else role.position
+
+        async def user_sorter(user: discord.Member | int) -> float:
+            return float("-inf") if isinstance(user, int) else user.top_role.position
+
         config = self.lavalink.player_config_manager.get_config(context.guild.id)
         dj_roles = [
             (role_object if (role_object := context.guild.get_role(role)) else role)
             for role in await config.fetch_dj_roles()
         ]
+        dj_roles = await heapq.nlargest(asyncstdlib.iter(dj_roles), key=role_sorter, n=len(dj_roles))
         dj_roles_chunks = [dj_roles[i : i + 3] for i in range(0, len(dj_roles), 3)]
-        dj_roles_string = "\n".join(
+        dj_roles_string_list = [
             " || ".join(
                 [
                     EightBitANSI.colorize(
@@ -409,13 +418,14 @@ class ConfigCommands(PyLavCogMixin, ABC):
                 ]
             )
             for chunk in dj_roles_chunks
-        )
+        ]
         dj_user = [
             (member_object if (member_object := context.guild.get_member(member)) else member)
             for member in await config.fetch_dj_users()
         ]
+        dj_user = await heapq.nlargest(asyncstdlib.iter(dj_user), key=user_sorter, n=len(dj_user))
         dj_user_chunks = [dj_user[i : i + 3] for i in range(0, len(dj_user), 3)]
-        dj_user_string = "\n".join(
+        dj_user_string_list = [
             " || ".join(
                 [
                     EightBitANSI.colorize(
@@ -425,7 +435,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
                 ]
             )
             for chunk in dj_user_chunks
-        )
+        ]
 
         if not dj_roles and not dj_user:
             await context.send(
@@ -438,16 +448,30 @@ class ConfigCommands(PyLavCogMixin, ABC):
             return
 
         string = ""
-        if dj_roles_string:
+
+        pages = []
+        if dj_roles_string_list:
             string += EightBitANSI.paint_yellow(_("DJ Roles"), bold=True, underline=True)
-            string += f"\n{dj_roles_string}"
-        if dj_user_string:
+            for line in dj_roles_string_list:
+                if len(string) + len(line) > 3000:
+                    pages.append(string)
+                    string = ""
+                    string += EightBitANSI.paint_yellow(_("DJ Roles"), bold=True, underline=True)
+                string += f"\n{line}"
+
+        if dj_user_string_list:
             if string:
                 string += "\n\n"
             string += EightBitANSI.paint_yellow(_("DJ Users"), bold=True, underline=True)
-            string += f"\n{dj_user_string}"
-
-        await context.send_interactive(messages=pagify(string), box_lang="ansi")  # type: ignore
+            for line in dj_user_string_list:
+                if len(string) + len(line) > 3000:
+                    pages.append(string)
+                    string = ""
+                    string += EightBitANSI.paint_yellow(_("DJ Users"), bold=True, underline=True)
+                string += f"\n{line}"
+        if string:
+            pages.append(string)
+        await context.send_interactive(messages=pages, box_lang="ansi", embed=True)  # type: ignore
 
     @command_playerset_server_dj.command(name="clear")
     async def command_playerset_server_dj_clear(self, context: PyLavContext) -> None:
