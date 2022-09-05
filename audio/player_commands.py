@@ -9,8 +9,8 @@ from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
 
-from pylav import Query, Track
-from pylav.tracks import decode_track
+from pylav.query import Query
+from pylav.tracks import Track, decode_track
 from pylav.types import PyLavCogMixin
 from pylav.utils import PyLavContext, format_time
 from pylavcogs_shared.utils import rgetattr

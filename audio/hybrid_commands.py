@@ -14,8 +14,8 @@ from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator
 
-from pylav import Query, Track
-from pylav.query import SEARCH_REGEX
+from pylav.query import SEARCH_REGEX, Query
+from pylav.tracks import Track
 from pylav.types import InteractionT, PyLavCogMixin
 from pylav.utils import PyLavContext, format_time
 from pylavcogs_shared.ui.menus.queue import QueueMenu

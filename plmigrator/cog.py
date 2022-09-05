@@ -18,7 +18,7 @@ from redbot.core.data_manager import cog_data_path
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.dbtools import APSWConnectionWrapper
 
-from pylav import Client
+from pylav.client import Client
 from pylav.sql import tables
 from pylav.sql.models import LibConfigModel, PlayerModel
 from pylav.types import BotT

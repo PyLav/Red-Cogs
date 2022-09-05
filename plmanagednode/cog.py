@@ -17,7 +17,7 @@ from redbot.core.utils.chat_formatting import bold, box, humanize_list, inline
 from tabulate import tabulate
 
 import pylavcogs_shared
-from pylav import Client
+from pylav.client import Client
 from pylav.envvars import JAVA_EXECUTABLE
 from pylav.types import BotT
 from pylav.utils import PyLavContext, get_jar_ram_actual, get_max_allocation_size, get_true_path

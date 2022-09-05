@@ -20,7 +20,7 @@ from redbot.core.utils.chat_formatting import box
 from tabulate import tabulate
 
 import pylavcogs_shared
-from pylav import Query
+from pylav.query import Query
 from pylav.sql.models import PlayerModel
 from pylav.types import BotT, InteractionT
 from pylav.utils import AsyncIter, PyLavContext

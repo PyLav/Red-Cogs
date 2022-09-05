@@ -16,7 +16,8 @@ from redbot.core.utils.chat_formatting import box, humanize_list, inline
 from tabulate import tabulate
 
 import pylavcogs_shared
-from pylav import Client, events
+from pylav import events
+from pylav.client import Client
 from pylav.filters import Equalizer, Volume
 from pylav.types import BotT
 from pylav.utils import PyLavContext, format_time

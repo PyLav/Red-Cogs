@@ -19,10 +19,13 @@ from redbot.core.utils.chat_formatting import bold, box, humanize_list
 from tabulate import tabulate
 
 import pylavcogs_shared
-from pylav import Client, InvalidPlaylist, Query, Track
+from pylav.client import Client
 from pylav.constants import BUNDLED_PLAYLIST_IDS
 from pylav.converters import PlaylistConverter, QueryPlaylistConverter
+from pylav.exceptions import InvalidPlaylist
+from pylav.query import Query
 from pylav.sql.models import PlaylistModel
+from pylav.tracks import Track
 from pylav.types import BotT, InteractionT
 from pylav.utils import AsyncIter, PyLavContext
 from pylav.utils.theme import EightBitANSI

@@ -12,7 +12,7 @@ from redbot.core.utils.chat_formatting import bold, box, inline
 from tabulate import tabulate
 
 import pylavcogs_shared
-from pylav import Client
+from pylav.client import Client
 from pylav.constants import PYLAV_BUNDLED_NODES_SETTINGS
 from pylav.localfiles import LocalFile
 from pylav.types import BotT

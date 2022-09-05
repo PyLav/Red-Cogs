@@ -7,7 +7,7 @@ from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
 
-from pylav import Client, Query
+from pylav.client import Client
 from pylav.converters.radio import (
     CodecConverter,
     CountryCodeConverter,
@@ -17,6 +17,7 @@ from pylav.converters.radio import (
     StationConverter,
     TagConverter,
 )
+from pylav.query import Query
 from pylav.radio.objects import Station
 from pylav.types import BotT, InteractionT
 from pylavcogs_shared.ui.prompts.generic import maybe_prompt_for_entry
