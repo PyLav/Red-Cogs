@@ -1717,6 +1717,7 @@ class PyLavNotifier(commands.Cog):
             event.distortion,
             event.low_pass,
             event.channel_mix,
+            event.echo,
         ):
             if not effect or isinstance(effect, Volume):
                 continue

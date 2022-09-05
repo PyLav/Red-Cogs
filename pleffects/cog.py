@@ -559,6 +559,57 @@ class PyLavEffects(commands.Cog):
             ephemeral=True,
         )
 
+    @slash_fx.command(name="echo", description=_("Apply a echo filter to the player"))
+    @app_commands.describe(
+        delay=_("The delay of the echo"),
+        decay=_("The decay of the echo"),
+        reset=_("Reset any existing effects currently applied to the player"),
+    )
+    @app_commands.guild_only()
+    @requires_player(slash=True)
+    @invoker_is_dj(slash=True)
+    async def slash_fx_echo(
+        self,
+        interaction: InteractionT,
+        delay: Range[float, 0.0, None] = None,
+        decay: Range[float, 0.0, 1.0] = None,
+        reset: bool = False,
+    ) -> None:
+        """Apply a echo filter to the player"""
+        if not interaction.response.is_done():
+            await interaction.response.defer(ephemeral=True)
+        context = await self.bot.get_context(interaction)
+        context.player.echo.delay = delay or context.player.echo.delay
+        context.player.echo.decay = decay or context.player.echo.decay
+        await context.player.set_echo(echo=context.player.echo, requester=context.author, forced=reset)
+
+        data = [
+            (EightBitANSI.paint_white(_("Delay")), EightBitANSI.paint_blue(context.player.echo.delay)),
+            (EightBitANSI.paint_white(_("Decay")), EightBitANSI.paint_blue(context.player.echo.decay)),
+            (
+                EightBitANSI.paint_white(_("Reset previous filters")),
+                EightBitANSI.paint_red(_("Yes")) if reset else EightBitANSI.paint_green(_("No")),
+            ),
+        ]
+        await context.send(
+            embed=await self.lavalink.construct_embed(
+                messageable=context,
+                title=_("New echo effect applied to the player"),
+                description=box(
+                    tabulate(
+                        data,
+                        headers=(
+                            EightBitANSI.paint_yellow(_("Setting"), bold=True, underline=True),
+                            EightBitANSI.paint_yellow(_("Value"), bold=True, underline=True),
+                        ),
+                        tablefmt="fancy_grid",
+                    ),
+                    lang="ansi",
+                ),
+            ),
+            ephemeral=True,
+        )
+
     @slash_fx.command(name="show", description=_("Show the current filters applied to the player"))
     @app_commands.guild_only()
     @requires_player(slash=True)
@@ -580,6 +631,7 @@ class PyLavEffects(commands.Cog):
             context.player.distortion,
             context.player.low_pass,
             context.player.channel_mix,
+            context.player.echo,
         ):
             data_ = {t_effect: effect.__class__.__name__}
 
