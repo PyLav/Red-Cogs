@@ -448,18 +448,32 @@ class PyLavManagedNode(commands.Cog):
         data = await config.fetch_yaml()
         new_plugin_data = []
         for plugin in data["lavalink"]["plugins"].copy():
+            dependency = ":".join(plugin["dependency"].split(":")[:-1])
             if plugin["dependency"].startswith("com.github.Topis-Lavalink-Plugins:Topis-Source-Managers-Plugin:"):
                 org = "Topis-Lavalink-Plugins"
                 repo = "Topis-Source-Managers-Plugin"
                 repository = "https://jitpack.io"
+                dependency += ":"
             elif plugin["dependency"].startswith("com.dunctebot:skybot-lavalink-plugin:"):
                 org = "DuncteBot"
                 repo = "skybot-lavalink-plugin"
                 repository = "https://m2.duncte123.dev/releases"
+                dependency += ":"
             elif plugin["dependency"].startswith("com.github.topisenpai:sponsorblock-plugin:"):
                 org = "Topis-Lavalink-Plugins"
                 repo = "Sponsorblock-Plugin"
                 repository = "https://jitpack.io"
+                dependency += ":"
+            elif plugin["dependency"].startswith("com.github.esmBot:lava-xm-plugin:"):
+                org = "rohank05"
+                repo = "lavalink-filter-plugin"
+                repository = "https://jitpack.io"
+                dependency += ":"
+            elif plugin["dependency"].startswith("me.rohank05:lavalink-filter-plugin:"):
+                org = "esmBot"
+                repo = "lava-xm-plugin"
+                repository = "https://jitpack.io"
+                dependency = "com.github.esmBot:lava-xm-plugin:v"
             else:
                 continue
             release_data = await (
@@ -470,7 +484,7 @@ class PyLavManagedNode(commands.Cog):
             name = release_data["tag_name"]
             new_plugin_data.append(
                 {
-                    "dependency": ":".join(plugin["dependency"].split(":")[:-1] + [name]),
+                    "dependency": dependency + name,
                     "repository": repository,
                 }
             )
