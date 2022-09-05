@@ -5,7 +5,7 @@ repos:
 -   repo: https://github.com/psf/black
     # The `refs/tags/<tag>:refs/tags/<tag>` is needed for black's required-version to work:
     # https://github.com/psf/black/issues/2493#issuecomment-1081987650
-    rev: 22.6.0
+    rev: 22.8.0
     hooks:
     -   id: black
 -   repo: https://github.com/Pierre-Sassoulas/black-disable-checker
@@ -57,7 +57,7 @@ repos:
         -   --autofix
         -   --indent=4
 -   repo: https://github.com/myint/autoflake
-    rev: v1.5.1
+    rev: v1.5.3
     hooks:
     -   id: autoflake
         args: [--remove-all-unused-imports, --recursive, --in-place, --remove-unused-variables, --ignore-init-module-imports, --remove-duplicate-keys]
