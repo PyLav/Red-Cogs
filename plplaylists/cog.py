@@ -698,7 +698,7 @@ class PyLavPlaylists(
             return
         if context.message.attachments:
             for file in context.message.attachments:
-                if file.filename.endswith(".yaml"):
+                if file.filename.endswith(".pylav"):
                     valid_playlist_urls.add(file.url)
         if not valid_playlist_urls:
             await context.send(
