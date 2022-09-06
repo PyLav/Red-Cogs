@@ -56,7 +56,7 @@ class PyLavRadio(commands.Cog):
         tag5=_("The tag filter to filter stations by"),
     )
     @app_commands.guild_only()
-    async def radio(
+    async def slash_radio(
         self,
         interaction: InteractionT,
         stations: StationConverter,
