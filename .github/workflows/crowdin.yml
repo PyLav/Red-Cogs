@@ -28,7 +28,7 @@ jobs:
             with:
                 upload_translations: false
                 download_translations: true
-                commit_message: '[skip-ci] Update translations'
+                commit_message: '[skip ci] Update translations'
                 download_translations_args: --all
                 pull_request_labels: i18n, translations, automerge
             env:
@@ -55,7 +55,7 @@ jobs:
             with:
                 upload_translations: true
                 download_translations: false
-                commit_message: '[skip-ci] Update translations'
+                commit_message: '[skip ci] Update translations'
                 pull_request_labels: i18n, translations, automerge
             env:
                 CROWDIN_API_KEY: ${{ secrets.crowdin_token}}
