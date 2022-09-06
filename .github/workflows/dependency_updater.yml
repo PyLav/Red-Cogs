@@ -21,7 +21,7 @@ jobs:
                 update-setuptools: 'true'
                 update-wheel: 'true'
                 path: tools/requirements.txt
-        -   name: Update Dependencies
+        -   name: Make changes
             run: |
                 python3.10 ./tools/dependency_updater.py
         -   name: Verify Changed files

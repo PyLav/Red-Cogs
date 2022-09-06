@@ -72,12 +72,12 @@ for cog in pathlib.Path(__file__).parent.parent.iterdir():
                     changed = False
                     for requirement in info["requirements"]:
                         requirement = pkg_resources.Requirement.parse(requirement)
-                        if requirement.project_name == "Py-Lav" and requirement != pylav_requirement:
+                        if requirement.project_name == "Py-Lav" and requirement != new_pylav_version:
                             new_requirements.append(new_pylav_version)
                             changed = True
                         elif (
                             requirement.project_name == "pylavcogs-shared"
-                            and requirement != pylavcogs_shared_requirement
+                            and requirement != new_pylavcogs_shared_version
                         ):
                             new_requirements.append(new_pylavcogs_shared_version)
                             changed = True
