@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2022-09-06 19:39+0000\n"
-"PO-Revision-Date: 2022-09-06 19:40\n"
+"POT-Creation-Date: 2022-09-08 20:32+0000\n"
+"PO-Revision-Date: 2022-09-08 20:33\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -22,103 +22,136 @@ msgstr ""
 msgid "A Media player using the PyLav library"
 msgstr "使用 PyLav 库的媒体播放器"
 
-#: audio/config_commands.py:36
+#: audio/config_commands.py:40
+#, docstring
+msgid "Notifies PyLav that a Player is having issues.\n\n"
+"        If enough (50%+ of currently playing players) report issues, PyLav will automatically\n"
+"        switch to a different node or restart the current node where possible.\n"
+"        "
+msgstr ""
+
+#: audio/config_commands.py:48
+msgid "This server already voted recently, please try again in 10 minutes"
+msgstr ""
+
+#: audio/config_commands.py:59
+msgid "Thank you for your report"
+msgstr ""
+
+#: audio/config_commands.py:69
+#, docstring
+msgid "Removes a vote for a Player being down.\n\n"
+"        If enough (50%+ of currently playing players) report issues, PyLav will automatically\n"
+"        switch to a different node or restart the current node where possible.\n\n"
+"        This command is only useful if you previously voted for a node to be down and it is now back up.\n"
+"        "
+msgstr ""
+
+#: audio/config_commands.py:79
+msgid "There is no active votes for the current backend"
+msgstr ""
+
+#: audio/config_commands.py:89
+msgid "Removed your report"
+msgstr ""
+
+#: audio/config_commands.py:97
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies"
 msgstr "显示Cog版本和它的 PyLav 依赖关系"
 
-#: audio/config_commands.py:53
+#: audio/config_commands.py:114
 msgid "Library/Cog"
 msgstr "库 / COG"
 
-#: audio/config_commands.py:54
+#: audio/config_commands.py:115
 msgid "Version"
 msgstr "版本"
 
-#: audio/config_commands.py:68
+#: audio/config_commands.py:129
 #, docstring
 msgid "Global configuration options"
 msgstr "全局配置选项"
 
-#: audio/config_commands.py:72
+#: audio/config_commands.py:133
 #, docstring
 msgid "Set the maximum volume server can set"
 msgstr "设置最大音量服务器"
 
-#: audio/config_commands.py:80 audio/config_commands.py:507
+#: audio/config_commands.py:141 audio/config_commands.py:568
 #: audio/hybrid_commands.py:658
 msgid "Volume must be less than 1000"
 msgstr "卷必须小于 1000"
 
-#: audio/config_commands.py:88 audio/config_commands.py:515
+#: audio/config_commands.py:149 audio/config_commands.py:576
 #: audio/hybrid_commands.py:666
 msgid "Volume must be greater than 0"
 msgstr "音量必须大于 0"
 
-#: audio/config_commands.py:96 audio/config_commands.py:552
+#: audio/config_commands.py:157 audio/config_commands.py:613
 msgid "Max volume set to {volume}%"
 msgstr "最大音量设置为 {volume}%"
 
-#: audio/config_commands.py:104 audio/config_commands.py:560
+#: audio/config_commands.py:165 audio/config_commands.py:621
 #, docstring
 msgid "Set whether the bot should deafen itself when playing"
 msgstr "设置机器人在玩时是否应该自制耳机"
 
-#: audio/config_commands.py:113 audio/config_commands.py:586
+#: audio/config_commands.py:174 audio/config_commands.py:647
 msgid "Deafen set to {deafen}"
 msgstr "Deafen 设置为 {deafen}"
 
-#: audio/config_commands.py:113 audio/config_commands.py:132
-#: audio/config_commands.py:151 audio/config_commands.py:168
-#: audio/config_commands.py:212 audio/config_commands.py:253
-#: audio/config_commands.py:586 audio/config_commands.py:616
-#: audio/config_commands.py:648 audio/config_commands.py:682
-#: audio/config_commands.py:746 audio/config_commands.py:809
+#: audio/config_commands.py:174 audio/config_commands.py:193
+#: audio/config_commands.py:212 audio/config_commands.py:229
+#: audio/config_commands.py:273 audio/config_commands.py:314
+#: audio/config_commands.py:647 audio/config_commands.py:677
+#: audio/config_commands.py:709 audio/config_commands.py:743
+#: audio/config_commands.py:807 audio/config_commands.py:870
 msgid "Enabled"
 msgstr "已启用"
 
-#: audio/config_commands.py:113 audio/config_commands.py:132
-#: audio/config_commands.py:151 audio/config_commands.py:168
-#: audio/config_commands.py:212 audio/config_commands.py:253
-#: audio/config_commands.py:586 audio/config_commands.py:616
-#: audio/config_commands.py:648 audio/config_commands.py:682
-#: audio/config_commands.py:746 audio/config_commands.py:809
+#: audio/config_commands.py:174 audio/config_commands.py:193
+#: audio/config_commands.py:212 audio/config_commands.py:229
+#: audio/config_commands.py:273 audio/config_commands.py:314
+#: audio/config_commands.py:647 audio/config_commands.py:677
+#: audio/config_commands.py:709 audio/config_commands.py:743
+#: audio/config_commands.py:807 audio/config_commands.py:870
 msgid "Disabled"
 msgstr "已禁用"
 
-#: audio/config_commands.py:121 audio/config_commands.py:594
+#: audio/config_commands.py:182 audio/config_commands.py:655
 #, docstring
 msgid "Set whether the bot should shuffle its queue after every new song added"
 msgstr "设置每次添加新歌曲后，机器人是否会随机播放"
 
-#: audio/config_commands.py:131 audio/config_commands.py:615
+#: audio/config_commands.py:192 audio/config_commands.py:676
 msgid "Auto-Shuffle set to {shuffle}"
 msgstr "自动随机随机设置为 {shuffle}"
 
-#: audio/config_commands.py:141 audio/config_commands.py:625
+#: audio/config_commands.py:202 audio/config_commands.py:686
 #, docstring
 msgid "Set whether the bot should allow users to shuffle the queue"
 msgstr "设置机器人是否允许用户随机播放队列"
 
-#: audio/config_commands.py:151 audio/config_commands.py:648
+#: audio/config_commands.py:212 audio/config_commands.py:709
 msgid "Shuffle set to {shuffle}"
 msgstr "随机播放设置为 {shuffle}"
 
-#: audio/config_commands.py:159 audio/config_commands.py:656
+#: audio/config_commands.py:220 audio/config_commands.py:717
 #, docstring
 msgid "Set whether the bot should automatically play songs when it's queue is empty"
 msgstr "设置当排队为空时，机器人是否应自动播放歌曲"
 
-#: audio/config_commands.py:168 audio/config_commands.py:682
+#: audio/config_commands.py:229 audio/config_commands.py:743
 msgid "Auto-Play set to {auto}"
 msgstr "自动播放设置为 {auto}"
 
-#: audio/config_commands.py:176 audio/config_commands.py:690
+#: audio/config_commands.py:237 audio/config_commands.py:751
 #, docstring
 msgid "Set whether the bot should disconnect from the voice voice channel"
 msgstr "设置机器人是否应断开语音频道连接"
 
-#: audio/config_commands.py:186
+#: audio/config_commands.py:247
 #, docstring
 msgid "Set whether the bot should disconnect from the voice voice channel when the queue is empty.\n\n"
 "        Arguments:\n"
@@ -133,16 +166,16 @@ msgstr "设置当队列为空时，机器人是否应断开语音频道连接。
 "            接受秒、 分钟、 小时、 天、 周(如果没有指定单位) 假定持续时间以秒为单位\n"
 "        "
 
-#: audio/config_commands.py:206 audio/config_commands.py:246
-#: audio/config_commands.py:740 audio/config_commands.py:802
+#: audio/config_commands.py:267 audio/config_commands.py:307
+#: audio/config_commands.py:801 audio/config_commands.py:863
 msgid " and players will be disconnected after {duration}"
 msgstr " 和 {duration} 后玩家将断开连接"
 
-#: audio/config_commands.py:211 audio/config_commands.py:745
+#: audio/config_commands.py:272 audio/config_commands.py:806
 msgid "Disconnect from voice channel when queue is empty set to {empty}{extras}"
 msgstr "当队列空时断开语音频道连接到 {empty}{extras}"
 
-#: audio/config_commands.py:227
+#: audio/config_commands.py:288
 #, docstring
 msgid "Set whether the bot should disconnect from the voice voice channel when alone.\n\n"
 "        Arguments:\n"
@@ -157,134 +190,134 @@ msgstr "设置机器人是否在单独时断开语音频道连接。\n\n"
 "            接受秒、 分钟、 小时、 天、 周(如果没有指定单位) 假定持续时间以秒为单位\n"
 "        "
 
-#: audio/config_commands.py:252 audio/config_commands.py:808
+#: audio/config_commands.py:313 audio/config_commands.py:869
 msgid "Disconnect from voice channel when alone set to {empty}{extras}"
 msgstr "单独设置为 {empty}{extras} 时断开语音频道"
 
-#: audio/config_commands.py:264
+#: audio/config_commands.py:325
 #, docstring
 msgid "Server configuration options"
 msgstr "服务器配置选项"
 
-#: audio/config_commands.py:268
+#: audio/config_commands.py:329
 #, docstring
 msgid "Add, Remove or show the DJ roles and users for the server"
 msgstr "添加、删除或显示服务器的 DJ 角色和用户"
 
-#: audio/config_commands.py:274
+#: audio/config_commands.py:335
 #, docstring
 msgid "Add DJ roles or users to this server"
 msgstr "添加DJ角色或用户到此服务器"
 
-#: audio/config_commands.py:287
+#: audio/config_commands.py:348
 msgid "Added {role} to the DJ roles"
 msgstr "添加 {role} 到 DJ 角色"
 
-#: audio/config_commands.py:290
+#: audio/config_commands.py:351
 msgid "Added {user} to the DJ users"
 msgstr "已将 {user} 添加到 DJ 用户"
 
-#: audio/config_commands.py:297
+#: audio/config_commands.py:358
 msgid "Added {roles} to the DJ roles and {users} to the DJ users"
 msgstr "添加 {roles} 到 DJ 角色和 {users} 到 DJ 用户"
 
-#: audio/config_commands.py:304
+#: audio/config_commands.py:365
 msgid "Added {roles} to the DJ roles"
 msgstr "添加 {roles} 到 DJ 角色"
 
-#: audio/config_commands.py:308
+#: audio/config_commands.py:369
 msgid "Added {users} to the DJ users"
 msgstr "已将 {users} 添加到 DJ 用户"
 
-#: audio/config_commands.py:323
+#: audio/config_commands.py:384
 #, docstring
 msgid "Remove DJ roles or users in this the server"
 msgstr "删除服务器中的DJ角色或用户"
 
-#: audio/config_commands.py:338
+#: audio/config_commands.py:399
 msgid "Removed `{id}` from the DJ roles and users"
 msgstr "已从 DJ 角色和用户中删除 `{id}`"
 
-#: audio/config_commands.py:340
+#: audio/config_commands.py:401
 msgid "Removed {role} from the DJ roles"
 msgstr "从 DJ 角色中移除 {role}"
 
-#: audio/config_commands.py:343
+#: audio/config_commands.py:404
 msgid "Removed {user} from the DJ users"
 msgstr "已从 DJ 用户中删除 {user}"
 
-#: audio/config_commands.py:351
+#: audio/config_commands.py:412
 msgid "Removed {roles} from the DJ roles and {users} from the DJ users, as well as {ints} from both"
 msgstr "从 DJ 角色中移除 {roles} 从 DJ 用户中移除 {users} 从 DJ 用户中移除 {ints}"
 
-#: audio/config_commands.py:359
+#: audio/config_commands.py:420
 msgid "Removed {roles} from the DJ roles and {users} from the DJ users"
 msgstr "从 DJ 角色中移除 {roles} ，从DJ 用户中移除 {users}"
 
-#: audio/config_commands.py:364
+#: audio/config_commands.py:425
 msgid "Removed {roles} from the DJ roles"
 msgstr "从 DJ 角色中移除 {roles}"
 
-#: audio/config_commands.py:370
+#: audio/config_commands.py:431
 msgid "Removed {users} from the DJ users"
 msgstr "已从 DJ 用户中删除 {users}"
 
-#: audio/config_commands.py:376
+#: audio/config_commands.py:437
 msgid "Removed {ints} from the DJ roles and users"
 msgstr "已从 DJ 角色和用户中删除 {ints}"
 
-#: audio/config_commands.py:392
+#: audio/config_commands.py:453
 #, docstring
 msgid "List the DJ roles for the server"
 msgstr "列出服务器的 DJ 角色"
 
-#: audio/config_commands.py:443
+#: audio/config_commands.py:504
 msgid "There are no DJ roles or users set in {server}"
 msgstr "{server} 中没有设置DJ角色或用户"
 
-#: audio/config_commands.py:454 audio/config_commands.py:459
+#: audio/config_commands.py:515 audio/config_commands.py:520
 msgid "DJ Roles"
 msgstr "DJ 角色"
 
-#: audio/config_commands.py:465 audio/config_commands.py:470
+#: audio/config_commands.py:526 audio/config_commands.py:531
 msgid "DJ Users"
 msgstr "DJ Users"
 
-#: audio/config_commands.py:478
+#: audio/config_commands.py:539
 #, docstring
 msgid "Clear the DJ roles and users for the server"
 msgstr "清除服务器的 DJ 角色和用户"
 
-#: audio/config_commands.py:490
+#: audio/config_commands.py:551
 msgid "Cleared the DJ roles and users for {server}"
 msgstr "清除了 {server} 的 DJ 角色和用户"
 
-#: audio/config_commands.py:498
+#: audio/config_commands.py:559
 #, docstring
 msgid "Set the maximum volume a user can set"
 msgstr "设置用户可以设置的最大音量"
 
-#: audio/config_commands.py:524 audio/config_commands.py:540
+#: audio/config_commands.py:585 audio/config_commands.py:601
 msgid "Volume must be between 0 and {volume}%"
 msgstr "卷必须介于 0 和 {volume} % 之间"
 
-#: audio/config_commands.py:569
+#: audio/config_commands.py:630
 msgid "My owner told me to always deafen myself"
 msgstr "我的主人告诉我永远不要自己戴上"
 
-#: audio/config_commands.py:602
+#: audio/config_commands.py:663
 msgid "Auto-Shuffle is globally disabled"
 msgstr "全局禁用自动随机播放"
 
-#: audio/config_commands.py:635
+#: audio/config_commands.py:696
 msgid "Shuffle is globally disabled"
 msgstr "随机播放已在全局禁用"
 
-#: audio/config_commands.py:665
+#: audio/config_commands.py:726
 msgid "Auto-Play is globally disabled"
 msgstr "自动播放已全局禁用"
 
-#: audio/config_commands.py:700
+#: audio/config_commands.py:761
 #, docstring
 msgid "Set whether the bot should disconnect from the voice voice channel when the queue is empty.\n\n"
 "        Arguments:\n"
@@ -303,11 +336,11 @@ msgstr "设置当队列为空时，机器人是否应断开语音频道连接。
 "            以秒为单位\n"
 "        "
 
-#: audio/config_commands.py:718
+#: audio/config_commands.py:779
 msgid "Disconnect when the queue finished is globally enable and players will be disconnected after {delta}"
 msgstr "当队列完成全局启用且玩家将在 {delta} 后断开连接时断开连接"
 
-#: audio/config_commands.py:761
+#: audio/config_commands.py:822
 #, docstring
 msgid "Set whether the bot should disconnect from the voice voice channel when alone.\n\n"
 "        Arguments:\n"
@@ -326,56 +359,56 @@ msgstr "设置机器人是否在单独时断开语音频道连接。\n\n"
 "            以秒为单位\n"
 "        "
 
-#: audio/config_commands.py:780
+#: audio/config_commands.py:841
 msgid "Disconnect when alone is globally enable and players will be disconnected after {delta}"
 msgstr "仅在全局启用时断开连接，玩家将在 {delta} 后断开连接"
 
-#: audio/config_commands.py:818
+#: audio/config_commands.py:879
 #, docstring
 msgid "Sets the Auto-Play playlist"
 msgstr "设置自动播放播放列表"
 
-#: audio/config_commands.py:835
+#: audio/config_commands.py:896
 msgid "Auto-Play playlist set to {playlist}"
 msgstr "自动播放列表设置为 {playlist}"
 
-#: audio/config_commands.py:843
+#: audio/config_commands.py:904
 #, docstring
 msgid "Set the channel locks"
 msgstr "设置频道锁定"
 
-#: audio/config_commands.py:849
+#: audio/config_commands.py:910
 #, docstring
 msgid "Set the channel lock for commands"
 msgstr "设置命令的频道锁定"
 
-#: audio/config_commands.py:865
+#: audio/config_commands.py:926
 msgid "I don't have permission to send message or send embed links or read messages in {channel}"
 msgstr "我没有权限发送消息或发送嵌入链接或阅读消息在 {channel}"
 
-#: audio/config_commands.py:886
+#: audio/config_commands.py:947
 msgid "I will only listen to commands in {channel}"
 msgstr "我只会在 {channel} 中聆听命令"
 
-#: audio/config_commands.py:894
+#: audio/config_commands.py:955
 msgid "I will listen to commands in all channels I can see"
 msgstr "我将在我可以看到的所有频道中聆听命令"
 
-#: audio/config_commands.py:902
+#: audio/config_commands.py:963
 #, docstring
 msgid "Set the channel lock for voice channels"
 msgstr "设置频道锁定语音频道"
 
-#: audio/config_commands.py:914 audio/hybrid_commands.py:105
+#: audio/config_commands.py:975 audio/hybrid_commands.py:105
 #: audio/player_commands.py:132
 msgid "I don't have permission to connect or speak in {channel}"
 msgstr "我没有权限在 {channel} 中连接或说话。"
 
-#: audio/config_commands.py:936
+#: audio/config_commands.py:997
 msgid "I will only be allowed to join {channel}"
 msgstr "我只允许加入 {channel}"
 
-#: audio/config_commands.py:943
+#: audio/config_commands.py:1004
 msgid "I'm free to join any VC"
 msgstr "我可以随时加入任意虚拟机"
 
