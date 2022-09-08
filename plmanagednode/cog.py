@@ -19,6 +19,7 @@ from tabulate import tabulate
 import pylavcogs_shared
 from pylav.client import Client
 from pylav.envvars import JAVA_EXECUTABLE
+from pylav.managed_node import LAVALINK_DOWNLOAD_DIR
 from pylav.types import BotT
 from pylav.utils import PyLavContext, get_jar_ram_actual, get_max_allocation_size, get_true_path
 from pylav.utils.built_in_node import NODE_DEFAULT_SETTINGS
@@ -436,6 +437,166 @@ class PyLavManagedNode(commands.Cog):
     @command_plmanaged_config.group(name="plugins")
     async def command_plmanaged_config_plugins(self, context: PyLavContext):
         """Change the managed node plugins"""
+
+    @command_plmanaged_config_plugins.command(name="disable")
+    async def command_plmanaged_config_plugins_disable(self, context: PyLavContext, *, plugin: str):
+        """Disabled one of the available plugins"""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+        plugin_str = plugin.lower()
+        plugins = [
+            "topis-source-Managers-plugin",
+            "skybot-lavalink-plugin",
+            "sponsorblock-plugin",
+            "lavalink-filter-plugin",
+            "lava-xm-plugin",
+        ]
+        if plugin_str not in plugins:
+            return await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("The plugin must be one of the following: {plugins}").format(
+                        plugins=inline(humanize_list(plugins))
+                    ),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+
+        config = self.lavalink._node_config_manager.bundled_node_config()
+        data = await config.fetch_yaml()
+        new_plugins = []
+        plugin_files = []
+        folder = LAVALINK_DOWNLOAD_DIR / "plugins"
+        for plugin in data["lavalink"]["plugins"].copy():
+            if plugin["dependency"].startswith("com.github.Topis-Lavalink-Plugins:Topis-Source-Managers-Plugin:"):
+                if plugin_str != "topis-source-Managers-plugin":
+                    new_plugins.append(plugin)
+                else:
+                    filename = "Topis-Source-Managers-Plugin-"
+                    plugin_files.extend(
+                        x
+                        async for x in folder.iterdir()
+                        if x.name.startswith(filename) and x.suffix == ".jar" and x.is_file()
+                    )
+            elif plugin["dependency"].startswith("com.dunctebot:skybot-lavalink-plugin:"):
+                if plugin_str != "skybot-lavalink-plugin":
+                    new_plugins.append(plugin)
+                else:
+                    filename = "skybot-lavalink-plugin-"
+                    plugin_files.extend(
+                        x
+                        async for x in folder.iterdir()
+                        if x.name.startswith(filename) and x.suffix == ".jar" and x.is_file()
+                    )
+            elif plugin["dependency"].startswith("com.github.topisenpai:sponsorblock-plugin:"):
+                if plugin_str != "sponsorblock-plugin":
+                    new_plugins.append(plugin)
+                else:
+                    filename = "sponsorblock-plugin-"
+                    plugin_files.extend(
+                        x
+                        async for x in folder.iterdir()
+                        if x.name.startswith(filename) and x.suffix == ".jar" and x.is_file()
+                    )
+            elif plugin["dependency"].startswith("com.github.esmBot:lava-xm-plugin:"):
+                if plugin_str != "lavalink-filter-plugin":
+                    new_plugins.append(plugin)
+                else:
+                    filename = "lava-xm-plugin-"
+                    plugin_files.extend(
+                        x
+                        async for x in folder.iterdir()
+                        if x.name.startswith(filename) and x.suffix == ".jar" and x.is_file()
+                    )
+            elif plugin["dependency"].startswith("me.rohank05:lavalink-filter-plugin:"):
+                if plugin_str != "lava-xm-plugin":
+                    new_plugins.append(plugin)
+                else:
+                    filename = "lavalink-filter-plugin-"
+                    plugin_files.extend(
+                        x
+                        async for x in folder.iterdir()
+                        if x.name.startswith(filename) and x.suffix == ".jar" and x.is_file()
+                    )
+
+        for file in plugin_files:
+            try:
+                await file.unlink()
+            except Exception:
+                LOGGER.exception("Failed to delete file %s", file)
+
+        data["lavalink"]["plugins"] = new_plugins
+        await config.update_yaml(data)
+        await context.send(
+            embed=await context.lavalink.construct_embed(
+                description=_(
+                    "Managed node's plugin {plugin} disabled.\n\nRestart the bot for it to take effect"
+                ).format(plugin=inline(plugin)),
+                messageable=context,
+            ),
+            ephemeral=True,
+        )
+
+    @command_plmanaged_config_plugins.command(name="enable")
+    async def command_plmanaged_config_plugins_enable(self, context: PyLavContext, *, plugin: str):
+        """Enable one of the available plugins"""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+        plugin_str = plugin.lower()
+        plugins = [
+            "topis-source-Managers-plugin",
+            "skybot-lavalink-plugin",
+            "sponsorblock-plugin",
+            "lavalink-filter-plugin",
+            "lava-xm-plugin",
+        ]
+        if plugin_str not in plugins:
+            return await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("The plugin must be one of the following: {plugins}").format(
+                        plugins=inline(humanize_list(plugins))
+                    ),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+
+        config = self.lavalink._node_config_manager.bundled_node_config()
+        data = await config.fetch_yaml()
+        new_plugins = data["lavalink"]["plugins"].copy()
+
+        for plugin in NODE_DEFAULT_SETTINGS["lavalink"]["plugins"]:
+            if plugin["dependency"].startswith("com.github.Topis-Lavalink-Plugins:Topis-Source-Managers-Plugin:"):
+                if plugin_str == "topis-source-Managers-plugin":
+                    new_plugins.append(plugin)
+            elif plugin["dependency"].startswith("com.dunctebot:skybot-lavalink-plugin:"):
+                if plugin_str == "skybot-lavalink-plugin":
+                    new_plugins.append(plugin)
+            elif plugin["dependency"].startswith("com.github.topisenpai:sponsorblock-plugin:"):
+                if plugin_str == "sponsorblock-plugin":
+                    new_plugins.append(plugin)
+            elif plugin["dependency"].startswith("com.github.esmBot:lava-xm-plugin:"):
+                if plugin_str == "lavalink-filter-plugin":
+                    new_plugins.append(plugin)
+            elif plugin["dependency"].startswith("me.rohank05:lavalink-filter-plugin:"):
+                if plugin_str == "lava-xm-plugin":
+                    new_plugins.append(plugin)
+
+        data["lavalink"]["plugins"] = new_plugins
+        await config.update_yaml(data)
+        await context.send(
+            embed=await context.lavalink.construct_embed(
+                description=_(
+                    "Managed node's plugin {plugin} enabled.\n\nRestart the bot for it to take effect"
+                ).format(plugin=inline(plugin)),
+                messageable=context,
+            ),
+            ephemeral=True,
+        )
 
     @command_plmanaged_config_plugins.command(name="update")
     async def command_plmanaged_config_plugins_update(self, context: PyLavContext):
