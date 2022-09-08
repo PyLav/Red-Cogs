@@ -260,7 +260,7 @@ class HybridCommands(PyLavCogMixin, ABC):
                 )
             ]
         choices = []
-        node = await interaction.client.lavalink.get_managed_node()
+        node = await interaction.client.lavalink.get_my_node()
         if node is None:
             node = interaction.client.lavalink.node_manager.find_best_node(feature=feature)
 

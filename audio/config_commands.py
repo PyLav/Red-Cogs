@@ -19,6 +19,7 @@ from pylav.types import PyLavCogMixin
 from pylav.utils import PyLavContext
 from pylav.utils.theme import EightBitANSI
 from pylavcogs_shared.ui.prompts.playlists import maybe_prompt_for_playlist
+from pylavcogs_shared.utils.decorators import invoker_is_dj, requires_player
 
 LOGGER = getLogger("red.3pt.PyLavPlayer.commands.config")
 
@@ -30,6 +31,66 @@ class ConfigCommands(PyLavCogMixin, ABC):
     @commands.group(name="playerset")
     async def command_playerset(self, context: PyLavContext) -> None:
         """Player configuration commands"""
+
+    @command_playerset.command(name="down")
+    @commands.cooldown(1, 600, commands.BucketType.guild)
+    @requires_player()
+    @invoker_is_dj()
+    async def command_playerset_down(self, context: PyLavContext) -> None:
+        """Notifies PyLav that a Player is having issues.
+
+        If enough (50%+ of currently playing players) report issues, PyLav will automatically
+        switch to a different node or restart the current node where possible.
+        """
+        if context.player.voted():
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("This server already voted recently, please try again in 10 minutes"),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+            return
+
+        context.player.vote_node_down()
+        await context.player.change_to_best_node()
+        await context.send(
+            embed=await context.lavalink.construct_embed(
+                description=_("Thank you for your report"),
+                messageable=context,
+            ),
+            ephemeral=True,
+        )
+
+    @command_playerset.command(name="up")
+    @requires_player()
+    @invoker_is_dj()
+    async def command_playerset_up(self, context: PyLavContext) -> None:
+        """Removes a vote for a Player being down.
+
+        If enough (50%+ of currently playing players) report issues, PyLav will automatically
+        switch to a different node or restart the current node where possible.
+
+        This command is only useful if you previously voted for a node to be down and it is now back up.
+        """
+        if not context.player.voted():
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("There is no active votes for the current backend"),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+            return
+
+        context.player.unvote_node_down()
+        await context.send(
+            embed=await context.lavalink.construct_embed(
+                description=_("Removed your report"),
+                messageable=context,
+            ),
+            ephemeral=True,
+        )
 
     @command_playerset.command(name="version")
     async def command_playerset_version(self, context: PyLavContext) -> None:

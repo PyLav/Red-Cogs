@@ -10,7 +10,7 @@ from netaddr import IPAddress, IPNetwork
 from redbot.core.i18n import Translator
 from redbot.core.utils.chat_formatting import humanize_list
 
-from pylav.types import BotT, InteractionT
+from pylav.types import BotT, CogT, InteractionT
 
 _ = Translator("PyLavManagedNode", Path(__file__))
 
@@ -23,9 +23,13 @@ class ConfigureIPRotationView(discord.ui.View):
     def __init__(
         self,
         bot: BotT,
+        cog: CogT,
+        prefix: str,
         timeout: int = 180,
     ):
         self.bot = bot
+        self.cog = cog
+        self.prefix = prefix
         super().__init__(timeout=timeout)
 
     async def interaction_check(self, interaction: InteractionT) -> bool:
@@ -39,7 +43,9 @@ class ConfigureIPRotationView(discord.ui.View):
         style=discord.ButtonStyle.grey,
     )
     async def add_ip_block(self, interaction: InteractionT, button: discord.ui.Button):
-        return await interaction.response.send_modal(ConfigureIPRotationModal(bot=self.bot))
+        return await interaction.response.send_modal(
+            ConfigureIPRotationModal(bot=self.bot, cog=self.cog, prefix=self.prefix)
+        )
 
 
 class ConfigureGoogleAccountView(discord.ui.View):
@@ -47,12 +53,10 @@ class ConfigureGoogleAccountView(discord.ui.View):
     A secure ``discord.ui.View`` used to configure the Google account for the node.
     """
 
-    def __init__(
-        self,
-        bot: BotT,
-        timeout: int = 180,
-    ):
+    def __init__(self, bot: BotT, cog: CogT, prefix: str, timeout: int = 180):
         self.bot = bot
+        self.cog = cog
+        self.prefix = prefix
         super().__init__(timeout=timeout)
 
     async def interaction_check(self, interaction: InteractionT) -> bool:
@@ -66,7 +70,9 @@ class ConfigureGoogleAccountView(discord.ui.View):
         style=discord.ButtonStyle.grey,
     )
     async def link_account(self, interaction: InteractionT, button: discord.ui.Button):
-        return await interaction.response.send_modal(ConfigureGoogleAccountModal(bot=self.bot))
+        return await interaction.response.send_modal(
+            ConfigureGoogleAccountModal(bot=self.bot, cog=self.cog, prefix=self.prefix)
+        )
 
 
 class ConfigureHTTPProxyView(discord.ui.View):
@@ -77,9 +83,13 @@ class ConfigureHTTPProxyView(discord.ui.View):
     def __init__(
         self,
         bot: BotT,
+        cog: CogT,
+        prefix: str,
         timeout: int = 180,
     ):
         self.bot = bot
+        self.cog = cog
+        self.prefix = prefix
         super().__init__(timeout=timeout)
 
     async def interaction_check(self, interaction: InteractionT) -> bool:
@@ -93,7 +103,9 @@ class ConfigureHTTPProxyView(discord.ui.View):
         style=discord.ButtonStyle.grey,
     )
     async def configure_proxy(self, interaction: InteractionT, button: discord.ui.Button):
-        return await interaction.response.send_modal(ConfigureHTTPProxyModal(bot=self.bot))
+        return await interaction.response.send_modal(
+            ConfigureHTTPProxyModal(bot=self.bot, cog=self.cog, prefix=self.prefix)
+        )
 
 
 class ConfigureIPRotationModal(discord.ui.Modal):
@@ -102,8 +114,12 @@ class ConfigureIPRotationModal(discord.ui.Modal):
     def __init__(
         self,
         bot: BotT,
+        cog: CogT,
+        prefix: str,
     ):
         self.bot = bot
+        self.cog = cog
+        self.prefix = prefix
 
         super().__init__(title=_("IP Rotation Configurator"))
 
@@ -267,7 +283,9 @@ class ConfigureIPRotationModal(discord.ui.Modal):
         await config.update_yaml(yaml_data)
         return await send_method(
             embed=await self.bot.lavalink.construct_embed(
-                description=_("IP rotation configuration saved.\n\nRestart the bot for it to take effect"),
+                description=_(
+                    "IP rotation configuration saved.\n\nRun `{prefix}{command}` to restart the managed node"
+                ).format(command=self.cog.command_plmanaged_restart.qualified_name, prefix=self.prefix),
                 messageable=interaction,
             ),
             ephemeral=True,
@@ -281,8 +299,12 @@ class ConfigureGoogleAccountModal(discord.ui.Modal):
     def __init__(
         self,
         bot: BotT,
+        cog: CogT,
+        prefix: str,
     ):
         self.bot = bot
+        self.cog = cog
+        self.prefix = prefix
 
         super().__init__(title=_("Google Account Configurator"))
 
@@ -332,7 +354,9 @@ class ConfigureGoogleAccountModal(discord.ui.Modal):
         await config.update_yaml(yaml_data)
         return await send_method(
             embed=await self.bot.lavalink.construct_embed(
-                description=_("Google account linked.\n\nRestart the bot for it to take effect"),
+                description=_("Google account linked.\n\nRun `{prefix}{command}` to restart the managed node").format(
+                    command=self.cog.command_plmanaged_restart.qualified_name, prefix=self.prefix
+                ),
                 messageable=interaction,
             ),
             ephemeral=True,
@@ -346,8 +370,12 @@ class ConfigureHTTPProxyModal(discord.ui.Modal):
     def __init__(
         self,
         bot: BotT,
+        cog: CogT,
+        prefix: str,
     ):
         self.bot = bot
+        self.cog = cog
+        self.prefix = prefix
 
         super().__init__(title=_("HTTP Proxy Configurator"))
 
@@ -417,7 +445,9 @@ class ConfigureHTTPProxyModal(discord.ui.Modal):
         await config.update_yaml(yaml_data)
         return await send_method(
             embed=await self.bot.lavalink.construct_embed(
-                description=_("HTTP proxy configuration saved.\n\nRestart the bot for it to take effect"),
+                description=_(
+                    "HTTP proxy configuration saved.\n\nRun `{prefix}{command}` to restart the managed node"
+                ).format(command=self.cog.command_plmanaged_restart.qualified_name, prefix=self.prefix),
                 messageable=interaction,
             ),
             ephemeral=True,

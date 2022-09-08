@@ -457,7 +457,7 @@ class EmbedGenerator:
             ),
             (
                 EightBitANSI.paint_white(_("Auto Update")),
-                enabled if self.cog.lavalink.managed_node_controller._auto_update else disabled,
+                enabled if await self.cog.lavalink.managed_node_controller.should_auto_update() else disabled,
             ),
         ]
 
