@@ -3,6 +3,7 @@ from __future__ import annotations
 import collections
 import contextlib
 import itertools
+import typing
 from abc import ABC
 from pathlib import Path
 from typing import Literal
@@ -259,7 +260,7 @@ class PyLavPlaylists(
                     guild_id=context.guild.id,
                     cog=self,
                     author=context.author,
-                    entries=playlist.tracks,
+                    entries=await playlist.fetch_tracks(),
                     playlist=playlist,
                 ),
                 delete_after_timeout=True,
@@ -334,18 +335,19 @@ class PyLavPlaylists(
             manageable=manageable,
         )
         if not (invoked_with_delete or invoked_with_queue):
+            name = await playlist.fetch_name()
             if manageable:
-                title = _("Let's manage: {playlist_name}").format(playlist_name=playlist.name)
+                title = _("Let's manage: {playlist_name}").format(playlist_name=name)
             else:
-                title = _("Let's take a look at: {playlist_name}").format(playlist_name=playlist.name)
+                title = _("Let's take a look at: {playlist_name}").format(playlist_name=name)
             description = info_description + playlist_info
 
             description = description.format(
                 playlist_name=await playlist.get_name_formatted(with_url=True),
                 scope=await playlist.get_scope_name(bot=self.bot, mention=True, guild=context.guild),
                 author=await playlist.get_author_name(bot=self.bot, mention=True),
-                url=playlist.url or _("N/A"),
-                tracks=len(playlist.tracks),
+                url=await playlist.fetch_url() or _("N/A"),
+                tracks=await playlist.size(),
                 space="\N{EN SPACE}",
             )
 
@@ -391,13 +393,13 @@ class PyLavPlaylists(
         if manageable:
             if playlist_prompt.clear:
                 changed = True
-                playlist.tracks = []
-            if playlist_prompt.name and playlist_prompt.name != playlist.name:
+                await playlist.remove_all_tracks()
+            if playlist_prompt.name and playlist_prompt.name != await playlist.fetch_name():
                 changed = True
-                playlist.name = playlist_prompt.name
-            if playlist_prompt.url and playlist_prompt.url != playlist.url:
+                await playlist.update_name(playlist_prompt.name)
+            if playlist_prompt.url and playlist_prompt.url != await playlist.fetch_url():
                 changed = True
-                playlist.url = playlist_prompt.url
+                await playlist.update_url(playlist_prompt.url)
             if (playlist_prompt.add_tracks or playlist_prompt.remove_prompt) and not playlist_prompt.update:
                 if playlist_prompt.remove_tracks:
                     response = await self.lavalink.get_tracks(
@@ -408,10 +410,9 @@ class PyLavPlaylists(
                     tracks = response.get("tracks")  # type:ignore
                     for t in tracks:
                         b64 = t["track"]
-                        while b64 in playlist.tracks:
-                            changed = True
-                            playlist.tracks.remove(b64)
-                            tracks_removed += 1
+                        await playlist.remove_track(b64)
+                        changed = True
+                        tracks_removed += 1
                 if playlist_prompt.add_tracks:
                     response = await self.lavalink.get_tracks(
                         *[await Query.from_string(at) for at in playlist_prompt.add_tracks],
@@ -420,16 +421,15 @@ class PyLavPlaylists(
                     if not response.get("tracks"):
                         pass
                     tracks = response.get("tracks")  # type:ignore
-                    for t in tracks:
-                        b64 = t["track"]
+                    if tracks:
+                        await playlist.add_track([t["track"] for t in tracks])
                         changed = True
-                        playlist.tracks.append(b64)
-                        tracks_added += 1
+                        tracks_added += sum(1 for __ in tracks)
         if playlist_prompt.update:
-            if playlist.url:
+            if url := await playlist.fetch_url():
                 with contextlib.suppress(Exception):
                     tracks: dict = await self.lavalink.get_tracks(
-                        await Query.from_string(playlist.url), bypass_cache=True, player=context.player
+                        await Query.from_string(url), bypass_cache=True, player=context.player
                     )
                     if not tracks.get("tracks"):
                         await context.send(
@@ -437,25 +437,24 @@ class PyLavPlaylists(
                                 messageable=context,
                                 description=_(
                                     "Playlist **{playlist_name}** could not be updated with URL: <{url}>"
-                                ).format(
-                                    playlist_name=await playlist.get_name_formatted(with_url=True), url=playlist.url
-                                ),
+                                ).format(playlist_name=await playlist.get_name_formatted(with_url=True), url=url),
                             ),
                             ephemeral=True,
                         )
                         return
-                    if tracks := [track["track"] for track in tracks["tracks"] if "track" in track]:  # type: ignore
+                    if tracks := typing.cast(list[str], [track["track"] for track in tracks["tracks"] if "track" in track]):  # type: ignore
                         changed = True
-                        playlist.tracks = tracks
+                        await playlist.update_tracks(tracks)
             elif playlist.id in BUNDLED_PLAYLIST_IDS:
                 changed = True
                 await self.lavalink.playlist_db_manager.update_bundled_playlists(playlist.id)
         if manageable:
             if playlist_prompt.dedupe:
-                new_tracks = list(dict.fromkeys(playlist.tracks))
-                if diff := len(playlist.tracks) - len(new_tracks):
+                track = await playlist.fetch_tracks()
+                new_tracks = list(dict.fromkeys(track))
+                if diff := len(track) - len(new_tracks):
                     changed = True
-                    playlist.tracks = new_tracks
+                    await playlist.update_tracks(new_tracks)
                     tracks_removed += diff
             if playlist_prompt.queue:
                 changed = True
@@ -463,7 +462,7 @@ class PyLavPlaylists(
                     tracks: collections.deque[Track] = context.player.queue.raw_queue
                     if tracks:
                         queue_tracks = [track.track for track in tracks if track.track]
-                        playlist.tracks.extend(queue_tracks)
+                        await playlist.add_track(queue_tracks)
                         tracks_added += len(queue_tracks)
 
         if changed:
@@ -476,7 +475,6 @@ class PyLavPlaylists(
                 extras += _("\n{track_count} {track_plural} added to the playlist").format(
                     track_count=tracks_added, track_plural=_("track") if tracks_added == 1 else _("tracks")
                 )
-            await playlist.save()
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     messageable=context,
@@ -584,7 +582,7 @@ class PyLavPlaylists(
                 guild_id=context.guild.id,
                 cog=self,
                 author=context.author,
-                entries=playlist.tracks,
+                entries=await playlist.fetch_tracks(),
                 playlist=playlist,
             ),
             delete_after_timeout=True,
@@ -634,7 +632,7 @@ class PyLavPlaylists(
         if context.player:
             if tracks := context.player.queue.raw_queue:
                 queue_tracks = [track.track for track in tracks if track.track]
-                playlist.tracks.extend(queue_tracks)
+                await playlist.add_track(queue_tracks)
                 tracks_added += len(queue_tracks)
                 changed = True
         if changed:
@@ -644,7 +642,6 @@ class PyLavPlaylists(
                     track_count=tracks_added, track_plural=_("track") if tracks_added == 1 else _("tracks")
                 )
 
-            await playlist.save()
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     messageable=context,
@@ -722,8 +719,7 @@ class PyLavPlaylists(
         for url in valid_playlist_urls:
             try:
                 playlist = await PlaylistModel.from_yaml(context=context, url=url, scope=context.author.id)
-                await playlist.save()
-                saved_playlists.append(f"{bold(playlist.name)} ({playlist.id})")
+                saved_playlists.append(f"{bold(await playlist.fetch_name())} ({playlist.id})")
             except InvalidPlaylist:
                 invalid_playlists_urls.add(url)
 
@@ -790,12 +786,12 @@ class PyLavPlaylists(
                 )
                 return
             player = await context.connect_player(channel=channel, self_deaf=True)
-        track_count = len(playlist.tracks)
+        track_count = await playlist.size()
         await player.bulk_add(
             requester=context.author.id,
             tracks_and_queries=[
                 Track(node=player.node, data=track, requester=context.author.id, query=await Query.from_base64(track))
-                async for i, track in AsyncIter(playlist.tracks).enumerate()
+                async for i, track in AsyncIter(await playlist.fetch_tracks()).enumerate()
             ],
         )
         bundle_prefix = _("Playlist")
