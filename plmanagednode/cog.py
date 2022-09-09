@@ -719,7 +719,6 @@ class PyLavManagedNode(commands.Cog):
         data = await config.fetch_yaml()
         source = source.lower().strip()
         valid_sources = NODE_DEFAULT_SETTINGS["lavalink"]["server"]["sources"].copy()
-
         valid_sources |= NODE_DEFAULT_SETTINGS["plugins"]["topissourcemanagers"]["sources"]
         valid_sources |= NODE_DEFAULT_SETTINGS["plugins"]["dunctebot"]["sources"]
         if source not in valid_sources:
@@ -739,12 +738,14 @@ class PyLavManagedNode(commands.Cog):
         elif source in data["plugins"]["dunctebot"]["sources"]:
             data["plugins"]["dunctebot"]["sources"][source] = state
         await config.update_yaml(data)
+        state = _("enabled") if state else _("disabled")
         await context.send(
             embed=await context.lavalink.construct_embed(
                 description=_(
-                    "Managed node's source set to {source}.\n\nRun `{prefix}{command}` to restart the managed node"
+                    "Managed node's {source} source set to {state}.\n\nRun `{prefix}{command}` to restart the managed node"
                 ).format(
                     source=inline(source),
+                    state=state,
                     command=self.command_plmanaged_restart.qualified_name,
                     prefix=context.clean_prefix,
                 ),
