@@ -17,7 +17,7 @@ from rich.tree import Tree
 from tabulate import tabulate
 
 import pylavcogs_shared
-from pylav.converters import QueryConverter
+from pylav.converters.query import QueryConverter
 from pylav.track_encoding import decode_track
 from pylav.types import BotT
 from pylav.utils import PyLavContext

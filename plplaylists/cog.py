@@ -22,7 +22,8 @@ from tabulate import tabulate
 import pylavcogs_shared
 from pylav.client import Client
 from pylav.constants import BUNDLED_PLAYLIST_IDS
-from pylav.converters import PlaylistConverter, QueryPlaylistConverter
+from pylav.converters.playlist import PlaylistConverter
+from pylav.converters.query import QueryPlaylistConverter
 from pylav.exceptions import InvalidPlaylist
 from pylav.query import Query
 from pylav.sql.models import PlaylistModel

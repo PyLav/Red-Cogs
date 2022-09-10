@@ -14,7 +14,7 @@ from redbot.core.utils.chat_formatting import bold, box, humanize_list, humanize
 from tabulate import tabulate
 
 import pylavcogs_shared
-from pylav.converters import PlaylistConverter
+from pylav.converters.playlist import PlaylistConverter
 from pylav.types import PyLavCogMixin
 from pylav.utils import PyLavContext
 from pylav.utils.theme import EightBitANSI

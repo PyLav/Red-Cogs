@@ -12,7 +12,7 @@ from redbot.core.i18n import Translator, cog_i18n
 from pylav.query import Query
 from pylav.tracks import Track, decode_track
 from pylav.types import PyLavCogMixin
-from pylav.utils import PyLavContext, format_time
+from pylav.utils import PyLavContext, get_time_string
 from pylavcogs_shared.utils import rgetattr
 from pylavcogs_shared.utils.decorators import invoker_is_dj
 
@@ -76,7 +76,7 @@ class PlayerCommands(PyLavCogMixin, ABC):
                     description=_("{track} will play after {current} finishes (in {eta})").format(
                         track=await track.get_track_display_name(with_url=True),
                         current=await player.current.get_track_display_name(with_url=True),
-                        eta=format_time(player.current.duration - player.position),
+                        eta=get_time_string((player.current.duration - player.position) // 1000),
                     ),
                     messageable=context,
                 ),
@@ -88,7 +88,7 @@ class PlayerCommands(PyLavCogMixin, ABC):
                     description=_("{track} will start now\n{current} has been skipped").format(
                         track=await track.get_track_display_name(with_url=True),
                         current=await player.current.get_track_display_name(with_url=True),
-                        eta=format_time(player.current.duration - player.position),
+                        eta=get_time_string((player.current.duration - player.position) // 1000),
                     ),
                     messageable=context,
                 ),
