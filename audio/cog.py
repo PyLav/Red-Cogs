@@ -18,6 +18,7 @@ from audio.config_commands import ConfigCommands
 from audio.context_menus import ContextMenus
 from audio.hybrid_commands import HybridCommands
 from audio.player_commands import PlayerCommands
+from audio.slash_commands import SlashCommands
 from audio.utility_commands import UtilityCommands
 
 
@@ -41,6 +42,7 @@ class PyLavPlayer(
     PlayerCommands,
     ConfigCommands,
     ContextMenus,
+    SlashCommands,
     metaclass=CompositeMetaClass,
 ):
     """A Media player using the PyLav library"""
