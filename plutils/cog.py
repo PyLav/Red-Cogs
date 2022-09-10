@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import asyncio
+import linecache
+import tracemalloc
 from io import StringIO
 from pathlib import Path
 
@@ -25,6 +27,30 @@ from pylavcogs_shared.utils.decorators import requires_player
 LOGGER = getLogger("red.3pt.PyLavUtils")
 
 _ = Translator("PyLavUtils", Path(__file__))
+
+
+def get_top(snapshot, key_type="lineno", limit=10):
+    snapshot = snapshot.filter_traces(
+        (
+            tracemalloc.Filter(False, "<frozen importlib._bootstrap>"),
+            tracemalloc.Filter(False, "<unknown>"),
+        )
+    )
+    top_stats = snapshot.statistics(key_type)
+    response = ""
+    response += f"Top {limit} lines"
+    for index, stat in enumerate(top_stats[:limit], 1):
+        frame = stat.traceback[0]
+        response += f"\n\n#{index}: {frame.filename}:{frame.lineno}: {stat.size / 1024:.1f} KiB"
+        if line := linecache.getline(frame.filename, frame.lineno).strip():
+            response += f"\n    {line}"
+
+    if other := top_stats[limit:]:
+        size = sum(stat.size for stat in other)
+        response += f"\n\n{len(other)} other: {size / 1024:.1f} KiB"
+    total = sum(stat.size for stat in top_stats)
+    response += f"\n\nTotal allocated size: {total / 1024:.1f} KiB"
+    return response
 
 
 @cog_i18n(_)
@@ -336,3 +362,45 @@ class PyLavUtils(commands.Cog):
             ),
             ephemeral=True,
         )
+
+    @commands.is_owner()
+    @command_plutils.command(name="trace", hidden=True)
+    async def command_plutils_trace(self, context: PyLavContext, value: int = -1):
+        """Start memory tracing
+
+        `[p]plutils trace 0` turns off tracing
+        `[p]plutils trace 1` turns on tracing
+        `[p]plutils trace` shows the current status of tracing
+        """
+        import tracemalloc
+
+        if tracemalloc.is_tracing() and value == 0:
+            tracemalloc.stop()
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Stopped memory tracing"),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+        elif not tracemalloc.is_tracing() and value == 1:
+            tracemalloc.start(25)
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Started memory tracing"),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+        if not tracemalloc.is_tracing():
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("You need to start tracing first"),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+        else:
+            snap = tracemalloc.take_snapshot()
+            messages = pagify(get_top(snap, limit=10), page_length=3500)
+            await context.send_interactive(messages, box_lang="py")
