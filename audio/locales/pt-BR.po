@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2022-09-08 20:32+0000\n"
-"PO-Revision-Date: 2022-09-08 20:33\n"
+"POT-Creation-Date: 2022-09-10 19:21+0000\n"
+"PO-Revision-Date: 2022-09-10 19:22\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese, Brazilian\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Crowdin-File-ID: 544\n"
 "Language: pt_BR\n"
 
-#: audio/cog.py:46
+#: audio/cog.py:48
 #, docstring
 msgid "A Media player using the PyLav library"
 msgstr "Um reprodutor de mídia usando a biblioteca PyLav"
@@ -79,12 +79,12 @@ msgid "Set the maximum volume server can set"
 msgstr "Definir o servidor máximo para volume"
 
 #: audio/config_commands.py:141 audio/config_commands.py:568
-#: audio/hybrid_commands.py:658
+#: audio/hybrid_commands.py:544
 msgid "Volume must be less than 1000"
 msgstr "O volume deve ser menor que 1000"
 
 #: audio/config_commands.py:149 audio/config_commands.py:576
-#: audio/hybrid_commands.py:666
+#: audio/hybrid_commands.py:552
 msgid "Volume must be greater than 0"
 msgstr "O volume deve ser maior que 0"
 
@@ -399,7 +399,7 @@ msgstr "Vou ouvir comandos em todos os canais que posso ver"
 msgid "Set the channel lock for voice channels"
 msgstr "Defina o bloqueio de canal para canais de voz"
 
-#: audio/config_commands.py:975 audio/hybrid_commands.py:105
+#: audio/config_commands.py:975 audio/hybrid_commands.py:100
 #: audio/player_commands.py:132
 msgid "I don't have permission to connect or speak in {channel}"
 msgstr "Eu não tenho permissão para conectar ou falar em {channel}"
@@ -452,186 +452,169 @@ msgstr "Não foi possível encontrar nenhuma faixa correspondente a {query}"
 msgid "Couldn't figure out what {user} is listening to"
 msgstr "Não foi possível descobrir o que {user} está ouvindo"
 
-#: audio/hybrid_commands.py:81
+#: audio/hybrid_commands.py:76
 msgid "You need to provide a query to play"
 msgstr "Você precisa fornecer uma consulta para executar"
 
-#: audio/hybrid_commands.py:95 audio/player_commands.py:122
+#: audio/hybrid_commands.py:90 audio/player_commands.py:122
 msgid "You must be in a voice channel to allow me to connect"
 msgstr "Você deve estar em um canal de voz para me permitir conectar"
 
-#: audio/hybrid_commands.py:151 audio/player_commands.py:178
+#: audio/hybrid_commands.py:146 audio/player_commands.py:178
 msgid "{track_count} tracks enqueued"
 msgstr "{track_count} faixas na fila"
 
-#: audio/hybrid_commands.py:159 audio/player_commands.py:186
+#: audio/hybrid_commands.py:154 audio/player_commands.py:186
 msgid "{track} enqueued"
 msgstr "{track} enfileirados"
 
-#: audio/hybrid_commands.py:170 audio/player_commands.py:197
+#: audio/hybrid_commands.py:165 audio/player_commands.py:197
 msgid "No tracks were found for your query"
 msgstr "Nenhuma faixa foi encontrada para sua consulta"
 
-#: audio/hybrid_commands.py:186
-#, docstring
-msgid "Search for a track then play the selected response"
-msgstr "Procure por uma faixa, em seguida, reproduza a resposta selecionada"
-
-#: audio/hybrid_commands.py:192
-msgid "You haven't select something to play"
-msgstr "Você não selecionou algo para jogar"
-
-#: audio/hybrid_commands.py:238
-msgid "Searching {service}"
-msgstr "Buscando {service}"
-
-#: audio/hybrid_commands.py:250 audio/hybrid_commands.py:258
-msgid "No results found on {service}"
-msgstr "Nenhum resultado encontrado em {service}"
-
-#: audio/hybrid_commands.py:304
+#: audio/hybrid_commands.py:190
 msgid "You need to be in a voice channel if you don't specify which channel I need to connect to"
 msgstr "Você precisa estar em um canal de voz se você não especificar a que canal eu preciso me conectar"
 
-#: audio/hybrid_commands.py:316
+#: audio/hybrid_commands.py:202
 msgid "I don't have permission to connect to that channel"
 msgstr "Não tenho permissão para conectar a esse canal"
 
-#: audio/hybrid_commands.py:320
+#: audio/hybrid_commands.py:206
 msgid "I don't have permission to speak in {channel}"
 msgstr "Eu não tenho permissão para falar em {channel}"
 
-#: audio/hybrid_commands.py:323
+#: audio/hybrid_commands.py:209
 msgid "I don't have permission to connect to {channel}"
 msgstr "Não tenho permissão para me conectar a {channel}"
 
-#: audio/hybrid_commands.py:337
+#: audio/hybrid_commands.py:223
 msgid "I'm forced to only join {channel}"
 msgstr "Sou forçado a só ingressar em {channel}"
 
-#: audio/hybrid_commands.py:345
+#: audio/hybrid_commands.py:231
 msgid "Connected to {channel}"
 msgstr "Conectado a {channel}"
 
-#: audio/hybrid_commands.py:361 audio/hybrid_commands.py:388
-#: audio/hybrid_commands.py:425 audio/hybrid_commands.py:457
-#: audio/hybrid_commands.py:481 audio/hybrid_commands.py:504
-#: audio/hybrid_commands.py:549 audio/hybrid_commands.py:583
-#: audio/hybrid_commands.py:618 audio/hybrid_commands.py:673
-#: audio/hybrid_commands.py:717 audio/hybrid_commands.py:815
+#: audio/hybrid_commands.py:247 audio/hybrid_commands.py:274
+#: audio/hybrid_commands.py:311 audio/hybrid_commands.py:343
+#: audio/hybrid_commands.py:367 audio/hybrid_commands.py:390
+#: audio/hybrid_commands.py:435 audio/hybrid_commands.py:469
+#: audio/hybrid_commands.py:504 audio/hybrid_commands.py:559
+#: audio/hybrid_commands.py:603 audio/hybrid_commands.py:701
 msgid "No player detected"
 msgstr "Nenhum jogador detectado"
 
-#: audio/hybrid_commands.py:368 audio/hybrid_commands.py:395
-#: audio/hybrid_commands.py:432
+#: audio/hybrid_commands.py:254 audio/hybrid_commands.py:281
+#: audio/hybrid_commands.py:318
 msgid "Player is not currently playing anything"
 msgstr "Jogador não está jogando nada"
 
-#: audio/hybrid_commands.py:403
+#: audio/hybrid_commands.py:289
 msgid "Skipped - {track}"
 msgstr "Ignorado - {track}"
 
-#: audio/hybrid_commands.py:439
+#: audio/hybrid_commands.py:325
 msgid "Player stopped"
 msgstr "Reprodutor interrompido"
 
-#: audio/hybrid_commands.py:465
+#: audio/hybrid_commands.py:351
 msgid "Disconnected from {channel}"
 msgstr "Desconectado de {channel}"
 
-#: audio/hybrid_commands.py:511
+#: audio/hybrid_commands.py:397
 msgid "There is nothing in the queue"
 msgstr "Não há nada na fila"
 
-#: audio/hybrid_commands.py:519
+#: audio/hybrid_commands.py:405
 msgid "You are not allowed to shuffle the queue"
 msgstr "Você não tem permissão para embaralhar a fila"
 
-#: audio/hybrid_commands.py:527
+#: audio/hybrid_commands.py:413
 msgid "{queue_size} tracks shuffled"
 msgstr "{queue_size} faixas embaralhadas"
 
-#: audio/hybrid_commands.py:556
+#: audio/hybrid_commands.py:442
 msgid "Repeating the queue"
 msgstr "Repetindo a fila"
 
-#: audio/hybrid_commands.py:559
+#: audio/hybrid_commands.py:445
 msgid "Repeating disabled"
 msgstr "Repetição desabilitada"
 
-#: audio/hybrid_commands.py:562
+#: audio/hybrid_commands.py:448
 msgid "Repeating {track}"
 msgstr "Repetindo {track}"
 
-#: audio/hybrid_commands.py:565
+#: audio/hybrid_commands.py:451
 msgid "current track"
 msgstr "faixa atual"
 
-#: audio/hybrid_commands.py:589
+#: audio/hybrid_commands.py:475
 msgid "Player already paused did you mean to run `/resume`"
 msgstr "O jogador já pausado queria executar `/resume`"
 
-#: audio/hybrid_commands.py:591
+#: audio/hybrid_commands.py:477
 msgid "Player already paused did you mean to run `{prefix}{command}`"
 msgstr "O reprodutor já pausou queria executar `{prefix}{command}`"
 
-#: audio/hybrid_commands.py:602
+#: audio/hybrid_commands.py:488
 msgid "Player paused"
 msgstr "Player pausado"
 
-#: audio/hybrid_commands.py:624
+#: audio/hybrid_commands.py:510
 msgid "Player already resumed did you mean to run `/pause`"
 msgstr "O jogador já resumiu você quis executar `/pause`"
 
-#: audio/hybrid_commands.py:626
+#: audio/hybrid_commands.py:512
 msgid "Player already resumed did you mean to run `{prefix}{command}`"
 msgstr "Jogador já retomado significa correr `{prefix}{command}`"
 
-#: audio/hybrid_commands.py:637
+#: audio/hybrid_commands.py:523
 msgid "Player resumed"
 msgstr "Jogador retomado"
 
-#: audio/hybrid_commands.py:681
+#: audio/hybrid_commands.py:567
 msgid "Volume cannot be higher than {max_volume}"
 msgstr "O volume não pode ser maior que {max_volume}"
 
-#: audio/hybrid_commands.py:690 audio/utility_commands.py:61
+#: audio/hybrid_commands.py:576 audio/utility_commands.py:61
 msgid "Player volume set to {volume}%"
 msgstr "Volume do jogador definido para {volume}%"
 
-#: audio/hybrid_commands.py:724
+#: audio/hybrid_commands.py:610
 msgid "Nothing playing"
 msgstr "Nada reproduzindo"
 
-#: audio/hybrid_commands.py:733 audio/hybrid_commands.py:742
+#: audio/hybrid_commands.py:619 audio/hybrid_commands.py:628
 msgid "Unable to seek track"
 msgstr "Não foi possível procurar faixa"
 
-#: audio/hybrid_commands.py:734
+#: audio/hybrid_commands.py:620
 msgid "Can't seek on a stream"
 msgstr "Não é possível procurar numa transmissão"
 
-#: audio/hybrid_commands.py:751
+#: audio/hybrid_commands.py:637
 msgid "Cannot seek when the player is paused"
 msgstr "Não pode procurar quando o jogador estiver pausado"
 
-#: audio/hybrid_commands.py:764
+#: audio/hybrid_commands.py:650
 msgid "Moved {seconds}s to 00:00:00"
 msgstr "{seconds}s foram movidos para 00:00"
 
-#: audio/hybrid_commands.py:771
+#: audio/hybrid_commands.py:657
 msgid "Moved {seconds}s to {time}"
 msgstr "{seconds}s movidos para {time}"
 
-#: audio/hybrid_commands.py:792
+#: audio/hybrid_commands.py:678
 msgid "Moved to {time}"
 msgstr "Movido para {time}"
 
-#: audio/hybrid_commands.py:823
+#: audio/hybrid_commands.py:709
 msgid "No previous in player history"
 msgstr "Não há anteriores no histórico do jogador"
 
-#: audio/hybrid_commands.py:831
+#: audio/hybrid_commands.py:717
 msgid "Playing previous track: {track}"
 msgstr "Reproduzindo a faixa anterior: {track}"
 
@@ -692,6 +675,23 @@ msgstr "referência"
 #: audio/player_commands.py:292
 msgid "entries"
 msgstr "referências"
+
+#: audio/slash_commands.py:34
+#, docstring
+msgid "Search for a track then play the selected response"
+msgstr "Procure por uma faixa, em seguida, reproduza a resposta selecionada"
+
+#: audio/slash_commands.py:40
+msgid "You haven't select something to play"
+msgstr "Você não selecionou algo para jogar"
+
+#: audio/slash_commands.py:86
+msgid "Searching {service}"
+msgstr "Buscando {service}"
+
+#: audio/slash_commands.py:98 audio/slash_commands.py:106
+msgid "No results found on {service}"
+msgstr "Nenhum resultado encontrado em {service}"
 
 #: audio/utility_commands.py:31
 msgid "Not connected to a voice channel"

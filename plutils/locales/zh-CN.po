@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2022-09-04 19:45+0000\n"
-"PO-Revision-Date: 2022-09-05 21:05\n"
+"POT-Creation-Date: 2022-09-10 19:21+0000\n"
+"PO-Revision-Date: 2022-09-10 19:22\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -17,25 +17,25 @@ msgstr ""
 "X-Crowdin-File-ID: 684\n"
 "Language: zh_CN\n"
 
-#: plutils/cog.py:32 plutils/cog.py:42
+#: plutils/cog.py:58 plutils/cog.py:68
 #, docstring
 msgid "Utility commands for PyLav"
 msgstr "PyLav 的实用命令"
 
-#: plutils/cog.py:46
+#: plutils/cog.py:72
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies"
 msgstr "显示Cog版本和它的 PyLav 依赖关系"
 
-#: plutils/cog.py:63
+#: plutils/cog.py:89
 msgid "Library/Cog"
 msgstr "库 / COG"
 
-#: plutils/cog.py:64
+#: plutils/cog.py:90
 msgid "Version"
 msgstr "版本"
 
-#: plutils/cog.py:77
+#: plutils/cog.py:103
 #, docstring
 msgid "Show the slashes available in the bot.\n\n"
 "        Author: TrustyJAID#0001 via Code block on Discord channel.\n"
@@ -44,86 +44,107 @@ msgstr "显示机器人可用的斜线。\n\n"
 "        作者：通过 Discord 通道上的代码块托管JAID#0001 。\n"
 "        "
 
-#: plutils/cog.py:108
+#: plutils/cog.py:134
 #, docstring
 msgid "Get info about specific things"
 msgstr "获取关于特定事项的信息"
 
-#: plutils/cog.py:112
+#: plutils/cog.py:138
 #, docstring
 msgid "Get the base64 of the current track"
 msgstr "获取当前音轨的基准64"
 
-#: plutils/cog.py:120 plutils/cog.py:152 plutils/cog.py:184 plutils/cog.py:215
+#: plutils/cog.py:146 plutils/cog.py:178 plutils/cog.py:210 plutils/cog.py:241
 msgid "Not connected to a voice channel"
 msgstr "未连接到语音频道"
 
-#: plutils/cog.py:128 plutils/cog.py:160 plutils/cog.py:192 plutils/cog.py:223
+#: plutils/cog.py:154 plutils/cog.py:186 plutils/cog.py:218 plutils/cog.py:249
 msgid "Nothing playing"
 msgstr "没有播放记录"
 
-#: plutils/cog.py:143
+#: plutils/cog.py:169
 #, docstring
 msgid "Get the author of the current track"
 msgstr "获取当前音轨的作者"
 
-#: plutils/cog.py:175
+#: plutils/cog.py:201
 #, docstring
 msgid "Get the title of the current track"
 msgstr "获取当前曲目的标题"
 
-#: plutils/cog.py:207
+#: plutils/cog.py:233
 #, docstring
 msgid "Get the source of the current track"
 msgstr "获取当前曲目的来源"
 
-#: plutils/cog.py:238
+#: plutils/cog.py:264
 #, docstring
 msgid "Decode a tracks base64 string into a JSON object"
 msgstr "解码一个曲目基64 字符串到 JSON 对象"
 
-#: plutils/cog.py:249
+#: plutils/cog.py:275
 msgid "Invalid base64 string"
 msgstr "无效的 base64 字符串"
 
-#: plutils/cog.py:266
+#: plutils/cog.py:292
 #, docstring
 msgid "Manage the query cache"
 msgstr "管理查询缓存"
 
-#: plutils/cog.py:270
+#: plutils/cog.py:296
 #, docstring
 msgid "Clear the query cache"
 msgstr "清除查询缓存"
 
-#: plutils/cog.py:277 plutils/cog.py:306 plutils/cog.py:319
+#: plutils/cog.py:303 plutils/cog.py:332 plutils/cog.py:345
 msgid "Query cache cleared"
 msgstr "查询缓存已清除"
 
-#: plutils/cog.py:283
+#: plutils/cog.py:309
 #, docstring
 msgid "Clear the query cache older than a number of days"
 msgstr "清除数天前的查询缓存"
 
-#: plutils/cog.py:291
+#: plutils/cog.py:317
 msgid "Days must be less than 31"
 msgstr "天数必须小于 31"
 
-#: plutils/cog.py:299
+#: plutils/cog.py:325
 msgid "Days must be greater than 1"
 msgstr "天数必须大于 1"
 
-#: plutils/cog.py:312
+#: plutils/cog.py:338
 #, docstring
 msgid "Clear the query cache for a query"
 msgstr "清除查询缓存"
 
-#: plutils/cog.py:325
+#: plutils/cog.py:351
 #, docstring
 msgid "Get the size of the query cache"
 msgstr "获取查询缓存的大小"
 
-#: plutils/cog.py:332
+#: plutils/cog.py:358
 msgid "Query cache size: `{size}`"
 msgstr "查询缓存大小：`{size}`"
+
+#: plutils/cog.py:369
+#, docstring
+msgid "Start memory tracing\n\n"
+"        `[p]plutils trace 0` turns off tracing\n"
+"        `[p]plutils trace 1` turns on tracing\n"
+"        `[p]plutils trace` shows the current status of tracing\n"
+"        "
+msgstr ""
+
+#: plutils/cog.py:381
+msgid "Stopped memory tracing"
+msgstr ""
+
+#: plutils/cog.py:390
+msgid "Started memory tracing"
+msgstr ""
+
+#: plutils/cog.py:398
+msgid "You need to start tracing first"
+msgstr ""
 

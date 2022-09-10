@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2022-09-08 20:32+0000\n"
-"PO-Revision-Date: 2022-09-08 20:33\n"
+"POT-Creation-Date: 2022-09-10 19:21+0000\n"
+"PO-Revision-Date: 2022-09-10 19:22\n"
 "Last-Translator: \n"
 "Language-Team: Dutch\n"
 "MIME-Version: 1.0\n"
@@ -231,16 +231,24 @@ msgstr "Beheerde node plugins zijn al bijgewerkt"
 msgid "Toggle the managed node sources"
 msgstr "De beheerde node bronnen in-/uitschakelen"
 
-#: plmanagednode/cog.py:728
+#: plmanagednode/cog.py:727
 msgid "Invalid source, {valid_list} are valid sources"
 msgstr "Ongeldige bron, {valid_list} zijn geldige bronnen"
 
+#: plmanagednode/cog.py:741
+msgid "enabled"
+msgstr "ingeschakeld"
+
+#: plmanagednode/cog.py:741
+msgid "disabled"
+msgstr "uitgeschakeld"
+
 #: plmanagednode/cog.py:744
-msgid "Managed node's source set to {source}.\n\n"
+msgid "Managed node's {source} source set to {state}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:758
+#: plmanagednode/cog.py:759
 #, docstring
 msgid "Configure multiple settings for the managed node.\n\n"
 "        Run `[p]plmanaged config server <setting> info` to show info about the settings and what they do.\n\n"
@@ -271,76 +279,76 @@ msgstr "Configureer meerdere instellingen voor de beheerde node.\n\n"
 "        `soundcloudSearchEnabled`: Boolean i. Waar (standaard waar)\n"
 "        "
 
-#: plmanagednode/cog.py:798
+#: plmanagednode/cog.py:799
 msgid "{Setting} is not a valid Setting; Options are:\n\n"
 "{setting_list}"
 msgstr "{Setting} is geen geldige instelling; Opties zijn:\n\n"
 "{setting_list}"
 
-#: plmanagednode/cog.py:809
+#: plmanagednode/cog.py:810
 msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses. Minimum of 40ms, lower values may introduce pauses. Accepted values: Range: 40 - 2,000"
 msgstr "De duur van de NAS buffer in milliseconden. Hogere waarden zijn beter tegen langere GC pauze. Minimum van 40 ms, lagere waarden kunnen pauzes introduceren. Geaccepteerde waarden: Bereik: 40 - 2.000"
 
-#: plmanagednode/cog.py:814
+#: plmanagednode/cog.py:815
 msgid "How many milliseconds of audio to keep buffered. Accepted values: Range: 1,000 - 10,000"
 msgstr "Hoeveel milliseconden audio om bufferd te houden. Geaccepteerde waarden: bereik: 1.000 - 10.000"
 
-#: plmanagednode/cog.py:817
+#: plmanagednode/cog.py:818
 msgid "The threshold in milliseconds for how long a track can be stuck. A track is stuck if does not return any audio data. Accepted values: Range: 5,000 - 20,000"
 msgstr "De drempel in milliseconden voor hoe lang een spoor vast kan worden gehouden. Een spoor zit vast als er geen audio-gegevens worden geretourneerd. Geaccepteerde waarden: Bereik: 5.000 - 20.000"
 
-#: plmanagednode/cog.py:821
+#: plmanagednode/cog.py:822
 msgid "Number of pages to return for a YouTube Playlist - Each page contains 100 songs. Accepted values: Range: 5 - 100"
 msgstr "Aantal terug te sturen pagina's voor een YouTube Afspeellijst - Elke pagina bevat 100 nummers. Geaccepteerde waarden: Bereik: 5 tot 100"
 
-#: plmanagednode/cog.py:825
+#: plmanagednode/cog.py:826
 msgid "Opus encoder quality. Valid values range from 0 to 10, where 10 is best quality but is the most expensive on the CPU"
 msgstr "Opus encoder kwaliteit. Geldige waarden variëren van 0 tot 10, waar 10 de beste kwaliteit is maar de duurste op de CPU is"
 
-#: plmanagednode/cog.py:829
+#: plmanagednode/cog.py:830
 msgid "Quality of resampling operations. Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU"
 msgstr "Kwaliteit van resampling operaties. Geldige waarden zijn LOW, MEDIUM en HIGH, waar HIGH de meeste CPU gebruikt"
 
-#: plmanagednode/cog.py:833
+#: plmanagednode/cog.py:834
 msgid "Seek ghosting is the effect where whilst a seek is in progress, the audio buffer is read from until empty, or until seek is ready. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "Seek ghosting is het effect waar terwijl een zoekactie wordt uitgevoerd, de audiobuffer wordt voorgelezen van totdat leeg is, of totdat het zoeken klaar is. Geaccepteerde waarden voor waar: `True`, `t`, `1`, Geaccepteerde waarden voor False: `False`, `f`, `0`"
 
-#: plmanagednode/cog.py:838
+#: plmanagednode/cog.py:839
 msgid "How frequently in seconds to send player updates to clients, affects the current position accuracy. Accepted values: Range: 1 - 10"
 msgstr "Hoe vaak in seconden het sturen van speler updates aan klanten, heeft invloed op de huidige nauwkeurigheid van de positie. Geaccepteerde waarden: Bereik: 1 - 10"
 
-#: plmanagednode/cog.py:842
+#: plmanagednode/cog.py:843
 msgid "Enable or disable YouTube searches within the node, this will affect AppleMusic, Spotify and any functionality dependant on YouTube. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "YouTube-zoekopdrachten binnen de node in- of uitschakelen zal invloed hebben op AppleMusic, Spotify en eventuele functionaliteit die afhankelijk is van YouTube. Geaccepteerde waarden voor waar: `True`, `t`, `1`, Geaccepteerde waarden voor False: `False`, `f`, `0`"
 
-#: plmanagednode/cog.py:847
+#: plmanagednode/cog.py:848
 msgid "Enable or disable SoundCloud searches within the node, this will affect any functionality dependant on SoundCloud. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "SoundCloud zoekopdrachten binnen de node in- of uitschakelen, dit zal invloed hebben op alle functionaliteiten die afhankelijk zijn van SoundCloud. Geaccepteerde waarden voor waar: `True`, `t`, `1`, Geaccepteerde waarden voor False: `False`, `f`, `0`"
 
-#: plmanagednode/cog.py:856
+#: plmanagednode/cog.py:857
 msgid "{Setting} info.\n\n"
 "{info}"
 msgstr "{Setting} info.\n\n"
 "{info}"
 
-#: plmanagednode/cog.py:884
+#: plmanagednode/cog.py:885
 msgid "{Setting} valid inputs are:\n\n"
 "Range between: {start} - {end}"
 msgstr "{Setting} geldige invoer zijn:\n\n"
 "Bereik tussen: {start} - {end}"
 
-#: plmanagednode/cog.py:895
+#: plmanagednode/cog.py:896
 msgid "{Setting} valid inputs are:\n\n"
 "{setting_list}"
 msgstr "{Setting} geldige invoer zijn:\n\n"
 "{setting_list}"
 
-#: plmanagednode/cog.py:913
+#: plmanagednode/cog.py:914
 msgid "{Setting} set to {value}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:928
+#: plmanagednode/cog.py:929
 #, docstring
 msgid "Configure Lavalink IP Rotation for ratelimits.\n\n"
 "        Run `[p]plmanaged config iprotation 1` to remove the ip rotation\n"
@@ -349,18 +357,18 @@ msgstr "Configureer Lavalink IP Rotatie voor ratelimits.\n\n"
 "        Voer `[p]plmanaged config iprotation 1 uit om de ip rotatie\n"
 "        te verwijderen        "
 
-#: plmanagednode/cog.py:939
+#: plmanagednode/cog.py:940
 msgid "Click the button below to configure the IP rotation for your node.\n"
 "More info at: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> and <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
 msgstr "Klik op de knop hieronder om de IP rotatie voor uw node te configureren.\n"
 "Meer info op: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> en <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
 
-#: plmanagednode/cog.py:956
+#: plmanagednode/cog.py:957
 msgid "Removing the IP rotation from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:966
+#: plmanagednode/cog.py:967
 #, docstring
 msgid "Link a Google account to Lavalink to bypass YouTube's age restriction\n\n"
 "        Run `[p]plmanaged config googleaccount 1` to remove the linked account.\n"
@@ -369,18 +377,18 @@ msgstr "Een Google-account koppelen aan Lavalink om YouTube's leeftijdsrestricti
 "        Voer uit[p]plmanaged config googleaccount 1` om het gekoppelde account te verwijderen.\n"
 "        "
 
-#: plmanagednode/cog.py:977
+#: plmanagednode/cog.py:978
 msgid "Click the button below to link a Google account to your node, if you have 2FA setup on this account you will need an app password instead\n"
 "More info at: <https://support.google.com/accounts/answer/185833>"
 msgstr "Klik op de knop hieronder om een Google-account aan uw node te koppelen, als je 2FA hebt ingesteld op dit account heb je een app-wachtwoord nodig\n"
 "Meer informatie op: <https://support.google.com/accounts/answer/185833>"
 
-#: plmanagednode/cog.py:994
+#: plmanagednode/cog.py:995
 msgid "Unlinking Google account from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:1004
+#: plmanagednode/cog.py:1005
 #, docstring
 msgid "Configure a HTTP proxy for Lavalink\n\n"
 "        Run `[p]plmanaged config httpproxy 1` to remove the proxy.\n"
@@ -389,11 +397,11 @@ msgstr "Configureer een HTTP-proxy voor Lavalink\n\n"
 "        Voer `[p]plmanaged config httpproxy 1` in om de proxy te verwijderen.\n"
 "        "
 
-#: plmanagednode/cog.py:1015
+#: plmanagednode/cog.py:1016
 msgid "Click the button below to configure a HTTP proxy for your node"
 msgstr "Klik op de knop hieronder om een HTTP-proxy voor uw node te configureren"
 
-#: plmanagednode/cog.py:1028
+#: plmanagednode/cog.py:1029
 msgid "Unlinking HTTP proxy from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2022-09-04 19:45+0000\n"
-"PO-Revision-Date: 2022-09-05 21:05\n"
+"POT-Creation-Date: 2022-09-10 19:21+0000\n"
+"PO-Revision-Date: 2022-09-10 19:22\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian\n"
 "MIME-Version: 1.0\n"
@@ -17,25 +17,25 @@ msgstr ""
 "X-Crowdin-File-ID: 684\n"
 "Language: no_NO\n"
 
-#: plutils/cog.py:32 plutils/cog.py:42
+#: plutils/cog.py:58 plutils/cog.py:68
 #, docstring
 msgid "Utility commands for PyLav"
 msgstr "Verktøyskommandoer for PyLav"
 
-#: plutils/cog.py:46
+#: plutils/cog.py:72
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies"
 msgstr "Vis versjonen av Cog dens PyLav avhengigheter"
 
-#: plutils/cog.py:63
+#: plutils/cog.py:89
 msgid "Library/Cog"
 msgstr "Bibliotek/Tannhjul"
 
-#: plutils/cog.py:64
+#: plutils/cog.py:90
 msgid "Version"
 msgstr "Versjon"
 
-#: plutils/cog.py:77
+#: plutils/cog.py:103
 #, docstring
 msgid "Show the slashes available in the bot.\n\n"
 "        Author: TrustyJAID#0001 via Code block on Discord channel.\n"
@@ -44,86 +44,107 @@ msgstr "Vis slashes tilgjengelige i boten.\n\n"
 "        Forfatter: TrustyJAID#0001 via Kode-blokken på Discord kanalen.\n"
 "        "
 
-#: plutils/cog.py:108
+#: plutils/cog.py:134
 #, docstring
 msgid "Get info about specific things"
 msgstr "Få info om konkrete ting"
 
-#: plutils/cog.py:112
+#: plutils/cog.py:138
 #, docstring
 msgid "Get the base64 of the current track"
 msgstr "Hent base64 i gjeldende spor"
 
-#: plutils/cog.py:120 plutils/cog.py:152 plutils/cog.py:184 plutils/cog.py:215
+#: plutils/cog.py:146 plutils/cog.py:178 plutils/cog.py:210 plutils/cog.py:241
 msgid "Not connected to a voice channel"
 msgstr "Ikke koblet til en talekanal"
 
-#: plutils/cog.py:128 plutils/cog.py:160 plutils/cog.py:192 plutils/cog.py:223
+#: plutils/cog.py:154 plutils/cog.py:186 plutils/cog.py:218 plutils/cog.py:249
 msgid "Nothing playing"
 msgstr "Ingenting spiller"
 
-#: plutils/cog.py:143
+#: plutils/cog.py:169
 #, docstring
 msgid "Get the author of the current track"
 msgstr "Få forfatteren av det nåværende sporet"
 
-#: plutils/cog.py:175
+#: plutils/cog.py:201
 #, docstring
 msgid "Get the title of the current track"
 msgstr "Hent tittelen på gjeldende spor"
 
-#: plutils/cog.py:207
+#: plutils/cog.py:233
 #, docstring
 msgid "Get the source of the current track"
 msgstr "Få kildekoden til det gjeldende sporet"
 
-#: plutils/cog.py:238
+#: plutils/cog.py:264
 #, docstring
 msgid "Decode a tracks base64 string into a JSON object"
 msgstr "Dekode en spor base64 strengen til et JSON-objekt"
 
-#: plutils/cog.py:249
+#: plutils/cog.py:275
 msgid "Invalid base64 string"
 msgstr "Ugyldig base64 streng"
 
-#: plutils/cog.py:266
+#: plutils/cog.py:292
 #, docstring
 msgid "Manage the query cache"
 msgstr "Administrer hurtigbufferen for spørring"
 
-#: plutils/cog.py:270
+#: plutils/cog.py:296
 #, docstring
 msgid "Clear the query cache"
 msgstr "Slett hurtigbufferen for spørring"
 
-#: plutils/cog.py:277 plutils/cog.py:306 plutils/cog.py:319
+#: plutils/cog.py:303 plutils/cog.py:332 plutils/cog.py:345
 msgid "Query cache cleared"
 msgstr "Hurtigbuffer for spørring tømt"
 
-#: plutils/cog.py:283
+#: plutils/cog.py:309
 #, docstring
 msgid "Clear the query cache older than a number of days"
 msgstr "Slett hurtigbufferen for spørring som er eldre enn et antall dager"
 
-#: plutils/cog.py:291
+#: plutils/cog.py:317
 msgid "Days must be less than 31"
 msgstr "Dagene må være mindre enn 31"
 
-#: plutils/cog.py:299
+#: plutils/cog.py:325
 msgid "Days must be greater than 1"
 msgstr "Dagene må være større enn 1"
 
-#: plutils/cog.py:312
+#: plutils/cog.py:338
 #, docstring
 msgid "Clear the query cache for a query"
 msgstr "Slett hurtigbufferen for en spørring"
 
-#: plutils/cog.py:325
+#: plutils/cog.py:351
 #, docstring
 msgid "Get the size of the query cache"
 msgstr "Hent størrelsen på spørringens cache"
 
-#: plutils/cog.py:332
+#: plutils/cog.py:358
 msgid "Query cache size: `{size}`"
 msgstr "Størrelse på spørringen: `{size}"
+
+#: plutils/cog.py:369
+#, docstring
+msgid "Start memory tracing\n\n"
+"        `[p]plutils trace 0` turns off tracing\n"
+"        `[p]plutils trace 1` turns on tracing\n"
+"        `[p]plutils trace` shows the current status of tracing\n"
+"        "
+msgstr ""
+
+#: plutils/cog.py:381
+msgid "Stopped memory tracing"
+msgstr ""
+
+#: plutils/cog.py:390
+msgid "Started memory tracing"
+msgstr ""
+
+#: plutils/cog.py:398
+msgid "You need to start tracing first"
+msgstr ""
 
