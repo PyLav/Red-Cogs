@@ -374,15 +374,17 @@ class PyLavUtils(commands.Cog):
         """
         import tracemalloc
 
-        if tracemalloc.is_tracing() and value == 0:
-            tracemalloc.stop()
-            await context.send(
-                embed=await context.lavalink.construct_embed(
-                    description=_("Stopped memory tracing"),
-                    messageable=context,
-                ),
-                ephemeral=True,
-            )
+        if tracemalloc.is_tracing():
+            snap = await asyncio.to_thread(tracemalloc.take_snapshot)
+            if value == 0:
+                tracemalloc.stop()
+                await context.send(
+                    embed=await context.lavalink.construct_embed(
+                        description=_("Stopped memory tracing"),
+                        messageable=context,
+                    ),
+                    ephemeral=True,
+                )
         elif not tracemalloc.is_tracing() and value == 1:
             tracemalloc.start(25)
             await context.send(
@@ -392,6 +394,7 @@ class PyLavUtils(commands.Cog):
                 ),
                 ephemeral=True,
             )
+            return
         if not tracemalloc.is_tracing():
             await context.send(
                 embed=await context.lavalink.construct_embed(
@@ -401,6 +404,5 @@ class PyLavUtils(commands.Cog):
                 ephemeral=True,
             )
         else:
-            snap = tracemalloc.take_snapshot()
-            messages = pagify(get_top(snap, limit=10), page_length=3500)
+            messages = pagify(await asyncio.to_thread(get_top, snap, limit=10), page_length=3500)
             await context.send_interactive(messages, box_lang="py")
