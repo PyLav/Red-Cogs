@@ -12,6 +12,7 @@ from redbot.core.utils.chat_formatting import box
 from tabulate import tabulate
 
 import pylavcogs_shared
+from pylav.filters import Equalizer
 from pylav.types import BotT, InteractionT
 from pylav.utils import PyLavContext
 from pylav.utils.theme import EightBitANSI
@@ -127,10 +128,14 @@ class PyLavEffects(commands.Cog):
         context.player.vibrato.frequency = frequency or context.player.vibrato.frequency
         context.player.vibrato.depth = depth or context.player.vibrato.depth
         await context.player.set_vibrato(vibrato=context.player.vibrato, requester=context.author, forced=reset)
+        default = _("Not changed")
 
         data = [
-            (EightBitANSI.paint_white(_("Frequency")), EightBitANSI.paint_blue(context.player.vibrato.frequency)),
-            (EightBitANSI.paint_white(_("Depth")), EightBitANSI.paint_blue(context.player.vibrato.depth)),
+            (
+                EightBitANSI.paint_white(_("Frequency")),
+                EightBitANSI.paint_blue(context.player.vibrato.frequency or default),
+            ),
+            (EightBitANSI.paint_white(_("Depth")), EightBitANSI.paint_blue(context.player.vibrato.depth or default)),
             (
                 EightBitANSI.paint_white(_("Reset previous filters")),
                 EightBitANSI.paint_red(_("Yes")) if reset else EightBitANSI.paint_green(_("No")),
@@ -178,9 +183,14 @@ class PyLavEffects(commands.Cog):
         context.player.tremolo.frequency = frequency or context.player.tremolo.frequency
         context.player.tremolo.depth = depth or context.player.tremolo.depth
         await context.player.set_tremolo(tremolo=context.player.tremolo, requester=context.author, forced=reset)
+        default = _("Not changed")
+
         data = [
-            (EightBitANSI.paint_white(_("Frequency")), EightBitANSI.paint_blue(context.player.tremolo.frequency)),
-            (EightBitANSI.paint_white(_("Depth")), EightBitANSI.paint_blue(context.player.tremolo.depth)),
+            (
+                EightBitANSI.paint_white(_("Frequency")),
+                EightBitANSI.paint_blue(context.player.tremolo.frequency or default),
+            ),
+            (EightBitANSI.paint_white(_("Depth")), EightBitANSI.paint_blue(context.player.tremolo.depth or default)),
             (
                 EightBitANSI.paint_white(_("Reset previous filters")),
                 EightBitANSI.paint_red(_("Yes")) if reset else EightBitANSI.paint_green(_("No")),
@@ -231,10 +241,11 @@ class PyLavEffects(commands.Cog):
         context.player.timescale.pitch = pitch or context.player.timescale.pitch
         context.player.timescale.rate = rate or context.player.timescale.rate
         await context.player.set_timescale(timescale=context.player.timescale, requester=context.author, forced=reset)
+        default = _("Not changed")
         data = [
-            (EightBitANSI.paint_white(_("Speed")), EightBitANSI.paint_blue(context.player.timescale.speed)),
-            (EightBitANSI.paint_white(_("Pitch")), EightBitANSI.paint_blue(context.player.timescale.pitch)),
-            (EightBitANSI.paint_white(_("Rate")), EightBitANSI.paint_blue(context.player.timescale.rate)),
+            (EightBitANSI.paint_white(_("Speed")), EightBitANSI.paint_blue(context.player.timescale.speed or default)),
+            (EightBitANSI.paint_white(_("Pitch")), EightBitANSI.paint_blue(context.player.timescale.pitch or default)),
+            (EightBitANSI.paint_white(_("Rate")), EightBitANSI.paint_blue(context.player.timescale.rate or default)),
             (
                 EightBitANSI.paint_white(_("Reset previous filters")),
                 EightBitANSI.paint_red(_("Yes")) if reset else EightBitANSI.paint_green(_("No")),
@@ -273,10 +284,15 @@ class PyLavEffects(commands.Cog):
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
-        context.player.rotation.speed = hertz or context.player.rotation.hertz
+        context.player.rotation.hertz = hertz or context.player.rotation.hertz
         await context.player.set_rotation(rotation=context.player.rotation, requester=context.author, forced=reset)
+        default = _("Not changed")
+
         data = [
-            (EightBitANSI.paint_white(_("Frequency hertz")), EightBitANSI.paint_blue(context.player.rotation.speed)),
+            (
+                EightBitANSI.paint_white(_("Frequency hertz")),
+                EightBitANSI.paint_blue(context.player.rotation.hertz or default),
+            ),
             (
                 EightBitANSI.paint_white(_("Reset previous filters")),
                 EightBitANSI.paint_red(_("Yes")) if reset else EightBitANSI.paint_green(_("No")),
@@ -316,10 +332,15 @@ class PyLavEffects(commands.Cog):
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
-        context.player.low_pass.speed = smoothing or context.player.low_pass.smoothing
+        context.player.low_pass.smoothing = smoothing or context.player.low_pass.smoothing
         await context.player.set_low_pass(low_pass=context.player.low_pass, requester=context.author, forced=reset)
+        default = _("Not changed")
+
         data = [
-            (EightBitANSI.paint_white(_("Smoothing factor")), EightBitANSI.paint_blue(context.player.low_pass.speed)),
+            (
+                EightBitANSI.paint_white(_("Smoothing factor")),
+                EightBitANSI.paint_blue(context.player.low_pass.smoothing or default),
+            ),
             (
                 EightBitANSI.paint_white(_("Reset previous filters")),
                 EightBitANSI.paint_red(_("Yes")) if reset else EightBitANSI.paint_green(_("No")),
@@ -373,11 +394,21 @@ class PyLavEffects(commands.Cog):
         context.player.karaoke.filter_band = filter_band or context.player.karaoke.filter_band
         context.player.karaoke.filter_width = filter_width or context.player.karaoke.filter_width
         await context.player.set_karaoke(karaoke=context.player.karaoke, requester=context.author, forced=reset)
+        default = _("Not changed")
         data = [
-            (EightBitANSI.paint_white(_("Level")), EightBitANSI.paint_blue(context.player.karaoke.level)),
-            (EightBitANSI.paint_white(_("Mono Level")), EightBitANSI.paint_blue(context.player.karaoke.mono_level)),
-            (EightBitANSI.paint_white(_("Filter Band")), EightBitANSI.paint_blue(context.player.karaoke.filter_band)),
-            (EightBitANSI.paint_white(_("Filter Width")), EightBitANSI.paint_blue(context.player.karaoke.filter_width)),
+            (EightBitANSI.paint_white(_("Level")), EightBitANSI.paint_blue(context.player.karaoke.level or default)),
+            (
+                EightBitANSI.paint_white(_("Mono Level")),
+                EightBitANSI.paint_blue(context.player.karaoke.mono_level or default),
+            ),
+            (
+                EightBitANSI.paint_white(_("Filter Band")),
+                EightBitANSI.paint_blue(context.player.karaoke.filter_band or default),
+            ),
+            (
+                EightBitANSI.paint_white(_("Filter Width")),
+                EightBitANSI.paint_blue(context.player.karaoke.filter_width or default),
+            ),
             (
                 EightBitANSI.paint_white(_("Reset previous filters")),
                 EightBitANSI.paint_red(_("Yes")) if reset else EightBitANSI.paint_green(_("No")),
@@ -433,22 +464,24 @@ class PyLavEffects(commands.Cog):
         await context.player.set_channel_mix(
             channel_mix=context.player.channel_mix, requester=context.author, forced=reset
         )
+        default = _("Not changed")
+
         data = [
             (
                 EightBitANSI.paint_white(_("Left to Left")),
-                EightBitANSI.paint_blue(context.player.channel_mix.left_to_left),
+                EightBitANSI.paint_blue(context.player.channel_mix.left_to_left or default),
             ),
             (
                 EightBitANSI.paint_white(_("Left to Right ")),
-                EightBitANSI.paint_blue(context.player.channel_mix.left_to_right),
+                EightBitANSI.paint_blue(context.player.channel_mix.left_to_right or default),
             ),
             (
                 EightBitANSI.paint_white(_("Right to Left")),
-                EightBitANSI.paint_blue(context.player.channel_mix.right_to_left),
+                EightBitANSI.paint_blue(context.player.channel_mix.right_to_left or default),
             ),
             (
                 EightBitANSI.paint_white(_("Right to Right")),
-                EightBitANSI.paint_blue(context.player.channel_mix.right_to_right),
+                EightBitANSI.paint_blue(context.player.channel_mix.right_to_right or default),
             ),
             (
                 EightBitANSI.paint_white(_("Reset previous filters")),
@@ -517,24 +550,37 @@ class PyLavEffects(commands.Cog):
         await context.player.set_distortion(
             distortion=context.player.distortion, requester=context.author, forced=reset
         )
+        default = _("Not changed")
         data = [
-            (EightBitANSI.paint_white(_("Sine Offset")), EightBitANSI.paint_blue(context.player.distortion.sin_offset)),
-            (EightBitANSI.paint_white(_("Sine Scale")), EightBitANSI.paint_blue(context.player.distortion.sin_scale)),
+            (
+                EightBitANSI.paint_white(_("Sine Offset")),
+                EightBitANSI.paint_blue(context.player.distortion.sin_offset or default),
+            ),
+            (
+                EightBitANSI.paint_white(_("Sine Scale")),
+                EightBitANSI.paint_blue(context.player.distortion.sin_scale or default),
+            ),
             (
                 EightBitANSI.paint_white(_("Cosine Offset")),
-                EightBitANSI.paint_blue(context.player.distortion.cos_offset),
+                EightBitANSI.paint_blue(context.player.distortion.cos_offset or default),
             ),
-            (EightBitANSI.paint_white(_("Cosine Scale")), EightBitANSI.paint_blue(context.player.distortion.cos_scale)),
+            (
+                EightBitANSI.paint_white(_("Cosine Scale")),
+                EightBitANSI.paint_blue(context.player.distortion.cos_scale or default),
+            ),
             (
                 EightBitANSI.paint_white(_("Tangent Offset")),
-                EightBitANSI.paint_blue(context.player.distortion.tan_offset),
+                EightBitANSI.paint_blue(context.player.distortion.tan_offset or default),
             ),
             (
                 EightBitANSI.paint_white(_("Tangent Scale")),
-                EightBitANSI.paint_blue(context.player.distortion.tan_scale),
+                EightBitANSI.paint_blue(context.player.distortion.tan_scale or default),
             ),
-            (EightBitANSI.paint_white(_("Offset")), EightBitANSI.paint_blue(context.player.distortion.offset)),
-            (EightBitANSI.paint_white(_("Scale")), EightBitANSI.paint_blue(context.player.distortion.scale)),
+            (
+                EightBitANSI.paint_white(_("Offset")),
+                EightBitANSI.paint_blue(context.player.distortion.offset or default),
+            ),
+            (EightBitANSI.paint_white(_("Scale")), EightBitANSI.paint_blue(context.player.distortion.scale or default)),
             (
                 EightBitANSI.paint_white(_("Reset previous filters")),
                 EightBitANSI.paint_red(_("Yes")) if reset else EightBitANSI.paint_green(_("No")),
@@ -582,10 +628,11 @@ class PyLavEffects(commands.Cog):
         context.player.echo.delay = delay or context.player.echo.delay
         context.player.echo.decay = decay or context.player.echo.decay
         await context.player.set_echo(echo=context.player.echo, requester=context.author, forced=reset)
+        default = _("Not changed")
 
         data = [
-            (EightBitANSI.paint_white(_("Delay")), EightBitANSI.paint_blue(context.player.echo.delay)),
-            (EightBitANSI.paint_white(_("Decay")), EightBitANSI.paint_blue(context.player.echo.decay)),
+            (EightBitANSI.paint_white(_("Delay")), EightBitANSI.paint_blue(context.player.echo.delay or default)),
+            (EightBitANSI.paint_white(_("Decay")), EightBitANSI.paint_blue(context.player.echo.decay or default)),
             (
                 EightBitANSI.paint_white(_("Reset previous filters")),
                 EightBitANSI.paint_red(_("Yes")) if reset else EightBitANSI.paint_green(_("No")),
@@ -621,6 +668,8 @@ class PyLavEffects(commands.Cog):
 
         t_effect = EightBitANSI.paint_yellow(_("Effect"), bold=True, underline=True)
         t_values = EightBitANSI.paint_yellow(_("Values"), bold=True, underline=True)
+        default = _("Not changed")
+
         data = []
         for effect in (
             context.player.karaoke,
@@ -637,9 +686,20 @@ class PyLavEffects(commands.Cog):
 
             if effect.changed:
                 values = effect.to_json()
-                data_[t_values] = "\n".join(
-                    f"{EightBitANSI.paint_white(k.title())}: {EightBitANSI.paint_green(v)}" for k, v in values.items()
-                )
+                if not isinstance(effect, Equalizer):
+                    data_[t_values] = "\n".join(
+                        f"{EightBitANSI.paint_white(k.title())}: {EightBitANSI.paint_green(v or default)}"
+                        for k, v in values.items()
+                    )
+                else:
+                    values = values["equalizer"]
+                    data_[t_values] = "\n".join(
+                        [
+                            f"{EightBitANSI.paint_white('Band ' + band['band'])}: {EightBitANSI.paint_green(band['gain'])}"
+                            for band in values
+                            if band["gain"]
+                        ]
+                    )
             else:
                 data_[t_values] = EightBitANSI.paint_blue(_("N/A"))
             data.append(data_)

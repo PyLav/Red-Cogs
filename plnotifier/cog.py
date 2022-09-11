@@ -1705,6 +1705,7 @@ class PyLavNotifier(commands.Cog):
         else:
             user = event.requester or self.bot.user
         t_effect = EightBitANSI.paint_yellow(_("Effect"), bold=True, underline=True)
+        default = _("Not changed")
         t_values = EightBitANSI.paint_yellow(_("Values"), bold=True, underline=True)
         data = []
         for effect in (
@@ -1728,7 +1729,7 @@ class PyLavNotifier(commands.Cog):
                 values = effect.to_json()
                 if not isinstance(effect, Equalizer):
                     data_[t_values] = "\n".join(
-                        f"{EightBitANSI.paint_white(k.title())}: {EightBitANSI.paint_green(v)}"
+                        f"{EightBitANSI.paint_white(k.title())}: {EightBitANSI.paint_green(v or default)}"
                         for k, v in values.items()
                     )
                 else:
