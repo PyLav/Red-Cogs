@@ -1,5 +1,6 @@
 import asyncio
 import contextlib
+import datetime
 from abc import ABC
 from functools import partial
 from pathlib import Path
@@ -12,7 +13,7 @@ from redbot.core.i18n import Translator, cog_i18n
 from pylav.query import Query
 from pylav.tracks import Track, decode_track
 from pylav.types import PyLavCogMixin
-from pylav.utils import PyLavContext, get_time_string
+from pylav.utils import PyLavContext
 from pylavcogs_shared.utils import rgetattr
 from pylavcogs_shared.utils.decorators import invoker_is_dj
 
@@ -73,10 +74,10 @@ class PlayerCommands(PyLavCogMixin, ABC):
             await player.move_track(track, context.author, 0)
             await context.send(
                 embed=await context.construct_embed(
-                    description=_("{track} will play after {current} finishes (in {eta})").format(
+                    description=_("{track} will play after {current} finishes ({eta})").format(
                         track=await track.get_track_display_name(with_url=True),
                         current=await player.current.get_track_display_name(with_url=True),
-                        eta=get_time_string((player.current.duration - player.position) // 1000),
+                        eta=f"<t:{int((datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(seconds=(player.current.duration - player.position) // 1000)).timestamp())}:R>",
                     ),
                     messageable=context,
                 ),
@@ -88,7 +89,6 @@ class PlayerCommands(PyLavCogMixin, ABC):
                     description=_("{track} will start now\n{current} has been skipped").format(
                         track=await track.get_track_display_name(with_url=True),
                         current=await player.current.get_track_display_name(with_url=True),
-                        eta=get_time_string((player.current.duration - player.position) // 1000),
                     ),
                     messageable=context,
                 ),
