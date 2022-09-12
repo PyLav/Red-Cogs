@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2022-09-10 19:21+0000\n"
-"PO-Revision-Date: 2022-09-10 19:22\n"
+"POT-Creation-Date: 2022-09-12 17:46+0000\n"
+"PO-Revision-Date: 2022-09-12 17:47\n"
 "Last-Translator: \n"
 "Language-Team: Ukrainian\n"
 "MIME-Version: 1.0\n"
@@ -37,42 +37,59 @@ msgstr "Версія"
 
 #: plmanagednode/cog.py:84
 #, docstring
+msgid "Update the managed Lavalink node"
+msgstr ""
+
+#: plmanagednode/cog.py:95
+msgid "The managed Lavalink node is already up to date."
+msgstr ""
+
+#: plmanagednode/cog.py:104
+msgid "Your node is out of date, to update please run `{prefix}{command} 1`."
+msgstr ""
+
+#: plmanagednode/cog.py:118
+msgid "The managed Lavalink node has been updated to version {version}."
+msgstr ""
+
+#: plmanagednode/cog.py:128
+#, docstring
 msgid "Restart the managed Lavalink node"
 msgstr "Перезапустити керований вузол Lavalink"
 
-#: plmanagednode/cog.py:93
+#: plmanagednode/cog.py:137
 msgid "The managed node is not enabled, run `{prefix}{command}` to first enable the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:131
+#: plmanagednode/cog.py:175
 msgid "Restarted the managed Lavalink node"
 msgstr "Перезапущено керований вузол Lavalink"
 
-#: plmanagednode/cog.py:139
+#: plmanagednode/cog.py:183
 #, docstring
 msgid "Set the java executable for PyLav.\n\n"
 "        Default is \"java\"\n"
 "        "
 msgstr ""
 
-#: plmanagednode/cog.py:155
+#: plmanagednode/cog.py:199
 msgid "{java} does not exist, run the command again with the java argument set to the correct path"
 msgstr "{java} не існує, повторіть команду з аргументом java для правильного шляху"
 
-#: plmanagednode/cog.py:172
+#: plmanagednode/cog.py:216
 msgid "{java} is not an executable file"
 msgstr "{java} не є файлом, виконуваним файлом"
 
-#: plmanagednode/cog.py:184
+#: plmanagednode/cog.py:228
 msgid "{java} is not an executable, run the command again with the java argument set to the correct path"
 msgstr "{java} не є виконуваним файлом, запустити команду знову з встановленим аргументом java на правильний шлях"
 
-#: plmanagednode/cog.py:203
+#: plmanagednode/cog.py:247
 msgid "PyLav's java executable has been set to {java}\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:217
+#: plmanagednode/cog.py:261
 #, docstring
 msgid "Toggle the managed node on/off.\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -81,17 +98,17 @@ msgstr "Увімкнути/вимкнути керований вузол.\n\n"
 "        зміни будуть застосовані після перезапуску бота.\n"
 "        "
 
-#: plmanagednode/cog.py:232
+#: plmanagednode/cog.py:276
 msgid "PyLav's managed node has been enabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:242
+#: plmanagednode/cog.py:286
 msgid "PyLav's managed node has been disabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:252
+#: plmanagednode/cog.py:296
 #, docstring
 msgid "Toggle the managed node auto updates on/off.\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -100,17 +117,17 @@ msgstr "Увімкнути/вимкнути автоматичні оновле�
 "        Зміни будуть застосовані після перезапуску бота.\n"
 "        "
 
-#: plmanagednode/cog.py:268
+#: plmanagednode/cog.py:312
 msgid "PyLav's managed node auto updates have been enabled\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:279
+#: plmanagednode/cog.py:323
 msgid "PyLav's managed node auto updates have been disabled\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:290
+#: plmanagednode/cog.py:334
 #, docstring
 msgid "Set the managed Lavalink node maximum heap-size.\n\n"
 "        By default, this value is 2G of available RAM in the host machine represented by (65-1023M|1+G) (256M,\n"
@@ -125,43 +142,43 @@ msgstr "Встановити керований Лавалінковий вуз�
 "        , що керований вузол Lavalink завжди буде використовувати цю кількість оперативної пам'яті.\n"
 "        "
 
-#: plmanagednode/cog.py:311
+#: plmanagednode/cog.py:355
 msgid "Heap-size must be a valid measure of size, e.g. 256M, 256G"
 msgstr "Розмір у Heap-size має бути допустимою мірою, наприклад 256M, 256G"
 
-#: plmanagednode/cog.py:321
+#: plmanagednode/cog.py:365
 msgid "Heap-size must be at least 64M, however it is recommended to have it set to at least 1G"
 msgstr "Розмір Геппа повинен бути не менше 64 М, однак рекомендовано мати його встановлений як мінімум в 1G"
 
-#: plmanagednode/cog.py:333
+#: plmanagednode/cog.py:377
 msgid "Heap-size must be less than your system RAM, You currently have {ram_in_bytes} of RAM available"
 msgstr "Розмір темпу повинен бути меншим, ніж системна оперативна пам'ять, в даний час у вас є {ram_in_bytes} доступні оперативної пам'яті"
 
-#: plmanagednode/cog.py:345
+#: plmanagednode/cog.py:389
 msgid "Heap-size must be less than {limit} due to your system limitations"
 msgstr "Розмір темпу має бути менше {limit} через системні обмеження"
 
-#: plmanagednode/cog.py:363
+#: plmanagednode/cog.py:407
 msgid "Managed node's heap-size set to {bytes}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:377
+#: plmanagednode/cog.py:421
 #, docstring
 msgid "Change the managed node start up configs"
 msgstr "Зміна керованого вузла запуск налаштувань"
 
-#: plmanagednode/cog.py:381
+#: plmanagednode/cog.py:425
 #, docstring
 msgid "Set the managed node host"
 msgstr "Встановити керований вузол вузла"
 
-#: plmanagednode/cog.py:392
+#: plmanagednode/cog.py:436
 msgid "Managed node's host set to {host}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:406
+#: plmanagednode/cog.py:450
 #, docstring
 msgid "`Dangerous command` Set the managed Lavalink node's connection port.\n\n"
 "        This port is the port the managed Lavalink node binds to, you should only change this if there is a\n"
@@ -174,86 +191,86 @@ msgstr "`Небезпечна команда` Встановити порт ке
 "        Значення за замовчуванням - `2154`.\n"
 "        "
 
-#: plmanagednode/cog.py:416
+#: plmanagednode/cog.py:460
 msgid "The port must be between 1024 and 49151"
 msgstr "Порт має бути від 1024 до 49151"
 
-#: plmanagednode/cog.py:427
+#: plmanagednode/cog.py:471
 msgid "Managed node's port set to {port}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:437
+#: plmanagednode/cog.py:481
 #, docstring
 msgid "Change the managed node plugins"
 msgstr "Змінити керованих плагінів вузла"
 
-#: plmanagednode/cog.py:441
+#: plmanagednode/cog.py:485
 #, docstring
 msgid "Disabled one of the available plugins"
 msgstr ""
 
-#: plmanagednode/cog.py:457 plmanagednode/cog.py:572
+#: plmanagednode/cog.py:501 plmanagednode/cog.py:616
 msgid "The plugin must be one of the following: {plugins}"
 msgstr ""
 
-#: plmanagednode/cog.py:542
+#: plmanagednode/cog.py:586
 msgid "Managed node's plugin {plugin} disabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:556
+#: plmanagednode/cog.py:600
 #, docstring
 msgid "Enable one of the available plugins"
 msgstr ""
 
-#: plmanagednode/cog.py:605
+#: plmanagednode/cog.py:649
 msgid "Managed node's plugin {plugin} enabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:619
+#: plmanagednode/cog.py:663
 #, docstring
 msgid "Update the managed node plugins"
 msgstr "Оновити керованих плагінів вузла"
 
-#: plmanagednode/cog.py:683
+#: plmanagednode/cog.py:727
 msgid "{name} was updated from {old_value} to {new_value}\n"
 msgstr "{name} був оновлений з {old_value} до {new_value}\n"
 
-#: plmanagednode/cog.py:691
+#: plmanagednode/cog.py:735
 msgid "Managed node's plugins updated.\n\n"
 "{updates}\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:705
+#: plmanagednode/cog.py:749
 msgid "Managed node's plugins already up to date"
 msgstr "Модулі керованого вузла вже оновлені"
 
-#: plmanagednode/cog.py:713
+#: plmanagednode/cog.py:757
 #, docstring
 msgid "Toggle the managed node sources"
 msgstr "Перемикач керованих джерел вузла"
 
-#: plmanagednode/cog.py:727
+#: plmanagednode/cog.py:771
 msgid "Invalid source, {valid_list} are valid sources"
 msgstr "Неправильне джерело, {valid_list} коректне джерело"
 
-#: plmanagednode/cog.py:741
+#: plmanagednode/cog.py:785
 msgid "enabled"
 msgstr "ввімкнено"
 
-#: plmanagednode/cog.py:741
+#: plmanagednode/cog.py:785
 msgid "disabled"
 msgstr "вимкнуто"
 
-#: plmanagednode/cog.py:744
+#: plmanagednode/cog.py:788
 msgid "Managed node's {source} source set to {state}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:759
+#: plmanagednode/cog.py:803
 #, docstring
 msgid "Configure multiple settings for the managed node.\n\n"
 "        Run `[p]plmanaged config server <setting> info` to show info about the settings and what they do.\n\n"
@@ -284,76 +301,76 @@ msgstr "Налаштувати декілька параметрів для ке
 "        `soundcloudSearchEnabled` : логічний і. True (True)\n"
 "        "
 
-#: plmanagednode/cog.py:799
+#: plmanagednode/cog.py:843
 msgid "{Setting} is not a valid Setting; Options are:\n\n"
 "{setting_list}"
 msgstr "{Setting} не є припустимим параметром; Параметри:\n\n"
 "{setting_list}"
 
-#: plmanagednode/cog.py:810
+#: plmanagednode/cog.py:854
 msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses. Minimum of 40ms, lower values may introduce pauses. Accepted values: Range: 40 - 2,000"
 msgstr "Тривалість буфера NAS в мілісекундах. Більш високі значення покращуються проти довше паузи. Мінімальна сума 40мс, менша кількість може ввести паузи. Допустимі значення: 40 - 2,000"
 
-#: plmanagednode/cog.py:815
+#: plmanagednode/cog.py:859
 msgid "How many milliseconds of audio to keep buffered. Accepted values: Range: 1,000 - 10,000"
 msgstr "Скільки мілісекунд для збереження буферу. Прийнятні значення: 1000 - 10 000"
 
-#: plmanagednode/cog.py:818
+#: plmanagednode/cog.py:862
 msgid "The threshold in milliseconds for how long a track can be stuck. A track is stuck if does not return any audio data. Accepted values: Range: 5,000 - 20,000"
 msgstr "Поріг збереження маршруту в мілісекундах. Трек застряг якщо не повертати жодних звукових даних. Прийнятні значення: 5,000 - 20 000"
 
-#: plmanagednode/cog.py:822
+#: plmanagednode/cog.py:866
 msgid "Number of pages to return for a YouTube Playlist - Each page contains 100 songs. Accepted values: Range: 5 - 100"
 msgstr "Кількість сторінок, які повертаються для YouTube Playlist - кожна сторінка містить 100 пісень. Прийняті значення: Діапазон: 5 - 100"
 
-#: plmanagednode/cog.py:826
+#: plmanagednode/cog.py:870
 msgid "Opus encoder quality. Valid values range from 0 to 10, where 10 is best quality but is the most expensive on the CPU"
 msgstr "Якість енкодеру Opus енкодера. Значення в діапазоні від 0 до 10, де 10 найкраща якість, але є найбільш дорогою на ЦП"
 
-#: plmanagednode/cog.py:830
+#: plmanagednode/cog.py:874
 msgid "Quality of resampling operations. Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU"
 msgstr "Якість передачі операцій. Допустимі значення - LOW, MEDIUM і HIGH, де HIGH використовує найбільше ЦП"
 
-#: plmanagednode/cog.py:834
+#: plmanagednode/cog.py:878
 msgid "Seek ghosting is the effect where whilst a seek is in progress, the audio buffer is read from until empty, or until seek is ready. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "Шукати примахи - це ефект, коли пошук в процесі виконання, аудіо-буфер зчитується до порожнечі, або поки не буде готовий. Допустимі значення True: `True`, `t`, `1`, Прийняті значення для False: `False`, `f`, `0`"
 
-#: plmanagednode/cog.py:839
+#: plmanagednode/cog.py:883
 msgid "How frequently in seconds to send player updates to clients, affects the current position accuracy. Accepted values: Range: 1 - 10"
 msgstr "Як часто в секундах відправити оновлення гравця клієнтам, впливає на поточну точність позиції. Прийнятні значення: 1 - 10"
 
-#: plmanagednode/cog.py:843
+#: plmanagednode/cog.py:887
 msgid "Enable or disable YouTube searches within the node, this will affect AppleMusic, Spotify and any functionality dependant on YouTube. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "Увімкнути або вимкнути пошук YouTube у цьому вузлі, це вплине на AppleMusic, Spotify та усі функціональні можливості на YouTube. Допустимі значення True: `True`, `t`, `1`, Прийняті значення для False: `False`, `f`, `0`"
 
-#: plmanagednode/cog.py:848
+#: plmanagednode/cog.py:892
 msgid "Enable or disable SoundCloud searches within the node, this will affect any functionality dependant on SoundCloud. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "Увімкнути або вимкнути пошук в SoundCloud всередині вузла, це вплине на будь-які функціональні можливості на SoundCloud. Допустимі значення True: `True`, `t`, `1`, Прийняті значення для False: `False`, `f`, `0`"
 
-#: plmanagednode/cog.py:857
+#: plmanagednode/cog.py:901
 msgid "{Setting} info.\n\n"
 "{info}"
 msgstr "{Setting} відомостей.\n\n"
 "{info}"
 
-#: plmanagednode/cog.py:885
+#: plmanagednode/cog.py:929
 msgid "{Setting} valid inputs are:\n\n"
 "Range between: {start} - {end}"
 msgstr "{Setting} припустимі дані:\n\n"
 "Діапазонний між: {start} - {end}"
 
-#: plmanagednode/cog.py:896
+#: plmanagednode/cog.py:940
 msgid "{Setting} valid inputs are:\n\n"
 "{setting_list}"
 msgstr "{Setting} припустимі дані:\n\n"
 "{setting_list}"
 
-#: plmanagednode/cog.py:914
+#: plmanagednode/cog.py:958
 msgid "{Setting} set to {value}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:929
+#: plmanagednode/cog.py:973
 #, docstring
 msgid "Configure Lavalink IP Rotation for ratelimits.\n\n"
 "        Run `[p]plmanaged config iprotation 1` to remove the ip rotation\n"
@@ -362,18 +379,18 @@ msgstr "Налаштуйте поворот Lavalink IP для ratelimits.\n\n"
 "        Для встановлення конфігурації `[p]керувалося iprotation 1`, щоб видалити IP-обертання\n"
 "        "
 
-#: plmanagednode/cog.py:940
+#: plmanagednode/cog.py:984
 msgid "Click the button below to configure the IP rotation for your node.\n"
 "More info at: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> and <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
 msgstr "Натисніть на кнопку нижче, щоб налаштувати поворот IP для вашого вузла.\n"
 "Більше інформації за адресою: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> та <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
 
-#: plmanagednode/cog.py:957
+#: plmanagednode/cog.py:1001
 msgid "Removing the IP rotation from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:967
+#: plmanagednode/cog.py:1011
 #, docstring
 msgid "Link a Google account to Lavalink to bypass YouTube's age restriction\n\n"
 "        Run `[p]plmanaged config googleaccount 1` to remove the linked account.\n"
@@ -382,18 +399,18 @@ msgstr "Прив'яжіть обліковий запис Google до Lavalink �
 "        запустіть `[p]профіль конфігурації з управління конфігурацією 1`, щоб видалити прив'язаний обліковий запис.\n"
 "        "
 
-#: plmanagednode/cog.py:978
+#: plmanagednode/cog.py:1022
 msgid "Click the button below to link a Google account to your node, if you have 2FA setup on this account you will need an app password instead\n"
 "More info at: <https://support.google.com/accounts/answer/185833>"
 msgstr "Натисніть на кнопку нижче, щоб прив'язати обліковий запис Google до вашого вузла, якщо у вас налаштовано 2FA на цьому акаунті, вам знадобиться пароль для додатку\n"
 "Детальніше: <https://support.google.com/accounts/answer/185833>"
 
-#: plmanagednode/cog.py:995
+#: plmanagednode/cog.py:1039
 msgid "Unlinking Google account from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:1005
+#: plmanagednode/cog.py:1049
 #, docstring
 msgid "Configure a HTTP proxy for Lavalink\n\n"
 "        Run `[p]plmanaged config httpproxy 1` to remove the proxy.\n"
@@ -402,11 +419,11 @@ msgstr "Налаштуйте HTTP-проксі для Lavalink\n\n"
 "        Запустити `[p]plmanaged config httpproxy 1`, щоб видалити проксі.\n"
 "        "
 
-#: plmanagednode/cog.py:1016
+#: plmanagednode/cog.py:1060
 msgid "Click the button below to configure a HTTP proxy for your node"
 msgstr "Натисніть на кнопку нижче, щоб налаштувати HTTP проксі для вашого вузла"
 
-#: plmanagednode/cog.py:1029
+#: plmanagednode/cog.py:1073
 msgid "Unlinking HTTP proxy from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
