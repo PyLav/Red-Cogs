@@ -89,7 +89,7 @@ class PyLavManagedNode(commands.Cog):
         self.lavalink.managed_node_controller._up_to_date = False
         upstream_data = await self.lavalink.managed_node_controller.get_ci_latest_info()
         number = upstream_data["number"]
-        if number == await self._client._config.fetch_download_id():
+        if number == await self.lavalink._config.fetch_download_id():
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("The managed Lavalink node is already up to date."),
