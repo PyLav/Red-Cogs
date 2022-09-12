@@ -79,6 +79,50 @@ class PyLavManagedNode(commands.Cog):
             ephemeral=True,
         )
 
+    @command_plmanaged.command(name="update")
+    async def command_plmanaged_update(self, context: PyLavContext, update: int = 0) -> None:
+        """Update the managed Lavalink node"""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+        self.lavalink.managed_node_controller._up_to_date = False
+        upstream_data = await self.lavalink.managed_node_controller.get_ci_latest_info()
+        number = upstream_data["number"]
+        if number == await self._client._config.fetch_download_id():
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("The managed Lavalink node is already up to date."),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+            return
+        if update == 0:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Your node is out of date, to update please run `{prefix}{command} 1`.").format(
+                        prefix=context.clean_prefix,
+                        command=self.command_plmanaged_update.qualified_name,
+                    ),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+            return
+        self.lavalink.managed_node_controller._up_to_date = False
+        await self.lavalink.managed_node_controller._download_jar(forced=True)
+
+        await context.send(
+            embed=await context.lavalink.construct_embed(
+                description=_("The managed Lavalink node has been updated to version {version}.").format(
+                    version=number,
+                ),
+                messageable=context,
+            ),
+            ephemeral=True,
+        )
+
     @command_plmanaged.command(name="restart", hidden=True)
     async def command_plmanaged_restart(self, context: PyLavContext) -> None:
         """Restart the managed Lavalink node"""
