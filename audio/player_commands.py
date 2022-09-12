@@ -6,6 +6,7 @@ from functools import partial
 from pathlib import Path
 
 import discord
+from discord.utils import utcnow
 from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
@@ -77,7 +78,10 @@ class PlayerCommands(PyLavCogMixin, ABC):
                     description=_("{track} will play after {current} finishes ({eta})").format(
                         track=await track.get_track_display_name(with_url=True),
                         current=await player.current.get_track_display_name(with_url=True),
-                        eta=f"<t:{int((datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(seconds=(player.current.duration - player.position) // 1000)).timestamp())}:R>",
+                        eta=discord.utils.format_dt(
+                            utcnow() + datetime.timedelta(milliseconds=player.current.duration - player.position),
+                            style="R",
+                        ),
                     ),
                     messageable=context,
                 ),
