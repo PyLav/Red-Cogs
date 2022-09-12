@@ -75,10 +75,19 @@ class PyLavRadio(commands.Cog):
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
+        if not stations:
+            await context.send(
+                embed=await self.lavalink.construct_embed(
+                    description=_("The Radio Browser functionality is currently unavailable"), messageable=context
+                ),
+                ephemeral=True,
+            )
+            return
+
         station: Station = await maybe_prompt_for_entry(
             cog=self,
             context=context,
-            entries=stations,
+            entries=stations,  # type: ignore
             message_str=_("Multiple stations matched, pick the one which you meant"),
             selector_text=_("Pick a station"),
         )
