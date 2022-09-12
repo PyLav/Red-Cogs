@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
 "POT-Creation-Date: 2022-09-12 17:46+0000\n"
-"PO-Revision-Date: 2022-09-12 17:47\n"
+"PO-Revision-Date: 2022-09-12 23:02\n"
 "Last-Translator: \n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -38,19 +38,19 @@ msgstr "Version"
 #: plmanagednode/cog.py:84
 #, docstring
 msgid "Update the managed Lavalink node"
-msgstr ""
+msgstr "Mettre à jour le noeud Lavalink géré"
 
 #: plmanagednode/cog.py:95
 msgid "The managed Lavalink node is already up to date."
-msgstr ""
+msgstr "Le noeud Lavalink géré est déjà à jour."
 
 #: plmanagednode/cog.py:104
 msgid "Your node is out of date, to update please run `{prefix}{command} 1`."
-msgstr ""
+msgstr "Votre nœud est obsolète, pour mettre à jour, veuillez exécuter `{prefix}{command} 1`."
 
 #: plmanagednode/cog.py:118
 msgid "The managed Lavalink node has been updated to version {version}."
-msgstr ""
+msgstr "Le noeud Lavalink géré a été mis à jour vers la version {version}."
 
 #: plmanagednode/cog.py:128
 #, docstring
@@ -59,7 +59,7 @@ msgstr "Redémarrer le nœud Lavalink géré"
 
 #: plmanagednode/cog.py:137
 msgid "The managed node is not enabled, run `{prefix}{command}` to first enable the managed node"
-msgstr ""
+msgstr "Le noeud géré n'est pas activé, exécutez `{prefix}{command}` pour d'abord activer le noeud géré"
 
 #: plmanagednode/cog.py:175
 msgid "Restarted the managed Lavalink node"
@@ -70,7 +70,9 @@ msgstr "Le noeud Lavalink géré a été redémarré"
 msgid "Set the java executable for PyLav.\n\n"
 "        Default is \"java\"\n"
 "        "
-msgstr ""
+msgstr "Définit l'exécutable java pour PyLav.\n\n"
+"        La valeur par défaut est \"java\"\n"
+"        "
 
 #: plmanagednode/cog.py:199
 msgid "{java} does not exist, run the command again with the java argument set to the correct path"
@@ -161,7 +163,8 @@ msgstr "La taille du tas doit être inférieure à {limit} en raison des limitat
 #: plmanagednode/cog.py:407
 msgid "Managed node's heap-size set to {bytes}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Taille du nœud gérée définie à {bytes}.\n\n"
+"Exécutez `{prefix}{command}` pour redémarrer le noeud géré"
 
 #: plmanagednode/cog.py:421
 #, docstring
@@ -208,11 +211,11 @@ msgstr "Changer les plugins de nœud gérés"
 #: plmanagednode/cog.py:485
 #, docstring
 msgid "Disabled one of the available plugins"
-msgstr ""
+msgstr "Désactivé un des plugins disponibles"
 
 #: plmanagednode/cog.py:501 plmanagednode/cog.py:616
 msgid "The plugin must be one of the following: {plugins}"
-msgstr ""
+msgstr "Le plugin doit être l'un des suivants : {plugins}"
 
 #: plmanagednode/cog.py:586
 msgid "Managed node's plugin {plugin} disabled.\n\n"
@@ -222,7 +225,7 @@ msgstr ""
 #: plmanagednode/cog.py:600
 #, docstring
 msgid "Enable one of the available plugins"
-msgstr ""
+msgstr "Activer l'un des plugins disponibles"
 
 #: plmanagednode/cog.py:649
 msgid "Managed node's plugin {plugin} enabled.\n\n"
@@ -242,7 +245,9 @@ msgstr "{name} a été mis à jour de {old_value} à {new_value}\n"
 msgid "Managed node's plugins updated.\n\n"
 "{updates}\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Gestion des plugins du noeud mis à jour.\n\n"
+"{updates}\n\n"
+"Exécutez `{prefix}{command}` pour redémarrer le noeud géré"
 
 #: plmanagednode/cog.py:749
 msgid "Managed node's plugins already up to date"
@@ -268,7 +273,8 @@ msgstr "désactivée"
 #: plmanagednode/cog.py:788
 msgid "Managed node's {source} source set to {state}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "La source {source} du nœud géré a été définie à {state}.\n\n"
+"Exécutez `{prefix}{command}` pour redémarrer le noeud géré"
 
 #: plmanagednode/cog.py:803
 #, docstring
@@ -368,7 +374,8 @@ msgstr "{Setting} entrées valides sont:\n\n"
 #: plmanagednode/cog.py:958
 msgid "{Setting} set to {value}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "{Setting} défini à {value}.\n\n"
+"Exécutez `{prefix}{command}` pour redémarrer le noeud géré"
 
 #: plmanagednode/cog.py:973
 #, docstring
@@ -388,7 +395,8 @@ msgstr "Cliquez sur le bouton ci-dessous pour configurer la rotation IP de votre
 #: plmanagednode/cog.py:1001
 msgid "Removing the IP rotation from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Suppression de la rotation IP de votre nœud.\n\n"
+"Exécutez `{prefix}{command}` pour redémarrer le nœud géré"
 
 #: plmanagednode/cog.py:1011
 #, docstring
@@ -408,7 +416,8 @@ msgstr "Cliquez sur le bouton ci-dessous pour lier un compte Google à votre nœ
 #: plmanagednode/cog.py:1039
 msgid "Unlinking Google account from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Dissocier le compte Google de votre nœud.\n\n"
+"Exécutez `{prefix}{command}` pour redémarrer le nœud géré"
 
 #: plmanagednode/cog.py:1049
 #, docstring
@@ -501,7 +510,8 @@ msgstr "Déclencheur de recherche invalide, doit être 0 ou 1"
 #: plmanagednode/view.py:286
 msgid "IP rotation configuration saved.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Configuration de rotation d'IP sauvegardée.\n\n"
+"Exécutez `{prefix}{command}` pour redémarrer le noeud géré"
 
 #: plmanagednode/view.py:309
 msgid "Google Account Configurator"
@@ -530,7 +540,8 @@ msgstr "Adresse e-mail invalide"
 #: plmanagednode/view.py:357
 msgid "Google account linked.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Compte Google lié.\n\n"
+"Exécutez `{prefix}{command}` pour redémarrer le noeud géré"
 
 #: plmanagednode/view.py:380
 msgid "HTTP Proxy Configurator"
@@ -575,5 +586,6 @@ msgstr "Port invalide, doit être un nombre compris entre 0 et 65536"
 #: plmanagednode/view.py:448
 msgid "HTTP proxy configuration saved.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Configuration du proxy HTTP sauvegardée.\n\n"
+"Exécutez `{prefix}{command}` pour redémarrer le noeud géré"
 

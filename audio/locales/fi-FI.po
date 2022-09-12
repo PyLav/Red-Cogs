@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
 "POT-Creation-Date: 2022-09-12 22:13+0000\n"
-"PO-Revision-Date: 2022-09-12 22:13\n"
+"PO-Revision-Date: 2022-09-12 23:02\n"
 "Last-Translator: \n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
@@ -28,15 +28,18 @@ msgid "Notifies PyLav that a Player is having issues.\n\n"
 "        If enough (50%+ of currently playing players) report issues, PyLav will automatically\n"
 "        switch to a different node or restart the current node where possible.\n"
 "        "
-msgstr ""
+msgstr "Ilmoittaa PyLaville, että pelaajalla on ongelmia.\n\n"
+"        Jos tarpeeksi (50 %+ tällä hetkellä pelaavia pelaajia) raportoi ongelmista, PyLav vaihtaa automaattisesti\n"
+"        toiseen solmuun tai käynnistää nykyisen solmun uudelleen mahdollisuuksien mukaan.\n"
+"        "
 
 #: audio/config_commands.py:48
 msgid "This server already voted recently, please try again in 10 minutes"
-msgstr ""
+msgstr "Tämä palvelin on jo äänestänyt äskettäin, yritä uudelleen 10 minuutin kuluttua"
 
 #: audio/config_commands.py:59
 msgid "Thank you for your report"
-msgstr ""
+msgstr "Kiitos mietinnöstänne"
 
 #: audio/config_commands.py:69
 #, docstring
@@ -45,15 +48,19 @@ msgid "Removes a vote for a Player being down.\n\n"
 "        switch to a different node or restart the current node where possible.\n\n"
 "        This command is only useful if you previously voted for a node to be down and it is now back up.\n"
 "        "
-msgstr ""
+msgstr "Poistaa äänen, jos pelaaja on alhaalla.\n\n"
+"        Jos tarpeeksi (50 %+ tällä hetkellä pelaavia pelaajia) raportoi ongelmista, PyLav vaihtaa automaattisesti\n"
+"        toiseen solmuun tai käynnistää nykyisen solmun uudelleen mahdollisuuksien mukaan.\n\n"
+"        Tämä komento on hyödyllinen vain, jos olet aiemmin äänestänyt solmun olevan alas ja se on nyt takaisin päälle.\n"
+"        "
 
 #: audio/config_commands.py:79
 msgid "There is no active votes for the current backend"
-msgstr ""
+msgstr "Nykyiselle taustaosalle ei ole aktiivisia ääniä"
 
 #: audio/config_commands.py:89
 msgid "Removed your report"
-msgstr ""
+msgstr "Poistettu raporttisi"
 
 #: audio/config_commands.py:97
 #, docstring
@@ -636,7 +643,7 @@ msgstr "Paikassa {position} ei ole raitaa"
 
 #: audio/player_commands.py:78
 msgid "{track} will play after {current} finishes ({eta})"
-msgstr ""
+msgstr "{track} soittaa {current} päättymisen jälkeen ({eta})"
 
 #: audio/player_commands.py:93
 msgid "{track} will start now\n"

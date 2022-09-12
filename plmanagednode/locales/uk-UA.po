@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
 "POT-Creation-Date: 2022-09-12 17:46+0000\n"
-"PO-Revision-Date: 2022-09-12 17:47\n"
+"PO-Revision-Date: 2022-09-12 23:02\n"
 "Last-Translator: \n"
 "Language-Team: Ukrainian\n"
 "MIME-Version: 1.0\n"
@@ -38,19 +38,19 @@ msgstr "Версія"
 #: plmanagednode/cog.py:84
 #, docstring
 msgid "Update the managed Lavalink node"
-msgstr ""
+msgstr "Оновити керований Лавалінковий вузол"
 
 #: plmanagednode/cog.py:95
 msgid "The managed Lavalink node is already up to date."
-msgstr ""
+msgstr "Керований вузол Lavalink вже оновлений."
 
 #: plmanagednode/cog.py:104
 msgid "Your node is out of date, to update please run `{prefix}{command} 1`."
-msgstr ""
+msgstr "Ваш вузол застарів, оновлюйте, будь ласка запустіть `{prefix}{command} 1`."
 
 #: plmanagednode/cog.py:118
 msgid "The managed Lavalink node has been updated to version {version}."
-msgstr ""
+msgstr "Керований вузол Lavalink був оновлений до версії {version}."
 
 #: plmanagednode/cog.py:128
 #, docstring
@@ -59,7 +59,7 @@ msgstr "Перезапустити керований вузол Lavalink"
 
 #: plmanagednode/cog.py:137
 msgid "The managed node is not enabled, run `{prefix}{command}` to first enable the managed node"
-msgstr ""
+msgstr "Керований вузол не ввімкнено, запустіть `{prefix}{command}`, щоб спочатку включити керований вузол"
 
 #: plmanagednode/cog.py:175
 msgid "Restarted the managed Lavalink node"
@@ -70,7 +70,9 @@ msgstr "Перезапущено керований вузол Lavalink"
 msgid "Set the java executable for PyLav.\n\n"
 "        Default is \"java\"\n"
 "        "
-msgstr ""
+msgstr "Встановіть виконавчий файл Java для PyLav.\n\n"
+"        За замовчуванням \"java\"\n"
+"        "
 
 #: plmanagednode/cog.py:199
 msgid "{java} does not exist, run the command again with the java argument set to the correct path"
@@ -87,7 +89,8 @@ msgstr "{java} не є виконуваним файлом, запустити �
 #: plmanagednode/cog.py:247
 msgid "PyLav's java executable has been set to {java}\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Виконуваний файл pyLava був встановлений на {java}\n\n"
+"Запустіть `{prefix}{command}` щоб перезапустити керований вузол"
 
 #: plmanagednode/cog.py:261
 #, docstring
@@ -101,12 +104,14 @@ msgstr "Увімкнути/вимкнути керований вузол.\n\n"
 #: plmanagednode/cog.py:276
 msgid "PyLav's managed node has been enabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "сконфігурований вузол PyLava увімкнено.\n\n"
+"Запустіть ` `{prefix}{command}для перезавантаження керованого вузла"
 
 #: plmanagednode/cog.py:286
 msgid "PyLav's managed node has been disabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Дистанційний вузол PyLava вимкнено.\n\n"
+"Запустіть `{prefix}{command}для перезавантаження керованого вузла"
 
 #: plmanagednode/cog.py:296
 #, docstring
@@ -120,12 +125,14 @@ msgstr "Увімкнути/вимкнути автоматичні оновле�
 #: plmanagednode/cog.py:312
 msgid "PyLav's managed node auto updates have been enabled\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Рекомендується автоматичне оновлення в PyLav's вузла\n\n"
+"Запустіть `{prefix}{command}`, щоб перезапустити керований вузол"
 
 #: plmanagednode/cog.py:323
 msgid "PyLav's managed node auto updates have been disabled\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Керувати авто-оновлення PyLav's вузла було вимкнуто\n\n"
+"Запустіть `{prefix}{command}`, щоб перезапустити керований вузол"
 
 #: plmanagednode/cog.py:334
 #, docstring
@@ -161,7 +168,8 @@ msgstr "Розмір темпу має бути менше {limit} через с
 #: plmanagednode/cog.py:407
 msgid "Managed node's heap-size set to {bytes}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Розмір керованого вузла для {bytes}.\n\n"
+"Запустіть `{prefix}{command}`, щоб перезапустити керований вузол"
 
 #: plmanagednode/cog.py:421
 #, docstring
@@ -176,7 +184,8 @@ msgstr "Встановити керований вузол вузла"
 #: plmanagednode/cog.py:436
 msgid "Managed node's host set to {host}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Вузол з керованим вузлом встановлено на {host}.\n\n"
+"Запустіть `{prefix}{command}` щоб перезавантажити керований вузол"
 
 #: plmanagednode/cog.py:450
 #, docstring
@@ -198,7 +207,8 @@ msgstr "Порт має бути від 1024 до 49151"
 #: plmanagednode/cog.py:471
 msgid "Managed node's port set to {port}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Порт керованого вузла встановлено на {port}.\n\n"
+"Запустити `{prefix}{command}` для перезавантаження керованого вузла"
 
 #: plmanagednode/cog.py:481
 #, docstring
@@ -208,26 +218,28 @@ msgstr "Змінити керованих плагінів вузла"
 #: plmanagednode/cog.py:485
 #, docstring
 msgid "Disabled one of the available plugins"
-msgstr ""
+msgstr "Вимкнено один з доступних плагінів"
 
 #: plmanagednode/cog.py:501 plmanagednode/cog.py:616
 msgid "The plugin must be one of the following: {plugins}"
-msgstr ""
+msgstr "Модуль має бути одним з наступних: {plugins}"
 
 #: plmanagednode/cog.py:586
 msgid "Managed node's plugin {plugin} disabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Плагін керованого вузла {plugin} відключений.\n\n"
+"Запустіть `{prefix}{command}`, щоб перезапустити керований вузол"
 
 #: plmanagednode/cog.py:600
 #, docstring
 msgid "Enable one of the available plugins"
-msgstr ""
+msgstr "Увімкнути один з доступних плагінів"
 
 #: plmanagednode/cog.py:649
 msgid "Managed node's plugin {plugin} enabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Модуль керованого вузла {plugin} включений.\n\n"
+"Запустіть `{prefix}{command}`, щоб перезапустити керований вузол"
 
 #: plmanagednode/cog.py:663
 #, docstring
@@ -242,7 +254,9 @@ msgstr "{name} був оновлений з {old_value} до {new_value}\n"
 msgid "Managed node's plugins updated.\n\n"
 "{updates}\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Плагіни керованого вузла оновлено.\n\n"
+"{updates}\n\n"
+"Запустити `{prefix}{command}` щоб перезапустити керований вузол"
 
 #: plmanagednode/cog.py:749
 msgid "Managed node's plugins already up to date"
@@ -268,7 +282,8 @@ msgstr "вимкнуто"
 #: plmanagednode/cog.py:788
 msgid "Managed node's {source} source set to {state}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Джерело керованого вузла {source} встановлено на {state}.\n\n"
+"Запустіть `{prefix}{command}` щоб перезапустити керований вузол"
 
 #: plmanagednode/cog.py:803
 #, docstring
@@ -368,7 +383,8 @@ msgstr "{Setting} припустимі дані:\n\n"
 #: plmanagednode/cog.py:958
 msgid "{Setting} set to {value}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "{Setting} встановлено на {value}.\n\n"
+"Запустити `{prefix}{command}` , щоб перезавантажити керований вузол"
 
 #: plmanagednode/cog.py:973
 #, docstring
@@ -388,7 +404,8 @@ msgstr "Натисніть на кнопку нижче, щоб налаштув
 #: plmanagednode/cog.py:1001
 msgid "Removing the IP rotation from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Видалення IP-обертання з вашого вузла.\n\n"
+"Запустіть `{prefix}{command}, щоб перезапустити керований вузол"
 
 #: plmanagednode/cog.py:1011
 #, docstring
@@ -408,7 +425,8 @@ msgstr "Натисніть на кнопку нижче, щоб прив'яза�
 #: plmanagednode/cog.py:1039
 msgid "Unlinking Google account from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Від'єднання облікового запису Google з вашого вузла.\n\n"
+"Запустіть `{prefix}{command}щоб перезапустити керований вузол"
 
 #: plmanagednode/cog.py:1049
 #, docstring
@@ -426,7 +444,8 @@ msgstr "Натисніть на кнопку нижче, щоб налаштув
 #: plmanagednode/cog.py:1073
 msgid "Unlinking HTTP proxy from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Від'єднання HTTP-проксі від вашого вузла.\n\n"
+"Запустіть `{prefix}{command}щоб перезапустити керований вузол"
 
 #: plmanagednode/view.py:37 plmanagednode/view.py:64 plmanagednode/view.py:97
 #: plmanagednode/view.py:176 plmanagednode/view.py:336
@@ -501,7 +520,8 @@ msgstr "Помилковий пошуковий тригер, має бути 0 
 #: plmanagednode/view.py:286
 msgid "IP rotation configuration saved.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Конфігурацію обертання IP-адреси збережено.\n\n"
+"Запустіть `{prefix}{command}` для перезавантаження керованого вузла"
 
 #: plmanagednode/view.py:309
 msgid "Google Account Configurator"
@@ -530,7 +550,8 @@ msgstr "Некоректна адреса електронної пошти"
 #: plmanagednode/view.py:357
 msgid "Google account linked.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Під’єднано обліковий запис Google.\n\n"
+"Запустіть `{prefix}{command}`, щоб перезапустити керований вузол"
 
 #: plmanagednode/view.py:380
 msgid "HTTP Proxy Configurator"
@@ -575,5 +596,6 @@ msgstr "Некоректний порт. Має бути число від 0 д�
 #: plmanagednode/view.py:448
 msgid "HTTP proxy configuration saved.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Конфігурація HTTP проксі-сервера збережена.\n\n"
+"Запустіть `{prefix}{command}` щоб перезапустити керований вузол"
 
