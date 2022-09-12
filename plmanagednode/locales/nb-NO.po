@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
 "POT-Creation-Date: 2022-09-12 17:46+0000\n"
-"PO-Revision-Date: 2022-09-12 17:47\n"
+"PO-Revision-Date: 2022-09-12 23:02\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian\n"
 "MIME-Version: 1.0\n"
@@ -38,19 +38,19 @@ msgstr "Versjon"
 #: plmanagednode/cog.py:84
 #, docstring
 msgid "Update the managed Lavalink node"
-msgstr ""
+msgstr "Oppdater noden med behandlet Lavalink"
 
 #: plmanagednode/cog.py:95
 msgid "The managed Lavalink node is already up to date."
-msgstr ""
+msgstr "Den administrerte Lavalink noden er allerede oppdatert."
 
 #: plmanagednode/cog.py:104
 msgid "Your node is out of date, to update please run `{prefix}{command} 1`."
-msgstr ""
+msgstr "Din node er utdatert, så du kan oppdatere vennligst kjør `{prefix}{command} 1`."
 
 #: plmanagednode/cog.py:118
 msgid "The managed Lavalink node has been updated to version {version}."
-msgstr ""
+msgstr "Noden håndterte Lavalink har blitt oppdatert til versjon {version}."
 
 #: plmanagednode/cog.py:128
 #, docstring
@@ -59,7 +59,7 @@ msgstr "Start noden med den gjennomsiktige Lavalink på nytt"
 
 #: plmanagednode/cog.py:137
 msgid "The managed node is not enabled, run `{prefix}{command}` to first enable the managed node"
-msgstr ""
+msgstr "Den administrerte noden er ikke aktivert, kjør `{prefix}{command}for å først aktivere den administrerte noden"
 
 #: plmanagednode/cog.py:175
 msgid "Restarted the managed Lavalink node"
@@ -70,7 +70,9 @@ msgstr "Gjenopprettet noden med behandlet Lavalink"
 msgid "Set the java executable for PyLav.\n\n"
 "        Default is \"java\"\n"
 "        "
-msgstr ""
+msgstr "Angi java kjørbar for PyLav.\n\n"
+"        Standard er \"java\"\n"
+"        "
 
 #: plmanagednode/cog.py:199
 msgid "{java} does not exist, run the command again with the java argument set to the correct path"
@@ -87,7 +89,8 @@ msgstr "{java} er ikke en kjørbar, kjør kommandoen igjen med javaargumentet sa
 #: plmanagednode/cog.py:247
 msgid "PyLav's java executable has been set to {java}\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "PyLav's java kjørbare har blitt satt til {java}\n\n"
+"Kjør `{prefix}{command}for å starte den administrerte noden på nytt"
 
 #: plmanagednode/cog.py:261
 #, docstring
@@ -101,12 +104,14 @@ msgstr "Slå av/på behandlet node på/av.\n\n"
 #: plmanagednode/cog.py:276
 msgid "PyLav's managed node has been enabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "PyLav's administrerte node er aktivert.\n\n"
+"Kjør `{prefix}{command}for å starte den administrerte noden på nytt"
 
 #: plmanagednode/cog.py:286
 msgid "PyLav's managed node has been disabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "PyLav's administrerte node har blitt deaktivert.\n\n"
+"Kjør `{prefix}{command}for å starte den administrerte noden på nytt"
 
 #: plmanagednode/cog.py:296
 #, docstring
@@ -120,12 +125,14 @@ msgstr "Slå av/på den administrerte node automatisk oppdateringer på/av.\n\n"
 #: plmanagednode/cog.py:312
 msgid "PyLav's managed node auto updates have been enabled\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "PyLav's administrerte node autooppdateringer har blitt aktivert\n\n"
+"Run `{prefix}{command}for å starte den administrerte noden på nytt"
 
 #: plmanagednode/cog.py:323
 msgid "PyLav's managed node auto updates have been disabled\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "PyLav's administrerte node autooppdateringer har blitt deaktivert\n\n"
+"Run `{prefix}{command}for å restarte den administrerte noden"
 
 #: plmanagednode/cog.py:334
 #, docstring
@@ -161,7 +168,8 @@ msgstr "Størrelsen må være mindre enn {limit} på grunn av systembegrensninge
 #: plmanagednode/cog.py:407
 msgid "Managed node's heap-size set to {bytes}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Administrerte nodens haug størrelse satt til {bytes}.\n\n"
+"Kjør `{prefix}{command}` for å starte den administrerte noden på nytt"
 
 #: plmanagednode/cog.py:421
 #, docstring
@@ -176,7 +184,8 @@ msgstr "Angi den administrerte node-verten"
 #: plmanagednode/cog.py:436
 msgid "Managed node's host set to {host}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Administrerte nodens verts-sett til {host}.\n\n"
+"Kjør `{prefix}{command}` for å restarte den administrerte noden"
 
 #: plmanagednode/cog.py:450
 #, docstring
@@ -198,7 +207,8 @@ msgstr "Havnen må være mellom 1024 og 49151"
 #: plmanagednode/cog.py:471
 msgid "Managed node's port set to {port}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Administrerte nodens port satt til {port}.\n\n"
+"Kjør `{prefix}{command}` for å starte på nytt den administrerte noden"
 
 #: plmanagednode/cog.py:481
 #, docstring
@@ -208,26 +218,28 @@ msgstr "Endre de administrerte node-programtilleggene"
 #: plmanagednode/cog.py:485
 #, docstring
 msgid "Disabled one of the available plugins"
-msgstr ""
+msgstr "Deaktivert en av de tilgjengelige tilleggene"
 
 #: plmanagednode/cog.py:501 plmanagednode/cog.py:616
 msgid "The plugin must be one of the following: {plugins}"
-msgstr ""
+msgstr "Plugin må være en av følgende: {plugins}"
 
 #: plmanagednode/cog.py:586
 msgid "Managed node's plugin {plugin} disabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Administrert nodens plugin {plugin} deaktivert.\n\n"
+"Kjør `{prefix}{command}` for å starte den administrerte noden på nytt"
 
 #: plmanagednode/cog.py:600
 #, docstring
 msgid "Enable one of the available plugins"
-msgstr ""
+msgstr "Aktiver en av de tilgjengelige tilleggene"
 
 #: plmanagednode/cog.py:649
 msgid "Managed node's plugin {plugin} enabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Administrert nodens plugin {plugin} aktivert.\n\n"
+"Kjør `{prefix}{command}` for å starte den administrerte noden på nytt"
 
 #: plmanagednode/cog.py:663
 #, docstring
@@ -242,7 +254,9 @@ msgstr "{name} ble oppdatert fra {old_value} til {new_value}\n"
 msgid "Managed node's plugins updated.\n\n"
 "{updates}\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Administrerte nodens plugins oppdatert.\n\n"
+"{updates}\n\n"
+"Kjør `{prefix}{command}` for å restarte den administrerte noden"
 
 #: plmanagednode/cog.py:749
 msgid "Managed node's plugins already up to date"
@@ -268,7 +282,8 @@ msgstr "deaktivert"
 #: plmanagednode/cog.py:788
 msgid "Managed node's {source} source set to {state}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Administrert node {source} kilde satt til {state}.\n\n"
+"Kjør `{prefix}{command}` for å restarte den administrerte noden"
 
 #: plmanagednode/cog.py:803
 #, docstring
@@ -368,7 +383,8 @@ msgstr "{Setting} gyldige data er:\n\n"
 #: plmanagednode/cog.py:958
 msgid "{Setting} set to {value}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "{Setting} satt til {value}.\n\n"
+"Kjør `{prefix}{command}` for å restarte den administrerte noden"
 
 #: plmanagednode/cog.py:973
 #, docstring
@@ -388,7 +404,8 @@ msgstr "Klikk på knappen under for å konfigurere IP rotasjon for din node.\n"
 #: plmanagednode/cog.py:1001
 msgid "Removing the IP rotation from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Fjerner IP rotasjon fra noden.\n\n"
+"Kjør `{prefix}{command}` for å restarte den administrerte noden"
 
 #: plmanagednode/cog.py:1011
 #, docstring
@@ -408,7 +425,8 @@ msgstr "Klikk på knappen nedenfor for å koble en Google-konto til din EK-grupp
 #: plmanagednode/cog.py:1039
 msgid "Unlinking Google account from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Koble fra Google-kontoen din fra noden.\n\n"
+"Kjør `{prefix}{command}` for å starte den administrerte noden på nytt"
 
 #: plmanagednode/cog.py:1049
 #, docstring
@@ -426,7 +444,8 @@ msgstr "Klikk på knappen nedenfor for å konfigurere en HTTP-proxy for noden di
 #: plmanagednode/cog.py:1073
 msgid "Unlinking HTTP proxy from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Fjern HTTP-proxy fra noden.\n\n"
+"Kjør `{prefix}{command}for å starte den administrerte noden på nytt"
 
 #: plmanagednode/view.py:37 plmanagednode/view.py:64 plmanagednode/view.py:97
 #: plmanagednode/view.py:176 plmanagednode/view.py:336
@@ -501,7 +520,8 @@ msgstr "Ugyldig søkeutløser, må være 0 eller 1"
 #: plmanagednode/view.py:286
 msgid "IP rotation configuration saved.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "IP rotasjonskonfigurasjon lagret.\n\n"
+"Kjør `{prefix}{command}` for å starte den administrerte noden på nytt"
 
 #: plmanagednode/view.py:309
 msgid "Google Account Configurator"
@@ -530,7 +550,8 @@ msgstr "Ugyldig e-postadresse"
 #: plmanagednode/view.py:357
 msgid "Google account linked.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Google konto koblet.\n\n"
+"Kjør `{prefix}{command}` for å starte den administrerte noden på nytt"
 
 #: plmanagednode/view.py:380
 msgid "HTTP Proxy Configurator"
@@ -575,5 +596,6 @@ msgstr "Ugyldig port, må være et tall mellom 0 og 65536"
 #: plmanagednode/view.py:448
 msgid "HTTP proxy configuration saved.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "HTTP-proxy-konfigurasjonen lagret.\n\n"
+"Kjør `{prefix}{command}` for å starte den administrerte noden på nytt"
 

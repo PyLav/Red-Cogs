@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
 "POT-Creation-Date: 2022-09-12 17:46+0000\n"
-"PO-Revision-Date: 2022-09-12 17:47\n"
+"PO-Revision-Date: 2022-09-12 23:02\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -38,19 +38,19 @@ msgstr "版本"
 #: plmanagednode/cog.py:84
 #, docstring
 msgid "Update the managed Lavalink node"
-msgstr ""
+msgstr "更新 Lavalink 节点"
 
 #: plmanagednode/cog.py:95
 msgid "The managed Lavalink node is already up to date."
-msgstr ""
+msgstr "管理的 Lavalink 节点已经是最新的。"
 
 #: plmanagednode/cog.py:104
 msgid "Your node is out of date, to update please run `{prefix}{command} 1`."
-msgstr ""
+msgstr "您的节点已过时，请运行`{prefix}{command} 1`。"
 
 #: plmanagednode/cog.py:118
 msgid "The managed Lavalink node has been updated to version {version}."
-msgstr ""
+msgstr "管理的 Lavalink 节点已更新到版本 {version}。"
 
 #: plmanagednode/cog.py:128
 #, docstring
@@ -59,7 +59,7 @@ msgstr "重启管理下的拉瓦林克节点"
 
 #: plmanagednode/cog.py:137
 msgid "The managed node is not enabled, run `{prefix}{command}` to first enable the managed node"
-msgstr ""
+msgstr "管理节点未启用，运行 `{prefix}{command}` 来首先启用管理节点."
 
 #: plmanagednode/cog.py:175
 msgid "Restarted the managed Lavalink node"
@@ -70,7 +70,9 @@ msgstr "重启了管理下的拉瓦链接节点"
 msgid "Set the java executable for PyLav.\n\n"
 "        Default is \"java\"\n"
 "        "
-msgstr ""
+msgstr "为 PyLava 设置java 可执行文件。\n\n"
+"        默认是 \"java\"\n"
+"        "
 
 #: plmanagednode/cog.py:199
 msgid "{java} does not exist, run the command again with the java argument set to the correct path"
@@ -87,7 +89,8 @@ msgstr "{java} 不是一个可执行程序，使用java参数设置为正确的�
 #: plmanagednode/cog.py:247
 msgid "PyLav's java executable has been set to {java}\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "PyLava 可执行文件已设置为 {java}\n\n"
+"运行{prefix}{command}` 以重新启动管理节点"
 
 #: plmanagednode/cog.py:261
 #, docstring
@@ -101,12 +104,14 @@ msgstr "切换管理节点开关。\n\n"
 #: plmanagednode/cog.py:276
 msgid "PyLav's managed node has been enabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "PyLav的管理节点已经启用。\n\n"
+"运行 `{prefix}{command}` 来重启管理节点."
 
 #: plmanagednode/cog.py:286
 msgid "PyLav's managed node has been disabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "PyLav的管理节点已被禁用。\n\n"
+"运行 `{prefix}{command}` 来重新启动管理的节点"
 
 #: plmanagednode/cog.py:296
 #, docstring
@@ -120,12 +125,14 @@ msgstr "切换管理节点自动更新开关。\n\n"
 #: plmanagednode/cog.py:312
 msgid "PyLav's managed node auto updates have been enabled\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "PyLav的管理节点自动更新已启用\n\n"
+"运行`{prefix}{command}以重启管理节点."
 
 #: plmanagednode/cog.py:323
 msgid "PyLav's managed node auto updates have been disabled\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "PyLav的管理节点自动更新已被禁用\n\n"
+"运行`{prefix}{command}以重启管理节点。"
 
 #: plmanagednode/cog.py:334
 #, docstring
@@ -161,7 +168,8 @@ msgstr "由于您的系统限制，加热大小必须小于 {limit}"
 #: plmanagednode/cog.py:407
 msgid "Managed node's heap-size set to {bytes}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "已管理节点的十六进制大小已设置为 {bytes}。\n\n"
+"运行{prefix}{command}` 来重新启动受管理的节点"
 
 #: plmanagednode/cog.py:421
 #, docstring
@@ -176,7 +184,8 @@ msgstr "设置管理的节点主机"
 #: plmanagednode/cog.py:436
 msgid "Managed node's host set to {host}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "管理节点主机设置为 {host}。\n\n"
+"运行{prefix}{command}` 以重启管理节点。"
 
 #: plmanagednode/cog.py:450
 #, docstring
@@ -198,7 +207,8 @@ msgstr "端口必须介于 1024 和 49151 之间"
 #: plmanagednode/cog.py:471
 msgid "Managed node's port set to {port}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "管理的节点端口设置为 {port}。\n\n"
+"运行{prefix}{command}` 以重新启动管理的节点"
 
 #: plmanagednode/cog.py:481
 #, docstring
@@ -208,26 +218,28 @@ msgstr "更改管理的节点插件"
 #: plmanagednode/cog.py:485
 #, docstring
 msgid "Disabled one of the available plugins"
-msgstr ""
+msgstr "禁用可用插件中的一个"
 
 #: plmanagednode/cog.py:501 plmanagednode/cog.py:616
 msgid "The plugin must be one of the following: {plugins}"
-msgstr ""
+msgstr "插件必须是以下插件之一: {plugins}"
 
 #: plmanagednode/cog.py:586
 msgid "Managed node's plugin {plugin} disabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "管理的节点插件 {plugin} 已禁用。\n\n"
+"运行 `{prefix}{command}` 以重新启动管理下的节点"
 
 #: plmanagednode/cog.py:600
 #, docstring
 msgid "Enable one of the available plugins"
-msgstr ""
+msgstr "启用可用的插件"
 
 #: plmanagednode/cog.py:649
 msgid "Managed node's plugin {plugin} enabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "管理节点插件 {plugin} 已启用。\n\n"
+"运行 `{prefix}{command}` 以重新启动管理节点。"
 
 #: plmanagednode/cog.py:663
 #, docstring
@@ -242,7 +254,9 @@ msgstr "{name} 从 {old_value} 更新到 {new_value}\n"
 msgid "Managed node's plugins updated.\n\n"
 "{updates}\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "管理节点插件已更新。\n\n"
+"{updates}\n\n"
+"运行`{prefix}{command}` 以重启管理节点的插件"
 
 #: plmanagednode/cog.py:749
 msgid "Managed node's plugins already up to date"
@@ -268,7 +282,8 @@ msgstr "已禁用"
 #: plmanagednode/cog.py:788
 msgid "Managed node's {source} source set to {state}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "管理节点的 {source} 源已设置为 {state}。\n\n"
+"运行`{prefix}{command}` 以重启管理节点的节点"
 
 #: plmanagednode/cog.py:803
 #, docstring
@@ -368,7 +383,8 @@ msgstr "{Setting} 有效的输入为：\n\n"
 #: plmanagednode/cog.py:958
 msgid "{Setting} set to {value}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "{Setting} 设置为 {value}。\n\n"
+"运行`{prefix}{command}` 以重启管理节点"
 
 #: plmanagednode/cog.py:973
 #, docstring
@@ -388,7 +404,8 @@ msgstr "点击下面的按钮为您的节点配置IP旋转。\n"
 #: plmanagednode/cog.py:1001
 msgid "Removing the IP rotation from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "从节点移除IP旋转。\n\n"
+"运行 `{prefix}{command}` 以重新启动管理节点"
 
 #: plmanagednode/cog.py:1011
 #, docstring
@@ -408,7 +425,8 @@ msgstr "点击下面的按钮将谷歌帐户链接到您的节点， 如果您�
 #: plmanagednode/cog.py:1039
 msgid "Unlinking Google account from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "将谷歌帐户从您的节点中取消链接。\n\n"
+"运行 `{prefix}{command}` 以重新启动管理的节点"
 
 #: plmanagednode/cog.py:1049
 #, docstring
@@ -426,7 +444,8 @@ msgstr "点击下面的按钮为您的节点配置一个 HTTP 代理"
 #: plmanagednode/cog.py:1073
 msgid "Unlinking HTTP proxy from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "将 HTTP 代理从您的节点中取消链接。\n\n"
+"运行 `{prefix}{command}` 以重新启动管理的节点"
 
 #: plmanagednode/view.py:37 plmanagednode/view.py:64 plmanagednode/view.py:97
 #: plmanagednode/view.py:176 plmanagednode/view.py:336
@@ -501,7 +520,8 @@ msgstr "无效的搜索触发器，必须是 0 或 1"
 #: plmanagednode/view.py:286
 msgid "IP rotation configuration saved.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "IP旋转配置已保存。\n\n"
+"运行 `{prefix}{command}` 以重启管理节点"
 
 #: plmanagednode/view.py:309
 msgid "Google Account Configurator"
@@ -530,7 +550,8 @@ msgstr "无效的电子邮件地址"
 #: plmanagednode/view.py:357
 msgid "Google account linked.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "谷歌帐户链接。\n\n"
+"运行 `{prefix}{command}` 以重新启动管理节点"
 
 #: plmanagednode/view.py:380
 msgid "HTTP Proxy Configurator"
@@ -575,5 +596,6 @@ msgstr "无效的端口，必须是 0 和 65536 之间的数字"
 #: plmanagednode/view.py:448
 msgid "HTTP proxy configuration saved.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "HTTP 代理配置已保存。\n\n"
+"运行 `{prefix}{command}` 以重新启动管理节点"
 

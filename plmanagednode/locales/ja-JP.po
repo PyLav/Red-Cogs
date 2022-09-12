@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
 "POT-Creation-Date: 2022-09-12 17:46+0000\n"
-"PO-Revision-Date: 2022-09-12 17:47\n"
+"PO-Revision-Date: 2022-09-12 23:02\n"
 "Last-Translator: \n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -38,19 +38,19 @@ msgstr "バージョン"
 #: plmanagednode/cog.py:84
 #, docstring
 msgid "Update the managed Lavalink node"
-msgstr ""
+msgstr "管理 Lavalink ノードを更新"
 
 #: plmanagednode/cog.py:95
 msgid "The managed Lavalink node is already up to date."
-msgstr ""
+msgstr "管理対象の Lavalink ノードは既に最新です。"
 
 #: plmanagednode/cog.py:104
 msgid "Your node is out of date, to update please run `{prefix}{command} 1`."
-msgstr ""
+msgstr "ノードが古くなっています。更新するには`{prefix}{command} 1`を実行してください。"
 
 #: plmanagednode/cog.py:118
 msgid "The managed Lavalink node has been updated to version {version}."
-msgstr ""
+msgstr "管理対象の Lavalink ノードをバージョン {version} に更新しました。"
 
 #: plmanagednode/cog.py:128
 #, docstring
@@ -59,7 +59,7 @@ msgstr "管理 Lavalink ノードを再起動します"
 
 #: plmanagednode/cog.py:137
 msgid "The managed node is not enabled, run `{prefix}{command}` to first enable the managed node"
-msgstr ""
+msgstr "管理ノードが有効になっていません。管理ノードを有効にするには`{prefix}{command}`を実行してください。"
 
 #: plmanagednode/cog.py:175
 msgid "Restarted the managed Lavalink node"
@@ -70,7 +70,9 @@ msgstr "管理されているLavalinkノードを再起動しました"
 msgid "Set the java executable for PyLav.\n\n"
 "        Default is \"java\"\n"
 "        "
-msgstr ""
+msgstr "PyLavのJava実行ファイルを設定します。\n\n"
+"        デフォルトは\"java\"\n"
+"        "
 
 #: plmanagednode/cog.py:199
 msgid "{java} does not exist, run the command again with the java argument set to the correct path"
@@ -87,7 +89,8 @@ msgstr "{java} は実行可能ファイルではありません。正しいパ�
 #: plmanagednode/cog.py:247
 msgid "PyLav's java executable has been set to {java}\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "PyLavのJava実行ファイルが {java}に設定されました\n\n"
+"Run `{prefix}{command}`管理ノードを再起動します"
 
 #: plmanagednode/cog.py:261
 #, docstring
@@ -101,12 +104,14 @@ msgstr "管理ノードのオン/オフを切り替えます。\n\n"
 #: plmanagednode/cog.py:276
 msgid "PyLav's managed node has been enabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "PyLavの管理ノードが有効になりました。\n\n"
+"{prefix}{command}`を実行して管理ノードを再起動します。"
 
 #: plmanagednode/cog.py:286
 msgid "PyLav's managed node has been disabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "PyLavの管理ノードは無効になっています。\n\n"
+"{prefix}{command}を実行して管理ノードを再起動してください"
 
 #: plmanagednode/cog.py:296
 #, docstring
@@ -120,12 +125,14 @@ msgstr "管理ノードの自動更新のオン/オフを切り替えます。\n
 #: plmanagednode/cog.py:312
 msgid "PyLav's managed node auto updates have been enabled\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "PyLavの管理ノードの自動更新が有効になりました\n\n"
+"Run `{prefix}{command}`が管理ノードを再起動します"
 
 #: plmanagednode/cog.py:323
 msgid "PyLav's managed node auto updates have been disabled\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "PyLavの管理ノードの自動更新が無効になりました\n\n"
+"Run `{prefix}{command}`は管理ノードを再起動します"
 
 #: plmanagednode/cog.py:334
 #, docstring
@@ -156,7 +163,8 @@ msgstr "システムの制限によりヒープサイズは {limit} より小さ
 #: plmanagednode/cog.py:407
 msgid "Managed node's heap-size set to {bytes}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "マネージドノードのヒープサイズを {bytes}に設定しました。\n\n"
+"`{prefix}{command}`を実行して管理ノードを再起動します。"
 
 #: plmanagednode/cog.py:421
 #, docstring
@@ -171,7 +179,8 @@ msgstr "管理ノードホストを設定"
 #: plmanagednode/cog.py:436
 msgid "Managed node's host set to {host}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "マネージドノードのホストを {host}に設定しました。\n\n"
+"`{prefix}{command}`を実行して管理ノードを再起動します。"
 
 #: plmanagednode/cog.py:450
 #, docstring
@@ -189,7 +198,8 @@ msgstr "ポートは 1024 から 49151 の間でなければなりません"
 #: plmanagednode/cog.py:471
 msgid "Managed node's port set to {port}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "管理されたノードのポートを {port}に設定しました。\n\n"
+"`{prefix}{command}`を実行して管理されたノードを再起動します。"
 
 #: plmanagednode/cog.py:481
 #, docstring
@@ -199,26 +209,28 @@ msgstr "管理ノードプラグインを変更する"
 #: plmanagednode/cog.py:485
 #, docstring
 msgid "Disabled one of the available plugins"
-msgstr ""
+msgstr "利用可能なプラグインを無効にしました"
 
 #: plmanagednode/cog.py:501 plmanagednode/cog.py:616
 msgid "The plugin must be one of the following: {plugins}"
-msgstr ""
+msgstr "プラグインは以下のいずれかでなければなりません: {plugins}"
 
 #: plmanagednode/cog.py:586
 msgid "Managed node's plugin {plugin} disabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "管理されたノードのプラグイン {plugin} が無効になっています。\n\n"
+"管理 ノードを再起動するには、 `{prefix}{command}を実行してください。"
 
 #: plmanagednode/cog.py:600
 #, docstring
 msgid "Enable one of the available plugins"
-msgstr ""
+msgstr "利用可能なプラグインを有効にする"
 
 #: plmanagednode/cog.py:649
 msgid "Managed node's plugin {plugin} enabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "管理されたノードのプラグイン {plugin} が有効になりました。\n\n"
+"管理 ノードを再起動するには、 `{prefix}{command}` を実行してください。"
 
 #: plmanagednode/cog.py:663
 #, docstring
@@ -233,7 +245,9 @@ msgstr "{name} が {old_value} から {new_value}に更新されました\n"
 msgid "Managed node's plugins updated.\n\n"
 "{updates}\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Managed nodeのプラグインを更新しました。\n\n"
+"{updates}\n\n"
+"Run `{prefix}{command}` を管理ノードを再起動します。"
 
 #: plmanagednode/cog.py:749
 msgid "Managed node's plugins already up to date"
@@ -259,7 +273,8 @@ msgstr "無効"
 #: plmanagednode/cog.py:788
 msgid "Managed node's {source} source set to {state}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "マネージドノードの {source} ソースを {state}に設定しました。\n\n"
+"Run `{prefix}{command}` を管理ノードを再起動します。"
 
 #: plmanagednode/cog.py:803
 #, docstring
@@ -346,7 +361,8 @@ msgstr "{Setting} の有効な入力は次のとおりです:\n\n"
 #: plmanagednode/cog.py:958
 msgid "{Setting} set to {value}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "{Setting} を {value}に設定しました。\n\n"
+"実行 `{prefix}{command}` を管理ノードを再起動します。"
 
 #: plmanagednode/cog.py:973
 #, docstring
@@ -366,7 +382,8 @@ msgstr "下のボタンをクリックして、ノードの IP ローテーシ�
 #: plmanagednode/cog.py:1001
 msgid "Removing the IP rotation from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "ノードからIPの回転を削除します。\n\n"
+"`{prefix}{command}`を実行して管理ノードを再起動します。"
 
 #: plmanagednode/cog.py:1011
 #, docstring
@@ -386,7 +403,8 @@ msgstr "下のボタンをクリックして、Googleアカウントをあなた
 #: plmanagednode/cog.py:1039
 msgid "Unlinking Google account from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "ノードからGoogleアカウントのリンクを解除します。\n\n"
+"`{prefix}{command}`を実行して管理ノードを再起動します。"
 
 #: plmanagednode/cog.py:1049
 #, docstring
@@ -404,7 +422,8 @@ msgstr "ノードの HTTP プロキシを構成するには、下のボタンを
 #: plmanagednode/cog.py:1073
 msgid "Unlinking HTTP proxy from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "ノードからHTTPプロキシのリンクを解除します。\n\n"
+"`{prefix}{command}` を実行して管理ノードを再起動します。"
 
 #: plmanagednode/view.py:37 plmanagednode/view.py:64 plmanagednode/view.py:97
 #: plmanagednode/view.py:176 plmanagednode/view.py:336
@@ -479,7 +498,8 @@ msgstr "無効な検索トリガーです。0または1でなければなりま�
 #: plmanagednode/view.py:286
 msgid "IP rotation configuration saved.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "IPローテーション設定が保存されました。\n\n"
+"`{prefix}{command}`を実行して管理ノードを再起動します。"
 
 #: plmanagednode/view.py:309
 msgid "Google Account Configurator"
@@ -508,7 +528,8 @@ msgstr "無効なメールアドレス"
 #: plmanagednode/view.py:357
 msgid "Google account linked.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Googleアカウントがリンクされました。\n\n"
+"`{prefix}{command}`を実行して管理ノードを再起動します。"
 
 #: plmanagednode/view.py:380
 msgid "HTTP Proxy Configurator"
@@ -553,5 +574,6 @@ msgstr "無効なポートです。0 から 65536 の数字である必要があ
 #: plmanagednode/view.py:448
 msgid "HTTP proxy configuration saved.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "HTTPプロキシ構成が保存されました。\n\n"
+"`{prefix}{command}`を実行して管理ノードを再起動します。"
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
 "POT-Creation-Date: 2022-09-12 17:46+0000\n"
-"PO-Revision-Date: 2022-09-12 17:47\n"
+"PO-Revision-Date: 2022-09-12 23:02\n"
 "Last-Translator: \n"
 "Language-Team: Greek\n"
 "MIME-Version: 1.0\n"
@@ -38,19 +38,19 @@ msgstr "Έκδοση"
 #: plmanagednode/cog.py:84
 #, docstring
 msgid "Update the managed Lavalink node"
-msgstr ""
+msgstr "Ενημέρωση του διαχειριζόμενου κόμβου Lavalink"
 
 #: plmanagednode/cog.py:95
 msgid "The managed Lavalink node is already up to date."
-msgstr ""
+msgstr "Ο κόμβος που διαχειρίζεται το Lavalink είναι ήδη ενημερωμένος."
 
 #: plmanagednode/cog.py:104
 msgid "Your node is out of date, to update please run `{prefix}{command} 1`."
-msgstr ""
+msgstr "Ο κόμβος σας είναι ξεπερασμένος, για ενημέρωση παρακαλώ εκτελέστε το `{prefix}{command} 1`."
 
 #: plmanagednode/cog.py:118
 msgid "The managed Lavalink node has been updated to version {version}."
-msgstr ""
+msgstr "Ο κόμβος που διαχειρίζεται το Lavalink έχει ενημερωθεί στην έκδοση {version}."
 
 #: plmanagednode/cog.py:128
 #, docstring
@@ -59,7 +59,7 @@ msgstr "Επανεκκίνηση του διαχειριζόμενου κόμβ�
 
 #: plmanagednode/cog.py:137
 msgid "The managed node is not enabled, run `{prefix}{command}` to first enable the managed node"
-msgstr ""
+msgstr "Ο διαχειριζόμενος κόμβος δεν είναι ενεργοποιημένος, εκτελέστε το `{prefix}{command}` για να ενεργοποιήσετε πρώτα τον διαχειριζόμενο κόμβο"
 
 #: plmanagednode/cog.py:175
 msgid "Restarted the managed Lavalink node"
@@ -70,7 +70,9 @@ msgstr "Επανεκκίνηση του διαχειριζόμενου κόμβ�
 msgid "Set the java executable for PyLav.\n\n"
 "        Default is \"java\"\n"
 "        "
-msgstr ""
+msgstr "Ορίστε το εκτελέσιμο java για το PyLav.\n\n"
+"        Η προεπιλογή είναι \"java\"\n"
+"        "
 
 #: plmanagednode/cog.py:199
 msgid "{java} does not exist, run the command again with the java argument set to the correct path"
@@ -87,7 +89,8 @@ msgstr "{java} δεν είναι εκτελέσιμο, εκτελέστε την
 #: plmanagednode/cog.py:247
 msgid "PyLav's java executable has been set to {java}\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Το εκτελέσιμο java της PyLava έχει οριστεί σε {java}\n\n"
+"Εκτέλεση `{prefix}{command}` για επανεκκίνηση του διαχειριζόμενου κόμβου"
 
 #: plmanagednode/cog.py:261
 #, docstring
@@ -101,12 +104,14 @@ msgstr "Εναλλαγή του διαχειριζόμενου κόμβου on/o
 #: plmanagednode/cog.py:276
 msgid "PyLav's managed node has been enabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Ο διαχειριζόμενος κόμβος της PyLav:\n\n"
+"Εκτέλεση `{prefix}{command}` για επανεκκίνηση του διαχειριζόμενου κόμβου"
 
 #: plmanagednode/cog.py:286
 msgid "PyLav's managed node has been disabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Ο διαχειριζόμενος κόμβος της PyLav:\n\n"
+"Εκτέλεση `{prefix}{command}` για επανεκκίνηση του διαχειριζόμενου κόμβου"
 
 #: plmanagednode/cog.py:296
 #, docstring
@@ -120,12 +125,14 @@ msgstr "Ενεργοποίηση/απενεργοποίηση αυτόματων
 #: plmanagednode/cog.py:312
 msgid "PyLav's managed node auto updates have been enabled\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Οι διαχειριζόμενες αυτόματες ενημερώσεις κόμβων της PyLav's έχουν ενεργοποιηθεί\n\n"
+"Εκτέλεση `{prefix}{command}` για επανεκκίνηση του διαχειριζόμενου κόμβου"
 
 #: plmanagednode/cog.py:323
 msgid "PyLav's managed node auto updates have been disabled\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Οι διαχειριζόμενες αυτόματες ενημερώσεις κόμβων της PyLav's έχουν απενεργοποιηθεί\n\n"
+"Εκτέλεση `{prefix}{command}` για επανεκκίνηση του διαχειριζόμενου κόμβου"
 
 #: plmanagednode/cog.py:334
 #, docstring
@@ -161,7 +168,8 @@ msgstr "Το μέγεθος του σωρού πρέπει να είναι μι�
 #: plmanagednode/cog.py:407
 msgid "Managed node's heap-size set to {bytes}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Το μέγεθος σωρού του κόμβου που έχει οριστεί σε {bytes}.\n\n"
+"Εκτέλεση `{prefix}{command}` για επανεκκίνηση του διαχειριζόμενου κόμβου"
 
 #: plmanagednode/cog.py:421
 #, docstring
@@ -176,7 +184,8 @@ msgstr "Ορίστε το διακομιστή του διαχειριζόμεν
 #: plmanagednode/cog.py:436
 msgid "Managed node's host set to {host}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Ο υπολογιστής του διαχειριζόμενου κόμβου ορίστηκε σε {host}.\n\n"
+"Εκτέλεση `{prefix}{command}` για επανεκκίνηση του διαχειριζόμενου κόμβου"
 
 #: plmanagednode/cog.py:450
 #, docstring
@@ -198,7 +207,8 @@ msgstr "Ο λιμένας πρέπει να είναι μεταξύ 1024 και 
 #: plmanagednode/cog.py:471
 msgid "Managed node's port set to {port}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Η θύρα του διαχειριζόμενου κόμβου ορίστηκε σε {port}.\n\n"
+"Εκτέλεση `{prefix}{command}` για επανεκκίνηση του διαχειριζόμενου κόμβου"
 
 #: plmanagednode/cog.py:481
 #, docstring
@@ -208,26 +218,28 @@ msgstr "Αλλαγή των πρόσθετων διαχειριζόμενων κ
 #: plmanagednode/cog.py:485
 #, docstring
 msgid "Disabled one of the available plugins"
-msgstr ""
+msgstr "Απενεργοποιήθηκε ένα από τα διαθέσιμα πρόσθετα"
 
 #: plmanagednode/cog.py:501 plmanagednode/cog.py:616
 msgid "The plugin must be one of the following: {plugins}"
-msgstr ""
+msgstr "Το πρόσθετο πρέπει να είναι ένα από τα παρακάτω: {plugins}"
 
 #: plmanagednode/cog.py:586
 msgid "Managed node's plugin {plugin} disabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Το πρόσθετο {plugin} του διαχειριζόμενου κόμβου απενεργοποιήθηκε.\n\n"
+"Εκτέλεση `{prefix}{command}` για επανεκκίνηση του διαχειριζόμενου κόμβου"
 
 #: plmanagednode/cog.py:600
 #, docstring
 msgid "Enable one of the available plugins"
-msgstr ""
+msgstr "Ενεργοποιήστε ένα από τα διαθέσιμα πρόσθετα"
 
 #: plmanagednode/cog.py:649
 msgid "Managed node's plugin {plugin} enabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Το πρόσθετο {plugin} για διαχείριση κόμβου ενεργοποιήθηκε.\n\n"
+"Εκτέλεση `{prefix}{command}` για επανεκκίνηση του διαχειριζόμενου κόμβου"
 
 #: plmanagednode/cog.py:663
 #, docstring
@@ -242,7 +254,9 @@ msgstr "{name} ενημερώθηκε από {old_value} σε {new_value}\n"
 msgid "Managed node's plugins updated.\n\n"
 "{updates}\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Τα πρόσθετα του διαχειριζόμενου κόμβου ενημερώθηκαν.\n\n"
+"{updates}\n\n"
+"Εκτέλεση `{prefix}{command}` για επανεκκίνηση του διαχειριζόμενου κόμβου"
 
 #: plmanagednode/cog.py:749
 msgid "Managed node's plugins already up to date"
@@ -268,7 +282,8 @@ msgstr "απενεργοποιημένο"
 #: plmanagednode/cog.py:788
 msgid "Managed node's {source} source set to {state}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Η πηγή {source} του διαχειριζόμενου κόμβου ορίστηκε στο {state}.\n\n"
+"Εκτέλεση `{prefix}{command}` για επανεκκίνηση του διαχειριζόμενου κόμβου"
 
 #: plmanagednode/cog.py:803
 #, docstring
@@ -368,7 +383,8 @@ msgstr "{Setting} έγκυρες εισόδους είναι:\n\n"
 #: plmanagednode/cog.py:958
 msgid "{Setting} set to {value}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "{Setting} ορίστηκε σε {value}.\n\n"
+"Εκτέλεση `{prefix}{command}` για επανεκκίνηση του διαχειριζόμενου κόμβου"
 
 #: plmanagednode/cog.py:973
 #, docstring
@@ -388,7 +404,8 @@ msgstr "Κάντε κλικ στο παρακάτω κουμπί για να ρ�
 #: plmanagednode/cog.py:1001
 msgid "Removing the IP rotation from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Αφαίρεση της περιστροφής IP από τον κόμβο.\n\n"
+"Εκτέλεση `{prefix}{command}` για επανεκκίνηση του διαχειριζόμενου κόμβου"
 
 #: plmanagednode/cog.py:1011
 #, docstring
@@ -408,7 +425,8 @@ msgstr "Κάντε κλικ στο παρακάτω κουμπί για να σ�
 #: plmanagednode/cog.py:1039
 msgid "Unlinking Google account from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Αποσύνδεση του λογαριασμού Google από τον κόμβο σας.\n\n"
+"Εκτελέστε `{prefix}{command}` για επανεκκίνηση του διαχειριζόμενου κόμβου"
 
 #: plmanagednode/cog.py:1049
 #, docstring
@@ -426,7 +444,8 @@ msgstr "Κάντε κλικ στο παρακάτω κουμπί για να ρ�
 #: plmanagednode/cog.py:1073
 msgid "Unlinking HTTP proxy from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Αποσύνδεση του διαμεσολαβητή HTTP από τον κόμβο σας.\n\n"
+"Εκτελέστε `{prefix}{command}` για επανεκκίνηση του διαχειριζόμενου κόμβου"
 
 #: plmanagednode/view.py:37 plmanagednode/view.py:64 plmanagednode/view.py:97
 #: plmanagednode/view.py:176 plmanagednode/view.py:336
@@ -501,7 +520,8 @@ msgstr "Μη έγκυρο έναυσμα αναζήτησης, πρέπει να
 #: plmanagednode/view.py:286
 msgid "IP rotation configuration saved.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Οι ρυθμίσεις περιστροφής IP αποθηκεύτηκαν.\n\n"
+"Εκτέλεση `{prefix}{command}` για επανεκκίνηση του διαχειριζόμενου κόμβου"
 
 #: plmanagednode/view.py:309
 msgid "Google Account Configurator"
@@ -530,7 +550,8 @@ msgstr "Μη έγκυρη διεύθυνση email"
 #: plmanagednode/view.py:357
 msgid "Google account linked.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Ο λογαριασμός Google συνδέθηκε.\n\n"
+"Εκτέλεση `{prefix}{command}` για επανεκκίνηση του διαχειριζόμενου κόμβου"
 
 #: plmanagednode/view.py:380
 msgid "HTTP Proxy Configurator"
@@ -575,5 +596,6 @@ msgstr "Μη έγκυρη θύρα, πρέπει να είναι ένας αρι
 #: plmanagednode/view.py:448
 msgid "HTTP proxy configuration saved.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Οι ρυθμίσεις διαμεσολαβητή HTTP αποθηκεύτηκαν.\n\n"
+"Εκτέλεση `{prefix}{command}` για επανεκκίνηση του διαχειριζόμενου κόμβου"
 

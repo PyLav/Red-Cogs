@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
 "POT-Creation-Date: 2022-09-12 17:46+0000\n"
-"PO-Revision-Date: 2022-09-12 17:47\n"
+"PO-Revision-Date: 2022-09-12 23:02\n"
 "Last-Translator: \n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -38,19 +38,19 @@ msgstr "Wersja"
 #: plmanagednode/cog.py:84
 #, docstring
 msgid "Update the managed Lavalink node"
-msgstr ""
+msgstr "Aktualizuj zarządzany węzeł Lavalink"
 
 #: plmanagednode/cog.py:95
 msgid "The managed Lavalink node is already up to date."
-msgstr ""
+msgstr "Zarządzany węzeł Lavalink jest już aktualny."
 
 #: plmanagednode/cog.py:104
 msgid "Your node is out of date, to update please run `{prefix}{command} 1`."
-msgstr ""
+msgstr "Twój węzeł jest nieaktualny, aby zaktualizować proszę uruchomić `{prefix}{command} 1`."
 
 #: plmanagednode/cog.py:118
 msgid "The managed Lavalink node has been updated to version {version}."
-msgstr ""
+msgstr "Zarządzany węzeł Lavalink został zaktualizowany do wersji {version}."
 
 #: plmanagednode/cog.py:128
 #, docstring
@@ -59,7 +59,7 @@ msgstr "Uruchom ponownie zarządzany węzeł Lavalink"
 
 #: plmanagednode/cog.py:137
 msgid "The managed node is not enabled, run `{prefix}{command}` to first enable the managed node"
-msgstr ""
+msgstr "Zarządzany węzeł nie jest włączony, uruchom `{prefix}{command}` aby najpierw włączyć zarządzany węzeł"
 
 #: plmanagednode/cog.py:175
 msgid "Restarted the managed Lavalink node"
@@ -70,7 +70,9 @@ msgstr "Uruchomiono ponownie zarządzany węzeł Lavalink"
 msgid "Set the java executable for PyLav.\n\n"
 "        Default is \"java\"\n"
 "        "
-msgstr ""
+msgstr "Ustaw plik wykonywalny java dla PyLav.\n\n"
+"        Domyślnie jest \"java\"\n"
+"        "
 
 #: plmanagednode/cog.py:199
 msgid "{java} does not exist, run the command again with the java argument set to the correct path"
@@ -87,7 +89,8 @@ msgstr "{java} nie jest wykonywalny, uruchom ponownie polecenie z argumentem jav
 #: plmanagednode/cog.py:247
 msgid "PyLav's java executable has been set to {java}\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Plik wykonywalny PyLav's java został ustawiony na {java}\n\n"
+"Uruchom `{prefix}{command}` aby uruchomić ponownie zarządzany węzeł"
 
 #: plmanagednode/cog.py:261
 #, docstring
@@ -101,12 +104,14 @@ msgstr "Włącz/wyłącz zarządzany węzeł.\n\n"
 #: plmanagednode/cog.py:276
 msgid "PyLav's managed node has been enabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Węzeł zarządzany przez PyLava został włączony.\n\n"
+"Uruchom `{prefix}{command}` aby uruchomić ponownie zarządzany węzeł"
 
 #: plmanagednode/cog.py:286
 msgid "PyLav's managed node has been disabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Węzeł zarządzany przez PyLava został wyłączony.\n\n"
+"Uruchom `{prefix}{command}` aby zrestartować zarządzany węzeł"
 
 #: plmanagednode/cog.py:296
 #, docstring
@@ -120,12 +125,14 @@ msgstr "Włącz/wyłącz automatyczne aktualizacje zarządzanego węzła.\n\n"
 #: plmanagednode/cog.py:312
 msgid "PyLav's managed node auto updates have been enabled\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Automatyczne aktualizacje węzła zarządzanego przez PyLava zostały włączone\n\n"
+"Uruchom `{prefix}{command}` aby zrestartować zarządzany węzeł"
 
 #: plmanagednode/cog.py:323
 msgid "PyLav's managed node auto updates have been disabled\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Automatyczne aktualizacje węzła zarządzanego przez PyLava zostały wyłączone\n\n"
+"Uruchom `{prefix}{command}` aby zrestartować zarządzany węzeł"
 
 #: plmanagednode/cog.py:334
 #, docstring
@@ -161,7 +168,8 @@ msgstr "Heap-rozmiar musi być mniejszy niż {limit} ze względu na ograniczenia
 #: plmanagednode/cog.py:407
 msgid "Managed node's heap-size set to {bytes}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Zarządzany rozmiar szapu węzła ustawiony na {bytes}.\n\n"
+"Uruchom `{prefix}{command}` aby zrestartować zarządzany węzeł"
 
 #: plmanagednode/cog.py:421
 #, docstring
@@ -176,7 +184,8 @@ msgstr "Ustaw zarządzany host węzła"
 #: plmanagednode/cog.py:436
 msgid "Managed node's host set to {host}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Zarządzany host węzła ustawiony na {host}.\n\n"
+"Uruchom `{prefix}{command}` aby uruchomić ponownie zarządzany węzeł"
 
 #: plmanagednode/cog.py:450
 #, docstring
@@ -198,7 +207,8 @@ msgstr "Port musi być pomiędzy 1024 a 49151"
 #: plmanagednode/cog.py:471
 msgid "Managed node's port set to {port}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Zarządzany port węzła ustawiony na {port}.\n\n"
+"Uruchom `{prefix}{command}` aby uruchomić ponownie zarządzany węzeł"
 
 #: plmanagednode/cog.py:481
 #, docstring
@@ -208,26 +218,28 @@ msgstr "Zmień obsługiwane wtyczki węzła"
 #: plmanagednode/cog.py:485
 #, docstring
 msgid "Disabled one of the available plugins"
-msgstr ""
+msgstr "Wyłączono jedną z dostępnych wtyczek"
 
 #: plmanagednode/cog.py:501 plmanagednode/cog.py:616
 msgid "The plugin must be one of the following: {plugins}"
-msgstr ""
+msgstr "Wtyczka musi być jednym z następujących: {plugins}"
 
 #: plmanagednode/cog.py:586
 msgid "Managed node's plugin {plugin} disabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Wtyczka węzła zarządzanego {plugin} wyłączona.\n\n"
+"Uruchom `{prefix}{command}` aby zrestartować zarządzany węzeł"
 
 #: plmanagednode/cog.py:600
 #, docstring
 msgid "Enable one of the available plugins"
-msgstr ""
+msgstr "Włącz jedną z dostępnych wtyczek"
 
 #: plmanagednode/cog.py:649
 msgid "Managed node's plugin {plugin} enabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Wtyczka węzła zarządzanego {plugin} włączona.\n\n"
+"Uruchom `{prefix}{command}` aby zrestartować zarządzany węzeł"
 
 #: plmanagednode/cog.py:663
 #, docstring
@@ -242,7 +254,9 @@ msgstr "{name} został zaktualizowany z {old_value} do {new_value}\n"
 msgid "Managed node's plugins updated.\n\n"
 "{updates}\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Zaktualizowano wtyczki zarządzane węzła.\n\n"
+"{updates}\n\n"
+"Uruchom `{prefix}{command}` aby zrestartować zarządzany węzeł"
 
 #: plmanagednode/cog.py:749
 msgid "Managed node's plugins already up to date"
@@ -268,7 +282,8 @@ msgstr "wyłączone"
 #: plmanagednode/cog.py:788
 msgid "Managed node's {source} source set to {state}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "{source} źródła zarządzanego węzła ustawione na {state}.\n\n"
+"Uruchom `{prefix}{command}` aby zrestartować zarządzany węzeł"
 
 #: plmanagednode/cog.py:803
 #, docstring
@@ -368,7 +383,8 @@ msgstr "{Setting} ważnych danych wejściowych to:\n\n"
 #: plmanagednode/cog.py:958
 msgid "{Setting} set to {value}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "{Setting} ustawiono na {value}.\n\n"
+"Uruchom `{prefix}{command}` aby zrestartować zarządzany węzeł"
 
 #: plmanagednode/cog.py:973
 #, docstring
@@ -388,7 +404,8 @@ msgstr "Kliknij poniższy przycisk, aby skonfigurować obrót IP dla Twojego wę
 #: plmanagednode/cog.py:1001
 msgid "Removing the IP rotation from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Usuwanie rotacji IP z węzła.\n\n"
+"Uruchom `{prefix}{command}` aby uruchomić ponownie zarządzany węzeł"
 
 #: plmanagednode/cog.py:1011
 #, docstring
@@ -408,7 +425,8 @@ msgstr "Kliknij poniższy przycisk, aby połączyć konto Google z Twoim węzłe
 #: plmanagednode/cog.py:1039
 msgid "Unlinking Google account from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Odłącz konto Google od twojego węzła.\n\n"
+"Uruchom `{prefix}{command}` aby uruchomić ponownie zarządzany węzeł"
 
 #: plmanagednode/cog.py:1049
 #, docstring
@@ -426,7 +444,8 @@ msgstr "Kliknij poniższy przycisk, aby skonfigurować serwer proxy HTTP dla Two
 #: plmanagednode/cog.py:1073
 msgid "Unlinking HTTP proxy from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Odłączanie proxy HTTP od twojego węzła.\n\n"
+"Uruchom `{prefix}{command}` aby uruchomić ponownie zarządzany węzeł"
 
 #: plmanagednode/view.py:37 plmanagednode/view.py:64 plmanagednode/view.py:97
 #: plmanagednode/view.py:176 plmanagednode/view.py:336
@@ -501,7 +520,8 @@ msgstr "Niepoprawny wyzwalacz wyszukiwania, musi być 0 lub 1"
 #: plmanagednode/view.py:286
 msgid "IP rotation configuration saved.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Konfiguracja rotacji IP zapisana.\n\n"
+"Uruchom `{prefix}{command}` aby zrestartować zarządzany węzeł"
 
 #: plmanagednode/view.py:309
 msgid "Google Account Configurator"
@@ -530,7 +550,8 @@ msgstr "Nieprawidłowy adres e-mail"
 #: plmanagednode/view.py:357
 msgid "Google account linked.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Konto Google połączone.\n\n"
+"Uruchom `{prefix}{command}` aby zrestartować zarządzany węzeł"
 
 #: plmanagednode/view.py:380
 msgid "HTTP Proxy Configurator"
@@ -575,5 +596,6 @@ msgstr "Nieprawidłowy port, musi być liczbą pomiędzy 0 a 65536"
 #: plmanagednode/view.py:448
 msgid "HTTP proxy configuration saved.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+msgstr "Konfiguracja proxy HTTP zapisana.\n\n"
+"Uruchom `{prefix}{command}` aby zrestartować zarządzany węzeł"
 
