@@ -402,12 +402,11 @@ class PyLavEqualizer(commands.Cog):
             band_10000=band_10000 or 0.0,
             band_16000=band_16000 or 0.0,
         )
-        filter = eq_model.to_filter()
-        if filter.changed:
+        if eq := eq_model.to_filter():
             if save:
                 await eq_model.save()
 
-            await context.player.set_equalizer(requester=context.author, equalizer=filter)
+            await context.player.set_equalizer(requester=context.author, equalizer=eq)
 
         else:
             await context.send(
@@ -431,7 +430,7 @@ class PyLavEqualizer(commands.Cog):
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
 
-        if not context.player.equalizer.changed:
+        if not context.player.equalizer:
             await context.send(
                 embed=await self.lavalink.construct_embed(
                     messageable=context,

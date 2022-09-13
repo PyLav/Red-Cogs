@@ -684,8 +684,8 @@ class PyLavEffects(commands.Cog):
         ):
             data_ = {t_effect: effect.__class__.__name__}
 
-            if effect.changed:
-                values = effect.to_json()
+            if effect:
+                values = effect.to_dict()
                 if not isinstance(effect, Equalizer):
                     data_[t_values] = "\n".join(
                         f"{EightBitANSI.paint_white(k.title())}: {EightBitANSI.paint_green(v or default)}"

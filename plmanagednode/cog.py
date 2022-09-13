@@ -710,7 +710,9 @@ class PyLavManagedNode(commands.Cog):
                 }
             )
 
-        if diff := DeepDiff(data["lavalink"]["plugins"], new_plugin_data, ignore_order=True, max_diffs=1):
+        if diff := DeepDiff(
+            data["lavalink"]["plugins"], new_plugin_data, ignore_order=True, max_passes=1, cache_size=1000
+        ):
             data["lavalink"]["plugins"] = new_plugin_data
             update_string = ""
             if "values_changed" in diff:
