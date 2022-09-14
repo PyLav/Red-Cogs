@@ -10,25 +10,23 @@ from packaging.version import parse
 __PYLAV_VERSION__ = "0.10.0.0"
 __PYLAV_SHARED_VERSION__ = "0.5.0.0"
 
-pylav_current_microversion = parse(__PYLAV_VERSION__)
-pylavcogs_shared_current_micro_version = parse(__PYLAV_SHARED_VERSION__)
+pylav_current_minor_version = parse(__PYLAV_VERSION__)
+pylavcogs_shared_current_minor_version = parse(__PYLAV_SHARED_VERSION__)
 
-print(f"__PYLAV_VERSION__: {pylav_current_microversion}")
-print(f"__PYLAV_SHARED_VERSION__: {pylavcogs_shared_current_micro_version}")
+print(f"__PYLAV_VERSION__: {pylav_current_minor_version}")
+print(f"__PYLAV_SHARED_VERSION__: {pylavcogs_shared_current_minor_version}")
 
-pylav_max_allowed_version = (
-    f"{pylav_current_microversion.major}.{pylav_current_microversion.minor}.{pylav_current_microversion.micro+1}"
+pylav_threshold_version = f"{pylav_current_minor_version.major}.{pylav_current_minor_version.minor + 1}"
+pylavcogs_shared_threshold_version = (
+    f"{pylavcogs_shared_current_minor_version.major}.{pylavcogs_shared_current_minor_version.minor + 1}"
 )
-pylavcogs_shared_max_allowed_version = f"{pylavcogs_shared_current_micro_version.major}.{pylavcogs_shared_current_micro_version.minor}.{pylavcogs_shared_current_micro_version.micro+1}"
 
-print(f"PyLav max version: {pylav_max_allowed_version}")
-print(f"PyLavCogs-Shared max version: {pylavcogs_shared_max_allowed_version}")
+print(f"PyLav max version: {pylav_threshold_version}")
+print(f"PyLavCogs-Shared max version: {pylavcogs_shared_threshold_version}")
 
-pylav_requirement = pkg_resources.Requirement.parse(
-    f"Py-Lav>={pylav_current_microversion},<{pylav_max_allowed_version}"
-)
+pylav_requirement = pkg_resources.Requirement.parse(f"Py-Lav>={pylav_current_minor_version},<{pylav_threshold_version}")
 pylavcogs_shared_requirement = pkg_resources.Requirement.parse(
-    f"pylavcogs-shared>={pylavcogs_shared_current_micro_version},<{pylavcogs_shared_max_allowed_version}"
+    f"pylavcogs-shared>={pylavcogs_shared_current_minor_version},<{pylavcogs_shared_threshold_version}"
 )
 
 print(f"Looking for most recent release matching: {pylav_requirement}")
@@ -40,8 +38,8 @@ pylavcogs_shared_data = requests.get("https://pypi.org/pypi/pylavcogs_shared/jso
 
 pylav_data_releases = {version for version, data in pylav_data.items() if data[0]["yanked"] is False}
 pylavcogs_shared_releases = {version for version, data in pylavcogs_shared_data.items() if data[0]["yanked"] is False}
-pylav_current_post_version = max(parse(i) for i in pylav_data_releases if pylav_requirement.specifier.contains(i))
-pylavcogs_shared_current_post_version = max(
+pylav_latest_compatible_version = max(parse(i) for i in pylav_data_releases if pylav_requirement.specifier.contains(i))
+pylavcogs_shared_latest_compatible_version = max(
     parse(i) for i in pylavcogs_shared_releases if pylavcogs_shared_requirement.specifier.contains(i)
 )
 
@@ -49,12 +47,12 @@ pylavcogs_shared_current_post_version = max(
 print(f"Most recent PyLav version: {max(parse(i) for i in pylav_data_releases)}")
 print(f"Most recent PyLav version: {max(parse(i) for i in pylavcogs_shared_releases)}")
 
-print(f"Most recent PyLav version in range: {pylav_current_post_version}")
-print(f"Most recent PyLavCogs-Shared version in range: {pylavcogs_shared_current_post_version}")
+print(f"Most recent PyLav version in range: {pylav_latest_compatible_version}")
+print(f"Most recent PyLavCogs-Shared version in range: {pylavcogs_shared_latest_compatible_version}")
 
-new_pylav_version = f"Py-Lav>={pylav_current_post_version}<{pylav_max_allowed_version}"
+new_pylav_version = f"Py-Lav>={pylav_latest_compatible_version}<{pylav_threshold_version}"
 new_pylavcogs_shared_version = (
-    f"pylavcogs-shared>={pylavcogs_shared_current_post_version},<{pylavcogs_shared_max_allowed_version}"
+    f"pylavcogs-shared>={pylavcogs_shared_latest_compatible_version},<{pylavcogs_shared_threshold_version}"
 )
 
 print(f"New PyLav version range: {new_pylav_version}")
