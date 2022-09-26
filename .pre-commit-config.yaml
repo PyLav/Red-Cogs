@@ -56,8 +56,8 @@ repos:
         args:
         -   --autofix
         -   --indent=4
--   repo: https://github.com/myint/autoflake
-    rev: v1.5.3
+-   repo: https://github.com/PyCQA/autoflake
+    rev: v1.6.1
     hooks:
     -   id: autoflake
         args: [--remove-all-unused-imports, --recursive, --in-place, --remove-unused-variables, --ignore-init-module-imports, --remove-duplicate-keys]
@@ -70,7 +70,7 @@ repos:
     hooks:
     -   id: isort
 -   repo: https://github.com/asottile/pyupgrade
-    rev: v2.37.3
+    rev: v2.38.2
     hooks:
     -   id: pyupgrade
         args: [--py39-plus]
