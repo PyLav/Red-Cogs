@@ -169,9 +169,7 @@ class PyLavPlaylists(
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     title=_("Playlist not created"),
-                    description=_("No tracks were provided in time.").format(
-                        name=name, id=context.message.id, track_count=len(tracks)
-                    ),
+                    description=_("No tracks were provided in time."),
                     messageable=context,
                 ),
                 ephemeral=True,
