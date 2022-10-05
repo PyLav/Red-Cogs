@@ -166,9 +166,7 @@ class PyLavPlaylists(
                 tracks = []
             url = None
         if not tracks and timed_out:
-            await context.send(
-                _("No tracks were provided in time. Cancelling..."), ephemeral=True
-            )
+            await context.send(_("No tracks were provided in time. Cancelling..."), ephemeral=True)
             return
         if name is None:
             name = f"{context.message.id}"
