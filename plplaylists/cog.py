@@ -166,7 +166,16 @@ class PyLavPlaylists(
                 tracks = []
             url = None
         if not tracks and timed_out:
-            await context.send(_("No tracks were provided in time. Cancelling..."), ephemeral=True)
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    title=_("Playlist not created"),
+                    description=_("No tracks were provided in time.").format(
+                        name=name, id=context.message.id, track_count=len(tracks)
+                    ),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
             return
         if name is None:
             name = f"{context.message.id}"
