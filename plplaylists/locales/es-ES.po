@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2022-09-10 19:46+0000\n"
-"PO-Revision-Date: 2022-09-12 23:02\n"
+"POT-Creation-Date: 2022-10-06 15:30+0000\n"
+"PO-Revision-Date: 2022-10-06 15:31\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -39,11 +39,11 @@ msgstr "Biblioteca/Cog"
 msgid "Version"
 msgstr "Versión"
 
-#: plplaylists/cog.py:137
+#: plplaylists/cog.py:138
 msgid "Let's create a playlist!"
 msgstr "¡Vamos a crear una lista de reproducción!"
 
-#: plplaylists/cog.py:138
+#: plplaylists/cog.py:139
 msgid "(**1**) - Apply changes to playlist.\n"
 "(**2**) - Cancel any changes made.\n"
 "(**3**) - Add a name to the playlist.\n"
@@ -57,11 +57,19 @@ msgstr "(**1**) - Aplicar cambios a la lista.\n"
 "(**5**) - Añadir toda la pista de la cola a la lista de reproducción.\n\n"
 "Si desea que el nombre de la lista de reproducción sea como la lista de reproducción original, simplemente establezca la URL pero sin nombre.\n\n"
 
-#: plplaylists/cog.py:174
+#: plplaylists/cog.py:171
+msgid "Playlist not created"
+msgstr ""
+
+#: plplaylists/cog.py:172
+msgid "No tracks were provided in time."
+msgstr ""
+
+#: plplaylists/cog.py:185
 msgid "Playlist created"
 msgstr "Lista de reproducción creada"
 
-#: plplaylists/cog.py:175
+#: plplaylists/cog.py:186
 msgid "Name: `{name}`\n"
 "ID: `{id}`\n"
 "Tracks: `{track_count}`"
@@ -69,23 +77,23 @@ msgstr "Nombre: `{name}`\n"
 "ID: `{id}`\n"
 "Pistas: `{track_count}`"
 
-#: plplaylists/cog.py:199
+#: plplaylists/cog.py:210
 msgid "You have no playlists"
 msgstr "No tienes listas de reproducción"
 
-#: plplaylists/cog.py:242 plplaylists/cog.py:606
+#: plplaylists/cog.py:253 plplaylists/cog.py:617
 msgid "Nothing to save"
 msgstr "Nada que guardar"
 
-#: plplaylists/cog.py:243 plplaylists/cog.py:607
+#: plplaylists/cog.py:254 plplaylists/cog.py:618
 msgid "There is nothing in the queue to save"
 msgstr "No hay nada en la cola para guardar"
 
-#: plplaylists/cog.py:280 plplaylists/cog.py:544 plplaylists/cog.py:624
+#: plplaylists/cog.py:291 plplaylists/cog.py:555 plplaylists/cog.py:635
 msgid "{user}, playlist {playlist_name} cannot be managed by yourself"
 msgstr "{user}, la lista de reproducción {playlist_name} no puede ser administrada por ti mismo"
 
-#: plplaylists/cog.py:289
+#: plplaylists/cog.py:300
 msgid "(**1**){space} - Apply changes to playlist.\n"
 "(**2**){space} - Cancel any changes made and close the menu.\n"
 "(**3**){space} - Delete this playlist.\n"
@@ -127,7 +135,7 @@ msgstr "(**1**){space} - Aplicar cambios a la lista de reproducción.\n"
 "El botón URL siempre se ejecutará en última instancia - El enlace de una lista de reproducción a través de la URL sobrescribirá cualquier pista añadida o eliminada a esta lista.\n\n"
 "Si interactúa con un botón varias veces aparte de los botones de añadir/quitar sólo la última interacción tendrá efecto.\n\n\n"
 
-#: plplaylists/cog.py:315
+#: plplaylists/cog.py:326
 msgid "(**1**) - Close the menu.\n"
 "(**2**) - Update the playlist with the latest tracks.\n"
 "(**3**) - Download the playlist file.\n"
@@ -139,7 +147,7 @@ msgstr "(**1**) - Cerrar el menú.\n"
 "(**4**) - Añadir lista de reproducción actual a la cola.\n"
 "(**5**) - Mostrar pistas en la lista de reproducción actual.\n\n\n"
 
-#: plplaylists/cog.py:323
+#: plplaylists/cog.py:334
 msgid "**__Currently managing__**:\n"
 "**Name**:{space}{space}{space}{playlist_name}\n"
 "**Scope**:{space}{space}{space}{scope}\n"
@@ -153,107 +161,107 @@ msgstr "**__Actualmente gestionando__**:\n"
 "**Pistas**:{space}{space}{space}{tracks} pistas\n"
 "**URL**:{space}{space}{space}{space}{space}{url}\n"
 
-#: plplaylists/cog.py:341
+#: plplaylists/cog.py:352
 msgid "Let's manage: {playlist_name}"
 msgstr "Vamos a gestionar: {playlist_name}"
 
-#: plplaylists/cog.py:343
+#: plplaylists/cog.py:354
 msgid "Let's take a look at: {playlist_name}"
 msgstr "Echemos un vistazo a: {playlist_name}"
 
-#: plplaylists/cog.py:350
+#: plplaylists/cog.py:361
 msgid "N/A"
 msgstr "N/A"
 
-#: plplaylists/cog.py:382 plplaylists/cog.py:554
+#: plplaylists/cog.py:393 plplaylists/cog.py:565
 msgid "Playlist deleted"
 msgstr "Lista de reproducción eliminada"
 
-#: plplaylists/cog.py:384 plplaylists/cog.py:556
+#: plplaylists/cog.py:395 plplaylists/cog.py:567
 msgid "{user}, playlist {playlist_name} has been deleted"
 msgstr "{user}, lista de reproducción {playlist_name} ha sido eliminada"
 
-#: plplaylists/cog.py:439
+#: plplaylists/cog.py:450
 msgid "Playlist **{playlist_name}** could not be updated with URL: <{url}>"
 msgstr "Lista de reproducción **{playlist_name}** no se pudo actualizar con la URL: <{url}>"
 
-#: plplaylists/cog.py:472
+#: plplaylists/cog.py:483
 msgid "\n"
 "{track_count} {track_plural} removed from the playlist"
 msgstr "\n"
 "{track_count} {track_plural} eliminado de la lista de reproducción"
 
-#: plplaylists/cog.py:473 plplaylists/cog.py:477 plplaylists/cog.py:643
+#: plplaylists/cog.py:484 plplaylists/cog.py:488 plplaylists/cog.py:654
 msgid "track"
 msgstr "pista"
 
-#: plplaylists/cog.py:473 plplaylists/cog.py:477 plplaylists/cog.py:643
+#: plplaylists/cog.py:484 plplaylists/cog.py:488 plplaylists/cog.py:654
 msgid "tracks"
 msgstr "pistas"
 
-#: plplaylists/cog.py:476 plplaylists/cog.py:642
+#: plplaylists/cog.py:487 plplaylists/cog.py:653
 msgid "\n"
 "{track_count} {track_plural} added to the playlist"
 msgstr "\n"
 "{track_count} {track_plural} añadido a la lista de reproducción"
 
-#: plplaylists/cog.py:482 plplaylists/cog.py:649
+#: plplaylists/cog.py:493 plplaylists/cog.py:660
 msgid "Playlist updated"
 msgstr "Lista de reproducción actualizada"
 
-#: plplaylists/cog.py:483 plplaylists/cog.py:650
+#: plplaylists/cog.py:494 plplaylists/cog.py:661
 msgid "{user}, playlist {playlist_name} has been updated.{extras}"
 msgstr "{user}, lista de reproducción {playlist_name} ha sido actualizada.{extras}"
 
-#: plplaylists/cog.py:495 plplaylists/cog.py:663
+#: plplaylists/cog.py:506 plplaylists/cog.py:674
 msgid "Playlist unchanged"
 msgstr "Lista de reproducción sin cambios"
 
-#: plplaylists/cog.py:496 plplaylists/cog.py:664
+#: plplaylists/cog.py:507 plplaylists/cog.py:675
 msgid "{user}, playlist {playlist_name} has not been updated"
 msgstr "{user}, la lista {playlist_name} no ha sido actualizada"
 
-#: plplaylists/cog.py:692
+#: plplaylists/cog.py:703
 msgid "You must either provide a URL or attach a playlist file to upload a playlist"
 msgstr "Debe proporcionar una URL o adjuntar un archivo de lista de reproducción para subir una lista"
 
-#: plplaylists/cog.py:704
+#: plplaylists/cog.py:715
 msgid "No valid playlist file provided"
 msgstr "Archivo de lista de reproducción no válido"
 
-#: plplaylists/cog.py:713
+#: plplaylists/cog.py:724
 msgid "Multiple playlist files provided - Currently only 1 per message is allowed"
 msgstr "Múltiples archivos de listas de reproducción proporcionados - Actualmente sólo 1 por mensaje está permitido"
 
-#: plplaylists/cog.py:730
+#: plplaylists/cog.py:741
 msgid "Failed to save any of the requested playlists"
 msgstr "No se pudo guardar ninguna de las listas de reproducción solicitadas"
 
-#: plplaylists/cog.py:739
+#: plplaylists/cog.py:750
 msgid "Failed to save the following playlists:\n"
 "{invalid_playlists}"
 msgstr "Error al guardar las siguientes listas:\n"
 "{invalid_playlists}"
 
-#: plplaylists/cog.py:748
+#: plplaylists/cog.py:759
 msgid "Successfully saved the following playlists:\n"
 "{saved_playlists}"
 msgstr "Guardado con éxito las siguientes listas de reproducción:\n"
 "{saved_playlists}"
 
-#: plplaylists/cog.py:773
+#: plplaylists/cog.py:784
 msgid "You must be in a voice channel to allow me to connect"
 msgstr "Debes estar en un canal de voz para permitirme conectar"
 
-#: plplaylists/cog.py:781
+#: plplaylists/cog.py:792
 msgid "I don't have permission to connect or speak in {channel}"
 msgstr "No tengo permiso para conectar o hablar en {channel}"
 
-#: plplaylists/cog.py:798
+#: plplaylists/cog.py:809
 msgid "Playlist"
 msgstr "Lista"
 
-#: plplaylists/cog.py:803
+#: plplaylists/cog.py:814
 msgid "{track_count} tracks enqueued.{playlist_name}"
 msgstr "{track_count} pistas en cola.{playlist_name}"
 
