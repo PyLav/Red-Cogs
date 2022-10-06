@@ -127,6 +127,7 @@ class PyLavPlaylists(
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
         add_queue = False
+        timed_out = False
         if not (name or url):
             playlist_prompt = PlaylistCreationFlow(
                 cog=self,
@@ -144,7 +145,7 @@ class PyLavPlaylists(
                 "If you want the playlist name to be as the original playlist simply set the URL but no name.\n\n"
             )
             await playlist_prompt.start(ctx=context, title=title, description=description)
-            await playlist_prompt.wait()
+            timed_out = await playlist_prompt.wait()
 
             url = playlist_prompt.url
             name = playlist_prompt.name
@@ -164,6 +165,16 @@ class PyLavPlaylists(
             else:
                 tracks = []
             url = None
+        if not tracks and timed_out:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    title=_("Playlist not created"),
+                    description=_("No tracks were provided in time."),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+            return
         if name is None:
             name = f"{context.message.id}"
         await context.lavalink.playlist_db_manager.create_or_update_user_playlist(
