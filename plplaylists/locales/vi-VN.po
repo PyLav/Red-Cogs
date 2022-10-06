@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2022-09-10 19:46+0000\n"
-"PO-Revision-Date: 2022-09-10 19:46\n"
+"POT-Creation-Date: 2022-10-06 15:30+0000\n"
+"PO-Revision-Date: 2022-10-06 15:31\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese\n"
 "MIME-Version: 1.0\n"
@@ -39,11 +39,11 @@ msgstr ""
 msgid "Version"
 msgstr ""
 
-#: plplaylists/cog.py:137
+#: plplaylists/cog.py:138
 msgid "Let's create a playlist!"
 msgstr ""
 
-#: plplaylists/cog.py:138
+#: plplaylists/cog.py:139
 msgid "(**1**) - Apply changes to playlist.\n"
 "(**2**) - Cancel any changes made.\n"
 "(**3**) - Add a name to the playlist.\n"
@@ -52,33 +52,41 @@ msgid "(**1**) - Apply changes to playlist.\n"
 "If you want the playlist name to be as the original playlist simply set the URL but no name.\n\n"
 msgstr ""
 
-#: plplaylists/cog.py:174
+#: plplaylists/cog.py:171
+msgid "Playlist not created"
+msgstr ""
+
+#: plplaylists/cog.py:172
+msgid "No tracks were provided in time."
+msgstr ""
+
+#: plplaylists/cog.py:185
 msgid "Playlist created"
 msgstr ""
 
-#: plplaylists/cog.py:175
+#: plplaylists/cog.py:186
 msgid "Name: `{name}`\n"
 "ID: `{id}`\n"
 "Tracks: `{track_count}`"
 msgstr ""
 
-#: plplaylists/cog.py:199
+#: plplaylists/cog.py:210
 msgid "You have no playlists"
 msgstr ""
 
-#: plplaylists/cog.py:242 plplaylists/cog.py:606
+#: plplaylists/cog.py:253 plplaylists/cog.py:617
 msgid "Nothing to save"
 msgstr ""
 
-#: plplaylists/cog.py:243 plplaylists/cog.py:607
+#: plplaylists/cog.py:254 plplaylists/cog.py:618
 msgid "There is nothing in the queue to save"
 msgstr ""
 
-#: plplaylists/cog.py:280 plplaylists/cog.py:544 plplaylists/cog.py:624
+#: plplaylists/cog.py:291 plplaylists/cog.py:555 plplaylists/cog.py:635
 msgid "{user}, playlist {playlist_name} cannot be managed by yourself"
 msgstr ""
 
-#: plplaylists/cog.py:289
+#: plplaylists/cog.py:300
 msgid "(**1**){space} - Apply changes to playlist.\n"
 "(**2**){space} - Cancel any changes made and close the menu.\n"
 "(**3**){space} - Delete this playlist.\n"
@@ -101,7 +109,7 @@ msgid "(**1**){space} - Apply changes to playlist.\n"
 "If you interact with a button multiple times other than the add/remove buttons only the last interaction will take effect.\n\n\n"
 msgstr ""
 
-#: plplaylists/cog.py:315
+#: plplaylists/cog.py:326
 msgid "(**1**) - Close the menu.\n"
 "(**2**) - Update the playlist with the latest tracks.\n"
 "(**3**) - Download the playlist file.\n"
@@ -109,7 +117,7 @@ msgid "(**1**) - Close the menu.\n"
 "(**5**) - Show tracks in current playlist.\n\n\n"
 msgstr ""
 
-#: plplaylists/cog.py:323
+#: plplaylists/cog.py:334
 msgid "**__Currently managing__**:\n"
 "**Name**:{space}{space}{space}{playlist_name}\n"
 "**Scope**:{space}{space}{space}{scope}\n"
@@ -118,103 +126,103 @@ msgid "**__Currently managing__**:\n"
 "**URL**:{space}{space}{space}{space}{space}{url}\n"
 msgstr ""
 
-#: plplaylists/cog.py:341
+#: plplaylists/cog.py:352
 msgid "Let's manage: {playlist_name}"
 msgstr ""
 
-#: plplaylists/cog.py:343
+#: plplaylists/cog.py:354
 msgid "Let's take a look at: {playlist_name}"
 msgstr ""
 
-#: plplaylists/cog.py:350
+#: plplaylists/cog.py:361
 msgid "N/A"
 msgstr ""
 
-#: plplaylists/cog.py:382 plplaylists/cog.py:554
+#: plplaylists/cog.py:393 plplaylists/cog.py:565
 msgid "Playlist deleted"
 msgstr ""
 
-#: plplaylists/cog.py:384 plplaylists/cog.py:556
+#: plplaylists/cog.py:395 plplaylists/cog.py:567
 msgid "{user}, playlist {playlist_name} has been deleted"
 msgstr ""
 
-#: plplaylists/cog.py:439
+#: plplaylists/cog.py:450
 msgid "Playlist **{playlist_name}** could not be updated with URL: <{url}>"
 msgstr ""
 
-#: plplaylists/cog.py:472
+#: plplaylists/cog.py:483
 msgid "\n"
 "{track_count} {track_plural} removed from the playlist"
 msgstr ""
 
-#: plplaylists/cog.py:473 plplaylists/cog.py:477 plplaylists/cog.py:643
+#: plplaylists/cog.py:484 plplaylists/cog.py:488 plplaylists/cog.py:654
 msgid "track"
 msgstr ""
 
-#: plplaylists/cog.py:473 plplaylists/cog.py:477 plplaylists/cog.py:643
+#: plplaylists/cog.py:484 plplaylists/cog.py:488 plplaylists/cog.py:654
 msgid "tracks"
 msgstr ""
 
-#: plplaylists/cog.py:476 plplaylists/cog.py:642
+#: plplaylists/cog.py:487 plplaylists/cog.py:653
 msgid "\n"
 "{track_count} {track_plural} added to the playlist"
 msgstr ""
 
-#: plplaylists/cog.py:482 plplaylists/cog.py:649
+#: plplaylists/cog.py:493 plplaylists/cog.py:660
 msgid "Playlist updated"
 msgstr ""
 
-#: plplaylists/cog.py:483 plplaylists/cog.py:650
+#: plplaylists/cog.py:494 plplaylists/cog.py:661
 msgid "{user}, playlist {playlist_name} has been updated.{extras}"
 msgstr ""
 
-#: plplaylists/cog.py:495 plplaylists/cog.py:663
+#: plplaylists/cog.py:506 plplaylists/cog.py:674
 msgid "Playlist unchanged"
 msgstr ""
 
-#: plplaylists/cog.py:496 plplaylists/cog.py:664
+#: plplaylists/cog.py:507 plplaylists/cog.py:675
 msgid "{user}, playlist {playlist_name} has not been updated"
 msgstr ""
 
-#: plplaylists/cog.py:692
+#: plplaylists/cog.py:703
 msgid "You must either provide a URL or attach a playlist file to upload a playlist"
 msgstr ""
 
-#: plplaylists/cog.py:704
+#: plplaylists/cog.py:715
 msgid "No valid playlist file provided"
 msgstr ""
 
-#: plplaylists/cog.py:713
+#: plplaylists/cog.py:724
 msgid "Multiple playlist files provided - Currently only 1 per message is allowed"
 msgstr ""
 
-#: plplaylists/cog.py:730
+#: plplaylists/cog.py:741
 msgid "Failed to save any of the requested playlists"
 msgstr ""
 
-#: plplaylists/cog.py:739
+#: plplaylists/cog.py:750
 msgid "Failed to save the following playlists:\n"
 "{invalid_playlists}"
 msgstr ""
 
-#: plplaylists/cog.py:748
+#: plplaylists/cog.py:759
 msgid "Successfully saved the following playlists:\n"
 "{saved_playlists}"
 msgstr ""
 
-#: plplaylists/cog.py:773
+#: plplaylists/cog.py:784
 msgid "You must be in a voice channel to allow me to connect"
 msgstr ""
 
-#: plplaylists/cog.py:781
+#: plplaylists/cog.py:792
 msgid "I don't have permission to connect or speak in {channel}"
 msgstr ""
 
-#: plplaylists/cog.py:798
+#: plplaylists/cog.py:809
 msgid "Playlist"
 msgstr ""
 
-#: plplaylists/cog.py:803
+#: plplaylists/cog.py:814
 msgid "{track_count} tracks enqueued.{playlist_name}"
 msgstr ""
 
