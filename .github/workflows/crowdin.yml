@@ -12,7 +12,7 @@ jobs:
         if: github.repository == 'Drapersniper/PyLav-Cogs'
         runs-on: ubuntu-latest
         steps:
-        -   uses: actions/checkout@v2
+        -   uses: actions/checkout@v3
         -   name: Set up Python
             uses: actions/setup-python@v4
             with:
@@ -24,7 +24,7 @@ jobs:
             run: |
                 python3.8 -m redgettext --command-docstrings --verbose --recursive .
         -   name: crowdin action
-            uses: crowdin/github-action@1.4.13
+            uses: crowdin/github-action@1.4.14
             with:
                 upload_translations: false
                 download_translations: true
@@ -39,7 +39,7 @@ jobs:
         if: github.repository == 'Drapersniper/PyLav-Cogs'
         runs-on: ubuntu-latest
         steps:
-        -   uses: actions/checkout@v2
+        -   uses: actions/checkout@v3
         -   name: Set up Python
             uses: actions/setup-python@v4
             with:
@@ -51,7 +51,7 @@ jobs:
             run: |
                 python3.8 -m redgettext --command-docstrings --verbose --recursive .
         -   name: crowdin action
-            uses: crowdin/github-action@1.4.13
+            uses: crowdin/github-action@1.4.14
             with:
                 upload_translations: true
                 download_translations: false
