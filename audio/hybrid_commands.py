@@ -675,9 +675,7 @@ class HybridCommands(PyLavCogMixin, ABC):
 
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("Moved to {time}").format(
-                        time=format_time(seek_ms) if seek_ms else "00:00"
-                    ),
+                    description=_("Moved to {time}").format(time=format_time(seek_ms) if seek_ms else "00:00"),
                     messageable=context,
                 ),
                 ephemeral=True,
