@@ -446,11 +446,11 @@ class PyLavConfigurator(commands.Cog):
 
         if not current_state:
             node_config = self.lavalink.node_db_manager.get_node_config(
-                PYLAV_BUNDLED_NODES_SETTINGS["ll-gb.draper.wt"]["unique_identifier"]
+                PYLAV_BUNDLED_NODES_SETTINGS["ll-gb.draper.wtf"]["unique_identifier"]
             )
             await self.lavalink.add_node(**(await node_config.get_connection_args()))
             node_config = self.lavalink.node_db_manager.get_node_config(
-                PYLAV_BUNDLED_NODES_SETTINGS["ll-us-ny.draper.wt"]["unique_identifier"]
+                PYLAV_BUNDLED_NODES_SETTINGS["ll-us-ny.draper.wtf"]["unique_identifier"]
             )
             await self.lavalink.add_node(**(await node_config.get_connection_args()))
             await context.send(
