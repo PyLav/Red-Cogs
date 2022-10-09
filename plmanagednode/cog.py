@@ -512,11 +512,11 @@ class PyLavManagedNode(commands.Cog):
         plugin_files = []
         folder = LAVALINK_DOWNLOAD_DIR / "plugins"
         for plugin in data["lavalink"]["plugins"].copy():
-            if plugin["dependency"].startswith("com.github.Topis-Lavalink-Plugins:Topis-Source-Managers-Plugin:"):
-                if plugin_str != "topis-source-Managers-plugin":
+            if plugin["dependency"].startswith("com.github.TopiSenpai.LavaSrc:lavasrc-plugin:"):
+                if plugin_str != "lavasrc-plugin":
                     new_plugins.append(plugin)
                 else:
-                    filename = "Topis-Source-Managers-Plugin-"
+                    filename = "lavasrc-plugin"
                     plugin_files.extend(
                         [
                             x
@@ -626,8 +626,8 @@ class PyLavManagedNode(commands.Cog):
         new_plugins = data["lavalink"]["plugins"].copy()
 
         for plugin in NODE_DEFAULT_SETTINGS["lavalink"]["plugins"]:
-            if plugin["dependency"].startswith("com.github.Topis-Lavalink-Plugins:Topis-Source-Managers-Plugin:"):
-                if plugin_str == "topis-source-Managers-plugin":
+            if plugin["dependency"].startswith("com.github.TopiSenpai.LavaSrc:lavasrc-plugin:"):
+                if plugin_str == "lavasrc-plugin":
                     new_plugins.append(plugin)
             elif plugin["dependency"].startswith("com.dunctebot:skybot-lavalink-plugin:"):
                 if plugin_str == "skybot-lavalink-plugin":
@@ -670,9 +670,9 @@ class PyLavManagedNode(commands.Cog):
         new_plugin_data = []
         for plugin in data["lavalink"]["plugins"].copy():
             dependency = ":".join(plugin["dependency"].split(":")[:-1])
-            if plugin["dependency"].startswith("com.github.Topis-Lavalink-Plugins:Topis-Source-Managers-Plugin:"):
-                org = "Topis-Lavalink-Plugins"
-                repo = "Topis-Source-Managers-Plugin"
+            if plugin["dependency"].startswith("com.github.TopiSenpai.LavaSrc:lavasrc-plugin:"):
+                org = "TopiSenpai"
+                repo = "LavaSrc"
                 repository = "https://jitpack.io"
                 dependency += ":"
             elif plugin["dependency"].startswith("com.dunctebot:skybot-lavalink-plugin:"):
