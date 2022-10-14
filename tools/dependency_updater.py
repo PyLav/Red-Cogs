@@ -87,3 +87,4 @@ for cog in pathlib.Path(__file__).parent.parent.iterdir():
                         info_json.seek(0)
                         info_json.truncate()
                         json.dump(info, info_json, indent=4)
+                        info_json.write("\n")
