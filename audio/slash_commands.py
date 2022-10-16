@@ -55,6 +55,7 @@ class SlashCommands(PyLavCogMixin, ABC):
             "YouTube Music": "ytmsearch:",
             "Spotify": "spsearch:",
             "Apple Music": "amsearch:",
+            "Deezer": "dzsearch:",
             "SoundCloud": "scsearch:",
             "YouTube": "ytsearch:",
         }
@@ -65,6 +66,7 @@ class SlashCommands(PyLavCogMixin, ABC):
             "amsearch:": "applemusic",
             "scsearch:": "soundcloud",
             "ytsearch:": "youtube",
+            "dzsearch:": "deezer",
         }
         inv_map = {v: k for k, v in prefix_mapping.items()}
         if options := data.get("options", []):

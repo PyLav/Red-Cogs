@@ -19,8 +19,8 @@ from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.dbtools import APSWConnectionWrapper
 
 from pylav.client import Client
-from pylav.sql import tables
 from pylav.sql.models import LibConfigModel, PlayerModel
+from pylav.sql.tables.init import DB
 from pylav.types import BotT
 from pylav.utils import AsyncIter, PyLavContext
 from pylav.vendored import aiopath
@@ -105,7 +105,7 @@ class PyLavMigrator(commands.Cog):
             audio_db_conn = APSWConnectionWrapper(str(cog_data_path(self.bot.get_cog("Audio")) / "Audio.db"))
             playlist_api = PlaylistWrapper(self.bot, audio_config, audio_db_conn)
             await playlist_api.init()
-        async with tables.DB.transaction():
+        async with DB.transaction():
             global_config = typing.cast(LibConfigModel, self.lavalink.lib_db_manager.get_config())
             if (r := await audio_config.java_exc_path()) and r != "java":
                 await global_config.update_java_path(r)

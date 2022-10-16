@@ -533,6 +533,22 @@ class PyLavConfigurator(commands.Cog):
             )
         )
 
+    @command_plset.command(name="deezerapi")
+    @commands.is_owner()
+    async def command_plset_deezerapi(self, context: PyLavContext) -> None:
+        """Instructions on how to set the Deezer Token"""
+        message = _(
+            "1. First of all, I would recommend you making a new Deezer account and getting the token of it for this.\n"
+            "2. Read: https://en.deezercommunity.com/subscription-and-payments-5/how-do-find-my-personal-arl-number-on-deezer-68040?postid=200029#post200029:\n"
+            "`{prefix}set api deezer token <your_token_here>`"
+        ).format(prefix=context.clean_prefix)
+        await context.send(
+            embed=await context.lavalink.construct_embed(
+                description=message,
+                messageable=context,
+            )
+        )
+
     @command_plset.command(name="stats")
     @commands.is_owner()
     async def command_plset_stats(self, context: PyLavContext, *, server: discord.Guild = None) -> None:

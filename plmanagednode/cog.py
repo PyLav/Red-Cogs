@@ -147,28 +147,31 @@ class PyLavManagedNode(commands.Cog):
             spotify = await self.bot.get_shared_api_tokens("spotify")
             client_id = spotify.get("client_id")
             client_secret = spotify.get("client_secret")
+            deezer = await self.bot.get_shared_api_tokens("deezer")
+            deezer_token = deezer.get("token")
         else:
             client_id = None
             client_secret = None
+            deezer_token = "..."
         config = self.lavalink._node_config_manager.bundled_node_config()
         yaml_data = await config.fetch_yaml()
         if not await asyncstdlib.all([client_id, client_secret]):
-            spotify_data = yaml_data["plugins"]["topissourcemanagers"]["spotify"]
+            spotify_data = yaml_data["plugins"]["lavasrc"]["spotify"]
             client_id = spotify_data["clientId"]
             client_secret = spotify_data["clientSecret"]
         elif await asyncstdlib.all([client_id, client_secret]):
             if (
-                yaml_data["plugins"]["topissourcemanagers"]["spotify"]["clientId"] != client_id
-                or yaml_data["plugins"]["topissourcemanagers"]["spotify"]["clientSecret"] != client_secret
+                yaml_data["plugins"]["lavasrc"]["spotify"]["clientId"] != client_id
+                or yaml_data["plugins"]["lavasrc"]["spotify"]["clientSecret"] != client_secret
             ):
-                yaml_data["plugins"]["topissourcemanagers"]["spotify"]["clientId"] = client_id
-                yaml_data["plugins"]["topissourcemanagers"]["spotify"]["clientSecret"] = client_secret
+                yaml_data["plugins"]["lavasrc"]["spotify"]["clientId"] = client_id
+                yaml_data["plugins"]["lavasrc"]["spotify"]["clientSecret"] = client_secret
                 await config.save_yaml(yaml_data)
-        self.lavalink._spotify_client_id = client_id
-        self.lavalink._spotify_client_secret = client_secret
-        self.lavalink._spotify_auth = ClientCredentialsFlow(
-            client_id=self.lavalink._spotify_client_id, client_secret=self.lavalink._spotify_client_secret
-        )
+        if deezer_token:
+            yaml_data["plugins"]["lavasrc"]["deezer"]["masterDecryptionKey"] = deezer_token
+            await config.save_yaml(yaml_data)
+
+        self.lavalink._spotify_auth = ClientCredentialsFlow(client_id=client_id, client_secret=client_secret)
         await self.lavalink.managed_node_controller.restart()
         await context.send(
             embed=await self.lavalink.construct_embed(
@@ -489,7 +492,7 @@ class PyLavManagedNode(commands.Cog):
             await context.defer(ephemeral=True)
         plugin_str = plugin.lower()
         plugins = [
-            "topis-source-Managers-plugin",
+            "lavasrc-plugin",
             "skybot-lavalink-plugin",
             "sponsorblock-plugin",
             "lavalink-filter-plugin",
@@ -604,7 +607,7 @@ class PyLavManagedNode(commands.Cog):
             await context.defer(ephemeral=True)
         plugin_str = plugin.lower()
         plugins = [
-            "topis-source-Managers-plugin",
+            "lavasrc-plugin",
             "skybot-lavalink-plugin",
             "sponsorblock-plugin",
             "lavalink-filter-plugin",
@@ -765,7 +768,7 @@ class PyLavManagedNode(commands.Cog):
         data = await config.fetch_yaml()
         source = source.lower().strip()
         valid_sources = NODE_DEFAULT_SETTINGS["lavalink"]["server"]["sources"].copy()
-        valid_sources |= NODE_DEFAULT_SETTINGS["plugins"]["topissourcemanagers"]["sources"]
+        valid_sources |= NODE_DEFAULT_SETTINGS["plugins"]["lavasrc"]["sources"]
         valid_sources |= NODE_DEFAULT_SETTINGS["plugins"]["dunctebot"]["sources"]
         if source not in valid_sources:
             return await context.send(
@@ -779,8 +782,8 @@ class PyLavManagedNode(commands.Cog):
             )
         if source in data["lavalink"]["server"]["sources"]:
             data["lavalink"]["server"]["sources"][source] = state
-        elif source in data["plugins"]["topissourcemanagers"]["sources"]:
-            data["plugins"]["topissourcemanagers"]["sources"][source] = state
+        elif source in data["plugins"]["lavasrc"]["sources"]:
+            data["plugins"]["lavasrc"]["sources"][source] = state
         elif source in data["plugins"]["dunctebot"]["sources"]:
             data["plugins"]["dunctebot"]["sources"][source] = state
         await config.update_yaml(data)
