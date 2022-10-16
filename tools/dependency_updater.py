@@ -7,8 +7,8 @@ import pkg_resources
 import requests
 from packaging.version import parse
 
-__PYLAV_VERSION__ = "0.10.0.0"
-__PYLAV_SHARED_VERSION__ = "0.5.0.0"
+__PYLAV_VERSION__ = "0.11.0.0"
+__PYLAV_SHARED_VERSION__ = "0.6.0.0"
 
 pylav_current_minor_version = parse(__PYLAV_VERSION__)
 pylavcogs_shared_current_minor_version = parse(__PYLAV_SHARED_VERSION__)
