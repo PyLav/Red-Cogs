@@ -166,10 +166,10 @@ class PyLavManagedNode(commands.Cog):
             ):
                 yaml_data["plugins"]["lavasrc"]["spotify"]["clientId"] = client_id
                 yaml_data["plugins"]["lavasrc"]["spotify"]["clientSecret"] = client_secret
-                await config.save_yaml(yaml_data)
+                await config.update_yaml(yaml_data)
         if deezer_token:
             yaml_data["plugins"]["lavasrc"]["deezer"]["masterDecryptionKey"] = deezer_token
-            await config.save_yaml(yaml_data)
+            await config.update_yaml(yaml_data)
 
         self.lavalink._spotify_auth = ClientCredentialsFlow(client_id=client_id, client_secret=client_secret)
         await self.lavalink.managed_node_controller.restart()
@@ -957,7 +957,7 @@ class PyLavManagedNode(commands.Cog):
         config = self.lavalink._node_config_manager.bundled_node_config()
         data = await config.fetch_yaml()
         data["lavalink"]["server"][setting] = value
-        await config.save_yaml(data)
+        await config.update_yaml(data)
         await context.send(
             embed=await context.lavalink.construct_embed(
                 description=_(
@@ -1000,7 +1000,7 @@ class PyLavManagedNode(commands.Cog):
             config = self.lavalink._node_config_manager.bundled_node_config()
             data = await config.fetch_yaml()
             data["lavalink"]["server"]["ratelimit"] = NODE_DEFAULT_SETTINGS["lavalink"]["server"]["ratelimit"]
-            await config.save_yaml(data)
+            await config.update_yaml(data)
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_(
@@ -1038,7 +1038,7 @@ class PyLavManagedNode(commands.Cog):
             config = self.lavalink._node_config_manager.bundled_node_config()
             data = await config.fetch_yaml()
             data["lavalink"]["server"]["youtubeConfig"] = NODE_DEFAULT_SETTINGS["lavalink"]["server"]["youtubeConfig"]
-            await config.save_yaml(data)
+            await config.update_yaml(data)
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_(
@@ -1072,7 +1072,7 @@ class PyLavManagedNode(commands.Cog):
             config = self.lavalink._node_config_manager.bundled_node_config()
             data = await config.fetch_yaml()
             data["lavalink"]["server"]["httpConfig"] = NODE_DEFAULT_SETTINGS["lavalink"]["server"]["httpConfig"]
-            await config.save_yaml(data)
+            await config.update_yaml(data)
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_(
