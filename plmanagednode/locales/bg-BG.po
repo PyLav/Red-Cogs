@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2022-09-13 20:22+0000\n"
-"PO-Revision-Date: 2022-09-13 20:23\n"
+"POT-Creation-Date: 2022-10-16 16:25+0000\n"
+"PO-Revision-Date: 2022-10-16 16:26\n"
 "Last-Translator: \n"
 "Language-Team: Bulgarian\n"
 "MIME-Version: 1.0\n"
@@ -61,69 +61,69 @@ msgstr ""
 msgid "The managed node is not enabled, run `{prefix}{command}` to first enable the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:175
+#: plmanagednode/cog.py:178
 msgid "Restarted the managed Lavalink node"
 msgstr ""
 
-#: plmanagednode/cog.py:183
+#: plmanagednode/cog.py:186
 #, docstring
 msgid "Set the java executable for PyLav.\n\n"
 "        Default is \"java\"\n"
 "        "
 msgstr ""
 
-#: plmanagednode/cog.py:199
+#: plmanagednode/cog.py:202
 msgid "{java} does not exist, run the command again with the java argument set to the correct path"
 msgstr ""
 
-#: plmanagednode/cog.py:216
+#: plmanagednode/cog.py:219
 msgid "{java} is not an executable file"
 msgstr ""
 
-#: plmanagednode/cog.py:228
+#: plmanagednode/cog.py:231
 msgid "{java} is not an executable, run the command again with the java argument set to the correct path"
 msgstr ""
 
-#: plmanagednode/cog.py:247
+#: plmanagednode/cog.py:250
 msgid "PyLav's java executable has been set to {java}\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:261
+#: plmanagednode/cog.py:264
 #, docstring
 msgid "Toggle the managed node on/off.\n\n"
 "        Changes will be applied after restarting the bot.\n"
 "        "
 msgstr ""
 
-#: plmanagednode/cog.py:276
+#: plmanagednode/cog.py:279
 msgid "PyLav's managed node has been enabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:286
+#: plmanagednode/cog.py:289
 msgid "PyLav's managed node has been disabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:296
+#: plmanagednode/cog.py:299
 #, docstring
 msgid "Toggle the managed node auto updates on/off.\n\n"
 "        Changes will be applied after restarting the bot.\n"
 "        "
 msgstr ""
 
-#: plmanagednode/cog.py:312
+#: plmanagednode/cog.py:315
 msgid "PyLav's managed node auto updates have been enabled\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:323
+#: plmanagednode/cog.py:326
 msgid "PyLav's managed node auto updates have been disabled\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:334
+#: plmanagednode/cog.py:337
 #, docstring
 msgid "Set the managed Lavalink node maximum heap-size.\n\n"
 "        By default, this value is 2G of available RAM in the host machine represented by (65-1023M|1+G) (256M,\n"
@@ -133,43 +133,43 @@ msgid "Set the managed Lavalink node maximum heap-size.\n\n"
 "        "
 msgstr ""
 
-#: plmanagednode/cog.py:355
+#: plmanagednode/cog.py:358
 msgid "Heap-size must be a valid measure of size, e.g. 256M, 256G"
 msgstr ""
 
-#: plmanagednode/cog.py:365
+#: plmanagednode/cog.py:368
 msgid "Heap-size must be at least 64M, however it is recommended to have it set to at least 1G"
 msgstr ""
 
-#: plmanagednode/cog.py:377
+#: plmanagednode/cog.py:380
 msgid "Heap-size must be less than your system RAM, You currently have {ram_in_bytes} of RAM available"
 msgstr ""
 
-#: plmanagednode/cog.py:389
+#: plmanagednode/cog.py:392
 msgid "Heap-size must be less than {limit} due to your system limitations"
 msgstr ""
 
-#: plmanagednode/cog.py:407
+#: plmanagednode/cog.py:410
 msgid "Managed node's heap-size set to {bytes}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:421
+#: plmanagednode/cog.py:424
 #, docstring
 msgid "Change the managed node start up configs"
 msgstr ""
 
-#: plmanagednode/cog.py:425
+#: plmanagednode/cog.py:428
 #, docstring
 msgid "Set the managed node host"
 msgstr ""
 
-#: plmanagednode/cog.py:436
+#: plmanagednode/cog.py:439
 msgid "Managed node's host set to {host}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:450
+#: plmanagednode/cog.py:453
 #, docstring
 msgid "`Dangerous command` Set the managed Lavalink node's connection port.\n\n"
 "        This port is the port the managed Lavalink node binds to, you should only change this if there is a\n"
@@ -178,86 +178,86 @@ msgid "`Dangerous command` Set the managed Lavalink node's connection port.\n\n"
 "        "
 msgstr ""
 
-#: plmanagednode/cog.py:460
+#: plmanagednode/cog.py:463
 msgid "The port must be between 1024 and 49151"
 msgstr ""
 
-#: plmanagednode/cog.py:471
+#: plmanagednode/cog.py:474
 msgid "Managed node's port set to {port}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:481
+#: plmanagednode/cog.py:484
 #, docstring
 msgid "Change the managed node plugins"
 msgstr ""
 
-#: plmanagednode/cog.py:485
+#: plmanagednode/cog.py:488
 #, docstring
 msgid "Disabled one of the available plugins"
 msgstr ""
 
-#: plmanagednode/cog.py:501 plmanagednode/cog.py:616
+#: plmanagednode/cog.py:504 plmanagednode/cog.py:619
 msgid "The plugin must be one of the following: {plugins}"
 msgstr ""
 
-#: plmanagednode/cog.py:586
+#: plmanagednode/cog.py:589
 msgid "Managed node's plugin {plugin} disabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:600
+#: plmanagednode/cog.py:603
 #, docstring
 msgid "Enable one of the available plugins"
 msgstr ""
 
-#: plmanagednode/cog.py:649
+#: plmanagednode/cog.py:652
 msgid "Managed node's plugin {plugin} enabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:663
+#: plmanagednode/cog.py:666
 #, docstring
 msgid "Update the managed node plugins"
 msgstr ""
 
-#: plmanagednode/cog.py:729
+#: plmanagednode/cog.py:732
 msgid "{name} was updated from {old_value} to {new_value}\n"
 msgstr ""
 
-#: plmanagednode/cog.py:737
+#: plmanagednode/cog.py:740
 msgid "Managed node's plugins updated.\n\n"
 "{updates}\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:751
+#: plmanagednode/cog.py:754
 msgid "Managed node's plugins already up to date"
 msgstr ""
 
-#: plmanagednode/cog.py:759
+#: plmanagednode/cog.py:762
 #, docstring
 msgid "Toggle the managed node sources"
 msgstr ""
 
-#: plmanagednode/cog.py:773
+#: plmanagednode/cog.py:776
 msgid "Invalid source, {valid_list} are valid sources"
 msgstr ""
 
-#: plmanagednode/cog.py:787
+#: plmanagednode/cog.py:790
 msgid "enabled"
 msgstr ""
 
-#: plmanagednode/cog.py:787
+#: plmanagednode/cog.py:790
 msgid "disabled"
 msgstr ""
 
-#: plmanagednode/cog.py:790
+#: plmanagednode/cog.py:793
 msgid "Managed node's {source} source set to {state}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:805
+#: plmanagednode/cog.py:808
 #, docstring
 msgid "Configure multiple settings for the managed node.\n\n"
 "        Run `[p]plmanaged config server <setting> info` to show info about the settings and what they do.\n\n"
@@ -275,117 +275,117 @@ msgid "Configure multiple settings for the managed node.\n\n"
 "        "
 msgstr ""
 
-#: plmanagednode/cog.py:845
+#: plmanagednode/cog.py:848
 msgid "{Setting} is not a valid Setting; Options are:\n\n"
 "{setting_list}"
 msgstr ""
 
-#: plmanagednode/cog.py:856
+#: plmanagednode/cog.py:859
 msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses. Minimum of 40ms, lower values may introduce pauses. Accepted values: Range: 40 - 2,000"
 msgstr ""
 
-#: plmanagednode/cog.py:861
+#: plmanagednode/cog.py:864
 msgid "How many milliseconds of audio to keep buffered. Accepted values: Range: 1,000 - 10,000"
 msgstr ""
 
-#: plmanagednode/cog.py:864
+#: plmanagednode/cog.py:867
 msgid "The threshold in milliseconds for how long a track can be stuck. A track is stuck if does not return any audio data. Accepted values: Range: 5,000 - 20,000"
 msgstr ""
 
-#: plmanagednode/cog.py:868
+#: plmanagednode/cog.py:871
 msgid "Number of pages to return for a YouTube Playlist - Each page contains 100 songs. Accepted values: Range: 5 - 100"
 msgstr ""
 
-#: plmanagednode/cog.py:872
+#: plmanagednode/cog.py:875
 msgid "Opus encoder quality. Valid values range from 0 to 10, where 10 is best quality but is the most expensive on the CPU"
 msgstr ""
 
-#: plmanagednode/cog.py:876
+#: plmanagednode/cog.py:879
 msgid "Quality of resampling operations. Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU"
 msgstr ""
 
-#: plmanagednode/cog.py:880
+#: plmanagednode/cog.py:883
 msgid "Seek ghosting is the effect where whilst a seek is in progress, the audio buffer is read from until empty, or until seek is ready. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr ""
 
-#: plmanagednode/cog.py:885
+#: plmanagednode/cog.py:888
 msgid "How frequently in seconds to send player updates to clients, affects the current position accuracy. Accepted values: Range: 1 - 10"
 msgstr ""
 
-#: plmanagednode/cog.py:889
+#: plmanagednode/cog.py:892
 msgid "Enable or disable YouTube searches within the node, this will affect AppleMusic, Spotify and any functionality dependant on YouTube. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr ""
 
-#: plmanagednode/cog.py:894
+#: plmanagednode/cog.py:897
 msgid "Enable or disable SoundCloud searches within the node, this will affect any functionality dependant on SoundCloud. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr ""
 
-#: plmanagednode/cog.py:903
+#: plmanagednode/cog.py:906
 msgid "{Setting} info.\n\n"
 "{info}"
 msgstr ""
 
-#: plmanagednode/cog.py:931
+#: plmanagednode/cog.py:934
 msgid "{Setting} valid inputs are:\n\n"
 "Range between: {start} - {end}"
 msgstr ""
 
-#: plmanagednode/cog.py:942
+#: plmanagednode/cog.py:945
 msgid "{Setting} valid inputs are:\n\n"
 "{setting_list}"
 msgstr ""
 
-#: plmanagednode/cog.py:960
+#: plmanagednode/cog.py:963
 msgid "{Setting} set to {value}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:975
+#: plmanagednode/cog.py:978
 #, docstring
 msgid "Configure Lavalink IP Rotation for ratelimits.\n\n"
 "        Run `[p]plmanaged config iprotation 1` to remove the ip rotation\n"
 "        "
 msgstr ""
 
-#: plmanagednode/cog.py:986
+#: plmanagednode/cog.py:989
 msgid "Click the button below to configure the IP rotation for your node.\n"
 "More info at: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> and <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
 msgstr ""
 
-#: plmanagednode/cog.py:1003
+#: plmanagednode/cog.py:1006
 msgid "Removing the IP rotation from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:1013
+#: plmanagednode/cog.py:1016
 #, docstring
 msgid "Link a Google account to Lavalink to bypass YouTube's age restriction\n\n"
 "        Run `[p]plmanaged config googleaccount 1` to remove the linked account.\n"
 "        "
 msgstr ""
 
-#: plmanagednode/cog.py:1024
+#: plmanagednode/cog.py:1027
 msgid "Click the button below to link a Google account to your node, if you have 2FA setup on this account you will need an app password instead\n"
 "More info at: <https://support.google.com/accounts/answer/185833>"
 msgstr ""
 
-#: plmanagednode/cog.py:1041
+#: plmanagednode/cog.py:1044
 msgid "Unlinking Google account from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
 
-#: plmanagednode/cog.py:1051
+#: plmanagednode/cog.py:1054
 #, docstring
 msgid "Configure a HTTP proxy for Lavalink\n\n"
 "        Run `[p]plmanaged config httpproxy 1` to remove the proxy.\n"
 "        "
 msgstr ""
 
-#: plmanagednode/cog.py:1062
+#: plmanagednode/cog.py:1065
 msgid "Click the button below to configure a HTTP proxy for your node"
 msgstr ""
 
-#: plmanagednode/cog.py:1075
+#: plmanagednode/cog.py:1078
 msgid "Unlinking HTTP proxy from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr ""
