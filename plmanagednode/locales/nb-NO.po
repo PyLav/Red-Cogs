@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2022-09-13 20:22+0000\n"
-"PO-Revision-Date: 2022-09-13 20:23\n"
+"POT-Creation-Date: 2022-10-16 16:25+0000\n"
+"PO-Revision-Date: 2022-10-16 16:26\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian\n"
 "MIME-Version: 1.0\n"
@@ -61,11 +61,11 @@ msgstr "Start noden med den gjennomsiktige Lavalink på nytt"
 msgid "The managed node is not enabled, run `{prefix}{command}` to first enable the managed node"
 msgstr "Den administrerte noden er ikke aktivert, kjør `{prefix}{command}for å først aktivere den administrerte noden"
 
-#: plmanagednode/cog.py:175
+#: plmanagednode/cog.py:178
 msgid "Restarted the managed Lavalink node"
 msgstr "Gjenopprettet noden med behandlet Lavalink"
 
-#: plmanagednode/cog.py:183
+#: plmanagednode/cog.py:186
 #, docstring
 msgid "Set the java executable for PyLav.\n\n"
 "        Default is \"java\"\n"
@@ -74,25 +74,25 @@ msgstr "Angi java kjørbar for PyLav.\n\n"
 "        Standard er \"java\"\n"
 "        "
 
-#: plmanagednode/cog.py:199
+#: plmanagednode/cog.py:202
 msgid "{java} does not exist, run the command again with the java argument set to the correct path"
 msgstr "{java} finnes ikke, kjør kommandoen igjen med java argument satt til korrekt bane"
 
-#: plmanagednode/cog.py:216
+#: plmanagednode/cog.py:219
 msgid "{java} is not an executable file"
 msgstr "{java} er ikke en kjørbar fil"
 
-#: plmanagednode/cog.py:228
+#: plmanagednode/cog.py:231
 msgid "{java} is not an executable, run the command again with the java argument set to the correct path"
 msgstr "{java} er ikke en kjørbar, kjør kommandoen igjen med javaargumentet satt til korrekt sti"
 
-#: plmanagednode/cog.py:247
+#: plmanagednode/cog.py:250
 msgid "PyLav's java executable has been set to {java}\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr "PyLav's java kjørbare har blitt satt til {java}\n\n"
 "Kjør `{prefix}{command}for å starte den administrerte noden på nytt"
 
-#: plmanagednode/cog.py:261
+#: plmanagednode/cog.py:264
 #, docstring
 msgid "Toggle the managed node on/off.\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -101,19 +101,19 @@ msgstr "Slå av/på behandlet node på/av.\n\n"
 "        Endringer vil bli brukt etter at du har startet boten på nytt.\n"
 "        "
 
-#: plmanagednode/cog.py:276
+#: plmanagednode/cog.py:279
 msgid "PyLav's managed node has been enabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr "PyLav's administrerte node er aktivert.\n\n"
 "Kjør `{prefix}{command}for å starte den administrerte noden på nytt"
 
-#: plmanagednode/cog.py:286
+#: plmanagednode/cog.py:289
 msgid "PyLav's managed node has been disabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr "PyLav's administrerte node har blitt deaktivert.\n\n"
 "Kjør `{prefix}{command}for å starte den administrerte noden på nytt"
 
-#: plmanagednode/cog.py:296
+#: plmanagednode/cog.py:299
 #, docstring
 msgid "Toggle the managed node auto updates on/off.\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -122,19 +122,19 @@ msgstr "Slå av/på den administrerte node automatisk oppdateringer på/av.\n\n"
 "        Endringer vil bli brukt etter omstart av boten.\n"
 "        "
 
-#: plmanagednode/cog.py:312
+#: plmanagednode/cog.py:315
 msgid "PyLav's managed node auto updates have been enabled\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr "PyLav's administrerte node autooppdateringer har blitt aktivert\n\n"
 "Run `{prefix}{command}for å starte den administrerte noden på nytt"
 
-#: plmanagednode/cog.py:323
+#: plmanagednode/cog.py:326
 msgid "PyLav's managed node auto updates have been disabled\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr "PyLav's administrerte node autooppdateringer har blitt deaktivert\n\n"
 "Run `{prefix}{command}for å restarte den administrerte noden"
 
-#: plmanagednode/cog.py:334
+#: plmanagednode/cog.py:337
 #, docstring
 msgid "Set the managed Lavalink node maximum heap-size.\n\n"
 "        By default, this value is 2G of available RAM in the host machine represented by (65-1023M|1+G) (256M,\n"
@@ -149,45 +149,45 @@ msgstr "Angi den administrerte Lavalink noden maksimale opphøyningsstørrelsen.
 "        at den håndterte Lavalink-noden alltid vil bruke denne mengden med RAM.\n"
 "        "
 
-#: plmanagednode/cog.py:355
+#: plmanagednode/cog.py:358
 msgid "Heap-size must be a valid measure of size, e.g. 256M, 256G"
 msgstr "Heap-størrelse må være et gyldig mål for størrelse, f.eks. 256M, 256G"
 
-#: plmanagednode/cog.py:365
+#: plmanagednode/cog.py:368
 msgid "Heap-size must be at least 64M, however it is recommended to have it set to at least 1G"
 msgstr "Størrelsen må være minst 64M, men det anbefales å ha den til minst 1G"
 
-#: plmanagednode/cog.py:377
+#: plmanagednode/cog.py:380
 msgid "Heap-size must be less than your system RAM, You currently have {ram_in_bytes} of RAM available"
 msgstr "Heap-størrelse må være mindre enn systemet RAM, du har for øyeblikket {ram_in_bytes} av RAM tilgjengelig"
 
-#: plmanagednode/cog.py:389
+#: plmanagednode/cog.py:392
 msgid "Heap-size must be less than {limit} due to your system limitations"
 msgstr "Størrelsen må være mindre enn {limit} på grunn av systembegrensningene"
 
-#: plmanagednode/cog.py:407
+#: plmanagednode/cog.py:410
 msgid "Managed node's heap-size set to {bytes}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr "Administrerte nodens haug størrelse satt til {bytes}.\n\n"
 "Kjør `{prefix}{command}` for å starte den administrerte noden på nytt"
 
-#: plmanagednode/cog.py:421
+#: plmanagednode/cog.py:424
 #, docstring
 msgid "Change the managed node start up configs"
 msgstr "Endre den administrerte noden starter innstillinger"
 
-#: plmanagednode/cog.py:425
+#: plmanagednode/cog.py:428
 #, docstring
 msgid "Set the managed node host"
 msgstr "Angi den administrerte node-verten"
 
-#: plmanagednode/cog.py:436
+#: plmanagednode/cog.py:439
 msgid "Managed node's host set to {host}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr "Administrerte nodens verts-sett til {host}.\n\n"
 "Kjør `{prefix}{command}` for å restarte den administrerte noden"
 
-#: plmanagednode/cog.py:450
+#: plmanagednode/cog.py:453
 #, docstring
 msgid "`Dangerous command` Set the managed Lavalink node's connection port.\n\n"
 "        This port is the port the managed Lavalink node binds to, you should only change this if there is a\n"
@@ -200,57 +200,57 @@ msgstr "\"Farlig kommando\" Angi den administrerte Lavalink ingen tilkoblingspor
 "        Verdien som standard er `2154`.\n"
 "        "
 
-#: plmanagednode/cog.py:460
+#: plmanagednode/cog.py:463
 msgid "The port must be between 1024 and 49151"
 msgstr "Havnen må være mellom 1024 og 49151"
 
-#: plmanagednode/cog.py:471
+#: plmanagednode/cog.py:474
 msgid "Managed node's port set to {port}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr "Administrerte nodens port satt til {port}.\n\n"
 "Kjør `{prefix}{command}` for å starte på nytt den administrerte noden"
 
-#: plmanagednode/cog.py:481
+#: plmanagednode/cog.py:484
 #, docstring
 msgid "Change the managed node plugins"
 msgstr "Endre de administrerte node-programtilleggene"
 
-#: plmanagednode/cog.py:485
+#: plmanagednode/cog.py:488
 #, docstring
 msgid "Disabled one of the available plugins"
 msgstr "Deaktivert en av de tilgjengelige tilleggene"
 
-#: plmanagednode/cog.py:501 plmanagednode/cog.py:616
+#: plmanagednode/cog.py:504 plmanagednode/cog.py:619
 msgid "The plugin must be one of the following: {plugins}"
 msgstr "Plugin må være en av følgende: {plugins}"
 
-#: plmanagednode/cog.py:586
+#: plmanagednode/cog.py:589
 msgid "Managed node's plugin {plugin} disabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr "Administrert nodens plugin {plugin} deaktivert.\n\n"
 "Kjør `{prefix}{command}` for å starte den administrerte noden på nytt"
 
-#: plmanagednode/cog.py:600
+#: plmanagednode/cog.py:603
 #, docstring
 msgid "Enable one of the available plugins"
 msgstr "Aktiver en av de tilgjengelige tilleggene"
 
-#: plmanagednode/cog.py:649
+#: plmanagednode/cog.py:652
 msgid "Managed node's plugin {plugin} enabled.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr "Administrert nodens plugin {plugin} aktivert.\n\n"
 "Kjør `{prefix}{command}` for å starte den administrerte noden på nytt"
 
-#: plmanagednode/cog.py:663
+#: plmanagednode/cog.py:666
 #, docstring
 msgid "Update the managed node plugins"
 msgstr "Oppdater de administrerte node-programtilleggene"
 
-#: plmanagednode/cog.py:729
+#: plmanagednode/cog.py:732
 msgid "{name} was updated from {old_value} to {new_value}\n"
 msgstr "{name} ble oppdatert fra {old_value} til {new_value}\n"
 
-#: plmanagednode/cog.py:737
+#: plmanagednode/cog.py:740
 msgid "Managed node's plugins updated.\n\n"
 "{updates}\n\n"
 "Run `{prefix}{command}` to restart the managed node"
@@ -258,34 +258,34 @@ msgstr "Administrerte nodens plugins oppdatert.\n\n"
 "{updates}\n\n"
 "Kjør `{prefix}{command}` for å restarte den administrerte noden"
 
-#: plmanagednode/cog.py:751
+#: plmanagednode/cog.py:754
 msgid "Managed node's plugins already up to date"
 msgstr "Administrerte nodens plugins er allerede oppdatert"
 
-#: plmanagednode/cog.py:759
+#: plmanagednode/cog.py:762
 #, docstring
 msgid "Toggle the managed node sources"
 msgstr "Slå av/på de administrerte nodekildene"
 
-#: plmanagednode/cog.py:773
+#: plmanagednode/cog.py:776
 msgid "Invalid source, {valid_list} are valid sources"
 msgstr "Ugyldig kilde, {valid_list} er gyldige kilder"
 
-#: plmanagednode/cog.py:787
+#: plmanagednode/cog.py:790
 msgid "enabled"
 msgstr "aktivert"
 
-#: plmanagednode/cog.py:787
+#: plmanagednode/cog.py:790
 msgid "disabled"
 msgstr "deaktivert"
 
-#: plmanagednode/cog.py:790
+#: plmanagednode/cog.py:793
 msgid "Managed node's {source} source set to {state}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr "Administrert node {source} kilde satt til {state}.\n\n"
 "Kjør `{prefix}{command}` for å restarte den administrerte noden"
 
-#: plmanagednode/cog.py:805
+#: plmanagednode/cog.py:808
 #, docstring
 msgid "Configure multiple settings for the managed node.\n\n"
 "        Run `[p]plmanaged config server <setting> info` to show info about the settings and what they do.\n\n"
@@ -316,77 +316,77 @@ msgstr "Konfigurer flere innstillinger for den administrerte noden.\n\n"
 "        `soundcloudSearchEnabled` : Bolsk i. Ekte (standard sant)\n"
 "        "
 
-#: plmanagednode/cog.py:845
+#: plmanagednode/cog.py:848
 msgid "{Setting} is not a valid Setting; Options are:\n\n"
 "{setting_list}"
 msgstr "{Setting} er ikke en gyldig innstilling; Innstillinger er:\n\n"
 "{setting_list}"
 
-#: plmanagednode/cog.py:856
+#: plmanagednode/cog.py:859
 msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses. Minimum of 40ms, lower values may introduce pauses. Accepted values: Range: 40 - 2,000"
 msgstr "Varigheten av NAS-bufferen i millisekunder. Høyere verdier farer bedre mot lengre GC-pauser. Minimum 40 ms, lavere verdier kan introdusere pauser. Godtatte verdier: Område: 40 - 2000"
 
-#: plmanagednode/cog.py:861
+#: plmanagednode/cog.py:864
 msgid "How many milliseconds of audio to keep buffered. Accepted values: Range: 1,000 - 10,000"
 msgstr "Hvor mange millisekunder av lyd som fortsetter å bufre. Aksepterte verdier: Område: 1000 - 10.000"
 
-#: plmanagednode/cog.py:864
+#: plmanagednode/cog.py:867
 msgid "The threshold in milliseconds for how long a track can be stuck. A track is stuck if does not return any audio data. Accepted values: Range: 5,000 - 20,000"
 msgstr "Terskelen i millisekunder for hvor lenge et spor kan stå fast. Et spor slår fast om ingen lyddata. Aksepterte verdier: Område: 5000 - 20 000"
 
-#: plmanagednode/cog.py:868
+#: plmanagednode/cog.py:871
 msgid "Number of pages to return for a YouTube Playlist - Each page contains 100 songs. Accepted values: Range: 5 - 100"
 msgstr "Antall sider som skal returneres for en YouTube Playlist - Hver side inneholder 100 sanger. Aksepterte verdier: Område: 5 - 100"
 
-#: plmanagednode/cog.py:872
+#: plmanagednode/cog.py:875
 msgid "Opus encoder quality. Valid values range from 0 to 10, where 10 is best quality but is the most expensive on the CPU"
 msgstr "Opus kodekvalitet. Gyldige verdier varierer fra 0 til 10, der 10 er best kvalitet, men er den dyreste på prosessorenheten"
 
-#: plmanagednode/cog.py:876
+#: plmanagednode/cog.py:879
 msgid "Quality of resampling operations. Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU"
 msgstr "Kvalitet på resampling operasjoner. Gyldige verdier er LOW, MEDIUM og HIGH, hvor HIGH bruker mest CPU"
 
-#: plmanagednode/cog.py:880
+#: plmanagednode/cog.py:883
 msgid "Seek ghosting is the effect where whilst a seek is in progress, the audio buffer is read from until empty, or until seek is ready. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "Søke ghosting er effekten der mens et søk pågår, leses lydbufferen fra til tom, eller til et søk er klar. Aksepterte verdier for True: `True`, `t`, `1`, Aksepterte verdier for False`, `f`, `0`"
 
-#: plmanagednode/cog.py:885
+#: plmanagednode/cog.py:888
 msgid "How frequently in seconds to send player updates to clients, affects the current position accuracy. Accepted values: Range: 1 - 10"
 msgstr "Hvor ofte i sekunder å sende spillernes oppdateringer til klienter, påvirker gjeldende posisjonsnøyaktighet. Aksepterte verdier: Område: 1 - 10"
 
-#: plmanagednode/cog.py:889
+#: plmanagednode/cog.py:892
 msgid "Enable or disable YouTube searches within the node, this will affect AppleMusic, Spotify and any functionality dependant on YouTube. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "Aktiver eller deaktiver YouTube søk innenfor EK-gruppen, dette vil påvirke AppleMusic, Spotify og alle funksjoner avhengig av YouTube. Aksepterte verdier for True: `True`, `t`, `1`, Aksepterte verdier for False`, `f`, `0`"
 
-#: plmanagednode/cog.py:894
+#: plmanagednode/cog.py:897
 msgid "Enable or disable SoundCloud searches within the node, this will affect any functionality dependant on SoundCloud. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "Aktivere eller deaktivere SoundCloud søk i noden, dette vil påvirke funksjonalitet avhengig av SoundCloud. Aksepterte verdier for True: `True`, `t`, `1`, Aksepterte verdier for False`, `f`, `0`"
 
-#: plmanagednode/cog.py:903
+#: plmanagednode/cog.py:906
 msgid "{Setting} info.\n\n"
 "{info}"
 msgstr "{Setting} info.\n\n"
 "{info}"
 
-#: plmanagednode/cog.py:931
+#: plmanagednode/cog.py:934
 msgid "{Setting} valid inputs are:\n\n"
 "Range between: {start} - {end}"
 msgstr "{Setting} gyldige data er:\n\n"
 "Rekkevidde mellom: {start} - {end}"
 
-#: plmanagednode/cog.py:942
+#: plmanagednode/cog.py:945
 msgid "{Setting} valid inputs are:\n\n"
 "{setting_list}"
 msgstr "{Setting} gyldige data er:\n\n"
 "{setting_list}"
 
-#: plmanagednode/cog.py:960
+#: plmanagednode/cog.py:963
 msgid "{Setting} set to {value}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr "{Setting} satt til {value}.\n\n"
 "Kjør `{prefix}{command}` for å restarte den administrerte noden"
 
-#: plmanagednode/cog.py:975
+#: plmanagednode/cog.py:978
 #, docstring
 msgid "Configure Lavalink IP Rotation for ratelimits.\n\n"
 "        Run `[p]plmanaged config iprotation 1` to remove the ip rotation\n"
@@ -395,19 +395,19 @@ msgstr "Konfigurer Lavalink IP-rotasjon for ratelimitasjoner.\n\n"
 "        Kjør `[p]plyndrende config iprotation 1` for å fjerne ip rotasjon\n"
 "        "
 
-#: plmanagednode/cog.py:986
+#: plmanagednode/cog.py:989
 msgid "Click the button below to configure the IP rotation for your node.\n"
 "More info at: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> and <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
 msgstr "Klikk på knappen under for å konfigurere IP rotasjon for din node.\n"
 "Mer informasjon på: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> og <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
 
-#: plmanagednode/cog.py:1003
+#: plmanagednode/cog.py:1006
 msgid "Removing the IP rotation from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr "Fjerner IP rotasjon fra noden.\n\n"
 "Kjør `{prefix}{command}` for å restarte den administrerte noden"
 
-#: plmanagednode/cog.py:1013
+#: plmanagednode/cog.py:1016
 #, docstring
 msgid "Link a Google account to Lavalink to bypass YouTube's age restriction\n\n"
 "        Run `[p]plmanaged config googleaccount 1` to remove the linked account.\n"
@@ -416,19 +416,19 @@ msgstr "Koble en Google-konto til Lavalink til bypass av YouTube's aldersbegrens
 "        Kjør `[p]plyndret config googleaccount 1` for å fjerne den tilknyttede kontoen.\n"
 "        "
 
-#: plmanagednode/cog.py:1024
+#: plmanagednode/cog.py:1027
 msgid "Click the button below to link a Google account to your node, if you have 2FA setup on this account you will need an app password instead\n"
 "More info at: <https://support.google.com/accounts/answer/185833>"
 msgstr "Klikk på knappen nedenfor for å koble en Google-konto til din EK-gruppe, hvis du har 2FA oppsett på denne kontoen trenger du et app-passord i stedet\n"
 "Mer informasjon på: <https://support.google.com/accounts/answer/185833>"
 
-#: plmanagednode/cog.py:1041
+#: plmanagednode/cog.py:1044
 msgid "Unlinking Google account from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr "Koble fra Google-kontoen din fra noden.\n\n"
 "Kjør `{prefix}{command}` for å starte den administrerte noden på nytt"
 
-#: plmanagednode/cog.py:1051
+#: plmanagednode/cog.py:1054
 #, docstring
 msgid "Configure a HTTP proxy for Lavalink\n\n"
 "        Run `[p]plmanaged config httpproxy 1` to remove the proxy.\n"
@@ -437,11 +437,11 @@ msgstr "Konfigurer en HTTP-proxy for Lavalink\n\n"
 "        Kjør `[p]håndtert config httpproxy 1` for å fjerne proxyen.\n"
 "        "
 
-#: plmanagednode/cog.py:1062
+#: plmanagednode/cog.py:1065
 msgid "Click the button below to configure a HTTP proxy for your node"
 msgstr "Klikk på knappen nedenfor for å konfigurere en HTTP-proxy for noden din"
 
-#: plmanagednode/cog.py:1075
+#: plmanagednode/cog.py:1078
 msgid "Unlinking HTTP proxy from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr "Fjern HTTP-proxy fra noden.\n\n"
