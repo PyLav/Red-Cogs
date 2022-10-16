@@ -533,7 +533,7 @@ class PyLavConfigurator(commands.Cog):
             )
         )
 
-    @command_plset.command(name="deezerapi")
+    @command_plset.command(name="deezerapi", hidden=True, disabled=True)
     @commands.is_owner()
     async def command_plset_deezerapi(self, context: PyLavContext) -> None:
         """Instructions on how to set the Deezer Token"""
