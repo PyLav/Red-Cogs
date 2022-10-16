@@ -1725,24 +1725,21 @@ class PyLavNotifier(commands.Cog):
                 continue
 
             data_ = {t_effect: effect.__class__.__name__}
-            if effect:
-                values = effect.to_dict()
-                if not isinstance(effect, Equalizer):
-                    data_[t_values] = "\n".join(
-                        f"{EightBitANSI.paint_white(k.title())}: {EightBitANSI.paint_green(v or default)}"
-                        for k, v in values.items()
-                    )
-                else:
-                    values = values["equalizer"]
-                    data_[t_values] = "\n".join(
-                        [
-                            f"{EightBitANSI.paint_white('Band '+band['band']) }: {EightBitANSI.paint_green(band['gain'])}"
-                            for band in values
-                            if band["gain"]
-                        ]
-                    )
+            values = effect.to_dict()
+            if not isinstance(effect, Equalizer):
+                data_[t_values] = "\n".join(
+                    f"{EightBitANSI.paint_white(k.title())}: {EightBitANSI.paint_green(v or default)}"
+                    for k, v in values.items()
+                )
             else:
-                data_[t_values] = EightBitANSI.paint_blue(_("N/A"))
+                values = values["equalizer"]
+                data_[t_values] = "\n".join(
+                    [
+                        f"{EightBitANSI.paint_white('Band '+band['band']) }: {EightBitANSI.paint_green(band['gain'])}"
+                        for band in values
+                        if band["gain"]
+                    ]
+                )
             data.append(data_)
         self._message_queue[channel].append(
             await self.lavalink.construct_embed(
