@@ -538,8 +538,8 @@ class PyLavConfigurator(commands.Cog):
     async def command_plset_deezerapi(self, context: PyLavContext) -> None:
         """Instructions on how to set the Deezer Token"""
         message = _(
-            "1. First of all, I would recommend you making a new Deezer account and getting the token of it for this.\n"
-            "2. Read: https://en.deezercommunity.com/subscription-and-payments-5/how-do-find-my-personal-arl-number-on-deezer-68040?postid=200029#post200029:\n"
+            "1. Google is your friend.\n"
+            "2. Once you have the key run:\n"
             "`{prefix}set api deezer token <your_token_here>`"
         ).format(prefix=context.clean_prefix)
         await context.send(
