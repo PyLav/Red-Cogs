@@ -671,8 +671,12 @@ class PyLavManagedNode(commands.Cog):
         config = self.lavalink._node_config_manager.bundled_node_config()
         data = await config.fetch_yaml()
         new_plugin_data = []
+        _temp = set()
         for plugin in data["lavalink"]["plugins"].copy():
             dependency = ":".join(plugin["dependency"].split(":")[:-1])
+            if dependency in _temp:
+                continue
+            _temp.add(dependency)
             if plugin["dependency"].startswith("com.github.TopiSenpai.LavaSrc:lavasrc-plugin:"):
                 org = "TopiSenpai"
                 repo = "LavaSrc"
@@ -689,15 +693,15 @@ class PyLavManagedNode(commands.Cog):
                 repository = "https://jitpack.io"
                 dependency += ":"
             elif plugin["dependency"].startswith("com.github.esmBot:lava-xm-plugin:"):
+                org = "esmBot"
+                repo = "lava-xm-plugin"
+                repository = "https://jitpack.io"
+                dependency += ":"
+            elif plugin["dependency"].startswith("me.rohank05:lavalink-filter-plugin:"):
                 org = "rohank05"
                 repo = "lavalink-filter-plugin"
                 repository = "https://jitpack.io"
                 dependency += ":"
-            elif plugin["dependency"].startswith("me.rohank05:lavalink-filter-plugin:"):
-                org = "esmBot"
-                repo = "lava-xm-plugin"
-                repository = "https://jitpack.io"
-                dependency = "com.github.esmBot:lava-xm-plugin:v"
             else:
                 continue
             release_data = await (
@@ -714,20 +718,24 @@ class PyLavManagedNode(commands.Cog):
             )
 
         if diff := DeepDiff(
-            data["lavalink"]["plugins"], new_plugin_data, ignore_order=True, max_passes=1, cache_size=1000
+            data["lavalink"]["plugins"], new_plugin_data, ignore_order=True, max_passes=3, cache_size=10000
         ):
             data["lavalink"]["plugins"] = new_plugin_data
             update_string = ""
             if "values_changed" in diff:
                 values_changed = diff["values_changed"]
-                for __, root_value in values_changed.items():
+                print(values_changed)
+                for key, root_value in values_changed.items():
+                    if "'dependency'" not in key:
+                        LOGGER.warning("Ignoring key %s  during plugin update - %s", key, root_value)
+                        continue
                     old_value = None
                     new_value = None
                     for key, value in root_value.items():
                         if key == "old_value":
-                            old_value = value["dependency"]
+                            old_value = value
                         elif key == "new_value":
-                            new_value = value["dependency"]
+                            new_value = value
                     if all([old_value, new_value]):
                         update_string += _("{name} was updated from {old_value} to {new_value}\n").format(
                             old_value=old_value.split(":")[-1],
