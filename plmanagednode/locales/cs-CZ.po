@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2022-10-16 16:25+0000\n"
-"PO-Revision-Date: 2022-10-16 16:26\n"
+"POT-Creation-Date: 2022-10-17 23:10+0000\n"
+"PO-Revision-Date: 2022-10-17 23:10\n"
 "Last-Translator: \n"
 "Language-Team: Czech\n"
 "MIME-Version: 1.0\n"
@@ -246,11 +246,11 @@ msgstr "Spravovaný Node plugin {plugin} je povolen.\n\n"
 msgid "Update the managed node plugins"
 msgstr "Aktualizovat spravované pluginy Node"
 
-#: plmanagednode/cog.py:732
+#: plmanagednode/cog.py:740
 msgid "{name} was updated from {old_value} to {new_value}\n"
 msgstr "{name} byl aktualizován z {old_value} na {new_value}\n"
 
-#: plmanagednode/cog.py:740
+#: plmanagednode/cog.py:748
 msgid "Managed node's plugins updated.\n\n"
 "{updates}\n\n"
 "Run `{prefix}{command}` to restart the managed node"
@@ -258,34 +258,34 @@ msgstr "Aktualizovány pluginy spravovaného uzlu.\n\n"
 "{updates}\n\n"
 "Spustit `{prefix}{command}` pro restartování spravovaného uzlu"
 
-#: plmanagednode/cog.py:754
+#: plmanagednode/cog.py:762
 msgid "Managed node's plugins already up to date"
 msgstr "Pluginy Spravovaného uzlu jsou již aktuální"
 
-#: plmanagednode/cog.py:762
+#: plmanagednode/cog.py:770
 #, docstring
 msgid "Toggle the managed node sources"
 msgstr "Přepnout spravované zdroje uzlu"
 
-#: plmanagednode/cog.py:776
+#: plmanagednode/cog.py:784
 msgid "Invalid source, {valid_list} are valid sources"
 msgstr "Neplatný zdroj, {valid_list} jsou platné zdroje"
 
-#: plmanagednode/cog.py:790
+#: plmanagednode/cog.py:798
 msgid "enabled"
 msgstr "povoleno"
 
-#: plmanagednode/cog.py:790
+#: plmanagednode/cog.py:798
 msgid "disabled"
 msgstr "vypnuto"
 
-#: plmanagednode/cog.py:793
+#: plmanagednode/cog.py:801
 msgid "Managed node's {source} source set to {state}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr "Spravovaný uzel {source} je nastaven na {state}.\n\n"
 "Spustit `{prefix}{command}` pro restartování spravovaného uzlu"
 
-#: plmanagednode/cog.py:808
+#: plmanagednode/cog.py:816
 #, docstring
 msgid "Configure multiple settings for the managed node.\n\n"
 "        Run `[p]plmanaged config server <setting> info` to show info about the settings and what they do.\n\n"
@@ -316,77 +316,77 @@ msgstr "Nastavení více nastavení pro spravovaný uzel.\n\n"
 "        `soundcloudSearchEenabled` : Boolean i. True (Default True)\n"
 "        "
 
-#: plmanagednode/cog.py:848
+#: plmanagednode/cog.py:856
 msgid "{Setting} is not a valid Setting; Options are:\n\n"
 "{setting_list}"
 msgstr "{Setting} není platné nastavení. Možnosti jsou:\n\n"
 "{setting_list}"
 
-#: plmanagednode/cog.py:859
+#: plmanagednode/cog.py:867
 msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses. Minimum of 40ms, lower values may introduce pauses. Accepted values: Range: 40 - 2,000"
 msgstr "Doba trvání NAS bufferu v milisekundách. Vyšší hodnoty jsou lepší vůči delším pozastavením GC. Minimálně 40 ms, nižší hodnoty mohou způsobit pauzy. Přijaté hodnoty: rozsah: 40 - 2,000"
 
-#: plmanagednode/cog.py:864
+#: plmanagednode/cog.py:872
 msgid "How many milliseconds of audio to keep buffered. Accepted values: Range: 1,000 - 10,000"
 msgstr "Kolik milisekund zvuku, který má být zachován v vyrovnávací paměti. Přijaté hodnoty: rozsah: 1,000 - 10,000"
 
-#: plmanagednode/cog.py:867
+#: plmanagednode/cog.py:875
 msgid "The threshold in milliseconds for how long a track can be stuck. A track is stuck if does not return any audio data. Accepted values: Range: 5,000 - 20,000"
 msgstr "Prahová hodnota v milisekundách, jak dlouho lze uvíznout stopu. Trasa je uvězněna, pokud nevrací žádná zvuková data. Přijaté hodnoty: rozsah: 5,000 - 20,000"
 
-#: plmanagednode/cog.py:871
+#: plmanagednode/cog.py:879
 msgid "Number of pages to return for a YouTube Playlist - Each page contains 100 songs. Accepted values: Range: 5 - 100"
 msgstr "Počet stránek pro návrat na YouTube Playlist - Každá stránka obsahuje 100 skladeb. Přijaté hodnoty: rozsah: 5 - 100"
 
-#: plmanagednode/cog.py:875
+#: plmanagednode/cog.py:883
 msgid "Opus encoder quality. Valid values range from 0 to 10, where 10 is best quality but is the most expensive on the CPU"
 msgstr "Kvalita opus enkodéru. Platné hodnoty se pohybují od 0 do 10, kde 10 je nejlepší kvalita, ale je nejdražší na CPU"
 
-#: plmanagednode/cog.py:879
+#: plmanagednode/cog.py:887
 msgid "Quality of resampling operations. Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU"
 msgstr "Kvalita operací při převrácení. Platnými hodnotami jsou LOW, MEDIUM a VYSOKO, kde VYSOKÉ používá nejvíce CPU"
 
-#: plmanagednode/cog.py:883
+#: plmanagednode/cog.py:891
 msgid "Seek ghosting is the effect where whilst a seek is in progress, the audio buffer is read from until empty, or until seek is ready. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "Vyhledej ghosting je efekt, kde probíhá vyhledávání, zvukový vyrovnávací paměť je přečtena do prázdné, nebo dokud není připraven vyhledat. Přijaté hodnoty pro True`, `t`, `1`, Přijaté hodnoty pro False: `False`, `f`, `0`"
 
-#: plmanagednode/cog.py:888
+#: plmanagednode/cog.py:896
 msgid "How frequently in seconds to send player updates to clients, affects the current position accuracy. Accepted values: Range: 1 - 10"
 msgstr "Jak často v sekundách zasílání aktualizací hráčů klientům, ovlivňuje aktuální přesnost polohy. Přijaté hodnoty: rozsah: 1 - 10"
 
-#: plmanagednode/cog.py:892
+#: plmanagednode/cog.py:900
 msgid "Enable or disable YouTube searches within the node, this will affect AppleMusic, Spotify and any functionality dependant on YouTube. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "Povolit nebo zakázat YouTube vyhledávání v uzlu, to ovlivní AppleMusic, Spotify a všechny funkce závislé na YouTube. Přijaté hodnoty pro True`, `t`, `1`, Přijaté hodnoty pro False: `False`, `f`, `0`"
 
-#: plmanagednode/cog.py:897
+#: plmanagednode/cog.py:905
 msgid "Enable or disable SoundCloud searches within the node, this will affect any functionality dependant on SoundCloud. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "Povolit nebo zakázat prohledávání SoundCloud v uzlu, to ovlivní všechny funkce závislé na SoundCloudu. Přijaté hodnoty pro True`, `t`, `1`, Přijaté hodnoty pro False: `False`, `f`, `0`"
 
-#: plmanagednode/cog.py:906
+#: plmanagednode/cog.py:914
 msgid "{Setting} info.\n\n"
 "{info}"
 msgstr "Informace o {Setting} .\n\n"
 "{info}"
 
-#: plmanagednode/cog.py:934
+#: plmanagednode/cog.py:942
 msgid "{Setting} valid inputs are:\n\n"
 "Range between: {start} - {end}"
 msgstr "{Setting} platné vstupy jsou:\n\n"
 "Rozsah mezi: {start} - {end}"
 
-#: plmanagednode/cog.py:945
+#: plmanagednode/cog.py:953
 msgid "{Setting} valid inputs are:\n\n"
 "{setting_list}"
 msgstr "{Setting} platné vstupy jsou:\n\n"
 "{setting_list}"
 
-#: plmanagednode/cog.py:963
+#: plmanagednode/cog.py:971
 msgid "{Setting} set to {value}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr "{Setting} nastaven na {value}.\n\n"
 "Spustit `{prefix}{command}` pro restartování spravovaného uzlu"
 
-#: plmanagednode/cog.py:978
+#: plmanagednode/cog.py:986
 #, docstring
 msgid "Configure Lavalink IP Rotation for ratelimits.\n\n"
 "        Run `[p]plmanaged config iprotation 1` to remove the ip rotation\n"
@@ -395,19 +395,19 @@ msgstr "Nakonfigurujte Lavalink IP rotaci pro ratelimity.\n\n"
 "        Spustit `[p]plmanaged config iprotation 1` pro odstranění otáčení IP\n"
 "        "
 
-#: plmanagednode/cog.py:989
+#: plmanagednode/cog.py:997
 msgid "Click the button below to configure the IP rotation for your node.\n"
 "More info at: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> and <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
 msgstr "Klikněte na tlačítko níže pro nastavení rotace IP pro váš uzel.\n"
 "Více informací v: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> a <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
 
-#: plmanagednode/cog.py:1006
+#: plmanagednode/cog.py:1014
 msgid "Removing the IP rotation from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr "Odstranění rotace IP z vašeho uzlu.\n\n"
 "Spusťte `{prefix}{command}` pro restartování spravovaného uzlu"
 
-#: plmanagednode/cog.py:1016
+#: plmanagednode/cog.py:1024
 #, docstring
 msgid "Link a Google account to Lavalink to bypass YouTube's age restriction\n\n"
 "        Run `[p]plmanaged config googleaccount 1` to remove the linked account.\n"
@@ -416,19 +416,19 @@ msgstr "Propojte účet Google s Lavalinkem pro obejití omezení věku YouTubeh
 "        Run `[p]plmanaged config googleaccount 1` pro odstranění propojeného účtu.\n"
 "        "
 
-#: plmanagednode/cog.py:1027
+#: plmanagednode/cog.py:1035
 msgid "Click the button below to link a Google account to your node, if you have 2FA setup on this account you will need an app password instead\n"
 "More info at: <https://support.google.com/accounts/answer/185833>"
 msgstr "Klikněte na tlačítko níže pro propojení účtu Google s vaším uzlem, pokud máte na tomto účtu 2FA nastavení, budete potřebovat heslo aplikace místo\n"
 "Více informací na: <https://support.google.com/accounts/answer/185833>"
 
-#: plmanagednode/cog.py:1044
+#: plmanagednode/cog.py:1052
 msgid "Unlinking Google account from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr "Odpojení účtu Google z vašeho uzlu.\n\n"
 "Spusťte `{prefix}{command}` pro restartování spravovaného uzlu"
 
-#: plmanagednode/cog.py:1054
+#: plmanagednode/cog.py:1062
 #, docstring
 msgid "Configure a HTTP proxy for Lavalink\n\n"
 "        Run `[p]plmanaged config httpproxy 1` to remove the proxy.\n"
@@ -437,11 +437,11 @@ msgstr "Konfigurace HTTP proxy pro Lavalink\n\n"
 "        Spustit `[p]plmanaged config httpproxy 1` pro odstranění proxy.\n"
 "        "
 
-#: plmanagednode/cog.py:1065
+#: plmanagednode/cog.py:1073
 msgid "Click the button below to configure a HTTP proxy for your node"
 msgstr "Klikněte na tlačítko níže pro nastavení HTTP proxy pro váš uzel"
 
-#: plmanagednode/cog.py:1078
+#: plmanagednode/cog.py:1086
 msgid "Unlinking HTTP proxy from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr "Odpojení HTTP proxy od vašeho uzlu.\n\n"
