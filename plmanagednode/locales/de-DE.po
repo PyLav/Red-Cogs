@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2022-10-16 16:25+0000\n"
-"PO-Revision-Date: 2022-10-16 16:26\n"
+"POT-Creation-Date: 2022-10-17 23:10+0000\n"
+"PO-Revision-Date: 2022-10-17 23:10\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -246,11 +246,11 @@ msgstr "Verwaltetes Knoten-Plugin {plugin} aktiviert.\n\n"
 msgid "Update the managed node plugins"
 msgstr "Verwaltete Knoten-Plugins aktualisieren"
 
-#: plmanagednode/cog.py:732
+#: plmanagednode/cog.py:740
 msgid "{name} was updated from {old_value} to {new_value}\n"
 msgstr "{name} wurde von {old_value} auf {new_value}aktualisiert\n"
 
-#: plmanagednode/cog.py:740
+#: plmanagednode/cog.py:748
 msgid "Managed node's plugins updated.\n\n"
 "{updates}\n\n"
 "Run `{prefix}{command}` to restart the managed node"
@@ -258,34 +258,34 @@ msgstr "Verwaltete Knoten-Plugins aktualisiert.\n\n"
 "{updates}\n\n"
 "Ausführen `{prefix}{command}` um den verwalteten Knoten neu zu starten"
 
-#: plmanagednode/cog.py:754
+#: plmanagednode/cog.py:762
 msgid "Managed node's plugins already up to date"
 msgstr "Verwaltete Knoten-Plugins sind bereits aktuell"
 
-#: plmanagednode/cog.py:762
+#: plmanagednode/cog.py:770
 #, docstring
 msgid "Toggle the managed node sources"
 msgstr "Verwaltete Knotenquellen umschalten"
 
-#: plmanagednode/cog.py:776
+#: plmanagednode/cog.py:784
 msgid "Invalid source, {valid_list} are valid sources"
 msgstr "Ungültige Quelle, {valid_list} sind gültige Quellen"
 
-#: plmanagednode/cog.py:790
+#: plmanagednode/cog.py:798
 msgid "enabled"
 msgstr "aktiviert"
 
-#: plmanagednode/cog.py:790
+#: plmanagednode/cog.py:798
 msgid "disabled"
 msgstr "deaktiviert"
 
-#: plmanagednode/cog.py:793
+#: plmanagednode/cog.py:801
 msgid "Managed node's {source} source set to {state}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr "Der {source} Quellcode des Verwalteten Knotens wurde auf {state}gesetzt.\n\n"
 "Führe `{prefix}{command}` aus, um den verwalteten Knoten neu zu starten"
 
-#: plmanagednode/cog.py:808
+#: plmanagednode/cog.py:816
 #, docstring
 msgid "Configure multiple settings for the managed node.\n\n"
 "        Run `[p]plmanaged config server <setting> info` to show info about the settings and what they do.\n\n"
@@ -316,77 +316,77 @@ msgstr "Konfigurieren Sie mehrere Einstellungen für den verwalteten Knoten.\n\n
 "        `soundcloudSearchEnabled` : Boolean i. True (Standard wahr)\n"
 "        "
 
-#: plmanagednode/cog.py:848
+#: plmanagednode/cog.py:856
 msgid "{Setting} is not a valid Setting; Options are:\n\n"
 "{setting_list}"
 msgstr "{Setting} ist keine gültige Einstellung; Optionen sind:\n\n"
 "{setting_list}"
 
-#: plmanagednode/cog.py:859
+#: plmanagednode/cog.py:867
 msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses. Minimum of 40ms, lower values may introduce pauses. Accepted values: Range: 40 - 2,000"
 msgstr "Die Dauer des NAS-Puffers in Millisekunden. Höhere Werte gehen besser gegen längere GC-Pausen vor. Mindestens 40ms, niedrigere Werte können Pausen einführen. Akzeptierte Werte: 40 - 2.000"
 
-#: plmanagednode/cog.py:864
+#: plmanagednode/cog.py:872
 msgid "How many milliseconds of audio to keep buffered. Accepted values: Range: 1,000 - 10,000"
 msgstr "Wie viele Millisekunden Audio gepuffert werden sollen. Akzeptierte Werte: Bereich: 1.000 - 10.000"
 
-#: plmanagednode/cog.py:867
+#: plmanagednode/cog.py:875
 msgid "The threshold in milliseconds for how long a track can be stuck. A track is stuck if does not return any audio data. Accepted values: Range: 5,000 - 20,000"
 msgstr "Der Schwellenwert in Millisekunden für die Dauer einer Strecke. Eine Spur ist festgehalten, wenn keine Audiodaten zurückgegeben werden. Akzeptierte Werte: 5.000 - 20.000"
 
-#: plmanagednode/cog.py:871
+#: plmanagednode/cog.py:879
 msgid "Number of pages to return for a YouTube Playlist - Each page contains 100 songs. Accepted values: Range: 5 - 100"
 msgstr "Anzahl der Seiten, die für eine YouTube-Playlist zurückgegeben werden sollen - Jede Seite enthält 100 Songs. Akzeptierte Werte: Bereich: 5 - 100"
 
-#: plmanagednode/cog.py:875
+#: plmanagednode/cog.py:883
 msgid "Opus encoder quality. Valid values range from 0 to 10, where 10 is best quality but is the most expensive on the CPU"
 msgstr "Opus Encoder Qualität. Gültige Werte liegen zwischen 0 und 10, wobei 10 die beste Qualität ist, aber der teuerste Wert auf der CPU ist"
 
-#: plmanagednode/cog.py:879
+#: plmanagednode/cog.py:887
 msgid "Quality of resampling operations. Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU"
 msgstr "Qualität der Resampling Operationen. Gültige Werte sind LOW, MEDIUM und HIGH, wobei HIGH die meisten CPU nutzt"
 
-#: plmanagednode/cog.py:883
+#: plmanagednode/cog.py:891
 msgid "Seek ghosting is the effect where whilst a seek is in progress, the audio buffer is read from until empty, or until seek is ready. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "Spulen ist der Effekt, bei dem während eines Suchvorgangs der Audio-Puffer von bis zu leer, oder bis die Suche fertig ist, gelesen wird. Akzeptierte Werte für True: `True`, `t`, `1`, Akzeptierte Werte für False: `False`, `f`, `0`"
 
-#: plmanagednode/cog.py:888
+#: plmanagednode/cog.py:896
 msgid "How frequently in seconds to send player updates to clients, affects the current position accuracy. Accepted values: Range: 1 - 10"
 msgstr "Wie oft in Sekunden Spieler-Updates an Clients gesendet werden, beeinflusst die aktuelle Positionsgenauigkeit. Akzeptierte Werte: Bereich: 1 - 10"
 
-#: plmanagednode/cog.py:892
+#: plmanagednode/cog.py:900
 msgid "Enable or disable YouTube searches within the node, this will affect AppleMusic, Spotify and any functionality dependant on YouTube. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "Aktivieren oder deaktivieren Sie YouTube-Suchanfragen innerhalb des Knotens, dies wirkt sich auf AppleMusic, Spotify und jegliche von YouTube abhängige Funktionalität aus. Akzeptierte Werte für True: `True`, `t`, `1`, Akzeptierte Werte für False: `False`, `f`, `0`"
 
-#: plmanagednode/cog.py:897
+#: plmanagednode/cog.py:905
 msgid "Enable or disable SoundCloud searches within the node, this will affect any functionality dependant on SoundCloud. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "Aktivieren oder deaktivieren Sie SoundCloud-Suchen innerhalb des Knotens, dies wirkt sich auf alle Funktionen aus, die von SoundCloud abhängig sind. Akzeptierte Werte für True: `True`, `t`, `1`, Akzeptierte Werte für False: `False`, `f`, `0`"
 
-#: plmanagednode/cog.py:906
+#: plmanagednode/cog.py:914
 msgid "{Setting} info.\n\n"
 "{info}"
 msgstr "{Setting} Infos.\n\n"
 "{info}"
 
-#: plmanagednode/cog.py:934
+#: plmanagednode/cog.py:942
 msgid "{Setting} valid inputs are:\n\n"
 "Range between: {start} - {end}"
 msgstr "{Setting} gültige Eingaben sind:\n\n"
 "Bereich zwischen: {start} - {end}"
 
-#: plmanagednode/cog.py:945
+#: plmanagednode/cog.py:953
 msgid "{Setting} valid inputs are:\n\n"
 "{setting_list}"
 msgstr "{Setting} gültige Eingaben sind:\n\n"
 "{setting_list}"
 
-#: plmanagednode/cog.py:963
+#: plmanagednode/cog.py:971
 msgid "{Setting} set to {value}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr "{Setting} wurde auf {value}gesetzt.\n\n"
 "Führe `{prefix}{command}` aus, um den verwalteten Knoten neu zu starten"
 
-#: plmanagednode/cog.py:978
+#: plmanagednode/cog.py:986
 #, docstring
 msgid "Configure Lavalink IP Rotation for ratelimits.\n\n"
 "        Run `[p]plmanaged config iprotation 1` to remove the ip rotation\n"
@@ -395,19 +395,19 @@ msgstr "Konfigurieren Sie Lavalink IP Rotation für Preislimits.\n\n"
 "        Ausführen`[p]plmanaged config iprotation 1` um die IP Rotation zu entfernen\n"
 "        "
 
-#: plmanagednode/cog.py:989
+#: plmanagednode/cog.py:997
 msgid "Click the button below to configure the IP rotation for your node.\n"
 "More info at: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> and <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
 msgstr "Klicken Sie auf die Schaltfläche unten, um die IP-Rotation für Ihren Knoten zu konfigurieren.\n"
 "Weitere Informationen unter: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> und <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
 
-#: plmanagednode/cog.py:1006
+#: plmanagednode/cog.py:1014
 msgid "Removing the IP rotation from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr "Entferne die IP-Rotation von deinem Knoten.\n\n"
 "Führe `{prefix}{command}` aus, um den verwalteten Knoten neu zu starten"
 
-#: plmanagednode/cog.py:1016
+#: plmanagednode/cog.py:1024
 #, docstring
 msgid "Link a Google account to Lavalink to bypass YouTube's age restriction\n\n"
 "        Run `[p]plmanaged config googleaccount 1` to remove the linked account.\n"
@@ -416,19 +416,19 @@ msgstr "Verknüpfen Sie ein Google-Konto mit Lavalink um YouTubes Altersbeschrä
 "        Führen Sie `[p]plmanaged config googleaccount 1` aus, um das verknüpfte Konto zu entfernen.\n"
 "        "
 
-#: plmanagednode/cog.py:1027
+#: plmanagednode/cog.py:1035
 msgid "Click the button below to link a Google account to your node, if you have 2FA setup on this account you will need an app password instead\n"
 "More info at: <https://support.google.com/accounts/answer/185833>"
 msgstr "Klicken Sie auf die Schaltfläche unten, um ein Google-Konto mit Ihrem Knoten zu verknüpfen wenn Sie 2FA-Einstellungen auf diesem Konto haben, benötigen Sie stattdessen ein App-Passwort\n"
 "Weitere Informationen unter: <https://support.google.com/accounts/answer/185833>"
 
-#: plmanagednode/cog.py:1044
+#: plmanagednode/cog.py:1052
 msgid "Unlinking Google account from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr "Entbinden Sie das Google-Konto von Ihrem Knoten.\n\n"
 "Führen Sie `{prefix}{command}` aus, um den verwalteten Knoten neu zu starten"
 
-#: plmanagednode/cog.py:1054
+#: plmanagednode/cog.py:1062
 #, docstring
 msgid "Configure a HTTP proxy for Lavalink\n\n"
 "        Run `[p]plmanaged config httpproxy 1` to remove the proxy.\n"
@@ -437,11 +437,11 @@ msgstr "Konfigurieren Sie einen HTTP-Proxy für Lavalink\n\n"
 "        Ausführen`[p]plmanaged config httpproxy 1` um den Proxy zu entfernen.\n"
 "        "
 
-#: plmanagednode/cog.py:1065
+#: plmanagednode/cog.py:1073
 msgid "Click the button below to configure a HTTP proxy for your node"
 msgstr "Klicken Sie auf die Schaltfläche unten, um einen HTTP-Proxy für Ihren Knoten zu konfigurieren"
 
-#: plmanagednode/cog.py:1078
+#: plmanagednode/cog.py:1086
 msgid "Unlinking HTTP proxy from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr "Entbinden Sie den HTTP-Proxy von Ihrem Knoten.\n\n"
