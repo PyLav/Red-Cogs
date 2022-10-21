@@ -47,7 +47,7 @@ class PyLavConfigurator(commands.Cog):
 
     @command_plset.command(name="version")
     async def command_plset_version(self, context: PyLavContext) -> None:
-        """Show the version of the Cog and it's PyLav dependencies"""
+        """Show the version of the Cog and its PyLav dependencies"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -118,7 +118,7 @@ class PyLavConfigurator(commands.Cog):
             SelectOption(
                 label=_("Playlist Tasks"),
                 value="playlist_tasks",
-                description=_("Get information Playlist auto update schedule"),
+                description=_("Get information about the playlist auto update schedule"),
             )
         )
 
@@ -133,7 +133,7 @@ class PyLavConfigurator(commands.Cog):
                     SelectOption(
                         label=_("Managed Node Config"),
                         value="managed_node_config",
-                        description=_("Get information about Managed PyLav Lavalink node"),
+                        description=_("Get information about the Managed PyLav Lavalink node"),
                     ),
                 ]
             )
