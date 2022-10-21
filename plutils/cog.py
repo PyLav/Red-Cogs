@@ -69,7 +69,7 @@ class PyLavUtils(commands.Cog):
 
     @command_plutils.command(name="version")
     async def command_plutils_version(self, context: PyLavContext) -> None:
-        """Show the version of the Cog and it's PyLav dependencies"""
+        """Show the version of the Cog and its PyLav dependencies"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -102,7 +102,7 @@ class PyLavUtils(commands.Cog):
     async def command_plutils_slashes(self, context: PyLavContext):
         """Show the slashes available in the bot.
 
-        Author: TrustyJAID#0001 via Code block on Discord channel.
+        Author: TrustyJAID#0001 via code block on Discord channel.
         """
 
         def rich_walk_commands(group: list, tree: Tree):
@@ -261,7 +261,7 @@ class PyLavUtils(commands.Cog):
 
     @command_plutils.command(name="decode")
     async def command_plutils_decode(self, context: PyLavContext, *, base64: str):
-        """Decode a tracks base64 string into a JSON object"""
+        """Decode a track's base64 string into a JSON object"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
