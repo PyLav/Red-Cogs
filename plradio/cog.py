@@ -40,7 +40,7 @@ class PyLavRadio(commands.Cog):
         self.bot = bot
 
     @app_commands.command(
-        name="radio", description=_("Enqueue a radio station. Use the arguments to filter for possible station")
+        name="radio", description=_("Enqueue a radio station. Use the arguments to filter for a possible station")
     )
     @app_commands.describe(
         stations=_("The radio station to enqueue"),
