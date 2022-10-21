@@ -21,7 +21,7 @@ _ = Translator("PyLavPlayer", Path(__file__))
 class SlashCommands(PyLavCogMixin, ABC):
     _track_cache: ExpiringDict
 
-    @app_commands.command(name="search", description=_("Search for a track then play the selected response"))
+    @app_commands.command(name="search", description=_("Search for a track, then play the selected response"))
     @app_commands.describe(source=_("Where to search in"), query=_("The query to search for search query"))
     @app_commands.guild_only()
     @invoker_is_dj(slash=True)
@@ -37,7 +37,7 @@ class SlashCommands(PyLavCogMixin, ABC):
         if query == "FqgqQW21tQ@#1g2fasf2":
             return await interaction.followup.send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("You haven't select something to play"),
+                    description=_("You haven't selected something to play"),
                     messageable=interaction,
                 ),
                 ephemeral=True,
