@@ -196,7 +196,7 @@ class ContextMenus(PyLavCogMixin, ABC):
             artist = apple_music_activity.state
             track = apple_music_activity.details
             # TODO: This should use the button URL instead of a search for 100% accuracy
-            #   Currently discord.py doesnt provide the button URLs, the day the do this can be updated
+            #   Currently discord.py doesnt provide the button URLs, the day they do this can be updated
             search_string = "amsearch:" if (album or artist or track) else ""
             if album:
                 search_string += f"{album} "
@@ -207,7 +207,7 @@ class ContextMenus(PyLavCogMixin, ABC):
             if not search_string:
                 await interaction.followup.send(
                     embed=await self.lavalink.construct_embed(
-                        description=_("Couldn't map {user} Apple Music track to a valid query").format(
+                        description=_("Couldn't map {user}'s Apple Music track to a valid query").format(
                             user=member.mention
                         ),
                         messageable=interaction,

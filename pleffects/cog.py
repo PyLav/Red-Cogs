@@ -46,7 +46,7 @@ class PyLavEffects(commands.Cog):
 
     @command_fxset.command(name="version")
     async def command_fxset_version(self, context: PyLavContext) -> None:
-        """Show the version of the Cog and it's PyLav dependencies"""
+        """Show the version of the Cog and its PyLav dependencies"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -436,7 +436,7 @@ class PyLavEffects(commands.Cog):
     @slash_fx.command(name="channelmix", description=_("Apply a channel mix filter to the player"))
     @app_commands.describe(
         left_to_left=_("The channel mix left to left weight"),
-        left_to_right=_("The channel mix left to left weight"),
+        left_to_right=_("The channel mix left to right weight"),
         right_to_left=_("The channel mix right to left weight"),
         right_to_right=_("The channel mix right to right weight"),
         reset=_("Reset any existing effects currently applied to the player"),
@@ -472,7 +472,7 @@ class PyLavEffects(commands.Cog):
                 EightBitANSI.paint_blue(context.player.channel_mix.left_to_left or default),
             ),
             (
-                EightBitANSI.paint_white(_("Left to Right ")),
+                EightBitANSI.paint_white(_("Left to Right")),
                 EightBitANSI.paint_blue(context.player.channel_mix.left_to_right or default),
             ),
             (

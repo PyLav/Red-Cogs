@@ -192,7 +192,7 @@ class PyLavEqualizer(commands.Cog):
                     {"band": 13, "gain": -0.1},
                     {"band": 14, "gain": -0.1},
                 ],
-                name=_("Bass boost - Fined Tuned"),
+                name=_("Bass boost - Fine Tuned"),
             )
         else:
             equalizer = Equalizer(
@@ -330,7 +330,7 @@ class PyLavEqualizer(commands.Cog):
             ephemeral=True,
         )
 
-    @slash_eq.command(name="custom", description=_("Apply and/or save a custom equalizer equalizer"))
+    @slash_eq.command(name="custom", description=_("Apply and/or save a custom equalizer setting"))
     @app_commands.describe(
         name=_("The name of the specified equalizer"),
         description=_("A brief description of the equalizer"),

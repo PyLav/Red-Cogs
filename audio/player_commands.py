@@ -100,11 +100,11 @@ class PlayerCommands(PyLavCogMixin, ABC):
             )
             await player.play(track=track, requester=context.author, query=await track.query())
 
-    @commands.command(name="playnext", description=_("Enqueue a track a song to the top of the queue"), aliases=["pn"])
+    @commands.command(name="playnext", description=_("Enqueue a track at the top of the queue"), aliases=["pn"])
     @commands.guild_only()
     @invoker_is_dj()
     async def command_playnext(self, context: PyLavContext, *, query: str):
-        """Enqueue a track a song to the top of the queue"""
+        """Enqueue a track at the top of the queue"""
         if isinstance(context, discord.Interaction):
             send = partial(context.followup.send, wait=True)
             if not context.response.is_done():

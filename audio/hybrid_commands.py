@@ -472,9 +472,9 @@ class HybridCommands(PyLavCogMixin, ABC):
             return
         if context.player.paused:
             if context.interaction:
-                description = _("Player already paused did you mean to run `/resume`")
+                description = _("Player already paused, did you mean to run `/resume`")
             else:
-                description = _("Player already paused did you mean to run `{prefix}{command}`").format(
+                description = _("Player already paused, did you mean to run `{prefix}{command}`").format(
                     prefix=context.clean_prefix, command=self.command_resume.qualified_name
                 )
             await context.send(
@@ -507,9 +507,9 @@ class HybridCommands(PyLavCogMixin, ABC):
             return
         if not context.player.paused:
             if context.interaction:
-                description = _("Player already resumed did you mean to run `/pause`")
+                description = _("Player already resumed, did you mean to run `/pause`")
             else:
-                description = _("Player already resumed did you mean to run `{prefix}{command}`").format(
+                description = _("Player already resumed, did you mean to run `{prefix}{command}`").format(
                     prefix=context.clean_prefix, command=self.command_pause.qualified_name
                 )
             await context.send(
@@ -532,7 +532,7 @@ class HybridCommands(PyLavCogMixin, ABC):
     async def command_volume(self, context: PyLavContext, volume: int):
         """Set the player volume.
 
-        The volume is a value from 0-1000.
+        The volume is a percentage value from 0-1000, where 100% is full volume.
         """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
