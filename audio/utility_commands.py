@@ -50,7 +50,7 @@ class UtilityCommands(PyLavCogMixin, ABC):
             await context.player.set_volume(0, requester=context.author)
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("Minimum volume reached, Player volume set to 0%"), messageable=context
+                    description=_("Minimum volume reached, player volume set to 0%"), messageable=context
                 ),
                 ephemeral=True,
             )
