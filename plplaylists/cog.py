@@ -141,7 +141,7 @@ class PyLavPlaylists(
                 "(**2**) - Cancel any changes made.\n"
                 "(**3**) - Add a name to the playlist.\n"
                 "(**4**) - Link this playlist to an existing playlist/album.\n"
-                "(**5**) - Add all track from the queue to the playlist.\n\n"
+                "(**5**) - Add all tracks from the queue to the playlist.\n\n"
                 "If you want the playlist name to be as the original playlist simply set the URL but no name.\n\n"
             )
             await playlist_prompt.start(ctx=context, title=title, description=description)
