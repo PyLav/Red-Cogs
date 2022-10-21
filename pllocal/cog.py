@@ -83,7 +83,7 @@ class PyLavLocalFiles(commands.Cog):
 
     @command_localset.command(name="version")
     async def command_localset_version(self, context: PyLavContext) -> None:
-        """Show the version of the Cog and it's PyLav dependencies"""
+        """Show the version of the Cog and its PyLav dependencies"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
