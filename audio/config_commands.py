@@ -94,7 +94,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
 
     @command_playerset.command(name="version")
     async def command_playerset_version(self, context: PyLavContext) -> None:
-        """Show the version of the Cog and it's PyLav dependencies"""
+        """Show the version of the Cog and its PyLav dependencies"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -130,7 +130,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
 
     @command_playerset_global.command(name="vol", aliases=["volume"])
     async def command_playerset_global_volume(self, context: PyLavContext, volume: int) -> None:
-        """Set the maximum volume server can set"""
+        """Set the maximum volume a server can set"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -179,7 +179,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
 
     @command_playerset_global.command(name="autoshuffle")
     async def command_playerset_global_autoshuffle(self, context: PyLavContext, toggle: bool) -> None:
-        """Set whether the bot should shuffle its queue after every new song added"""
+        """Set whether the bot should shuffle the queue after every new song added"""
 
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -217,7 +217,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
 
     @command_playerset_global.command(name="auto")
     async def command_playerset_global_auto(self, context: PyLavContext, toggle: bool) -> None:
-        """Set whether the bot should automatically play songs when it's queue is empty"""
+        """Set whether the bot should automatically play songs when the queue is empty"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -234,7 +234,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
 
     @command_playerset_global.group(name="dc")
     async def command_playerset_global_dc(self, context: PyLavContext) -> None:
-        """Set whether the bot should disconnect from the voice voice channel"""
+        """Set whether the bot should disconnect from the voice channel"""
 
     @command_playerset_global_dc.command(name="empty")
     async def command_playerset_global_dc_empty(
@@ -244,10 +244,10 @@ class ConfigCommands(PyLavCogMixin, ABC):
         *,
         after: TimedeltaConverter(default_unit="seconds", minimum=60) = None,  # noqa
     ) -> None:
-        """Set whether the bot should disconnect from the voice voice channel when the queue is empty.
+        """Set whether the bot should disconnect from the voice channel when the queue is empty.
 
         Arguments:
-            - `<toggle>`: Whether the bot should disconnect from the voice voice channel when the queue is empty.
+            - `<toggle>`: Whether the bot should disconnect from the voice channel when the queue is empty.
             - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60 seconds.
             Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)
         """
@@ -285,11 +285,11 @@ class ConfigCommands(PyLavCogMixin, ABC):
         *,
         after: TimedeltaConverter(default_unit="seconds", minimum=60) = None,  # noqa
     ) -> None:
-        """Set whether the bot should disconnect from the voice voice channel when alone.
+        """Set whether the bot should disconnect from the voice channel when alone.
 
         Arguments:
-            - `<toggle>`: Whether the bot should disconnect from the voice voice channel when it detects that it is alone.
-            - `<duration>`: How longer after detecting should the player be disconnected Default is 60 seconds.
+            - `<toggle>`: Whether the bot should disconnect from the voice channel when it detects that it is alone.
+            - `<duration>`: How longer after detecting should the player be disconnected. Default is 60 seconds.
             Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)
         """
         if isinstance(context, discord.Interaction):
@@ -326,7 +326,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
 
     @command_playerset_server.group(name="dj")
     async def command_playerset_server_dj(self, context: PyLavContext) -> None:
-        """Add, Remove or show the DJ roles and users for the server"""
+        """Add, remove or show the DJ roles and users for the server"""
 
     @command_playerset_server_dj.command(name="add")
     async def command_playerset_server_dj_add(
@@ -652,7 +652,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
 
     @command_playerset_server.command(name="autoshuffle")
     async def command_playerset_server_autoshuffle(self, context: PyLavContext, toggle: bool) -> None:
-        """Set whether the bot should shuffle its queue after every new song added"""
+        """Set whether the bot should shuffle the queue after every new song added"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -714,7 +714,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
 
     @command_playerset_server.command(name="auto")
     async def command_playerset_server_auto(self, context: PyLavContext, toggle: bool) -> None:
-        """Set whether the bot should automatically play songs when it's queue is empty"""
+        """Set whether the bot should automatically play songs when the queue is empty"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -748,7 +748,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
 
     @command_playerset_server.group(name="dc")
     async def command_playerset_server_dc(self, context: PyLavContext) -> None:
-        """Set whether the bot should disconnect from the voice voice channel"""
+        """Set whether the bot should disconnect from the voice channel"""
 
     @command_playerset_server.command(name="empty")
     async def command_playerset_server_dc_empty(
@@ -758,10 +758,10 @@ class ConfigCommands(PyLavCogMixin, ABC):
         *,
         after: TimedeltaConverter(default_unit="seconds", minimum=60) = None,  # noqa
     ) -> None:
-        """Set whether the bot should disconnect from the voice voice channel when the queue is empty.
+        """Set whether the bot should disconnect from the voice channel when the queue is empty.
 
         Arguments:
-            - `<toggle>`: Whether the bot should disconnect from the voice voice channel when the queue is empty.
+            - `<toggle>`: Whether the bot should disconnect from the voice channel when the queue is empty.
             - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60
             seconds.
             Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be
@@ -777,7 +777,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
             await context.send(
                 embed=await self.lavalink.construct_embed(
                     description=_(
-                        "Disconnect when the queue finished is globally enable "
+                        "Disconnect when the queue finished is globally enabled "
                         "and players will be disconnected after {delta}"
                     ).format(delta=humanize_timedelta(timedelta=datetime.timedelta(seconds=global_timer))),
                     messageable=context,
@@ -819,12 +819,12 @@ class ConfigCommands(PyLavCogMixin, ABC):
         *,
         after: TimedeltaConverter(default_unit="seconds", minimum=60) = None,  # noqa
     ) -> None:
-        """Set whether the bot should disconnect from the voice voice channel when alone.
+        """Set whether the bot should disconnect from the voice channel when alone.
 
         Arguments:
-            - `<toggle>`: Whether the bot should disconnect from the voice voice channel when it detects that it is
+            - `<toggle>`: Whether the bot should disconnect from the voice channel when it detects that it is
             alone.
-            - `<duration>`: How longer after detecting should the player be disconnected Default is 60 seconds.
+            - `<duration>`: How longer after detecting should the player be disconnected. Default is 60 seconds.
             Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be
             given in seconds)
         """
@@ -839,7 +839,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
             await context.send(
                 embed=await self.lavalink.construct_embed(
                     description=_(
-                        "Disconnect when alone is globally enable and players will be disconnected after {delta}"
+                        "Disconnect when alone is globally enabled and players will be disconnected after {delta}"
                     ).format(delta=humanize_timedelta(timedelta=datetime.timedelta(seconds=global_timer))),
                     messageable=context,
                 ),
