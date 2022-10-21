@@ -84,7 +84,7 @@ POSSIBLE_EVENTS = {
 
 @cog_i18n(_)
 class PyLavNotifier(commands.Cog):
-    """Listen to events from the PyLav player and sent them as messages to the specified channel"""
+    """Listen to events from the PyLav player and send them as messages to the specified channel"""
 
     lavalink: Client
 
@@ -226,7 +226,7 @@ class PyLavNotifier(commands.Cog):
 
     @command_plnotify.command(name="version")
     async def command_plnotify_version(self, context: PyLavContext) -> None:
-        """Show the version of the Cog and it's PyLav dependencies"""
+        """Show the version of the Cog and its PyLav dependencies"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -303,7 +303,7 @@ class PyLavNotifier(commands.Cog):
                         existing_thread = thread
             if not existing_thread:
                 message = await channel.send(
-                    _("This thread will be used by PyLav to post notification about the player")
+                    _("This thread will be used by PyLav to post notifications about the player")
                 )
                 existing_thread = await channel.create_thread(
                     invitable=False,
