@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2022-10-21 20:47+0000\n"
-"PO-Revision-Date: 2022-10-21 20:47\n"
+"POT-Creation-Date: 2022-10-21 21:00+0000\n"
+"PO-Revision-Date: 2022-10-21 21:01\n"
 "Last-Translator: \n"
 "Language-Team: Danish\n"
 "MIME-Version: 1.0\n"
@@ -246,11 +246,11 @@ msgstr "Administreret node-plugin {plugin} aktiveret.\n\n"
 msgid "Update the managed node plugins"
 msgstr "Opdater de administrerede indholdselementer"
 
-#: plmanagednode/cog.py:740
+#: plmanagednode/cog.py:739
 msgid "{name} was updated from {old_value} to {new_value}\n"
 msgstr "{name} blev opdateret fra {old_value} til {new_value}\n"
 
-#: plmanagednode/cog.py:748
+#: plmanagednode/cog.py:747
 msgid "Managed node's plugins updated.\n\n"
 "{updates}\n\n"
 "Run `{prefix}{command}` to restart the managed node"
@@ -258,34 +258,34 @@ msgstr "Administrerede nodes plugins opdateret.\n\n"
 "{updates}\n\n"
 "Kør `{prefix}{command}` for at genstarte den administrerede node"
 
-#: plmanagednode/cog.py:762
+#: plmanagednode/cog.py:761
 msgid "Managed node's plugins already up to date"
 msgstr "Administrerede node's plugins allerede opdateret"
 
-#: plmanagednode/cog.py:770
+#: plmanagednode/cog.py:769
 #, docstring
 msgid "Toggle the managed node sources"
 msgstr "Slå de administrerede indholdskilder til/fra"
 
-#: plmanagednode/cog.py:784
+#: plmanagednode/cog.py:783
 msgid "Invalid source, {valid_list} are valid sources"
 msgstr "Ugyldig kilde, {valid_list} er gyldige kilder"
 
-#: plmanagednode/cog.py:798
+#: plmanagednode/cog.py:797
 msgid "enabled"
 msgstr "aktiveret"
 
-#: plmanagednode/cog.py:798
+#: plmanagednode/cog.py:797
 msgid "disabled"
 msgstr "deaktiveret"
 
-#: plmanagednode/cog.py:801
+#: plmanagednode/cog.py:800
 msgid "Managed node's {source} source set to {state}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr "Administreret node {source} kilde sat til {state}.\n\n"
 "Kør `{prefix}{command}` for at genstarte den administrerede node"
 
-#: plmanagednode/cog.py:816
+#: plmanagednode/cog.py:815
 #, docstring
 msgid "Configure multiple settings for the managed node.\n\n"
 "        Run `[p]plmanaged config server <setting> info` to show info about the settings and what they do.\n\n"
@@ -316,77 +316,77 @@ msgstr "Konfigurer flere indstillinger for den administrerede node.\n\n"
 "        `soundcloudSearchEnabled` : Boolean i. Sandt (Standard Sandt)\n"
 "        "
 
-#: plmanagednode/cog.py:856
+#: plmanagednode/cog.py:855
 msgid "{Setting} is not a valid Setting; Options are:\n\n"
 "{setting_list}"
 msgstr "{Setting} er ikke en gyldig indstilling; Indstillinger er:\n\n"
 "{setting_list}"
 
-#: plmanagednode/cog.py:867
+#: plmanagednode/cog.py:866
 msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses. Minimum of 40ms, lower values may introduce pauses. Accepted values: Range: 40 - 2,000"
 msgstr "Varigheden af NAS bufferen i millisekunder. Højere værdier billetpriser bedre mod længere GC pauser. Mindst 40 ms, lavere værdier kan indføre pauser. Accepterede værdier: Område: 40 - 2.000"
 
-#: plmanagednode/cog.py:872
+#: plmanagednode/cog.py:871
 msgid "How many milliseconds of audio to keep buffered. Accepted values: Range: 1,000 - 10,000"
 msgstr "Hvor mange millisekunder lyd der skal holdes buffer. Accepterede værdier: Område: 1.000 - 10.000"
 
-#: plmanagednode/cog.py:875
+#: plmanagednode/cog.py:874
 msgid "The threshold in milliseconds for how long a track can be stuck. A track is stuck if does not return any audio data. Accepted values: Range: 5,000 - 20,000"
 msgstr "Tærsklen i millisekunder, hvor længe et spor kan sidde fast. Et spor sidder fast, hvis ikke returnerer nogen lyddata. Accepterede værdier: Område: 5.000 - 20.000"
 
-#: plmanagednode/cog.py:879
+#: plmanagednode/cog.py:878
 msgid "Number of pages to return for a YouTube Playlist - Each page contains 100 songs. Accepted values: Range: 5 - 100"
 msgstr "Antal sider der skal returneres til en YouTube-spilleliste - Hver side indeholder 100 sange. Accepterede værdier: Område: 5 - 100"
 
-#: plmanagednode/cog.py:883
+#: plmanagednode/cog.py:882
 msgid "Opus encoder quality. Valid values range from 0 to 10, where 10 is best quality but is the most expensive on the CPU"
 msgstr "Opus encoder kvalitet. Gyldige værdier spænder fra 0 til 10, hvor 10 er bedste kvalitet, men er den dyreste på CPU"
 
-#: plmanagednode/cog.py:887
+#: plmanagednode/cog.py:886
 msgid "Quality of resampling operations. Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU"
 msgstr "Kvalitet af resampling operationer. Gyldige værdier er LOW, MEDIUM og HIGH, hvor HØJ bruger mest CPU"
 
-#: plmanagednode/cog.py:891
+#: plmanagednode/cog.py:890
 msgid "Seek ghosting is the effect where whilst a seek is in progress, the audio buffer is read from until empty, or until seek is ready. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "Søg ghosting er den effekt, hvor mens en søgning er i gang, lydbufferen læses fra indtil tom, eller indtil søgning er klar. Accepterede værdier for True: `True`, `t`, `1`, Accepterede værdier for False: `False`, `f`, `0`"
 
-#: plmanagednode/cog.py:896
+#: plmanagednode/cog.py:895
 msgid "How frequently in seconds to send player updates to clients, affects the current position accuracy. Accepted values: Range: 1 - 10"
 msgstr "Hvor ofte i sekunder til at sende spilleropdateringer til klienter, påvirker den aktuelle positionsnøjagtighed. Accepterede værdier: Område: 1 - 10"
 
-#: plmanagednode/cog.py:900
+#: plmanagednode/cog.py:899
 msgid "Enable or disable YouTube searches within the node, this will affect AppleMusic, Spotify and any functionality dependant on YouTube. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "Aktiver eller deaktiver YouTube-søgninger i indholdselementet, dette vil påvirke AppleMusic, Spotify og enhver funktionalitet afhængig af YouTube. Accepterede værdier for True: `True`, `t`, `1`, Accepterede værdier for False: `False`, `f`, `0`"
 
-#: plmanagednode/cog.py:905
+#: plmanagednode/cog.py:904
 msgid "Enable or disable SoundCloud searches within the node, this will affect any functionality dependant on SoundCloud. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "Aktiver eller deaktiver SoundCloud søgninger i indholdselementet, dette vil påvirke enhver funktionalitet afhængig af SoundCloud. Accepterede værdier for True: `True`, `t`, `1`, Accepterede værdier for False: `False`, `f`, `0`"
 
-#: plmanagednode/cog.py:914
+#: plmanagednode/cog.py:913
 msgid "{Setting} info.\n\n"
 "{info}"
 msgstr "{Setting} info.\n\n"
 "{info}"
 
-#: plmanagednode/cog.py:942
+#: plmanagednode/cog.py:941
 msgid "{Setting} valid inputs are:\n\n"
 "Range between: {start} - {end}"
 msgstr "{Setting} gyldige indgange er:\n\n"
 "Interval mellem: {start} - {end}"
 
-#: plmanagednode/cog.py:953
+#: plmanagednode/cog.py:952
 msgid "{Setting} valid inputs are:\n\n"
 "{setting_list}"
 msgstr "{Setting} gyldige indgange er:\n\n"
 "{setting_list}"
 
-#: plmanagednode/cog.py:971
+#: plmanagednode/cog.py:970
 msgid "{Setting} set to {value}.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr "{Setting} sat til {value}.\n\n"
 "Kør `{prefix}{command}` for at genstarte den administrerede node"
 
-#: plmanagednode/cog.py:986
+#: plmanagednode/cog.py:985
 #, docstring
 msgid "Configure Lavalink IP Rotation for ratelimits.\n\n"
 "        Run `[p]plmanaged config iprotation 1` to remove the ip rotation\n"
@@ -395,19 +395,19 @@ msgstr "Konfigurer Lavalink IP Rotation for ratelimits.\n\n"
 "        Kør `[p]plmanaged config iprotation 1` for at fjerne IP-rotation\n"
 "        "
 
-#: plmanagednode/cog.py:997
+#: plmanagednode/cog.py:996
 msgid "Click the button below to configure the IP rotation for your node.\n"
 "More info at: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> and <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
 msgstr "Klik på knappen nedenfor for at konfigurere IP-rotation for din node.\n"
 "Mere info på: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> og <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
 
-#: plmanagednode/cog.py:1014
+#: plmanagednode/cog.py:1013
 msgid "Removing the IP rotation from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr "Fjernelse af IP-rotation fra din node.\n\n"
 "Kør `{prefix}{command}` for at genstarte den administrerede node"
 
-#: plmanagednode/cog.py:1024
+#: plmanagednode/cog.py:1023
 #, docstring
 msgid "Link a Google account to Lavalink to bypass YouTube's age restriction\n\n"
 "        Run `[p]plmanaged config googleaccount 1` to remove the linked account.\n"
@@ -416,19 +416,19 @@ msgstr "Link en Google-konto til Lavalink for at omgå YouTube's aldersbegrænsn
 "        Kør `[p]plmanaged config googleaccount 1` for at fjerne den linkede konto.\n"
 "        "
 
-#: plmanagednode/cog.py:1035
+#: plmanagednode/cog.py:1034
 msgid "Click the button below to link a Google account to your node, if you have 2FA setup on this account you will need an app password instead\n"
 "More info at: <https://support.google.com/accounts/answer/185833>"
 msgstr "Klik på knappen nedenfor for at linke en Google-konto til din node, hvis du har 2FA opsætning på denne konto, skal du bruge en app adgangskode i stedet\n"
 "Mere info på: <https://support.google.com/accounts/answer/185833>"
 
-#: plmanagednode/cog.py:1052
+#: plmanagednode/cog.py:1051
 msgid "Unlinking Google account from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr "Afkobling af Google-konto fra din node.\n\n"
 "Kør `{prefix}{command}` for at genstarte den administrerede node"
 
-#: plmanagednode/cog.py:1062
+#: plmanagednode/cog.py:1061
 #, docstring
 msgid "Configure a HTTP proxy for Lavalink\n\n"
 "        Run `[p]plmanaged config httpproxy 1` to remove the proxy.\n"
@@ -437,11 +437,11 @@ msgstr "Konfigurer en HTTP-proxy for Lavalink\n\n"
 "        Run `[p]plmanaged config httpproxy 1` for at fjerne proxyen.\n"
 "        "
 
-#: plmanagednode/cog.py:1073
+#: plmanagednode/cog.py:1072
 msgid "Click the button below to configure a HTTP proxy for your node"
 msgstr "Klik på knappen nedenfor for at konfigurere en HTTP-proxy for din node"
 
-#: plmanagednode/cog.py:1086
+#: plmanagednode/cog.py:1085
 msgid "Unlinking HTTP proxy from your node.\n\n"
 "Run `{prefix}{command}` to restart the managed node"
 msgstr "Fjern forbindelse til HTTP-proxy fra din node.\n\n"
