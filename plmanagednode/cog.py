@@ -724,6 +724,7 @@ class PyLavManagedNode(commands.Cog):
             update_string = ""
             if "values_changed" in diff:
                 values_changed = diff["values_changed"]
+                print(values_changed)
                 for key, root_value in values_changed.items():
                     if "'dependency'" not in key:
                         LOGGER.warning("Ignoring key %s  during plugin update - %s", key, root_value)
