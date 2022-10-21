@@ -46,7 +46,7 @@ class PyLavNodes(commands.Cog):
 
     @command_plnode.command(name="version")
     async def command_plnode_version(self, context: PyLavContext) -> None:
-        """Show the version of the Cog and it's PyLav dependencies"""
+        """Show the version of the Cog and its PyLav dependencies"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -77,7 +77,7 @@ class PyLavNodes(commands.Cog):
 
     @command_plnode.command(name="add", aliases=["create", "new"])
     async def command_plnode_add(self, context: PyLavContext) -> None:
-        """Add a node PyLav"""
+        """Add a node to PyLav"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -181,7 +181,7 @@ class PyLavNodes(commands.Cog):
 
     @command_plnode.command(name="remove", aliases=["delete", "del", "rm"])
     async def command_plnode_remove(self, context: PyLavContext, *, nodes: NodeConverter):
-        """Remove a node from PyLav instance"""
+        """Remove a node from a PyLav instance"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -226,7 +226,7 @@ class PyLavNodes(commands.Cog):
 
     @command_plnode.command(name="manage")
     async def command_plnode_manage(self, context: PyLavContext):
-        """Manage all nodes in PyLav instance"""
+        """Manage all nodes in a PyLav instance"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
