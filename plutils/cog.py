@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import asyncio
 import linecache
+import logging
 import tracemalloc
 from io import StringIO
 from pathlib import Path
@@ -17,6 +18,7 @@ from rich.tree import Tree
 from tabulate import tabulate
 
 import pylavcogs_shared
+from pylav._logging import getLogger as pylav_getLogger
 from pylav.converters.query import QueryConverter
 from pylav.track_encoding import decode_track
 from pylav.types import BotT
@@ -406,3 +408,43 @@ class PyLavUtils(commands.Cog):
         else:
             messages = pagify(await asyncio.to_thread(get_top, snap, limit=10), page_length=3500)
             await context.send_interactive(messages, box_lang="py")
+
+    @commands.is_owner()
+    @command_plutils.command(name="logger")
+    async def command_plutils_logger(self, context: PyLavContext, *, level: int):
+        """Set the logger level
+
+        Levels are the following:
+        0: Critical
+        1: Error
+        2: Warning
+        3: Info
+        4: Debug
+        5: Verbose
+        6: Trace
+        """
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+        level_map = {
+            0: logging.CRITICAL,
+            1: logging.ERROR,
+            2: logging.WARNING,
+            3: logging.INFO,
+            4: logging.DEBUG,
+            5: logging.DEBUG - 3,
+            6: logging.DEBUG - 5,
+        }
+        if level not in level_map:
+            await context.send_help()
+            return
+        logger = pylav_getLogger("Pylav")
+        logger.setLevel(level_map[level])
+        await context.send(
+            embed=await context.lavalink.construct_embed(
+                description=_("Logger level set to `{level}`").format(level=logging.getLevelName(logger.level)),
+                messageable=context,
+            ),
+            ephemeral=True,
+        )
