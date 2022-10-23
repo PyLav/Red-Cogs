@@ -519,7 +519,7 @@ class PyLavManagedNode(commands.Cog):
                 if plugin_str != "lavasrc-plugin":
                     new_plugins.append(plugin)
                 else:
-                    filename = "lavasrc-plugin"
+                    filename = "lavasrc-plugin-"
                     plugin_files.extend(
                         [
                             x
@@ -552,7 +552,7 @@ class PyLavManagedNode(commands.Cog):
                         ]
                     )
             elif plugin["dependency"].startswith("com.github.esmBot:lava-xm-plugin:"):
-                if plugin_str != "lavalink-filter-plugin":
+                if plugin_str != "lava-xm-plugin":
                     new_plugins.append(plugin)
                 else:
                     filename = "lava-xm-plugin-"
@@ -564,7 +564,7 @@ class PyLavManagedNode(commands.Cog):
                         ]
                     )
             elif plugin["dependency"].startswith("me.rohank05:lavalink-filter-plugin:"):
-                if plugin_str != "lava-xm-plugin":
+                if plugin_str != "lavalink-filter-plugin":
                     new_plugins.append(plugin)
                 else:
                     filename = "lavalink-filter-plugin-"
@@ -579,8 +579,8 @@ class PyLavManagedNode(commands.Cog):
         for file in plugin_files:
             try:
                 await file.unlink()
-            except Exception:
-                LOGGER.exception("Failed to delete file %s", file)
+            except Exception as exc:
+                LOGGER.error("Failed to delete file %s", file, exc_info=exc)
 
         data["lavalink"]["plugins"] = new_plugins
         await config.update_yaml(data)
