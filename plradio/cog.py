@@ -125,7 +125,7 @@ class PyLavRadio(commands.Cog):
         url = station.url_resolved or station.url
         query = await Query.from_string(url)
         successful, count, failed = await self.lavalink.get_all_tracks_for_queries(
-            query, requester=author, player=player, bypass_cache=True
+            query, requester=author, player=player, bypass_cache=True, partial=False
         )
         single_track = successful[0] if successful else None
         total_tracks_enqueue += count

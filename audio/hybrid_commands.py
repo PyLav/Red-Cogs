@@ -38,21 +38,23 @@ class HybridCommands(PyLavCogMixin, ABC):
 
         Separate multiple queries with a new line (`shift + enter`).
 
-        If you want to play a a local track, you can do so by specifying the full path or path relatively to the local tracks folder.
+        If you want to play a local track, you can do so by specifying the full path or path relatively to the local tracks' folder.
         For example if my local tracks folder is: `/home/draper/music`
 
         I can play a single track with `track.mp3` or `/home/draper/music/track.mp3`
         I can play everything inside a folder with `sub-folder/folder`
         I can play everything inside a folder and its sub-folders with the `all:` prefix i.e. `all:sub-folder/folder`
 
-        You can search specify services by using the following prefixes (dependant on service availability):
+        You can search specify services by using the following prefixes (dependent on service availability):
         `ytmsearch:` - Will search YouTube Music
         `spsearch:` - Will search Spotify
         `amsearch:` - Will search Apple Music
         `scsearch:` - Will search SoundCloud
         `ytsearch:` - Will search YouTube
+        `dzsearch:` - Will search Deezer
+        `ymsearch:` - Will search Yandex Music
 
-        You can trigger text-to-speech by using the following prefixes (dependant on service availability):
+        You can trigger text-to-speech by using the following prefixes (dependent on service availability):
         `speak:` - The bot will speak the query  (limited to 200 characters)
         `tts://` - The bot will speak the query
         """
