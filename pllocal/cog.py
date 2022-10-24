@@ -183,7 +183,7 @@ class PyLavLocalFiles(commands.Cog):
             player = await self.lavalink.connect_player(channel=channel, requester=author)
 
         successful, count, failed = await self.lavalink.get_all_tracks_for_queries(
-            entry, requester=author, player=player
+            entry, requester=author, player=player, partial=True
         )
         if count:
             if count == 1:
