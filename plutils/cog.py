@@ -439,7 +439,7 @@ class PyLavUtils(commands.Cog):
         if level not in level_map:
             await context.send_help()
             return
-        logger = pylav_getLogger("Pylav")
+        logger = pylav_getLogger("PyLav")
         logger.setLevel(level_map[level])
         await context.send(
             embed=await context.lavalink.construct_embed(
