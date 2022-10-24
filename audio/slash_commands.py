@@ -58,6 +58,7 @@ class SlashCommands(PyLavCogMixin, ABC):
             "Deezer": "dzsearch:",
             "SoundCloud": "scsearch:",
             "YouTube": "ytsearch:",
+            "Yandex Music": "ymsearch:",
         }
 
         feature_mapping = {
@@ -67,6 +68,7 @@ class SlashCommands(PyLavCogMixin, ABC):
             "scsearch:": "soundcloud",
             "ytsearch:": "youtube",
             "dzsearch:": "deezer",
+            "ymsearch": "yandexmusic",
         }
         inv_map = {v: k for k, v in prefix_mapping.items()}
         if options := data.get("options", []):
