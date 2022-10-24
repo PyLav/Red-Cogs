@@ -473,7 +473,7 @@ class PyLavPlaylists(
                 if context.player:
                     tracks: collections.deque[Track] = context.player.queue.raw_queue
                     if tracks:
-                        queue_tracks = [track.track for track in tracks if track.track]
+                        queue_tracks = [track.encoded for track in tracks if track.encoded]
                         await playlist.add_track(queue_tracks)
                         tracks_added += len(queue_tracks)
 

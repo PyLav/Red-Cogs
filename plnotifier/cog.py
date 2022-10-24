@@ -1679,8 +1679,8 @@ class PyLavNotifier(commands.Cog):
                 title=_("Sponsor Segment Skipped Event"),
                 description=_("[Node={node}] Sponsorblock: Skipped {category} running from {start}s to {to}s").format(
                     category=explanation,
-                    start=segment.start // 1000,
-                    to=segment.end // 1000,
+                    start=int(segment.start) // 1000,
+                    to=int(segment.end) // 1000,
                     node=event.player.node.name,
                 ),
                 messageable=channel,
