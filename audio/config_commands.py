@@ -249,7 +249,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
         Arguments:
             - `<toggle>`: Whether the bot should disconnect from the voice channel when the queue is empty.
             - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60 seconds.
-            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)
+            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)
         """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -290,7 +290,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
         Arguments:
             - `<toggle>`: Whether the bot should disconnect from the voice channel when it detects that it is alone.
             - `<duration>`: How longer after detecting should the player be disconnected. Default is 60 seconds.
-            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)
+            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)
         """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -893,7 +893,9 @@ class ConfigCommands(PyLavCogMixin, ABC):
 
         await context.send(
             embed=await self.lavalink.construct_embed(
-                description=_("Auto-Play playlist set to {playlist}").format(playlist=bold(playlist.name)),
+                description=_("Auto-Play playlist set to {playlist}").format(
+                    playlist=bold(await playlist.fetch_name())
+                ),
                 messageable=context,
             ),
             ephemeral=True,

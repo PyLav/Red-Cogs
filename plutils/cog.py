@@ -160,7 +160,7 @@ class PyLavUtils(commands.Cog):
 
         await context.send(
             embed=await context.lavalink.construct_embed(
-                description=inline(context.player.current.track),
+                description=inline(context.player.current.encoded),
                 messageable=context,
             ),
             ephemeral=True,
