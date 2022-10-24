@@ -220,7 +220,7 @@ class ContextMenus(PyLavCogMixin, ABC):
                 await Query.from_string(search_string),
                 player=interaction.client.lavalink.get_player(interaction.guild.id),
             )
-            if not response.get("tracks"):
+            if not response.tracks:
                 await interaction.followup.send(
                     embed=await self.lavalink.construct_embed(
                         description=_("Couldn't find any tracks matching {query}").format(query=search_string),
@@ -230,7 +230,7 @@ class ContextMenus(PyLavCogMixin, ABC):
                     wait=True,
                 )
                 return
-            track_url = response["tracks"][0]["info"]["uri"]
+            track_url = response.tracks[0].info.uri
             await self.command_play.callback(
                 self,
                 interaction,

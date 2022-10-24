@@ -282,7 +282,7 @@ class PyLavUtils(commands.Cog):
         else:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=box(lang="json", text=ujson.dumps(data["info"], indent=2, sort_keys=True)),
+                    description=box(lang="json", text=ujson.dumps(data.info, indent=2, sort_keys=True)),
                     messageable=context,
                 ),
                 ephemeral=True,

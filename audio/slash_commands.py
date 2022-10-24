@@ -91,19 +91,19 @@ class SlashCommands(PyLavCogMixin, ABC):
                     value="FqgqQW21tQ@#1g2fasf2",
                 )
             ]
-        tracks = await interaction.client.lavalink.get_tracks(
+        response = await interaction.client.lavalink.get_tracks(
             await Query.from_string(current),
             fullsearch=True,
             player=interaction.client.lavalink.get_player(interaction.guild.id),
         )
-        if not tracks:
+        if not response:
             return [
                 Choice(
                     name=_("No results found on {service}").format(service=inv_map.get(prefix, "YouTube Music")),
                     value="FqgqQW21tQ@#1g2fasf2",
                 )
             ]
-        tracks = tracks["tracks"][:25]
+        tracks = response.tracks[:25]
         if not tracks:
             return [
                 Choice(
@@ -118,9 +118,9 @@ class SlashCommands(PyLavCogMixin, ABC):
 
         for track in tracks:
             track = Track(
-                node=node, data=track, query=await Query.from_base64(track["track"]), requester=interaction.user.id
+                node=node, data=track, query=await Query.from_base64(track.encoded), requester=interaction.user.id
             )
-            track_id = hashlib.md5(track["track"].encode()).hexdigest()
+            track_id = hashlib.md5(track.encoded.encode()).hexdigest()
             self._track_cache[track_id] = track
             choices.append(
                 Choice(
