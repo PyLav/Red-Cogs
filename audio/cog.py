@@ -72,10 +72,6 @@ class PyLavPlayer(
         self.bot.tree.remove_command(self.context_user_play, type=AppCommandType.user)
         self.bot.tree.remove_command(self.context_message_play, type=AppCommandType.message)
 
-    @red_commands.Cog.listener()
-    async def on_red_api_tokens_update(self, service_name: str, api_tokens: dict[str, str]) -> None:
-        if service_name == "spotify":
-            await self.lavalink.update_spotify_tokens(**api_tokens)
 
     async def red_delete_data_for_user(
         self,

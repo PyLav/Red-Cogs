@@ -149,16 +149,22 @@ class PyLavManagedNode(commands.Cog):
             client_secret = spotify.get("client_secret")
             deezer = await self.bot.get_shared_api_tokens("deezer")
             deezer_token = deezer.get("token")
+            yandexmusic = await self.bot.get_shared_api_tokens("yandexmusic")
+            yandexmusic_token = yandexmusic.get("token")
         else:
             client_id = None
             client_secret = None
-            deezer_token = "..."
+            deezer_token = None
+            yandexmusic_token = None
         config = self.lavalink._node_config_manager.bundled_node_config()
         yaml_data = await config.fetch_yaml()
+        need_update = False
         if not await asyncstdlib.all([client_id, client_secret]):
             spotify_data = yaml_data["plugins"]["lavasrc"]["spotify"]
             client_id = spotify_data["clientId"]
             client_secret = spotify_data["clientSecret"]
+            yaml_data["plugins"]["lavasrc"]["sources"]["spotify"] = False
+            need_update = True
         elif await asyncstdlib.all([client_id, client_secret]):
             if (
                 yaml_data["plugins"]["lavasrc"]["spotify"]["clientId"] != client_id
@@ -166,9 +172,18 @@ class PyLavManagedNode(commands.Cog):
             ):
                 yaml_data["plugins"]["lavasrc"]["spotify"]["clientId"] = client_id
                 yaml_data["plugins"]["lavasrc"]["spotify"]["clientSecret"] = client_secret
-                await config.update_yaml(yaml_data)
+                yaml_data["plugins"]["lavasrc"]["sources"]["spotify"] = True
+                need_update = True
         if deezer_token:
+            yaml_data["plugins"]["lavasrc"]["sources"]["deezer"] = True
             yaml_data["plugins"]["lavasrc"]["deezer"]["masterDecryptionKey"] = deezer_token
+            need_update = True
+        if yandexmusic_token:
+            yaml_data["plugins"]["lavasrc"]["sources"]["yandexmusic"] = True
+            yaml_data["plugins"]["lavasrc"]["yandexmusic"]["accessToken"] = yandexmusic_token
+            need_update = True
+
+        if need_update:
             await config.update_yaml(yaml_data)
 
         self.lavalink._spotify_auth = ClientCredentialsFlow(client_id=client_id, client_secret=client_secret)
@@ -1046,6 +1061,7 @@ class PyLavManagedNode(commands.Cog):
             data = await config.fetch_yaml()
             data["lavalink"]["server"]["youtubeConfig"] = NODE_DEFAULT_SETTINGS["lavalink"]["server"]["youtubeConfig"]
             await config.update_yaml(data)
+            await self.bot.remove_shared_api_tokens("google", "email", "password")
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_(
