@@ -72,7 +72,6 @@ class PyLavPlayer(
         self.bot.tree.remove_command(self.context_user_play, type=AppCommandType.user)
         self.bot.tree.remove_command(self.context_message_play, type=AppCommandType.message)
 
-
     async def red_delete_data_for_user(
         self,
         *,
