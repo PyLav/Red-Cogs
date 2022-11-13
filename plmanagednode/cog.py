@@ -824,7 +824,7 @@ class PyLavManagedNode(commands.Cog):
         `opusEncodingQuality` : Integer i.e 10 (Default 10)
         `resamplingQuality` : String i.e LOW (Default LOW)
         `useSeekGhosting` : Boolean i.e True (Default True)
-        `playerUpdateInterval` : Integer i.e 1 (Default 1)
+        `playerUpdateInterval` : Integer i.e 600 (Default 600)
         `youtubeSearchEnabled` : Boolean i.e True (Default True)
         `soundcloudSearchEnabled` : Boolean i.e True (Default True)
         """
@@ -894,7 +894,7 @@ class PyLavManagedNode(commands.Cog):
                 ),
                 "playerUpdateInterval": _(
                     "How frequently in seconds to send player updates to clients, "
-                    "affects the current position accuracy. Accepted values: Range: 1 - 10"
+                    "affects the current position accuracy. Accepted values: Range: 1 - 86400"
                 ),
                 "youtubeSearchEnabled": _(
                     "Enable or disable YouTube searches within the node, "
@@ -927,7 +927,7 @@ class PyLavManagedNode(commands.Cog):
             "opusEncodingQuality": (0, 10),
             "resamplingQuality": ("low", "medium", "high"),
             "useSeekGhosting": ("0", "1", "true", "false", "t", "f"),
-            "playerUpdateInterval": (1, 10),
+            "playerUpdateInterval": (1, 84600),
             "youtubeSearchEnabled": ("0", "1", "true", "false", "t", "f"),
             "soundcloudSearchEnabled": ("0", "1", "true", "false", "t", "f"),
         }

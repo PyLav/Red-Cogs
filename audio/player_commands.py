@@ -79,7 +79,7 @@ class PlayerCommands(PyLavCogMixin, ABC):
                         track=await track.get_track_display_name(with_url=True),
                         current=await player.current.get_track_display_name(with_url=True),
                         eta=discord.utils.format_dt(
-                            utcnow() + datetime.timedelta(milliseconds=player.current.duration - player.position),
+                            utcnow() + datetime.timedelta(milliseconds=player.current.duration - await player.fetch_position()),
                             style="R",
                         ),
                     ),
