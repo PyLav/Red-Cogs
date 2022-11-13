@@ -348,10 +348,11 @@ class ConfigureGoogleAccountModal(discord.ui.Modal):
                 wait=True,
             )
 
-        config = self.bot.lavalink.node_db_manager.bundled_node_config()
-        yaml_data = await config.fetch_yaml()
-        yaml_data["lavalink"]["server"]["youtubeConfig"] = {"email": self.email.value, "password": self.password.value}
-        await config.update_yaml(yaml_data)
+        await self.bot.set_shared_api_tokens(
+            "google",
+            email=self.email.value,
+            password=self.password.value
+        )
         return await send_method(
             embed=await self.bot.lavalink.construct_embed(
                 description=_("Google account linked.\n\nRun `{prefix}{command}` to restart the managed node").format(
