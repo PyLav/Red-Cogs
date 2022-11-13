@@ -824,7 +824,7 @@ class PyLavManagedNode(commands.Cog):
         `opusEncodingQuality` : Integer i.e 10 (Default 10)
         `resamplingQuality` : String i.e LOW (Default LOW)
         `useSeekGhosting` : Boolean i.e True (Default True)
-        `playerUpdateInterval` : Integer i.e 600 (Default 600)
+        `playerUpdateInterval` : Integer i.e 1200 (Default 1200)
         `youtubeSearchEnabled` : Boolean i.e True (Default True)
         `soundcloudSearchEnabled` : Boolean i.e True (Default True)
         """
