@@ -284,8 +284,8 @@ class ConfigureIPRotationModal(discord.ui.Modal):
         return await send_method(
             embed=await self.bot.lavalink.construct_embed(
                 description=_(
-                    "IP rotation configuration saved.\n\nRun `{prefix}{command}` to restart the managed node"
-                ).format(command=self.cog.command_plmanaged_restart.qualified_name, prefix=self.prefix),
+                    "IP rotation configuration saved."
+                ).format(prefix=self.prefix),
                 messageable=interaction,
             ),
             ephemeral=True,
@@ -351,8 +351,8 @@ class ConfigureGoogleAccountModal(discord.ui.Modal):
         await self.bot.set_shared_api_tokens("google", email=self.email.value, password=self.password.value)
         return await send_method(
             embed=await self.bot.lavalink.construct_embed(
-                description=_("Google account linked.\n\nRun `{prefix}{command}` to restart the managed node").format(
-                    command=self.cog.command_plmanaged_restart.qualified_name, prefix=self.prefix
+                description=_("Google account linked.").format(
+                    prefix=self.prefix
                 ),
                 messageable=interaction,
             ),
@@ -443,8 +443,8 @@ class ConfigureHTTPProxyModal(discord.ui.Modal):
         return await send_method(
             embed=await self.bot.lavalink.construct_embed(
                 description=_(
-                    "HTTP proxy configuration saved.\n\nRun `{prefix}{command}` to restart the managed node"
-                ).format(command=self.cog.command_plmanaged_restart.qualified_name, prefix=self.prefix),
+                    "HTTP proxy configuration saved."
+                ).format( prefix=self.prefix),
                 messageable=interaction,
             ),
             ephemeral=True,
