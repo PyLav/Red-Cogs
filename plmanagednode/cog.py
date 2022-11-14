@@ -268,9 +268,7 @@ class PyLavManagedNode(commands.Cog):
         self.lavalink.managed_node_controller._java_exc = await global_config.fetch_java_path()
         await context.send(
             embed=await context.lavalink.construct_embed(
-                description=_(
-                    "PyLav's java executable has been set to {java}"
-                ).format(
+                description=_("PyLav's java executable has been set to {java}").format(
                     java=inline(f"{java}"),
                     prefix=context.clean_prefix,
                 ),
@@ -296,9 +294,7 @@ class PyLavManagedNode(commands.Cog):
         if current:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_(
-                        "PyLav's managed node has been enabled."
-                    ).format(prefix=context.clean_prefix),
+                    description=_("PyLav's managed node has been enabled.").format(prefix=context.clean_prefix),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -306,9 +302,7 @@ class PyLavManagedNode(commands.Cog):
         else:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_(
-                        "PyLav's managed node has been disabled."
-                    ).format(prefix=context.clean_prefix),
+                    description=_("PyLav's managed node has been disabled.").format(prefix=context.clean_prefix),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -332,10 +326,9 @@ class PyLavManagedNode(commands.Cog):
         if current:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_(
-                        "PyLav's managed node auto updates have been enabled"
-                        ""
-                    ).format(prefix=context.clean_prefix),
+                    description=_("PyLav's managed node auto updates have been enabled" "").format(
+                        prefix=context.clean_prefix
+                    ),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -343,10 +336,9 @@ class PyLavManagedNode(commands.Cog):
         else:
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_(
-                        "PyLav's managed node auto updates have been disabled"
-                        ""
-                    ).format(prefix=context.clean_prefix),
+                    description=_("PyLav's managed node auto updates have been disabled" "").format(
+                        prefix=context.clean_prefix
+                    ),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -427,9 +419,7 @@ class PyLavManagedNode(commands.Cog):
         await global_config.update_extras(extras)
         await context.send(
             embed=await context.lavalink.construct_embed(
-                description=_(
-                    "Managed node's heap-size set to {bytes}."
-                ).format(
+                description=_("Managed node's heap-size set to {bytes}.").format(
                     bytes=inline(size),
                     prefix=context.clean_prefix,
                 ),
@@ -455,9 +445,7 @@ class PyLavManagedNode(commands.Cog):
         await config.update_yaml(data)
         await context.send(
             embed=await context.lavalink.construct_embed(
-                description=_(
-                    "Managed node's host set to {host}."
-                ).format(
+                description=_("Managed node's host set to {host}.").format(
                     host=inline(host),
                     prefix=context.clean_prefix,
                 ),
@@ -489,9 +477,7 @@ class PyLavManagedNode(commands.Cog):
         await config.update_yaml(data)
         await context.send(
             embed=await context.lavalink.construct_embed(
-                description=_(
-                    "Managed node's port set to {port}."
-                ).format(port=port, prefix=context.clean_prefix),
+                description=_("Managed node's port set to {port}.").format(port=port, prefix=context.clean_prefix),
                 messageable=context,
             ),
             ephemeral=True,
@@ -604,9 +590,7 @@ class PyLavManagedNode(commands.Cog):
         await config.update_yaml(data)
         await context.send(
             embed=await context.lavalink.construct_embed(
-                description=_(
-                    "Managed node's plugin {plugin} disabled."
-                ).format(
+                description=_("Managed node's plugin {plugin} disabled.").format(
                     plugin=inline(plugin_str),
                     prefix=context.clean_prefix,
                 ),
@@ -666,9 +650,7 @@ class PyLavManagedNode(commands.Cog):
         await config.update_yaml(data)
         await context.send(
             embed=await context.lavalink.construct_embed(
-                description=_(
-                    "Managed node's plugin {plugin} enabled."
-                ).format(
+                description=_("Managed node's plugin {plugin} enabled.").format(
                     plugin=inline(plugin_str),
                     prefix=context.clean_prefix,
                 ),
@@ -760,9 +742,7 @@ class PyLavManagedNode(commands.Cog):
             await config.update_yaml(data)
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_(
-                        "Managed node's plugins updated.\n\n{updates}"
-                    ).format(
+                    description=_("Managed node's plugins updated.\n\n{updates}").format(
                         updates=update_string,
                         prefix=context.clean_prefix,
                     ),
@@ -812,9 +792,7 @@ class PyLavManagedNode(commands.Cog):
         state = _("enabled") if state else _("disabled")
         await context.send(
             embed=await context.lavalink.construct_embed(
-                description=_(
-                    "Managed node's {source} source set to {state}."
-                ).format(
+                description=_("Managed node's {source} source set to {state}.").format(
                     source=inline(source),
                     state=state,
                     prefix=context.clean_prefix,
@@ -981,9 +959,7 @@ class PyLavManagedNode(commands.Cog):
         await config.update_yaml(data)
         await context.send(
             embed=await context.lavalink.construct_embed(
-                description=_(
-                    "{Setting} set to {value}."
-                ).format(
+                description=_("{Setting} set to {value}.").format(
                     setting=setting,
                     value=value,
                     prefix=context.clean_prefix,
@@ -1023,9 +999,7 @@ class PyLavManagedNode(commands.Cog):
             await config.update_yaml(data)
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_(
-                        "Removing the IP rotation from your node."
-                    ).format(prefix=context.clean_prefix),
+                    description=_("Removing the IP rotation from your node.").format(prefix=context.clean_prefix),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -1062,9 +1036,7 @@ class PyLavManagedNode(commands.Cog):
             await self.bot.remove_shared_api_tokens("google", "email", "password")
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_(
-                        "Unlinking Google account from your node."
-                    ).format(prefix=context.clean_prefix),
+                    description=_("Unlinking Google account from your node.").format(prefix=context.clean_prefix),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -1096,9 +1068,7 @@ class PyLavManagedNode(commands.Cog):
             await config.update_yaml(data)
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_(
-                        "Unlinking HTTP proxy from your node."
-                    ).format(prefix=context.clean_prefix),
+                    description=_("Unlinking HTTP proxy from your node.").format(prefix=context.clean_prefix),
                     messageable=context,
                 ),
                 ephemeral=True,
