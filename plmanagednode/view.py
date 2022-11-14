@@ -283,9 +283,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
         await config.update_yaml(yaml_data)
         return await send_method(
             embed=await self.bot.lavalink.construct_embed(
-                description=_(
-                    "IP rotation configuration saved."
-                ).format(prefix=self.prefix),
+                description=_("IP rotation configuration saved.").format(prefix=self.prefix),
                 messageable=interaction,
             ),
             ephemeral=True,
@@ -351,9 +349,7 @@ class ConfigureGoogleAccountModal(discord.ui.Modal):
         await self.bot.set_shared_api_tokens("google", email=self.email.value, password=self.password.value)
         return await send_method(
             embed=await self.bot.lavalink.construct_embed(
-                description=_("Google account linked.").format(
-                    prefix=self.prefix
-                ),
+                description=_("Google account linked.").format(prefix=self.prefix),
                 messageable=interaction,
             ),
             ephemeral=True,
@@ -442,9 +438,7 @@ class ConfigureHTTPProxyModal(discord.ui.Modal):
         await config.update_yaml(yaml_data)
         return await send_method(
             embed=await self.bot.lavalink.construct_embed(
-                description=_(
-                    "HTTP proxy configuration saved."
-                ).format( prefix=self.prefix),
+                description=_("HTTP proxy configuration saved.").format(prefix=self.prefix),
                 messageable=interaction,
             ),
             ephemeral=True,
