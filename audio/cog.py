@@ -7,7 +7,6 @@ from typing import Literal
 import discord
 from discord import AppCommandType
 from expiringdict import ExpiringDict
-from red_commons.logging import getLogger
 from redbot.core import Config
 from redbot.core import commands as red_commands
 from redbot.core.i18n import Translator, cog_i18n
