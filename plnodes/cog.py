@@ -24,7 +24,7 @@ from pylavcogs_shared.ui.menus.nodes import AddNodeFlow, NodeManagerMenu
 from pylavcogs_shared.ui.prompts.nodes import maybe_prompt_for_node
 from pylavcogs_shared.ui.sources.nodes import NodeListSource, NodeManageSource
 
-LOGGER = getLogger("red.3pt.PyLavNodes")
+LOGGER = getLogger("PyLav.cog.Nodes")
 
 _ = Translator("PyLavNodes", Path(__file__))
 

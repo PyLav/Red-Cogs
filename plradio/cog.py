@@ -23,7 +23,7 @@ from pylav.types import BotT, InteractionT
 from pylavcogs_shared.ui.prompts.generic import maybe_prompt_for_entry
 from pylavcogs_shared.utils import rgetattr
 
-LOGGER = getLogger("red.3pt.PyLavRadio")
+LOGGER = getLogger("PyLav.cog.Radio")
 
 
 _ = Translator("PyLavRadio", Path(__file__))

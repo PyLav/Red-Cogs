@@ -24,7 +24,7 @@ from pylavcogs_shared.ui.sources.player import PlayersSource
 
 from plconfig.view import InfoView
 
-LOGGER = getLogger("red.3pt.PyLavConfigurator")
+LOGGER = getLogger("PyLav.cog.Configurator")
 
 _ = Translator("PyLavConfigurator", Path(__file__))
 

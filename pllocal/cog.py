@@ -27,7 +27,7 @@ from pylav.utils import AsyncIter, PyLavContext
 from pylav.utils.theme import EightBitANSI
 from pylavcogs_shared.utils import rgetattr
 
-LOGGER = getLogger("red.3pt.PyLavLocalFiles")
+LOGGER = getLogger("PyLav.cog.LocalFiles")
 
 _ = Translator("PyLavLocalFiles", Path(__file__))
 

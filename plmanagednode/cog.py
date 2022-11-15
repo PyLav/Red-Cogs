@@ -27,7 +27,7 @@ from pylav.vendored import aiopath
 
 from plmanagednode.view import ConfigureGoogleAccountView, ConfigureHTTPProxyView, ConfigureIPRotationView
 
-LOGGER = getLogger("red.3pt.PyLavManagedNode")
+LOGGER = getLogger("PyLav.cog.ManagedNode")
 
 _ = Translator("PyLavManagedNode", Path(__file__))
 

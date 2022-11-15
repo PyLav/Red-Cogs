@@ -20,7 +20,7 @@ from pylav.utils.theme import EightBitANSI
 from pylavcogs_shared.converters.equalizer import BassBoostConverter
 from pylavcogs_shared.utils.decorators import invoker_is_dj, requires_player
 
-LOGGER = getLogger("red.3pt.PyLavEqualizer")
+LOGGER = getLogger("PyLav.cog.Equalizer")
 
 _ = Translator("PyLavEqualizer", Path(__file__))
 

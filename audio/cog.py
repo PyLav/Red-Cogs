@@ -31,8 +31,6 @@ class CompositeMetaClass(type(red_commands.Cog), type(ABC)):
 
 _ = Translator("PyLavPlayer", Path(__file__))
 
-LOGGER_ERROR = getLogger("red.3pt.PyLavPlayer.error_handler")
-
 
 @cog_i18n(_)
 class PyLavPlayer(
