@@ -11,7 +11,6 @@ from typing import Literal
 import asyncstdlib
 import discord
 from discord import app_commands
-from red_commons.logging import getLogger
 from redbot.core import Config
 from redbot.core import commands
 from redbot.core import commands as red_commands
@@ -47,6 +46,7 @@ class CompositeMetaClass(type(red_commands.Cog), type(ABC)):
 
 
 _ = Translator("PyLavPlaylists", Path(__file__))
+
 
 @cog_i18n(_)
 class PyLavPlaylists(
