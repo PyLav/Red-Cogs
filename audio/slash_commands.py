@@ -14,7 +14,7 @@ from pylav.tracks import Track
 from pylav.types import InteractionT, PyLavCogMixin
 from pylavcogs_shared.utils.decorators import invoker_is_dj
 
-LOGGER = getLogger("red.3pt.PyLavPlayer.commands.slashes")
+LOGGER = getLogger("PyLav.cog.Player.commands.slashes")
 _ = Translator("PyLavPlayer", Path(__file__))
 
 

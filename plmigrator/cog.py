@@ -26,7 +26,7 @@ from pylav.utils import AsyncIter, PyLavContext
 from pylav.vendored import aiopath
 from pylavcogs_shared.utils import recursive_merge
 
-LOGGER = getLogger("red.3pt.PyLavMigrator")
+LOGGER = getLogger("PyLav.cog.Migrator")
 
 _ = Translator("PyLavMigrator", Path(__file__))
 

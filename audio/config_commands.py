@@ -21,7 +21,7 @@ from pylav.utils.theme import EightBitANSI
 from pylavcogs_shared.ui.prompts.playlists import maybe_prompt_for_playlist
 from pylavcogs_shared.utils.decorators import invoker_is_dj, requires_player
 
-LOGGER = getLogger("red.3pt.PyLavPlayer.commands.config")
+LOGGER = getLogger("PyLav.cog.Player.commands.config")
 
 _ = Translator("PyLavPlayer", __file__)
 

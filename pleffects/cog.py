@@ -18,7 +18,7 @@ from pylav.utils import PyLavContext
 from pylav.utils.theme import EightBitANSI
 from pylavcogs_shared.utils.decorators import invoker_is_dj, requires_player
 
-LOGGER = getLogger("red.3pt.PyLavEffects")
+LOGGER = getLogger("PyLav.cog.Effects")
 
 _ = Translator("PyLavEffects", Path(__file__))
 

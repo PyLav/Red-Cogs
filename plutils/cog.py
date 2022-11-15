@@ -20,13 +20,14 @@ from tabulate import tabulate
 import pylavcogs_shared
 from pylav._logging import getLogger as pylav_getLogger
 from pylav.converters.query import QueryConverter
+from pylav.exceptions import HTTPError
 from pylav.track_encoding import decode_track
 from pylav.types import BotT
 from pylav.utils import PyLavContext
 from pylav.utils.theme import EightBitANSI
 from pylavcogs_shared.utils.decorators import requires_player
 
-LOGGER = getLogger("red.3pt.PyLavUtils")
+LOGGER = getLogger("PyLav.cog.Utils")
 
 _ = Translator("PyLavUtils", Path(__file__))
 
@@ -256,6 +257,51 @@ class PyLavUtils(commands.Cog):
         await context.send(
             embed=await context.lavalink.construct_embed(
                 description=inline(context.player.current.source),
+                messageable=context,
+            ),
+            ephemeral=True,
+        )
+
+    @command_plutils_get.command(name="player")
+    async def command_plutils_get_api(self, context: PyLavContext):
+        """Get the API of the current track"""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+
+        if not context.player:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Not connected to a voice channel"), messageable=context
+                ),
+                ephemeral=True,
+            )
+            return
+
+        try:
+            node_player = await context.player.fetch_node_player()
+        except Exception:
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Unable to get player info"), messageable=context
+                ),
+                ephemeral=True,
+            )
+            return
+
+        if isinstance(node_player, HTTPError):
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Unable to get player info"), messageable=context
+                ),
+                ephemeral=True,
+            )
+            return
+        data = node_player.to_dict()
+        await context.send(
+            embed=await context.lavalink.construct_embed(
+                description=box(ujson.dumps(data, indent=2), lang="json"),
                 messageable=context,
             ),
             ephemeral=True,

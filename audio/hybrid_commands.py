@@ -20,7 +20,7 @@ from pylavcogs_shared.utils import rgetattr
 from pylavcogs_shared.utils.decorators import invoker_is_dj, requires_player
 from pylavcogs_shared.utils.validators import valid_query_attachment
 
-LOGGER = getLogger("red.3pt.PyLavPlayer.commands.hybrids")
+LOGGER = getLogger("PyLav.cog.Player.commands.hybrids")
 _ = Translator("PyLavPlayer", Path(__file__))
 # taken from https://github.com/Cog-Creators/Red-DiscordBot/blob/ec55622418810731e1ee2ede1569f81f9bddeeec/redbot/cogs/audio/core/utilities/miscellaneous.py#L28
 _RE_TIME_CONVERTER: Final[Pattern] = re.compile(r"(?:(\d+):)?(\d+):(\d+)")

@@ -11,7 +11,7 @@ from pylav.types import PyLavCogMixin
 from pylav.utils import PyLavContext
 from pylavcogs_shared.utils.decorators import always_hidden
 
-LOGGER = getLogger("red.3pt.PyLavPlayer.commands.utils")
+LOGGER = getLogger("PyLav.cog.Player.commands.utils")
 
 _ = Translator("PyLavPlayer", Path(__file__))
 

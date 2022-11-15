@@ -18,7 +18,7 @@ from pylav.utils import PyLavContext
 from pylavcogs_shared.utils import rgetattr
 from pylavcogs_shared.utils.decorators import invoker_is_dj
 
-LOGGER = getLogger("red.3pt.PyLavPlayer.commands.player")
+LOGGER = getLogger("PyLav.cog.Player.commands.player")
 _ = Translator("PyLavPlayer", Path(__file__))
 
 

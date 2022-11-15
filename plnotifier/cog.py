@@ -25,7 +25,7 @@ from pylav.utils.theme import EightBitANSI
 
 _ = Translator("PyLavNotifier", Path(__file__))
 
-LOGGER = getLogger("red.3pt.PyLavNotifier")
+LOGGER = getLogger("PyLav.cog.Notifier")
 
 POSSIBLE_EVENTS = {
     "track_stuck",
