@@ -45,13 +45,12 @@ class HybridCommands(PyLavCogMixin, ABC):
         I can play everything inside a folder and its sub-folders with the `all:` prefix i.e. `all:sub-folder/folder`
 
         You can search specify services by using the following prefixes (dependent on service availability):
-        `ytmsearch:` - YouTube Music
-        `ytsearch:`  - YouTube Music
+        `dzsearch:`  - Deezer
         `spsearch:`  - Spotify
         `amsearch:`  - Apple Music
-        `scsearch:`  - SoundCloud
+        `ytmsearch:` - YouTube Music
         `ytsearch:`  - YouTube
-        `dzsearch:`  - Deezer
+        `scsearch:`  - SoundCloud
         `ymsearch:`  - Yandex Music
 
         You can trigger text-to-speech by using the following prefixes (dependent on service availability):
