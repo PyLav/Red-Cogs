@@ -272,7 +272,6 @@ class PlayerCommands(PyLavCogMixin, ABC):
                     query=await Query.from_string(track_url_or_index),
                     requester=context.author.id,
                 )
-                await track.search(player)
         try:
             number_removed += await player.remove_from_queue(
                 track, requester=context.author, duplicates=remove_duplicates
