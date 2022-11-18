@@ -40,7 +40,7 @@ class PyLavNodes(commands.Cog):
         self.bot = bot
 
     @commands.is_owner()
-    @commands.group(name="plnode")
+    @commands.group(name="plnode", aliases=["plnodes"])
     async def command_plnode(self, context: PyLavContext) -> None:
         """Configure PyLav Nodes"""
 
@@ -199,8 +199,8 @@ class PyLavNodes(commands.Cog):
                 ephemeral=True,
             )
             return
-        await self.lavalink.remove_node(node.identifier)
         node_data = await node.config.fetch_all()
+        await self.lavalink.remove_node(node.identifier)
         for k in ["id", "resume_key", "resume_timeout", "managed", "reconnect_attempts", "extras"]:
             node_data.pop(k, None)
         if yaml := node_data.pop("yaml", None):
