@@ -190,17 +190,17 @@ class PyLavNodes(commands.Cog):
         node = await maybe_prompt_for_node(cog=self, nodes=nodes, context=context)
         if not node:
             return
-        node_data = await node.fetch_all()
-        if node_data["id"] in BUNDLED_NODES_IDS_HOST_MAPPING:
+        if node.identifier in BUNDLED_NODES_IDS_HOST_MAPPING:
             await context.send(
                 embed=await self.lavalink.construct_embed(
-                    description=_("{name} is managed by PyLav and cannot be removed").format(name=node_data["name"]),
+                    description=_("{name} is managed by PyLav and cannot be removed").format(name=node.name),
                     messageable=context.channel,
                 ),
                 ephemeral=True,
             )
             return
-        await self.lavalink.remove_node(node.id)
+        await self.lavalink.remove_node(node.identifier)
+        node_data = await node.config.fetch_all()
         for k in ["id", "resume_key", "resume_timeout", "managed", "reconnect_attempts", "extras"]:
             node_data.pop(k, None)
         if yaml := node_data.pop("yaml", None):
