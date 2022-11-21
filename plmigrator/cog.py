@@ -139,9 +139,7 @@ class PyLavMigrator(commands.Cog):
         else:
             audio_yaml = change_dict_naming_convention(await audio_config.yaml.all())
             bundled_node_config = self.lavalink.node_db_manager.bundled_node_config()
-            await bundled_node_config.update_yaml(
-                recursive_merge(await bundled_node_config.fetch_yaml(), audio_yaml)
-            )
+            await bundled_node_config.update_yaml(recursive_merge(await bundled_node_config.fetch_yaml(), audio_yaml))
             extras = await bundled_node_config.fetch_extras()
             extras["max_ram"] = await audio_config.java.Xmx()
             await bundled_node_config.update_extras(extras)
@@ -176,9 +174,7 @@ class PyLavMigrator(commands.Cog):
                 )
 
             if guild_config.get("emptydc_enabled"):
-                await player_config.update_alone_dc(
-                    {"enabled": True, "time": guild_config.get("emptydc_timer", 60)}
-                )
+                await player_config.update_alone_dc({"enabled": True, "time": guild_config.get("emptydc_timer", 60)})
 
             if guild_config.get("disconnect"):
                 await player_config.update_empty_queue_dc({"enabled": True, "time": 60})
