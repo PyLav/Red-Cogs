@@ -456,7 +456,10 @@ class PyLavPlaylists(
                         await playlist.update_tracks(b64_list)
             elif playlist.id in BUNDLED_PLAYLIST_IDS:
                 changed = True
-                await self.lavalink.playlist_db_manager.update_bundled_playlists(playlist.id)
+                if playlist.id < 1000001:
+                    await self.lavalink.playlist_db_manager.update_bundled_playlists(playlist.id)
+                else:
+                    await self.lavalink.playlist_db_manager.update_bundled_external_playlists(playlist.id)
         if manageable:
             if playlist_prompt.dedupe:
                 track = await playlist.fetch_tracks()
