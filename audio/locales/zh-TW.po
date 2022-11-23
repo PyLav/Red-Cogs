@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
 "POT-Creation-Date: 2022-10-24 16:04+0000\n"
-"PO-Revision-Date: 2022-10-24 16:04\n"
+"PO-Revision-Date: 2022-11-23 16:03\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: audio/cog.py:48
 #, docstring
 msgid "A Media player using the PyLav library"
-msgstr ""
+msgstr "使用 PyLav 資料庫的媒體播放器"
 
 #: audio/config_commands.py:40
 #, docstring
@@ -28,15 +28,18 @@ msgid "Notifies PyLav that a Player is having issues.\n\n"
 "        If enough (50%+ of currently playing players) report issues, PyLav will automatically\n"
 "        switch to a different node or restart the current node where possible.\n"
 "        "
-msgstr ""
+msgstr "通知 PyLav 播放器有問題。\n\n"
+"        如果有足夠多的人（50% 以上的當前使用者）報告問題，PyLav 將自動\n"
+"        切換到不同的節點或在可能的情況下重新啟動當前節點。\n"
+"        "
 
 #: audio/config_commands.py:48
 msgid "This server already voted recently, please try again in 10 minutes"
-msgstr ""
+msgstr "此伺務器最近已投票，請在 10 分鐘後重試"
 
 #: audio/config_commands.py:59
 msgid "Thank you for your report"
-msgstr ""
+msgstr "感謝您的回報"
 
 #: audio/config_commands.py:69
 #, docstring
@@ -45,61 +48,65 @@ msgid "Removes a vote for a Player being down.\n\n"
 "        switch to a different node or restart the current node where possible.\n\n"
 "        This command is only useful if you previously voted for a node to be down and it is now back up.\n"
 "        "
-msgstr ""
+msgstr "刪除對播放器失敗的投票。\n\n"
+"        如果有足夠多的人（50% 以上的當前使用者）報告問題，PyLav 將自動\n"
+"        切換到不同的節點或在可能的情況下重新啟動當前節點。\n\n"
+"        此命令僅在您之前投票支持節點關閉並且現在已備份時才有用。\n"
+"        "
 
 #: audio/config_commands.py:79
 msgid "There is no active votes for the current backend"
-msgstr ""
+msgstr "當前後端沒有有效的投票"
 
 #: audio/config_commands.py:89
 msgid "Removed your report"
-msgstr ""
+msgstr "你的回報已被刪除了"
 
 #: audio/config_commands.py:97
 #, docstring
 msgid "Show the version of the Cog and its PyLav dependencies"
-msgstr ""
+msgstr "顯示 Cog 的版本及其 PyLav 依賴項目"
 
 #: audio/config_commands.py:114
 msgid "Library/Cog"
-msgstr ""
+msgstr "資料庫/Cog"
 
 #: audio/config_commands.py:115
 msgid "Version"
-msgstr ""
+msgstr "版本"
 
 #: audio/config_commands.py:129
 #, docstring
 msgid "Global configuration options"
-msgstr ""
+msgstr "全局配置選項"
 
 #: audio/config_commands.py:133
 #, docstring
 msgid "Set the maximum volume a server can set"
-msgstr ""
+msgstr "設置伺務器可以使用的最大音量"
 
 #: audio/config_commands.py:141 audio/config_commands.py:568
 #: audio/hybrid_commands.py:546
 msgid "Volume must be less than 1000"
-msgstr ""
+msgstr "音量必須小於 1000"
 
 #: audio/config_commands.py:149 audio/config_commands.py:576
 #: audio/hybrid_commands.py:554
 msgid "Volume must be greater than 0"
-msgstr ""
+msgstr "音量必須大於 0"
 
 #: audio/config_commands.py:157 audio/config_commands.py:613
 msgid "Max volume set to {volume}%"
-msgstr ""
+msgstr "最大音量設置為 {volume}%"
 
 #: audio/config_commands.py:165 audio/config_commands.py:621
 #, docstring
 msgid "Set whether the bot should deafen itself when playing"
-msgstr ""
+msgstr "設置機器人在播放音樂時是否自動拒聽"
 
 #: audio/config_commands.py:174 audio/config_commands.py:647
 msgid "Deafen set to {deafen}"
-msgstr ""
+msgstr "拒聽已設置為{deafen}"
 
 #: audio/config_commands.py:174 audio/config_commands.py:193
 #: audio/config_commands.py:212 audio/config_commands.py:229
@@ -108,7 +115,7 @@ msgstr ""
 #: audio/config_commands.py:709 audio/config_commands.py:743
 #: audio/config_commands.py:807 audio/config_commands.py:870
 msgid "Enabled"
-msgstr ""
+msgstr "啟用"
 
 #: audio/config_commands.py:174 audio/config_commands.py:193
 #: audio/config_commands.py:212 audio/config_commands.py:229
@@ -117,39 +124,39 @@ msgstr ""
 #: audio/config_commands.py:709 audio/config_commands.py:743
 #: audio/config_commands.py:807 audio/config_commands.py:870
 msgid "Disabled"
-msgstr ""
+msgstr "停用"
 
 #: audio/config_commands.py:182 audio/config_commands.py:655
 #, docstring
 msgid "Set whether the bot should shuffle the queue after every new song added"
-msgstr ""
+msgstr "設置機器人是否在每新增一首歌曲後隨機排列待播清單"
 
 #: audio/config_commands.py:192 audio/config_commands.py:676
 msgid "Auto-Shuffle set to {shuffle}"
-msgstr ""
+msgstr "自動隨機播放設置為{shuffle}"
 
 #: audio/config_commands.py:202 audio/config_commands.py:686
 #, docstring
 msgid "Set whether the bot should allow users to shuffle the queue"
-msgstr ""
+msgstr "設置機器人是否允許用戶隨機播放隊列"
 
 #: audio/config_commands.py:212 audio/config_commands.py:709
 msgid "Shuffle set to {shuffle}"
-msgstr ""
+msgstr "隨機播放設置為{shuffle}"
 
 #: audio/config_commands.py:220 audio/config_commands.py:717
 #, docstring
 msgid "Set whether the bot should automatically play songs when the queue is empty"
-msgstr ""
+msgstr "設置機器人是否應在播放清單中無歌曲時自動播放歌曲"
 
 #: audio/config_commands.py:229 audio/config_commands.py:743
 msgid "Auto-Play set to {auto}"
-msgstr ""
+msgstr "自動播放設置為 {auto}"
 
 #: audio/config_commands.py:237 audio/config_commands.py:751
 #, docstring
 msgid "Set whether the bot should disconnect from the voice channel"
-msgstr ""
+msgstr "設置機器人是否斷開與語音頻道的連接"
 
 #: audio/config_commands.py:247
 #, docstring
@@ -159,16 +166,21 @@ msgid "Set whether the bot should disconnect from the voice channel when the que
 "            - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr ""
+msgstr "設置機器人是否在播放清單沒有歌曲時自動斷開與語音通道的連接。\n\n"
+"         參數：\n"
+"             - `<toggle>`：當清單為空時，機器人是否應斷開與語音通道的連接。\n"
+"             - `<duration>`：清單為空後斷開連接的時間。 默認值為 60 秒。\n"
+"             接受秒、分鐘、小時、天、週（如果未指定單位，則假定持續時間以秒為單位）\n"
+"        "
 
 #: audio/config_commands.py:267 audio/config_commands.py:307
 #: audio/config_commands.py:801 audio/config_commands.py:863
 msgid " and players will be disconnected after {duration}"
-msgstr ""
+msgstr "機器人將在 {duration} 後斷開連接"
 
 #: audio/config_commands.py:272 audio/config_commands.py:806
 msgid "Disconnect from voice channel when queue is empty set to {empty}{extras}"
-msgstr ""
+msgstr "當播放清單無歌曲時斷開語音頻道的設置為 {empty}{extras}"
 
 #: audio/config_commands.py:288
 #, docstring
@@ -178,67 +190,72 @@ msgid "Set whether the bot should disconnect from the voice channel when alone.\
 "            - `<duration>`: How longer after detecting should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr ""
+msgstr "設置機器人單獨在語音頻道時是否自動斷開與語音頻道的連接。\n\n"
+"         參數：\n"
+"             - `<toggle>`：當機器人檢測到它是單獨的時候，是否自動斷開與語音頻道的連接。\n"
+"             - `<duration>`：檢測到播放器斷開連接後多長時間。 默認值為 60 秒。\n"
+"             接受秒、分鐘、小時、天、週（如果未指定單位，則假定持續時間以秒為單位）\n"
+"        "
 
 #: audio/config_commands.py:313 audio/config_commands.py:869
 msgid "Disconnect from voice channel when alone set to {empty}{extras}"
-msgstr ""
+msgstr "單獨時離開頻道設置為 {empty}{extras} 時斷開語音頻道"
 
 #: audio/config_commands.py:325
 #, docstring
 msgid "Server configuration options"
-msgstr ""
+msgstr "伺務器配置選項"
 
 #: audio/config_commands.py:329
 #, docstring
 msgid "Add, remove or show the DJ roles and users for the server"
-msgstr ""
+msgstr "添加、刪除或顯示伺務器的 DJ 身分組和用戶"
 
 #: audio/config_commands.py:335
 #, docstring
 msgid "Add DJ roles or users to this server"
-msgstr ""
+msgstr "將 DJ 身分組或用戶添加到此伺務器"
 
 #: audio/config_commands.py:348
 msgid "Added {role} to the DJ roles"
-msgstr ""
+msgstr "已將 {role} 新增為 DJ 身分組"
 
 #: audio/config_commands.py:351
 msgid "Added {user} to the DJ users"
-msgstr ""
+msgstr "已將 {user} 新增為 DJ"
 
 #: audio/config_commands.py:358
 msgid "Added {roles} to the DJ roles and {users} to the DJ users"
-msgstr ""
+msgstr "為 DJ 身分組新增了 {roles}，為 DJ 成員添加了 {users}"
 
 #: audio/config_commands.py:365
 msgid "Added {roles} to the DJ roles"
-msgstr ""
+msgstr "已將 {roles} 新增為 DJ 身分組"
 
 #: audio/config_commands.py:369
 msgid "Added {users} to the DJ users"
-msgstr ""
+msgstr "已將 {users} 新增為 DJ"
 
 #: audio/config_commands.py:384
 #, docstring
 msgid "Remove DJ roles or users in this the server"
-msgstr ""
+msgstr "刪除此伺務器中的 DJ 身分組或DJ成員"
 
 #: audio/config_commands.py:399
 msgid "Removed `{id}` from the DJ roles and users"
-msgstr ""
+msgstr "已從 DJ 身分組和用戶中刪除了“{id}”"
 
 #: audio/config_commands.py:401
 msgid "Removed {role} from the DJ roles"
-msgstr ""
+msgstr "已從 DJ 身分組中刪除了 {role}"
 
 #: audio/config_commands.py:404
 msgid "Removed {user} from the DJ users"
-msgstr ""
+msgstr "已從 DJ 成員中刪除了 {user}"
 
 #: audio/config_commands.py:412
 msgid "Removed {roles} from the DJ roles and {users} from the DJ users, as well as {ints} from both"
-msgstr ""
+msgstr "已從 DJ 身分組中刪除了 {roles}，及 DJ 成員中刪除了 {users}，並從兩者中刪除了 {ints}"
 
 #: audio/config_commands.py:420
 msgid "Removed {roles} from the DJ roles and {users} from the DJ users"
