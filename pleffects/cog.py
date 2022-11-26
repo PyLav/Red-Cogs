@@ -100,8 +100,13 @@ class PyLavEffects(commands.Cog):
             try:
                 await context.player.apply_nightcore(requester=context.author)
             except NodeHasNoFilters as exc:
-                await context.send(embed=await self.lavalink.construct_embed(messageable=context,
-                    description=exc.message, ), ephemeral=True, )
+                await context.send(
+                    embed=await self.lavalink.construct_embed(
+                        messageable=context,
+                        description=exc.message,
+                    ),
+                    ephemeral=True,
+                )
             else:
                 await context.send(
                     embed=await self.lavalink.construct_embed(
@@ -132,8 +137,13 @@ class PyLavEffects(commands.Cog):
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
         if not context.player.node.has_filter("vibrato"):
-            await context.send(embed=await self.lavalink.construct_embed(messageable=context, description=_(
-                "The current node does not have the Vibrato functionality enabled"), ), ephemeral=True, )
+            await context.send(
+                embed=await self.lavalink.construct_embed(
+                    messageable=context,
+                    description=_("The current node does not have the Vibrato functionality enabled"),
+                ),
+                ephemeral=True,
+            )
             return
         context.player.vibrato.frequency = frequency or context.player.vibrato.frequency
         context.player.vibrato.depth = depth or context.player.vibrato.depth
@@ -191,8 +201,13 @@ class PyLavEffects(commands.Cog):
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
         if not context.player.node.has_filter("tremolo"):
-            await context.send(embed=await self.lavalink.construct_embed(messageable=context, description=_(
-                "The current node does not have the Tremolo functionality enabled"), ), ephemeral=True, )
+            await context.send(
+                embed=await self.lavalink.construct_embed(
+                    messageable=context,
+                    description=_("The current node does not have the Tremolo functionality enabled"),
+                ),
+                ephemeral=True,
+            )
             return
         context.player.tremolo.frequency = frequency or context.player.tremolo.frequency
         context.player.tremolo.depth = depth or context.player.tremolo.depth
@@ -252,8 +267,13 @@ class PyLavEffects(commands.Cog):
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
         if not context.player.node.has_filter("timescale"):
-            await context.send(embed=await self.lavalink.construct_embed(messageable=context, description=_(
-                "The current node does not have the Timescale functionality enabled"), ), ephemeral=True, )
+            await context.send(
+                embed=await self.lavalink.construct_embed(
+                    messageable=context,
+                    description=_("The current node does not have the Timescale functionality enabled"),
+                ),
+                ephemeral=True,
+            )
             return
         context.player.timescale.speed = speed or context.player.timescale.speed
         context.player.timescale.pitch = pitch or context.player.timescale.pitch
@@ -303,8 +323,13 @@ class PyLavEffects(commands.Cog):
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
         if not context.player.node.has_filter("rotation"):
-            await context.send(embed=await self.lavalink.construct_embed(messageable=context, description=_(
-                "The current node does not have the Rotation functionality enabled"), ), ephemeral=True, )
+            await context.send(
+                embed=await self.lavalink.construct_embed(
+                    messageable=context,
+                    description=_("The current node does not have the Rotation functionality enabled"),
+                ),
+                ephemeral=True,
+            )
             return
         context.player.rotation.hertz = hertz or context.player.rotation.hertz
         await context.player.set_rotation(rotation=context.player.rotation, requester=context.author, forced=reset)
@@ -355,8 +380,13 @@ class PyLavEffects(commands.Cog):
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
         if not context.player.node.has_filter("lowPass"):
-            await context.send(embed=await self.lavalink.construct_embed(messageable=context, description=_(
-                "The current node does not have the LowPass functionality enabled"), ), ephemeral=True, )
+            await context.send(
+                embed=await self.lavalink.construct_embed(
+                    messageable=context,
+                    description=_("The current node does not have the LowPass functionality enabled"),
+                ),
+                ephemeral=True,
+            )
             return
         context.player.low_pass.smoothing = smoothing or context.player.low_pass.smoothing
         await context.player.set_low_pass(low_pass=context.player.low_pass, requester=context.author, forced=reset)
@@ -416,8 +446,13 @@ class PyLavEffects(commands.Cog):
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
         if not context.player.node.has_filter("karaoke"):
-            await context.send(embed=await self.lavalink.construct_embed(messageable=context, description=_(
-                "The current node does not have the Karaoke functionality enabled"), ), ephemeral=True, )
+            await context.send(
+                embed=await self.lavalink.construct_embed(
+                    messageable=context,
+                    description=_("The current node does not have the Karaoke functionality enabled"),
+                ),
+                ephemeral=True,
+            )
             return
         context.player.karaoke.level = level or context.player.karaoke.level
         context.player.karaoke.mono_level = mono_level or context.player.karaoke.mono_level
@@ -488,8 +523,13 @@ class PyLavEffects(commands.Cog):
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
         if not context.player.node.has_filter("channelMix"):
-            await context.send(embed=await self.lavalink.construct_embed(messageable=context, description=_(
-                "The current node does not have the ChannelMix functionality enabled"), ), ephemeral=True, )
+            await context.send(
+                embed=await self.lavalink.construct_embed(
+                    messageable=context,
+                    description=_("The current node does not have the ChannelMix functionality enabled"),
+                ),
+                ephemeral=True,
+            )
             return
         context.player.channel_mix.left_to_left = left_to_left or context.player.channel_mix.left_to_left
         context.player.channel_mix.left_to_right = left_to_right or context.player.channel_mix.left_to_right
@@ -574,8 +614,13 @@ class PyLavEffects(commands.Cog):
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
         if not context.player.node.has_filter("distortion"):
-            await context.send(embed=await self.lavalink.construct_embed(messageable=context, description=_(
-                "The current node does not have the Distortion functionality enabled"), ), ephemeral=True, )
+            await context.send(
+                embed=await self.lavalink.construct_embed(
+                    messageable=context,
+                    description=_("The current node does not have the Distortion functionality enabled"),
+                ),
+                ephemeral=True,
+            )
             return
         context.player.distortion.sin_offset = sin_offset or context.player.distortion.sin_offset
         context.player.distortion.sin_scale = sin_scale or context.player.distortion.sin_scale
@@ -664,8 +709,13 @@ class PyLavEffects(commands.Cog):
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
         if not context.player.node.has_filter("echo"):
-            await context.send(embed=await self.lavalink.construct_embed(messageable=context, description=_(
-                "The current node does not have the Echo functionality enabled"), ), ephemeral=True, )
+            await context.send(
+                embed=await self.lavalink.construct_embed(
+                    messageable=context,
+                    description=_("The current node does not have the Echo functionality enabled"),
+                ),
+                ephemeral=True,
+            )
             return
         context.player.echo.delay = delay or context.player.echo.delay
         context.player.echo.decay = decay or context.player.echo.decay
