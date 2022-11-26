@@ -4,6 +4,7 @@ import asyncio
 import typing
 from pathlib import Path
 
+import aiopath
 from red_commons.logging import getLogger
 from redbot.cogs.audio.apis.api_utils import PlaylistFetchResult
 from redbot.cogs.audio.apis.playlist_wrapper import PlaylistWrapper
@@ -22,7 +23,6 @@ from pylav.client import Client
 from pylav.sql.models import LibConfigModel, PlayerModel
 from pylav.types import BotT
 from pylav.utils import AsyncIter, PyLavContext
-from pylav.vendored import aiopath
 from pylavcogs_shared.utils import recursive_merge
 
 LOGGER = getLogger("PyLav.cog.Migrator")
