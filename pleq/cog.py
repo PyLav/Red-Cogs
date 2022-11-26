@@ -134,6 +134,10 @@ class PyLavEqualizer(commands.Cog):
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
+        if not context.player.node.has_filter("equalizer"):
+            await context.send(embed=await self.lavalink.construct_embed(messageable=context, description=_(
+                "The current node does not have the Equalizer functionality enabled"), ), ephemeral=True, )
+            return
         if level == "Off":
             await context.player.set_equalizer(requester=context.author, equalizer=Equalizer.default())
             if await self._config.guild(context.guild).persist_eq():
@@ -228,7 +232,10 @@ class PyLavEqualizer(commands.Cog):
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
-
+        if not context.player.node.has_filter("equalizer"):
+            await context.send(embed=await self.lavalink.construct_embed(messageable=context, description=_(
+                "The current node does not have the Equalizer functionality enabled"), ), ephemeral=True, )
+            return
         equalizer = Equalizer(
             levels=[
                 {"band": 0, "gain": -0.25},
@@ -273,6 +280,10 @@ class PyLavEqualizer(commands.Cog):
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
+        if not context.player.node.has_filter("equalizer"):
+            await context.send(embed=await self.lavalink.construct_embed(messageable=context, description=_(
+                "The current node does not have the Equalizer functionality enabled"), ), ephemeral=True, )
+            return
 
         equalizer = Equalizer(
             levels=[
@@ -316,6 +327,10 @@ class PyLavEqualizer(commands.Cog):
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
+        if not context.player.node.has_filter("equalizer"):
+            await context.send(embed=await self.lavalink.construct_embed(messageable=context, description=_(
+                "The current node does not have the Equalizer functionality enabled"), ), ephemeral=True, )
+            return
 
         await context.player.set_equalizer(requester=context.author, equalizer=Equalizer.default())
         if await self._config.guild(context.guild).persist_eq():
@@ -380,6 +395,7 @@ class PyLavEqualizer(commands.Cog):
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
 
+
         eq_model = EqualizerModel(
             name=name,
             description=description,
@@ -405,7 +421,10 @@ class PyLavEqualizer(commands.Cog):
         if eq := eq_model.to_filter():
             if save:
                 await eq_model.save()
-
+            if not context.player.node.has_filter("equalizer"):
+                await context.send(embed=await self.lavalink.construct_embed(messageable=context, description=_(
+                    "The current node does not have the Equalizer functionality enabled"), ), ephemeral=True, )
+                return
             await context.player.set_equalizer(requester=context.author, equalizer=eq)
 
         else:
