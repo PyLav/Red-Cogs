@@ -53,7 +53,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
             return
 
         context.player.vote_node_down()
-        await context.player.change_to_best_node()
+        await context.player.change_to_best_node(forced=True, skip_position_fetch=True)
         await context.send(
             embed=await context.lavalink.construct_embed(
                 description=_("Thank you for your report"),
