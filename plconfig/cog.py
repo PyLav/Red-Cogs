@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import aiopath
 import discord
 from discord import SelectOption
 from discord.utils import maybe_coroutine
@@ -18,7 +19,6 @@ from pylav.localfiles import LocalFile
 from pylav.types import BotT
 from pylav.utils import PyLavContext, get_true_path
 from pylav.utils.theme import EightBitANSI
-from pylav.vendored import aiopath
 from pylavcogs_shared.ui.menus.player import StatsMenu
 from pylavcogs_shared.ui.sources.player import PlayersSource
 

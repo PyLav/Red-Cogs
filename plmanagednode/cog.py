@@ -3,6 +3,7 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
+import aiopath
 import asyncstdlib
 import discord
 import humanize
@@ -23,7 +24,6 @@ from pylav.types import BotT
 from pylav.utils import PyLavContext, get_jar_ram_actual, get_max_allocation_size, get_true_path
 from pylav.utils.built_in_node import NODE_DEFAULT_SETTINGS
 from pylav.utils.theme import EightBitANSI
-from pylav.vendored import aiopath
 
 from plmanagednode.view import ConfigureGoogleAccountView, ConfigureHTTPProxyView, ConfigureIPRotationView
 
