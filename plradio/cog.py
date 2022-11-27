@@ -3,10 +3,10 @@ from __future__ import annotations
 from pathlib import Path
 
 from discord import app_commands
-from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
 
+from pylav import getLogger
 from pylav.client import Client
 from pylav.converters.radio import (
     CodecConverter,

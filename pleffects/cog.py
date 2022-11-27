@@ -5,12 +5,12 @@ from pathlib import Path
 import discord
 from discord import app_commands
 from discord.app_commands import Range
-from red_commons.logging import getLogger
 from redbot.core import Config, commands
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import box
 from tabulate import tabulate
 
+from pylav import getLogger
 from pylav.exceptions import NodeHasNoFilters
 from pylav.filters import Equalizer
 from pylav.red_utils.utils.decorators import invoker_is_dj, requires_player

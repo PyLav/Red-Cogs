@@ -7,10 +7,10 @@ from pathlib import Path
 
 import discord
 from discord.utils import utcnow
-from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
 
+from pylav import getLogger
 from pylav.query import Query
 from pylav.red_utils.utils import rgetattr
 from pylav.red_utils.utils.decorators import invoker_is_dj

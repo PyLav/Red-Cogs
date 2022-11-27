@@ -9,7 +9,6 @@ from pathlib import Path
 
 import discord
 import ujson
-from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import box, humanize_number, inline, pagify
@@ -17,7 +16,7 @@ from rich.console import Console
 from rich.tree import Tree
 from tabulate import tabulate
 
-from pylav._logging import getLogger as pylav_getLogger
+from pylav._logging import getLogger
 from pylav.converters.query import QueryConverter
 from pylav.exceptions import HTTPError
 from pylav.red_utils.utils.decorators import requires_player
@@ -483,7 +482,7 @@ class PyLavUtils(commands.Cog):
         if level not in level_map:
             await context.send_help()
             return
-        logger = pylav_getLogger("PyLav")
+        logger = getLogger("PyLav")
         logger.setLevel(level_map[level])
         await context.send(
             embed=await context.lavalink.construct_embed(

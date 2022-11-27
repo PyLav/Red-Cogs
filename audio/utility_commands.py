@@ -2,11 +2,11 @@ from abc import ABC
 from pathlib import Path
 
 import discord
-from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import humanize_number
 
+from pylav import getLogger
 from pylav.red_utils.utils.decorators import always_hidden
 from pylav.types import PyLavCogMixin
 from pylav.utils import PyLavContext

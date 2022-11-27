@@ -6,13 +6,13 @@ from typing import Union
 import asyncstdlib
 import discord
 from asyncstdlib import heapq
-from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.commands import TimedeltaConverter
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import bold, box, humanize_list, humanize_number, humanize_timedelta
 from tabulate import tabulate
 
+from pylav import getLogger
 from pylav.converters.playlist import PlaylistConverter
 from pylav.red_utils.ui.prompts.playlists import maybe_prompt_for_playlist
 from pylav.red_utils.utils.decorators import invoker_is_dj, requires_player

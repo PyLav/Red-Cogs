@@ -7,12 +7,12 @@ from pathlib import Path
 import asyncstdlib
 import discord
 import ujson
-from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import box, humanize_list, inline
 from tabulate import tabulate
 
+from pylav import getLogger
 from pylav.constants import BUNDLED_NODES_IDS_HOST_MAPPING
 from pylav.converters.nodes import NodeConverter
 from pylav.red_utils.ui.menus.generic import PaginatingMenu

@@ -9,13 +9,12 @@ import aiohttp
 import discord
 import ujson
 from apscheduler.job import Job
-from red_commons.logging import getLogger
 from redbot.core import Config, commands
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import box, humanize_list, inline
 from tabulate import tabulate
 
-from pylav import events
+from pylav import events, getLogger
 from pylav.client import Client
 from pylav.filters import Equalizer, Volume
 from pylav.types import BotT
