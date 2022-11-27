@@ -1,6 +1,5 @@
 import re
 from abc import ABC
-from functools import partial
 from pathlib import Path
 from re import Pattern
 from typing import Final, Optional
