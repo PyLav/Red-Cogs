@@ -142,7 +142,7 @@ class PyLavRadio(commands.Cog):
                     description="{translation} **[{station_name}]({station_url})**".format(
                         station_name=station.name, station_url=url, translation=_("Enqueued")
                     ),
-                    thumbnail=await single_track.thumbnail(),
+                    thumbnail=single_track.thumbnail,
                     messageable=context,
                 ),
                 ephemeral=True,

@@ -191,7 +191,7 @@ class PlayerCommands(PyLavCogMixin, ABC):
                     description=_("{track} enqueued").format(
                         track=await single_track.get_track_display_name(with_url=True)
                     ),
-                    thumbnail=await single_track.thumbnail(),
+                    thumbnail=single_track.thumbnail,
                     messageable=context,
                 ),
                 ephemeral=True,
