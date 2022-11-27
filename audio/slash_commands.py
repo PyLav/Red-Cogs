@@ -6,9 +6,9 @@ from typing import Literal
 from discord import app_commands
 from discord.app_commands import Choice
 from expiringdict import ExpiringDict
-from red_commons.logging import getLogger
 from redbot.core.i18n import Translator
 
+from pylav import getLogger
 from pylav.query import SEARCH_REGEX, Query
 from pylav.red_utils.utils.decorators import invoker_is_dj
 from pylav.tracks import Track

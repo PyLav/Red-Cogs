@@ -6,12 +6,12 @@ import aiopath
 import discord
 from discord import SelectOption
 from discord.utils import maybe_coroutine
-from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import bold, box, inline
 from tabulate import tabulate
 
+from pylav import getLogger
 from pylav.client import Client
 from pylav.constants import PYLAV_BUNDLED_NODES_SETTINGS
 from pylav.localfiles import LocalFile

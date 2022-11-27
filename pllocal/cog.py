@@ -13,12 +13,12 @@ from asyncstdlib import heapq
 from discord import app_commands
 from discord.app_commands import Choice
 from rapidfuzz import fuzz
-from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import box
 from tabulate import tabulate
 
+from pylav import getLogger
 from pylav.query import Query
 from pylav.red_utils.utils import rgetattr
 from pylav.sql.models import PlayerModel

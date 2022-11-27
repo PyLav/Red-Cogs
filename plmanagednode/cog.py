@@ -11,12 +11,12 @@ import ujson
 from asyncspotify import ClientCredentialsFlow
 from deepdiff import DeepDiff
 from discord.utils import maybe_coroutine
-from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import bold, box, humanize_list, inline
 from tabulate import tabulate
 
+from pylav import getLogger
 from pylav.client import Client
 from pylav.managed_node import LAVALINK_DOWNLOAD_DIR
 from pylav.types import BotT

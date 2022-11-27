@@ -5,7 +5,6 @@ import typing
 from pathlib import Path
 
 import aiopath
-from red_commons.logging import getLogger
 from redbot.cogs.audio.apis.api_utils import PlaylistFetchResult
 from redbot.cogs.audio.apis.playlist_wrapper import PlaylistWrapper
 from redbot.cogs.audio.utils import (
@@ -19,6 +18,7 @@ from redbot.core.data_manager import cog_data_path
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.dbtools import APSWConnectionWrapper
 
+from pylav import getLogger
 from pylav.client import Client
 from pylav.red_utils.utils import recursive_merge
 from pylav.sql.models import LibConfigModel, PlayerModel

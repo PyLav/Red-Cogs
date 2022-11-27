@@ -6,10 +6,10 @@ from typing import Final, Optional
 
 import discord
 from discord import app_commands
-from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator
 
+from pylav import getLogger
 from pylav.query import Query
 from pylav.red_utils.ui.menus.queue import QueueMenu
 from pylav.red_utils.ui.sources.queue import QueueSource
