@@ -286,7 +286,7 @@ class HybridCommands(PyLavCogMixin, ABC):
                     description=_("Skipped - {track}").format(
                         track=await context.player.current.get_track_display_name(with_url=True)
                     ),
-                    thumbnail=context.player.current.thumbnail,
+                    thumbnail=await context.player.current.thumbnail(),
                     messageable=context,
                 ),
                 ephemeral=True,
