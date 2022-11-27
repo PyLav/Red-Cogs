@@ -802,6 +802,41 @@ class PyLavManagedNode(commands.Cog):
             ephemeral=True,
         )
 
+    @command_plmanaged_config.command(name="filter")
+    async def command_plmanaged_config_filter(self, context: PyLavContext, filter: str, state: bool):
+        """Toggle the managed node filters"""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+        config = self.lavalink._node_config_manager.bundled_node_config()
+        data = await config.fetch_yaml()
+        valid_filters = NODE_DEFAULT_SETTINGS["lavalink"]["server"]["filters"].copy()
+        if filter not in valid_filters:
+            return await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Invalid source, {valid_list} are valid filters").format(
+                        valid_list=humanize_list(sorted(list(map(inline, valid_filters.keys())), key=str.lower))
+                    ),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+        data["lavalink"]["server"]["filters"][filter] = state
+        await config.update_yaml(data)
+        state = _("enabled") if state else _("disabled")
+        await context.send(
+            embed=await context.lavalink.construct_embed(
+                description=_("Managed node's {source} filter set to {state}.").format(
+                    source=inline(filter),
+                    state=state,
+                    prefix=context.clean_prefix,
+                ),
+                messageable=context,
+            ),
+            ephemeral=True,
+        )
+
     @command_plmanaged_config.command(name="server")
     async def command_plmanaged_config_server(self, context: PyLavContext, setting: str, value: str):
         """Configure multiple settings for the managed node.
