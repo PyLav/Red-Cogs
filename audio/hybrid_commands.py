@@ -58,22 +58,18 @@ class HybridCommands(PyLavCogMixin, ABC):
         `speak:` - The bot will speak the query  (limited to 200 characters)
         `tts://` - The bot will speak the query
         """
-
         if isinstance(context, discord.Interaction):
-            send = partial(context.followup.send, wait=True)
-            if not context.response.is_done():
-                await context.response.defer(ephemeral=True)
-            author = context.user
-        else:
-            send = context.send
-            author = context.author
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+
         if query is None:
             if attachments := context.message.attachments:
                 query = "\n".join(
                     attachment.url for attachment in attachments if valid_query_attachment(attachment.filename)
                 )
         if not query:
-            await send(
+            await context.send(
                 embed=await self.lavalink.construct_embed(
                     description=_("You need to provide a query to play"),
                     messageable=context,
@@ -85,9 +81,9 @@ class HybridCommands(PyLavCogMixin, ABC):
         if player is None:
             config = self.lavalink.player_config_manager.get_config(context.guild.id)
             if (channel := context.guild.get_channel_or_thread(await config.fetch_forced_channel_id())) is None:
-                channel = rgetattr(author, "voice.channel", None)
+                channel = rgetattr(context.author, "voice.channel", None)
                 if not channel:
-                    await send(
+                    await context.send(
                         embed=await self.lavalink.construct_embed(
                             description=_("You must be in a voice channel to allow me to connect"), messageable=context
                         ),
@@ -97,7 +93,7 @@ class HybridCommands(PyLavCogMixin, ABC):
             if not (
                 (permission := channel.permissions_for(context.guild.me)) and permission.connect and permission.speak
             ):
-                await send(
+                await context.send(
                     embed=await self.lavalink.construct_embed(
                         description=_("I don't have permission to connect or speak in {channel}").format(
                             channel=channel.mention
@@ -107,8 +103,7 @@ class HybridCommands(PyLavCogMixin, ABC):
                     ephemeral=True,
                 )
                 return
-            player = await self.lavalink.connect_player(channel=channel, requester=author)
-        await context.defer(ephemeral=True)
+            player = await self.lavalink.connect_player(channel=channel, requester=context.author)
 
         queries = [await Query.from_string(qf) for q in query.split("\n") if (qf := q.strip("<>").strip())]
         search_queries = [q for q in queries if q.is_search]
@@ -119,16 +114,16 @@ class HybridCommands(PyLavCogMixin, ABC):
             total_tracks_from_search = 0
             for query in search_queries:
                 single_track = track = Track(
-                    node=player.node, data=None, query=query, requester=author.id, timestamp=query.start_time
+                    node=player.node, data=None, query=query, requester=context.author.id, timestamp=query.start_time
                 )
-                await player.add(requester=author.id, track=track)
+                await player.add(requester=context.author.id, track=track)
                 if not player.is_playing:
-                    await player.next(requester=author)
+                    await player.next(requester=context.author)
                 total_tracks_enqueue += 1
                 total_tracks_from_search += 1
         if non_search_queries:
             successful, count, failed = await self.lavalink.get_all_tracks_for_queries(
-                *non_search_queries, requester=author, player=player
+                *non_search_queries, requester=context.author, player=player
             )
             if successful:
                 single_track = successful[0]
@@ -137,14 +132,14 @@ class HybridCommands(PyLavCogMixin, ABC):
             failed_queries.extend(failed)
             if count:
                 if count == 1:
-                    await player.add(requester=author.id, track=successful[0])
+                    await player.add(requester=context.author.id, track=successful[0])
                 else:
-                    await player.bulk_add(requester=author.id, tracks_and_queries=successful)
+                    await player.bulk_add(requester=context.author.id, tracks_and_queries=successful)
         if not (player.is_playing or player.queue.empty()):
-            await player.next(requester=author)
+            await player.next(requester=context.author)
 
         if total_tracks_enqueue > 1:
-            await send(
+            await context.send(
                 embed=await self.lavalink.construct_embed(
                     description=_("{track_count} tracks enqueued").format(track_count=total_tracks_enqueue),
                     messageable=context,
@@ -152,7 +147,7 @@ class HybridCommands(PyLavCogMixin, ABC):
                 ephemeral=True,
             )
         elif total_tracks_enqueue == 1:
-            await send(
+            await context.send(
                 embed=await self.lavalink.construct_embed(
                     description=_("{track} enqueued").format(
                         track=await single_track.get_track_display_name(with_url=True)
@@ -163,7 +158,7 @@ class HybridCommands(PyLavCogMixin, ABC):
                 ephemeral=True,
             )
         else:
-            await send(
+            await context.send(
                 embed=await self.lavalink.construct_embed(
                     description=_("No tracks were found for your query"),
                     messageable=context,
@@ -292,7 +287,7 @@ class HybridCommands(PyLavCogMixin, ABC):
                     description=_("Skipped - {track}").format(
                         track=await context.player.current.get_track_display_name(with_url=True)
                     ),
-                    thumbnail=await context.player.current.thumbnail(),
+                    thumbnail=context.player.current.thumbnail,
                     messageable=context,
                 ),
                 ephemeral=True,
