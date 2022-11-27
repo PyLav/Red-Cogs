@@ -74,11 +74,7 @@ Translations
 You can help translating the project into your language here:
 [![Crowdin](https://badges.crowdin.net/pylav/localized.svg)](https://crowdin.com/project/pylav)
 
-Shared code translations can be found here:
-
-[![Crowdin](https://badges.crowdin.net/pylavcogs-shared/localized.svg)](https://crowdin.com/project/pylavcogs-shared)
-
-PyLav translations can be found here:
+PyLav cogs translations can be found here:
 
 [![Crowdin](https://badges.crowdin.net/pylavcogs/localized.svg)](https://crowdin.com/project/pylavcogs)
 ------------------------------

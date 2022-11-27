@@ -19,13 +19,12 @@ from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import box
 from tabulate import tabulate
 
-import pylavcogs_shared
 from pylav.query import Query
+from pylav.red_utils.utils import rgetattr
 from pylav.sql.models import PlayerModel
 from pylav.types import BotT, InteractionT
 from pylav.utils import AsyncIter, PyLavContext
 from pylav.utils.theme import EightBitANSI
-from pylavcogs_shared.utils import rgetattr
 
 LOGGER = getLogger("PyLav.cog.LocalFiles")
 
@@ -90,7 +89,6 @@ class PyLavLocalFiles(commands.Cog):
             await context.defer(ephemeral=True)
         data = [
             (EightBitANSI.paint_white(self.__class__.__name__), EightBitANSI.paint_blue(self.__version__)),
-            (EightBitANSI.paint_white("PyLavCogs-Shared"), EightBitANSI.paint_blue(pylavcogs_shared.__VERSION__)),
             (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.lavalink.lib_version)),
         ]
 

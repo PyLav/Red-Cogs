@@ -17,7 +17,6 @@ from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import bold, box, humanize_list, inline
 from tabulate import tabulate
 
-import pylavcogs_shared
 from pylav.client import Client
 from pylav.managed_node import LAVALINK_DOWNLOAD_DIR
 from pylav.types import BotT
@@ -57,7 +56,6 @@ class PyLavManagedNode(commands.Cog):
             await context.defer(ephemeral=True)
         data = [
             (EightBitANSI.paint_white(self.__class__.__name__), EightBitANSI.paint_blue(self.__version__)),
-            (EightBitANSI.paint_white("PyLavCogs-Shared"), EightBitANSI.paint_blue(pylavcogs_shared.__VERSION__)),
             (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.lavalink.lib_version)),
         ]
 

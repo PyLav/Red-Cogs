@@ -6,9 +6,9 @@ from discord.ext.commands import HybridCommand
 from redbot.core.i18n import Translator, cog_i18n
 
 from pylav.query import MERGED_REGEX, Query
+from pylav.red_utils.utils.decorators import is_dj_logic
+from pylav.red_utils.utils.validators import valid_query_attachment
 from pylav.types import InteractionT, PyLavCogMixin
-from pylavcogs_shared.utils.decorators import is_dj_logic
-from pylavcogs_shared.utils.validators import valid_query_attachment
 
 _ = Translator("PyLavPlayer", __file__)
 

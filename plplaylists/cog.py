@@ -18,24 +18,23 @@ from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import bold, box, humanize_list
 from tabulate import tabulate
 
-import pylavcogs_shared
 from pylav.client import Client
 from pylav.constants import BUNDLED_PLAYLIST_IDS
 from pylav.converters.playlist import PlaylistConverter
 from pylav.converters.query import QueryPlaylistConverter
 from pylav.exceptions import InvalidPlaylist
 from pylav.query import Query
+from pylav.red_utils.ui.menus.generic import PaginatingMenu
+from pylav.red_utils.ui.menus.playlist import PlaylistCreationFlow, PlaylistManageFlow
+from pylav.red_utils.ui.prompts.playlists import maybe_prompt_for_playlist
+from pylav.red_utils.ui.sources.playlist import Base64Source, PlaylistListSource
+from pylav.red_utils.utils import rgetattr
+from pylav.red_utils.utils.decorators import always_hidden, invoker_is_dj, requires_player
 from pylav.sql.models import PlaylistModel
 from pylav.tracks import Track
 from pylav.types import BotT, InteractionT
 from pylav.utils import AsyncIter, PyLavContext
 from pylav.utils.theme import EightBitANSI
-from pylavcogs_shared.ui.menus.generic import PaginatingMenu
-from pylavcogs_shared.ui.menus.playlist import PlaylistCreationFlow, PlaylistManageFlow
-from pylavcogs_shared.ui.prompts.playlists import maybe_prompt_for_playlist
-from pylavcogs_shared.ui.sources.playlist import Base64Source, PlaylistListSource
-from pylavcogs_shared.utils import rgetattr
-from pylavcogs_shared.utils.decorators import always_hidden, invoker_is_dj, requires_player
 
 
 class CompositeMetaClass(type(red_commands.Cog), type(ABC)):
@@ -89,7 +88,6 @@ class PyLavPlaylists(
         context = await self.bot.get_context(interaction)
         data = [
             (EightBitANSI.paint_white(self.__class__.__name__), EightBitANSI.paint_blue(self.__version__)),
-            (EightBitANSI.paint_white("PyLavCogs-Shared"), EightBitANSI.paint_blue(pylavcogs_shared.__VERSION__)),
             (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.lavalink.lib_version)),
         ]
 

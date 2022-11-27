@@ -12,15 +12,14 @@ from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import bold, box, inline
 from tabulate import tabulate
 
-import pylavcogs_shared
 from pylav.client import Client
 from pylav.constants import PYLAV_BUNDLED_NODES_SETTINGS
 from pylav.localfiles import LocalFile
+from pylav.red_utils.ui.menus.player import StatsMenu
+from pylav.red_utils.ui.sources.player import PlayersSource
 from pylav.types import BotT
 from pylav.utils import PyLavContext, get_true_path
 from pylav.utils.theme import EightBitANSI
-from pylavcogs_shared.ui.menus.player import StatsMenu
-from pylavcogs_shared.ui.sources.player import PlayersSource
 
 from plconfig.view import InfoView
 
@@ -54,7 +53,6 @@ class PyLavConfigurator(commands.Cog):
             await context.defer(ephemeral=True)
         data = [
             (EightBitANSI.paint_white(self.__class__.__name__), EightBitANSI.paint_blue(self.__version__)),
-            (EightBitANSI.paint_white("PyLavCogs-Shared"), EightBitANSI.paint_blue(pylavcogs_shared.__VERSION__)),
             (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.lavalink.lib_version)),
         ]
 

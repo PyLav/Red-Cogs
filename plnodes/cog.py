@@ -13,16 +13,15 @@ from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import box, humanize_list, inline
 from tabulate import tabulate
 
-import pylavcogs_shared
 from pylav.constants import BUNDLED_NODES_IDS_HOST_MAPPING
 from pylav.converters.nodes import NodeConverter
+from pylav.red_utils.ui.menus.generic import PaginatingMenu
+from pylav.red_utils.ui.menus.nodes import AddNodeFlow, NodeManagerMenu
+from pylav.red_utils.ui.prompts.nodes import maybe_prompt_for_node
+from pylav.red_utils.ui.sources.nodes import NodeListSource, NodeManageSource
 from pylav.types import BotT
 from pylav.utils import PyLavContext
 from pylav.utils.theme import EightBitANSI
-from pylavcogs_shared.ui.menus.generic import PaginatingMenu
-from pylavcogs_shared.ui.menus.nodes import AddNodeFlow, NodeManagerMenu
-from pylavcogs_shared.ui.prompts.nodes import maybe_prompt_for_node
-from pylavcogs_shared.ui.sources.nodes import NodeListSource, NodeManageSource
 
 LOGGER = getLogger("PyLav.cog.Nodes")
 
@@ -53,7 +52,6 @@ class PyLavNodes(commands.Cog):
             await context.defer(ephemeral=True)
         data = [
             (EightBitANSI.paint_white(self.__class__.__name__), EightBitANSI.paint_blue(self.__version__)),
-            (EightBitANSI.paint_white("PyLavCogs-Shared"), EightBitANSI.paint_blue(pylavcogs_shared.__VERSION__)),
             (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.lavalink.lib_version)),
         ]
 

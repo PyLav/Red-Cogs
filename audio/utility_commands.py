@@ -7,9 +7,9 @@ from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import humanize_number
 
+from pylav.red_utils.utils.decorators import always_hidden
 from pylav.types import PyLavCogMixin
 from pylav.utils import PyLavContext
-from pylavcogs_shared.utils.decorators import always_hidden
 
 LOGGER = getLogger("PyLav.cog.Player.commands.utils")
 

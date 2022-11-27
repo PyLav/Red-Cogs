@@ -17,15 +17,14 @@ from rich.console import Console
 from rich.tree import Tree
 from tabulate import tabulate
 
-import pylavcogs_shared
 from pylav._logging import getLogger as pylav_getLogger
 from pylav.converters.query import QueryConverter
 from pylav.exceptions import HTTPError
+from pylav.red_utils.utils.decorators import requires_player
 from pylav.track_encoding import decode_track
 from pylav.types import BotT
 from pylav.utils import PyLavContext
 from pylav.utils.theme import EightBitANSI
-from pylavcogs_shared.utils.decorators import requires_player
 
 LOGGER = getLogger("PyLav.cog.Utils")
 
@@ -79,7 +78,6 @@ class PyLavUtils(commands.Cog):
             await context.defer(ephemeral=True)
         data = [
             (EightBitANSI.paint_white(self.__class__.__name__), EightBitANSI.paint_blue(self.__version__)),
-            (EightBitANSI.paint_white("PyLavCogs-Shared"), EightBitANSI.paint_blue(pylavcogs_shared.__VERSION__)),
             (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.lavalink.lib_version)),
         ]
 

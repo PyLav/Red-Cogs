@@ -10,9 +10,9 @@ from red_commons.logging import getLogger
 from redbot.core.i18n import Translator
 
 from pylav.query import SEARCH_REGEX, Query
+from pylav.red_utils.utils.decorators import invoker_is_dj
 from pylav.tracks import Track
 from pylav.types import InteractionT, PyLavCogMixin
-from pylavcogs_shared.utils.decorators import invoker_is_dj
 
 LOGGER = getLogger("PyLav.cog.Player.commands.slashes")
 _ = Translator("PyLavPlayer", Path(__file__))

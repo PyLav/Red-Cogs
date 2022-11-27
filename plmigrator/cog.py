@@ -20,10 +20,10 @@ from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.dbtools import APSWConnectionWrapper
 
 from pylav.client import Client
+from pylav.red_utils.utils import recursive_merge
 from pylav.sql.models import LibConfigModel, PlayerModel
 from pylav.types import BotT
 from pylav.utils import AsyncIter, PyLavContext
-from pylavcogs_shared.utils import recursive_merge
 
 LOGGER = getLogger("PyLav.cog.Migrator")
 

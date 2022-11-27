@@ -19,9 +19,9 @@ from pylav.converters.radio import (
 )
 from pylav.query import Query
 from pylav.radio.objects import Station
+from pylav.red_utils.ui.prompts.generic import maybe_prompt_for_entry
+from pylav.red_utils.utils import rgetattr
 from pylav.types import BotT, InteractionT
-from pylavcogs_shared.ui.prompts.generic import maybe_prompt_for_entry
-from pylavcogs_shared.utils import rgetattr
 
 LOGGER = getLogger("PyLav.cog.Radio")
 
