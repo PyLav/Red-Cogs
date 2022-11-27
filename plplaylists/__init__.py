@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from redbot.core.utils import get_end_user_data_statement
 
+from pylav.red_utils.utils.required_methods import pylav_auto_setup
 from pylav.types import BotT
-from pylavcogs_shared.utils.required_methods import pylav_auto_setup
 
 from plplaylists.cog import PyLavPlaylists
 

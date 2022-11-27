@@ -13,13 +13,12 @@ from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import bold, box, humanize_list, humanize_number, humanize_timedelta
 from tabulate import tabulate
 
-import pylavcogs_shared
 from pylav.converters.playlist import PlaylistConverter
+from pylav.red_utils.ui.prompts.playlists import maybe_prompt_for_playlist
+from pylav.red_utils.utils.decorators import invoker_is_dj, requires_player
 from pylav.types import PyLavCogMixin
 from pylav.utils import PyLavContext
 from pylav.utils.theme import EightBitANSI
-from pylavcogs_shared.ui.prompts.playlists import maybe_prompt_for_playlist
-from pylavcogs_shared.utils.decorators import invoker_is_dj, requires_player
 
 LOGGER = getLogger("PyLav.cog.Player.commands.config")
 
@@ -101,7 +100,6 @@ class ConfigCommands(PyLavCogMixin, ABC):
             await context.defer(ephemeral=True)
         data = [
             (EightBitANSI.paint_white(self.__class__.__name__), EightBitANSI.paint_blue(self.__version__)),
-            (EightBitANSI.paint_white("PyLavCogs-Shared"), EightBitANSI.paint_blue(pylavcogs_shared.__VERSION__)),
             (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.lavalink.lib_version)),
         ]
 

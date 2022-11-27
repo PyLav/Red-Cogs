@@ -11,14 +11,14 @@ from redbot.core import commands
 from redbot.core.i18n import Translator
 
 from pylav.query import Query
+from pylav.red_utils.ui.menus.queue import QueueMenu
+from pylav.red_utils.ui.sources.queue import QueueSource
+from pylav.red_utils.utils import rgetattr
+from pylav.red_utils.utils.decorators import invoker_is_dj, requires_player
+from pylav.red_utils.utils.validators import valid_query_attachment
 from pylav.tracks import Track
 from pylav.types import PyLavCogMixin
 from pylav.utils import PyLavContext, format_time
-from pylavcogs_shared.ui.menus.queue import QueueMenu
-from pylavcogs_shared.ui.sources.queue import QueueSource
-from pylavcogs_shared.utils import rgetattr
-from pylavcogs_shared.utils.decorators import invoker_is_dj, requires_player
-from pylavcogs_shared.utils.validators import valid_query_attachment
 
 LOGGER = getLogger("PyLav.cog.Player.commands.hybrids")
 _ = Translator("PyLavPlayer", Path(__file__))

@@ -12,11 +12,11 @@ from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
 
 from pylav.query import Query
+from pylav.red_utils.utils import rgetattr
+from pylav.red_utils.utils.decorators import invoker_is_dj
 from pylav.tracks import Track, decode_track
 from pylav.types import PyLavCogMixin
 from pylav.utils import PyLavContext
-from pylavcogs_shared.utils import rgetattr
-from pylavcogs_shared.utils.decorators import invoker_is_dj
 
 LOGGER = getLogger("PyLav.cog.Player.commands.player")
 _ = Translator("PyLavPlayer", Path(__file__))
