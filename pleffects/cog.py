@@ -114,6 +114,32 @@ class PyLavEffects(commands.Cog):
                     ephemeral=True,
                 )
 
+    @slash_fx.command(name="varporwave", description=_("Apply a Vaporwave preset to the player"))
+    @app_commands.guild_only()
+    @requires_player(slash=True)
+    @invoker_is_dj(slash=True)
+    async def slash_fx_varporwave(self, interaction: InteractionT) -> None:
+        """Apply a Vaporwave filter to the player"""
+
+        if not interaction.response.is_done():
+            await interaction.response.defer(ephemeral=True)
+        context = await self.bot.get_context(interaction)
+
+        if context.player.equalizer.name == "Vaporwave":
+            await context.player.remove_vaporwave(requester=context.author)
+            await context.send(embed=await self.lavalink.construct_embed(messageable=context,
+                description=_("Vaporwave effect has been disabled"), ), ephemeral=True, )
+        else:
+            try:
+                await context.player.apply_vaporwave(requester=context.author)
+            except NodeHasNoFilters as exc:
+                await context.send(
+                    embed=await self.lavalink.construct_embed(messageable=context, description=exc.message, ),
+                    ephemeral=True, )
+            else:
+                await context.send(embed=await self.lavalink.construct_embed(messageable=context,
+                    description=_("Vaporwave effect has been enabled"), ), ephemeral=True, )
+
     @slash_fx.command(name="vibrato", description=_("Apply a vibrato filter to the player"))
     @app_commands.describe(
         frequency=_("The vibrato frequency"),
