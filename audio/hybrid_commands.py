@@ -108,6 +108,7 @@ class HybridCommands(PyLavCogMixin, ABC):
                 )
                 return
             player = await self.lavalink.connect_player(channel=channel, requester=author)
+        await context.defer(ephemeral=True)
 
         queries = [await Query.from_string(qf) for q in query.split("\n") if (qf := q.strip("<>").strip())]
         search_queries = [q for q in queries if q.is_search]
