@@ -844,7 +844,7 @@ class PyLavManagedNode(commands.Cog):
         Run `[p]plmanaged config server <setting> info` to show info about the settings and what they do.
 
         **Setting names**:
-        `bufferDurationMs` : Integer i.e 400 (Default 400)
+        `bufferDurationMs` : Integer i.e 400 (Default 400) - Set to 0 to disable JDA-NAS
         `frameBufferDurationMs` : Integer i.e 1000 (Default 1000)
         `trackStuckThresholdMs` : Integer i.e 1000 (Default 1000)
         `youtubePlaylistLoadLimit` : Integer i.e 1000 (Default 1000)
@@ -892,11 +892,13 @@ class PyLavManagedNode(commands.Cog):
             setting_description_map = {
                 "bufferDurationMs": _(
                     "The duration of the NAS buffer in milliseconds. "
-                    "Higher values fare better against longer GC pauses. "
-                    "Minimum of 40ms, lower values may introduce pauses. Accepted values: Range: 40 - 2,000"
+                    "Higher values fare better against longer GC pauses but will increase RAM usage. "
+                    "Minimum of 40ms, lower values may introduce pauses and stutters. "
+                    "Set to 0 to disable JDA-NAS. Accepted values: Range: 0 - 2,000"
                 ),
                 "frameBufferDurationMs": _(
-                    "How many milliseconds of audio to keep buffered. Accepted values: Range: 1,000 - 10,000"
+                    "How many milliseconds of audio to keep buffered, Higher values increase RAM usage. "
+                    "Accepted values: Range: 1,000 - 10,000"
                 ),
                 "trackStuckThresholdMs": _(
                     "The threshold in milliseconds for how long a track can be stuck. "
