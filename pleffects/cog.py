@@ -127,18 +127,32 @@ class PyLavEffects(commands.Cog):
 
         if context.player.equalizer.name == "Vaporwave":
             await context.player.remove_vaporwave(requester=context.author)
-            await context.send(embed=await self.lavalink.construct_embed(messageable=context,
-                description=_("Vaporwave effect has been disabled"), ), ephemeral=True, )
+            await context.send(
+                embed=await self.lavalink.construct_embed(
+                    messageable=context,
+                    description=_("Vaporwave effect has been disabled"),
+                ),
+                ephemeral=True,
+            )
         else:
             try:
                 await context.player.apply_vaporwave(requester=context.author)
             except NodeHasNoFilters as exc:
                 await context.send(
-                    embed=await self.lavalink.construct_embed(messageable=context, description=exc.message, ),
-                    ephemeral=True, )
+                    embed=await self.lavalink.construct_embed(
+                        messageable=context,
+                        description=exc.message,
+                    ),
+                    ephemeral=True,
+                )
             else:
-                await context.send(embed=await self.lavalink.construct_embed(messageable=context,
-                    description=_("Vaporwave effect has been enabled"), ), ephemeral=True, )
+                await context.send(
+                    embed=await self.lavalink.construct_embed(
+                        messageable=context,
+                        description=_("Vaporwave effect has been enabled"),
+                    ),
+                    ephemeral=True,
+                )
 
     @slash_fx.command(name="vibrato", description=_("Apply a vibrato filter to the player"))
     @app_commands.describe(
