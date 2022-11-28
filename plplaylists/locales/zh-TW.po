@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
 "POT-Creation-Date: 2022-10-21 17:21+0000\n"
-"PO-Revision-Date: 2022-11-27 19:44\n"
+"PO-Revision-Date: 2022-11-28 05:03\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
@@ -20,11 +20,11 @@ msgstr ""
 #: plplaylists/cog.py:59
 #, docstring
 msgid "PyLav playlist management commands"
-msgstr ""
+msgstr "PyLav 播放列表管理命令"
 
 #: plplaylists/cog.py:67
 msgid "Control PyLav playlists"
-msgstr ""
+msgstr "控制 PyLav 播放列表"
 
 #: plplaylists/cog.py:89
 #, docstring
@@ -41,7 +41,7 @@ msgstr "版本"
 
 #: plplaylists/cog.py:138
 msgid "Let's create a playlist!"
-msgstr ""
+msgstr "讓我們創建一個播放列表！"
 
 #: plplaylists/cog.py:139
 msgid "(**1**) - Apply changes to playlist.\n"
@@ -50,41 +50,48 @@ msgid "(**1**) - Apply changes to playlist.\n"
 "(**4**) - Link this playlist to an existing playlist/album.\n"
 "(**5**) - Add all tracks from the queue to the playlist.\n\n"
 "If you want the playlist name to be as the original playlist simply set the URL but no name.\n\n"
-msgstr ""
+msgstr "(**1**) - 將更改應用於播放列表。\n"
+"(**2**) - 取消所做的任何更改。\n"
+"(**3**) - 將名稱添加到播放列表。\n"
+"(**4**) - 將此播放列表連結到現有的播放列表/專輯。\n"
+"(**5**) - 將列表中的所有曲目添加到播放列表。\n\n"
+"如果您希望播放列表名稱與原始播放列表相同，只需設置 URL 但不要設置名稱。"
 
 #: plplaylists/cog.py:171
 msgid "Playlist not created"
-msgstr ""
+msgstr "未創建播放列表"
 
 #: plplaylists/cog.py:172
 msgid "No tracks were provided in time."
-msgstr ""
+msgstr "沒有及時提供曲目。"
 
 #: plplaylists/cog.py:185
 msgid "Playlist created"
-msgstr ""
+msgstr "已創建播放列表"
 
 #: plplaylists/cog.py:186
 msgid "Name: `{name}`\n"
 "ID: `{id}`\n"
 "Tracks: `{track_count}`"
-msgstr ""
+msgstr "名稱：`{name}`\n"
+"編號：`{id}`\n"
+"曲目：`{track_count}`"
 
 #: plplaylists/cog.py:210
 msgid "You have no playlists"
-msgstr ""
+msgstr "您沒有播放列表"
 
 #: plplaylists/cog.py:253 plplaylists/cog.py:617
 msgid "Nothing to save"
-msgstr ""
+msgstr "沒有任何變更可以儲存"
 
 #: plplaylists/cog.py:254 plplaylists/cog.py:618
 msgid "There is nothing in the queue to save"
-msgstr ""
+msgstr "列表中沒有可保存的內容"
 
 #: plplaylists/cog.py:291 plplaylists/cog.py:555 plplaylists/cog.py:635
 msgid "{user}, playlist {playlist_name} cannot be managed by yourself"
-msgstr ""
+msgstr "{user}，播放列表 {playlist_name} 無法由您自己管理"
 
 #: plplaylists/cog.py:300
 msgid "(**1**){space} - Apply changes to playlist.\n"
@@ -107,7 +114,26 @@ msgid "(**1**){space} - Apply changes to playlist.\n"
 "The clear button will always be run first before any other operations.\n"
 "The URL button will always run last - Linking a playlist via the URL will overwrite any tracks added or removed to this playlist.\n\n"
 "If you interact with a button multiple times other than the add/remove buttons only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - 將更改應用於播放列表。\n"
+"(**2**){space} - 取消所做的任何更改並關閉菜單。\n"
+"(**3**){space} - 刪除這個播放列表。\n"
+"(**4**){space} - 從此播放列表中刪除所有曲目。\n"
+"(**5**){space} - 用最新曲目更新播放列表。\n"
+"請注意，此操作將忽略通過此菜單添加/刪除的任何曲目。\n"
+"(**6**){space} - 更改播放列表的名稱。\n"
+"(**7**){space} - 將此播放列錶鍊接到現有的播放列表/專輯。\n"
+"(**8**){space} - 向該播放列表添加查詢。\n"
+"(**9**){space} - 從此播放列表中刪除查詢。\n"
+"(**10**) - 下載播放列表文件。\n"
+"(**11**) - 將當前播放列表添加到隊列中。\n"
+"(**12**) - 顯示當前播放列表中的曲目。\n"
+"(**13**) - 將列隊中的曲目添加到此播放列表。\n"
+"(**14**) - 刪除播放列表中的重複的曲目。\n\n"
+"添加/刪除曲目按鈕可以多次使用以一次添加/刪除多個曲目和播放列表。\n\n"
+"查詢是播放命令可以播放的任何內容——添加/刪除按鈕可以使用任何查詢\n\n"
+"清除按鈕將始終在任何其他操作之前首先運行。\n"
+"URL 按鈕將始終最後運行 - 通過 URL 鏈接播放列表將覆蓋添加或刪除到該播放列表的任何曲目。\n\n"
+"如果您多次與添加/刪除按鈕以外的按鈕進行交互，則只有最後一次交互才會生效。"
 
 #: plplaylists/cog.py:326
 msgid "(**1**) - Close the menu.\n"
@@ -115,7 +141,11 @@ msgid "(**1**) - Close the menu.\n"
 "(**3**) - Download the playlist file.\n"
 "(**4**) - Add current playlist to the queue.\n"
 "(**5**) - Show tracks in current playlist.\n\n\n"
-msgstr ""
+msgstr "(**1**) - 關閉菜單。\n"
+"(**2**) - 使用最新曲目更新播放列表。\n"
+"(**3**) - 下載播放列表文件。\n"
+"(**4**) - 將當前播放列表添加到列表中。\n"
+"(**5**) - 顯示當前播放列表中的曲目。"
 
 #: plplaylists/cog.py:334
 msgid "**__Currently managing__**:\n"
@@ -124,15 +154,20 @@ msgid "**__Currently managing__**:\n"
 "**Author**:{space}{space}{author}\n"
 "**Tracks**:{space}{space}{space}{tracks} tracks\n"
 "**URL**:{space}{space}{space}{space}{space}{url}\n"
-msgstr ""
+msgstr "**__目前管理__**：\n"
+"**名稱**：{space}{space}{space}{playlist_name}\n"
+"**範圍**：{space}{space}{space}{scope}\n"
+"**作者**：{space}{space}{author}\n"
+"**曲目**：{space}{space}{space}{tracks} 首曲目\n"
+"**網址**：{space}{space}{space}{space}{space}{url}"
 
 #: plplaylists/cog.py:352
 msgid "Let's manage: {playlist_name}"
-msgstr ""
+msgstr "讓我們管理：{playlist_name}"
 
 #: plplaylists/cog.py:354
 msgid "Let's take a look at: {playlist_name}"
-msgstr ""
+msgstr "讓我們來看看：{playlist_name}"
 
 #: plplaylists/cog.py:361
 msgid "N/A"
@@ -140,75 +175,77 @@ msgstr "N/A"
 
 #: plplaylists/cog.py:393 plplaylists/cog.py:565
 msgid "Playlist deleted"
-msgstr ""
+msgstr "播放列表已刪除"
 
 #: plplaylists/cog.py:395 plplaylists/cog.py:567
 msgid "{user}, playlist {playlist_name} has been deleted"
-msgstr ""
+msgstr "{user}，播放列表 {playlist_name} 已被刪除"
 
 #: plplaylists/cog.py:450
 msgid "Playlist **{playlist_name}** could not be updated with URL: <{url}>"
-msgstr ""
+msgstr "無法使用 URL 更新播放列表 **{playlist_name}**：<{url}>"
 
 #: plplaylists/cog.py:483
 msgid "\n"
 "{track_count} {track_plural} removed from the playlist"
-msgstr ""
+msgstr "從播放列表中刪除了 {track_count} {track_plural}"
 
 #: plplaylists/cog.py:484 plplaylists/cog.py:488 plplaylists/cog.py:654
 msgid "track"
-msgstr ""
+msgstr "曲目"
 
 #: plplaylists/cog.py:484 plplaylists/cog.py:488 plplaylists/cog.py:654
 msgid "tracks"
-msgstr ""
+msgstr "首歌曲"
 
 #: plplaylists/cog.py:487 plplaylists/cog.py:653
 msgid "\n"
 "{track_count} {track_plural} added to the playlist"
-msgstr ""
+msgstr "{track_count} {track_plural} 添加到播放列表"
 
 #: plplaylists/cog.py:493 plplaylists/cog.py:660
 msgid "Playlist updated"
-msgstr ""
+msgstr "播放列表已更新"
 
 #: plplaylists/cog.py:494 plplaylists/cog.py:661
 msgid "{user}, playlist {playlist_name} has been updated.{extras}"
-msgstr ""
+msgstr "{user}，播放列表 {playlist_name} 已更新。{extras}"
 
 #: plplaylists/cog.py:506 plplaylists/cog.py:674
 msgid "Playlist unchanged"
-msgstr ""
+msgstr "播放列表未更新"
 
 #: plplaylists/cog.py:507 plplaylists/cog.py:675
 msgid "{user}, playlist {playlist_name} has not been updated"
-msgstr ""
+msgstr "{user}，播放列表 {playlist_name} 尚未更新"
 
 #: plplaylists/cog.py:703
 msgid "You must either provide a URL or attach a playlist file to upload a playlist"
-msgstr ""
+msgstr "您必須提供 URL 或附加播放列表文件才能上傳播放列表"
 
 #: plplaylists/cog.py:715
 msgid "No valid playlist file provided"
-msgstr ""
+msgstr "未提供有效的播放列表文件"
 
 #: plplaylists/cog.py:724
 msgid "Multiple playlist files provided - Currently only 1 per message is allowed"
-msgstr ""
+msgstr "提供多個播放列表文件 - 目前每條訊息只允許 1 個文件"
 
 #: plplaylists/cog.py:741
 msgid "Failed to save any of the requested playlists"
-msgstr ""
+msgstr "無法保存任何請求的播放列表"
 
 #: plplaylists/cog.py:750
 msgid "Failed to save the following playlists:\n"
 "{invalid_playlists}"
-msgstr ""
+msgstr "無法保存以下播放列表：\n"
+"{invalid_playlists}"
 
 #: plplaylists/cog.py:759
 msgid "Successfully saved the following playlists:\n"
 "{saved_playlists}"
-msgstr ""
+msgstr "已成功保存以下播放列表：\n"
+"{saved_playlists}"
 
 #: plplaylists/cog.py:784
 msgid "You must be in a voice channel to allow me to connect"
@@ -220,9 +257,9 @@ msgstr "我無權限連接或在{channel}中說話"
 
 #: plplaylists/cog.py:809
 msgid "Playlist"
-msgstr ""
+msgstr "播放清單"
 
 #: plplaylists/cog.py:814
 msgid "{track_count} tracks enqueued.{playlist_name}"
-msgstr ""
+msgstr "{track_count} 首曲目已加入播放列表。{playlist_name}"
 
