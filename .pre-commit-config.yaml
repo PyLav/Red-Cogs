@@ -13,7 +13,7 @@ repos:
     hooks:
     -   id: black-disable-checker
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.3.0
+    rev: v4.4.0
     hooks:
       # all files should end with an empty line (for one, it minimizes the diffs)
     -   id: end-of-file-fixer
@@ -57,7 +57,7 @@ repos:
         -   --autofix
         -   --indent=4
 -   repo: https://github.com/PyCQA/autoflake
-    rev: v1.7.7
+    rev: v2.0.0
     hooks:
     -   id: autoflake
         args: [--remove-all-unused-imports, --recursive, --in-place, --remove-unused-variables, --ignore-init-module-imports, --remove-duplicate-keys]
