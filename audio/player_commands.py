@@ -153,7 +153,7 @@ class PlayerCommands(PyLavCogMixin, ABC):
             total_tracks_from_search = 0
             for query in search_queries:
                 single_track = track = Track(
-                    node=player.node, data=None, query=query, requester=author.id, timestamp=query.start_time
+                    node=player.node, data=None, query=query, requester=author.id, timestamp=query.start_time, partial=query.is_partial
                 )
                 await player.add(requester=author.id, track=track, index=0)
                 if not player.is_playing:
