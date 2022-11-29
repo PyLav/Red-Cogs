@@ -115,7 +115,7 @@ class HybridCommands(PyLavCogMixin, ABC):
             total_tracks_from_search = 0
             for query in search_queries:
                 single_track = track = Track(
-                    node=player.node, data=None, query=query, requester=context.author.id, timestamp=query.start_time
+                    node=player.node, data=None, query=query, requester=context.author.id, timestamp=query.start_time, partial=query.is_partial
                 )
                 await player.add(requester=context.author.id, track=track)
                 if not player.is_playing:

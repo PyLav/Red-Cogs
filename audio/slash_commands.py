@@ -29,7 +29,7 @@ class SlashCommands(PyLavCogMixin, ABC):
         self,
         interaction: InteractionT,
         query: str,
-        source: Literal["YouTube Music", "Spotify", "Apple Music", "SoundCloud", "YouTube"] = None,
+        source: Literal["Deezer", "YouTube Music", "Spotify", "Apple Music", "SoundCloud", "YouTube", "Yandex Music"] = None,
     ):
         """Search for a track then play the selected response"""
         if not interaction.response.is_done():
@@ -68,26 +68,26 @@ class SlashCommands(PyLavCogMixin, ABC):
             "scsearch:": "soundcloud",
             "ytsearch:": "youtube",
             "dzsearch:": "deezer",
-            "ymsearch": "yandexmusic",
+            "ymsearch:": "yandexmusic",
         }
         inv_map = {v: k for k, v in prefix_mapping.items()}
         if options := data.get("options", []):
             value_list = [v for v in options if v.get("name") == "source"]
             if value_list and (value := value_list[0].get("value")):
-                prefix = prefix_mapping.get(value, "ytmsearch:")
+                prefix = prefix_mapping.get(value, "dzsearch:")
             else:
-                prefix = "ytmsearch:"
+                prefix = "dzsearch:"
         else:
-            prefix = "ytmsearch:"
+            prefix = "dzsearch:"
         match = SEARCH_REGEX.match(current)
         service = match.group("search_source") if match else None
         if not service:
             current = prefix + current
-        feature = feature_mapping.get(prefix, "youtube")
+        feature = feature_mapping.get(prefix, "deezer")
         if not (match := SEARCH_REGEX.match(current)) or not match.group("search_query"):
             return [
                 Choice(
-                    name=_("Searching {service}").format(service=inv_map.get(prefix, "YouTube Music")),
+                    name=_("Searching {service}").format(service=inv_map.get(prefix, "Deezer")),
                     value="FqgqQW21tQ@#1g2fasf2",
                 )
             ]
@@ -99,7 +99,7 @@ class SlashCommands(PyLavCogMixin, ABC):
         if not response:
             return [
                 Choice(
-                    name=_("No results found on {service}").format(service=inv_map.get(prefix, "YouTube Music")),
+                    name=_("No results found on {service}").format(service=inv_map.get(prefix, "Deezer")),
                     value="FqgqQW21tQ@#1g2fasf2",
                 )
             ]
@@ -107,7 +107,7 @@ class SlashCommands(PyLavCogMixin, ABC):
         if not tracks:
             return [
                 Choice(
-                    name=_("No results found on {service}").format(service=inv_map.get(prefix, "YouTube Music")),
+                    name=_("No results found on {service}").format(service=inv_map.get(prefix, "Deezer")),
                     value="FqgqQW21tQ@#1g2fasf2",
                 )
             ]
