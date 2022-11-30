@@ -128,7 +128,9 @@ class ConfigureIPRotationModal(discord.ui.Modal):
             label=translation_shortener(max_length=100, translation=_("IP Blocks")),
             style=discord.TextStyle.long,
             required=True,
-            placeholder=translation_shortener(max_length=100, translation=_("1.0.0.0/8,...,... - Comma separated list of IP blocks")),
+            placeholder=translation_shortener(
+                max_length=100, translation=_("1.0.0.0/8,...,... - Comma separated list of IP blocks")
+            ),
         )
 
         self.strategy = discord.ui.TextInput(
@@ -144,7 +146,9 @@ class ConfigureIPRotationModal(discord.ui.Modal):
             label=translation_shortener(max_length=100, translation=_("Retry limit")),
             style=discord.TextStyle.short,
             required=False,
-            placeholder=translation_shortener(max_length=100, translation=_("-1 = default, 0 = infinity, >0 = number of retries")),
+            placeholder=translation_shortener(
+                max_length=100, translation=_("-1 = default, 0 = infinity, >0 = number of retries")
+            ),
             min_length=1,
             max_length=3,
         )
@@ -152,7 +156,9 @@ class ConfigureIPRotationModal(discord.ui.Modal):
             label=translation_shortener(max_length=100, translation=_("IPs to exclude")),
             required=False,
             style=discord.TextStyle.short,
-            placeholder=translation_shortener(max_length=100, translation=_("Comma separated list of IP to exclude from rotation")),
+            placeholder=translation_shortener(
+                max_length=100, translation=_("Comma separated list of IP to exclude from rotation")
+            ),
         )
 
         self.search_trigger = discord.ui.TextInput(
@@ -319,7 +325,9 @@ class ConfigureGoogleAccountModal(discord.ui.Modal):
             label=translation_shortener(max_length=100, translation=_("password")),
             style=discord.TextStyle.short,
             required=True,
-            placeholder=translation_shortener(max_length=100, translation=_("If you have 2FA you will need an app password")),
+            placeholder=translation_shortener(
+                max_length=100, translation=_("If you have 2FA you will need an app password")
+            ),
             min_length=8,
             max_length=100,
         )
@@ -377,14 +385,18 @@ class ConfigureHTTPProxyModal(discord.ui.Modal):
             label=translation_shortener(max_length=100, translation=_("Hostname")),
             style=discord.TextStyle.short,
             required=True,
-            placeholder=translation_shortener(max_length=100, translation=_("Hostname of the proxy, (ip or domain or localhost)")),
+            placeholder=translation_shortener(
+                max_length=100, translation=_("Hostname of the proxy, (ip or domain or localhost)")
+            ),
         )
 
         self.port = discord.ui.TextInput(
             label=translation_shortener(max_length=100, translation=_("Proxy port")),
             style=discord.TextStyle.short,
             required=True,
-            placeholder=translation_shortener(max_length=100, translation=_("Proxy port, 3128 is the default for squidProxy")),
+            placeholder=translation_shortener(
+                max_length=100, translation=_("Proxy port, 3128 is the default for squidProxy")
+            ),
             min_length=1,
             max_length=5,
         )
@@ -393,13 +405,21 @@ class ConfigureHTTPProxyModal(discord.ui.Modal):
             label=translation_shortener(max_length=100, translation=_("User")),
             style=discord.TextStyle.long,
             required=False,
-            placeholder=translation_shortener(max_length=100, translation=_("Optional user for basic authentication fields, leave blank if you don't use basic auth")),
+            placeholder=translation_shortener(
+                max_length=100,
+                translation=_("Optional user for basic authentication fields, leave blank if you don't use basic auth"),
+            ),
         )
         self.password = discord.ui.TextInput(
             label=_("Password"),
             style=discord.TextStyle.long,
             required=False,
-            placeholder=translation_shortener(max_length=100, translation=_("Optional password for basic authentication fields, leave blank if you don't use basic auth")),
+            placeholder=translation_shortener(
+                max_length=100,
+                translation=_(
+                    "Optional password for basic authentication fields, leave blank if you don't use basic auth"
+                ),
+            ),
         )
         self.add_item(self.host)
         self.add_item(self.port)

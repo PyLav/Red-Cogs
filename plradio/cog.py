@@ -41,13 +41,20 @@ class PyLavRadio(commands.Cog):
         self.bot = bot
 
     @app_commands.command(
-        name="radio", description=translation_shortener(max_length=100, translation=_("Enqueue a radio station. Use the arguments to filter for a possible station"))
+        name="radio",
+        description=translation_shortener(
+            max_length=100, translation=_("Enqueue a radio station. Use the arguments to filter for a possible station")
+        ),
     )
     @app_commands.describe(
         stations=translation_shortener(max_length=100, translation=_("The radio station to enqueue")),
         language=translation_shortener(max_length=100, translation=_("The language code to filter stations by")),
-        countrycode=translation_shortener(max_length=100, translation=_("The country code to filter stations and countries by")),
-        country=translation_shortener(max_length=100, translation=_("The country filter to filter stations and states by")),
+        countrycode=translation_shortener(
+            max_length=100, translation=_("The country code to filter stations and countries by")
+        ),
+        country=translation_shortener(
+            max_length=100, translation=_("The country filter to filter stations and states by")
+        ),
         state=translation_shortener(max_length=100, translation=_("The state filter to filter stations by")),
         codec=translation_shortener(max_length=100, translation=_("The codec filter to filter stations by")),
         tag1=translation_shortener(max_length=100, translation=_("The tag filter to filter stations by")),

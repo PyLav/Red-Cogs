@@ -74,7 +74,10 @@ class PyLavEffects(commands.Cog):
             ephemeral=True,
         )
 
-    @slash_fx.command(name="nightcore", description=translation_shortener(max_length=100, translation=_("Apply a Nightcore preset to the player")))
+    @slash_fx.command(
+        name="nightcore",
+        description=translation_shortener(max_length=100, translation=_("Apply a Nightcore preset to the player")),
+    )
     @app_commands.guild_only()
     @requires_player(slash=True)
     @invoker_is_dj(slash=True)

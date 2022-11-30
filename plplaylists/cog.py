@@ -109,9 +109,16 @@ class PyLavPlaylists(
             ephemeral=True,
         )
 
-    @slash_playlist.command(name="create", description=translation_shortener(max_length=100, translation=_("Create a playlist")))
+    @slash_playlist.command(
+        name="create", description=translation_shortener(max_length=100, translation=_("Create a playlist"))
+    )
     @app_commands.describe(
-        url=translation_shortener(max_length=100, translation=_("The URL of the playlist to create. YouTube, Spotify, SoundCloud, Apple Music playlists or albums")),
+        url=translation_shortener(
+            max_length=100,
+            translation=_(
+                "The URL of the playlist to create. YouTube, Spotify, SoundCloud, Apple Music playlists or albums"
+            ),
+        ),
         name=translation_shortener(max_length=100, translation=_("The name of the playlist")),
     )
     @app_commands.guild_only()

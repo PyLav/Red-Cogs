@@ -85,12 +85,16 @@ class PyLavConfigurator(commands.Cog):
             SelectOption(
                 label=translation_shortener(max_length=100, translation=_("PyLav Config")),
                 value="pylav_config",
-                description=translation_shortener(max_length=100, translation=_("Get information about the PyLav library settings")),
+                description=translation_shortener(
+                    max_length=100, translation=_("Get information about the PyLav library settings")
+                ),
             ),
             SelectOption(
                 label=translation_shortener(max_length=100, translation=_("Global Player Config")),
                 value="global_player_config",
-                description=translation_shortener(max_length=100, translation=_("Get information about bot owner configured settings for the players")),
+                description=translation_shortener(
+                    max_length=100, translation=_("Get information about bot owner configured settings for the players")
+                ),
             ),
         ]
         if context.guild:
@@ -99,15 +103,21 @@ class PyLavConfigurator(commands.Cog):
                     SelectOption(
                         label=translation_shortener(max_length=100, translation=_("Context Player Config")),
                         value="context_player_config",
-                        description=translation_shortener(max_length=100, translation=_(
-                            "Get information about contextual settings for the player, "
-                            "accounting for the global settings"
-                        )),
+                        description=translation_shortener(
+                            max_length=100,
+                            translation=_(
+                                "Get information about contextual settings for the player, "
+                                "accounting for the global settings"
+                            ),
+                        ),
                     ),
                     SelectOption(
                         label=translation_shortener(max_length=100, translation=_("Server Player Config")),
                         value="server_player_config",
-                        description=translation_shortener(max_length=100, translation=_("Get information about server configured settings for the player")),
+                        description=translation_shortener(
+                            max_length=100,
+                            translation=_("Get information about server configured settings for the player"),
+                        ),
                     ),
                 ]
             )
@@ -116,7 +126,9 @@ class PyLavConfigurator(commands.Cog):
             SelectOption(
                 label=translation_shortener(max_length=100, translation=_("Playlist Tasks")),
                 value="playlist_tasks",
-                description=translation_shortener(max_length=100, translation=_("Get information about the playlist auto update schedule")),
+                description=translation_shortener(
+                    max_length=100, translation=_("Get information about the playlist auto update schedule")
+                ),
             )
         )
 
@@ -126,12 +138,16 @@ class PyLavConfigurator(commands.Cog):
                     SelectOption(
                         label=translation_shortener(max_length=100, translation=_("PyLav Paths")),
                         value="pylav_paths",
-                        description=translation_shortener(max_length=100, translation=_("Get information about PyLav paths")),
+                        description=translation_shortener(
+                            max_length=100, translation=_("Get information about PyLav paths")
+                        ),
                     ),
                     SelectOption(
                         label=translation_shortener(max_length=100, translation=_("Managed Node Config")),
                         value="managed_node_config",
-                        description=translation_shortener(max_length=100, translation=_("Get information about the Managed PyLav Lavalink node")),
+                        description=translation_shortener(
+                            max_length=100, translation=_("Get information about the Managed PyLav Lavalink node")
+                        ),
                     ),
                 ]
             )

@@ -121,16 +121,26 @@ class PyLavLocalFiles(commands.Cog):
         await self._update_cache()
         await context.send(
             embed=await self.lavalink.construct_embed(
-                description=translation_shortener(max_length=100, translation=_("Local track list updated {number} currently present").format(number=len(self.cache))),
+                description=translation_shortener(
+                    max_length=100,
+                    translation=_("Local track list updated {number} currently present").format(number=len(self.cache)),
+                ),
                 messageable=context,
             ),
             ephemeral=True,
         )
 
-    @app_commands.command(name="local", description=translation_shortener(max_length=100, translation=_("Play a local file or folder, supports partial searching")))
+    @app_commands.command(
+        name="local",
+        description=translation_shortener(
+            max_length=100, translation=_("Play a local file or folder, supports partial searching")
+        ),
+    )
     @app_commands.describe(
         entry=translation_shortener(max_length=100, translation=_("The local file or folder to play")),
-        recursive=translation_shortener(max_length=100, translation=_("If entry is a folder, play everything inside of it recursively")),
+        recursive=translation_shortener(
+            max_length=100, translation=_("If entry is a folder, play everything inside of it recursively")
+        ),
     )
     @app_commands.guild_only()
     @app_commands.check(cache_filled)
