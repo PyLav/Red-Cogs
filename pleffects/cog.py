@@ -15,7 +15,7 @@ from pylav.exceptions import NodeHasNoFilters
 from pylav.filters import Equalizer
 from pylav.red_utils.utils.decorators import invoker_is_dj, requires_player
 from pylav.types import BotT, InteractionT
-from pylav.utils import PyLavContext
+from pylav.utils import PyLavContext, translation_shortener
 from pylav.utils.theme import EightBitANSI
 
 LOGGER = getLogger("PyLav.cog.Effects")
@@ -74,7 +74,7 @@ class PyLavEffects(commands.Cog):
             ephemeral=True,
         )
 
-    @slash_fx.command(name="nightcore", description=_("Apply a Nightcore preset to the player"))
+    @slash_fx.command(name="nightcore", description=translation_shortener(max_length=100, translation=_("Apply a Nightcore preset to the player")))
     @app_commands.guild_only()
     @requires_player(slash=True)
     @invoker_is_dj(slash=True)

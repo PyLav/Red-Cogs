@@ -23,7 +23,7 @@ from pylav.query import Query
 from pylav.red_utils.utils import rgetattr
 from pylav.sql.models import PlayerModel
 from pylav.types import BotT, InteractionT
-from pylav.utils import AsyncIter, PyLavContext
+from pylav.utils import AsyncIter, PyLavContext, translation_shortener
 from pylav.utils.theme import EightBitANSI
 
 LOGGER = getLogger("PyLav.cog.LocalFiles")
@@ -121,16 +121,16 @@ class PyLavLocalFiles(commands.Cog):
         await self._update_cache()
         await context.send(
             embed=await self.lavalink.construct_embed(
-                description=_("Local track list updated {number} currently present").format(number=len(self.cache)),
+                description=translation_shortener(max_length=100, translation=_("Local track list updated {number} currently present").format(number=len(self.cache))),
                 messageable=context,
             ),
             ephemeral=True,
         )
 
-    @app_commands.command(name="local", description=_("Play a local file or folder, supports partial searching"))
+    @app_commands.command(name="local", description=translation_shortener(max_length=100, translation=_("Play a local file or folder, supports partial searching")))
     @app_commands.describe(
-        entry=_("The local file or folder to play"),
-        recursive=_("If entry is a folder, play everything inside of it recursively"),
+        entry=translation_shortener(max_length=100, translation=_("The local file or folder to play")),
+        recursive=translation_shortener(max_length=100, translation=_("If entry is a folder, play everything inside of it recursively")),
     )
     @app_commands.guild_only()
     @app_commands.check(cache_filled)

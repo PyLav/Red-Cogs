@@ -9,7 +9,7 @@ from redbot.core.utils.chat_formatting import box
 from tabulate import tabulate
 
 from pylav.types import CogT, InteractionT
-from pylav.utils import PyLavContext, get_true_path
+from pylav.utils import PyLavContext, get_true_path, translation_shortener
 from pylav.utils.theme import EightBitANSI
 
 _ = Translator("PyLavConfigurator", Path(__file__))
@@ -506,7 +506,7 @@ class InfoSelector(discord.ui.Select):
         options: list[discord.SelectOption],
     ):
 
-        super().__init__(min_values=1, max_values=1, options=options, placeholder=_("Pick an option to view"))
+        super().__init__(min_values=1, max_values=1, options=options, placeholder=translation_shortener(max_length=100, translation=_("Pick an option to view")))
         self.cog = cog
         self.embed_maker = EmbedGenerator(cog=cog, context=context)
 

@@ -22,6 +22,7 @@ from pylav.radio.objects import Station
 from pylav.red_utils.ui.prompts.generic import maybe_prompt_for_entry
 from pylav.red_utils.utils import rgetattr
 from pylav.types import BotT, InteractionT
+from pylav.utils import translation_shortener
 
 LOGGER = getLogger("PyLav.cog.Radio")
 
@@ -40,20 +41,20 @@ class PyLavRadio(commands.Cog):
         self.bot = bot
 
     @app_commands.command(
-        name="radio", description=_("Enqueue a radio station. Use the arguments to filter for a possible station")
+        name="radio", description=translation_shortener(max_length=100, translation=_("Enqueue a radio station. Use the arguments to filter for a possible station"))
     )
     @app_commands.describe(
-        stations=_("The radio station to enqueue"),
-        language=_("The language code to filter stations by"),
-        countrycode=_("The country code to filter stations and countries by"),
-        country=_("The country filter to filter stations and states by"),
-        state=_("The state filter to filter stations by"),
-        codec=_("The codec filter to filter stations by"),
-        tag1=_("The tag filter to filter stations by"),
-        tag2=_("The tag filter to filter stations by"),
-        tag3=_("The tag filter to filter stations by"),
-        tag4=_("The tag filter to filter stations by"),
-        tag5=_("The tag filter to filter stations by"),
+        stations=translation_shortener(max_length=100, translation=_("The radio station to enqueue")),
+        language=translation_shortener(max_length=100, translation=_("The language code to filter stations by")),
+        countrycode=translation_shortener(max_length=100, translation=_("The country code to filter stations and countries by")),
+        country=translation_shortener(max_length=100, translation=_("The country filter to filter stations and states by")),
+        state=translation_shortener(max_length=100, translation=_("The state filter to filter stations by")),
+        codec=translation_shortener(max_length=100, translation=_("The codec filter to filter stations by")),
+        tag1=translation_shortener(max_length=100, translation=_("The tag filter to filter stations by")),
+        tag2=translation_shortener(max_length=100, translation=_("The tag filter to filter stations by")),
+        tag3=translation_shortener(max_length=100, translation=_("The tag filter to filter stations by")),
+        tag4=translation_shortener(max_length=100, translation=_("The tag filter to filter stations by")),
+        tag5=translation_shortener(max_length=100, translation=_("The tag filter to filter stations by")),
     )
     @app_commands.guild_only()
     async def slash_radio(
@@ -89,7 +90,7 @@ class PyLavRadio(commands.Cog):
             context=context,
             entries=stations,  # type: ignore
             message_str=_("Multiple stations matched, pick the one which you meant"),
-            selector_text=_("Pick a station"),
+            selector_text=translation_shortener(max_length=100, translation=_("Pick a station")),
         )
         send = context.send
         author = context.author

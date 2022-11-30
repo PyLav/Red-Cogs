@@ -13,6 +13,7 @@ from pylav.query import SEARCH_REGEX, Query
 from pylav.red_utils.utils.decorators import invoker_is_dj
 from pylav.tracks import Track
 from pylav.types import InteractionT, PyLavCogMixin
+from pylav.utils import translation_shortener
 
 LOGGER = getLogger("PyLav.cog.Player.commands.slashes")
 _ = Translator("PyLavPlayer", Path(__file__))
@@ -21,8 +22,8 @@ _ = Translator("PyLavPlayer", Path(__file__))
 class SlashCommands(PyLavCogMixin, ABC):
     _track_cache: ExpiringDict
 
-    @app_commands.command(name="search", description=_("Search for a track, then play the selected response"))
-    @app_commands.describe(source=_("Where to search in"), query=_("The query to search for search query"))
+    @app_commands.command(name="search", description=translation_shortener(max_length=100, translation=_("Search for a track, then play the selected response")))
+    @app_commands.describe(source=translation_shortener(max_length=100, translation=_("Where to search in")), query=translation_shortener(max_length=100, translation=_("The query to search for search query")))
     @app_commands.guild_only()
     @invoker_is_dj(slash=True)
     async def slash_search(
@@ -87,7 +88,7 @@ class SlashCommands(PyLavCogMixin, ABC):
         if not (match := SEARCH_REGEX.match(current)) or not match.group("search_query"):
             return [
                 Choice(
-                    name=_("Searching {service}").format(service=inv_map.get(prefix, "Deezer")),
+                    name=translation_shortener(max_length=100, translation=_("Searching {service}").format(service=inv_map.get(prefix, "Deezer"))),
                     value="FqgqQW21tQ@#1g2fasf2",
                 )
             ]
@@ -99,7 +100,7 @@ class SlashCommands(PyLavCogMixin, ABC):
         if not response:
             return [
                 Choice(
-                    name=_("No results found on {service}").format(service=inv_map.get(prefix, "Deezer")),
+                    name=translation_shortener(max_length=100, translation=_("No results found on {service}").format(service=inv_map.get(prefix, "Deezer"))),
                     value="FqgqQW21tQ@#1g2fasf2",
                 )
             ]
@@ -107,7 +108,7 @@ class SlashCommands(PyLavCogMixin, ABC):
         if not tracks:
             return [
                 Choice(
-                    name=_("No results found on {service}").format(service=inv_map.get(prefix, "Deezer")),
+                    name=translation_shortener(max_length=100, translation=_("No results found on {service}").format(service=inv_map.get(prefix, "Deezer"))),
                     value="FqgqQW21tQ@#1g2fasf2",
                 )
             ]

@@ -16,7 +16,7 @@ from pylav.red_utils.converters.equalizer import BassBoostConverter
 from pylav.red_utils.utils.decorators import invoker_is_dj, requires_player
 from pylav.sql.models import EqualizerModel
 from pylav.types import BotT, InteractionT
-from pylav.utils import PyLavContext
+from pylav.utils import PyLavContext, translation_shortener
 from pylav.utils.theme import EightBitANSI
 
 LOGGER = getLogger("PyLav.cog.Equalizer")
@@ -30,7 +30,7 @@ class PyLavEqualizer(commands.Cog):
 
     __version__ = "1.0.0.0rc1"
 
-    slash_eq = app_commands.Group(name="eq", description=_("Apply an Equalizer preset to the player"))
+    slash_eq = app_commands.Group(name="eq", description=translation_shortener(max_length=100, translation=_("Apply an Equalizer preset to the player")))
 
     def __init__(self, bot: BotT, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -111,7 +111,7 @@ class PyLavEqualizer(commands.Cog):
             )
 
     @slash_eq.command(name="bassboost")
-    @app_commands.describe(level=_("The bass boost level to apply"))
+    @app_commands.describe(level=translation_shortener(max_length=100, translation=_("The bass boost level to apply")))
     @app_commands.guild_only()
     @requires_player(slash=True)
     @invoker_is_dj(slash=True)
