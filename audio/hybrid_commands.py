@@ -28,8 +28,14 @@ _RE_TIME_CONVERTER: Final[Pattern] = re.compile(r"(?:(\d+):)?(\d+):(\d+)")
 
 
 class HybridCommands(PyLavCogMixin, ABC):
-    @commands.hybrid_command(name="play", description=translation_shortener(max_length=100, translation=_("Plays a specified query")), aliases=["p"])
-    @app_commands.describe(query=translation_shortener(max_length=100, translation=_("The query to play, either a link or a search query")))
+    @commands.hybrid_command(
+        name="play",
+        description=translation_shortener(max_length=100, translation=_("Plays a specified query")),
+        aliases=["p"],
+    )
+    @app_commands.describe(
+        query=translation_shortener(max_length=100, translation=_("The query to play, either a link or a search query"))
+    )
     @commands.guild_only()
     @invoker_is_dj()
     async def command_play(self, context: PyLavContext, *, query: str = None):  # sourcery no-metrics
@@ -115,7 +121,12 @@ class HybridCommands(PyLavCogMixin, ABC):
             total_tracks_from_search = 0
             for query in search_queries:
                 single_track = track = Track(
-                    node=player.node, data=None, query=query, requester=context.author.id, timestamp=query.start_time, partial=query.is_partial
+                    node=player.node,
+                    data=None,
+                    query=query,
+                    requester=context.author.id,
+                    timestamp=query.start_time,
+                    partial=query.is_partial,
                 )
                 await player.add(requester=context.author.id, track=track)
                 if not player.is_playing:
@@ -168,9 +179,14 @@ class HybridCommands(PyLavCogMixin, ABC):
             )
 
     @commands.hybrid_command(
-        name="connect", description=translation_shortener(max_length=100, translation=_("Connects the Player to the specified channel or your current channel"))
+        name="connect",
+        description=translation_shortener(
+            max_length=100, translation=_("Connects the Player to the specified channel or your current channel")
+        ),
     )
-    @app_commands.describe(channel=translation_shortener(max_length=100, translation=_("The voice channel to connect to")))
+    @app_commands.describe(
+        channel=translation_shortener(max_length=100, translation=_("The voice channel to connect to"))
+    )
     @commands.guild_only()
     @invoker_is_dj()
     async def command_connect(self, context: PyLavContext, *, channel: Optional[discord.VoiceChannel] = None):
@@ -248,7 +264,11 @@ class HybridCommands(PyLavCogMixin, ABC):
                 ephemeral=True,
             )
 
-    @commands.hybrid_command(name="np", description=translation_shortener(max_length=100, translation=_("Shows the track currently being played")), aliases=["now"])
+    @commands.hybrid_command(
+        name="np",
+        description=translation_shortener(max_length=100, translation=_("Shows the track currently being played")),
+        aliases=["now"],
+    )
     @commands.guild_only()
     @requires_player()
     async def command_now(self, context: PyLavContext):
@@ -274,7 +294,10 @@ class HybridCommands(PyLavCogMixin, ABC):
         current_embed = await context.player.get_currently_playing_message(messageable=context)
         await context.send(embed=current_embed, ephemeral=True)
 
-    @commands.hybrid_command(name="skip", description=translation_shortener(max_length=100, translation=_("Skips or votes to skip the current track")))
+    @commands.hybrid_command(
+        name="skip",
+        description=translation_shortener(max_length=100, translation=_("Skips or votes to skip the current track")),
+    )
     @commands.guild_only()
     @requires_player()
     @invoker_is_dj()
@@ -311,7 +334,12 @@ class HybridCommands(PyLavCogMixin, ABC):
             )
         await context.player.skip(requester=context.author)
 
-    @commands.hybrid_command(name="stop", description=translation_shortener(max_length=100, translation=_("Stops the player and remove all tracks from the queue")))
+    @commands.hybrid_command(
+        name="stop",
+        description=translation_shortener(
+            max_length=100, translation=_("Stops the player and remove all tracks from the queue")
+        ),
+    )
     @commands.guild_only()
     @requires_player()
     @invoker_is_dj()
@@ -342,7 +370,11 @@ class HybridCommands(PyLavCogMixin, ABC):
         )
 
     @commands.hybrid_command(
-        name="dc", description=translation_shortener(max_length=100, translation=_("Disconnects the player from the voice channel")), aliases=["disconnect"]
+        name="dc",
+        description=translation_shortener(
+            max_length=100, translation=_("Disconnects the player from the voice channel")
+        ),
+        aliases=["disconnect"],
     )
     @requires_player()
     @invoker_is_dj()
@@ -368,7 +400,11 @@ class HybridCommands(PyLavCogMixin, ABC):
             ephemeral=True,
         )
 
-    @commands.hybrid_command(name="queue", description=translation_shortener(max_length=100, translation=_("Shows the current queue for the player")), aliases=["q"])
+    @commands.hybrid_command(
+        name="queue",
+        description=translation_shortener(max_length=100, translation=_("Shows the current queue for the player")),
+        aliases=["q"],
+    )
     @commands.guild_only()
     @requires_player()
     async def command_queue(self, context: PyLavContext):
@@ -390,7 +426,9 @@ class HybridCommands(PyLavCogMixin, ABC):
             original_author=context.interaction.user if context.interaction else context.author,
         ).start(ctx=context)
 
-    @commands.hybrid_command(name="shuffle", description=translation_shortener(max_length=100, translation=_("Shuffles the player's queue")))
+    @commands.hybrid_command(
+        name="shuffle", description=translation_shortener(max_length=100, translation=_("Shuffles the player's queue"))
+    )
     @commands.guild_only()
     @requires_player()
     @invoker_is_dj()
@@ -431,8 +469,13 @@ class HybridCommands(PyLavCogMixin, ABC):
             ephemeral=True,
         )
 
-    @commands.hybrid_command(name="repeat", description=translation_shortener(max_length=100, translation=_("Set whether to repeat current song or queue")))
-    @app_commands.describe(queue=translation_shortener(max_length=100, translation=_("Should the whole queue be repeated")))
+    @commands.hybrid_command(
+        name="repeat",
+        description=translation_shortener(max_length=100, translation=_("Set whether to repeat current song or queue")),
+    )
+    @app_commands.describe(
+        queue=translation_shortener(max_length=100, translation=_("Should the whole queue be repeated"))
+    )
     @commands.guild_only()
     @requires_player()
     @invoker_is_dj()
@@ -469,7 +512,9 @@ class HybridCommands(PyLavCogMixin, ABC):
             embed=await context.lavalink.construct_embed(description=msg, messageable=context), ephemeral=True
         )
 
-    @commands.hybrid_command(name="pause", description=translation_shortener(max_length=100, translation=_("Pause the player")))
+    @commands.hybrid_command(
+        name="pause", description=translation_shortener(max_length=100, translation=_("Pause the player"))
+    )
     @commands.guild_only()
     @requires_player()
     @invoker_is_dj()
@@ -504,7 +549,9 @@ class HybridCommands(PyLavCogMixin, ABC):
             ephemeral=True,
         )
 
-    @commands.hybrid_command(name="resume", description=translation_shortener(max_length=100, translation=_("Resume the player")))
+    @commands.hybrid_command(
+        name="resume", description=translation_shortener(max_length=100, translation=_("Resume the player"))
+    )
     @commands.guild_only()
     @requires_player()
     @invoker_is_dj()

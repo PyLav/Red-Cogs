@@ -506,7 +506,12 @@ class InfoSelector(discord.ui.Select):
         options: list[discord.SelectOption],
     ):
 
-        super().__init__(min_values=1, max_values=1, options=options, placeholder=translation_shortener(max_length=100, translation=_("Pick an option to view")))
+        super().__init__(
+            min_values=1,
+            max_values=1,
+            options=options,
+            placeholder=translation_shortener(max_length=100, translation=_("Pick an option to view")),
+        )
         self.cog = cog
         self.embed_maker = EmbedGenerator(cog=cog, context=context)
 

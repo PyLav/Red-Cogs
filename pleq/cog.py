@@ -30,7 +30,10 @@ class PyLavEqualizer(commands.Cog):
 
     __version__ = "1.0.0.0rc1"
 
-    slash_eq = app_commands.Group(name="eq", description=translation_shortener(max_length=100, translation=_("Apply an Equalizer preset to the player")))
+    slash_eq = app_commands.Group(
+        name="eq",
+        description=translation_shortener(max_length=100, translation=_("Apply an Equalizer preset to the player")),
+    )
 
     def __init__(self, bot: BotT, *args, **kwargs):
         super().__init__(*args, **kwargs)
