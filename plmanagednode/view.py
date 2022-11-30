@@ -11,6 +11,7 @@ from redbot.core.i18n import Translator
 from redbot.core.utils.chat_formatting import humanize_list
 
 from pylav.types import BotT, CogT, InteractionT
+from pylav.utils import translation_shortener
 
 _ = Translator("PyLavManagedNode", Path(__file__))
 
@@ -39,7 +40,7 @@ class ConfigureIPRotationView(discord.ui.View):
         return True
 
     @discord.ui.button(
-        label=_("Configure IP Rotation"),
+        label=translation_shortener(max_length=100, translation=_("Configure IP Rotation")),
         style=discord.ButtonStyle.grey,
     )
     async def add_ip_block(self, interaction: InteractionT, button: discord.ui.Button):
@@ -66,7 +67,7 @@ class ConfigureGoogleAccountView(discord.ui.View):
         return True
 
     @discord.ui.button(
-        label=_("Link Google Account"),
+        label=translation_shortener(max_length=100, translation=_("Link Google Account")),
         style=discord.ButtonStyle.grey,
     )
     async def link_account(self, interaction: InteractionT, button: discord.ui.Button):
@@ -99,7 +100,7 @@ class ConfigureHTTPProxyView(discord.ui.View):
         return True
 
     @discord.ui.button(
-        label=_("Configure HTTP Proxy"),
+        label=translation_shortener(max_length=100, translation=_("Configure HTTP Proxy")),
         style=discord.ButtonStyle.grey,
     )
     async def configure_proxy(self, interaction: InteractionT, button: discord.ui.Button):
@@ -121,17 +122,17 @@ class ConfigureIPRotationModal(discord.ui.Modal):
         self.cog = cog
         self.prefix = prefix
 
-        super().__init__(title=_("IP Rotation Configurator"))
+        super().__init__(title=translation_shortener(max_length=100, translation=_("IP Rotation Configurator")))
 
         self.ip_blocks = discord.ui.TextInput(
-            label=_("IP Blocks"),
+            label=translation_shortener(max_length=100, translation=_("IP Blocks")),
             style=discord.TextStyle.long,
             required=True,
-            placeholder=_("1.0.0.0/8,...,... - Comma separated list of IP blocks"),
+            placeholder=translation_shortener(max_length=100, translation=_("1.0.0.0/8,...,... - Comma separated list of IP blocks")),
         )
 
         self.strategy = discord.ui.TextInput(
-            label=_("Rotation strategy"),
+            label=translation_shortener(max_length=100, translation=_("Rotation strategy")),
             style=discord.TextStyle.long,
             required=True,
             placeholder="RotateOnBan | LoadBalance | NanoSwitch | RotatingNanoSwitch",
@@ -140,25 +141,25 @@ class ConfigureIPRotationModal(discord.ui.Modal):
         )
 
         self.retry_limit = discord.ui.TextInput(
-            label=_("Retry limit"),
+            label=translation_shortener(max_length=100, translation=_("Retry limit")),
             style=discord.TextStyle.short,
             required=False,
-            placeholder=_("-1 = default, 0 = infinity, >0 = number of retries"),
+            placeholder=translation_shortener(max_length=100, translation=_("-1 = default, 0 = infinity, >0 = number of retries")),
             min_length=1,
             max_length=3,
         )
         self.excluded_ips = discord.ui.TextInput(
-            label=_("IPs to exclude"),
+            label=translation_shortener(max_length=100, translation=_("IPs to exclude")),
             required=False,
             style=discord.TextStyle.short,
-            placeholder=_("Comma separated list of IP to exclude from rotation"),
+            placeholder=translation_shortener(max_length=100, translation=_("Comma separated list of IP to exclude from rotation")),
         )
 
         self.search_trigger = discord.ui.TextInput(
-            label=_("Search trigger rotation"),
+            label=translation_shortener(max_length=100, translation=_("Search trigger rotation")),
             style=discord.TextStyle.short,
             required=False,
-            placeholder=_("0 or 1 (0 = disabled, 1 = enabled)"),
+            placeholder=translation_shortener(max_length=100, translation=_("0 or 1 (0 = disabled, 1 = enabled)")),
             min_length=1,
             max_length=1,
         )
@@ -307,18 +308,18 @@ class ConfigureGoogleAccountModal(discord.ui.Modal):
         super().__init__(title=_("Google Account Configurator"))
 
         self.email = discord.ui.TextInput(
-            label=_("Email address"),
+            label=translation_shortener(max_length=100, translation=("Email address")),
             style=discord.TextStyle.short,
             required=True,
-            placeholder=_("Your Google account email"),
+            placeholder=translation_shortener(max_length=100, translation=_("Your Google account email")),
             min_length=4,
         )
 
         self.password = discord.ui.TextInput(
-            label=_("password"),
+            label=translation_shortener(max_length=100, translation=_("password")),
             style=discord.TextStyle.short,
             required=True,
-            placeholder=_("If you have 2FA you will need an app password"),
+            placeholder=translation_shortener(max_length=100, translation=_("If you have 2FA you will need an app password")),
             min_length=8,
             max_length=100,
         )
@@ -373,32 +374,32 @@ class ConfigureHTTPProxyModal(discord.ui.Modal):
         super().__init__(title=_("HTTP Proxy Configurator"))
 
         self.host = discord.ui.TextInput(
-            label=_("Hostname"),
+            label=translation_shortener(max_length=100, translation=_("Hostname")),
             style=discord.TextStyle.short,
             required=True,
-            placeholder=_("Hostname of the proxy, (ip or domain or localhost)"),
+            placeholder=translation_shortener(max_length=100, translation=_("Hostname of the proxy, (ip or domain or localhost)")),
         )
 
         self.port = discord.ui.TextInput(
-            label=_("Proxy port"),
+            label=translation_shortener(max_length=100, translation=_("Proxy port")),
             style=discord.TextStyle.short,
             required=True,
-            placeholder=_("Proxy port, 3128 is the default for squidProxy"),
+            placeholder=translation_shortener(max_length=100, translation=_("Proxy port, 3128 is the default for squidProxy")),
             min_length=1,
             max_length=5,
         )
 
         self.user = discord.ui.TextInput(
-            label=_("User"),
+            label=translation_shortener(max_length=100, translation=_("User")),
             style=discord.TextStyle.long,
             required=False,
-            placeholder=_("Optional user for basic authentication fields, leave blank if you don't use basic auth"),
+            placeholder=translation_shortener(max_length=100, translation=_("Optional user for basic authentication fields, leave blank if you don't use basic auth")),
         )
         self.password = discord.ui.TextInput(
             label=_("Password"),
             style=discord.TextStyle.long,
             required=False,
-            placeholder=_("Optional password for basic authentication fields, leave blank if you don't use basic auth"),
+            placeholder=translation_shortener(max_length=100, translation=_("Optional password for basic authentication fields, leave blank if you don't use basic auth")),
         )
         self.add_item(self.host)
         self.add_item(self.port)

@@ -33,7 +33,7 @@ from pylav.red_utils.utils.decorators import always_hidden, invoker_is_dj, requi
 from pylav.sql.models import PlaylistModel
 from pylav.tracks import Track
 from pylav.types import BotT, InteractionT
-from pylav.utils import AsyncIter, PyLavContext
+from pylav.utils import AsyncIter, PyLavContext, translation_shortener
 from pylav.utils.theme import EightBitANSI
 
 
@@ -60,7 +60,7 @@ class PyLavPlaylists(
 
     slash_playlist = app_commands.Group(
         name="playlist",
-        description=_("Control PyLav playlists"),
+        description=translation_shortener(max_length=100, translation=_("Control PyLav playlists")),
     )
 
     def __init__(self, bot: BotT, *args, **kwargs):
@@ -109,10 +109,10 @@ class PyLavPlaylists(
             ephemeral=True,
         )
 
-    @slash_playlist.command(name="create", description=_("Create a playlist"))
+    @slash_playlist.command(name="create", description=translation_shortener(max_length=100, translation=_("Create a playlist")))
     @app_commands.describe(
-        url=_("The URL of the playlist to create. YouTube, Spotify, SoundCloud, Apple Music playlists or albums"),
-        name=_("The name of the playlist"),
+        url=translation_shortener(max_length=100, translation=_("The URL of the playlist to create. YouTube, Spotify, SoundCloud, Apple Music playlists or albums")),
+        name=translation_shortener(max_length=100, translation=_("The name of the playlist")),
     )
     @app_commands.guild_only()
     async def slash_playlist_create(

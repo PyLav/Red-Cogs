@@ -16,7 +16,7 @@ from pylav.red_utils.utils import rgetattr
 from pylav.red_utils.utils.decorators import invoker_is_dj
 from pylav.tracks import Track, decode_track
 from pylav.types import PyLavCogMixin
-from pylav.utils import PyLavContext
+from pylav.utils import PyLavContext, translation_shortener
 
 LOGGER = getLogger("PyLav.cog.Player.commands.player")
 _ = Translator("PyLavPlayer", Path(__file__))
@@ -24,7 +24,7 @@ _ = Translator("PyLavPlayer", Path(__file__))
 
 @cog_i18n(_)
 class PlayerCommands(PyLavCogMixin, ABC):
-    @commands.command(name="bump", description=_("Plays the specified track in the queue"))
+    @commands.command(name="bump", description=translation_shortener(max_length=100, translation=_("Plays the specified track in the queue")))
     @commands.guild_only()
     @invoker_is_dj()
     async def command_bump(self, context: PyLavContext, queue_number: int, after_current: bool = False):
@@ -42,7 +42,7 @@ class PlayerCommands(PyLavCogMixin, ABC):
 
         if player.queue.empty():
             await context.send(
-                embed=await context.construct_embed(description=_("Queue is empty"), messageable=context),
+                embed=await context.construct_embed(description=translation_shortener(max_length=100, translation=_("Queue is empty")), messageable=context),
                 ephemeral=True,
             )
             return
@@ -101,7 +101,7 @@ class PlayerCommands(PyLavCogMixin, ABC):
             )
             await player.play(track=track, requester=context.author, query=await track.query())
 
-    @commands.command(name="playnext", description=_("Enqueue a track at the top of the queue"), aliases=["pn"])
+    @commands.command(name="playnext", description=translation_shortener(max_length=100, translation=_("Enqueue a track at the top of the queue")), aliases=["pn"])
     @commands.guild_only()
     @invoker_is_dj()
     async def command_playnext(self, context: PyLavContext, *, query: str):
