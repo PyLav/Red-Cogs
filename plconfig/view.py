@@ -527,10 +527,7 @@ class InfoSelector(discord.ui.Select):
             return
         embed_key = self.values[0]
         embed = await self.embed_maker.get_embed(key=embed_key)
-        if not interaction.response.is_done():
-            await interaction.response.edit_message(embed=embed, view=self.view)
-        else:
-            await interaction.edit_original_response(embed=embed, view=self.view)
+        await self.view.message.edit(embed=embed, view=self.view)
 
 
 class InfoView(discord.ui.View):
