@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import contextlib
 import re
 from pathlib import Path
 
@@ -12,7 +13,7 @@ from asyncspotify import ClientCredentialsFlow
 from deepdiff import DeepDiff
 from discord.utils import maybe_coroutine
 from redbot.core import commands
-from redbot.core.i18n import Translator, cog_i18n
+from redbot.core.i18n import Translator, cog_i18n, get_babel_locale
 from redbot.core.utils.chat_formatting import bold, box, humanize_list, inline
 from tabulate import tabulate
 
@@ -358,6 +359,9 @@ class PyLavManagedNode(commands.Cog):
             await context.defer(ephemeral=True)
 
         async def validate_input(arg: str):
+            locale = f"{get_babel_locale()}"
+            with contextlib.suppress(Exception):
+                humanize.i18n.activate(locale)
             executable = await self.lavalink.lib_db_manager.get_config().fetch_java_path()
             total_ram, is_64bit = get_max_allocation_size(executable)
             __, __, min_allocation_size, max_allocation_size = get_jar_ram_actual(executable)
@@ -409,7 +413,9 @@ class PyLavManagedNode(commands.Cog):
             return 1
 
         if not (await validate_input(size)):
+            humanize.i18n.deactivate()
             return
+        humanize.i18n.deactivate()
         size = size.upper()
         global_config = self.lavalink.lib_db_manager.get_config()
         extras = await global_config.fetch_extras()
