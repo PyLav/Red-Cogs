@@ -146,9 +146,13 @@ class PyLavConfigurator(commands.Cog):
             )
             if not self.lavalink.managed_node_controller.disabled:
                 options.append(
-                SelectOption(label=translation_shortener(max_length=100, translation=_("Managed Node Config")),
-                        value="managed_node_config", description=translation_shortener(max_length=100,
-                            translation=_("Get information about the Managed PyLav Lavalink node")), ),
+                    SelectOption(
+                        label=translation_shortener(max_length=100, translation=_("Managed Node Config")),
+                        value="managed_node_config",
+                        description=translation_shortener(
+                            max_length=100, translation=_("Get information about the Managed PyLav Lavalink node")
+                        ),
+                    ),
                 )
 
         await InfoView(cog=self, context=context, options=options).start()
