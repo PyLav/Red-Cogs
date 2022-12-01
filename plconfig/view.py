@@ -8,6 +8,7 @@ from redbot.core.i18n import Translator
 from redbot.core.utils.chat_formatting import box
 from tabulate import tabulate
 
+from pylav.managed_node import LAVALINK_DOWNLOAD_DIR
 from pylav.types import CogT, InteractionT
 from pylav.utils import PyLavContext, get_true_path, translation_shortener
 from pylav.utils.theme import EightBitANSI
@@ -396,7 +397,8 @@ class EmbedGenerator:
             (
                 EightBitANSI.paint_white(_("Local Tracks")),
                 EightBitANSI.paint_magenta(pylav_config["localtrack_folder"]),
-            ),
+            ), (EightBitANSI.paint_white(_("Lavalink Folder")),
+                (EightBitANSI.paint_magenta(LAVALINK_DOWNLOAD_DIR))),
             (
                 EightBitANSI.paint_white(_("Java Executable")),
                 (
@@ -404,7 +406,7 @@ class EmbedGenerator:
                     if (jpath := get_true_path(pylav_config["java_path"]))
                     else EightBitANSI.paint_red(_("Not Found"))
                 ),
-            ),
+            )
         ]
 
         return await self.cog.lavalink.construct_embed(
