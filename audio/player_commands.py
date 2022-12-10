@@ -1,7 +1,5 @@
-import asyncio
 import contextlib
 import datetime
-from abc import ABC
 from functools import partial
 from pathlib import Path
 
@@ -10,23 +8,25 @@ from discord.utils import utcnow
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
 
-from pylav import getLogger
-from pylav.query import Query
-from pylav.red_utils.utils import rgetattr
-from pylav.red_utils.utils.decorators import invoker_is_dj
-from pylav.tracks import Track, decode_track
-from pylav.types import PyLavCogMixin
-from pylav.utils import PyLavContext, translation_shortener
+from pylav.core.context import PyLavContext
+from pylav.extension.red.utils import rgetattr
+from pylav.extension.red.utils.decorators import invoker_is_dj
+from pylav.helpers.format.strings import shorten_string
+from pylav.logging import getLogger
+from pylav.players.query.obj import Query
+from pylav.players.tracks.decoder import async_decoder
+from pylav.players.tracks.obj import Track
+from pylav.type_hints.bot import DISCORD_COG_TYPE_MIXIN
 
 LOGGER = getLogger("PyLav.cog.Player.commands.player")
 _ = Translator("PyLavPlayer", Path(__file__))
 
 
 @cog_i18n(_)
-class PlayerCommands(PyLavCogMixin, ABC):
+class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
     @commands.command(
         name="bump",
-        description=translation_shortener(max_length=100, translation=_("Plays the specified track in the queue")),
+        description=shorten_string(max_length=100, string=_("Plays the specified track in the queue")),
     )
     @commands.guild_only()
     @invoker_is_dj()
@@ -46,7 +46,7 @@ class PlayerCommands(PyLavCogMixin, ABC):
         if player.queue.empty():
             await context.send(
                 embed=await context.construct_embed(
-                    description=translation_shortener(max_length=100, translation=_("Queue is empty")),
+                    description=shorten_string(max_length=100, string=_("Queue is empty")),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -86,7 +86,9 @@ class PlayerCommands(PyLavCogMixin, ABC):
                         current=await player.current.get_track_display_name(with_url=True),
                         eta=discord.utils.format_dt(
                             utcnow()
-                            + datetime.timedelta(milliseconds=player.current.duration - await player.fetch_position()),
+                            + datetime.timedelta(
+                                milliseconds=await player.current.duration() - await player.fetch_position()
+                            ),
                             style="R",
                         ),
                     ),
@@ -109,7 +111,7 @@ class PlayerCommands(PyLavCogMixin, ABC):
 
     @commands.command(
         name="playnext",
-        description=translation_shortener(max_length=100, translation=_("Enqueue a track at the top of the queue")),
+        description=shorten_string(max_length=100, string=_("Enqueue a track at the top of the queue")),
         aliases=["pn"],
     )
     @commands.guild_only()
@@ -206,7 +208,7 @@ class PlayerCommands(PyLavCogMixin, ABC):
                     description=_("{track} enqueued").format(
                         track=await single_track.get_track_display_name(with_url=True)
                     ),
-                    thumbnail=single_track.thumbnail,
+                    thumbnail=await single_track.thumbnail(),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -273,7 +275,7 @@ class PlayerCommands(PyLavCogMixin, ABC):
                 return
         else:
             try:
-                data, __ = await asyncio.to_thread(decode_track, track_url_or_index)
+                data = await async_decoder(track_url_or_index)
                 track = Track(
                     node=player.node,
                     data=data,

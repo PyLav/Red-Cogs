@@ -10,14 +10,15 @@ from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import box
 from tabulate import tabulate
 
-from pylav import getLogger
-from pylav.filters import Equalizer
-from pylav.red_utils.converters.equalizer import BassBoostConverter
-from pylav.red_utils.utils.decorators import invoker_is_dj, requires_player
-from pylav.sql.models import EqualizerModel
-from pylav.types import BotT, InteractionT
-from pylav.utils import PyLavContext, translation_shortener
-from pylav.utils.theme import EightBitANSI
+from pylav.core.context import PyLavContext
+from pylav.extension.red.converters.equalizer import BassBoostConverter
+from pylav.extension.red.utils.decorators import invoker_is_dj, requires_player
+from pylav.helpers.format.ascii import EightBitANSI
+from pylav.helpers.format.strings import shorten_string
+from pylav.logging import getLogger
+from pylav.players.filters import Equalizer
+from pylav.storage.models.equilizer import Equalizer as EqualizerModel
+from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE_MIXIN, DISCORD_INTERACTION_TYPE
 
 LOGGER = getLogger("PyLav.cog.Equalizer")
 
@@ -25,17 +26,17 @@ _ = Translator("PyLavEqualizer", Path(__file__))
 
 
 @cog_i18n(_)
-class PyLavEqualizer(commands.Cog):
+class PyLavEqualizer(DISCORD_COG_TYPE_MIXIN):
     """Apply equalizer presets to the PyLav player"""
 
     __version__ = "1.0.0.0rc1"
 
     slash_eq = app_commands.Group(
         name="eq",
-        description=translation_shortener(max_length=100, translation=_("Apply an Equalizer preset to the player")),
+        description=shorten_string(max_length=100, string=_("Apply an Equalizer preset to the player")),
     )
 
-    def __init__(self, bot: BotT, *args, **kwargs):
+    def __init__(self, bot: DISCORD_BOT_TYPE, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot
         self._config = Config.get_conf(self, identifier=208903205982044161)
@@ -114,11 +115,11 @@ class PyLavEqualizer(commands.Cog):
             )
 
     @slash_eq.command(name="bassboost")
-    @app_commands.describe(level=translation_shortener(max_length=100, translation=_("The bass boost level to apply")))
+    @app_commands.describe(level=shorten_string(max_length=100, string=_("The bass boost level to apply")))
     @app_commands.guild_only()
     @requires_player(slash=True)
     @invoker_is_dj(slash=True)
-    async def slash_eq_bassboost(self, interaction: InteractionT, level: BassBoostConverter) -> None:
+    async def slash_eq_bassboost(self, interaction: DISCORD_INTERACTION_TYPE, level: BassBoostConverter) -> None:
         """Apply a Bass boost preset to the player.
 
         Arguments:
@@ -148,7 +149,7 @@ class PyLavEqualizer(commands.Cog):
             await context.player.set_equalizer(requester=context.author, equalizer=Equalizer.default())
             if await self._config.guild(context.guild).persist_eq():
                 effects = await context.player.config.fetch_effects()
-                effects["equalizer"] = {}
+                effects["equalizer"] = []  # type: ignore
                 await context.player.config.update_effects(effects)
             await context.send(
                 embed=await self.lavalink.construct_embed(
@@ -228,7 +229,7 @@ class PyLavEqualizer(commands.Cog):
     @app_commands.guild_only()
     @requires_player(slash=True)
     @invoker_is_dj(slash=True)
-    async def slash_eq_piano(self, interaction: InteractionT) -> None:
+    async def slash_eq_piano(self, interaction: DISCORD_INTERACTION_TYPE) -> None:
         """Apply a Piano preset to the player.
 
         Suitable for acoustic tracks, or tacks with an emphasis on female vocals.
@@ -283,7 +284,7 @@ class PyLavEqualizer(commands.Cog):
     @app_commands.guild_only()
     @requires_player(slash=True)
     @invoker_is_dj(slash=True)
-    async def slash_eq_rock(self, interaction: InteractionT) -> None:
+    async def slash_eq_rock(self, interaction: DISCORD_INTERACTION_TYPE) -> None:
         """Apply an experimental Metal/Rock equalizer preset.
 
         Expect clipping on songs with heavy bass.
@@ -338,7 +339,7 @@ class PyLavEqualizer(commands.Cog):
     @app_commands.guild_only()
     @requires_player(slash=True)
     @invoker_is_dj(slash=True)
-    async def slash_eq_remove(self, interaction: InteractionT) -> None:
+    async def slash_eq_remove(self, interaction: DISCORD_INTERACTION_TYPE) -> None:
         """Remove any equalizer preset from the player"""
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
@@ -392,7 +393,7 @@ class PyLavEqualizer(commands.Cog):
     @invoker_is_dj(slash=True)
     async def slash_eq_custom(
         self,
-        interaction: InteractionT,
+        interaction: DISCORD_INTERACTION_TYPE,
         name: str,
         description: str = None,
         band_25: Range[float, -0.25, 1.0] = None,
@@ -469,7 +470,7 @@ class PyLavEqualizer(commands.Cog):
     @app_commands.guild_only()
     @requires_player(slash=True)
     @invoker_is_dj(slash=True)
-    async def slash_eq_save(self, interaction: InteractionT, name: str, description: str = None):
+    async def slash_eq_save(self, interaction: DISCORD_INTERACTION_TYPE, name: str, description: str = None):
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)

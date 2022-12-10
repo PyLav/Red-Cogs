@@ -4,52 +4,44 @@ import collections
 import contextlib
 import itertools
 import typing
-from abc import ABC
 from pathlib import Path
 from typing import Literal
 
 import asyncstdlib
 import discord
 from discord import app_commands
-from redbot.core import Config
-from redbot.core import commands
-from redbot.core import commands as red_commands
+from redbot.core import Config, commands
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import bold, box, humanize_list
 from tabulate import tabulate
 
-from pylav.client import Client
-from pylav.constants import BUNDLED_PLAYLIST_IDS
-from pylav.converters.playlist import PlaylistConverter
-from pylav.converters.query import QueryPlaylistConverter
-from pylav.exceptions import InvalidPlaylist
-from pylav.query import Query
-from pylav.red_utils.ui.menus.generic import PaginatingMenu
-from pylav.red_utils.ui.menus.playlist import PlaylistCreationFlow, PlaylistManageFlow
-from pylav.red_utils.ui.prompts.playlists import maybe_prompt_for_playlist
-from pylav.red_utils.ui.sources.playlist import Base64Source, PlaylistListSource
-from pylav.red_utils.utils import rgetattr
-from pylav.red_utils.utils.decorators import always_hidden, invoker_is_dj, requires_player
-from pylav.sql.models import PlaylistModel
-from pylav.tracks import Track
-from pylav.types import BotT, InteractionT
-from pylav.utils import AsyncIter, PyLavContext, translation_shortener
-from pylav.utils.theme import EightBitANSI
-
-
-class CompositeMetaClass(type(red_commands.Cog), type(ABC)):
-    """
-    This allows the metaclass used for proper type detection to
-    coexist with discord.py's metaclass
-    """
-
+from pylav.constants.playlists import BUNDLED_PLAYLIST_IDS
+from pylav.core.client import Client
+from pylav.core.context import PyLavContext
+from pylav.exceptions.playlist import InvalidPlaylistException
+from pylav.extension.red.ui.menus.generic import PaginatingMenu
+from pylav.extension.red.ui.menus.playlist import PlaylistCreationFlow, PlaylistManageFlow
+from pylav.extension.red.ui.prompts.playlists import maybe_prompt_for_playlist
+from pylav.extension.red.ui.sources.playlist import Base64Source, PlaylistListSource
+from pylav.extension.red.utils import CompositeMetaClass, rgetattr
+from pylav.extension.red.utils.decorators import always_hidden, invoker_is_dj, requires_player
+from pylav.helpers.discord.converters.playlists import PlaylistConverter
+from pylav.helpers.discord.converters.queries import QueryPlaylistConverter
+from pylav.helpers.format.ascii import EightBitANSI
+from pylav.helpers.format.strings import shorten_string
+from pylav.nodes.api.responses.track import Track as LavalinkTrack
+from pylav.players.query.obj import Query
+from pylav.players.tracks.obj import Track
+from pylav.storage.models.playlist import Playlist
+from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE_MIXIN, DISCORD_INTERACTION_TYPE
+from pylav.utils.vendor.redbot import AsyncIter
 
 _ = Translator("PyLavPlaylists", Path(__file__))
 
 
 @cog_i18n(_)
 class PyLavPlaylists(
-    red_commands.Cog,
+    DISCORD_COG_TYPE_MIXIN,
     metaclass=CompositeMetaClass,
 ):
     """PyLav playlist management commands"""
@@ -60,10 +52,10 @@ class PyLavPlaylists(
 
     slash_playlist = app_commands.Group(
         name="playlist",
-        description=translation_shortener(max_length=100, translation=_("Control PyLav playlists")),
+        description=shorten_string(max_length=100, string=_("Control PyLav playlists")),
     )
 
-    def __init__(self, bot: BotT, *args, **kwargs):
+    def __init__(self, bot: DISCORD_BOT_TYPE, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot
         self._config = Config.get_conf(self, identifier=208903205982044161)
@@ -81,7 +73,7 @@ class PyLavPlaylists(
 
     @slash_playlist.command(name="version")
     @app_commands.guild_only()
-    async def slash_playlist_version(self, interaction: InteractionT) -> None:
+    async def slash_playlist_version(self, interaction: DISCORD_INTERACTION_TYPE) -> None:
         """Show the version of the Cog and it's PyLav dependencies"""
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
@@ -109,21 +101,19 @@ class PyLavPlaylists(
             ephemeral=True,
         )
 
-    @slash_playlist.command(
-        name="create", description=translation_shortener(max_length=100, translation=_("Create a playlist"))
-    )
+    @slash_playlist.command(name="create", description=shorten_string(max_length=100, string=_("Create a playlist")))
     @app_commands.describe(
-        url=translation_shortener(
+        url=shorten_string(
             max_length=100,
-            translation=_(
+            string=_(
                 "The URL of the playlist to create. YouTube, Spotify, SoundCloud, Apple Music playlists or albums"
             ),
         ),
-        name=translation_shortener(max_length=100, translation=_("The name of the playlist")),
+        name=shorten_string(max_length=100, string=_("The name of the playlist")),
     )
     @app_commands.guild_only()
     async def slash_playlist_create(
-        self, interaction: InteractionT, url: QueryPlaylistConverter = None, *, name: str = None
+        self, interaction: DISCORD_INTERACTION_TYPE, url: QueryPlaylistConverter = None, *, name: str = None
     ):
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
@@ -163,7 +153,7 @@ class PyLavPlaylists(
         else:
             if add_queue and context.player:
                 tracks = context.player.queue.raw_queue
-                tracks = [track.track for track in tracks if track.track] if tracks else []
+                tracks = [track.encoded for track in tracks if track.encoded] if tracks else []
             else:
                 tracks = []
             url = None
@@ -180,7 +170,7 @@ class PyLavPlaylists(
         if name is None:
             name = f"{context.message.id}"
         await context.lavalink.playlist_db_manager.create_or_update_user_playlist(
-            id=context.message.id, author=context.author.id, name=name, url=url, tracks=tracks
+            identifier=context.message.id, author=context.author.id, name=name, url=url, tracks=tracks
         )
         await context.send(
             embed=await context.lavalink.construct_embed(
@@ -195,7 +185,7 @@ class PyLavPlaylists(
 
     @slash_playlist.command(name="list", description=_("List all playlists you have access to on the invoked context"))
     @app_commands.guild_only()
-    async def slash_playlist_list(self, interaction: InteractionT):
+    async def slash_playlist_list(self, interaction: DISCORD_INTERACTION_TYPE):
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
@@ -234,7 +224,7 @@ class PyLavPlaylists(
     @app_commands.guild_only()
     async def slash_playlist_manage(
         self,
-        interaction: InteractionT,
+        interaction: DISCORD_INTERACTION_TYPE,
         playlist: PlaylistConverter,
         operation: Literal["Info", "Save", "Play", "Delete"] = None,
     ):
@@ -283,7 +273,7 @@ class PyLavPlaylists(
             ).start(context)
             return
         if playlist.id not in BUNDLED_PLAYLIST_IDS:
-            manageable = await playlist.can_manage(bot=self.bot, requester=context.author, guild=context.guild)
+            manageable = await playlist.can_manage(bot=self.bot, requester=context.author)
         else:
             manageable = False
         if invoked_with_delete and not manageable:
@@ -421,7 +411,7 @@ class PyLavPlaylists(
                     )
                     if not response.tracks:
                         pass
-                    tracks = response.tracks
+                    tracks = typing.cast(collections.deque[LavalinkTrack], response.tracks)
                     for t in tracks:
                         b64 = t.encoded
                         await playlist.remove_track(b64)
@@ -434,7 +424,7 @@ class PyLavPlaylists(
                     )
                     if not response.tracks:
                         pass
-                    tracks = response.tracks
+                    tracks = typing.cast(collections.deque[LavalinkTrack], response.tracks)
                     if tracks:
                         await playlist.add_track([t.encoded for t in tracks])
                         changed = True
@@ -476,7 +466,7 @@ class PyLavPlaylists(
             if playlist_prompt.queue:
                 changed = True
                 if context.player:
-                    tracks: collections.deque[Track] = context.player.queue.raw_queue
+                    tracks = context.player.queue.raw_queue
                     if tracks:
                         queue_tracks = [track.encoded for track in tracks if track.encoded]
                         await playlist.add_track(queue_tracks)
@@ -523,7 +513,7 @@ class PyLavPlaylists(
     @app_commands.describe(playlist=_("The playlist to enqueue"))
     @app_commands.guild_only()
     @invoker_is_dj(slash=True)
-    async def slash_playlist_play(self, interaction: InteractionT, playlist: PlaylistConverter):
+    async def slash_playlist_play(self, interaction: DISCORD_INTERACTION_TYPE, playlist: PlaylistConverter):
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
@@ -540,7 +530,7 @@ class PyLavPlaylists(
     )
     @app_commands.describe(playlist=_("The playlist to delete"))
     @app_commands.guild_only()
-    async def slash_playlist_delete(self, interaction: InteractionT, playlist: PlaylistConverter):
+    async def slash_playlist_delete(self, interaction: DISCORD_INTERACTION_TYPE, playlist: PlaylistConverter):
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
@@ -550,7 +540,7 @@ class PyLavPlaylists(
         if not playlist:
             return
         if playlist.id not in BUNDLED_PLAYLIST_IDS:
-            manageable = await playlist.can_manage(bot=self.bot, requester=context.author, guild=context.guild)
+            manageable = await playlist.can_manage(bot=self.bot, requester=context.author)
         else:
             manageable = False
         if not manageable:
@@ -582,7 +572,7 @@ class PyLavPlaylists(
     )
     @app_commands.describe(playlist=_("The playlist show info about"))
     @app_commands.guild_only()
-    async def slash_playlist_info(self, interaction: InteractionT, playlist: PlaylistConverter):
+    async def slash_playlist_info(self, interaction: DISCORD_INTERACTION_TYPE, playlist: PlaylistConverter):
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
@@ -611,7 +601,7 @@ class PyLavPlaylists(
     @app_commands.describe(playlist=_("The playlist to append the queue to"))
     @app_commands.guild_only()
     @requires_player(slash=True)
-    async def slash_playlist_save(self, interaction: InteractionT, playlist: PlaylistConverter):
+    async def slash_playlist_save(self, interaction: DISCORD_INTERACTION_TYPE, playlist: PlaylistConverter):
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
@@ -625,12 +615,12 @@ class PyLavPlaylists(
                 ephemeral=True,
             )
             return
-        playlists: list[PlaylistModel] = playlist
+        playlists: list[Playlist] = playlist
         playlist = await maybe_prompt_for_playlist(cog=self, playlists=playlists, context=context)
         if not playlist:
             return
         if playlist.id not in BUNDLED_PLAYLIST_IDS:
-            manageable = await playlist.can_manage(bot=self.bot, requester=context.author, guild=context.guild)
+            manageable = await playlist.can_manage(bot=self.bot, requester=context.author)
         else:
             manageable = False
         if not manageable:
@@ -648,7 +638,7 @@ class PyLavPlaylists(
         changed = False
         if context.player:
             if tracks := context.player.queue.raw_queue:
-                queue_tracks = [track.track for track in tracks if track.track]
+                queue_tracks = [track.encoded for track in tracks if track.encoded]
                 await playlist.add_track(queue_tracks)
                 tracks_added += len(queue_tracks)
                 changed = True
@@ -690,7 +680,7 @@ class PyLavPlaylists(
     )
     @app_commands.guild_only()
     @invoker_is_dj(slash=True)
-    async def slash_playlist_upload(self, interaction: InteractionT, url: str = None):
+    async def slash_playlist_upload(self, interaction: DISCORD_INTERACTION_TYPE, url: str = None):
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
@@ -735,9 +725,9 @@ class PyLavPlaylists(
         saved_playlists = []
         for url in valid_playlist_urls:
             try:
-                playlist = await PlaylistModel.from_yaml(context=context, url=url, scope=context.author.id)
+                playlist = await Playlist.from_yaml(context=context, url=url, scope=context.author.id)
                 saved_playlists.append(f"{bold(await playlist.fetch_name())} ({playlist.id})")
-            except InvalidPlaylist:
+            except InvalidPlaylistException:
                 invalid_playlists_urls.add(url)
 
         if not saved_playlists:

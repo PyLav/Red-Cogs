@@ -8,16 +8,18 @@ from redbot.core.i18n import Translator
 from redbot.core.utils.chat_formatting import box
 from tabulate import tabulate
 
-from pylav.managed_node import LAVALINK_DOWNLOAD_DIR
-from pylav.types import CogT, InteractionT
-from pylav.utils import PyLavContext, get_true_path, translation_shortener
-from pylav.utils.theme import EightBitANSI
+from pylav.core.context import PyLavContext
+from pylav.extension.bundled_node import LAVALINK_DOWNLOAD_DIR
+from pylav.extension.bundled_node.utils import get_true_path
+from pylav.helpers.format.ascii import EightBitANSI
+from pylav.helpers.format.strings import shorten_string
+from pylav.type_hints.bot import DISCORD_COG_TYPE, DISCORD_INTERACTION_TYPE
 
 _ = Translator("PyLavConfigurator", Path(__file__))
 
 
 class EmbedGenerator:
-    def __init__(self, cog: CogT, context: PyLavContext):
+    def __init__(self, cog: DISCORD_COG_TYPE, context: PyLavContext):
         self.cog = cog
         self.context = context
 
@@ -427,10 +429,11 @@ class EmbedGenerator:
     async def generate_managed_node_config_embed(self) -> discord.Embed:
         enabled = EightBitANSI.paint_green(_("Enabled"), bold=True, italic=True)
         disabled = EightBitANSI.paint_red(_("Disabled"), bold=True, italic=True)
+        # noinspection PyProtectedMember
         build_date, build_time = self.cog.lavalink.managed_node_controller._buildtime.split(" ", 1)
         build_data = build_date.split("/")
         build_date = f"{build_data[2]}/{build_data[1]}/{build_data[0]}\n{build_time}"
-
+        # noinspection PyProtectedMember
         data = [
             (
                 EightBitANSI.paint_white(_("Java")),
@@ -503,7 +506,7 @@ class EmbedGenerator:
 class InfoSelector(discord.ui.Select):
     def __init__(
         self,
-        cog: CogT,
+        cog: DISCORD_COG_TYPE,
         context: PyLavContext,
         options: list[discord.SelectOption],
     ):
@@ -512,12 +515,12 @@ class InfoSelector(discord.ui.Select):
             min_values=1,
             max_values=1,
             options=options,
-            placeholder=translation_shortener(max_length=100, translation=_("Pick an option to view")),
+            placeholder=shorten_string(max_length=100, string=_("Pick an option to view")),
         )
         self.cog = cog
         self.embed_maker = EmbedGenerator(cog=cog, context=context)
 
-    async def callback(self, interaction: InteractionT):
+    async def callback(self, interaction: DISCORD_INTERACTION_TYPE):
         await interaction.response.defer()
         if self.view.author.id != interaction.user.id:
             await interaction.response.send_message(
@@ -533,9 +536,10 @@ class InfoSelector(discord.ui.Select):
 
 
 class InfoView(discord.ui.View):
-    def __init__(self, cog: CogT, context: PyLavContext, options: list[discord.SelectOption]):
+    def __init__(self, cog: DISCORD_COG_TYPE, context: PyLavContext, options: list[discord.SelectOption]):
         super().__init__(timeout=180.0)
         self.delete_after_timeout = True
+        self.message = None
         self.current_page = 0
         self._running = True
         self.bot = cog.bot
@@ -545,7 +549,7 @@ class InfoView(discord.ui.View):
         self.selector = InfoSelector(cog=cog, context=context, options=options)
         self.add_item(self.selector)
 
-    async def interaction_check(self, interaction: InteractionT):
+    async def interaction_check(self, interaction: DISCORD_INTERACTION_TYPE):
         """Just extends the default reaction_check to use owner_ids"""
         if (not await self.bot.allowed_by_whitelist_blacklist(interaction.user, guild=interaction.guild)) or (
             self.author and (interaction.user.id != self.author.id)

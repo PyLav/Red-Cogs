@@ -18,12 +18,12 @@ from redbot.core.data_manager import cog_data_path
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.dbtools import APSWConnectionWrapper
 
-from pylav import getLogger
-from pylav.client import Client
-from pylav.red_utils.utils import recursive_merge
-from pylav.sql.models import LibConfigModel, PlayerModel
-from pylav.types import BotT
-from pylav.utils import AsyncIter, PyLavContext
+from pylav.core.client import Client
+from pylav.core.context import PyLavContext
+from pylav.extension.red.utils import recursive_merge
+from pylav.logging import getLogger
+from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE_MIXIN
+from pylav.utils.vendor.redbot import AsyncIter
 
 LOGGER = getLogger("PyLav.cog.Migrator")
 
@@ -31,14 +31,14 @@ _ = Translator("PyLavMigrator", Path(__file__))
 
 
 @cog_i18n(_)
-class PyLavMigrator(commands.Cog):
+class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
     """Copy Red's Audio settings over to PyLav"""
 
     lavalink: Client
 
     __version__ = "1.0.0.0rc1"
 
-    def __init__(self, bot: BotT, *args, **kwargs):
+    def __init__(self, bot: DISCORD_BOT_TYPE, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot
 
@@ -104,7 +104,7 @@ class PyLavMigrator(commands.Cog):
             audio_db_conn = APSWConnectionWrapper(str(cog_data_path(self.bot.get_cog("Audio")) / "Audio.db"))
             playlist_api = PlaylistWrapper(self.bot, audio_config, audio_db_conn)
             await playlist_api.init()
-        global_config = typing.cast(LibConfigModel, self.lavalink.lib_db_manager.get_config())
+        global_config = self.lavalink.lib_db_manager.get_config()
         if (r := await audio_config.java_exc_path()) and r != "java":
             await global_config.update_java_path(r)
         if r := await audio_config.localpath():
@@ -145,7 +145,7 @@ class PyLavMigrator(commands.Cog):
             await bundled_node_config.update_extras(extras)
 
         async for guild, guild_config in AsyncIter((await audio_config.all_guilds()).items()):
-            player_config: PlayerModel = self.lavalink.player_config_manager.get_config(guild)
+            player_config = self.lavalink.player_config_manager.get_config(guild)
             if not guild_config.get("auto_deafen", True):
                 await player_config.update_self_deaf(False)
             if guild_config.get("dj_enabled", False) is True:
@@ -197,7 +197,7 @@ class PyLavMigrator(commands.Cog):
                 continue
 
             await self.lavalink.playlist_db_manager.create_or_update_playlist(
-                id=pl.playlist_id,
+                identifier=pl.playlist_id,
                 name=pl.playlist_name,
                 scope=pl.scope_id,
                 author=pl.author_id,

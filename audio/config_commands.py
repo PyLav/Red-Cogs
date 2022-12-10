@@ -1,6 +1,5 @@
 import datetime
 import typing
-from abc import ABC
 from typing import Union
 
 import asyncstdlib
@@ -12,13 +11,13 @@ from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import bold, box, humanize_list, humanize_number, humanize_timedelta
 from tabulate import tabulate
 
-from pylav import getLogger
-from pylav.converters.playlist import PlaylistConverter
-from pylav.red_utils.ui.prompts.playlists import maybe_prompt_for_playlist
-from pylav.red_utils.utils.decorators import invoker_is_dj, requires_player
-from pylav.types import PyLavCogMixin
-from pylav.utils import PyLavContext
-from pylav.utils.theme import EightBitANSI
+from pylav.core.context import PyLavContext
+from pylav.extension.red.ui.prompts.playlists import maybe_prompt_for_playlist
+from pylav.extension.red.utils.decorators import invoker_is_dj, requires_player
+from pylav.helpers.discord.converters.playlists import PlaylistConverter
+from pylav.helpers.format.ascii import EightBitANSI
+from pylav.logging import getLogger
+from pylav.type_hints.bot import DISCORD_COG_TYPE_MIXIN
 
 LOGGER = getLogger("PyLav.cog.Player.commands.config")
 
@@ -26,7 +25,7 @@ _ = Translator("PyLavPlayer", __file__)
 
 
 @cog_i18n(_)
-class ConfigCommands(PyLavCogMixin, ABC):
+class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
     @commands.group(name="playerset")
     async def command_playerset(self, context: PyLavContext) -> None:
         """Player configuration commands"""

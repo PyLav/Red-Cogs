@@ -11,19 +11,19 @@ import humanize
 import ujson
 from asyncspotify import ClientCredentialsFlow
 from deepdiff import DeepDiff
-from discord.utils import maybe_coroutine
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n, get_babel_locale
 from redbot.core.utils.chat_formatting import bold, box, humanize_list, inline
 from tabulate import tabulate
 
-from pylav import getLogger
-from pylav.client import Client
-from pylav.managed_node import LAVALINK_DOWNLOAD_DIR
-from pylav.types import BotT
-from pylav.utils import PyLavContext, get_jar_ram_actual, get_max_allocation_size, get_true_path
-from pylav.utils.built_in_node import NODE_DEFAULT_SETTINGS
-from pylav.utils.theme import EightBitANSI
+from pylav.constants.node import NODE_DEFAULT_SETTINGS
+from pylav.core.client import Client
+from pylav.core.context import PyLavContext
+from pylav.extension.bundled_node import LAVALINK_DOWNLOAD_DIR
+from pylav.extension.bundled_node.utils import get_jar_ram_actual, get_max_allocation_size, get_true_path
+from pylav.helpers.format.ascii import EightBitANSI
+from pylav.logging import getLogger
+from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE_MIXIN
 
 from plmanagednode.view import ConfigureGoogleAccountView, ConfigureHTTPProxyView, ConfigureIPRotationView
 
@@ -33,13 +33,13 @@ _ = Translator("PyLavManagedNode", Path(__file__))
 
 
 @cog_i18n(_)
-class PyLavManagedNode(commands.Cog):
+class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
     """Configure the managed Lavalink node used by PyLav"""
 
-    __version__ = "0.0.0.1a"
+    __version__ = "1.0.0.0rc1"
     lavalink: Client
 
-    def __init__(self, bot: BotT, *args, **kwargs):
+    def __init__(self, bot: DISCORD_BOT_TYPE, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot
 
@@ -88,6 +88,7 @@ class PyLavManagedNode(commands.Cog):
         self.lavalink.managed_node_controller._up_to_date = False
         upstream_data = await self.lavalink.managed_node_controller.get_ci_latest_info()
         number = upstream_data["number"]
+        # noinspection PyProtectedMember
         if number == await self.lavalink._config.fetch_download_id():
             await context.send(
                 embed=await context.lavalink.construct_embed(
@@ -109,7 +110,9 @@ class PyLavManagedNode(commands.Cog):
                 ephemeral=True,
             )
             return
+
         self.lavalink.managed_node_controller._up_to_date = False
+        # noinspection PyProtectedMember
         await self.lavalink.managed_node_controller._download_jar(forced=True)
 
         await context.send(
@@ -158,6 +161,7 @@ class PyLavManagedNode(commands.Cog):
             deezer_token = None
             yandexmusic_token = None
             apple_music_token = None
+        # noinspection PyProtectedMember
         config = self.lavalink._node_config_manager.bundled_node_config()
         yaml_data = await config.fetch_yaml()
         need_update = False
@@ -226,7 +230,7 @@ class PyLavManagedNode(commands.Cog):
                         "set to the correct "
                         "path"
                     ).format(
-                        java=inline(f"{await maybe_coroutine(path.absolute)}"),
+                        java=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
                         messageable=context,
                     )
                 ),
@@ -237,7 +241,7 @@ class PyLavManagedNode(commands.Cog):
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("{java} is not an executable file").format(
-                        java=inline(f"{await maybe_coroutine(path.absolute)}"),
+                        java=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
                         messageable=context,
                     )
                 ),
@@ -254,7 +258,7 @@ class PyLavManagedNode(commands.Cog):
                         "the java argument "
                         "set to the correct path"
                     ).format(
-                        java=inline(f"{await maybe_coroutine(path.absolute)}"),
+                        java=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
                         messageable=context,
                     )
                 ),
@@ -263,7 +267,7 @@ class PyLavManagedNode(commands.Cog):
             return
 
         global_config = self.lavalink.lib_db_manager.get_config()
-        await global_config.update_java_path(str(await maybe_coroutine(path.absolute)))
+        await global_config.update_java_path(str(await discord.utils.maybe_coroutine(path.absolute)))
         self.lavalink.managed_node_controller._java_exc = await global_config.fetch_java_path()
         await context.send(
             embed=await context.lavalink.construct_embed(
@@ -443,6 +447,7 @@ class PyLavManagedNode(commands.Cog):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
+        # noinspection PyProtectedMember
         config = self.lavalink._node_config_manager.bundled_node_config()
         data = await config.fetch_yaml()
         data["server"]["host"] = host
@@ -475,6 +480,7 @@ class PyLavManagedNode(commands.Cog):
                 ),
                 ephemeral=True,
             )
+        # noinspection PyProtectedMember
         config = self.lavalink._node_config_manager.bundled_node_config()
         data = await config.fetch_yaml()
         data["server"]["port"] = port
@@ -516,7 +522,7 @@ class PyLavManagedNode(commands.Cog):
                 ),
                 ephemeral=True,
             )
-
+        # noinspection PyProtectedMember
         config = self.lavalink._node_config_manager.bundled_node_config()
         data = await config.fetch_yaml()
         new_plugins = []
@@ -628,7 +634,7 @@ class PyLavManagedNode(commands.Cog):
                 ),
                 ephemeral=True,
             )
-
+        # noinspection PyProtectedMember
         config = self.lavalink._node_config_manager.bundled_node_config()
         data = await config.fetch_yaml()
         new_plugins = data["lavalink"]["plugins"].copy()
@@ -670,6 +676,7 @@ class PyLavManagedNode(commands.Cog):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
+        # noinspection PyProtectedMember
         config = self.lavalink._node_config_manager.bundled_node_config()
         data = await config.fetch_yaml()
         new_plugin_data = []
@@ -732,10 +739,10 @@ class PyLavManagedNode(commands.Cog):
                         continue
                     old_value = None
                     new_value = None
-                    for key, value in root_value.items():
-                        if key == "old_value":
+                    for sub_key, value in root_value.items():
+                        if sub_key == "old_value":
                             old_value = value
-                        elif key == "new_value":
+                        elif sub_key == "new_value":
                             new_value = value
                     if all([old_value, new_value]):
                         update_string += _("{name} was updated from {old_value} to {new_value}\n").format(
@@ -770,6 +777,7 @@ class PyLavManagedNode(commands.Cog):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
+        # noinspection PyProtectedMember
         config = self.lavalink._node_config_manager.bundled_node_config()
         data = await config.fetch_yaml()
         source = source.lower().strip()
@@ -807,16 +815,17 @@ class PyLavManagedNode(commands.Cog):
         )
 
     @command_plmanaged_config.command(name="filter")
-    async def command_plmanaged_config_filter(self, context: PyLavContext, filter: str, state: bool):
+    async def command_plmanaged_config_filter(self, context: PyLavContext, filter_name: str, state: bool):
         """Toggle the managed node filters"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
+        # noinspection PyProtectedMember
         config = self.lavalink._node_config_manager.bundled_node_config()
         data = await config.fetch_yaml()
         valid_filters = NODE_DEFAULT_SETTINGS["lavalink"]["server"]["filters"].copy()
-        if filter not in valid_filters:
+        if filter_name not in valid_filters:
             return await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("Invalid source, {valid_list} are valid filters").format(
@@ -826,13 +835,13 @@ class PyLavManagedNode(commands.Cog):
                 ),
                 ephemeral=True,
             )
-        data["lavalink"]["server"]["filters"][filter] = state
+        data["lavalink"]["server"]["filters"][filter_name] = state
         await config.update_yaml(data)
         state = _("enabled") if state else _("disabled")
         await context.send(
             embed=await context.lavalink.construct_embed(
                 description=_("Managed node's {source} filter set to {state}.").format(
-                    source=inline(filter),
+                    source=inline(filter_name),
                     state=state,
                     prefix=context.clean_prefix,
                 ),
@@ -994,6 +1003,7 @@ class PyLavManagedNode(commands.Cog):
             value = value in ("0", "1", "true")
         elif possible_values == ("low", "medium", "high"):
             value = value.upper()
+        # noinspection PyProtectedMember
         config = self.lavalink._node_config_manager.bundled_node_config()
         data = await config.fetch_yaml()
         data["lavalink"]["server"][setting] = value
@@ -1034,6 +1044,7 @@ class PyLavManagedNode(commands.Cog):
                 ephemeral=True,
             )
         else:
+            # noinspection PyProtectedMember
             config = self.lavalink._node_config_manager.bundled_node_config()
             data = await config.fetch_yaml()
             data["lavalink"]["server"]["ratelimit"] = NODE_DEFAULT_SETTINGS["lavalink"]["server"]["ratelimit"]
@@ -1070,6 +1081,7 @@ class PyLavManagedNode(commands.Cog):
                 ephemeral=True,
             )
         else:
+            # noinspection PyProtectedMember
             config = self.lavalink._node_config_manager.bundled_node_config()
             data = await config.fetch_yaml()
             data["lavalink"]["server"]["youtubeConfig"] = NODE_DEFAULT_SETTINGS["lavalink"]["server"]["youtubeConfig"]
@@ -1103,6 +1115,7 @@ class PyLavManagedNode(commands.Cog):
                 ephemeral=True,
             )
         else:
+            # noinspection PyProtectedMember
             config = self.lavalink._node_config_manager.bundled_node_config()
             data = await config.fetch_yaml()
             data["lavalink"]["server"]["httpConfig"] = NODE_DEFAULT_SETTINGS["lavalink"]["server"]["httpConfig"]

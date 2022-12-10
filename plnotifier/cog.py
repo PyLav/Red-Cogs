@@ -14,12 +14,59 @@ from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import box, humanize_list, inline
 from tabulate import tabulate
 
-from pylav import events, getLogger
-from pylav.client import Client
-from pylav.filters import Equalizer, Volume
-from pylav.types import BotT
-from pylav.utils import PyLavContext, format_time
-from pylav.utils.theme import EightBitANSI
+from pylav.core.client import Client
+from pylav.core.context import PyLavContext
+from pylav.events.node import NodeChangedEvent, NodeConnectedEvent, NodeDisconnectedEvent, WebSocketClosedEvent
+from pylav.events.player import (
+    FiltersAppliedEvent,
+    PlayerConnectedEvent,
+    PlayerDisconnectedEvent,
+    PlayerMovedEvent,
+    PlayerPausedEvent,
+    PlayerRepeatEvent,
+    PlayerRestoredEvent,
+    PlayerResumedEvent,
+    PlayerStoppedEvent,
+    PlayerVolumeChangedEvent,
+)
+from pylav.events.plugins import SegmentSkippedEvent
+from pylav.events.queue import QueueEndEvent, QueueShuffledEvent, QueueTracksRemovedEvent
+from pylav.events.track import (
+    TrackAutoPlayEvent,
+    TrackEndEvent,
+    TrackExceptionEvent,
+    TrackPreviousRequestedEvent,
+    TrackResumedEvent,
+    TrackSeekEvent,
+    TrackSkippedEvent,
+    TracksRequestedEvent,
+    TrackStuckEvent,
+)
+from pylav.events.track.track_start import (
+    TrackStartAppleMusicEvent,
+    TrackStartBandcampEvent,
+    TrackStartDeezerEvent,
+    TrackStartGCTTSEvent,
+    TrackStartGetYarnEvent,
+    TrackStartHTTPEvent,
+    TrackStartLocalFileEvent,
+    TrackStartMixCloudEvent,
+    TrackStartNicoNicoEvent,
+    TrackStartPornHubEvent,
+    TrackStartSoundCloudEvent,
+    TrackStartSoundgasmEvent,
+    TrackStartSpeakEvent,
+    TrackStartSpotifyEvent,
+    TrackStartTwitchEvent,
+    TrackStartVimeoEvent,
+    TrackStartYouTubeEvent,
+    TrackStartYouTubeMusicEvent,
+)
+from pylav.helpers.format.ascii import EightBitANSI
+from pylav.helpers.format.strings import format_time_dd_hh_mm_ss
+from pylav.logging import getLogger
+from pylav.players.filters import Equalizer, Volume
+from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE_MIXIN
 
 _ = Translator("PyLavNotifier", Path(__file__))
 
@@ -81,14 +128,14 @@ POSSIBLE_EVENTS = {
 
 
 @cog_i18n(_)
-class PyLavNotifier(commands.Cog):
+class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     """Listen to events from the PyLav player and send them as messages to the specified channel"""
 
     lavalink: Client
 
     __version__ = "1.0.0.0rc1"
 
-    def __init__(self, bot: BotT, *args, **kwargs):
+    def __init__(self, bot: DISCORD_BOT_TYPE, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot
         self._config = Config.get_conf(self, identifier=208903205982044161)
@@ -398,7 +445,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_track_stuck_event(self, event: events.TrackStuckEvent) -> None:
+    async def on_pylav_track_stuck_event(self, event: TrackStuckEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -416,7 +463,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_track_exception_event(self, event: events.TrackExceptionEvent) -> None:
+    async def on_pylav_track_exception_event(self, event: TrackExceptionEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -441,7 +488,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_track_end_event(self, event: events.TrackEndEvent) -> None:
+    async def on_pylav_track_end_event(self, event: TrackEndEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -473,7 +520,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_track_start_youtube_music_event(self, event: events.TrackStartYouTubeMusicEvent) -> None:
+    async def on_pylav_track_start_youtube_music_event(self, event: TrackStartYouTubeMusicEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -502,7 +549,36 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_track_start_spotify_event(self, event: events.TrackStartSpotifyEvent) -> None:
+    async def on_pylav_track_start_deezer_event(self, event: TrackStartDeezerEvent) -> None:
+        player = event.player
+        channel = await player.notify_channel()
+        if channel is None:
+            return
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_start_deezer", default={"enabled": True, "mention": True}
+        )
+        notify, mention = data["enabled"], data["mention"]
+        if not notify:
+            return
+        if mention:
+            req = event.track.requester or self.bot.user
+            user = req.mention
+        else:
+            user = event.track.requester or self.bot.user
+        self._message_queue[channel].append(
+            await self.lavalink.construct_embed(
+                title=_("Spotify Track Start Event"),
+                description=_(
+                    "[Node={node}] Deezer track: {track} has started playing.\nRequested by: {requester}"
+                ).format(
+                    track=await event.track.get_track_display_name(with_url=True), requester=user, node=event.node.name
+                ),
+                messageable=channel,
+            )
+        )
+
+    @commands.Cog.listener()
+    async def on_pylav_track_start_spotify_event(self, event: TrackStartSpotifyEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -531,7 +607,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_track_start_apple_music_event(self, event: events.TrackStartAppleMusicEvent) -> None:
+    async def on_pylav_track_start_apple_music_event(self, event: TrackStartAppleMusicEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -560,7 +636,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_track_start_localfile_event(self, event: events.TrackStartLocalFileEvent) -> None:
+    async def on_pylav_track_start_localfile_event(self, event: TrackStartLocalFileEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -589,7 +665,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_track_start_http_event(self, event: events.TrackStartHTTPEvent) -> None:
+    async def on_pylav_track_start_http_event(self, event: TrackStartHTTPEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -618,7 +694,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_track_start_speak_event(self, event: events.TrackStartSpeakEvent) -> None:
+    async def on_pylav_track_start_speak_event(self, event: TrackStartSpeakEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -647,7 +723,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_track_start_youtube_event(self, event: events.TrackStartYouTubeEvent) -> None:
+    async def on_pylav_track_start_youtube_event(self, event: TrackStartYouTubeEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -676,7 +752,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_track_start_clypit_event(self, event: events.TrackStartGetYarnEvent) -> None:
+    async def on_pylav_track_start_clypit_event(self, event: TrackStartGetYarnEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -708,7 +784,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_track_start_getyarn_event(self, event: events.TrackStartGetYarnEvent) -> None:
+    async def on_pylav_track_start_getyarn_event(self, event: TrackStartGetYarnEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -740,7 +816,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_track_start_mixcloud_event(self, event: events.TrackStartMixCloudEvent) -> None:
+    async def on_pylav_track_start_mixcloud_event(self, event: TrackStartMixCloudEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -772,7 +848,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_track_start_ocrmix_event(self, event: events.TrackStartMixCloudEvent) -> None:
+    async def on_pylav_track_start_ocrmix_event(self, event: TrackStartMixCloudEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -804,7 +880,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_track_start_pornhub_event(self, event: events.TrackStartPornHubEvent) -> None:
+    async def on_pylav_track_start_pornhub_event(self, event: TrackStartPornHubEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -836,7 +912,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_track_start_reddit_event(self, event: events.TrackStartPornHubEvent) -> None:
+    async def on_pylav_track_start_reddit_event(self, event: TrackStartPornHubEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -868,7 +944,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_track_start_soundgasm_event(self, event: events.TrackStartSoundgasmEvent) -> None:
+    async def on_pylav_track_start_soundgasm_event(self, event: TrackStartSoundgasmEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -900,7 +976,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_track_start_tiktok_event(self, event: events.TrackStartSoundgasmEvent) -> None:
+    async def on_pylav_track_start_tiktok_event(self, event: TrackStartSoundgasmEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -932,7 +1008,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_track_start_bandcamp_event(self, event: events.TrackStartBandcampEvent) -> None:
+    async def on_pylav_track_start_bandcamp_event(self, event: TrackStartBandcampEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -964,7 +1040,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_track_start_soundcloud_event(self, event: events.TrackStartSoundCloudEvent) -> None:
+    async def on_pylav_track_start_soundcloud_event(self, event: TrackStartSoundCloudEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -996,7 +1072,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_track_start_twitch_event(self, event: events.TrackStartTwitchEvent) -> None:
+    async def on_pylav_track_start_twitch_event(self, event: TrackStartTwitchEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -1028,7 +1104,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_track_start_vimeo_event(self, event: events.TrackStartVimeoEvent) -> None:
+    async def on_pylav_track_start_vimeo_event(self, event: TrackStartVimeoEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -1060,7 +1136,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_track_start_gctts_event(self, event: events.TrackStartGCTTSEvent) -> None:
+    async def on_pylav_track_start_gctts_event(self, event: TrackStartGCTTSEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -1092,7 +1168,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_track_start_niconico_event(self, event: events.TrackStartNicoNicoEvent) -> None:
+    async def on_pylav_track_start_niconico_event(self, event: TrackStartNicoNicoEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -1124,7 +1200,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_track_skipped_event(self, event: events.TrackSkippedEvent) -> None:
+    async def on_pylav_track_skipped_event(self, event: TrackSkippedEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -1153,7 +1229,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_track_seek_event(self, event: events.TrackSeekEvent) -> None:
+    async def on_pylav_track_seek_event(self, event: TrackSeekEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -1177,8 +1253,8 @@ class PyLavNotifier(commands.Cog):
                     "is sought from position {fro} to position {after}"
                 ).format(
                     track=await event.track.get_track_display_name(with_url=True),
-                    fro=format_time(event.before),
-                    after=format_time(event.after),
+                    fro=format_time_dd_hh_mm_ss(event.before),
+                    after=format_time_dd_hh_mm_ss(event.after),
                     requester=user,
                     node=event.player.node.name,
                 ),
@@ -1187,7 +1263,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_track_previous_requested_event(self, event: events.TrackPreviousRequestedEvent) -> None:
+    async def on_pylav_track_previous_requested_event(self, event: TrackPreviousRequestedEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -1216,7 +1292,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_tracks_requested_event(self, event: events.TracksRequestedEvent) -> None:
+    async def on_pylav_tracks_requested_event(self, event: TracksRequestedEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -1247,7 +1323,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_track_auto_play_event(self, event: events.TrackAutoPlayEvent) -> None:
+    async def on_pylav_track_auto_play_event(self, event: TrackAutoPlayEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -1269,7 +1345,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_track_resumed_event(self, event: events.TrackResumedEvent) -> None:
+    async def on_pylav_track_resumed_event(self, event: TrackResumedEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -1298,7 +1374,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_queue_shuffled_event(self, event: events.QueueShuffledEvent) -> None:
+    async def on_pylav_queue_shuffled_event(self, event: QueueShuffledEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -1325,7 +1401,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_queue_end_event(self, event: events.QueueEndEvent) -> None:
+    async def on_pylav_queue_end_event(self, event: QueueEndEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -1347,7 +1423,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_queue_tracks_removed_event(self, event: events.QueueTracksRemovedEvent) -> None:
+    async def on_pylav_queue_tracks_removed_event(self, event: QueueTracksRemovedEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -1374,7 +1450,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_player_paused_event(self, event: events.PlayerPausedEvent) -> None:
+    async def on_pylav_player_paused_event(self, event: PlayerPausedEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -1401,7 +1477,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_player_stopped_event(self, event: events.PlayerStoppedEvent) -> None:
+    async def on_pylav_player_stopped_event(self, event: PlayerStoppedEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -1428,7 +1504,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_player_resumed_event(self, event: events.PlayerResumedEvent) -> None:
+    async def on_pylav_player_resumed_event(self, event: PlayerResumedEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -1455,7 +1531,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_player_moved_event(self, event: events.PlayerMovedEvent) -> None:
+    async def on_pylav_player_moved_event(self, event: PlayerMovedEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -1482,7 +1558,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_player_disconnected_event(self, event: events.PlayerDisconnectedEvent) -> None:
+    async def on_pylav_player_disconnected_event(self, event: PlayerDisconnectedEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -1509,7 +1585,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_player_connected_event(self, event: events.PlayerConnectedEvent) -> None:
+    async def on_pylav_player_connected_event(self, event: PlayerConnectedEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -1536,7 +1612,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_player_volume_changed_event(self, event: events.PlayerVolumeChangedEvent) -> None:
+    async def on_pylav_player_volume_changed_event(self, event: PlayerVolumeChangedEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -1563,7 +1639,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_player_repeat_event(self, event: events.PlayerRepeatEvent) -> None:
+    async def on_pylav_player_repeat_event(self, event: PlayerRepeatEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -1615,7 +1691,7 @@ class PyLavNotifier(commands.Cog):
             )
 
     @commands.Cog.listener()
-    async def on_pylav_player_restored_event(self, event: events.PlayerRestoredEvent) -> None:
+    async def on_pylav_player_restored_event(self, event: PlayerRestoredEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -1642,7 +1718,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_segment_skipped_event(self, event: events.SegmentSkippedEvent) -> None:
+    async def on_pylav_segment_skipped_event(self, event: SegmentSkippedEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -1686,7 +1762,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_filters_applied_event(self, event: events.FiltersAppliedEvent) -> None:
+    async def on_pylav_filters_applied_event(self, event: FiltersAppliedEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -1757,7 +1833,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_node_connected_event(self, event: events.NodeConnectedEvent) -> None:
+    async def on_pylav_node_connected_event(self, event: NodeConnectedEvent) -> None:
         data = await self._config.get_raw("node_connected", default={"enabled": True, "mention": True})
         notify, mention = data["enabled"], data["mention"]
         if not notify:
@@ -1773,7 +1849,7 @@ class PyLavNotifier(commands.Cog):
                 )
 
     @commands.Cog.listener()
-    async def on_pylav_node_disconnected_event(self, event: events.NodeDisconnectedEvent) -> None:
+    async def on_pylav_node_disconnected_event(self, event: NodeDisconnectedEvent) -> None:
         data = await self._config.get_raw("node_disconnected", default={"enabled": True, "mention": True})
         notify, mention = data["enabled"], data["mention"]
         if not notify:
@@ -1791,7 +1867,7 @@ class PyLavNotifier(commands.Cog):
                 )
 
     @commands.Cog.listener()
-    async def on_pylav_node_changed_event(self, event: events.NodeChangedEvent) -> None:
+    async def on_pylav_node_changed_event(self, event: NodeChangedEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:
@@ -1813,7 +1889,7 @@ class PyLavNotifier(commands.Cog):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_web_socket_closed_event(self, event: events.WebSocketClosedEvent) -> None:
+    async def on_pylav_web_socket_closed_event(self, event: WebSocketClosedEvent) -> None:
         player = event.player
         channel = await player.notify_channel()
         if channel is None:

@@ -12,16 +12,16 @@ from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import box, humanize_list, inline
 from tabulate import tabulate
 
-from pylav import getLogger
-from pylav.constants import BUNDLED_NODES_IDS_HOST_MAPPING
-from pylav.converters.nodes import NodeConverter
-from pylav.red_utils.ui.menus.generic import PaginatingMenu
-from pylav.red_utils.ui.menus.nodes import AddNodeFlow, NodeManagerMenu
-from pylav.red_utils.ui.prompts.nodes import maybe_prompt_for_node
-from pylav.red_utils.ui.sources.nodes import NodeListSource, NodeManageSource
-from pylav.types import BotT
-from pylav.utils import PyLavContext
-from pylav.utils.theme import EightBitANSI
+from pylav.constants.builtin_nodes import BUNDLED_NODES_IDS_HOST_MAPPING
+from pylav.core.context import PyLavContext
+from pylav.extension.red.ui.menus.generic import PaginatingMenu
+from pylav.extension.red.ui.menus.nodes import AddNodeFlow, NodeManagerMenu
+from pylav.extension.red.ui.prompts.nodes import maybe_prompt_for_node
+from pylav.extension.red.ui.sources.nodes import NodeListSource, NodeManageSource
+from pylav.helpers.discord.converters.nodes import NodeConverter
+from pylav.helpers.format.ascii import EightBitANSI
+from pylav.logging import getLogger
+from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE_MIXIN
 
 LOGGER = getLogger("PyLav.cog.Nodes")
 
@@ -29,12 +29,12 @@ _ = Translator("PyLavNodes", Path(__file__))
 
 
 @cog_i18n(_)
-class PyLavNodes(commands.Cog):
+class PyLavNodes(DISCORD_COG_TYPE_MIXIN):
     """Manage the nodes used by PyLav"""
 
     __version__ = "1.0.0.0rc1"
 
-    def __init__(self, bot: BotT, *args, **kwargs):
+    def __init__(self, bot: DISCORD_BOT_TYPE, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot
 
@@ -162,7 +162,7 @@ class PyLavNodes(commands.Cog):
                 await context.author.send(
                     embed=embed,
                 )
-        except Exception:
+        except Exception:  # noqa
             if menu.last_interaction:
                 await menu.last_interaction.followup.send(
                     embed=await self.lavalink.construct_embed(

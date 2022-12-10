@@ -5,21 +5,22 @@ from pathlib import Path
 import aiopath
 import discord
 from discord import SelectOption
-from discord.utils import maybe_coroutine
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import bold, box, inline
 from tabulate import tabulate
 
-from pylav import getLogger
-from pylav.client import Client
-from pylav.constants import PYLAV_BUNDLED_NODES_SETTINGS
-from pylav.localfiles import LocalFile
-from pylav.red_utils.ui.menus.player import StatsMenu
-from pylav.red_utils.ui.sources.player import PlayersSource
-from pylav.types import BotT
-from pylav.utils import PyLavContext, get_true_path, translation_shortener
-from pylav.utils.theme import EightBitANSI
+from pylav.constants.builtin_nodes import PYLAV_BUNDLED_NODES_SETTINGS
+from pylav.core.client import Client
+from pylav.core.context import PyLavContext
+from pylav.extension.bundled_node.utils import get_true_path
+from pylav.extension.red.ui.menus.player import StatsMenu
+from pylav.extension.red.ui.sources.player import PlayersSource
+from pylav.helpers.format.ascii import EightBitANSI
+from pylav.helpers.format.strings import shorten_string
+from pylav.logging import getLogger
+from pylav.players.query.local_files import LocalFile
+from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE_MIXIN
 
 from plconfig.view import InfoView
 
@@ -29,14 +30,14 @@ _ = Translator("PyLavConfigurator", Path(__file__))
 
 
 @cog_i18n(_)
-class PyLavConfigurator(commands.Cog):
+class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
     """Configure PyLav library settings"""
 
     lavalink: Client
 
     __version__ = "1.0.0.0rc1"
 
-    def __init__(self, bot: BotT, *args, **kwargs):
+    def __init__(self, bot: DISCORD_BOT_TYPE, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot
 
@@ -83,17 +84,17 @@ class PyLavConfigurator(commands.Cog):
             await context.defer(ephemeral=True)
         options = [
             SelectOption(
-                label=translation_shortener(max_length=100, translation=_("PyLav Config")),
+                label=shorten_string(max_length=100, string=_("PyLav Config")),
                 value="pylav_config",
-                description=translation_shortener(
-                    max_length=100, translation=_("Get information about the PyLav library settings")
+                description=shorten_string(
+                    max_length=100, string=_("Get information about the PyLav library settings")
                 ),
             ),
             SelectOption(
-                label=translation_shortener(max_length=100, translation=_("Global Player Config")),
+                label=shorten_string(max_length=100, string=_("Global Player Config")),
                 value="global_player_config",
-                description=translation_shortener(
-                    max_length=100, translation=_("Get information about bot owner configured settings for the players")
+                description=shorten_string(
+                    max_length=100, string=_("Get information about bot owner configured settings for the players")
                 ),
             ),
         ]
@@ -101,22 +102,22 @@ class PyLavConfigurator(commands.Cog):
             options.extend(
                 [
                     SelectOption(
-                        label=translation_shortener(max_length=100, translation=_("Context Player Config")),
+                        label=shorten_string(max_length=100, string=_("Context Player Config")),
                         value="context_player_config",
-                        description=translation_shortener(
+                        description=shorten_string(
                             max_length=100,
-                            translation=_(
+                            string=_(
                                 "Get information about contextual settings for the player, "
                                 "accounting for the global settings"
                             ),
                         ),
                     ),
                     SelectOption(
-                        label=translation_shortener(max_length=100, translation=_("Server Player Config")),
+                        label=shorten_string(max_length=100, string=_("Server Player Config")),
                         value="server_player_config",
-                        description=translation_shortener(
+                        description=shorten_string(
                             max_length=100,
-                            translation=_("Get information about server configured settings for the player"),
+                            string=_("Get information about server configured settings for the player"),
                         ),
                     ),
                 ]
@@ -124,10 +125,10 @@ class PyLavConfigurator(commands.Cog):
 
         options.append(
             SelectOption(
-                label=translation_shortener(max_length=100, translation=_("Playlist Tasks")),
+                label=shorten_string(max_length=100, string=_("Playlist Tasks")),
                 value="playlist_tasks",
-                description=translation_shortener(
-                    max_length=100, translation=_("Get information about the playlist auto update schedule")
+                description=shorten_string(
+                    max_length=100, string=_("Get information about the playlist auto update schedule")
                 ),
             )
         )
@@ -136,21 +137,19 @@ class PyLavConfigurator(commands.Cog):
             options.extend(
                 [
                     SelectOption(
-                        label=translation_shortener(max_length=100, translation=_("PyLav Paths")),
+                        label=shorten_string(max_length=100, string=_("PyLav Paths")),
                         value="pylav_paths",
-                        description=translation_shortener(
-                            max_length=100, translation=_("Get information about PyLav paths")
-                        ),
+                        description=shorten_string(max_length=100, string=_("Get information about PyLav paths")),
                     ),
                 ]
             )
             if not self.lavalink.managed_node_controller.disabled:
                 options.append(
                     SelectOption(
-                        label=translation_shortener(max_length=100, translation=_("Managed Node Config")),
+                        label=shorten_string(max_length=100, string=_("Managed Node Config")),
                         value="managed_node_config",
-                        description=translation_shortener(
-                            max_length=100, translation=_("Get information about the Managed PyLav Lavalink node")
+                        description=shorten_string(
+                            max_length=100, string=_("Get information about the Managed PyLav Lavalink node")
                         ),
                     ),
                 )
@@ -206,7 +205,7 @@ class PyLavConfigurator(commands.Cog):
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("{folder} is not a folder").format(
-                        folder=inline(f"{await maybe_coroutine(path.absolute)}"),
+                        folder=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
                     ),
                     messageable=context,
                 ),
@@ -224,7 +223,7 @@ class PyLavConfigurator(commands.Cog):
                         "run the command again with the create argument "
                         "set to 1 to automatically create this folder"
                     ).format(
-                        folder=inline(f"{await maybe_coroutine(path.absolute)}"),
+                        folder=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
                     ),
                     messageable=context,
                 ),
@@ -233,12 +232,12 @@ class PyLavConfigurator(commands.Cog):
             return
 
         global_config = self.lavalink.lib_db_manager.get_config()
-        await global_config.update_config_folder(str(await maybe_coroutine(path.absolute)))
+        await global_config.update_config_folder(str(await discord.utils.maybe_coroutine(path.absolute)))
 
         await context.send(
             embed=await context.lavalink.construct_embed(
                 description=_("PyLav's config folder has been set to {folder}").format(
-                    folder=inline(f"{await maybe_coroutine(path.absolute)}"),
+                    folder=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
                 ),
                 messageable=context,
             ),
@@ -261,7 +260,7 @@ class PyLavConfigurator(commands.Cog):
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("{folder} is not a folder").format(
-                        folder=inline(f"{await maybe_coroutine(path.absolute)}"),
+                        folder=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
                     ),
                     messageable=context,
                 ),
@@ -281,7 +280,7 @@ class PyLavConfigurator(commands.Cog):
                         "set to 1 to automatically "
                         "create this folder"
                     ).format(
-                        folder=inline(f"{await maybe_coroutine(path.absolute)}"),
+                        folder=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
                     ),
                     messageable=context,
                 ),
@@ -290,13 +289,13 @@ class PyLavConfigurator(commands.Cog):
             return
 
         global_config = self.lavalink.lib_db_manager.get_config()
-        await global_config.update_localtrack_folder(str(await maybe_coroutine(path.absolute)))
+        await global_config.update_localtrack_folder(str(await discord.utils.maybe_coroutine(path.absolute)))
 
         await LocalFile.add_root_folder(path=path)
         await context.send(
             embed=await context.lavalink.construct_embed(
                 description=_("PyLav's local tracks folder has been set to {folder}").format(
-                    folder=inline(f"{await maybe_coroutine(path.absolute)}"),
+                    folder=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
                 ),
                 messageable=context,
             ),
@@ -329,7 +328,7 @@ class PyLavConfigurator(commands.Cog):
                         "the java argument "
                         "set to the correct path"
                     ).format(
-                        java=inline(f"{await maybe_coroutine(path.absolute)}"),
+                        java=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
                     ),
                     messageable=context,
                 ),
@@ -340,7 +339,7 @@ class PyLavConfigurator(commands.Cog):
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("{java} is not an executable file").format(
-                        java=inline(f"{await maybe_coroutine(path.absolute)}"),
+                        java=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
                     ),
                     messageable=context,
                 ),
@@ -357,7 +356,7 @@ class PyLavConfigurator(commands.Cog):
                         "the java argument "
                         "set to the correct path"
                     ).format(
-                        java=inline(f"{await maybe_coroutine(path.absolute)}"),
+                        java=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
                     ),
                     messageable=context,
                 ),
@@ -366,7 +365,7 @@ class PyLavConfigurator(commands.Cog):
             return
 
         global_config = self.lavalink.lib_db_manager.get_config()
-        await global_config.update_java_path(str(await maybe_coroutine(path.absolute)))
+        await global_config.update_java_path(str(await discord.utils.maybe_coroutine(path.absolute)))
         await context.send(
             embed=await context.lavalink.construct_embed(
                 description=_("PyLav's java executable has been set to {java}").format(

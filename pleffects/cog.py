@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import typing
 from pathlib import Path
 
 import discord
@@ -10,13 +11,15 @@ from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import box
 from tabulate import tabulate
 
-from pylav import getLogger
-from pylav.exceptions import NodeHasNoFilters
-from pylav.filters import Equalizer
-from pylav.red_utils.utils.decorators import invoker_is_dj, requires_player
-from pylav.types import BotT, InteractionT
-from pylav.utils import PyLavContext, translation_shortener
-from pylav.utils.theme import EightBitANSI
+from pylav.core.context import PyLavContext
+from pylav.exceptions.node import NodeHasNoFiltersException
+from pylav.extension.red.utils.decorators import invoker_is_dj, requires_player
+from pylav.helpers.format.ascii import EightBitANSI
+from pylav.helpers.format.strings import shorten_string
+from pylav.logging import getLogger
+from pylav.players.filters import Equalizer
+from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE_MIXIN, DISCORD_INTERACTION_TYPE
+from pylav.type_hints.dict_typing import JSON_DICT_TYPE
 
 LOGGER = getLogger("PyLav.cog.Effects")
 
@@ -24,14 +27,14 @@ _ = Translator("PyLavEffects", Path(__file__))
 
 
 @cog_i18n(_)
-class PyLavEffects(commands.Cog):
+class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
     """Apply filters and effects to the PyLav player"""
 
-    __version__ = "0.0.1.0a"
+    __version__ = "1.0.0.0rc1"
 
     slash_fx = app_commands.Group(name="fx", description="Apply or remove bundled filters")
 
-    def __init__(self, bot: BotT, *args, **kwargs):
+    def __init__(self, bot: DISCORD_BOT_TYPE, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot
         self._config = Config.get_conf(self, identifier=208903205982044161)
@@ -76,12 +79,12 @@ class PyLavEffects(commands.Cog):
 
     @slash_fx.command(
         name="nightcore",
-        description=translation_shortener(max_length=100, translation=_("Apply a Nightcore preset to the player")),
+        description=shorten_string(max_length=100, string=_("Apply a Nightcore preset to the player")),
     )
     @app_commands.guild_only()
     @requires_player(slash=True)
     @invoker_is_dj(slash=True)
-    async def slash_fx_nightcore(self, interaction: InteractionT) -> None:
+    async def slash_fx_nightcore(self, interaction: DISCORD_INTERACTION_TYPE) -> None:
         """Apply a Nightcore filter to the player"""
 
         if not interaction.response.is_done():
@@ -100,7 +103,7 @@ class PyLavEffects(commands.Cog):
         else:
             try:
                 await context.player.apply_nightcore(requester=context.author)
-            except NodeHasNoFilters as exc:
+            except NodeHasNoFiltersException as exc:
                 await context.send(
                     embed=await self.lavalink.construct_embed(
                         messageable=context,
@@ -121,7 +124,7 @@ class PyLavEffects(commands.Cog):
     @app_commands.guild_only()
     @requires_player(slash=True)
     @invoker_is_dj(slash=True)
-    async def slash_fx_varporwave(self, interaction: InteractionT) -> None:
+    async def slash_fx_varporwave(self, interaction: DISCORD_INTERACTION_TYPE) -> None:
         """Apply a Vaporwave filter to the player"""
 
         if not interaction.response.is_done():
@@ -140,7 +143,7 @@ class PyLavEffects(commands.Cog):
         else:
             try:
                 await context.player.apply_vaporwave(requester=context.author)
-            except NodeHasNoFilters as exc:
+            except NodeHasNoFiltersException as exc:
                 await context.send(
                     embed=await self.lavalink.construct_embed(
                         messageable=context,
@@ -168,7 +171,7 @@ class PyLavEffects(commands.Cog):
     @invoker_is_dj(slash=True)
     async def slash_fx_vibrato(
         self,
-        interaction: InteractionT,
+        interaction: DISCORD_INTERACTION_TYPE,
         frequency: Range[float, 0.01, 14.0] = None,
         depth: Range[float, 0.01, 1.0] = None,
         reset: bool = False,
@@ -232,7 +235,7 @@ class PyLavEffects(commands.Cog):
     @invoker_is_dj(slash=True)
     async def slash_fx_tremolo(
         self,
-        interaction: InteractionT,
+        interaction: DISCORD_INTERACTION_TYPE,
         frequency: Range[float, 0.01, None] = None,
         depth: Range[float, 0.01, 1.0] = None,
         reset: bool = False,
@@ -297,7 +300,7 @@ class PyLavEffects(commands.Cog):
     @invoker_is_dj(slash=True)
     async def slash_fx_timescale(
         self,
-        interaction: InteractionT,
+        interaction: DISCORD_INTERACTION_TYPE,
         speed: Range[float, 0.0, None] = None,
         pitch: Range[float, 0.0, None] = None,
         rate: Range[float, 0.0, None] = None,
@@ -357,7 +360,7 @@ class PyLavEffects(commands.Cog):
     @requires_player(slash=True)
     @invoker_is_dj(slash=True)
     async def slash_fx_rotation(
-        self, interaction: InteractionT, hertz: Range[float, 0.0, None] = None, reset: bool = False
+        self, interaction: DISCORD_INTERACTION_TYPE, hertz: Range[float, 0.0, None] = None, reset: bool = False
     ) -> None:
         """Apply a rotation filter to the player"""
         if not interaction.response.is_done():
@@ -414,7 +417,7 @@ class PyLavEffects(commands.Cog):
     @requires_player(slash=True)
     @invoker_is_dj(slash=True)
     async def slash_fx_lowpass(
-        self, interaction: InteractionT, smoothing: Range[float, 0.0, None] = None, reset: bool = False
+        self, interaction: DISCORD_INTERACTION_TYPE, smoothing: Range[float, 0.0, None] = None, reset: bool = False
     ) -> None:
         """Apply a low pass filter to the player"""
         if not interaction.response.is_done():
@@ -475,7 +478,7 @@ class PyLavEffects(commands.Cog):
     @invoker_is_dj(slash=True)
     async def slash_fx_karaoke(
         self,
-        interaction: InteractionT,
+        interaction: DISCORD_INTERACTION_TYPE,
         level: Range[float, 0.0, None] = None,
         mono_level: Range[float, 0.0, None] = None,
         filter_band: Range[float, 0.0, None] = None,
@@ -552,7 +555,7 @@ class PyLavEffects(commands.Cog):
     @invoker_is_dj(slash=True)
     async def slash_fx_channelmix(
         self,
-        interaction: InteractionT,
+        interaction: DISCORD_INTERACTION_TYPE,
         left_to_left: Range[float, 0.0, None] = None,
         left_to_right: Range[float, 0.0, None] = None,
         right_to_left: Range[float, 0.0, None] = None,
@@ -639,7 +642,7 @@ class PyLavEffects(commands.Cog):
     @invoker_is_dj(slash=True)
     async def slash_fx_distortion(
         self,
-        interaction: InteractionT,
+        interaction: DISCORD_INTERACTION_TYPE,
         sin_offset: Range[float, 0.0, None] = None,
         sin_scale: Range[float, 0.0, None] = None,
         cos_offset: Range[float, 0.0, None] = None,
@@ -740,7 +743,7 @@ class PyLavEffects(commands.Cog):
     @invoker_is_dj(slash=True)
     async def slash_fx_echo(
         self,
-        interaction: InteractionT,
+        interaction: DISCORD_INTERACTION_TYPE,
         delay: Range[float, 0.0, None] = None,
         decay: Range[float, 0.0, 1.0] = None,
         reset: bool = False,
@@ -793,7 +796,7 @@ class PyLavEffects(commands.Cog):
     @slash_fx.command(name="show", description=_("Show the current filters applied to the player"))
     @app_commands.guild_only()
     @requires_player(slash=True)
-    async def slash_fx_show(self, interaction: InteractionT) -> None:
+    async def slash_fx_show(self, interaction: DISCORD_INTERACTION_TYPE) -> None:
         """Show the current filters applied to the player"""
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
@@ -825,11 +828,11 @@ class PyLavEffects(commands.Cog):
                         for k, v in values.items()
                     )
                 else:
-                    values = values["equalizer"]
+                    eq_value = typing.cast(list[JSON_DICT_TYPE], values["bands"])
                     data_[t_values] = "\n".join(
                         [
                             f"{EightBitANSI.paint_white('Band ' + band['band'])}: {EightBitANSI.paint_green(band['gain'])}"
-                            for band in values
+                            for band in eq_value
                             if band["gain"]
                         ]
                     )
@@ -855,7 +858,7 @@ class PyLavEffects(commands.Cog):
     @app_commands.guild_only()
     @requires_player(slash=True)
     @invoker_is_dj(slash=True)
-    async def slash_fx_reset(self, interaction: InteractionT) -> None:
+    async def slash_fx_reset(self, interaction: DISCORD_INTERACTION_TYPE) -> None:
         """Reset any existing filters currently applied to the player"""
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)

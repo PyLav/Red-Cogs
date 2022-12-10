@@ -16,14 +16,14 @@ from rich.console import Console
 from rich.tree import Tree
 from tabulate import tabulate
 
-from pylav._logging import getLogger
-from pylav.converters.query import QueryConverter
-from pylav.exceptions import HTTPError
-from pylav.red_utils.utils.decorators import requires_player
-from pylav.track_encoding import decode_track
-from pylav.types import BotT
-from pylav.utils import PyLavContext
-from pylav.utils.theme import EightBitANSI
+from pylav.core.context import PyLavContext
+from pylav.exceptions.request import HTTPException
+from pylav.extension.red.utils.decorators import requires_player
+from pylav.helpers.discord.converters.queries import QueryConverter
+from pylav.helpers.format.ascii import EightBitANSI
+from pylav.logging import getLogger
+from pylav.players.tracks.decoder import async_decoder
+from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE_MIXIN
 
 LOGGER = getLogger("PyLav.cog.Utils")
 
@@ -55,12 +55,12 @@ def get_top(snapshot, key_type="lineno", limit=10):
 
 
 @cog_i18n(_)
-class PyLavUtils(commands.Cog):
+class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
     """Utility commands for PyLav"""
 
     __version__ = "1.0.0.0rc1"
 
-    def __init__(self, bot: BotT, *args, **kwargs):
+    def __init__(self, bot: DISCORD_BOT_TYPE, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot
 
@@ -125,7 +125,7 @@ class PyLavUtils(commands.Cog):
             width=40,
         )
         temp_console.print(rich_tree)
-        msg = "\n".join(line.rstrip() for line in temp_console.file.getvalue().split("\n"))
+        msg = "\n".join(line.rstrip() for line in temp_console.file.getvalue().split("\n"))  # type: ignore
         await context.send_interactive(messages=pagify(msg), box_lang="ansi")
 
     @command_plutils.group(name="get")
@@ -190,7 +190,7 @@ class PyLavUtils(commands.Cog):
 
         await context.send(
             embed=await context.lavalink.construct_embed(
-                description=inline(context.player.current.author),
+                description=inline(await context.player.current.author()),
                 messageable=context,
             ),
             ephemeral=True,
@@ -222,7 +222,7 @@ class PyLavUtils(commands.Cog):
 
         await context.send(
             embed=await context.lavalink.construct_embed(
-                description=inline(context.player.current.title),
+                description=inline(await context.player.current.title()),
                 messageable=context,
             ),
             ephemeral=True,
@@ -253,7 +253,7 @@ class PyLavUtils(commands.Cog):
 
         await context.send(
             embed=await context.lavalink.construct_embed(
-                description=inline(context.player.current.source),
+                description=inline(await context.player.current.source()),
                 messageable=context,
             ),
             ephemeral=True,
@@ -278,7 +278,7 @@ class PyLavUtils(commands.Cog):
 
         try:
             node_player = await context.player.fetch_node_player()
-        except Exception:
+        except Exception:  # noqa
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("Unable to get player info"), messageable=context
@@ -287,7 +287,7 @@ class PyLavUtils(commands.Cog):
             )
             return
 
-        if isinstance(node_player, HTTPError):
+        if isinstance(node_player, HTTPException):
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("Unable to get player info"), messageable=context
@@ -313,8 +313,8 @@ class PyLavUtils(commands.Cog):
             await context.defer(ephemeral=True)
 
         try:
-            data, __ = await asyncio.to_thread(decode_track, base64)
-        except Exception:
+            data = await async_decoder(base64)
+        except Exception:  # noqa
             await context.send(
                 embed=await context.lavalink.construct_embed(
                     description=_("Invalid base64 string"), messageable=context
@@ -449,7 +449,7 @@ class PyLavUtils(commands.Cog):
                 ephemeral=True,
             )
         else:
-            messages = pagify(await asyncio.to_thread(get_top, snap, limit=10), page_length=3500)
+            messages = pagify(await asyncio.to_thread(get_top, snap, limit=10), page_length=3500)  # noqa
             await context.send_interactive(messages, box_lang="py")
 
     @commands.is_owner()

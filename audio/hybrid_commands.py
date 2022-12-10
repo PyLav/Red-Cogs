@@ -1,5 +1,4 @@
 import re
-from abc import ABC
 from pathlib import Path
 from re import Pattern
 from typing import Final, Optional
@@ -9,16 +8,17 @@ from discord import app_commands
 from redbot.core import commands
 from redbot.core.i18n import Translator
 
-from pylav import getLogger
-from pylav.query import Query
-from pylav.red_utils.ui.menus.queue import QueueMenu
-from pylav.red_utils.ui.sources.queue import QueueSource
-from pylav.red_utils.utils import rgetattr
-from pylav.red_utils.utils.decorators import invoker_is_dj, requires_player
-from pylav.red_utils.utils.validators import valid_query_attachment
-from pylav.tracks import Track
-from pylav.types import PyLavCogMixin
-from pylav.utils import PyLavContext, format_time, translation_shortener
+from pylav.core.context import PyLavContext
+from pylav.extension.red.ui.menus.queue import QueueMenu
+from pylav.extension.red.ui.sources.queue import QueueSource
+from pylav.extension.red.utils import rgetattr
+from pylav.extension.red.utils.decorators import invoker_is_dj, requires_player
+from pylav.extension.red.utils.validators import valid_query_attachment
+from pylav.helpers.format.strings import format_time_dd_hh_mm_ss, shorten_string
+from pylav.logging import getLogger
+from pylav.players.query.obj import Query
+from pylav.players.tracks.obj import Track
+from pylav.type_hints.bot import DISCORD_COG_TYPE_MIXIN
 
 LOGGER = getLogger("PyLav.cog.Player.commands.hybrids")
 _ = Translator("PyLavPlayer", Path(__file__))
@@ -27,14 +27,14 @@ _RE_TIME_CONVERTER: Final[Pattern] = re.compile(r"(?:(\d+):)?(\d+):(\d+)")
 # The above was updated to allow for any `(\d+)?\d+:\d+` combination to include unusual time formats such as `1:75`
 
 
-class HybridCommands(PyLavCogMixin, ABC):
+class HybridCommands(DISCORD_COG_TYPE_MIXIN):
     @commands.hybrid_command(
         name="play",
-        description=translation_shortener(max_length=100, translation=_("Plays a specified query")),
+        description=shorten_string(max_length=100, string=_("Plays a specified query")),
         aliases=["p"],
     )
     @app_commands.describe(
-        query=translation_shortener(max_length=100, translation=_("The query to play, either a link or a search query"))
+        query=shorten_string(max_length=100, string=_("The query to play, either a link or a search query"))
     )
     @commands.guild_only()
     @invoker_is_dj()
@@ -164,7 +164,7 @@ class HybridCommands(PyLavCogMixin, ABC):
                     description=_("{track} enqueued").format(
                         track=await single_track.get_track_display_name(with_url=True)
                     ),
-                    thumbnail=single_track.thumbnail,
+                    thumbnail=await single_track.thumbnail(),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -180,13 +180,11 @@ class HybridCommands(PyLavCogMixin, ABC):
 
     @commands.hybrid_command(
         name="connect",
-        description=translation_shortener(
-            max_length=100, translation=_("Connects the Player to the specified channel or your current channel")
+        description=shorten_string(
+            max_length=100, string=_("Connects the Player to the specified channel or your current channel")
         ),
     )
-    @app_commands.describe(
-        channel=translation_shortener(max_length=100, translation=_("The voice channel to connect to"))
-    )
+    @app_commands.describe(channel=shorten_string(max_length=100, string=_("The voice channel to connect to")))
     @commands.guild_only()
     @invoker_is_dj()
     async def command_connect(self, context: PyLavContext, *, channel: Optional[discord.VoiceChannel] = None):
@@ -266,7 +264,7 @@ class HybridCommands(PyLavCogMixin, ABC):
 
     @commands.hybrid_command(
         name="np",
-        description=translation_shortener(max_length=100, translation=_("Shows the track currently being played")),
+        description=shorten_string(max_length=100, string=_("Shows the track currently being played")),
         aliases=["now"],
     )
     @commands.guild_only()
@@ -296,7 +294,7 @@ class HybridCommands(PyLavCogMixin, ABC):
 
     @commands.hybrid_command(
         name="skip",
-        description=translation_shortener(max_length=100, translation=_("Skips or votes to skip the current track")),
+        description=shorten_string(max_length=100, string=_("Skips or votes to skip the current track")),
     )
     @commands.guild_only()
     @requires_player()
@@ -327,7 +325,7 @@ class HybridCommands(PyLavCogMixin, ABC):
                     description=_("Skipped - {track}").format(
                         track=await context.player.current.get_track_display_name(with_url=True)
                     ),
-                    thumbnail=context.player.current.thumbnail,
+                    thumbnail=await context.player.current.thumbnail(),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -336,9 +334,7 @@ class HybridCommands(PyLavCogMixin, ABC):
 
     @commands.hybrid_command(
         name="stop",
-        description=translation_shortener(
-            max_length=100, translation=_("Stops the player and remove all tracks from the queue")
-        ),
+        description=shorten_string(max_length=100, string=_("Stops the player and remove all tracks from the queue")),
     )
     @commands.guild_only()
     @requires_player()
@@ -371,9 +367,7 @@ class HybridCommands(PyLavCogMixin, ABC):
 
     @commands.hybrid_command(
         name="dc",
-        description=translation_shortener(
-            max_length=100, translation=_("Disconnects the player from the voice channel")
-        ),
+        description=shorten_string(max_length=100, string=_("Disconnects the player from the voice channel")),
         aliases=["disconnect"],
     )
     @requires_player()
@@ -402,7 +396,7 @@ class HybridCommands(PyLavCogMixin, ABC):
 
     @commands.hybrid_command(
         name="queue",
-        description=translation_shortener(max_length=100, translation=_("Shows the current queue for the player")),
+        description=shorten_string(max_length=100, string=_("Shows the current queue for the player")),
         aliases=["q"],
     )
     @commands.guild_only()
@@ -427,7 +421,7 @@ class HybridCommands(PyLavCogMixin, ABC):
         ).start(ctx=context)
 
     @commands.hybrid_command(
-        name="shuffle", description=translation_shortener(max_length=100, translation=_("Shuffles the player's queue"))
+        name="shuffle", description=shorten_string(max_length=100, string=_("Shuffles the player's queue"))
     )
     @commands.guild_only()
     @requires_player()
@@ -471,11 +465,9 @@ class HybridCommands(PyLavCogMixin, ABC):
 
     @commands.hybrid_command(
         name="repeat",
-        description=translation_shortener(max_length=100, translation=_("Set whether to repeat current song or queue")),
+        description=shorten_string(max_length=100, string=_("Set whether to repeat current song or queue")),
     )
-    @app_commands.describe(
-        queue=translation_shortener(max_length=100, translation=_("Should the whole queue be repeated"))
-    )
+    @app_commands.describe(queue=shorten_string(max_length=100, string=_("Should the whole queue be repeated")))
     @commands.guild_only()
     @requires_player()
     @invoker_is_dj()
@@ -512,9 +504,7 @@ class HybridCommands(PyLavCogMixin, ABC):
             embed=await context.lavalink.construct_embed(description=msg, messageable=context), ephemeral=True
         )
 
-    @commands.hybrid_command(
-        name="pause", description=translation_shortener(max_length=100, translation=_("Pause the player"))
-    )
+    @commands.hybrid_command(name="pause", description=shorten_string(max_length=100, string=_("Pause the player")))
     @commands.guild_only()
     @requires_player()
     @invoker_is_dj()
@@ -549,9 +539,7 @@ class HybridCommands(PyLavCogMixin, ABC):
             ephemeral=True,
         )
 
-    @commands.hybrid_command(
-        name="resume", description=translation_shortener(max_length=100, translation=_("Resume the player"))
-    )
+    @commands.hybrid_command(name="resume", description=shorten_string(max_length=100, string=_("Resume the player")))
     @commands.guild_only()
     @requires_player()
     @invoker_is_dj()
@@ -674,8 +662,8 @@ class HybridCommands(PyLavCogMixin, ABC):
             )
             return
 
-        if not context.player.current.is_seekable:
-            if context.player.current.stream:
+        if not await context.player.current.is_seekable():
+            if await context.player.current.stream():
                 await context.send(
                     embed=await context.lavalink.construct_embed(
                         title=_("Unable to seek track"),
@@ -718,7 +706,7 @@ class HybridCommands(PyLavCogMixin, ABC):
                     embed=await context.lavalink.construct_embed(
                         description=_("Moved {seconds}s to {time}").format(
                             seconds=seek,
-                            time=format_time(seek_ms),
+                            time=format_time_dd_hh_mm_ss(seek_ms),
                         ),
                         messageable=context,
                     ),
@@ -737,7 +725,9 @@ class HybridCommands(PyLavCogMixin, ABC):
 
             await context.send(
                 embed=await context.lavalink.construct_embed(
-                    description=_("Moved to {time}").format(time=format_time(seek_ms) if seek_ms else "00:00"),
+                    description=_("Moved to {time}").format(
+                        time=format_time_dd_hh_mm_ss(seek_ms) if seek_ms else "00:00"
+                    ),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -780,7 +770,7 @@ class HybridCommands(PyLavCogMixin, ABC):
                 description=_("Playing previous track: {track}").format(
                     track=await context.player.current.get_track_display_name(with_url=True)
                 ),
-                thumbnail=context.player.current.thumbnail,
+                thumbnail=await context.player.current.thumbnail(),
                 messageable=context,
             ),
             ephemeral=True,

@@ -1,4 +1,3 @@
-from abc import ABC
 from pathlib import Path
 
 import discord
@@ -6,10 +5,10 @@ from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import humanize_number
 
-from pylav import getLogger
-from pylav.red_utils.utils.decorators import always_hidden
-from pylav.types import PyLavCogMixin
-from pylav.utils import PyLavContext
+from pylav.core.context import PyLavContext
+from pylav.extension.red.utils.decorators import always_hidden
+from pylav.logging import getLogger
+from pylav.type_hints.bot import DISCORD_COG_TYPE_MIXIN
 
 LOGGER = getLogger("PyLav.cog.Player.commands.utils")
 
@@ -17,7 +16,7 @@ _ = Translator("PyLavPlayer", Path(__file__))
 
 
 @cog_i18n(_)
-class UtilityCommands(PyLavCogMixin, ABC):
+class UtilityCommands(DISCORD_COG_TYPE_MIXIN):
     @always_hidden()
     @commands.command(name="__volume_change_by", hidden=True)
     async def command_volume_change_by(self, context: PyLavContext, change_by: int):

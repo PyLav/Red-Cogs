@@ -1,23 +1,23 @@
 import shlex
-from abc import ABC
 
 import discord
 from discord.ext.commands import HybridCommand
 from redbot.core.i18n import Translator, cog_i18n
 
-from pylav.query import MERGED_REGEX, Query
-from pylav.red_utils.utils.decorators import is_dj_logic
-from pylav.red_utils.utils.validators import valid_query_attachment
-from pylav.types import InteractionT, PyLavCogMixin
+from pylav.constants.regex import SOURCE_INPUT_MATCH_MERGED
+from pylav.extension.red.utils.decorators import is_dj_logic
+from pylav.extension.red.utils.validators import valid_query_attachment
+from pylav.players.query.obj import Query
+from pylav.type_hints.bot import DISCORD_COG_TYPE_MIXIN, DISCORD_INTERACTION_TYPE
 
 _ = Translator("PyLavPlayer", __file__)
 
 
 @cog_i18n(_)
-class ContextMenus(PyLavCogMixin, ABC):
+class ContextMenus(DISCORD_COG_TYPE_MIXIN):
     command_play: HybridCommand
 
-    async def _context_message_play(self, interaction: InteractionT, message: discord.Message) -> None:
+    async def _context_message_play(self, interaction: DISCORD_INTERACTION_TYPE, message: discord.Message) -> None:
         await interaction.response.defer(ephemeral=True)
         if not interaction.guild:
             await interaction.followup.send(
@@ -89,7 +89,7 @@ class ContextMenus(PyLavCogMixin, ABC):
 
         for part in content_parts:
             part = part.strip()
-            for __ in MERGED_REGEX.finditer(part):
+            for __ in SOURCE_INPUT_MATCH_MERGED.finditer(part):
                 valid_matches.add(part)
         for attachment in message.attachments:
             if valid_query_attachment(attachment.filename):
@@ -126,7 +126,7 @@ class ContextMenus(PyLavCogMixin, ABC):
 
         await self.command_play.callback(self, interaction, query="\n".join(valid_matches))  # type: ignore
 
-    async def _context_user_play(self, interaction: InteractionT, member: discord.Member) -> None:
+    async def _context_user_play(self, interaction: DISCORD_INTERACTION_TYPE, member: discord.Member) -> None:
         # sourcery no-metrics
         await interaction.response.defer(ephemeral=True)
         if not interaction.guild:
