@@ -197,6 +197,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         config = self.lavalink.player_config_manager.get_config(context.guild.id)
         if (channel_ := context.guild.get_channel_or_thread(await config.fetch_forced_channel_id())) is None:
             actual_channel = channel or rgetattr(context, "author.voice.channel", None)
+            forced_channel = False
             if not actual_channel:
                 await context.send(
                     embed=await context.lavalink.construct_embed(
@@ -210,6 +211,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                 return
         else:
             actual_channel = channel_
+            forced_channel = True
         if not ((permission := actual_channel.permissions_for(context.me)) and permission.connect and permission.speak):
             if permission.connect:
                 description = _("I don't have permission to connect to that channel").format(
@@ -225,7 +227,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                 ephemeral=True,
             )
             return
-        if not (
+        if not forced_channel and not (
             (permission := actual_channel.permissions_for(context.author))
             and permission.connect
             and permission.view_channel
