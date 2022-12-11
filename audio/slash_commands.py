@@ -137,9 +137,7 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN):
             node = interaction.client.lavalink.node_manager.find_best_node(feature=feature)
 
         for track in tracks:
-            track = Track(
-                node=node, data=track, query=await Query.from_base64(track.encoded), requester=interaction.user.id
-            )
+            track = await Track.build_track(node=node, data=track, query=None, requester=interaction.user.id)
             track_id = hashlib.md5(track.encoded.encode()).hexdigest()
             self._track_cache[track_id] = track
             choices.append(

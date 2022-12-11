@@ -164,7 +164,7 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
         if search_queries:
             total_tracks_from_search = 0
             for query in search_queries:
-                single_track = track = Track(
+                single_track = track = await Track.build_track(
                     node=player.node,
                     data=None,
                     query=query,
@@ -276,14 +276,14 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
         else:
             try:
                 data = await async_decoder(track_url_or_index)
-                track = Track(
+                track = await Track.build_track(
                     node=player.node,
                     data=data,
                     query=await Query.from_base64(track_url_or_index),
                     requester=context.author.id,
                 )
             except Exception:  # noqa
-                track = Track(
+                track = await Track.build_track(
                     node=player.node,
                     data=None,
                     query=await Query.from_string(track_url_or_index),

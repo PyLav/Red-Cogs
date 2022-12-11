@@ -120,7 +120,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         if search_queries:
             total_tracks_from_search = 0
             for query in search_queries:
-                single_track = track = Track(
+                single_track = track = await Track.build_track(
                     node=player.node,
                     data=None,
                     query=query,

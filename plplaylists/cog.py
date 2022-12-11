@@ -249,7 +249,7 @@ class PyLavPlaylists(
             )
             return
 
-        playlists: list[PlaylistModel] = playlist  # type: ignore
+        playlists: list[Playlist] = playlist
         playlist = await maybe_prompt_for_playlist(cog=self, playlists=playlists, context=context)
         if not playlist:
             return
@@ -518,7 +518,7 @@ class PyLavPlaylists(
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
 
-        playlists: list[PlaylistModel] = playlist  # type: ignore
+        playlists: list[Playlist] = playlist
         playlist = await maybe_prompt_for_playlist(cog=self, playlists=playlists, context=context)
         if not playlist:
             return
@@ -535,7 +535,7 @@ class PyLavPlaylists(
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
 
-        playlists: list[PlaylistModel] = playlist  # type: ignore
+        playlists: list[Playlist] = playlist
         playlist = await maybe_prompt_for_playlist(cog=self, playlists=playlists, context=context)
         if not playlist:
             return
@@ -577,7 +577,7 @@ class PyLavPlaylists(
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
 
-        playlists: list[PlaylistModel] = playlist  # type: ignore
+        playlists: list[Playlist] = playlist
         playlist = await maybe_prompt_for_playlist(cog=self, playlists=playlists, context=context)
         if not playlist:
             return
@@ -765,7 +765,7 @@ class PyLavPlaylists(
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        playlists: list[PlaylistModel] = playlist  # type: ignore
+        playlists: list[Playlist] = playlist
         playlist = await maybe_prompt_for_playlist(cog=self, playlists=playlists, context=context)
         if not playlist:
             return
@@ -797,7 +797,7 @@ class PyLavPlaylists(
         await player.bulk_add(
             requester=context.author.id,
             tracks_and_queries=[
-                Track(node=player.node, data=track, requester=context.author.id, query=await Query.from_base64(track))
+                await Track.build_track(node=player.node, data=track, requester=context.author.id, query=None)
                 async for i, track in AsyncIter(await playlist.fetch_tracks()).enumerate()
             ],
         )
