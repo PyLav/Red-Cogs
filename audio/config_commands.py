@@ -914,9 +914,8 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        if not (
-            channel
-            and (permission := channel.permissions_for(context.me))
+        if channel is not None and not (
+            (permission := channel.permissions_for(context.me))
             and permission.send_messages
             and permission.embed_links
             and permission.read_message_history
@@ -932,14 +931,10 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
             )
             return
 
-        if context.player:
-            config = context.player.config
-        else:
-            config = self.lavalink.player_config_manager.get_config(context.guild.id)
-
-        if context.player:
+        if context.player and channel is not None:
             await context.player.set_text_channel(channel)
         else:
+            config = self.lavalink.player_config_manager.get_config(context.guild.id)
             await config.update_text_channel_id(channel.id if channel else 0)
         if channel:
             await context.send(
@@ -967,8 +962,8 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        if not (
-            channel and (permission := channel.permissions_for(context.me)) and permission.connect and permission.speak
+        if channel is not None and not (
+            (permission := channel.permissions_for(context.me)) and permission.connect and permission.speak
         ):
             await context.send(
                 embed=await context.lavalink.construct_embed(
@@ -980,16 +975,12 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
                 ephemeral=True,
             )
             return
-
-        if context.player:
-            config = context.player.config
-        else:
-            config = self.lavalink.player_config_manager.get_config(context.guild.id)
-        if context.player:
-            if channel and context.player.channel.id != channel.id:
+        if context.player and channel is not None:
+            if context.player.channel.id != channel.id:
                 await context.player.move_to(channel=channel, requester=context.author)
             await context.player.set_forced_vc(channel)
         else:
+            config = self.lavalink.player_config_manager.get_config(context.guild.id)
             await config.update_forced_channel_id(channel.id if channel else 0)
         if channel:
             await context.send(
