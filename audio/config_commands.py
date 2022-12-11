@@ -17,6 +17,7 @@ from pylav.extension.red.utils.decorators import invoker_is_dj, requires_player
 from pylav.helpers.discord.converters.playlists import PlaylistConverter
 from pylav.helpers.format.ascii import EightBitANSI
 from pylav.logging import getLogger
+from pylav.storage.models.playlist import Playlist
 from pylav.type_hints.bot import DISCORD_COG_TYPE_MIXIN
 
 LOGGER = getLogger("PyLav.cog.Player.commands.config")
@@ -878,7 +879,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        playlists: list[PlaylistModel] = playlist  # type: ignore
+        playlists: list[Playlist] = playlist
         playlist = await maybe_prompt_for_playlist(cog=self, playlists=playlists, context=context)
         if not playlist:
             return
