@@ -209,6 +209,18 @@ class HybridCommands(PyLavCogMixin, ABC):
                 ephemeral=True,
             )
             return
+        if not (
+            (permission := actual_channel.permissions_for(context.author)) and permission.connect and permission.view_channel
+        ):
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("You don't have permission to connect to {channel}").format(channel=actual_channel.mention),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+            return
+
         if (player := context.player) is None:
             player = await context.lavalink.connect_player(context.author, channel=actual_channel, self_deaf=True)
         else:
