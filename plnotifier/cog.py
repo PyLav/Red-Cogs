@@ -567,7 +567,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             user = event.track.requester or self.bot.user
         self._message_queue[channel].append(
             await self.lavalink.construct_embed(
-                title=_("Spotify Track Start Event"),
+                title=_("Deezer Track Start Event"),
                 description=_(
                     "[Node={node}] Deezer track: {track} has started playing.\nRequested by: {requester}"
                 ).format(
@@ -1904,7 +1904,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             await self.lavalink.construct_embed(
                 title=_("WebSocket Closed Event"),
                 description=_(
-                    "[Node={node}] The websocket connection to the Lavalink node closed with"
+                    "[Node={node}] The Lavalink websocket connection to Discord closed with"
                     " code {code} and reason {reason}"
                 ).format(code=event.code, reason=event.reason, node=event.node.name),
                 messageable=channel,
