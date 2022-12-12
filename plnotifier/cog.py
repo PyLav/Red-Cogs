@@ -14,6 +14,7 @@ from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import box, humanize_list, inline
 from tabulate import tabulate
 
+from pylav.constants.misc import EQ_BAND_MAPPING
 from pylav.core.client import Client
 from pylav.core.context import PyLavContext
 from pylav.events.node import NodeChangedEvent, NodeConnectedEvent, NodeDisconnectedEvent, WebSocketClosedEvent
@@ -1855,7 +1856,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
                 data_[t_values] = "\n".join(
                     [
                         "{band}: {gain}".format(
-                            band=EightBitANSI.paint_white(_("Band {band_name}").format(band_name=band["band"])),
+                            band=EightBitANSI.paint_white(EQ_BAND_MAPPING[band["band"]]),
                             gain=EightBitANSI.paint_green(band["gain"]),
                         )
                         for band in values

@@ -11,6 +11,7 @@ from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import box
 from tabulate import tabulate
 
+from pylav.constants.misc import EQ_BAND_MAPPING
 from pylav.core.context import PyLavContext
 from pylav.exceptions.node import NodeHasNoFiltersException
 from pylav.extension.red.utils.decorators import invoker_is_dj, requires_player
@@ -832,7 +833,7 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
                     data_[t_values] = "\n".join(
                         [
                             "{band}: {gain}".format(
-                                band=EightBitANSI.paint_white(_("Band {band}").format(band["band"])),
+                                band=EightBitANSI.paint_white(EQ_BAND_MAPPING[band["band"]]),
                                 gain=EightBitANSI.paint_green(band["gain"]),
                             )
                             for band in eq_value
