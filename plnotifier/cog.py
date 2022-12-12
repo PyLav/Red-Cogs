@@ -447,6 +447,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_track_stuck_event(self, event: TrackStuckEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -465,6 +466,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_track_exception_event(self, event: TrackExceptionEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -490,6 +492,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_track_end_event(self, event: TrackEndEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -522,6 +525,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_track_start_youtube_music_event(self, event: TrackStartYouTubeMusicEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -551,6 +555,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_track_start_deezer_event(self, event: TrackStartDeezerEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -580,6 +585,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_track_start_spotify_event(self, event: TrackStartSpotifyEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -609,6 +615,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_track_start_apple_music_event(self, event: TrackStartAppleMusicEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -638,6 +645,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_track_start_localfile_event(self, event: TrackStartLocalFileEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -667,6 +675,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_track_start_http_event(self, event: TrackStartHTTPEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -696,6 +705,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_track_start_speak_event(self, event: TrackStartSpeakEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -725,6 +735,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_track_start_youtube_event(self, event: TrackStartYouTubeEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -754,6 +765,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_track_start_clypit_event(self, event: TrackStartGetYarnEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -786,6 +798,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_track_start_getyarn_event(self, event: TrackStartGetYarnEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -818,6 +831,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_track_start_mixcloud_event(self, event: TrackStartMixCloudEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -850,6 +864,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_track_start_ocrmix_event(self, event: TrackStartMixCloudEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -882,6 +897,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_track_start_pornhub_event(self, event: TrackStartPornHubEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -914,6 +930,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_track_start_reddit_event(self, event: TrackStartPornHubEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -946,6 +963,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_track_start_soundgasm_event(self, event: TrackStartSoundgasmEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -978,6 +996,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_track_start_tiktok_event(self, event: TrackStartSoundgasmEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -1010,6 +1029,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_track_start_bandcamp_event(self, event: TrackStartBandcampEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -1042,6 +1062,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_track_start_soundcloud_event(self, event: TrackStartSoundCloudEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -1074,6 +1095,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_track_start_twitch_event(self, event: TrackStartTwitchEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -1106,6 +1128,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_track_start_vimeo_event(self, event: TrackStartVimeoEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -1138,6 +1161,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_track_start_gctts_event(self, event: TrackStartGCTTSEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -1170,6 +1194,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_track_start_niconico_event(self, event: TrackStartNicoNicoEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -1202,6 +1227,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_track_skipped_event(self, event: TrackSkippedEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -1231,6 +1257,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_track_seek_event(self, event: TrackSeekEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -1265,6 +1292,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_track_previous_requested_event(self, event: TrackPreviousRequestedEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -1294,6 +1322,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_tracks_requested_event(self, event: TracksRequestedEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -1325,6 +1354,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_track_auto_play_event(self, event: TrackAutoPlayEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -1347,6 +1377,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_track_resumed_event(self, event: TrackResumedEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -1376,6 +1407,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_queue_shuffled_event(self, event: QueueShuffledEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -1403,6 +1435,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_queue_end_event(self, event: QueueEndEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -1425,6 +1458,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_queue_tracks_removed_event(self, event: QueueTracksRemovedEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -1452,6 +1486,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_player_paused_event(self, event: PlayerPausedEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -1479,6 +1514,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_player_stopped_event(self, event: PlayerStoppedEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -1506,6 +1542,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_player_resumed_event(self, event: PlayerResumedEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -1533,6 +1570,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_player_moved_event(self, event: PlayerMovedEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -1560,6 +1598,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_player_disconnected_event(self, event: PlayerDisconnectedEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -1587,6 +1626,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_player_connected_event(self, event: PlayerConnectedEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -1614,6 +1654,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_player_volume_changed_event(self, event: PlayerVolumeChangedEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -1641,6 +1682,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_player_repeat_event(self, event: PlayerRepeatEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -1693,6 +1735,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_player_restored_event(self, event: PlayerRestoredEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -1720,6 +1763,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_segment_skipped_event(self, event: SegmentSkippedEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -1764,6 +1808,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_filters_applied_event(self, event: FiltersAppliedEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -1809,7 +1854,10 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
                 values = values["equalizer"]
                 data_[t_values] = "\n".join(
                     [
-                        f"{EightBitANSI.paint_white('Band '+band['band']) }: {EightBitANSI.paint_green(band['gain'])}"
+                        "{band}: {gain}".format(
+                            band=EightBitANSI.paint_white(_("Band {band_name}").format(band_name=band["band"])),
+                            gain=EightBitANSI.paint_green(band["gain"]),
+                        )
                         for band in values
                         if band["gain"]
                     ]
@@ -1840,6 +1888,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             return
         if channel_id := await self._config.notify_channel_id():
             if notify_channel := self.bot.get_channel(channel_id):
+                await self.lavalink.set_context_locale(notify_channel.guild)
                 self._message_queue[notify_channel].append(
                     await self.lavalink.construct_embed(
                         title=_("Node Connected Event"),
@@ -1856,6 +1905,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             return
         if channel_id := await self._config.notify_channel_id():
             if notify_channel := self.bot.get_channel(channel_id):
+                await self.lavalink.set_context_locale(notify_channel.guild)
                 self._message_queue[notify_channel].append(
                     await self.lavalink.construct_embed(
                         title=_("Node Disconnected Event"),
@@ -1869,6 +1919,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_node_changed_event(self, event: NodeChangedEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
@@ -1891,6 +1942,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
     @commands.Cog.listener()
     async def on_pylav_web_socket_closed_event(self, event: WebSocketClosedEvent) -> None:
         player = event.player
+        await self.lavalink.set_context_locale(player.guild)
         channel = await player.notify_channel()
         if channel is None:
             return
