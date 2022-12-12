@@ -831,7 +831,10 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
                     eq_value = typing.cast(list[JSON_DICT_TYPE], values["bands"])
                     data_[t_values] = "\n".join(
                         [
-                            f"{EightBitANSI.paint_white('Band ' + band['band'])}: {EightBitANSI.paint_green(band['gain'])}"
+                            "{band}: {gain}".format(
+                                band=EightBitANSI.paint_white(_("Band {band}").format(band["band"])),
+                                gain=EightBitANSI.paint_green(band["gain"]),
+                            )
                             for band in eq_value
                             if band["gain"]
                         ]
