@@ -208,7 +208,7 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
                     description=_("{track} enqueued").format(
                         track=await single_track.get_track_display_name(with_url=True)
                     ),
-                    thumbnail=await single_track.thumbnail(),
+                    thumbnail=await single_track.artworkUrl(),
                     messageable=context,
                 ),
                 ephemeral=True,

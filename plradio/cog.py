@@ -146,7 +146,7 @@ class PyLavRadio(DISCORD_COG_TYPE_MIXIN):
                     description="{translation} **[{station_name}]({station_url})**".format(
                         station_name=station.name, station_url=url, translation=_("Enqueued")
                     ),
-                    thumbnail=await single_track.thumbnail(),
+                    thumbnail=await single_track.artworkUrl(),
                     messageable=context,
                 ),
                 ephemeral=True,

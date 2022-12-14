@@ -164,7 +164,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                     description=_("{track} enqueued").format(
                         track=await single_track.get_track_display_name(with_url=True)
                     ),
-                    thumbnail=await single_track.thumbnail(),
+                    thumbnail=await single_track.artworkUrl(),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -325,7 +325,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                     description=_("Skipped - {track}").format(
                         track=await context.player.current.get_track_display_name(with_url=True)
                     ),
-                    thumbnail=await context.player.current.thumbnail(),
+                    thumbnail=await context.player.current.artworkUrl(),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -770,7 +770,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                 description=_("Playing previous track: {track}").format(
                     track=await context.player.current.get_track_display_name(with_url=True)
                 ),
-                thumbnail=await context.player.current.thumbnail(),
+                thumbnail=await context.player.current.artworkUrl(),
                 messageable=context,
             ),
             ephemeral=True,
