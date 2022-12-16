@@ -222,24 +222,16 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
             for i, page in enumerate(pagify(lyrics, delims=["\n"], page_length=3950), start=1):
                 embed_list.append(
                     await self.lavalink.construct_embed(
-                        title=_(
-                            "{extras}Lyrics for {title}{author} - Part {page}"
-                        ).format(
+                        title=_("{extras}Lyrics for {title}{author} - Part {page}").format(
                             title=await track.title(),
                             page=i,
                             extras="" if exact else _("(Guess) "),
-                            author=_(" by {name}").format(
-                                name=await track.author()
-                            )
-                            if show_author
-                            else "",
+                            author=_(" by {name}").format(name=await track.author()) if show_author else "",
                         ),
                         description=page,
                         url=await track.uri(),
                         messageable=channel,
-                        footer=_("Lyrics provided by {provider}").format(
-                            provider=response.provider
-                        ),
+                        footer=_("Lyrics provided by {provider}").format(provider=response.provider),
                     )
                 )
             await channel.send(embeds=embed_list)
@@ -249,16 +241,12 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                     title=_("{extras}Lyrics for {title}{author}").format(
                         title=await track.title(),
                         extras="" if exact else _("(Guess) "),
-                        author=_(" by {name}").format(name=await track.author())
-                        if show_author
-                        else "",
+                        author=_(" by {name}").format(name=await track.author()) if show_author else "",
                     ),
                     url=await track.uri(),
                     description=lyrics,
                     messageable=channel,
-                    footer=_("Lyrics provided by {provider}").format(
-                        provider=response.provider
-                    ),
+                    footer=_("Lyrics provided by {provider}").format(provider=response.provider),
                 )
             )
 
