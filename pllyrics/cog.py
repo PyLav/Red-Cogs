@@ -89,9 +89,9 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                 description=box(
                     EightBitANSI.paint_yellow(
                         _("Timed lyrics are now {state}").format(
-                            state=EightBitANSI.paint_green(_("enabled"))
-                            if not current
-                            else EightBitANSI.paint_red(_("disabled"))
+                            state=EightBitANSI.paint_red(_("disabled"))
+                            if current
+                            else EightBitANSI.paint_green(_("enabled"))
                         )
                     ),
                     lang="ansi",
@@ -112,9 +112,9 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                 description=box(
                     EightBitANSI.paint_yellow(
                         _("Sending full lyrics on track start {state}").format(
-                            state=EightBitANSI.paint_green(_("enabled"))
-                            if not current
-                            else EightBitANSI.paint_red(_("disabled"))
+                            state=EightBitANSI.paint_red(_("disabled"))
+                            if current
+                            else EightBitANSI.paint_green(_("enabled"))
                         )
                     ),
                     lang="ansi",
@@ -222,16 +222,24 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
             for i, page in enumerate(pagify(lyrics, delims=["\n"], page_length=3950), start=1):
                 embed_list.append(
                     await self.lavalink.construct_embed(
-                        title=_("{extras}Lyrics for {title}{author} - Part {page}").format(
+                        title=_(
+                            "{extras}Lyrics for {title}{author} - Part {page}"
+                        ).format(
                             title=await track.title(),
                             page=i,
-                            extras=_("(Guess) ") if not exact else "",
-                            author=_(" by {name}").format(name=await track.author()) if show_author else "",
+                            extras="" if exact else _("(Guess) "),
+                            author=_(" by {name}").format(
+                                name=await track.author()
+                            )
+                            if show_author
+                            else "",
                         ),
                         description=page,
                         url=await track.uri(),
                         messageable=channel,
-                        footer=_("Lyrics provided by {provider}").format(provider=response.provider),
+                        footer=_("Lyrics provided by {provider}").format(
+                            provider=response.provider
+                        ),
                     )
                 )
             await channel.send(embeds=embed_list)
@@ -240,14 +248,18 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                 embed=await self.lavalink.construct_embed(
                     title=_("{extras}Lyrics for {title}{author}").format(
                         title=await track.title(),
-                        extras=_("(Guess) ") if not exact else "",
-                        author=_(" by {name}").format(name=await track.author()) if show_author else "",
+                        extras="" if exact else _("(Guess) "),
+                        author=_(" by {name}").format(name=await track.author())
+                        if show_author
+                        else "",
                     ),
                     url=await track.uri(),
                     description=lyrics,
                     messageable=channel,
-                    footer=_("Lyrics provided by {provider}").format(provider=response.provider),
-                ),
+                    footer=_("Lyrics provided by {provider}").format(
+                        provider=response.provider
+                    ),
+                )
             )
 
     async def process_event(self, event: TrackStartEvent):
