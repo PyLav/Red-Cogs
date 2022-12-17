@@ -16,6 +16,7 @@ from pylav.exceptions.request import HTTPException
 from pylav.extension.flowery.lyrics import Error
 from pylav.extension.red.utils.decorators import requires_player
 from pylav.helpers.format.ascii import EightBitANSI
+from pylav.helpers.format.strings import format_time_dd_hh_mm_ss
 from pylav.logging import getLogger
 from pylav.players.tracks.obj import Track
 from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE_MIXIN
@@ -102,7 +103,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
         )
 
     @command_pllyrics_set.command(name="full")
-    async def command_pllyrics_set_timed(self, context: PyLavContext):
+    async def command_pllyrics_set_full(self, context: PyLavContext):
         """Show full lyrics on track start timed lyrics"""
 
         current = await self._config.guild(context.guild).lyrics.timed()
@@ -125,17 +126,28 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
         )
 
     @command_pllyrics_set.command(name="channel")
-    async def command_pllyrics_set_channel(self, context: PyLavContext, channel: discord.TextChannel):
+    async def command_pllyrics_set_channel(
+        self, context: PyLavContext, channel: discord.TextChannel | discord.Thread | discord.DMChannel | None = None
+    ):
         """Set the lyrics channel"""
-
-        await self._config.guild(context.guild).lyrics.channel.set(channel.id)
-        await context.send(
-            embed=await context.lavalink.construct_embed(
-                description=_("Lyrics channel set to {channel}").format(channel=channel.mention),
-                messageable=context,
-            ),
-            ephemeral=True,
-        )
+        if channel:
+            await self._config.guild(context.guild).lyrics.channel.set(channel.id)
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("Lyrics channel set to {channel}").format(channel=channel.mention),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+        else:
+            await self._config.guild(context.guild).lyrics.channel.clear()
+            await context.send(
+                embed=await context.lavalink.construct_embed(
+                    description=_("I will not send lyrics to any channel"),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
 
     @command_pllyrics.command(name="show")
     @requires_player()
@@ -250,6 +262,64 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                 ),
             )
 
+    async def _send_timed_lyrics(self, track: Track, channel_id: int, guild: discord.Guild) -> None:
+        channel = guild.get_channel(channel_id)
+        if not channel:
+            return
+        player = self.lavalink.player_manager.get(guild.id)
+        if not player:
+            return
+        if not player.current:
+            return
+        if player.current.encoded != track.encoded:
+            return
+        try:
+            exact, response = await track.fetch_lyrics()
+        except HTTPException:
+            return
+        if isinstance(response, Error):
+            return
+        if not response or not response.lyrics:
+            return
+        show_author = await track.source() in {"deezer", "spotify", "applemusic"}
+        lyric_lines = len(response.lyrics.lines)
+        splitter = lyric_lines // 5
+        for chunk in [response.lyrics.lines[i : i + splitter] for i in range(0, lyric_lines, splitter)]:
+            if not player.current:
+                return
+            if player.current.encoded != track.encoded:
+                return
+            sleep_duration = 0
+            message_content = ""
+            start_point = chunk[0].start
+            if start_point < (player.estimated_position - 5000):
+                continue
+            for lyric in chunk:
+                message_content += f"{lyric.text}\n"
+                sleep_duration += lyric.duration
+            delta = sleep_duration
+            if player.timescale.changed:
+                sleep_duration = player.timescale.adjust_position(sleep_duration)
+
+            await channel.send(
+                embed=await self.lavalink.construct_embed(
+                    title=_("{extras}Lyrics for {title}{author}").format(
+                        title=await track.title(),
+                        extras=_("(Guess) ") if not exact else "",
+                        author=_(" by {name}").format(name=await track.author()) if show_author else "",
+                    ),
+                    url=await track.uri(),
+                    description=_("{lyrics}\n\nPosition: {duration} until {until}").format(
+                        lyrics=message_content,
+                        duration=format_time_dd_hh_mm_ss(start_point) if start_point else _("Start"),
+                        until=format_time_dd_hh_mm_ss(start_point + delta),
+                    ),
+                    messageable=channel,
+                    footer=_("Lyrics provided by {provider}").format(provider=response.provider),
+                ),
+            )
+            await asyncio.sleep(sleep_duration // 1000)
+
     async def process_event(self, event: TrackStartEvent):
         guild = event.player.guild
         if await self.bot.cog_disabled_in_guild(self, guild):
@@ -272,7 +342,13 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
             )
             return
         elif lyrics_config["timed"]:
-            # TODO: Implement timed lyrics
+            self._tasks.append(
+                asyncio.create_task(
+                    self._send_timed_lyrics(
+                        track=player.current, guild=player.guild, channel_id=lyrics_config["channel"]
+                    )
+                )
+            )
             return
         for task in self._tasks:
             if task.done():
