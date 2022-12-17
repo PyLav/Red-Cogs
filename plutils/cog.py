@@ -22,7 +22,6 @@ from pylav.extension.red.utils.decorators import requires_player
 from pylav.helpers.discord.converters.queries import QueryConverter
 from pylav.helpers.format.ascii import EightBitANSI
 from pylav.logging import getLogger
-from pylav.players.tracks.decoder import async_decoder
 from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE_MIXIN
 
 LOGGER = getLogger("PyLav.cog.Utils")
@@ -311,9 +310,8 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-
         try:
-            data = await async_decoder(base64)
+            data = await self.lavalink.decode_track(base64, raise_on_failure=True)
         except Exception:  # noqa
             await context.send(
                 embed=await context.lavalink.construct_embed(

@@ -14,7 +14,6 @@ from pylav.extension.red.utils.decorators import invoker_is_dj
 from pylav.helpers.format.strings import shorten_string
 from pylav.logging import getLogger
 from pylav.players.query.obj import Query
-from pylav.players.tracks.decoder import async_decoder
 from pylav.players.tracks.obj import Track
 from pylav.type_hints.bot import DISCORD_COG_TYPE_MIXIN
 
@@ -275,7 +274,7 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
                 return
         else:
             try:
-                data = await async_decoder(track_url_or_index)
+                data = await self.lavalink.decode_track(track_url_or_index, raise_on_failure=True)
                 track = await Track.build_track(
                     node=player.node,
                     data=data,
