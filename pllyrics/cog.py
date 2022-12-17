@@ -305,7 +305,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                 embed=await self.lavalink.construct_embed(
                     title=_("{extras}Lyrics for {title}{author}").format(
                         title=await track.title(),
-                        extras=_("(Guess) ") if not exact else "",
+                        extras="" if exact else _("(Guess) "),
                         author=_(" by {name}").format(name=await track.author()) if show_author else "",
                     ),
                     url=await track.uri(),
@@ -316,7 +316,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                     ),
                     messageable=channel,
                     footer=_("Lyrics provided by {provider}").format(provider=response.provider),
-                ),
+                )
             )
             await asyncio.sleep(sleep_duration // 1000)
 
