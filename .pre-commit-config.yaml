@@ -74,6 +74,19 @@ repos:
     hooks:
     -   id: pyupgrade
         args: [--py39-plus]
+-   repo: https://github.com/pycqa/flake8
+    rev: 6.0.0
+    hooks:
+    -   id: flake8
+        args: [--count, --select, 'E9,F7,F82', --show-source]
+-   repo: local
+    hooks:
+    -   id: update_po_files
+        name: update .po files
+        entry: python -m redgettext --command-docstrings --verbose --recursive .
+        language: system
+        types: [python]
+        pass_filenames: false
 ci:
     autofix_commit_msg: |
         [pre-commit.ci] auto fixes from pre-commit.com hooks
