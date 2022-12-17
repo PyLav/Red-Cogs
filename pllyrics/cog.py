@@ -306,24 +306,16 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                     title=_("{extras}Lyrics for {title}{author}").format(
                         title=await track.title(),
                         extras="" if exact else _("(Guess) "),
-                        author=_(" by {name}").format(name=await track.author())
-                        if show_author
-                        else "",
+                        author=_(" by {name}").format(name=await track.author()) if show_author else "",
                     ),
                     url=await track.uri(),
-                    description=_(
-                        "{lyrics}\n\nPosition: {duration} until {until}"
-                    ).format(
+                    description=_("{lyrics}\n\nPosition: {duration} until {until}").format(
                         lyrics=message_content,
-                        duration=format_time_dd_hh_mm_ss(start_point)
-                        if start_point
-                        else _("Start"),
+                        duration=format_time_dd_hh_mm_ss(start_point) if start_point else _("Start"),
                         until=format_time_dd_hh_mm_ss(start_point + delta),
                     ),
                     messageable=channel,
-                    footer=_("Lyrics provided by {provider}").format(
-                        provider=response.provider
-                    ),
+                    footer=_("Lyrics provided by {provider}").format(provider=response.provider),
                 )
             )
             await asyncio.sleep(sleep_duration // 1000)
