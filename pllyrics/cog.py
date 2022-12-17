@@ -89,9 +89,9 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                 description=box(
                     EightBitANSI.paint_yellow(
                         _("Timed lyrics are now {state}").format(
-                            state=EightBitANSI.paint_green(_("enabled"))
-                            if not current
-                            else EightBitANSI.paint_red(_("disabled"))
+                            state=EightBitANSI.paint_red(_("disabled"))
+                            if current
+                            else EightBitANSI.paint_green(_("enabled"))
                         )
                     ),
                     lang="ansi",
@@ -112,9 +112,9 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                 description=box(
                     EightBitANSI.paint_yellow(
                         _("Sending full lyrics on track start {state}").format(
-                            state=EightBitANSI.paint_green(_("enabled"))
-                            if not current
-                            else EightBitANSI.paint_red(_("disabled"))
+                            state=EightBitANSI.paint_red(_("disabled"))
+                            if current
+                            else EightBitANSI.paint_green(_("enabled"))
                         )
                     ),
                     lang="ansi",
@@ -225,7 +225,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                         title=_("{extras}Lyrics for {title}{author} - Part {page}").format(
                             title=await track.title(),
                             page=i,
-                            extras=_("(Guess) ") if not exact else "",
+                            extras="" if exact else _("(Guess) "),
                             author=_(" by {name}").format(name=await track.author()) if show_author else "",
                         ),
                         description=page,
@@ -240,14 +240,14 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                 embed=await self.lavalink.construct_embed(
                     title=_("{extras}Lyrics for {title}{author}").format(
                         title=await track.title(),
-                        extras=_("(Guess) ") if not exact else "",
+                        extras="" if exact else _("(Guess) "),
                         author=_(" by {name}").format(name=await track.author()) if show_author else "",
                     ),
                     url=await track.uri(),
                     description=lyrics,
                     messageable=channel,
                     footer=_("Lyrics provided by {provider}").format(provider=response.provider),
-                ),
+                )
             )
 
     async def process_event(self, event: TrackStartEvent):
