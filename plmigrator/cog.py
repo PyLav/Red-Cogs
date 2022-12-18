@@ -105,8 +105,6 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
             playlist_api = PlaylistWrapper(self.bot, audio_config, audio_db_conn)
             await playlist_api.init()
         global_config = self.lavalink.lib_db_manager.get_config()
-        if (r := await audio_config.java_exc_path()) and r != "java":
-            await global_config.update_java_path(r)
         if r := await audio_config.localpath():
             path = aiopath.AsyncPath(r)
             localtracks_path = path / "localtracks"

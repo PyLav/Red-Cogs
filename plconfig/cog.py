@@ -13,7 +13,6 @@ from tabulate import tabulate
 from pylav.constants.builtin_nodes import PYLAV_BUNDLED_NODES_SETTINGS
 from pylav.core.client import Client
 from pylav.core.context import PyLavContext
-from pylav.extension.bundled_node.utils import get_true_path
 from pylav.extension.red.ui.menus.player import StatsMenu
 from pylav.extension.red.ui.sources.player import PlayersSource
 from pylav.helpers.format.ascii import EightBitANSI
@@ -296,80 +295,6 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
             embed=await context.lavalink.construct_embed(
                 description=_("PyLav's local tracks folder has been set to {folder}").format(
                     folder=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
-                ),
-                messageable=context,
-            ),
-            ephemeral=True,
-        )
-
-    @command_plset.command(name="java")
-    @commands.is_owner()
-    async def command_plset_java(self, context: PyLavContext, *, java: str) -> None:
-        """Set the java executable for PyLav.
-
-        Default is "java"
-        Changes will be applied after restarting the bot.
-        """
-        if isinstance(context, discord.Interaction):
-            context = await self.bot.get_context(context)
-        if context.interaction and not context.interaction.response.is_done():
-            await context.defer(ephemeral=True)
-
-        from stat import S_IXGRP, S_IXOTH, S_IXUSR
-
-        java = get_true_path(java, "PyLav-1295u8125125y1825")
-        path = aiopath.AsyncPath(java)
-        if not await path.exists():
-            await context.send(
-                embed=await context.lavalink.construct_embed(
-                    description=_(
-                        "{java} does not exist, "
-                        "run the command again with "
-                        "the java argument "
-                        "set to the correct path"
-                    ).format(
-                        java=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
-                    ),
-                    messageable=context,
-                ),
-                ephemeral=True,
-            )
-            return
-        elif not await path.is_file():
-            await context.send(
-                embed=await context.lavalink.construct_embed(
-                    description=_("{java} is not an executable file").format(
-                        java=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
-                    ),
-                    messageable=context,
-                ),
-                ephemeral=True,
-            )
-            return
-        stats = await path.stat()
-        if not stats.st_mode & (S_IXUSR | S_IXGRP | S_IXOTH):
-            await context.send(
-                embed=await context.lavalink.construct_embed(
-                    description=_(
-                        "{java} is not an executable, "
-                        "run the command again with "
-                        "the java argument "
-                        "set to the correct path"
-                    ).format(
-                        java=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
-                    ),
-                    messageable=context,
-                ),
-                ephemeral=True,
-            )
-            return
-
-        global_config = self.lavalink.lib_db_manager.get_config()
-        await global_config.update_java_path(str(await discord.utils.maybe_coroutine(path.absolute)))
-        await context.send(
-            embed=await context.lavalink.construct_embed(
-                description=_("PyLav's java executable has been set to {java}").format(
-                    java=inline(f"{java}"),
                 ),
                 messageable=context,
             ),

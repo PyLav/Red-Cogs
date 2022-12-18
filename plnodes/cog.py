@@ -118,7 +118,6 @@ class PyLavNodes(DISCORD_COG_TYPE_MIXIN):
             port=menu.port,
             name=menu.name,
             resume_timeout=menu.resume_timeout,
-            resume_key=f"PyLav/{menu.name}-{menu.unique_identifier}",
             ssl=menu.ssl,
             reconnect_attempts=-1,
             search_only=menu.search_only,
@@ -263,7 +262,7 @@ class PyLavNodes(DISCORD_COG_TYPE_MIXIN):
         node = menu.source.target
         if not node:
             return
-        if node.managed or node.identifier in BUNDLED_NODES_IDS_HOST_MAPPING:
+        if node.managed or node.identifier in BUNDLED_NODES_IDS_HOST_MAPPING or node.identifier == 31415:
             await context.send(
                 embed=await self.lavalink.construct_embed(
                     description=_("{name} is managed by PyLav and cannot be modified with this command").format(

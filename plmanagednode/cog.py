@@ -4,7 +4,6 @@ import contextlib
 import re
 from pathlib import Path
 
-import aiopath
 import asyncstdlib
 import discord
 import humanize
@@ -20,7 +19,7 @@ from pylav.constants.node import NODE_DEFAULT_SETTINGS
 from pylav.core.client import Client
 from pylav.core.context import PyLavContext
 from pylav.extension.bundled_node import LAVALINK_DOWNLOAD_DIR
-from pylav.extension.bundled_node.utils import get_jar_ram_actual, get_max_allocation_size, get_true_path
+from pylav.extension.bundled_node.utils import get_jar_ram_actual, get_max_allocation_size
 from pylav.helpers.format.ascii import EightBitANSI
 from pylav.logging import getLogger
 from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE_MIXIN
@@ -200,81 +199,6 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         await context.send(
             embed=await self.lavalink.construct_embed(
                 description=_("Restarted the managed Lavalink node"),
-                messageable=context,
-            ),
-            ephemeral=True,
-        )
-
-    @command_plmanaged.command(name="java")
-    async def command_plmanaged_java(self, context: PyLavContext, *, java: str) -> None:
-        """Set the java executable for PyLav.
-
-        Default is "java"
-        """
-        if isinstance(context, discord.Interaction):
-            context = await self.bot.get_context(context)
-        if context.interaction and not context.interaction.response.is_done():
-            await context.defer(ephemeral=True)
-
-        from stat import S_IXGRP, S_IXOTH, S_IXUSR
-
-        java = get_true_path(java, "PyLav-31242515125")
-        path = aiopath.AsyncPath(java)
-        if not await path.exists():
-            await context.send(
-                embed=await context.lavalink.construct_embed(
-                    description=_(
-                        "{java} does not exist, "
-                        "run the command again with "
-                        "the java argument "
-                        "set to the correct "
-                        "path"
-                    ).format(
-                        java=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
-                        messageable=context,
-                    )
-                ),
-                ephemeral=True,
-            )
-            return
-        elif not await path.is_file():
-            await context.send(
-                embed=await context.lavalink.construct_embed(
-                    description=_("{java} is not an executable file").format(
-                        java=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
-                        messageable=context,
-                    )
-                ),
-                ephemeral=True,
-            )
-            return
-        stats = await path.stat()
-        if not stats.st_mode & (S_IXUSR | S_IXGRP | S_IXOTH):
-            await context.send(
-                embed=await context.lavalink.construct_embed(
-                    description=_(
-                        "{java} is not an executable, "
-                        "run the command again with "
-                        "the java argument "
-                        "set to the correct path"
-                    ).format(
-                        java=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
-                        messageable=context,
-                    )
-                ),
-                ephemeral=True,
-            )
-            return
-
-        global_config = self.lavalink.lib_db_manager.get_config()
-        await global_config.update_java_path(str(await discord.utils.maybe_coroutine(path.absolute)))
-        self.lavalink.managed_node_controller._java_exc = await global_config.fetch_java_path()
-        await context.send(
-            embed=await context.lavalink.construct_embed(
-                description=_("PyLav's java executable has been set to {java}").format(
-                    java=inline(f"{java}"),
-                    prefix=context.clean_prefix,
-                ),
                 messageable=context,
             ),
             ephemeral=True,
