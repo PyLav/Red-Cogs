@@ -1,9 +1,10 @@
+from __future__ import annotations
+
 import asyncio
 import contextlib
 from collections import defaultdict
 from functools import partial
 from pathlib import Path
-from typing import Union
 
 import aiohttp
 import discord
@@ -201,7 +202,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             webhook_url=None,
         )
         self._message_queue: dict[
-            Union[discord.TextChannel, discord.VoiceChannel, discord.Thread], list[discord.Embed]
+            discord.TextChannel | discord.VoiceChannel | discord.Thread, list[discord.Embed]
         ] = defaultdict(list)
         self._scheduled_jobs: list[Job] = []
         self._webhook_cache: dict[int, discord.Webhook] = {}
@@ -238,7 +239,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
         )
 
     async def send_embed_batch(
-        self, channel: Union[discord.TextChannel, discord.VoiceChannel, discord.Thread], embed_list: list[discord.Embed]
+        self, channel: discord.TextChannel | discord.VoiceChannel | discord.Thread, embed_list: list[discord.Embed]
     ) -> None:
         if not embed_list:
             return
@@ -303,7 +304,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
 
     @command_plnotify.command(name="webhook")
     async def command_plnotify_webhook(
-        self, context: PyLavContext, *, channel: Union[discord.TextChannel, discord.VoiceChannel, discord.Thread]
+        self, context: PyLavContext, *, channel: discord.TextChannel | discord.VoiceChannel | discord.Thread
     ) -> None:  # sourcery skip: low-code-quality
         """Set the notify channel for the player"""
         if isinstance(context, discord.Interaction):

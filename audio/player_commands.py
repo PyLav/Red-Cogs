@@ -1,10 +1,11 @@
+from __future__ import annotations
+
 import contextlib
 import datetime
 from functools import partial
 from pathlib import Path
 
 import discord
-from discord.utils import utcnow
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
 
@@ -12,6 +13,7 @@ from pylav.core.context import PyLavContext
 from pylav.extension.red.utils import rgetattr
 from pylav.extension.red.utils.decorators import invoker_is_dj
 from pylav.helpers.format.strings import shorten_string
+from pylav.helpers.time import get_now_utc
 from pylav.logging import getLogger
 from pylav.players.query.obj import Query
 from pylav.players.tracks.obj import Track
@@ -84,7 +86,7 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
                         track=await track.get_track_display_name(with_url=True),
                         current=await player.current.get_track_display_name(with_url=True),
                         eta=discord.utils.format_dt(
-                            utcnow()
+                            get_now_utc()
                             + datetime.timedelta(
                                 milliseconds=await player.current.duration() - await player.fetch_position()
                             ),

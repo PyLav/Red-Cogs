@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import asyncio
 import hashlib
 import os.path
@@ -5,7 +7,6 @@ import re
 import typing
 from functools import partial
 from pathlib import Path
-from typing import Optional
 
 import asyncstdlib
 import discord
@@ -151,7 +152,7 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
         self,
         interaction: DISCORD_INTERACTION_TYPE,
         entry: str,
-        recursive: Optional[bool] = False,
+        recursive: bool | None = False,
     ):  # sourcery no-metrics
         """Play a local file or folder, supports partial searching"""
         send = partial(interaction.followup.send, wait=True)

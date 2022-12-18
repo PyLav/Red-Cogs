@@ -1,6 +1,7 @@
+from __future__ import annotations
+
 import datetime
 import typing
-from typing import Union
 
 import asyncstdlib
 import discord
@@ -17,6 +18,7 @@ from pylav.extension.red.utils.decorators import invoker_is_dj, requires_player
 from pylav.helpers.discord.converters.playlists import PlaylistConverter
 from pylav.helpers.format.ascii import EightBitANSI
 from pylav.logging import getLogger
+from pylav.storage.models.player.config import PlayerConfig
 from pylav.storage.models.playlist import Playlist
 from pylav.type_hints.bot import DISCORD_COG_TYPE_MIXIN
 
@@ -328,7 +330,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
     @command_playerset_server_dj.command(name="add")
     async def command_playerset_server_dj_add(
-        self, context: PyLavContext, roles_or_users: commands.Greedy[Union[discord.Role, discord.Member]]
+        self, context: PyLavContext, roles_or_users: commands.Greedy[discord.Role | discord.Member]
     ) -> None:
         """Add DJ roles or users to this server"""
         if isinstance(context, discord.Interaction):
@@ -349,8 +351,8 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
                 message = _("Added {user} to the DJ users").format(user=role_or_user.mention)
                 await config.bulk_add_dj_users(role_or_user)
         else:
-            roles = [r for r in roles_or_users if isinstance(r, discord.Role)]
-            users = [u for u in roles_or_users if isinstance(u, discord.Member)]
+            roles = {r for r in roles_or_users if isinstance(r, discord.Role)}
+            users = {u for u in roles_or_users if isinstance(u, discord.Member)}
             message = None
             if roles and users:
                 message = _("Added {roles} to the DJ roles and {users} to the DJ users").format(
@@ -377,7 +379,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
     @command_playerset_server_dj.command(name="remove")
     async def command_playerset_server_dj_remove(
-        self, context: PyLavContext, roles_or_users: commands.Greedy[Union[discord.Role, discord.Member, int]]
+        self, context: PyLavContext, roles_or_users: commands.Greedy[discord.Role | discord.Member | int]
     ) -> None:
         """Remove DJ roles or users in this the server"""
         if isinstance(context, discord.Interaction):
@@ -390,53 +392,9 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
         config = self.lavalink.player_config_manager.get_config(context.guild.id)
         if len(roles_or_users) == 1:
-            role_or_user = roles_or_users[0]
-            if isinstance(role_or_user, int):
-                await config.remove_from_dj_roles(typing.cast(discord.Role, discord.Object(id=role_or_user)))
-                await config.remove_from_dj_users(typing.cast(discord.Member, discord.Object(id=role_or_user)))
-                message = _("Removed `{id}` from the DJ roles and users").format(id=role_or_user)
-            elif isinstance(role_or_user, discord.Role):
-                message = _("Removed {role} from the DJ roles").format(role=role_or_user.mention)
-                await config.remove_from_dj_roles(role_or_user)
-            else:
-                message = _("Removed {user} from the DJ users").format(user=role_or_user.mention)
-                await config.remove_from_dj_users(role_or_user)
+            message = await self._precess_remove_single_dj_role_or_user(config, roles_or_users)
         else:
-            roles = [r for r in roles_or_users if isinstance(r, discord.Role)]
-            users = [u for u in roles_or_users if isinstance(u, discord.Member)]
-            ints = [i for i in roles_or_users if isinstance(i, int)]
-            message = None
-            if roles and users and ints:
-                message = _(
-                    "Removed {roles} from the DJ roles and {users} from the DJ users, as well as {ints} from both"
-                ).format(
-                    roles=humanize_list([r.mention for r in roles]),
-                    users=humanize_list([u.mention for u in users]),
-                    ints=humanize_list([str(i) for i in ints]),
-                )
-            elif roles and users:
-                message = _("Removed {roles} from the DJ roles and {users} from the DJ users").format(
-                    roles=humanize_list([r.mention for r in roles]), users=humanize_list([u.mention for u in users])
-                )
-            if roles:
-                if not message:
-                    message = _("Removed {roles} from the DJ roles").format(
-                        roles=humanize_list([r.mention for r in roles])
-                    )
-                await config.bulk_remove_dj_roles(*roles)
-            if users:
-                if not message:
-                    message = _("Removed {users} from the DJ users").format(
-                        users=humanize_list([u.mention for u in users])
-                    )
-                await config.bulk_remove_dj_users(*users)
-            if ints:
-                if not message:
-                    message = _("Removed {ints} from the DJ roles and users").format(
-                        ints=humanize_list([str(u) for u in users])
-                    )
-                await config.bulk_remove_dj_users(*[discord.Object(id=i) for i in ints])
-                await config.bulk_remove_dj_roles(*[discord.Object(id=i) for i in ints])
+            message = await self._process_remove_multiple_dj_roles_or_users(config, roles_or_users)
 
         await context.send(
             embed=await self.lavalink.construct_embed(
@@ -445,6 +403,60 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
             ),
             ephemeral=True,
         )
+
+    @staticmethod
+    async def _process_remove_multiple_dj_roles_or_users(
+        config: PlayerConfig, roles_or_users: list[discord.Role | discord.Member | int]
+    ) -> str:
+        roles = {r for r in roles_or_users if isinstance(r, discord.Role)}
+        users = {u for u in roles_or_users if isinstance(u, discord.Member)}
+        ints = {i for i in roles_or_users if isinstance(i, int)}
+        message = None
+        if roles and users and ints:
+            message = _(
+                "Removed {roles} from the DJ roles and {users} from the DJ users, as well as {ints} from both"
+            ).format(
+                roles=humanize_list([r.mention for r in roles]),
+                users=humanize_list([u.mention for u in users]),
+                ints=humanize_list([str(i) for i in ints]),
+            )
+        elif roles and users:
+            message = _("Removed {roles} from the DJ roles and {users} from the DJ users").format(
+                roles=humanize_list([r.mention for r in roles]), users=humanize_list([u.mention for u in users])
+            )
+        if roles:
+            if not message:
+                message = _("Removed {roles} from the DJ roles").format(roles=humanize_list([r.mention for r in roles]))
+            await config.bulk_remove_dj_roles(*roles)
+        if users:
+            if not message:
+                message = _("Removed {users} from the DJ users").format(users=humanize_list([u.mention for u in users]))
+            await config.bulk_remove_dj_users(*users)
+        if ints:
+            if not message:
+                message = _("Removed {ints} from the DJ roles and users").format(
+                    ints=humanize_list([str(u) for u in users])
+                )
+            await config.bulk_remove_dj_users(*[discord.Object(id=i) for i in ints])
+            await config.bulk_remove_dj_roles(*[discord.Object(id=i) for i in ints])
+        return message
+
+    @staticmethod
+    async def _precess_remove_single_dj_role_or_user(
+        config: PlayerConfig, roles_or_users: list[discord.Role | discord.Member | int]
+    ):
+        role_or_user = roles_or_users[0]
+        if isinstance(role_or_user, int):
+            await config.remove_from_dj_roles(typing.cast(discord.Role, discord.Object(id=role_or_user)))
+            await config.remove_from_dj_users(typing.cast(discord.Member, discord.Object(id=role_or_user)))
+            message = _("Removed `{id}` from the DJ roles and users").format(id=role_or_user)
+        elif isinstance(role_or_user, discord.Role):
+            message = _("Removed {role} from the DJ roles").format(role=role_or_user.mention)
+            await config.remove_from_dj_roles(role_or_user)
+        else:
+            message = _("Removed {user} from the DJ users").format(user=role_or_user.mention)
+            await config.remove_from_dj_users(role_or_user)
+        return message
 
     @command_playerset_server_dj.command(name="list")
     async def command_playerset_server_dj_list(self, context: PyLavContext) -> None:
@@ -461,10 +473,10 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
             return float("-inf") if isinstance(user, int) else user.top_role.position
 
         config = self.lavalink.player_config_manager.get_config(context.guild.id)
-        dj_roles = [
+        dj_roles = {
             (role_object if (role_object := context.guild.get_role(role)) else role)
             for role in await config.fetch_dj_roles()
-        ]
+        }
         dj_roles = await heapq.nlargest(asyncstdlib.iter(dj_roles), key=role_sorter, n=len(dj_roles))
         dj_roles_chunks = [dj_roles[i : i + 3] for i in range(0, len(dj_roles), 3)]
         dj_roles_string_list = [
@@ -478,10 +490,10 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
             )
             for chunk in dj_roles_chunks
         ]
-        dj_user = [
+        dj_user = {
             (member_object if (member_object := context.guild.get_member(member)) else member)
             for member in await config.fetch_dj_users()
-        ]
+        }
         dj_user = await heapq.nlargest(asyncstdlib.iter(dj_user), key=user_sorter, n=len(dj_user))
         dj_user_chunks = [dj_user[i : i + 3] for i in range(0, len(dj_user), 3)]
         dj_user_string_list = [
@@ -905,7 +917,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
     @command_playerset_server_lock.command(name="commands")
     async def command_playerset_server_lock_commands(
-        self, context: PyLavContext, *, channel: Union[discord.TextChannel, discord.Thread, discord.VoiceChannel] = None
+        self, context: PyLavContext, *, channel: discord.TextChannel | discord.Thread | discord.VoiceChannel = None
     ):
         """Set the channel lock for commands"""
 

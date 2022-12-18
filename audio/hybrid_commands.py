@@ -1,7 +1,9 @@
+from __future__ import annotations
+
 import re
 from pathlib import Path
 from re import Pattern
-from typing import Final, Optional
+from typing import Final
 
 import discord
 from discord import app_commands
@@ -187,7 +189,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
     @app_commands.describe(channel=shorten_string(max_length=100, string=_("The voice channel to connect to")))
     @commands.guild_only()
     @invoker_is_dj()
-    async def command_connect(self, context: PyLavContext, *, channel: Optional[discord.VoiceChannel] = None):
+    async def command_connect(self, context: PyLavContext, *, channel: discord.VoiceChannel | None = None):
         """Connect the bot to the specified channel or your current channel"""
 
         if isinstance(context, discord.Interaction):
@@ -471,7 +473,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
     @commands.guild_only()
     @requires_player()
     @invoker_is_dj()
-    async def command_repeat(self, context: PyLavContext, queue: Optional[bool] = None):
+    async def command_repeat(self, context: PyLavContext, queue: bool | None = None):
         """Set whether to repeat current song or queue.
 
         If no argument is given, the current repeat mode will be toggled between current track and off.
