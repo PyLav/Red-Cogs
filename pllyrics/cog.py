@@ -53,11 +53,11 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
             await context.defer(ephemeral=True)
         data = [
             (EightBitANSI.paint_white(self.__class__.__name__), EightBitANSI.paint_blue(self.__version__)),
-            (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.lavalink.lib_version)),
+            (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.pylav.lib_version)),
         ]
 
         await context.send(
-            embed=await context.lavalink.construct_embed(
+            embed=await context.pylav.construct_embed(
                 description=box(
                     tabulate(
                         data,
@@ -86,7 +86,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
         current = await self._config.guild(context.guild).lyrics.timed()
         await self._config.guild(context.guild).lyrics.timed.set(not current)
         await context.send(
-            embed=await context.lavalink.construct_embed(
+            embed=await context.pylav.construct_embed(
                 description=box(
                     EightBitANSI.paint_yellow(
                         _("Timed lyrics are now {state}").format(
@@ -109,7 +109,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
         current = await self._config.guild(context.guild).lyrics.timed()
         await self._config.guild(context.guild).lyrics.full.set(not current)
         await context.send(
-            embed=await context.lavalink.construct_embed(
+            embed=await context.pylav.construct_embed(
                 description=box(
                     EightBitANSI.paint_yellow(
                         _("Sending full lyrics on track start {state}").format(
@@ -133,7 +133,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
         if channel:
             await self._config.guild(context.guild).lyrics.channel.set(channel.id)
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Lyrics channel set to {channel}").format(channel=channel.mention),
                     messageable=context,
                 ),
@@ -142,7 +142,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
         else:
             await self._config.guild(context.guild).lyrics.channel.clear()
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("I will not send lyrics to any channel"),
                     messageable=context,
                 ),
@@ -160,7 +160,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
             await context.defer(ephemeral=True)
         if not context.player.current:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Nothing is currently playing"),
                     messageable=context,
                 ),
@@ -186,7 +186,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
         channel = guild.get_channel(channel_id)
         if not channel:
             return
-        player = self.lavalink.player_manager.get(guild.id)
+        player = self.pylav.player_manager.get(guild.id)
         if not player:
             return
         if not player.current:
@@ -199,7 +199,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
             if not send_error:
                 return
             await channel.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("Error: {error}").format(error=e),
                     messageable=channel,
                 ),
@@ -209,7 +209,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
             if not send_error:
                 return
             await channel.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("API Error: {error}").format(error=response.error),
                     messageable=channel,
                 ),
@@ -219,7 +219,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
             if not send_error:
                 return
             await channel.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("No lyrics found"),
                     messageable=channel,
                 ),
@@ -229,11 +229,14 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
         show_author = await track.source() in {"deezer", "spotify", "applemusic"}
         if self._track_cache[guild.id] and self._track_cache[guild.id] != track.encoded:
             return
+        await self._send_lyrics_messages(channel, exact, lyrics, response, show_author, track)
+
+    async def _send_lyrics_messages(self, channel, exact, lyrics, response, show_author, track):
         if len(lyrics) > 3950:
             embed_list = []
             for i, page in enumerate(pagify(lyrics, delims=["\n"], page_length=3950), start=1):
                 embed_list.append(
-                    await self.lavalink.construct_embed(
+                    await self.pylav.construct_embed(
                         title=_("{extras}Lyrics for {title}{author} - Part {page}").format(
                             title=await track.title(),
                             page=i,
@@ -249,7 +252,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
             await channel.send(embeds=embed_list)
         else:
             await channel.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     title=_("{extras}Lyrics for {title}{author}").format(
                         title=await track.title(),
                         extras="" if exact else _("(Guess) "),
@@ -266,7 +269,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
         channel = guild.get_channel(channel_id)
         if not channel:
             return
-        player = self.lavalink.player_manager.get(guild.id)
+        player = self.pylav.player_manager.get(guild.id)
         if not player:
             return
         if not player.current:
@@ -302,7 +305,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                 sleep_duration = player.timescale.adjust_position(sleep_duration)
 
             await channel.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     title=_("{extras}Lyrics for {title}{author}").format(
                         title=await track.title(),
                         extras="" if exact else _("(Guess) "),
@@ -328,7 +331,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
         if player.current is None:
             return
         self._track_cache[guild.id] = event.track.encoded
-        await self.lavalink.set_context_locale(player.guild)
+        await self.pylav.set_context_locale(player.guild)
         lyrics_config = await self._config.guild(player.guild).lyrics()
         if not lyrics_config["channel"]:
             return

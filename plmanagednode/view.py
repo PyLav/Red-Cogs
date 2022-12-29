@@ -188,7 +188,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
                 )
             except netaddr.core.AddrFormatError as exc:
                 return await send_method(
-                    embed=await self.bot.lavalink.construct_embed(
+                    embed=await self.bot.pylav.construct_embed(
                         description=_("Invalid IP block - {error}").format(exc),
                         messageable=interaction,
                     ),
@@ -201,7 +201,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
         if not ip_blocks:
 
             return await send_method(
-                embed=await self.bot.lavalink.construct_embed(
+                embed=await self.bot.pylav.construct_embed(
                     description=_("No IP blocks were provided"),
                     messageable=interaction,
                 ),
@@ -216,7 +216,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
             except netaddr.core.AddrFormatError as exc:
 
                 return await send_method(
-                    embed=await self.bot.lavalink.construct_embed(
+                    embed=await self.bot.pylav.construct_embed(
                         description=_("Invalid IP address - {error}").format(exc),
                         messageable=interaction,
                     ),
@@ -235,7 +235,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
         }
         if strategy not in stategy_mapping:
             return await send_method(
-                embed=await self.bot.lavalink.construct_embed(
+                embed=await self.bot.pylav.construct_embed(
                     description=_("Invalid strategy, must be one of: {options}").format(
                         options=humanize_list(list(stategy_mapping.values()))
                     ),
@@ -251,7 +251,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
                 raise ValueError
         except ValueError:
             return await send_method(
-                embed=await self.bot.lavalink.construct_embed(
+                embed=await self.bot.pylav.construct_embed(
                     description=_("Invalid retry limit, must be a number greater than or equals to -1"),
                     messageable=interaction,
                 ),
@@ -266,7 +266,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
             search_trigger = bool(search_trigger)
         except ValueError:
             return await send_method(
-                embed=await self.bot.lavalink.construct_embed(
+                embed=await self.bot.pylav.construct_embed(
                     description=_("Invalid search trigger, must be 0 or 1"),
                     messageable=interaction,
                 ),
@@ -274,7 +274,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
                 wait=True,
             )
 
-        config = self.bot.lavalink.node_db_manager.bundled_node_config()
+        config = self.bot.pylav.node_db_manager.bundled_node_config()
         yaml_data = await config.fetch_yaml()
         yaml_data["lavalink"]["server"]["ratelimit"] = {
             "ipBlocks": ip_blocks,
@@ -285,7 +285,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
         }
         await config.update_yaml(yaml_data)
         return await send_method(
-            embed=await self.bot.lavalink.construct_embed(
+            embed=await self.bot.pylav.construct_embed(
                 description=_("IP rotation configuration saved.").format(prefix=self.prefix),
                 messageable=interaction,
             ),
@@ -341,7 +341,7 @@ class ConfigureGoogleAccountModal(discord.ui.Modal):
         send_method = interaction.followup.send
         if re.match(r"[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+", self.email.value) is None:
             return await send_method(
-                embed=await self.bot.lavalink.construct_embed(
+                embed=await self.bot.pylav.construct_embed(
                     description=_("Invalid email address"),
                     messageable=interaction,
                 ),
@@ -351,7 +351,7 @@ class ConfigureGoogleAccountModal(discord.ui.Modal):
 
         await self.bot.set_shared_api_tokens("google", email=self.email.value, password=self.password.value)
         return await send_method(
-            embed=await self.bot.lavalink.construct_embed(
+            embed=await self.bot.pylav.construct_embed(
                 description=_("Google account linked.").format(prefix=self.prefix),
                 messageable=interaction,
             ),
@@ -429,14 +429,14 @@ class ConfigureHTTPProxyModal(discord.ui.Modal):
                 raise ValueError
         except ValueError:
             return await send_method(
-                embed=await self.bot.lavalink.construct_embed(
+                embed=await self.bot.pylav.construct_embed(
                     description=_("Invalid port, must be a number between 0 and 65536"),
                     messageable=interaction,
                 ),
                 ephemeral=True,
                 wait=True,
             )
-        config = self.bot.lavalink.node_db_manager.bundled_node_config()
+        config = self.bot.pylav.node_db_manager.bundled_node_config()
         yaml_data = await config.fetch_yaml()
         yaml_data["lavalink"]["server"]["httpConfig"] = {
             "proxyHost": self.host.value,
@@ -446,7 +446,7 @@ class ConfigureHTTPProxyModal(discord.ui.Modal):
         }
         await config.update_yaml(yaml_data)
         return await send_method(
-            embed=await self.bot.lavalink.construct_embed(
+            embed=await self.bot.pylav.construct_embed(
                 description=_("HTTP proxy configuration saved.").format(prefix=self.prefix),
                 messageable=interaction,
             ),

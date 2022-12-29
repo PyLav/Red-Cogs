@@ -26,7 +26,7 @@ class EmbedGenerator:
     async def generate_pylav_config_embed(self) -> discord.Embed:
         enabled = EightBitANSI.paint_green(_("Enabled"), bold=True, italic=True)
         disabled = EightBitANSI.paint_red(_("Disabled"), bold=True, italic=True)
-        pylav_config = await self.cog.lavalink.lib_db_manager.get_config().fetch_all()
+        pylav_config = await self.cog.pylav.lib_db_manager.get_config().fetch_all()
         data = [
             (
                 EightBitANSI.paint_white(_("Use Managed Node")),
@@ -49,7 +49,7 @@ class EmbedGenerator:
                 enabled if pylav_config["use_bundled_lava_link_external"] else disabled,
             ),
         ]
-        return await self.cog.lavalink.construct_embed(
+        return await self.cog.pylav.construct_embed(
             description=box(
                 tabulate(
                     data,
@@ -68,7 +68,7 @@ class EmbedGenerator:
 
         enabled = EightBitANSI.paint_green(_("Enabled"), bold=True, italic=True)
         disabled = EightBitANSI.paint_red(_("Disabled"), bold=True, italic=True)
-        global_config = await self.cog.lavalink.player_config_manager.get_global_config().fetch_all()
+        global_config = await self.cog.pylav.player_config_manager.get_global_config().fetch_all()
 
         (EightBitANSI.paint_white(_("Volume")), EightBitANSI.paint_cyan(global_config["volume"]))
         data = [
@@ -115,7 +115,7 @@ class EmbedGenerator:
             ),
         ]
 
-        return await self.cog.lavalink.construct_embed(
+        return await self.cog.pylav.construct_embed(
             description=box(
                 tabulate(
                     data,
@@ -132,7 +132,7 @@ class EmbedGenerator:
 
     async def generate_context_player_config_embed(self) -> discord.Embed:
         if not self.context.guild:
-            return await self.cog.lavalink.construct_embed(
+            return await self.cog.pylav.construct_embed(
                 messageable=self.context,
                 description=_("You need to be in a server to be able to show this page."),
             )
@@ -140,15 +140,15 @@ class EmbedGenerator:
         enabled = EightBitANSI.paint_green(_("Enabled"), bold=True, italic=True)
         disabled = EightBitANSI.paint_red(_("Disabled"), bold=True, italic=True)
 
-        ac_max_volume = await self.cog.lavalink.player_config_manager.get_max_volume(self.context.guild.id)
-        ac_volume = await self.cog.lavalink.player_config_manager.get_volume(self.context.guild.id)
-        ac_alone_dc = await self.cog.lavalink.player_config_manager.get_alone_dc(self.context.guild.id)
-        ac_alone_pause = await self.cog.lavalink.player_config_manager.get_alone_pause(self.context.guild.id)
-        ac_empty_queue_dc = await self.cog.lavalink.player_config_manager.get_empty_queue_dc(self.context.guild.id)
-        ac_shuffle = await self.cog.lavalink.player_config_manager.get_shuffle(self.context.guild.id)
-        ac_auto_shuffle = await self.cog.lavalink.player_config_manager.get_auto_shuffle(self.context.guild.id)
-        ac_self_deaf = await self.cog.lavalink.player_config_manager.get_self_deaf(self.context.guild.id)
-        ac_auto_play = await self.cog.lavalink.player_config_manager.get_auto_play(self.context.guild.id)
+        ac_max_volume = await self.cog.pylav.player_config_manager.get_max_volume(self.context.guild.id)
+        ac_volume = await self.cog.pylav.player_config_manager.get_volume(self.context.guild.id)
+        ac_alone_dc = await self.cog.pylav.player_config_manager.get_alone_dc(self.context.guild.id)
+        ac_alone_pause = await self.cog.pylav.player_config_manager.get_alone_pause(self.context.guild.id)
+        ac_empty_queue_dc = await self.cog.pylav.player_config_manager.get_empty_queue_dc(self.context.guild.id)
+        ac_shuffle = await self.cog.pylav.player_config_manager.get_shuffle(self.context.guild.id)
+        ac_auto_shuffle = await self.cog.pylav.player_config_manager.get_auto_shuffle(self.context.guild.id)
+        ac_self_deaf = await self.cog.pylav.player_config_manager.get_self_deaf(self.context.guild.id)
+        ac_auto_play = await self.cog.pylav.player_config_manager.get_auto_play(self.context.guild.id)
 
         data = [
             (EightBitANSI.paint_white(_("Volume")), EightBitANSI.paint_cyan(ac_volume)),
@@ -186,7 +186,7 @@ class EmbedGenerator:
             ),
         ]
 
-        return await self.cog.lavalink.construct_embed(
+        return await self.cog.pylav.construct_embed(
             description=box(
                 tabulate(
                     data,
@@ -201,9 +201,9 @@ class EmbedGenerator:
             messageable=self.context,
         )
 
-    async def generate_server_player_config_embed(self) -> discord.Embed:
+    async def generate_server_player_config_embed(self) -> discord.Embed:  # sourcery skip: low-code-quality
         if not self.context.guild:
-            return await self.cog.lavalink.construct_embed(
+            return await self.cog.pylav.construct_embed(
                 messageable=self.context,
                 description=_("You need to be in a server to be able to show this page."),
             )
@@ -211,7 +211,7 @@ class EmbedGenerator:
         enabled = EightBitANSI.paint_green(_("Enabled"), bold=True, italic=True)
         disabled = EightBitANSI.paint_red(_("Disabled"), bold=True, italic=True)
 
-        config = await self.cog.lavalink.player_config_manager.get_config(self.context.guild.id).fetch_all()
+        config = await self.cog.pylav.player_config_manager.get_config(self.context.guild.id).fetch_all()
 
         dj_user_str = (
             "\n".join(
@@ -331,7 +331,7 @@ class EmbedGenerator:
             (EightBitANSI.paint_white(_("DJ Roles")), dj_role_str),
         ]
 
-        return await self.cog.lavalink.construct_embed(
+        return await self.cog.pylav.construct_embed(
             description=box(
                 tabulate(
                     data,
@@ -347,7 +347,7 @@ class EmbedGenerator:
         )
 
     async def generate_playlist_tasks_embed(self) -> discord.Embed:
-        pylav_config = await self.cog.lavalink.lib_db_manager.get_config().fetch_all()
+        pylav_config = await self.cog.pylav.lib_db_manager.get_config().fetch_all()
 
         data = [
             (
@@ -370,7 +370,7 @@ class EmbedGenerator:
             ),
         ]
 
-        return await self.cog.lavalink.construct_embed(
+        return await self.cog.pylav.construct_embed(
             description=box(
                 tabulate(
                     data,
@@ -387,12 +387,12 @@ class EmbedGenerator:
 
     async def generate_pylav_paths_embed(self) -> discord.Embed:
         if not await self.cog.bot.is_owner(self.context.author):
-            return await self.cog.lavalink.construct_embed(
+            return await self.cog.pylav.construct_embed(
                 messageable=self.context,
                 description=_("You need to be the bot owner to be able to show this page."),
             )
 
-        pylav_config = await self.cog.lavalink.lib_db_manager.get_config().fetch_all()
+        pylav_config = await self.cog.pylav.lib_db_manager.get_config().fetch_all()
 
         data = [
             (EightBitANSI.paint_white(_("Config Folder")), EightBitANSI.paint_magenta(pylav_config["config_folder"])),
@@ -411,7 +411,7 @@ class EmbedGenerator:
             ),
         ]
 
-        return await self.cog.lavalink.construct_embed(
+        return await self.cog.pylav.construct_embed(
             description=box(
                 tabulate(
                     data,
@@ -430,43 +430,43 @@ class EmbedGenerator:
         enabled = EightBitANSI.paint_green(_("Enabled"), bold=True, italic=True)
         disabled = EightBitANSI.paint_red(_("Disabled"), bold=True, italic=True)
         # noinspection PyProtectedMember
-        build_date, build_time = self.cog.lavalink.managed_node_controller._buildtime.split(" ", 1)
+        build_date, build_time = self.cog.pylav.managed_node_controller._buildtime.split(" ", 1)
         build_data = build_date.split("/")
         build_date = f"{build_data[2]}/{build_data[1]}/{build_data[0]}\n{build_time}"
         # noinspection PyProtectedMember
         data = [
             (
                 EightBitANSI.paint_white(_("Java")),
-                EightBitANSI.paint_blue(self.cog.lavalink.managed_node_controller._jvm),
+                EightBitANSI.paint_blue(self.cog.pylav.managed_node_controller._jvm),
             ),
             (
                 EightBitANSI.paint_white(_("Lavaplayer")),
-                EightBitANSI.paint_blue(self.cog.lavalink.managed_node_controller._lavaplayer),
+                EightBitANSI.paint_blue(self.cog.pylav.managed_node_controller._lavaplayer),
             ),
             (
                 EightBitANSI.paint_white(_("Lavalink Branch")),
-                EightBitANSI.paint_blue(self.cog.lavalink.managed_node_controller._lavalink_branch),
+                EightBitANSI.paint_blue(self.cog.pylav.managed_node_controller._lavalink_branch),
             ),
             (
                 EightBitANSI.paint_white(_("Lavalink Version")),
-                EightBitANSI.paint_blue(self.cog.lavalink.managed_node_controller._version),
+                EightBitANSI.paint_blue(self.cog.pylav.managed_node_controller._version),
             ),
             (
                 EightBitANSI.paint_white(_("Lavalink Build")),
-                EightBitANSI.paint_blue(self.cog.lavalink.managed_node_controller._lavalink_build),
+                EightBitANSI.paint_blue(self.cog.pylav.managed_node_controller._lavalink_build),
             ),
             (EightBitANSI.paint_white(_("Build Time")), EightBitANSI.paint_blue(build_date)),
             (
                 EightBitANSI.paint_white(_("Commit")),
-                EightBitANSI.paint_blue(self.cog.lavalink.managed_node_controller._commit),
+                EightBitANSI.paint_blue(self.cog.pylav.managed_node_controller._commit),
             ),
             (
                 EightBitANSI.paint_white(_("Auto Update")),
-                enabled if await self.cog.lavalink.managed_node_controller.should_auto_update() else disabled,
+                enabled if await self.cog.pylav.managed_node_controller.should_auto_update() else disabled,
             ),
         ]
 
-        return await self.cog.lavalink.construct_embed(
+        return await self.cog.pylav.construct_embed(
             description=box(
                 tabulate(
                     data,
@@ -497,7 +497,7 @@ class EmbedGenerator:
         elif key == "managed_node_config":
             return await self.generate_managed_node_config_embed()
         else:
-            return await self.cog.lavalink.construct_embed(
+            return await self.cog.pylav.construct_embed(
                 messageable=self.context,
                 description=_("Select an option from the dropdown menu below."),
             )
@@ -524,7 +524,7 @@ class InfoSelector(discord.ui.Select):
         await interaction.response.defer()
         if self.view.author.id != interaction.user.id:
             await interaction.response.send_message(
-                embed=await self.cog.lavalink.construct_embed(
+                embed=await self.cog.pylav.construct_embed(
                     messageable=interaction, description=_("You are not authorized to interact with this option")
                 ),
                 ephemeral=True,

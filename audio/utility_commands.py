@@ -28,18 +28,18 @@ class UtilityCommands(DISCORD_COG_TYPE_MIXIN):
             await context.defer(ephemeral=True)
         if not context.player:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Not connected to a voice channel"), messageable=context
                 ),
                 ephemeral=True,
             )
             return
-        max_volume = await self.lavalink.player_config_manager.get_max_volume(context.guild.id)
+        max_volume = await self.pylav.player_config_manager.get_max_volume(context.guild.id)
         new_vol = context.player.volume + change_by
         if new_vol > max_volume:
             await context.player.set_volume(max_volume, requester=context.author)
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Volume limit reached, player volume set to {volume}%").format(
                         volume=humanize_number(context.player.volume)
                     ),
@@ -50,7 +50,7 @@ class UtilityCommands(DISCORD_COG_TYPE_MIXIN):
         elif new_vol < 0:
             await context.player.set_volume(0, requester=context.author)
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Minimum volume reached, player volume set to 0%"), messageable=context
                 ),
                 ephemeral=True,
@@ -58,7 +58,7 @@ class UtilityCommands(DISCORD_COG_TYPE_MIXIN):
         else:
             await context.player.set_volume(new_vol, requester=context.author)
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Player volume set to {volume}%").format(volume=new_vol), messageable=context
                 ),
                 ephemeral=True,

@@ -57,11 +57,11 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
             await context.defer(ephemeral=True)
         data = [
             (EightBitANSI.paint_white(self.__class__.__name__), EightBitANSI.paint_blue(self.__version__)),
-            (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.lavalink.lib_version)),
+            (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.pylav.lib_version)),
         ]
 
         await context.send(
-            embed=await context.lavalink.construct_embed(
+            embed=await context.pylav.construct_embed(
                 description=box(
                     tabulate(
                         data,
@@ -95,7 +95,7 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
         if context.player.equalizer.name == "Nightcore":
             await context.player.remove_nightcore(requester=context.author)
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     messageable=context,
                     description=_("Nightcore effect has been disabled"),
                 ),
@@ -106,7 +106,7 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
                 await context.player.apply_nightcore(requester=context.author)
             except NodeHasNoFiltersException as exc:
                 await context.send(
-                    embed=await self.lavalink.construct_embed(
+                    embed=await self.pylav.construct_embed(
                         messageable=context,
                         description=exc.message,
                     ),
@@ -114,7 +114,7 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
                 )
             else:
                 await context.send(
-                    embed=await self.lavalink.construct_embed(
+                    embed=await self.pylav.construct_embed(
                         messageable=context,
                         description=_("Nightcore effect has been enabled"),
                     ),
@@ -135,7 +135,7 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
         if context.player.equalizer.name == "Vaporwave":
             await context.player.remove_vaporwave(requester=context.author)
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     messageable=context,
                     description=_("Vaporwave effect has been disabled"),
                 ),
@@ -146,7 +146,7 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
                 await context.player.apply_vaporwave(requester=context.author)
             except NodeHasNoFiltersException as exc:
                 await context.send(
-                    embed=await self.lavalink.construct_embed(
+                    embed=await self.pylav.construct_embed(
                         messageable=context,
                         description=exc.message,
                     ),
@@ -154,7 +154,7 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
                 )
             else:
                 await context.send(
-                    embed=await self.lavalink.construct_embed(
+                    embed=await self.pylav.construct_embed(
                         messageable=context,
                         description=_("Vaporwave effect has been enabled"),
                     ),
@@ -183,7 +183,7 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
         context = await self.bot.get_context(interaction)
         if not context.player.node.has_filter("vibrato"):
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     messageable=context,
                     description=_("The current node does not have the Vibrato functionality enabled"),
                 ),
@@ -207,7 +207,7 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
             ),
         ]
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 messageable=context,
                 title=_("New vibrato effect applied to the player"),
                 description=box(
@@ -247,7 +247,7 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
         context = await self.bot.get_context(interaction)
         if not context.player.node.has_filter("tremolo"):
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     messageable=context,
                     description=_("The current node does not have the Tremolo functionality enabled"),
                 ),
@@ -271,7 +271,7 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
             ),
         ]
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 messageable=context,
                 title=_("New tremolo effect applied to the player"),
                 description=box(
@@ -313,7 +313,7 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
         context = await self.bot.get_context(interaction)
         if not context.player.node.has_filter("timescale"):
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     messageable=context,
                     description=_("The current node does not have the Timescale functionality enabled"),
                 ),
@@ -335,7 +335,7 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
             ),
         ]
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 messageable=context,
                 title=_("New timescale effect applied to the player"),
                 description=box(
@@ -369,7 +369,7 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
         context = await self.bot.get_context(interaction)
         if not context.player.node.has_filter("rotation"):
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     messageable=context,
                     description=_("The current node does not have the Rotation functionality enabled"),
                 ),
@@ -391,7 +391,7 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
             ),
         ]
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 messageable=context,
                 title=_("New rotation effect applied to the player"),
                 description=box(
@@ -426,7 +426,7 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
         context = await self.bot.get_context(interaction)
         if not context.player.node.has_filter("lowPass"):
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     messageable=context,
                     description=_("The current node does not have the LowPass functionality enabled"),
                 ),
@@ -448,7 +448,7 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
             ),
         ]
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 messageable=context,
                 title=_("New low pass effect applied to the player"),
                 description=box(
@@ -492,7 +492,7 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
         context = await self.bot.get_context(interaction)
         if not context.player.node.has_filter("karaoke"):
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     messageable=context,
                     description=_("The current node does not have the Karaoke functionality enabled"),
                 ),
@@ -525,7 +525,7 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
             ),
         ]
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 messageable=context,
                 title=_("New karaoke effect applied to the player"),
                 description=box(
@@ -569,7 +569,7 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
         context = await self.bot.get_context(interaction)
         if not context.player.node.has_filter("channelMix"):
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     messageable=context,
                     description=_("The current node does not have the ChannelMix functionality enabled"),
                 ),
@@ -608,7 +608,7 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
             ),
         ]
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 messageable=context,
                 title=_("New channel mix effect applied to the player"),
                 description=box(
@@ -653,14 +653,14 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
         offset: Range[float, 0.0, None] = None,
         scale: Range[float, 0.0, None] = None,
         reset: bool = False,
-    ) -> None:
+    ) -> None:  # sourcery skip: low-code-quality
         """Apply a distortion filter to the player"""
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
         if not context.player.node.has_filter("distortion"):
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     messageable=context,
                     description=_("The current node does not have the Distortion functionality enabled"),
                 ),
@@ -715,7 +715,7 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
             ),
         ]
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 messageable=context,
                 title=_("New distortion effect applied to the player"),
                 description=box(
@@ -755,7 +755,7 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
         context = await self.bot.get_context(interaction)
         if not context.player.node.has_filter("echo"):
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     messageable=context,
                     description=_("The current node does not have the Echo functionality enabled"),
                 ),
@@ -776,7 +776,7 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
             ),
         ]
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 messageable=context,
                 title=_("New echo effect applied to the player"),
                 description=box(
@@ -845,7 +845,7 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
             data.append(data_)
 
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 title=_("Current filters applied to the player"),
                 description="__**{translation}:**__\n{data}".format(
                     data=box(tabulate(data, headers="keys", tablefmt="fancy_grid", maxcolwidths=[10, 18]), lang="ansi")  # type: ignore
@@ -870,7 +870,7 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
 
         await context.player.set_filters(requester=context.author, reset_not_set=True)
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 messageable=context, description=_("Reset any existing filters currently applied to the player")
             ),
             ephemeral=True,

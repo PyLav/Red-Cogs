@@ -92,13 +92,13 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
                     tracks = [
                         t
                         async for t in async_bulk_re_encoder(
-                            tracks_temp, await self.lavalink.node_manager.find_best_node(wait=True)
+                            tracks_temp, await self.pylav.node_manager.find_best_node(wait=True)
                         )
                     ]
                 else:
                     tracks = []
                 if tracks:
-                    await self.lavalink.playlist_db_manager.create_or_update_playlist(
+                    await self.pylav.playlist_db_manager.create_or_update_playlist(
                         identifier=pl.playlist_id,
                         name=pl.playlist_name,
                         scope=pl.scope_id,
@@ -116,7 +116,7 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
                 )
 
     async def _process_server_settings(self, guild: int, guild_config: typing.MutableMapping[str, typing.Any]) -> None:
-        player_config = self.lavalink.player_config_manager.get_config(guild)
+        player_config = self.pylav.player_config_manager.get_config(guild)
         if not guild_config.get("auto_deafen", True):
             await player_config.update_self_deaf(False)
         if guild_config.get("dj_enabled", False) is True:
@@ -144,7 +144,7 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
             await player_config.update_empty_queue_dc({"enabled": True, "time": 60})
 
     async def _process_global_settings(self, audio_config: Config, context: PyLavContext) -> None:
-        global_config = self.lavalink.lib_db_manager.get_config()
+        global_config = self.pylav.lib_db_manager.get_config()
         if r := await audio_config.localpath():
             path = aiopath.AsyncPath(r)
             localtracks_path = path / "localtracks"
@@ -153,7 +153,7 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
                     await global_config.update_localtrack_folder(f"{localtracks_path}")
             except PermissionError:
                 await context.send(
-                    embed=await self.lavalink.construct_embed(
+                    embed=await self.pylav.construct_embed(
                         description=_("I don't have permission to access {folder}").format(folder=localtracks_path)
                     )
                 )
@@ -161,7 +161,7 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
             await global_config.update_update_bot_activity(True)
         if __ := await audio_config.use_external_lavalink():
             await global_config.update_enable_managed_node(False)
-            await self.lavalink.add_node(
+            await self.pylav.add_node(
                 unique_identifier=context.message.id,
                 name="AudioMigratedExternal",
                 host=await audio_config.host(),
@@ -176,7 +176,7 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
             )
         else:
             audio_yaml = change_dict_naming_convention(await audio_config.yaml.all())
-            bundled_node_config = self.lavalink.node_db_manager.bundled_node_config()
+            bundled_node_config = self.pylav.node_db_manager.bundled_node_config()
             await bundled_node_config.update_yaml(recursive_merge(await bundled_node_config.fetch_yaml(), audio_yaml))
             extras = await bundled_node_config.fetch_extras()
             extras["max_ram"] = await audio_config.java.Xmx()

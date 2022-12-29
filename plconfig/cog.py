@@ -53,11 +53,11 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
             await context.defer(ephemeral=True)
         data = [
             (EightBitANSI.paint_white(self.__class__.__name__), EightBitANSI.paint_blue(self.__version__)),
-            (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.lavalink.lib_version)),
+            (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.pylav.lib_version)),
         ]
 
         await context.send(
-            embed=await context.lavalink.construct_embed(
+            embed=await context.pylav.construct_embed(
                 description=box(
                     tabulate(
                         data,
@@ -142,7 +142,7 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
                     ),
                 ]
             )
-            if not self.lavalink.managed_node_controller.disabled:
+            if not self.pylav.managed_node_controller.disabled:
                 options.append(
                     SelectOption(
                         label=shorten_string(max_length=100, string=_("Managed Node Config")),
@@ -164,7 +164,7 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
         if isinstance(role_or_member, discord.Role):
-            config = self.bot.lavalink.player_config_manager.get_config(context.guild.id)
+            config = self.bot.pylav.player_config_manager.get_config(context.guild.id)
             dj_roles = await config.fetch_dj_roles()
             dj_roles = dj_roles.union(await config.fetch_dj_users())
             is_dj = role_or_member.id in dj_roles if dj_roles else True
@@ -174,14 +174,14 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
                 else _("{role} is not a DJ role").format(role=role_or_member.mention)
             )
         else:
-            is_dj = await self.bot.lavalink.is_dj(user=role_or_member, guild=context.guild, bot=self.bot)
+            is_dj = await self.bot.pylav.is_dj(user=role_or_member, guild=context.guild, bot=self.bot)
             message = (
                 _("{user} is a DJ").format(user=role_or_member.mention)
                 if is_dj
                 else _("{user} is not a DJ").format(user=role_or_member.mention)
             )
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 description=message,
                 messageable=context,
             ),
@@ -202,7 +202,7 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
         path = aiopath.AsyncPath(folder)
         if await path.is_file():
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("{folder} is not a folder").format(
                         folder=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
                     ),
@@ -216,7 +216,7 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
             await path.mkdir(parents=True, exist_ok=True)
         elif not await path.exists():
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_(
                         "{folder} does not exist, "
                         "run the command again with the create argument "
@@ -230,11 +230,11 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
             )
             return
 
-        global_config = self.lavalink.lib_db_manager.get_config()
+        global_config = self.pylav.lib_db_manager.get_config()
         await global_config.update_config_folder(str(await discord.utils.maybe_coroutine(path.absolute)))
 
         await context.send(
-            embed=await context.lavalink.construct_embed(
+            embed=await context.pylav.construct_embed(
                 description=_("PyLav's config folder has been set to {folder}").format(
                     folder=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
                 ),
@@ -257,7 +257,7 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
         path = aiopath.AsyncPath(folder)
         if await path.is_file():
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("{folder} is not a folder").format(
                         folder=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
                     ),
@@ -271,7 +271,7 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
             await path.mkdir(parents=True, exist_ok=True)
         elif not await path.exists():
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_(
                         "{folder} does not exist, "
                         "run the command again with "
@@ -287,12 +287,12 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
             )
             return
 
-        global_config = self.lavalink.lib_db_manager.get_config()
+        global_config = self.pylav.lib_db_manager.get_config()
         await global_config.update_localtrack_folder(str(await discord.utils.maybe_coroutine(path.absolute)))
 
         await LocalFile.add_root_folder(path=path)
         await context.send(
-            embed=await context.lavalink.construct_embed(
+            embed=await context.pylav.construct_embed(
                 description=_("PyLav's local tracks folder has been set to {folder}").format(
                     folder=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
                 ),
@@ -317,13 +317,13 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        global_config = self.lavalink.lib_db_manager.get_config()
+        global_config = self.pylav.lib_db_manager.get_config()
         current = await global_config.fetch_enable_managed_node()
         await global_config.update_enable_managed_node(not current)
 
         if not current:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("PyLav's managed node has been enabled"),
                     messageable=context,
                 ),
@@ -331,7 +331,7 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
             )
         else:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("PyLav's managed node has been disabled"),
                     messageable=context,
                 ),
@@ -349,13 +349,13 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        global_config = self.lavalink.lib_db_manager.get_config()
+        global_config = self.pylav.lib_db_manager.get_config()
         current = await global_config.fetch_auto_update_managed_nodes()
         await global_config.update_auto_update_managed_nodes(not current)
 
         if not current:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("PyLav's managed node auto updates have been enabled"),
                     messageable=context,
                 ),
@@ -363,7 +363,7 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
             )
         else:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("PyLav's managed node auto updates have been disabled"),
                     messageable=context,
                 ),
@@ -381,31 +381,31 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        global_config = self.lavalink.lib_db_manager.get_config()
+        global_config = self.pylav.lib_db_manager.get_config()
         current_state = await global_config.fetch_use_bundled_pylav_external()
         await global_config.update_use_bundled_pylav_external(not current_state)
 
         if not current_state:
-            node_config = self.lavalink.node_db_manager.get_node_config(
+            node_config = self.pylav.node_db_manager.get_node_config(
                 PYLAV_BUNDLED_NODES_SETTINGS["ll-gb.draper.wtf"]["unique_identifier"]
             )
-            await self.lavalink.add_node(**(await node_config.get_connection_args()))
-            node_config = self.lavalink.node_db_manager.get_node_config(
+            await self.pylav.add_node(**(await node_config.get_connection_args()))
+            node_config = self.pylav.node_db_manager.get_node_config(
                 PYLAV_BUNDLED_NODES_SETTINGS["ll-us-ny.draper.wtf"]["unique_identifier"]
             )
-            await self.lavalink.add_node(**(await node_config.get_connection_args()))
+            await self.pylav.add_node(**(await node_config.get_connection_args()))
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("PyLav's managed pylav external node has been enabled"),
                     messageable=context,
                 ),
                 ephemeral=True,
             )
         else:
-            await self.lavalink.remove_node(PYLAV_BUNDLED_NODES_SETTINGS["ll-gb.draper.wtf"]["unique_identifier"])
-            await self.lavalink.remove_node(PYLAV_BUNDLED_NODES_SETTINGS["ll-us-ny.draper.wtf"]["unique_identifier"])
+            await self.pylav.remove_node(PYLAV_BUNDLED_NODES_SETTINGS["ll-gb.draper.wtf"]["unique_identifier"])
+            await self.pylav.remove_node(PYLAV_BUNDLED_NODES_SETTINGS["ll-us-ny.draper.wtf"]["unique_identifier"])
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("PyLav's managed pylav external node has been disabled"),
                     messageable=context,
                 ),
@@ -419,33 +419,33 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        global_config = self.lavalink.lib_db_manager.get_config()
+        global_config = self.pylav.lib_db_manager.get_config()
         current_state = await global_config.fetch_use_bundled_lava_link_external()
         await global_config.update_use_bundled_lava_link_external(not current_state)
         if current_state:
-            await self.lavalink.remove_node(2)
+            await self.pylav.remove_node(2)
         else:
-            node_config = self.lavalink.node_db_manager.get_node_config(
+            node_config = self.pylav.node_db_manager.get_node_config(
                 PYLAV_BUNDLED_NODES_SETTINGS["lava.link"]["unique_identifier"]
             )
-            await self.lavalink.add_node(**(await node_config.get_connection_args()))
+            await self.pylav.add_node(**(await node_config.get_connection_args()))
 
         if not current_state:
-            node_config = self.lavalink.node_db_manager.get_node_config(
+            node_config = self.pylav.node_db_manager.get_node_config(
                 PYLAV_BUNDLED_NODES_SETTINGS["lava.link"]["unique_identifier"]
             )
-            await self.lavalink.add_node(**(await node_config.get_connection_args()))
+            await self.pylav.add_node(**(await node_config.get_connection_args()))
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("PyLav's managed lava.link external node has been enabled"),
                     messageable=context,
                 ),
                 ephemeral=True,
             )
         else:
-            await self.lavalink.remove_node(2)
+            await self.pylav.remove_node(2)
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("PyLav's managed lava.link external node has been disabled"),
                     messageable=context,
                 ),
@@ -468,7 +468,7 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
             "client_secret <your_client_secret_here>`"
         ).format(prefix=context.clean_prefix)
         await context.send(
-            embed=await context.lavalink.construct_embed(
+            embed=await context.pylav.construct_embed(
                 description=message,
                 messageable=context,
             )
@@ -484,7 +484,7 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
             "`{prefix}set api deezer token <your_token_here>`"
         ).format(prefix=context.clean_prefix)
         await context.send(
-            embed=await context.lavalink.construct_embed(
+            embed=await context.pylav.construct_embed(
                 description=message,
                 messageable=context,
             )
@@ -499,18 +499,18 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        if server and (self.lavalink.player_manager.get(server.id) is None):
+        if server and (self.pylav.player_manager.get(server.id) is None):
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("No active player in {name}").format(bold(server.name)),
                     messageable=context,
                 ),
                 ephemeral=True,
             )
             return
-        elif not self.lavalink.player_manager.connected_players:
+        elif not self.pylav.player_manager.connected_players:
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("No connected players"),
                     messageable=context,
                 ),
@@ -533,12 +533,12 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        global_config = self.lavalink.lib_db_manager.get_config()
+        global_config = self.pylav.lib_db_manager.get_config()
         current = await global_config.fetch_update_bot_activity()
         await global_config.update_update_bot_activity(not current)
         if not current:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("PyLav will change bot activity"),
                     messageable=context,
                 ),
@@ -547,7 +547,7 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
         else:
             await self.bot.change_presence(activity=None)
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("PyLav will no longer change the bot activity"),
                     messageable=context,
                 ),

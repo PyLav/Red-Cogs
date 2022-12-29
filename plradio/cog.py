@@ -74,14 +74,14 @@ class PyLavRadio(DISCORD_COG_TYPE_MIXIN):
         tag3: TagConverter = None,  # noqa
         tag4: TagConverter = None,  # noqa
         tag5: TagConverter = None,  # noqa
-    ):
+    ):  # sourcery skip: low-code-quality
         """Enqueue a radio station"""
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
         if not stations:
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("The Radio Browser functionality is currently unavailable"), messageable=context
                 ),
                 ephemeral=True,
@@ -97,14 +97,14 @@ class PyLavRadio(DISCORD_COG_TYPE_MIXIN):
         )
         send = context.send
         author = context.author
-        player = self.lavalink.get_player(context.guild.id)
+        player = self.pylav.get_player(context.guild.id)
         if player is None:
-            config = self.lavalink.player_config_manager.get_config(context.guild.id)
+            config = self.pylav.player_config_manager.get_config(context.guild.id)
             if (channel := context.guild.get_channel_or_thread(await config.fetch_forced_channel_id())) is None:
                 channel = rgetattr(author, "voice.channel", None)
                 if not channel:
                     await send(
-                        embed=await self.lavalink.construct_embed(
+                        embed=await self.pylav.construct_embed(
                             description=_("You must be in a voice channel to allow me to connect"), messageable=context
                         ),
                         ephemeral=True,
@@ -114,7 +114,7 @@ class PyLavRadio(DISCORD_COG_TYPE_MIXIN):
                 (permission := channel.permissions_for(context.guild.me)) and permission.connect and permission.speak
             ):
                 await send(
-                    embed=await self.lavalink.construct_embed(
+                    embed=await self.pylav.construct_embed(
                         description=_("I don't have permission to connect or speak in {channel}").format(
                             channel=channel.mention
                         ),
@@ -123,12 +123,12 @@ class PyLavRadio(DISCORD_COG_TYPE_MIXIN):
                     ephemeral=True,
                 )
                 return
-            player = await self.lavalink.connect_player(channel=channel, requester=author)
+            player = await self.pylav.connect_player(channel=channel, requester=author)
 
         total_tracks_enqueue = 0
         url = station.url_resolved or station.url
         query = await Query.from_string(url)
-        successful, count, failed = await self.lavalink.get_all_tracks_for_queries(
+        successful, count, failed = await self.pylav.get_all_tracks_for_queries(
             query, requester=author, player=player, bypass_cache=True, partial=False
         )
         single_track = successful[0] if successful else None
@@ -142,7 +142,7 @@ class PyLavRadio(DISCORD_COG_TYPE_MIXIN):
 
         if total_tracks_enqueue == 1:
             await send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description="{translation} **[{station_name}]({station_url})**".format(
                         station_name=station.name, station_url=url, translation=_("Enqueued")
                     ),
@@ -154,7 +154,7 @@ class PyLavRadio(DISCORD_COG_TYPE_MIXIN):
             await station.click()
         else:
             await send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description="**[{station_name}]({station_url})**".format(
                         station_name=station.name, station_url=url, translation=_("Unable to play")
                     ),

@@ -76,11 +76,11 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
             await context.defer(ephemeral=True)
         data = [
             (EightBitANSI.paint_white(self.__class__.__name__), EightBitANSI.paint_blue(self.__version__)),
-            (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.lavalink.lib_version)),
+            (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.pylav.lib_version)),
         ]
 
         await context.send(
-            embed=await context.lavalink.construct_embed(
+            embed=await context.pylav.construct_embed(
                 description=box(
                     tabulate(
                         data,
@@ -141,7 +141,7 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
             await context.defer(ephemeral=True)
         if not context.player:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Not connected to a voice channel"), messageable=context
                 ),
                 ephemeral=True,
@@ -150,13 +150,13 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
 
         if not context.player.current:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("Nothing playing"), messageable=context),
+                embed=await context.pylav.construct_embed(description=_("Nothing playing"), messageable=context),
                 ephemeral=True,
             )
             return
 
         await context.send(
-            embed=await context.lavalink.construct_embed(
+            embed=await context.pylav.construct_embed(
                 description=inline(context.player.current.encoded),
                 messageable=context,
             ),
@@ -173,7 +173,7 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
 
         if not context.player:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Not connected to a voice channel"), messageable=context
                 ),
                 ephemeral=True,
@@ -182,13 +182,13 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
 
         if not context.player.current:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("Nothing playing"), messageable=context),
+                embed=await context.pylav.construct_embed(description=_("Nothing playing"), messageable=context),
                 ephemeral=True,
             )
             return
 
         await context.send(
-            embed=await context.lavalink.construct_embed(
+            embed=await context.pylav.construct_embed(
                 description=inline(await context.player.current.author()),
                 messageable=context,
             ),
@@ -205,7 +205,7 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
 
         if not context.player:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Not connected to a voice channel"), messageable=context
                 ),
                 ephemeral=True,
@@ -214,13 +214,13 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
 
         if not context.player.current:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("Nothing playing"), messageable=context),
+                embed=await context.pylav.construct_embed(description=_("Nothing playing"), messageable=context),
                 ephemeral=True,
             )
             return
 
         await context.send(
-            embed=await context.lavalink.construct_embed(
+            embed=await context.pylav.construct_embed(
                 description=inline(await context.player.current.title()),
                 messageable=context,
             ),
@@ -236,7 +236,7 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
             await context.defer(ephemeral=True)
         if not context.player:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Not connected to a voice channel"), messageable=context
                 ),
                 ephemeral=True,
@@ -245,13 +245,13 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
 
         if not context.player.current:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("Nothing playing"), messageable=context),
+                embed=await context.pylav.construct_embed(description=_("Nothing playing"), messageable=context),
                 ephemeral=True,
             )
             return
 
         await context.send(
-            embed=await context.lavalink.construct_embed(
+            embed=await context.pylav.construct_embed(
                 description=inline(await context.player.current.source()),
                 messageable=context,
             ),
@@ -268,7 +268,7 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
 
         if not context.player:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Not connected to a voice channel"), messageable=context
                 ),
                 ephemeral=True,
@@ -279,7 +279,7 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
             node_player = await context.player.fetch_node_player()
         except Exception:  # noqa
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Unable to get player info"), messageable=context
                 ),
                 ephemeral=True,
@@ -288,7 +288,7 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
 
         if isinstance(node_player, HTTPException):
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Unable to get player info"), messageable=context
                 ),
                 ephemeral=True,
@@ -296,7 +296,7 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
             return
         data = node_player.to_dict()
         await context.send(
-            embed=await context.lavalink.construct_embed(
+            embed=await context.pylav.construct_embed(
                 description=box(ujson.dumps(data, indent=2), lang="json"),
                 messageable=context,
             ),
@@ -311,18 +311,16 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
         try:
-            data = await self.lavalink.decode_track(base64, raise_on_failure=True)
+            data = await self.pylav.decode_track(base64, raise_on_failure=True)
         except Exception:  # noqa
             await context.send(
-                embed=await context.lavalink.construct_embed(
-                    description=_("Invalid base64 string"), messageable=context
-                ),
+                embed=await context.pylav.construct_embed(description=_("Invalid base64 string"), messageable=context),
                 ephemeral=True,
             )
             return
         else:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=box(lang="json", text=ujson.dumps(data.info.to_dict(), indent=2, sort_keys=True)),
                     messageable=context,
                 ),
@@ -341,9 +339,9 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        await self.lavalink.query_cache_manager.wipe()
+        await self.pylav.query_cache_manager.wipe()
         await context.send(
-            embed=await context.lavalink.construct_embed(description=_("Query cache cleared"), messageable=context),
+            embed=await context.pylav.construct_embed(description=_("Query cache cleared"), messageable=context),
             ephemeral=True,
         )
 
@@ -356,7 +354,7 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
             await context.defer(ephemeral=True)
         if days > 31:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Days must be less than 31"), messageable=context
                 ),
                 ephemeral=True,
@@ -364,15 +362,15 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
             return
         elif days < 1:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Days must be greater than 1"), messageable=context
                 ),
                 ephemeral=True,
             )
             return
-        await self.lavalink.query_cache_manager.delete_older_than(days=days)
+        await self.pylav.query_cache_manager.delete_older_than(days=days)
         await context.send(
-            embed=await context.lavalink.construct_embed(description=_("Query cache cleared"), messageable=context),
+            embed=await context.pylav.construct_embed(description=_("Query cache cleared"), messageable=context),
             ephemeral=True,
         )
 
@@ -383,9 +381,9 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        await self.lavalink.query_cache_manager.delete_query(query)
+        await self.pylav.query_cache_manager.delete_query(query)
         await context.send(
-            embed=await context.lavalink.construct_embed(description=_("Query cache cleared"), messageable=context),
+            embed=await context.pylav.construct_embed(description=_("Query cache cleared"), messageable=context),
             ephemeral=True,
         )
 
@@ -397,9 +395,9 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
         await context.send(
-            embed=await context.lavalink.construct_embed(
+            embed=await context.pylav.construct_embed(
                 description=_("Query cache size: `{size}`").format(
-                    size=humanize_number(await self.lavalink.query_cache_manager.size())
+                    size=humanize_number(await self.pylav.query_cache_manager.size())
                 ),
                 messageable=context,
             ),
@@ -422,7 +420,7 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
             if value == 0:
                 tracemalloc.stop()
                 await context.send(
-                    embed=await context.lavalink.construct_embed(
+                    embed=await context.pylav.construct_embed(
                         description=_("Stopped memory tracing"),
                         messageable=context,
                     ),
@@ -431,7 +429,7 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
         elif not tracemalloc.is_tracing() and value == 1:
             tracemalloc.start(25)
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Started memory tracing"),
                     messageable=context,
                 ),
@@ -440,7 +438,7 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
             return
         if not tracemalloc.is_tracing():
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("You need to start tracing first"),
                     messageable=context,
                 ),
@@ -483,7 +481,7 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
         logger = getLogger("PyLav")
         logger.setLevel(level_map[level])
         await context.send(
-            embed=await context.lavalink.construct_embed(
+            embed=await context.pylav.construct_embed(
                 description=_("Logger level set to `{level}`").format(level=logging.getLevelName(logger.level)),
                 messageable=context,
             ),

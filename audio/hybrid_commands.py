@@ -77,21 +77,21 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                 )
         if not query:
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("You need to provide a query to play"),
                     messageable=context,
                 ),
                 ephemeral=True,
             )
             return
-        player = self.lavalink.get_player(context.guild.id)
+        player = self.pylav.get_player(context.guild.id)
         if player is None:
-            config = self.lavalink.player_config_manager.get_config(context.guild.id)
+            config = self.pylav.player_config_manager.get_config(context.guild.id)
             if (channel := context.guild.get_channel_or_thread(await config.fetch_forced_channel_id())) is None:
                 channel = rgetattr(context.author, "voice.channel", None)
                 if not channel:
                     await context.send(
-                        embed=await self.lavalink.construct_embed(
+                        embed=await self.pylav.construct_embed(
                             description=_("You must be in a voice channel to allow me to connect"), messageable=context
                         ),
                         ephemeral=True,
@@ -101,7 +101,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                 (permission := channel.permissions_for(context.guild.me)) and permission.connect and permission.speak
             ):
                 await context.send(
-                    embed=await self.lavalink.construct_embed(
+                    embed=await self.pylav.construct_embed(
                         description=_("I don't have permission to connect or speak in {channel}").format(
                             channel=channel.mention
                         ),
@@ -110,7 +110,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                     ephemeral=True,
                 )
                 return
-            player = await self.lavalink.connect_player(channel=channel, requester=context.author)
+            player = await self.pylav.connect_player(channel=channel, requester=context.author)
 
         queries = [
             await Query.from_string(qf, partial=True) for q in query.split("\n") if (qf := q.strip("<>").strip())
@@ -120,41 +120,22 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         total_tracks_enqueue = 0
         single_track = None
         if search_queries:
-            total_tracks_from_search = 0
-            for query in search_queries:
-                single_track = track = await Track.build_track(
-                    node=player.node,
-                    data=None,
-                    query=query,
-                    requester=context.author.id,
-                    timestamp=query.start_time,
-                    partial=query.is_partial,
-                )
-                await player.add(requester=context.author.id, track=track)
-                if not player.is_playing:
-                    await player.next(requester=context.author)
-                total_tracks_enqueue += 1
-                total_tracks_from_search += 1
-        if non_search_queries:
-            successful, count, failed = await self.lavalink.get_all_tracks_for_queries(
-                *non_search_queries, requester=context.author, player=player
+            single_track, total_tracks_enqueue = await self._process_play_search_queries(
+                context, player, search_queries, single_track, total_tracks_enqueue
             )
-            if successful:
-                single_track = successful[0]
-            total_tracks_enqueue += count
-            failed_queries = []
-            failed_queries.extend(failed)
-            if count:
-                if count == 1:
-                    await player.add(requester=context.author.id, track=successful[0])
-                else:
-                    await player.bulk_add(requester=context.author.id, tracks_and_queries=successful)
+        if non_search_queries:
+            single_track, total_tracks_enqueue = await self._process_play_non_search_queries(
+                context, non_search_queries, player, single_track, total_tracks_enqueue
+            )
         if not (player.is_playing or player.queue.empty()):
             await player.next(requester=context.author)
 
+        await self._process_play_message(context, single_track, total_tracks_enqueue)
+
+    async def _process_play_message(self, context, single_track, total_tracks_enqueue):
         if total_tracks_enqueue > 1:
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("{track_count} tracks enqueued").format(track_count=total_tracks_enqueue),
                     messageable=context,
                 ),
@@ -162,7 +143,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             )
         elif total_tracks_enqueue == 1:
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("{track} enqueued").format(
                         track=await single_track.get_track_display_name(with_url=True)
                     ),
@@ -173,12 +154,48 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             )
         else:
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("No tracks were found for your query"),
                     messageable=context,
                 ),
                 ephemeral=True,
             )
+
+    async def _process_play_non_search_queries(
+        self, context, non_search_queries, player, single_track, total_tracks_enqueue
+    ):
+        successful, count, failed = await self.pylav.get_all_tracks_for_queries(
+            *non_search_queries, requester=context.author, player=player
+        )
+        if successful:
+            single_track = successful[0]
+        total_tracks_enqueue += count
+        failed_queries = []
+        failed_queries.extend(failed)
+        if count:
+            if count == 1:
+                await player.add(requester=context.author.id, track=successful[0])
+            else:
+                await player.bulk_add(requester=context.author.id, tracks_and_queries=successful)
+        return single_track, total_tracks_enqueue
+
+    async def _process_play_search_queries(self, context, player, search_queries, single_track, total_tracks_enqueue):
+        total_tracks_from_search = 0
+        for query in search_queries:
+            single_track = track = await Track.build_track(
+                node=player.node,
+                data=None,
+                query=query,
+                requester=context.author.id,
+                timestamp=query.start_time,
+                partial=query.is_partial,
+            )
+            await player.add(requester=context.author.id, track=track)
+            if not player.is_playing:
+                await player.next(requester=context.author)
+            total_tracks_enqueue += 1
+            total_tracks_from_search += 1
+        return single_track, total_tracks_enqueue
 
     @commands.hybrid_command(
         name="connect",
@@ -196,12 +213,12 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        config = self.lavalink.player_config_manager.get_config(context.guild.id)
+        config = self.pylav.player_config_manager.get_config(context.guild.id)
         if (channel_ := context.guild.get_channel_or_thread(await config.fetch_forced_channel_id())) is None:
             actual_channel = channel or rgetattr(context, "author.voice.channel", None)
             if not actual_channel:
                 await context.send(
-                    embed=await context.lavalink.construct_embed(
+                    embed=await context.pylav.construct_embed(
                         description=_(
                             "You need to be in a voice channel if you don't specify which channel I need to connect to"
                         ),
@@ -220,7 +237,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             else:
                 description = _("I don't have permission to speak in {channel}").format(channel=actual_channel.mention)
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("I don't have permission to connect to {channel}").format(channel=description),
                     messageable=context,
                 ),
@@ -233,7 +250,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             and permission.view_channel
         ):
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("You don't have permission to connect to {channel}").format(
                         channel=actual_channel.mention
                     ),
@@ -244,13 +261,13 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             return
 
         if (player := context.player) is None:
-            player = await context.lavalink.connect_player(context.author, channel=actual_channel, self_deaf=True)
+            player = await context.pylav.connect_player(context.author, channel=actual_channel, self_deaf=True)
         else:
             await player.move_to(context.author, channel=actual_channel, self_deaf=True)
 
         if (vc := await player.forced_vc()) and channel != actual_channel:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("I'm forced to only join {channel}").format(channel=vc.mention),
                     messageable=context,
                 ),
@@ -258,7 +275,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             )
         else:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Connected to {channel}").format(channel=player.channel.mention), messageable=context
                 ),
                 ephemeral=True,
@@ -279,13 +296,13 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             await context.defer(ephemeral=True)
         if not context.player:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("No player detected"), messageable=context),
+                embed=await context.pylav.construct_embed(description=_("No player detected"), messageable=context),
                 ephemeral=True,
             )
             return
         if not context.player.current:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Player is not currently playing anything"), messageable=context
                 ),
                 ephemeral=True,
@@ -309,13 +326,13 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             await context.defer(ephemeral=True)
         if not context.player:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("No player detected"), messageable=context),
+                embed=await context.pylav.construct_embed(description=_("No player detected"), messageable=context),
                 ephemeral=True,
             )
             return
         if not context.player.current and not context.player.autoplay_enabled:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Player is not currently playing anything"), messageable=context
                 ),
                 ephemeral=True,
@@ -323,7 +340,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             return
         if context.player.current:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Skipped - {track}").format(
                         track=await context.player.current.get_track_display_name(with_url=True)
                     ),
@@ -349,13 +366,13 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             await context.defer(ephemeral=True)
         if not context.player:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("No player detected"), messageable=context),
+                embed=await context.pylav.construct_embed(description=_("No player detected"), messageable=context),
                 ephemeral=True,
             )
             return
         if not context.player.current:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Player is not currently playing anything"), messageable=context
                 ),
                 ephemeral=True,
@@ -363,7 +380,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             return
         await context.player.stop(context.author)
         await context.send(
-            embed=await context.lavalink.construct_embed(description=_("Player stopped"), messageable=context),
+            embed=await context.pylav.construct_embed(description=_("Player stopped"), messageable=context),
             ephemeral=True,
         )
 
@@ -383,14 +400,14 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         LOGGER.info("Disconnecting from voice channel - %s", context.author)
         if not context.player:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("No player detected"), messageable=context),
+                embed=await context.pylav.construct_embed(description=_("No player detected"), messageable=context),
                 ephemeral=True,
             )
             return
         channel = context.player.channel
         await context.player.disconnect(requester=context.author)
         await context.send(
-            embed=await context.lavalink.construct_embed(
+            embed=await context.pylav.construct_embed(
                 description=_("Disconnected from {channel}").format(channel=channel.mention), messageable=context
             ),
             ephemeral=True,
@@ -411,7 +428,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             await context.defer(ephemeral=True)
         if not context.player:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("No player detected"), messageable=context),
+                embed=await context.pylav.construct_embed(description=_("No player detected"), messageable=context),
                 ephemeral=True,
             )
             return
@@ -436,21 +453,21 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             await context.defer(ephemeral=True)
         if not context.player:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("No player detected"), messageable=context),
+                embed=await context.pylav.construct_embed(description=_("No player detected"), messageable=context),
                 ephemeral=True,
             )
             return
         if context.player.queue.empty():
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("There is nothing in the queue"), messageable=context
                 ),
                 ephemeral=True,
             )
             return
-        if (await self.lavalink.player_config_manager.get_shuffle(context.guild.id)) is False:
+        if (await self.pylav.player_config_manager.get_shuffle(context.guild.id)) is False:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("You are not allowed to shuffle the queue"), messageable=context
                 ),
                 ephemeral=True,
@@ -458,7 +475,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             return
         await context.player.shuffle_queue(context.author.id)
         await context.send(
-            embed=await context.lavalink.construct_embed(
+            embed=await context.pylav.construct_embed(
                 description=_("{queue_size} tracks shuffled").format(queue_size=context.player.queue.size()),
                 messageable=context,
             ),
@@ -484,7 +501,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             await context.defer(ephemeral=True)
         if not context.player:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("No player detected"), messageable=context),
+                embed=await context.pylav.construct_embed(description=_("No player detected"), messageable=context),
                 ephemeral=True,
             )
             return
@@ -503,7 +520,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                 else _("current track")
             )
         await context.send(
-            embed=await context.lavalink.construct_embed(description=msg, messageable=context), ephemeral=True
+            embed=await context.pylav.construct_embed(description=msg, messageable=context), ephemeral=True
         )
 
     @commands.hybrid_command(name="pause", description=shorten_string(max_length=100, string=_("Pause the player")))
@@ -518,7 +535,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             await context.defer(ephemeral=True)
         if not context.player:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("No player detected"), messageable=context),
+                embed=await context.pylav.construct_embed(description=_("No player detected"), messageable=context),
                 ephemeral=True,
             )
             return
@@ -530,14 +547,14 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                     prefix=context.clean_prefix, command=self.command_resume.qualified_name
                 )
             await context.send(
-                embed=await context.lavalink.construct_embed(description=description, messageable=context),
+                embed=await context.pylav.construct_embed(description=description, messageable=context),
                 ephemeral=True,
             )
             return
 
         await context.player.set_pause(True, requester=context.author)
         await context.send(
-            embed=await context.lavalink.construct_embed(description=_("Player paused"), messageable=context),
+            embed=await context.pylav.construct_embed(description=_("Player paused"), messageable=context),
             ephemeral=True,
         )
 
@@ -553,7 +570,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             await context.defer(ephemeral=True)
         if not context.player:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("No player detected"), messageable=context),
+                embed=await context.pylav.construct_embed(description=_("No player detected"), messageable=context),
                 ephemeral=True,
             )
             return
@@ -565,14 +582,14 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                     prefix=context.clean_prefix, command=self.command_pause.qualified_name
                 )
             await context.send(
-                embed=await context.lavalink.construct_embed(description=description, messageable=context),
+                embed=await context.pylav.construct_embed(description=description, messageable=context),
                 ephemeral=True,
             )
             return
 
         await context.player.set_pause(False, context.author)
         await context.send(
-            embed=await context.lavalink.construct_embed(description=_("Player resumed"), messageable=context),
+            embed=await context.pylav.construct_embed(description=_("Player resumed"), messageable=context),
             ephemeral=True,
         )
 
@@ -592,7 +609,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             await context.defer(ephemeral=True)
         if volume > 1000:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Volume must be less than 1000"), messageable=context
                 ),
                 ephemeral=True,
@@ -600,7 +617,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             return
         elif volume < 0:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Volume must be greater than 0"), messageable=context
                 ),
                 ephemeral=True,
@@ -608,14 +625,14 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             return
         if not context.player:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("No player detected"), messageable=context),
+                embed=await context.pylav.construct_embed(description=_("No player detected"), messageable=context),
                 ephemeral=True,
             )
             return
-        max_volume = await self.lavalink.player_config_manager.get_max_volume(context.guild.id)
+        max_volume = await self.pylav.player_config_manager.get_max_volume(context.guild.id)
         if volume > max_volume:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Volume cannot be higher than {max_volume}").format(max_volume=max_volume),
                     messageable=context,
                 ),
@@ -624,7 +641,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             return
         await context.player.set_volume(volume, requester=context.author)
         await context.send(
-            embed=await context.lavalink.construct_embed(
+            embed=await context.pylav.construct_embed(
                 description=_("Player volume set to {volume}%").format(volume=volume), messageable=context
             ),
             ephemeral=True,
@@ -652,14 +669,14 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
 
         if not context.player:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("No player detected"), messageable=context),
+                embed=await context.pylav.construct_embed(description=_("No player detected"), messageable=context),
                 ephemeral=True,
             )
             return
 
         if not context.player.current:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("Nothing playing"), messageable=context),
+                embed=await context.pylav.construct_embed(description=_("Nothing playing"), messageable=context),
                 ephemeral=True,
             )
             return
@@ -667,7 +684,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         if not await context.player.current.is_seekable():
             if await context.player.current.stream():
                 await context.send(
-                    embed=await context.lavalink.construct_embed(
+                    embed=await context.pylav.construct_embed(
                         title=_("Unable to seek track"),
                         description=_("Can't seek on a stream"),
                         messageable=context,
@@ -676,7 +693,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                 )
             else:
                 await context.send(
-                    embed=await context.lavalink.construct_embed(
+                    embed=await context.pylav.construct_embed(
                         description=_("Unable to seek track"), messageable=context
                     ),
                     ephemeral=True,
@@ -685,7 +702,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
 
         if context.player.paused:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Cannot seek when the player is paused"), messageable=context
                 ),
                 ephemeral=True,
@@ -698,14 +715,14 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
 
             if seek_ms <= 0:
                 await context.send(
-                    embed=await context.lavalink.construct_embed(
+                    embed=await context.pylav.construct_embed(
                         description=_("Moved {seconds}s to 00:00:00").format(seconds=seek), messageable=context
                     ),
                     ephemeral=True,
                 )
             else:
                 await context.send(
-                    embed=await context.lavalink.construct_embed(
+                    embed=await context.pylav.construct_embed(
                         description=_("Moved {seconds}s to {time}").format(
                             seconds=seek,
                             time=format_time_dd_hh_mm_ss(seek_ms),
@@ -726,7 +743,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                 seek_ms = 0
 
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Moved to {time}").format(
                         time=format_time_dd_hh_mm_ss(seek_ms) if seek_ms else "00:00"
                     ),
@@ -753,14 +770,14 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
 
         if not context.player:
             await context.send(
-                embed=await context.lavalink.construct_embed(description=_("No player detected"), messageable=context),
+                embed=await context.pylav.construct_embed(description=_("No player detected"), messageable=context),
                 ephemeral=True,
             )
             return
 
         if context.player.history.empty():
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("No previous in player history"), messageable=context
                 ),
                 ephemeral=True,
@@ -768,7 +785,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             return
         await context.player.previous(requester=context.author)
         await context.send(
-            embed=await context.lavalink.construct_embed(
+            embed=await context.pylav.construct_embed(
                 description=_("Playing previous track: {track}").format(
                     track=await context.player.current.get_track_display_name(with_url=True)
                 ),

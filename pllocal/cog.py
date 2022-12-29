@@ -95,11 +95,11 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
             await context.defer(ephemeral=True)
         data = [
             (EightBitANSI.paint_white(self.__class__.__name__), EightBitANSI.paint_blue(self.__version__)),
-            (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.lavalink.lib_version)),
+            (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.pylav.lib_version)),
         ]
 
         await context.send(
-            embed=await context.lavalink.construct_embed(
+            embed=await context.pylav.construct_embed(
                 description=box(
                     tabulate(
                         data,
@@ -126,7 +126,7 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
             await context.defer(ephemeral=True)
         await self._update_cache()
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 description=shorten_string(
                     max_length=100,
                     string=_("Local track list updated {number} currently present").format(number=len(self.cache)),
@@ -161,14 +161,14 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
         author = interaction.user
         entry = self.cache[entry]
         entry._recursive = recursive
-        player = self.lavalink.get_player(interaction.guild.id)
+        player = self.pylav.get_player(interaction.guild.id)
         if player is None:
-            config = self.lavalink.player_config_manager.get_config(interaction.guild.id)
+            config = self.pylav.player_config_manager.get_config(interaction.guild.id)
             if (channel := interaction.guild.get_channel_or_thread(await config.fetch_forced_channel_id())) is None:
                 channel = rgetattr(author, "voice.channel", None)
                 if not channel:
                     await send(
-                        embed=await self.lavalink.construct_embed(
+                        embed=await self.pylav.construct_embed(
                             description=_("You must be in a voice channel to allow me to connect"),
                             messageable=interaction,
                         ),
@@ -181,7 +181,7 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
                 and permission.speak
             ):
                 await send(
-                    embed=await self.lavalink.construct_embed(
+                    embed=await self.pylav.construct_embed(
                         description=_("I don't have permission to connect or speak in {channel}").format(
                             channel=channel.mention
                         ),
@@ -190,9 +190,9 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
                     ephemeral=True,
                 )
                 return
-            player = await self.lavalink.connect_player(channel=channel, requester=author)
+            player = await self.pylav.connect_player(channel=channel, requester=author)
 
-        successful, count, failed = await self.lavalink.get_all_tracks_for_queries(
+        successful, count, failed = await self.pylav.get_all_tracks_for_queries(
             entry, requester=author, player=player, partial=True
         )
         if count:
@@ -206,7 +206,7 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
 
         if count > 1:
             await send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("{track_count} tracks enqueued").format(track_count=count),
                     messageable=interaction,
                 ),
@@ -214,7 +214,7 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
             )
         elif count == 1:
             await send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("{track} enqueued").format(
                         track=await single_track.get_track_display_name(with_url=True)
                     ),
@@ -224,7 +224,7 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
             )
         else:
             await send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("No tracks were found for your query"),
                     messageable=interaction,
                 ),

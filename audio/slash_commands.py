@@ -49,7 +49,7 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN):
             await interaction.response.defer(ephemeral=True)
         if query == "FqgqQW21tQ@#1g2fasf2":
             return await interaction.followup.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("You haven't selected something to play"),
                     messageable=interaction,
                 ),
@@ -107,10 +107,10 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN):
                     value="FqgqQW21tQ@#1g2fasf2",
                 )
             ]
-        response = await interaction.client.lavalink.get_tracks(
+        response = await interaction.client.pylav.get_tracks(
             await Query.from_string(current),
             fullsearch=True,
-            player=interaction.client.lavalink.get_player(interaction.guild.id),
+            player=interaction.client.pylav.get_player(interaction.guild.id),
         )
         if not response:
             return [
@@ -134,9 +134,9 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN):
                 )
             ]
         choices = []
-        node = await interaction.client.lavalink.get_my_node()
+        node = await interaction.client.pylav.get_my_node()
         if node is None:
-            node = interaction.client.lavalink.node_manager.find_best_node(feature=feature)
+            node = interaction.client.pylav.node_manager.find_best_node(feature=feature)
 
         for track in tracks:
             track = await Track.build_track(node=node, data=track, query=None, requester=interaction.user.id)

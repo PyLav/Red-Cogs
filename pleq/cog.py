@@ -58,11 +58,11 @@ class PyLavEqualizer(DISCORD_COG_TYPE_MIXIN):
             await context.defer(ephemeral=True)
         data = [
             (EightBitANSI.paint_white(self.__class__.__name__), EightBitANSI.paint_blue(self.__version__)),
-            (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.lavalink.lib_version)),
+            (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.pylav.lib_version)),
         ]
 
         await context.send(
-            embed=await context.lavalink.construct_embed(
+            embed=await context.pylav.construct_embed(
                 description=box(
                     tabulate(
                         data,
@@ -95,7 +95,7 @@ class PyLavEqualizer(DISCORD_COG_TYPE_MIXIN):
                 effects["equalizer"] = {}
                 await context.player.config.update_effects(effects)
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     messageable=context,
                     description=_("The player will now apply the last used preset when it is created"),
                 ),
@@ -107,7 +107,7 @@ class PyLavEqualizer(DISCORD_COG_TYPE_MIXIN):
                 effects["equalizer"] = context.player.equalizer.to_dict()
                 await context.player.config.update_effects(effects)
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     messageable=context,
                     description=_("Last used preset will no longer be saved"),
                 ),
@@ -138,7 +138,7 @@ class PyLavEqualizer(DISCORD_COG_TYPE_MIXIN):
         context = await self.bot.get_context(interaction)
         if not context.player.node.has_filter("equalizer"):
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     messageable=context,
                     description=_("The current node does not have the Equalizer functionality enabled"),
                 ),
@@ -152,7 +152,7 @@ class PyLavEqualizer(DISCORD_COG_TYPE_MIXIN):
                 effects["equalizer"] = []  # type: ignore
                 await context.player.config.update_effects(effects)
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     messageable=context,
                     description=_("Bass boost preset has been disabled"),
                 ),
@@ -218,7 +218,7 @@ class PyLavEqualizer(DISCORD_COG_TYPE_MIXIN):
             effects["equalizer"] = context.player.equalizer.to_dict()
             await context.player.config.update_effects(effects)
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 messageable=context,
                 description=_("Preset has been set to {name}").format(name=equalizer.name),
             ),
@@ -241,7 +241,7 @@ class PyLavEqualizer(DISCORD_COG_TYPE_MIXIN):
         context = await self.bot.get_context(interaction)
         if not context.player.node.has_filter("equalizer"):
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     messageable=context,
                     description=_("The current node does not have the Equalizer functionality enabled"),
                 ),
@@ -273,7 +273,7 @@ class PyLavEqualizer(DISCORD_COG_TYPE_MIXIN):
             await context.player.config.update_effects(effects)
 
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 messageable=context,
                 description=_("Piano preset has been set"),
             ),
@@ -294,7 +294,7 @@ class PyLavEqualizer(DISCORD_COG_TYPE_MIXIN):
         context = await self.bot.get_context(interaction)
         if not context.player.node.has_filter("equalizer"):
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     messageable=context,
                     description=_("The current node does not have the Equalizer functionality enabled"),
                 ),
@@ -328,7 +328,7 @@ class PyLavEqualizer(DISCORD_COG_TYPE_MIXIN):
             effects["equalizer"] = equalizer.to_dict()
             await context.player.config.update_effects(effects)
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 messageable=context,
                 description=_("Rock/Metal preset has been set"),
             ),
@@ -346,7 +346,7 @@ class PyLavEqualizer(DISCORD_COG_TYPE_MIXIN):
         context = await self.bot.get_context(interaction)
         if not context.player.node.has_filter("equalizer"):
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     messageable=context,
                     description=_("The current node does not have the Equalizer functionality enabled"),
                 ),
@@ -360,7 +360,7 @@ class PyLavEqualizer(DISCORD_COG_TYPE_MIXIN):
             effects["equalizer"] = {}
             await context.player.config.update_effects(effects)
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 messageable=context,
                 description=_("Equalizer preset has been reset"),
             ),
@@ -412,7 +412,7 @@ class PyLavEqualizer(DISCORD_COG_TYPE_MIXIN):
         band_10000: Range[float, -0.25, 1.0] = None,
         band_16000: Range[float, -0.25, 1.0] = None,
         save: bool = False,
-    ) -> None:
+    ) -> None:  # sourcery skip: low-code-quality
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
@@ -444,7 +444,7 @@ class PyLavEqualizer(DISCORD_COG_TYPE_MIXIN):
                 await eq_model.save()
             if not context.player.node.has_filter("equalizer"):
                 await context.send(
-                    embed=await self.lavalink.construct_embed(
+                    embed=await self.pylav.construct_embed(
                         messageable=context,
                         description=_("The current node does not have the Equalizer functionality enabled"),
                     ),
@@ -455,7 +455,7 @@ class PyLavEqualizer(DISCORD_COG_TYPE_MIXIN):
 
         else:
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     messageable=context,
                     description=_("No changes were made to the equalizer, discarding request"),
                 ),
@@ -477,7 +477,7 @@ class PyLavEqualizer(DISCORD_COG_TYPE_MIXIN):
 
         if not context.player.equalizer:
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     messageable=context,
                     description=_("No changes were made to the equalizer, discarding request"),
                 ),
