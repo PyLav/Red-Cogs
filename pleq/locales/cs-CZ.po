@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2022-10-21 17:21+0000\n"
-"PO-Revision-Date: 2022-10-21 18:05\n"
+"POT-Creation-Date: 2022-12-30 22:35+0000\n"
+"PO-Revision-Date: 2022-12-30 22:38\n"
 "Last-Translator: \n"
 "Language-Team: Czech\n"
 "MIME-Version: 1.0\n"
@@ -22,42 +22,42 @@ msgstr ""
 msgid "Apply equalizer presets to the PyLav player"
 msgstr "Použít předvolby ekvalizéru na přehrávač PyLav"
 
-#: pleq/cog.py:34
+#: pleq/cog.py:36
 msgid "Apply an Equalizer preset to the player"
 msgstr "Použít předvolbu ekvalizéru na přehrávač"
 
-#: pleq/cog.py:47
+#: pleq/cog.py:50
 #, docstring
 msgid "Configure the Player behaviour when a preset is set"
 msgstr "Konfigurace chování přehrávače při nastavení předvolby"
 
-#: pleq/cog.py:51
+#: pleq/cog.py:54
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies"
 msgstr "Zobrazit verzi Cog a jsou to PyLav závislosti"
 
-#: pleq/cog.py:68
+#: pleq/cog.py:70
 msgid "Library/Cog"
 msgstr "Knihovna/Cog"
 
-#: pleq/cog.py:69
+#: pleq/cog.py:71
 msgid "Version"
 msgstr "Verze"
 
-#: pleq/cog.py:82
+#: pleq/cog.py:84
 #, docstring
 msgid "Persist the last used preset"
 msgstr "Zachovat poslední použitou předvolbu"
 
-#: pleq/cog.py:98
+#: pleq/cog.py:100
 msgid "The player will now apply the last used preset when it is created"
 msgstr "Přehrávač nyní použije poslední použitou předvolbu při jejím vytvoření"
 
-#: pleq/cog.py:110
+#: pleq/cog.py:112
 msgid "Last used preset will no longer be saved"
 msgstr "Poslední použitá předvolba již nebude uložena"
 
-#: pleq/cog.py:121
+#: pleq/cog.py:123
 #, docstring
 msgid "Apply a Bass boost preset to the player.\n\n"
 "        Arguments:\n"
@@ -84,47 +84,52 @@ msgstr "Použít předvolbu zvýraznění basů na hráče.\n\n"
 "            - Vypnuto\n"
 "        "
 
-#: pleq/cog.py:146
+#: pleq/cog.py:143 pleq/cog.py:246 pleq/cog.py:299 pleq/cog.py:351
+#: pleq/cog.py:449
+msgid "The current node does not have the Equalizer functionality enabled"
+msgstr ""
+
+#: pleq/cog.py:157
 msgid "Bass boost preset has been disabled"
 msgstr "Předvolba zvýraznění basů byla zakázána"
 
-#: pleq/cog.py:153
+#: pleq/cog.py:164
 msgid "Bass boost - Maximum"
 msgstr "Zesílení basů - maximum"
 
-#: pleq/cog.py:157
+#: pleq/cog.py:168
 msgid "Bass boost - Insane"
 msgstr "Zvýraznění basů - šílený"
 
-#: pleq/cog.py:161
+#: pleq/cog.py:172
 msgid "Bass boost - Extreme"
 msgstr "Zesílení basů - extrémní"
 
-#: pleq/cog.py:165
+#: pleq/cog.py:176
 msgid "Bass boost - Very High"
 msgstr "Zvýšení basů - velmi vysoké"
 
-#: pleq/cog.py:169
+#: pleq/cog.py:180
 msgid "Bass boost - High"
 msgstr "Zesílení basů - vysoká"
 
-#: pleq/cog.py:173
+#: pleq/cog.py:184
 msgid "Bass boost - Medium"
 msgstr "Zvýraznění basů - střední"
 
-#: pleq/cog.py:195
+#: pleq/cog.py:206
 msgid "Bass boost - Fine Tuned"
 msgstr ""
 
-#: pleq/cog.py:199
+#: pleq/cog.py:210
 msgid "Bass boost - Cut-off"
 msgstr "Zesílení basů - odříznutí"
 
-#: pleq/cog.py:212
+#: pleq/cog.py:223
 msgid "Preset has been set to {name}"
 msgstr "Předvolba byla nastavena na {name}"
 
-#: pleq/cog.py:222
+#: pleq/cog.py:233
 #, docstring
 msgid "Apply a Piano preset to the player.\n\n"
 "        Suitable for acoustic tracks, or tacks with an emphasis on female vocals.\n\n"
@@ -135,15 +140,15 @@ msgstr "Použít předvolbu Piano na hráče.\n\n"
 "        Může být také použito jako vyříznutí základů.\n"
 "        "
 
-#: pleq/cog.py:245
+#: pleq/cog.py:264
 msgid "Piano"
 msgstr "Piano"
 
-#: pleq/cog.py:259
+#: pleq/cog.py:278
 msgid "Piano preset has been set"
 msgstr "Piano předvolba byla nastavena"
 
-#: pleq/cog.py:269
+#: pleq/cog.py:288
 #, docstring
 msgid "Apply an experimental Metal/Rock equalizer preset.\n\n"
 "        Expect clipping on songs with heavy bass.\n"
@@ -152,24 +157,24 @@ msgstr "Použít experimentální předvolbu kovového/kamenného ekvalizéru.\n
 "        Očekávejte stříhání písní s těžkými základnami.\n"
 "        "
 
-#: pleq/cog.py:292
+#: pleq/cog.py:320
 msgid "Metal"
 msgstr "Kovové"
 
-#: pleq/cog.py:305
+#: pleq/cog.py:333
 msgid "Rock/Metal preset has been set"
 msgstr "Byla nastavena předvolba Rock/kovu"
 
-#: pleq/cog.py:315
+#: pleq/cog.py:343
 #, docstring
 msgid "Remove any equalizer preset from the player"
 msgstr "Odstranit jakoukoli předvolbu ekvalizéru z přehrávače"
 
-#: pleq/cog.py:328
+#: pleq/cog.py:365
 msgid "Equalizer preset has been reset"
 msgstr "Předvolba ekvalizéru byla obnovena"
 
-#: pleq/cog.py:415 pleq/cog.py:437
+#: pleq/cog.py:460 pleq/cog.py:482
 msgid "No changes were made to the equalizer, discarding request"
 msgstr "Nebyly provedeny žádné změny v ekvalizéru, žádost o výměty"
 

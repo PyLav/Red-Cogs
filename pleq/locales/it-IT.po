@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2022-10-21 17:21+0000\n"
-"PO-Revision-Date: 2022-10-21 18:05\n"
+"POT-Creation-Date: 2022-12-30 22:35+0000\n"
+"PO-Revision-Date: 2022-12-30 22:38\n"
 "Last-Translator: \n"
 "Language-Team: Italian\n"
 "MIME-Version: 1.0\n"
@@ -22,42 +22,42 @@ msgstr ""
 msgid "Apply equalizer presets to the PyLav player"
 msgstr "Applica le preimpostazioni equalizzatore al lettore PyLav"
 
-#: pleq/cog.py:34
+#: pleq/cog.py:36
 msgid "Apply an Equalizer preset to the player"
 msgstr "Applica una preimpostazione Equalizzatore al giocatore"
 
-#: pleq/cog.py:47
+#: pleq/cog.py:50
 #, docstring
 msgid "Configure the Player behaviour when a preset is set"
 msgstr "Configura il comportamento del giocatore quando è impostata una preimpostazione"
 
-#: pleq/cog.py:51
+#: pleq/cog.py:54
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies"
 msgstr "Mostra la versione del Cog e le sue dipendenze di PyLav"
 
-#: pleq/cog.py:68
+#: pleq/cog.py:70
 msgid "Library/Cog"
 msgstr "Library/Cog"
 
-#: pleq/cog.py:69
+#: pleq/cog.py:71
 msgid "Version"
 msgstr "Versione"
 
-#: pleq/cog.py:82
+#: pleq/cog.py:84
 #, docstring
 msgid "Persist the last used preset"
 msgstr "Persiste l'ultimo preset usato"
 
-#: pleq/cog.py:98
+#: pleq/cog.py:100
 msgid "The player will now apply the last used preset when it is created"
 msgstr "Il giocatore ora applicherà l'ultimo preset usato quando viene creato"
 
-#: pleq/cog.py:110
+#: pleq/cog.py:112
 msgid "Last used preset will no longer be saved"
 msgstr "L'ultima preimpostazione usata non sarà più salvata"
 
-#: pleq/cog.py:121
+#: pleq/cog.py:123
 #, docstring
 msgid "Apply a Bass boost preset to the player.\n\n"
 "        Arguments:\n"
@@ -84,47 +84,52 @@ msgstr "Applica una preimpostazione Bass boost al giocatore.\n\n"
 "            - Off\n"
 "        "
 
-#: pleq/cog.py:146
+#: pleq/cog.py:143 pleq/cog.py:246 pleq/cog.py:299 pleq/cog.py:351
+#: pleq/cog.py:449
+msgid "The current node does not have the Equalizer functionality enabled"
+msgstr ""
+
+#: pleq/cog.py:157
 msgid "Bass boost preset has been disabled"
 msgstr "La preimpostazione amplificazione bassi è stata disabilitata"
 
-#: pleq/cog.py:153
+#: pleq/cog.py:164
 msgid "Bass boost - Maximum"
 msgstr "Ampliamento bassi - Massimo"
 
-#: pleq/cog.py:157
+#: pleq/cog.py:168
 msgid "Bass boost - Insane"
 msgstr "Amplificazione bassi - Insane"
 
-#: pleq/cog.py:161
+#: pleq/cog.py:172
 msgid "Bass boost - Extreme"
 msgstr "Amplificazione bassi - Estrema"
 
-#: pleq/cog.py:165
+#: pleq/cog.py:176
 msgid "Bass boost - Very High"
 msgstr "Ampliamento bassi - Molto alto"
 
-#: pleq/cog.py:169
+#: pleq/cog.py:180
 msgid "Bass boost - High"
 msgstr "Amplificazione bassi - Alto"
 
-#: pleq/cog.py:173
+#: pleq/cog.py:184
 msgid "Bass boost - Medium"
 msgstr "Amplificazione bassi - Media"
 
-#: pleq/cog.py:195
+#: pleq/cog.py:206
 msgid "Bass boost - Fine Tuned"
 msgstr ""
 
-#: pleq/cog.py:199
+#: pleq/cog.py:210
 msgid "Bass boost - Cut-off"
 msgstr "Ampliamento bassi - Taglio off"
 
-#: pleq/cog.py:212
+#: pleq/cog.py:223
 msgid "Preset has been set to {name}"
 msgstr "La preimpostazione è stata impostata su {name}"
 
-#: pleq/cog.py:222
+#: pleq/cog.py:233
 #, docstring
 msgid "Apply a Piano preset to the player.\n\n"
 "        Suitable for acoustic tracks, or tacks with an emphasis on female vocals.\n\n"
@@ -135,15 +140,15 @@ msgstr "Applica una preimpostazione Pianoforte al giocatore.\n\n"
 "        Può essere utilizzato anche come cut-off dei bassi.\n"
 "        "
 
-#: pleq/cog.py:245
+#: pleq/cog.py:264
 msgid "Piano"
 msgstr "Pianoforte"
 
-#: pleq/cog.py:259
+#: pleq/cog.py:278
 msgid "Piano preset has been set"
 msgstr "Il pianoforte è stato impostato"
 
-#: pleq/cog.py:269
+#: pleq/cog.py:288
 #, docstring
 msgid "Apply an experimental Metal/Rock equalizer preset.\n\n"
 "        Expect clipping on songs with heavy bass.\n"
@@ -152,24 +157,24 @@ msgstr "Applica una preimpostazione sperimentale di equalizzatore Metal/Rock.\n\
 "        Aspettatevi di ritagliare i brani con bassi pesanti.\n"
 "        "
 
-#: pleq/cog.py:292
+#: pleq/cog.py:320
 msgid "Metal"
 msgstr "Metallo"
 
-#: pleq/cog.py:305
+#: pleq/cog.py:333
 msgid "Rock/Metal preset has been set"
 msgstr "La preimpostazione Rock/Metal è stata impostata"
 
-#: pleq/cog.py:315
+#: pleq/cog.py:343
 #, docstring
 msgid "Remove any equalizer preset from the player"
 msgstr "Rimuovere qualsiasi equalizzatore preimpostato dal giocatore"
 
-#: pleq/cog.py:328
+#: pleq/cog.py:365
 msgid "Equalizer preset has been reset"
 msgstr "Il preset Equalizzatore è stato resettato"
 
-#: pleq/cog.py:415 pleq/cog.py:437
+#: pleq/cog.py:460 pleq/cog.py:482
 msgid "No changes were made to the equalizer, discarding request"
 msgstr "Non sono state apportate modifiche all'equalizzatore, scartando la richiesta"
 

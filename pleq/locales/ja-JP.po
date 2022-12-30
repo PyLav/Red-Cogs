@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2022-10-21 17:21+0000\n"
-"PO-Revision-Date: 2022-10-21 18:05\n"
+"POT-Creation-Date: 2022-12-30 22:35+0000\n"
+"PO-Revision-Date: 2022-12-30 22:39\n"
 "Last-Translator: \n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -22,42 +22,42 @@ msgstr ""
 msgid "Apply equalizer presets to the PyLav player"
 msgstr "イコライザプリセットを PyLav プレイヤーに適用する"
 
-#: pleq/cog.py:34
+#: pleq/cog.py:36
 msgid "Apply an Equalizer preset to the player"
 msgstr "プレイヤーにイコライザープリセットを適用する"
 
-#: pleq/cog.py:47
+#: pleq/cog.py:50
 #, docstring
 msgid "Configure the Player behaviour when a preset is set"
 msgstr "プリセットを設定したときのプレイヤーの動作を設定する"
 
-#: pleq/cog.py:51
+#: pleq/cog.py:54
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies"
 msgstr "Cog のバージョンと PyLav の依存関係を表示する"
 
-#: pleq/cog.py:68
+#: pleq/cog.py:70
 msgid "Library/Cog"
 msgstr "ライブラリ/Cog"
 
-#: pleq/cog.py:69
+#: pleq/cog.py:71
 msgid "Version"
 msgstr "バージョン"
 
-#: pleq/cog.py:82
+#: pleq/cog.py:84
 #, docstring
 msgid "Persist the last used preset"
 msgstr "最後に使用したプリセットを保持"
 
-#: pleq/cog.py:98
+#: pleq/cog.py:100
 msgid "The player will now apply the last used preset when it is created"
 msgstr "プレイヤーは作成時に最後に使用されたプリセットを適用します"
 
-#: pleq/cog.py:110
+#: pleq/cog.py:112
 msgid "Last used preset will no longer be saved"
 msgstr "最後に使用したプリセットは保存されません"
 
-#: pleq/cog.py:121
+#: pleq/cog.py:123
 #, docstring
 msgid "Apply a Bass boost preset to the player.\n\n"
 "        Arguments:\n"
@@ -84,47 +84,52 @@ msgstr "プレーヤーにベースブーストプリセットを適用します
 "            - Off\n"
 "        "
 
-#: pleq/cog.py:146
+#: pleq/cog.py:143 pleq/cog.py:246 pleq/cog.py:299 pleq/cog.py:351
+#: pleq/cog.py:449
+msgid "The current node does not have the Equalizer functionality enabled"
+msgstr ""
+
+#: pleq/cog.py:157
 msgid "Bass boost preset has been disabled"
 msgstr "Bass boost preset has been disabled"
 
-#: pleq/cog.py:153
+#: pleq/cog.py:164
 msgid "Bass boost - Maximum"
 msgstr "バスブースト - 最大値"
 
-#: pleq/cog.py:157
+#: pleq/cog.py:168
 msgid "Bass boost - Insane"
 msgstr "バスブースト - Insane"
 
-#: pleq/cog.py:161
+#: pleq/cog.py:172
 msgid "Bass boost - Extreme"
 msgstr "バスブースト - エクストリーム"
 
-#: pleq/cog.py:165
+#: pleq/cog.py:176
 msgid "Bass boost - Very High"
 msgstr "バスブースト - 非常に高い"
 
-#: pleq/cog.py:169
+#: pleq/cog.py:180
 msgid "Bass boost - High"
 msgstr "バスブースト - 高い"
 
-#: pleq/cog.py:173
+#: pleq/cog.py:184
 msgid "Bass boost - Medium"
 msgstr "バスブースト - Medium"
 
-#: pleq/cog.py:195
+#: pleq/cog.py:206
 msgid "Bass boost - Fine Tuned"
 msgstr ""
 
-#: pleq/cog.py:199
+#: pleq/cog.py:210
 msgid "Bass boost - Cut-off"
 msgstr "バスブースト - カットオフ"
 
-#: pleq/cog.py:212
+#: pleq/cog.py:223
 msgid "Preset has been set to {name}"
 msgstr "プリセットが {name} に設定されました"
 
-#: pleq/cog.py:222
+#: pleq/cog.py:233
 #, docstring
 msgid "Apply a Piano preset to the player.\n\n"
 "        Suitable for acoustic tracks, or tacks with an emphasis on female vocals.\n\n"
@@ -132,15 +137,15 @@ msgid "Apply a Piano preset to the player.\n\n"
 "        "
 msgstr ""
 
-#: pleq/cog.py:245
+#: pleq/cog.py:264
 msgid "Piano"
 msgstr "Piano"
 
-#: pleq/cog.py:259
+#: pleq/cog.py:278
 msgid "Piano preset has been set"
 msgstr "ピアノプリセットが設定されました"
 
-#: pleq/cog.py:269
+#: pleq/cog.py:288
 #, docstring
 msgid "Apply an experimental Metal/Rock equalizer preset.\n\n"
 "        Expect clipping on songs with heavy bass.\n"
@@ -149,24 +154,24 @@ msgstr "実験的なメタル/ロックイコライザープリセットを適�
 "        ヘビーベースの曲でクリッピングすることを期待します。\n"
 "        "
 
-#: pleq/cog.py:292
+#: pleq/cog.py:320
 msgid "Metal"
 msgstr "合金"
 
-#: pleq/cog.py:305
+#: pleq/cog.py:333
 msgid "Rock/Metal preset has been set"
 msgstr "ロック/メタルプリセットが設定されました"
 
-#: pleq/cog.py:315
+#: pleq/cog.py:343
 #, docstring
 msgid "Remove any equalizer preset from the player"
 msgstr "プレイヤーからイコライザープリセットを削除"
 
-#: pleq/cog.py:328
+#: pleq/cog.py:365
 msgid "Equalizer preset has been reset"
 msgstr "イコライザプリセットがリセットされました"
 
-#: pleq/cog.py:415 pleq/cog.py:437
+#: pleq/cog.py:460 pleq/cog.py:482
 msgid "No changes were made to the equalizer, discarding request"
 msgstr "イコライザに変更はありませんでした。リクエストを破棄します。"
 

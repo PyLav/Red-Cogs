@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2022-10-21 21:00+0000\n"
-"PO-Revision-Date: 2022-12-02 23:04\n"
+"POT-Creation-Date: 2022-12-30 22:35+0000\n"
+"PO-Revision-Date: 2022-12-30 22:38\n"
 "Last-Translator: \n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -17,81 +17,42 @@ msgstr ""
 "X-Crowdin-File-ID: 610\n"
 "Language: fr_FR\n"
 
-#: plmanagednode/cog.py:37 plmanagednode/cog.py:49
+#: plmanagednode/cog.py:34 plmanagednode/cog.py:46
 #, docstring
 msgid "Configure the managed Lavalink node used by PyLav"
 msgstr "Configurer le nœud Lavalink géré utilisé par PyLav"
 
-#: plmanagednode/cog.py:53
+#: plmanagednode/cog.py:50
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies"
 msgstr "Afficher la version du Cog et ses dépendances PyLav"
 
-#: plmanagednode/cog.py:70
+#: plmanagednode/cog.py:66
 msgid "Library/Cog"
 msgstr "Bibliothèque/Cog"
 
-#: plmanagednode/cog.py:71
+#: plmanagednode/cog.py:67
 msgid "Version"
 msgstr "Version"
 
-#: plmanagednode/cog.py:84
+#: plmanagednode/cog.py:80
 #, docstring
 msgid "Update the managed Lavalink node"
 msgstr "Mettre à jour le noeud Lavalink géré"
 
-#: plmanagednode/cog.py:95
+#: plmanagednode/cog.py:92
 msgid "The managed Lavalink node is already up to date."
 msgstr "Le noeud Lavalink géré est déjà à jour."
 
-#: plmanagednode/cog.py:104
+#: plmanagednode/cog.py:101
 msgid "Your node is out of date, to update please run `{prefix}{command} 1`."
 msgstr "Votre nœud est obsolète, pour mettre à jour, veuillez exécuter `{prefix}{command} 1`."
 
-#: plmanagednode/cog.py:118
+#: plmanagednode/cog.py:117
 msgid "The managed Lavalink node has been updated to version {version}."
 msgstr "Le noeud Lavalink géré a été mis à jour vers la version {version}."
 
-#: plmanagednode/cog.py:128
-#, docstring
-msgid "Restart the managed Lavalink node"
-msgstr "Redémarrer le nœud Lavalink géré"
-
-#: plmanagednode/cog.py:137
-msgid "The managed node is not enabled, run `{prefix}{command}` to first enable the managed node"
-msgstr "Le noeud géré n'est pas activé, exécutez `{prefix}{command}` pour d'abord activer le noeud géré"
-
-#: plmanagednode/cog.py:178
-msgid "Restarted the managed Lavalink node"
-msgstr "Le noeud Lavalink géré a été redémarré"
-
-#: plmanagednode/cog.py:186
-#, docstring
-msgid "Set the java executable for PyLav.\n\n"
-"        Default is \"java\"\n"
-"        "
-msgstr "Définit l'exécutable java pour PyLav.\n\n"
-"        La valeur par défaut est \"java\"\n"
-"        "
-
-#: plmanagednode/cog.py:202
-msgid "{java} does not exist, run the command again with the java argument set to the correct path"
-msgstr "{java} n'existe pas, exécutez la commande à nouveau avec l'argument java défini sur le chemin correct"
-
-#: plmanagednode/cog.py:219
-msgid "{java} is not an executable file"
-msgstr "{java} n'est pas un fichier exécutable"
-
-#: plmanagednode/cog.py:231
-msgid "{java} is not an executable, run the command again with the java argument set to the correct path"
-msgstr "{java} n'est pas un exécutable, exécutez la commande à nouveau avec l'argument java défini au bon chemin"
-
-#: plmanagednode/cog.py:250
-msgid "PyLav's java executable has been set to {java}\n\n"
-"Run `{prefix}{command}` to restart the managed node"
-msgstr ""
-
-#: plmanagednode/cog.py:264
+#: plmanagednode/cog.py:127
 #, docstring
 msgid "Toggle the managed node on/off.\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -100,17 +61,15 @@ msgstr "Activer/désactiver le noeud géré.\n\n"
 "        Les modifications seront appliquées après le redémarrage du bot.\n"
 "        "
 
-#: plmanagednode/cog.py:279
-msgid "PyLav's managed node has been enabled.\n\n"
-"Run `{prefix}{command}` to restart the managed node"
+#: plmanagednode/cog.py:142
+msgid "PyLav's managed node has been enabled."
 msgstr ""
 
-#: plmanagednode/cog.py:289
-msgid "PyLav's managed node has been disabled.\n\n"
-"Run `{prefix}{command}` to restart the managed node"
+#: plmanagednode/cog.py:150
+msgid "PyLav's managed node has been disabled."
 msgstr ""
 
-#: plmanagednode/cog.py:299
+#: plmanagednode/cog.py:158
 #, docstring
 msgid "Toggle the managed node auto updates on/off.\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -119,17 +78,15 @@ msgstr "Activer/désactiver les mises à jour automatiques des nœuds gérés.\n
 "        Les modifications seront appliquées après le redémarrage du bot.\n"
 "        "
 
-#: plmanagednode/cog.py:315
-msgid "PyLav's managed node auto updates have been enabled\n\n"
-"Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+#: plmanagednode/cog.py:174
+msgid "PyLav's managed node auto updates have been enabled"
+msgstr "Les mises à jour automatiques de nœuds gérées par PyLavs ont été activées"
 
-#: plmanagednode/cog.py:326
-msgid "PyLav's managed node auto updates have been disabled\n\n"
-"Run `{prefix}{command}` to restart the managed node"
-msgstr ""
+#: plmanagednode/cog.py:184
+msgid "PyLav's managed node auto updates have been disabled"
+msgstr "Les mises à jour automatiques de nœuds gérées par PyLav, ont été désactivées"
 
-#: plmanagednode/cog.py:337
+#: plmanagednode/cog.py:194
 #, docstring
 msgid "Set the managed Lavalink node maximum heap-size.\n\n"
 "        By default, this value is 2G of available RAM in the host machine represented by (65-1023M|1+G) (256M,\n"
@@ -144,44 +101,41 @@ msgstr "Définit la taille maximale du tas du nœud Lavalink géré.\n\n"
 "        que le noeud Lavalink géré utilisera toujours cette quantité de RAM.\n"
 "        "
 
-#: plmanagednode/cog.py:358
+#: plmanagednode/cog.py:218
 msgid "Heap-size must be a valid measure of size, e.g. 256M, 256G"
 msgstr "La taille du tas doit être une mesure valide de la taille, par exemple 256M, 256G"
 
-#: plmanagednode/cog.py:368
+#: plmanagednode/cog.py:228
 msgid "Heap-size must be at least 64M, however it is recommended to have it set to at least 1G"
 msgstr "La taille du tas doit être d'au moins 64M, mais il est recommandé de le définir à au moins 1G"
 
-#: plmanagednode/cog.py:380
+#: plmanagednode/cog.py:240
 msgid "Heap-size must be less than your system RAM, You currently have {ram_in_bytes} of RAM available"
 msgstr "La taille du tas doit être inférieure à la mémoire vive de votre système, vous avez actuellement {ram_in_bytes} de RAM disponible"
 
-#: plmanagednode/cog.py:392
+#: plmanagednode/cog.py:252
 msgid "Heap-size must be less than {limit} due to your system limitations"
 msgstr "La taille du tas doit être inférieure à {limit} en raison des limitations de votre système"
 
-#: plmanagednode/cog.py:410
-msgid "Managed node's heap-size set to {bytes}.\n\n"
-"Run `{prefix}{command}` to restart the managed node"
-msgstr "Taille du nœud gérée définie à {bytes}.\n\n"
-"Exécutez `{prefix}{command}` pour redémarrer le noeud géré"
+#: plmanagednode/cog.py:272
+msgid "Managed node's heap-size set to {bytes}."
+msgstr ""
 
-#: plmanagednode/cog.py:424
+#: plmanagednode/cog.py:283
 #, docstring
 msgid "Change the managed node start up configs"
 msgstr "Changer les configurations de démarrage des nœuds gérés"
 
-#: plmanagednode/cog.py:428
+#: plmanagednode/cog.py:287
 #, docstring
 msgid "Set the managed node host"
 msgstr "Définir l'hôte de nœud géré"
 
-#: plmanagednode/cog.py:439
-msgid "Managed node's host set to {host}.\n\n"
-"Run `{prefix}{command}` to restart the managed node"
+#: plmanagednode/cog.py:299
+msgid "Managed node's host set to {host}."
 msgstr ""
 
-#: plmanagednode/cog.py:453
+#: plmanagednode/cog.py:310
 #, docstring
 msgid "`Dangerous command` Set the managed Lavalink node's connection port.\n\n"
 "        This port is the port the managed Lavalink node binds to, you should only change this if there is a\n"
@@ -194,190 +148,180 @@ msgstr "`Commande dangereuse` Définit le port de connexion du noeud Lavalink g�
 "        La valeur par défaut est `2154`.\n"
 "        "
 
-#: plmanagednode/cog.py:463
+#: plmanagednode/cog.py:320
 msgid "The port must be between 1024 and 49151"
 msgstr "Le port doit être compris entre 1024 et 49151"
 
-#: plmanagednode/cog.py:474
-msgid "Managed node's port set to {port}.\n\n"
-"Run `{prefix}{command}` to restart the managed node"
+#: plmanagednode/cog.py:332
+msgid "Managed node's port set to {port}."
 msgstr ""
 
-#: plmanagednode/cog.py:484
+#: plmanagednode/cog.py:340
 #, docstring
 msgid "Change the managed node plugins"
 msgstr "Changer les plugins de nœud gérés"
 
-#: plmanagednode/cog.py:488
+#: plmanagednode/cog.py:346
 #, docstring
 msgid "Disabled one of the available plugins"
 msgstr "Désactivé un des plugins disponibles"
 
-#: plmanagednode/cog.py:504 plmanagednode/cog.py:619
+#: plmanagednode/cog.py:362 plmanagednode/cog.py:474
 msgid "The plugin must be one of the following: {plugins}"
 msgstr "Le plugin doit être l'un des suivants : {plugins}"
 
-#: plmanagednode/cog.py:589
-msgid "Managed node's plugin {plugin} disabled.\n\n"
-"Run `{prefix}{command}` to restart the managed node"
+#: plmanagednode/cog.py:447
+msgid "Managed node's plugin {plugin} disabled."
 msgstr ""
 
-#: plmanagednode/cog.py:603
+#: plmanagednode/cog.py:458
 #, docstring
 msgid "Enable one of the available plugins"
 msgstr "Activer l'un des plugins disponibles"
 
-#: plmanagednode/cog.py:652
-msgid "Managed node's plugin {plugin} enabled.\n\n"
-"Run `{prefix}{command}` to restart the managed node"
+#: plmanagednode/cog.py:507
+msgid "Managed node's plugin {plugin} enabled."
 msgstr ""
 
-#: plmanagednode/cog.py:666
+#: plmanagednode/cog.py:518
 #, docstring
 msgid "Update the managed node plugins"
 msgstr "Mettre à jour les plugins de nœuds gérés"
 
-#: plmanagednode/cog.py:739
+#: plmanagednode/cog.py:592
 msgid "{name} was updated from {old_value} to {new_value}\n"
 msgstr "{name} a été mis à jour de {old_value} à {new_value}\n"
 
-#: plmanagednode/cog.py:747
+#: plmanagednode/cog.py:600
 msgid "Managed node's plugins updated.\n\n"
-"{updates}\n\n"
-"Run `{prefix}{command}` to restart the managed node"
-msgstr "Gestion des plugins du noeud mis à jour.\n\n"
-"{updates}\n\n"
-"Exécutez `{prefix}{command}` pour redémarrer le noeud géré"
+"{updates}"
+msgstr ""
 
-#: plmanagednode/cog.py:761
+#: plmanagednode/cog.py:611
 msgid "Managed node's plugins already up to date"
 msgstr "Les plugins de nœud gérés sont déjà à jour"
 
-#: plmanagednode/cog.py:769
+#: plmanagednode/cog.py:619
 #, docstring
 msgid "Toggle the managed node sources"
 msgstr "Activer/désactiver les sources de nœuds gérés"
 
-#: plmanagednode/cog.py:783
+#: plmanagednode/cog.py:634
 msgid "Invalid source, {valid_list} are valid sources"
 msgstr "Source non valide, {valid_list} sont des sources valides"
 
-#: plmanagednode/cog.py:797
+#: plmanagednode/cog.py:648 plmanagednode/cog.py:684
 msgid "enabled"
 msgstr "Activé"
 
-#: plmanagednode/cog.py:797
+#: plmanagednode/cog.py:648 plmanagednode/cog.py:684
 msgid "disabled"
 msgstr "désactivée"
 
-#: plmanagednode/cog.py:800
-msgid "Managed node's {source} source set to {state}.\n\n"
-"Run `{prefix}{command}` to restart the managed node"
-msgstr "La source {source} du nœud géré a été définie à {state}.\n\n"
-"Exécutez `{prefix}{command}` pour redémarrer le noeud géré"
+#: plmanagednode/cog.py:651
+msgid "Managed node's {source} source set to {state}."
+msgstr ""
 
-#: plmanagednode/cog.py:815
+#: plmanagednode/cog.py:663
+#, docstring
+msgid "Toggle the managed node filters"
+msgstr ""
+
+#: plmanagednode/cog.py:675
+msgid "Invalid source, {valid_list} are valid filters"
+msgstr ""
+
+#: plmanagednode/cog.py:687
+msgid "Managed node's {source} filter set to {state}."
+msgstr ""
+
+#: plmanagednode/cog.py:699
 #, docstring
 msgid "Configure multiple settings for the managed node.\n\n"
 "        Run `[p]plmanaged config server <setting> info` to show info about the settings and what they do.\n\n"
 "        **Setting names**:\n"
-"        `bufferDurationMs` : Integer i.e 400 (Default 400)\n"
+"        `bufferDurationMs` : Integer i.e 400 (Default 400) - Set to 0 to disable JDA-NAS\n"
 "        `frameBufferDurationMs` : Integer i.e 1000 (Default 1000)\n"
 "        `trackStuckThresholdMs` : Integer i.e 1000 (Default 1000)\n"
 "        `youtubePlaylistLoadLimit` : Integer i.e 1000 (Default 1000)\n"
 "        `opusEncodingQuality` : Integer i.e 10 (Default 10)\n"
 "        `resamplingQuality` : String i.e LOW (Default LOW)\n"
 "        `useSeekGhosting` : Boolean i.e True (Default True)\n"
-"        `playerUpdateInterval` : Integer i.e 1 (Default 1)\n"
+"        `playerUpdateInterval` : Integer i.e 30 (Default 30)\n"
 "        `youtubeSearchEnabled` : Boolean i.e True (Default True)\n"
 "        `soundcloudSearchEnabled` : Boolean i.e True (Default True)\n"
 "        "
-msgstr "Configurer plusieurs paramètres pour le noeud géré.\n\n"
-"        Exécutez `[p]plmanaged config server <setting> info` pour afficher des informations sur les paramètres et ce qu'ils font.\n\n"
-"        **Noms de paramètres** :\n"
-"        `bufferDurationMs` : Integer i. 400 (par défaut 400)\n"
-"        `frameBufferDurationMs` : Integer i. 1000 (Défaut 1000)\n"
-"        `trackStuckThresholdMs` : Integer i. 1000 (Défaut 1000)\n"
-"        `youtubePlaylistLoadLimit` : Integer i. 1000 (Défaut 1000)\n"
-"        `opusEncodingQuality` : Integer i. 10 (par défaut 10)\n"
-"        `resamplingQuality` : String i. LOW (Par défaut LOW)\n"
-"        `useSeekGhosting` : Boolean i. True (par défaut True)\n"
-"        `playerUpdateInterval` : Integer i. 1 (Défaut 1)\n"
-"        `youtubeSearchEnabled` : Boolean i. True (par défaut True)\n"
-"        `soundcloudSearchEnabled` : Boolean i. Vrai (Par Défaut Vrai)\n"
-"        "
+msgstr ""
 
-#: plmanagednode/cog.py:855
+#: plmanagednode/cog.py:739
 msgid "{Setting} is not a valid Setting; Options are:\n\n"
 "{setting_list}"
 msgstr "{Setting} n'est pas un paramètre valide ; les options sont:\n\n"
 "{setting_list}"
 
-#: plmanagednode/cog.py:866
-msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses. Minimum of 40ms, lower values may introduce pauses. Accepted values: Range: 40 - 2,000"
-msgstr "La durée du tampon NAS en millisecondes. Des valeurs plus élevées sont meilleures contre les pauses GC plus longues. Minimum de 40 ms, les valeurs inférieures peuvent introduire des pauses. Valeurs acceptées: Plage : 40 - 2 000"
+#: plmanagednode/cog.py:750
+msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses but will increase RAM usage. Minimum of 40ms, lower values may introduce pauses and stutters. Set to 0 to disable JDA-NAS. Accepted values: Range: 0 - 2,000"
+msgstr ""
 
-#: plmanagednode/cog.py:871
-msgid "How many milliseconds of audio to keep buffered. Accepted values: Range: 1,000 - 10,000"
-msgstr "Combien de millisecondes audio à garder en mémoire tampon. Valeurs acceptées: Plage: 1000 - 10 000"
+#: plmanagednode/cog.py:756
+msgid "How many milliseconds of audio to keep buffered, Higher values increase RAM usage. Accepted values: Range: 1,000 - 10,000"
+msgstr ""
 
-#: plmanagednode/cog.py:874
+#: plmanagednode/cog.py:760
 msgid "The threshold in milliseconds for how long a track can be stuck. A track is stuck if does not return any audio data. Accepted values: Range: 5,000 - 20,000"
 msgstr "Le seuil en millisecondes pour combien de temps une piste peut être bloquée. Une piste est bloquée si elle ne renvoie aucune donnée audio. Valeurs acceptées: Plage: 5 000 - 20 000"
 
-#: plmanagednode/cog.py:878
+#: plmanagednode/cog.py:764
 msgid "Number of pages to return for a YouTube Playlist - Each page contains 100 songs. Accepted values: Range: 5 - 100"
 msgstr "Nombre de pages à retourner pour une playlist YouTube - Chaque page contient 100 chansons. Valeurs acceptées: Plage: 5 - 100"
 
-#: plmanagednode/cog.py:882
+#: plmanagednode/cog.py:768
 msgid "Opus encoder quality. Valid values range from 0 to 10, where 10 is best quality but is the most expensive on the CPU"
 msgstr "Qualité de l'encodeur Opus. Les valeurs valides varient de 0 à 10, où 10 est la meilleure qualité mais est la plus chère sur le CPU"
 
-#: plmanagednode/cog.py:886
+#: plmanagednode/cog.py:772
 msgid "Quality of resampling operations. Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU"
 msgstr "Qualité des opérations de rééchantillonnage. Les valeurs valides sont LOW, MEDIUM et HIGH, où HIGH utilise le plus de CPU"
 
-#: plmanagednode/cog.py:890
+#: plmanagednode/cog.py:776
 msgid "Seek ghosting is the effect where whilst a seek is in progress, the audio buffer is read from until empty, or until seek is ready. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "Seek ghosting est l'effet où pendant qu'une recherche est en cours, le tampon audio est lu jusqu'à ce qu'il soit vide, ou jusqu'à ce que la recherche soit prête. Valeurs acceptées pour True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 
-#: plmanagednode/cog.py:895
-msgid "How frequently in seconds to send player updates to clients, affects the current position accuracy. Accepted values: Range: 1 - 10"
-msgstr "Fréquence d'envoi en secondes des mises à jour des joueurs aux clients, affecte la précision de la position actuelle. Valeurs acceptées: Plage: 1 - 10"
+#: plmanagednode/cog.py:781
+msgid "How frequently in seconds to send player updates to clients, affects the current position accuracy. Accepted values: Range: 1 - 86400"
+msgstr ""
 
-#: plmanagednode/cog.py:899
+#: plmanagednode/cog.py:785
 msgid "Enable or disable YouTube searches within the node, this will affect AppleMusic, Spotify and any functionality dependant on YouTube. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "Activer ou désactiver les recherches YouTube dans le nœud, cela affectera AppleMusic, Spotify et toutes les fonctionnalités dépendantes de YouTube. Valeurs acceptées pour True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 
-#: plmanagednode/cog.py:904
+#: plmanagednode/cog.py:790
 msgid "Enable or disable SoundCloud searches within the node, this will affect any functionality dependant on SoundCloud. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "Activer ou désactiver les recherches SoundCloud dans le nœud, cela affectera toutes les fonctionnalités dépendantes de SoundCloud. Valeurs acceptées pour True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 
-#: plmanagednode/cog.py:913
+#: plmanagednode/cog.py:799
 msgid "{Setting} info.\n\n"
 "{info}"
 msgstr "{Setting} infos.\n\n"
 "{info}"
 
-#: plmanagednode/cog.py:941
+#: plmanagednode/cog.py:827
 msgid "{Setting} valid inputs are:\n\n"
 "Range between: {start} - {end}"
 msgstr "{Setting} entrées valides sont:\n\n"
 "Plage entre: {start} - {end}"
 
-#: plmanagednode/cog.py:952
+#: plmanagednode/cog.py:838
 msgid "{Setting} valid inputs are:\n\n"
 "{setting_list}"
 msgstr "{Setting} entrées valides sont:\n\n"
 "{setting_list}"
 
-#: plmanagednode/cog.py:970
-msgid "{Setting} set to {value}.\n\n"
-"Run `{prefix}{command}` to restart the managed node"
-msgstr "{Setting} défini à {value}.\n\n"
-"Exécutez `{prefix}{command}` pour redémarrer le noeud géré"
+#: plmanagednode/cog.py:857
+msgid "{Setting} set to {value}."
+msgstr ""
 
-#: plmanagednode/cog.py:985
+#: plmanagednode/cog.py:869
 #, docstring
 msgid "Configure Lavalink IP Rotation for ratelimits.\n\n"
 "        Run `[p]plmanaged config iprotation 1` to remove the ip rotation\n"
@@ -386,19 +330,17 @@ msgstr "Configurer Lavalink IP Rotation pour les limites de débit.\n\n"
 "        Exécutez `[p]plmanaged config iprotation 1` pour supprimer la rotation ip\n"
 "        "
 
-#: plmanagednode/cog.py:996
+#: plmanagednode/cog.py:880
 msgid "Click the button below to configure the IP rotation for your node.\n"
 "More info at: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> and <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
 msgstr "Cliquez sur le bouton ci-dessous pour configurer la rotation IP de votre nœud.\n"
 "Plus d'infos à: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> et <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
 
-#: plmanagednode/cog.py:1013
-msgid "Removing the IP rotation from your node.\n\n"
-"Run `{prefix}{command}` to restart the managed node"
-msgstr "Suppression de la rotation IP de votre nœud.\n\n"
-"Exécutez `{prefix}{command}` pour redémarrer le nœud géré"
+#: plmanagednode/cog.py:898
+msgid "Removing the IP rotation from your node."
+msgstr ""
 
-#: plmanagednode/cog.py:1023
+#: plmanagednode/cog.py:906
 #, docstring
 msgid "Link a Google account to Lavalink to bypass YouTube's age restriction\n\n"
 "        Run `[p]plmanaged config googleaccount 1` to remove the linked account.\n"
@@ -407,19 +349,17 @@ msgstr "Lier un compte Google à Lavalink pour contourner la restriction d'âge 
 "        Exécuter `[p]plmanaged config googleaccount 1` pour supprimer le compte lié.\n"
 "        "
 
-#: plmanagednode/cog.py:1034
+#: plmanagednode/cog.py:917
 msgid "Click the button below to link a Google account to your node, if you have 2FA setup on this account you will need an app password instead\n"
 "More info at: <https://support.google.com/accounts/answer/185833>"
 msgstr "Cliquez sur le bouton ci-dessous pour lier un compte Google à votre nœud, si vous avez 2FA configuré sur ce compte, vous aurez besoin d'un mot de passe de l'application à la place\n"
 "Plus d'informations à : <https://support.google.com/accounts/answer/185833>"
 
-#: plmanagednode/cog.py:1051
-msgid "Unlinking Google account from your node.\n\n"
-"Run `{prefix}{command}` to restart the managed node"
-msgstr "Dissocier le compte Google de votre nœud.\n\n"
-"Exécutez `{prefix}{command}` pour redémarrer le nœud géré"
+#: plmanagednode/cog.py:936
+msgid "Unlinking Google account from your node."
+msgstr ""
 
-#: plmanagednode/cog.py:1061
+#: plmanagednode/cog.py:944
 #, docstring
 msgid "Configure a HTTP proxy for Lavalink\n\n"
 "        Run `[p]plmanaged config httpproxy 1` to remove the proxy.\n"
@@ -428,164 +368,157 @@ msgstr "Configurer un proxy HTTP pour Lavalink\n\n"
 "        Exécutez `[p]plmanaged config httpproxy 1` pour supprimer le proxy.\n"
 "        "
 
-#: plmanagednode/cog.py:1072
+#: plmanagednode/cog.py:955
 msgid "Click the button below to configure a HTTP proxy for your node"
 msgstr "Cliquez sur le bouton ci-dessous pour configurer un proxy HTTP pour votre nœud"
 
-#: plmanagednode/cog.py:1085
-msgid "Unlinking HTTP proxy from your node.\n\n"
-"Run `{prefix}{command}` to restart the managed node"
+#: plmanagednode/cog.py:969
+msgid "Unlinking HTTP proxy from your node."
 msgstr ""
 
-#: plmanagednode/view.py:37 plmanagednode/view.py:64 plmanagednode/view.py:97
-#: plmanagednode/view.py:176 plmanagednode/view.py:336
-#: plmanagednode/view.py:420
+#: plmanagednode/view.py:38 plmanagednode/view.py:65 plmanagednode/view.py:98
+#: plmanagednode/view.py:179 plmanagednode/view.py:337
+#: plmanagednode/view.py:422
 msgid "You are not authorized to interact with this"
 msgstr "Vous n'êtes pas autorisé à interagir avec ceci"
 
-#: plmanagednode/view.py:124
+#: plmanagednode/view.py:125
 msgid "IP Rotation Configurator"
 msgstr "Configurateur de Rotation IP"
 
-#: plmanagednode/view.py:127
+#: plmanagednode/view.py:128
 msgid "IP Blocks"
 msgstr "Blocs IP"
 
-#: plmanagednode/view.py:130
+#: plmanagednode/view.py:132
 msgid "1.0.0.0/8,...,... - Comma separated list of IP blocks"
 msgstr "1.0.0.0/8,...,... - Liste de blocs IP séparés par des virgules"
 
-#: plmanagednode/view.py:134
+#: plmanagednode/view.py:137
 msgid "Rotation strategy"
 msgstr "Stratégie de rotation"
 
-#: plmanagednode/view.py:143
+#: plmanagednode/view.py:146
 msgid "Retry limit"
 msgstr "Limite de nouvel essai"
 
-#: plmanagednode/view.py:146
+#: plmanagednode/view.py:149
 msgid "-1 = default, 0 = infinity, >0 = number of retries"
 msgstr "-1 = défaut, 0 = infini, >0 = nombre de tentatives"
 
-#: plmanagednode/view.py:151
+#: plmanagednode/view.py:154
 msgid "IPs to exclude"
 msgstr "IP à exclure"
 
-#: plmanagednode/view.py:154
+#: plmanagednode/view.py:157
 msgid "Comma separated list of IP to exclude from rotation"
 msgstr "Liste d'IP séparée par des virgules à exclure de la rotation"
 
-#: plmanagednode/view.py:158
+#: plmanagednode/view.py:161
 msgid "Search trigger rotation"
 msgstr "Rotation des déclencheurs de recherche"
 
-#: plmanagednode/view.py:161
+#: plmanagednode/view.py:164
 msgid "0 or 1 (0 = disabled, 1 = enabled)"
 msgstr "0 ou 1 (0 = désactivé, 1 = activé)"
 
-#: plmanagednode/view.py:189
+#: plmanagednode/view.py:192
 msgid "Invalid IP block - {error}"
 msgstr "Bloc IP invalide - {error}"
 
-#: plmanagednode/view.py:202
+#: plmanagednode/view.py:205
 msgid "No IP blocks were provided"
 msgstr "Aucun bloc IP n'a été fourni"
 
-#: plmanagednode/view.py:217
+#: plmanagednode/view.py:220
 msgid "Invalid IP address - {error}"
 msgstr "Adresse IP invalide - {error}"
 
-#: plmanagednode/view.py:236
+#: plmanagednode/view.py:239
 msgid "Invalid strategy, must be one of: {options}"
 msgstr "Stratégie non valide, doit être une de: {options}"
 
-#: plmanagednode/view.py:252
+#: plmanagednode/view.py:255
 msgid "Invalid retry limit, must be a number greater than or equals to -1"
 msgstr "Limite de réessai invalide, doit être un nombre supérieur ou égal à -1"
 
-#: plmanagednode/view.py:267
+#: plmanagednode/view.py:270
 msgid "Invalid search trigger, must be 0 or 1"
 msgstr "Déclencheur de recherche invalide, doit être 0 ou 1"
 
-#: plmanagednode/view.py:286
-msgid "IP rotation configuration saved.\n\n"
-"Run `{prefix}{command}` to restart the managed node"
-msgstr "Configuration de rotation d'IP sauvegardée.\n\n"
-"Exécutez `{prefix}{command}` pour redémarrer le noeud géré"
+#: plmanagednode/view.py:289
+msgid "IP rotation configuration saved."
+msgstr ""
 
-#: plmanagednode/view.py:309
+#: plmanagednode/view.py:310
 msgid "Google Account Configurator"
 msgstr "Configurateur de compte Google"
 
-#: plmanagednode/view.py:312
+#: plmanagednode/view.py:313
 msgid "Email address"
 msgstr "Adresse e-mail"
 
-#: plmanagednode/view.py:315
+#: plmanagednode/view.py:316
 msgid "Your Google account email"
 msgstr "Email de votre compte Google"
 
-#: plmanagednode/view.py:320
+#: plmanagednode/view.py:321
 msgid "password"
 msgstr "mot de passe"
 
-#: plmanagednode/view.py:323
+#: plmanagednode/view.py:324
 msgid "If you have 2FA you will need an app password"
 msgstr "Si vous avez 2FA vous aurez besoin d'un mot de passe de l'application"
 
-#: plmanagednode/view.py:344
+#: plmanagednode/view.py:345
 msgid "Invalid email address"
 msgstr "Adresse e-mail invalide"
 
-#: plmanagednode/view.py:357
-msgid "Google account linked.\n\n"
-"Run `{prefix}{command}` to restart the managed node"
-msgstr "Compte Google lié.\n\n"
-"Exécutez `{prefix}{command}` pour redémarrer le noeud géré"
+#: plmanagednode/view.py:355
+msgid "Google account linked."
+msgstr ""
 
-#: plmanagednode/view.py:380
+#: plmanagednode/view.py:376
 msgid "HTTP Proxy Configurator"
 msgstr "Configurateur de proxy HTTP"
 
-#: plmanagednode/view.py:383
+#: plmanagednode/view.py:379
 msgid "Hostname"
 msgstr "Hostname"
 
-#: plmanagednode/view.py:386
+#: plmanagednode/view.py:382
 msgid "Hostname of the proxy, (ip or domain or localhost)"
 msgstr "Nom d'hôte du proxy, (ip ou domaine ou localhost)"
 
-#: plmanagednode/view.py:390
+#: plmanagednode/view.py:386
 msgid "Proxy port"
 msgstr "Port du proxy"
 
-#: plmanagednode/view.py:393
+#: plmanagednode/view.py:389
 msgid "Proxy port, 3128 is the default for squidProxy"
 msgstr "Port du proxy, 3128 est la valeur par défaut pour squidProxy"
 
-#: plmanagednode/view.py:399
+#: plmanagednode/view.py:395
 msgid "User"
 msgstr "Utilisateur"
 
-#: plmanagednode/view.py:402
+#: plmanagednode/view.py:400
 msgid "Optional user for basic authentication fields, leave blank if you don't use basic auth"
 msgstr "Utilisateur optionnel pour les champs d'authentification de base, laissez vide si vous n'utilisez pas l'authentification de base"
 
-#: plmanagednode/view.py:405
+#: plmanagednode/view.py:404
 msgid "Password"
 msgstr "Mot de passe"
 
-#: plmanagednode/view.py:408
+#: plmanagednode/view.py:409
 msgid "Optional password for basic authentication fields, leave blank if you don't use basic auth"
 msgstr "Mot de passe facultatif pour les champs d'authentification de base, laisser vide si vous n'utilisez pas d'authentification de base"
 
-#: plmanagednode/view.py:431
+#: plmanagednode/view.py:433
 msgid "Invalid port, must be a number between 0 and 65536"
 msgstr "Port invalide, doit être un nombre compris entre 0 et 65536"
 
-#: plmanagednode/view.py:448
-msgid "HTTP proxy configuration saved.\n\n"
-"Run `{prefix}{command}` to restart the managed node"
-msgstr "Configuration du proxy HTTP sauvegardée.\n\n"
-"Exécutez `{prefix}{command}` pour redémarrer le noeud géré"
+#: plmanagednode/view.py:450
+msgid "HTTP proxy configuration saved."
+msgstr ""
 
