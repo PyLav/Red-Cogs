@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
 "POT-Creation-Date: 2022-12-30 22:35+0000\n"
-"PO-Revision-Date: 2022-12-30 22:39\n"
+"PO-Revision-Date: 2022-12-30 23:02\n"
 "Last-Translator: \n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -63,11 +63,11 @@ msgstr "Växla den hanterade noden på/av.\n\n"
 
 #: plmanagednode/cog.py:142
 msgid "PyLav's managed node has been enabled."
-msgstr ""
+msgstr "PyLavs hanterade nod har aktiverats."
 
 #: plmanagednode/cog.py:150
 msgid "PyLav's managed node has been disabled."
-msgstr ""
+msgstr "PyLavs hanterade nod har inaktiverats."
 
 #: plmanagednode/cog.py:158
 #, docstring
@@ -119,7 +119,7 @@ msgstr "Heap-size måste vara mindre än {limit} på grund av dina systembegrän
 
 #: plmanagednode/cog.py:272
 msgid "Managed node's heap-size set to {bytes}."
-msgstr ""
+msgstr "Hanterade nodens heap-size inställd på {bytes}."
 
 #: plmanagednode/cog.py:283
 #, docstring
@@ -133,7 +133,7 @@ msgstr "Ställ in den hanterade noden värd"
 
 #: plmanagednode/cog.py:299
 msgid "Managed node's host set to {host}."
-msgstr ""
+msgstr "Hanterade nodens värd satt till {host}."
 
 #: plmanagednode/cog.py:310
 #, docstring
@@ -154,7 +154,7 @@ msgstr "Hamnen måste vara mellan 1024 och 49151"
 
 #: plmanagednode/cog.py:332
 msgid "Managed node's port set to {port}."
-msgstr ""
+msgstr "Hanterade nodens port satt till {port}."
 
 #: plmanagednode/cog.py:340
 #, docstring
@@ -172,7 +172,7 @@ msgstr "Pluginen måste vara en av följande: {plugins}"
 
 #: plmanagednode/cog.py:447
 msgid "Managed node's plugin {plugin} disabled."
-msgstr ""
+msgstr "Hanterade nodens plugin {plugin} inaktiverad."
 
 #: plmanagednode/cog.py:458
 #, docstring
@@ -181,7 +181,7 @@ msgstr "Aktivera en av de tillgängliga insticksprogrammen"
 
 #: plmanagednode/cog.py:507
 msgid "Managed node's plugin {plugin} enabled."
-msgstr ""
+msgstr "Hanterade nodens plugin {plugin} aktiverad."
 
 #: plmanagednode/cog.py:518
 #, docstring
@@ -195,7 +195,8 @@ msgstr "{name} uppdaterades från {old_value} till {new_value}\n"
 #: plmanagednode/cog.py:600
 msgid "Managed node's plugins updated.\n\n"
 "{updates}"
-msgstr ""
+msgstr "Hanterade nodens plugins uppdaterade.\n\n"
+"{updates}"
 
 #: plmanagednode/cog.py:611
 msgid "Managed node's plugins already up to date"
@@ -220,20 +221,20 @@ msgstr "inaktiverad"
 
 #: plmanagednode/cog.py:651
 msgid "Managed node's {source} source set to {state}."
-msgstr ""
+msgstr "Hanterade nodens {source} källa satt till {state}."
 
 #: plmanagednode/cog.py:663
 #, docstring
 msgid "Toggle the managed node filters"
-msgstr ""
+msgstr "Växla de hanterade nodfiltren"
 
 #: plmanagednode/cog.py:675
 msgid "Invalid source, {valid_list} are valid filters"
-msgstr ""
+msgstr "Ogiltig källa, {valid_list} är giltiga filter"
 
 #: plmanagednode/cog.py:687
 msgid "Managed node's {source} filter set to {state}."
-msgstr ""
+msgstr "Hanterade nodens {source} filter satt till {state}."
 
 #: plmanagednode/cog.py:699
 #, docstring
@@ -251,7 +252,20 @@ msgid "Configure multiple settings for the managed node.\n\n"
 "        `youtubeSearchEnabled` : Boolean i.e True (Default True)\n"
 "        `soundcloudSearchEnabled` : Boolean i.e True (Default True)\n"
 "        "
-msgstr ""
+msgstr "Konfigurera flera inställningar för den hanterade noden.\n\n"
+"        Kör `[p]plmanaged config server <setting> info` för att visa information om inställningarna och vad de gör.\n\n"
+"        **Inställningsnamn**:\n"
+"        `bufferVaraktighetMs` : Integer i. 400 (Standard 400) - Sätt till 0 för att inaktivera JDA-NAS\n"
+"        `frameBufferDurationMs`: Integer i. 1000 (Standard 1000)\n"
+"        `trackStuckThresholdMs` : Integer i. 1000 (Standard 1000)\n"
+"        `youtubePlaylistLoadLimit` : Integer i. 1000 (Standard 1000)\n"
+"        `opusEncodingQuality` : Integer i. 10 (Standard 10)\n"
+"        `resamplingQuality` : Sträng i. LÅG (Standard LOW)\n"
+"        `useSeekGhosting` : Boolean i. True (Standard True)\n"
+"        `playerUpdateInterval` : Integer i. 30 (Standard 30)\n"
+"        `youtubeSearchEnabled` : Boolean i. True (Default True)\n"
+"        `soundcloudSearchEnabled` : Boolean i. Sant (standard sant)\n"
+"        "
 
 #: plmanagednode/cog.py:739
 msgid "{Setting} is not a valid Setting; Options are:\n\n"
@@ -261,11 +275,11 @@ msgstr "{Setting} är inte en giltig inställning; Alternativ är:\n\n"
 
 #: plmanagednode/cog.py:750
 msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses but will increase RAM usage. Minimum of 40ms, lower values may introduce pauses and stutters. Set to 0 to disable JDA-NAS. Accepted values: Range: 0 - 2,000"
-msgstr ""
+msgstr "Varaktigheten av NAS-bufferten i millisekunder. Högre värden klarar sig bättre mot längre GC-pauser men ökar RAM-användningen. Lägsta 40 m lägre värden kan introducera pauser och stammar. Sätt till 0 för att inaktivera JDA-NAS. Accepterade värden: intervall: 0 - 2000"
 
 #: plmanagednode/cog.py:756
 msgid "How many milliseconds of audio to keep buffered, Higher values increase RAM usage. Accepted values: Range: 1,000 - 10,000"
-msgstr ""
+msgstr "Hur många millisekunder ljud för att hålla buffrad, Högre värden ökar RAM-användning. Accepterade värden: intervall: 1.00-10.000"
 
 #: plmanagednode/cog.py:760
 msgid "The threshold in milliseconds for how long a track can be stuck. A track is stuck if does not return any audio data. Accepted values: Range: 5,000 - 20,000"
@@ -289,7 +303,7 @@ msgstr "Sök spöke är effekten där medan en sökning pågår, ljudbufferten l
 
 #: plmanagednode/cog.py:781
 msgid "How frequently in seconds to send player updates to clients, affects the current position accuracy. Accepted values: Range: 1 - 86400"
-msgstr ""
+msgstr "Hur ofta i sekunder för att skicka spelaruppdateringar till kunder, påverkar nuvarande position noggrannhet. Accepterade värden: Intervall: 1 - 86400"
 
 #: plmanagednode/cog.py:785
 msgid "Enable or disable YouTube searches within the node, this will affect AppleMusic, Spotify and any functionality dependant on YouTube. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
@@ -319,7 +333,7 @@ msgstr "{Setting} giltiga ingångar är:\n\n"
 
 #: plmanagednode/cog.py:857
 msgid "{Setting} set to {value}."
-msgstr ""
+msgstr "{Setting} satt till {value}."
 
 #: plmanagednode/cog.py:869
 #, docstring
@@ -338,7 +352,7 @@ msgstr "Klicka på knappen nedan för att konfigurera IP-rotationen för din nod
 
 #: plmanagednode/cog.py:898
 msgid "Removing the IP rotation from your node."
-msgstr ""
+msgstr "Ta bort IP-rotationen från din nod."
 
 #: plmanagednode/cog.py:906
 #, docstring
@@ -357,7 +371,7 @@ msgstr "Klicka på knappen nedan för att länka ett Google-konto till din nod, 
 
 #: plmanagednode/cog.py:936
 msgid "Unlinking Google account from your node."
-msgstr ""
+msgstr "Avlänka Google-konto från din nod."
 
 #: plmanagednode/cog.py:944
 #, docstring
@@ -374,7 +388,7 @@ msgstr "Klicka på knappen nedan för att konfigurera en HTTP-proxy för din nod
 
 #: plmanagednode/cog.py:969
 msgid "Unlinking HTTP proxy from your node."
-msgstr ""
+msgstr "Kopplar bort HTTP-proxy från din nod."
 
 #: plmanagednode/view.py:38 plmanagednode/view.py:65 plmanagednode/view.py:98
 #: plmanagednode/view.py:179 plmanagednode/view.py:337
@@ -448,7 +462,7 @@ msgstr "Ogiltig sökutlösare, måste vara 0 eller 1"
 
 #: plmanagednode/view.py:289
 msgid "IP rotation configuration saved."
-msgstr ""
+msgstr "IP-rotationskonfiguration sparad."
 
 #: plmanagednode/view.py:310
 msgid "Google Account Configurator"
@@ -476,7 +490,7 @@ msgstr "Ogiltig e-postadress"
 
 #: plmanagednode/view.py:355
 msgid "Google account linked."
-msgstr ""
+msgstr "Google-konto länkat."
 
 #: plmanagednode/view.py:376
 msgid "HTTP Proxy Configurator"
@@ -520,5 +534,5 @@ msgstr "Ogiltig port, måste vara ett nummer mellan 0 och 65536"
 
 #: plmanagednode/view.py:450
 msgid "HTTP proxy configuration saved."
-msgstr ""
+msgstr "Konfiguration av HTTP-proxy sparad."
 

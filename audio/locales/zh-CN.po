@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
 "POT-Creation-Date: 2022-12-30 22:35+0000\n"
-"PO-Revision-Date: 2022-12-30 22:39\n"
+"PO-Revision-Date: 2022-12-30 23:02\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -58,7 +58,7 @@ msgstr "移除您的报告"
 #: audio/config_commands.py:98
 #, docstring
 msgid "Show the version of the Cog and its PyLav dependencies"
-msgstr ""
+msgstr "显示 Cog版本和 PyLav 依赖关系"
 
 #: audio/config_commands.py:114
 msgid "Library/Cog"
@@ -76,7 +76,7 @@ msgstr "全局配置选项"
 #: audio/config_commands.py:133
 #, docstring
 msgid "Set the maximum volume a server can set"
-msgstr ""
+msgstr "设置服务器可以设置的最大音量"
 
 #: audio/config_commands.py:141 audio/config_commands.py:578
 #: audio/hybrid_commands.py:613
@@ -122,7 +122,7 @@ msgstr "已禁用"
 #: audio/config_commands.py:182 audio/config_commands.py:665
 #, docstring
 msgid "Set whether the bot should shuffle the queue after every new song added"
-msgstr ""
+msgstr "设置每次添加新歌曲后，机器人是否会随机播放队列"
 
 #: audio/config_commands.py:192 audio/config_commands.py:686
 msgid "Auto-Shuffle set to {shuffle}"
@@ -140,7 +140,7 @@ msgstr "随机播放设置为 {shuffle}"
 #: audio/config_commands.py:220 audio/config_commands.py:727
 #, docstring
 msgid "Set whether the bot should automatically play songs when the queue is empty"
-msgstr ""
+msgstr "设置当队列为空时机器人是否应自动播放歌曲"
 
 #: audio/config_commands.py:229 audio/config_commands.py:753
 msgid "Auto-Play set to {auto}"
@@ -149,7 +149,7 @@ msgstr "自动播放设置为 {auto}"
 #: audio/config_commands.py:237 audio/config_commands.py:761
 #, docstring
 msgid "Set whether the bot should disconnect from the voice channel"
-msgstr ""
+msgstr "设置机器人是否应断开语音频道"
 
 #: audio/config_commands.py:247
 #, docstring
@@ -159,7 +159,12 @@ msgid "Set whether the bot should disconnect from the voice channel when the que
 "            - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr ""
+msgstr "设置当队列为空时，机器人是否应断开语音频道连接。\n\n"
+"        参数：\n"
+"            - `<toggle>`：当队列为空时，机器人是否应该断开与语音频道的连接。\n"
+"            - `<duration>`: 如果玩家断开连接，队列空后多长时间。 默认值为 60 秒。\n"
+"            接受秒、 分钟、 小时、 天、 周(如果没有指定单位) 假定持续时间以秒为单位\n"
+"        "
 
 #: audio/config_commands.py:267 audio/config_commands.py:307
 #: audio/config_commands.py:811 audio/config_commands.py:873
@@ -178,7 +183,12 @@ msgid "Set whether the bot should disconnect from the voice channel when alone.\
 "            - `<duration>`: How longer after detecting should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr ""
+msgstr "设置机器人是否在单独时断开语音频道连接。\n\n"
+"        参数：\n"
+"            - `<toggle>`：当机器人检测到它是单独的时候，是否应该断开与声音频道的连接。\n"
+"            - `<duration>`: 检测到玩家断开连接后的时间长度。 默认值为 60 秒。\n"
+"            接受秒、 分钟、 小时、 天、 周(如果没有指定单位) 假定持续时间以秒为单位\n"
+"        "
 
 #: audio/config_commands.py:313 audio/config_commands.py:879
 msgid "Disconnect from voice channel when alone set to {empty}{extras}"
@@ -192,7 +202,7 @@ msgstr "服务器配置选项"
 #: audio/config_commands.py:329
 #, docstring
 msgid "Add, remove or show the DJ roles and users for the server"
-msgstr ""
+msgstr "添加、删除或显示服务器的 DJ 角色和用户"
 
 #: audio/config_commands.py:335
 #, docstring
@@ -317,11 +327,18 @@ msgid "Set whether the bot should disconnect from the voice channel when the que
 "            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be\n"
 "            given in seconds)\n"
 "        "
-msgstr ""
+msgstr "设置当队列为空时，机器人是否应断开语音频道连接。\n\n"
+"        参数：\n"
+"            - `<toggle>`：当队列为空时，机器人是否应该断开与语音频道的连接。\n"
+"            - `<duration>`: 如果玩家断开连接，队列空后多长时间。 默认值是 60\n"
+"            秒。\n"
+"            接受秒、 分钟、 小时、 天、 周(如果没有指定单位) 假定持续时间为\n"
+"            以秒为单位\n"
+"        "
 
 #: audio/config_commands.py:789
 msgid "Disconnect when the queue finished is globally enabled and players will be disconnected after {delta}"
-msgstr ""
+msgstr "当队列已在全局启用，玩家将在 {delta} 后断开连接"
 
 #: audio/config_commands.py:832
 #, docstring
@@ -333,11 +350,18 @@ msgid "Set whether the bot should disconnect from the voice channel when alone.\
 "            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be\n"
 "            given in seconds)\n"
 "        "
-msgstr ""
+msgstr "设置机器人是否在单独时断开语音频道连接。\n\n"
+"        参数：\n"
+"            - `<toggle>`: 当机器人检测到它是\n"
+"            的单独时，是否应该断开与声音频道的连接。\n"
+"            - `<duration>`: 检测到玩家是否断开连接后需要多长时间。 默认值为 60 秒。\n"
+"            接受秒、 分钟、 小时、 天、 周(如果没有指定单位) 假定持续时间为\n"
+"            以秒为单位\n"
+"        "
 
 #: audio/config_commands.py:851
 msgid "Disconnect when alone is globally enabled and players will be disconnected after {delta}"
-msgstr ""
+msgstr "仅在全局启用时断开连接，玩家将在 {delta} 后断开连接"
 
 #: audio/config_commands.py:889
 #, docstring
@@ -418,7 +442,7 @@ msgstr "我找不到任何支持的活动 {user} 正在参与中"
 
 #: audio/context_menus.py:218
 msgid "Couldn't map {user}'s Apple Music track to a valid query"
-msgstr ""
+msgstr "无法映射 {user}的苹果音乐曲目到一个有效查询"
 
 #: audio/context_menus.py:234
 msgid "Couldn't find any tracks matching {query}"
@@ -466,7 +490,7 @@ msgstr "我没有连接到 {channel} 的权限"
 
 #: audio/hybrid_commands.py:254
 msgid "You don't have permission to connect to {channel}"
-msgstr ""
+msgstr "您没有连接到 {channel} 的权限"
 
 #: audio/hybrid_commands.py:271
 msgid "I'm forced to only join {channel}"
@@ -532,11 +556,11 @@ msgstr "当前曲目"
 
 #: audio/hybrid_commands.py:544
 msgid "Player already paused, did you mean to run `/resume`"
-msgstr ""
+msgstr "玩家已暂停，你是要运行 `/resume`"
 
 #: audio/hybrid_commands.py:546
 msgid "Player already paused, did you mean to run `{prefix}{command}`"
-msgstr ""
+msgstr "玩家已暂停，你是否要运行 `{prefix}{command}`"
 
 #: audio/hybrid_commands.py:557
 msgid "Player paused"
@@ -544,11 +568,11 @@ msgstr "播放器已暂停"
 
 #: audio/hybrid_commands.py:579
 msgid "Player already resumed, did you mean to run `/pause`"
-msgstr ""
+msgstr "玩家已经恢复，你想要运行 `/暂停 `"
 
 #: audio/hybrid_commands.py:581
 msgid "Player already resumed, did you mean to run `{prefix}{command}`"
-msgstr ""
+msgstr "玩家已经恢复，你是否想要运行 `{prefix}{command}`"
 
 #: audio/hybrid_commands.py:592
 msgid "Player resumed"
@@ -627,7 +651,7 @@ msgstr "{track} 将现在开始\n"
 #: audio/player_commands.py:121
 #, docstring
 msgid "Enqueue a track at the top of the queue"
-msgstr ""
+msgstr "在队列顶部排队一个曲目"
 
 #: audio/player_commands.py:255
 #, docstring
@@ -663,7 +687,7 @@ msgstr "搜索轨迹，然后播放选定的响应"
 
 #: audio/slash_commands.py:53
 msgid "You haven't selected something to play"
-msgstr ""
+msgstr "您还没有选择要播放的内容"
 
 #: audio/slash_commands.py:105
 msgid "Searching {service}"
@@ -683,5 +707,5 @@ msgstr "达到音量上限，播放器音量设置为 {volume}%"
 
 #: audio/utility_commands.py:54
 msgid "Minimum volume reached, player volume set to 0%"
-msgstr ""
+msgstr "达到最小音量，播放器音量设置为0%"
 

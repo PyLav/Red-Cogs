@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
 "POT-Creation-Date: 2022-12-30 22:35+0000\n"
-"PO-Revision-Date: 2022-12-30 22:38\n"
+"PO-Revision-Date: 2022-12-30 23:02\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian\n"
 "MIME-Version: 1.0\n"
@@ -65,7 +65,7 @@ msgstr "Fjernet din rapport"
 #: audio/config_commands.py:98
 #, docstring
 msgid "Show the version of the Cog and its PyLav dependencies"
-msgstr ""
+msgstr "Vis versjonen av Cog dens PyLav avhengigheter"
 
 #: audio/config_commands.py:114
 msgid "Library/Cog"
@@ -83,7 +83,7 @@ msgstr "Globale konfigurasjonsalternativer"
 #: audio/config_commands.py:133
 #, docstring
 msgid "Set the maximum volume a server can set"
-msgstr ""
+msgstr "Angi maksimalt volum en server kan sette"
 
 #: audio/config_commands.py:141 audio/config_commands.py:578
 #: audio/hybrid_commands.py:613
@@ -129,7 +129,7 @@ msgstr "Deaktivert"
 #: audio/config_commands.py:182 audio/config_commands.py:665
 #, docstring
 msgid "Set whether the bot should shuffle the queue after every new song added"
-msgstr ""
+msgstr "Angi om botten skal stokke køen etter hver nye sang lagt til"
 
 #: audio/config_commands.py:192 audio/config_commands.py:686
 msgid "Auto-Shuffle set to {shuffle}"
@@ -147,7 +147,7 @@ msgstr "Bland satt til {shuffle}"
 #: audio/config_commands.py:220 audio/config_commands.py:727
 #, docstring
 msgid "Set whether the bot should automatically play songs when the queue is empty"
-msgstr ""
+msgstr "Angi om botten skal spille sanger automatisk når køen er tom"
 
 #: audio/config_commands.py:229 audio/config_commands.py:753
 msgid "Auto-Play set to {auto}"
@@ -156,7 +156,7 @@ msgstr "Auto-avspilling satt til {auto}"
 #: audio/config_commands.py:237 audio/config_commands.py:761
 #, docstring
 msgid "Set whether the bot should disconnect from the voice channel"
-msgstr ""
+msgstr "Angi om botten skal koble fra talekanalen"
 
 #: audio/config_commands.py:247
 #, docstring
@@ -166,7 +166,12 @@ msgid "Set whether the bot should disconnect from the voice channel when the que
 "            - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Angi om botten skal koble fra talekanalen når køen er tom.\n\n"
+"        Argumenter:\n"
+"            - `<toggle>`: Om botten skal koble fra talekanalen når køen er tom.\n"
+"            - `<duration>`: Hvor lengre etter at køen er tom skal spilleren bli frakoblet. Standard er 60 sekunder.\n"
+"            Godtar sekunder, minutter, timer, dager, uker (hvis ingen enhet er angitt, varigheten antas å være angitt i sekunder)\n"
+"        "
 
 #: audio/config_commands.py:267 audio/config_commands.py:307
 #: audio/config_commands.py:811 audio/config_commands.py:873
@@ -185,7 +190,12 @@ msgid "Set whether the bot should disconnect from the voice channel when alone.\
 "            - `<duration>`: How longer after detecting should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Angi om botten skal koble fra talekanalen når alene\n\n"
+"        Argumenter:\n"
+"            - `<toggle>`: Om botten skal koble fra talekanalen når den oppdager at den er alene.\n"
+"            - `<duration>`: Hvor lenger etter å ha oppdaget skal spilleren bli frakoblet. Standard er 60 sekunder.\n"
+"            Godtar sekunder, minutter, timer, dager, uker (hvis ingen enhet er angitt, varigheten antas å være angitt i sekunder)\n"
+"        "
 
 #: audio/config_commands.py:313 audio/config_commands.py:879
 msgid "Disconnect from voice channel when alone set to {empty}{extras}"
@@ -199,7 +209,7 @@ msgstr "Server konfigurasjonsvalg"
 #: audio/config_commands.py:329
 #, docstring
 msgid "Add, remove or show the DJ roles and users for the server"
-msgstr ""
+msgstr "Legg til, fjern eller vis DJ roller og brukere for serveren"
 
 #: audio/config_commands.py:335
 #, docstring
@@ -328,7 +338,7 @@ msgstr ""
 
 #: audio/config_commands.py:789
 msgid "Disconnect when the queue finished is globally enabled and players will be disconnected after {delta}"
-msgstr ""
+msgstr "Koble fra når køen som er ferdig globalt er aktivert, og spillere vil bli koblet fra etter {delta}"
 
 #: audio/config_commands.py:832
 #, docstring
@@ -340,11 +350,18 @@ msgid "Set whether the bot should disconnect from the voice channel when alone.\
 "            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be\n"
 "            given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Angi om botten skal koble fra talekanalen når alene\n\n"
+"        Argumenter:\n"
+"            - `<toggle>`: Om botten skal koble fra talekanalen når den oppdager at den er\n"
+"            alene.\n"
+"            - `<duration>`: Hvor lenger etter å ha oppdaget skal spilleren bli frakoblet. Standard er 60 sekunder.\n"
+"            Godtar sekunder, minutter, timer, dager, uker (hvis ingen enhet er angitt, varigheten antas å være\n"
+"            gitt i løpet av sekunder)\n"
+"        "
 
 #: audio/config_commands.py:851
 msgid "Disconnect when alone is globally enabled and players will be disconnected after {delta}"
-msgstr ""
+msgstr "Koble fra når alene er globalt aktivert og spillere vil bli koblet fra etter {delta}"
 
 #: audio/config_commands.py:889
 #, docstring
@@ -425,7 +442,7 @@ msgstr "Jeg kunne ikke finne noen støttede aktiviteter {user} tar del i"
 
 #: audio/context_menus.py:218
 msgid "Couldn't map {user}'s Apple Music track to a valid query"
-msgstr ""
+msgstr "Kunne ikke tilordne {user}sin Apple Music track til et gyldig spørring"
 
 #: audio/context_menus.py:234
 msgid "Couldn't find any tracks matching {query}"
@@ -473,7 +490,7 @@ msgstr "Jeg har ikke tillatelse til å koble til {channel}"
 
 #: audio/hybrid_commands.py:254
 msgid "You don't have permission to connect to {channel}"
-msgstr ""
+msgstr "Du har ikke tillatelse til å koble til {channel}"
 
 #: audio/hybrid_commands.py:271
 msgid "I'm forced to only join {channel}"
@@ -539,11 +556,11 @@ msgstr "nåværende spor"
 
 #: audio/hybrid_commands.py:544
 msgid "Player already paused, did you mean to run `/resume`"
-msgstr ""
+msgstr "Spilleren pauset allerede, mente du å kjøre `/resume`"
 
 #: audio/hybrid_commands.py:546
 msgid "Player already paused, did you mean to run `{prefix}{command}`"
-msgstr ""
+msgstr "Spilleren pauset allerede, mente du å kjøre `{prefix}{command}`"
 
 #: audio/hybrid_commands.py:557
 msgid "Player paused"
@@ -551,11 +568,11 @@ msgstr "Spiller pauset"
 
 #: audio/hybrid_commands.py:579
 msgid "Player already resumed, did you mean to run `/pause`"
-msgstr ""
+msgstr "Spiller allerede gjenopptatt, mente du å kjøre `/pause`"
 
 #: audio/hybrid_commands.py:581
 msgid "Player already resumed, did you mean to run `{prefix}{command}`"
-msgstr ""
+msgstr "Spiller allerede gjenopptatt, mente du å kjøre `{prefix}{command}`"
 
 #: audio/hybrid_commands.py:592
 msgid "Player resumed"
@@ -634,7 +651,7 @@ msgstr "{track} vil starte nå\n"
 #: audio/player_commands.py:121
 #, docstring
 msgid "Enqueue a track at the top of the queue"
-msgstr ""
+msgstr "Sett et spor i toppen av køen"
 
 #: audio/player_commands.py:255
 #, docstring
@@ -670,7 +687,7 @@ msgstr "Søk etter et spor og spill det valgte svaret"
 
 #: audio/slash_commands.py:53
 msgid "You haven't selected something to play"
-msgstr ""
+msgstr "Du har ikke valgt noe å spille på"
 
 #: audio/slash_commands.py:105
 msgid "Searching {service}"
@@ -690,5 +707,5 @@ msgstr "Volumgrense nådd, spillervolum satt til {volume}%"
 
 #: audio/utility_commands.py:54
 msgid "Minimum volume reached, player volume set to 0%"
-msgstr ""
+msgstr "Minste volum nådd, spillervolum satt til 0%"
 

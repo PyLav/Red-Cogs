@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
 "POT-Creation-Date: 2022-12-30 22:35+0000\n"
-"PO-Revision-Date: 2022-12-30 22:38\n"
+"PO-Revision-Date: 2022-12-30 23:02\n"
 "Last-Translator: \n"
 "Language-Team: Greek\n"
 "MIME-Version: 1.0\n"
@@ -63,11 +63,11 @@ msgstr "Εναλλαγή του διαχειριζόμενου κόμβου on/o
 
 #: plmanagednode/cog.py:142
 msgid "PyLav's managed node has been enabled."
-msgstr ""
+msgstr "Ο διαχειριζόμενος κόμβος της PyLav έχει ενεργοποιηθεί."
 
 #: plmanagednode/cog.py:150
 msgid "PyLav's managed node has been disabled."
-msgstr ""
+msgstr "Ο διαχειριζόμενος κόμβος της PyLav έχει απενεργοποιηθεί."
 
 #: plmanagednode/cog.py:158
 #, docstring
@@ -119,7 +119,7 @@ msgstr "Το μέγεθος του σωρού πρέπει να είναι μι�
 
 #: plmanagednode/cog.py:272
 msgid "Managed node's heap-size set to {bytes}."
-msgstr ""
+msgstr "Το μέγεθος σωρού του διαχειριζόμενου κόμβου ορίστηκε σε {bytes}."
 
 #: plmanagednode/cog.py:283
 #, docstring
@@ -133,7 +133,7 @@ msgstr "Ορίστε το διακομιστή του διαχειριζόμεν
 
 #: plmanagednode/cog.py:299
 msgid "Managed node's host set to {host}."
-msgstr ""
+msgstr "Ο κεντρικός υπολογιστής του διαχειριζόμενου κόμβου ορίστηκε σε {host}."
 
 #: plmanagednode/cog.py:310
 #, docstring
@@ -154,7 +154,7 @@ msgstr "Ο λιμένας πρέπει να είναι μεταξύ 1024 και 
 
 #: plmanagednode/cog.py:332
 msgid "Managed node's port set to {port}."
-msgstr ""
+msgstr "Η θύρα του διαχειριζόμενου κόμβου ορίστηκε σε {port}."
 
 #: plmanagednode/cog.py:340
 #, docstring
@@ -172,7 +172,7 @@ msgstr "Το πρόσθετο πρέπει να είναι ένα από τα π
 
 #: plmanagednode/cog.py:447
 msgid "Managed node's plugin {plugin} disabled."
-msgstr ""
+msgstr "Πρόσθετο διαχείρισης κόμβου {plugin} απενεργοποιήθηκε."
 
 #: plmanagednode/cog.py:458
 #, docstring
@@ -181,7 +181,7 @@ msgstr "Ενεργοποιήστε ένα από τα διαθέσιμα πρό�
 
 #: plmanagednode/cog.py:507
 msgid "Managed node's plugin {plugin} enabled."
-msgstr ""
+msgstr "Το πρόσθετο {plugin} για διαχείριση κόμβου ενεργοποιήθηκε."
 
 #: plmanagednode/cog.py:518
 #, docstring
@@ -195,7 +195,8 @@ msgstr "{name} ενημερώθηκε από {old_value} σε {new_value}\n"
 #: plmanagednode/cog.py:600
 msgid "Managed node's plugins updated.\n\n"
 "{updates}"
-msgstr ""
+msgstr "Ενημερώθηκαν τα πρόσθετα του διαχειριζόμενου κόμβου.\n\n"
+"{updates}"
 
 #: plmanagednode/cog.py:611
 msgid "Managed node's plugins already up to date"
@@ -220,20 +221,20 @@ msgstr "απενεργοποιημένο"
 
 #: plmanagednode/cog.py:651
 msgid "Managed node's {source} source set to {state}."
-msgstr ""
+msgstr "Η πηγή {source} του διαχειριζόμενου κόμβου ορίστηκε σε {state}."
 
 #: plmanagednode/cog.py:663
 #, docstring
 msgid "Toggle the managed node filters"
-msgstr ""
+msgstr "Εναλλαγή φίλτρων διαχειριζόμενων κόμβων"
 
 #: plmanagednode/cog.py:675
 msgid "Invalid source, {valid_list} are valid filters"
-msgstr ""
+msgstr "Μη έγκυρη πηγή, {valid_list} είναι έγκυρα φίλτρα"
 
 #: plmanagednode/cog.py:687
 msgid "Managed node's {source} filter set to {state}."
-msgstr ""
+msgstr "Το φίλτρο {source} του διαχειριζόμενου κόμβου έχει οριστεί σε {state}."
 
 #: plmanagednode/cog.py:699
 #, docstring
@@ -251,7 +252,20 @@ msgid "Configure multiple settings for the managed node.\n\n"
 "        `youtubeSearchEnabled` : Boolean i.e True (Default True)\n"
 "        `soundcloudSearchEnabled` : Boolean i.e True (Default True)\n"
 "        "
-msgstr ""
+msgstr "Ρύθμιση πολλαπλών ρυθμίσεων για τον διαχειριζόμενο κόμβο.\n\n"
+"        Run `[p]καταψήφισε πληροφορίες <setting> για να εμφανίσεις πληροφορίες σχετικά με τις ρυθμίσεις και τι κάνουν.\n\n"
+"        **Ορισμός ονομάτων**:\n"
+"        `bufferDurationMs` : Integer i. 400 (Default 400) - Ρυθμίστε σε 0 για να απενεργοποιήσετε το JDA-NAS\n"
+"        `frameBufferDurationMs` : Integer i. 1000 (Default 1000)\n"
+"        `trackStuckThresholdMs` : Integer i. 1000 (Default 1000)\n"
+"        `youtubePlaylistLoadLimit` : Integer i. 1000 (Default 1000)\n"
+"        `opusEncodingQuality` : Integer i. 10 (Προεπιλογή 10)\n"
+"        `resamplingQuality` : String i. ΧΑΜΗΛΟ (Προεπιλογή ΧΑΜΗΛΟ)\n"
+"        `useSeekGhosting` : Boolean i. True (Προεπιλογή True)\n"
+"        `playerUpdateInterval` : Integer i. 30 (Προεπιλογή 30)\n"
+"        `youtubeSearchEnabled` : Boolean i. True (Default True)\n"
+"        `soundcloudSearchEnabled` : Boolean i. Αληθές (Προεπιλογή Αλήθεια)\n"
+"        "
 
 #: plmanagednode/cog.py:739
 msgid "{Setting} is not a valid Setting; Options are:\n\n"
@@ -261,11 +275,11 @@ msgstr "{Setting} δεν είναι έγκυρη ρύθμιση. Οι επιλο
 
 #: plmanagednode/cog.py:750
 msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses but will increase RAM usage. Minimum of 40ms, lower values may introduce pauses and stutters. Set to 0 to disable JDA-NAS. Accepted values: Range: 0 - 2,000"
-msgstr ""
+msgstr "Η διάρκεια του buffer της NAS σε χιλιοστά του δευτερολέπτου. Οι υψηλότερες τιμές είναι καλύτερες έναντι της μεγαλύτερης παύσης GC αλλά θα αυξήσουν τη χρήση της RAM. Ελάχιστο 40ms, χαμηλότερες τιμές μπορεί να εισαγάγει παύσεις και καβούρια. Ορίστε στο 0 για να απενεργοποιήσετε JDA-NAS. Αποδεκτές τιμές: Εύρος: 0 - 2.000"
 
 #: plmanagednode/cog.py:756
 msgid "How many milliseconds of audio to keep buffered, Higher values increase RAM usage. Accepted values: Range: 1,000 - 10,000"
-msgstr ""
+msgstr "Πόσα χιλιοστά του δευτερολέπτου του ήχου για να κρατήσει buffered, Υψηλότερες τιμές αυξάνουν τη χρήση RAM. Αποδεκτές τιμές: Εύρος: 1.000 - 10.000"
 
 #: plmanagednode/cog.py:760
 msgid "The threshold in milliseconds for how long a track can be stuck. A track is stuck if does not return any audio data. Accepted values: Range: 5,000 - 20,000"
@@ -289,7 +303,7 @@ msgstr "Αναζήτηση ghosting είναι το αποτέλεσμα όπο�
 
 #: plmanagednode/cog.py:781
 msgid "How frequently in seconds to send player updates to clients, affects the current position accuracy. Accepted values: Range: 1 - 86400"
-msgstr ""
+msgstr "Πόσο συχνά σε δευτερόλεπτα για να στείλετε ενημερώσεις παίκτη σε πελάτες, επηρεάζει την τρέχουσα ακρίβεια θέσης. Αποδεκτές τιμές: Εύρος: 1 - 86400"
 
 #: plmanagednode/cog.py:785
 msgid "Enable or disable YouTube searches within the node, this will affect AppleMusic, Spotify and any functionality dependant on YouTube. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
@@ -319,7 +333,7 @@ msgstr "{Setting} έγκυρες εισόδους είναι:\n\n"
 
 #: plmanagednode/cog.py:857
 msgid "{Setting} set to {value}."
-msgstr ""
+msgstr "{Setting} ορίστηκε σε {value}."
 
 #: plmanagednode/cog.py:869
 #, docstring
@@ -338,7 +352,7 @@ msgstr "Κάντε κλικ στο παρακάτω κουμπί για να ρ�
 
 #: plmanagednode/cog.py:898
 msgid "Removing the IP rotation from your node."
-msgstr ""
+msgstr "Αφαίρεση της περιστροφής IP από τον κόμβο."
 
 #: plmanagednode/cog.py:906
 #, docstring
@@ -357,7 +371,7 @@ msgstr "Κάντε κλικ στο παρακάτω κουμπί για να σ�
 
 #: plmanagednode/cog.py:936
 msgid "Unlinking Google account from your node."
-msgstr ""
+msgstr "Αποσύνδεση του λογαριασμού Google από τον κόμβο σας."
 
 #: plmanagednode/cog.py:944
 #, docstring
@@ -374,7 +388,7 @@ msgstr "Κάντε κλικ στο παρακάτω κουμπί για να ρ�
 
 #: plmanagednode/cog.py:969
 msgid "Unlinking HTTP proxy from your node."
-msgstr ""
+msgstr "Αποσύνδεση διακομιστή μεσολάβησης HTTP από τον κόμβο σας."
 
 #: plmanagednode/view.py:38 plmanagednode/view.py:65 plmanagednode/view.py:98
 #: plmanagednode/view.py:179 plmanagednode/view.py:337
@@ -448,7 +462,7 @@ msgstr "Μη έγκυρο έναυσμα αναζήτησης, πρέπει να
 
 #: plmanagednode/view.py:289
 msgid "IP rotation configuration saved."
-msgstr ""
+msgstr "Η διαμόρφωση περιστροφής IP αποθηκεύτηκε."
 
 #: plmanagednode/view.py:310
 msgid "Google Account Configurator"
@@ -476,7 +490,7 @@ msgstr "Μη έγκυρη διεύθυνση email"
 
 #: plmanagednode/view.py:355
 msgid "Google account linked."
-msgstr ""
+msgstr "Ο λογαριασμός Google συνδέθηκε."
 
 #: plmanagednode/view.py:376
 msgid "HTTP Proxy Configurator"
@@ -520,5 +534,5 @@ msgstr "Μη έγκυρη θύρα, πρέπει να είναι ένας αρι
 
 #: plmanagednode/view.py:450
 msgid "HTTP proxy configuration saved."
-msgstr ""
+msgstr "Οι ρυθμίσεις διαμεσολαβητή HTTP αποθηκεύτηκαν."
 

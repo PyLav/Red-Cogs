@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
 "POT-Creation-Date: 2022-12-30 22:35+0000\n"
-"PO-Revision-Date: 2022-12-30 22:38\n"
+"PO-Revision-Date: 2022-12-30 23:02\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -65,7 +65,7 @@ msgstr "Tu informe ha sido eliminado"
 #: audio/config_commands.py:98
 #, docstring
 msgid "Show the version of the Cog and its PyLav dependencies"
-msgstr ""
+msgstr "Mostrar la versión del Cog y sus dependencias PyLav"
 
 #: audio/config_commands.py:114
 msgid "Library/Cog"
@@ -83,7 +83,7 @@ msgstr "Opciones de configuración global"
 #: audio/config_commands.py:133
 #, docstring
 msgid "Set the maximum volume a server can set"
-msgstr ""
+msgstr "Establecer el volumen máximo que un servidor puede establecer"
 
 #: audio/config_commands.py:141 audio/config_commands.py:578
 #: audio/hybrid_commands.py:613
@@ -129,7 +129,7 @@ msgstr "Deshabilitado"
 #: audio/config_commands.py:182 audio/config_commands.py:665
 #, docstring
 msgid "Set whether the bot should shuffle the queue after every new song added"
-msgstr ""
+msgstr "Establecer si el bot debe mezclar la cola después de cada nueva canción añadida"
 
 #: audio/config_commands.py:192 audio/config_commands.py:686
 msgid "Auto-Shuffle set to {shuffle}"
@@ -147,7 +147,7 @@ msgstr "Mezclado establecido en {shuffle}"
 #: audio/config_commands.py:220 audio/config_commands.py:727
 #, docstring
 msgid "Set whether the bot should automatically play songs when the queue is empty"
-msgstr ""
+msgstr "Establecer si el bot debe reproducir automáticamente canciones cuando la cola está vacía"
 
 #: audio/config_commands.py:229 audio/config_commands.py:753
 msgid "Auto-Play set to {auto}"
@@ -156,7 +156,7 @@ msgstr "Auto-Juego establecido en {auto}"
 #: audio/config_commands.py:237 audio/config_commands.py:761
 #, docstring
 msgid "Set whether the bot should disconnect from the voice channel"
-msgstr ""
+msgstr "Establecer si el bot debe desconectarse del canal de voz"
 
 #: audio/config_commands.py:247
 #, docstring
@@ -166,7 +166,12 @@ msgid "Set whether the bot should disconnect from the voice channel when the que
 "            - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Establecer si el bot debe desconectarse del canal de voz cuando la cola está vacía.\n\n"
+"        Argumentos:\n"
+"            - `<toggle>`: Si el bot debe desconectarse del canal de voz cuando la cola está vacía.\n"
+"            - `<duration>`: Cuanto más tiempo después de que la cola está vacía debe desconectar el jugador. Por defecto es 60 segundos.\n"
+"            Acepta segundo, minutos, horas, días, semanas (si no se especifica ninguna unidad, la duración se asume que se da en segundos)\n"
+"        "
 
 #: audio/config_commands.py:267 audio/config_commands.py:307
 #: audio/config_commands.py:811 audio/config_commands.py:873
@@ -185,7 +190,12 @@ msgid "Set whether the bot should disconnect from the voice channel when alone.\
 "            - `<duration>`: How longer after detecting should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Establecer si el bot debe desconectarse del canal de voz cuando está solo.\n\n"
+"        Argumentos:\n"
+"            - `<toggle>`: Si el bot debe desconectarse del canal de voz cuando detecta que está solo.\n"
+"            - `<duration>`: Cuanto más tiempo después de detectar debe desconectar el jugador. Por defecto es 60 segundos.\n"
+"            Acepta segundo, minutos, horas, días, semanas (si no se especifica ninguna unidad, la duración se asume que se da en segundos)\n"
+"        "
 
 #: audio/config_commands.py:313 audio/config_commands.py:879
 msgid "Disconnect from voice channel when alone set to {empty}{extras}"
@@ -199,7 +209,7 @@ msgstr "Opciones de configuración del servidor"
 #: audio/config_commands.py:329
 #, docstring
 msgid "Add, remove or show the DJ roles and users for the server"
-msgstr ""
+msgstr "Agregar, eliminar o mostrar los roles de DJ y los usuarios del servidor"
 
 #: audio/config_commands.py:335
 #, docstring
@@ -324,11 +334,18 @@ msgid "Set whether the bot should disconnect from the voice channel when the que
 "            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be\n"
 "            given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Establecer si el bot debe desconectarse del canal de voz cuando la cola está vacía.\n\n"
+"        Argumentos:\n"
+"            - `<toggle>`: Si el bot debe desconectarse del canal de voz cuando la cola está vacía.\n"
+"            - `<duration>`: Cuanto más tiempo después de que la cola está vacía debe desconectar el jugador. Por defecto es 60\n"
+"            segundos.\n"
+"            Acepta segundos, minutos, horas, días, semanas (si no se especifica ninguna unidad, la duración se asume que es\n"
+"            dada en segundos)\n"
+"        "
 
 #: audio/config_commands.py:789
 msgid "Disconnect when the queue finished is globally enabled and players will be disconnected after {delta}"
-msgstr ""
+msgstr "Desconectar cuando la cola terminada está activada globalmente y los jugadores serán desconectados después de {delta}"
 
 #: audio/config_commands.py:832
 #, docstring
@@ -340,11 +357,18 @@ msgid "Set whether the bot should disconnect from the voice channel when alone.\
 "            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be\n"
 "            given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Establecer si el bot debe desconectarse del canal de voz cuando está solo.\n\n"
+"        Argumentos:\n"
+"            - `<toggle>`: Si el bot debe desconectarse del canal de voz cuando detecta que está\n"
+"            solo.\n"
+"            - `<duration>`: Cuanto más tiempo después de detectar debe desconectar el jugador. Por defecto es 60 segundos.\n"
+"            Acepta segundos, minutos, horas, días, semanas (si no se especifica ninguna unidad, la duración se asume que es\n"
+"            dada en segundos)\n"
+"        "
 
 #: audio/config_commands.py:851
 msgid "Disconnect when alone is globally enabled and players will be disconnected after {delta}"
-msgstr ""
+msgstr "Desconectar cuando solo está habilitado globalmente y los jugadores serán desconectados después de {delta}"
 
 #: audio/config_commands.py:889
 #, docstring
@@ -425,7 +449,7 @@ msgstr "No pude encontrar ninguna actividad soportada en la que {user} esté par
 
 #: audio/context_menus.py:218
 msgid "Couldn't map {user}'s Apple Music track to a valid query"
-msgstr ""
+msgstr "No se pudo asignar la pista de Apple Music de {user}a una consulta válida"
 
 #: audio/context_menus.py:234
 msgid "Couldn't find any tracks matching {query}"
@@ -473,7 +497,7 @@ msgstr "No tengo permiso para conectarme a {channel}"
 
 #: audio/hybrid_commands.py:254
 msgid "You don't have permission to connect to {channel}"
-msgstr ""
+msgstr "No tiene permiso para conectarse a {channel}"
 
 #: audio/hybrid_commands.py:271
 msgid "I'm forced to only join {channel}"
@@ -539,11 +563,11 @@ msgstr "pista actual"
 
 #: audio/hybrid_commands.py:544
 msgid "Player already paused, did you mean to run `/resume`"
-msgstr ""
+msgstr "Jugador ya pausado, ¿quieres ejecutar `/resume`"
 
 #: audio/hybrid_commands.py:546
 msgid "Player already paused, did you mean to run `{prefix}{command}`"
-msgstr ""
+msgstr "Jugador ya pausado, ¿quieres ejecutar `{prefix}{command}`"
 
 #: audio/hybrid_commands.py:557
 msgid "Player paused"
@@ -551,11 +575,11 @@ msgstr "Jugador pausado"
 
 #: audio/hybrid_commands.py:579
 msgid "Player already resumed, did you mean to run `/pause`"
-msgstr ""
+msgstr "Jugador ya reanudado, quería ejecutar `/pause`"
 
 #: audio/hybrid_commands.py:581
 msgid "Player already resumed, did you mean to run `{prefix}{command}`"
-msgstr ""
+msgstr "Jugador ya reanudado, quisiste ejecutar `{prefix}{command}`"
 
 #: audio/hybrid_commands.py:592
 msgid "Player resumed"
@@ -634,7 +658,7 @@ msgstr "{track} comenzará ahora\n"
 #: audio/player_commands.py:121
 #, docstring
 msgid "Enqueue a track at the top of the queue"
-msgstr ""
+msgstr "Encolar un track en la parte superior de la cola"
 
 #: audio/player_commands.py:255
 #, docstring
@@ -670,7 +694,7 @@ msgstr "Buscar un track y luego reproducir la respuesta seleccionada"
 
 #: audio/slash_commands.py:53
 msgid "You haven't selected something to play"
-msgstr ""
+msgstr "No has seleccionado algo para jugar"
 
 #: audio/slash_commands.py:105
 msgid "Searching {service}"
@@ -690,5 +714,5 @@ msgstr "Límite de volumen alcanzado, volumen del jugador establecido a {volume}
 
 #: audio/utility_commands.py:54
 msgid "Minimum volume reached, player volume set to 0%"
-msgstr ""
+msgstr "Volumen mínimo alcanzado, volumen del reproductor establecido a 0%"
 
