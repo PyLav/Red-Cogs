@@ -5,35 +5,38 @@ from pathlib import Path
 import discord
 from discord import app_commands
 from discord.app_commands import Range
-from red_commons.logging import getLogger
 from redbot.core import Config, commands
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import box
 from tabulate import tabulate
 
-import pylavcogs_shared
-from pylav.filters import Equalizer
-from pylav.sql.models import EqualizerModel
-from pylav.types import BotT, InteractionT
-from pylav.utils import PyLavContext
-from pylav.utils.theme import EightBitANSI
-from pylavcogs_shared.converters.equalizer import BassBoostConverter
-from pylavcogs_shared.utils.decorators import invoker_is_dj, requires_player
+from pylav.core.context import PyLavContext
+from pylav.extension.red.converters.equalizer import BassBoostConverter
+from pylav.extension.red.utils.decorators import invoker_is_dj, requires_player
+from pylav.helpers.format.ascii import EightBitANSI
+from pylav.helpers.format.strings import shorten_string
+from pylav.logging import getLogger
+from pylav.players.filters import Equalizer
+from pylav.storage.models.equilizer import Equalizer as EqualizerModel
+from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE_MIXIN, DISCORD_INTERACTION_TYPE
 
-LOGGER = getLogger("red.3pt.PyLavEqualizer")
+LOGGER = getLogger("PyLav.cog.Equalizer")
 
 _ = Translator("PyLavEqualizer", Path(__file__))
 
 
 @cog_i18n(_)
-class PyLavEqualizer(commands.Cog):
+class PyLavEqualizer(DISCORD_COG_TYPE_MIXIN):
     """Apply equalizer presets to the PyLav player"""
 
     __version__ = "1.0.0.0rc1"
 
-    slash_eq = app_commands.Group(name="eq", description=_("Apply an Equalizer preset to the player"))
+    slash_eq = app_commands.Group(
+        name="eq",
+        description=shorten_string(max_length=100, string=_("Apply an Equalizer preset to the player")),
+    )
 
-    def __init__(self, bot: BotT, *args, **kwargs):
+    def __init__(self, bot: DISCORD_BOT_TYPE, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot
         self._config = Config.get_conf(self, identifier=208903205982044161)
@@ -55,12 +58,11 @@ class PyLavEqualizer(commands.Cog):
             await context.defer(ephemeral=True)
         data = [
             (EightBitANSI.paint_white(self.__class__.__name__), EightBitANSI.paint_blue(self.__version__)),
-            (EightBitANSI.paint_white("PyLavCogs-Shared"), EightBitANSI.paint_blue(pylavcogs_shared.__VERSION__)),
-            (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.lavalink.lib_version)),
+            (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.pylav.lib_version)),
         ]
 
         await context.send(
-            embed=await context.lavalink.construct_embed(
+            embed=await context.pylav.construct_embed(
                 description=box(
                     tabulate(
                         data,
@@ -93,7 +95,7 @@ class PyLavEqualizer(commands.Cog):
                 effects["equalizer"] = {}
                 await context.player.config.update_effects(effects)
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     messageable=context,
                     description=_("The player will now apply the last used preset when it is created"),
                 ),
@@ -105,7 +107,7 @@ class PyLavEqualizer(commands.Cog):
                 effects["equalizer"] = context.player.equalizer.to_dict()
                 await context.player.config.update_effects(effects)
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     messageable=context,
                     description=_("Last used preset will no longer be saved"),
                 ),
@@ -113,11 +115,11 @@ class PyLavEqualizer(commands.Cog):
             )
 
     @slash_eq.command(name="bassboost")
-    @app_commands.describe(level=_("The bass boost level to apply"))
+    @app_commands.describe(level=shorten_string(max_length=100, string=_("The bass boost level to apply")))
     @app_commands.guild_only()
     @requires_player(slash=True)
     @invoker_is_dj(slash=True)
-    async def slash_eq_bassboost(self, interaction: InteractionT, level: BassBoostConverter) -> None:
+    async def slash_eq_bassboost(self, interaction: DISCORD_INTERACTION_TYPE, level: BassBoostConverter) -> None:
         """Apply a Bass boost preset to the player.
 
         Arguments:
@@ -134,14 +136,23 @@ class PyLavEqualizer(commands.Cog):
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
+        if not context.player.node.has_filter("equalizer"):
+            await context.send(
+                embed=await self.pylav.construct_embed(
+                    messageable=context,
+                    description=_("The current node does not have the Equalizer functionality enabled"),
+                ),
+                ephemeral=True,
+            )
+            return
         if level == "Off":
             await context.player.set_equalizer(requester=context.author, equalizer=Equalizer.default())
             if await self._config.guild(context.guild).persist_eq():
                 effects = await context.player.config.fetch_effects()
-                effects["equalizer"] = {}
+                effects["equalizer"] = []  # type: ignore
                 await context.player.config.update_effects(effects)
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     messageable=context,
                     description=_("Bass boost preset has been disabled"),
                 ),
@@ -207,7 +218,7 @@ class PyLavEqualizer(commands.Cog):
             effects["equalizer"] = context.player.equalizer.to_dict()
             await context.player.config.update_effects(effects)
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 messageable=context,
                 description=_("Preset has been set to {name}").format(name=equalizer.name),
             ),
@@ -218,7 +229,7 @@ class PyLavEqualizer(commands.Cog):
     @app_commands.guild_only()
     @requires_player(slash=True)
     @invoker_is_dj(slash=True)
-    async def slash_eq_piano(self, interaction: InteractionT) -> None:
+    async def slash_eq_piano(self, interaction: DISCORD_INTERACTION_TYPE) -> None:
         """Apply a Piano preset to the player.
 
         Suitable for acoustic tracks, or tacks with an emphasis on female vocals.
@@ -228,7 +239,15 @@ class PyLavEqualizer(commands.Cog):
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
-
+        if not context.player.node.has_filter("equalizer"):
+            await context.send(
+                embed=await self.pylav.construct_embed(
+                    messageable=context,
+                    description=_("The current node does not have the Equalizer functionality enabled"),
+                ),
+                ephemeral=True,
+            )
+            return
         equalizer = Equalizer(
             levels=[
                 {"band": 0, "gain": -0.25},
@@ -254,7 +273,7 @@ class PyLavEqualizer(commands.Cog):
             await context.player.config.update_effects(effects)
 
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 messageable=context,
                 description=_("Piano preset has been set"),
             ),
@@ -265,7 +284,7 @@ class PyLavEqualizer(commands.Cog):
     @app_commands.guild_only()
     @requires_player(slash=True)
     @invoker_is_dj(slash=True)
-    async def slash_eq_rock(self, interaction: InteractionT) -> None:
+    async def slash_eq_rock(self, interaction: DISCORD_INTERACTION_TYPE) -> None:
         """Apply an experimental Metal/Rock equalizer preset.
 
         Expect clipping on songs with heavy bass.
@@ -273,6 +292,15 @@ class PyLavEqualizer(commands.Cog):
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
+        if not context.player.node.has_filter("equalizer"):
+            await context.send(
+                embed=await self.pylav.construct_embed(
+                    messageable=context,
+                    description=_("The current node does not have the Equalizer functionality enabled"),
+                ),
+                ephemeral=True,
+            )
+            return
 
         equalizer = Equalizer(
             levels=[
@@ -300,7 +328,7 @@ class PyLavEqualizer(commands.Cog):
             effects["equalizer"] = equalizer.to_dict()
             await context.player.config.update_effects(effects)
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 messageable=context,
                 description=_("Rock/Metal preset has been set"),
             ),
@@ -311,11 +339,20 @@ class PyLavEqualizer(commands.Cog):
     @app_commands.guild_only()
     @requires_player(slash=True)
     @invoker_is_dj(slash=True)
-    async def slash_eq_remove(self, interaction: InteractionT) -> None:
+    async def slash_eq_remove(self, interaction: DISCORD_INTERACTION_TYPE) -> None:
         """Remove any equalizer preset from the player"""
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
+        if not context.player.node.has_filter("equalizer"):
+            await context.send(
+                embed=await self.pylav.construct_embed(
+                    messageable=context,
+                    description=_("The current node does not have the Equalizer functionality enabled"),
+                ),
+                ephemeral=True,
+            )
+            return
 
         await context.player.set_equalizer(requester=context.author, equalizer=Equalizer.default())
         if await self._config.guild(context.guild).persist_eq():
@@ -323,7 +360,7 @@ class PyLavEqualizer(commands.Cog):
             effects["equalizer"] = {}
             await context.player.config.update_effects(effects)
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 messageable=context,
                 description=_("Equalizer preset has been reset"),
             ),
@@ -356,7 +393,7 @@ class PyLavEqualizer(commands.Cog):
     @invoker_is_dj(slash=True)
     async def slash_eq_custom(
         self,
-        interaction: InteractionT,
+        interaction: DISCORD_INTERACTION_TYPE,
         name: str,
         description: str = None,
         band_25: Range[float, -0.25, 1.0] = None,
@@ -375,7 +412,7 @@ class PyLavEqualizer(commands.Cog):
         band_10000: Range[float, -0.25, 1.0] = None,
         band_16000: Range[float, -0.25, 1.0] = None,
         save: bool = False,
-    ) -> None:
+    ) -> None:  # sourcery skip: low-code-quality
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
@@ -405,12 +442,20 @@ class PyLavEqualizer(commands.Cog):
         if eq := eq_model.to_filter():
             if save:
                 await eq_model.save()
-
+            if not context.player.node.has_filter("equalizer"):
+                await context.send(
+                    embed=await self.pylav.construct_embed(
+                        messageable=context,
+                        description=_("The current node does not have the Equalizer functionality enabled"),
+                    ),
+                    ephemeral=True,
+                )
+                return
             await context.player.set_equalizer(requester=context.author, equalizer=eq)
 
         else:
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     messageable=context,
                     description=_("No changes were made to the equalizer, discarding request"),
                 ),
@@ -425,14 +470,14 @@ class PyLavEqualizer(commands.Cog):
     @app_commands.guild_only()
     @requires_player(slash=True)
     @invoker_is_dj(slash=True)
-    async def slash_eq_save(self, interaction: InteractionT, name: str, description: str = None):
+    async def slash_eq_save(self, interaction: DISCORD_INTERACTION_TYPE, name: str, description: str = None):
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
 
         if not context.player.equalizer:
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     messageable=context,
                     description=_("No changes were made to the equalizer, discarding request"),
                 ),

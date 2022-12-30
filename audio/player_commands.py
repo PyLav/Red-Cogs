@@ -1,30 +1,34 @@
-import asyncio
+from __future__ import annotations
+
 import contextlib
 import datetime
-from abc import ABC
-from functools import partial
 from pathlib import Path
 
 import discord
-from discord.utils import utcnow
-from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
 
-from pylav.query import Query
-from pylav.tracks import Track, decode_track
-from pylav.types import PyLavCogMixin
-from pylav.utils import PyLavContext
-from pylavcogs_shared.utils import rgetattr
-from pylavcogs_shared.utils.decorators import invoker_is_dj
+from pylav.core.context import PyLavContext
+from pylav.extension.red.utils import rgetattr
+from pylav.extension.red.utils.decorators import invoker_is_dj
+from pylav.helpers.format.strings import shorten_string
+from pylav.helpers.time import get_now_utc
+from pylav.logging import getLogger
+from pylav.players.player import Player
+from pylav.players.query.obj import Query
+from pylav.players.tracks.obj import Track
+from pylav.type_hints.bot import DISCORD_COG_TYPE_MIXIN
 
-LOGGER = getLogger("red.3pt.PyLavPlayer.commands.player")
+LOGGER = getLogger("PyLav.cog.Player.commands.player")
 _ = Translator("PyLavPlayer", Path(__file__))
 
 
 @cog_i18n(_)
-class PlayerCommands(PyLavCogMixin, ABC):
-    @commands.command(name="bump", description=_("Plays the specified track in the queue"))
+class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
+    @commands.command(
+        name="bump",
+        description=shorten_string(max_length=100, string=_("Plays the specified track in the queue")),
+    )
     @commands.guild_only()
     @invoker_is_dj()
     async def command_bump(self, context: PyLavContext, queue_number: int, after_current: bool = False):
@@ -42,7 +46,10 @@ class PlayerCommands(PyLavCogMixin, ABC):
 
         if player.queue.empty():
             await context.send(
-                embed=await context.construct_embed(description=_("Queue is empty"), messageable=context),
+                embed=await context.construct_embed(
+                    description=shorten_string(max_length=100, string=_("Queue is empty")),
+                    messageable=context,
+                ),
                 ephemeral=True,
             )
             return
@@ -79,7 +86,10 @@ class PlayerCommands(PyLavCogMixin, ABC):
                         track=await track.get_track_display_name(with_url=True),
                         current=await player.current.get_track_display_name(with_url=True),
                         eta=discord.utils.format_dt(
-                            utcnow() + datetime.timedelta(milliseconds=player.current.duration - player.position),
+                            get_now_utc()
+                            + datetime.timedelta(
+                                milliseconds=await player.current.duration() - await player.fetch_position()
+                            ),
                             style="R",
                         ),
                     ),
@@ -100,29 +110,27 @@ class PlayerCommands(PyLavCogMixin, ABC):
             )
             await player.play(track=track, requester=context.author, query=await track.query())
 
-    @commands.command(name="playnext", description=_("Enqueue a track at the top of the queue"), aliases=["pn"])
+    @commands.command(
+        name="playnext",
+        description=shorten_string(max_length=100, string=_("Enqueue a track at the top of the queue")),
+        aliases=["pn"],
+    )
     @commands.guild_only()
     @invoker_is_dj()
     async def command_playnext(self, context: PyLavContext, *, query: str):
         """Enqueue a track at the top of the queue"""
-        if isinstance(context, discord.Interaction):
-            send = partial(context.followup.send, wait=True)
-            if not context.response.is_done():
-                await context.response.defer(ephemeral=True)
-            author = context.user
-        else:
-            send = context.send
-            author = context.author
+        if isinstance(context, discord.Interaction) and not context.response.is_done():
+            await context.response.defer(ephemeral=True)
 
         player = context.player
 
         if player is None:
-            config = self.lavalink.player_config_manager.get_config(context.guild.id)
+            config = self.pylav.player_config_manager.get_config(context.guild.id)
             if (channel := context.guild.get_channel_or_thread(await config.fetch_forced_channel_id())) is None:
-                channel = rgetattr(author, "voice.channel", None)
+                channel = rgetattr(context.author, "voice.channel", None)
                 if not channel:
-                    await send(
-                        embed=await self.lavalink.construct_embed(
+                    await context.send(
+                        embed=await self.pylav.construct_embed(
                             description=_("You must be in a voice channel to allow me to connect"), messageable=context
                         ),
                         ephemeral=True,
@@ -131,8 +139,8 @@ class PlayerCommands(PyLavCogMixin, ABC):
             if not (
                 (permission := channel.permissions_for(context.guild.me)) and permission.connect and permission.speak
             ):
-                await send(
-                    embed=await self.lavalink.construct_embed(
+                await context.send(
+                    embed=await self.pylav.construct_embed(
                         description=_("I don't have permission to connect or speak in {channel}").format(
                             channel=channel.mention
                         ),
@@ -141,7 +149,7 @@ class PlayerCommands(PyLavCogMixin, ABC):
                     ephemeral=True,
                 )
                 return
-            player = await self.lavalink.connect_player(channel=channel, requester=author)
+            player = await self.pylav.connect_player(channel=channel, requester=context.author)
 
         queries = [await Query.from_string(qf) for q in query.split("\n") if (qf := q.strip("<>").strip())]
         search_queries = [q for q in queries if q.is_search]
@@ -149,55 +157,91 @@ class PlayerCommands(PyLavCogMixin, ABC):
         total_tracks_enqueue = 0
         single_track = None
         if search_queries:
-            total_tracks_from_search = 0
-            for query in search_queries:
-                single_track = track = Track(
-                    node=player.node, data=None, query=query, requester=author.id, timestamp=query.start_time
-                )
-                await player.add(requester=author.id, track=track, index=0)
-                if not player.is_playing:
-                    await player.next(requester=author)
-                total_tracks_enqueue += 1
-                total_tracks_from_search += 1
-        if non_search_queries:
-            successful, count, failed = await self.lavalink.get_all_tracks_for_queries(
-                *non_search_queries, requester=author, player=player
+            single_track, total_tracks_enqueue = await self._process_search_queries(
+                context, player, search_queries, single_track, total_tracks_enqueue
             )
-            if successful:
-                single_track = successful[0]
-            total_tracks_enqueue += count
-            failed_queries = []
-            failed_queries.extend(failed)
-            if count:
-                if count == 1:
-                    await player.add(requester=author.id, track=successful[0], index=0)
-                else:
-                    await player.bulk_add(requester=author.id, tracks_and_queries=successful, index=0)
+        if non_search_queries:
+            single_track, total_tracks_enqueue = await self._process_non_search_queries(
+                context, non_search_queries, player, single_track, total_tracks_enqueue
+            )
         if not (player.is_playing or player.queue.empty()):
-            await player.next(requester=author)
+            await player.next(requester=context.author)
 
+        await self._send_play_next_message(context, single_track, total_tracks_enqueue)
+
+    @staticmethod
+    async def _process_search_queries(
+        context: PyLavContext,
+        player: Player,
+        search_queries: list[Query],
+        single_track: Track | None,
+        total_tracks_enqueue: int,
+    ) -> tuple[Track, int]:
+        total_tracks_from_search = 0
+        for query in search_queries:
+            single_track = track = await Track.build_track(
+                node=player.node,
+                data=None,
+                query=query,
+                requester=context.author.id,
+                timestamp=query.start_time,
+                partial=query.is_partial,
+            )
+            await player.add(requester=context.author.id, track=track, index=0)
+            if not player.is_playing:
+                await player.next(requester=context.author)
+            total_tracks_enqueue += 1
+            total_tracks_from_search += 1
+        return single_track, total_tracks_enqueue
+
+    async def _process_non_search_queries(
+        self,
+        context: PyLavContext,
+        non_search_queries: list[Query],
+        player: Player,
+        single_track: Track,
+        total_tracks_enqueue: int,
+    ) -> tuple[Track, int]:
+        successful, count, failed = await self.pylav.get_all_tracks_for_queries(
+            *non_search_queries, requester=context.author, player=player
+        )
+        if successful:
+            single_track = successful[0]
+        total_tracks_enqueue += count
+        failed_queries = []
+        failed_queries.extend(failed)
+        if count:
+            if count == 1:
+                await player.add(requester=context.author.id, track=successful[0], index=0)
+            else:
+                await player.bulk_add(requester=context.author.id, tracks_and_queries=successful, index=0)
+        return single_track, total_tracks_enqueue
+
+    async def _send_play_next_message(
+        self, context: PyLavContext, single_track: Track, total_tracks_enqueue: int
+    ) -> None:
         if total_tracks_enqueue > 1:
-            await send(
-                embed=await self.lavalink.construct_embed(
+            await context.send(
+                embed=await self.pylav.construct_embed(
                     description=_("{track_count} tracks enqueued").format(track_count=total_tracks_enqueue),
                     messageable=context,
                 ),
                 ephemeral=True,
             )
         elif total_tracks_enqueue == 1:
-            await send(
-                embed=await self.lavalink.construct_embed(
+            await context.send(
+                embed=await self.pylav.construct_embed(
                     description=_("{track} enqueued").format(
                         track=await single_track.get_track_display_name(with_url=True)
                     ),
-                    thumbnail=await single_track.thumbnail(),
+                    thumbnail=await single_track.artworkUrl(),
                     messageable=context,
                 ),
                 ephemeral=True,
             )
         else:
-            await send(
-                embed=await self.lavalink.construct_embed(
+            await context.send(
+                embed=await self.pylav.construct_embed(
                     description=_("No tracks were found for your query"),
                     messageable=context,
                 ),
@@ -257,21 +301,20 @@ class PlayerCommands(PyLavCogMixin, ABC):
                 return
         else:
             try:
-                data, __ = await asyncio.to_thread(decode_track, track_url_or_index)
-                track = Track(
+                data = await self.pylav.decode_track(track_url_or_index, raise_on_failure=True)
+                track = await Track.build_track(
                     node=player.node,
                     data=data,
                     query=await Query.from_base64(track_url_or_index),
                     requester=context.author.id,
                 )
             except Exception:  # noqa
-                track = Track(
+                track = await Track.build_track(
                     node=player.node,
                     data=None,
                     query=await Query.from_string(track_url_or_index),
                     requester=context.author.id,
                 )
-                await track.search(player)
         try:
             number_removed += await player.remove_from_queue(
                 track, requester=context.author, duplicates=remove_duplicates

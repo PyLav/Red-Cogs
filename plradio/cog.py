@@ -1,14 +1,16 @@
 from __future__ import annotations
 
+import typing
 from pathlib import Path
 
 from discord import app_commands
-from red_commons.logging import getLogger
-from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
 
-from pylav.client import Client
-from pylav.converters.radio import (
+from pylav.core.client import Client
+from pylav.extension.radio.objects import Station
+from pylav.extension.red.ui.prompts.generic import maybe_prompt_for_entry
+from pylav.extension.red.utils import rgetattr
+from pylav.helpers.discord.converters.radio import (
     CodecConverter,
     CountryCodeConverter,
     CountryConverter,
@@ -17,90 +19,92 @@ from pylav.converters.radio import (
     StationConverter,
     TagConverter,
 )
-from pylav.query import Query
-from pylav.radio.objects import Station
-from pylav.types import BotT, InteractionT
-from pylavcogs_shared.ui.prompts.generic import maybe_prompt_for_entry
-from pylavcogs_shared.utils import rgetattr
+from pylav.helpers.format.strings import shorten_string
+from pylav.logging import getLogger
+from pylav.players.query.obj import Query
+from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE_MIXIN, DISCORD_INTERACTION_TYPE
 
-LOGGER = getLogger("red.3pt.PyLavRadio")
+LOGGER = getLogger("PyLav.cog.Radio")
 
 
 _ = Translator("PyLavRadio", Path(__file__))
 
 
 @cog_i18n(_)
-class PyLavRadio(commands.Cog):
+class PyLavRadio(DISCORD_COG_TYPE_MIXIN):
     lavalink: Client
 
     __version__ = "1.0.0.0rc1"
 
-    def __init__(self, bot: BotT, *args, **kwargs):
+    def __init__(self, bot: DISCORD_BOT_TYPE, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot
 
     @app_commands.command(
-        name="radio", description=_("Enqueue a radio station. Use the arguments to filter for a possible station")
+        name="radio",
+        description=shorten_string(
+            max_length=100, string=_("Enqueue a radio station. Use the arguments to filter for a possible station")
+        ),
     )
     @app_commands.describe(
-        stations=_("The radio station to enqueue"),
-        language=_("The language code to filter stations by"),
-        countrycode=_("The country code to filter stations and countries by"),
-        country=_("The country filter to filter stations and states by"),
-        state=_("The state filter to filter stations by"),
-        codec=_("The codec filter to filter stations by"),
-        tag1=_("The tag filter to filter stations by"),
-        tag2=_("The tag filter to filter stations by"),
-        tag3=_("The tag filter to filter stations by"),
-        tag4=_("The tag filter to filter stations by"),
-        tag5=_("The tag filter to filter stations by"),
+        stations=shorten_string(max_length=100, string=_("The radio station to enqueue")),
+        language=shorten_string(max_length=100, string=_("The language code to filter stations by")),
+        countrycode=shorten_string(max_length=100, string=_("The country code to filter stations and countries by")),
+        country=shorten_string(max_length=100, string=_("The country filter to filter stations and states by")),
+        state=shorten_string(max_length=100, string=_("The state filter to filter stations by")),
+        codec=shorten_string(max_length=100, string=_("The codec filter to filter stations by")),
+        tag1=shorten_string(max_length=100, string=_("The tag filter to filter stations by")),
+        tag2=shorten_string(max_length=100, string=_("The tag filter to filter stations by")),
+        tag3=shorten_string(max_length=100, string=_("The tag filter to filter stations by")),
+        tag4=shorten_string(max_length=100, string=_("The tag filter to filter stations by")),
+        tag5=shorten_string(max_length=100, string=_("The tag filter to filter stations by")),
     )
     @app_commands.guild_only()
     async def slash_radio(
         self,
-        interaction: InteractionT,
+        interaction: DISCORD_INTERACTION_TYPE,
         stations: StationConverter,
-        language: LanguageConverter = None,
-        countrycode: CountryCodeConverter = None,
-        country: CountryConverter = None,
-        state: StateConverter = None,
-        codec: CodecConverter = None,
-        tag1: TagConverter = None,
-        tag2: TagConverter = None,
-        tag3: TagConverter = None,
-        tag4: TagConverter = None,
-        tag5: TagConverter = None,
-    ):
+        language: LanguageConverter = None,  # noqa
+        countrycode: CountryCodeConverter = None,  # noqa
+        country: CountryConverter = None,  # noqa
+        state: StateConverter = None,  # noqa
+        codec: CodecConverter = None,  # noqa
+        tag1: TagConverter = None,  # noqa
+        tag2: TagConverter = None,  # noqa
+        tag3: TagConverter = None,  # noqa
+        tag4: TagConverter = None,  # noqa
+        tag5: TagConverter = None,  # noqa
+    ):  # sourcery skip: low-code-quality
         """Enqueue a radio station"""
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
         if not stations:
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("The Radio Browser functionality is currently unavailable"), messageable=context
                 ),
                 ephemeral=True,
             )
             return
-
-        station: Station = await maybe_prompt_for_entry(
+        stations = typing.cast(list[Station], stations)
+        station = await maybe_prompt_for_entry(
             cog=self,
             context=context,
-            entries=stations,  # type: ignore
+            entries=stations,
             message_str=_("Multiple stations matched, pick the one which you meant"),
-            selector_text=_("Pick a station"),
+            selector_text=shorten_string(max_length=100, string=_("Pick a station")),
         )
         send = context.send
         author = context.author
-        player = self.lavalink.get_player(context.guild.id)
+        player = self.pylav.get_player(context.guild.id)
         if player is None:
-            config = self.lavalink.player_config_manager.get_config(context.guild.id)
+            config = self.pylav.player_config_manager.get_config(context.guild.id)
             if (channel := context.guild.get_channel_or_thread(await config.fetch_forced_channel_id())) is None:
                 channel = rgetattr(author, "voice.channel", None)
                 if not channel:
                     await send(
-                        embed=await self.lavalink.construct_embed(
+                        embed=await self.pylav.construct_embed(
                             description=_("You must be in a voice channel to allow me to connect"), messageable=context
                         ),
                         ephemeral=True,
@@ -110,7 +114,7 @@ class PyLavRadio(commands.Cog):
                 (permission := channel.permissions_for(context.guild.me)) and permission.connect and permission.speak
             ):
                 await send(
-                    embed=await self.lavalink.construct_embed(
+                    embed=await self.pylav.construct_embed(
                         description=_("I don't have permission to connect or speak in {channel}").format(
                             channel=channel.mention
                         ),
@@ -119,12 +123,12 @@ class PyLavRadio(commands.Cog):
                     ephemeral=True,
                 )
                 return
-            player = await self.lavalink.connect_player(channel=channel, requester=author)
+            player = await self.pylav.connect_player(channel=channel, requester=author)
 
         total_tracks_enqueue = 0
         url = station.url_resolved or station.url
         query = await Query.from_string(url)
-        successful, count, failed = await self.lavalink.get_all_tracks_for_queries(
+        successful, count, failed = await self.pylav.get_all_tracks_for_queries(
             query, requester=author, player=player, bypass_cache=True, partial=False
         )
         single_track = successful[0] if successful else None
@@ -138,11 +142,11 @@ class PyLavRadio(commands.Cog):
 
         if total_tracks_enqueue == 1:
             await send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description="{translation} **[{station_name}]({station_url})**".format(
                         station_name=station.name, station_url=url, translation=_("Enqueued")
                     ),
-                    thumbnail=await single_track.thumbnail(),
+                    thumbnail=await single_track.artworkUrl(),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -150,7 +154,7 @@ class PyLavRadio(commands.Cog):
             await station.click()
         else:
             await send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description="**[{station_name}]({station_url})**".format(
                         station_name=station.name, station_url=url, translation=_("Unable to play")
                     ),

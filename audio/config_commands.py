@@ -1,33 +1,34 @@
+from __future__ import annotations
+
 import datetime
 import typing
-from abc import ABC
-from typing import Union
 
 import asyncstdlib
 import discord
 from asyncstdlib import heapq
-from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.commands import TimedeltaConverter
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import bold, box, humanize_list, humanize_number, humanize_timedelta
 from tabulate import tabulate
 
-import pylavcogs_shared
-from pylav.converters.playlist import PlaylistConverter
-from pylav.types import PyLavCogMixin
-from pylav.utils import PyLavContext
-from pylav.utils.theme import EightBitANSI
-from pylavcogs_shared.ui.prompts.playlists import maybe_prompt_for_playlist
-from pylavcogs_shared.utils.decorators import invoker_is_dj, requires_player
+from pylav.core.context import PyLavContext
+from pylav.extension.red.ui.prompts.playlists import maybe_prompt_for_playlist
+from pylav.extension.red.utils.decorators import invoker_is_dj, requires_player
+from pylav.helpers.discord.converters.playlists import PlaylistConverter
+from pylav.helpers.format.ascii import EightBitANSI
+from pylav.logging import getLogger
+from pylav.storage.models.player.config import PlayerConfig
+from pylav.storage.models.playlist import Playlist
+from pylav.type_hints.bot import DISCORD_COG_TYPE_MIXIN
 
-LOGGER = getLogger("red.3pt.PyLavPlayer.commands.config")
+LOGGER = getLogger("PyLav.cog.Player.commands.config")
 
 _ = Translator("PyLavPlayer", __file__)
 
 
 @cog_i18n(_)
-class ConfigCommands(PyLavCogMixin, ABC):
+class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
     @commands.group(name="playerset")
     async def command_playerset(self, context: PyLavContext) -> None:
         """Player configuration commands"""
@@ -44,7 +45,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
         """
         if context.player.voted():
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("This server already voted recently, please try again in 10 minutes"),
                     messageable=context,
                 ),
@@ -53,9 +54,9 @@ class ConfigCommands(PyLavCogMixin, ABC):
             return
 
         context.player.vote_node_down()
-        await context.player.change_to_best_node()
+        await context.player.change_to_best_node(forced=True, skip_position_fetch=True)
         await context.send(
-            embed=await context.lavalink.construct_embed(
+            embed=await context.pylav.construct_embed(
                 description=_("Thank you for your report"),
                 messageable=context,
             ),
@@ -75,7 +76,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
         """
         if not context.player.voted():
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("There is no active votes for the current backend"),
                     messageable=context,
                 ),
@@ -85,7 +86,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
 
         context.player.unvote_node_down()
         await context.send(
-            embed=await context.lavalink.construct_embed(
+            embed=await context.pylav.construct_embed(
                 description=_("Removed your report"),
                 messageable=context,
             ),
@@ -101,12 +102,11 @@ class ConfigCommands(PyLavCogMixin, ABC):
             await context.defer(ephemeral=True)
         data = [
             (EightBitANSI.paint_white(self.__class__.__name__), EightBitANSI.paint_blue(self.__version__)),
-            (EightBitANSI.paint_white("PyLavCogs-Shared"), EightBitANSI.paint_blue(pylavcogs_shared.__VERSION__)),
-            (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.lavalink.lib_version)),
+            (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.pylav.lib_version)),
         ]
 
         await context.send(
-            embed=await context.lavalink.construct_embed(
+            embed=await context.pylav.construct_embed(
                 description=box(
                     tabulate(
                         data,
@@ -137,7 +137,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
             await context.defer(ephemeral=True)
         if volume > 1000:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Volume must be less than 1000"), messageable=context
                 ),
                 ephemeral=True,
@@ -145,15 +145,15 @@ class ConfigCommands(PyLavCogMixin, ABC):
             return
         elif volume < 0:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Volume must be greater than 0"), messageable=context
                 ),
                 ephemeral=True,
             )
             return
-        await self.lavalink.player_manager.global_config.update_max_volume(volume)
+        await self.pylav.player_manager.global_config.update_max_volume(volume)
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 description=_("Max volume set to {volume}%").format(volume=humanize_number(volume)),
                 messageable=context,
             ),
@@ -168,9 +168,9 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        await self.lavalink.player_manager.global_config.update_self_deaf(toggle)
+        await self.pylav.player_manager.global_config.update_self_deaf(toggle)
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 description=_("Deafen set to {deafen}").format(deafen=_("Enabled") if toggle else _("Disabled")),
                 messageable=context,
             ),
@@ -186,9 +186,9 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        await self.lavalink.player_manager.global_config.update_auto_shuffle(toggle)
+        await self.pylav.player_manager.global_config.update_auto_shuffle(toggle)
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 description=_("Auto-Shuffle set to {shuffle}").format(
                     shuffle=_("Enabled") if toggle else _("Disabled")
                 ),
@@ -206,9 +206,9 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        await self.lavalink.player_manager.global_config.update_shuffle(toggle)
+        await self.pylav.player_manager.global_config.update_shuffle(toggle)
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 description=_("Shuffle set to {shuffle}").format(shuffle=_("Enabled") if toggle else _("Disabled")),
                 messageable=context,
             ),
@@ -223,9 +223,9 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        await self.lavalink.player_manager.global_config.update_auto_play(toggle)
+        await self.pylav.player_manager.global_config.update_auto_play(toggle)
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 description=_("Auto-Play set to {auto}").format(auto=_("Enabled") if toggle else _("Disabled")),
                 messageable=context,
             ),
@@ -249,14 +249,14 @@ class ConfigCommands(PyLavCogMixin, ABC):
         Arguments:
             - `<toggle>`: Whether the bot should disconnect from the voice channel when the queue is empty.
             - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60 seconds.
-            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)
+            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)
         """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        await self.lavalink.player_manager.global_config.update_empty_queue_dc(
+        await self.pylav.player_manager.global_config.update_empty_queue_dc(
             {
                 "enabled": toggle,
                 "time": after.total_seconds() if after else 60,
@@ -268,7 +268,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
         else:
             extras = ""
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 description=_("Disconnect from voice channel when queue is empty set to {empty}{extras}").format(
                     empty=_("Enabled") if toggle else _("Disabled"), extras=extras
                 ),
@@ -290,13 +290,13 @@ class ConfigCommands(PyLavCogMixin, ABC):
         Arguments:
             - `<toggle>`: Whether the bot should disconnect from the voice channel when it detects that it is alone.
             - `<duration>`: How longer after detecting should the player be disconnected. Default is 60 seconds.
-            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)
+            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)
         """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        await self.lavalink.player_manager.global_config.update_alone_dc(
+        await self.pylav.player_manager.global_config.update_alone_dc(
             {
                 "enabled": toggle,
                 "time": after.total_seconds() if after else 60,
@@ -309,7 +309,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
             extras = ""
 
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 description=_("Disconnect from voice channel when alone set to {empty}{extras}").format(
                     empty=_("Enabled") if toggle else _("Disabled"), extras=extras
                 ),
@@ -330,7 +330,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
 
     @command_playerset_server_dj.command(name="add")
     async def command_playerset_server_dj_add(
-        self, context: PyLavContext, roles_or_users: commands.Greedy[Union[discord.Role, discord.Member]]
+        self, context: PyLavContext, roles_or_users: commands.Greedy[discord.Role | discord.Member]
     ) -> None:
         """Add DJ roles or users to this server"""
         if isinstance(context, discord.Interaction):
@@ -341,7 +341,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if not roles_or_users:
             return await context.send_help()
 
-        config = self.lavalink.player_config_manager.get_config(context.guild.id)
+        config = self.pylav.player_config_manager.get_config(context.guild.id)
         if len(roles_or_users) == 1:
             role_or_user = roles_or_users[0]
             if isinstance(role_or_user, discord.Role):
@@ -351,8 +351,8 @@ class ConfigCommands(PyLavCogMixin, ABC):
                 message = _("Added {user} to the DJ users").format(user=role_or_user.mention)
                 await config.bulk_add_dj_users(role_or_user)
         else:
-            roles = [r for r in roles_or_users if isinstance(r, discord.Role)]
-            users = [u for u in roles_or_users if isinstance(u, discord.Member)]
+            roles = {r for r in roles_or_users if isinstance(r, discord.Role)}
+            users = {u for u in roles_or_users if isinstance(u, discord.Member)}
             message = None
             if roles and users:
                 message = _("Added {roles} to the DJ roles and {users} to the DJ users").format(
@@ -370,7 +370,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
                 await config.bulk_add_dj_users(*users)
 
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 description=message,
                 messageable=context,
             ),
@@ -379,7 +379,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
 
     @command_playerset_server_dj.command(name="remove")
     async def command_playerset_server_dj_remove(
-        self, context: PyLavContext, roles_or_users: commands.Greedy[Union[discord.Role, discord.Member, int]]
+        self, context: PyLavContext, roles_or_users: commands.Greedy[discord.Role | discord.Member | int]
     ) -> None:
         """Remove DJ roles or users in this the server"""
         if isinstance(context, discord.Interaction):
@@ -390,63 +390,73 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if not roles_or_users:
             return await context.send_help()
 
-        config = self.lavalink.player_config_manager.get_config(context.guild.id)
+        config = self.pylav.player_config_manager.get_config(context.guild.id)
         if len(roles_or_users) == 1:
-            role_or_user = roles_or_users[0]
-            if isinstance(role_or_user, int):
-                await config.remove_from_dj_roles(typing.cast(discord.Role, discord.Object(id=role_or_user)))
-                await config.remove_from_dj_users(typing.cast(discord.Member, discord.Object(id=role_or_user)))
-                message = _("Removed `{id}` from the DJ roles and users").format(id=role_or_user)
-            elif isinstance(role_or_user, discord.Role):
-                message = _("Removed {role} from the DJ roles").format(role=role_or_user.mention)
-                await config.remove_from_dj_roles(role_or_user)
-            else:
-                message = _("Removed {user} from the DJ users").format(user=role_or_user.mention)
-                await config.remove_from_dj_users(role_or_user)
+            message = await self._precess_remove_single_dj_role_or_user(config, roles_or_users)
         else:
-            roles = [r for r in roles_or_users if isinstance(r, discord.Role)]
-            users = [u for u in roles_or_users if isinstance(u, discord.Member)]
-            ints = [i for i in roles_or_users if isinstance(i, int)]
-            message = None
-            if roles and users and ints:
-                message = _(
-                    "Removed {roles} from the DJ roles and {users} from the DJ users, as well as {ints} from both"
-                ).format(
-                    roles=humanize_list([r.mention for r in roles]),
-                    users=humanize_list([u.mention for u in users]),
-                    ints=humanize_list([str(i) for i in ints]),
-                )
-            elif roles and users:
-                message = _("Removed {roles} from the DJ roles and {users} from the DJ users").format(
-                    roles=humanize_list([r.mention for r in roles]), users=humanize_list([u.mention for u in users])
-                )
-            if roles:
-                if not message:
-                    message = _("Removed {roles} from the DJ roles").format(
-                        roles=humanize_list([r.mention for r in roles])
-                    )
-                await config.bulk_remove_dj_roles(*roles)
-            if users:
-                if not message:
-                    message = _("Removed {users} from the DJ users").format(
-                        users=humanize_list([u.mention for u in users])
-                    )
-                await config.bulk_remove_dj_users(*users)
-            if ints:
-                if not message:
-                    message = _("Removed {ints} from the DJ roles and users").format(
-                        ints=humanize_list([str(u) for u in users])
-                    )
-                await config.bulk_remove_dj_users(*[discord.Object(id=i) for i in ints])
-                await config.bulk_remove_dj_roles(*[discord.Object(id=i) for i in ints])
+            message = await self._process_remove_multiple_dj_roles_or_users(config, roles_or_users)
 
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 description=message,
                 messageable=context,
             ),
             ephemeral=True,
         )
+
+    @staticmethod
+    async def _process_remove_multiple_dj_roles_or_users(
+        config: PlayerConfig, roles_or_users: list[discord.Role | discord.Member | int]
+    ) -> str:
+        roles = {r for r in roles_or_users if isinstance(r, discord.Role)}
+        users = {u for u in roles_or_users if isinstance(u, discord.Member)}
+        ints = {i for i in roles_or_users if isinstance(i, int)}
+        message = None
+        if roles and users and ints:
+            message = _(
+                "Removed {roles} from the DJ roles and {users} from the DJ users, as well as {ints} from both"
+            ).format(
+                roles=humanize_list([r.mention for r in roles]),
+                users=humanize_list([u.mention for u in users]),
+                ints=humanize_list([str(i) for i in ints]),
+            )
+        elif roles and users:
+            message = _("Removed {roles} from the DJ roles and {users} from the DJ users").format(
+                roles=humanize_list([r.mention for r in roles]), users=humanize_list([u.mention for u in users])
+            )
+        if roles:
+            if not message:
+                message = _("Removed {roles} from the DJ roles").format(roles=humanize_list([r.mention for r in roles]))
+            await config.bulk_remove_dj_roles(*roles)
+        if users:
+            if not message:
+                message = _("Removed {users} from the DJ users").format(users=humanize_list([u.mention for u in users]))
+            await config.bulk_remove_dj_users(*users)
+        if ints:
+            if not message:
+                message = _("Removed {ints} from the DJ roles and users").format(
+                    ints=humanize_list([str(u) for u in users])
+                )
+            await config.bulk_remove_dj_users(*[discord.Object(id=i) for i in ints])
+            await config.bulk_remove_dj_roles(*[discord.Object(id=i) for i in ints])
+        return message
+
+    @staticmethod
+    async def _precess_remove_single_dj_role_or_user(
+        config: PlayerConfig, roles_or_users: list[discord.Role | discord.Member | int]
+    ):
+        role_or_user = roles_or_users[0]
+        if isinstance(role_or_user, int):
+            await config.remove_from_dj_roles(typing.cast(discord.Role, discord.Object(id=role_or_user)))
+            await config.remove_from_dj_users(typing.cast(discord.Member, discord.Object(id=role_or_user)))
+            message = _("Removed `{id}` from the DJ roles and users").format(id=role_or_user)
+        elif isinstance(role_or_user, discord.Role):
+            message = _("Removed {role} from the DJ roles").format(role=role_or_user.mention)
+            await config.remove_from_dj_roles(role_or_user)
+        else:
+            message = _("Removed {user} from the DJ users").format(user=role_or_user.mention)
+            await config.remove_from_dj_users(role_or_user)
+        return message
 
     @command_playerset_server_dj.command(name="list")
     async def command_playerset_server_dj_list(self, context: PyLavContext) -> None:
@@ -462,11 +472,11 @@ class ConfigCommands(PyLavCogMixin, ABC):
         async def user_sorter(user: discord.Member | int) -> float:
             return float("-inf") if isinstance(user, int) else user.top_role.position
 
-        config = self.lavalink.player_config_manager.get_config(context.guild.id)
-        dj_roles = [
+        config = self.pylav.player_config_manager.get_config(context.guild.id)
+        dj_roles = {
             (role_object if (role_object := context.guild.get_role(role)) else role)
             for role in await config.fetch_dj_roles()
-        ]
+        }
         dj_roles = await heapq.nlargest(asyncstdlib.iter(dj_roles), key=role_sorter, n=len(dj_roles))
         dj_roles_chunks = [dj_roles[i : i + 3] for i in range(0, len(dj_roles), 3)]
         dj_roles_string_list = [
@@ -480,10 +490,10 @@ class ConfigCommands(PyLavCogMixin, ABC):
             )
             for chunk in dj_roles_chunks
         ]
-        dj_user = [
+        dj_user = {
             (member_object if (member_object := context.guild.get_member(member)) else member)
             for member in await config.fetch_dj_users()
-        ]
+        }
         dj_user = await heapq.nlargest(asyncstdlib.iter(dj_user), key=user_sorter, n=len(dj_user))
         dj_user_chunks = [dj_user[i : i + 3] for i in range(0, len(dj_user), 3)]
         dj_user_string_list = [
@@ -500,7 +510,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
 
         if not dj_roles and not dj_user:
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("There are no DJ roles or users set in {server}").format(server=context.guild.name),
                     messageable=context,
                 ),
@@ -542,12 +552,12 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        config = self.lavalink.player_config_manager.get_config(context.guild.id)
+        config = self.pylav.player_config_manager.get_config(context.guild.id)
         await config.dj_roles_reset()
         await config.dj_users_reset()
 
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 description=_("Cleared the DJ roles and users for {server}").format(server=context.guild.name),
                 messageable=context,
             ),
@@ -564,7 +574,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
 
         if volume > 1000:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Volume must be less than 1000"), messageable=context
                 ),
                 ephemeral=True,
@@ -572,18 +582,18 @@ class ConfigCommands(PyLavCogMixin, ABC):
             return
         elif volume < 0:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Volume must be greater than 0"), messageable=context
                 ),
                 ephemeral=True,
             )
             return
 
-        if volume > await self.lavalink.player_manager.global_config.fetch_max_volume():
+        if volume > await self.pylav.player_manager.global_config.fetch_max_volume():
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("Volume must be between 0 and {volume}%").format(
-                        volume=humanize_number(await self.lavalink.player_manager.global_config.fetch_max_volume())
+                        volume=humanize_number(await self.pylav.player_manager.global_config.fetch_max_volume())
                     ),
                     messageable=context,
                 ),
@@ -593,11 +603,11 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.player:
             config = context.player.config
         else:
-            config = self.lavalink.player_config_manager.get_config(context.guild.id)
-        max_volume = await self.lavalink.player_config_manager.get_max_volume(context.guild.id)
+            config = self.pylav.player_config_manager.get_config(context.guild.id)
+        max_volume = await self.pylav.player_config_manager.get_max_volume(context.guild.id)
         if volume > max_volume:
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("Volume must be between 0 and {volume}%").format(volume=humanize_number(max_volume)),
                     messageable=context,
                 ),
@@ -609,7 +619,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.player and context.player.volume > volume:
             await context.player.set_volume(volume, requester=context.author)
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 description=_("Max volume set to {volume}%").format(volume=humanize_number(volume)),
                 messageable=context,
             ),
@@ -624,9 +634,9 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        if await self.lavalink.player_manager.global_config.fetch_self_deaf() is True:
+        if await self.pylav.player_manager.global_config.fetch_self_deaf() is True:
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("My owner told me to always deafen myself"),
                     messageable=context,
                 ),
@@ -637,13 +647,13 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.player:
             config = context.player.config
         else:
-            config = self.lavalink.player_config_manager.get_config(context.guild.id)
+            config = self.pylav.player_config_manager.get_config(context.guild.id)
         if context.player and context.me.voice.self_deaf != toggle:
             await context.player.self_deafen(toggle)
         else:
             await config.update_self_deaf(toggle)
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 description=_("Deafen set to {deafen}").format(deafen=_("Enabled") if toggle else _("Disabled")),
                 messageable=context,
             ),
@@ -657,9 +667,9 @@ class ConfigCommands(PyLavCogMixin, ABC):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        if await self.lavalink.player_manager.global_config.fetch_auto_shuffle() is False:
+        if await self.pylav.player_manager.global_config.fetch_auto_shuffle() is False:
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("Auto-Shuffle is globally disabled"), messageable=context
                 ),
                 ephemeral=True,
@@ -669,10 +679,10 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.player:
             await context.player.set_auto_shuffle(toggle)
         else:
-            config = self.lavalink.player_config_manager.get_config(context.guild.id)
+            config = self.pylav.player_config_manager.get_config(context.guild.id)
             await config.update_auto_shuffle(toggle)
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 description=_("Auto-Shuffle set to {shuffle}").format(
                     shuffle=_("Enabled") if toggle else _("Disabled")
                 ),
@@ -690,9 +700,9 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        if (await self.lavalink.player_manager.global_config.fetch_shuffle()) is False:
+        if (await self.pylav.player_manager.global_config.fetch_shuffle()) is False:
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("Shuffle is globally disabled"),
                     messageable=context,
                 ),
@@ -702,10 +712,10 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.player:
             await context.player.set_shuffle(toggle)
         else:
-            config = self.lavalink.player_config_manager.get_config(context.guild.id)
+            config = self.pylav.player_config_manager.get_config(context.guild.id)
             await config.update_shuffle(toggle)
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 description=_("Shuffle set to {shuffle}").format(shuffle=_("Enabled") if toggle else _("Disabled")),
                 messageable=context,
             ),
@@ -720,9 +730,9 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        if await self.lavalink.player_manager.global_config.fetch_auto_play() is False:
+        if await self.pylav.player_manager.global_config.fetch_auto_play() is False:
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("Auto-Play is globally disabled"),
                     messageable=context,
                 ),
@@ -733,13 +743,13 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.player:
             config = context.player.config
         else:
-            config = self.lavalink.player_config_manager.get_config(context.guild.id)
+            config = self.pylav.player_config_manager.get_config(context.guild.id)
         if context.player:
             await context.player.set_autoplay(toggle)
         else:
             await config.update_auto_play(toggle)
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 description=_("Auto-Play set to {auto}").format(auto=_("Enabled") if toggle else _("Disabled")),
                 messageable=context,
             ),
@@ -771,11 +781,11 @@ class ConfigCommands(PyLavCogMixin, ABC):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        db_value = await self.lavalink.player_manager.global_config.fetch_empty_queue_dc()
+        db_value = await self.pylav.player_manager.global_config.fetch_empty_queue_dc()
         global_state, global_timer = db_value.enabled, db_value.time
         if global_state is True:
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_(
                         "Disconnect when the queue finished is globally enabled "
                         "and players will be disconnected after {delta}"
@@ -789,7 +799,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.player:
             config = context.player.config
         else:
-            config = self.lavalink.player_config_manager.get_config(context.guild.id)
+            config = self.pylav.player_config_manager.get_config(context.guild.id)
         await config.update_empty_queue_dc(
             {
                 "enabled": toggle,
@@ -802,7 +812,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
         else:
             extras = ""
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 description=_("Disconnect from voice channel when queue is empty set to {empty}{extras}").format(
                     empty=_("Enabled") if toggle else _("Disabled"), extras=extras
                 ),
@@ -833,11 +843,11 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        db_value = await self.lavalink.player_manager.global_config.fetch_alone_dc()
+        db_value = await self.pylav.player_manager.global_config.fetch_alone_dc()
         global_state, global_timer = db_value.enabled, db_value.time
         if global_state is True:
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_(
                         "Disconnect when alone is globally enabled and players will be disconnected after {delta}"
                     ).format(delta=humanize_timedelta(timedelta=datetime.timedelta(seconds=global_timer))),
@@ -850,7 +860,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.player:
             config = context.player.config
         else:
-            config = self.lavalink.player_config_manager.get_config(context.guild.id)
+            config = self.pylav.player_config_manager.get_config(context.guild.id)
 
         await config.update_alone_dc(
             {
@@ -865,7 +875,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
             extras = ""
 
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 description=_("Disconnect from voice channel when alone set to {empty}{extras}").format(
                     empty=_("Enabled") if toggle else _("Disabled"), extras=extras
                 ),
@@ -881,19 +891,21 @@ class ConfigCommands(PyLavCogMixin, ABC):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        playlists: list[PlaylistModel] = playlist  # type: ignore
+        playlists: list[Playlist] = playlist
         playlist = await maybe_prompt_for_playlist(cog=self, playlists=playlists, context=context)
         if not playlist:
             return
         if context.player:
             await context.player.set_autoplay_playlist(playlist)
         else:
-            config = self.lavalink.player_config_manager.get_config(context.guild.id)
+            config = self.pylav.player_config_manager.get_config(context.guild.id)
             await config.update_auto_play_playlist_id(playlist.id)
 
         await context.send(
-            embed=await self.lavalink.construct_embed(
-                description=_("Auto-Play playlist set to {playlist}").format(playlist=bold(playlist.name)),
+            embed=await self.pylav.construct_embed(
+                description=_("Auto-Play playlist set to {playlist}").format(
+                    playlist=bold(await playlist.fetch_name())
+                ),
                 messageable=context,
             ),
             ephemeral=True,
@@ -905,7 +917,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
 
     @command_playerset_server_lock.command(name="commands")
     async def command_playerset_server_lock_commands(
-        self, context: PyLavContext, *, channel: Union[discord.TextChannel, discord.Thread, discord.VoiceChannel] = None
+        self, context: PyLavContext, *, channel: discord.TextChannel | discord.Thread | discord.VoiceChannel = None
     ):
         """Set the channel lock for commands"""
 
@@ -914,15 +926,14 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        if not (
-            channel
-            and (permission := channel.permissions_for(context.me))
+        if channel is not None and not (
+            (permission := channel.permissions_for(context.me))
             and permission.send_messages
             and permission.embed_links
             and permission.read_message_history
         ):
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_(
                         "I don't have permission to send message or send embed links or read messages in {channel}"
                     ).format(channel=channel.mention),
@@ -932,18 +943,14 @@ class ConfigCommands(PyLavCogMixin, ABC):
             )
             return
 
-        if context.player:
-            config = context.player.config
-        else:
-            config = self.lavalink.player_config_manager.get_config(context.guild.id)
-
-        if context.player:
+        if context.player and channel is not None:
             await context.player.set_text_channel(channel)
         else:
+            config = self.pylav.player_config_manager.get_config(context.guild.id)
             await config.update_text_channel_id(channel.id if channel else 0)
         if channel:
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("I will only listen to commands in {channel}").format(channel=channel.mention),
                     messageable=context,
                 ),
@@ -951,7 +958,7 @@ class ConfigCommands(PyLavCogMixin, ABC):
             )
             return
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 description=_("I will listen to commands in all channels I can see"),
                 messageable=context,
             ),
@@ -967,11 +974,11 @@ class ConfigCommands(PyLavCogMixin, ABC):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        if not (
-            channel and (permission := channel.permissions_for(context.me)) and permission.connect and permission.speak
+        if channel is not None and not (
+            (permission := channel.permissions_for(context.me)) and permission.connect and permission.speak
         ):
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("I don't have permission to connect or speak in {channel}").format(
                         channel=channel.mention
                     ),
@@ -980,20 +987,16 @@ class ConfigCommands(PyLavCogMixin, ABC):
                 ephemeral=True,
             )
             return
-
-        if context.player:
-            config = context.player.config
-        else:
-            config = self.lavalink.player_config_manager.get_config(context.guild.id)
-        if context.player:
-            if channel and context.player.channel.id != channel.id:
+        if context.player and channel is not None:
+            if context.player.channel.id != channel.id:
                 await context.player.move_to(channel=channel, requester=context.author)
             await context.player.set_forced_vc(channel)
         else:
+            config = self.pylav.player_config_manager.get_config(context.guild.id)
             await config.update_forced_channel_id(channel.id if channel else 0)
         if channel:
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("I will only be allowed to join {channel}").format(channel=channel.mention),
                     messageable=context,
                 ),
@@ -1001,6 +1004,6 @@ class ConfigCommands(PyLavCogMixin, ABC):
             )
             return
         await context.send(
-            embed=await self.lavalink.construct_embed(description=_("I'm free to join any VC"), messageable=context),
+            embed=await self.pylav.construct_embed(description=_("I'm free to join any VC"), messageable=context),
             ephemeral=True,
         )

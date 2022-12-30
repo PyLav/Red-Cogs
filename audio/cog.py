@@ -1,18 +1,16 @@
 from __future__ import annotations
 
-from abc import ABC
 from pathlib import Path
-from typing import Literal
+from typing import Any, Literal
 
 import discord
 from discord import AppCommandType
 from expiringdict import ExpiringDict
-from red_commons.logging import getLogger
 from redbot.core import Config
-from redbot.core import commands as red_commands
 from redbot.core.i18n import Translator, cog_i18n
 
-from pylav.types import BotT
+from pylav.extension.red.utils import CompositeMetaClass
+from pylav.type_hints.bot import DISCORD_BOT_TYPE
 
 from audio.config_commands import ConfigCommands
 from audio.context_menus import ContextMenus
@@ -21,22 +19,11 @@ from audio.player_commands import PlayerCommands
 from audio.slash_commands import SlashCommands
 from audio.utility_commands import UtilityCommands
 
-
-class CompositeMetaClass(type(red_commands.Cog), type(ABC)):
-    """
-    This allows the metaclass used for proper type detection to
-    coexist with discord.py's metaclass
-    """
-
-
 _ = Translator("PyLavPlayer", Path(__file__))
-
-LOGGER_ERROR = getLogger("red.3pt.PyLavPlayer.error_handler")
 
 
 @cog_i18n(_)
 class PyLavPlayer(
-    red_commands.Cog,
     HybridCommands,
     UtilityCommands,
     PlayerCommands,
@@ -49,7 +36,7 @@ class PyLavPlayer(
 
     __version__ = "1.0.0.0rc1"
 
-    def __init__(self, bot: BotT, *args, **kwargs):
+    def __init__(self, bot: DISCORD_BOT_TYPE, *args: Any, **kwargs: Any):
         super().__init__(*args, **kwargs)
         self.bot = bot
         self._config = Config.get_conf(self, identifier=208903205982044161)
@@ -71,11 +58,6 @@ class PyLavPlayer(
     async def cog_unload(self) -> None:
         self.bot.tree.remove_command(self.context_user_play, type=AppCommandType.user)
         self.bot.tree.remove_command(self.context_message_play, type=AppCommandType.message)
-
-    @red_commands.Cog.listener()
-    async def on_red_api_tokens_update(self, service_name: str, api_tokens: dict[str, str]) -> None:
-        if service_name == "spotify":
-            await self.lavalink.update_spotify_tokens(**api_tokens)
 
     async def red_delete_data_for_user(
         self,

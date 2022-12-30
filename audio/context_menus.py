@@ -1,27 +1,29 @@
+from __future__ import annotations
+
 import shlex
-from abc import ABC
 
 import discord
 from discord.ext.commands import HybridCommand
 from redbot.core.i18n import Translator, cog_i18n
 
-from pylav.query import MERGED_REGEX, Query
-from pylav.types import InteractionT, PyLavCogMixin
-from pylavcogs_shared.utils.decorators import is_dj_logic
-from pylavcogs_shared.utils.validators import valid_query_attachment
+from pylav.constants.regex import SOURCE_INPUT_MATCH_MERGED
+from pylav.extension.red.utils.decorators import is_dj_logic
+from pylav.extension.red.utils.validators import valid_query_attachment
+from pylav.players.query.obj import Query
+from pylav.type_hints.bot import DISCORD_COG_TYPE_MIXIN, DISCORD_INTERACTION_TYPE
 
 _ = Translator("PyLavPlayer", __file__)
 
 
 @cog_i18n(_)
-class ContextMenus(PyLavCogMixin, ABC):
+class ContextMenus(DISCORD_COG_TYPE_MIXIN):
     command_play: HybridCommand
 
-    async def _context_message_play(self, interaction: InteractionT, message: discord.Message) -> None:
+    async def _context_message_play(self, interaction: DISCORD_INTERACTION_TYPE, message: discord.Message) -> None:
         await interaction.response.defer(ephemeral=True)
         if not interaction.guild:
             await interaction.followup.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("I can't play songs in DMs"),
                     messageable=interaction,
                 ),
@@ -32,7 +34,7 @@ class ContextMenus(PyLavCogMixin, ABC):
         is_dj = await is_dj_logic(interaction)
         if not is_dj:
             await interaction.followup.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("You need to be a DJ to play tracks"),
                     messageable=interaction,
                 ),
@@ -41,14 +43,14 @@ class ContextMenus(PyLavCogMixin, ABC):
             )
             return
 
-        if player := self.lavalink.get_player(interaction.guild.id):
+        if player := self.pylav.get_player(interaction.guild.id):
             config = player.config
         else:
-            config = self.lavalink.player_config_manager.get_config(interaction.guild.id)
+            config = self.pylav.player_config_manager.get_config(interaction.guild.id)
 
         if (channel_id := await config.fetch_text_channel_id()) != 0 and channel_id != interaction.channel.id:
             await interaction.followup.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     messageable=interaction,
                     description=_("This command is not available in this channel. Please use {channel}").format(
                         channel=channel.mention
@@ -60,6 +62,54 @@ class ContextMenus(PyLavCogMixin, ABC):
                 wait=True,
             )
             return
+        content = await self._reconstruct_msg_content(message)
+
+        try:
+            content_parts = shlex.split(content)
+        except ValueError:
+            content_parts = content.split()
+        valid_matches = set()
+
+        for part in content_parts:
+            part = part.strip()
+            for __ in SOURCE_INPUT_MATCH_MERGED.finditer(part):
+                valid_matches.add(part)
+        for attachment in message.attachments:
+            if valid_query_attachment(attachment.filename):
+                valid_matches.add(attachment.url)
+        if not valid_matches:
+            await interaction.followup.send(
+                embed=await self.pylav.construct_embed(
+                    description=_("I couldn't find any valid matches in the message"),
+                    messageable=interaction,
+                ),
+                ephemeral=True,
+                wait=True,
+            )
+            return
+
+        if len(valid_matches) > 1:
+            await interaction.followup.send(
+                embed=await self.pylav.construct_embed(
+                    description=_("I found multiple valid matches in the message"),
+                    messageable=interaction,
+                ),
+                ephemeral=True,
+                wait=True,
+            )
+        else:
+            await interaction.followup.send(
+                embed=await self.pylav.construct_embed(
+                    description=_("I found a single valid match in the message"),
+                    messageable=interaction,
+                ),
+                ephemeral=True,
+                wait=True,
+            )
+
+        await self.command_play.callback(self, interaction, query="\n".join(valid_matches))  # type: ignore
+
+    async def _reconstruct_msg_content(self, message):
         content = message.content.strip()
         for embed in message.embeds:
             if embed.description:
@@ -80,58 +130,16 @@ class ContextMenus(PyLavCogMixin, ABC):
                     content += f" {field.value}"
                 if field.name:
                     content += f" {field.name}"
+        return content
 
-        try:
-            content_parts = shlex.split(content)
-        except ValueError:
-            content_parts = content.split()
-        valid_matches = set()
-
-        for part in content_parts:
-            part = part.strip()
-            for __ in MERGED_REGEX.finditer(part):
-                valid_matches.add(part)
-        for attachment in message.attachments:
-            if valid_query_attachment(attachment.filename):
-                valid_matches.add(attachment.url)
-        if not valid_matches:
-            await interaction.followup.send(
-                embed=await self.lavalink.construct_embed(
-                    description=_("I couldn't find any valid matches in the message"),
-                    messageable=interaction,
-                ),
-                ephemeral=True,
-                wait=True,
-            )
-            return
-
-        if len(valid_matches) > 1:
-            await interaction.followup.send(
-                embed=await self.lavalink.construct_embed(
-                    description=_("I found multiple valid matches in the message"),
-                    messageable=interaction,
-                ),
-                ephemeral=True,
-                wait=True,
-            )
-        else:
-            await interaction.followup.send(
-                embed=await self.lavalink.construct_embed(
-                    description=_("I found a single valid match in the message"),
-                    messageable=interaction,
-                ),
-                ephemeral=True,
-                wait=True,
-            )
-
-        await self.command_play.callback(self, interaction, query="\n".join(valid_matches))  # type: ignore
-
-    async def _context_user_play(self, interaction: InteractionT, member: discord.Member) -> None:
+    async def _context_user_play(
+        self, interaction: DISCORD_INTERACTION_TYPE, member: discord.Member
+    ) -> None:  # sourcery skip: low-code-quality
         # sourcery no-metrics
         await interaction.response.defer(ephemeral=True)
         if not interaction.guild:
             await interaction.followup.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("I can't play songs in DMs"),
                     messageable=interaction,
                 ),
@@ -142,7 +150,7 @@ class ContextMenus(PyLavCogMixin, ABC):
         is_dj = await is_dj_logic(interaction)
         if not is_dj:
             await interaction.followup.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("You need to be a DJ to play tracks"),
                     messageable=interaction,
                 ),
@@ -150,13 +158,13 @@ class ContextMenus(PyLavCogMixin, ABC):
                 wait=True,
             )
             return
-        if player := self.lavalink.get_player(interaction.guild.id):
+        if player := self.pylav.get_player(interaction.guild.id):
             config = player.config
         else:
-            config = self.lavalink.player_config_manager.get_config(interaction.guild.id)
+            config = self.pylav.player_config_manager.get_config(interaction.guild.id)
         if (channel_id := await config.fetch_text_channel_id()) != 0 and channel_id != interaction.channel.id:
             await interaction.followup.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     messageable=interaction,
                     description=_("This command is not available in this channel. Please use {channel}").format(
                         channel=channel.mention
@@ -174,7 +182,7 @@ class ContextMenus(PyLavCogMixin, ABC):
         apple_music_activity = next((a for a in member.activities if a.name in ["Apple Music", "Cider"]), None)
         if not apple_music_activity and not spotify_activity:
             await interaction.followup.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("I couldn't find any supported activity {user} is taking part in").format(
                         user=member.mention
                     ),
@@ -206,7 +214,7 @@ class ContextMenus(PyLavCogMixin, ABC):
                 search_string += f"{track}"
             if not search_string:
                 await interaction.followup.send(
-                    embed=await self.lavalink.construct_embed(
+                    embed=await self.pylav.construct_embed(
                         description=_("Couldn't map {user}'s Apple Music track to a valid query").format(
                             user=member.mention
                         ),
@@ -216,13 +224,13 @@ class ContextMenus(PyLavCogMixin, ABC):
                     wait=True,
                 )
                 return
-            response = await self.lavalink.get_tracks(
+            response = await self.pylav.get_tracks(
                 await Query.from_string(search_string),
-                player=interaction.client.lavalink.get_player(interaction.guild.id),
+                player=interaction.client.pylav.get_player(interaction.guild.id),
             )
-            if not response.get("tracks"):
+            if not response.tracks:
                 await interaction.followup.send(
-                    embed=await self.lavalink.construct_embed(
+                    embed=await self.pylav.construct_embed(
                         description=_("Couldn't find any tracks matching {query}").format(query=search_string),
                         messageable=interaction,
                     ),
@@ -230,7 +238,7 @@ class ContextMenus(PyLavCogMixin, ABC):
                     wait=True,
                 )
                 return
-            track_url = response["tracks"][0]["info"]["uri"]
+            track_url = response.tracks[0].info.uri
             await self.command_play.callback(
                 self,
                 interaction,
@@ -238,7 +246,7 @@ class ContextMenus(PyLavCogMixin, ABC):
             )
         else:
             await interaction.followup.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("Couldn't figure out what {user} is listening to").format(user=member.mention),
                     messageable=interaction,
                 ),

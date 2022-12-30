@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import asyncio
 import hashlib
 import os.path
@@ -5,7 +7,6 @@ import re
 import typing
 from functools import partial
 from pathlib import Path
-from typing import Optional
 
 import asyncstdlib
 import discord
@@ -13,26 +14,27 @@ from asyncstdlib import heapq
 from discord import app_commands
 from discord.app_commands import Choice
 from rapidfuzz import fuzz
-from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import box
 from tabulate import tabulate
 
-import pylavcogs_shared
-from pylav.query import Query
-from pylav.sql.models import PlayerModel
-from pylav.types import BotT, InteractionT
-from pylav.utils import AsyncIter, PyLavContext
-from pylav.utils.theme import EightBitANSI
-from pylavcogs_shared.utils import rgetattr
+from pylav.core.context import PyLavContext
+from pylav.extension.red.utils import rgetattr
+from pylav.helpers.format.ascii import EightBitANSI
+from pylav.helpers.format.strings import shorten_string
+from pylav.logging import getLogger
+from pylav.players.query.local_files import LocalFile
+from pylav.players.query.obj import Query
+from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE_MIXIN, DISCORD_INTERACTION_TYPE
+from pylav.utils.vendor.redbot import AsyncIter
 
-LOGGER = getLogger("red.3pt.PyLavLocalFiles")
+LOGGER = getLogger("PyLav.cog.LocalFiles")
 
 _ = Translator("PyLavLocalFiles", Path(__file__))
 
 
-async def cache_filled(interaction: InteractionT) -> bool:
+async def cache_filled(interaction: DISCORD_INTERACTION_TYPE) -> bool:
     if not interaction.response.is_done():
         await interaction.response.defer(ephemeral=True)
     context = await interaction.client.get_context(interaction)
@@ -41,30 +43,33 @@ async def cache_filled(interaction: InteractionT) -> bool:
 
 
 @cog_i18n(_)
-class PyLavLocalFiles(commands.Cog):
+class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
     """Play local files and folders from the owner configured location"""
 
     __version__ = "1.0.0.0rc1"
 
-    def __init__(self, bot: BotT, *args, **kwargs):
+    def __init__(self, bot: DISCORD_BOT_TYPE, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot
         self.cache: dict[str, Query] = {}
         self.ready_event = asyncio.Event()
 
     @staticmethod
-    async def _filter_is_folder_alphabetical(x):
+    async def _filter_is_folder_alphabetical(x: list[Query]) -> tuple[int, str]:
+        # noinspection PyProtectedMember
         string = f"{x[1]._query}"
         return -1 if os.path.isdir(string) else 2, string
 
     async def _update_cache(self):
-        from pylav.localfiles import LocalFile
-
+        # noinspection PyProtectedMember
         while LocalFile._ROOT_FOLDER is None:
             await asyncio.sleep(1)
+        # noinspection PyProtectedMember
         assert LocalFile._ROOT_FOLDER is not None
         temp: dict[str, Query] = {}
+        # noinspection PyProtectedMember
         async for file in LocalFile(LocalFile._ROOT_FOLDER).files_in_tree(show_folders=True):
+            # noinspection PyProtectedMember
             temp[hashlib.md5(f"{file._query}".encode()).hexdigest()] = file
 
         extracted: typing.Iterable[tuple[str, Query]] = await heapq.nsmallest(asyncstdlib.iter(temp.items()), n=len(temp.items()), key=self._filter_is_folder_alphabetical)  # type: ignore
@@ -90,12 +95,11 @@ class PyLavLocalFiles(commands.Cog):
             await context.defer(ephemeral=True)
         data = [
             (EightBitANSI.paint_white(self.__class__.__name__), EightBitANSI.paint_blue(self.__version__)),
-            (EightBitANSI.paint_white("PyLavCogs-Shared"), EightBitANSI.paint_blue(pylavcogs_shared.__VERSION__)),
-            (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.lavalink.lib_version)),
+            (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.pylav.lib_version)),
         ]
 
         await context.send(
-            embed=await context.lavalink.construct_embed(
+            embed=await context.pylav.construct_embed(
                 description=box(
                     tabulate(
                         data,
@@ -122,25 +126,33 @@ class PyLavLocalFiles(commands.Cog):
             await context.defer(ephemeral=True)
         await self._update_cache()
         await context.send(
-            embed=await self.lavalink.construct_embed(
-                description=_("Local track list updated {number} currently present").format(number=len(self.cache)),
+            embed=await self.pylav.construct_embed(
+                description=shorten_string(
+                    max_length=100,
+                    string=_("Local track list updated {number} currently present").format(number=len(self.cache)),
+                ),
                 messageable=context,
             ),
             ephemeral=True,
         )
 
-    @app_commands.command(name="local", description=_("Play a local file or folder, supports partial searching"))
+    @app_commands.command(
+        name="local",
+        description=shorten_string(max_length=100, string=_("Play a local file or folder, supports partial searching")),
+    )
     @app_commands.describe(
-        entry=_("The local file or folder to play"),
-        recursive=_("If entry is a folder, play everything inside of it recursively"),
+        entry=shorten_string(max_length=100, string=_("The local file or folder to play")),
+        recursive=shorten_string(
+            max_length=100, string=_("If entry is a folder, play everything inside of it recursively")
+        ),
     )
     @app_commands.guild_only()
     @app_commands.check(cache_filled)
     async def slash_local(
         self,
-        interaction: InteractionT,
+        interaction: DISCORD_INTERACTION_TYPE,
         entry: str,
-        recursive: Optional[bool] = False,
+        recursive: bool | None = False,
     ):  # sourcery no-metrics
         """Play a local file or folder, supports partial searching"""
         send = partial(interaction.followup.send, wait=True)
@@ -149,16 +161,14 @@ class PyLavLocalFiles(commands.Cog):
         author = interaction.user
         entry = self.cache[entry]
         entry._recursive = recursive
-        player = self.lavalink.get_player(interaction.guild.id)
+        player = self.pylav.get_player(interaction.guild.id)
         if player is None:
-            config = typing.cast(
-                PlayerModel, await self.lavalink.player_config_manager.get_config(interaction.guild.id)
-            )
+            config = self.pylav.player_config_manager.get_config(interaction.guild.id)
             if (channel := interaction.guild.get_channel_or_thread(await config.fetch_forced_channel_id())) is None:
                 channel = rgetattr(author, "voice.channel", None)
                 if not channel:
                     await send(
-                        embed=await self.lavalink.construct_embed(
+                        embed=await self.pylav.construct_embed(
                             description=_("You must be in a voice channel to allow me to connect"),
                             messageable=interaction,
                         ),
@@ -171,7 +181,7 @@ class PyLavLocalFiles(commands.Cog):
                 and permission.speak
             ):
                 await send(
-                    embed=await self.lavalink.construct_embed(
+                    embed=await self.pylav.construct_embed(
                         description=_("I don't have permission to connect or speak in {channel}").format(
                             channel=channel.mention
                         ),
@@ -180,10 +190,10 @@ class PyLavLocalFiles(commands.Cog):
                     ephemeral=True,
                 )
                 return
-            player = await self.lavalink.connect_player(channel=channel, requester=author)
+            player = await self.pylav.connect_player(channel=channel, requester=author)
 
-        successful, count, failed = await self.lavalink.get_all_tracks_for_queries(
-            entry, requester=author, player=player
+        successful, count, failed = await self.pylav.get_all_tracks_for_queries(
+            entry, requester=author, player=player, partial=True
         )
         if count:
             if count == 1:
@@ -196,7 +206,7 @@ class PyLavLocalFiles(commands.Cog):
 
         if count > 1:
             await send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("{track_count} tracks enqueued").format(track_count=count),
                     messageable=interaction,
                 ),
@@ -204,7 +214,7 @@ class PyLavLocalFiles(commands.Cog):
             )
         elif count == 1:
             await send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("{track} enqueued").format(
                         track=await single_track.get_track_display_name(with_url=True)
                     ),
@@ -214,7 +224,7 @@ class PyLavLocalFiles(commands.Cog):
             )
         else:
             await send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("No tracks were found for your query"),
                     messageable=interaction,
                 ),
@@ -222,7 +232,7 @@ class PyLavLocalFiles(commands.Cog):
             )
 
     @slash_local.autocomplete("entry")
-    async def slash_local_autocomplete_entry(self, interaction: InteractionT, current: str):
+    async def slash_local_autocomplete_entry(self, interaction: DISCORD_INTERACTION_TYPE, current: str):
         entries = []
         if not self.cache:
             return []
@@ -233,7 +243,9 @@ class PyLavLocalFiles(commands.Cog):
             current = re.sub(r"[/\\]", r" ", current)
 
             async def _filter_partial_ratio(x: tuple[str, Query]):
+                # noinspection PyProtectedMember
                 path = f"{x[1]._query}"
+                # noinspection PyProtectedMember
                 return (
                     await asyncio.to_thread(
                         fuzz.partial_ratio, re.sub(r"[.\-_/\\]", r" ", path), current, score_cutoff=75

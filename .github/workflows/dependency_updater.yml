@@ -13,7 +13,7 @@ jobs:
         -   name: Set up Python
             uses: actions/setup-python@v4
             with:
-                python-version: '3.10'
+                python-version: '3.11'
         -   name: Install Python dependencies
             uses: py-actions/py-dependency-install@v4
             with:
@@ -23,7 +23,7 @@ jobs:
                 path: tools/requirements.txt
         -   name: Make changes
             run: |
-                python3.10 ./tools/dependency_updater.py
+                python3.11 ./tools/dependency_updater.py
         -   name: Verify Changed files
             uses: tj-actions/verify-changed-files@v12.0
             id: verify-changed-files

@@ -7,40 +7,39 @@ from pathlib import Path
 import asyncstdlib
 import discord
 import ujson
-from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import box, humanize_list, inline
 from tabulate import tabulate
 
-import pylavcogs_shared
-from pylav.constants import BUNDLED_NODES_IDS
-from pylav.converters.nodes import NodeConverter
-from pylav.types import BotT
-from pylav.utils import PyLavContext
-from pylav.utils.theme import EightBitANSI
-from pylavcogs_shared.ui.menus.generic import PaginatingMenu
-from pylavcogs_shared.ui.menus.nodes import AddNodeFlow, NodeManagerMenu
-from pylavcogs_shared.ui.prompts.nodes import maybe_prompt_for_node
-from pylavcogs_shared.ui.sources.nodes import NodeListSource, NodeManageSource
+from pylav.constants.builtin_nodes import BUNDLED_NODES_IDS_HOST_MAPPING
+from pylav.core.context import PyLavContext
+from pylav.extension.red.ui.menus.generic import PaginatingMenu
+from pylav.extension.red.ui.menus.nodes import AddNodeFlow, NodeManagerMenu
+from pylav.extension.red.ui.prompts.nodes import maybe_prompt_for_node
+from pylav.extension.red.ui.sources.nodes import NodeListSource, NodeManageSource
+from pylav.helpers.discord.converters.nodes import NodeConverter
+from pylav.helpers.format.ascii import EightBitANSI
+from pylav.logging import getLogger
+from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE_MIXIN
 
-LOGGER = getLogger("red.3pt.PyLavNodes")
+LOGGER = getLogger("PyLav.cog.Nodes")
 
 _ = Translator("PyLavNodes", Path(__file__))
 
 
 @cog_i18n(_)
-class PyLavNodes(commands.Cog):
+class PyLavNodes(DISCORD_COG_TYPE_MIXIN):
     """Manage the nodes used by PyLav"""
 
     __version__ = "1.0.0.0rc1"
 
-    def __init__(self, bot: BotT, *args, **kwargs):
+    def __init__(self, bot: DISCORD_BOT_TYPE, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot
 
     @commands.is_owner()
-    @commands.group(name="plnode")
+    @commands.group(name="plnode", aliases=["plnodes"])
     async def command_plnode(self, context: PyLavContext) -> None:
         """Configure PyLav Nodes"""
 
@@ -53,12 +52,11 @@ class PyLavNodes(commands.Cog):
             await context.defer(ephemeral=True)
         data = [
             (EightBitANSI.paint_white(self.__class__.__name__), EightBitANSI.paint_blue(self.__version__)),
-            (EightBitANSI.paint_white("PyLavCogs-Shared"), EightBitANSI.paint_blue(pylavcogs_shared.__VERSION__)),
-            (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.lavalink.lib_version)),
+            (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.pylav.lib_version)),
         ]
 
         await context.send(
-            embed=await context.lavalink.construct_embed(
+            embed=await context.pylav.construct_embed(
                 description=box(
                     tabulate(
                         data,
@@ -113,14 +111,13 @@ class PyLavNodes(commands.Cog):
             [menu.host, menu.password, menu.unique_identifier, menu.port, menu.name, menu.resume_timeout]
         ):
             return
-        node = await self.lavalink.add_node(
+        node = await self.pylav.add_node(
             host=menu.host,
             password=menu.password,
             unique_identifier=menu.unique_identifier,
             port=menu.port,
             name=menu.name,
             resume_timeout=menu.resume_timeout,
-            resume_key=f"PyLav/{menu.name}-{menu.unique_identifier}",
             ssl=menu.ssl,
             reconnect_attempts=-1,
             search_only=menu.search_only,
@@ -136,7 +133,7 @@ class PyLavNodes(commands.Cog):
             disabled_capabilities = set(menu.disabled_sources_selector.values).union(
                 await node.get_unsupported_features()
             )
-            embed = await self.lavalink.construct_embed(
+            embed = await self.pylav.construct_embed(
                 description=_(
                     "Added node {name} with the following settings:\n"
                     "Host: {host}\n"
@@ -164,17 +161,17 @@ class PyLavNodes(commands.Cog):
                 await context.author.send(
                     embed=embed,
                 )
-        except Exception:
+        except Exception:  # noqa
             if menu.last_interaction:
                 await menu.last_interaction.followup.send(
-                    embed=await self.lavalink.construct_embed(
+                    embed=await self.pylav.construct_embed(
                         description=_("Unable to add this node"), messageable=context.channel
                     ),
                     ephemeral=True,
                 )
             else:
                 await context.author.send(
-                    embed=await self.lavalink.construct_embed(
+                    embed=await self.pylav.construct_embed(
                         description=_("Unable to add this node"), messageable=context.channel
                     ),
                 )
@@ -190,24 +187,24 @@ class PyLavNodes(commands.Cog):
         node = await maybe_prompt_for_node(cog=self, nodes=nodes, context=context)
         if not node:
             return
-        node_data = await node.fetch_all()
-        if node_data["id"] in BUNDLED_NODES_IDS:
+        if node.identifier in BUNDLED_NODES_IDS_HOST_MAPPING:
             await context.send(
-                embed=await self.lavalink.construct_embed(
-                    description=_("{name} is managed by PyLav and cannot be removed").format(name=node_data["name"]),
+                embed=await self.pylav.construct_embed(
+                    description=_("{name} is managed by PyLav and cannot be removed").format(name=node.name),
                     messageable=context.channel,
                 ),
                 ephemeral=True,
             )
             return
-        await self.lavalink.remove_node(node.id)
+        node_data = await node.config.fetch_all()
+        await self.pylav.remove_node(node.identifier)
         for k in ["id", "resume_key", "resume_timeout", "managed", "reconnect_attempts", "extras"]:
             node_data.pop(k, None)
         if yaml := node_data.pop("yaml", None):
             node_data["server"] = yaml["server"]
             node_data["server"].update(yaml["lavalink"]["server"])
         await context.author.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 description=_("Removed node {name}.\n\n{data}").format(
                     name=node_data["name"], data=box(lang="json", text=ujson.dumps(node_data, indent=2, sort_keys=True))
                 ),
@@ -215,7 +212,7 @@ class PyLavNodes(commands.Cog):
             )
         )
         await context.send(
-            embed=await self.lavalink.construct_embed(
+            embed=await self.pylav.construct_embed(
                 description=_(
                     "Removed node {name}, a DM was sent to you with the node details in case you wish to re-add it"
                 ).format(name=node_data["name"]),
@@ -265,9 +262,9 @@ class PyLavNodes(commands.Cog):
         node = menu.source.target
         if not node:
             return
-        if node.managed or node.identifier in BUNDLED_NODES_IDS:
+        if node.managed or node.identifier in BUNDLED_NODES_IDS_HOST_MAPPING or node.identifier == 31415:
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("{name} is managed by PyLav and cannot be modified with this command").format(
                         name=node.name
                     ),
@@ -277,9 +274,9 @@ class PyLavNodes(commands.Cog):
             )
             return
         if menu.delete:
-            await self.lavalink.remove_node(node.identifier)
+            await self.pylav.remove_node(node.identifier)
             await context.send(
-                embed=await self.lavalink.construct_embed(
+                embed=await self.pylav.construct_embed(
                     description=_("Removed node {name}").format(name=node.name),
                     messageable=context.channel,
                 ),
@@ -313,9 +310,9 @@ class PyLavNodes(commands.Cog):
         if menu.disabled_sources_selector:
             await node.config.bulk_add_to_disabled_sources(*disabled_capabilities)
 
-        await self.lavalink.remove_node(node.identifier)
-        await self.lavalink.add_node(**(await node.config.get_connection_args()))
-        embed = await self.lavalink.construct_embed(
+        await self.pylav.remove_node(node.identifier)
+        await self.pylav.add_node(**(await node.config.get_connection_args()))
+        embed = await self.pylav.construct_embed(
             description=_(
                 "Changed node {name} to the following settings:\n"
                 "Host: {host}\n"
@@ -350,9 +347,9 @@ class PyLavNodes(commands.Cog):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        if not self.lavalink.node_manager.nodes:
+        if not self.pylav.node_manager.nodes:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("No nodes added to PyLav"), messageable=context
                 ),
                 ephemeral=True,
@@ -361,7 +358,7 @@ class PyLavNodes(commands.Cog):
         await PaginatingMenu(
             cog=self,
             bot=self.bot,
-            source=NodeListSource(cog=self, pages=self.lavalink.node_manager.nodes),
+            source=NodeListSource(cog=self, pages=self.pylav.node_manager.nodes),
             delete_after_timeout=True,
             timeout=120,
             original_author=context.interaction.user if context.interaction else context.author,

@@ -1,45 +1,42 @@
 from __future__ import annotations
 
+import contextlib
 import re
 from pathlib import Path
 
-import asyncstdlib
 import discord
 import humanize
 import ujson
-from asyncspotify import ClientCredentialsFlow
 from deepdiff import DeepDiff
-from discord.utils import maybe_coroutine
-from red_commons.logging import getLogger
 from redbot.core import commands
-from redbot.core.i18n import Translator, cog_i18n
+from redbot.core.i18n import Translator, cog_i18n, get_babel_locale
 from redbot.core.utils.chat_formatting import bold, box, humanize_list, inline
 from tabulate import tabulate
 
-import pylavcogs_shared
-from pylav.client import Client
-from pylav.managed_node import LAVALINK_DOWNLOAD_DIR
-from pylav.types import BotT
-from pylav.utils import PyLavContext, get_jar_ram_actual, get_max_allocation_size, get_true_path
-from pylav.utils.built_in_node import NODE_DEFAULT_SETTINGS
-from pylav.utils.theme import EightBitANSI
-from pylav.vendored import aiopath
+from pylav.constants.node import NODE_DEFAULT_SETTINGS
+from pylav.core.client import Client
+from pylav.core.context import PyLavContext
+from pylav.extension.bundled_node import LAVALINK_DOWNLOAD_DIR
+from pylav.extension.bundled_node.utils import get_jar_ram_actual, get_max_allocation_size
+from pylav.helpers.format.ascii import EightBitANSI
+from pylav.logging import getLogger
+from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE_MIXIN
 
 from plmanagednode.view import ConfigureGoogleAccountView, ConfigureHTTPProxyView, ConfigureIPRotationView
 
-LOGGER = getLogger("red.3pt.PyLavManagedNode")
+LOGGER = getLogger("PyLav.cog.ManagedNode")
 
 _ = Translator("PyLavManagedNode", Path(__file__))
 
 
 @cog_i18n(_)
-class PyLavManagedNode(commands.Cog):
+class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
     """Configure the managed Lavalink node used by PyLav"""
 
-    __version__ = "0.0.0.1a"
+    __version__ = "1.0.0.0rc1"
     lavalink: Client
 
-    def __init__(self, bot: BotT, *args, **kwargs):
+    def __init__(self, bot: DISCORD_BOT_TYPE, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot
 
@@ -57,12 +54,11 @@ class PyLavManagedNode(commands.Cog):
             await context.defer(ephemeral=True)
         data = [
             (EightBitANSI.paint_white(self.__class__.__name__), EightBitANSI.paint_blue(self.__version__)),
-            (EightBitANSI.paint_white("PyLavCogs-Shared"), EightBitANSI.paint_blue(pylavcogs_shared.__VERSION__)),
-            (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.lavalink.lib_version)),
+            (EightBitANSI.paint_white("PyLav"), EightBitANSI.paint_blue(context.pylav.lib_version)),
         ]
 
         await context.send(
-            embed=await context.lavalink.construct_embed(
+            embed=await context.pylav.construct_embed(
                 description=box(
                     tabulate(
                         data,
@@ -86,12 +82,13 @@ class PyLavManagedNode(commands.Cog):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        self.lavalink.managed_node_controller._up_to_date = False
-        upstream_data = await self.lavalink.managed_node_controller.get_ci_latest_info()
+        self.pylav.managed_node_controller._up_to_date = False
+        upstream_data = await self.pylav.managed_node_controller.get_ci_latest_info()
         number = upstream_data["number"]
-        if number == await self.lavalink._config.fetch_download_id():
+        # noinspection PyProtectedMember
+        if number == await self.pylav._config.fetch_download_id():
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("The managed Lavalink node is already up to date."),
                     messageable=context,
                 ),
@@ -100,7 +97,7 @@ class PyLavManagedNode(commands.Cog):
             return
         if update == 0:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Your node is out of date, to update please run `{prefix}{command} 1`.").format(
                         prefix=context.clean_prefix,
                         command=self.command_plmanaged_update.qualified_name,
@@ -110,149 +107,15 @@ class PyLavManagedNode(commands.Cog):
                 ephemeral=True,
             )
             return
-        self.lavalink.managed_node_controller._up_to_date = False
-        await self.lavalink.managed_node_controller._download_jar(forced=True)
+
+        self.pylav.managed_node_controller._up_to_date = False
+        # noinspection PyProtectedMember
+        await self.pylav.managed_node_controller._download_jar(forced=True)
 
         await context.send(
-            embed=await context.lavalink.construct_embed(
+            embed=await context.pylav.construct_embed(
                 description=_("The managed Lavalink node has been updated to version {version}.").format(
                     version=number,
-                ),
-                messageable=context,
-            ),
-            ephemeral=True,
-        )
-
-    @command_plmanaged.command(name="restart", hidden=True)
-    async def command_plmanaged_restart(self, context: PyLavContext) -> None:
-        """Restart the managed Lavalink node"""
-        if isinstance(context, discord.Interaction):
-            context = await self.bot.get_context(context)
-        if context.interaction and not context.interaction.response.is_done():
-            await context.defer(ephemeral=True)
-
-        if not await self.lavalink.lib_db_manager.get_config().fetch_enable_managed_node():
-            await context.send(
-                embed=await self.lavalink.construct_embed(
-                    description=_(
-                        "The managed node is not enabled, run `{prefix}{command}` to first enable the managed node"
-                    ).format(command=self.command_plmanaged_toggle.qualified_name, prefix=context.clean_prefix),
-                    messageable=context,
-                ),
-                ephemeral=True,
-            )
-            return
-
-        if hasattr(self.bot, "get_shared_api_token"):
-            spotify = await self.bot.get_shared_api_tokens("spotify")
-            client_id = spotify.get("client_id")
-            client_secret = spotify.get("client_secret")
-            deezer = await self.bot.get_shared_api_tokens("deezer")
-            deezer_token = deezer.get("token")
-        else:
-            client_id = None
-            client_secret = None
-            deezer_token = "..."
-        config = self.lavalink._node_config_manager.bundled_node_config()
-        yaml_data = await config.fetch_yaml()
-        if not await asyncstdlib.all([client_id, client_secret]):
-            spotify_data = yaml_data["plugins"]["lavasrc"]["spotify"]
-            client_id = spotify_data["clientId"]
-            client_secret = spotify_data["clientSecret"]
-        elif await asyncstdlib.all([client_id, client_secret]):
-            if (
-                yaml_data["plugins"]["lavasrc"]["spotify"]["clientId"] != client_id
-                or yaml_data["plugins"]["lavasrc"]["spotify"]["clientSecret"] != client_secret
-            ):
-                yaml_data["plugins"]["lavasrc"]["spotify"]["clientId"] = client_id
-                yaml_data["plugins"]["lavasrc"]["spotify"]["clientSecret"] = client_secret
-                await config.update_yaml(yaml_data)
-        if deezer_token:
-            yaml_data["plugins"]["lavasrc"]["deezer"]["masterDecryptionKey"] = deezer_token
-            await config.update_yaml(yaml_data)
-
-        self.lavalink._spotify_auth = ClientCredentialsFlow(client_id=client_id, client_secret=client_secret)
-        await self.lavalink.managed_node_controller.restart()
-        await context.send(
-            embed=await self.lavalink.construct_embed(
-                description=_("Restarted the managed Lavalink node"),
-                messageable=context,
-            ),
-            ephemeral=True,
-        )
-
-    @command_plmanaged.command(name="java")
-    async def command_plmanaged_java(self, context: PyLavContext, *, java: str) -> None:
-        """Set the java executable for PyLav.
-
-        Default is "java"
-        """
-        if isinstance(context, discord.Interaction):
-            context = await self.bot.get_context(context)
-        if context.interaction and not context.interaction.response.is_done():
-            await context.defer(ephemeral=True)
-
-        from stat import S_IXGRP, S_IXOTH, S_IXUSR
-
-        java = get_true_path(java, "PyLav-31242515125")
-        path = aiopath.AsyncPath(java)
-        if not await path.exists():
-            await context.send(
-                embed=await context.lavalink.construct_embed(
-                    description=_(
-                        "{java} does not exist, "
-                        "run the command again with "
-                        "the java argument "
-                        "set to the correct "
-                        "path"
-                    ).format(
-                        java=inline(f"{await maybe_coroutine(path.absolute)}"),
-                        messageable=context,
-                    )
-                ),
-                ephemeral=True,
-            )
-            return
-        elif not await path.is_file():
-            await context.send(
-                embed=await context.lavalink.construct_embed(
-                    description=_("{java} is not an executable file").format(
-                        java=inline(f"{await maybe_coroutine(path.absolute)}"),
-                        messageable=context,
-                    )
-                ),
-                ephemeral=True,
-            )
-            return
-        stats = await path.stat()
-        if not stats.st_mode & (S_IXUSR | S_IXGRP | S_IXOTH):
-            await context.send(
-                embed=await context.lavalink.construct_embed(
-                    description=_(
-                        "{java} is not an executable, "
-                        "run the command again with "
-                        "the java argument "
-                        "set to the correct path"
-                    ).format(
-                        java=inline(f"{await maybe_coroutine(path.absolute)}"),
-                        messageable=context,
-                    )
-                ),
-                ephemeral=True,
-            )
-            return
-
-        global_config = self.lavalink.lib_db_manager.get_config()
-        await global_config.update_java_path(str(await maybe_coroutine(path.absolute)))
-        self.lavalink.managed_node_controller._java_exc = await global_config.fetch_java_path()
-        await context.send(
-            embed=await context.lavalink.construct_embed(
-                description=_(
-                    "PyLav's java executable has been set to {java}\n\nRun `{prefix}{command}` to restart the managed node"
-                ).format(
-                    java=inline(f"{java}"),
-                    command=self.command_plmanaged_restart.qualified_name,
-                    prefix=context.clean_prefix,
                 ),
                 messageable=context,
             ),
@@ -270,25 +133,21 @@ class PyLavManagedNode(commands.Cog):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        global_config = self.lavalink.lib_db_manager.get_config()
+        global_config = self.pylav.lib_db_manager.get_config()
         current = await global_config.fetch_enable_managed_node()
         await global_config.update_enable_managed_node(not current)
         if current:
             await context.send(
-                embed=await context.lavalink.construct_embed(
-                    description=_(
-                        "PyLav's managed node has been enabled.\n\nRun `{prefix}{command}` to restart the managed node"
-                    ).format(command=self.command_plmanaged_restart.qualified_name, prefix=context.clean_prefix),
+                embed=await context.pylav.construct_embed(
+                    description=_("PyLav's managed node has been enabled.").format(prefix=context.clean_prefix),
                     messageable=context,
                 ),
                 ephemeral=True,
             )
         else:
             await context.send(
-                embed=await context.lavalink.construct_embed(
-                    description=_(
-                        "PyLav's managed node has been disabled.\n\nRun `{prefix}{command}` to restart the managed node"
-                    ).format(command=self.command_plmanaged_restart.qualified_name, prefix=context.clean_prefix),
+                embed=await context.pylav.construct_embed(
+                    description=_("PyLav's managed node has been disabled.").format(prefix=context.clean_prefix),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -305,28 +164,26 @@ class PyLavManagedNode(commands.Cog):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        global_config = self.lavalink.lib_db_manager.get_config()
+        global_config = self.pylav.lib_db_manager.get_config()
         current = await global_config.fetch_auto_update_managed_nodes()
         await global_config.update_auto_update_managed_nodes(not current)
 
         if current:
             await context.send(
-                embed=await context.lavalink.construct_embed(
-                    description=_(
-                        "PyLav's managed node auto updates have been enabled"
-                        "\n\nRun `{prefix}{command}` to restart the managed node"
-                    ).format(command=self.command_plmanaged_restart.qualified_name, prefix=context.clean_prefix),
+                embed=await context.pylav.construct_embed(
+                    description=_("PyLav's managed node auto updates have been enabled" "").format(
+                        prefix=context.clean_prefix
+                    ),
                     messageable=context,
                 ),
                 ephemeral=True,
             )
         else:
             await context.send(
-                embed=await context.lavalink.construct_embed(
-                    description=_(
-                        "PyLav's managed node auto updates have been disabled"
-                        "\n\nRun `{prefix}{command}` to restart the managed node"
-                    ).format(command=self.command_plmanaged_restart.qualified_name, prefix=context.clean_prefix),
+                embed=await context.pylav.construct_embed(
+                    description=_("PyLav's managed node auto updates have been disabled" "").format(
+                        prefix=context.clean_prefix
+                    ),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -348,13 +205,16 @@ class PyLavManagedNode(commands.Cog):
             await context.defer(ephemeral=True)
 
         async def validate_input(arg: str):
-            executable = await self.lavalink.lib_db_manager.get_config().fetch_java_path()
+            locale = f"{get_babel_locale()}"
+            with contextlib.suppress(Exception):
+                humanize.i18n.activate(locale)
+            executable = await self.pylav.lib_db_manager.get_config().fetch_java_path()
             total_ram, is_64bit = get_max_allocation_size(executable)
             __, __, min_allocation_size, max_allocation_size = get_jar_ram_actual(executable)
             match = re.match(r"^(\d+)([MG])$", arg, flags=re.IGNORECASE)
             if not match:
                 await context.send(
-                    embed=await context.lavalink.construct_embed(
+                    embed=await context.pylav.construct_embed(
                         description=_("Heap-size must be a valid measure of size, e.g. 256M, 256G"),
                         messageable=context,
                     ),
@@ -364,7 +224,7 @@ class PyLavManagedNode(commands.Cog):
             input_in_bytes = int(match[1]) * 1024 ** (2 if match[2].lower() == "m" else 3)
             if input_in_bytes < min_allocation_size:
                 await context.send(
-                    embed=await context.lavalink.construct_embed(
+                    embed=await context.pylav.construct_embed(
                         description=_(
                             "Heap-size must be at least 64M, however it is recommended to have it set to at least 1G"
                         ),
@@ -376,7 +236,7 @@ class PyLavManagedNode(commands.Cog):
             elif input_in_bytes > max_allocation_size:
                 if is_64bit:
                     await context.send(
-                        embed=await context.lavalink.construct_embed(
+                        embed=await context.pylav.construct_embed(
                             description=_(
                                 "Heap-size must be less than your system RAM, "
                                 "You currently have {ram_in_bytes} of RAM available"
@@ -388,7 +248,7 @@ class PyLavManagedNode(commands.Cog):
 
                 else:
                     await context.send(
-                        embed=await context.lavalink.construct_embed(
+                        embed=await context.pylav.construct_embed(
                             description=_("Heap-size must be less than {limit} due to your system limitations").format(
                                 limit=inline(humanize.naturalsize(total_ram))
                             )
@@ -399,19 +259,18 @@ class PyLavManagedNode(commands.Cog):
             return 1
 
         if not (await validate_input(size)):
+            humanize.i18n.deactivate()
             return
+        humanize.i18n.deactivate()
         size = size.upper()
-        global_config = self.lavalink.lib_db_manager.get_config()
+        global_config = self.pylav.lib_db_manager.get_config()
         extras = await global_config.fetch_extras()
         extras["max_ram"] = size
         await global_config.update_extras(extras)
         await context.send(
-            embed=await context.lavalink.construct_embed(
-                description=_(
-                    "Managed node's heap-size set to {bytes}.\n\nRun `{prefix}{command}` to restart the managed node"
-                ).format(
+            embed=await context.pylav.construct_embed(
+                description=_("Managed node's heap-size set to {bytes}.").format(
                     bytes=inline(size),
-                    command=self.command_plmanaged_restart.qualified_name,
                     prefix=context.clean_prefix,
                 ),
                 messageable=context,
@@ -430,17 +289,15 @@ class PyLavManagedNode(commands.Cog):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        config = self.lavalink._node_config_manager.bundled_node_config()
+        # noinspection PyProtectedMember
+        config = self.pylav._node_config_manager.bundled_node_config()
         data = await config.fetch_yaml()
         data["server"]["host"] = host
         await config.update_yaml(data)
         await context.send(
-            embed=await context.lavalink.construct_embed(
-                description=_(
-                    "Managed node's host set to {host}.\n\nRun `{prefix}{command}` to restart the managed node"
-                ).format(
+            embed=await context.pylav.construct_embed(
+                description=_("Managed node's host set to {host}.").format(
                     host=inline(host),
-                    command=self.command_plmanaged_restart.qualified_name,
                     prefix=context.clean_prefix,
                 ),
                 messageable=context,
@@ -459,21 +316,20 @@ class PyLavManagedNode(commands.Cog):
         """
         if port < 1024 or port > 49151:
             return await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("The port must be between 1024 and 49151"),
                     messageable=context,
                 ),
                 ephemeral=True,
             )
-        config = self.lavalink._node_config_manager.bundled_node_config()
+        # noinspection PyProtectedMember
+        config = self.pylav._node_config_manager.bundled_node_config()
         data = await config.fetch_yaml()
         data["server"]["port"] = port
         await config.update_yaml(data)
         await context.send(
-            embed=await context.lavalink.construct_embed(
-                description=_(
-                    "Managed node's port set to {port}.\n\nRun `{prefix}{command}` to restart the managed node"
-                ).format(port=port, command=self.command_plmanaged_restart.qualified_name, prefix=context.clean_prefix),
+            embed=await context.pylav.construct_embed(
+                description=_("Managed node's port set to {port}.").format(port=port, prefix=context.clean_prefix),
                 messageable=context,
             ),
             ephemeral=True,
@@ -484,7 +340,9 @@ class PyLavManagedNode(commands.Cog):
         """Change the managed node plugins"""
 
     @command_plmanaged_config_plugins.command(name="disable")
-    async def command_plmanaged_config_plugins_disable(self, context: PyLavContext, *, plugin: str):
+    async def command_plmanaged_config_plugins_disable(
+        self, context: PyLavContext, *, plugin: str
+    ):  # sourcery skip: low-code-quality
         """Disabled one of the available plugins"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -500,7 +358,7 @@ class PyLavManagedNode(commands.Cog):
         ]
         if plugin_str not in plugins:
             return await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("The plugin must be one of the following: {plugins}").format(
                         plugins=inline(humanize_list(plugins))
                     ),
@@ -508,8 +366,8 @@ class PyLavManagedNode(commands.Cog):
                 ),
                 ephemeral=True,
             )
-
-        config = self.lavalink._node_config_manager.bundled_node_config()
+        # noinspection PyProtectedMember
+        config = self.pylav._node_config_manager.bundled_node_config()
         data = await config.fetch_yaml()
         new_plugins = []
         plugin_files = []
@@ -585,12 +443,9 @@ class PyLavManagedNode(commands.Cog):
         data["lavalink"]["plugins"] = new_plugins
         await config.update_yaml(data)
         await context.send(
-            embed=await context.lavalink.construct_embed(
-                description=_(
-                    "Managed node's plugin {plugin} disabled.\n\nRun `{prefix}{command}` to restart the managed node"
-                ).format(
+            embed=await context.pylav.construct_embed(
+                description=_("Managed node's plugin {plugin} disabled.").format(
                     plugin=inline(plugin_str),
-                    command=self.command_plmanaged_restart.qualified_name,
                     prefix=context.clean_prefix,
                 ),
                 messageable=context,
@@ -615,7 +470,7 @@ class PyLavManagedNode(commands.Cog):
         ]
         if plugin_str not in plugins:
             return await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("The plugin must be one of the following: {plugins}").format(
                         plugins=inline(humanize_list(plugins))
                     ),
@@ -623,8 +478,8 @@ class PyLavManagedNode(commands.Cog):
                 ),
                 ephemeral=True,
             )
-
-        config = self.lavalink._node_config_manager.bundled_node_config()
+        # noinspection PyProtectedMember
+        config = self.pylav._node_config_manager.bundled_node_config()
         data = await config.fetch_yaml()
         new_plugins = data["lavalink"]["plugins"].copy()
 
@@ -648,12 +503,9 @@ class PyLavManagedNode(commands.Cog):
         data["lavalink"]["plugins"] = new_plugins
         await config.update_yaml(data)
         await context.send(
-            embed=await context.lavalink.construct_embed(
-                description=_(
-                    "Managed node's plugin {plugin} enabled.\n\nRun `{prefix}{command}` to restart the managed node"
-                ).format(
+            embed=await context.pylav.construct_embed(
+                description=_("Managed node's plugin {plugin} enabled.").format(
                     plugin=inline(plugin_str),
-                    command=self.command_plmanaged_restart.qualified_name,
                     prefix=context.clean_prefix,
                 ),
                 messageable=context,
@@ -662,13 +514,14 @@ class PyLavManagedNode(commands.Cog):
         )
 
     @command_plmanaged_config_plugins.command(name="update")
-    async def command_plmanaged_config_plugins_update(self, context: PyLavContext):
+    async def command_plmanaged_config_plugins_update(self, context: PyLavContext):  # sourcery skip: low-code-quality
         """Update the managed node plugins"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        config = self.lavalink._node_config_manager.bundled_node_config()
+        # noinspection PyProtectedMember
+        config = self.pylav._node_config_manager.bundled_node_config()
         data = await config.fetch_yaml()
         new_plugin_data = []
         _temp = set()
@@ -705,7 +558,7 @@ class PyLavManagedNode(commands.Cog):
             else:
                 continue
             release_data = await (
-                await self.lavalink.cached_session.get(
+                await self.pylav.cached_session.get(
                     f"https://api.github.com/repos/{org}/{repo}/releases/latest",
                 )
             ).json(loads=ujson.loads)
@@ -730,10 +583,10 @@ class PyLavManagedNode(commands.Cog):
                         continue
                     old_value = None
                     new_value = None
-                    for key, value in root_value.items():
-                        if key == "old_value":
+                    for sub_key, value in root_value.items():
+                        if sub_key == "old_value":
                             old_value = value
-                        elif key == "new_value":
+                        elif sub_key == "new_value":
                             new_value = value
                     if all([old_value, new_value]):
                         update_string += _("{name} was updated from {old_value} to {new_value}\n").format(
@@ -743,12 +596,9 @@ class PyLavManagedNode(commands.Cog):
                         )
             await config.update_yaml(data)
             await context.send(
-                embed=await context.lavalink.construct_embed(
-                    description=_(
-                        "Managed node's plugins updated.\n\n{updates}\n\nRun `{prefix}{command}` to restart the managed node"
-                    ).format(
+                embed=await context.pylav.construct_embed(
+                    description=_("Managed node's plugins updated.\n\n{updates}").format(
                         updates=update_string,
-                        command=self.command_plmanaged_restart.qualified_name,
                         prefix=context.clean_prefix,
                     ),
                     messageable=context,
@@ -757,7 +607,7 @@ class PyLavManagedNode(commands.Cog):
             )
         else:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Managed node's plugins already up to date"),
                     messageable=context,
                 ),
@@ -771,7 +621,8 @@ class PyLavManagedNode(commands.Cog):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        config = self.lavalink._node_config_manager.bundled_node_config()
+        # noinspection PyProtectedMember
+        config = self.pylav._node_config_manager.bundled_node_config()
         data = await config.fetch_yaml()
         source = source.lower().strip()
         valid_sources = NODE_DEFAULT_SETTINGS["lavalink"]["server"]["sources"].copy()
@@ -779,7 +630,7 @@ class PyLavManagedNode(commands.Cog):
         valid_sources |= NODE_DEFAULT_SETTINGS["plugins"]["dunctebot"]["sources"]
         if source not in valid_sources:
             return await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Invalid source, {valid_list} are valid sources").format(
                         valid_list=humanize_list(sorted(list(map(inline, valid_sources.keys())), key=str.lower))
                     ),
@@ -796,13 +647,46 @@ class PyLavManagedNode(commands.Cog):
         await config.update_yaml(data)
         state = _("enabled") if state else _("disabled")
         await context.send(
-            embed=await context.lavalink.construct_embed(
-                description=_(
-                    "Managed node's {source} source set to {state}.\n\nRun `{prefix}{command}` to restart the managed node"
-                ).format(
+            embed=await context.pylav.construct_embed(
+                description=_("Managed node's {source} source set to {state}.").format(
                     source=inline(source),
                     state=state,
-                    command=self.command_plmanaged_restart.qualified_name,
+                    prefix=context.clean_prefix,
+                ),
+                messageable=context,
+            ),
+            ephemeral=True,
+        )
+
+    @command_plmanaged_config.command(name="filter")
+    async def command_plmanaged_config_filter(self, context: PyLavContext, filter_name: str, state: bool):
+        """Toggle the managed node filters"""
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+        # noinspection PyProtectedMember
+        config = self.pylav._node_config_manager.bundled_node_config()
+        data = await config.fetch_yaml()
+        valid_filters = NODE_DEFAULT_SETTINGS["lavalink"]["server"]["filters"].copy()
+        if filter_name not in valid_filters:
+            return await context.send(
+                embed=await context.pylav.construct_embed(
+                    description=_("Invalid source, {valid_list} are valid filters").format(
+                        valid_list=humanize_list(sorted(list(map(inline, valid_filters.keys())), key=str.lower))
+                    ),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+        data["lavalink"]["server"]["filters"][filter_name] = state
+        await config.update_yaml(data)
+        state = _("enabled") if state else _("disabled")
+        await context.send(
+            embed=await context.pylav.construct_embed(
+                description=_("Managed node's {source} filter set to {state}.").format(
+                    source=inline(filter_name),
+                    state=state,
                     prefix=context.clean_prefix,
                 ),
                 messageable=context,
@@ -817,14 +701,14 @@ class PyLavManagedNode(commands.Cog):
         Run `[p]plmanaged config server <setting> info` to show info about the settings and what they do.
 
         **Setting names**:
-        `bufferDurationMs` : Integer i.e 400 (Default 400)
+        `bufferDurationMs` : Integer i.e 400 (Default 400) - Set to 0 to disable JDA-NAS
         `frameBufferDurationMs` : Integer i.e 1000 (Default 1000)
         `trackStuckThresholdMs` : Integer i.e 1000 (Default 1000)
         `youtubePlaylistLoadLimit` : Integer i.e 1000 (Default 1000)
         `opusEncodingQuality` : Integer i.e 10 (Default 10)
         `resamplingQuality` : String i.e LOW (Default LOW)
         `useSeekGhosting` : Boolean i.e True (Default True)
-        `playerUpdateInterval` : Integer i.e 1 (Default 1)
+        `playerUpdateInterval` : Integer i.e 30 (Default 30)
         `youtubeSearchEnabled` : Boolean i.e True (Default True)
         `soundcloudSearchEnabled` : Boolean i.e True (Default True)
         """
@@ -851,7 +735,7 @@ class PyLavManagedNode(commands.Cog):
         setting = setting_case_map.get(user_input)
         if setting is None:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("{Setting} is not a valid Setting; Options are:\n\n{setting_list}").format(
                         setting=user_input, setting_list=humanize_list(list(setting_case_map.values()))
                     ),
@@ -865,11 +749,13 @@ class PyLavManagedNode(commands.Cog):
             setting_description_map = {
                 "bufferDurationMs": _(
                     "The duration of the NAS buffer in milliseconds. "
-                    "Higher values fare better against longer GC pauses. "
-                    "Minimum of 40ms, lower values may introduce pauses. Accepted values: Range: 40 - 2,000"
+                    "Higher values fare better against longer GC pauses but will increase RAM usage. "
+                    "Minimum of 40ms, lower values may introduce pauses and stutters. "
+                    "Set to 0 to disable JDA-NAS. Accepted values: Range: 0 - 2,000"
                 ),
                 "frameBufferDurationMs": _(
-                    "How many milliseconds of audio to keep buffered. Accepted values: Range: 1,000 - 10,000"
+                    "How many milliseconds of audio to keep buffered, Higher values increase RAM usage. "
+                    "Accepted values: Range: 1,000 - 10,000"
                 ),
                 "trackStuckThresholdMs": _(
                     "The threshold in milliseconds for how long a track can be stuck. "
@@ -894,7 +780,7 @@ class PyLavManagedNode(commands.Cog):
                 ),
                 "playerUpdateInterval": _(
                     "How frequently in seconds to send player updates to clients, "
-                    "affects the current position accuracy. Accepted values: Range: 1 - 10"
+                    "affects the current position accuracy. Accepted values: Range: 1 - 86400"
                 ),
                 "youtubeSearchEnabled": _(
                     "Enable or disable YouTube searches within the node, "
@@ -909,7 +795,7 @@ class PyLavManagedNode(commands.Cog):
             }
 
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("{Setting} info.\n\n{info}").format(
                         setting=setting, info=setting_description_map.get(setting)
                     ),
@@ -927,7 +813,7 @@ class PyLavManagedNode(commands.Cog):
             "opusEncodingQuality": (0, 10),
             "resamplingQuality": ("low", "medium", "high"),
             "useSeekGhosting": ("0", "1", "true", "false", "t", "f"),
-            "playerUpdateInterval": (1, 10),
+            "playerUpdateInterval": (1, 84600),
             "youtubeSearchEnabled": ("0", "1", "true", "false", "t", "f"),
             "soundcloudSearchEnabled": ("0", "1", "true", "false", "t", "f"),
         }
@@ -937,7 +823,7 @@ class PyLavManagedNode(commands.Cog):
             value = int(value)
             if value not in range(possible_values[0], possible_values[0] + 1):
                 await context.send(
-                    embed=await context.lavalink.construct_embed(
+                    embed=await context.pylav.construct_embed(
                         description=_("{Setting} valid inputs are:\n\nRange between: {start} - {end}").format(
                             setting=setting, start=possible_values[0], end=possible_values[1]
                         ),
@@ -948,7 +834,7 @@ class PyLavManagedNode(commands.Cog):
                 return
         elif value not in possible_values:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("{Setting} valid inputs are:\n\n{setting_list}").format(
                         setting=setting, setting_list=humanize_list(possible_values)
                     ),
@@ -961,18 +847,16 @@ class PyLavManagedNode(commands.Cog):
             value = value in ("0", "1", "true")
         elif possible_values == ("low", "medium", "high"):
             value = value.upper()
-        config = self.lavalink._node_config_manager.bundled_node_config()
+        # noinspection PyProtectedMember
+        config = self.pylav._node_config_manager.bundled_node_config()
         data = await config.fetch_yaml()
         data["lavalink"]["server"][setting] = value
         await config.update_yaml(data)
         await context.send(
-            embed=await context.lavalink.construct_embed(
-                description=_(
-                    "{Setting} set to {value}.\n\nRun `{prefix}{command}` to restart the managed node"
-                ).format(
+            embed=await context.pylav.construct_embed(
+                description=_("{Setting} set to {value}.").format(
                     setting=setting,
                     value=value,
-                    command=self.command_plmanaged_restart.qualified_name,
                     prefix=context.clean_prefix,
                 ),
                 messageable=context,
@@ -992,7 +876,7 @@ class PyLavManagedNode(commands.Cog):
             await context.defer(ephemeral=True)
         if not reset:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_(
                         "Click the button below to configure the IP rotation for your node.\n"
                         "More info at: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> and "
@@ -1004,15 +888,14 @@ class PyLavManagedNode(commands.Cog):
                 ephemeral=True,
             )
         else:
-            config = self.lavalink._node_config_manager.bundled_node_config()
+            # noinspection PyProtectedMember
+            config = self.pylav._node_config_manager.bundled_node_config()
             data = await config.fetch_yaml()
             data["lavalink"]["server"]["ratelimit"] = NODE_DEFAULT_SETTINGS["lavalink"]["server"]["ratelimit"]
             await config.update_yaml(data)
             await context.send(
-                embed=await context.lavalink.construct_embed(
-                    description=_(
-                        "Removing the IP rotation from your node.\n\nRun `{prefix}{command}` to restart the managed node"
-                    ).format(command=self.command_plmanaged_restart.qualified_name, prefix=context.clean_prefix),
+                embed=await context.pylav.construct_embed(
+                    description=_("Removing the IP rotation from your node.").format(prefix=context.clean_prefix),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -1030,7 +913,7 @@ class PyLavManagedNode(commands.Cog):
             await context.defer(ephemeral=True)
         if not reset:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_(
                         "Click the button below to link a Google account to your node, "
                         "if you have 2FA setup on this account you will need an app password instead"
@@ -1042,15 +925,15 @@ class PyLavManagedNode(commands.Cog):
                 ephemeral=True,
             )
         else:
-            config = self.lavalink._node_config_manager.bundled_node_config()
+            # noinspection PyProtectedMember
+            config = self.pylav._node_config_manager.bundled_node_config()
             data = await config.fetch_yaml()
             data["lavalink"]["server"]["youtubeConfig"] = NODE_DEFAULT_SETTINGS["lavalink"]["server"]["youtubeConfig"]
             await config.update_yaml(data)
+            await self.bot.remove_shared_api_tokens("google", "email", "password")
             await context.send(
-                embed=await context.lavalink.construct_embed(
-                    description=_(
-                        "Unlinking Google account from your node.\n\nRun `{prefix}{command}` to restart the managed node"
-                    ).format(command=self.command_plmanaged_restart.qualified_name, prefix=context.clean_prefix),
+                embed=await context.pylav.construct_embed(
+                    description=_("Unlinking Google account from your node.").format(prefix=context.clean_prefix),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -1068,7 +951,7 @@ class PyLavManagedNode(commands.Cog):
             await context.defer(ephemeral=True)
         if not reset:
             await context.send(
-                embed=await context.lavalink.construct_embed(
+                embed=await context.pylav.construct_embed(
                     description=_("Click the button below to configure a HTTP proxy for your node"),
                     messageable=context,
                 ),
@@ -1076,15 +959,14 @@ class PyLavManagedNode(commands.Cog):
                 ephemeral=True,
             )
         else:
-            config = self.lavalink._node_config_manager.bundled_node_config()
+            # noinspection PyProtectedMember
+            config = self.pylav._node_config_manager.bundled_node_config()
             data = await config.fetch_yaml()
             data["lavalink"]["server"]["httpConfig"] = NODE_DEFAULT_SETTINGS["lavalink"]["server"]["httpConfig"]
             await config.update_yaml(data)
             await context.send(
-                embed=await context.lavalink.construct_embed(
-                    description=_(
-                        "Unlinking HTTP proxy from your node.\n\nRun `{prefix}{command}` to restart the managed node"
-                    ).format(command=self.command_plmanaged_restart.qualified_name, prefix=context.clean_prefix),
+                embed=await context.pylav.construct_embed(
+                    description=_("Unlinking HTTP proxy from your node.").format(prefix=context.clean_prefix),
                     messageable=context,
                 ),
                 ephemeral=True,

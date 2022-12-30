@@ -1,6 +1,6 @@
 ### Drapers' Individual Contributor License Agreement
 
-Thank you for your interest in contributing to open source software projects (“Projects”) made available by Draper or its affiliates (“Drapers”). This Individual Contributor License Agreement (“Agreement”) sets out the terms governing any source code, object code, bug fixes, configuration changes, tools, specifications, documentation, data, materials, feedback, information or other works of authorship that you submit or have submitted, in any form and in any manner, to Draper in respect of any of the Projects (collectively “Contributions”). If you have any questions respecting this Agreement, please contact draper@draper.wtf
+Thank you for your interest in contributing to open source software projects ("Projects") made available by Draper or its affiliates ("Drapers"). This Individual Contributor License Agreement ("Agreement") sets out the terms governing any source code, object code, bug fixes, configuration changes, tools, specifications, documentation, data, materials, feedback, information or other works of authorship that you submit or have submitted, in any form and in any manner, to Draper in respect of any of the Projects (collectively "Contributions"). If you have any questions respecting this Agreement, please contact draper@draper.wtf
 
 
 You agree that the following terms apply to all of your past, present and future Contributions. Except for the licenses granted in this Agreement, you retain all of your right, title and interest in and to your Contributions.
@@ -18,14 +18,14 @@ foregoing rights through multiple tiers of sublicensees.
 
 
 **Moral Rights.** To the fullest extent permitted under applicable law, you hereby waive, and agree not to
-assert, all of your “moral rights” in or relating to your Contributions for the benefit of Draper, its assigns, and
+assert, all of your "moral rights" in or relating to your Contributions for the benefit of Draper, its assigns, and
 their respective direct and indirect sublicensees.
 
 
 **Third Party Content/Rights.** If your Contribution includes or is based on any source code, object code, bug
 fixes, configuration changes, tools, specifications, documentation, data, materials, feedback, information or
-other works of authorship that were not authored by you (“Third Party Content”) or if you are aware of any
-third party intellectual property or proprietary rights associated with your Contribution (“Third Party Rights”),
+other works of authorship that were not authored by you ("Third Party Content") or if you are aware of any
+third party intellectual property or proprietary rights associated with your Contribution ("Third Party Rights"),
 then you agree to include with the submission of your Contribution full details respecting such Third Party
 Content and Third Party Rights, including, without limitation, identification of which aspects of your
 Contribution contain Third Party Content or are associated with Third Party Rights, the owner/author of the

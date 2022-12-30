@@ -4,7 +4,7 @@ import asyncio
 import typing
 from pathlib import Path
 
-from red_commons.logging import getLogger
+import aiopath
 from redbot.cogs.audio.apis.api_utils import PlaylistFetchResult
 from redbot.cogs.audio.apis.playlist_wrapper import PlaylistWrapper
 from redbot.cogs.audio.utils import (
@@ -18,28 +18,28 @@ from redbot.core.data_manager import cog_data_path
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.dbtools import APSWConnectionWrapper
 
-from pylav.client import Client
-from pylav.sql.models import LibConfigModel, PlayerModel
-from pylav.sql.tables.init import DB
-from pylav.types import BotT
-from pylav.utils import AsyncIter, PyLavContext
-from pylav.vendored import aiopath
-from pylavcogs_shared.utils import recursive_merge
+from pylav.core.client import Client
+from pylav.core.context import PyLavContext
+from pylav.extension.red.utils import recursive_merge
+from pylav.logging import getLogger
+from pylav.players.tracks.encoder import async_bulk_re_encoder
+from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE_MIXIN
+from pylav.utils.vendor.redbot import AsyncIter
 
-LOGGER = getLogger("red.3pt.PyLavMigrator")
+LOGGER = getLogger("PyLav.cog.Migrator")
 
 _ = Translator("PyLavMigrator", Path(__file__))
 
 
 @cog_i18n(_)
-class PyLavMigrator(commands.Cog):
+class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
     """Copy Red's Audio settings over to PyLav"""
 
     lavalink: Client
 
     __version__ = "1.0.0.0rc1"
 
-    def __init__(self, bot: BotT, *args, **kwargs):
+    def __init__(self, bot: DISCORD_BOT_TYPE, *args: typing.Any, **kwargs: typing.Any) -> None:
         super().__init__(*args, **kwargs)
         self.bot = bot
 
@@ -56,6 +56,133 @@ class PyLavMigrator(commands.Cog):
         if not confirm:
             await context.send_help()
             return
+        audio_config, playlist_api = await self._init_audio_cog_dependencies()
+        await self._process_global_settings(audio_config, context)
+        async for guild, guild_config in AsyncIter((await audio_config.all_guilds()).items()):
+            await self._process_server_settings(guild, guild_config)
+        await self._process_playlists(playlist_api)
+        await context.send(
+            content=_(
+                "Migration of Audio cog settings to PyLav complete. "
+                "Restart the bot for it to take effect.\n{requester}"
+            ).format(requester=context.author.mention),
+            ephemeral=True,
+        )
+
+    async def _process_playlists(self, playlist_api: PlaylistWrapper) -> None:
+        query = """
+                    SELECT
+                        playlist_id,
+                        playlist_name,
+                        scope_id,
+                        author_id,
+                        playlist_url,
+                        tracks
+                    FROM
+                        playlists
+                """
+        row_results = await asyncio.to_thread(playlist_api.database.cursor().execute, query)
+        async for row in AsyncIter(row_results):
+            pl = PlaylistFetchResult(*row)
+            try:
+                if pl.playlist_id == 42069:
+                    continue
+                tracks_temp = [t["track"] for t in pl.tracks if "track" in t]
+                if pl.tracks:
+                    tracks = [
+                        t
+                        async for t in async_bulk_re_encoder(
+                            tracks_temp, await self.pylav.node_manager.find_best_node(wait=True)
+                        )
+                    ]
+                else:
+                    tracks = []
+                if tracks:
+                    await self.pylav.playlist_db_manager.create_or_update_playlist(
+                        identifier=pl.playlist_id,
+                        name=pl.playlist_name,
+                        scope=pl.scope_id,
+                        author=pl.author_id,
+                        url=pl.playlist_url,
+                        tracks=tracks,
+                    )
+            except Exception as exc:
+                LOGGER.error(
+                    "Failed to migrate playlist %s (%s) from guild: %s",
+                    pl.playlist_name,
+                    pl.playlist_id,
+                    pl.author_id,
+                    exc_info=exc,
+                )
+
+    async def _process_server_settings(self, guild: int, guild_config: typing.MutableMapping[str, typing.Any]) -> None:
+        player_config = self.pylav.player_config_manager.get_config(guild)
+        if not guild_config.get("auto_deafen", True):
+            await player_config.update_self_deaf(False)
+        if guild_config.get("dj_enabled", False) is True:
+            if dj_role := guild_config.get("dj_role"):
+                if guild_obj := self.bot.get_guild(guild):
+                    if role := guild_obj.get_role(dj_role):
+                        await player_config.add_to_dj_roles(role)
+        if guild_config.get("autoplaylist", {}).get("enabled", False):
+            saved_id = guild_config.get("autoplaylist", {}).get("id", 42069)
+            await player_config.update_auto_play(True)
+            await player_config.update_auto_play_playlist_id(saved_id if saved_id != 42069 else 1)
+        else:
+            await player_config.update_auto_play(False)
+        if guild_config.get("shuffle", False):
+            await player_config.update_shuffle(True)
+        if guild_config.get("volume", 100) != 100:
+            await player_config.update_volume(guild_config.get("volume"))
+        if guild_config.get("max_volume", 150) != 150:
+            await player_config.update_max_volume(int((guild_config.get("max_volume") / 150) * 1000))
+        if guild_config.get("emptypause_enabled"):
+            await player_config.update_alone_pause({"enabled": True, "time": guild_config.get("emptypause_timer", 60)})
+        if guild_config.get("emptydc_enabled"):
+            await player_config.update_alone_dc({"enabled": True, "time": guild_config.get("emptydc_timer", 60)})
+        if guild_config.get("disconnect"):
+            await player_config.update_empty_queue_dc({"enabled": True, "time": 60})
+
+    async def _process_global_settings(self, audio_config: Config, context: PyLavContext) -> None:
+        global_config = self.pylav.lib_db_manager.get_config()
+        if r := await audio_config.localpath():
+            path = aiopath.AsyncPath(r)
+            localtracks_path = path / "localtracks"
+            try:
+                if await localtracks_path.exists():
+                    await global_config.update_localtrack_folder(f"{localtracks_path}")
+            except PermissionError:
+                await context.send(
+                    embed=await self.pylav.construct_embed(
+                        description=_("I don't have permission to access {folder}").format(folder=localtracks_path)
+                    )
+                )
+        if await audio_config.status():
+            await global_config.update_update_bot_activity(True)
+        if __ := await audio_config.use_external_lavalink():
+            await global_config.update_enable_managed_node(False)
+            await self.pylav.add_node(
+                unique_identifier=context.message.id,
+                name="AudioMigratedExternal",
+                host=await audio_config.host(),
+                password=await audio_config.password(),
+                port=await audio_config.rest_port(),
+                ssl=await audio_config.secured_ws(),
+                search_only=False,
+                managed=False,
+                extras=None,
+                disabled_sources=None,
+                yaml=None,
+            )
+        else:
+            audio_yaml = change_dict_naming_convention(await audio_config.yaml.all())
+            bundled_node_config = self.pylav.node_db_manager.bundled_node_config()
+            await bundled_node_config.update_yaml(recursive_merge(await bundled_node_config.fetch_yaml(), audio_yaml))
+            extras = await bundled_node_config.fetch_extras()
+            extras["max_ram"] = await audio_config.java.Xmx()
+            await bundled_node_config.update_extras(extras)
+
+    async def _init_audio_cog_dependencies(self) -> tuple[Config, PlaylistWrapper]:
         from redbot.cogs.audio import Audio
 
         if cog := typing.cast(Audio, self.bot.get_cog("Audio")):
@@ -105,115 +232,4 @@ class PyLavMigrator(commands.Cog):
             audio_db_conn = APSWConnectionWrapper(str(cog_data_path(self.bot.get_cog("Audio")) / "Audio.db"))
             playlist_api = PlaylistWrapper(self.bot, audio_config, audio_db_conn)
             await playlist_api.init()
-        async with DB.transaction():
-            global_config = typing.cast(LibConfigModel, self.lavalink.lib_db_manager.get_config())
-            if (r := await audio_config.java_exc_path()) and r != "java":
-                await global_config.update_java_path(r)
-            if r := await audio_config.localpath():
-                path = aiopath.AsyncPath(r)
-                localtracks_path = path / "localtracks"
-                try:
-                    if await localtracks_path.exists():
-                        await global_config.update_localtrack_folder(f"{localtracks_path}")
-                except PermissionError:
-                    await context.send(
-                        embed=await self.lavalink.construct_embed(
-                            description=_("I don't have permission to access {folder}").format(folder=localtracks_path)
-                        )
-                    )
-            if await audio_config.status():
-                await global_config.update_update_bot_activity(True)
-            if __ := await audio_config.use_external_lavalink():
-                await global_config.update_enable_managed_node(False)
-                await self.lavalink.add_node(
-                    unique_identifier=context.message.id,
-                    name="AudioMigratedExternal",
-                    host=await audio_config.host(),
-                    password=await audio_config.password(),
-                    port=await audio_config.rest_port(),
-                    ssl=await audio_config.secured_ws(),
-                    search_only=False,
-                    managed=False,
-                    extras=None,
-                    disabled_sources=None,
-                    yaml=None,
-                )
-            else:
-                audio_yaml = change_dict_naming_convention(await audio_config.yaml.all())
-                bundled_node_config = self.lavalink.node_db_manager.bundled_node_config()
-                await bundled_node_config.update_yaml(
-                    recursive_merge(await bundled_node_config.fetch_yaml(), audio_yaml)
-                )
-                extras = await bundled_node_config.fetch_extras()
-                extras["max_ram"] = await audio_config.java.Xmx()
-                await bundled_node_config.update_extras(extras)
-
-            async for guild, guild_config in AsyncIter((await audio_config.all_guilds()).items()):
-                player_config: PlayerModel = self.lavalink.player_config_manager.get_config(guild)
-                if not guild_config.get("auto_deafen", True):
-                    await player_config.update_self_deaf(False)
-                if guild_config.get("dj_enabled", False) is True:
-                    if dj_role := guild_config.get("dj_role"):
-                        if guild_obj := self.bot.get_guild(guild):
-                            if role := guild_obj.get_role(dj_role):
-                                await player_config.add_to_dj_roles(role)
-                if guild_config.get("autoplaylist", {}).get("enabled", False):
-                    saved_id = guild_config.get("autoplaylist", {}).get("id", 42069)
-                    await player_config.update_auto_play(True)
-                    await player_config.update_auto_play_playlist_id(saved_id if saved_id != 42069 else 1)
-                else:
-                    await player_config.update_auto_play(False)
-
-                if guild_config.get("shuffle", False):
-                    await player_config.update_shuffle(True)
-                if guild_config.get("volume", 100) != 100:
-                    await player_config.update_volume(guild_config.get("volume"))
-
-                if guild_config.get("max_volume", 150) != 150:
-                    await player_config.update_max_volume(int((guild_config.get("max_volume") / 150) * 1000))
-
-                if guild_config.get("emptypause_enabled"):
-                    await player_config.update_alone_pause(
-                        {"enabled": True, "time": guild_config.get("emptypause_timer", 60)}
-                    )
-
-                if guild_config.get("emptydc_enabled"):
-                    await player_config.update_alone_dc(
-                        {"enabled": True, "time": guild_config.get("emptydc_timer", 60)}
-                    )
-
-                if guild_config.get("disconnect"):
-                    await player_config.update_empty_queue_dc({"enabled": True, "time": 60})
-
-            query = """
-                        SELECT
-                            playlist_id,
-                            playlist_name,
-                            scope_id,
-                            author_id,
-                            playlist_url,
-                            tracks
-                        FROM
-                            playlists
-                    """
-            row_results = await asyncio.to_thread(playlist_api.database.cursor().execute, query)
-            async for row in AsyncIter(row_results):
-                pl = PlaylistFetchResult(*row)
-                if pl.playlist_id == 42069:
-                    continue
-
-                await self.lavalink.playlist_db_manager.create_or_update_playlist(
-                    id=pl.playlist_id,
-                    name=pl.playlist_name,
-                    scope=pl.scope_id,
-                    author=pl.author_id,
-                    url=pl.playlist_url,
-                    tracks=[t["track"] for t in pl.tracks if "track" in t],
-                )
-        await context.send(
-            content=_(
-                "Migration of Audio cog settings to PyLav complete. "
-                "Restart the bot for it to take effect.\n{requester}"
-            ).format(requester=context.author.mention),
-            ephemeral=True,
-        )
+        return audio_config, playlist_api

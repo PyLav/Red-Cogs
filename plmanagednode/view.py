@@ -10,7 +10,8 @@ from netaddr import IPAddress, IPNetwork
 from redbot.core.i18n import Translator
 from redbot.core.utils.chat_formatting import humanize_list
 
-from pylav.types import BotT, CogT, InteractionT
+from pylav.helpers.format.strings import shorten_string
+from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE, DISCORD_INTERACTION_TYPE
 
 _ = Translator("PyLavManagedNode", Path(__file__))
 
@@ -22,8 +23,8 @@ class ConfigureIPRotationView(discord.ui.View):
 
     def __init__(
         self,
-        bot: BotT,
-        cog: CogT,
+        bot: DISCORD_BOT_TYPE,
+        cog: DISCORD_COG_TYPE,
         prefix: str,
         timeout: int = 180,
     ):
@@ -32,17 +33,17 @@ class ConfigureIPRotationView(discord.ui.View):
         self.prefix = prefix
         super().__init__(timeout=timeout)
 
-    async def interaction_check(self, interaction: InteractionT) -> bool:
+    async def interaction_check(self, interaction: DISCORD_INTERACTION_TYPE) -> bool:
         if not await self.bot.is_owner(interaction.user):
             await interaction.response.send_message(_("You are not authorized to interact with this"), ephemeral=True)
             return False
         return True
 
     @discord.ui.button(
-        label=_("Configure IP Rotation"),
+        label=shorten_string(max_length=100, string=_("Configure IP Rotation")),
         style=discord.ButtonStyle.grey,
     )
-    async def add_ip_block(self, interaction: InteractionT, button: discord.ui.Button):
+    async def add_ip_block(self, interaction: DISCORD_INTERACTION_TYPE, button: discord.ui.Button):
         return await interaction.response.send_modal(
             ConfigureIPRotationModal(bot=self.bot, cog=self.cog, prefix=self.prefix)
         )
@@ -53,23 +54,23 @@ class ConfigureGoogleAccountView(discord.ui.View):
     A secure ``discord.ui.View`` used to configure the Google account for the node.
     """
 
-    def __init__(self, bot: BotT, cog: CogT, prefix: str, timeout: int = 180):
+    def __init__(self, bot: DISCORD_BOT_TYPE, cog: DISCORD_COG_TYPE, prefix: str, timeout: int = 180):
         self.bot = bot
         self.cog = cog
         self.prefix = prefix
         super().__init__(timeout=timeout)
 
-    async def interaction_check(self, interaction: InteractionT) -> bool:
+    async def interaction_check(self, interaction: DISCORD_INTERACTION_TYPE) -> bool:
         if not await self.bot.is_owner(interaction.user):
             await interaction.response.send_message(_("You are not authorized to interact with this"), ephemeral=True)
             return False
         return True
 
     @discord.ui.button(
-        label=_("Link Google Account"),
+        label=shorten_string(max_length=100, string=_("Link Google Account")),
         style=discord.ButtonStyle.grey,
     )
-    async def link_account(self, interaction: InteractionT, button: discord.ui.Button):
+    async def link_account(self, interaction: DISCORD_INTERACTION_TYPE, button: discord.ui.Button):
         return await interaction.response.send_modal(
             ConfigureGoogleAccountModal(bot=self.bot, cog=self.cog, prefix=self.prefix)
         )
@@ -82,8 +83,8 @@ class ConfigureHTTPProxyView(discord.ui.View):
 
     def __init__(
         self,
-        bot: BotT,
-        cog: CogT,
+        bot: DISCORD_BOT_TYPE,
+        cog: DISCORD_COG_TYPE,
         prefix: str,
         timeout: int = 180,
     ):
@@ -92,17 +93,17 @@ class ConfigureHTTPProxyView(discord.ui.View):
         self.prefix = prefix
         super().__init__(timeout=timeout)
 
-    async def interaction_check(self, interaction: InteractionT) -> bool:
+    async def interaction_check(self, interaction: DISCORD_INTERACTION_TYPE) -> bool:
         if not await self.bot.is_owner(interaction.user):
             await interaction.response.send_message(_("You are not authorized to interact with this"), ephemeral=True)
             return False
         return True
 
     @discord.ui.button(
-        label=_("Configure HTTP Proxy"),
+        label=shorten_string(max_length=100, string=_("Configure HTTP Proxy")),
         style=discord.ButtonStyle.grey,
     )
-    async def configure_proxy(self, interaction: InteractionT, button: discord.ui.Button):
+    async def configure_proxy(self, interaction: DISCORD_INTERACTION_TYPE, button: discord.ui.Button):
         return await interaction.response.send_modal(
             ConfigureHTTPProxyModal(bot=self.bot, cog=self.cog, prefix=self.prefix)
         )
@@ -113,25 +114,27 @@ class ConfigureIPRotationModal(discord.ui.Modal):
 
     def __init__(
         self,
-        bot: BotT,
-        cog: CogT,
+        bot: DISCORD_BOT_TYPE,
+        cog: DISCORD_COG_TYPE,
         prefix: str,
     ):
         self.bot = bot
         self.cog = cog
         self.prefix = prefix
 
-        super().__init__(title=_("IP Rotation Configurator"))
+        super().__init__(title=shorten_string(max_length=100, string=_("IP Rotation Configurator")))
 
         self.ip_blocks = discord.ui.TextInput(
-            label=_("IP Blocks"),
+            label=shorten_string(max_length=100, string=_("IP Blocks")),
             style=discord.TextStyle.long,
             required=True,
-            placeholder=_("1.0.0.0/8,...,... - Comma separated list of IP blocks"),
+            placeholder=shorten_string(
+                max_length=100, string=_("1.0.0.0/8,...,... - Comma separated list of IP blocks")
+            ),
         )
 
         self.strategy = discord.ui.TextInput(
-            label=_("Rotation strategy"),
+            label=shorten_string(max_length=100, string=_("Rotation strategy")),
             style=discord.TextStyle.long,
             required=True,
             placeholder="RotateOnBan | LoadBalance | NanoSwitch | RotatingNanoSwitch",
@@ -140,25 +143,25 @@ class ConfigureIPRotationModal(discord.ui.Modal):
         )
 
         self.retry_limit = discord.ui.TextInput(
-            label=_("Retry limit"),
+            label=shorten_string(max_length=100, string=_("Retry limit")),
             style=discord.TextStyle.short,
             required=False,
-            placeholder=_("-1 = default, 0 = infinity, >0 = number of retries"),
+            placeholder=shorten_string(max_length=100, string=_("-1 = default, 0 = infinity, >0 = number of retries")),
             min_length=1,
             max_length=3,
         )
         self.excluded_ips = discord.ui.TextInput(
-            label=_("IPs to exclude"),
+            label=shorten_string(max_length=100, string=_("IPs to exclude")),
             required=False,
             style=discord.TextStyle.short,
-            placeholder=_("Comma separated list of IP to exclude from rotation"),
+            placeholder=shorten_string(max_length=100, string=_("Comma separated list of IP to exclude from rotation")),
         )
 
         self.search_trigger = discord.ui.TextInput(
-            label=_("Search trigger rotation"),
+            label=shorten_string(max_length=100, string=_("Search trigger rotation")),
             style=discord.TextStyle.short,
             required=False,
-            placeholder=_("0 or 1 (0 = disabled, 1 = enabled)"),
+            placeholder=shorten_string(max_length=100, string=_("0 or 1 (0 = disabled, 1 = enabled)")),
             min_length=1,
             max_length=1,
         )
@@ -168,7 +171,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
         self.add_item(self.search_trigger)
         self.add_item(self.excluded_ips)
 
-    async def on_submit(self, interaction: InteractionT):
+    async def on_submit(self, interaction: DISCORD_INTERACTION_TYPE):
         if not await self.bot.is_owner(
             interaction.user
         ):  # Prevent non-bot owners from somehow acquiring and saving the modal.
@@ -185,7 +188,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
                 )
             except netaddr.core.AddrFormatError as exc:
                 return await send_method(
-                    embed=await self.bot.lavalink.construct_embed(
+                    embed=await self.bot.pylav.construct_embed(
                         description=_("Invalid IP block - {error}").format(exc),
                         messageable=interaction,
                     ),
@@ -198,7 +201,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
         if not ip_blocks:
 
             return await send_method(
-                embed=await self.bot.lavalink.construct_embed(
+                embed=await self.bot.pylav.construct_embed(
                     description=_("No IP blocks were provided"),
                     messageable=interaction,
                 ),
@@ -213,7 +216,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
             except netaddr.core.AddrFormatError as exc:
 
                 return await send_method(
-                    embed=await self.bot.lavalink.construct_embed(
+                    embed=await self.bot.pylav.construct_embed(
                         description=_("Invalid IP address - {error}").format(exc),
                         messageable=interaction,
                     ),
@@ -232,7 +235,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
         }
         if strategy not in stategy_mapping:
             return await send_method(
-                embed=await self.bot.lavalink.construct_embed(
+                embed=await self.bot.pylav.construct_embed(
                     description=_("Invalid strategy, must be one of: {options}").format(
                         options=humanize_list(list(stategy_mapping.values()))
                     ),
@@ -248,7 +251,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
                 raise ValueError
         except ValueError:
             return await send_method(
-                embed=await self.bot.lavalink.construct_embed(
+                embed=await self.bot.pylav.construct_embed(
                     description=_("Invalid retry limit, must be a number greater than or equals to -1"),
                     messageable=interaction,
                 ),
@@ -263,7 +266,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
             search_trigger = bool(search_trigger)
         except ValueError:
             return await send_method(
-                embed=await self.bot.lavalink.construct_embed(
+                embed=await self.bot.pylav.construct_embed(
                     description=_("Invalid search trigger, must be 0 or 1"),
                     messageable=interaction,
                 ),
@@ -271,7 +274,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
                 wait=True,
             )
 
-        config = self.bot.lavalink.node_db_manager.bundled_node_config()
+        config = self.bot.pylav.node_db_manager.bundled_node_config()
         yaml_data = await config.fetch_yaml()
         yaml_data["lavalink"]["server"]["ratelimit"] = {
             "ipBlocks": ip_blocks,
@@ -282,10 +285,8 @@ class ConfigureIPRotationModal(discord.ui.Modal):
         }
         await config.update_yaml(yaml_data)
         return await send_method(
-            embed=await self.bot.lavalink.construct_embed(
-                description=_(
-                    "IP rotation configuration saved.\n\nRun `{prefix}{command}` to restart the managed node"
-                ).format(command=self.cog.command_plmanaged_restart.qualified_name, prefix=self.prefix),
+            embed=await self.bot.pylav.construct_embed(
+                description=_("IP rotation configuration saved.").format(prefix=self.prefix),
                 messageable=interaction,
             ),
             ephemeral=True,
@@ -298,8 +299,8 @@ class ConfigureGoogleAccountModal(discord.ui.Modal):
 
     def __init__(
         self,
-        bot: BotT,
-        cog: CogT,
+        bot: DISCORD_BOT_TYPE,
+        cog: DISCORD_COG_TYPE,
         prefix: str,
     ):
         self.bot = bot
@@ -309,18 +310,18 @@ class ConfigureGoogleAccountModal(discord.ui.Modal):
         super().__init__(title=_("Google Account Configurator"))
 
         self.email = discord.ui.TextInput(
-            label=_("Email address"),
+            label=shorten_string(max_length=100, string=_("Email address")),
             style=discord.TextStyle.short,
             required=True,
-            placeholder=_("Your Google account email"),
+            placeholder=shorten_string(max_length=100, string=_("Your Google account email")),
             min_length=4,
         )
 
         self.password = discord.ui.TextInput(
-            label=_("password"),
+            label=shorten_string(max_length=100, string=_("password")),
             style=discord.TextStyle.short,
             required=True,
-            placeholder=_("If you have 2FA you will need an app password"),
+            placeholder=shorten_string(max_length=100, string=_("If you have 2FA you will need an app password")),
             min_length=8,
             max_length=100,
         )
@@ -328,7 +329,7 @@ class ConfigureGoogleAccountModal(discord.ui.Modal):
         self.add_item(self.email)
         self.add_item(self.password)
 
-    async def on_submit(self, interaction: InteractionT):
+    async def on_submit(self, interaction: DISCORD_INTERACTION_TYPE):
         if not await self.bot.is_owner(
             interaction.user
         ):  # Prevent non-bot owners from somehow acquiring and saving the modal.
@@ -340,7 +341,7 @@ class ConfigureGoogleAccountModal(discord.ui.Modal):
         send_method = interaction.followup.send
         if re.match(r"[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+", self.email.value) is None:
             return await send_method(
-                embed=await self.bot.lavalink.construct_embed(
+                embed=await self.bot.pylav.construct_embed(
                     description=_("Invalid email address"),
                     messageable=interaction,
                 ),
@@ -348,15 +349,10 @@ class ConfigureGoogleAccountModal(discord.ui.Modal):
                 wait=True,
             )
 
-        config = self.bot.lavalink.node_db_manager.bundled_node_config()
-        yaml_data = await config.fetch_yaml()
-        yaml_data["lavalink"]["server"]["youtubeConfig"] = {"email": self.email.value, "password": self.password.value}
-        await config.update_yaml(yaml_data)
+        await self.bot.set_shared_api_tokens("google", email=self.email.value, password=self.password.value)
         return await send_method(
-            embed=await self.bot.lavalink.construct_embed(
-                description=_("Google account linked.\n\nRun `{prefix}{command}` to restart the managed node").format(
-                    command=self.cog.command_plmanaged_restart.qualified_name, prefix=self.prefix
-                ),
+            embed=await self.bot.pylav.construct_embed(
+                description=_("Google account linked.").format(prefix=self.prefix),
                 messageable=interaction,
             ),
             ephemeral=True,
@@ -369,8 +365,8 @@ class ConfigureHTTPProxyModal(discord.ui.Modal):
 
     def __init__(
         self,
-        bot: BotT,
-        cog: CogT,
+        bot: DISCORD_BOT_TYPE,
+        cog: DISCORD_COG_TYPE,
         prefix: str,
     ):
         self.bot = bot
@@ -380,39 +376,45 @@ class ConfigureHTTPProxyModal(discord.ui.Modal):
         super().__init__(title=_("HTTP Proxy Configurator"))
 
         self.host = discord.ui.TextInput(
-            label=_("Hostname"),
+            label=shorten_string(max_length=100, string=_("Hostname")),
             style=discord.TextStyle.short,
             required=True,
-            placeholder=_("Hostname of the proxy, (ip or domain or localhost)"),
+            placeholder=shorten_string(max_length=100, string=_("Hostname of the proxy, (ip or domain or localhost)")),
         )
 
         self.port = discord.ui.TextInput(
-            label=_("Proxy port"),
+            label=shorten_string(max_length=100, string=_("Proxy port")),
             style=discord.TextStyle.short,
             required=True,
-            placeholder=_("Proxy port, 3128 is the default for squidProxy"),
+            placeholder=shorten_string(max_length=100, string=_("Proxy port, 3128 is the default for squidProxy")),
             min_length=1,
             max_length=5,
         )
 
         self.user = discord.ui.TextInput(
-            label=_("User"),
+            label=shorten_string(max_length=100, string=_("User")),
             style=discord.TextStyle.long,
             required=False,
-            placeholder=_("Optional user for basic authentication fields, leave blank if you don't use basic auth"),
+            placeholder=shorten_string(
+                max_length=100,
+                string=_("Optional user for basic authentication fields, leave blank if you don't use basic auth"),
+            ),
         )
         self.password = discord.ui.TextInput(
             label=_("Password"),
             style=discord.TextStyle.long,
             required=False,
-            placeholder=_("Optional password for basic authentication fields, leave blank if you don't use basic auth"),
+            placeholder=shorten_string(
+                max_length=100,
+                string=_("Optional password for basic authentication fields, leave blank if you don't use basic auth"),
+            ),
         )
         self.add_item(self.host)
         self.add_item(self.port)
         self.add_item(self.user)
         self.add_item(self.password)
 
-    async def on_submit(self, interaction: InteractionT):
+    async def on_submit(self, interaction: DISCORD_INTERACTION_TYPE):
         if not await self.bot.is_owner(
             interaction.user
         ):  # Prevent non-bot owners from somehow acquiring and saving the modal.
@@ -427,14 +429,14 @@ class ConfigureHTTPProxyModal(discord.ui.Modal):
                 raise ValueError
         except ValueError:
             return await send_method(
-                embed=await self.bot.lavalink.construct_embed(
+                embed=await self.bot.pylav.construct_embed(
                     description=_("Invalid port, must be a number between 0 and 65536"),
                     messageable=interaction,
                 ),
                 ephemeral=True,
                 wait=True,
             )
-        config = self.bot.lavalink.node_db_manager.bundled_node_config()
+        config = self.bot.pylav.node_db_manager.bundled_node_config()
         yaml_data = await config.fetch_yaml()
         yaml_data["lavalink"]["server"]["httpConfig"] = {
             "proxyHost": self.host.value,
@@ -444,10 +446,8 @@ class ConfigureHTTPProxyModal(discord.ui.Modal):
         }
         await config.update_yaml(yaml_data)
         return await send_method(
-            embed=await self.bot.lavalink.construct_embed(
-                description=_(
-                    "HTTP proxy configuration saved.\n\nRun `{prefix}{command}` to restart the managed node"
-                ).format(command=self.cog.command_plmanaged_restart.qualified_name, prefix=self.prefix),
+            embed=await self.bot.pylav.construct_embed(
+                description=_("HTTP proxy configuration saved.").format(prefix=self.prefix),
                 messageable=interaction,
             ),
             ephemeral=True,
