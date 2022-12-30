@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2022-10-22 20:02+0000\n"
-"PO-Revision-Date: 2022-10-22 20:03\n"
+"POT-Creation-Date: 2022-12-30 22:38+0000\n"
+"PO-Revision-Date: 2022-12-30 22:38\n"
 "Last-Translator: \n"
 "Language-Team: Thai\n"
 "MIME-Version: 1.0\n"
@@ -17,115 +17,125 @@ msgstr ""
 "X-Crowdin-File-ID: 684\n"
 "Language: th_TH\n"
 
-#: plutils/cog.py:60 plutils/cog.py:70
+#: plutils/cog.py:58 plutils/cog.py:68
 #, docstring
 msgid "Utility commands for PyLav"
 msgstr ""
 
-#: plutils/cog.py:74
+#: plutils/cog.py:72
 #, docstring
 msgid "Show the version of the Cog and its PyLav dependencies"
 msgstr ""
 
-#: plutils/cog.py:91
+#: plutils/cog.py:88
 msgid "Library/Cog"
 msgstr ""
 
-#: plutils/cog.py:92
+#: plutils/cog.py:89
 msgid "Version"
 msgstr ""
 
-#: plutils/cog.py:105
+#: plutils/cog.py:102
 #, docstring
 msgid "Show the slashes available in the bot.\n\n"
 "        Author: TrustyJAID#0001 via code block on Discord channel.\n"
 "        "
 msgstr ""
 
-#: plutils/cog.py:136
+#: plutils/cog.py:133
 #, docstring
 msgid "Get info about specific things"
 msgstr ""
 
-#: plutils/cog.py:140
+#: plutils/cog.py:137
 #, docstring
 msgid "Get the base64 of the current track"
 msgstr ""
 
-#: plutils/cog.py:148 plutils/cog.py:180 plutils/cog.py:212 plutils/cog.py:243
+#: plutils/cog.py:145 plutils/cog.py:177 plutils/cog.py:209 plutils/cog.py:240
+#: plutils/cog.py:272
 msgid "Not connected to a voice channel"
 msgstr ""
 
-#: plutils/cog.py:156 plutils/cog.py:188 plutils/cog.py:220 plutils/cog.py:251
+#: plutils/cog.py:153 plutils/cog.py:185 plutils/cog.py:217 plutils/cog.py:248
 msgid "Nothing playing"
 msgstr ""
 
-#: plutils/cog.py:171
+#: plutils/cog.py:168
 #, docstring
 msgid "Get the author of the current track"
 msgstr ""
 
-#: plutils/cog.py:203
+#: plutils/cog.py:200
 #, docstring
 msgid "Get the title of the current track"
 msgstr ""
 
-#: plutils/cog.py:235
+#: plutils/cog.py:232
 #, docstring
 msgid "Get the source of the current track"
 msgstr ""
 
-#: plutils/cog.py:266
+#: plutils/cog.py:263
+#, docstring
+msgid "Get the API of the current track"
+msgstr ""
+
+#: plutils/cog.py:283 plutils/cog.py:292
+msgid "Unable to get player info"
+msgstr ""
+
+#: plutils/cog.py:308
 #, docstring
 msgid "Decode a track's base64 string into a JSON object"
 msgstr ""
 
-#: plutils/cog.py:277
+#: plutils/cog.py:317
 msgid "Invalid base64 string"
 msgstr ""
 
-#: plutils/cog.py:294
+#: plutils/cog.py:333
 #, docstring
 msgid "Manage the query cache"
 msgstr ""
 
-#: plutils/cog.py:298
+#: plutils/cog.py:337
 #, docstring
 msgid "Clear the query cache"
 msgstr ""
 
-#: plutils/cog.py:305 plutils/cog.py:334 plutils/cog.py:347
+#: plutils/cog.py:344 plutils/cog.py:373 plutils/cog.py:386
 msgid "Query cache cleared"
 msgstr ""
 
-#: plutils/cog.py:311
+#: plutils/cog.py:350
 #, docstring
 msgid "Clear the query cache older than a number of days"
 msgstr ""
 
-#: plutils/cog.py:319
+#: plutils/cog.py:358
 msgid "Days must be less than 31"
 msgstr ""
 
-#: plutils/cog.py:327
+#: plutils/cog.py:366
 msgid "Days must be greater than 1"
 msgstr ""
 
-#: plutils/cog.py:340
+#: plutils/cog.py:379
 #, docstring
 msgid "Clear the query cache for a query"
 msgstr ""
 
-#: plutils/cog.py:353
+#: plutils/cog.py:392
 #, docstring
 msgid "Get the size of the query cache"
 msgstr ""
 
-#: plutils/cog.py:360
+#: plutils/cog.py:399
 msgid "Query cache size: `{size}`"
 msgstr ""
 
-#: plutils/cog.py:371
+#: plutils/cog.py:410
 #, docstring
 msgid "Start memory tracing\n\n"
 "        `[p]plutils trace 0` turns off tracing\n"
@@ -134,19 +144,19 @@ msgid "Start memory tracing\n\n"
 "        "
 msgstr ""
 
-#: plutils/cog.py:385
+#: plutils/cog.py:424
 msgid "Stopped memory tracing"
 msgstr ""
 
-#: plutils/cog.py:394
+#: plutils/cog.py:433
 msgid "Started memory tracing"
 msgstr ""
 
-#: plutils/cog.py:403
+#: plutils/cog.py:442
 msgid "You need to start tracing first"
 msgstr ""
 
-#: plutils/cog.py:415
+#: plutils/cog.py:454
 #, docstring
 msgid "Set the logger level\n\n"
 "        Levels are the following:\n"
@@ -160,7 +170,7 @@ msgid "Set the logger level\n\n"
 "        "
 msgstr ""
 
-#: plutils/cog.py:446
+#: plutils/cog.py:485
 msgid "Logger level set to `{level}`"
 msgstr ""
 

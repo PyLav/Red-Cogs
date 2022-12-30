@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2022-10-21 21:00+0000\n"
-"PO-Revision-Date: 2022-10-21 21:00\n"
+"POT-Creation-Date: 2022-12-30 22:35+0000\n"
+"PO-Revision-Date: 2022-12-30 22:38\n"
 "Last-Translator: \n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -17,82 +17,42 @@ msgstr ""
 "X-Crowdin-File-ID: 610\n"
 "Language: ja_JP\n"
 
-#: plmanagednode/cog.py:37 plmanagednode/cog.py:49
+#: plmanagednode/cog.py:34 plmanagednode/cog.py:46
 #, docstring
 msgid "Configure the managed Lavalink node used by PyLav"
 msgstr "PyLav が使用する Lavalink ノードを設定します。"
 
-#: plmanagednode/cog.py:53
+#: plmanagednode/cog.py:50
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies"
 msgstr "Cog のバージョンと PyLav の依存関係を表示する"
 
-#: plmanagednode/cog.py:70
+#: plmanagednode/cog.py:66
 msgid "Library/Cog"
 msgstr "ライブラリ/Cog"
 
-#: plmanagednode/cog.py:71
+#: plmanagednode/cog.py:67
 msgid "Version"
 msgstr "バージョン"
 
-#: plmanagednode/cog.py:84
+#: plmanagednode/cog.py:80
 #, docstring
 msgid "Update the managed Lavalink node"
 msgstr "管理 Lavalink ノードを更新"
 
-#: plmanagednode/cog.py:95
+#: plmanagednode/cog.py:92
 msgid "The managed Lavalink node is already up to date."
 msgstr "管理対象の Lavalink ノードは既に最新です。"
 
-#: plmanagednode/cog.py:104
+#: plmanagednode/cog.py:101
 msgid "Your node is out of date, to update please run `{prefix}{command} 1`."
 msgstr "ノードが古くなっています。更新するには`{prefix}{command} 1`を実行してください。"
 
-#: plmanagednode/cog.py:118
+#: plmanagednode/cog.py:117
 msgid "The managed Lavalink node has been updated to version {version}."
 msgstr "管理対象の Lavalink ノードをバージョン {version} に更新しました。"
 
-#: plmanagednode/cog.py:128
-#, docstring
-msgid "Restart the managed Lavalink node"
-msgstr "管理 Lavalink ノードを再起動します"
-
-#: plmanagednode/cog.py:137
-msgid "The managed node is not enabled, run `{prefix}{command}` to first enable the managed node"
-msgstr "管理ノードが有効になっていません。管理ノードを有効にするには`{prefix}{command}`を実行してください。"
-
-#: plmanagednode/cog.py:178
-msgid "Restarted the managed Lavalink node"
-msgstr "管理されているLavalinkノードを再起動しました"
-
-#: plmanagednode/cog.py:186
-#, docstring
-msgid "Set the java executable for PyLav.\n\n"
-"        Default is \"java\"\n"
-"        "
-msgstr "PyLavのJava実行ファイルを設定します。\n\n"
-"        デフォルトは\"java\"\n"
-"        "
-
-#: plmanagednode/cog.py:202
-msgid "{java} does not exist, run the command again with the java argument set to the correct path"
-msgstr "{java} は存在しません。正しいパスに設定された Java 引数でコマンドをもう一度実行してください。"
-
-#: plmanagednode/cog.py:219
-msgid "{java} is not an executable file"
-msgstr "{java} は実行可能ファイルではありません"
-
-#: plmanagednode/cog.py:231
-msgid "{java} is not an executable, run the command again with the java argument set to the correct path"
-msgstr "{java} は実行可能ファイルではありません。正しいパスに設定された Java 引数でコマンドを再実行してください。"
-
-#: plmanagednode/cog.py:250
-msgid "PyLav's java executable has been set to {java}\n\n"
-"Run `{prefix}{command}` to restart the managed node"
-msgstr "PyLavのJava実行ファイルが {java}に設定されました\n\n"
-"Run `{prefix}{command}`管理ノードを再起動します"
-
-#: plmanagednode/cog.py:264
+#: plmanagednode/cog.py:127
 #, docstring
 msgid "Toggle the managed node on/off.\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -101,19 +61,15 @@ msgstr "管理ノードのオン/オフを切り替えます。\n\n"
 "        ボットを再起動した後に変更が適用されます。\n"
 "        "
 
-#: plmanagednode/cog.py:279
-msgid "PyLav's managed node has been enabled.\n\n"
-"Run `{prefix}{command}` to restart the managed node"
-msgstr "PyLavの管理ノードが有効になりました。\n\n"
-"{prefix}{command}`を実行して管理ノードを再起動します。"
+#: plmanagednode/cog.py:142
+msgid "PyLav's managed node has been enabled."
+msgstr ""
 
-#: plmanagednode/cog.py:289
-msgid "PyLav's managed node has been disabled.\n\n"
-"Run `{prefix}{command}` to restart the managed node"
-msgstr "PyLavの管理ノードは無効になっています。\n\n"
-"{prefix}{command}を実行して管理ノードを再起動してください"
+#: plmanagednode/cog.py:150
+msgid "PyLav's managed node has been disabled."
+msgstr ""
 
-#: plmanagednode/cog.py:299
+#: plmanagednode/cog.py:158
 #, docstring
 msgid "Toggle the managed node auto updates on/off.\n\n"
 "        Changes will be applied after restarting the bot.\n"
@@ -122,19 +78,15 @@ msgstr "管理ノードの自動更新のオン/オフを切り替えます。\n
 "        ボットを再起動した後に変更が適用されます。\n"
 "        "
 
-#: plmanagednode/cog.py:315
-msgid "PyLav's managed node auto updates have been enabled\n\n"
-"Run `{prefix}{command}` to restart the managed node"
-msgstr "PyLavの管理ノードの自動更新が有効になりました\n\n"
-"Run `{prefix}{command}`が管理ノードを再起動します"
+#: plmanagednode/cog.py:174
+msgid "PyLav's managed node auto updates have been enabled"
+msgstr "PyLavの管理ノードの自動更新が有効になりました"
 
-#: plmanagednode/cog.py:326
-msgid "PyLav's managed node auto updates have been disabled\n\n"
-"Run `{prefix}{command}` to restart the managed node"
-msgstr "PyLavの管理ノードの自動更新が無効になりました\n\n"
-"Run `{prefix}{command}`は管理ノードを再起動します"
+#: plmanagednode/cog.py:184
+msgid "PyLav's managed node auto updates have been disabled"
+msgstr "PyLavの管理ノードの自動更新は無効になっています"
 
-#: plmanagednode/cog.py:337
+#: plmanagednode/cog.py:194
 #, docstring
 msgid "Set the managed Lavalink node maximum heap-size.\n\n"
 "        By default, this value is 2G of available RAM in the host machine represented by (65-1023M|1+G) (256M,\n"
@@ -144,45 +96,41 @@ msgid "Set the managed Lavalink node maximum heap-size.\n\n"
 "        "
 msgstr ""
 
-#: plmanagednode/cog.py:358
+#: plmanagednode/cog.py:218
 msgid "Heap-size must be a valid measure of size, e.g. 256M, 256G"
 msgstr "ヒープサイズは、256M、256G などの有効なサイズでなければなりません"
 
-#: plmanagednode/cog.py:368
+#: plmanagednode/cog.py:228
 msgid "Heap-size must be at least 64M, however it is recommended to have it set to at least 1G"
 msgstr "ヒープサイズは少なくとも64Mでなければなりませんが、少なくとも1Gに設定することをお勧めします"
 
-#: plmanagednode/cog.py:380
+#: plmanagednode/cog.py:240
 msgid "Heap-size must be less than your system RAM, You currently have {ram_in_bytes} of RAM available"
 msgstr "ヒープサイズはシステムRAMより小さくなければなりません。現在 {ram_in_bytes} 個のRAMが利用可能です"
 
-#: plmanagednode/cog.py:392
+#: plmanagednode/cog.py:252
 msgid "Heap-size must be less than {limit} due to your system limitations"
 msgstr "システムの制限によりヒープサイズは {limit} より小さくなければなりません"
 
-#: plmanagednode/cog.py:410
-msgid "Managed node's heap-size set to {bytes}.\n\n"
-"Run `{prefix}{command}` to restart the managed node"
-msgstr "マネージドノードのヒープサイズを {bytes}に設定しました。\n\n"
-"`{prefix}{command}`を実行して管理ノードを再起動します。"
+#: plmanagednode/cog.py:272
+msgid "Managed node's heap-size set to {bytes}."
+msgstr ""
 
-#: plmanagednode/cog.py:424
+#: plmanagednode/cog.py:283
 #, docstring
 msgid "Change the managed node start up configs"
 msgstr "管理ノードの起動設定を変更する"
 
-#: plmanagednode/cog.py:428
+#: plmanagednode/cog.py:287
 #, docstring
 msgid "Set the managed node host"
 msgstr "管理ノードホストを設定"
 
-#: plmanagednode/cog.py:439
-msgid "Managed node's host set to {host}.\n\n"
-"Run `{prefix}{command}` to restart the managed node"
-msgstr "マネージドノードのホストを {host}に設定しました。\n\n"
-"`{prefix}{command}`を実行して管理ノードを再起動します。"
+#: plmanagednode/cog.py:299
+msgid "Managed node's host set to {host}."
+msgstr ""
 
-#: plmanagednode/cog.py:453
+#: plmanagednode/cog.py:310
 #, docstring
 msgid "`Dangerous command` Set the managed Lavalink node's connection port.\n\n"
 "        This port is the port the managed Lavalink node binds to, you should only change this if there is a\n"
@@ -191,180 +139,180 @@ msgid "`Dangerous command` Set the managed Lavalink node's connection port.\n\n"
 "        "
 msgstr ""
 
-#: plmanagednode/cog.py:463
+#: plmanagednode/cog.py:320
 msgid "The port must be between 1024 and 49151"
 msgstr "ポートは 1024 から 49151 の間でなければなりません"
 
-#: plmanagednode/cog.py:474
-msgid "Managed node's port set to {port}.\n\n"
-"Run `{prefix}{command}` to restart the managed node"
-msgstr "管理されたノードのポートを {port}に設定しました。\n\n"
-"`{prefix}{command}`を実行して管理されたノードを再起動します。"
+#: plmanagednode/cog.py:332
+msgid "Managed node's port set to {port}."
+msgstr ""
 
-#: plmanagednode/cog.py:484
+#: plmanagednode/cog.py:340
 #, docstring
 msgid "Change the managed node plugins"
 msgstr "管理ノードプラグインを変更する"
 
-#: plmanagednode/cog.py:488
+#: plmanagednode/cog.py:346
 #, docstring
 msgid "Disabled one of the available plugins"
 msgstr "利用可能なプラグインを無効にしました"
 
-#: plmanagednode/cog.py:504 plmanagednode/cog.py:619
+#: plmanagednode/cog.py:362 plmanagednode/cog.py:474
 msgid "The plugin must be one of the following: {plugins}"
 msgstr "プラグインは以下のいずれかでなければなりません: {plugins}"
 
-#: plmanagednode/cog.py:589
-msgid "Managed node's plugin {plugin} disabled.\n\n"
-"Run `{prefix}{command}` to restart the managed node"
-msgstr "管理されたノードのプラグイン {plugin} が無効になっています。\n\n"
-"管理 ノードを再起動するには、 `{prefix}{command}を実行してください。"
+#: plmanagednode/cog.py:447
+msgid "Managed node's plugin {plugin} disabled."
+msgstr ""
 
-#: plmanagednode/cog.py:603
+#: plmanagednode/cog.py:458
 #, docstring
 msgid "Enable one of the available plugins"
 msgstr "利用可能なプラグインを有効にする"
 
-#: plmanagednode/cog.py:652
-msgid "Managed node's plugin {plugin} enabled.\n\n"
-"Run `{prefix}{command}` to restart the managed node"
-msgstr "管理されたノードのプラグイン {plugin} が有効になりました。\n\n"
-"管理 ノードを再起動するには、 `{prefix}{command}` を実行してください。"
+#: plmanagednode/cog.py:507
+msgid "Managed node's plugin {plugin} enabled."
+msgstr ""
 
-#: plmanagednode/cog.py:666
+#: plmanagednode/cog.py:518
 #, docstring
 msgid "Update the managed node plugins"
 msgstr "管理されたノードプラグインを更新する"
 
-#: plmanagednode/cog.py:739
+#: plmanagednode/cog.py:592
 msgid "{name} was updated from {old_value} to {new_value}\n"
 msgstr "{name} が {old_value} から {new_value}に更新されました\n"
 
-#: plmanagednode/cog.py:747
+#: plmanagednode/cog.py:600
 msgid "Managed node's plugins updated.\n\n"
-"{updates}\n\n"
-"Run `{prefix}{command}` to restart the managed node"
-msgstr "Managed nodeのプラグインを更新しました。\n\n"
-"{updates}\n\n"
-"Run `{prefix}{command}` を管理ノードを再起動します。"
+"{updates}"
+msgstr ""
 
-#: plmanagednode/cog.py:761
+#: plmanagednode/cog.py:611
 msgid "Managed node's plugins already up to date"
 msgstr "管理されたノードのプラグインは既に最新です"
 
-#: plmanagednode/cog.py:769
+#: plmanagednode/cog.py:619
 #, docstring
 msgid "Toggle the managed node sources"
 msgstr "管理ノードのソースを切り替えます"
 
-#: plmanagednode/cog.py:783
+#: plmanagednode/cog.py:634
 msgid "Invalid source, {valid_list} are valid sources"
 msgstr "無効なソースです。 {valid_list} は有効なソースです"
 
-#: plmanagednode/cog.py:797
+#: plmanagednode/cog.py:648 plmanagednode/cog.py:684
 msgid "enabled"
 msgstr "有効"
 
-#: plmanagednode/cog.py:797
+#: plmanagednode/cog.py:648 plmanagednode/cog.py:684
 msgid "disabled"
 msgstr "無効"
 
-#: plmanagednode/cog.py:800
-msgid "Managed node's {source} source set to {state}.\n\n"
-"Run `{prefix}{command}` to restart the managed node"
-msgstr "マネージドノードの {source} ソースを {state}に設定しました。\n\n"
-"Run `{prefix}{command}` を管理ノードを再起動します。"
+#: plmanagednode/cog.py:651
+msgid "Managed node's {source} source set to {state}."
+msgstr ""
 
-#: plmanagednode/cog.py:815
+#: plmanagednode/cog.py:663
+#, docstring
+msgid "Toggle the managed node filters"
+msgstr ""
+
+#: plmanagednode/cog.py:675
+msgid "Invalid source, {valid_list} are valid filters"
+msgstr ""
+
+#: plmanagednode/cog.py:687
+msgid "Managed node's {source} filter set to {state}."
+msgstr ""
+
+#: plmanagednode/cog.py:699
 #, docstring
 msgid "Configure multiple settings for the managed node.\n\n"
 "        Run `[p]plmanaged config server <setting> info` to show info about the settings and what they do.\n\n"
 "        **Setting names**:\n"
-"        `bufferDurationMs` : Integer i.e 400 (Default 400)\n"
+"        `bufferDurationMs` : Integer i.e 400 (Default 400) - Set to 0 to disable JDA-NAS\n"
 "        `frameBufferDurationMs` : Integer i.e 1000 (Default 1000)\n"
 "        `trackStuckThresholdMs` : Integer i.e 1000 (Default 1000)\n"
 "        `youtubePlaylistLoadLimit` : Integer i.e 1000 (Default 1000)\n"
 "        `opusEncodingQuality` : Integer i.e 10 (Default 10)\n"
 "        `resamplingQuality` : String i.e LOW (Default LOW)\n"
 "        `useSeekGhosting` : Boolean i.e True (Default True)\n"
-"        `playerUpdateInterval` : Integer i.e 1 (Default 1)\n"
+"        `playerUpdateInterval` : Integer i.e 30 (Default 30)\n"
 "        `youtubeSearchEnabled` : Boolean i.e True (Default True)\n"
 "        `soundcloudSearchEnabled` : Boolean i.e True (Default True)\n"
 "        "
 msgstr ""
 
-#: plmanagednode/cog.py:855
+#: plmanagednode/cog.py:739
 msgid "{Setting} is not a valid Setting; Options are:\n\n"
 "{setting_list}"
 msgstr "{Setting} は有効な設定ではありません; オプションは次のとおりです:\n\n"
 "{setting_list}"
 
-#: plmanagednode/cog.py:866
-msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses. Minimum of 40ms, lower values may introduce pauses. Accepted values: Range: 40 - 2,000"
-msgstr "NAS バッファの長さ（ミリ秒）。値が大きいほど、GC の一時停止時間が長くなります。 最低40ミリ秒、低い値は一時停止をもたらす可能性があります。 受け入れられる値: 範囲: 40 - 2,000"
+#: plmanagednode/cog.py:750
+msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses but will increase RAM usage. Minimum of 40ms, lower values may introduce pauses and stutters. Set to 0 to disable JDA-NAS. Accepted values: Range: 0 - 2,000"
+msgstr ""
 
-#: plmanagednode/cog.py:871
-msgid "How many milliseconds of audio to keep buffered. Accepted values: Range: 1,000 - 10,000"
-msgstr "バッファを保持するオーディオのミリ秒数。受け入れられる値: 範囲: 1,000 - 10,000"
+#: plmanagednode/cog.py:756
+msgid "How many milliseconds of audio to keep buffered, Higher values increase RAM usage. Accepted values: Range: 1,000 - 10,000"
+msgstr ""
 
-#: plmanagednode/cog.py:874
+#: plmanagednode/cog.py:760
 msgid "The threshold in milliseconds for how long a track can be stuck. A track is stuck if does not return any audio data. Accepted values: Range: 5,000 - 20,000"
 msgstr "トラックを停止させる時間のしきい値（ミリ秒単位）。 オーディオデータが返されない場合、トラックが停止します。受け入れられる値: 範囲: 5,000 - 20,000"
 
-#: plmanagednode/cog.py:878
+#: plmanagednode/cog.py:764
 msgid "Number of pages to return for a YouTube Playlist - Each page contains 100 songs. Accepted values: Range: 5 - 100"
 msgstr "YouTubeプレイリストに戻るページ数 - 各ページには100曲が含まれています。 受け入れられる値: 範囲: 5 - 100"
 
-#: plmanagednode/cog.py:882
+#: plmanagednode/cog.py:768
 msgid "Opus encoder quality. Valid values range from 0 to 10, where 10 is best quality but is the most expensive on the CPU"
 msgstr "Opus エンコーダの品質。有効な値は 0 から 10 の範囲で、10 は最高の品質ですが、CPU で最も高価です。"
 
-#: plmanagednode/cog.py:886
+#: plmanagednode/cog.py:772
 msgid "Quality of resampling operations. Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU"
 msgstr "リサンプリング操作の品質。有効な値はLOW、MEDIUM、HIGHがほとんどのCPUを使用しています。"
 
-#: plmanagednode/cog.py:890
+#: plmanagednode/cog.py:776
 msgid "Seek ghosting is the effect where whilst a seek is in progress, the audio buffer is read from until empty, or until seek is ready. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "シークゴーストはシークが進行中の間、オーディオバッファは空から読み込まれるか、シークの準備ができるまで読み込まれるエフェクトです。 Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 
-#: plmanagednode/cog.py:895
-msgid "How frequently in seconds to send player updates to clients, affects the current position accuracy. Accepted values: Range: 1 - 10"
-msgstr "クライアントにプレーヤーのアップデートを送信する頻度は、現在のポジション精度に影響します。受け入れられる値: 範囲: 1 - 10"
+#: plmanagednode/cog.py:781
+msgid "How frequently in seconds to send player updates to clients, affects the current position accuracy. Accepted values: Range: 1 - 86400"
+msgstr ""
 
-#: plmanagednode/cog.py:899
+#: plmanagednode/cog.py:785
 msgid "Enable or disable YouTube searches within the node, this will affect AppleMusic, Spotify and any functionality dependant on YouTube. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "ノード内のYouTube検索を有効または無効にすると、AppleMusic、Spotify、YouTubeに依存する機能に影響します。 Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 
-#: plmanagednode/cog.py:904
+#: plmanagednode/cog.py:790
 msgid "Enable or disable SoundCloud searches within the node, this will affect any functionality dependant on SoundCloud. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "ノード内でSoundCloud検索を有効または無効にすると、SoundCloudに依存する機能に影響します。 Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 
-#: plmanagednode/cog.py:913
+#: plmanagednode/cog.py:799
 msgid "{Setting} info.\n\n"
 "{info}"
 msgstr "{Setting} info.\n\n"
 "{info}"
 
-#: plmanagednode/cog.py:941
+#: plmanagednode/cog.py:827
 msgid "{Setting} valid inputs are:\n\n"
 "Range between: {start} - {end}"
 msgstr "{Setting} の有効な入力は次のとおりです:\n\n"
 "範囲: {start} - {end}"
 
-#: plmanagednode/cog.py:952
+#: plmanagednode/cog.py:838
 msgid "{Setting} valid inputs are:\n\n"
 "{setting_list}"
 msgstr "{Setting} の有効な入力は次のとおりです:\n\n"
 "{setting_list}"
 
-#: plmanagednode/cog.py:970
-msgid "{Setting} set to {value}.\n\n"
-"Run `{prefix}{command}` to restart the managed node"
-msgstr "{Setting} を {value}に設定しました。\n\n"
-"実行 `{prefix}{command}` を管理ノードを再起動します。"
+#: plmanagednode/cog.py:857
+msgid "{Setting} set to {value}."
+msgstr ""
 
-#: plmanagednode/cog.py:985
+#: plmanagednode/cog.py:869
 #, docstring
 msgid "Configure Lavalink IP Rotation for ratelimits.\n\n"
 "        Run `[p]plmanaged config iprotation 1` to remove the ip rotation\n"
@@ -373,19 +321,17 @@ msgstr "ラバルリンク IP ローテーションを設定します。\n\n"
 "        `[p]plmanaged config iprotation 1` を実行して、IP ローテーションを削除します。\n"
 "        "
 
-#: plmanagednode/cog.py:996
+#: plmanagednode/cog.py:880
 msgid "Click the button below to configure the IP rotation for your node.\n"
 "More info at: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> and <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
 msgstr "下のボタンをクリックして、ノードの IP ローテーションを設定します。\n"
 "詳細情報: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> と <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
 
-#: plmanagednode/cog.py:1013
-msgid "Removing the IP rotation from your node.\n\n"
-"Run `{prefix}{command}` to restart the managed node"
-msgstr "ノードからIPの回転を削除します。\n\n"
-"`{prefix}{command}`を実行して管理ノードを再起動します。"
+#: plmanagednode/cog.py:898
+msgid "Removing the IP rotation from your node."
+msgstr ""
 
-#: plmanagednode/cog.py:1023
+#: plmanagednode/cog.py:906
 #, docstring
 msgid "Link a Google account to Lavalink to bypass YouTube's age restriction\n\n"
 "        Run `[p]plmanaged config googleaccount 1` to remove the linked account.\n"
@@ -394,19 +340,17 @@ msgstr "GoogleアカウントをLavalinkにリンクしてYouTubeの年齢制限
 "        `[p]plmanaged config googleaccount 1` を実行してリンクされたアカウントを削除します。\n"
 "        "
 
-#: plmanagednode/cog.py:1034
+#: plmanagednode/cog.py:917
 msgid "Click the button below to link a Google account to your node, if you have 2FA setup on this account you will need an app password instead\n"
 "More info at: <https://support.google.com/accounts/answer/185833>"
 msgstr "下のボタンをクリックして、Googleアカウントをあなたのノードにリンクします このアカウントに2FA設定がある場合は、代わりにアプリのパスワードが必要になります。\n"
 "詳細はこちら: <https://support.google.com/accounts/answer/185833>"
 
-#: plmanagednode/cog.py:1051
-msgid "Unlinking Google account from your node.\n\n"
-"Run `{prefix}{command}` to restart the managed node"
-msgstr "ノードからGoogleアカウントのリンクを解除します。\n\n"
-"`{prefix}{command}`を実行して管理ノードを再起動します。"
+#: plmanagednode/cog.py:936
+msgid "Unlinking Google account from your node."
+msgstr ""
 
-#: plmanagednode/cog.py:1061
+#: plmanagednode/cog.py:944
 #, docstring
 msgid "Configure a HTTP proxy for Lavalink\n\n"
 "        Run `[p]plmanaged config httpproxy 1` to remove the proxy.\n"
@@ -415,165 +359,157 @@ msgstr "Lavalink の HTTP プロキシを設定する\n\n"
 "        実行する `[p]plmanaged config httpproxy 1` でプロキシを削除します。\n"
 "        "
 
-#: plmanagednode/cog.py:1072
+#: plmanagednode/cog.py:955
 msgid "Click the button below to configure a HTTP proxy for your node"
 msgstr "ノードの HTTP プロキシを構成するには、下のボタンをクリックします"
 
-#: plmanagednode/cog.py:1085
-msgid "Unlinking HTTP proxy from your node.\n\n"
-"Run `{prefix}{command}` to restart the managed node"
-msgstr "ノードからHTTPプロキシのリンクを解除します。\n\n"
-"`{prefix}{command}` を実行して管理ノードを再起動します。"
+#: plmanagednode/cog.py:969
+msgid "Unlinking HTTP proxy from your node."
+msgstr ""
 
-#: plmanagednode/view.py:37 plmanagednode/view.py:64 plmanagednode/view.py:97
-#: plmanagednode/view.py:176 plmanagednode/view.py:336
-#: plmanagednode/view.py:420
+#: plmanagednode/view.py:38 plmanagednode/view.py:65 plmanagednode/view.py:98
+#: plmanagednode/view.py:179 plmanagednode/view.py:337
+#: plmanagednode/view.py:422
 msgid "You are not authorized to interact with this"
 msgstr "これとやり取りする権限がありません"
 
-#: plmanagednode/view.py:124
+#: plmanagednode/view.py:125
 msgid "IP Rotation Configurator"
 msgstr "IP Rotation Configurator"
 
-#: plmanagednode/view.py:127
+#: plmanagednode/view.py:128
 msgid "IP Blocks"
 msgstr "IP ブロック"
 
-#: plmanagednode/view.py:130
+#: plmanagednode/view.py:132
 msgid "1.0.0.0/8,...,... - Comma separated list of IP blocks"
 msgstr "1.0.0.0/8,...,... - IP ブロックのカンマ区切りリスト"
 
-#: plmanagednode/view.py:134
+#: plmanagednode/view.py:137
 msgid "Rotation strategy"
 msgstr "ローテーション戦略"
 
-#: plmanagednode/view.py:143
+#: plmanagednode/view.py:146
 msgid "Retry limit"
 msgstr "再試行の制限"
 
-#: plmanagednode/view.py:146
+#: plmanagednode/view.py:149
 msgid "-1 = default, 0 = infinity, >0 = number of retries"
 msgstr "-1 = default, 0 = 無限大, 0 = リトライ数"
 
-#: plmanagednode/view.py:151
+#: plmanagednode/view.py:154
 msgid "IPs to exclude"
 msgstr "除外する IP アドレス"
 
-#: plmanagednode/view.py:154
+#: plmanagednode/view.py:157
 msgid "Comma separated list of IP to exclude from rotation"
 msgstr "ローテーションから除外するIPアドレスのカンマ区切りリスト"
 
-#: plmanagednode/view.py:158
+#: plmanagednode/view.py:161
 msgid "Search trigger rotation"
 msgstr "トリガーの回転を検索"
 
-#: plmanagednode/view.py:161
+#: plmanagednode/view.py:164
 msgid "0 or 1 (0 = disabled, 1 = enabled)"
 msgstr "0 または 1 (0 = 無効、1 = 有効)"
 
-#: plmanagednode/view.py:189
+#: plmanagednode/view.py:192
 msgid "Invalid IP block - {error}"
 msgstr "無効な IP ブロック - {error}"
 
-#: plmanagednode/view.py:202
+#: plmanagednode/view.py:205
 msgid "No IP blocks were provided"
 msgstr "IPブロックが指定されていません"
 
-#: plmanagednode/view.py:217
+#: plmanagednode/view.py:220
 msgid "Invalid IP address - {error}"
 msgstr "無効なIPアドレス - {error}"
 
-#: plmanagednode/view.py:236
+#: plmanagednode/view.py:239
 msgid "Invalid strategy, must be one of: {options}"
 msgstr "無効な戦略です。次のいずれかを指定する必要があります： {options}"
 
-#: plmanagednode/view.py:252
+#: plmanagednode/view.py:255
 msgid "Invalid retry limit, must be a number greater than or equals to -1"
 msgstr "無効な再試行制限です。数値は -1 以上である必要があります"
 
-#: plmanagednode/view.py:267
+#: plmanagednode/view.py:270
 msgid "Invalid search trigger, must be 0 or 1"
 msgstr "無効な検索トリガーです。0または1でなければなりません"
 
-#: plmanagednode/view.py:286
-msgid "IP rotation configuration saved.\n\n"
-"Run `{prefix}{command}` to restart the managed node"
-msgstr "IPローテーション設定が保存されました。\n\n"
-"`{prefix}{command}`を実行して管理ノードを再起動します。"
+#: plmanagednode/view.py:289
+msgid "IP rotation configuration saved."
+msgstr ""
 
-#: plmanagednode/view.py:309
+#: plmanagednode/view.py:310
 msgid "Google Account Configurator"
 msgstr "Google アカウントの設定"
 
-#: plmanagednode/view.py:312
+#: plmanagednode/view.py:313
 msgid "Email address"
 msgstr "メールアドレス"
 
-#: plmanagednode/view.py:315
+#: plmanagednode/view.py:316
 msgid "Your Google account email"
 msgstr "Googleアカウントのメールアドレス"
 
-#: plmanagednode/view.py:320
+#: plmanagednode/view.py:321
 msgid "password"
 msgstr "パスワード"
 
-#: plmanagednode/view.py:323
+#: plmanagednode/view.py:324
 msgid "If you have 2FA you will need an app password"
 msgstr "2FAをお持ちの場合は、アプリのパスワードが必要になります。"
 
-#: plmanagednode/view.py:344
+#: plmanagednode/view.py:345
 msgid "Invalid email address"
 msgstr "無効なメールアドレス"
 
-#: plmanagednode/view.py:357
-msgid "Google account linked.\n\n"
-"Run `{prefix}{command}` to restart the managed node"
-msgstr "Googleアカウントがリンクされました。\n\n"
-"`{prefix}{command}`を実行して管理ノードを再起動します。"
+#: plmanagednode/view.py:355
+msgid "Google account linked."
+msgstr ""
 
-#: plmanagednode/view.py:380
+#: plmanagednode/view.py:376
 msgid "HTTP Proxy Configurator"
 msgstr "HTTP プロキシ設定"
 
-#: plmanagednode/view.py:383
+#: plmanagednode/view.py:379
 msgid "Hostname"
 msgstr "Hostname"
 
-#: plmanagednode/view.py:386
+#: plmanagednode/view.py:382
 msgid "Hostname of the proxy, (ip or domain or localhost)"
 msgstr "プロキシのホスト名 (IPまたはドメインまたはローカルホスト)"
 
-#: plmanagednode/view.py:390
+#: plmanagednode/view.py:386
 msgid "Proxy port"
 msgstr "プロキシポート"
 
-#: plmanagednode/view.py:393
+#: plmanagednode/view.py:389
 msgid "Proxy port, 3128 is the default for squidProxy"
 msgstr "proxy port, 3128 は squidProxy のデフォルトです。"
 
-#: plmanagednode/view.py:399
+#: plmanagednode/view.py:395
 msgid "User"
 msgstr "ユーザー"
 
-#: plmanagednode/view.py:402
+#: plmanagednode/view.py:400
 msgid "Optional user for basic authentication fields, leave blank if you don't use basic auth"
 msgstr "基本的な認証フィールドを使用しない場合は空白のままにする"
 
-#: plmanagednode/view.py:405
+#: plmanagednode/view.py:404
 msgid "Password"
 msgstr "パスワード"
 
-#: plmanagednode/view.py:408
+#: plmanagednode/view.py:409
 msgid "Optional password for basic authentication fields, leave blank if you don't use basic auth"
 msgstr "ベーシック認証フィールドのオプションパスワード。ベーシック認証を使用しない場合は空白のままにする"
 
-#: plmanagednode/view.py:431
+#: plmanagednode/view.py:433
 msgid "Invalid port, must be a number between 0 and 65536"
 msgstr "無効なポートです。0 から 65536 の数字である必要があります。"
 
-#: plmanagednode/view.py:448
-msgid "HTTP proxy configuration saved.\n\n"
-"Run `{prefix}{command}` to restart the managed node"
-msgstr "HTTPプロキシ構成が保存されました。\n\n"
-"`{prefix}{command}`を実行して管理ノードを再起動します。"
+#: plmanagednode/view.py:450
+msgid "HTTP proxy configuration saved."
+msgstr ""
 
