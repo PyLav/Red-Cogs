@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
 "POT-Creation-Date: 2022-12-30 22:35+0000\n"
-"PO-Revision-Date: 2022-12-30 22:38\n"
+"PO-Revision-Date: 2022-12-30 23:02\n"
 "Last-Translator: \n"
 "Language-Team: Dutch\n"
 "MIME-Version: 1.0\n"
@@ -63,11 +63,11 @@ msgstr "Zet de beheerde node aan/uit.\n\n"
 
 #: plmanagednode/cog.py:142
 msgid "PyLav's managed node has been enabled."
-msgstr ""
+msgstr "PyLav's beheerde node is ingeschakeld."
 
 #: plmanagednode/cog.py:150
 msgid "PyLav's managed node has been disabled."
-msgstr ""
+msgstr "PyLav's beheerde node is uitgeschakeld."
 
 #: plmanagednode/cog.py:158
 #, docstring
@@ -114,7 +114,7 @@ msgstr "Heap-grootte moet kleiner zijn dan {limit} als gevolg van uw systeem bep
 
 #: plmanagednode/cog.py:272
 msgid "Managed node's heap-size set to {bytes}."
-msgstr ""
+msgstr "Managed nodes 's heap-size ingesteld op {bytes}."
 
 #: plmanagednode/cog.py:283
 #, docstring
@@ -128,7 +128,7 @@ msgstr "Stel de beheerde node host in"
 
 #: plmanagednode/cog.py:299
 msgid "Managed node's host set to {host}."
-msgstr ""
+msgstr "Beheerde node 's host ingesteld op {host}."
 
 #: plmanagednode/cog.py:310
 #, docstring
@@ -149,7 +149,7 @@ msgstr "De poort moet tussen 1024 en 49151 zijn"
 
 #: plmanagednode/cog.py:332
 msgid "Managed node's port set to {port}."
-msgstr ""
+msgstr "Beheerde knooppunt poort ingesteld op {port}."
 
 #: plmanagednode/cog.py:340
 #, docstring
@@ -167,7 +167,7 @@ msgstr "De plug-in moet een van de volgende zijn: {plugins}"
 
 #: plmanagednode/cog.py:447
 msgid "Managed node's plugin {plugin} disabled."
-msgstr ""
+msgstr "Beheerde node's plugin {plugin} uitgeschakeld."
 
 #: plmanagednode/cog.py:458
 #, docstring
@@ -176,7 +176,7 @@ msgstr "Een van de beschikbare plug-ins inschakelen"
 
 #: plmanagednode/cog.py:507
 msgid "Managed node's plugin {plugin} enabled."
-msgstr ""
+msgstr "Beheerde node 's plugin {plugin} ingeschakeld."
 
 #: plmanagednode/cog.py:518
 #, docstring
@@ -190,7 +190,8 @@ msgstr "{name} is bijgewerkt van {old_value} naar {new_value}\n"
 #: plmanagednode/cog.py:600
 msgid "Managed node's plugins updated.\n\n"
 "{updates}"
-msgstr ""
+msgstr "Beheerde node plugins geüpdatet.\n\n"
+"{updates}"
 
 #: plmanagednode/cog.py:611
 msgid "Managed node's plugins already up to date"
@@ -215,20 +216,20 @@ msgstr "uitgeschakeld"
 
 #: plmanagednode/cog.py:651
 msgid "Managed node's {source} source set to {state}."
-msgstr ""
+msgstr "Beheerde node 's {source} bron ingesteld op {state}."
 
 #: plmanagednode/cog.py:663
 #, docstring
 msgid "Toggle the managed node filters"
-msgstr ""
+msgstr "De beheerde node filters in-/uitschakelen"
 
 #: plmanagednode/cog.py:675
 msgid "Invalid source, {valid_list} are valid filters"
-msgstr ""
+msgstr "Ongeldige bron, {valid_list} zijn geldige filters"
 
 #: plmanagednode/cog.py:687
 msgid "Managed node's {source} filter set to {state}."
-msgstr ""
+msgstr "Beheerde node 's {source} filter ingesteld op {state}."
 
 #: plmanagednode/cog.py:699
 #, docstring
@@ -246,7 +247,20 @@ msgid "Configure multiple settings for the managed node.\n\n"
 "        `youtubeSearchEnabled` : Boolean i.e True (Default True)\n"
 "        `soundcloudSearchEnabled` : Boolean i.e True (Default True)\n"
 "        "
-msgstr ""
+msgstr "Configureer meerdere instellingen voor de beheerde node.\n\n"
+"        Voer `[p]plmanaged config server <setting> info` uit om info te tonen over de instellingen en wat ze doen.\n\n"
+"        **Namen instellen**:\n"
+"        `bufferDurationMs`: Integer i. 400 (Standaard 400) - Zet op 0 om JDA-NAS\n"
+"        `frameBufferDurationMs` uit te schakelen: Integer i. 1000 (Standaard 1000)\n"
+"        `trackStuckThresholdMs`: Integer i. 1000 (Standaard 1000)\n"
+"        `youtubePlaylistLoadLimit`: Integer i. 1000 (Standaard 1000)\n"
+"        `opusEncodingQuality`: Integer i. 10 (Standaard 10)\n"
+"        `resamplingQuality`: String i. LOW (standaard LOW)\n"
+"        `useSeekGhosting`: Boolean i. True (Default True)\n"
+"        `playerUpdateInterval` : Integer i. 30 (Standaard 30)\n"
+"        `youtubeSearchEnabled`: Boolean i. True (Default True)\n"
+"        `soundcloudSearchEnabled`: Boolean i. Waar (standaard waar)\n"
+"        "
 
 #: plmanagednode/cog.py:739
 msgid "{Setting} is not a valid Setting; Options are:\n\n"
@@ -256,11 +270,11 @@ msgstr "{Setting} is geen geldige instelling; Opties zijn:\n\n"
 
 #: plmanagednode/cog.py:750
 msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses but will increase RAM usage. Minimum of 40ms, lower values may introduce pauses and stutters. Set to 0 to disable JDA-NAS. Accepted values: Range: 0 - 2,000"
-msgstr ""
+msgstr "De duur van de NAS buffer in milliseconden. Hogere waarden zijn beter tegen langere GC pauze, maar zullen het RAM gebruik verhogen. Minimum van 40ms, lagere waarden kunnen pauzes en stutters introduceren. Zet op 0 om JDA-NAS uit te schakelen. Geaccepteerde waarden: Bereik: 0 - 2.000"
 
 #: plmanagednode/cog.py:756
 msgid "How many milliseconds of audio to keep buffered, Higher values increase RAM usage. Accepted values: Range: 1,000 - 10,000"
-msgstr ""
+msgstr "Hoeveel milliseconden audio om bufferd te houden, Hogere waarden verhogen het RAM gebruik. Geaccepteerde waarden: Bereik: 1.000 - 10.000"
 
 #: plmanagednode/cog.py:760
 msgid "The threshold in milliseconds for how long a track can be stuck. A track is stuck if does not return any audio data. Accepted values: Range: 5,000 - 20,000"
@@ -284,7 +298,7 @@ msgstr "Seek ghosting is het effect waar terwijl een zoekactie wordt uitgevoerd,
 
 #: plmanagednode/cog.py:781
 msgid "How frequently in seconds to send player updates to clients, affects the current position accuracy. Accepted values: Range: 1 - 86400"
-msgstr ""
+msgstr "Hoe vaak in seconden het sturen van speler updates aan klanten, heeft invloed op de huidige nauwkeurigheid van de positie. Geaccepteerde waarden: Bereik: 1 - 86400"
 
 #: plmanagednode/cog.py:785
 msgid "Enable or disable YouTube searches within the node, this will affect AppleMusic, Spotify and any functionality dependant on YouTube. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
@@ -314,7 +328,7 @@ msgstr "{Setting} geldige invoer zijn:\n\n"
 
 #: plmanagednode/cog.py:857
 msgid "{Setting} set to {value}."
-msgstr ""
+msgstr "{Setting} veranderd naar {value}."
 
 #: plmanagednode/cog.py:869
 #, docstring
@@ -333,7 +347,7 @@ msgstr "Klik op de knop hieronder om de IP rotatie voor uw node te configureren.
 
 #: plmanagednode/cog.py:898
 msgid "Removing the IP rotation from your node."
-msgstr ""
+msgstr "Verwijder IP rotatie van uw node."
 
 #: plmanagednode/cog.py:906
 #, docstring
@@ -352,7 +366,7 @@ msgstr "Klik op de knop hieronder om een Google-account aan uw node te koppelen,
 
 #: plmanagednode/cog.py:936
 msgid "Unlinking Google account from your node."
-msgstr ""
+msgstr "Ontkoppelen van Google-account via uw node."
 
 #: plmanagednode/cog.py:944
 #, docstring
@@ -369,7 +383,7 @@ msgstr "Klik op de knop hieronder om een HTTP-proxy voor uw node te configureren
 
 #: plmanagednode/cog.py:969
 msgid "Unlinking HTTP proxy from your node."
-msgstr ""
+msgstr "Ontkoppelen van HTTP-proxy van uw node."
 
 #: plmanagednode/view.py:38 plmanagednode/view.py:65 plmanagednode/view.py:98
 #: plmanagednode/view.py:179 plmanagednode/view.py:337
@@ -443,7 +457,7 @@ msgstr "Ongeldige zoektrigger, moet 0 of 1 zijn"
 
 #: plmanagednode/view.py:289
 msgid "IP rotation configuration saved."
-msgstr ""
+msgstr "IP rotatie configuratie opgeslagen."
 
 #: plmanagednode/view.py:310
 msgid "Google Account Configurator"
@@ -471,7 +485,7 @@ msgstr "Ongeldig e-mailadres"
 
 #: plmanagednode/view.py:355
 msgid "Google account linked."
-msgstr ""
+msgstr "Google-account gekoppeld."
 
 #: plmanagednode/view.py:376
 msgid "HTTP Proxy Configurator"
@@ -515,5 +529,5 @@ msgstr "Ongeldige poort, moet een getal zijn tussen 0 en 65536"
 
 #: plmanagednode/view.py:450
 msgid "HTTP proxy configuration saved."
-msgstr ""
+msgstr "HTTP proxyconfiguratie opgeslagen."
 

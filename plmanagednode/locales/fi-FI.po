@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
 "POT-Creation-Date: 2022-12-30 22:35+0000\n"
-"PO-Revision-Date: 2022-12-30 22:38\n"
+"PO-Revision-Date: 2022-12-30 23:02\n"
 "Last-Translator: \n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
@@ -63,11 +63,11 @@ msgstr "Vaihda hallitun solmun päälle/pois.\n\n"
 
 #: plmanagednode/cog.py:142
 msgid "PyLav's managed node has been enabled."
-msgstr ""
+msgstr "PyLavin hallinnoitu solmu on otettu käyttöön."
 
 #: plmanagednode/cog.py:150
 msgid "PyLav's managed node has been disabled."
-msgstr ""
+msgstr "PyLavin hallinnoitu solmu on poistettu käytöstä."
 
 #: plmanagednode/cog.py:158
 #, docstring
@@ -119,7 +119,7 @@ msgstr "Heap-koon on oltava pienempi kuin {limit} järjestelmäsi rajoitusten vu
 
 #: plmanagednode/cog.py:272
 msgid "Managed node's heap-size set to {bytes}."
-msgstr ""
+msgstr "Hallittu solmun kasa-koko asetettu {bytes}."
 
 #: plmanagednode/cog.py:283
 #, docstring
@@ -133,7 +133,7 @@ msgstr "Aseta hallinnoitu palvelin"
 
 #: plmanagednode/cog.py:299
 msgid "Managed node's host set to {host}."
-msgstr ""
+msgstr "Hallinnoitu solmun isäntä asetettu {host}."
 
 #: plmanagednode/cog.py:310
 #, docstring
@@ -154,7 +154,7 @@ msgstr "Sataman on oltava välillä 1024 ja 49151"
 
 #: plmanagednode/cog.py:332
 msgid "Managed node's port set to {port}."
-msgstr ""
+msgstr "Hallittu solmun portti asetettu {port}."
 
 #: plmanagednode/cog.py:340
 #, docstring
@@ -172,7 +172,7 @@ msgstr "Liitännäisen on oltava yksi seuraavista: {plugins}"
 
 #: plmanagednode/cog.py:447
 msgid "Managed node's plugin {plugin} disabled."
-msgstr ""
+msgstr "Hallittu solmukohdan liitännäinen {plugin} poistettu käytöstä."
 
 #: plmanagednode/cog.py:458
 #, docstring
@@ -181,7 +181,7 @@ msgstr "Ota käyttöön yksi käytettävissä olevista liitännäisistä"
 
 #: plmanagednode/cog.py:507
 msgid "Managed node's plugin {plugin} enabled."
-msgstr ""
+msgstr "Hallittu solmukohdan liitännäinen {plugin} otettu käyttöön."
 
 #: plmanagednode/cog.py:518
 #, docstring
@@ -195,7 +195,8 @@ msgstr "{name} päivitettiin paikasta {old_value} kohteeseen {new_value}\n"
 #: plmanagednode/cog.py:600
 msgid "Managed node's plugins updated.\n\n"
 "{updates}"
-msgstr ""
+msgstr "Ylläpidettyjen solmukohtien liitännäiset päivitetty.\n\n"
+"{updates}"
 
 #: plmanagednode/cog.py:611
 msgid "Managed node's plugins already up to date"
@@ -220,20 +221,20 @@ msgstr "poistettu käytöstä"
 
 #: plmanagednode/cog.py:651
 msgid "Managed node's {source} source set to {state}."
-msgstr ""
+msgstr "Hallittu solmun {source} lähde asetettu {state}."
 
 #: plmanagednode/cog.py:663
 #, docstring
 msgid "Toggle the managed node filters"
-msgstr ""
+msgstr "Vaihda hallittujen solmujen suodattimet"
 
 #: plmanagednode/cog.py:675
 msgid "Invalid source, {valid_list} are valid filters"
-msgstr ""
+msgstr "Virheellinen lähde, {valid_list} ovat kelvollisia suodattimia"
 
 #: plmanagednode/cog.py:687
 msgid "Managed node's {source} filter set to {state}."
-msgstr ""
+msgstr "Hallittu solmun {source} suodatin asetettu {state}."
 
 #: plmanagednode/cog.py:699
 #, docstring
@@ -251,7 +252,20 @@ msgid "Configure multiple settings for the managed node.\n\n"
 "        `youtubeSearchEnabled` : Boolean i.e True (Default True)\n"
 "        `soundcloudSearchEnabled` : Boolean i.e True (Default True)\n"
 "        "
-msgstr ""
+msgstr "Määritä hallitun solmun useita asetuksia.\n\n"
+"        Suorita `[p]plmanaged config-palvelin <setting> info` näyttääksesi tiedot asetuksista ja siitä, mitä he tekevät.\n\n"
+"        **Asetetaan nimiä**:\n"
+"        `bufferDurationMs` : Kokonaisluku i. 400 (oletus 400) - Aseta 0 poistaaksesi JDA-NAS\n"
+"        `frameBufferDurationMs` : Kokonaisluku i. 1000 (Oletus 1000)\n"
+"        `trackStuckThresholdMs` : Kokonaisluku i. 1000 (Oletus 1000)\n"
+"        `youtubePlaylistLoadLimit` : Kokonaisluku i. 1000 (Oletus 1000)\n"
+"        `opusEncodingQuality` : Kokonaisluku i. 10 (oletus 10)\n"
+"        `resamplingQuality` : String i. LOW (Default LOW)\n"
+"        `useSeekGhosting` : Boolean i. True (Default True)\n"
+"        `playerUpdateInterval` : Kokonaisluku i. 30 (oletus 30)\n"
+"        `youtubeSearchEnabled`: Boolean i. True (Default True)\n"
+"        `soundcloudSearchEnabled` : Boolean i. Tosi (oletus totta)\n"
+"        "
 
 #: plmanagednode/cog.py:739
 msgid "{Setting} is not a valid Setting; Options are:\n\n"
@@ -261,11 +275,11 @@ msgstr "{Setting} ei ole kelvollinen Asetus; Valinnat ovat:\n\n"
 
 #: plmanagednode/cog.py:750
 msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses but will increase RAM usage. Minimum of 40ms, lower values may introduce pauses and stutters. Set to 0 to disable JDA-NAS. Accepted values: Range: 0 - 2,000"
-msgstr ""
+msgstr "NAS-puskurin kesto millisekunteina. Korkeammat arvot pärjäävät paremmin pidempiä GC-taukoja vastaan, mutta lisäävät RAM-muistin käyttöä. Vähintään 40ms, pienemmät arvot voivat ottaa käyttöön taukoja ja stutters. Aseta 0 poistaaksesi käytöstä JDA-NAS. Hyväksytyt arvot: alue: 0 - 2000"
 
 #: plmanagednode/cog.py:756
 msgid "How many milliseconds of audio to keep buffered, Higher values increase RAM usage. Accepted values: Range: 1,000 - 10,000"
-msgstr ""
+msgstr "Kuinka monta millisekuntia äänen puskuroitaessa, Korkeammat arvot lisäävät RAM-muistin käyttöä. Hyväksytyt arvot: alue: 1000 - 10,000"
 
 #: plmanagednode/cog.py:760
 msgid "The threshold in milliseconds for how long a track can be stuck. A track is stuck if does not return any audio data. Accepted values: Range: 5,000 - 20,000"
@@ -289,7 +303,7 @@ msgstr "Etsii haamua on se vaikutus, jossa etsintä on käynnissä, äänipuskur
 
 #: plmanagednode/cog.py:781
 msgid "How frequently in seconds to send player updates to clients, affects the current position accuracy. Accepted values: Range: 1 - 86400"
-msgstr ""
+msgstr "Kuinka usein sekunnissa lähettää pelaajapäivityksiä asiakkaille, vaikuttaa nykyiseen sijaintitarkkuuteen. Hyväksytyt arvot: alue: 1 - 86400"
 
 #: plmanagednode/cog.py:785
 msgid "Enable or disable YouTube searches within the node, this will affect AppleMusic, Spotify and any functionality dependant on YouTube. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
@@ -319,7 +333,7 @@ msgstr "{Setting} kelvollista syötettä ovat:\n\n"
 
 #: plmanagednode/cog.py:857
 msgid "{Setting} set to {value}."
-msgstr ""
+msgstr "{Setting} asetettu arvoon {value}."
 
 #: plmanagednode/cog.py:869
 #, docstring
@@ -338,7 +352,7 @@ msgstr "Napsauta alla olevaa painiketta määrittääksesi IP-kierto palvelimell
 
 #: plmanagednode/cog.py:898
 msgid "Removing the IP rotation from your node."
-msgstr ""
+msgstr "Poistetaan IP-kierto solmun kautta."
 
 #: plmanagednode/cog.py:906
 #, docstring
@@ -357,7 +371,7 @@ msgstr "Klikkaa alla olevaa painiketta linkittääksesi Google-tilin solmuasi va
 
 #: plmanagednode/cog.py:936
 msgid "Unlinking Google account from your node."
-msgstr ""
+msgstr "Poistetaan Google-tilin linkitys palvelimeltasi."
 
 #: plmanagednode/cog.py:944
 #, docstring
@@ -374,7 +388,7 @@ msgstr "Napsauta alla olevaa painiketta määrittääksesi HTTP-välityspalvelim
 
 #: plmanagednode/cog.py:969
 msgid "Unlinking HTTP proxy from your node."
-msgstr ""
+msgstr "HTTP-välityspalvelimen linkittäminen pois palvelimelta."
 
 #: plmanagednode/view.py:38 plmanagednode/view.py:65 plmanagednode/view.py:98
 #: plmanagednode/view.py:179 plmanagednode/view.py:337
@@ -448,7 +462,7 @@ msgstr "Virheellinen hakulaukaisin, täytyy olla 0 tai 1"
 
 #: plmanagednode/view.py:289
 msgid "IP rotation configuration saved."
-msgstr ""
+msgstr "IP-kierto asetus tallennettu."
 
 #: plmanagednode/view.py:310
 msgid "Google Account Configurator"
@@ -476,7 +490,7 @@ msgstr "Virheellinen sähköpostiosoite"
 
 #: plmanagednode/view.py:355
 msgid "Google account linked."
-msgstr ""
+msgstr "Google-tili linkitetty."
 
 #: plmanagednode/view.py:376
 msgid "HTTP Proxy Configurator"
@@ -520,5 +534,5 @@ msgstr "Virheellinen portti, on numero väliltä 0 ja 65536"
 
 #: plmanagednode/view.py:450
 msgid "HTTP proxy configuration saved."
-msgstr ""
+msgstr "HTTP-välityspalvelimen asetukset tallennettu."
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
 "POT-Creation-Date: 2022-12-30 22:35+0000\n"
-"PO-Revision-Date: 2022-12-30 22:38\n"
+"PO-Revision-Date: 2022-12-30 23:02\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -166,7 +166,12 @@ msgid "Set whether the bot should disconnect from the voice channel when the que
 "            - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Legen Sie fest, ob der Bot die Verbindung zum Sprachkanal trennen soll, wenn die Warteschlange leer ist.\n\n"
+"        Arguments:\n"
+"            - `<toggle>`: Ob der Bot sich vom Sprachkanal trennen soll, wenn die Warteschlange leer ist.\n"
+"            - `<duration>`: Wie lange nachdem die Warteschlange leer ist, sollte der Spieler getrennt werden. Standard ist 60 Sekunden.\n"
+"            Akzeptiert Sekunde, Minuten, Stunden, Tage, Wochen (falls keine Einheit angegeben ist, die Dauer wird angenommen, dass sie in Sekunden)\n"
+"        "
 
 #: audio/config_commands.py:267 audio/config_commands.py:307
 #: audio/config_commands.py:811 audio/config_commands.py:873
@@ -185,7 +190,12 @@ msgid "Set whether the bot should disconnect from the voice channel when alone.\
 "            - `<duration>`: How longer after detecting should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Legen Sie fest, ob der Bot allein die Verbindung zum Sprachkanal trennen soll.\n\n"
+"        Arguments:\n"
+"            - `<toggle>`: Ob der Bot sich vom Sprachkanal trennen soll, wenn er erkennt, dass er allein ist.\n"
+"            - `<duration>`: Wie lange nach der Erkennung der Spieler getrennt werden soll. Standard ist 60 Sekunden.\n"
+"            Akzeptiert Sekunde, Minuten, Stunden, Tage, Wochen (falls keine Einheit angegeben ist, die Dauer wird angenommen, dass sie in Sekunden)\n"
+"        "
 
 #: audio/config_commands.py:313 audio/config_commands.py:879
 msgid "Disconnect from voice channel when alone set to {empty}{extras}"
@@ -324,7 +334,14 @@ msgid "Set whether the bot should disconnect from the voice channel when the que
 "            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be\n"
 "            given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Legen Sie fest, ob der Bot die Verbindung zum Sprachkanal trennen soll, wenn die Warteschlange leer ist.\n\n"
+"        Arguments:\n"
+"            - `<toggle>`: Ob der Bot sich vom Sprachkanal trennen soll, wenn die Warteschlange leer ist.\n"
+"            - `<duration>`: Wie lange nachdem die Warteschlange leer ist, sollte der Spieler getrennt werden. Standard ist 60\n"
+"            Sekunden.\n"
+"            Akzeptiert Sekunden, Minuten, Stunden, Tage, Wochen (falls keine Einheit angegeben ist, die Dauer wird als\n"
+"            in Sekunden angegeben)\n"
+"        "
 
 #: audio/config_commands.py:789
 msgid "Disconnect when the queue finished is globally enabled and players will be disconnected after {delta}"
@@ -340,11 +357,18 @@ msgid "Set whether the bot should disconnect from the voice channel when alone.\
 "            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be\n"
 "            given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Legen Sie fest, ob der Bot allein die Verbindung zum Sprachkanal trennen soll.\n\n"
+"        Arguments:\n"
+"            - `<toggle>`: Ob der Bot sich vom Sprachkanal trennen soll, wenn er erkennt, dass er allein\n"
+"            ist.\n"
+"            - `<duration>`: Wie lange nach dem Erkennen, dass der Spieler getrennt werden soll. Standard ist 60 Sekunden.\n"
+"            Akzeptiert Sekunden, Minuten, Stunden, Tage, Wochen (falls keine Einheit angegeben ist, die Dauer wird als\n"
+"            in Sekunden angegeben)\n"
+"        "
 
 #: audio/config_commands.py:851
 msgid "Disconnect when alone is globally enabled and players will be disconnected after {delta}"
-msgstr ""
+msgstr "Trenne die Verbindung, wenn allein global aktiviert ist und Spieler werden nach {delta} getrennt"
 
 #: audio/config_commands.py:889
 #, docstring
@@ -473,7 +497,7 @@ msgstr "Ich habe keine Berechtigung zu {channel} zu verbinden"
 
 #: audio/hybrid_commands.py:254
 msgid "You don't have permission to connect to {channel}"
-msgstr ""
+msgstr "Ihnen fehlt die Berechtigung, sich mit {channel} zu verbinden"
 
 #: audio/hybrid_commands.py:271
 msgid "I'm forced to only join {channel}"
@@ -543,7 +567,7 @@ msgstr "Spieler hat bereits pausiert, wolltest du `/resume` ausführen?"
 
 #: audio/hybrid_commands.py:546
 msgid "Player already paused, did you mean to run `{prefix}{command}`"
-msgstr ""
+msgstr "Spieler hat bereits pausiert, meinte du `{prefix}{command} ` auszuführen"
 
 #: audio/hybrid_commands.py:557
 msgid "Player paused"
@@ -551,11 +575,11 @@ msgstr "Spieler pausiert"
 
 #: audio/hybrid_commands.py:579
 msgid "Player already resumed, did you mean to run `/pause`"
-msgstr ""
+msgstr "Spieler wurde bereits fortgesetzt, meinte du `/pause` auszuführen"
 
 #: audio/hybrid_commands.py:581
 msgid "Player already resumed, did you mean to run `{prefix}{command}`"
-msgstr ""
+msgstr "Spieler wurde bereits fortgesetzt, meinte du `{prefix}{command} ` auszuführen"
 
 #: audio/hybrid_commands.py:592
 msgid "Player resumed"
@@ -634,7 +658,7 @@ msgstr "{track} startet jetzt\n"
 #: audio/player_commands.py:121
 #, docstring
 msgid "Enqueue a track at the top of the queue"
-msgstr ""
+msgstr "Einen Track oben an der Warteschlange einreihen"
 
 #: audio/player_commands.py:255
 #, docstring
@@ -670,7 +694,7 @@ msgstr "Suche nach einem Titel und spiele dann die ausgewählte Antwort ab"
 
 #: audio/slash_commands.py:53
 msgid "You haven't selected something to play"
-msgstr ""
+msgstr "Sie haben nichts zum Abspielen ausgewählt"
 
 #: audio/slash_commands.py:105
 msgid "Searching {service}"
@@ -690,5 +714,5 @@ msgstr "Lautstärkelimit erreicht, Spielerlautstärke auf {volume} % gesetzt"
 
 #: audio/utility_commands.py:54
 msgid "Minimum volume reached, player volume set to 0%"
-msgstr ""
+msgstr "Mindestlautstärke erreicht, Player-Lautstärke 0 %"
 

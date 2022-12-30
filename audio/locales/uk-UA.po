@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
 "POT-Creation-Date: 2022-12-30 22:35+0000\n"
-"PO-Revision-Date: 2022-12-30 22:38\n"
+"PO-Revision-Date: 2022-12-30 23:02\n"
 "Last-Translator: \n"
 "Language-Team: Ukrainian\n"
 "MIME-Version: 1.0\n"
@@ -65,7 +65,7 @@ msgstr "Видалено ваш звіт"
 #: audio/config_commands.py:98
 #, docstring
 msgid "Show the version of the Cog and its PyLav dependencies"
-msgstr ""
+msgstr "Показати версію Кога і його залежності PyLav"
 
 #: audio/config_commands.py:114
 msgid "Library/Cog"
@@ -83,7 +83,7 @@ msgstr "Загальні параметри конфігурації"
 #: audio/config_commands.py:133
 #, docstring
 msgid "Set the maximum volume a server can set"
-msgstr ""
+msgstr "Встановлення максимальної гучності, яку може встановити сервер"
 
 #: audio/config_commands.py:141 audio/config_commands.py:578
 #: audio/hybrid_commands.py:613
@@ -129,7 +129,7 @@ msgstr "Вимкнено"
 #: audio/config_commands.py:182 audio/config_commands.py:665
 #, docstring
 msgid "Set whether the bot should shuffle the queue after every new song added"
-msgstr ""
+msgstr "Встановити, чи повинен бот перемішувати чергу після кожної нової пісні"
 
 #: audio/config_commands.py:192 audio/config_commands.py:686
 msgid "Auto-Shuffle set to {shuffle}"
@@ -147,7 +147,7 @@ msgstr "Переміщення встановлено на {shuffle}"
 #: audio/config_commands.py:220 audio/config_commands.py:727
 #, docstring
 msgid "Set whether the bot should automatically play songs when the queue is empty"
-msgstr ""
+msgstr "Встановити, чи повинен бот автоматично відтворювати пісні, коли черга пуста"
 
 #: audio/config_commands.py:229 audio/config_commands.py:753
 msgid "Auto-Play set to {auto}"
@@ -156,7 +156,7 @@ msgstr "Встановлено режим автоматичного відтв�
 #: audio/config_commands.py:237 audio/config_commands.py:761
 #, docstring
 msgid "Set whether the bot should disconnect from the voice channel"
-msgstr ""
+msgstr "Встановити, чи повинен бот відключитися від голосового каналу"
 
 #: audio/config_commands.py:247
 #, docstring
@@ -166,7 +166,12 @@ msgid "Set whether the bot should disconnect from the voice channel when the que
 "            - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Встановити, чи повинен бот відключитися від голосового каналу, коли черга пуста.\n\n"
+"        Аргументи:\n"
+"            - `<toggle>`: Чи повинен бот відключатися від голосового каналу, коли черга пуста.\n"
+"            - `<duration>`: Як довше після завершення черги, якщо гравець буде відключений. За замовчуванням 60 секунд.\n"
+"            Прийняття секунд, годин, днів, тижнями (якщо одиниці не вказано, передбачається, що тривалість задана в секундах)\n"
+"        "
 
 #: audio/config_commands.py:267 audio/config_commands.py:307
 #: audio/config_commands.py:811 audio/config_commands.py:873
@@ -185,7 +190,12 @@ msgid "Set whether the bot should disconnect from the voice channel when alone.\
 "            - `<duration>`: How longer after detecting should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Виберіть, чи повинен бот відключитися від голосового канала поодинці.\n\n"
+"        Аргументи:\n"
+"            - `<toggle>`: Чи повинен бот відключитись від голосового каналу, коли він виявляє, що він один.\n"
+"            - `<duration>`: Як довше після виявлення, гравець повинен роз'єднатись. За замовчуванням 60 секунд.\n"
+"            Прийняття секунд, годин, днів, тижнями (якщо одиниці не вказано, передбачається, що тривалість задана в секундах)\n"
+"        "
 
 #: audio/config_commands.py:313 audio/config_commands.py:879
 msgid "Disconnect from voice channel when alone set to {empty}{extras}"
@@ -199,7 +209,7 @@ msgstr "Налаштування сервера"
 #: audio/config_commands.py:329
 #, docstring
 msgid "Add, remove or show the DJ roles and users for the server"
-msgstr ""
+msgstr "Додати, видалити або показати ролі DJ і користувачів для сервера"
 
 #: audio/config_commands.py:335
 #, docstring
@@ -324,11 +334,18 @@ msgid "Set whether the bot should disconnect from the voice channel when the que
 "            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be\n"
 "            given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Встановити, чи повинен бот відключитися від голосового каналу, коли черга пуста.\n\n"
+"        Аргументи:\n"
+"            - `<toggle>`: Чи повинен бот відключатися від голосового каналу, коли черга пуста.\n"
+"            - `<duration>`: Як довше після завершення черги, якщо гравець буде відключений. За замовчуванням 60 секунд\n"
+"            секунд.\n"
+"            Приймає секунди, хвилини, години, дні, тижні (якщо не вказано жодної одиниці вимірювання, передбачається, що тривалість в секундах\n"
+"            буде дана в секундах)\n"
+"        "
 
 #: audio/config_commands.py:789
 msgid "Disconnect when the queue finished is globally enabled and players will be disconnected after {delta}"
-msgstr ""
+msgstr "Роз'єднатися, коли черга закінчена глобально увімкнена і гравці будуть відключені після {delta}"
 
 #: audio/config_commands.py:832
 #, docstring
@@ -340,11 +357,18 @@ msgid "Set whether the bot should disconnect from the voice channel when alone.\
 "            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be\n"
 "            given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Виберіть, чи повинен бот відключитися від голосового канала поодинці.\n\n"
+"        Аргументи:\n"
+"            - `<toggle>`: Чи повинен бот відключитись від голосового каналу, коли він виявляє, що він є тільки\n"
+"            .\n"
+"            - `<duration>`: Після виявлення гравця буде від'єднано. За замовчуванням 60 секунд.\n"
+"            Приймає секунди, хвилини, години, дні, тижні (якщо не вказано жодної одиниці вимірювання, передбачається, що тривалість в секундах\n"
+"            буде дана в секундах)\n"
+"        "
 
 #: audio/config_commands.py:851
 msgid "Disconnect when alone is globally enabled and players will be disconnected after {delta}"
-msgstr ""
+msgstr "Роз'єднатися, коли тільки один увімкнений глобально і гравці будуть відключені після {delta}"
 
 #: audio/config_commands.py:889
 #, docstring
@@ -425,7 +449,7 @@ msgstr "Я не зміг знайти підтримувану діяльніс�
 
 #: audio/context_menus.py:218
 msgid "Couldn't map {user}'s Apple Music track to a valid query"
-msgstr ""
+msgstr "Не вдалося відобразити трек Apple Music до правильного запиту від {user}"
 
 #: audio/context_menus.py:234
 msgid "Couldn't find any tracks matching {query}"
@@ -473,7 +497,7 @@ msgstr "Я не маю дозволу на підключення до {channel}
 
 #: audio/hybrid_commands.py:254
 msgid "You don't have permission to connect to {channel}"
-msgstr ""
+msgstr "У вас недостатньо прав для підключення до {channel}"
 
 #: audio/hybrid_commands.py:271
 msgid "I'm forced to only join {channel}"
@@ -539,11 +563,11 @@ msgstr "поточний трек"
 
 #: audio/hybrid_commands.py:544
 msgid "Player already paused, did you mean to run `/resume`"
-msgstr ""
+msgstr "Гравець вже призупинений, ви мали на увазі запустити `/resume`"
 
 #: audio/hybrid_commands.py:546
 msgid "Player already paused, did you mean to run `{prefix}{command}`"
-msgstr ""
+msgstr "Гравець вже призупинений, ви мали на увазі запустити `{prefix}{command}`"
 
 #: audio/hybrid_commands.py:557
 msgid "Player paused"
@@ -551,11 +575,11 @@ msgstr "Програвач призупинено"
 
 #: audio/hybrid_commands.py:579
 msgid "Player already resumed, did you mean to run `/pause`"
-msgstr ""
+msgstr "Гравець вже відновився, ви мали на увазі запустити `/pause`"
 
 #: audio/hybrid_commands.py:581
 msgid "Player already resumed, did you mean to run `{prefix}{command}`"
-msgstr ""
+msgstr "Гравець вже був відновлений, ви мали на увазі запустити{prefix}{command}`"
 
 #: audio/hybrid_commands.py:592
 msgid "Player resumed"
@@ -634,7 +658,7 @@ msgstr "{track} запуститься зараз\n"
 #: audio/player_commands.py:121
 #, docstring
 msgid "Enqueue a track at the top of the queue"
-msgstr ""
+msgstr "Додати трек в чергу"
 
 #: audio/player_commands.py:255
 #, docstring
@@ -670,7 +694,7 @@ msgstr "Пошук треку потім програти вибрану від�
 
 #: audio/slash_commands.py:53
 msgid "You haven't selected something to play"
-msgstr ""
+msgstr "Ви не вибрали нічого для гри"
 
 #: audio/slash_commands.py:105
 msgid "Searching {service}"
@@ -690,5 +714,5 @@ msgstr "Межа гучності досягнута, гучність грав�
 
 #: audio/utility_commands.py:54
 msgid "Minimum volume reached, player volume set to 0%"
-msgstr ""
+msgstr "Мінімальна гучності досягнута, гучність гравця складає 0%"
 
