@@ -37,7 +37,7 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
 
     lavalink: Client
 
-    __version__ = "1.0.0.0rc1"
+    __version__ = "1.0.0"
 
     def __init__(self, bot: DISCORD_BOT_TYPE, *args: typing.Any, **kwargs: typing.Any) -> None:
         super().__init__(*args, **kwargs)

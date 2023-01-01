@@ -179,7 +179,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
     @command_playerset_global.command(name="autoshuffle")
     async def command_playerset_global_autoshuffle(self, context: PyLavContext, toggle: bool) -> None:
-        """Set whether the bot should shuffle the queue after every new song added"""
+        """Set whether the a server is allowed to enabled auto shuffle"""
 
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -460,7 +460,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
     @command_playerset_server_dj.command(name="list")
     async def command_playerset_server_dj_list(self, context: PyLavContext) -> None:
-        """List the DJ roles for the server"""
+        """List the DJ roles and users for the server"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():

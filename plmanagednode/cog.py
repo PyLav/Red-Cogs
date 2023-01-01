@@ -33,7 +33,7 @@ _ = Translator("PyLavManagedNode", Path(__file__))
 class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
     """Configure the managed Lavalink node used by PyLav"""
 
-    __version__ = "1.0.0.0rc1"
+    __version__ = "1.0.0"
     lavalink: Client
 
     def __init__(self, bot: DISCORD_BOT_TYPE, *args, **kwargs):

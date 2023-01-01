@@ -1,0 +1,178 @@
+# PyLavPlayer
+
+## Text Commands
+### Configuration
+- `[p]playerset`
+  -  Player configuration commands
+- `[p]playerset version`
+  - Show the version of the Cog and its PyLav dependencies
+- `[p]playerset down` | 10 minute cooldown
+  - Notifies PyLav that a Player is having issues.
+  - If enough (50%+ of currently playing players) report issues, PyLav will automatically switch to a different node or restart the current node where possible.
+- `[p]playerset up`
+  - Removes a vote for a Player being down.
+  - This command is only useful if you previously voted for a node to be down and it is now back up.
+- `[p]playerset global` | Bot-Owner only commands
+  - Global configuration options
+- `[p]playerset global vol` | `[p]playerset global volume`
+  -  Set the maximum volume a server can set for a Player.
+- `[p]playerset global deafen` | `[p]playerset global deaf`
+  - Set whether the bot should deafen itself when connected to a voice channel.
+  - If this is enabled, server owners will be able to change this behaviour within their own servers.
+- `[p]playerset global autoshuffle`
+  - Set whether the a server is allowed to enabled auto shuffle.
+- `[p]playerset global shuffle`
+  - Set whether the a server is allowed to shuffle the queue.
+- `[p]playerset global auto`
+  - Set whether the a server is allowed to enable auto play.
+- `[p]playerset global dc`
+  - Set whether the a server is allowed to enable auto disconnect.
+- `[p]playerset global dc empty <toggle> [after]`
+  - Set whether the bot should disconnect from a voice channel when the queue is empty, if this is set to false server owners will be able to change this behaviour within their own servers.
+  -  Toggle should be one of `1`/`true` or `0`/`false`
+  - `after` is the number of seconds to wait before disconnecting.
+    - Defaults to 60 seconds.
+- `[p]playerset global dc alone`
+  - Set whether the bot should disconnect from a voice channel when the last person leaves the voice channel, if this is set to false server owners will be able to change this behaviour within their own servers.
+  -  Toggle should be one of `1`/`true` or `0`/`false`
+  - `after` is the number of seconds to wait before disconnecting.
+    - Defaults to 60 seconds.
+- `[p]playerset server` | Server only commands | Manage Server permission required or Server Owner
+  -  Server configuration options
+- `[p]playerset server dj`
+  - Add, remove or show the DJ roles and users for the server
+- `[p]playerset server dj add <roles_or_users, ...>`
+  - Add DJ roles or users to this server
+  - Multiple users or roles can be provided in a single command.
+- `[p]playerset server dj remove <roles_or_users, ...>`
+  - Remove DJ roles or users from this server
+  - Multiple users or roles can be provided in a single command.
+- `[p]playerset server dj list`
+  - List the DJ roles and users for the server
+- `[p]playerset server dj clear`
+  - Clear the DJ roles and users for the server
+- `[p]playerset server vol` | `[p]playerset server volume`
+  - Set the maximum volume a user can set for a Player.
+  - This cannot be higher than the global volume set by the bot owner.
+  - If the bot owner sets a new  global volume that is lower than the current server volume, the server volume will respect the new global volume.
+- `[p]playerset server deafen` | `[p]playerset server deaf`
+  - Set whether the bot should deafen itself when playing
+  - Servers can only configure this if has disabled deafening globally.
+- `[p]playerset server autoshuffle`
+  - Set whether the server is allowed to enabled auto shuffle.
+  - Servers can only configure this if has enabled auto shuffle globally.
+- `[p]playerset server shuffle`
+  - Set whether the server is allowed to shuffle the queue.
+  - Servers can only configure this if has enabled shuffle globally.
+- `[p]playerset server auto`
+  - Set whether the server is allowed to enable auto play.
+  - Servers can only configure this if has enabled auto play globally.
+- `[p]playerset server dc`
+  - Set whether the server is allowed to enable auto disconnect.
+- `[p]playerset server dc empty <toggle> [after]`
+  - Set whether the bot should disconnect from a voice channel when the queue is empty.
+  - Servers can only configure this if has disabled auto disconnect globally.
+  - Toggle should be one of `1`/`true` or `0`/`false`
+  - `after` is the number of seconds to wait before disconnecting.
+    - Defaults to 60 seconds.
+- `[p]playerset server dc alone <toggle> [after]`
+  - Set whether the bot should disconnect from a voice channel when the last person leaves the voice channel.
+  - Servers can only configure this if has disabled auto disconnect globally.
+  - Toggle should be one of `1`/`true` or `0`/`false`
+  - `after` is the number of seconds to wait before disconnecting.
+    - Defaults to 60 seconds.
+- `[p]playerset server playlist <playlist>`
+  - Set the auto play playlist for the server.
+  - `<playlist>` can a partial or full playlist name or a playlist id.
+- `[p]playerset server lock`
+  - Set the channel locks
+- `[p]playerset server lock commands [channel]`
+  - Set the channel locks for PyLav commands
+  - If no channel is provided, the lock will be removed.
+- `[p]playerset server lock voice [channel]` | `[p]playerset server lock vc [channel]`
+  - Set the channel lock for voice channels
+  - If no channel is provided, the lock will be removed.
+### Player commands
+- `[p]bump <queue_number> [after_current]`
+  -  Plays the specified track in the queue.
+  - `<queue_number>` is the number of the track in the queue.
+  - `[after_current]` must be one of `1`/`true` or `0`/`false`, defaults to `false`
+  -  If you specify the `after_current` argument, the track will be played after the current track, otherwise it will replace the current track
+- `[p]playnext <query>`
+  -  Plays the specified track next in the queue.
+  - Equivalent to running `[p]play <query>` followed by `[p]bump <query index>`
+  - `<query>` is the query to search for.
+- `[p]remove <track_url_or_index> [remove_duplicates]`
+  -  Plays the specified track in the queue.
+  - `<track_url_or_index>` is the url or index of the track to remove.
+  - `[remove_duplicates]` must be one of `1`/`true` or `0`/`false`, defaults to `false`
+
+## Hybrid commands (Text or Slash)
+- `[p]play <query>` or `/play <query>`
+  - Attempt to play the queries which you provide.
+  - `<query>` is the query to search for.
+  -  Separate multiple queries with a new line (`shift + enter`).
+  - If you want to play a local track, you can do so by specifying the full path or path relatively to the local tracks' folder.
+    - For example if my local tracks folder is: `/home/draper/music`
+    - I can play a single track with `track.mp3` or `/home/draper/music/track.mp3`
+    - I can play everything inside a folder with `sub-folder/folder`
+    - I can play everything inside a folder and its sub-folders with the `all:` prefix i.e. `all:sub-folder/folder`
+  - You can search specify services by using the following prefixes (dependent on service availability):
+    - `dzsearch:`  - Deezer
+    - `spsearch:`  - Spotify
+    - `amsearch:`  - Apple Music
+    - `ytmsearch:` - YouTube Music
+    - `ytsearch:`  - YouTube
+    - `scsearch:`  - SoundCloud
+    - `ymsearch:`  - Yandex Music
+  - You can trigger text-to-speech by using the following prefixes (dependent on service availability):
+    - `speak:` - The bot will speak the query  (limited to 200 characters)
+    - `tts://` - The bot will speak the query-
+- `[p]connect [channel]` | `/connect [channel]`
+  - Connect to a voice channel
+  - `[channel]` is the voice channel to connect to.
+  - If no channel is provided, the bot will connect to the channel you are in.
+- `[p]np` | `/np`
+  - Shows the currently playing track.
+- `[p]skip` | `/skip`
+  - Skip the current track.
+- `[p]stop` | `/stop`
+  - Stop the player and clear the queue.
+- `[p]dc` `[p]disconnect`| `/dc`
+  - Disconnect from the voice channel, saving the current player state
+- `[p]queue` | `[p]q` | `/queue``
+  - Shows the current queue.
+- `[p]shuffle` | `/shuffle`
+  - Shuffle the current queue.
+- `[p]repeat` | `/repeat`
+  - Toggle repeat mode between off, repeat current, and repeat queue
+- `[p]pause` | `/pause`
+  - Pause the current track.
+- `[p]resume` | `/resume`
+  - Resume the current track.
+- `[p]volume` | `/volume`
+  - Set the volume of the player.
+  - `<volume>` is the volume to set the player to.
+- `[p]seek` | `/seek`
+  - Seek to a position in the current track.
+  - `<position>` can be a positive number of seconds to seek forward, or a negative number of seconds to seek backwards.
+  - `<position>` can be a timestamp in the format `mm:ss` or `hh:mm:ss` to seek to a specific position.
+- `[p]prev` | `/prev`
+  - Play the previous track.
+
+## Slash Commands
+### Player commands
+- `/search <query> [source]`
+  - Search for a track and add it to the queue.
+  - `<query>` is the query to search for.
+  - `[source]` is the source to search from.
+    - Defaults to `Deezer`
+    - Can be one of `Deezer`, `YouTube Music`, `Spotify`, `Apple Music`, `SoundCloud`, `YouTube`, `Yandex Music`
+
+## Context Menu Commands (Right click on user or message)
+### Right click on user
+- Apps > Play from Spotify/Apple Music
+  - Play a song from Spotify or Apple Music based on the user's activity.
+### Right click on message
+- Apps > Play from message
+  - Parse a message and play all valid tracks from it.
