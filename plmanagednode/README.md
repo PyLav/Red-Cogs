@@ -1,0 +1,100 @@
+# PyLavManagedNode
+
+## Text Commands
+- `[p]plmanaged` | Bot owner only
+- `[p]plmanaged version`
+  - Show the version of the Cog and it's PyLav dependencies
+- `[p]plmanaged update [update]`
+  - Update the managed Lavalink node
+  - `[update]` can be `1` to confirm the managed node update if there is one available.
+- `[p]plmanaged toggle`
+  - Toggle the managed node on/off.
+- `[p]plmanaged updates`
+  - Toggle the managed node auto updates on/off.
+- `[p]plmanaged heapsize <size>` | `[p]plmanaged hs <size>` |  `[p]plmanaged ram <size>`  | `[p]plmanaged memory <size>`
+  - Set the managed Lavalink node maximum heap-size.
+  - By default, this value is 2G of available RAM in the host machine represented by (65-1023M|1+G) (256M, 256G for example)
+  - This value only represents the maximum amount of RAM allowed to be used at any given point, and does not mean that the managed Lavalink node will always use this amount of RAM.
+- `[p]plmanaged config`
+  - Change the managed node start up configs
+- `[p]plmanaged config host`
+  - Set the managed node host
+- `[p]plmanaged config port`
+  - Set the managed Lavalink node's connection port.
+  - The value by default is `2154`.
+  - This port is the port the managed Lavalink node binds to, you should only change this if there is a conflict with the default port because you already have an application using port 2154 on this device.
+- `[p]plmanaged config plugins`
+  - Change the managed node plugins
+- `[p]plmanaged config plugins disable <plugin>`
+  - Disabled one of the available plugins
+- `[p]plmanaged config plugins enable`
+  -  Enable one of the available plugins
+- `[p]plmanaged config plugins update`
+  - Update the managed node plugins
+- `[p]plmanaged config source <source> <state>`
+  - Toggle the managed node sources
+  - `<state>` can be one of `1`/`true` or `0`/`false`
+  - `<source>` can be one:
+    - `bandcamp`
+    - `http`
+    - `local`
+    - `soundcloud`
+    - `twitch`
+    - `vimeo`
+    - `youtube`
+    - `clypit`
+    - `getyarn`
+    - `mixcloud`
+    - `ocremix`
+    - `pornhub`
+    - `reddit`
+    - `soundgasm`
+    - `tiktok`
+    - `tts`
+    - `applemusic`
+    - `deezer`
+    - `spotify`
+    - `yandexmusic`
+  - Disabling a source my have unexpected results, and is not recommended, if in doubt join the discord server and ask for help/clarification.
+- `[p]plmanaged config filter <name> <state>`
+  - Toggle the managed node filters
+  - `<state>` can be one of `1`/`true` or `0`/`false`
+  - `<name>` can be one of:
+    - `channelMix`
+    - `distortion`
+    - `equalizer`
+    - `karaoke`
+    - `lowPass`
+    - `rotation`
+    - `timescale`
+    - `tremolo`
+    - `vibrato`
+    - `volume`
+    - `echo`
+- `[p]plmanaged config server <setting> <value>`
+  - Configure multiple settings for the managed node.
+  - Run `[p]plmanaged config server <setting> info` to show info about the settings and what they do.
+  - `<setting>` can be one of:
+    - `bufferDurationMs` -  (Default 400) - Set to 0 to disable JDA-NAS
+    - `frameBufferDurationMs` (Default 1000)
+    - `trackStuckThresholdMs` (Default 1000)
+    - `youtubePlaylistLoadLimit` (Default 1000)
+    - `opusEncodingQuality` (Default 10)
+    - `resamplingQuality` (Default HIGH)
+    - `useSeekGhosting` (Default True)
+    - `playerUpdateInterval` (Default 30)
+    - `youtubeSearchEnabled` (Default True)
+    - `soundcloudSearchEnabled` (Default True)
+
+- `[p]plmanaged config iprotation` | `[p]plmanaged config ir`
+  - Configure Lavalink IP Rotation for rate limits.
+  - Run `[p]plmanaged config iprotation 1` to remove the ip rotation
+  - You will be prompted by an interactive menu.
+- `[p]plmanaged config googleaccount` | `[p]plmanaged config ga`
+  - Link a Google account to Lavalink to bypass YouTube's age restriction
+  - Run `[p]plmanaged config googleaccount 1` to remove the linked account.
+  - You will be prompted by an interactive menu.
+- `[p]plmanaged config httpproxy`  | `[p]plmanaged config hp`
+  - Configure a HTTP proxy for Lavalink
+  - Run `[p]plmanaged config httpproxy 1` to remove the proxy.
+  - You will be prompted by an interactive menu.

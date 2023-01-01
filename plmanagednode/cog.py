@@ -126,7 +126,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
     async def command_plmanaged_toggle(self, context: PyLavContext) -> None:
         """Toggle the managed node on/off.
 
-        Changes will be applied after restarting the bot.
+        Changes will be applied after restarting [botname].
         """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -157,7 +157,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
     async def ccommand_plmanaged_updates(self, context: PyLavContext) -> None:
         """Toggle the managed node auto updates on/off.
 
-        Changes will be applied after restarting the bot.
+        Changes will be applied after restarting [botname].
         """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -706,7 +706,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         `trackStuckThresholdMs` : Integer i.e 1000 (Default 1000)
         `youtubePlaylistLoadLimit` : Integer i.e 1000 (Default 1000)
         `opusEncodingQuality` : Integer i.e 10 (Default 10)
-        `resamplingQuality` : String i.e LOW (Default LOW)
+        `resamplingQuality` : String i.e LOW (Default HIGH)
         `useSeekGhosting` : Boolean i.e True (Default True)
         `playerUpdateInterval` : Integer i.e 30 (Default 30)
         `youtubeSearchEnabled` : Boolean i.e True (Default True)
@@ -866,7 +866,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
 
     @command_plmanaged_config.command(name="iprotation", aliases=["ir"])
     async def command_plmanaged_config_iprotation(self, context: PyLavContext, *, reset: bool = False):
-        """Configure Lavalink IP Rotation for ratelimits.
+        """Configure Lavalink IP Rotation for rate limits.
 
         Run `[p]plmanaged config iprotation 1` to remove the ip rotation
         """
