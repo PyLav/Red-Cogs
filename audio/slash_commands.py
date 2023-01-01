@@ -136,7 +136,7 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN):
         choices = []
         node = await interaction.client.pylav.get_my_node()
         if node is None:
-            node = interaction.client.pylav.node_manager.find_best_node(feature=feature)
+            node = await interaction.client.pylav.node_manager.find_best_node(feature=feature)
 
         for track in tracks:
             track = await Track.build_track(node=node, data=track, query=None, requester=interaction.user.id)
