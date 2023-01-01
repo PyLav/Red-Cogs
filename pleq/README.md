@@ -8,8 +8,6 @@
 - `[p]eqset list persist`
   - Persist the last used preset
 
-## Hybrid commands (Text or Slash)
-
 ## Slash Commands
 - `/eq`
   - Apply an Equalizer preset to the player
