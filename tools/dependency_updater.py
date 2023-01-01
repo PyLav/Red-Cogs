@@ -2,12 +2,13 @@ from __future__ import annotations
 
 import json
 import pathlib
+import sys
 
 import pkg_resources
 import requests
 from packaging.version import parse
 
-__PYLAV_VERSION__ = "1.0.0"
+__PYLAV_VERSION__ = sys.argv[1] or sys.argv[2]
 
 pylav_current_minor_version = parse(__PYLAV_VERSION__)
 

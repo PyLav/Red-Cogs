@@ -1,9 +1,12 @@
 name: Update dependency version for translation
 on:
-    schedule:
-    -   cron: '*/5 * * * *'
     workflow_dispatch:
-
+        inputs:
+            version:
+                required: true
+                type: string
+    repository_dispatch:
+        types: [on-release]
 
 jobs:
     update:
@@ -23,8 +26,11 @@ jobs:
                 update-wheel: 'true'
                 path: tools/requirements.txt
         -   name: Make changes
+            env:
+                VERSION_DISPATCH: ${{ github.event.client_payload.version }}
+                VERSION_INPUT: ${{ inputs.version }}
             run: |
-                python3.11 ./tools/dependency_updater.py
+                python3.11 ./tools/dependency_updater.py "$VERSION_DISPATCH"  "$VERSION_INPUT"
         -   name: Verify Changed files
             uses: tj-actions/verify-changed-files@v12.0
             id: verify-changed-files
