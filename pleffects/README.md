@@ -1,0 +1,135 @@
+# PyLavEffects
+
+## Text Commands
+- `[p]fxset`
+  - Configure the Player behaviour when an effect is set
+- `[p]fxset version`
+  - Show the version of the Cog and its PyLav dependencies
+## Slash Commands
+- `/fx`
+  - Apply or remove filters
+- `/fx nightcore`
+  -  Apply a Nightcore preset to the player
+- `/fx vaporwave`
+  -  Apply a Vaporwave preset to the player
+- `/fx vibrato [frequency] [depth] [reset]`
+  -  Apply a Vibrato filter to the player
+  -  `[frequency]` - The frequency of the vibrato effect
+    - Can be a number between `0.01` and `14.0`
+    - If not provided it will use the currently set value or not set.
+  - `[depth]` - The depth of the vibrato effect
+    - Can be a number between `0.01` and `1.0`
+    - If not provided it will use the currently set value or not set.
+  - `[reset]` - Whether to reset other filters currently applied.
+    - Can be `true` or `false`
+- `/fx tremolo [frequency] [depth] [reset]`
+  -  Apply a Tremolo filter to the player
+  -  `[frequency]` - The frequency of the tremolo effect
+    - Can be a number greater than `0.01`
+    - If not provided it will use the currently set value or not set.
+  - `[depth]` - The depth of the tremolo effect
+    - Can be a number between `0.01` and `1.0`
+    - If not provided it will use the currently set value or not set.
+  - `[reset]` - Whether to reset other filters currently applied.
+    - Can be `true` or `false`
+- `/fx timescale [speed] [pitch] [rate] [reset]`
+  - Apply a Timescale filter to the player
+  - `[speed]` - The speed of the timescale effect
+    - Can be a number greater than `0`
+    - If not provided it will use the currently set value or not set.
+  - `[pitch]` - The pitch of the timescale effect
+    - Can be a number greater than `0`
+    - If not provided it will use the currently set value or not set.
+  - `[rate]` - The rate of the timescale effect
+    - Can be a number greater than `0`
+    - If not provided it will use the currently set value or not set.
+  - `[reset]` - Whether to reset other filters currently applied.
+    - Can be `true` or `false`
+- `/fx karaoke [level] [mono_level] [filter_band] [filter_width] [reset]`
+  - Apply a Karaoke filter to the player
+  - `[level]` - The level of the karaoke effect
+    - Can be a number greater than `0`
+    - If not provided it will use the currently set value or not set.
+  - `[mono_level]` - The mono level of the karaoke effect
+    - Can be a number greater than `0`
+    - If not provided it will use the currently set value or not set.
+  - `[filter_band]` - The filter band of the karaoke effect
+    - Can be a number greater than `0`
+    - If not provided it will use the currently set value or not set.
+  - `[filter_width]` - The filter width of the karaoke effect
+    - Can be a number greater than `0`
+    - If not provided it will use the currently set value or not set.
+  - `[reset]` - Whether to reset other filters currently applied.
+    - Can be `true` or `false`
+- `/fx rotation [hertz] [reset]`
+  - Apply a Rotation filter to the player
+  - `[hertz]` - The rotation hertz frequency of the effect
+    - Can be a number greater than `0`
+    - If not provided it will use the currently set value or not set.
+  - `[reset]` - Whether to reset other filters currently applied.
+    - Can be `true` or `false`
+- `/fx lowpass [smoothing] [reset]`
+  - Apply a Lowpass filter to the player
+  - `[smoothing]` - The smoothing of the lowpass effect
+    - Can be a number greater than `0`
+    - If not provided it will use the currently set value or not set.
+  - `[reset]` - Whether to reset other filters currently applied.
+    - Can be `true` or `false`
+- `/fx channelmix [left_to_left] [left_to_right] [right_to_left] [right_to_right] [reset]`
+  - Apply a ChannelMix filter to the player
+  - `[left_to_left]` - The left to left channelmix effect weight
+    - Can be a number greater than `0`
+    - If not provided it will use the currently set value or not set.
+  - `[left_to_right]` - The left to right channelmix effect weight
+    - Can be a number greater than `0`
+    - If not provided it will use the currently set value or not set.
+  - `[right_to_left]` - The right to left channelmix effect weight
+    - Can be a number greater than `0`
+    - If not provided it will use the currently set value or not set.
+  - `[right_to_right]` - The right to right channelmix effect weight
+    - Can be a number greater than `0`
+    - If not provided it will use the currently set value or not set.
+  - `[reset]` - Whether to reset other filters currently applied.
+    - Can be `true` or `false`
+- `/fx distortion [sin_offset] [sin_scale] [cos_offset] [cos_scale] [tan_offset] [tan_scale] [offset] [scale] [reset]`
+  - Apply a Distortion filter to the player
+  - `[sin_offset]` - The sin offset of the distortion effect
+    - Can be a number greater than `0`
+    - If not provided it will use the currently set value or not set.
+  - `[sin_scale]` - The sin scale of the distortion effect
+    - Can be a number greater than `0`
+    - If not provided it will use the currently set value or not set.
+  - `[cos_offset]` - The cos offset of the distortion effect
+    - Can be a number greater than `0`
+    - If not provided it will use the currently set value or not set.
+  - `[cos_scale]` - The cos scale of the distortion effect
+    - Can be a number greater than `0`
+    - If not provided it will use the currently set value or not set.
+  - `[tan_offset]` - The tan offset of the distortion effect
+    - Can be a number greater than `0`
+    - If not provided it will use the currently set value or not set.
+  - `[tan_scale]` - The tan scale of the distortion effect
+    - Can be a number greater than `0`
+    - If not provided it will use the currently set value or not set.
+  - `[offset]` - The offset of the distortion effect
+    - Can be a number greater than `0`
+    - If not provided it will use the currently set value or not set.
+  - `[scale]` - The scale of the distortion effect
+    - Can be a number greater than `0`
+    - If not provided it will use the currently set value or not set.
+  - `[reset]` - Whether to reset other filters currently applied.
+    - Can be `true` or `false`
+- `/fx echo [delay] [decay] [reset]`
+  - Apply an Echo filter to the player
+  - `[delay]` - The delay of the echo effect
+    - Can be a number greater than `0`
+    - If not provided it will use the currently set value or not set.
+  - `[decay]` - The decay of the echo effect
+    - Can be a number between `0` and `1.0`
+    - If not provided it will use the currently set value or not set.
+  - `[reset]` - Whether to reset other filters currently applied.
+    - Can be `true` or `false`
+- `/fx show`
+  - Show the current filters applied to the player
+- `/fx reset`
+  - Reset any existing filters currently applied to the player

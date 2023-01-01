@@ -33,7 +33,7 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
 
     __version__ = "1.0.0"
 
-    slash_fx = app_commands.Group(name="fx", description="Apply or remove bundled filters")
+    slash_fx = app_commands.Group(name="fx", description="Apply or remove filters")
 
     def __init__(self, bot: DISCORD_BOT_TYPE, *args, **kwargs):
         super().__init__(*args, **kwargs)
