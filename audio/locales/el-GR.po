@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2022-12-30 22:35+0000\n"
-"PO-Revision-Date: 2022-12-30 23:02\n"
+"POT-Creation-Date: 2023-01-01 21:53+0000\n"
+"PO-Revision-Date: 2023-01-01 21:53\n"
 "Last-Translator: \n"
 "Language-Team: Greek\n"
 "MIME-Version: 1.0\n"
@@ -101,8 +101,8 @@ msgstr "Ο μέγιστος όγκος ρυθμίστηκε σε {volume}%"
 
 #: audio/config_commands.py:165 audio/config_commands.py:631
 #, docstring
-msgid "Set whether the bot should deafen itself when playing"
-msgstr "Ορίστε αν το bot πρέπει να κωφεύει όταν παίζει"
+msgid "Set whether [botname] should deafen itself when playing"
+msgstr ""
 
 #: audio/config_commands.py:174 audio/config_commands.py:657
 msgid "Deafen set to {deafen}"
@@ -126,10 +126,10 @@ msgstr "Ενεργοποιημένο"
 msgid "Disabled"
 msgstr "Απενεργοποιημένο"
 
-#: audio/config_commands.py:182 audio/config_commands.py:665
+#: audio/config_commands.py:182
 #, docstring
-msgid "Set whether the bot should shuffle the queue after every new song added"
-msgstr "Ορίστε αν το bot θα πρέπει να ανακατεύει την ουρά μετά από κάθε νέο τραγούδι που προστίθεται"
+msgid "Set whether the a server is allowed to enabled auto shuffle"
+msgstr ""
 
 #: audio/config_commands.py:192 audio/config_commands.py:686
 msgid "Auto-Shuffle set to {shuffle}"
@@ -137,41 +137,36 @@ msgstr "Η αυτόματη ανάμιξη ορίστηκε σε {shuffle}"
 
 #: audio/config_commands.py:202 audio/config_commands.py:696
 #, docstring
-msgid "Set whether the bot should allow users to shuffle the queue"
-msgstr "Ορίστε αν το bot θα επιτρέπει στους χρήστες να ανακατέψουν την ουρά"
+msgid "Set whether [botname] should allow users to shuffle the queue"
+msgstr ""
 
 #: audio/config_commands.py:212 audio/config_commands.py:719
 msgid "Shuffle set to {shuffle}"
 msgstr "Τυχαία αναπαραγωγή ορίστηκε σε {shuffle}"
 
-#: audio/config_commands.py:220 audio/config_commands.py:727
+#: audio/config_commands.py:220
 #, docstring
-msgid "Set whether the bot should automatically play songs when the queue is empty"
-msgstr "Ορίστε αν το bot θα αναπαράγει αυτόματα τραγούδια όταν η ουρά είναι κενή"
+msgid "Set whether [botname] should automatically play songs when the queue is empty"
+msgstr ""
 
 #: audio/config_commands.py:229 audio/config_commands.py:753
 msgid "Auto-Play set to {auto}"
 msgstr "Η αυτόματη αναπαραγωγή ορίστηκε σε {auto}"
 
-#: audio/config_commands.py:237 audio/config_commands.py:761
+#: audio/config_commands.py:237
 #, docstring
-msgid "Set whether the bot should disconnect from the voice channel"
-msgstr "Ορίστε αν το bot θα πρέπει να αποσυνδεθεί από το κανάλι φωνής"
+msgid "Set whether [botname] should disconnect from the voice channel"
+msgstr ""
 
 #: audio/config_commands.py:247
 #, docstring
-msgid "Set whether the bot should disconnect from the voice channel when the queue is empty.\n\n"
+msgid "Set whether [botname] should disconnect from the voice channel when the queue is empty.\n\n"
 "        Arguments:\n"
-"            - `<toggle>`: Whether the bot should disconnect from the voice channel when the queue is empty.\n"
+"            - `<toggle>`: Whether [botname] should disconnect from the voice channel when the queue is empty.\n"
 "            - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr "Ορίστε αν το bot θα πρέπει να αποσυνδεθεί από το κανάλι φωνής όταν η ουρά είναι κενή.\n\n"
-"        Παράμετροι:\n"
-"            - `<toggle>`: Εάν το bot θα αποσυνδεθεί από το κανάλι φωνής όταν η ουρά είναι κενή.\n"
-"            - `<duration>`: Πόσο περισσότερο μετά την ουρά είναι άδειο αν ο παίκτης αποσυνδεθεί. Η προεπιλογή είναι 60 δευτερόλεπτα.\n"
-"            Δέχεται δεύτερη, λεπτά, ώρες, ημέρες, εβδομάδες (αν δεν έχει καθοριστεί μονάδα, η διάρκεια θεωρείται ότι δίνεται σε δευτερόλεπτα)\n"
-"        "
+msgstr ""
 
 #: audio/config_commands.py:267 audio/config_commands.py:307
 #: audio/config_commands.py:811 audio/config_commands.py:873
@@ -184,18 +179,13 @@ msgstr "Αποσύνδεση από το φωνητικό κανάλι όταν 
 
 #: audio/config_commands.py:288
 #, docstring
-msgid "Set whether the bot should disconnect from the voice channel when alone.\n\n"
+msgid "Set whether [botname] should disconnect from the voice channel when alone.\n\n"
 "        Arguments:\n"
-"            - `<toggle>`: Whether the bot should disconnect from the voice channel when it detects that it is alone.\n"
+"            - `<toggle>`: Whether [botname] should disconnect from the voice channel when it detects that it is alone.\n"
 "            - `<duration>`: How longer after detecting should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr "Ορίστε αν το bot θα πρέπει να αποσυνδέεται από το κανάλι φωνής όταν είναι μόνο.\n\n"
-"        Επιχειρήσεις:\n"
-"            - `<toggle>`: Εάν το bot θα πρέπει να αποσυνδεθεί από το κανάλι φωνής όταν εντοπίζει ότι είναι μόνο.\n"
-"            - `<duration>`: Πόσο περισσότερο μετά τον εντοπισμό θα πρέπει ο παίκτης να αποσυνδεθεί. Η προεπιλογή είναι 60 δευτερόλεπτα.\n"
-"            Δέχεται δεύτερη, λεπτά, ώρες, ημέρες, εβδομάδες (αν δεν έχει καθοριστεί μονάδα, η διάρκεια θεωρείται ότι δίνεται σε δευτερόλεπτα)\n"
-"        "
+msgstr ""
 
 #: audio/config_commands.py:313 audio/config_commands.py:879
 msgid "Disconnect from voice channel when alone set to {empty}{extras}"
@@ -275,8 +265,8 @@ msgstr "Αφαιρέθηκε {user} από τους χρήστες DJ"
 
 #: audio/config_commands.py:463
 #, docstring
-msgid "List the DJ roles for the server"
-msgstr "Λίστα ρόλων DJ για το διακομιστή"
+msgid "List the DJ roles and users for the server"
+msgstr ""
 
 #: audio/config_commands.py:514
 msgid "There are no DJ roles or users set in {server}"
@@ -312,6 +302,11 @@ msgstr "Ο τόμος πρέπει να είναι μεταξύ 0 και {volume
 msgid "My owner told me to always deafen myself"
 msgstr "Ο ιδιοκτήτης μου μου είπε να βγάλω πάντα τον εαυτό μου"
 
+#: audio/config_commands.py:665
+#, docstring
+msgid "Set whether [botname] should shuffle the queue after every new song added"
+msgstr ""
+
 #: audio/config_commands.py:673
 msgid "Auto-Shuffle is globally disabled"
 msgstr "Η αυτόματη ανάμιξη είναι καθολικά απενεργοποιημένη"
@@ -320,9 +315,19 @@ msgstr "Η αυτόματη ανάμιξη είναι καθολικά απεν�
 msgid "Shuffle is globally disabled"
 msgstr "Η ανάμιξη είναι καθολικά απενεργοποιημένη"
 
+#: audio/config_commands.py:727
+#, docstring
+msgid "Set whether the bot should automatically play songs when the queue is empty"
+msgstr "Ορίστε αν το bot θα αναπαράγει αυτόματα τραγούδια όταν η ουρά είναι κενή"
+
 #: audio/config_commands.py:736
 msgid "Auto-Play is globally disabled"
 msgstr "Η αυτόματη αναπαραγωγή είναι καθολικά απενεργοποιημένη"
+
+#: audio/config_commands.py:761
+#, docstring
+msgid "Set whether the bot should disconnect from the voice channel"
+msgstr "Ορίστε αν το bot θα πρέπει να αποσυνδεθεί από το κανάλι φωνής"
 
 #: audio/config_commands.py:771
 #, docstring

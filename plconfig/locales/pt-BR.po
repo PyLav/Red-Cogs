@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2022-12-30 22:35+0000\n"
-"PO-Revision-Date: 2022-12-30 23:02\n"
+"POT-Creation-Date: 2023-01-01 21:53+0000\n"
+"PO-Revision-Date: 2023-01-01 21:53\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese, Brazilian\n"
 "MIME-Version: 1.0\n"
@@ -124,114 +124,95 @@ msgstr "{user} não é um DJ"
 
 #: plconfig/cog.py:194
 #, docstring
-msgid "Set the folder for PyLav's config files\n\n"
-"        Changes will be applied after restarting the bot.\n"
+msgid "Set the local tracks folder for PyLav.\n\n"
+"        Changes will be applied after restarting the [botname].\n"
 "        "
-msgstr "Defina a pasta para os arquivos de configuração do PyLav,\n\n"
-"        As alterações serão aplicadas após reiniciar o bot.\n"
-"        "
+msgstr ""
 
-#: plconfig/cog.py:206 plconfig/cog.py:261
+#: plconfig/cog.py:206
 msgid "{folder} is not a folder"
 msgstr "{folder} não é uma pasta"
 
-#: plconfig/cog.py:220 plconfig/cog.py:275
+#: plconfig/cog.py:220
 msgid "{folder} does not exist, run the command again with the create argument set to 1 to automatically create this folder"
 msgstr "{folder} não existe, execute o comando novamente com o argumento de criação definido para 1 para criar automaticamente esta pasta"
 
-#: plconfig/cog.py:238
-msgid "PyLav's config folder has been set to {folder}"
-msgstr "A pasta de configuração do PyLaves foi definida para {folder}"
-
-#: plconfig/cog.py:249
-#, docstring
-msgid "Set the local tracks folder for PyLav.\n\n"
-"        Changes will be applied after restarting the bot.\n"
-"        "
-msgstr "Defina a pasta de faixas locais para PyLav.\n\n"
-"        As alterações serão aplicadas após reiniciar o bot.\n"
-"        "
-
-#: plconfig/cog.py:296
+#: plconfig/cog.py:241
 msgid "PyLav's local tracks folder has been set to {folder}"
 msgstr "A pasta de faixas locais do PyLave foi definida para {folder}"
 
-#: plconfig/cog.py:307
+#: plconfig/cog.py:252
 #, docstring
 msgid "Change the managed node configuration"
 msgstr "Alterar a configuração do servidor gerenciado"
 
-#: plconfig/cog.py:311
+#: plconfig/cog.py:256
 #, docstring
 msgid "Toggle the managed node on/off.\n\n"
-"        Changes will be applied after restarting the bot.\n"
+"        Changes will be applied after restarting the [botname].\n"
 "        "
-msgstr "Ativa/desativa o nó gerenciado.\n\n"
-"        As alterações serão aplicadas após reiniciar o bot.\n"
-"        "
+msgstr ""
 
-#: plconfig/cog.py:327
+#: plconfig/cog.py:272
 msgid "PyLav's managed node has been enabled"
 msgstr "O nó gerenciado do PyLave foi ativado"
 
-#: plconfig/cog.py:335
+#: plconfig/cog.py:280
 msgid "PyLav's managed node has been disabled"
 msgstr "O nó gerenciado do PyLave foi desativado"
 
-#: plconfig/cog.py:343
+#: plconfig/cog.py:288
 #, docstring
 msgid "Toggle the managed node auto updates on/off.\n\n"
-"        Changes will be applied after restarting the bot.\n"
+"        Changes will be applied after restarting [botname].\n"
 "        "
-msgstr "Liga/desliga a atualização automática do nó gerenciado.\n\n"
-"        As alterações serão aplicadas após reiniciar o bot.\n"
-"        "
+msgstr ""
 
-#: plconfig/cog.py:359
+#: plconfig/cog.py:304
 msgid "PyLav's managed node auto updates have been enabled"
 msgstr "As atualizações automáticas dos nós gerenciados pela PyLave foram ativadas"
 
-#: plconfig/cog.py:367
+#: plconfig/cog.py:312
 msgid "PyLav's managed node auto updates have been disabled"
 msgstr "As atualizações automáticas de nós da PyLave foram desabilitadas"
 
-#: plconfig/cog.py:375
+#: plconfig/cog.py:320
 #, docstring
 msgid "Change the bundled external nodes state"
 msgstr "Alterar o estado dos nós externos embutidos"
 
-#: plconfig/cog.py:379
+#: plconfig/cog.py:324
 #, docstring
 msgid "Toggle the managed external draper.wtf nodes on/off"
 msgstr "Liga/desliga os nós externos gerenciados draper.wtf"
 
-#: plconfig/cog.py:399
+#: plconfig/cog.py:344
 msgid "PyLav's managed pylav external node has been enabled"
 msgstr "Nó externo do PyLav, gerenciado por pylav foi ativado"
 
-#: plconfig/cog.py:409
+#: plconfig/cog.py:354
 msgid "PyLav's managed pylav external node has been disabled"
 msgstr "O nó externo do PyLav, gerenciado pelo Pylav foi desativado"
 
-#: plconfig/cog.py:417
+#: plconfig/cog.py:362
 #, docstring
 msgid "Toggle the managed external lava.link node on/off"
 msgstr "Liga/desliga o nó de link gerenciado"
 
-#: plconfig/cog.py:440
+#: plconfig/cog.py:385
 msgid "PyLav's managed lava.link external node has been enabled"
 msgstr "Nó externo de lava.link gerenciado do PyLave foi ativado"
 
-#: plconfig/cog.py:449
+#: plconfig/cog.py:394
 msgid "PyLav's managed lava.link external node has been disabled"
 msgstr "O nó externo de lava.link gerenciado do PyLave foi desativado"
 
-#: plconfig/cog.py:458
+#: plconfig/cog.py:403
 #, docstring
 msgid "Instructions on how to set the Spotify API Tokens"
 msgstr "Instruções sobre como definir os Tokens da API do Spotify"
 
-#: plconfig/cog.py:459
+#: plconfig/cog.py:404
 msgid "1. Go to Spotify developers and log in with your Spotify account.\n"
 "(https://developer.spotify.com/dashboard/applications)\n"
 "2. Click \"Create An App\".\n"
@@ -249,42 +230,29 @@ msgstr "1. Acesse desenvolvedores do Spotify e faça login com sua conta do Spot
 "6. Copie seu ID de cliente e seu segredo de cliente em:\n"
 "`{prefix}set api spotify client_id <your_client_id_here> cliente_secret <your_client_secret_here>`"
 
-#: plconfig/cog.py:480
-#, docstring
-msgid "Instructions on how to set the Deezer Token"
-msgstr "Instruções sobre como definir o Token do Deezer"
-
-#: plconfig/cog.py:481
-msgid "1. Google is your friend.\n"
-"2. Once you have the key run:\n"
-"`{prefix}set api deezer token <your_token_here>`"
-msgstr "1. O Google é seu amigo.\n"
-"2. Uma vez que a chave seja executada:\n"
-"`{prefix}define o token mais profundo da api <your_token_here>`"
-
-#: plconfig/cog.py:496
+#: plconfig/cog.py:425
 #, docstring
 msgid "Manage active players"
 msgstr "Gerenciar jogadores ativos"
 
-#: plconfig/cog.py:505
+#: plconfig/cog.py:434
 msgid "No active player in {name}"
 msgstr "Nenhum jogador ativo em {name}"
 
-#: plconfig/cog.py:514
+#: plconfig/cog.py:443
 msgid "No connected players"
 msgstr "Nenhum jogador conectado"
 
-#: plconfig/cog.py:531
+#: plconfig/cog.py:460
 #, docstring
-msgid "Toggle whether or not to change the bot's activity"
-msgstr "Alternar ou não para mudar a atividade do bot"
+msgid "Toggle whether or not to change [botname]'s activity"
+msgstr ""
 
-#: plconfig/cog.py:542
+#: plconfig/cog.py:471
 msgid "PyLav will change bot activity"
 msgstr "PyLav irá alterar a atividade do bot"
 
-#: plconfig/cog.py:551
+#: plconfig/cog.py:480
 msgid "PyLav will no longer change the bot activity"
 msgstr "PyLav não irá mais alterar a atividade do bot"
 

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2022-12-30 22:35+0000\n"
-"PO-Revision-Date: 2022-12-30 23:03\n"
+"POT-Creation-Date: 2023-01-01 21:53+0000\n"
+"PO-Revision-Date: 2023-01-01 21:53\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -17,59 +17,59 @@ msgstr ""
 "X-Crowdin-File-ID: 660\n"
 "Language: zh_CN\n"
 
-#: plnotifier/cog.py:134
+#: plnotifier/cog.py:80
 #, docstring
 msgid "Listen to events from the PyLav player and send them as messages to the specified channel"
 msgstr "聆听来自PyLav 播放器的事件并将其作为消息发送到指定的频道"
 
-#: plnotifier/cog.py:273
+#: plnotifier/cog.py:219
 #, docstring
 msgid "Configure the PyLavNotifier cog"
 msgstr "配置 PyLavNotifier 牛排"
 
-#: plnotifier/cog.py:277
+#: plnotifier/cog.py:223
 #, docstring
 msgid "Show the version of the Cog and its PyLav dependencies"
 msgstr "显示 Cog版本和 PyLav 依赖关系"
 
-#: plnotifier/cog.py:293
+#: plnotifier/cog.py:239
 msgid "Library/Cog"
 msgstr "库 / COG"
 
-#: plnotifier/cog.py:294
+#: plnotifier/cog.py:240
 msgid "Version"
 msgstr "版本"
 
-#: plnotifier/cog.py:309
+#: plnotifier/cog.py:255
 #, docstring
 msgid "Set the notify channel for the player"
 msgstr "设置玩家的通知频道"
 
-#: plnotifier/cog.py:318 plnotifier/cog.py:373
+#: plnotifier/cog.py:264 plnotifier/cog.py:319
 msgid "I do not have permission to manage webhooks in {channel}"
 msgstr "我没有权限管理 {channel} 的 webhooks"
 
-#: plnotifier/cog.py:332
+#: plnotifier/cog.py:278
 msgid "I do not have permission to create a thread in {channel}"
 msgstr "我没有权限在 {channel} 中创建一个帖子"
 
-#: plnotifier/cog.py:341 plnotifier/cog.py:357 plnotifier/cog.py:382
+#: plnotifier/cog.py:287 plnotifier/cog.py:303 plnotifier/cog.py:328
 msgid "PyLavNotifier"
 msgstr "PyLavNotifier"
 
-#: plnotifier/cog.py:342 plnotifier/cog.py:360 plnotifier/cog.py:383
+#: plnotifier/cog.py:288 plnotifier/cog.py:306 plnotifier/cog.py:329
 msgid "PyLav Notifier - Requested by {author}"
 msgstr "PyLav 通知器 - 由 {author} 请求"
 
-#: plnotifier/cog.py:353
+#: plnotifier/cog.py:299
 msgid "This thread will be used by PyLav to post notifications about the player"
 msgstr "此帖子将被PyLav 用来发布关于播放器的通知"
 
-#: plnotifier/cog.py:397
+#: plnotifier/cog.py:343
 msgid "PyLavNotifier channel set to {channel}"
 msgstr "PyLavNotifier 频道设置为 {channel}"
 
-#: plnotifier/cog.py:407
+#: plnotifier/cog.py:353
 #, docstring
 msgid "Set whether or not to notify for the specified event.\n\n"
 "        Arguments:\n"
@@ -84,439 +84,439 @@ msgstr "设置是否通知指定事件。\n\n"
 "            使用 _reference -- 是否使用提及而不是请求的动作名称。\n"
 "        "
 
-#: plnotifier/cog.py:422
+#: plnotifier/cog.py:370
 msgid "Invalid event, possible events are:\n\n"
 "{events}"
 msgstr "无效的事件，可能的事件为：\n\n"
 "{events}"
 
-#: plnotifier/cog.py:439
+#: plnotifier/cog.py:387
 msgid "Event {event} set to {toggle}{extras}"
 msgstr "事件 {event} 设置为 {toggle}{extras}"
 
-#: plnotifier/cog.py:441
+#: plnotifier/cog.py:389
 msgid "notify"
 msgstr "通知"
 
-#: plnotifier/cog.py:441
+#: plnotifier/cog.py:389
 msgid "do not notify"
 msgstr "不通知"
 
-#: plnotifier/cog.py:442
+#: plnotifier/cog.py:390
 msgid " with mentions"
 msgstr " 带提到的"
 
-#: plnotifier/cog.py:442
+#: plnotifier/cog.py:390
 msgid " without mentions"
 msgstr " 没有提及的"
 
-#: plnotifier/cog.py:458
+#: plnotifier/cog.py:406
 msgid "Track Stuck Event"
 msgstr "跟踪卡住事件"
 
-#: plnotifier/cog.py:459
+#: plnotifier/cog.py:407
 msgid "[Node={node}] {track} is stuck for {threshold} seconds, skipping"
 msgstr "[Node={node}] {track} 被卡住了 {threshold} 秒，跳过"
 
-#: plnotifier/cog.py:484
+#: plnotifier/cog.py:432
 msgid "Track Exception Event"
 msgstr "跟踪异常事件"
 
-#: plnotifier/cog.py:485
+#: plnotifier/cog.py:433
 msgid "[Node={node}] There was an error while playing {track}:\n"
 "{exception}"
 msgstr "[Node={node}] 在播放 {track}时出错：\n"
 "{exception}"
 
-#: plnotifier/cog.py:508
+#: plnotifier/cog.py:456
 msgid "the player reached the end of the tracks runtime"
 msgstr "玩家已经到达轨道运行时间结束"
 
-#: plnotifier/cog.py:510
+#: plnotifier/cog.py:458
 msgid "a new track started playing"
 msgstr "新曲目开始播放"
 
-#: plnotifier/cog.py:512
+#: plnotifier/cog.py:460
 msgid "it failed to start"
 msgstr "启动失败"
 
-#: plnotifier/cog.py:514
+#: plnotifier/cog.py:462
 msgid "because the player was stopped"
 msgstr "因为玩家已被停止"
 
-#: plnotifier/cog.py:516
+#: plnotifier/cog.py:464
 msgid "the node told it to stop"
 msgstr "节点告诉它要停止"
 
-#: plnotifier/cog.py:519
+#: plnotifier/cog.py:467
 msgid "Track End Event"
 msgstr "跟踪结束事件"
 
-#: plnotifier/cog.py:520
+#: plnotifier/cog.py:468
 msgid "[Node={node}] {track} has finished playing because {reason}"
 msgstr "[节点={node}] {track} 已经完成游戏，因为 {reason}"
 
-#: plnotifier/cog.py:547
+#: plnotifier/cog.py:495
 msgid "YouTube Music Track Start Event"
 msgstr "YouTube 音乐曲目开始事件"
 
-#: plnotifier/cog.py:548
+#: plnotifier/cog.py:496
 msgid "[Node={node}] YouTube Music track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] YouTube 音乐曲目: {track} 已开始播放。\n"
 "请求者: {requester}"
 
-#: plnotifier/cog.py:577
+#: plnotifier/cog.py:525
 msgid "Deezer Track Start Event"
 msgstr "Deezer 音轨开始事件"
 
-#: plnotifier/cog.py:578
+#: plnotifier/cog.py:526
 msgid "[Node={node}] Deezer track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[节点={node}] Deezer 音轨: {track} 已经开始玩。\n"
 "请求者: {requester}"
 
-#: plnotifier/cog.py:607
+#: plnotifier/cog.py:555
 msgid "Spotify Track Start Event"
 msgstr "Spotify 曲目开始事件"
 
-#: plnotifier/cog.py:608
+#: plnotifier/cog.py:556
 msgid "[Node={node}] Spotify track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] Spotify 歌曲: {track} 已经开始玩。\n"
 "请求者: {requester}"
 
-#: plnotifier/cog.py:637
+#: plnotifier/cog.py:585
 msgid "Apple Music Track Start Event"
 msgstr "苹果音乐曲目开始事件"
 
-#: plnotifier/cog.py:638
+#: plnotifier/cog.py:586
 msgid "[Node={node}] Apple Music track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] 苹果音乐曲目: {track} 已经开始播放。\n"
 "请求者: {requester}"
 
-#: plnotifier/cog.py:667
+#: plnotifier/cog.py:615
 msgid "Local Track Start Event"
 msgstr "本地曲目开始事件"
 
-#: plnotifier/cog.py:668
+#: plnotifier/cog.py:616
 msgid "[Node={node}] Local track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[节点={node}] 本地轨道: {track} 已经开始玩。\n"
 "请求者: {requester}"
 
-#: plnotifier/cog.py:697
+#: plnotifier/cog.py:645
 msgid "HTTP Track Start Event"
 msgstr "HTTP 曲目开始事件"
 
-#: plnotifier/cog.py:698
+#: plnotifier/cog.py:646
 msgid "[Node={node}] HTTP track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] HTTP 轨道: {track} 已开始播放。\n"
 "请求者: {requester}"
 
-#: plnotifier/cog.py:727
+#: plnotifier/cog.py:675
 msgid "Text-To-Speech Track Start Event"
 msgstr "文字语音轨开始事件"
 
-#: plnotifier/cog.py:728
+#: plnotifier/cog.py:676
 msgid "[Node={node}] Text-To-Speech track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] 文本语音轨： {track} 已经开始播放。\n"
 "请求者为： {requester}"
 
-#: plnotifier/cog.py:757
+#: plnotifier/cog.py:705
 msgid "YouTube Track Start Event"
 msgstr "YouTube 音轨开始事件"
 
-#: plnotifier/cog.py:758
+#: plnotifier/cog.py:706
 msgid "[Node={node}] YouTube track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[节点={node}] YouTube 曲目: {track} 已开始播放。\n"
 "请求者: {requester}"
 
-#: plnotifier/cog.py:787 plnotifier/cog.py:820 plnotifier/cog.py:853
-#: plnotifier/cog.py:886 plnotifier/cog.py:919 plnotifier/cog.py:952
-#: plnotifier/cog.py:985 plnotifier/cog.py:1018 plnotifier/cog.py:1051
-#: plnotifier/cog.py:1084 plnotifier/cog.py:1117 plnotifier/cog.py:1150
-#: plnotifier/cog.py:1183 plnotifier/cog.py:1216
+#: plnotifier/cog.py:735 plnotifier/cog.py:768 plnotifier/cog.py:801
+#: plnotifier/cog.py:834 plnotifier/cog.py:867 plnotifier/cog.py:900
+#: plnotifier/cog.py:933 plnotifier/cog.py:966 plnotifier/cog.py:999
+#: plnotifier/cog.py:1032 plnotifier/cog.py:1065 plnotifier/cog.py:1098
+#: plnotifier/cog.py:1131 plnotifier/cog.py:1164
 msgid "{source} Track Start Event"
 msgstr "{source} 曲目开始事件"
 
-#: plnotifier/cog.py:788 plnotifier/cog.py:821 plnotifier/cog.py:854
-#: plnotifier/cog.py:887 plnotifier/cog.py:920 plnotifier/cog.py:953
-#: plnotifier/cog.py:986 plnotifier/cog.py:1019 plnotifier/cog.py:1052
-#: plnotifier/cog.py:1085 plnotifier/cog.py:1118 plnotifier/cog.py:1151
-#: plnotifier/cog.py:1184 plnotifier/cog.py:1217
+#: plnotifier/cog.py:736 plnotifier/cog.py:769 plnotifier/cog.py:802
+#: plnotifier/cog.py:835 plnotifier/cog.py:868 plnotifier/cog.py:901
+#: plnotifier/cog.py:934 plnotifier/cog.py:967 plnotifier/cog.py:1000
+#: plnotifier/cog.py:1033 plnotifier/cog.py:1066 plnotifier/cog.py:1099
+#: plnotifier/cog.py:1132 plnotifier/cog.py:1165
 msgid "[Node={node}] {source} track: {track} has started playing.\n"
 "Requested by: {requester}"
 msgstr "[Node={node}] {source} 曲目: {track} 已经开始播放。\n"
 "请求者: {requester}"
 
-#: plnotifier/cog.py:1249
+#: plnotifier/cog.py:1197
 msgid "Track Skipped Event"
 msgstr "曲目跳过的事件"
 
-#: plnotifier/cog.py:1250
+#: plnotifier/cog.py:1198
 msgid "[Node={node}] {track} has been skipped.\n"
 "Requested by {requester}"
 msgstr "[节点={node}] {track} 已跳过。\n"
 " {requester} 请求跳过"
 
-#: plnotifier/cog.py:1279
+#: plnotifier/cog.py:1227
 msgid "Track Seek Event"
 msgstr "跟踪查找事件"
 
-#: plnotifier/cog.py:1280
+#: plnotifier/cog.py:1228
 msgid "[Node={node}] {requester} requested that {track} is sought from position {fro} to position {after}"
 msgstr ""
 
-#: plnotifier/cog.py:1314
+#: plnotifier/cog.py:1262
 msgid "Track Previous Requested Event"
 msgstr "跟踪上一个请求的事件"
 
-#: plnotifier/cog.py:1315
+#: plnotifier/cog.py:1263
 msgid "[Node={node}] {requester} requested that the previous track {track} be played"
 msgstr "[Node={node}] {requester} 请求播放上一个轨道 {track}"
 
-#: plnotifier/cog.py:1344
+#: plnotifier/cog.py:1292
 msgid "Tracks Requested Event"
 msgstr "曲目请求事件"
 
-#: plnotifier/cog.py:1345
+#: plnotifier/cog.py:1293
 msgid "[Node={node}] {requester} added {track_count}  to the queue"
 msgstr "[Node={node}] {requester} 添加了 {track_count}  到队列中"
 
-#: plnotifier/cog.py:1346
+#: plnotifier/cog.py:1294
 msgid "{count} track"
 msgstr "{count} 音轨"
 
-#: plnotifier/cog.py:1371
+#: plnotifier/cog.py:1319
 msgid "Track AutoPlay Event"
 msgstr "音轨自动播放事件"
 
-#: plnotifier/cog.py:1372
+#: plnotifier/cog.py:1320
 msgid "[Node={node}] Auto-playing {track}"
 msgstr "[节点={node}] 自动播放 {track}"
 
-#: plnotifier/cog.py:1399
+#: plnotifier/cog.py:1347
 msgid "Track Resumed Event"
 msgstr "曲目恢复事件"
 
-#: plnotifier/cog.py:1400
+#: plnotifier/cog.py:1348
 msgid "[Node={node}] {requester} resumed {track}"
 msgstr "[Node={node}] {requester} 已恢复 {track}"
 
-#: plnotifier/cog.py:1429
+#: plnotifier/cog.py:1377
 msgid "Queue Shuffled Event"
 msgstr "队列混杂事件"
 
-#: plnotifier/cog.py:1430
+#: plnotifier/cog.py:1378
 msgid "[Node={node}] {requester} shuffled the queue"
 msgstr "[Node={node}] {requester} 乱序队列"
 
-#: plnotifier/cog.py:1452
+#: plnotifier/cog.py:1400
 msgid "Queue End Event"
 msgstr "队列结束事件"
 
-#: plnotifier/cog.py:1453
+#: plnotifier/cog.py:1401
 msgid "[Node={node}] All tracks in the queue have been played"
 msgstr "[Node={node}] 队列中的所有曲目已被播放"
 
-#: plnotifier/cog.py:1480
+#: plnotifier/cog.py:1428
 msgid "Tracks Removed Event"
 msgstr "曲目已删除事件"
 
-#: plnotifier/cog.py:1481
+#: plnotifier/cog.py:1429
 msgid "[Node={node}] {requester} removed {track_count} tracks from the queue"
 msgstr "[Node={node}] {requester} 已从队列中移除了 {track_count} 首曲目"
 
-#: plnotifier/cog.py:1508
+#: plnotifier/cog.py:1456
 msgid "Player Paused Event"
 msgstr "播放器暂停事件"
 
-#: plnotifier/cog.py:1509
+#: plnotifier/cog.py:1457
 msgid "[Node={node}] {requester} paused the player"
 msgstr "[Node={node}] {requester} 暂停播放器"
 
-#: plnotifier/cog.py:1536
+#: plnotifier/cog.py:1484
 msgid "Player Stopped Event"
 msgstr "播放器停止事件"
 
-#: plnotifier/cog.py:1537
+#: plnotifier/cog.py:1485
 msgid "[Node={node}] {requester} stopped the player"
 msgstr "[Node={node}] {requester} 停止播放器"
 
-#: plnotifier/cog.py:1564
+#: plnotifier/cog.py:1512
 msgid "Player Resumed Event"
 msgstr "播放器恢复事件"
 
-#: plnotifier/cog.py:1565
+#: plnotifier/cog.py:1513
 msgid "[Node={node}] {requester} resumed the player"
 msgstr "[Node={node}] {requester} 恢复播放器"
 
-#: plnotifier/cog.py:1592
+#: plnotifier/cog.py:1540
 msgid "Player Moved Event"
 msgstr "播放器移动事件"
 
-#: plnotifier/cog.py:1593
+#: plnotifier/cog.py:1541
 msgid "[Node={node}] {requester} moved the player from {before} to {after}"
 msgstr "[Node={node}] {requester} 将玩家从 {before} 移动到 {after}"
 
-#: plnotifier/cog.py:1620
+#: plnotifier/cog.py:1568
 msgid "Player Disconnected Event"
 msgstr "播放器已断开的事件"
 
-#: plnotifier/cog.py:1621
+#: plnotifier/cog.py:1569
 msgid "[Node={node}] {requester} disconnected the player"
 msgstr "[Node={node}] {requester} 断开了玩家连接"
 
-#: plnotifier/cog.py:1648
+#: plnotifier/cog.py:1596
 msgid "Player Connected Event"
 msgstr "玩家连接事件"
 
-#: plnotifier/cog.py:1649
+#: plnotifier/cog.py:1597
 msgid "[Node={node}] {requester} connected the player"
 msgstr "[Node={node}] {requester} 连接了玩家"
 
-#: plnotifier/cog.py:1676
+#: plnotifier/cog.py:1624
 msgid "Player Volume Changed Event"
 msgstr "播放器音量已更改事件"
 
-#: plnotifier/cog.py:1677
+#: plnotifier/cog.py:1625
 msgid "[Node={node}] {requester} changed the player's volume from {before} to {after}"
 msgstr "[节点={node}] {requester} 将玩家的音量从 {before} 更改为 {after}"
 
-#: plnotifier/cog.py:1706 plnotifier/cog.py:1716 plnotifier/cog.py:1726
+#: plnotifier/cog.py:1654 plnotifier/cog.py:1664 plnotifier/cog.py:1674
 msgid "Player Repeat Event"
 msgstr "播放器重复事件"
 
-#: plnotifier/cog.py:1707
+#: plnotifier/cog.py:1655
 msgid "[Node={node}] {requester} disabled repeat"
 msgstr "[Node={node}] {requester} 已禁用重复"
 
-#: plnotifier/cog.py:1717
+#: plnotifier/cog.py:1665
 msgid "{requester} {status} repeat of the whole queue"
 msgstr "{requester} {status} 重复整个队列"
 
-#: plnotifier/cog.py:1718 plnotifier/cog.py:1729
+#: plnotifier/cog.py:1666 plnotifier/cog.py:1677
 msgid "enabled"
 msgstr "已启用"
 
-#: plnotifier/cog.py:1718 plnotifier/cog.py:1729
+#: plnotifier/cog.py:1666 plnotifier/cog.py:1677
 msgid "disabled"
 msgstr "已禁用"
 
-#: plnotifier/cog.py:1727
+#: plnotifier/cog.py:1675
 msgid "[Node={node}] {requester} {status} repeat for {track}"
 msgstr "[节点={node}] {requester} {status} 重复 {track}"
 
-#: plnotifier/cog.py:1757
+#: plnotifier/cog.py:1705
 msgid "Player Restored Event"
 msgstr "恢复播放器事件"
 
-#: plnotifier/cog.py:1758
+#: plnotifier/cog.py:1706
 msgid "[Node={node}] {requester} restored the player"
 msgstr "[Node={node}] {requester} 恢复了玩家"
 
-#: plnotifier/cog.py:1781
+#: plnotifier/cog.py:1729
 msgid "an intro section"
 msgstr "介绍部分"
 
-#: plnotifier/cog.py:1783
+#: plnotifier/cog.py:1731
 msgid "an outro section"
 msgstr "直接受益部分"
 
-#: plnotifier/cog.py:1785
+#: plnotifier/cog.py:1733
 msgid "a preview section"
 msgstr "预览部分"
 
-#: plnotifier/cog.py:1787
+#: plnotifier/cog.py:1735
 msgid "an off-topic section"
 msgstr "一个非主题部分"
 
-#: plnotifier/cog.py:1789
+#: plnotifier/cog.py:1737
 msgid "a filler section"
 msgstr "一个填充部分"
 
-#: plnotifier/cog.py:1791
+#: plnotifier/cog.py:1739
 msgid "a sponsor section"
 msgstr "a 提案人部分"
 
-#: plnotifier/cog.py:1793
+#: plnotifier/cog.py:1741
 msgid "a self-promotion section"
 msgstr "a 自促销部分"
 
-#: plnotifier/cog.py:1795
+#: plnotifier/cog.py:1743
 msgid "an interaction section"
 msgstr "交互部分"
 
-#: plnotifier/cog.py:1799
+#: plnotifier/cog.py:1747
 msgid "Sponsor Segment Skipped Event"
 msgstr "已跳过事件的赞助者部分"
 
-#: plnotifier/cog.py:1800
+#: plnotifier/cog.py:1748
 msgid "[Node={node}] Sponsorblock: Skipped {category} running from {start}s to {to}s"
 msgstr "[Node={node}] 赞助方块: 跳过 {category} 运行于 {start}秒到 {to}秒"
 
-#: plnotifier/cog.py:1828
+#: plnotifier/cog.py:1776
 msgid "Effect"
 msgstr "效果"
 
-#: plnotifier/cog.py:1829
+#: plnotifier/cog.py:1777
 msgid "Not changed"
 msgstr "未更改"
 
-#: plnotifier/cog.py:1830
+#: plnotifier/cog.py:1778
 msgid "Values"
 msgstr "值"
 
-#: plnotifier/cog.py:1870
+#: plnotifier/cog.py:1818
 msgid "Filters Applied Event"
 msgstr "筛选应用事件"
 
-#: plnotifier/cog.py:1873
+#: plnotifier/cog.py:1821
 msgid "None"
 msgstr "无"
 
-#: plnotifier/cog.py:1874
+#: plnotifier/cog.py:1822
 msgid "Currently Applied"
 msgstr "当前已应用"
 
-#: plnotifier/cog.py:1876
+#: plnotifier/cog.py:1824
 msgid "[Node={node}] {requester} changed the player filters"
 msgstr "[Node={node}] {requester} 更改了玩家筛选器"
 
-#: plnotifier/cog.py:1896
+#: plnotifier/cog.py:1844
 msgid "Node Connected Event"
 msgstr "节点连接事件"
 
-#: plnotifier/cog.py:1897
+#: plnotifier/cog.py:1845
 msgid "Node {name} has been connected"
 msgstr "节点 {name} 已被连接"
 
-#: plnotifier/cog.py:1913
+#: plnotifier/cog.py:1861
 msgid "Node Disconnected Event"
 msgstr "节点断开连接的事件"
 
-#: plnotifier/cog.py:1914
+#: plnotifier/cog.py:1862
 msgid "Node {name} has been disconnected with code {code} and reason: {reason}"
 msgstr "节点 {name} 已经断开了与代码 {code} 的连接，原因: {reason}"
 
-#: plnotifier/cog.py:1936
+#: plnotifier/cog.py:1884
 msgid "Node Changed Event"
 msgstr "节点更改事件"
 
-#: plnotifier/cog.py:1937
+#: plnotifier/cog.py:1885
 msgid "The node which the player is connected to changed from {fro} to {to}"
 msgstr "玩家所连接的节点从 {fro} 更改为 {to}"
 
-#: plnotifier/cog.py:1959
+#: plnotifier/cog.py:1907
 msgid "WebSocket Closed Event"
 msgstr "WebSocket 闭合事件"
 
-#: plnotifier/cog.py:1960
+#: plnotifier/cog.py:1908
 msgid "[Node={node}] The Lavalink websocket connection to Discord closed with code {code} and reason {reason}"
 msgstr "[Node={node}] Lavalink websocket 与 Discord 的连接已关闭，代码为 {code} 和原因 {reason}"
 
