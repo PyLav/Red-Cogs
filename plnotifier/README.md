@@ -1,0 +1,71 @@
+# PyLavNotifier
+
+## Text Commands
+
+- `[p]plnotifier`
+  - Configure the PyLavNotifier cog
+- `[p]plnotifier version`
+  - Show the version of the Cog and its PyLav dependencies
+- `[p]plnotifier webhook <channel>`
+  - Set the channel for the bot to send notifications to.
+  - The bot must have the `Manage Webhooks`  and ` Create Public Threads` permissions in the channel.
+- `[p]plnotifier event <event> <toggle> [use_mention]`
+  - Set the event to be notified for.
+  - `[use_mention]`  must be one of `1`/`true` or `0`/`false`.
+    - Won't ping user this is just for visual purposes.
+  - `<toggle>`  must be one of `1`/`true` or `0`/`false`.
+    - `1`/`true` to enable the event.
+    - `0`/`false` to disable the event.
+  - `<event>` must be one of the following:
+    - `track_stuck` - Track stuck event.
+    - `track_exception` - Track exception event.
+    - `track_end` - Track end event.
+    - `track_start_youtube_music` - Track start event for YouTube Music.
+    - `track_start_spotify` - Track start event for Spotify.
+    - `track_start_apple_music` - Track start event for Apple Music.
+    - `track_start_deezer` - Track start event for Deezer.
+    - `track_start_localfile` - Track start event for local files.
+    - `track_start_http` - Track start event for HTTP links.
+    - `track_start_speak` - Track start event for text to speech.
+    - `track_start_youtube` - Track start event for YouTube.
+    - `track_start_clypit` - Track start event for Clypit.
+    - `track_start_getyarn` - Track start event for Getyarn.
+    - `track_start_mixcloud` - Track start event for Mixcloud.
+    - `track_start_ocrmix` - Track start event for OCR Mix.
+    - `track_start_pornhub` - Track start event for Pornhub.
+    - `track_start_reddit` - Track start event for Reddit.
+    - `track_start_soundgasm` - Track start event for Soundgasm.
+    - `track_start_tiktok` - Track start event for TikTok.
+    - `track_start_bandcamp` - Track start event for Bandcamp.
+    - `track_start_soundcloud` - Track start event for Soundcloud.
+    - `track_start_twitch` - Track start event for Twitch.
+    - `track_start_vimeo` - Track start event for Vimeo.
+    - `track_start_gctts` - Track start event for Google Cloud Text to Speech.
+    - `track_start_niconico` - Track start event for Niconico.
+    - `track_skipped` - Track skipped event.
+    - `track_seek` - Track seek event.
+    - `track_replaced` - Track replaced event.
+    - `track_previous_requested` - Track previous requested event.
+    - `tracks_requested` - Tracks requested event.
+    - `track_autoplay` - Track autoplay event.
+    - `track_resumed` - Track resumed event.
+    - `queue_shuffled` - Queue shuffled event.
+    - `queue_end` - Queue end event.
+    - `queue_track_position_changed` - Queue track position changed event.
+    - `queue_tracks_removed` - Queue tracks removed event.
+    - `player_paused` - Player paused event.
+    - `player_stopped` - Player stopped event.
+    - `player_resumed` - Player resumed event.
+    - `player_moved` - Player moved event.
+    - `player_disconnected` - Player disconnected event.
+    - `player_connected` - Player connected event.
+    - `volume_changed` - Volume changed event.
+    - `player_repeat` - Player repeat event.
+    - `player_restored` - Player restored event.
+    - `segment_skipped` - Segment skipped event.
+    - `segments_loaded` - Segments loaded event.
+    - `filters_applied` - Filters applied event.
+    - `node_connected` - Node connected event.
+    - `node_disconnected` - Node disconnected event.
+    - `node_changed` - Node changed event.
+    - `websocket_closed` - Websocket closed event.

@@ -81,6 +81,7 @@ POSSIBLE_EVENTS = {
     "track_start_youtube_music",
     "track_start_spotify",
     "track_start_apple_music",
+    "track_start_deezer",
     "track_start_localfile",
     "track_start_http",
     "track_start_speak",
