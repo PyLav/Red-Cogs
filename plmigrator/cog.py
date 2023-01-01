@@ -52,6 +52,8 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
 
         If you are sure you want to proceed please run this command again with the confirm argument set to 1
         i.e `[p]pylavmigrate 1`
+
+        Once you complete the migration unload this cog and uninstall it as you will not need it again.
         """
         if not confirm:
             await context.send_help()
