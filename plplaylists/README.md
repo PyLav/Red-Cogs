@@ -1,0 +1,44 @@
+# PyLavPlaylists
+
+## Slash Commands
+- `/playlists version`
+  -  Show the version of the Cog and its PyLav dependencies
+- `/playlists create [url] [name]`
+  - Creates a playlist.
+    - If no URL is provided, it will create an empty playlist.
+    - If a URL is provided, it will create a playlist with the tracks from the URL.
+    - If a name is provided, it will create a playlist with the name provided.
+    - If no name is provided, it will create a playlist with the name of the URL if one was provided, the name of the playlist will be its ID.
+- `/playlists list`
+  - List all playlists you have access to on the invoked context
+- `/playlists manage <playlist> [operation]`
+  -  Manage a playlist.
+    - If no operation is provided,you will be shown a menu to select from.
+    - If an operation is provided, it will perform the operation on the playlist.
+    - Operations are the following:
+      - `Info` - Show info about the playlist.
+      - `Save` -  Add the current queue to the playlist.
+      - `Play` -  Play the playlist.
+      - `Delete` -  Delete the playlist.
+    - If you have the permission to manage a playlist and do not specify an operation you will be able to do the following in addition to the above:
+      - Remove all tracks from the playlist.
+      - Update the playlist with the latest tracks if it was created from a URL.
+      - Change the name of the playlist.
+      - Link this playlist to an existing playlist/album (i.e an URL).
+      - Add a query to this playlist.
+      - Remove a query from this playlist.
+      - Download the playlist file.
+      - Add tracks from queue to this playlist.
+      - Remove duplicate entries in the playlist.
+- `/playlist play <playlist>`
+  - Play a playlist.
+- `/playlist delete <playlist>`
+  - Delete a playlist.
+- `/playlist info <playlist>`
+  - Show info about a playlist.
+- `/playlist save <playlist>`
+  - Add the current queue to a playlist
+- `/playlist upload [url]`
+  - Create playlist from files.
+    - If no URL is provided, it will upload the playlist file from the current attached filed.
+    - If a URL is provided, it will upload the playlist file from the URL.
