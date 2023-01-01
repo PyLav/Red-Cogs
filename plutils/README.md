@@ -1,0 +1,47 @@
+# PyLavUtils
+
+## Text Commands
+- `[p]plutils`
+  - Utility commands for PyLav
+- `[p]plutils version`
+  - Show the version of the Cog and its PyLav dependencies
+- `[p]plutils slashes`
+  - Show the slashes available in the bot.
+  - Author: TrustyJAID#0001 via code block on Discord channel.
+- `[p]plutils get` | Requires a active player
+  - Get info about specific things.
+- `[p]plutils get b64`
+  -  Get the base64 encoded string of the current track.
+- `[p]plutils get author`
+  -  Get the author of the current track.
+- `[p]plutils get title`
+  -  Get the title of the current track.
+- `[p]plutils get source`
+  -  Get the source of the current track.
+- `[p]plutils get player` | Bot owner only
+  -  Get the player as seen by lavaplayer.
+- `[p]plutils decode <base64>`
+  -  Decode a track's base64 string into a JSON object.
+- `[p]plutils cache` | Bot owner only
+  - Manage the query cache
+- `[p]plutils cache clear`
+  -  Clear the query cache
+- `[p]plutils cache older <days>`
+  - Clear the query cache older than a number of days
+- `[p]plutils cache query <query>`
+  -  Removed the specified query from the cache.
+- `[p]plutils cache size`
+  -  Get the size of the query cache.
+- `[p]plutils trace [value]` | Bot owner only
+  - Start memory tracing.
+  - `[value]` to 1 to start, 0 to stop and none to display the trace result.
+- `[p]plutils logger <level>` | Bot owner only
+  -  Set the PyLav logger level.
+  - Levels are the following:
+    - 0: Critical
+    - 1: Error
+    - 2: Warning
+    - 3: Info
+    - 4: Debug
+    - 5: Verbose
+    - 6: Trace

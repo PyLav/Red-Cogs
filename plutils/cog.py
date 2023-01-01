@@ -259,6 +259,7 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
         )
 
     @command_plutils_get.command(name="player")
+    @commands.is_owner()
     async def command_plutils_get_api(self, context: PyLavContext):
         """Get the API of the current track"""
         if isinstance(context, discord.Interaction):
