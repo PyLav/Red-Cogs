@@ -74,61 +74,6 @@ _ = Translator("PyLavNotifier", Path(__file__))
 
 LOGGER = getLogger("PyLav.cog.Notifier")
 
-POSSIBLE_EVENTS = {
-    "track_stuck",
-    "track_exception",
-    "track_end",
-    "track_start_youtube_music",
-    "track_start_spotify",
-    "track_start_apple_music",
-    "track_start_deezer",
-    "track_start_localfile",
-    "track_start_http",
-    "track_start_speak",
-    "track_start_youtube",
-    "track_start_clypit",
-    "track_start_getyarn",
-    "track_start_mixcloud",
-    "track_start_ocrmix",
-    "track_start_pornhub",
-    "track_start_reddit",
-    "track_start_soundgasm",
-    "track_start_tiktok",
-    "track_start_bandcamp",
-    "track_start_soundcloud",
-    "track_start_twitch",
-    "track_start_vimeo",
-    "track_start_gctts",
-    "track_start_niconico",
-    "track_skipped",
-    "track_seek",
-    "track_replaced",
-    "track_previous_requested",
-    "tracks_requested",
-    "track_autoplay",
-    "track_resumed",
-    "queue_shuffled",
-    "queue_end",
-    "queue_track_position_changed",
-    "queue_tracks_removed",
-    "player_paused",
-    "player_stopped",
-    "player_resumed",
-    "player_moved",
-    "player_disconnected",
-    "player_connected",
-    "volume_changed",
-    "player_repeat",
-    "player_restored",
-    "segment_skipped",
-    "segments_loaded",
-    "filters_applied",
-    "node_connected",
-    "node_disconnected",
-    "node_changed",
-    "websocket_closed",
-}
-
 
 @cog_i18n(_)
 class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
@@ -417,11 +362,13 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
         event = event.lower()
-        if event not in POSSIBLE_EVENTS:
+        possible_events = self.pylav.dispatch_manager.simple_event_names()
+
+        if event not in possible_events:
             await context.send(
                 embed=await context.pylav.construct_embed(
                     description=_("Invalid event, possible events are:\n\n{events}").format(
-                        events=humanize_list(sorted(list(map(inline, POSSIBLE_EVENTS)), key=str.lower))
+                        events=humanize_list(sorted(list(map(inline, possible_events)), key=str.lower))
                     ),
                     messageable=context,
                 ),
