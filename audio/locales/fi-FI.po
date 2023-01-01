@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2022-12-30 22:35+0000\n"
-"PO-Revision-Date: 2022-12-30 23:02\n"
+"POT-Creation-Date: 2023-01-01 21:53+0000\n"
+"PO-Revision-Date: 2023-01-01 21:53\n"
 "Last-Translator: \n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
@@ -101,8 +101,8 @@ msgstr "Maksimi äänenvoimakkuus asetettu {volume}%"
 
 #: audio/config_commands.py:165 audio/config_commands.py:631
 #, docstring
-msgid "Set whether the bot should deafen itself when playing"
-msgstr "Määritä, pitäisikö botin kuuroa itse soitettaessa"
+msgid "Set whether [botname] should deafen itself when playing"
+msgstr ""
 
 #: audio/config_commands.py:174 audio/config_commands.py:657
 msgid "Deafen set to {deafen}"
@@ -126,10 +126,10 @@ msgstr "Käytössä"
 msgid "Disabled"
 msgstr "Pois Käytöstä"
 
-#: audio/config_commands.py:182 audio/config_commands.py:665
+#: audio/config_commands.py:182
 #, docstring
-msgid "Set whether the bot should shuffle the queue after every new song added"
-msgstr "Määritä, pitäisikö botin sekoittaa jono jokaisen uuden kappaleen jälkeen lisätty"
+msgid "Set whether the a server is allowed to enabled auto shuffle"
+msgstr ""
 
 #: audio/config_commands.py:192 audio/config_commands.py:686
 msgid "Auto-Shuffle set to {shuffle}"
@@ -137,41 +137,36 @@ msgstr "Sekoitus asetettu arvoon {shuffle}"
 
 #: audio/config_commands.py:202 audio/config_commands.py:696
 #, docstring
-msgid "Set whether the bot should allow users to shuffle the queue"
-msgstr "Määritä onko botti sallittava käyttäjien sekoittaa jono"
+msgid "Set whether [botname] should allow users to shuffle the queue"
+msgstr ""
 
 #: audio/config_commands.py:212 audio/config_commands.py:719
 msgid "Shuffle set to {shuffle}"
 msgstr "Sekoita joukkoon {shuffle}"
 
-#: audio/config_commands.py:220 audio/config_commands.py:727
+#: audio/config_commands.py:220
 #, docstring
-msgid "Set whether the bot should automatically play songs when the queue is empty"
-msgstr "Määritä, pitäisikö botin soittaa kappaleita automaattisesti, kun jono on tyhjä"
+msgid "Set whether [botname] should automatically play songs when the queue is empty"
+msgstr ""
 
 #: audio/config_commands.py:229 audio/config_commands.py:753
 msgid "Auto-Play set to {auto}"
 msgstr "Automaattinen toisto asetettu {auto}"
 
-#: audio/config_commands.py:237 audio/config_commands.py:761
+#: audio/config_commands.py:237
 #, docstring
-msgid "Set whether the bot should disconnect from the voice channel"
-msgstr "Määritä, pitäisikö botin katkaista yhteys äänikanavaan"
+msgid "Set whether [botname] should disconnect from the voice channel"
+msgstr ""
 
 #: audio/config_commands.py:247
 #, docstring
-msgid "Set whether the bot should disconnect from the voice channel when the queue is empty.\n\n"
+msgid "Set whether [botname] should disconnect from the voice channel when the queue is empty.\n\n"
 "        Arguments:\n"
-"            - `<toggle>`: Whether the bot should disconnect from the voice channel when the queue is empty.\n"
+"            - `<toggle>`: Whether [botname] should disconnect from the voice channel when the queue is empty.\n"
 "            - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr "Määritä, pitäisikö botti irrottaa äänikanavasta, kun jono on tyhjä.\n\n"
-"        Argumentit:\n"
-"            - `<toggle>`: Onko botti irrotettava puhekanavasta, kun jono on tyhjä.\n"
-"            - `<duration>`: Kuinka kauemmin kun jono on tyhjä, jos soitin irrotetaan. Oletus on 60 sekuntia.\n"
-"            Hyväksyy toisen, minuutin, tunnin, päivän, viikon (jos yksikköä ei ole määritelty, kesto oletetaan annettavan sekunteina)\n"
-"        "
+msgstr ""
 
 #: audio/config_commands.py:267 audio/config_commands.py:307
 #: audio/config_commands.py:811 audio/config_commands.py:873
@@ -184,18 +179,13 @@ msgstr "Katkaise yhteys puhekanavaan, kun jono on tyhjä asetettu {empty}{extras
 
 #: audio/config_commands.py:288
 #, docstring
-msgid "Set whether the bot should disconnect from the voice channel when alone.\n\n"
+msgid "Set whether [botname] should disconnect from the voice channel when alone.\n\n"
 "        Arguments:\n"
-"            - `<toggle>`: Whether the bot should disconnect from the voice channel when it detects that it is alone.\n"
+"            - `<toggle>`: Whether [botname] should disconnect from the voice channel when it detects that it is alone.\n"
 "            - `<duration>`: How longer after detecting should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr "Määritä, pitäisikö botti irrottaa äänikanavasta, kun se on yksin.\n\n"
-"        Argumentit:\n"
-"            - `<toggle>`: Onko botti irrotettava puhekanavasta, kun se havaitsee että se on yksin.\n"
-"            - `<duration>`: Kuinka kauan havainnon jälkeen soitin pitäisi irrottaa. Oletus on 60 sekuntia.\n"
-"            Hyväksyy toisen, minuutin, tunnin, päivän, viikon (jos yksikköä ei ole määritelty, kesto oletetaan annettavan sekunteina)\n"
-"        "
+msgstr ""
 
 #: audio/config_commands.py:313 audio/config_commands.py:879
 msgid "Disconnect from voice channel when alone set to {empty}{extras}"
@@ -275,8 +265,8 @@ msgstr "Poistettu {user} DJ käyttäjiltä"
 
 #: audio/config_commands.py:463
 #, docstring
-msgid "List the DJ roles for the server"
-msgstr "Listaa DJ roolit palvelimella"
+msgid "List the DJ roles and users for the server"
+msgstr ""
 
 #: audio/config_commands.py:514
 msgid "There are no DJ roles or users set in {server}"
@@ -312,6 +302,11 @@ msgstr "Äänenvoimakkuuden on oltava välillä 0 - {volume}%"
 msgid "My owner told me to always deafen myself"
 msgstr "Omistajani käski minua aina kuuromaan itseäni"
 
+#: audio/config_commands.py:665
+#, docstring
+msgid "Set whether [botname] should shuffle the queue after every new song added"
+msgstr ""
+
 #: audio/config_commands.py:673
 msgid "Auto-Shuffle is globally disabled"
 msgstr "Automaattinen Shuffle on pois päältä"
@@ -320,9 +315,19 @@ msgstr "Automaattinen Shuffle on pois päältä"
 msgid "Shuffle is globally disabled"
 msgstr "Sekoitus on poistettu käytöstä maailmanlaajuisesti"
 
+#: audio/config_commands.py:727
+#, docstring
+msgid "Set whether the bot should automatically play songs when the queue is empty"
+msgstr "Määritä, pitäisikö botin soittaa kappaleita automaattisesti, kun jono on tyhjä"
+
 #: audio/config_commands.py:736
 msgid "Auto-Play is globally disabled"
 msgstr "Automaattinen toisto on poistettu käytöstä maailmanlaajuisesti"
+
+#: audio/config_commands.py:761
+#, docstring
+msgid "Set whether the bot should disconnect from the voice channel"
+msgstr "Määritä, pitäisikö botin katkaista yhteys äänikanavaan"
 
 #: audio/config_commands.py:771
 #, docstring

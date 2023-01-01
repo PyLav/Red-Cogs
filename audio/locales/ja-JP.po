@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2022-12-30 22:35+0000\n"
-"PO-Revision-Date: 2022-12-30 23:02\n"
+"POT-Creation-Date: 2023-01-01 21:53+0000\n"
+"PO-Revision-Date: 2023-01-01 21:53\n"
 "Last-Translator: \n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -94,8 +94,8 @@ msgstr "最大音量を {volume} % に設定しました"
 
 #: audio/config_commands.py:165 audio/config_commands.py:631
 #, docstring
-msgid "Set whether the bot should deafen itself when playing"
-msgstr "再生時にボット自体をミュートするかどうかを設定します"
+msgid "Set whether [botname] should deafen itself when playing"
+msgstr ""
 
 #: audio/config_commands.py:174 audio/config_commands.py:657
 msgid "Deafen set to {deafen}"
@@ -119,10 +119,10 @@ msgstr "有効"
 msgid "Disabled"
 msgstr "無効"
 
-#: audio/config_commands.py:182 audio/config_commands.py:665
+#: audio/config_commands.py:182
 #, docstring
-msgid "Set whether the bot should shuffle the queue after every new song added"
-msgstr "新しい曲が追加された後、ボットがキューをシャッフルするかどうかを設定します"
+msgid "Set whether the a server is allowed to enabled auto shuffle"
+msgstr ""
 
 #: audio/config_commands.py:192 audio/config_commands.py:686
 msgid "Auto-Shuffle set to {shuffle}"
@@ -130,32 +130,32 @@ msgstr "{shuffle} に自動シャッフルを設定しました"
 
 #: audio/config_commands.py:202 audio/config_commands.py:696
 #, docstring
-msgid "Set whether the bot should allow users to shuffle the queue"
-msgstr "ボットがキューをシャッフルすることを許可するかどうか設定"
+msgid "Set whether [botname] should allow users to shuffle the queue"
+msgstr ""
 
 #: audio/config_commands.py:212 audio/config_commands.py:719
 msgid "Shuffle set to {shuffle}"
 msgstr "シャッフルを {shuffle} に設定しました"
 
-#: audio/config_commands.py:220 audio/config_commands.py:727
+#: audio/config_commands.py:220
 #, docstring
-msgid "Set whether the bot should automatically play songs when the queue is empty"
-msgstr "キューが空の場合、ボットが自動的に曲を再生するかどうかを設定します"
+msgid "Set whether [botname] should automatically play songs when the queue is empty"
+msgstr ""
 
 #: audio/config_commands.py:229 audio/config_commands.py:753
 msgid "Auto-Play set to {auto}"
 msgstr "{auto} に自動再生を設定しました"
 
-#: audio/config_commands.py:237 audio/config_commands.py:761
+#: audio/config_commands.py:237
 #, docstring
-msgid "Set whether the bot should disconnect from the voice channel"
-msgstr "ボットがボイスチャンネルから切断するかどうかを設定します"
+msgid "Set whether [botname] should disconnect from the voice channel"
+msgstr ""
 
 #: audio/config_commands.py:247
 #, docstring
-msgid "Set whether the bot should disconnect from the voice channel when the queue is empty.\n\n"
+msgid "Set whether [botname] should disconnect from the voice channel when the queue is empty.\n\n"
 "        Arguments:\n"
-"            - `<toggle>`: Whether the bot should disconnect from the voice channel when the queue is empty.\n"
+"            - `<toggle>`: Whether [botname] should disconnect from the voice channel when the queue is empty.\n"
 "            - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
@@ -172,9 +172,9 @@ msgstr "キューが {empty}{extras} に設定されている場合、ボイス�
 
 #: audio/config_commands.py:288
 #, docstring
-msgid "Set whether the bot should disconnect from the voice channel when alone.\n\n"
+msgid "Set whether [botname] should disconnect from the voice channel when alone.\n\n"
 "        Arguments:\n"
-"            - `<toggle>`: Whether the bot should disconnect from the voice channel when it detects that it is alone.\n"
+"            - `<toggle>`: Whether [botname] should disconnect from the voice channel when it detects that it is alone.\n"
 "            - `<duration>`: How longer after detecting should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
@@ -258,8 +258,8 @@ msgstr "DJユーザーから {user} を削除しました"
 
 #: audio/config_commands.py:463
 #, docstring
-msgid "List the DJ roles for the server"
-msgstr "サーバーの DJ ロールの一覧"
+msgid "List the DJ roles and users for the server"
+msgstr ""
 
 #: audio/config_commands.py:514
 msgid "There are no DJ roles or users set in {server}"
@@ -295,6 +295,11 @@ msgstr "音量は 0 から {volume} % の間でなければなりません"
 msgid "My owner told me to always deafen myself"
 msgstr "私の所有者は、常に自分自身を聞くように私に言った"
 
+#: audio/config_commands.py:665
+#, docstring
+msgid "Set whether [botname] should shuffle the queue after every new song added"
+msgstr ""
+
 #: audio/config_commands.py:673
 msgid "Auto-Shuffle is globally disabled"
 msgstr "自動シャッフルはグローバルで無効になっています"
@@ -303,9 +308,19 @@ msgstr "自動シャッフルはグローバルで無効になっています"
 msgid "Shuffle is globally disabled"
 msgstr "シャッフルはグローバルで無効です"
 
+#: audio/config_commands.py:727
+#, docstring
+msgid "Set whether the bot should automatically play songs when the queue is empty"
+msgstr "キューが空の場合、ボットが自動的に曲を再生するかどうかを設定します"
+
 #: audio/config_commands.py:736
 msgid "Auto-Play is globally disabled"
 msgstr "自動再生はグローバルで無効になっています"
+
+#: audio/config_commands.py:761
+#, docstring
+msgid "Set whether the bot should disconnect from the voice channel"
+msgstr "ボットがボイスチャンネルから切断するかどうかを設定します"
 
 #: audio/config_commands.py:771
 #, docstring
