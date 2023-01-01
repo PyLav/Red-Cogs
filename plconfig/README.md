@@ -1,0 +1,35 @@
+# PyLavConfigurator
+
+## Text Commands
+- `[p]plset` | `[p]plconfig`
+  - Change global settings for PyLav
+- `[p]plset version`
+  - Show the version of the Cog and its PyLav dependencies
+- `[p]plset info`
+  -  Show the config values (Additional info is displayed if run by a bot owner)
+- `[p]plset dj <role_or_member>`
+  -  Checks if a user or role is considered a DJ
+  - If a role is provided, it will check if the role is a DJ role
+  - If a member is provided, it will check if the member is a DJ
+- `[p]plset tracks <create> <folder>` | Bot owner only
+  - Set the local tracks folder for PyLav.
+  - Changes will be applied after restarting the bot.
+- `[p]plset node` | Bot owner only
+  - Change the managed node configuration
+  - Changes will be applied after restarting the bot.
+- `[p]plset node toggle`
+  - Toggle the managed node on/off.
+- `[p]plset node updates`
+  - Toggle the managed node auto updates on/off.
+- `[p]plset node external`
+  - Change the bundled external nodes state
+- `[p]plset node external pylav`
+  - Toggle the managed external draper.wtf nodes on/off
+- `[p]plset node external lavalink`
+  - Toggle the managed external lava.link node on/off
+- `[p]plset spotifyapi` | Bot owner only
+  - Instructions on how to set the Spotify API Tokens
+- `[p]plset stats [server]` | Bot owner only
+  - Manage active players
+  - If `[server]` is provided, it will show the stats for that server if not it will show the stats for all servers.
+- `[p]plset activity` | Bot owner only

@@ -188,67 +188,12 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
             ephemeral=True,
         )
 
-    @command_plset.command(name="folder")
-    @commands.is_owner()
-    async def command_plset_folder(self, context: PyLavContext, create: bool, *, folder: str) -> None:
-        """Set the folder for PyLav's config files
-
-        Changes will be applied after restarting the bot.
-        """
-        if isinstance(context, discord.Interaction):
-            context = await self.bot.get_context(context)
-        if context.interaction and not context.interaction.response.is_done():
-            await context.defer(ephemeral=True)
-        path = aiopath.AsyncPath(folder)
-        if await path.is_file():
-            await context.send(
-                embed=await context.pylav.construct_embed(
-                    description=_("{folder} is not a folder").format(
-                        folder=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
-                    ),
-                    messageable=context,
-                ),
-                ephemeral=True,
-            )
-            return
-
-        if create:
-            await path.mkdir(parents=True, exist_ok=True)
-        elif not await path.exists():
-            await context.send(
-                embed=await context.pylav.construct_embed(
-                    description=_(
-                        "{folder} does not exist, "
-                        "run the command again with the create argument "
-                        "set to 1 to automatically create this folder"
-                    ).format(
-                        folder=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
-                    ),
-                    messageable=context,
-                ),
-                ephemeral=True,
-            )
-            return
-
-        global_config = self.pylav.lib_db_manager.get_config()
-        await global_config.update_config_folder(str(await discord.utils.maybe_coroutine(path.absolute)))
-
-        await context.send(
-            embed=await context.pylav.construct_embed(
-                description=_("PyLav's config folder has been set to {folder}").format(
-                    folder=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
-                ),
-                messageable=context,
-            ),
-            ephemeral=True,
-        )
-
     @command_plset.command(name="tracks")
     @commands.is_owner()
     async def command_plset_tracks(self, context: PyLavContext, create: bool, *, folder: str) -> None:
         """Set the local tracks folder for PyLav.
 
-        Changes will be applied after restarting the bot.
+        Changes will be applied after restarting the [botname].
         """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -310,7 +255,7 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
     async def command_plset_node_toggle(self, context: PyLavContext) -> None:
         """Toggle the managed node on/off.
 
-        Changes will be applied after restarting the bot.
+        Changes will be applied after restarting the [botname].
         """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -342,7 +287,7 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
     async def command_plset_node_updates(self, context: PyLavContext) -> None:
         """Toggle the managed node auto updates on/off.
 
-        Changes will be applied after restarting the bot.
+        Changes will be applied after restarting [botname].
         """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -474,22 +419,6 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
             )
         )
 
-    @command_plset.command(name="deezerapi", hidden=True, disabled=True)
-    @commands.is_owner()
-    async def command_plset_deezerapi(self, context: PyLavContext) -> None:
-        """Instructions on how to set the Deezer Token"""
-        message = _(
-            "1. Google is your friend.\n"
-            "2. Once you have the key run:\n"
-            "`{prefix}set api deezer token <your_token_here>`"
-        ).format(prefix=context.clean_prefix)
-        await context.send(
-            embed=await context.pylav.construct_embed(
-                description=message,
-                messageable=context,
-            )
-        )
-
     @command_plset.command(name="stats")
     @commands.is_owner()
     async def command_plset_stats(self, context: PyLavContext, *, server: discord.Guild = None) -> None:
@@ -528,7 +457,7 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
     @command_plset.command(name="activity")
     @commands.is_owner()
     async def command_plset_activity(self, context: PyLavContext) -> None:
-        """Toggle whether or not to change the bot's activity"""
+        """Toggle whether or not to change [botname]'s activity"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
