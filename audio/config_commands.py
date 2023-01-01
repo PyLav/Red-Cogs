@@ -162,7 +162,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
     @command_playerset_global.command(name="deafen", aliases=["deaf"])
     async def command_playerset_global_deafen(self, context: PyLavContext, toggle: bool) -> None:
-        """Set whether the bot should deafen itself when playing"""
+        """Set whether [botname] should deafen itself when playing"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -199,7 +199,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
     @command_playerset_global.command(name="shuffle")
     async def command_playerset_global_shuffle(self, context: PyLavContext, toggle: bool) -> None:
-        """Set whether the bot should allow users to shuffle the queue"""
+        """Set whether [botname] should allow users to shuffle the queue"""
 
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -217,7 +217,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
     @command_playerset_global.command(name="auto")
     async def command_playerset_global_auto(self, context: PyLavContext, toggle: bool) -> None:
-        """Set whether the bot should automatically play songs when the queue is empty"""
+        """Set whether [botname] should automatically play songs when the queue is empty"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -234,7 +234,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
     @command_playerset_global.group(name="dc")
     async def command_playerset_global_dc(self, context: PyLavContext) -> None:
-        """Set whether the bot should disconnect from the voice channel"""
+        """Set whether [botname] should disconnect from the voice channel"""
 
     @command_playerset_global_dc.command(name="empty")
     async def command_playerset_global_dc_empty(
@@ -244,10 +244,10 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         *,
         after: TimedeltaConverter(default_unit="seconds", minimum=60) = None,  # noqa
     ) -> None:
-        """Set whether the bot should disconnect from the voice channel when the queue is empty.
+        """Set whether [botname] should disconnect from the voice channel when the queue is empty.
 
         Arguments:
-            - `<toggle>`: Whether the bot should disconnect from the voice channel when the queue is empty.
+            - `<toggle>`: Whether [botname] should disconnect from the voice channel when the queue is empty.
             - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60 seconds.
             Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)
         """
@@ -285,10 +285,10 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         *,
         after: TimedeltaConverter(default_unit="seconds", minimum=60) = None,  # noqa
     ) -> None:
-        """Set whether the bot should disconnect from the voice channel when alone.
+        """Set whether [botname] should disconnect from the voice channel when alone.
 
         Arguments:
-            - `<toggle>`: Whether the bot should disconnect from the voice channel when it detects that it is alone.
+            - `<toggle>`: Whether [botname] should disconnect from the voice channel when it detects that it is alone.
             - `<duration>`: How longer after detecting should the player be disconnected. Default is 60 seconds.
             Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)
         """
@@ -628,7 +628,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
     @command_playerset_server.command(name="deafen", aliases=["deaf"])
     async def command_playerset_server_deafen(self, context: PyLavContext, toggle: bool) -> None:
-        """Set whether the bot should deafen itself when playing"""
+        """Set whether [botname] should deafen itself when playing"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -662,7 +662,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
     @command_playerset_server.command(name="autoshuffle")
     async def command_playerset_server_autoshuffle(self, context: PyLavContext, toggle: bool) -> None:
-        """Set whether the bot should shuffle the queue after every new song added"""
+        """Set whether [botname] should shuffle the queue after every new song added"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -693,7 +693,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
     @command_playerset_server.command(name="shuffle")
     async def command_playerset_server_shuffle(self, context: PyLavContext, toggle: bool) -> None:
-        """Set whether the bot should allow users to shuffle the queue"""
+        """Set whether [botname] should allow users to shuffle the queue"""
 
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)

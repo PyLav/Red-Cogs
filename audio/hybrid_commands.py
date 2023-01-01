@@ -62,8 +62,8 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         `ymsearch:`  - Yandex Music
 
         You can trigger text-to-speech by using the following prefixes (dependent on service availability):
-        `speak:` - The bot will speak the query  (limited to 200 characters)
-        `tts://` - The bot will speak the query
+        `speak:` - [botname] will speak the query  (limited to 200 characters)
+        `tts://` - [botname] will speak the query
         """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -207,7 +207,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
     @commands.guild_only()
     @invoker_is_dj()
     async def command_connect(self, context: PyLavContext, *, channel: discord.VoiceChannel | None = None):
-        """Connect the bot to the specified channel or your current channel"""
+        """Connect [botname] to the specified channel or your current channel"""
 
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
