@@ -5,7 +5,6 @@ import pathlib
 import sys
 
 import pkg_resources
-import requests
 from packaging.version import parse
 
 __PYLAV_VERSION__ = sys.argv[1] or sys.argv[2]
@@ -18,23 +17,7 @@ pylav_threshold_version = f"{pylav_current_minor_version.major}.{pylav_current_m
 
 print(f"PyLav max version: {pylav_threshold_version}")
 
-pylav_requirement = pkg_resources.Requirement.parse(f"Py-Lav>={pylav_current_minor_version},<{pylav_threshold_version}")
-
-
-print(f"Looking for most recent release matching: {pylav_requirement}")
-
-pylav_data = requests.get("https://pypi.org/pypi/Py-Lav/json").json()["releases"]
-
-
-pylav_data_releases = {version for version, data in pylav_data.items() if data[0]["yanked"] is False}
-pylav_latest_compatible_version = max(parse(i) for i in pylav_data_releases if pylav_requirement.specifier.contains(i))
-
-
-print(f"Most recent PyLav version: {max(parse(i) for i in pylav_data_releases)}")
-
-print(f"Most recent PyLav version in range: {pylav_latest_compatible_version}")
-
-new_pylav_version = f"Py-Lav>={pylav_latest_compatible_version}<{pylav_threshold_version}"
+new_pylav_version = f"Py-Lav>={__PYLAV_VERSION__}<{pylav_threshold_version}"
 
 print(f"New PyLav version range: {new_pylav_version}")
 
