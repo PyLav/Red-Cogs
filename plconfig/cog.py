@@ -366,32 +366,20 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
             await context.defer(ephemeral=True)
         global_config = self.pylav.lib_db_manager.get_config()
         current_state = await global_config.fetch_use_bundled_lava_link_external()
-        await global_config.update_use_bundled_lava_link_external(not current_state)
+        await global_config.update_use_bundled_lava_link_external(False)
         if current_state:
             await self.pylav.remove_node(2)
-        else:
-            node_config = self.pylav.node_db_manager.get_node_config(
-                PYLAV_BUNDLED_NODES_SETTINGS["lava.link"]["unique_identifier"]
-            )
-            await self.pylav.add_node(**(await node_config.get_connection_args()))
-
-        if not current_state:
-            node_config = self.pylav.node_db_manager.get_node_config(
-                PYLAV_BUNDLED_NODES_SETTINGS["lava.link"]["unique_identifier"]
-            )
-            await self.pylav.add_node(**(await node_config.get_connection_args()))
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("PyLav's managed lava.link external node has been enabled"),
+                    description=_("PyLav's managed lava.link external node has been disabled"),
                     messageable=context,
                 ),
                 ephemeral=True,
             )
         else:
-            await self.pylav.remove_node(2)
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("PyLav's managed lava.link external node has been disabled"),
+                    description=_("PyLav's managed lava.link has been permanently removed"),
                     messageable=context,
                 ),
                 ephemeral=True,

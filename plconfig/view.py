@@ -46,7 +46,7 @@ class EmbedGenerator:
             ),
             (
                 EightBitANSI.paint_white(_("Use Bundled\nlava.link Nodes")),
-                enabled if pylav_config["use_bundled_lava_link_external"] else disabled,
+                disabled,
             ),
         ]
         return await self.cog.pylav.construct_embed(
