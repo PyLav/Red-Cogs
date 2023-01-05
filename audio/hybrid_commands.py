@@ -187,7 +187,6 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                 data=None,
                 query=query,
                 requester=context.author.id,
-                timestamp=query.start_time,
                 partial=query.is_partial,
             )
             await player.add(requester=context.author.id, track=track)
