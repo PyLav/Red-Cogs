@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
 "POT-Creation-Date: 2023-01-06 21:56+0000\n"
-"PO-Revision-Date: 2023-01-06 22:03\n"
+"PO-Revision-Date: 2023-01-07 03:03\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
@@ -102,7 +102,7 @@ msgstr "最大音量設置為 {volume}%"
 #: audio/config_commands.py:165 audio/config_commands.py:631
 #, docstring
 msgid "Set whether [botname] should deafen itself when playing"
-msgstr ""
+msgstr "設置 [botname] 在播放時是否應該讓自己拒聽"
 
 #: audio/config_commands.py:174 audio/config_commands.py:657
 msgid "Deafen set to {deafen}"
@@ -129,7 +129,7 @@ msgstr "停用"
 #: audio/config_commands.py:182
 #, docstring
 msgid "Set whether the a server is allowed to enabled auto shuffle"
-msgstr ""
+msgstr "設置服務器是否允許啟用自動隨機播放"
 
 #: audio/config_commands.py:192 audio/config_commands.py:686
 msgid "Auto-Shuffle set to {shuffle}"
@@ -138,7 +138,7 @@ msgstr "自動隨機播放設置為{shuffle}"
 #: audio/config_commands.py:202 audio/config_commands.py:696
 #, docstring
 msgid "Set whether [botname] should allow users to shuffle the queue"
-msgstr ""
+msgstr "設置 [botname] 是否允許用戶隨機播放播放清單"
 
 #: audio/config_commands.py:212 audio/config_commands.py:719
 msgid "Shuffle set to {shuffle}"
@@ -147,7 +147,7 @@ msgstr "隨機播放設置為{shuffle}"
 #: audio/config_commands.py:220
 #, docstring
 msgid "Set whether [botname] should automatically play songs when the queue is empty"
-msgstr ""
+msgstr "設置 [botname] 播放清單為無音樂時是否自動播放歌曲"
 
 #: audio/config_commands.py:229 audio/config_commands.py:753
 msgid "Auto-Play set to {auto}"
@@ -156,7 +156,7 @@ msgstr "自動播放設置為 {auto}"
 #: audio/config_commands.py:237
 #, docstring
 msgid "Set whether [botname] should disconnect from the voice channel"
-msgstr ""
+msgstr "設置 [botname] 是否應該斷開與語音通道的連接"
 
 #: audio/config_commands.py:247
 #, docstring
@@ -166,7 +166,12 @@ msgid "Set whether [botname] should disconnect from the voice channel when the q
 "            - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr ""
+msgstr "設置當清單無音樂時 [botname] 是否應斷開與語音通道的連接。\n\n"
+"        參數：\n"
+"            - `<toggle>`：當隊列為空時，[botname] 是否應斷開與語音通道的連接。\n"
+"            - `<duration>`：隊列為空後玩家斷開連接的時間。 默認值為 60 秒。\n"
+"            接受秒、分鐘、小時、天、週（如果未指定單位，則假定持續時間以秒為單位）\n"
+"        "
 
 #: audio/config_commands.py:267 audio/config_commands.py:307
 #: audio/config_commands.py:811 audio/config_commands.py:873
@@ -185,7 +190,12 @@ msgid "Set whether [botname] should disconnect from the voice channel when alone
 "            - `<duration>`: How longer after detecting should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr ""
+msgstr "設置 [botname] 單獨在語音時是否應斷開與語音通道的連接。\n\n"
+"        參數：\n"
+"            - `<toggle>`：[botname] 檢測到它獨自一人時是否應斷開與語音通道的連接。\n"
+"            - `<duration>`：檢測到播放器斷開連接後多長時間。 默認值為 60 秒。\n"
+"            接受秒、分鐘、小時、天、週（如果未指定單位，則假定持續時間以秒為單位）\n"
+"        "
 
 #: audio/config_commands.py:313 audio/config_commands.py:879
 msgid "Disconnect from voice channel when alone set to {empty}{extras}"
@@ -266,7 +276,7 @@ msgstr "已從 DJ 成員中刪除了 {user}"
 #: audio/config_commands.py:463
 #, docstring
 msgid "List the DJ roles and users for the server"
-msgstr ""
+msgstr "列出伺服器的 DJ 身分組和用戶"
 
 #: audio/config_commands.py:514
 msgid "There are no DJ roles or users set in {server}"
@@ -305,7 +315,7 @@ msgstr "我的主人告訴我要永遠把自己拒聽"
 #: audio/config_commands.py:665
 #, docstring
 msgid "Set whether [botname] should shuffle the queue after every new song added"
-msgstr ""
+msgstr "設置 [botname] 是否在每添加一首新歌曲後重新排列歌曲"
 
 #: audio/config_commands.py:673
 msgid "Auto-Shuffle is globally disabled"
@@ -498,7 +508,7 @@ msgstr "我沒有權限連接到 {channel}"
 
 #: audio/hybrid_commands.py:253
 msgid "You don't have permission to connect to {channel}"
-msgstr ""
+msgstr "您無權限連接到{channel}"
 
 #: audio/hybrid_commands.py:270
 msgid "I'm forced to only join {channel}"
