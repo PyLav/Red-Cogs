@@ -242,7 +242,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         context: PyLavContext,  # noqa
         toggle: bool,  # noqa
         *,
-        after: TimedeltaConverter(default_unit="seconds", minimum=60) = None,  # noqa
+        after: TimedeltaConverter(default_unit="seconds", minimum=datetime.timedelta(seconds=60)) = None,  # noqa
     ) -> None:
         """Set whether [botname] should disconnect from the voice channel when the queue is empty.
 
@@ -283,7 +283,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         context: PyLavContext,  # noqa
         toggle: bool,  # noqa
         *,
-        after: TimedeltaConverter(default_unit="seconds", minimum=60) = None,  # noqa
+        after: TimedeltaConverter(default_unit="seconds", minimum=datetime.timedelta(seconds=60)) = None,  # noqa
     ) -> None:
         """Set whether [botname] should disconnect from the voice channel when alone.
 
@@ -766,7 +766,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         context: PyLavContext,  # noqa
         toggle: bool,  # noqa
         *,
-        after: TimedeltaConverter(default_unit="seconds", minimum=60) = None,  # noqa
+        after: TimedeltaConverter(default_unit="seconds", minimum=datetime.timedelta(seconds=60)) = None,  # noqa
     ) -> None:
         """Set whether the bot should disconnect from the voice channel when the queue is empty.
 
@@ -827,7 +827,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         context: PyLavContext,  # noqa
         toggle: bool,  # noqa
         *,
-        after: TimedeltaConverter(default_unit="seconds", minimum=60) = None,  # noqa
+        after: TimedeltaConverter(default_unit="seconds", minimum=datetime.timedelta(seconds=60)) = None,  # noqa
     ) -> None:
         """Set whether the bot should disconnect from the voice channel when alone.
 
