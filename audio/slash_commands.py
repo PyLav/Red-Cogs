@@ -107,8 +107,9 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN):
                     value="FqgqQW21tQ@#1g2fasf2",
                 )
             ]
+        original_query = await Query.from_string(current)
         response = await interaction.client.pylav.get_tracks(
-            await Query.from_string(current),
+            original_query,
             fullsearch=True,
             player=interaction.client.pylav.get_player(interaction.guild.id),
         )
@@ -139,7 +140,7 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN):
             node = await interaction.client.pylav.node_manager.find_best_node(feature=feature)
 
         for track in tracks:
-            track = await Track.build_track(node=node, data=track, query=None, requester=interaction.user.id)
+            track = await Track.build_track(node=node, data=track, query=original_query, requester=interaction.user.id)
             track_id = hashlib.md5(track.encoded.encode()).hexdigest()
             self._track_cache[track_id] = track
             choices.append(
