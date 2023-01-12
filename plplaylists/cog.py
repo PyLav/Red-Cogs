@@ -789,13 +789,26 @@ class PyLavPlaylists(
                 return
             player = await context.connect_player(channel=channel, self_deaf=True)
         track_count = await playlist.size()
-        await player.bulk_add(
-            requester=context.author.id,
-            tracks_and_queries=[
-                await Track.build_track(node=player.node, data=track, requester=context.author.id, query=None)
-                async for i, track in AsyncIter(await playlist.fetch_tracks()).enumerate()
-            ],
-        )
+
+        tracks = await playlist.fetch_tracks()
+        node = await self.pylav.node_manager.find_best_node()
+        track_objects = await node.post_decodetracks(tracks)
+        if isinstance(track_objects, list):
+            await player.bulk_add(
+                requester=context.author.id,
+                tracks_and_queries=[
+                    await Track.build_track(node=player.node, data=track, requester=context.author.id, query=None)
+                    async for track in AsyncIter(track_objects)
+                ],
+            )
+        else:
+            await player.bulk_add(
+                requester=context.author.id,
+                tracks_and_queries=[
+                    await Track.build_track(node=player.node, data=track, requester=context.author.id, query=None)
+                    async for track in AsyncIter(tracks)
+                ],
+            )
         bundle_prefix = _("Playlist")
         playlist_name = f"\n\n**{bundle_prefix}**:  {await playlist.get_name_formatted(with_url=True)}"
         await context.send(
