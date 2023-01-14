@@ -331,10 +331,10 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
         await global_config.update_use_bundled_pylav_external(not current_state)
 
         if not current_state:
-            node_config = self.pylav.node_db_manager.get_node_config(
-                PYLAV_BUNDLED_NODES_SETTINGS["ll-gb.draper.wtf"]["unique_identifier"]
-            )
-            await self.pylav.add_node(**(await node_config.get_connection_args()))
+            # node_config = self.pylav.node_db_manager.get_node_config(
+            #     PYLAV_BUNDLED_NODES_SETTINGS["ll-gb.draper.wtf"]["unique_identifier"]
+            # )
+            # await self.pylav.add_node(**(await node_config.get_connection_args()))
             node_config = self.pylav.node_db_manager.get_node_config(
                 PYLAV_BUNDLED_NODES_SETTINGS["ll-us-ny.draper.wtf"]["unique_identifier"]
             )
@@ -347,7 +347,7 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
                 ephemeral=True,
             )
         else:
-            await self.pylav.remove_node(PYLAV_BUNDLED_NODES_SETTINGS["ll-gb.draper.wtf"]["unique_identifier"])
+            # await self.pylav.remove_node(PYLAV_BUNDLED_NODES_SETTINGS["ll-gb.draper.wtf"]["unique_identifier"])
             await self.pylav.remove_node(PYLAV_BUNDLED_NODES_SETTINGS["ll-us-ny.draper.wtf"]["unique_identifier"])
             await context.send(
                 embed=await context.pylav.construct_embed(
