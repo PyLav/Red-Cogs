@@ -25,7 +25,7 @@ jobs:
             run: |
                 python3.11 -m redgettext --command-docstrings --verbose --recursive .
         -   name: crowdin action
-            uses: crowdin/github-action@1.5.1
+            uses: crowdin/github-action@1.5.3
             with:
                 upload_translations: false
                 download_translations: true
@@ -52,7 +52,7 @@ jobs:
             run: |
                 python3.11 -m redgettext --command-docstrings --verbose --recursive .
         -   name: crowdin action
-            uses: crowdin/github-action@1.5.1
+            uses: crowdin/github-action@1.5.3
             with:
                 upload_translations: true
                 download_translations: false
