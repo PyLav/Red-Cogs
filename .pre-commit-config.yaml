@@ -45,11 +45,11 @@ repos:
     -   id: pretty-format-ini
         args: [--autofix]
 -   repo: https://github.com/asottile/blacken-docs
-    rev: v1.12.1
+    rev: 1.13.0
     hooks:
     -   id: blacken-docs
 -   repo: https://github.com/sourcery-ai/sourcery
-    rev: v1.0.2
+    rev: v1.0.3
     hooks:
     -   id: sourcery
         args: [--diff=git diff HEAD, --in-place, --no-summary]
