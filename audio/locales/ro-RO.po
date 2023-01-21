@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
 "POT-Creation-Date: 2023-01-09 20:14+0000\n"
-"PO-Revision-Date: 2023-01-09 20:14\n"
+"PO-Revision-Date: 2023-01-21 16:35\n"
 "Last-Translator: \n"
 "Language-Team: Romanian\n"
 "MIME-Version: 1.0\n"
@@ -102,7 +102,7 @@ msgstr "Volum maxim setat la {volume}%"
 #: audio/config_commands.py:165 audio/config_commands.py:631
 #, docstring
 msgid "Set whether [botname] should deafen itself when playing"
-msgstr ""
+msgstr "Setează dacă [botname] ar trebui să se abată singur atunci când se joacă"
 
 #: audio/config_commands.py:174 audio/config_commands.py:657
 msgid "Deafen set to {deafen}"
@@ -129,7 +129,7 @@ msgstr "Dezactivat"
 #: audio/config_commands.py:182
 #, docstring
 msgid "Set whether the a server is allowed to enabled auto shuffle"
-msgstr ""
+msgstr "Setează dacă un server are permisiunea de a dezactiva comutarea automată"
 
 #: audio/config_commands.py:192 audio/config_commands.py:686
 msgid "Auto-Shuffle set to {shuffle}"
@@ -138,7 +138,7 @@ msgstr "Auto-Shuffle setat la {shuffle}"
 #: audio/config_commands.py:202 audio/config_commands.py:696
 #, docstring
 msgid "Set whether [botname] should allow users to shuffle the queue"
-msgstr ""
+msgstr "Setează dacă [botname] ar trebui să permită utilizatorilor să amestece coada de așteptare"
 
 #: audio/config_commands.py:212 audio/config_commands.py:719
 msgid "Shuffle set to {shuffle}"
@@ -147,7 +147,7 @@ msgstr "Amestecare setată la {shuffle}"
 #: audio/config_commands.py:220
 #, docstring
 msgid "Set whether [botname] should automatically play songs when the queue is empty"
-msgstr ""
+msgstr "Setează dacă [botname] ar trebui să redea automat melodiile când coada este goală"
 
 #: audio/config_commands.py:229 audio/config_commands.py:753
 msgid "Auto-Play set to {auto}"
@@ -156,7 +156,7 @@ msgstr "Auto-Play setat la {auto}"
 #: audio/config_commands.py:237
 #, docstring
 msgid "Set whether [botname] should disconnect from the voice channel"
-msgstr ""
+msgstr "Setează dacă [botname] trebuie să se deconecteze de la canalul vocal"
 
 #: audio/config_commands.py:247
 #, docstring
@@ -166,7 +166,12 @@ msgid "Set whether [botname] should disconnect from the voice channel when the q
 "            - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Setează dacă [botname] trebuie să se deconecteze de la canalul vocal atunci când coada este goală.\n\n"
+"        Argumente:\n"
+"            - `<toggle>`: Dacă [botname] ar trebui să se deconecteze de la canalul vocal atunci când coada este goală.\n"
+"            - `<duration>`: Cât mai mult după ce coada este goală ar trebui ca jucătorul să fie deconectat. Implicit este de 60 de secunde.\n"
+"            Acceptă secunde, minute, ore, zile, săptămâni (dacă nu este specificată nicio unitate durata se presupune a fi dată în secunde\n"
+"        "
 
 #: audio/config_commands.py:267 audio/config_commands.py:307
 #: audio/config_commands.py:811 audio/config_commands.py:873
@@ -185,7 +190,12 @@ msgid "Set whether [botname] should disconnect from the voice channel when alone
 "            - `<duration>`: How longer after detecting should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Setează dacă [botname] trebuie să se deconecteze de la canalul de voce atunci când este singur.\n\n"
+"        Argumente:\n"
+"            - `<toggle>`: Dacă [botname] ar trebui să se deconecteze de la canalul vocal atunci când detectează că este singur.\n"
+"            - `<duration>`: Cât mai mult după detectarea jucătorului ar trebui deconectat. Implicit este de 60 de secunde.\n"
+"            Acceptă secunde, minute, ore, zile, săptămâni (dacă nu este specificată nicio unitate durata se presupune a fi dată în secunde\n"
+"        "
 
 #: audio/config_commands.py:313 audio/config_commands.py:879
 msgid "Disconnect from voice channel when alone set to {empty}{extras}"
@@ -266,7 +276,7 @@ msgstr "Eliminat {user} de la utilizatorii DJ"
 #: audio/config_commands.py:463
 #, docstring
 msgid "List the DJ roles and users for the server"
-msgstr ""
+msgstr "Listează rolurile DJ și utilizatorii pentru server"
 
 #: audio/config_commands.py:514
 msgid "There are no DJ roles or users set in {server}"
@@ -305,7 +315,7 @@ msgstr "Proprietarul meu mi-a spus să mă asigur mereu"
 #: audio/config_commands.py:665
 #, docstring
 msgid "Set whether [botname] should shuffle the queue after every new song added"
-msgstr ""
+msgstr "Setează dacă [botname] ar trebui să amestece coada de redare după adăugarea fiecărei melodii noi"
 
 #: audio/config_commands.py:673
 msgid "Auto-Shuffle is globally disabled"
