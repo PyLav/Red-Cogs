@@ -8,7 +8,6 @@ from io import StringIO
 from pathlib import Path
 
 import discord
-import ujson
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import box, humanize_number, inline, pagify
@@ -16,6 +15,7 @@ from rich.console import Console
 from rich.tree import Tree
 from tabulate import tabulate
 
+from pylav.compat import json
 from pylav.core.context import PyLavContext
 from pylav.exceptions.request import HTTPException
 from pylav.extension.red.utils.decorators import requires_player
@@ -298,7 +298,7 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
         data = node_player.to_dict()
         await context.send(
             embed=await context.pylav.construct_embed(
-                description=box(ujson.dumps(data, indent=2), lang="json"),
+                description=box(json.dumps(data, indent=2), lang="json"),
                 messageable=context,
             ),
             ephemeral=True,
@@ -322,7 +322,7 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
         else:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=box(lang="json", text=ujson.dumps(data.info.to_dict(), indent=2, sort_keys=True)),
+                    description=box(lang="json", text=json.dumps(data.info.to_dict(), indent=2, sort_keys=True)),
                     messageable=context,
                 ),
                 ephemeral=True,

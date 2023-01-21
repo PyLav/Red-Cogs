@@ -6,12 +6,12 @@ from pathlib import Path
 
 import asyncstdlib
 import discord
-import ujson
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import box, humanize_list, inline
 from tabulate import tabulate
 
+from pylav.compat import json
 from pylav.constants.builtin_nodes import BUNDLED_NODES_IDS_HOST_MAPPING
 from pylav.core.context import PyLavContext
 from pylav.extension.red.ui.menus.generic import PaginatingMenu
@@ -206,7 +206,7 @@ class PyLavNodes(DISCORD_COG_TYPE_MIXIN):
         await context.author.send(
             embed=await self.pylav.construct_embed(
                 description=_("Removed node {name}.\n\n{data}").format(
-                    name=node_data["name"], data=box(lang="json", text=ujson.dumps(node_data, indent=2, sort_keys=True))
+                    name=node_data["name"], data=box(lang="json", text=json.dumps(node_data, indent=2, sort_keys=True))
                 ),
                 messageable=context.channel,
             )

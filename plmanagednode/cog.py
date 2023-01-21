@@ -6,13 +6,13 @@ from pathlib import Path
 
 import discord
 import humanize
-import ujson
 from deepdiff import DeepDiff
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n, get_babel_locale
 from redbot.core.utils.chat_formatting import bold, box, humanize_list, inline
 from tabulate import tabulate
 
+from pylav.compat import json
 from pylav.constants.node import NODE_DEFAULT_SETTINGS
 from pylav.core.client import Client
 from pylav.core.context import PyLavContext
@@ -561,7 +561,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
                 await self.pylav.cached_session.get(
                     f"https://api.github.com/repos/{org}/{repo}/releases/latest",
                 )
-            ).json(loads=ujson.loads)
+            ).json(loads=json.loads)
             name = release_data["tag_name"]
             new_plugin_data.append(
                 {

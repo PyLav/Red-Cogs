@@ -8,13 +8,13 @@ from pathlib import Path
 
 import aiohttp
 import discord
-import ujson
 from apscheduler.job import Job
 from redbot.core import Config, commands
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import box, humanize_list, inline
 from tabulate import tabulate
 
+from pylav.compat import json
 from pylav.constants.misc import EQ_BAND_MAPPING
 from pylav.core.client import Client
 from pylav.core.context import PyLavContext
@@ -160,7 +160,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
         ] = defaultdict(list)
         self._scheduled_jobs: list[Job] = []
         self._webhook_cache: dict[int, discord.Webhook] = {}
-        self._session = aiohttp.ClientSession(json_serialize=ujson.dumps, auto_decompress=False)
+        self._session = aiohttp.ClientSession(json_serialize=json.dumps, auto_decompress=False)
 
     async def initialize(self, *args, **kwargs) -> None:
         for guild_id, guild_data in (await self._config.all_guilds()).items():
