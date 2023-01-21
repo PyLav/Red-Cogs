@@ -152,7 +152,7 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
             localtracks_path = path / "localtracks"
             try:
                 if await localtracks_path.exists():
-                    await global_config.update_localtrack_folder(f"{localtracks_path}")
+                    await self.pylav.update_localtracks_folder(f"{localtracks_path}")
             except PermissionError:
                 await context.send(
                     embed=await self.pylav.construct_embed(

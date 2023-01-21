@@ -18,7 +18,6 @@ from pylav.extension.red.ui.sources.player import PlayersSource
 from pylav.helpers.format.ascii import EightBitANSI
 from pylav.helpers.format.strings import shorten_string
 from pylav.logging import getLogger
-from pylav.players.query.local_files import LocalFile
 from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE_MIXIN
 
 from plconfig.view import InfoView
@@ -232,10 +231,7 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
             )
             return
 
-        global_config = self.pylav.lib_db_manager.get_config()
-        await global_config.update_localtrack_folder(str(await discord.utils.maybe_coroutine(path.absolute)))
-
-        await LocalFile.add_root_folder(path=path)
+        await self.pylav.update_localtracks_folder(folder=path)
         await context.send(
             embed=await context.pylav.construct_embed(
                 description=_("PyLav's local tracks folder has been set to {folder}").format(
