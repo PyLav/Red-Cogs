@@ -21,6 +21,10 @@ from pylav.core.context import PyLavContext
 from pylav.events.node import NodeChangedEvent, NodeConnectedEvent, NodeDisconnectedEvent, WebSocketClosedEvent
 from pylav.events.player import (
     FiltersAppliedEvent,
+    PlayerAutoDisconnectedAloneEvent,
+    PlayerAutoDisconnectedEmptyQueueEvent,
+    PlayerAutoPausedEvent,
+    PlayerAutoResumedEvent,
     PlayerConnectedEvent,
     PlayerDisconnectedEvent,
     PlayerMovedEvent,
@@ -145,6 +149,10 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             node_disconnected=dict(enabled=False, mention=True),
             node_changed=dict(enabled=False, mention=True),
             websocket_closed=dict(enabled=False, mention=True),
+            player_auto_paused=dict(enabled=True, mention=True),
+            player_auto_resumed=dict(enabled=True, mention=True),
+            player_auto_disconnected=dict(enabled=True, mention=True),
+            player_auto_disconnected_empty_queue=dict(enabled=True, mention=True),
             webhook_url=None,
         )
         self._message_queue: dict[
@@ -1909,6 +1917,120 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
                     "[Node={node}] The Lavalink websocket connection to Discord closed with"
                     " code {code} and reason {reason}"
                 ).format(code=event.code, reason=event.reason, node=event.node.name),
+                messageable=channel,
+            )
+        )
+
+    @commands.Cog.listener()
+    async def on_pylav_player_auto_paused_event(self, event: PlayerAutoPausedEvent) -> None:
+        player = event.player
+        await self.pylav.set_context_locale(player.guild)
+        channel = await player.notify_channel()
+        if channel is None:
+            return
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "player_auto_paused", default={"enabled": True, "mention": True}
+        )
+        notify, mention = data["enabled"], data["mention"]
+        if not notify:
+            return
+        if mention:
+            req = event.requester or self.bot.user
+            user = req.mention
+        else:
+            user = event.requester or self.bot.user
+        self._message_queue[channel].append(
+            await self.pylav.construct_embed(
+                title=_("Player Paused Event"),
+                description=_(
+                    "[Node={node}] {requester} automatically paused the player due to configured values"
+                ).format(requester=user, node=event.player.node.name),
+                messageable=channel,
+            )
+        )
+
+    @commands.Cog.listener()
+    async def on_pylav_player_auto_resumed_event(self, event: PlayerAutoResumedEvent) -> None:
+        player = event.player
+        await self.pylav.set_context_locale(player.guild)
+        channel = await player.notify_channel()
+        if channel is None:
+            return
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "player_auto_resumed", default={"enabled": True, "mention": True}
+        )
+        notify, mention = data["enabled"], data["mention"]
+        if not notify:
+            return
+        if mention:
+            req = event.requester or self.bot.user
+            user = req.mention
+        else:
+            user = event.requester or self.bot.user
+        self._message_queue[channel].append(
+            await self.pylav.construct_embed(
+                title=_("Player Resumed Event"),
+                description=_(
+                    "[Node={node}] {requester} automatically resumed the player due to configured values"
+                ).format(requester=user, node=event.player.node.name),
+                messageable=channel,
+            )
+        )
+
+    @commands.Cog.listener()
+    async def on_pylav_player_auto_disconnected_alone_event(self, event: PlayerAutoDisconnectedAloneEvent) -> None:
+        player = event.player
+        await self.pylav.set_context_locale(player.guild)
+        channel = await player.notify_channel()
+        if channel is None:
+            return
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "player_auto_disconnected_alone", default={"enabled": True, "mention": True}
+        )
+        notify, mention = data["enabled"], data["mention"]
+        if not notify:
+            return
+        if mention:
+            req = event.requester or self.bot.user
+            user = req.mention
+        else:
+            user = event.requester or self.bot.user
+        self._message_queue[channel].append(
+            await self.pylav.construct_embed(
+                title=_("Auto Player Disconnected Event"),
+                description=_(
+                    "[Node={node}] {requester} automatically disconnected the player as there is no one listening"
+                ).format(requester=user, node=event.player.node.name),
+                messageable=channel,
+            )
+        )
+
+    @commands.Cog.listener()
+    async def on_pylav_player_auto_disconnected_empty_queue_event(
+        self, event: PlayerAutoDisconnectedEmptyQueueEvent
+    ) -> None:
+        player = event.player
+        await self.pylav.set_context_locale(player.guild)
+        channel = await player.notify_channel()
+        if channel is None:
+            return
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "auto_disconnected_empty_queue", default={"enabled": True, "mention": True}
+        )
+        notify, mention = data["enabled"], data["mention"]
+        if not notify:
+            return
+        if mention:
+            req = event.requester or self.bot.user
+            user = req.mention
+        else:
+            user = event.requester or self.bot.user
+        self._message_queue[channel].append(
+            await self.pylav.construct_embed(
+                title=_("Auto Player Disconnected Event"),
+                description=_(
+                    "[Node={node}] {requester} automatically disconnected the player as the queue is empty"
+                ).format(requester=user, node=event.player.node.name),
                 messageable=channel,
             )
         )
