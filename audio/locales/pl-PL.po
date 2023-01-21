@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
 "POT-Creation-Date: 2023-01-09 20:14+0000\n"
-"PO-Revision-Date: 2023-01-09 20:14\n"
+"PO-Revision-Date: 2023-01-21 16:35\n"
 "Last-Translator: \n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -102,7 +102,7 @@ msgstr "Maksymalna głośność ustawiona na {volume}%"
 #: audio/config_commands.py:165 audio/config_commands.py:631
 #, docstring
 msgid "Set whether [botname] should deafen itself when playing"
-msgstr ""
+msgstr "Ustaw czy [botname] powinien się deaftować podczas odtwarzania"
 
 #: audio/config_commands.py:174 audio/config_commands.py:657
 msgid "Deafen set to {deafen}"
@@ -129,7 +129,7 @@ msgstr "Wyłączone"
 #: audio/config_commands.py:182
 #, docstring
 msgid "Set whether the a server is allowed to enabled auto shuffle"
-msgstr ""
+msgstr "Ustaw czy serwer może włączyć automatyczne losowanie"
 
 #: audio/config_commands.py:192 audio/config_commands.py:686
 msgid "Auto-Shuffle set to {shuffle}"
@@ -138,7 +138,7 @@ msgstr "Automatyczne odtwarzanie ustawione na {shuffle}"
 #: audio/config_commands.py:202 audio/config_commands.py:696
 #, docstring
 msgid "Set whether [botname] should allow users to shuffle the queue"
-msgstr ""
+msgstr "Ustaw czy [botname] powinien zezwolić użytkownikom na losowanie kolejki"
 
 #: audio/config_commands.py:212 audio/config_commands.py:719
 msgid "Shuffle set to {shuffle}"
@@ -147,7 +147,7 @@ msgstr "Losowo ustawione na {shuffle}"
 #: audio/config_commands.py:220
 #, docstring
 msgid "Set whether [botname] should automatically play songs when the queue is empty"
-msgstr ""
+msgstr "Ustaw czy [botname] powinien automatycznie odtwarzać utwory, gdy kolejka jest pusta"
 
 #: audio/config_commands.py:229 audio/config_commands.py:753
 msgid "Auto-Play set to {auto}"
@@ -156,7 +156,7 @@ msgstr "Automatyczne odtwarzanie ustawione na {auto}"
 #: audio/config_commands.py:237
 #, docstring
 msgid "Set whether [botname] should disconnect from the voice channel"
-msgstr ""
+msgstr "Ustaw czy [botname] powinien odłączyć się od kanału głosowego"
 
 #: audio/config_commands.py:247
 #, docstring
@@ -166,7 +166,12 @@ msgid "Set whether [botname] should disconnect from the voice channel when the q
 "            - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Ustaw czy [botname] powinien odłączyć się od kanału głosowego, gdy kolejka jest pusta.\n\n"
+"        Argumenty:\n"
+"            - `<toggle>`: Czy [botname] powinno odłączyć się od kanału głosowego, gdy kolejka jest pusta.\n"
+"            - `<duration>`: Jak długo po opróżnieniu kolejki gracz będzie odłączony. Domyślnie jest 60 sekund.\n"
+"            Akceptuje sekundę, minuty, godziny, dni, tygodnie (jeśli nie określono jednostki, zakłada się, że czas trwania jest podany w sekundach\n"
+"        "
 
 #: audio/config_commands.py:267 audio/config_commands.py:307
 #: audio/config_commands.py:811 audio/config_commands.py:873
@@ -185,7 +190,12 @@ msgid "Set whether [botname] should disconnect from the voice channel when alone
 "            - `<duration>`: How longer after detecting should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Ustaw czy [botname] powinien odłączyć się od kanału głosowego, gdy jest sam.\n\n"
+"        Argumenty:\n"
+"            - `<toggle>`: Czy [botname] powinno odłączyć się od kanału głosowego, gdy wykryje, że jest sama.\n"
+"            - `<duration>`: Jak długo po wykryciu gracz powinien zostać odłączony. Domyślnie jest 60 sekund.\n"
+"            Akceptuje sekundę, minuty, godziny, dni, tygodnie (jeśli nie określono jednostki, zakłada się, że czas trwania jest podany w sekundach\n"
+"        "
 
 #: audio/config_commands.py:313 audio/config_commands.py:879
 msgid "Disconnect from voice channel when alone set to {empty}{extras}"
@@ -266,7 +276,7 @@ msgstr "Usunięto {user} z użytkowników DJ"
 #: audio/config_commands.py:463
 #, docstring
 msgid "List the DJ roles and users for the server"
-msgstr ""
+msgstr "Lista ról i użytkowników DJ dla serwera"
 
 #: audio/config_commands.py:514
 msgid "There are no DJ roles or users set in {server}"
@@ -305,7 +315,7 @@ msgstr "Mój właściciel kazał mi zawsze się bawić"
 #: audio/config_commands.py:665
 #, docstring
 msgid "Set whether [botname] should shuffle the queue after every new song added"
-msgstr ""
+msgstr "Ustaw czy [botname] powinien losować kolejkę po każdym dodanym utworze"
 
 #: audio/config_commands.py:673
 msgid "Auto-Shuffle is globally disabled"

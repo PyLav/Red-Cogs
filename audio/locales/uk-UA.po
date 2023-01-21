@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
 "POT-Creation-Date: 2023-01-09 20:14+0000\n"
-"PO-Revision-Date: 2023-01-09 20:14\n"
+"PO-Revision-Date: 2023-01-21 16:35\n"
 "Last-Translator: \n"
 "Language-Team: Ukrainian\n"
 "MIME-Version: 1.0\n"
@@ -102,7 +102,7 @@ msgstr "Максимальний обсяг встановлений на {volum
 #: audio/config_commands.py:165 audio/config_commands.py:631
 #, docstring
 msgid "Set whether [botname] should deafen itself when playing"
-msgstr ""
+msgstr "Налаштувати, чи [botname] вимкнути звук себе під час відтворення"
 
 #: audio/config_commands.py:174 audio/config_commands.py:657
 msgid "Deafen set to {deafen}"
@@ -129,7 +129,7 @@ msgstr "Вимкнено"
 #: audio/config_commands.py:182
 #, docstring
 msgid "Set whether the a server is allowed to enabled auto shuffle"
-msgstr ""
+msgstr "Виберіть, чи дозволено серверу увімкнути автоматичне перемішування"
 
 #: audio/config_commands.py:192 audio/config_commands.py:686
 msgid "Auto-Shuffle set to {shuffle}"
@@ -138,7 +138,7 @@ msgstr "Встановлено автоматично змішування на 
 #: audio/config_commands.py:202 audio/config_commands.py:696
 #, docstring
 msgid "Set whether [botname] should allow users to shuffle the queue"
-msgstr ""
+msgstr "Установити, чи повинен [botname] дозволити користувачам перемішувати чергу"
 
 #: audio/config_commands.py:212 audio/config_commands.py:719
 msgid "Shuffle set to {shuffle}"
@@ -147,7 +147,7 @@ msgstr "Переміщення встановлено на {shuffle}"
 #: audio/config_commands.py:220
 #, docstring
 msgid "Set whether [botname] should automatically play songs when the queue is empty"
-msgstr ""
+msgstr "Встановити, чи [botname] автоматично відтворювати пісні коли черга пуста"
 
 #: audio/config_commands.py:229 audio/config_commands.py:753
 msgid "Auto-Play set to {auto}"
@@ -156,7 +156,7 @@ msgstr "Встановлено режим автоматичного відтв�
 #: audio/config_commands.py:237
 #, docstring
 msgid "Set whether [botname] should disconnect from the voice channel"
-msgstr ""
+msgstr "Встановити, чи [botname] слід відключитись від голосового каналу"
 
 #: audio/config_commands.py:247
 #, docstring
@@ -166,7 +166,12 @@ msgid "Set whether [botname] should disconnect from the voice channel when the q
 "            - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Встановлює, чи [botname] відключитися від голосового каналу, коли черга порожня.\n\n"
+"        Аргументи:\n"
+"            - `<toggle>`: Чи потрібно [botname] відключитись від голосового каналу, коли черга пуста.\n"
+"            - `<duration>`: На що довше після черги буде порожнім, якщо гравець буде від'єднаний. За замовчуванням 60 секунд.\n"
+"            Дозволено другого, хвилин, годин, днів, тижнями (якщо одиниць не задано, передбачається, що тривалість в секундах)\n"
+"        "
 
 #: audio/config_commands.py:267 audio/config_commands.py:307
 #: audio/config_commands.py:811 audio/config_commands.py:873
@@ -266,7 +271,7 @@ msgstr "Видалено {user} з користувачів DJ"
 #: audio/config_commands.py:463
 #, docstring
 msgid "List the DJ roles and users for the server"
-msgstr ""
+msgstr "Список ролей і користувачів DJ для сервера"
 
 #: audio/config_commands.py:514
 msgid "There are no DJ roles or users set in {server}"
@@ -305,7 +310,7 @@ msgstr "Мій власник сказав мені завжди глушити 
 #: audio/config_commands.py:665
 #, docstring
 msgid "Set whether [botname] should shuffle the queue after every new song added"
-msgstr ""
+msgstr "Встановити, чи [botname] слід перемішувати чергу після того, як додана пісня"
 
 #: audio/config_commands.py:673
 msgid "Auto-Shuffle is globally disabled"
