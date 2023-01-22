@@ -1,7 +1,7 @@
 project_id_env: CROWDIN_PROJECT_ID
 api_token_env: CROWDIN_API_KEY
 base_path: ./
-preserve_hierarchy: 1
+preserve_hierarchy: true
 commit_message: '[skip ci] Update translations'
 files:
 -   source: audio/**/messages.pot
@@ -9,7 +9,7 @@ files:
 -   source: plconfig/**/messages.pot
     translation: /%original_path%/%locale%.po
 -   source: pleffects/**/messages.pot
-    translation: /%original_path%/%locale%.poo
+    translation: /%original_path%/%locale%.po
 -   source: pllocal/**/messages.pot
     translation: /%original_path%/%locale%.po
 -   source: plmanagednode/**/messages.pot
