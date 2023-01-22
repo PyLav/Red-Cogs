@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2022-12-30 22:35+0000\n"
-"PO-Revision-Date: 2022-12-30 23:02\n"
+"POT-Creation-Date: 2023-01-02 18:07+0000\n"
+"PO-Revision-Date: 2023-01-21 20:02\n"
 "Last-Translator: \n"
 "Language-Team: Dutch\n"
 "MIME-Version: 1.0\n"
@@ -17,340 +17,470 @@ msgstr ""
 "X-Crowdin-File-ID: 558\n"
 "Language: nl_NL\n"
 
-#: pleffects/cog.py:32
+#: pleffects/cog.py:34
 #, docstring
 msgid "Apply filters and effects to the PyLav player"
 msgstr "Filters en effecten toepassen op de PyLav speler"
 
-#: pleffects/cog.py:49
+#: pleffects/cog.py:51
 #, docstring
 msgid "Configure the Player behaviour when an effect is set"
 msgstr "Het gedrag van de speler configureren wanneer een effect is ingesteld"
 
-#: pleffects/cog.py:53
+#: pleffects/cog.py:55
 #, docstring
 msgid "Show the version of the Cog and its PyLav dependencies"
 msgstr "Toon de versie van de Cog en zijn PyLav afhankelijkheden"
 
-#: pleffects/cog.py:69
+#: pleffects/cog.py:71
 msgid "Library/Cog"
 msgstr "Bibliotheek/Cog"
 
-#: pleffects/cog.py:70
+#: pleffects/cog.py:72
 msgid "Version"
 msgstr "Versie"
 
-#: pleffects/cog.py:89
+#: pleffects/cog.py:87
+#, docstring
+msgid "Configure the Player behaviour when an equalizer preset is set"
+msgstr "Het gedrag van de speler configureren wanneer een equalizer voorinstelling is ingesteld"
+
+#: pleffects/cog.py:91
+#, docstring
+msgid "Persist the last used preset"
+msgstr "Behoud de laatst gebruikte voorinstelling"
+
+#: pleffects/cog.py:107
+msgid "The player will now apply the last used preset when it is created"
+msgstr "De speler zal nu de laatst gebruikte voorinstelling toepassen wanneer het is gemaakt"
+
+#: pleffects/cog.py:119
+msgid "Last used preset will no longer be saved"
+msgstr "Laatst gebruikte voorinstelling zal niet langer worden opgeslagen"
+
+#: pleffects/cog.py:132
 #, docstring
 msgid "Apply a Nightcore filter to the player"
 msgstr "Pas een Nightcore filter toe op de speler"
 
-#: pleffects/cog.py:100
+#: pleffects/cog.py:143
 msgid "Nightcore effect has been disabled"
 msgstr "Nachtcore effect is uitgeschakeld"
 
-#: pleffects/cog.py:119
+#: pleffects/cog.py:162
 msgid "Nightcore effect has been enabled"
 msgstr "Nachtcore effect is ingeschakeld"
 
-#: pleffects/cog.py:129
+#: pleffects/cog.py:172
 #, docstring
 msgid "Apply a Vaporwave filter to the player"
 msgstr "Een verdampingsfilter toepassen op de speler"
 
-#: pleffects/cog.py:140
+#: pleffects/cog.py:183
 msgid "Vaporwave effect has been disabled"
 msgstr "Het verdampingseffect is uitgeschakeld"
 
-#: pleffects/cog.py:159
+#: pleffects/cog.py:202
 msgid "Vaporwave effect has been enabled"
 msgstr "Het verdampingseffect is ingeschakeld"
 
-#: pleffects/cog.py:180
+#: pleffects/cog.py:223
 #, docstring
 msgid "Apply a vibrato filter to the player"
 msgstr "Pas een trilfilter toe aan de speler"
 
-#: pleffects/cog.py:188
+#: pleffects/cog.py:231
 msgid "The current node does not have the Vibrato functionality enabled"
 msgstr "Het huidige node heeft de Vibrato functionaliteit niet ingeschakeld"
 
-#: pleffects/cog.py:196 pleffects/cog.py:260 pleffects/cog.py:327
-#: pleffects/cog.py:381 pleffects/cog.py:438 pleffects/cog.py:507
-#: pleffects/cog.py:586 pleffects/cog.py:681 pleffects/cog.py:768
-#: pleffects/cog.py:808
+#: pleffects/cog.py:239 pleffects/cog.py:303 pleffects/cog.py:370
+#: pleffects/cog.py:424 pleffects/cog.py:481 pleffects/cog.py:550
+#: pleffects/cog.py:629 pleffects/cog.py:724 pleffects/cog.py:811
+#: pleffects/cog.py:851
 msgid "Not changed"
 msgstr "Niet gewijzigd"
 
-#: pleffects/cog.py:200 pleffects/cog.py:264
+#: pleffects/cog.py:243 pleffects/cog.py:307
 msgid "Frequency"
 msgstr "Frequentie"
 
-#: pleffects/cog.py:203 pleffects/cog.py:267
+#: pleffects/cog.py:246 pleffects/cog.py:310
 msgid "Depth"
 msgstr "Diepte"
 
-#: pleffects/cog.py:205 pleffects/cog.py:269 pleffects/cog.py:333
-#: pleffects/cog.py:389 pleffects/cog.py:446 pleffects/cog.py:523
-#: pleffects/cog.py:606 pleffects/cog.py:713 pleffects/cog.py:774
+#: pleffects/cog.py:248 pleffects/cog.py:312 pleffects/cog.py:376
+#: pleffects/cog.py:432 pleffects/cog.py:489 pleffects/cog.py:566
+#: pleffects/cog.py:649 pleffects/cog.py:756 pleffects/cog.py:817
 msgid "Reset previous filters"
 msgstr "Vorige filters opnieuw instellen"
 
-#: pleffects/cog.py:206 pleffects/cog.py:270 pleffects/cog.py:334
-#: pleffects/cog.py:390 pleffects/cog.py:447 pleffects/cog.py:524
-#: pleffects/cog.py:607 pleffects/cog.py:714 pleffects/cog.py:775
+#: pleffects/cog.py:249 pleffects/cog.py:313 pleffects/cog.py:377
+#: pleffects/cog.py:433 pleffects/cog.py:490 pleffects/cog.py:567
+#: pleffects/cog.py:650 pleffects/cog.py:757 pleffects/cog.py:818
 msgid "Yes"
 msgstr "Ja"
 
-#: pleffects/cog.py:206 pleffects/cog.py:270 pleffects/cog.py:334
-#: pleffects/cog.py:390 pleffects/cog.py:447 pleffects/cog.py:524
-#: pleffects/cog.py:607 pleffects/cog.py:714 pleffects/cog.py:775
+#: pleffects/cog.py:249 pleffects/cog.py:313 pleffects/cog.py:377
+#: pleffects/cog.py:433 pleffects/cog.py:490 pleffects/cog.py:567
+#: pleffects/cog.py:650 pleffects/cog.py:757 pleffects/cog.py:818
 msgid "No"
 msgstr "Neen"
 
-#: pleffects/cog.py:212
+#: pleffects/cog.py:255
 msgid "New vibrato effect applied to the player"
 msgstr "Nieuw trileffect toegepast op de speler"
 
-#: pleffects/cog.py:217 pleffects/cog.py:281 pleffects/cog.py:345
-#: pleffects/cog.py:401 pleffects/cog.py:458 pleffects/cog.py:535
-#: pleffects/cog.py:618 pleffects/cog.py:725 pleffects/cog.py:786
+#: pleffects/cog.py:260 pleffects/cog.py:324 pleffects/cog.py:388
+#: pleffects/cog.py:444 pleffects/cog.py:501 pleffects/cog.py:578
+#: pleffects/cog.py:661 pleffects/cog.py:768 pleffects/cog.py:829
 msgid "Setting"
 msgstr "Instellingen"
 
-#: pleffects/cog.py:218 pleffects/cog.py:282 pleffects/cog.py:346
-#: pleffects/cog.py:402 pleffects/cog.py:459 pleffects/cog.py:536
-#: pleffects/cog.py:619 pleffects/cog.py:726 pleffects/cog.py:787
+#: pleffects/cog.py:261 pleffects/cog.py:325 pleffects/cog.py:389
+#: pleffects/cog.py:445 pleffects/cog.py:502 pleffects/cog.py:579
+#: pleffects/cog.py:662 pleffects/cog.py:769 pleffects/cog.py:830
 msgid "Value"
 msgstr "Waarde"
 
-#: pleffects/cog.py:244
+#: pleffects/cog.py:287
 #, docstring
 msgid "Apply a tremolo filter to the player"
 msgstr "Pas een tremolo filter toe aan de speler"
 
-#: pleffects/cog.py:252
+#: pleffects/cog.py:295
 msgid "The current node does not have the Tremolo functionality enabled"
 msgstr "Het huidige node heeft de Tremolo functionaliteit niet ingeschakeld"
 
-#: pleffects/cog.py:276
+#: pleffects/cog.py:319
 msgid "New tremolo effect applied to the player"
 msgstr "Nieuw tremolo effect toegepast op de speler"
 
-#: pleffects/cog.py:310
+#: pleffects/cog.py:353
 #, docstring
 msgid "Apply a timescale filter to the player"
 msgstr "Pas een tijdschaal filter toe aan de speler"
 
-#: pleffects/cog.py:318
+#: pleffects/cog.py:361
 msgid "The current node does not have the Timescale functionality enabled"
 msgstr "Het huidige node heeft de tijdschaalfunctionaliteit niet ingeschakeld"
 
-#: pleffects/cog.py:329
+#: pleffects/cog.py:372
 msgid "Speed"
 msgstr "Snelheid"
 
-#: pleffects/cog.py:330
+#: pleffects/cog.py:373
 msgid "Pitch"
 msgstr "Toonhoogte"
 
-#: pleffects/cog.py:331
+#: pleffects/cog.py:374
 msgid "Rate"
 msgstr "Beoordelen"
 
-#: pleffects/cog.py:340
+#: pleffects/cog.py:383
 msgid "New timescale effect applied to the player"
 msgstr "Nieuwe tijdschaal effect toegepast op de speler"
 
-#: pleffects/cog.py:366
+#: pleffects/cog.py:409
 #, docstring
 msgid "Apply a rotation filter to the player"
 msgstr "Een rotatie filter toepassen op de speler"
 
-#: pleffects/cog.py:374
+#: pleffects/cog.py:417
 msgid "The current node does not have the Rotation functionality enabled"
 msgstr "Het huidige node heeft de rotatiefunctionaliteit niet ingeschakeld"
 
-#: pleffects/cog.py:385
+#: pleffects/cog.py:428
 msgid "Frequency hertz"
 msgstr "Frequentie Hertz"
 
-#: pleffects/cog.py:396
+#: pleffects/cog.py:439
 msgid "New rotation effect applied to the player"
 msgstr "Nieuwe rotatie effect toegepast op de speler"
 
-#: pleffects/cog.py:423
+#: pleffects/cog.py:466
 #, docstring
 msgid "Apply a low pass filter to the player"
 msgstr "Pas een laag pasfilter toe aan de speler"
 
-#: pleffects/cog.py:431
+#: pleffects/cog.py:474
 msgid "The current node does not have the LowPass functionality enabled"
 msgstr "Het huidige node heeft niet de LowPass functionaliteit ingeschakeld"
 
-#: pleffects/cog.py:442
+#: pleffects/cog.py:485
 msgid "Smoothing factor"
 msgstr "Vloeiend element"
 
-#: pleffects/cog.py:453
+#: pleffects/cog.py:496
 msgid "New low pass effect applied to the player"
 msgstr "Nieuw 'low pass effect' toegepast op de speler"
 
-#: pleffects/cog.py:489
+#: pleffects/cog.py:532
 #, docstring
 msgid "Apply a karaoke filter to the player"
 msgstr "Pas een karaoke-filter toe op de speler"
 
-#: pleffects/cog.py:497
+#: pleffects/cog.py:540
 msgid "The current node does not have the Karaoke functionality enabled"
 msgstr "Het huidige node heeft niet de Karaoke functionaliteit ingeschakeld"
 
-#: pleffects/cog.py:509
+#: pleffects/cog.py:552
 msgid "Level"
 msgstr "Niveau"
 
-#: pleffects/cog.py:511
+#: pleffects/cog.py:554
 msgid "Mono Level"
 msgstr "Mono Niveau"
 
-#: pleffects/cog.py:515
+#: pleffects/cog.py:558
 msgid "Filter Band"
 msgstr "Band filteren"
 
-#: pleffects/cog.py:519
+#: pleffects/cog.py:562
 msgid "Filter Width"
 msgstr "Filter breedte"
 
-#: pleffects/cog.py:530
+#: pleffects/cog.py:573
 msgid "New karaoke effect applied to the player"
 msgstr "Nieuw karaoke effect toegepast op de speler"
 
-#: pleffects/cog.py:566
+#: pleffects/cog.py:609
 #, docstring
 msgid "Apply a channel mix filter to the player"
 msgstr "Filter voor kanaalmix toepassen op de speler"
 
-#: pleffects/cog.py:574
+#: pleffects/cog.py:617
 msgid "The current node does not have the ChannelMix functionality enabled"
 msgstr "Het huidige node heeft de KanaalMix functionaliteit niet ingeschakeld"
 
-#: pleffects/cog.py:590
+#: pleffects/cog.py:633
 msgid "Left to Left"
 msgstr "Van links naar links"
 
-#: pleffects/cog.py:594
+#: pleffects/cog.py:637
 msgid "Left to Right"
 msgstr "Van links naar rechts"
 
-#: pleffects/cog.py:598
+#: pleffects/cog.py:641
 msgid "Right to Left"
 msgstr "Rechts naar links"
 
-#: pleffects/cog.py:602
+#: pleffects/cog.py:645
 msgid "Right to Right"
 msgstr "Rechts naar rechts"
 
-#: pleffects/cog.py:613
+#: pleffects/cog.py:656
 msgid "New channel mix effect applied to the player"
 msgstr "Nieuw kanaalmix effect toegepast op de speler"
 
-#: pleffects/cog.py:657
+#: pleffects/cog.py:700
 #, docstring
 msgid "Apply a distortion filter to the player"
 msgstr "Een vervorming filter toepassen op de speler"
 
-#: pleffects/cog.py:665
+#: pleffects/cog.py:708
 msgid "The current node does not have the Distortion functionality enabled"
 msgstr "Het huidige node heeft de vervormingsfunctionaliteit niet ingeschakeld"
 
-#: pleffects/cog.py:684
+#: pleffects/cog.py:727
 msgid "Sine Offset"
 msgstr "Sinus offset"
 
-#: pleffects/cog.py:688
+#: pleffects/cog.py:731
 msgid "Sine Scale"
 msgstr "Zijne schaal"
 
-#: pleffects/cog.py:692
+#: pleffects/cog.py:735
 msgid "Cosine Offset"
 msgstr "Cosine offset"
 
-#: pleffects/cog.py:696
+#: pleffects/cog.py:739
 msgid "Cosine Scale"
 msgstr "Cosine schaal"
 
-#: pleffects/cog.py:700
+#: pleffects/cog.py:743
 msgid "Tangent Offset"
 msgstr "Tangens Offset"
 
-#: pleffects/cog.py:704
+#: pleffects/cog.py:747
 msgid "Tangent Scale"
 msgstr "Tangens Schaal"
 
-#: pleffects/cog.py:708
+#: pleffects/cog.py:751
 msgid "Offset"
 msgstr "Verschuiving"
 
-#: pleffects/cog.py:711
+#: pleffects/cog.py:754
 msgid "Scale"
 msgstr "Schaal"
 
-#: pleffects/cog.py:720
+#: pleffects/cog.py:763
 msgid "New distortion effect applied to the player"
 msgstr "Nieuwe vervormingseffect toegepast op de speler"
 
-#: pleffects/cog.py:752
+#: pleffects/cog.py:795
 #, docstring
 msgid "Apply a echo filter to the player"
 msgstr "Pas een echo filter toe op de speler"
 
-#: pleffects/cog.py:760
+#: pleffects/cog.py:803
 msgid "The current node does not have the Echo functionality enabled"
 msgstr "Het huidige node heeft niet de functionaliteit van Echo ingeschakeld"
 
-#: pleffects/cog.py:771
+#: pleffects/cog.py:814
 msgid "Delay"
 msgstr "Vertraging"
 
-#: pleffects/cog.py:772
+#: pleffects/cog.py:815
 msgid "Decay"
 msgstr "Verval"
 
-#: pleffects/cog.py:781
+#: pleffects/cog.py:824
 msgid "New echo effect applied to the player"
 msgstr "Nieuw echo effect toegepast op de speler"
 
-#: pleffects/cog.py:801
+#: pleffects/cog.py:844
 #, docstring
 msgid "Show the current filters applied to the player"
 msgstr "Toon de huidige filters toegepast op de speler"
 
-#: pleffects/cog.py:806
+#: pleffects/cog.py:849
 msgid "Effect"
 msgstr "Effect"
 
-#: pleffects/cog.py:807
+#: pleffects/cog.py:850
 msgid "Values"
 msgstr "Waarden"
 
-#: pleffects/cog.py:844
+#: pleffects/cog.py:887
 msgid "N/A"
 msgstr "N/B"
 
-#: pleffects/cog.py:849
+#: pleffects/cog.py:892
 msgid "Current filters applied to the player"
 msgstr "Huidige filters toegepast op de speler"
 
-#: pleffects/cog.py:853
+#: pleffects/cog.py:896
 msgid "None"
 msgstr "Geen"
 
-#: pleffects/cog.py:854
+#: pleffects/cog.py:897
 msgid "Currently Applied"
 msgstr "Momenteel toegepast"
 
-#: pleffects/cog.py:866 pleffects/cog.py:874
+#: pleffects/cog.py:909 pleffects/cog.py:922
 #, docstring
 msgid "Reset any existing filters currently applied to the player"
 msgstr "Reset bestaande filters die momenteel toegepast worden op de speler"
+
+#: pleffects/cog.py:933
+#, docstring
+msgid "Apply a Bass boost equalizer preset to the player.\n\n"
+"        Arguments:\n"
+"            - Maximum\n"
+"            - Insane\n"
+"            - Extreme\n"
+"            - High\n"
+"            - Very High\n"
+"            - Medium\n"
+"            - Fined Tuned\n"
+"            - Cut-off\n"
+"            - Off\n"
+"        "
+msgstr "Pas een standaard Equalizer toe aan de speler.\n\n"
+"        Argumenten:\n"
+"            - Maximum\n"
+"            - Chaos\n"
+"            - Extreme\n"
+"            - Hoog\n"
+"            - Zeer hoog\n"
+"            - Medium\n"
+"            - Afgeronde Tuned\n"
+"            - Knip af\n"
+"            - Uit\n"
+"        "
+
+#: pleffects/cog.py:953 pleffects/cog.py:1057 pleffects/cog.py:1110
+#: pleffects/cog.py:1228
+msgid "The current node does not have the Equalizer functionality enabled"
+msgstr "Het huidige node heeft de Equalizer functionaliteit niet ingeschakeld"
+
+#: pleffects/cog.py:967
+msgid "Bass boost preset has been disabled"
+msgstr "Voorkeursinstellingen voor basversterker is uitgeschakeld"
+
+#: pleffects/cog.py:974
+msgid "Bass boost - Maximum"
+msgstr "Bass boost - Maximaal"
+
+#: pleffects/cog.py:978
+msgid "Bass boost - Insane"
+msgstr "Bass boost - Chaos"
+
+#: pleffects/cog.py:982
+msgid "Bass boost - Extreme"
+msgstr "Bass boost - Extreme"
+
+#: pleffects/cog.py:986
+msgid "Bass boost - Very High"
+msgstr "Bass boost - Zeer Hoog"
+
+#: pleffects/cog.py:990
+msgid "Bass boost - High"
+msgstr "Bass boost - Hoog"
+
+#: pleffects/cog.py:994
+msgid "Bass boost - Medium"
+msgstr "Bass boost - Medium"
+
+#: pleffects/cog.py:1017
+msgid "Bass boost - Fine Tuned"
+msgstr "Bass boost - Fijn Tuned"
+
+#: pleffects/cog.py:1021
+msgid "Bass boost - Cut-off"
+msgstr "Bass boost - Uitknippen"
+
+#: pleffects/cog.py:1034
+msgid "Preset has been set to {name}"
+msgstr "Voorkeursinstelling is ingesteld op {name}"
+
+#: pleffects/cog.py:1044
+#, docstring
+msgid "Apply a Piano equalizer preset to the player.\n\n"
+"        Suitable for acoustic tracks, or tacks with an emphasis on female vocals.\n\n"
+"        Can also be used as a bass cut-off.\n"
+"        "
+msgstr "Een Piano equalizer voorinstelling toepassen op de speler.\n\n"
+"        Ideaal voor akoestische cellen, of doet het met de nadruk op vrouwelijke stemmetjes.\n\n"
+"        Kan ook gebruikt worden als een afgesneden bass.\n"
+"        "
+
+#: pleffects/cog.py:1075
+msgid "Piano"
+msgstr "Piano"
+
+#: pleffects/cog.py:1089
+msgid "Piano preset has been set"
+msgstr "Piano preset is ingesteld"
+
+#: pleffects/cog.py:1099
+#, docstring
+msgid "Apply an experimental Metal/Rock equalizer preset.\n\n"
+"        Expect clipping on songs with heavy bass.\n"
+"        "
+msgstr "Pas een experimentele Metale/Rock equalizer voorinstelling toe.\n\n"
+"        Verwacht muziek met zware basaalstand.\n"
+"        "
+
+#: pleffects/cog.py:1131
+msgid "Metal"
+msgstr "Metalen"
+
+#: pleffects/cog.py:1144
+msgid "Rock/Metal preset has been set"
+msgstr "Rock/Metalen voorinstelling is ingesteld"
+
+#: pleffects/cog.py:1239 pleffects/cog.py:1261
+msgid "No changes were made to the equalizer, discarding request"
+msgstr "Er zijn geen wijzigingen aangebracht in het Equalizer, Overschrijvingsverzoek"
 
