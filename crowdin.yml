@@ -1,30 +1,30 @@
 project_id_env: CROWDIN_PROJECT_ID
 api_token_env: CROWDIN_API_KEY
 base_path: ./
-preserve_hierarchy: true
+preserve_hierarchy: 1
 commit_message: '[skip ci] Update translations'
 files:
--   source: audio/**/messages.pot
+  - source: audio/**/messages.pot
     translation: /%original_path%/%locale%.po
--   source: plconfig/**/messages.pot
+  - source: plconfig/**/messages.pot
     translation: /%original_path%/%locale%.po
--   source: pleffects/**/messages.pot
+  - source: pleffects/**/messages.pot
     translation: /%original_path%/%locale%.poo
--   source: pllocal/**/messages.pot
+  - source: pllocal/**/messages.pot
     translation: /%original_path%/%locale%.po
--   source: plmanagednode/**/messages.pot
+  - source: plmanagednode/**/messages.pot
     translation: /%original_path%/%locale%.po
--   source: plmigrator/**/messages.pot
+  - source: plmigrator/**/messages.pot
     translation: /%original_path%/%locale%.po
--   source: plnodes/**/messages.pot
+  - source: plnodes/**/messages.pot
     translation: /%original_path%/%locale%.po
--   source: plnotifier/**/messages.pot
+  - source: plnotifier/**/messages.pot
     translation: /%original_path%/%locale%.po
--   source: plplaylists/**/messages.pot
+  - source: plplaylists/**/messages.pot
     translation: /%original_path%/%locale%.po
--   source: plradio/**/messages.pot
+  - source: plradio/**/messages.pot
     translation: /%original_path%/%locale%.po
--   source: plutils/**/messages.pot
+  - source: plutils/**/messages.pot
     translation: /%original_path%/%locale%.po
--   source: pllyrics/**/messages.pot
+  - source: pllyrics/**/messages.pot
     translation: /%original_path%/%locale%.po
