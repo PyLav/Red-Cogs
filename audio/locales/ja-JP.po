@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2023-01-09 20:14+0000\n"
-"PO-Revision-Date: 2023-01-21 20:02\n"
+"POT-Creation-Date: 2023-01-23 21:08+0000\n"
+"PO-Revision-Date: 2023-01-23 21:08\n"
 "Last-Translator: \n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -79,12 +79,12 @@ msgid "Set the maximum volume a server can set"
 msgstr "サーバーが設定できる最大音量を設定します"
 
 #: audio/config_commands.py:141 audio/config_commands.py:578
-#: audio/hybrid_commands.py:612
+#: audio/hybrid_commands.py:627
 msgid "Volume must be less than 1000"
 msgstr "音量は1000未満でなければなりません"
 
 #: audio/config_commands.py:149 audio/config_commands.py:586
-#: audio/hybrid_commands.py:620
+#: audio/hybrid_commands.py:635
 msgid "Volume must be greater than 0"
 msgstr "ボリュームは0より大きくなければなりません"
 
@@ -390,7 +390,7 @@ msgstr "私が見ることができるすべてのチャンネルのコマンド
 msgid "Set the channel lock for voice channels"
 msgstr "ボイスチャンネルのチャンネルロックを設定"
 
-#: audio/config_commands.py:982 audio/hybrid_commands.py:105
+#: audio/config_commands.py:982 audio/hybrid_commands.py:107
 #: audio/player_commands.py:144
 msgid "I don't have permission to connect or speak in {channel}"
 msgstr "{channel} に接続または話す権限がありません。"
@@ -439,177 +439,177 @@ msgstr "{user}の Apple Music トラックを有効なクエリにマップで�
 msgid "Couldn't find any tracks matching {query}"
 msgstr "{query} に一致するトラックが見つかりませんでした"
 
-#: audio/context_menus.py:250
+#: audio/context_menus.py:249
 msgid "Couldn't figure out what {user} is listening to"
 msgstr "{user} が聴いている内容が分かりませんでした"
 
-#: audio/hybrid_commands.py:81
+#: audio/hybrid_commands.py:83
 msgid "You need to provide a query to play"
 msgstr "プレイするためにクエリを指定する必要があります"
 
-#: audio/hybrid_commands.py:95 audio/player_commands.py:134
+#: audio/hybrid_commands.py:97 audio/player_commands.py:134
 msgid "You must be in a voice channel to allow me to connect"
 msgstr "接続を許可するにはボイスチャンネルにいる必要があります"
 
-#: audio/hybrid_commands.py:139 audio/player_commands.py:225
+#: audio/hybrid_commands.py:154 audio/player_commands.py:225
 msgid "{track_count} tracks enqueued"
 msgstr "{track_count} がキューに追加されました。"
 
-#: audio/hybrid_commands.py:147 audio/player_commands.py:233
+#: audio/hybrid_commands.py:162 audio/player_commands.py:233
 msgid "{track} enqueued"
 msgstr "{track} がキューに追加されました"
 
-#: audio/hybrid_commands.py:158 audio/player_commands.py:244
+#: audio/hybrid_commands.py:173 audio/player_commands.py:244
 msgid "No tracks were found for your query"
 msgstr "クエリのトラックが見つかりませんでした"
 
-#: audio/hybrid_commands.py:221
+#: audio/hybrid_commands.py:236
 msgid "You need to be in a voice channel if you don't specify which channel I need to connect to"
 msgstr "接続するチャンネルを指定しない場合は、音声チャンネルにする必要があります。"
 
-#: audio/hybrid_commands.py:233
+#: audio/hybrid_commands.py:248
 msgid "I don't have permission to connect to that channel"
 msgstr "そのチャンネルに接続する権限がありません"
 
-#: audio/hybrid_commands.py:237
+#: audio/hybrid_commands.py:252
 msgid "I don't have permission to speak in {channel}"
 msgstr "{channel} で話す権限がありません。"
 
-#: audio/hybrid_commands.py:240
+#: audio/hybrid_commands.py:255
 msgid "I don't have permission to connect to {channel}"
 msgstr "{channel} に接続する権限がありません"
 
-#: audio/hybrid_commands.py:253
+#: audio/hybrid_commands.py:268
 msgid "You don't have permission to connect to {channel}"
 msgstr "{channel} に接続する権限がありません。"
 
-#: audio/hybrid_commands.py:270
+#: audio/hybrid_commands.py:285
 msgid "I'm forced to only join {channel}"
 msgstr "{channel} のみ参加を余儀なくされています"
 
-#: audio/hybrid_commands.py:278
+#: audio/hybrid_commands.py:293
 msgid "Connected to {channel}"
 msgstr "{channel} に接続しました"
 
-#: audio/hybrid_commands.py:298 audio/hybrid_commands.py:328
-#: audio/hybrid_commands.py:368 audio/hybrid_commands.py:402
-#: audio/hybrid_commands.py:430 audio/hybrid_commands.py:455
-#: audio/hybrid_commands.py:503 audio/hybrid_commands.py:537
-#: audio/hybrid_commands.py:572 audio/hybrid_commands.py:627
-#: audio/hybrid_commands.py:671 audio/hybrid_commands.py:772
+#: audio/hybrid_commands.py:313 audio/hybrid_commands.py:343
+#: audio/hybrid_commands.py:383 audio/hybrid_commands.py:417
+#: audio/hybrid_commands.py:445 audio/hybrid_commands.py:470
+#: audio/hybrid_commands.py:518 audio/hybrid_commands.py:552
+#: audio/hybrid_commands.py:587 audio/hybrid_commands.py:642
+#: audio/hybrid_commands.py:686 audio/hybrid_commands.py:787
 msgid "No player detected"
 msgstr "プレイヤーが見つかりませんでした"
 
-#: audio/hybrid_commands.py:305 audio/hybrid_commands.py:335
-#: audio/hybrid_commands.py:375
+#: audio/hybrid_commands.py:320 audio/hybrid_commands.py:350
+#: audio/hybrid_commands.py:390
 msgid "Player is not currently playing anything"
 msgstr "プレイヤーは現在何も再生していません"
 
-#: audio/hybrid_commands.py:343
+#: audio/hybrid_commands.py:358
 msgid "Skipped - {track}"
 msgstr "スキップ - {track}"
 
-#: audio/hybrid_commands.py:382
+#: audio/hybrid_commands.py:397
 msgid "Player stopped"
 msgstr "プレイヤーが停止しました"
 
-#: audio/hybrid_commands.py:410
+#: audio/hybrid_commands.py:425
 msgid "Disconnected from {channel}"
 msgstr "{channel} から切断されました"
 
-#: audio/hybrid_commands.py:462
+#: audio/hybrid_commands.py:477
 msgid "There is nothing in the queue"
 msgstr "キューには何もありません"
 
-#: audio/hybrid_commands.py:470
+#: audio/hybrid_commands.py:485
 msgid "You are not allowed to shuffle the queue"
 msgstr "キューをシャッフルする権限がありません"
 
-#: audio/hybrid_commands.py:478
+#: audio/hybrid_commands.py:493
 msgid "{queue_size} tracks shuffled"
 msgstr "{queue_size} トラックシャッフル"
 
-#: audio/hybrid_commands.py:510
+#: audio/hybrid_commands.py:525
 msgid "Repeating the queue"
 msgstr "キューを繰り返す"
 
-#: audio/hybrid_commands.py:513
+#: audio/hybrid_commands.py:528
 msgid "Repeating disabled"
 msgstr "リピートは無効です"
 
-#: audio/hybrid_commands.py:516
+#: audio/hybrid_commands.py:531
 msgid "Repeating {track}"
 msgstr "{track} を繰り返す"
 
-#: audio/hybrid_commands.py:519
+#: audio/hybrid_commands.py:534
 msgid "current track"
 msgstr "現在のトラック"
 
-#: audio/hybrid_commands.py:543
+#: audio/hybrid_commands.py:558
 msgid "Player already paused, did you mean to run `/resume`"
 msgstr "プレイヤーは既に一時停止しています。`/resume`を実行するつもりですか？"
 
-#: audio/hybrid_commands.py:545
+#: audio/hybrid_commands.py:560
 msgid "Player already paused, did you mean to run `{prefix}{command}`"
 msgstr "プレイヤーは既に一時停止しています。`{prefix}{command}`を実行するつもりですか？"
 
-#: audio/hybrid_commands.py:556
+#: audio/hybrid_commands.py:571
 msgid "Player paused"
 msgstr "プレイヤーを一時停止しました"
 
-#: audio/hybrid_commands.py:578
+#: audio/hybrid_commands.py:593
 msgid "Player already resumed, did you mean to run `/pause`"
 msgstr "プレイヤーは既に再開されています。`/pause`を実行しますか？"
 
-#: audio/hybrid_commands.py:580
+#: audio/hybrid_commands.py:595
 msgid "Player already resumed, did you mean to run `{prefix}{command}`"
 msgstr "プレイヤーはすでに再開されています。`{prefix}{command}`を実行するつもりですか？"
 
-#: audio/hybrid_commands.py:591
+#: audio/hybrid_commands.py:606
 msgid "Player resumed"
 msgstr "プレイヤーが再開されました"
 
-#: audio/hybrid_commands.py:635
+#: audio/hybrid_commands.py:650
 msgid "Volume cannot be higher than {max_volume}"
 msgstr "音量は {max_volume} より大きくすることはできません"
 
-#: audio/hybrid_commands.py:644 audio/utility_commands.py:62
+#: audio/hybrid_commands.py:659 audio/utility_commands.py:62
 msgid "Player volume set to {volume}%"
 msgstr "プレーヤーの音量を {volume} % に設定しました"
 
-#: audio/hybrid_commands.py:678
+#: audio/hybrid_commands.py:693
 msgid "Nothing playing"
 msgstr "再生中のものはありません"
 
-#: audio/hybrid_commands.py:687 audio/hybrid_commands.py:696
+#: audio/hybrid_commands.py:702 audio/hybrid_commands.py:711
 msgid "Unable to seek track"
 msgstr "曲をシークできません"
 
-#: audio/hybrid_commands.py:688
+#: audio/hybrid_commands.py:703
 msgid "Can't seek on a stream"
 msgstr "ストリームをシークできません"
 
-#: audio/hybrid_commands.py:705
+#: audio/hybrid_commands.py:720
 msgid "Cannot seek when the player is paused"
 msgstr "プレイヤーが一時停止中はシークできません"
 
-#: audio/hybrid_commands.py:718
+#: audio/hybrid_commands.py:733
 msgid "Moved {seconds}s to 00:00:00"
 msgstr "{seconds}秒を 00:00:00 に移動しました"
 
-#: audio/hybrid_commands.py:725
+#: audio/hybrid_commands.py:740
 msgid "Moved {seconds}s to {time}"
 msgstr "{seconds}秒で {time} に移動しました"
 
-#: audio/hybrid_commands.py:746
+#: audio/hybrid_commands.py:761
 msgid "Moved to {time}"
 msgstr "{time} に移動しました"
 
-#: audio/hybrid_commands.py:780
+#: audio/hybrid_commands.py:795
 msgid "No previous in player history"
 msgstr "プレイヤーの履歴に過去がありません"
 
-#: audio/hybrid_commands.py:788
+#: audio/hybrid_commands.py:803
 msgid "Playing previous track: {track}"
 msgstr "前のトラックを再生: {track}"
 
