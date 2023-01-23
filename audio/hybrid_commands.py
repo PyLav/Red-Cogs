@@ -19,6 +19,7 @@ from pylav.extension.red.utils.decorators import invoker_is_dj, requires_player
 from pylav.extension.red.utils.validators import valid_query_attachment
 from pylav.helpers.format.strings import format_time_dd_hh_mm_ss, shorten_string
 from pylav.logging import getLogger
+from pylav.nodes.api.responses.track import Track as TrackResponse
 from pylav.players.query.obj import Query
 from pylav.players.tracks.obj import Track
 from pylav.type_hints.bot import DISCORD_COG_TYPE_MIXIN
@@ -112,11 +113,17 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                 )
                 return
             player = await self.pylav.connect_player(channel=channel, requester=context.author)
-        if isinstance(query, Track):
-            await player.add(track=query, requester=context.author.id)
+        if isinstance(query, (Track, TrackResponse)):
+            track = await Track.build_track(
+                node=player.node,
+                data=query,
+                requester=context.author.id,
+                query=None,
+            )
+            await player.add(track=track, requester=context.author.id)
             if not (player.is_playing or player.queue.empty()):
                 await player.next(requester=context.author)
-            await self._process_play_message(context, query, 1)
+            await self._process_play_message(context, track, 1)
             return
         queries = [
             await Query.from_string(qf, partial=PREFER_PARTIAL_TRACKS)

@@ -238,11 +238,10 @@ class ContextMenus(DISCORD_COG_TYPE_MIXIN):
                     wait=True,
                 )
                 return
-            track_url = response.tracks[0].info.uri
             await self.command_play.callback(
                 self,
                 interaction,
-                query=track_url,
+                query=response.tracks[0],
             )
         else:
             await interaction.followup.send(

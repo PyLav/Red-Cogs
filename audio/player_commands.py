@@ -304,7 +304,7 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
                 track = await Track.build_track(
                     node=player.node,
                     data=data,
-                    query=await Query.from_string(data.info.uri),
+                    query=None,
                     requester=context.author.id,
                 )
             except Exception:  # noqa
