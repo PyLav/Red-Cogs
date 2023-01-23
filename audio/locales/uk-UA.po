@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2023-01-09 20:14+0000\n"
-"PO-Revision-Date: 2023-01-21 20:02\n"
+"POT-Creation-Date: 2023-01-23 21:08+0000\n"
+"PO-Revision-Date: 2023-01-23 21:08\n"
 "Last-Translator: \n"
 "Language-Team: Ukrainian\n"
 "MIME-Version: 1.0\n"
@@ -86,12 +86,12 @@ msgid "Set the maximum volume a server can set"
 msgstr "Встановлення максимальної гучності, яку може встановити сервер"
 
 #: audio/config_commands.py:141 audio/config_commands.py:578
-#: audio/hybrid_commands.py:612
+#: audio/hybrid_commands.py:627
 msgid "Volume must be less than 1000"
 msgstr "Об'єм повинен бути менше 1000"
 
 #: audio/config_commands.py:149 audio/config_commands.py:586
-#: audio/hybrid_commands.py:620
+#: audio/hybrid_commands.py:635
 msgid "Volume must be greater than 0"
 msgstr "Розмір повинен бути більшим за 0"
 
@@ -416,7 +416,7 @@ msgstr "Я вислухаю команди по всіх каналах, які 
 msgid "Set the channel lock for voice channels"
 msgstr "Встановлення блокування каналу для голосових каналів"
 
-#: audio/config_commands.py:982 audio/hybrid_commands.py:105
+#: audio/config_commands.py:982 audio/hybrid_commands.py:107
 #: audio/player_commands.py:144
 msgid "I don't have permission to connect or speak in {channel}"
 msgstr "У мене немає дозволу на додавання контактів або говорити в {channel}"
@@ -465,177 +465,177 @@ msgstr "Не вдалося відобразити трек Apple Music до п�
 msgid "Couldn't find any tracks matching {query}"
 msgstr "Не вдалося знайти жодного треку, який відповідає {query}"
 
-#: audio/context_menus.py:250
+#: audio/context_menus.py:249
 msgid "Couldn't figure out what {user} is listening to"
 msgstr "Не вдалося зрозуміти, що {user} слухає"
 
-#: audio/hybrid_commands.py:81
+#: audio/hybrid_commands.py:83
 msgid "You need to provide a query to play"
 msgstr "Вам потрібно надати запит для гри"
 
-#: audio/hybrid_commands.py:95 audio/player_commands.py:134
+#: audio/hybrid_commands.py:97 audio/player_commands.py:134
 msgid "You must be in a voice channel to allow me to connect"
 msgstr "Ви повинні бути в голосовому каналі, щоб дозволити мені підключитися"
 
-#: audio/hybrid_commands.py:139 audio/player_commands.py:225
+#: audio/hybrid_commands.py:154 audio/player_commands.py:225
 msgid "{track_count} tracks enqueued"
 msgstr "{track_count} треків в черзі"
 
-#: audio/hybrid_commands.py:147 audio/player_commands.py:233
+#: audio/hybrid_commands.py:162 audio/player_commands.py:233
 msgid "{track} enqueued"
 msgstr "{track} в черзі"
 
-#: audio/hybrid_commands.py:158 audio/player_commands.py:244
+#: audio/hybrid_commands.py:173 audio/player_commands.py:244
 msgid "No tracks were found for your query"
 msgstr "Не знайдено жодного треку для вашого запиту"
 
-#: audio/hybrid_commands.py:221
+#: audio/hybrid_commands.py:236
 msgid "You need to be in a voice channel if you don't specify which channel I need to connect to"
 msgstr "Ви повинні бути в голосовому каналі, якщо ви не вкажете, який канал вам потрібно підключитися до"
 
-#: audio/hybrid_commands.py:233
+#: audio/hybrid_commands.py:248
 msgid "I don't have permission to connect to that channel"
 msgstr "У мене немає дозволу на підключення до цього каналу"
 
-#: audio/hybrid_commands.py:237
+#: audio/hybrid_commands.py:252
 msgid "I don't have permission to speak in {channel}"
 msgstr "У мене немає дозволу на розмову в {channel}"
 
-#: audio/hybrid_commands.py:240
+#: audio/hybrid_commands.py:255
 msgid "I don't have permission to connect to {channel}"
 msgstr "Я не маю дозволу на підключення до {channel}"
 
-#: audio/hybrid_commands.py:253
+#: audio/hybrid_commands.py:268
 msgid "You don't have permission to connect to {channel}"
 msgstr "У вас недостатньо прав для підключення до {channel}"
 
-#: audio/hybrid_commands.py:270
+#: audio/hybrid_commands.py:285
 msgid "I'm forced to only join {channel}"
 msgstr "Мені примусово приєднатися тільки до {channel}"
 
-#: audio/hybrid_commands.py:278
+#: audio/hybrid_commands.py:293
 msgid "Connected to {channel}"
 msgstr "Підключено до {channel}"
 
-#: audio/hybrid_commands.py:298 audio/hybrid_commands.py:328
-#: audio/hybrid_commands.py:368 audio/hybrid_commands.py:402
-#: audio/hybrid_commands.py:430 audio/hybrid_commands.py:455
-#: audio/hybrid_commands.py:503 audio/hybrid_commands.py:537
-#: audio/hybrid_commands.py:572 audio/hybrid_commands.py:627
-#: audio/hybrid_commands.py:671 audio/hybrid_commands.py:772
+#: audio/hybrid_commands.py:313 audio/hybrid_commands.py:343
+#: audio/hybrid_commands.py:383 audio/hybrid_commands.py:417
+#: audio/hybrid_commands.py:445 audio/hybrid_commands.py:470
+#: audio/hybrid_commands.py:518 audio/hybrid_commands.py:552
+#: audio/hybrid_commands.py:587 audio/hybrid_commands.py:642
+#: audio/hybrid_commands.py:686 audio/hybrid_commands.py:787
 msgid "No player detected"
 msgstr "Жодного гравця не виявлено"
 
-#: audio/hybrid_commands.py:305 audio/hybrid_commands.py:335
-#: audio/hybrid_commands.py:375
+#: audio/hybrid_commands.py:320 audio/hybrid_commands.py:350
+#: audio/hybrid_commands.py:390
 msgid "Player is not currently playing anything"
 msgstr "Гравець на даний момент нічого не грає"
 
-#: audio/hybrid_commands.py:343
+#: audio/hybrid_commands.py:358
 msgid "Skipped - {track}"
 msgstr "Пропущені - {track}"
 
-#: audio/hybrid_commands.py:382
+#: audio/hybrid_commands.py:397
 msgid "Player stopped"
 msgstr "Трансляцію зупинено"
 
-#: audio/hybrid_commands.py:410
+#: audio/hybrid_commands.py:425
 msgid "Disconnected from {channel}"
 msgstr "Від'єднано від {channel}"
 
-#: audio/hybrid_commands.py:462
+#: audio/hybrid_commands.py:477
 msgid "There is nothing in the queue"
 msgstr "У черзі нічого немає"
 
-#: audio/hybrid_commands.py:470
+#: audio/hybrid_commands.py:485
 msgid "You are not allowed to shuffle the queue"
 msgstr "Вам не дозволено перемішувати чергу"
 
-#: audio/hybrid_commands.py:478
+#: audio/hybrid_commands.py:493
 msgid "{queue_size} tracks shuffled"
 msgstr "{queue_size} маршрутів змішано"
 
-#: audio/hybrid_commands.py:510
+#: audio/hybrid_commands.py:525
 msgid "Repeating the queue"
 msgstr "Повторення черги"
 
-#: audio/hybrid_commands.py:513
+#: audio/hybrid_commands.py:528
 msgid "Repeating disabled"
 msgstr "Повторення заборонене"
 
-#: audio/hybrid_commands.py:516
+#: audio/hybrid_commands.py:531
 msgid "Repeating {track}"
 msgstr "Повторення {track}"
 
-#: audio/hybrid_commands.py:519
+#: audio/hybrid_commands.py:534
 msgid "current track"
 msgstr "поточний трек"
 
-#: audio/hybrid_commands.py:543
+#: audio/hybrid_commands.py:558
 msgid "Player already paused, did you mean to run `/resume`"
 msgstr "Гравець вже призупинений, ви мали на увазі запустити `/resume`"
 
-#: audio/hybrid_commands.py:545
+#: audio/hybrid_commands.py:560
 msgid "Player already paused, did you mean to run `{prefix}{command}`"
 msgstr "Гравець вже призупинений, ви мали на увазі запустити `{prefix}{command}`"
 
-#: audio/hybrid_commands.py:556
+#: audio/hybrid_commands.py:571
 msgid "Player paused"
 msgstr "Програвач призупинено"
 
-#: audio/hybrid_commands.py:578
+#: audio/hybrid_commands.py:593
 msgid "Player already resumed, did you mean to run `/pause`"
 msgstr "Гравець вже відновився, ви мали на увазі запустити `/pause`"
 
-#: audio/hybrid_commands.py:580
+#: audio/hybrid_commands.py:595
 msgid "Player already resumed, did you mean to run `{prefix}{command}`"
 msgstr "Гравець вже був відновлений, ви мали на увазі запустити{prefix}{command}`"
 
-#: audio/hybrid_commands.py:591
+#: audio/hybrid_commands.py:606
 msgid "Player resumed"
 msgstr "Гравець відновлений"
 
-#: audio/hybrid_commands.py:635
+#: audio/hybrid_commands.py:650
 msgid "Volume cannot be higher than {max_volume}"
 msgstr "Об'єм не може бути вище, ніж {max_volume}"
 
-#: audio/hybrid_commands.py:644 audio/utility_commands.py:62
+#: audio/hybrid_commands.py:659 audio/utility_commands.py:62
 msgid "Player volume set to {volume}%"
 msgstr "Гучність плеєра змінено на {volume}%"
 
-#: audio/hybrid_commands.py:678
+#: audio/hybrid_commands.py:693
 msgid "Nothing playing"
 msgstr "Нічого не грає"
 
-#: audio/hybrid_commands.py:687 audio/hybrid_commands.py:696
+#: audio/hybrid_commands.py:702 audio/hybrid_commands.py:711
 msgid "Unable to seek track"
 msgstr "Не вдалося знайти трек"
 
-#: audio/hybrid_commands.py:688
+#: audio/hybrid_commands.py:703
 msgid "Can't seek on a stream"
 msgstr "Не можна шукати у потоці"
 
-#: audio/hybrid_commands.py:705
+#: audio/hybrid_commands.py:720
 msgid "Cannot seek when the player is paused"
 msgstr "Не вдається перейти коли плеєр призупинено"
 
-#: audio/hybrid_commands.py:718
+#: audio/hybrid_commands.py:733
 msgid "Moved {seconds}s to 00:00:00"
 msgstr "Переміщено {seconds}сек до 00:00:00"
 
-#: audio/hybrid_commands.py:725
+#: audio/hybrid_commands.py:740
 msgid "Moved {seconds}s to {time}"
 msgstr "Переміщено {seconds}s до {time}"
 
-#: audio/hybrid_commands.py:746
+#: audio/hybrid_commands.py:761
 msgid "Moved to {time}"
 msgstr "Переміщено до {time}"
 
-#: audio/hybrid_commands.py:780
+#: audio/hybrid_commands.py:795
 msgid "No previous in player history"
 msgstr "У історії гравця немає попереднього"
 
-#: audio/hybrid_commands.py:788
+#: audio/hybrid_commands.py:803
 msgid "Playing previous track: {track}"
 msgstr "У попередній композиції: {track}"
 
