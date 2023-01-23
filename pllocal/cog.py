@@ -19,6 +19,7 @@ from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import box
 from tabulate import tabulate
 
+from pylav.constants.config import PREFER_PARTIAL_TRACKS
 from pylav.core.context import PyLavContext
 from pylav.extension.red.utils import rgetattr
 from pylav.helpers.format.ascii import EightBitANSI
@@ -193,7 +194,7 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
             player = await self.pylav.connect_player(channel=channel, requester=author)
 
         successful, count, failed = await self.pylav.get_all_tracks_for_queries(
-            entry, requester=author, player=player, partial=True
+            entry, requester=author, player=player, partial=PREFER_PARTIAL_TRACKS
         )
         if count:
             if count == 1:

@@ -10,6 +10,7 @@ from discord import app_commands
 from redbot.core import commands
 from redbot.core.i18n import Translator
 
+from pylav.constants.config import PREFER_PARTIAL_TRACKS
 from pylav.core.context import PyLavContext
 from pylav.extension.red.ui.menus.queue import QueueMenu
 from pylav.extension.red.ui.sources.queue import QueueSource
@@ -40,7 +41,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
     )
     @commands.guild_only()
     @invoker_is_dj()
-    async def command_play(self, context: PyLavContext, *, query: str = None):  # sourcery no-metrics
+    async def command_play(self, context: PyLavContext, *, query: str = None):  # sourcery skip: low-code-quality
         """Attempt to play the queries which you provide.
 
         Separate multiple queries with a new line (`shift + enter`).
@@ -111,9 +112,16 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                 )
                 return
             player = await self.pylav.connect_player(channel=channel, requester=context.author)
-
+        if isinstance(query, Track):
+            await player.add(track=query, requester=context.author.id)
+            if not (player.is_playing or player.queue.empty()):
+                await player.next(requester=context.author)
+            await self._process_play_message(context, query, 1)
+            return
         queries = [
-            await Query.from_string(qf, partial=True) for q in query.split("\n") if (qf := q.strip("<>").strip())
+            await Query.from_string(qf, partial=PREFER_PARTIAL_TRACKS)
+            for q in query.split("\n")
+            if (qf := q.strip("<>").strip())
         ]
         search_queries = [q for q in queries if q.is_search or q.is_partial]
         non_search_queries = [q for q in queries if not (q.is_search or q.is_partial)]

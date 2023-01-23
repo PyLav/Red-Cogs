@@ -56,7 +56,7 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN):
                 ephemeral=True,
             )
         _track = self._track_cache.get(query)
-        track = query if _track is None else await _track.query_identifier()
+        track = query if _track is None else _track
         await self.command_play.callback(self, interaction, query=track)
 
     @slash_search.autocomplete("query")
