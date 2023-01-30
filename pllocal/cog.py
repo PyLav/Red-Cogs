@@ -156,10 +156,19 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
         recursive: bool | None = False,
     ):  # sourcery no-metrics
         """Play a local file or folder, supports partial searching"""
-        send = partial(interaction.followup.send, wait=True)
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
+        send = partial(interaction.followup.send, wait=True)
         author = interaction.user
+        if entry not in self.cache:
+            await send(
+                embed=await self.pylav.construct_embed(
+                    description=_("{query} is not a valid local file or folder").format(query=entry),
+                    messageable=interaction,
+                ),
+                ephemeral=True,
+            )
+            return
         entry = self.cache[entry]
         entry._recursive = recursive
         player = self.pylav.get_player(interaction.guild.id)
