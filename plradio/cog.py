@@ -155,7 +155,7 @@ class PyLavRadio(DISCORD_COG_TYPE_MIXIN):
         else:
             await send(
                 embed=await self.pylav.construct_embed(
-                    description="**[{station_name}]({station_url})**".format(
+                    description="{translation} **[{station_name}]({station_url})**".format(
                         station_name=station.name, station_url=url, translation=_("Unable to play")
                     ),
                     messageable=context,
