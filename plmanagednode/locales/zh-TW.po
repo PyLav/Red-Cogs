@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2023-01-01 21:53+0000\n"
-"PO-Revision-Date: 2023-01-27 18:03\n"
+"Project-Id-Version: pylav\n"
+"POT-Creation-Date: 2023-01-31 19:44+0000\n"
+"PO-Revision-Date: 2023-01-31 19:45\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
@@ -10,26 +10,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: redgettext 3.4.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: pylavcogs\n"
-"X-Crowdin-Project-ID: 535246\n"
+"X-Crowdin-Project: pylav\n"
+"X-Crowdin-Project-ID: 535244\n"
 "X-Crowdin-Language: zh-TW\n"
-"X-Crowdin-File: /plmanagednode/locales/messages.pot\n"
-"X-Crowdin-File-ID: 610\n"
+"X-Crowdin-File: /cogs/plmanagednode/locales/%locale%.po\n"
+"X-Crowdin-File-ID: 1139\n"
 "Language: zh_TW\n"
 
 #: plmanagednode/cog.py:34 plmanagednode/cog.py:46
 #, docstring
 msgid "Configure the managed Lavalink node used by PyLav"
-msgstr "配置 PyLav 使用的託管 Lavalink 節點"
+msgstr ""
 
 #: plmanagednode/cog.py:50
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies"
-msgstr "顯示 Cog 的版本及其 PyLav 依賴項"
+msgstr ""
 
 #: plmanagednode/cog.py:66
 msgid "Library/Cog"
-msgstr "資料庫/Cog"
+msgstr ""
 
 #: plmanagednode/cog.py:67
 msgid "Version"
@@ -38,53 +38,49 @@ msgstr "版本"
 #: plmanagednode/cog.py:80
 #, docstring
 msgid "Update the managed Lavalink node"
-msgstr "更新託管的 Lavalink 節點"
+msgstr ""
 
 #: plmanagednode/cog.py:92
 msgid "The managed Lavalink node is already up to date."
-msgstr "託管的 Lavalink 節點已經是最新的。"
+msgstr ""
 
 #: plmanagednode/cog.py:101
 msgid "Your node is out of date, to update please run `{prefix}{command} 1`."
-msgstr "您的節點已過期，要更新請運行“{prefix}{command} 1”。"
+msgstr ""
 
 #: plmanagednode/cog.py:117
 msgid "The managed Lavalink node has been updated to version {version}."
-msgstr "受管 Lavalink 節點已更新至版本 {version}。"
+msgstr ""
 
 #: plmanagednode/cog.py:127
 #, docstring
 msgid "Toggle the managed node on/off.\n\n"
 "        Changes will be applied after restarting [botname].\n"
 "        "
-msgstr "打開/關閉受管節點。\n\n"
-"        重新啟動 [botname] 後將應用更改。\n"
-"        "
+msgstr ""
 
 #: plmanagednode/cog.py:142
 msgid "PyLav's managed node has been enabled."
-msgstr "PyLav 的託管節點已啟用."
+msgstr ""
 
 #: plmanagednode/cog.py:150
 msgid "PyLav's managed node has been disabled."
-msgstr "PyLav 的託管節點已被禁用."
+msgstr ""
 
 #: plmanagednode/cog.py:158
 #, docstring
 msgid "Toggle the managed node auto updates on/off.\n\n"
 "        Changes will be applied after restarting [botname].\n"
 "        "
-msgstr "打開/關閉受管節點自動更新。\n\n"
-"        重新啟動 [botname] 後將應用更改。\n"
-"        "
+msgstr ""
 
 #: plmanagednode/cog.py:174
 msgid "PyLav's managed node auto updates have been enabled"
-msgstr "PyLav 的託管節點自動更新已啟用"
+msgstr ""
 
 #: plmanagednode/cog.py:184
 msgid "PyLav's managed node auto updates have been disabled"
-msgstr "PyLav 的託管節點自動更新已被禁用"
+msgstr ""
 
 #: plmanagednode/cog.py:194
 #, docstring
@@ -94,46 +90,41 @@ msgid "Set the managed Lavalink node maximum heap-size.\n\n"
 "        This value only represents the maximum amount of RAM allowed to be used at any given point, and does not mean\n"
 "        that the managed Lavalink node will always use this amount of RAM.\n"
 "        "
-msgstr "設置託管 Lavalink 節點的最記憶體大小。\n\n"
-"        默認情況下，此值為主機中可用 RAM 的 2G，由 (65-1023M|1+G) (256M,\n"
-"        以256G為例）\n\n"
-"        此值僅表示在任何給定點允許使用的最大 RAM 量，並不意味著\n"
-"        託管的 Lavalink 節點將始終使用此數量的 RAM。\n"
-"        "
+msgstr ""
 
 #: plmanagednode/cog.py:218
 msgid "Heap-size must be a valid measure of size, e.g. 256M, 256G"
-msgstr "記憶體大小必須是有效的大小度量，例如 256M, 256G"
+msgstr ""
 
 #: plmanagednode/cog.py:228
 msgid "Heap-size must be at least 64M, however it is recommended to have it set to at least 1G"
-msgstr "記憶體大小必須至少為 64M，但建議至少設置為 1G"
+msgstr ""
 
 #: plmanagednode/cog.py:240
 msgid "Heap-size must be less than your system RAM, You currently have {ram_in_bytes} of RAM available"
-msgstr "記憶體大小必須小於您的系統 RAM，您當前有 {ram_in_bytes} 可用 "
+msgstr ""
 
 #: plmanagednode/cog.py:252
 msgid "Heap-size must be less than {limit} due to your system limitations"
-msgstr "由於您的系統限制，記憶體大小必須小於 {limit}"
+msgstr ""
 
 #: plmanagednode/cog.py:272
 msgid "Managed node's heap-size set to {bytes}."
-msgstr "受管節點的記憶體大小設置為 {bytes}。"
+msgstr ""
 
 #: plmanagednode/cog.py:283
 #, docstring
 msgid "Change the managed node start up configs"
-msgstr "更改託管節點啟動配置"
+msgstr ""
 
 #: plmanagednode/cog.py:287
 #, docstring
 msgid "Set the managed node host"
-msgstr "設置託管節點主機"
+msgstr ""
 
 #: plmanagednode/cog.py:299
 msgid "Managed node's host set to {host}."
-msgstr "受管節點的主機設置為 {host}。"
+msgstr ""
 
 #: plmanagednode/cog.py:310
 #, docstring
@@ -142,99 +133,94 @@ msgid "`Dangerous command` Set the managed Lavalink node's connection port.\n\n"
 "        conflict with the default port because you already have an application using port 2154 on this device.\n\n"
 "        The value by default is `2154`.\n"
 "        "
-msgstr "`Dangerous command` 設置託管 Lavalink 節點的連接端口。\n\n"
-"        此端口是受管 Lavalink 節點綁定到的端口，只有在有\n"
-"        與默認端口衝突，因為您在此設備上已有使用端口 2154 的應用程序。\n\n"
-"        默認值為 `2154`。\n"
-"        "
+msgstr ""
 
 #: plmanagednode/cog.py:320
 msgid "The port must be between 1024 and 49151"
-msgstr "端口必須在 1024 和 49151 之間"
+msgstr ""
 
 #: plmanagednode/cog.py:332
 msgid "Managed node's port set to {port}."
-msgstr "受管節點的端口設置為 {port}。"
+msgstr ""
 
 #: plmanagednode/cog.py:340
 #, docstring
 msgid "Change the managed node plugins"
-msgstr "更改託管節點插件"
+msgstr ""
 
 #: plmanagednode/cog.py:346
 #, docstring
 msgid "Disabled one of the available plugins"
-msgstr "禁用了一個可用的插件"
+msgstr ""
 
 #: plmanagednode/cog.py:362 plmanagednode/cog.py:474
 msgid "The plugin must be one of the following: {plugins}"
-msgstr "插件必須是以下之一：{plugins}"
+msgstr ""
 
 #: plmanagednode/cog.py:447
 msgid "Managed node's plugin {plugin} disabled."
-msgstr "受管節點的插件 {plugin} 已禁用。"
+msgstr ""
 
 #: plmanagednode/cog.py:458
 #, docstring
 msgid "Enable one of the available plugins"
-msgstr "啟用可用插件之一"
+msgstr ""
 
 #: plmanagednode/cog.py:507
 msgid "Managed node's plugin {plugin} enabled."
-msgstr "受管節點的插件 {plugin} 已啟用。"
+msgstr ""
 
 #: plmanagednode/cog.py:518
 #, docstring
 msgid "Update the managed node plugins"
-msgstr "更新託管節點插件"
+msgstr ""
 
 #: plmanagednode/cog.py:592
 msgid "{name} was updated from {old_value} to {new_value}\n"
-msgstr "{name} 已從 {old_value} 更新至 {new_value}"
+msgstr ""
 
 #: plmanagednode/cog.py:600
 msgid "Managed node's plugins updated.\n\n"
 "{updates}"
-msgstr "管理節點的插件已更新。\n\n"
-"{updates}"
+msgstr ""
 
 #: plmanagednode/cog.py:611
 msgid "Managed node's plugins already up to date"
-msgstr "託管節點的插件已經是最新的"
+msgstr ""
 
 #: plmanagednode/cog.py:619
 #, docstring
 msgid "Toggle the managed node sources"
-msgstr "切換託管節點源"
+msgstr ""
 
 #: plmanagednode/cog.py:634
 msgid "Invalid source, {valid_list} are valid sources"
-msgstr "來源無效，{valid_list} 是有效來源"
+msgstr ""
 
 #: plmanagednode/cog.py:648 plmanagednode/cog.py:684
 msgid "enabled"
-msgstr "已啟用"
+msgstr ""
 
 #: plmanagednode/cog.py:648 plmanagednode/cog.py:684
 msgid "disabled"
-msgstr "已停用"
+msgstr ""
 
 #: plmanagednode/cog.py:651
 msgid "Managed node's {source} source set to {state}."
-msgstr "受管節點的 {source} 源設置為 {state}。"
+msgstr ""
 
 #: plmanagednode/cog.py:663
 #, docstring
 msgid "Toggle the managed node filters"
-msgstr "切換受管節點過濾器"
+msgstr ""
 
 #: plmanagednode/cog.py:675
 msgid "Invalid source, {valid_list} are valid filters"
-msgstr "來源無效，{valid_list} 是有效過濾器"
+msgstr ""
 
 #: plmanagednode/cog.py:687
 msgid "Managed node's {source} filter set to {state}."
-msgstr "受管節點的 {source} 過濾器設置為 {state}。"
+msgstr ""
 
 #: plmanagednode/cog.py:699
 #, docstring
@@ -252,143 +238,118 @@ msgid "Configure multiple settings for the managed node.\n\n"
 "        `youtubeSearchEnabled` : Boolean i.e True (Default True)\n"
 "        `soundcloudSearchEnabled` : Boolean i.e True (Default True)\n"
 "        "
-msgstr "為受管節點配置多個設置。\n\n"
-"        運行“[p]plmanaged config server <setting> info”以顯示有關設置及其作用的信息。\n\n"
-"        **設置名稱**：\n"
-"        `bufferDurationMs`：整數，即 400（默認 400）- 設置為 0 以禁用 JDA-NAS\n"
-"        `frameBufferDurationMs`：整數，即 1000（默認 1000）\n"
-"        `trackStuckThresholdMs`：整數，即 1000（默認 1000）\n"
-"        `youtubePlaylistLoadLimit`：整數，即 1000（默認 1000）\n"
-"        `opusEncodingQuality`：整數，即 10（默認 10）\n"
-"        `resamplingQuality`：字符串，即低（默認高）\n"
-"        `useSeekGhosting`：值，即 True（默認 True）\n"
-"        `playerUpdateInterval`：整數，即 30（默認 30）\n"
-"        `youtubeSearchEnabled`：值，即 True（默認 True）\n"
-"        `soundcloudSearchEnabled`：值，即 True（默認 True）\n"
-"        "
+msgstr ""
 
 #: plmanagednode/cog.py:739
 msgid "{Setting} is not a valid Setting; Options are:\n\n"
 "{setting_list}"
-msgstr "{Setting} 不是一個有效的設置； 選項是：\n\n"
-"{setting_list}"
+msgstr ""
 
 #: plmanagednode/cog.py:750
 msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses but will increase RAM usage. Minimum of 40ms, lower values may introduce pauses and stutters. Set to 0 to disable JDA-NAS. Accepted values: Range: 0 - 2,000"
-msgstr "NAS 緩衝區的持續時間（以毫秒為單位）。 較高的值可以更好地應對較長的 GC 暫停，但會增加 RAM 使用量。 最少 40 毫秒，較低的值可能會導致停頓和卡頓。 設置為 0 以禁用 JDA-NAS。 可接受的值：範圍：0 - 2,000"
+msgstr ""
 
 #: plmanagednode/cog.py:756
 msgid "How many milliseconds of audio to keep buffered, Higher values increase RAM usage. Accepted values: Range: 1,000 - 10,000"
-msgstr "保持緩衝多少毫秒的音頻，更高的值會增加 RAM 使用。 可接受的值：範圍：1,000 - 10,000"
+msgstr ""
 
 #: plmanagednode/cog.py:760
 msgid "The threshold in milliseconds for how long a track can be stuck. A track is stuck if does not return any audio data. Accepted values: Range: 5,000 - 20,000"
-msgstr "軌道可以卡住多長時間的閾值（以毫秒為單位）。 如果不返回任何音頻數據，則軌道被卡住。 可接受的值：範圍：5,000 - 20,000"
+msgstr ""
 
 #: plmanagednode/cog.py:764
 msgid "Number of pages to return for a YouTube Playlist - Each page contains 100 songs. Accepted values: Range: 5 - 100"
-msgstr "返回 YouTube 播放列表的頁數 - 每頁包含 100 首歌曲。 可接受的值：範圍：5 - 100"
+msgstr ""
 
 #: plmanagednode/cog.py:768
 msgid "Opus encoder quality. Valid values range from 0 to 10, where 10 is best quality but is the most expensive on the CPU"
-msgstr "Opus 編碼器質量。 有效值範圍從 0 到 10，其中 10 擁有最好的質量，但在 CPU 上也是最耗能的"
+msgstr ""
 
 #: plmanagednode/cog.py:772
 msgid "Quality of resampling operations. Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU"
-msgstr "重採樣操作的質量。 有效值為 LOW、MEDIUM 和 HIGH，其中 HIGH 使用的 CPU 最多"
+msgstr ""
 
 #: plmanagednode/cog.py:776
 msgid "Seek ghosting is the effect where whilst a seek is in progress, the audio buffer is read from until empty, or until seek is ready. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
-msgstr "Seek ghosting 是一種效果，在進行搜索時，音頻緩衝區會一直讀取到空，或者直到搜索準備就緒。 接受的 True 值：`True`、`t`、`1`，接受的 False 值：`False`、`f`、`0`"
+msgstr ""
 
 #: plmanagednode/cog.py:781
 msgid "How frequently in seconds to send player updates to clients, affects the current position accuracy. Accepted values: Range: 1 - 86400"
-msgstr "以秒為單位向客戶端發送玩家更新的頻率會影響當前位置的準確性。 可接受的值：範圍：1 - 86400"
+msgstr ""
 
 #: plmanagednode/cog.py:785
 msgid "Enable or disable YouTube searches within the node, this will affect AppleMusic, Spotify and any functionality dependant on YouTube. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
-msgstr "在節點內啟用或禁用 YouTube 搜索，這將影響 AppleMusic、Spotify 和任何依賴於 YouTube 的功能。 接受的 True 值：`True`、`t`、`1`，接受的 False 值：`False`、`f`、`0`"
+msgstr ""
 
 #: plmanagednode/cog.py:790
 msgid "Enable or disable SoundCloud searches within the node, this will affect any functionality dependant on SoundCloud. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
-msgstr "在節點內啟用或禁用 SoundCloud 搜索，這將影響依賴於 SoundCloud 的任何功能。 接受的 True 值：`True`、`t`、`1`，接受的 False 值：`False`、`f`、`0`"
+msgstr ""
 
 #: plmanagednode/cog.py:799
 msgid "{Setting} info.\n\n"
 "{info}"
-msgstr "{Setting} 資訊。\n\n"
-"{info}"
+msgstr ""
 
 #: plmanagednode/cog.py:827
 msgid "{Setting} valid inputs are:\n\n"
 "Range between: {start} - {end}"
-msgstr "{Setting} 有效輸入值是：\n\n"
-"範圍介於：{start} - {end}"
+msgstr ""
 
 #: plmanagednode/cog.py:838
 msgid "{Setting} valid inputs are:\n\n"
 "{setting_list}"
-msgstr "{Setting} 的有效值是：\n\n"
-"{setting_list}"
+msgstr ""
 
 #: plmanagednode/cog.py:857
 msgid "{Setting} set to {value}."
-msgstr "{Setting} 設置為 {value}。"
+msgstr ""
 
 #: plmanagednode/cog.py:869
 #, docstring
 msgid "Configure Lavalink IP Rotation for rate limits.\n\n"
 "        Run `[p]plmanaged config iprotation 1` to remove the ip rotation\n"
 "        "
-msgstr "為速率限製配置 Lavalink IP 輪換。\n\n"
-"        運行 `[p]plmanaged config iprotation 1` 以刪除 ip 輪換\n"
-"        "
+msgstr ""
 
 #: plmanagednode/cog.py:880
 msgid "Click the button below to configure the IP rotation for your node.\n"
 "More info at: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> and <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
-msgstr "單擊下面的按鈕為您的節點配置 IP 輪換。\n"
-"更多信息請訪問：<https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> 和 <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
+msgstr ""
 
 #: plmanagednode/cog.py:898
 msgid "Removing the IP rotation from your node."
-msgstr "從您的節點中刪除 IP 輪換。"
+msgstr ""
 
 #: plmanagednode/cog.py:906
 #, docstring
 msgid "Link a Google account to Lavalink to bypass YouTube's age restriction\n\n"
 "        Run `[p]plmanaged config googleaccount 1` to remove the linked account.\n"
 "        "
-msgstr "將 Google 帳戶鏈接到 Lavalink 以繞過 YouTube 的年齡限制\n\n"
-"        運行 `[p]plmanaged config googleaccount 1` 以刪除鏈接的帳戶。\n"
-"        "
+msgstr ""
 
 #: plmanagednode/cog.py:917
 msgid "Click the button below to link a Google account to your node, if you have 2FA setup on this account you will need an app password instead\n"
 "More info at: <https://support.google.com/accounts/answer/185833>"
-msgstr "單擊下面的按鈕將 Google 帳戶鏈接到您的節點，如果您在此帳戶上設置了 2FA，則需要應用程序密碼\n"
-"更多信息，請訪問：<https://support.google.com/accounts/answer/185833>"
+msgstr ""
 
 #: plmanagednode/cog.py:936
 msgid "Unlinking Google account from your node."
-msgstr "取消 Google 帳戶與您的節點的鏈接。"
+msgstr ""
 
 #: plmanagednode/cog.py:944
 #, docstring
 msgid "Configure a HTTP proxy for Lavalink\n\n"
 "        Run `[p]plmanaged config httpproxy 1` to remove the proxy.\n"
 "        "
-msgstr "為 Lavalink 配置 HTTP 代理\n\n"
-"        運行“[p]plmanaged config httpproxy 1”以刪除代理。\n"
-"        "
+msgstr ""
 
 #: plmanagednode/cog.py:955
 msgid "Click the button below to configure a HTTP proxy for your node"
-msgstr "單擊下面的按鈕為您的節點配置 HTTP 代理"
+msgstr ""
 
 #: plmanagednode/cog.py:969
 msgid "Unlinking HTTP proxy from your node."
-msgstr "取消 HTTP 代理與您的節點的鏈接。"
+msgstr ""
 
 #: plmanagednode/view.py:38 plmanagednode/view.py:65 plmanagednode/view.py:98
 #: plmanagednode/view.py:179 plmanagednode/view.py:337
@@ -398,127 +359,127 @@ msgstr "您無權限與此互動"
 
 #: plmanagednode/view.py:125
 msgid "IP Rotation Configurator"
-msgstr "IP 輪換配置器"
+msgstr ""
 
 #: plmanagednode/view.py:128
 msgid "IP Blocks"
-msgstr "IP Blocks"
+msgstr ""
 
 #: plmanagednode/view.py:132
 msgid "1.0.0.0/8,...,... - Comma separated list of IP blocks"
-msgstr "1.0.0.0/8,...,... - IP 塊的逗號分隔列表"
+msgstr ""
 
 #: plmanagednode/view.py:137
 msgid "Rotation strategy"
-msgstr "輪換策略"
+msgstr ""
 
 #: plmanagednode/view.py:146
 msgid "Retry limit"
-msgstr "重試限制"
+msgstr ""
 
 #: plmanagednode/view.py:149
 msgid "-1 = default, 0 = infinity, >0 = number of retries"
-msgstr "-1 = 默認值，0 = 無限大，>0 = 重試次數"
+msgstr ""
 
 #: plmanagednode/view.py:154
 msgid "IPs to exclude"
-msgstr "要排除的 IP"
+msgstr ""
 
 #: plmanagednode/view.py:157
 msgid "Comma separated list of IP to exclude from rotation"
-msgstr "要從輪換中排除的 IP 的逗號分隔列表"
+msgstr ""
 
 #: plmanagednode/view.py:161
 msgid "Search trigger rotation"
-msgstr "搜索觸發輪換"
+msgstr ""
 
 #: plmanagednode/view.py:164
 msgid "0 or 1 (0 = disabled, 1 = enabled)"
-msgstr "0 或 1（0 = 禁用，1 = 啟用）"
+msgstr ""
 
 #: plmanagednode/view.py:192
 msgid "Invalid IP block - {error}"
-msgstr "無效的 IP 塊 - {error}"
+msgstr ""
 
 #: plmanagednode/view.py:205
 msgid "No IP blocks were provided"
-msgstr "未提供 IP 塊"
+msgstr ""
 
 #: plmanagednode/view.py:220
 msgid "Invalid IP address - {error}"
-msgstr "無效的 IP 地址 - {error}"
+msgstr ""
 
 #: plmanagednode/view.py:239
 msgid "Invalid strategy, must be one of: {options}"
-msgstr "無效的策略，必須是以下之一：{options}"
+msgstr ""
 
 #: plmanagednode/view.py:255
 msgid "Invalid retry limit, must be a number greater than or equals to -1"
-msgstr "無效的重試限制，必須是大於或等於-1的數字"
+msgstr ""
 
 #: plmanagednode/view.py:270
 msgid "Invalid search trigger, must be 0 or 1"
-msgstr "搜索觸發器無效，必須為 0 或 1"
+msgstr ""
 
 #: plmanagednode/view.py:289
 msgid "IP rotation configuration saved."
-msgstr "IP 輪換配置已保存。"
+msgstr ""
 
 #: plmanagednode/view.py:310
 msgid "Google Account Configurator"
-msgstr "Google帳戶配置器"
+msgstr ""
 
 #: plmanagednode/view.py:313
 msgid "Email address"
-msgstr "電子郵件地址"
+msgstr ""
 
 #: plmanagednode/view.py:316
 msgid "Your Google account email"
-msgstr "您的 Google 帳號"
+msgstr ""
 
 #: plmanagednode/view.py:321
 msgid "password"
-msgstr "密碼"
+msgstr ""
 
 #: plmanagednode/view.py:324
 msgid "If you have 2FA you will need an app password"
-msgstr "如果你有 2FA，你將需要一個應用程序密碼"
+msgstr ""
 
 #: plmanagednode/view.py:345
 msgid "Invalid email address"
-msgstr "不正確電子郵件地址"
+msgstr ""
 
 #: plmanagednode/view.py:355
 msgid "Google account linked."
-msgstr "已連結 Google 帳戶。"
+msgstr ""
 
 #: plmanagednode/view.py:376
 msgid "HTTP Proxy Configurator"
-msgstr "HTTP 代理配置器"
+msgstr ""
 
 #: plmanagednode/view.py:379
 msgid "Hostname"
-msgstr "主機名稱"
+msgstr ""
 
 #: plmanagednode/view.py:382
 msgid "Hostname of the proxy, (ip or domain or localhost)"
-msgstr "代理的主機名，（ip 或域名或本地主機）"
+msgstr ""
 
 #: plmanagednode/view.py:386
 msgid "Proxy port"
-msgstr "Proxy 通訊埠"
+msgstr ""
 
 #: plmanagednode/view.py:389
 msgid "Proxy port, 3128 is the default for squidProxy"
-msgstr "代理端口，3128是squidProxy的默認值"
+msgstr ""
 
 #: plmanagednode/view.py:395
 msgid "User"
-msgstr "用户"
+msgstr ""
 
 #: plmanagednode/view.py:400
 msgid "Optional user for basic authentication fields, leave blank if you don't use basic auth"
-msgstr "基本身份驗證字段的可選用戶，如果不使用基本身份驗證，請留空"
+msgstr ""
 
 #: plmanagednode/view.py:404
 msgid "Password"
@@ -526,13 +487,13 @@ msgstr "密碼"
 
 #: plmanagednode/view.py:409
 msgid "Optional password for basic authentication fields, leave blank if you don't use basic auth"
-msgstr "基本身份驗證字段的可選密碼，如果不使用基本身份驗證，請留空"
+msgstr ""
 
 #: plmanagednode/view.py:433
 msgid "Invalid port, must be a number between 0 and 65536"
-msgstr "端口無效，必須是 0 到 65536 之間的數字"
+msgstr ""
 
 #: plmanagednode/view.py:450
 msgid "HTTP proxy configuration saved."
-msgstr "已保存 HTTP 代理配置。"
+msgstr ""
 
