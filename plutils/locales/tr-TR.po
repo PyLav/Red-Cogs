@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 19:44+0000\n"
-"PO-Revision-Date: 2023-01-31 21:06\n"
+"PO-Revision-Date: 2023-01-31 22:05\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -20,16 +20,16 @@ msgstr ""
 #: plutils/cog.py:58 plutils/cog.py:68
 #, docstring
 msgid "Utility commands for PyLav"
-msgstr ""
+msgstr "PyLav için yardımcı program komutları"
 
 #: plutils/cog.py:72
 #, docstring
 msgid "Show the version of the Cog and its PyLav dependencies"
-msgstr ""
+msgstr "Cog sürümünü ve PyLav bağımlılıklarını gösterme"
 
 #: plutils/cog.py:88
 msgid "Library/Cog"
-msgstr ""
+msgstr "Kütüphane/Dişli Çark"
 
 #: plutils/cog.py:89
 msgid "Version"
@@ -40,17 +40,19 @@ msgstr "Sürüm"
 msgid "Show the slashes available in the bot.\n\n"
 "        Author: TrustyJAID#0001 via code block on Discord channel.\n"
 "        "
-msgstr ""
+msgstr "Botta bulunan eğik çizgileri gösterin.\n\n"
+"        Yazar: Discord kanalında kod bloğu aracılığıyla TrustyJAID # 0001.\n"
+"        "
 
 #: plutils/cog.py:133
 #, docstring
 msgid "Get info about specific things"
-msgstr ""
+msgstr "Belirli şeyler hakkında bilgi alma"
 
 #: plutils/cog.py:137
 #, docstring
 msgid "Get the base64 of the current track"
-msgstr ""
+msgstr "Geçerli parçanın tabanını64 edinin"
 
 #: plutils/cog.py:145 plutils/cog.py:177 plutils/cog.py:209 plutils/cog.py:240
 #: plutils/cog.py:273
@@ -64,76 +66,76 @@ msgstr "Hiçbir şey çalmıyor."
 #: plutils/cog.py:168
 #, docstring
 msgid "Get the author of the current track"
-msgstr ""
+msgstr "Geçerli parçanın yazarını edinin"
 
 #: plutils/cog.py:200
 #, docstring
 msgid "Get the title of the current track"
-msgstr ""
+msgstr "Geçerli parçanın başlığını alın"
 
 #: plutils/cog.py:232
 #, docstring
 msgid "Get the source of the current track"
-msgstr ""
+msgstr "Geçerli parçanın kaynağını öğrenin"
 
 #: plutils/cog.py:264
 #, docstring
 msgid "Get the API of the current track"
-msgstr ""
+msgstr "Geçerli kanalın API'sini edinin"
 
 #: plutils/cog.py:284 plutils/cog.py:293
 msgid "Unable to get player info"
-msgstr ""
+msgstr "Oyuncu bilgileri alınamıyor"
 
 #: plutils/cog.py:309
 #, docstring
 msgid "Decode a track's base64 string into a JSON object"
-msgstr ""
+msgstr "Bir parçanın base64 dizesinin kodunu JSON nesnesine çözme"
 
 #: plutils/cog.py:318
 msgid "Invalid base64 string"
-msgstr ""
+msgstr "Geçersiz base64 dizesi"
 
 #: plutils/cog.py:334
 #, docstring
 msgid "Manage the query cache"
-msgstr ""
+msgstr "Sorgu önbelleğini yönetme"
 
 #: plutils/cog.py:338
 #, docstring
 msgid "Clear the query cache"
-msgstr ""
+msgstr "Sorgu önbelleğini temizleme"
 
 #: plutils/cog.py:345 plutils/cog.py:374 plutils/cog.py:387
 msgid "Query cache cleared"
-msgstr ""
+msgstr "Sorgu önbelleği temizlendi"
 
 #: plutils/cog.py:351
 #, docstring
 msgid "Clear the query cache older than a number of days"
-msgstr ""
+msgstr "Birkaç günden daha eski sorgu önbelleğini temizleme"
 
 #: plutils/cog.py:359
 msgid "Days must be less than 31"
-msgstr ""
+msgstr "Gün 31'den az olmalıdır"
 
 #: plutils/cog.py:367
 msgid "Days must be greater than 1"
-msgstr ""
+msgstr "Gün 1'den büyük olmalıdır"
 
 #: plutils/cog.py:380
 #, docstring
 msgid "Clear the query cache for a query"
-msgstr ""
+msgstr "Sorgu için sorgu önbelleğini temizleme"
 
 #: plutils/cog.py:393
 #, docstring
 msgid "Get the size of the query cache"
-msgstr ""
+msgstr "Sorgu önbelleğinin boyutunu alma"
 
 #: plutils/cog.py:400
 msgid "Query cache size: `{size}`"
-msgstr ""
+msgstr "Sorgu önbelleği boyutu: '{size}`"
 
 #: plutils/cog.py:411
 #, docstring
@@ -142,19 +144,23 @@ msgid "Start memory tracing\n\n"
 "        `[p]plutils trace 1` turns on tracing\n"
 "        `[p]plutils trace` shows the current status of tracing\n"
 "        "
-msgstr ""
+msgstr "Bellek izlemeyi başlatma\n\n"
+"        `[p]plutils trace 0' izlemeyi kapatır\n"
+"        `[p]plutils trace 1' izlemeyi açar\n"
+"        `[p]plutils trace' izlemenin mevcut durumunu gösterir\n"
+"        "
 
 #: plutils/cog.py:425
 msgid "Stopped memory tracing"
-msgstr ""
+msgstr "Bellek izleme durduruldu"
 
 #: plutils/cog.py:434
 msgid "Started memory tracing"
-msgstr ""
+msgstr "Bellek izleme başlatıldı"
 
 #: plutils/cog.py:443
 msgid "You need to start tracing first"
-msgstr ""
+msgstr "Önce izlemeye başlamanız gerekir"
 
 #: plutils/cog.py:455
 #, docstring
@@ -168,9 +174,18 @@ msgid "Set the logger level\n\n"
 "        5: Verbose\n"
 "        6: Trace\n"
 "        "
-msgstr ""
+msgstr "Logger düzeyini ayarlama\n\n"
+"        Seviyeler şunlardır:\n"
+"        0: Kritik\n"
+"        1: Hata\n"
+"        2: Uyarı\n"
+"        3: Bilgi\n"
+"        4: Hata Ayıklama\n"
+"        5: Ayrıntılı\n"
+"        6: İzleme\n"
+"        "
 
 #: plutils/cog.py:486
 msgid "Logger level set to `{level}`"
-msgstr ""
+msgstr "Logger seviyesi ' olarak ayarlandı{level}`"
 

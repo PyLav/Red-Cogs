@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 19:44+0000\n"
-"PO-Revision-Date: 2023-01-31 21:06\n"
+"PO-Revision-Date: 2023-01-31 22:05\n"
 "Last-Translator: \n"
 "Language-Team: Hungarian\n"
 "MIME-Version: 1.0\n"
@@ -20,28 +20,28 @@ msgstr ""
 #: plplaylists/cog.py:47
 #, docstring
 msgid "PyLav playlist management commands"
-msgstr ""
+msgstr "PyLav lejátszási lista kezelési parancsai"
 
 #: plplaylists/cog.py:55
 msgid "Control PyLav playlists"
-msgstr ""
+msgstr "A PyLav lejátszási listák vezérlése"
 
 #: plplaylists/cog.py:77
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies"
-msgstr ""
+msgstr "A Cog verziójának és PyLav-függőségeinek megjelenítése"
 
 #: plplaylists/cog.py:92
 msgid "Library/Cog"
-msgstr ""
+msgstr "Könyvtár/fogaskerék"
 
 #: plplaylists/cog.py:93
 msgid "Version"
-msgstr ""
+msgstr "Verzió"
 
 #: plplaylists/cog.py:130
 msgid "Let's create a playlist!"
-msgstr ""
+msgstr "Hozzunk létre egy lejátszási listát!"
 
 #: plplaylists/cog.py:131
 msgid "(**1**) - Apply changes to playlist.\n"
@@ -50,41 +50,48 @@ msgid "(**1**) - Apply changes to playlist.\n"
 "(**4**) - Link this playlist to an existing playlist/album.\n"
 "(**5**) - Add all tracks from the queue to the playlist.\n\n"
 "If you want the playlist name to be as the original playlist simply set the URL but no name.\n\n"
-msgstr ""
+msgstr "(**1**) - Módosítások alkalmazása a lejátszási listára.\n"
+"(**2**) - Törölje az elvégzett módosításokat.\n"
+"(**3**) - Adjon nevet a lejátszási listához.\n"
+"(**4**) - Kapcsolja össze ezt a lejátszási listát egy meglévő lejátszási listával/albummal.\n"
+"(**5**) - Adja hozzá a sor összes számát a lejátszási listához.\n\n"
+"Ha azt szeretné, hogy a lejátszási lista neve olyan legyen, mint az eredeti lejátszási lista, egyszerűen állítsa be az URL-t, de ne legyen név.\n\n"
 
 #: plplaylists/cog.py:165
 msgid "Playlist not created"
-msgstr ""
+msgstr "A lejátszási lista nincs létrehozva"
 
 #: plplaylists/cog.py:166
 msgid "No tracks were provided in time."
-msgstr ""
+msgstr "A pályákat nem biztosították időben."
 
 #: plplaylists/cog.py:179
 msgid "Playlist created"
-msgstr ""
+msgstr "Lejátszási lista létrehozva"
 
 #: plplaylists/cog.py:180
 msgid "Name: `{name}`\n"
 "ID: `{id}`\n"
 "Tracks: `{track_count}`"
-msgstr ""
+msgstr "Név: '{name}`\n"
+"Azonosító: '{id}`\n"
+"Számok: '{track_count}`"
 
 #: plplaylists/cog.py:204
 msgid "You have no playlists"
-msgstr ""
+msgstr "Nincsenek lejátszási listáid"
 
 #: plplaylists/cog.py:246 plplaylists/cog.py:607
 msgid "Nothing to save"
-msgstr ""
+msgstr "Nincs mit menteni"
 
 #: plplaylists/cog.py:247 plplaylists/cog.py:608
 msgid "There is nothing in the queue to save"
-msgstr ""
+msgstr "Nincs semmi a sorban a mentéshez"
 
 #: plplaylists/cog.py:284 plplaylists/cog.py:545 plplaylists/cog.py:625
 msgid "{user}, playlist {playlist_name} cannot be managed by yourself"
-msgstr ""
+msgstr "{user}lejátszási lista {playlist_name} nem kezelhető egyedül"
 
 #: plplaylists/cog.py:293
 msgid "(**1**){space} - Apply changes to playlist.\n"
@@ -107,7 +114,26 @@ msgid "(**1**){space} - Apply changes to playlist.\n"
 "The clear button will always be run first before any other operations.\n"
 "The URL button will always run last - Linking a playlist via the URL will overwrite any tracks added or removed to this playlist.\n\n"
 "If you interact with a button multiple times other than the add/remove buttons only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - Változtatások alkalmazása a lejátszási listára.\n"
+"(**2**){space} - Törölje az elvégzett módosításokat és zárja be a menüt.\n"
+"(**3**){space} - Törölje ezt a lejátszási listát.\n"
+"(**4**){space} - Távolítsa el az összes zeneszámot erről a lejátszási listáról.\n"
+"(**5**){space} - Frissítse a lejátszási listát a legújabb számokkal.\n"
+"Felhívjuk figyelmét, hogy ez a művelet figyelmen kívül hagyja az ebben a menüben hozzáadott / eltávolított zeneszámokat.\n"
+"(**6**){space} - Változtassa meg a lejátszási lista nevét.\n"
+"(**7**){space} - Kapcsolja össze ezt a lejátszási listát egy meglévő lejátszási listával / albummal.\n"
+"(**8**){space} - Adjon hozzá egy lekérdezést ehhez a lejátszási listához.\n"
+"(**9**){space} - Távolítson el egy lekérdezést a lejátszási listáról.\n"
+"(**10**) - Töltse le a lejátszási lista fájlt.\n"
+"(**11**) - Aktuális lejátszási lista hozzáadása a sorhoz.\n"
+"(**12**) - Zeneszámok megjelenítése az aktuális lejátszási listában.\n"
+"(**13**) - Adjon hozzá számokat a sorból ehhez a lejátszási listához.\n"
+"(**14**) - Távolítsa el az ismétlődő bejegyzéseket a lejátszási listáról.\n\n"
+"A szám hozzáadása/eltávolítása gombok többször is használhatók több szám és lejátszási lista egyszerre történő hozzáadásához/eltávolításához.\n\n"
+"A lekérdezés bármi, ami lejátszható a play paranccsal - bármilyen lekérdezést használhat a hozzáadás/eltávolítás gombok\n\n"
+"Az átlátszó gomb mindig először kerül futtatásra minden más művelet előtt.\n"
+"Az URL gomb mindig utoljára fog futni - A lejátszási lista URL-en keresztüli összekapcsolása felülírja a lejátszási listához hozzáadott vagy eltávolított számokat.\n\n"
+"Ha a hozzáadás/eltávolítás gombokon kívül többször is interakcióba lép egy gombbal, csak az utolsó interakció lép érvénybe.\n\n\n"
 
 #: plplaylists/cog.py:319
 msgid "(**1**) - Close the menu.\n"
@@ -115,7 +141,11 @@ msgid "(**1**) - Close the menu.\n"
 "(**3**) - Download the playlist file.\n"
 "(**4**) - Add current playlist to the queue.\n"
 "(**5**) - Show tracks in current playlist.\n\n\n"
-msgstr ""
+msgstr "(**1**) – Zárja be a menüt.\n"
+"(**2**) - Frissítse a lejátszási listát a legújabb számokkal.\n"
+"(**3**) - Töltse le a lejátszási lista fájlt.\n"
+"(**4**) - Aktuális lejátszási lista hozzáadása a sorhoz.\n"
+"(**5**) - Zeneszámok megjelenítése az aktuális lejátszási listában.\n\n\n"
 
 #: plplaylists/cog.py:327
 msgid "**__Currently managing__**:\n"
@@ -124,105 +154,114 @@ msgid "**__Currently managing__**:\n"
 "**Author**:{space}{space}{author}\n"
 "**Tracks**:{space}{space}{space}{tracks} tracks\n"
 "**URL**:{space}{space}{space}{space}{space}{url}\n"
-msgstr ""
+msgstr "**__Currently managing__**:\n"
+"**Név**:{space}{space}{space}{playlist_name}\n"
+"**Kiterjedés**:{space}{space}{space}{scope}\n"
+"**Szerző**:{space}{space}{author}\n"
+"**Sín**:{space}{space}{space}{tracks} sín\n"
+"**URL**:{space}{space}{space}{space}{space}{url}\n"
 
 #: plplaylists/cog.py:345
 msgid "Let's manage: {playlist_name}"
-msgstr ""
+msgstr "Kezeljük: {playlist_name}"
 
 #: plplaylists/cog.py:347
 msgid "Let's take a look at: {playlist_name}"
-msgstr ""
+msgstr "Vessünk egy pillantást a következőkre: {playlist_name}"
 
 #: plplaylists/cog.py:354
 msgid "N/A"
-msgstr ""
+msgstr "N/A"
 
 #: plplaylists/cog.py:386 plplaylists/cog.py:555
 msgid "Playlist deleted"
-msgstr ""
+msgstr "Lejátszási lista törölve"
 
 #: plplaylists/cog.py:388 plplaylists/cog.py:557
 msgid "{user}, playlist {playlist_name} has been deleted"
-msgstr ""
+msgstr "{user}lejátszási lista {playlist_name} törölve lett"
 
 #: plplaylists/cog.py:438
 msgid "Playlist **{playlist_name}** could not be updated with URL: <{url}>"
-msgstr ""
+msgstr "Lejátszási lista**{playlist_name}** nem frissíthető URL-lel: <{url}>"
 
 #: plplaylists/cog.py:473
 msgid "\n"
 "{track_count} {track_plural} removed from the playlist"
-msgstr ""
+msgstr "\n"
+"{track_count} {track_plural} eltávolítva a lejátszási listáról"
 
 #: plplaylists/cog.py:474 plplaylists/cog.py:478 plplaylists/cog.py:644
 msgid "track"
-msgstr ""
+msgstr "nyom"
 
 #: plplaylists/cog.py:474 plplaylists/cog.py:478 plplaylists/cog.py:644
 msgid "tracks"
-msgstr ""
+msgstr "sín"
 
 #: plplaylists/cog.py:477 plplaylists/cog.py:643
 msgid "\n"
 "{track_count} {track_plural} added to the playlist"
-msgstr ""
+msgstr "\n"
+"{track_count} {track_plural} hozzáadva a lejátszási listához"
 
 #: plplaylists/cog.py:483 plplaylists/cog.py:650
 msgid "Playlist updated"
-msgstr ""
+msgstr "Lejátszási lista frissítve"
 
 #: plplaylists/cog.py:484 plplaylists/cog.py:651
 msgid "{user}, playlist {playlist_name} has been updated.{extras}"
-msgstr ""
+msgstr "{user}lejátszási lista {playlist_name} frissítve lett.{extras}"
 
 #: plplaylists/cog.py:496 plplaylists/cog.py:664
 msgid "Playlist unchanged"
-msgstr ""
+msgstr "Lejátszási lista változatlan"
 
 #: plplaylists/cog.py:497 plplaylists/cog.py:665
 msgid "{user}, playlist {playlist_name} has not been updated"
-msgstr ""
+msgstr "{user}lejátszási lista {playlist_name} nem lett frissítve"
 
 #: plplaylists/cog.py:693
 msgid "You must either provide a URL or attach a playlist file to upload a playlist"
-msgstr ""
+msgstr "A lejátszási lista feltöltéséhez meg kell adnod egy URL-t, vagy csatolnod kell egy listafájlt"
 
 #: plplaylists/cog.py:705
 msgid "No valid playlist file provided"
-msgstr ""
+msgstr "Nincs érvényes lejátszási listafájl megadva"
 
 #: plplaylists/cog.py:714
 msgid "Multiple playlist files provided - Currently only 1 per message is allowed"
-msgstr ""
+msgstr "Több lejátszási listafájl van megadva – Jelenleg üzenetenként csak 1 engedélyezett"
 
 #: plplaylists/cog.py:731
 msgid "Failed to save any of the requested playlists"
-msgstr ""
+msgstr "Nem sikerült menteni a kért lejátszási listákat"
 
 #: plplaylists/cog.py:740
 msgid "Failed to save the following playlists:\n"
 "{invalid_playlists}"
-msgstr ""
+msgstr "Nem sikerült menteni a következő lejátszási listákat:\n"
+"{invalid_playlists}"
 
 #: plplaylists/cog.py:749
 msgid "Successfully saved the following playlists:\n"
 "{saved_playlists}"
-msgstr ""
+msgstr "Sikeresen mentette a következő lejátszási listákat:\n"
+"{saved_playlists}"
 
 #: plplaylists/cog.py:774
 msgid "You must be in a voice channel to allow me to connect"
-msgstr ""
+msgstr "Hangcsatornában kell lennie ahhoz, hogy csatlakozhassak"
 
 #: plplaylists/cog.py:782
 msgid "I don't have permission to connect or speak in {channel}"
-msgstr ""
+msgstr "Nincs engedélyem a csatlakozásra vagy a beszélgetésre {channel}"
 
 #: plplaylists/cog.py:812
 msgid "Playlist"
-msgstr ""
+msgstr "Lejátszási lista"
 
 #: plplaylists/cog.py:817
 msgid "{track_count} tracks enqueued.{playlist_name}"
-msgstr ""
+msgstr "{track_count} pályák sorba kerültek.{playlist_name}"
 

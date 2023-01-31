@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 19:44+0000\n"
-"PO-Revision-Date: 2023-01-31 21:06\n"
+"PO-Revision-Date: 2023-01-31 22:05\n"
 "Last-Translator: \n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: plmigrator/cog.py:36
 #, docstring
 msgid "Copy Red's Audio settings over to PyLav"
-msgstr ""
+msgstr "Redのオーディオ設定をPyLavにコピー"
 
 #: plmigrator/cog.py:49
 #, docstring
@@ -30,7 +30,12 @@ msgid "Migrate Audio settings to PyLav\n\n"
 "        i.e `[p]pylavmigrate 1`\n\n"
 "        Once you complete the migration unload this cog and uninstall it as you will not need it again.\n"
 "        "
-msgstr ""
+msgstr "オーディオ設定をPyLavに移行する\n\n"
+"        これにより、PyLavにすでに存在する構成が置き換えられることに注意してください。\n\n"
+"        続行する場合は、confirm引数を1に設定してこのコマンドを再度実行してください。\n"
+"        すなわち '[p]ピラブマイグレーション 1'\n\n"
+"        移行が完了したら、この歯車をアンロードし、二度と必要ないためアンインストールします。\n"
+"        "
 
 #: plmigrator/cog.py:67
 msgid "Migration of Audio cog settings to PyLav complete. Restart the bot for it to take effect.\n"
@@ -40,5 +45,5 @@ msgstr "オーディオコグ設定のPyLavへの移行が完了しました。B
 
 #: plmigrator/cog.py:159
 msgid "I don't have permission to access {folder}"
-msgstr ""
+msgstr "{folder} にアクセスする権限がありません"
 

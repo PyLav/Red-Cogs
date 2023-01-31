@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 19:44+0000\n"
-"PO-Revision-Date: 2023-01-31 21:06\n"
+"PO-Revision-Date: 2023-01-31 22:05\n"
 "Last-Translator: \n"
 "Language-Team: Croatian\n"
 "MIME-Version: 1.0\n"
@@ -20,12 +20,12 @@ msgstr ""
 #: plnodes/cog.py:33
 #, docstring
 msgid "Manage the nodes used by PyLav"
-msgstr ""
+msgstr "Upravljanje čvorovima koje koristi PyLav"
 
 #: plnodes/cog.py:44
 #, docstring
 msgid "Configure PyLav Nodes"
-msgstr ""
+msgstr "Konfiguriranje PyLav čvorova"
 
 #: plnodes/cog.py:48
 #, docstring
@@ -43,11 +43,11 @@ msgstr "Verzija"
 #: plnodes/cog.py:78
 #, docstring
 msgid "Add a node to PyLav"
-msgstr ""
+msgstr "Dodavanje čvora u PyLav"
 
 #: plnodes/cog.py:88
 msgid "Let's add a node to PyLav!"
-msgstr ""
+msgstr "Dodajmo čvor u PyLav!"
 
 #: plnodes/cog.py:89
 msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
@@ -61,7 +61,17 @@ msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
 "(**9**){space} - Set the connection timeout.\n"
 "(**10**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - Primijenite promjene i dodajte čvor u PyLav.\n"
+"(**2**){space} - Otkažite sve izvršene promjene i zatvorite izbornik.\n"
+"(**3**){space} - Prebacivanje između načina pretraživanja i pretraživanja i reprodukcije.\n"
+"(**4**){space} - Prebacivanje između SSL-a uključeno i isključeno.\n"
+"(**5**){space} - Dodajte naziv čvoru.\n"
+"(**6**){space} - Dodajte adresu glavnog računala čvora.\n"
+"(**7**){space} - Dodajte priključak koji čvor koristi.\n"
+"(**8**){space} - Postavite lozinku za čvor.\n"
+"(**9**){space} - Postavite vremensko ograničenje veze.\n"
+"(**10**) - Odaberite koje izvore želite onemogućiti za ovaj čvor (može se odabrati višestruko).\n"
+"Ako s gumbom stupite u interakciju više puta, stupit će na snagu samo posljednja interakcija.\n\n\n"
 
 #: plnodes/cog.py:137
 msgid "Added node {name} with the following settings:\n"
@@ -72,38 +82,46 @@ msgid "Added node {name} with the following settings:\n"
 "Search Only: {search_only}\n"
 "SSL: {ssl}\n"
 "Disabled Sources: {disabled_sources}\n"
-msgstr ""
+msgstr "Dodani čvor {name} sa sljedećim postavkama:\n"
+"Domaćin: {host}\n"
+"Luka: {port}\n"
+"Lozinka: {password}\n"
+"Prekoračenje vremena nastavka: {resume_timeout}\n"
+"Samo pretraživanje: {search_only}\n"
+"SSL: {ssl}\n"
+"Onemogućeni izvori: {disabled_sources}\n"
 
 #: plnodes/cog.py:168 plnodes/cog.py:175
 msgid "Unable to add this node"
-msgstr ""
+msgstr "Nije moguće dodati ovaj čvor"
 
 #: plnodes/cog.py:181
 #, docstring
 msgid "Remove a node from a PyLav instance"
-msgstr ""
+msgstr "Uklanjanje čvora iz instance PyLav-a"
 
 #: plnodes/cog.py:193
 msgid "{name} is managed by PyLav and cannot be removed"
-msgstr ""
+msgstr "{name} njime upravlja PyLav i ne može se ukloniti"
 
 #: plnodes/cog.py:208
 msgid "Removed node {name}.\n\n"
 "{data}"
-msgstr ""
+msgstr "Uklonjeni čvor {name}.\n\n"
+"{data}"
 
 #: plnodes/cog.py:216
 msgid "Removed node {name}, a DM was sent to you with the node details in case you wish to re-add it"
-msgstr ""
+msgstr "Uklonjeni čvor {name}, poslan vam je DM s detaljima čvora u slučaju da ga želite ponovno dodati"
 
 #: plnodes/cog.py:226
 #, docstring
 msgid "Manage all nodes in a PyLav instance"
-msgstr ""
+msgstr "Upravljanje svim čvorovima u PyLav instanci"
 
 #: plnodes/cog.py:238
 msgid "Let's manage some nodes!"
-msgstr ""
+msgstr "Upravljajmo nekim čvorovima!"
 
 #: plnodes/cog.py:239
 msgid "(**1**){space} - Cancel any changes made and close the menu.\n"
@@ -119,15 +137,27 @@ msgid "(**1**){space} - Cancel any changes made and close the menu.\n"
 "(**15**) - Remove this node.\n"
 "(**16**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - Otkažite sve izvršene promjene i zatvorite izbornik.\n"
+"(**6**){space} - Prikaži izvore omogućene za ovaj čvor.\n"
+"(**7**){space} - Primijenite promjene i dodajte čvor u PyLav.\n"
+"(**8**){space} - Prebacivanje između načina pretraživanja i pretraživanja i reprodukcije.\n"
+"(**9**){space} - Prebacivanje između SSL-a uključeno i isključeno.\n"
+"(**10**) - Dodajte naziv čvoru.\n"
+"(**11**) - Dodajte adresu glavnog računala čvora.\n"
+"(**12**) - Dodajte priključak koji čvor koristi.\n"
+"(**13**) - Postavite lozinku za čvor.\n"
+"(**14**) - Postavite vremensko ograničenje veze.\n"
+"(**15**) - Uklonite ovaj čvor.\n"
+"(**16**) - Odaberite koje izvore želite onemogućiti za ovaj čvor (može se odabrati višestruko).\n"
+"Ako s gumbom stupite u interakciju više puta, stupit će na snagu samo posljednja interakcija.\n\n\n"
 
 #: plnodes/cog.py:268
 msgid "{name} is managed by PyLav and cannot be modified with this command"
-msgstr ""
+msgstr "{name} njime upravlja PyLav i ne može se mijenjati ovom naredbom"
 
 #: plnodes/cog.py:280
 msgid "Removed node {name}"
-msgstr ""
+msgstr "Uklonjeni čvor {name}"
 
 #: plnodes/cog.py:316
 msgid "Changed node {name} to the following settings:\n"
@@ -138,14 +168,21 @@ msgid "Changed node {name} to the following settings:\n"
 "Search Only: {search_only}\n"
 "SSL: {ssl}\n"
 "Disabled Sources: {disabled_sources}\n"
-msgstr ""
+msgstr "Promijenjen čvor {name} do sljedećih postavki:\n"
+"Domaćin: {host}\n"
+"Luka: {port}\n"
+"Lozinka: {password}\n"
+"Prekoračenje vremena nastavka: {resume_timeout}\n"
+"Samo pretraživanje: {search_only}\n"
+"SSL: {ssl}\n"
+"Onemogućeni izvori: {disabled_sources}\n"
 
 #: plnodes/cog.py:343
 #, docstring
 msgid "List all nodes used by PyLav"
-msgstr ""
+msgstr "Popis svih čvorova koje koristi PyLav"
 
 #: plnodes/cog.py:353
 msgid "No nodes added to PyLav"
-msgstr ""
+msgstr "U PyLav nisu dodani čvorovi"
 

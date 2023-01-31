@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 19:44+0000\n"
-"PO-Revision-Date: 2023-01-31 21:06\n"
+"PO-Revision-Date: 2023-01-31 21:13\n"
 "Last-Translator: \n"
 "Language-Team: Greek\n"
 "MIME-Version: 1.0\n"
@@ -20,11 +20,11 @@ msgstr ""
 #: plplaylists/cog.py:47
 #, docstring
 msgid "PyLav playlist management commands"
-msgstr ""
+msgstr "PyLav εντολές διαχείρισης λίστας αναπαραγωγής"
 
 #: plplaylists/cog.py:55
 msgid "Control PyLav playlists"
-msgstr ""
+msgstr "Έλεγχος λιστών αναπαραγωγής PyLav"
 
 #: plplaylists/cog.py:77
 #, docstring
@@ -50,15 +50,20 @@ msgid "(**1**) - Apply changes to playlist.\n"
 "(**4**) - Link this playlist to an existing playlist/album.\n"
 "(**5**) - Add all tracks from the queue to the playlist.\n\n"
 "If you want the playlist name to be as the original playlist simply set the URL but no name.\n\n"
-msgstr ""
+msgstr "(**1**) - Εφαρμογή αλλαγών στη λίστα αναπαραγωγής.\n"
+"(**2**) - Ακύρωση τυχόν αλλαγών που έγιναν.\n"
+"(**3**) - Προσθέστε ένα όνομα στη λίστα αναπαραγωγής.\n"
+"(**4**) - Συνδέστε αυτή τη λίστα αναπαραγωγής με μια υπάρχουσα λίστα/άλμπουμ.\n"
+"(**5**) - Προσθήκη όλων των κομματιών από την ουρά στη λίστα αναπαραγωγής.\n\n"
+"Αν θέλετε το όνομα της λίστας αναπαραγωγής να είναι η αρχική λίστα αναπαραγωγής απλά ορίστε το URL αλλά χωρίς όνομα.\n\n"
 
 #: plplaylists/cog.py:165
 msgid "Playlist not created"
-msgstr ""
+msgstr "Δεν δημιουργήθηκε λίστα αναπαραγωγής"
 
 #: plplaylists/cog.py:166
 msgid "No tracks were provided in time."
-msgstr ""
+msgstr "Δεν παρασχέθηκαν κομμάτια εγκαίρως."
 
 #: plplaylists/cog.py:179
 msgid "Playlist created"
@@ -78,11 +83,11 @@ msgstr "Δεν έχετε λίστες αναπαραγωγής"
 
 #: plplaylists/cog.py:246 plplaylists/cog.py:607
 msgid "Nothing to save"
-msgstr ""
+msgstr "Τίποτα για αποθήκευση"
 
 #: plplaylists/cog.py:247 plplaylists/cog.py:608
 msgid "There is nothing in the queue to save"
-msgstr ""
+msgstr "Δεν υπάρχει τίποτα στην ουρά για αποθήκευση"
 
 #: plplaylists/cog.py:284 plplaylists/cog.py:545 plplaylists/cog.py:625
 msgid "{user}, playlist {playlist_name} cannot be managed by yourself"
@@ -170,20 +175,21 @@ msgstr "Δ/Υ"
 
 #: plplaylists/cog.py:386 plplaylists/cog.py:555
 msgid "Playlist deleted"
-msgstr ""
+msgstr "Η λίστα διαγράφηκε"
 
 #: plplaylists/cog.py:388 plplaylists/cog.py:557
 msgid "{user}, playlist {playlist_name} has been deleted"
-msgstr ""
+msgstr "{user}, λίστα αναπαραγωγής {playlist_name} έχει διαγραφεί"
 
 #: plplaylists/cog.py:438
 msgid "Playlist **{playlist_name}** could not be updated with URL: <{url}>"
-msgstr ""
+msgstr "Λίστα αναπαραγωγής **{playlist_name}** δεν ήταν δυνατή η ενημέρωση με URL: <{url}>"
 
 #: plplaylists/cog.py:473
 msgid "\n"
 "{track_count} {track_plural} removed from the playlist"
-msgstr ""
+msgstr "\n"
+"{track_count} {track_plural} αφαιρέθηκε από τη λίστα αναπαραγωγής"
 
 #: plplaylists/cog.py:474 plplaylists/cog.py:478 plplaylists/cog.py:644
 msgid "track"
@@ -196,11 +202,12 @@ msgstr "κομμάτια"
 #: plplaylists/cog.py:477 plplaylists/cog.py:643
 msgid "\n"
 "{track_count} {track_plural} added to the playlist"
-msgstr ""
+msgstr "\n"
+"{track_count} {track_plural} προστέθηκαν στη λίστα αναπαραγωγής"
 
 #: plplaylists/cog.py:483 plplaylists/cog.py:650
 msgid "Playlist updated"
-msgstr ""
+msgstr "Η λίστα ενημερώθηκε"
 
 #: plplaylists/cog.py:484 plplaylists/cog.py:651
 msgid "{user}, playlist {playlist_name} has been updated.{extras}"
@@ -208,27 +215,27 @@ msgstr "{user}, η λίστα αναπαραγωγής {playlist_name} έχει 
 
 #: plplaylists/cog.py:496 plplaylists/cog.py:664
 msgid "Playlist unchanged"
-msgstr ""
+msgstr "Λίστα αναπαραγωγής αμετάβλητη"
 
 #: plplaylists/cog.py:497 plplaylists/cog.py:665
 msgid "{user}, playlist {playlist_name} has not been updated"
-msgstr ""
+msgstr "{user}, η λίστα αναπαραγωγής {playlist_name} δεν έχει ενημερωθεί"
 
 #: plplaylists/cog.py:693
 msgid "You must either provide a URL or attach a playlist file to upload a playlist"
-msgstr ""
+msgstr "Πρέπει είτε να παρέχετε ένα URL είτε να επισυνάψετε ένα αρχείο λίστας αναπαραγωγής για να ανεβάσετε μια λίστα αναπαραγωγής"
 
 #: plplaylists/cog.py:705
 msgid "No valid playlist file provided"
-msgstr ""
+msgstr "Δεν δόθηκε έγκυρο αρχείο λίστας αναπαραγωγής"
 
 #: plplaylists/cog.py:714
 msgid "Multiple playlist files provided - Currently only 1 per message is allowed"
-msgstr ""
+msgstr "Πολλαπλά αρχεία λίστας αναπαραγωγής που παρέχονται - Προς το παρόν μόνο 1 ανά μήνυμα επιτρέπεται"
 
 #: plplaylists/cog.py:731
 msgid "Failed to save any of the requested playlists"
-msgstr ""
+msgstr "Αποτυχία αποθήκευσης οποιασδήποτε από τις ζητούμενες λίστες αναπαραγωγής"
 
 #: plplaylists/cog.py:740
 msgid "Failed to save the following playlists:\n"

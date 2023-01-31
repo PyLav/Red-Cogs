@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 19:44+0000\n"
-"PO-Revision-Date: 2023-01-31 21:06\n"
+"PO-Revision-Date: 2023-01-31 22:05\n"
 "Last-Translator: \n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: plutils/cog.py:58 plutils/cog.py:68
 #, docstring
 msgid "Utility commands for PyLav"
-msgstr ""
+msgstr "Verktygskommandon för PyLav"
 
 #: plutils/cog.py:72
 #, docstring
@@ -40,17 +40,19 @@ msgstr "Version"
 msgid "Show the slashes available in the bot.\n\n"
 "        Author: TrustyJAID#0001 via code block on Discord channel.\n"
 "        "
-msgstr ""
+msgstr "Visa snedstreck som finns i boten.\n\n"
+"        Författare: TrustyJAID#0001 via kodblock på Discord-kanalen.\n"
+"        "
 
 #: plutils/cog.py:133
 #, docstring
 msgid "Get info about specific things"
-msgstr ""
+msgstr "Få information om specifika saker"
 
 #: plutils/cog.py:137
 #, docstring
 msgid "Get the base64 of the current track"
-msgstr ""
+msgstr "Hämta base64 för det aktuella spåret"
 
 #: plutils/cog.py:145 plutils/cog.py:177 plutils/cog.py:209 plutils/cog.py:240
 #: plutils/cog.py:273
@@ -64,76 +66,76 @@ msgstr "Ingenting spelas"
 #: plutils/cog.py:168
 #, docstring
 msgid "Get the author of the current track"
-msgstr ""
+msgstr "Hämta författaren till det aktuella spåret"
 
 #: plutils/cog.py:200
 #, docstring
 msgid "Get the title of the current track"
-msgstr ""
+msgstr "Få titeln på det aktuella spåret"
 
 #: plutils/cog.py:232
 #, docstring
 msgid "Get the source of the current track"
-msgstr ""
+msgstr "Få källan till det aktuella spåret"
 
 #: plutils/cog.py:264
 #, docstring
 msgid "Get the API of the current track"
-msgstr ""
+msgstr "Hämta API:et för det aktuella spåret"
 
 #: plutils/cog.py:284 plutils/cog.py:293
 msgid "Unable to get player info"
-msgstr ""
+msgstr "Det går inte att hämta spelarinfo"
 
 #: plutils/cog.py:309
 #, docstring
 msgid "Decode a track's base64 string into a JSON object"
-msgstr ""
+msgstr "Avkoda ett spårs base64-sträng till ett JSON-objekt"
 
 #: plutils/cog.py:318
 msgid "Invalid base64 string"
-msgstr ""
+msgstr "Ogiltig base64-sträng"
 
 #: plutils/cog.py:334
 #, docstring
 msgid "Manage the query cache"
-msgstr ""
+msgstr "Hantera cachen för sökfrågan"
 
 #: plutils/cog.py:338
 #, docstring
 msgid "Clear the query cache"
-msgstr ""
+msgstr "Rensa cachen för fråga"
 
 #: plutils/cog.py:345 plutils/cog.py:374 plutils/cog.py:387
 msgid "Query cache cleared"
-msgstr ""
+msgstr "Frågecache rensad"
 
 #: plutils/cog.py:351
 #, docstring
 msgid "Clear the query cache older than a number of days"
-msgstr ""
+msgstr "Rensa cachen äldre än ett antal dagar"
 
 #: plutils/cog.py:359
 msgid "Days must be less than 31"
-msgstr ""
+msgstr "Dagarna måste vara mindre än 31"
 
 #: plutils/cog.py:367
 msgid "Days must be greater than 1"
-msgstr ""
+msgstr "Dagarna måste vara större än 1"
 
 #: plutils/cog.py:380
 #, docstring
 msgid "Clear the query cache for a query"
-msgstr ""
+msgstr "Rensa cachen för en fråga"
 
 #: plutils/cog.py:393
 #, docstring
 msgid "Get the size of the query cache"
-msgstr ""
+msgstr "Få storleken på cachen för sökfrågan"
 
 #: plutils/cog.py:400
 msgid "Query cache size: `{size}`"
-msgstr ""
+msgstr "Frågecache storlek: `{size}`"
 
 #: plutils/cog.py:411
 #, docstring
@@ -142,19 +144,23 @@ msgid "Start memory tracing\n\n"
 "        `[p]plutils trace 1` turns on tracing\n"
 "        `[p]plutils trace` shows the current status of tracing\n"
 "        "
-msgstr ""
+msgstr "Starta minnesspårning\n\n"
+"        `[p]plutils trace 0` stänger av spårning\n"
+"        `[p]plutils trace 1` slår på spårning\n"
+"        `[p]plutils trace` visar aktuell status för spårning\n"
+"        "
 
 #: plutils/cog.py:425
 msgid "Stopped memory tracing"
-msgstr ""
+msgstr "Spårning av stoppat minne"
 
 #: plutils/cog.py:434
 msgid "Started memory tracing"
-msgstr ""
+msgstr "Spårning av startat minne"
 
 #: plutils/cog.py:443
 msgid "You need to start tracing first"
-msgstr ""
+msgstr "Du måste börja spåra först"
 
 #: plutils/cog.py:455
 #, docstring
@@ -168,9 +174,18 @@ msgid "Set the logger level\n\n"
 "        5: Verbose\n"
 "        6: Trace\n"
 "        "
-msgstr ""
+msgstr "Ange logger nivå\n\n"
+"        Nivåerna är följande:\n"
+"        0: Kritiskt\n"
+"        1: Fel\n"
+"        2: Varning\n"
+"        3: Info\n"
+"        4: Felsök\n"
+"        5: erbose\n"
+"        6: Spår\n"
+"        "
 
 #: plutils/cog.py:486
 msgid "Logger level set to `{level}`"
-msgstr ""
+msgstr "Loggningsnivå inställd på `{level}`"
 
