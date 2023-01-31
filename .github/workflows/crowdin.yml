@@ -1,4 +1,4 @@
-name: Crowdin - Upload  and Download strings
+name: Crowdin - Upload and Download strings
 on:
     push:
         branches:
@@ -9,34 +9,7 @@ on:
 
 
 jobs:
-    crowdin-download:
-        if: github.repository == 'Drapersniper/PyLav-Cogs'
-        runs-on: ubuntu-latest
-        steps:
-        -   uses: actions/checkout@v3
-        -   name: Set up Python
-            uses: actions/setup-python@v4
-            with:
-                python-version: '3.11'
-        -   name: Install dependencies
-            run: |
-                pip install redgettext==3.4.2
-        -   name: Generate source files
-            run: |
-                python3.11 -m redgettext --command-docstrings --verbose --recursive .
-        -   name: crowdin action
-            uses: crowdin/github-action@v1.6.0
-            with:
-                upload_translations: false
-                download_translations: true
-                commit_message: '[skip ci] Update translations'
-                download_translations_args: --all
-                pull_request_labels: i18n, translations, automerge
-            env:
-                CROWDIN_API_KEY: ${{ secrets.crowdin_token}}
-                CROWDIN_PROJECT_ID: ${{ secrets.crowdin_identifier }}
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    crowdin-upload:
+    crowdin:
         if: github.repository == 'Drapersniper/PyLav-Cogs'
         runs-on: ubuntu-latest
         steps:
@@ -55,7 +28,7 @@ jobs:
             uses: crowdin/github-action@v1.6.0
             with:
                 upload_translations: true
-                download_translations: false
+                download_translations: true
                 commit_message: '[skip ci] Update translations'
                 pull_request_labels: i18n, translations, automerge
             env:
