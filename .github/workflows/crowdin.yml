@@ -14,16 +14,6 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         -   uses: actions/checkout@v3
-        -   name: Set up Python
-            uses: actions/setup-python@v4
-            with:
-                python-version: '3.11'
-        -   name: Install dependencies
-            run: |
-                pip install redgettext==3.4.2
-        -   name: Generate source files
-            run: |
-                python3.11 -m redgettext --command-docstrings --verbose --recursive .
         -   name: crowdin action
             uses: crowdin/github-action@v1.6.0
             with:
@@ -41,6 +31,16 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         -   uses: actions/checkout@v3
+        -   name: Set up Python
+            uses: actions/setup-python@v4
+            with:
+                python-version: '3.11'
+        -   name: Install dependencies
+            run: |
+                pip install redgettext==3.4.2
+        -   name: Generate source files
+            run: |
+                python3.11 -m redgettext --command-docstrings --verbose --recursive .
         -   name: crowdin action
             uses: crowdin/github-action@v1.6.0
             with:
