@@ -76,8 +76,12 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
 
         extracted: typing.Iterable[tuple[str, Query]] = heapq.nsmallest(len(temp.items()), temp.items(), key=self._filter_is_folder_alphabetical)  # type: ignore
         self.cache = dict(extracted)
+        self.__load_local_files()
 
     def __load_local_files(self):
+        LOGGER.debug("Loading local files into cache")
+        if self.__load_locals_task is not None:
+            self.__load_locals_task.cancel()
         self.__load_locals_task = asyncio.create_task(
             self.pylav.get_all_tracks_for_queries(
                 *self.cache.values(), partial=False, enqueue=False, requester=self.bot.user, player=None
@@ -95,7 +99,6 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
 
     async def initialize(self):
         await self._update_cache()
-        self.__load_local_files()
         self.ready_event.set()
 
     async def cog_unload(self) -> None:
