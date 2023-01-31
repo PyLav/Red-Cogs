@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 19:44+0000\n"
-"PO-Revision-Date: 2023-01-31 21:06\n"
+"PO-Revision-Date: 2023-01-31 22:05\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese, Brazilian\n"
 "MIME-Version: 1.0\n"
@@ -20,11 +20,11 @@ msgstr ""
 #: plplaylists/cog.py:47
 #, docstring
 msgid "PyLav playlist management commands"
-msgstr ""
+msgstr "Gerenciamento de playlists PyLav"
 
 #: plplaylists/cog.py:55
 msgid "Control PyLav playlists"
-msgstr ""
+msgstr "Controlar playlists do PyLav"
 
 #: plplaylists/cog.py:77
 #, docstring
@@ -50,15 +50,20 @@ msgid "(**1**) - Apply changes to playlist.\n"
 "(**4**) - Link this playlist to an existing playlist/album.\n"
 "(**5**) - Add all tracks from the queue to the playlist.\n\n"
 "If you want the playlist name to be as the original playlist simply set the URL but no name.\n\n"
-msgstr ""
+msgstr "(**1**) - Aplicar alterações na lista de reprodução.\n"
+"(**2**) - Cancele quaisquer alterações feitas.\n"
+"(**3**) - Adicione um nome à lista de reprodução.\n"
+"(**4**) - Vincule esta playlist a uma lista/álbum existente.\n"
+"(**5**) - Adicione todas as faixas da fila à lista de reprodução.\n\n"
+"Se você quer que o nome da playlist seja como a playlist original, defina simplesmente o URL mas sem nome.\n\n"
 
 #: plplaylists/cog.py:165
 msgid "Playlist not created"
-msgstr ""
+msgstr "Playlist não criada"
 
 #: plplaylists/cog.py:166
 msgid "No tracks were provided in time."
-msgstr ""
+msgstr "Nenhuma faixa foi fornecida a tempo."
 
 #: plplaylists/cog.py:179
 msgid "Playlist created"
@@ -78,11 +83,11 @@ msgstr "Você não tem listas de reprodução"
 
 #: plplaylists/cog.py:246 plplaylists/cog.py:607
 msgid "Nothing to save"
-msgstr ""
+msgstr "Nada para salvar"
 
 #: plplaylists/cog.py:247 plplaylists/cog.py:608
 msgid "There is nothing in the queue to save"
-msgstr ""
+msgstr "Não há nada na fila para salvar"
 
 #: plplaylists/cog.py:284 plplaylists/cog.py:545 plplaylists/cog.py:625
 msgid "{user}, playlist {playlist_name} cannot be managed by yourself"
@@ -170,20 +175,21 @@ msgstr "N/D"
 
 #: plplaylists/cog.py:386 plplaylists/cog.py:555
 msgid "Playlist deleted"
-msgstr ""
+msgstr "Playlist excluída"
 
 #: plplaylists/cog.py:388 plplaylists/cog.py:557
 msgid "{user}, playlist {playlist_name} has been deleted"
-msgstr ""
+msgstr "{user}, lista de reprodução {playlist_name} foi excluída"
 
 #: plplaylists/cog.py:438
 msgid "Playlist **{playlist_name}** could not be updated with URL: <{url}>"
-msgstr ""
+msgstr "Lista de reprodução **{playlist_name}** não pode ser atualizada com URL: <{url}>"
 
 #: plplaylists/cog.py:473
 msgid "\n"
 "{track_count} {track_plural} removed from the playlist"
-msgstr ""
+msgstr "\n"
+"{track_count} {track_plural} removido da lista de reprodução"
 
 #: plplaylists/cog.py:474 plplaylists/cog.py:478 plplaylists/cog.py:644
 msgid "track"
@@ -196,11 +202,12 @@ msgstr "Faixas"
 #: plplaylists/cog.py:477 plplaylists/cog.py:643
 msgid "\n"
 "{track_count} {track_plural} added to the playlist"
-msgstr ""
+msgstr "\n"
+"{track_count} {track_plural} adicionado à lista de reprodução"
 
 #: plplaylists/cog.py:483 plplaylists/cog.py:650
 msgid "Playlist updated"
-msgstr ""
+msgstr "Playlist atualizada"
 
 #: plplaylists/cog.py:484 plplaylists/cog.py:651
 msgid "{user}, playlist {playlist_name} has been updated.{extras}"
@@ -208,27 +215,27 @@ msgstr "{user}, a playlist {playlist_name} foi atualizada.{extras}"
 
 #: plplaylists/cog.py:496 plplaylists/cog.py:664
 msgid "Playlist unchanged"
-msgstr ""
+msgstr "Playlist inalterada"
 
 #: plplaylists/cog.py:497 plplaylists/cog.py:665
 msgid "{user}, playlist {playlist_name} has not been updated"
-msgstr ""
+msgstr "{user}, lista de reprodução {playlist_name} não foi atualizada"
 
 #: plplaylists/cog.py:693
 msgid "You must either provide a URL or attach a playlist file to upload a playlist"
-msgstr ""
+msgstr "Você deve fornecer um URL ou anexar um arquivo de playlist para fazer o upload de uma playlist"
 
 #: plplaylists/cog.py:705
 msgid "No valid playlist file provided"
-msgstr ""
+msgstr "Nenhum arquivo de playlist válido fornecido"
 
 #: plplaylists/cog.py:714
 msgid "Multiple playlist files provided - Currently only 1 per message is allowed"
-msgstr ""
+msgstr "Vários arquivos de playlist fornecidos - Atualmente apenas 1 por mensagem é permitido"
 
 #: plplaylists/cog.py:731
 msgid "Failed to save any of the requested playlists"
-msgstr ""
+msgstr "Falha ao salvar qualquer uma das playlists solicitadas"
 
 #: plplaylists/cog.py:740
 msgid "Failed to save the following playlists:\n"
@@ -252,7 +259,7 @@ msgstr "Eu não tenho permissão para conectar ou falar em {channel}"
 
 #: plplaylists/cog.py:812
 msgid "Playlist"
-msgstr ""
+msgstr "Playlist"
 
 #: plplaylists/cog.py:817
 msgid "{track_count} tracks enqueued.{playlist_name}"

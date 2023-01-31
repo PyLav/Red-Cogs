@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 19:44+0000\n"
-"PO-Revision-Date: 2023-01-31 21:06\n"
+"PO-Revision-Date: 2023-01-31 22:05\n"
 "Last-Translator: \n"
 "Language-Team: Ukrainian\n"
 "MIME-Version: 1.0\n"
@@ -190,7 +190,12 @@ msgid "Set whether [botname] should disconnect from the voice channel when alone
 "            - `<duration>`: How longer after detecting should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Установіть, чи є [botname] слід відключатися від голосового каналу, перебуваючи на самоті.\n\n"
+"        Аргументи:\n"
+"            - `<toggle>': Чи є [botname] слід відключитися від голосового каналу, коли він виявить, що він один.\n"
+"            - `<duration>': Як довго після виявлення слід відключати гравця. За замовчуванням 60 секунд.\n"
+"            Приймає другий, хвилини, години, дні, тижні (якщо одиниця не вказана, тривалість передбачається дати в секундах)\n"
+"        "
 
 #: audio/config_commands.py:313 audio/config_commands.py:879
 msgid "Disconnect from voice channel when alone set to {empty}{extras}"
@@ -258,7 +263,7 @@ msgstr "Видалено {ints} з ролей DJ і користувачів"
 
 #: audio/config_commands.py:452
 msgid "Removed `{id}` from the DJ roles and users"
-msgstr ""
+msgstr "Вилучено '{id}' з ролей діджея та користувачів"
 
 #: audio/config_commands.py:454
 msgid "Removed {role} from the DJ roles"

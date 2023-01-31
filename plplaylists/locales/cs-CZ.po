@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 19:44+0000\n"
-"PO-Revision-Date: 2023-01-31 21:06\n"
+"PO-Revision-Date: 2023-01-31 22:05\n"
 "Last-Translator: \n"
 "Language-Team: Czech\n"
 "MIME-Version: 1.0\n"
@@ -20,11 +20,11 @@ msgstr ""
 #: plplaylists/cog.py:47
 #, docstring
 msgid "PyLav playlist management commands"
-msgstr ""
+msgstr "PyLav playlist příkazy"
 
 #: plplaylists/cog.py:55
 msgid "Control PyLav playlists"
-msgstr ""
+msgstr "Ovládat PyLav playlisty"
 
 #: plplaylists/cog.py:77
 #, docstring
@@ -41,7 +41,7 @@ msgstr "Verze"
 
 #: plplaylists/cog.py:130
 msgid "Let's create a playlist!"
-msgstr ""
+msgstr "Pojďme vytvořit seznam skladeb!"
 
 #: plplaylists/cog.py:131
 msgid "(**1**) - Apply changes to playlist.\n"
@@ -50,41 +50,48 @@ msgid "(**1**) - Apply changes to playlist.\n"
 "(**4**) - Link this playlist to an existing playlist/album.\n"
 "(**5**) - Add all tracks from the queue to the playlist.\n\n"
 "If you want the playlist name to be as the original playlist simply set the URL but no name.\n\n"
-msgstr ""
+msgstr "(**1**) - Použít změny v seznamu skladeb.\n"
+"(**2**) - Zrušit provedené změny.\n"
+"(**3**) - Přidejte jméno do seznamu skladeb.\n"
+"(**4**) - Propojte tento seznam skladeb s existujícím seznamem/albem.\n"
+"(**5**) - Přidejte všechny skladby z fronty do seznamu skladeb.\n\n"
+"Pokud chcete, aby byl název playlistu jako původní playlist jednoduše nastaven URL, ale bez názvu.\n\n"
 
 #: plplaylists/cog.py:165
 msgid "Playlist not created"
-msgstr ""
+msgstr "Seznam skladeb nebyl vytvořen"
 
 #: plplaylists/cog.py:166
 msgid "No tracks were provided in time."
-msgstr ""
+msgstr "Žádné skladby nebyly poskytnuty včas."
 
 #: plplaylists/cog.py:179
 msgid "Playlist created"
-msgstr ""
+msgstr "Seznam skladeb vytvořen"
 
 #: plplaylists/cog.py:180
 msgid "Name: `{name}`\n"
 "ID: `{id}`\n"
 "Tracks: `{track_count}`"
-msgstr ""
+msgstr "Název: `{name}\n"
+"ID: `{id}`\n"
+"stopy: `{track_count}`"
 
 #: plplaylists/cog.py:204
 msgid "You have no playlists"
-msgstr ""
+msgstr "Nemáte žádné seznamy skladeb"
 
 #: plplaylists/cog.py:246 plplaylists/cog.py:607
 msgid "Nothing to save"
-msgstr ""
+msgstr "Nic k uložení"
 
 #: plplaylists/cog.py:247 plplaylists/cog.py:608
 msgid "There is nothing in the queue to save"
-msgstr ""
+msgstr "Ve frontě není nic k uložení"
 
 #: plplaylists/cog.py:284 plplaylists/cog.py:545 plplaylists/cog.py:625
 msgid "{user}, playlist {playlist_name} cannot be managed by yourself"
-msgstr ""
+msgstr "{user}, seznam skladeb {playlist_name} nemůže spravovat sám sebe"
 
 #: plplaylists/cog.py:293
 msgid "(**1**){space} - Apply changes to playlist.\n"
@@ -107,7 +114,26 @@ msgid "(**1**){space} - Apply changes to playlist.\n"
 "The clear button will always be run first before any other operations.\n"
 "The URL button will always run last - Linking a playlist via the URL will overwrite any tracks added or removed to this playlist.\n\n"
 "If you interact with a button multiple times other than the add/remove buttons only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - Použít změny v seznamu skladeb.\n"
+"(**2**){space} - Zrušte provedené změny a zavřete menu.\n"
+"(**3**){space} - Odstranit tento playlist.\n"
+"(**4**){space} - Odstraňte všechny skladby z tohoto seznamu skladeb.\n"
+"(**5**){space} - Aktualizujte seznam skladeb o nejnovější skladby.\n"
+"Vezměte prosím na vědomí, že tato akce bude ignorovat všechny skladby přidané nebo odebírané v této nabídce.\n"
+"(**6**){space} - Změnit jméno seznamu skladeb.\n"
+"(**7**){space} - Propojte tento seznam skladeb s existujícím seznamem skladeb/albem.\n"
+"(**8**){space} - Přidejte dotaz do tohoto seznamu skladeb.\n"
+"(**9**){space} - Odstraňte dotaz z tohoto playlistu.\n"
+"(**10**) - Stáhněte si soubor seznamu skladeb.\n"
+"(**11**) - Přidejte aktuální seznam skladeb do fronty.\n"
+"(**12**) - Zobrazit skladby v aktuálním seznamu skladeb.\n"
+"(**13**) - Přidejte skladby z fronty do tohoto seznamu skladeb.\n"
+"(**14**) - Odstranit duplicitní položky v seznamu skladeb.\n\n"
+"Tlačítka add/remove track mohou být použita vícekrát k přidání/odebrání více skladeb a skladeb najednou.\n\n"
+"Dotaz je cokoliv, co lze přehrávat pomocí příkazu play - jakýkoliv dotaz může být použit tlačítkem přidání/odebrání\n\n"
+"Tlačítko \"Vyčistit\" bude vždy spuštěno nejdříve před každou další operací.\n"
+"Tlačítko URL bude vždy trvat - Propojení playlistu přes URL přepíše všechny skladby přidané nebo odebírané do tohoto seznamu skladeb.\n\n"
+"Pokud komunikujete s tlačítkem vícekrát jiným než tlačítkem přidat/odebrat pouze poslední interakce.\n\n\n"
 
 #: plplaylists/cog.py:319
 msgid "(**1**) - Close the menu.\n"
@@ -115,7 +141,11 @@ msgid "(**1**) - Close the menu.\n"
 "(**3**) - Download the playlist file.\n"
 "(**4**) - Add current playlist to the queue.\n"
 "(**5**) - Show tracks in current playlist.\n\n\n"
-msgstr ""
+msgstr "(**1**) - Zavřete menu.\n"
+"(**2**) - Aktualizujte seznam skladeb s nejnovějšími skladbami.\n"
+"(**3**) - Stáhněte si soubor playlistu.\n"
+"(**4**) - Přidat aktuální seznam skladeb do fronty.\n"
+"(**5**) - Zobrazit skladby v aktuálním seznamu skladeb.\n\n\n"
 
 #: plplaylists/cog.py:327
 msgid "**__Currently managing__**:\n"
@@ -124,15 +154,20 @@ msgid "**__Currently managing__**:\n"
 "**Author**:{space}{space}{author}\n"
 "**Tracks**:{space}{space}{space}{tracks} tracks\n"
 "**URL**:{space}{space}{space}{space}{space}{url}\n"
-msgstr ""
+msgstr "**__Currently managing__**:\n"
+"**Jméno**:{space}{space}{space}{playlist_name}\n"
+"**Rozsah**:{space}{space}{space}{scope}\n"
+"**Autor**:{space}{space}{author}\n"
+"**Skladby**:{space}{space}{space}{tracks} Skladby\n"
+"**URL**:{space}{space}{space}{space}{space}{url}\n"
 
 #: plplaylists/cog.py:345
 msgid "Let's manage: {playlist_name}"
-msgstr ""
+msgstr "Pojďme řídit: {playlist_name}"
 
 #: plplaylists/cog.py:347
 msgid "Let's take a look at: {playlist_name}"
-msgstr ""
+msgstr "Podívejme se na: {playlist_name}"
 
 #: plplaylists/cog.py:354
 msgid "N/A"
@@ -140,20 +175,21 @@ msgstr "Nepřichází v úvahu"
 
 #: plplaylists/cog.py:386 plplaylists/cog.py:555
 msgid "Playlist deleted"
-msgstr ""
+msgstr "Playlist odstraněn"
 
 #: plplaylists/cog.py:388 plplaylists/cog.py:557
 msgid "{user}, playlist {playlist_name} has been deleted"
-msgstr ""
+msgstr "{user}, seznam skladeb {playlist_name} byl odstraněn"
 
 #: plplaylists/cog.py:438
 msgid "Playlist **{playlist_name}** could not be updated with URL: <{url}>"
-msgstr ""
+msgstr "Seznam skladeb **{playlist_name}** nelze aktualizovat s URL: <{url}>"
 
 #: plplaylists/cog.py:473
 msgid "\n"
 "{track_count} {track_plural} removed from the playlist"
-msgstr ""
+msgstr "\n"
+"{track_count} {track_plural} odebráno ze seznamu skladeb"
 
 #: plplaylists/cog.py:474 plplaylists/cog.py:478 plplaylists/cog.py:644
 msgid "track"
@@ -166,49 +202,52 @@ msgstr "skladby"
 #: plplaylists/cog.py:477 plplaylists/cog.py:643
 msgid "\n"
 "{track_count} {track_plural} added to the playlist"
-msgstr ""
+msgstr "\n"
+"{track_count} {track_plural} přidáno do seznamu skladeb"
 
 #: plplaylists/cog.py:483 plplaylists/cog.py:650
 msgid "Playlist updated"
-msgstr ""
+msgstr "Seznam skladeb aktualizován"
 
 #: plplaylists/cog.py:484 plplaylists/cog.py:651
 msgid "{user}, playlist {playlist_name} has been updated.{extras}"
-msgstr ""
+msgstr "{user}, seznam skladeb {playlist_name} byl aktualizován.{extras}"
 
 #: plplaylists/cog.py:496 plplaylists/cog.py:664
 msgid "Playlist unchanged"
-msgstr ""
+msgstr "Seznam skladeb nezměněn"
 
 #: plplaylists/cog.py:497 plplaylists/cog.py:665
 msgid "{user}, playlist {playlist_name} has not been updated"
-msgstr ""
+msgstr "{user}, seznam skladeb {playlist_name} nebyl aktualizován"
 
 #: plplaylists/cog.py:693
 msgid "You must either provide a URL or attach a playlist file to upload a playlist"
-msgstr ""
+msgstr "Musíte buď zadat adresu URL, nebo připojit soubor playlistu pro nahrání playlistu"
 
 #: plplaylists/cog.py:705
 msgid "No valid playlist file provided"
-msgstr ""
+msgstr "Nebyl zadán platný soubor playlistu"
 
 #: plplaylists/cog.py:714
 msgid "Multiple playlist files provided - Currently only 1 per message is allowed"
-msgstr ""
+msgstr "Je k dispozici více souborů playlistu - v současné době je povoleno pouze 1 na zprávu"
 
 #: plplaylists/cog.py:731
 msgid "Failed to save any of the requested playlists"
-msgstr ""
+msgstr "Nepodařilo se uložit žádný z požadovaných seznamů skladeb"
 
 #: plplaylists/cog.py:740
 msgid "Failed to save the following playlists:\n"
 "{invalid_playlists}"
-msgstr ""
+msgstr "Nepodařilo se uložit následující seznamy skladeb:\n"
+"{invalid_playlists}"
 
 #: plplaylists/cog.py:749
 msgid "Successfully saved the following playlists:\n"
 "{saved_playlists}"
-msgstr ""
+msgstr "Úspěšně uloženo následující seznamy skladeb:\n"
+"{saved_playlists}"
 
 #: plplaylists/cog.py:774
 msgid "You must be in a voice channel to allow me to connect"
@@ -220,9 +259,9 @@ msgstr "Nemám oprávnění připojit se nebo mluvit v {channel}"
 
 #: plplaylists/cog.py:812
 msgid "Playlist"
-msgstr ""
+msgstr "Seznam skladeb"
 
 #: plplaylists/cog.py:817
 msgid "{track_count} tracks enqueued.{playlist_name}"
-msgstr ""
+msgstr "{track_count} skladeb ve frontě.{playlist_name}"
 

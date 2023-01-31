@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 19:44+0000\n"
-"PO-Revision-Date: 2023-01-31 21:06\n"
+"PO-Revision-Date: 2023-01-31 22:05\n"
 "Last-Translator: \n"
 "Language-Team: Greek\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: plutils/cog.py:58 plutils/cog.py:68
 #, docstring
 msgid "Utility commands for PyLav"
-msgstr ""
+msgstr "Εντολές χρησιμότητας για το PyLav"
 
 #: plutils/cog.py:72
 #, docstring
@@ -40,7 +40,9 @@ msgstr "Έκδοση"
 msgid "Show the slashes available in the bot.\n\n"
 "        Author: TrustyJAID#0001 via code block on Discord channel.\n"
 "        "
-msgstr ""
+msgstr "Εμφάνιση των κάθετων διαθέσιμων στο bot.\n\n"
+"        Συγγραφέας: TrustyJAID#0001 μέσω του μπλοκ κώδικα στο κανάλι Discord.\n"
+"        "
 
 #: plutils/cog.py:133
 #, docstring
@@ -79,16 +81,16 @@ msgstr "Λήψη πηγής του τρέχοντος κομματιού"
 #: plutils/cog.py:264
 #, docstring
 msgid "Get the API of the current track"
-msgstr ""
+msgstr "Λήψη του API του τρέχοντος κομματιού"
 
 #: plutils/cog.py:284 plutils/cog.py:293
 msgid "Unable to get player info"
-msgstr ""
+msgstr "Δεν είναι δυνατή η λήψη πληροφοριών παίκτη"
 
 #: plutils/cog.py:309
 #, docstring
 msgid "Decode a track's base64 string into a JSON object"
-msgstr ""
+msgstr "Αποκωδικοποίηση συμβολοσειράς base64 ενός κομματιού σε αντικείμενο JSON"
 
 #: plutils/cog.py:318
 msgid "Invalid base64 string"
@@ -97,43 +99,43 @@ msgstr "Μη έγκυρη συμβολοσειρά base64"
 #: plutils/cog.py:334
 #, docstring
 msgid "Manage the query cache"
-msgstr ""
+msgstr "Διαχείριση της λανθάνουσας μνήμης ερωτήματος"
 
 #: plutils/cog.py:338
 #, docstring
 msgid "Clear the query cache"
-msgstr ""
+msgstr "Καθαρισμός της λανθάνουσας μνήμης ερωτήματος"
 
 #: plutils/cog.py:345 plutils/cog.py:374 plutils/cog.py:387
 msgid "Query cache cleared"
-msgstr ""
+msgstr "Η λανθάνουσα μνήμη ερωτήματος διαγράφηκε"
 
 #: plutils/cog.py:351
 #, docstring
 msgid "Clear the query cache older than a number of days"
-msgstr ""
+msgstr "Εκκαθάριση της προσωρινής μνήμης ερωτημάτων παλαιότερης από έναν αριθμό ημερών"
 
 #: plutils/cog.py:359
 msgid "Days must be less than 31"
-msgstr ""
+msgstr "Οι ημέρες πρέπει να είναι μικρότερες από 31"
 
 #: plutils/cog.py:367
 msgid "Days must be greater than 1"
-msgstr ""
+msgstr "Οι ημέρες πρέπει να είναι μεγαλύτερες από 1"
 
 #: plutils/cog.py:380
 #, docstring
 msgid "Clear the query cache for a query"
-msgstr ""
+msgstr "Εκκαθάριση προσωρινής μνήμης ερωτήματος για ένα ερώτημα"
 
 #: plutils/cog.py:393
 #, docstring
 msgid "Get the size of the query cache"
-msgstr ""
+msgstr "Λήψη του μεγέθους της λανθάνουσας μνήμης ερωτημάτων"
 
 #: plutils/cog.py:400
 msgid "Query cache size: `{size}`"
-msgstr ""
+msgstr "Μέγεθος λανθάνουσας μνήμης: `{size}`"
 
 #: plutils/cog.py:411
 #, docstring
@@ -142,19 +144,23 @@ msgid "Start memory tracing\n\n"
 "        `[p]plutils trace 1` turns on tracing\n"
 "        `[p]plutils trace` shows the current status of tracing\n"
 "        "
-msgstr ""
+msgstr "Έναρξη ανίχνευσης μνήμης\n\n"
+"        `[p]plutils trace 0` απενεργοποιεί την ανίχνευση\n"
+"        `[p]plutils trace 1` ενεργοποιεί την ανίχνευση\n"
+"        `[p]ίχνη plutil` δείχνει την τρέχουσα κατάσταση της ανίχνευσης\n"
+"        "
 
 #: plutils/cog.py:425
 msgid "Stopped memory tracing"
-msgstr ""
+msgstr "Διακόπηκε η ανίχνευση μνήμης"
 
 #: plutils/cog.py:434
 msgid "Started memory tracing"
-msgstr ""
+msgstr "Εκκίνηση ανίχνευσης μνήμης"
 
 #: plutils/cog.py:443
 msgid "You need to start tracing first"
-msgstr ""
+msgstr "Πρέπει πρώτα να ξεκινήσετε την ανίχνευση"
 
 #: plutils/cog.py:455
 #, docstring
@@ -168,9 +174,18 @@ msgid "Set the logger level\n\n"
 "        5: Verbose\n"
 "        6: Trace\n"
 "        "
-msgstr ""
+msgstr "Ορίστε το επίπεδο καταγραφέα\n\n"
+"        Επίπεδα είναι τα ακόλουθα:\n"
+"        0: Κρίσιμο\n"
+"        1: Σφάλμα\n"
+"        2: Προειδοποίηση\n"
+"        3: Πληροφορίες\n"
+"        4: Αποσφαλμάτωση\n"
+"        5: Ρήμα\n"
+"        6: Ίχνος\n"
+"        "
 
 #: plutils/cog.py:486
 msgid "Logger level set to `{level}`"
-msgstr ""
+msgstr "Το επίπεδο καταγραφέα ορίστηκε σε `{level}`"
 

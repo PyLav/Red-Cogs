@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 19:44+0000\n"
-"PO-Revision-Date: 2023-01-31 21:06\n"
+"PO-Revision-Date: 2023-01-31 22:05\n"
 "Last-Translator: \n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -28,7 +28,10 @@ msgid "Notifies PyLav that a Player is having issues.\n\n"
 "        If enough (50%+ of currently playing players) report issues, PyLav will automatically\n"
 "        switch to a different node or restart the current node where possible.\n"
 "        "
-msgstr ""
+msgstr "プレイヤーに問題があることをPyLavに通知します。\n\n"
+"        十分な量(現在プレイ中のプレイヤーの50%+)が問題を報告した場合、PyLavは自動的に\n"
+"        可能な場合は、別のノードに切り替えるか、現在のノードを再起動します。\n"
+"        "
 
 #: audio/config_commands.py:49
 msgid "This server already voted recently, please try again in 10 minutes"
@@ -45,7 +48,11 @@ msgid "Removes a vote for a Player being down.\n\n"
 "        switch to a different node or restart the current node where possible.\n\n"
 "        This command is only useful if you previously voted for a node to be down and it is now back up.\n"
 "        "
-msgstr ""
+msgstr "プレイヤーがダウンしたことに対する投票を削除します。\n\n"
+"        十分な量(現在プレイ中のプレイヤーの50%+)が問題を報告した場合、PyLavは自動的に\n"
+"        可能な場合は、別のノードに切り替えるか、現在のノードを再起動します。\n\n"
+"        このコマンドは、以前にノードがダウンすることに投票し、現在はバックアップされている場合にのみ役立ちます。\n"
+"        "
 
 #: audio/config_commands.py:80
 msgid "There is no active votes for the current backend"
@@ -131,7 +138,7 @@ msgstr "{shuffle} に自動シャッフルを設定しました"
 #: audio/config_commands.py:202 audio/config_commands.py:696
 #, docstring
 msgid "Set whether [botname] should allow users to shuffle the queue"
-msgstr ""
+msgstr "設定するかどうか [botname] ユーザーがキューをシャッフルできるようにする必要があります"
 
 #: audio/config_commands.py:212 audio/config_commands.py:719
 msgid "Shuffle set to {shuffle}"
@@ -140,7 +147,7 @@ msgstr "シャッフルを {shuffle} に設定しました"
 #: audio/config_commands.py:220
 #, docstring
 msgid "Set whether [botname] should automatically play songs when the queue is empty"
-msgstr ""
+msgstr "設定するかどうか [botname] キューが空のときに自動的に曲を再生する必要があります"
 
 #: audio/config_commands.py:229 audio/config_commands.py:753
 msgid "Auto-Play set to {auto}"
@@ -159,7 +166,12 @@ msgid "Set whether [botname] should disconnect from the voice channel when the q
 "            - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr ""
+msgstr "設定するかどうか [botname] キューが空のときに音声チャネルから切断する必要があります。\n\n"
+"        引数：\n"
+"            - `<toggle>': かどうか [botname] キューが空のときに音声チャネルから切断する必要があります。\n"
+"            - `<duration>': キューが空になってからプレイヤーを切断するまでの時間。デフォルトは 60 秒です。\n"
+"            秒、分、時間、日、週を受け入れます (単位が指定されていない場合、期間は秒単位で指定されていると見なされます)\n"
+"        "
 
 #: audio/config_commands.py:267 audio/config_commands.py:307
 #: audio/config_commands.py:811 audio/config_commands.py:873
@@ -178,7 +190,12 @@ msgid "Set whether [botname] should disconnect from the voice channel when alone
 "            - `<duration>`: How longer after detecting should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr ""
+msgstr "設定するかどうか [botname] 単独で音声チャネルから切断する必要があります。\n\n"
+"        引数：\n"
+"            - `<toggle>': かどうか [botname] 音声チャネルが単独であることを検出したときに、音声チャネルから切断する必要があります。\n"
+"            - `<duration>':検出してからプレーヤーを切断する時間。デフォルトは 60 秒です。\n"
+"            秒、分、時間、日、週を受け入れます (単位が指定されていない場合、期間は秒単位で指定されていると見なされます)\n"
+"        "
 
 #: audio/config_commands.py:313 audio/config_commands.py:879
 msgid "Disconnect from voice channel when alone set to {empty}{extras}"
@@ -332,7 +349,14 @@ msgid "Set whether the bot should disconnect from the voice channel when the que
 "            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be\n"
 "            given in seconds)\n"
 "        "
-msgstr ""
+msgstr "キューが空のときにボットを音声チャネルから切断するかどうかを設定します。\n\n"
+"        引数：\n"
+"            - `<toggle>': キューが空のときにボットを音声チャネルから切断する必要があるかどうか。\n"
+"            - `<duration>': キューが空になってからプレイヤーを切断するまでの時間。デフォルトは 60 です。\n"
+"            お代わり。\n"
+"            秒、分、時間、日、週を受け入れます (単位が指定されていない場合、期間は\n"
+"            秒単位で指定)\n"
+"        "
 
 #: audio/config_commands.py:789
 msgid "Disconnect when the queue finished is globally enabled and players will be disconnected after {delta}"
@@ -348,7 +372,14 @@ msgid "Set whether the bot should disconnect from the voice channel when alone.\
 "            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be\n"
 "            given in seconds)\n"
 "        "
-msgstr ""
+msgstr "ボットが単独で音声チャネルから切断する必要があるかどうかを設定します。\n\n"
+"        引数：\n"
+"            - `<toggle>': ボットが音声チャネルであることを検出したときに、音声チャネルから切断する必要があるかどうか\n"
+"            一人。\n"
+"            - `<duration>':検出してからプレーヤーを切断する時間。デフォルトは 60 秒です。\n"
+"            秒、分、時間、日、週を受け入れます (単位が指定されていない場合、期間は\n"
+"            秒単位で指定)\n"
+"        "
 
 #: audio/config_commands.py:851
 msgid "Disconnect when alone is globally enabled and players will be disconnected after {delta}"
@@ -650,7 +681,10 @@ msgid "\n"
 "        Remove the specified track from the queue.\n\n"
 "        If you specify the `remove_duplicates` argument, all tracks that are the same as your URL or the index track will be removed.\n"
 "        "
-msgstr ""
+msgstr "\n"
+"        指定されたトラックをキューから削除します。\n\n"
+"        'remove_duplicates' 引数を指定すると、URL またはインデックス トラックと同じすべてのトラックが削除されます。\n"
+"        "
 
 #: audio/player_commands.py:325
 msgid "{track} not found in queue"

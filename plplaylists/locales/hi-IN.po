@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 19:44+0000\n"
-"PO-Revision-Date: 2023-01-31 21:06\n"
+"PO-Revision-Date: 2023-01-31 22:05\n"
 "Last-Translator: \n"
 "Language-Team: Hindi\n"
 "MIME-Version: 1.0\n"
@@ -20,28 +20,28 @@ msgstr ""
 #: plplaylists/cog.py:47
 #, docstring
 msgid "PyLav playlist management commands"
-msgstr ""
+msgstr "PyLav playlist प्रबंधन आदेश"
 
 #: plplaylists/cog.py:55
 msgid "Control PyLav playlists"
-msgstr ""
+msgstr "PyLav playlists को नियंत्रित करें"
 
 #: plplaylists/cog.py:77
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies"
-msgstr ""
+msgstr "कॉग का संस्करण दिखाएँ और यह PyLav निर्भरताएँ हैं"
 
 #: plplaylists/cog.py:92
 msgid "Library/Cog"
-msgstr ""
+msgstr "पुस्तकालय/कॉग"
 
 #: plplaylists/cog.py:93
 msgid "Version"
-msgstr ""
+msgstr "संस्करण"
 
 #: plplaylists/cog.py:130
 msgid "Let's create a playlist!"
-msgstr ""
+msgstr "चलो एक प्लेलिस्ट बनाते हैं!"
 
 #: plplaylists/cog.py:131
 msgid "(**1**) - Apply changes to playlist.\n"
@@ -50,41 +50,48 @@ msgid "(**1**) - Apply changes to playlist.\n"
 "(**4**) - Link this playlist to an existing playlist/album.\n"
 "(**5**) - Add all tracks from the queue to the playlist.\n\n"
 "If you want the playlist name to be as the original playlist simply set the URL but no name.\n\n"
-msgstr ""
+msgstr "(**1**) - प्लेलिस्ट में परिवर्तन लागू करें।\n"
+"(**2**) - किए गए किसी भी परिवर्तन को रद्द करें।\n"
+"(**3**) - प्लेलिस्ट में एक नाम जोड़ें।\n"
+"(**4**) - इस प्लेलिस्ट को मौजूदा प्लेलिस्ट/एल्बम से लिंक करें।\n"
+"(**5**) - प्लेलिस्ट में कतार से सभी ट्रैक जोड़ें।\n\n"
+"यदि आप चाहते हैं कि प्लेलिस्ट का नाम मूल प्लेलिस्ट के रूप में हो, तो बस यूआरएल सेट करें लेकिन कोई नाम नहीं।\n\n"
 
 #: plplaylists/cog.py:165
 msgid "Playlist not created"
-msgstr ""
+msgstr "प्लेलिस्ट नहीं बनाई गई"
 
 #: plplaylists/cog.py:166
 msgid "No tracks were provided in time."
-msgstr ""
+msgstr "समय पर कोई ट्रैक उपलब्ध नहीं कराया गया।"
 
 #: plplaylists/cog.py:179
 msgid "Playlist created"
-msgstr ""
+msgstr "प्लेलिस्ट बनाई गई"
 
 #: plplaylists/cog.py:180
 msgid "Name: `{name}`\n"
 "ID: `{id}`\n"
 "Tracks: `{track_count}`"
-msgstr ""
+msgstr "नाम: '{name}`\n"
+"ID: '{id}`\n"
+"ट्रैक: '{track_count}`"
 
 #: plplaylists/cog.py:204
 msgid "You have no playlists"
-msgstr ""
+msgstr "आपके पास कोई प्लेलिस्ट नहीं है"
 
 #: plplaylists/cog.py:246 plplaylists/cog.py:607
 msgid "Nothing to save"
-msgstr ""
+msgstr "बचाने के लिए कुछ भी नहीं"
 
 #: plplaylists/cog.py:247 plplaylists/cog.py:608
 msgid "There is nothing in the queue to save"
-msgstr ""
+msgstr "बचाने के लिए कतार में कुछ भी नहीं है"
 
 #: plplaylists/cog.py:284 plplaylists/cog.py:545 plplaylists/cog.py:625
 msgid "{user}, playlist {playlist_name} cannot be managed by yourself"
-msgstr ""
+msgstr "{user}प्लेलिस्ट {playlist_name} खुद से प्रबंधित नहीं किया जा सकता"
 
 #: plplaylists/cog.py:293
 msgid "(**1**){space} - Apply changes to playlist.\n"
@@ -107,7 +114,26 @@ msgid "(**1**){space} - Apply changes to playlist.\n"
 "The clear button will always be run first before any other operations.\n"
 "The URL button will always run last - Linking a playlist via the URL will overwrite any tracks added or removed to this playlist.\n\n"
 "If you interact with a button multiple times other than the add/remove buttons only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - प्लेलिस्ट में परिवर्तन लागू करें।\n"
+"(**2**){space} - किए गए किसी भी बदलाव को रद्द करें और मेनू बंद करें।\n"
+"(**3**){space} - इस प्लेलिस्ट को हटा दें।\n"
+"(**4**){space} - इस प्लेलिस्ट से सभी ट्रैक हटा दें।\n"
+"(**5**){space} - नवीनतम ट्रैक के साथ प्लेलिस्ट अपडेट करें।\n"
+"कृपया ध्यान दें कि यह क्रिया इस मेनू के माध्यम से जोड़े गए / हटाए गए किसी भी ट्रैक को अनदेखा कर देगी।\n"
+"(**6**){space} - प्लेलिस्ट का नाम बदलें।\n"
+"(**7**){space} - इस प्लेलिस्ट को मौजूदा प्लेलिस्ट/एल्बम से लिंक करें।\n"
+"(**8**){space} - इस प्लेलिस्ट में एक क्वेरी जोड़ें।\n"
+"(**9**){space} - इस प्लेलिस्ट से एक क्वेरी निकालें।\n"
+"(**10**) - प्लेलिस्ट फ़ाइल डाउनलोड करें।\n"
+"(**11**) - कतार में वर्तमान प्लेलिस्ट जोड़ें।\n"
+"(**12**) - वर्तमान प्लेलिस्ट में ट्रैक दिखाएँ.\n"
+"(**13**) - इस प्लेलिस्ट में कतार से ट्रैक जोड़ें।\n"
+"(**14**) - प्लेलिस्ट में डुप्लिकेट प्रविष्टियों को हटा दें।\n\n"
+"ऐड/रिमूव ट्रैक बटन का उपयोग एक साथ कई ट्रैक और प्लेलिस्ट जोड़ने/हटाने के लिए कई बार किया जा सकता है।\n\n"
+"एक क्वेरी प्ले कमांड द्वारा खेलने योग्य कुछ भी है - किसी भी क्वेरी का उपयोग ऐड /रिमूव बटन द्वारा किया जा सकता है\n\n"
+"किसी भी अन्य ऑपरेशन से पहले स्पष्ट बटन हमेशा पहले चलाया जाएगा।\n"
+"URL बटन हमेशा आखिरी में चलेगा - URL के माध्यम से प्लेलिस्ट लिंक करना इस प्लेलिस्ट में जोड़े गए या हटाए गए किसी भी ट्रैक को ओवरराइट कर देगा।\n\n"
+"यदि आप ऐड/रिमूव बटन के अलावा किसी बटन के साथ कई बार इंटरैक्ट करते हैं, तो केवल अंतिम इंटरैक्शन प्रभावी होगा।\n\n\n"
 
 #: plplaylists/cog.py:319
 msgid "(**1**) - Close the menu.\n"
@@ -115,7 +141,11 @@ msgid "(**1**) - Close the menu.\n"
 "(**3**) - Download the playlist file.\n"
 "(**4**) - Add current playlist to the queue.\n"
 "(**5**) - Show tracks in current playlist.\n\n\n"
-msgstr ""
+msgstr "(**1**) - मेनू बंद करें।\n"
+"(**2**) - नवीनतम ट्रैक के साथ प्लेलिस्ट अपडेट करें।\n"
+"(**3**) - प्लेलिस्ट फ़ाइल डाउनलोड करें।\n"
+"(**4**) - कतार में वर्तमान प्लेलिस्ट जोड़ें।\n"
+"(**5**) - वर्तमान प्लेलिस्ट में ट्रैक दिखाएँ.\n\n\n"
 
 #: plplaylists/cog.py:327
 msgid "**__Currently managing__**:\n"
@@ -124,105 +154,114 @@ msgid "**__Currently managing__**:\n"
 "**Author**:{space}{space}{author}\n"
 "**Tracks**:{space}{space}{space}{tracks} tracks\n"
 "**URL**:{space}{space}{space}{space}{space}{url}\n"
-msgstr ""
+msgstr "** __Currently managing__ **:\n"
+"**नाम**:{space}{space}{space}{playlist_name}\n"
+"**गुंजाइश**:{space}{space}{space}{scope}\n"
+"**लेखक**:{space}{space}{author}\n"
+"**पटरियों**:{space}{space}{space}{tracks} पटरियों\n"
+"** URL*** :{space}{space}{space}{space}{space}{url}\n"
 
 #: plplaylists/cog.py:345
 msgid "Let's manage: {playlist_name}"
-msgstr ""
+msgstr "चलो प्रबंधित करते हैं: {playlist_name}"
 
 #: plplaylists/cog.py:347
 msgid "Let's take a look at: {playlist_name}"
-msgstr ""
+msgstr "आइए एक नज़र डालते हैं: {playlist_name}"
 
 #: plplaylists/cog.py:354
 msgid "N/A"
-msgstr ""
+msgstr "N/A"
 
 #: plplaylists/cog.py:386 plplaylists/cog.py:555
 msgid "Playlist deleted"
-msgstr ""
+msgstr "प्लेलिस्ट हटा दी गई"
 
 #: plplaylists/cog.py:388 plplaylists/cog.py:557
 msgid "{user}, playlist {playlist_name} has been deleted"
-msgstr ""
+msgstr "{user}प्लेलिस्ट {playlist_name} हटा दिया गया है"
 
 #: plplaylists/cog.py:438
 msgid "Playlist **{playlist_name}** could not be updated with URL: <{url}>"
-msgstr ""
+msgstr "प्लेलिस्ट**{playlist_name}** URL के साथ अद्यतन नहीं किया जा सका: <{url}>"
 
 #: plplaylists/cog.py:473
 msgid "\n"
 "{track_count} {track_plural} removed from the playlist"
-msgstr ""
+msgstr "\n"
+"{track_count} {track_plural} प्लेलिस्ट से हटाया गया"
 
 #: plplaylists/cog.py:474 plplaylists/cog.py:478 plplaylists/cog.py:644
 msgid "track"
-msgstr ""
+msgstr "ट्रैक"
 
 #: plplaylists/cog.py:474 plplaylists/cog.py:478 plplaylists/cog.py:644
 msgid "tracks"
-msgstr ""
+msgstr "पटरियों"
 
 #: plplaylists/cog.py:477 plplaylists/cog.py:643
 msgid "\n"
 "{track_count} {track_plural} added to the playlist"
-msgstr ""
+msgstr "\n"
+"{track_count} {track_plural} प्लेलिस्ट में जोड़ा गया"
 
 #: plplaylists/cog.py:483 plplaylists/cog.py:650
 msgid "Playlist updated"
-msgstr ""
+msgstr "प्लेलिस्ट अपडेट की गई"
 
 #: plplaylists/cog.py:484 plplaylists/cog.py:651
 msgid "{user}, playlist {playlist_name} has been updated.{extras}"
-msgstr ""
+msgstr "{user}प्लेलिस्ट {playlist_name} अद्यतन किया गया है.{extras}"
 
 #: plplaylists/cog.py:496 plplaylists/cog.py:664
 msgid "Playlist unchanged"
-msgstr ""
+msgstr "प्लेलिस्ट अपरिवर्तित"
 
 #: plplaylists/cog.py:497 plplaylists/cog.py:665
 msgid "{user}, playlist {playlist_name} has not been updated"
-msgstr ""
+msgstr "{user}प्लेलिस्ट {playlist_name} अद्यतन नहीं किया गया है"
 
 #: plplaylists/cog.py:693
 msgid "You must either provide a URL or attach a playlist file to upload a playlist"
-msgstr ""
+msgstr "प्लेलिस्ट अपलोड करने के लिए आपको या तो URL प्रदान करना होगा या प्लेलिस्ट फ़ाइल अनुलग्न करनी होगी"
 
 #: plplaylists/cog.py:705
 msgid "No valid playlist file provided"
-msgstr ""
+msgstr "कोई मान्य प्लेलिस्ट फ़ाइल प्रदान नहीं की गई"
 
 #: plplaylists/cog.py:714
 msgid "Multiple playlist files provided - Currently only 1 per message is allowed"
-msgstr ""
+msgstr "प्रदान की गई एकाधिक प्लेलिस्ट फ़ाइलें - वर्तमान में केवल 1 प्रति संदेश की अनुमति है"
 
 #: plplaylists/cog.py:731
 msgid "Failed to save any of the requested playlists"
-msgstr ""
+msgstr "अनुरोधित प्लेलिस्ट में से कोई भी सहेजने में विफल"
 
 #: plplaylists/cog.py:740
 msgid "Failed to save the following playlists:\n"
 "{invalid_playlists}"
-msgstr ""
+msgstr "निम्न प्लेलिस्ट सहेजने में विफल रहा:\n"
+"{invalid_playlists}"
 
 #: plplaylists/cog.py:749
 msgid "Successfully saved the following playlists:\n"
 "{saved_playlists}"
-msgstr ""
+msgstr "सफलतापूर्वक निम्न प्लेलिस्ट सहेजी गई:\n"
+"{saved_playlists}"
 
 #: plplaylists/cog.py:774
 msgid "You must be in a voice channel to allow me to connect"
-msgstr ""
+msgstr "मुझे कनेक्ट करने की अनुमति देने के लिए आपको एक वॉयस चैनल में होना चाहिए"
 
 #: plplaylists/cog.py:782
 msgid "I don't have permission to connect or speak in {channel}"
-msgstr ""
+msgstr "मुझे कनेक्ट करने या बोलने की अनुमति नहीं है {channel}"
 
 #: plplaylists/cog.py:812
 msgid "Playlist"
-msgstr ""
+msgstr "प्लेलिस्ट"
 
 #: plplaylists/cog.py:817
 msgid "{track_count} tracks enqueued.{playlist_name}"
-msgstr ""
+msgstr "{track_count} पटरियों पर कतार लगी हुई थी।{playlist_name}"
 

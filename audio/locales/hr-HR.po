@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 19:44+0000\n"
-"PO-Revision-Date: 2023-01-31 21:06\n"
+"PO-Revision-Date: 2023-01-31 22:05\n"
 "Last-Translator: \n"
 "Language-Team: Croatian\n"
 "MIME-Version: 1.0\n"
@@ -28,15 +28,18 @@ msgid "Notifies PyLav that a Player is having issues.\n\n"
 "        If enough (50%+ of currently playing players) report issues, PyLav will automatically\n"
 "        switch to a different node or restart the current node where possible.\n"
 "        "
-msgstr ""
+msgstr "Obavještava PyLav da igrač ima problema.\n\n"
+"        Ako dovoljno (50%+ trenutno igrajućih igrača) prijavi probleme, PyLav će automatski\n"
+"        prebacite se na drugi čvor ili ponovno pokrenite trenutni čvor gdje je to moguće.\n"
+"        "
 
 #: audio/config_commands.py:49
 msgid "This server already voted recently, please try again in 10 minutes"
-msgstr ""
+msgstr "Ovaj poslužitelj je već nedavno glasao, pokušajte ponovno za 10 minuta"
 
 #: audio/config_commands.py:60
 msgid "Thank you for your report"
-msgstr ""
+msgstr "Hvala vam na izvješću"
 
 #: audio/config_commands.py:70
 #, docstring
@@ -45,15 +48,19 @@ msgid "Removes a vote for a Player being down.\n\n"
 "        switch to a different node or restart the current node where possible.\n\n"
 "        This command is only useful if you previously voted for a node to be down and it is now back up.\n"
 "        "
-msgstr ""
+msgstr "Uklanja glas za igrača koji je pao.\n\n"
+"        Ako dovoljno (50%+ trenutno igrajućih igrača) prijavi probleme, PyLav će automatski\n"
+"        prebacite se na drugi čvor ili ponovno pokrenite trenutni čvor gdje je to moguće.\n\n"
+"        Ova naredba je korisna samo ako ste prethodno glasali da se čvor spusti i sada je ponovno podignut.\n"
+"        "
 
 #: audio/config_commands.py:80
 msgid "There is no active votes for the current backend"
-msgstr ""
+msgstr "Nema aktivnih glasova za sadašnji backend"
 
 #: audio/config_commands.py:90
 msgid "Removed your report"
-msgstr ""
+msgstr "Uklonjeno izvješće"
 
 #: audio/config_commands.py:98
 #, docstring
@@ -122,7 +129,7 @@ msgstr "Onemogućeno"
 #: audio/config_commands.py:182
 #, docstring
 msgid "Set whether the a server is allowed to enabled auto shuffle"
-msgstr ""
+msgstr "Postavljanje je li poslužitelju dopušteno automatsko miješanje"
 
 #: audio/config_commands.py:192 audio/config_commands.py:686
 msgid "Auto-Shuffle set to {shuffle}"
@@ -159,16 +166,21 @@ msgid "Set whether [botname] should disconnect from the voice channel when the q
 "            - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Postavi da li [botname] treba prekinuti vezu s glasovnim kanalom kada je red čekanja prazan.\n\n"
+"        Argumente:\n"
+"            - `<toggle>\": Je li [botname] treba prekinuti vezu s glasovnim kanalom kada je red čekanja prazan.\n"
+"            - `<duration>': Koliko duže nakon što je red prazan treba li isključiti uređaj. Zadano je 60 sekundi.\n"
+"            Prihvaća sekundu, minute, sate, dane, tjedne (ako nije navedena jedinica, pretpostavlja se da će trajanje biti dano u sekundama)\n"
+"        "
 
 #: audio/config_commands.py:267 audio/config_commands.py:307
 #: audio/config_commands.py:811 audio/config_commands.py:873
 msgid " and players will be disconnected after {duration}"
-msgstr ""
+msgstr " i igrači će biti isključeni nakon {duration}"
 
 #: audio/config_commands.py:272 audio/config_commands.py:816
 msgid "Disconnect from voice channel when queue is empty set to {empty}{extras}"
-msgstr ""
+msgstr "Prekini vezu s glasovnim kanalom kada je red čekanja prazan postavljen na {empty}{extras}"
 
 #: audio/config_commands.py:288
 #, docstring
@@ -178,109 +190,114 @@ msgid "Set whether [botname] should disconnect from the voice channel when alone
 "            - `<duration>`: How longer after detecting should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Postavi da li [botname] treba isključiti iz glasovnog kanala kada je sam.\n\n"
+"        Argumente:\n"
+"            - `<toggle>\": Je li [botname] trebao bi se isključiti iz glasovnog kanala kada otkrije da je sam.\n"
+"            - `<duration>': Koliko duže nakon otkrivanja treba li igrač biti isključen. Zadano je 60 sekundi.\n"
+"            Prihvaća sekundu, minute, sate, dane, tjedne (ako nije navedena jedinica, pretpostavlja se da će trajanje biti dano u sekundama)\n"
+"        "
 
 #: audio/config_commands.py:313 audio/config_commands.py:879
 msgid "Disconnect from voice channel when alone set to {empty}{extras}"
-msgstr ""
+msgstr "Prekini vezu s glasovnim kanalom kada je sam postavljen na {empty}{extras}"
 
 #: audio/config_commands.py:325
 #, docstring
 msgid "Server configuration options"
-msgstr ""
+msgstr "Mogućnosti konfiguracije poslužitelja"
 
 #: audio/config_commands.py:329
 #, docstring
 msgid "Add, remove or show the DJ roles and users for the server"
-msgstr ""
+msgstr "Dodavanje, uklanjanje ili prikazivanje DJ uloga i korisnika poslužitelja"
 
 #: audio/config_commands.py:335
 #, docstring
 msgid "Add DJ roles or users to this server"
-msgstr ""
+msgstr "Dodaj DJ uloge ili korisnike na ovaj poslužitelj"
 
 #: audio/config_commands.py:348
 msgid "Added {role} to the DJ roles"
-msgstr ""
+msgstr "Dodan {role} na DJ uloge"
 
 #: audio/config_commands.py:351
 msgid "Added {user} to the DJ users"
-msgstr ""
+msgstr "Dodan {user} korisnicima DJ-a"
 
 #: audio/config_commands.py:358
 msgid "Added {roles} to the DJ roles and {users} to the DJ users"
-msgstr ""
+msgstr "Dodan {roles} DJ ulogama i {users} korisnicima DJ-a"
 
 #: audio/config_commands.py:365
 msgid "Added {roles} to the DJ roles"
-msgstr ""
+msgstr "Dodan {roles} na DJ uloge"
 
 #: audio/config_commands.py:369
 msgid "Added {users} to the DJ users"
-msgstr ""
+msgstr "Dodan {users} korisnicima DJ-a"
 
 #: audio/config_commands.py:384
 #, docstring
 msgid "Remove DJ roles or users in this the server"
-msgstr ""
+msgstr "Uklonite DJ uloge ili korisnike u ovom poslužitelju"
 
 #: audio/config_commands.py:416
 msgid "Removed {roles} from the DJ roles and {users} from the DJ users, as well as {ints} from both"
-msgstr ""
+msgstr "Uklonjen {roles} iz DJ uloga i {users} od DJ korisnika, kao i od KORISNIKA DJ-a, kao i od korisnika DJ-a, kao i od korisnika DJ- {ints} od oba"
 
 #: audio/config_commands.py:424
 msgid "Removed {roles} from the DJ roles and {users} from the DJ users"
-msgstr ""
+msgstr "Uklonjen {roles} iz DJ uloga i {users} od DJ korisnika"
 
 #: audio/config_commands.py:429
 msgid "Removed {roles} from the DJ roles"
-msgstr ""
+msgstr "Uklonjen {roles} iz DJ uloga"
 
 #: audio/config_commands.py:433
 msgid "Removed {users} from the DJ users"
-msgstr ""
+msgstr "Uklonjen {users} od DJ korisnika"
 
 #: audio/config_commands.py:437
 msgid "Removed {ints} from the DJ roles and users"
-msgstr ""
+msgstr "Uklonjen {ints} od DJ uloga i korisnika"
 
 #: audio/config_commands.py:452
 msgid "Removed `{id}` from the DJ roles and users"
-msgstr ""
+msgstr "Uklonjeno '{id}' od DJ uloga i korisnika"
 
 #: audio/config_commands.py:454
 msgid "Removed {role} from the DJ roles"
-msgstr ""
+msgstr "Uklonjen {role} iz DJ uloga"
 
 #: audio/config_commands.py:457
 msgid "Removed {user} from the DJ users"
-msgstr ""
+msgstr "Uklonjen {user} od DJ korisnika"
 
 #: audio/config_commands.py:463
 #, docstring
 msgid "List the DJ roles and users for the server"
-msgstr ""
+msgstr "Popis DJ uloga i korisnika poslužitelja"
 
 #: audio/config_commands.py:514
 msgid "There are no DJ roles or users set in {server}"
-msgstr ""
+msgstr "Nema DJ uloga ili korisnika postavljenih u {server}"
 
 #: audio/config_commands.py:525 audio/config_commands.py:530
 msgid "DJ Roles"
-msgstr ""
+msgstr "DJ uloge"
 
 #: audio/config_commands.py:536 audio/config_commands.py:541
 msgid "DJ Users"
-msgstr ""
+msgstr "DJ korisnici"
 
 #: audio/config_commands.py:549
 #, docstring
 msgid "Clear the DJ roles and users for the server"
-msgstr ""
+msgstr "Brisanje DJ uloga i korisnika za poslužitelj"
 
 #: audio/config_commands.py:561
 msgid "Cleared the DJ roles and users for {server}"
-msgstr ""
+msgstr "Očistio DJ uloge i korisnike za {server}"
 
 #: audio/config_commands.py:569
 #, docstring
@@ -332,11 +349,18 @@ msgid "Set whether the bot should disconnect from the voice channel when the que
 "            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be\n"
 "            given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Postavite treba li bot prekinuti vezu s glasovnim kanalom kada je red čekanja prazan.\n\n"
+"        Argumente:\n"
+"            - `<toggle>\": Treba li bot prekinuti vezu s glasovnim kanalom kada je red prazan.\n"
+"            - `<duration>': Koliko duže nakon što je red prazan treba li isključiti uređaj. Zadano je 60\n"
+"            sekunde.\n"
+"            Prihvaća sekunde, minute, sate, dane, tjedne (ako nije navedena jedinica, pretpostavlja se da je trajanje\n"
+"            dano u sekundama)\n"
+"        "
 
 #: audio/config_commands.py:789
 msgid "Disconnect when the queue finished is globally enabled and players will be disconnected after {delta}"
-msgstr ""
+msgstr "Prekini vezu kada je red čekanja završen globalno omogućen i igrači će nakon toga biti odspojeni {delta}"
 
 #: audio/config_commands.py:832
 #, docstring
@@ -348,30 +372,37 @@ msgid "Set whether the bot should disconnect from the voice channel when alone.\
 "            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be\n"
 "            given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Postavite treba li bot isključiti vezu s glasovnim kanalom kada je sam.\n\n"
+"        Argumente:\n"
+"            - `<toggle>': Treba li se bot isključiti iz glasovnog kanala kada otkrije da jest\n"
+"            sam.\n"
+"            - `<duration>': Koliko duže nakon otkrivanja treba li igrač biti isključen. Zadano je 60 sekundi.\n"
+"            Prihvaća sekunde, minute, sate, dane, tjedne (ako nije navedena jedinica, pretpostavlja se da je trajanje\n"
+"            dano u sekundama)\n"
+"        "
 
 #: audio/config_commands.py:851
 msgid "Disconnect when alone is globally enabled and players will be disconnected after {delta}"
-msgstr ""
+msgstr "Prekini vezu kada je globalno omogućena sama i igrači će nakon toga biti isključeni {delta}"
 
 #: audio/config_commands.py:889
 #, docstring
 msgid "Sets the Auto-Play playlist"
-msgstr ""
+msgstr "Postavlja popis za automatsku reprodukciju"
 
 #: audio/config_commands.py:906
 msgid "Auto-Play playlist set to {playlist}"
-msgstr ""
+msgstr "Popis za automatsku reprodukciju postavljen na {playlist}"
 
 #: audio/config_commands.py:916
 #, docstring
 msgid "Set the channel locks"
-msgstr ""
+msgstr "Postavljanje zaključavanja kanala"
 
 #: audio/config_commands.py:922
 #, docstring
 msgid "Set the channel lock for commands"
-msgstr ""
+msgstr "Postavljanje zaključavanja kanala za naredbe"
 
 #: audio/config_commands.py:937
 msgid "I don't have permission to send message or send embed links or read messages in {channel}"
@@ -388,7 +419,7 @@ msgstr "Slušat ću naredbe u svim kanalima koje vidim"
 #: audio/config_commands.py:970
 #, docstring
 msgid "Set the channel lock for voice channels"
-msgstr ""
+msgstr "Postavljanje zaključavanja kanala za glasovne kanale"
 
 #: audio/config_commands.py:982 audio/hybrid_commands.py:107
 #: audio/player_commands.py:144
@@ -409,7 +440,7 @@ msgstr "Ne mogu puštati pjesme u direktnim porukama"
 
 #: audio/context_menus.py:38 audio/context_menus.py:154
 msgid "You need to be a DJ to play tracks"
-msgstr ""
+msgstr "Morate biti DJ da biste svirali pjesme"
 
 #: audio/context_menus.py:55 audio/context_menus.py:169
 msgid "This command is not available in this channel. Please use {channel}"
@@ -433,7 +464,7 @@ msgstr "Nisam mogao pronaći nijednu podržanu aktivnost u kojoj {user} sudjeluj
 
 #: audio/context_menus.py:218
 msgid "Couldn't map {user}'s Apple Music track to a valid query"
-msgstr ""
+msgstr "Nije moguće mapirati {user}'s Apple Music zapis na valjani upit"
 
 #: audio/context_menus.py:234
 msgid "Couldn't find any tracks matching {query}"
@@ -611,7 +642,7 @@ msgstr "Nema prethodne pjesme u povijesti playera"
 
 #: audio/hybrid_commands.py:803
 msgid "Playing previous track: {track}"
-msgstr ""
+msgstr "Reproduciranje prethodne pjesme: {track}"
 
 #: audio/player_commands.py:30
 msgid "Plays the specified track in the queue"

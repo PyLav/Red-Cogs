@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 19:44+0000\n"
-"PO-Revision-Date: 2023-01-31 21:06\n"
+"PO-Revision-Date: 2023-01-31 22:05\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese\n"
 "MIME-Version: 1.0\n"
@@ -20,28 +20,28 @@ msgstr ""
 #: plplaylists/cog.py:47
 #, docstring
 msgid "PyLav playlist management commands"
-msgstr ""
+msgstr "Các lệnh quản lý danh sách phát PyLav"
 
 #: plplaylists/cog.py:55
 msgid "Control PyLav playlists"
-msgstr ""
+msgstr "Kiểm soát danh sách phát PyLav"
 
 #: plplaylists/cog.py:77
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies"
-msgstr ""
+msgstr "Hiển thị phiên bản của Cog và đó là phụ thuộc PyLav"
 
 #: plplaylists/cog.py:92
 msgid "Library/Cog"
-msgstr ""
+msgstr "Thư viện / Cog"
 
 #: plplaylists/cog.py:93
 msgid "Version"
-msgstr ""
+msgstr "Phiên bản"
 
 #: plplaylists/cog.py:130
 msgid "Let's create a playlist!"
-msgstr ""
+msgstr "Hãy tạo một danh sách phát!"
 
 #: plplaylists/cog.py:131
 msgid "(**1**) - Apply changes to playlist.\n"
@@ -50,41 +50,48 @@ msgid "(**1**) - Apply changes to playlist.\n"
 "(**4**) - Link this playlist to an existing playlist/album.\n"
 "(**5**) - Add all tracks from the queue to the playlist.\n\n"
 "If you want the playlist name to be as the original playlist simply set the URL but no name.\n\n"
-msgstr ""
+msgstr "(**1**) - Áp dụng các thay đổi cho danh sách phát.\n"
+"(**2**) - Hủy mọi thay đổi đã thực hiện.\n"
+"(**3**) - Thêm tên vào danh sách phát.\n"
+"(**4**) - Liên kết danh sách phát này với danh sách phát/album hiện có.\n"
+"(**5**) - Thêm tất cả các bản nhạc từ hàng đợi vào danh sách phát.\n\n"
+"Nếu bạn muốn tên danh sách phát như danh sách phát gốc, chỉ cần đặt URL nhưng không có tên.\n\n"
 
 #: plplaylists/cog.py:165
 msgid "Playlist not created"
-msgstr ""
+msgstr "Danh sách phát không được tạo"
 
 #: plplaylists/cog.py:166
 msgid "No tracks were provided in time."
-msgstr ""
+msgstr "Không có bản nhạc nào được cung cấp kịp thời."
 
 #: plplaylists/cog.py:179
 msgid "Playlist created"
-msgstr ""
+msgstr "Danh sách phát đã tạo"
 
 #: plplaylists/cog.py:180
 msgid "Name: `{name}`\n"
 "ID: `{id}`\n"
 "Tracks: `{track_count}`"
-msgstr ""
+msgstr "Tên: '{name}`\n"
+"ID: '{id}`\n"
+"Bài hát: '{track_count}`"
 
 #: plplaylists/cog.py:204
 msgid "You have no playlists"
-msgstr ""
+msgstr "Bạn không có danh sách phát"
 
 #: plplaylists/cog.py:246 plplaylists/cog.py:607
 msgid "Nothing to save"
-msgstr ""
+msgstr "Không có gì để tiết kiệm"
 
 #: plplaylists/cog.py:247 plplaylists/cog.py:608
 msgid "There is nothing in the queue to save"
-msgstr ""
+msgstr "Không có gì trong hàng đợi để lưu"
 
 #: plplaylists/cog.py:284 plplaylists/cog.py:545 plplaylists/cog.py:625
 msgid "{user}, playlist {playlist_name} cannot be managed by yourself"
-msgstr ""
+msgstr "{user}Danh sách {playlist_name} không thể tự quản lý"
 
 #: plplaylists/cog.py:293
 msgid "(**1**){space} - Apply changes to playlist.\n"
@@ -107,7 +114,26 @@ msgid "(**1**){space} - Apply changes to playlist.\n"
 "The clear button will always be run first before any other operations.\n"
 "The URL button will always run last - Linking a playlist via the URL will overwrite any tracks added or removed to this playlist.\n\n"
 "If you interact with a button multiple times other than the add/remove buttons only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - Áp dụng các thay đổi cho danh sách phát.\n"
+"(**2**){space} - Hủy bất kỳ thay đổi nào đã thực hiện và đóng menu.\n"
+"(**3**){space} - Xóa Danh sách phát này.\n"
+"(**4**){space} - Xóa tất cả các bản nhạc khỏi danh sách phát này.\n"
+"(**5**){space} - Cập nhật danh sách phát với các bản nhạc mới nhất.\n"
+"Xin lưu ý rằng hành động này sẽ bỏ qua bất kỳ bản nhạc nào được thêm / xóa thông qua menu này.\n"
+"(**6**){space} - Thay đổi tên của danh sách phát.\n"
+"(**7**){space} - Liên kết danh sách phát này với danh sách phát / album hiện có.\n"
+"(**8**){space} - Thêm một truy vấn vào danh sách phát này.\n"
+"(**9**){space} - Xóa truy vấn khỏi danh sách phát này.\n"
+"(**10**) - Tải xuống tệp danh sách phát.\n"
+"(**11**) - Thêm danh sách phát hiện tại vào hàng đợi.\n"
+"(**12**) - Hiển thị các bản nhạc trong danh sách phát hiện tại.\n"
+"(**13**) - Thêm các bản nhạc từ hàng đợi vào danh sách phát này.\n"
+"(**14**) - Xóa các mục nhập trùng lặp trong danh sách phát.\n\n"
+"Các nút thêm / xóa bản nhạc có thể được sử dụng nhiều lần để thêm / xóa nhiều bản nhạc và danh sách phát cùng một lúc.\n\n"
+"Truy vấn là bất kỳ thứ gì có thể phát được bằng lệnh phát - bất kỳ truy vấn nào cũng có thể được sử dụng bởi các nút thêm / xóa\n\n"
+"Nút xóa sẽ luôn được chạy trước bất kỳ thao tác nào khác.\n"
+"Nút URL sẽ luôn chạy cuối cùng - Liên kết danh sách phát qua URL sẽ ghi đè lên bất kỳ bản nhạc nào được thêm hoặc xóa vào danh sách phát này.\n\n"
+"Nếu bạn tương tác với một nút nhiều lần khác với các nút thêm / xóa, chỉ tương tác cuối cùng mới có hiệu lực.\n\n\n"
 
 #: plplaylists/cog.py:319
 msgid "(**1**) - Close the menu.\n"
@@ -115,7 +141,11 @@ msgid "(**1**) - Close the menu.\n"
 "(**3**) - Download the playlist file.\n"
 "(**4**) - Add current playlist to the queue.\n"
 "(**5**) - Show tracks in current playlist.\n\n\n"
-msgstr ""
+msgstr "(**1**) - Đóng menu.\n"
+"(**2**) - Cập nhật danh sách phát với các bản nhạc mới nhất.\n"
+"(**3**) - Tải xuống tệp danh sách phát.\n"
+"(**4**) - Thêm danh sách phát hiện tại vào hàng đợi.\n"
+"(**5**) - Hiển thị các bản nhạc trong danh sách phát hiện tại.\n\n\n"
 
 #: plplaylists/cog.py:327
 msgid "**__Currently managing__**:\n"
@@ -124,105 +154,114 @@ msgid "**__Currently managing__**:\n"
 "**Author**:{space}{space}{author}\n"
 "**Tracks**:{space}{space}{space}{tracks} tracks\n"
 "**URL**:{space}{space}{space}{space}{space}{url}\n"
-msgstr ""
+msgstr "**__Currently managing__**:\n"
+"**Tên**:{space}{space}{space}{playlist_name}\n"
+"**Phạm vi**:{space}{space}{space}{scope}\n"
+"**Tác giả**:{space}{space}{author}\n"
+"**Bài hát**:{space}{space}{space}{tracks} Bài hát\n"
+"**URL**:{space}{space}{space}{space}{space}{url}\n"
 
 #: plplaylists/cog.py:345
 msgid "Let's manage: {playlist_name}"
-msgstr ""
+msgstr "Hãy quản lý: {playlist_name}"
 
 #: plplaylists/cog.py:347
 msgid "Let's take a look at: {playlist_name}"
-msgstr ""
+msgstr "Chúng ta hãy xem xét: {playlist_name}"
 
 #: plplaylists/cog.py:354
 msgid "N/A"
-msgstr ""
+msgstr "N/A"
 
 #: plplaylists/cog.py:386 plplaylists/cog.py:555
 msgid "Playlist deleted"
-msgstr ""
+msgstr "Đã xóa playlist"
 
 #: plplaylists/cog.py:388 plplaylists/cog.py:557
 msgid "{user}, playlist {playlist_name} has been deleted"
-msgstr ""
+msgstr "{user}Danh sách {playlist_name} đã bị xóa"
 
 #: plplaylists/cog.py:438
 msgid "Playlist **{playlist_name}** could not be updated with URL: <{url}>"
-msgstr ""
+msgstr "Danh sách**{playlist_name}** không thể cập nhật bằng URL: <{url}>"
 
 #: plplaylists/cog.py:473
 msgid "\n"
 "{track_count} {track_plural} removed from the playlist"
-msgstr ""
+msgstr "\n"
+"{track_count} {track_plural} Đã xóa khỏi playlist"
 
 #: plplaylists/cog.py:474 plplaylists/cog.py:478 plplaylists/cog.py:644
 msgid "track"
-msgstr ""
+msgstr "rãnh"
 
 #: plplaylists/cog.py:474 plplaylists/cog.py:478 plplaylists/cog.py:644
 msgid "tracks"
-msgstr ""
+msgstr "Bài hát"
 
 #: plplaylists/cog.py:477 plplaylists/cog.py:643
 msgid "\n"
 "{track_count} {track_plural} added to the playlist"
-msgstr ""
+msgstr "\n"
+"{track_count} {track_plural} Đã thêm vào danh sách phát"
 
 #: plplaylists/cog.py:483 plplaylists/cog.py:650
 msgid "Playlist updated"
-msgstr ""
+msgstr "Danh sách phát đã cập nhật"
 
 #: plplaylists/cog.py:484 plplaylists/cog.py:651
 msgid "{user}, playlist {playlist_name} has been updated.{extras}"
-msgstr ""
+msgstr "{user}Danh sách {playlist_name} đã được cập nhật.{extras}"
 
 #: plplaylists/cog.py:496 plplaylists/cog.py:664
 msgid "Playlist unchanged"
-msgstr ""
+msgstr "Danh sách phát không thay đổi"
 
 #: plplaylists/cog.py:497 plplaylists/cog.py:665
 msgid "{user}, playlist {playlist_name} has not been updated"
-msgstr ""
+msgstr "{user}Danh sách {playlist_name} chưa được cập nhật"
 
 #: plplaylists/cog.py:693
 msgid "You must either provide a URL or attach a playlist file to upload a playlist"
-msgstr ""
+msgstr "Bạn phải cung cấp URL hoặc đính kèm tệp danh sách phát để tải danh sách phát lên"
 
 #: plplaylists/cog.py:705
 msgid "No valid playlist file provided"
-msgstr ""
+msgstr "Không có tệp danh sách phát hợp lệ nào được cung cấp"
 
 #: plplaylists/cog.py:714
 msgid "Multiple playlist files provided - Currently only 1 per message is allowed"
-msgstr ""
+msgstr "Nhiều tệp danh sách phát được cung cấp - Hiện chỉ cho phép 1 tệp cho mỗi tin nhắn"
 
 #: plplaylists/cog.py:731
 msgid "Failed to save any of the requested playlists"
-msgstr ""
+msgstr "Không thể lưu bất kỳ danh sách phát nào được yêu cầu"
 
 #: plplaylists/cog.py:740
 msgid "Failed to save the following playlists:\n"
 "{invalid_playlists}"
-msgstr ""
+msgstr "Không thể lưu các playlist sau:\n"
+"{invalid_playlists}"
 
 #: plplaylists/cog.py:749
 msgid "Successfully saved the following playlists:\n"
 "{saved_playlists}"
-msgstr ""
+msgstr "Đã lưu thành công các danh sách phát sau:\n"
+"{saved_playlists}"
 
 #: plplaylists/cog.py:774
 msgid "You must be in a voice channel to allow me to connect"
-msgstr ""
+msgstr "Bạn phải ở trong một kênh thoại để cho phép tôi kết nối"
 
 #: plplaylists/cog.py:782
 msgid "I don't have permission to connect or speak in {channel}"
-msgstr ""
+msgstr "Tôi không có quyền kết nối hoặc nói chuyện {channel}"
 
 #: plplaylists/cog.py:812
 msgid "Playlist"
-msgstr ""
+msgstr "Danh sách"
 
 #: plplaylists/cog.py:817
 msgid "{track_count} tracks enqueued.{playlist_name}"
-msgstr ""
+msgstr "{track_count} các bản nhạc được xếp hàng.{playlist_name}"
 
