@@ -54,6 +54,7 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
         self.bot = bot
         self.cache: dict[str, Query] = {}
         self.ready_event = asyncio.Event()
+        self.__load_locals_task: asyncio.Task | None = None
 
     @staticmethod
     def _filter_is_folder_alphabetical(x: list[Query]) -> tuple[int, str]:
@@ -76,9 +77,30 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
         extracted: typing.Iterable[tuple[str, Query]] = heapq.nsmallest(len(temp.items()), temp.items(), key=self._filter_is_folder_alphabetical)  # type: ignore
         self.cache = dict(extracted)
 
+    def __load_local_files(self):
+        self.__load_locals_task = asyncio.create_task(
+            self.pylav.get_all_tracks_for_queries(
+                *self.cache.values(), partial=False, enqueue=False, requester=self.bot.user, player=None
+            )
+        )
+        self.__load_locals_task.add_done_callback(self.__load_local_files_done_callback)
+        self.__load_locals_task.set_name("Load Local Files Task")
+
+    @staticmethod
+    def __load_local_files_done_callback(task: asyncio.Task) -> None:
+        if (exc := task.exception()) is not None:
+            name = task.get_name()
+            LOGGER.warning("%s encountered an exception!", name)
+            LOGGER.debug("%s encountered an exception!", name, exc_info=exc)
+
     async def initialize(self):
         await self._update_cache()
+        self.__load_local_files()
         self.ready_event.set()
+
+    async def cog_unload(self) -> None:
+        if self.__load_locals_task is not None:
+            self.__load_locals_task.cancel()
 
     async def cog_check(self, ctx: PyLavContext):
         return bool(self.ready_event.is_set())
