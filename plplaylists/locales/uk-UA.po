@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2023-01-12 20:08+0000\n"
-"PO-Revision-Date: 2023-01-21 20:02\n"
+"Project-Id-Version: pylav\n"
+"POT-Creation-Date: 2023-01-31 19:44+0000\n"
+"PO-Revision-Date: 2023-01-31 19:45\n"
 "Last-Translator: \n"
 "Language-Team: Ukrainian\n"
 "MIME-Version: 1.0\n"
@@ -10,30 +10,30 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: redgettext 3.4.2\n"
 "Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
-"X-Crowdin-Project: pylavcogs\n"
-"X-Crowdin-Project-ID: 535246\n"
+"X-Crowdin-Project: pylav\n"
+"X-Crowdin-Project-ID: 535244\n"
 "X-Crowdin-Language: uk\n"
-"X-Crowdin-File: /plplaylists/locales/messages.pot\n"
-"X-Crowdin-File-ID: 666\n"
+"X-Crowdin-File: /cogs/plplaylists/locales/%locale%.po\n"
+"X-Crowdin-File-ID: 1163\n"
 "Language: uk_UA\n"
 
 #: plplaylists/cog.py:47
 #, docstring
 msgid "PyLav playlist management commands"
-msgstr "Команди керування плейлістом PyLav"
+msgstr ""
 
 #: plplaylists/cog.py:55
 msgid "Control PyLav playlists"
-msgstr "Контрольні плейлісти PyLav"
+msgstr ""
 
 #: plplaylists/cog.py:77
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies"
-msgstr "Показати версію Кога і це pyLv залежності"
+msgstr ""
 
 #: plplaylists/cog.py:92
 msgid "Library/Cog"
-msgstr "Бібліотека/Ког"
+msgstr ""
 
 #: plplaylists/cog.py:93
 msgid "Version"
@@ -41,7 +41,7 @@ msgstr "Версія"
 
 #: plplaylists/cog.py:130
 msgid "Let's create a playlist!"
-msgstr "Створімо плейліст!"
+msgstr ""
 
 #: plplaylists/cog.py:131
 msgid "(**1**) - Apply changes to playlist.\n"
@@ -50,47 +50,41 @@ msgid "(**1**) - Apply changes to playlist.\n"
 "(**4**) - Link this playlist to an existing playlist/album.\n"
 "(**5**) - Add all tracks from the queue to the playlist.\n\n"
 "If you want the playlist name to be as the original playlist simply set the URL but no name.\n\n"
-msgstr "(**1**) - Застосувати зміни до плейлісту.\n"
-"(**2**) - Скасувати будь-які внесені зміни.\n"
-"(**3**) - Додати назву до плейлісту.\n"
-"(**4**) - Пов’язати цей плейліст з існуючим плейлістом/альбомом.\n"
-"(**5**) - Додати всі пісні з черги до плейлісту. Якщо ви хочете, щоб назва плейлісту відповідала оригінальному плейлісту, просто вкажіть URL-адресу, але без назви."
+msgstr ""
 
 #: plplaylists/cog.py:165
 msgid "Playlist not created"
-msgstr "Плейліст не створено"
+msgstr ""
 
 #: plplaylists/cog.py:166
 msgid "No tracks were provided in time."
-msgstr "Вчасно не надано пісень."
+msgstr ""
 
 #: plplaylists/cog.py:179
 msgid "Playlist created"
-msgstr "Список відтворення створено"
+msgstr ""
 
 #: plplaylists/cog.py:180
 msgid "Name: `{name}`\n"
 "ID: `{id}`\n"
 "Tracks: `{track_count}`"
-msgstr "Назва: `{name}`\n"
-"ID: `{id}`\n"
-"Пісні: `{track_count}`"
+msgstr ""
 
 #: plplaylists/cog.py:204
 msgid "You have no playlists"
-msgstr "У вас немає списків відтворення"
+msgstr ""
 
 #: plplaylists/cog.py:246 plplaylists/cog.py:607
 msgid "Nothing to save"
-msgstr "Нічого зберігати"
+msgstr ""
 
 #: plplaylists/cog.py:247 plplaylists/cog.py:608
 msgid "There is nothing in the queue to save"
-msgstr "Немає нічого в черзі для збереження"
+msgstr ""
 
 #: plplaylists/cog.py:284 plplaylists/cog.py:545 plplaylists/cog.py:625
 msgid "{user}, playlist {playlist_name} cannot be managed by yourself"
-msgstr "{user}, список відтворення {playlist_name} не можна керувати самостійно"
+msgstr ""
 
 #: plplaylists/cog.py:293
 msgid "(**1**){space} - Apply changes to playlist.\n"
@@ -113,26 +107,7 @@ msgid "(**1**){space} - Apply changes to playlist.\n"
 "The clear button will always be run first before any other operations.\n"
 "The URL button will always run last - Linking a playlist via the URL will overwrite any tracks added or removed to this playlist.\n\n"
 "If you interact with a button multiple times other than the add/remove buttons only the last interaction will take effect.\n\n\n"
-msgstr "(**1**){space} - Застосувати зміни до списку відтворення.\n"
-"(**2**){space} - Скасування всіх внесених змін та закриття меню.\n"
-"(**3**){space} - Видалити цей список відтворення.\n"
-"(**4**){space} - Видалити всі композиції з цього плейліста.\n"
-"(**5**){space} - Оновити список відтворення з останніми композиціями.\n"
-"Будь ласка, зверніть увагу, що ця дія ігноруватиме будь-які додані пісні/вилучені через це меню.\n"
-"(**6**){space} - Змінити назву плейліста.\n"
-"(**7**){space} - Зв'язати цей список відтворення з існуючим плейлістом/альбомом.\n"
-"(**8**){space} - Додати запит до цього списку відтворення.\n"
-"(**9**){space} - Видалити запит з цього плейліста.\n"
-"(**10**) - Завантажити файл плейліста.\n"
-"(**11**) - Додати поточний список відтворення до черги.\n"
-"(**12**) - Показати композиції в поточному списку відтворення.\n"
-"(**13**) - Додати треки з черги до цього списку відтворення.\n"
-"(**14**) - Видалити повторювані записи у списку відтворення.\n\n"
-"Кнопки додавання/видалення треку можуть використовуватись кілька разів для додавання/видалення кількох треків та списків відтворення за один раз.\n\n"
-"запити - це все, що відтворюється командою гри - будь-який запит може бути використаний кнопками додавання/видалення\n\n"
-"кнопки \"Чітка\" завжди буде запускатися першими до будь-яких інших операцій.\n"
-"Кнопка URL завжди запуститься останньою - посилання на плейліст через URL перезапише будь-які додані чи вилучені до цього списку відтворення.\n\n"
-"якщо ви взаємодієте з кнопкою кілька разів, окрім кнопки Додати/вилучення, лише остання взаємодія набуде чинності.\n\n\n"
+msgstr ""
 
 #: plplaylists/cog.py:319
 msgid "(**1**) - Close the menu.\n"
@@ -140,11 +115,7 @@ msgid "(**1**) - Close the menu.\n"
 "(**3**) - Download the playlist file.\n"
 "(**4**) - Add current playlist to the queue.\n"
 "(**5**) - Show tracks in current playlist.\n\n\n"
-msgstr "(**1**) - Закрити меню.\n"
-"(**2**) - Оновити список відтворення з останніми треками.\n"
-"(**3**) - Завантажити файл плейлиста.\n"
-"(**4**) - Додати поточний список відтворення до черги.\n"
-"(**5**) - Показати композиції в поточному списку відтворення\n\n\n"
+msgstr ""
 
 #: plplaylists/cog.py:327
 msgid "**__Currently managing__**:\n"
@@ -153,20 +124,15 @@ msgid "**__Currently managing__**:\n"
 "**Author**:{space}{space}{author}\n"
 "**Tracks**:{space}{space}{space}{tracks} tracks\n"
 "**URL**:{space}{space}{space}{space}{space}{url}\n"
-msgstr "**__Наразі керуюча__**:\n"
-"**Назва**:{space}{space}{space}{playlist_name}\n"
-"**Копія**:{space}{space}{space}{scope}\n"
-"**Автор**:{space}{space}{author}\n"
-"**Пісні**:{space}{space}{space}{tracks} пісень\n"
-"**URL**:{space}{space}{space}{space}{space}{url}\n"
+msgstr ""
 
 #: plplaylists/cog.py:345
 msgid "Let's manage: {playlist_name}"
-msgstr "Здійснимо керування: {playlist_name}"
+msgstr ""
 
 #: plplaylists/cog.py:347
 msgid "Let's take a look at: {playlist_name}"
-msgstr "Давайте розглянемо на: {playlist_name}"
+msgstr ""
 
 #: plplaylists/cog.py:354
 msgid "N/A"
@@ -174,21 +140,20 @@ msgstr "Н/А"
 
 #: plplaylists/cog.py:386 plplaylists/cog.py:555
 msgid "Playlist deleted"
-msgstr "Список відтворення видалено"
+msgstr ""
 
 #: plplaylists/cog.py:388 plplaylists/cog.py:557
 msgid "{user}, playlist {playlist_name} has been deleted"
-msgstr "{user}, список відтворення {playlist_name} було видалено"
+msgstr ""
 
 #: plplaylists/cog.py:438
 msgid "Playlist **{playlist_name}** could not be updated with URL: <{url}>"
-msgstr "Список відтворення**{playlist_name}** не вдалося оновити за допомогою URL: <{url}>"
+msgstr ""
 
 #: plplaylists/cog.py:473
 msgid "\n"
 "{track_count} {track_plural} removed from the playlist"
-msgstr "\n"
-"{track_count} {track_plural} видалено зі списку відтворення"
+msgstr ""
 
 #: plplaylists/cog.py:474 plplaylists/cog.py:478 plplaylists/cog.py:644
 msgid "track"
@@ -201,66 +166,63 @@ msgstr "композиції"
 #: plplaylists/cog.py:477 plplaylists/cog.py:643
 msgid "\n"
 "{track_count} {track_plural} added to the playlist"
-msgstr "\n"
-"{track_count} {track_plural} додано до списку відтворення"
+msgstr ""
 
 #: plplaylists/cog.py:483 plplaylists/cog.py:650
 msgid "Playlist updated"
-msgstr "Список відтворення оновлено"
+msgstr ""
 
 #: plplaylists/cog.py:484 plplaylists/cog.py:651
 msgid "{user}, playlist {playlist_name} has been updated.{extras}"
-msgstr "{user}, список відтворення {playlist_name} було оновлено.{extras}"
+msgstr ""
 
 #: plplaylists/cog.py:496 plplaylists/cog.py:664
 msgid "Playlist unchanged"
-msgstr "Список відтворення не змінено"
+msgstr ""
 
 #: plplaylists/cog.py:497 plplaylists/cog.py:665
 msgid "{user}, playlist {playlist_name} has not been updated"
-msgstr "{user}, список відтворення {playlist_name} не оновлено"
+msgstr ""
 
 #: plplaylists/cog.py:693
 msgid "You must either provide a URL or attach a playlist file to upload a playlist"
-msgstr "Ви повинні вказати URL або додати файл плейлісту для завантаження списку відтворення"
+msgstr ""
 
 #: plplaylists/cog.py:705
 msgid "No valid playlist file provided"
-msgstr "Не вказано коректний файл плейлиста"
+msgstr ""
 
 #: plplaylists/cog.py:714
 msgid "Multiple playlist files provided - Currently only 1 per message is allowed"
-msgstr "Надано декілька файлів плейлисту - в даний час лише 1 на повідомлення"
+msgstr ""
 
 #: plplaylists/cog.py:731
 msgid "Failed to save any of the requested playlists"
-msgstr "Не вдалося зберегти жодного із запитаних списків відтворення"
+msgstr ""
 
 #: plplaylists/cog.py:740
 msgid "Failed to save the following playlists:\n"
 "{invalid_playlists}"
-msgstr "Не вдалося зберегти наступні плейлісти:\n"
-"{invalid_playlists}"
+msgstr ""
 
 #: plplaylists/cog.py:749
 msgid "Successfully saved the following playlists:\n"
 "{saved_playlists}"
-msgstr "Успішно збережено наступні плейлісти:\n"
-"{saved_playlists}"
+msgstr ""
 
 #: plplaylists/cog.py:774
 msgid "You must be in a voice channel to allow me to connect"
-msgstr "Ви повинні бути в голосовому каналі, щоб дозволити мені підключитися"
+msgstr ""
 
 #: plplaylists/cog.py:782
 msgid "I don't have permission to connect or speak in {channel}"
-msgstr "У мене немає дозволу на додавання контактів або говорити в {channel}"
+msgstr ""
 
 #: plplaylists/cog.py:812
 msgid "Playlist"
-msgstr "Плейліст"
+msgstr ""
 
 #: plplaylists/cog.py:817
 msgid "{track_count} tracks enqueued.{playlist_name}"
-msgstr "{track_count} треків в черзі.{playlist_name}"
+msgstr ""
 

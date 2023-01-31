@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: pylavcogs\n"
-"POT-Creation-Date: 2023-01-23 21:08+0000\n"
-"PO-Revision-Date: 2023-01-23 21:08\n"
+"Project-Id-Version: pylav\n"
+"POT-Creation-Date: 2023-01-31 19:44+0000\n"
+"PO-Revision-Date: 2023-01-31 19:45\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese, Brazilian\n"
 "MIME-Version: 1.0\n"
@@ -10,17 +10,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: redgettext 3.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: pylavcogs\n"
-"X-Crowdin-Project-ID: 535246\n"
+"X-Crowdin-Project: pylav\n"
+"X-Crowdin-Project-ID: 535244\n"
 "X-Crowdin-Language: pt-BR\n"
-"X-Crowdin-File: /audio/locales/messages.pot\n"
-"X-Crowdin-File-ID: 544\n"
+"X-Crowdin-File: /cogs/audio/locales/%locale%.po\n"
+"X-Crowdin-File-ID: 1115\n"
 "Language: pt_BR\n"
 
 #: audio/cog.py:35
 #, docstring
 msgid "A Media player using the PyLav library"
-msgstr "Um reprodutor de mídia usando a biblioteca PyLav"
+msgstr ""
 
 #: audio/config_commands.py:41
 #, docstring
@@ -28,18 +28,15 @@ msgid "Notifies PyLav that a Player is having issues.\n\n"
 "        If enough (50%+ of currently playing players) report issues, PyLav will automatically\n"
 "        switch to a different node or restart the current node where possible.\n"
 "        "
-msgstr "Notifica PyLav que um jogador está tendo problemas.\n\n"
-"        Se houver problemas com o relatório de (50%+ de jogadores jogadores), PyLav irá\n"
-"        automaticamente mudar para um nó diferente ou reiniciar o nó atual quando possível.\n"
-"        "
+msgstr ""
 
 #: audio/config_commands.py:49
 msgid "This server already voted recently, please try again in 10 minutes"
-msgstr "Este servidor já votou recentemente, por favor, tente novamente em 10 minutos"
+msgstr ""
 
 #: audio/config_commands.py:60
 msgid "Thank you for your report"
-msgstr "Obrigado pelo seu relatório"
+msgstr ""
 
 #: audio/config_commands.py:70
 #, docstring
@@ -48,28 +45,24 @@ msgid "Removes a vote for a Player being down.\n\n"
 "        switch to a different node or restart the current node where possible.\n\n"
 "        This command is only useful if you previously voted for a node to be down and it is now back up.\n"
 "        "
-msgstr "Remove uma votação para um jogador ser rejeitado.\n\n"
-"        Se houver problemas com o relatório de (50%+ de jogadores jogadores), PyLav irá\n"
-"        automaticamente mudar para um nó diferente ou reiniciar o nó atual quando possível.\n\n"
-"        Este comando só é útil se você votou anteriormente para que um nó estivesse negativo e agora está de volta.\n"
-"        "
+msgstr ""
 
 #: audio/config_commands.py:80
 msgid "There is no active votes for the current backend"
-msgstr "Não há votos ativos para o back-end atual"
+msgstr ""
 
 #: audio/config_commands.py:90
 msgid "Removed your report"
-msgstr "Seu relatório foi removido"
+msgstr ""
 
 #: audio/config_commands.py:98
 #, docstring
 msgid "Show the version of the Cog and its PyLav dependencies"
-msgstr "Mostrar a versão do Cog e suas dependências PyLav"
+msgstr ""
 
 #: audio/config_commands.py:114
 msgid "Library/Cog"
-msgstr "Biblioteca/Cog"
+msgstr ""
 
 #: audio/config_commands.py:115
 msgid "Version"
@@ -78,35 +71,35 @@ msgstr "Versão"
 #: audio/config_commands.py:129
 #, docstring
 msgid "Global configuration options"
-msgstr "Opções de configuração global"
+msgstr ""
 
 #: audio/config_commands.py:133
 #, docstring
 msgid "Set the maximum volume a server can set"
-msgstr "Definir o volume máximo que um servidor pode definir"
+msgstr ""
 
 #: audio/config_commands.py:141 audio/config_commands.py:578
 #: audio/hybrid_commands.py:627
 msgid "Volume must be less than 1000"
-msgstr "O volume deve ser menor que 1000"
+msgstr ""
 
 #: audio/config_commands.py:149 audio/config_commands.py:586
 #: audio/hybrid_commands.py:635
 msgid "Volume must be greater than 0"
-msgstr "O volume deve ser maior que 0"
+msgstr ""
 
 #: audio/config_commands.py:157 audio/config_commands.py:623
 msgid "Max volume set to {volume}%"
-msgstr "Volume máximo definido para {volume}%"
+msgstr ""
 
 #: audio/config_commands.py:165 audio/config_commands.py:631
 #, docstring
 msgid "Set whether [botname] should deafen itself when playing"
-msgstr "Definir se [botname] deve ser surdo ao tocar"
+msgstr ""
 
 #: audio/config_commands.py:174 audio/config_commands.py:657
 msgid "Deafen set to {deafen}"
-msgstr "Desativar áudio definido para {deafen}"
+msgstr ""
 
 #: audio/config_commands.py:174 audio/config_commands.py:193
 #: audio/config_commands.py:212 audio/config_commands.py:229
@@ -115,7 +108,7 @@ msgstr "Desativar áudio definido para {deafen}"
 #: audio/config_commands.py:719 audio/config_commands.py:753
 #: audio/config_commands.py:817 audio/config_commands.py:880
 msgid "Enabled"
-msgstr "Ativado"
+msgstr ""
 
 #: audio/config_commands.py:174 audio/config_commands.py:193
 #: audio/config_commands.py:212 audio/config_commands.py:229
@@ -124,39 +117,39 @@ msgstr "Ativado"
 #: audio/config_commands.py:719 audio/config_commands.py:753
 #: audio/config_commands.py:817 audio/config_commands.py:880
 msgid "Disabled"
-msgstr "Desabilitado"
+msgstr ""
 
 #: audio/config_commands.py:182
 #, docstring
 msgid "Set whether the a server is allowed to enabled auto shuffle"
-msgstr "Defina se um servidor é permitido para ativar o auto shuffle"
+msgstr ""
 
 #: audio/config_commands.py:192 audio/config_commands.py:686
 msgid "Auto-Shuffle set to {shuffle}"
-msgstr "Misturar automaticamente definido para {shuffle}"
+msgstr ""
 
 #: audio/config_commands.py:202 audio/config_commands.py:696
 #, docstring
 msgid "Set whether [botname] should allow users to shuffle the queue"
-msgstr "Definir se [botname] deve permitir que os usuários embaralhem a fila"
+msgstr ""
 
 #: audio/config_commands.py:212 audio/config_commands.py:719
 msgid "Shuffle set to {shuffle}"
-msgstr "Embaralhar conjunto para {shuffle}"
+msgstr ""
 
 #: audio/config_commands.py:220
 #, docstring
 msgid "Set whether [botname] should automatically play songs when the queue is empty"
-msgstr "Definir se [botname] deve tocar músicas automaticamente quando a fila estiver vazia"
+msgstr ""
 
 #: audio/config_commands.py:229 audio/config_commands.py:753
 msgid "Auto-Play set to {auto}"
-msgstr "Reprodução automática definida para {auto}"
+msgstr ""
 
 #: audio/config_commands.py:237
 #, docstring
 msgid "Set whether [botname] should disconnect from the voice channel"
-msgstr "Defina se [botname] deve se desconectar do canal de voz"
+msgstr ""
 
 #: audio/config_commands.py:247
 #, docstring
@@ -166,21 +159,16 @@ msgid "Set whether [botname] should disconnect from the voice channel when the q
 "            - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr "Defina se [botname] deve desconectar do canal de voz quando a fila estiver vazia.\n\n"
-"        Argumentos:\n"
-"            - `<toggle>`: Se [botname] deve se desconectar do canal de voz quando a fila estiver vazia.\n"
-"            - `<duration>`: Quanto mais tempo após a fila estiver vazia o jogador deve ser desconectado. O padrão é 60 segundos.\n"
-"            Aceita segundos, minutos, horas, dias, semanas (se nenhuma unidade for especificada, a duração é suposto ser dada em segundos)\n"
-"        "
+msgstr ""
 
 #: audio/config_commands.py:267 audio/config_commands.py:307
 #: audio/config_commands.py:811 audio/config_commands.py:873
 msgid " and players will be disconnected after {duration}"
-msgstr " e os jogadores serão desconectados após {duration}"
+msgstr ""
 
 #: audio/config_commands.py:272 audio/config_commands.py:816
 msgid "Disconnect from voice channel when queue is empty set to {empty}{extras}"
-msgstr "Desconectar do canal de voz quando a fila estiver vazia definido como {empty}{extras}"
+msgstr ""
 
 #: audio/config_commands.py:288
 #, docstring
@@ -190,154 +178,149 @@ msgid "Set whether [botname] should disconnect from the voice channel when alone
 "            - `<duration>`: How longer after detecting should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr "Defina se [botname] deve se desconectar do canal de voz quando estiver sozinho.\n\n"
-"        Argumentos:\n"
-"            - `<toggle>`: Se [botname] deve se desconectar do canal de voz quando detectar que está sozinho.\n"
-"            - `<duration>`: Quanto mais tempo depois de detectar caso o jogador seja desconectado. O padrão é 60 segundos.\n"
-"            Aceita segundos, minutos, horas, dias, semanas (se nenhuma unidade for especificada, a duração é suposto ser dada em segundos)\n"
-"        "
+msgstr ""
 
 #: audio/config_commands.py:313 audio/config_commands.py:879
 msgid "Disconnect from voice channel when alone set to {empty}{extras}"
-msgstr "Desconectar do canal de voz sozinho definido para {empty}{extras}"
+msgstr ""
 
 #: audio/config_commands.py:325
 #, docstring
 msgid "Server configuration options"
-msgstr "Opções do Servidor"
+msgstr ""
 
 #: audio/config_commands.py:329
 #, docstring
 msgid "Add, remove or show the DJ roles and users for the server"
-msgstr "Adicionar, remover ou mostrar os papéis e usuários do DJ para o servidor"
+msgstr ""
 
 #: audio/config_commands.py:335
 #, docstring
 msgid "Add DJ roles or users to this server"
-msgstr "Adicionar funções ou usuários do DJ a este servidor"
+msgstr ""
 
 #: audio/config_commands.py:348
 msgid "Added {role} to the DJ roles"
-msgstr "{role} adicionado para os cargos do DJ"
+msgstr ""
 
 #: audio/config_commands.py:351
 msgid "Added {user} to the DJ users"
-msgstr "Adicionado {user} aos usuários do DJ"
+msgstr ""
 
 #: audio/config_commands.py:358
 msgid "Added {roles} to the DJ roles and {users} to the DJ users"
-msgstr "Adicionou {roles} para os cargos do DJ e {users} para os usuários do DJ"
+msgstr ""
 
 #: audio/config_commands.py:365
 msgid "Added {roles} to the DJ roles"
-msgstr "{roles} adicionado para os cargos do DJ"
+msgstr ""
 
 #: audio/config_commands.py:369
 msgid "Added {users} to the DJ users"
-msgstr "Adicionado {users} aos usuários do DJ"
+msgstr ""
 
 #: audio/config_commands.py:384
 #, docstring
 msgid "Remove DJ roles or users in this the server"
-msgstr "Remover funções ou usuários do DJ neste servidor"
+msgstr ""
 
 #: audio/config_commands.py:416
 msgid "Removed {roles} from the DJ roles and {users} from the DJ users, as well as {ints} from both"
-msgstr "Removido {roles} dos cargos do DJ e {users} dos usuários do DJ, bem como {ints} de ambos"
+msgstr ""
 
 #: audio/config_commands.py:424
 msgid "Removed {roles} from the DJ roles and {users} from the DJ users"
-msgstr "Removido {roles} dos cargos do DJ e {users} dos usuários do DJ"
+msgstr ""
 
 #: audio/config_commands.py:429
 msgid "Removed {roles} from the DJ roles"
-msgstr "{roles} removido dos cargos de DJ"
+msgstr ""
 
 #: audio/config_commands.py:433
 msgid "Removed {users} from the DJ users"
-msgstr "Removido {users} dos usuários do DJ"
+msgstr ""
 
 #: audio/config_commands.py:437
 msgid "Removed {ints} from the DJ roles and users"
-msgstr "Removido {ints} das funções e usuários do DJ"
+msgstr ""
 
 #: audio/config_commands.py:452
 msgid "Removed `{id}` from the DJ roles and users"
-msgstr "Removeu `{id}` dos papéis e usuários do DJ"
+msgstr ""
 
 #: audio/config_commands.py:454
 msgid "Removed {role} from the DJ roles"
-msgstr "{role} removido dos cargos de DJ"
+msgstr ""
 
 #: audio/config_commands.py:457
 msgid "Removed {user} from the DJ users"
-msgstr "Removido {user} dos usuários do DJ"
+msgstr ""
 
 #: audio/config_commands.py:463
 #, docstring
 msgid "List the DJ roles and users for the server"
-msgstr "Listar as funções e usuários do DJ para o servidor"
+msgstr ""
 
 #: audio/config_commands.py:514
 msgid "There are no DJ roles or users set in {server}"
-msgstr "Não há cargos de DJ ou usuários definidos em {server}"
+msgstr ""
 
 #: audio/config_commands.py:525 audio/config_commands.py:530
 msgid "DJ Roles"
-msgstr "Cargos de DJ"
+msgstr ""
 
 #: audio/config_commands.py:536 audio/config_commands.py:541
 msgid "DJ Users"
-msgstr "DJ Users"
+msgstr ""
 
 #: audio/config_commands.py:549
 #, docstring
 msgid "Clear the DJ roles and users for the server"
-msgstr "Limpar as funções e usuários do DJ para o servidor"
+msgstr ""
 
 #: audio/config_commands.py:561
 msgid "Cleared the DJ roles and users for {server}"
-msgstr "Foram removidas as funções e usuários do DJ para {server}"
+msgstr ""
 
 #: audio/config_commands.py:569
 #, docstring
 msgid "Set the maximum volume a user can set"
-msgstr "Definir o volume máximo que um usuário pode definir"
+msgstr ""
 
 #: audio/config_commands.py:595 audio/config_commands.py:611
 msgid "Volume must be between 0 and {volume}%"
-msgstr "O volume deve estar entre 0 e {volume}%"
+msgstr ""
 
 #: audio/config_commands.py:640
 msgid "My owner told me to always deafen myself"
-msgstr "Meu dono me disse para sempre me ensurdecer"
+msgstr ""
 
 #: audio/config_commands.py:665
 #, docstring
 msgid "Set whether [botname] should shuffle the queue after every new song added"
-msgstr "Definir se [botname] deve embaralhar a fila depois de cada nova música adicionada"
+msgstr ""
 
 #: audio/config_commands.py:673
 msgid "Auto-Shuffle is globally disabled"
-msgstr "Auto-Misturar está globalmente desativado"
+msgstr ""
 
 #: audio/config_commands.py:706
 msgid "Shuffle is globally disabled"
-msgstr "Aleatório está globalmente desativado"
+msgstr ""
 
 #: audio/config_commands.py:727
 #, docstring
 msgid "Set whether the bot should automatically play songs when the queue is empty"
-msgstr "Definir se o bot deve tocar músicas automaticamente quando a fila está vazia"
+msgstr ""
 
 #: audio/config_commands.py:736
 msgid "Auto-Play is globally disabled"
-msgstr "A reprodução automática está globalmente desativada"
+msgstr ""
 
 #: audio/config_commands.py:761
 #, docstring
 msgid "Set whether the bot should disconnect from the voice channel"
-msgstr "Define se o bot deve desconectar do canal de voz"
+msgstr ""
 
 #: audio/config_commands.py:771
 #, docstring
@@ -349,18 +332,11 @@ msgid "Set whether the bot should disconnect from the voice channel when the que
 "            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be\n"
 "            given in seconds)\n"
 "        "
-msgstr "Defina se o bot deve desconectar do canal de voz quando a fila estiver vazia.\n\n"
-"        Argumentos:\n"
-"            - `<toggle>`: Se o bot deve desligar o canal de voz quando a fila estiver vazia.\n"
-"            - `<duration>`: Quanto mais tempo após a fila estiver vazia o jogador deve ser desconectado. O padrão é 60\n"
-"            segundos.\n"
-"            Aceita segundos, minutos, horas, dias, semanas (se nenhuma unidade for especificada, a duração é assumida ser\n"
-"            dada em segundos)\n"
-"        "
+msgstr ""
 
 #: audio/config_commands.py:789
 msgid "Disconnect when the queue finished is globally enabled and players will be disconnected after {delta}"
-msgstr "Desconectar quando a fila for terminada globalmente ativada e os jogadores serão desconectados após {delta}"
+msgstr ""
 
 #: audio/config_commands.py:832
 #, docstring
@@ -372,75 +348,68 @@ msgid "Set whether the bot should disconnect from the voice channel when alone.\
 "            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be\n"
 "            given in seconds)\n"
 "        "
-msgstr "Define se o bot deve desconectar do canal de voz quando estiver sozinho.\n\n"
-"        Argumentos:\n"
-"            -<toggle>`: Se o bot deve se desconectar do canal de voz quando ele detectar que ele está\n"
-"            sozinho.\n"
-"            - `<duration>`: Quanto mais tempo após a detecção do jogador será desconectado. O padrão é 60 segundos.\n"
-"            Aceita segundos, minutos, horas, dias, semanas (se nenhuma unidade for especificada, a duração é assumida ser\n"
-"            dada em segundos)\n"
-"        "
+msgstr ""
 
 #: audio/config_commands.py:851
 msgid "Disconnect when alone is globally enabled and players will be disconnected after {delta}"
-msgstr "Desconecte quando estiver globalmente ativado e os jogadores serão desconectados após {delta}"
+msgstr ""
 
 #: audio/config_commands.py:889
 #, docstring
 msgid "Sets the Auto-Play playlist"
-msgstr "Define a playlist de reprodução automática"
+msgstr ""
 
 #: audio/config_commands.py:906
 msgid "Auto-Play playlist set to {playlist}"
-msgstr "Playlist de reprodução automática definida para {playlist}"
+msgstr ""
 
 #: audio/config_commands.py:916
 #, docstring
 msgid "Set the channel locks"
-msgstr "Definir os bloqueios dos canais"
+msgstr ""
 
 #: audio/config_commands.py:922
 #, docstring
 msgid "Set the channel lock for commands"
-msgstr "Defina o bloqueio de canal para comandos"
+msgstr ""
 
 #: audio/config_commands.py:937
 msgid "I don't have permission to send message or send embed links or read messages in {channel}"
-msgstr "Não tenho permissão para enviar uma mensagem ou enviar links incorporados ou ler mensagens em {channel}"
+msgstr ""
 
 #: audio/config_commands.py:954
 msgid "I will only listen to commands in {channel}"
-msgstr "Eu só vou ouvir comandos no {channel}"
+msgstr ""
 
 #: audio/config_commands.py:962
 msgid "I will listen to commands in all channels I can see"
-msgstr "Vou ouvir comandos em todos os canais que posso ver"
+msgstr ""
 
 #: audio/config_commands.py:970
 #, docstring
 msgid "Set the channel lock for voice channels"
-msgstr "Defina o bloqueio de canal para canais de voz"
+msgstr ""
 
 #: audio/config_commands.py:982 audio/hybrid_commands.py:107
 #: audio/player_commands.py:144
 msgid "I don't have permission to connect or speak in {channel}"
-msgstr "Eu não tenho permissão para conectar ou falar em {channel}"
+msgstr ""
 
 #: audio/config_commands.py:1000
 msgid "I will only be allowed to join {channel}"
-msgstr "Eu só terei permissão para entrar em {channel}"
+msgstr ""
 
 #: audio/config_commands.py:1007
 msgid "I'm free to join any VC"
-msgstr "Estou livre para participar de qualquer VC"
+msgstr ""
 
 #: audio/context_menus.py:27 audio/context_menus.py:143
 msgid "I can't play songs in DMs"
-msgstr "Não consigo tocar músicas em mensagens diretas"
+msgstr ""
 
 #: audio/context_menus.py:38 audio/context_menus.py:154
 msgid "You need to be a DJ to play tracks"
-msgstr "Você precisa ser um DJ para tocar músicas"
+msgstr ""
 
 #: audio/context_menus.py:55 audio/context_menus.py:169
 msgid "This command is not available in this channel. Please use {channel}"
@@ -448,79 +417,79 @@ msgstr "Esse comando não está disponível neste canal. Por favor, use {channel
 
 #: audio/context_menus.py:83
 msgid "I couldn't find any valid matches in the message"
-msgstr "Não encontrei nenhuma correspondência válida na mensagem"
+msgstr ""
 
 #: audio/context_menus.py:94
 msgid "I found multiple valid matches in the message"
-msgstr "Encontrei várias correspondências válidas na mensagem"
+msgstr ""
 
 #: audio/context_menus.py:103
 msgid "I found a single valid match in the message"
-msgstr "Encontrei uma única correspondência válida na mensagem"
+msgstr ""
 
 #: audio/context_menus.py:186
 msgid "I couldn't find any supported activity {user} is taking part in"
-msgstr "Não foi possível encontrar nenhuma atividade suportada {user} está participando"
+msgstr ""
 
 #: audio/context_menus.py:218
 msgid "Couldn't map {user}'s Apple Music track to a valid query"
-msgstr "Não foi possível mapear a faixa de música de {user}para uma consulta válida"
+msgstr ""
 
 #: audio/context_menus.py:234
 msgid "Couldn't find any tracks matching {query}"
-msgstr "Não foi possível encontrar nenhuma faixa correspondente a {query}"
+msgstr ""
 
 #: audio/context_menus.py:249
 msgid "Couldn't figure out what {user} is listening to"
-msgstr "Não foi possível descobrir o que {user} está ouvindo"
+msgstr ""
 
 #: audio/hybrid_commands.py:83
 msgid "You need to provide a query to play"
-msgstr "Você precisa fornecer uma consulta para executar"
+msgstr ""
 
 #: audio/hybrid_commands.py:97 audio/player_commands.py:134
 msgid "You must be in a voice channel to allow me to connect"
-msgstr "Você deve estar em um canal de voz para me permitir conectar"
+msgstr ""
 
 #: audio/hybrid_commands.py:154 audio/player_commands.py:225
 msgid "{track_count} tracks enqueued"
-msgstr "{track_count} faixas na fila"
+msgstr ""
 
 #: audio/hybrid_commands.py:162 audio/player_commands.py:233
 msgid "{track} enqueued"
-msgstr "{track} enfileirados"
+msgstr ""
 
 #: audio/hybrid_commands.py:173 audio/player_commands.py:244
 msgid "No tracks were found for your query"
-msgstr "Nenhuma faixa foi encontrada para sua consulta"
+msgstr ""
 
 #: audio/hybrid_commands.py:236
 msgid "You need to be in a voice channel if you don't specify which channel I need to connect to"
-msgstr "Você precisa estar em um canal de voz se você não especificar a que canal eu preciso me conectar"
+msgstr ""
 
 #: audio/hybrid_commands.py:248
 msgid "I don't have permission to connect to that channel"
-msgstr "Não tenho permissão para conectar a esse canal"
+msgstr ""
 
 #: audio/hybrid_commands.py:252
 msgid "I don't have permission to speak in {channel}"
-msgstr "Eu não tenho permissão para falar em {channel}"
+msgstr ""
 
 #: audio/hybrid_commands.py:255
 msgid "I don't have permission to connect to {channel}"
-msgstr "Não tenho permissão para me conectar a {channel}"
+msgstr ""
 
 #: audio/hybrid_commands.py:268
 msgid "You don't have permission to connect to {channel}"
-msgstr "Você não tem permissão para se conectar a {channel}"
+msgstr ""
 
 #: audio/hybrid_commands.py:285
 msgid "I'm forced to only join {channel}"
-msgstr "Sou forçado a só ingressar em {channel}"
+msgstr ""
 
 #: audio/hybrid_commands.py:293
 msgid "Connected to {channel}"
-msgstr "Conectado a {channel}"
+msgstr ""
 
 #: audio/hybrid_commands.py:313 audio/hybrid_commands.py:343
 #: audio/hybrid_commands.py:383 audio/hybrid_commands.py:417
@@ -529,16 +498,16 @@ msgstr "Conectado a {channel}"
 #: audio/hybrid_commands.py:587 audio/hybrid_commands.py:642
 #: audio/hybrid_commands.py:686 audio/hybrid_commands.py:787
 msgid "No player detected"
-msgstr "Nenhum jogador detectado"
+msgstr ""
 
 #: audio/hybrid_commands.py:320 audio/hybrid_commands.py:350
 #: audio/hybrid_commands.py:390
 msgid "Player is not currently playing anything"
-msgstr "Jogador não está jogando nada"
+msgstr ""
 
 #: audio/hybrid_commands.py:358
 msgid "Skipped - {track}"
-msgstr "Ignorado - {track}"
+msgstr ""
 
 #: audio/hybrid_commands.py:397
 msgid "Player stopped"
@@ -546,134 +515,133 @@ msgstr "Reprodutor interrompido"
 
 #: audio/hybrid_commands.py:425
 msgid "Disconnected from {channel}"
-msgstr "Desconectado de {channel}"
+msgstr ""
 
 #: audio/hybrid_commands.py:477
 msgid "There is nothing in the queue"
-msgstr "Não há nada na fila"
+msgstr ""
 
 #: audio/hybrid_commands.py:485
 msgid "You are not allowed to shuffle the queue"
-msgstr "Você não tem permissão para embaralhar a fila"
+msgstr ""
 
 #: audio/hybrid_commands.py:493
 msgid "{queue_size} tracks shuffled"
-msgstr "{queue_size} faixas embaralhadas"
+msgstr ""
 
 #: audio/hybrid_commands.py:525
 msgid "Repeating the queue"
-msgstr "Repetindo a fila"
+msgstr ""
 
 #: audio/hybrid_commands.py:528
 msgid "Repeating disabled"
-msgstr "Repetição desabilitada"
+msgstr ""
 
 #: audio/hybrid_commands.py:531
 msgid "Repeating {track}"
-msgstr "Repetindo {track}"
+msgstr ""
 
 #: audio/hybrid_commands.py:534
 msgid "current track"
-msgstr "faixa atual"
+msgstr ""
 
 #: audio/hybrid_commands.py:558
 msgid "Player already paused, did you mean to run `/resume`"
-msgstr "Jogador já pausado, você quis executar `/resume`"
+msgstr ""
 
 #: audio/hybrid_commands.py:560
 msgid "Player already paused, did you mean to run `{prefix}{command}`"
-msgstr "Player já pausado, você quis executar `{prefix}{command}`"
+msgstr ""
 
 #: audio/hybrid_commands.py:571
 msgid "Player paused"
-msgstr "Player pausado"
+msgstr ""
 
 #: audio/hybrid_commands.py:593
 msgid "Player already resumed, did you mean to run `/pause`"
-msgstr "Jogador já retomado, você quis executar `/pause`"
+msgstr ""
 
 #: audio/hybrid_commands.py:595
 msgid "Player already resumed, did you mean to run `{prefix}{command}`"
-msgstr "Jogador já retomado, você quis executar `{prefix}{command}`"
+msgstr ""
 
 #: audio/hybrid_commands.py:606
 msgid "Player resumed"
-msgstr "Jogador retomado"
+msgstr ""
 
 #: audio/hybrid_commands.py:650
 msgid "Volume cannot be higher than {max_volume}"
-msgstr "O volume não pode ser maior que {max_volume}"
+msgstr ""
 
 #: audio/hybrid_commands.py:659 audio/utility_commands.py:62
 msgid "Player volume set to {volume}%"
-msgstr "Volume do jogador definido para {volume}%"
+msgstr ""
 
 #: audio/hybrid_commands.py:693
 msgid "Nothing playing"
-msgstr "Nada reproduzindo"
+msgstr "Nada em reprodução"
 
 #: audio/hybrid_commands.py:702 audio/hybrid_commands.py:711
 msgid "Unable to seek track"
-msgstr "Não foi possível procurar faixa"
+msgstr ""
 
 #: audio/hybrid_commands.py:703
 msgid "Can't seek on a stream"
-msgstr "Não é possível procurar numa transmissão"
+msgstr ""
 
 #: audio/hybrid_commands.py:720
 msgid "Cannot seek when the player is paused"
-msgstr "Não pode procurar quando o jogador estiver pausado"
+msgstr ""
 
 #: audio/hybrid_commands.py:733
 msgid "Moved {seconds}s to 00:00:00"
-msgstr "{seconds}s foram movidos para 00:00"
+msgstr ""
 
 #: audio/hybrid_commands.py:740
 msgid "Moved {seconds}s to {time}"
-msgstr "{seconds}s movidos para {time}"
+msgstr ""
 
 #: audio/hybrid_commands.py:761
 msgid "Moved to {time}"
-msgstr "Movido para {time}"
+msgstr ""
 
 #: audio/hybrid_commands.py:795
 msgid "No previous in player history"
-msgstr "Não há anteriores no histórico do jogador"
+msgstr ""
 
 #: audio/hybrid_commands.py:803
 msgid "Playing previous track: {track}"
-msgstr "Reproduzindo a faixa anterior: {track}"
+msgstr ""
 
 #: audio/player_commands.py:30
 msgid "Plays the specified track in the queue"
-msgstr "Reproduz a faixa especificada na fila"
+msgstr ""
 
 #: audio/player_commands.py:50 audio/player_commands.py:269
 msgid "Queue is empty"
-msgstr "Fila está vazia"
+msgstr ""
 
 #: audio/player_commands.py:59 audio/player_commands.py:282
 msgid "Track index must be between 1 and {size}"
-msgstr "O índice da faixa deve estar entre 1 e {size}"
+msgstr ""
 
 #: audio/player_commands.py:75 audio/player_commands.py:295
 msgid "There is no track in position {position}"
-msgstr "Não há nenhuma faixa na posição {position}"
+msgstr ""
 
 #: audio/player_commands.py:85
 msgid "{track} will play after {current} finishes ({eta})"
-msgstr "{track} jogará após {current} terminar ({eta})"
+msgstr ""
 
 #: audio/player_commands.py:103
 msgid "{track} will start now\n"
 "{current} has been skipped"
-msgstr "{track} começará agora\n"
-"{current} foi ignorado"
+msgstr ""
 
 #: audio/player_commands.py:121
 #, docstring
 msgid "Enqueue a track at the top of the queue"
-msgstr "Enfileirar uma faixa no topo da fila"
+msgstr ""
 
 #: audio/player_commands.py:254
 #, docstring
@@ -681,18 +649,15 @@ msgid "\n"
 "        Remove the specified track from the queue.\n\n"
 "        If you specify the `remove_duplicates` argument, all tracks that are the same as your URL or the index track will be removed.\n"
 "        "
-msgstr "\n"
-"        Remova a faixa especificada da fila.\n\n"
-"        Se você especificar o argumento `remove_duplicates`, todas as faixas que são iguais à sua URL ou faixa de índice serão removidas.\n"
-"        "
+msgstr ""
 
 #: audio/player_commands.py:325
 msgid "{track} not found in queue"
-msgstr "{track} não foi encontrado na fila"
+msgstr ""
 
 #: audio/player_commands.py:335
 msgid "Removed {times} {entry_plural} of {track} from the queue"
-msgstr "Removido {times} {entry_plural} de {track} da fila"
+msgstr ""
 
 #: audio/player_commands.py:338
 msgid "entry"
@@ -705,29 +670,29 @@ msgstr "referências"
 #: audio/slash_commands.py:47
 #, docstring
 msgid "Search for a track then play the selected response"
-msgstr "Procure por uma faixa, em seguida, reproduza a resposta selecionada"
+msgstr ""
 
 #: audio/slash_commands.py:53
 msgid "You haven't selected something to play"
-msgstr "Você não selecionou nada para jogar"
+msgstr ""
 
 #: audio/slash_commands.py:105
 msgid "Searching {service}"
-msgstr "Buscando {service}"
+msgstr ""
 
 #: audio/slash_commands.py:121 audio/slash_commands.py:132
 msgid "No results found on {service}"
-msgstr "Nenhum resultado encontrado em {service}"
+msgstr ""
 
 #: audio/utility_commands.py:32
 msgid "Not connected to a voice channel"
-msgstr "Não está conectado a um canal de voz"
+msgstr "Não conectado a um canal de voz"
 
 #: audio/utility_commands.py:43
 msgid "Volume limit reached, player volume set to {volume}%"
-msgstr "Limite de volume atingido, volume do jogador definido como {volume}%"
+msgstr ""
 
 #: audio/utility_commands.py:54
 msgid "Minimum volume reached, player volume set to 0%"
-msgstr "Volume mínimo atingido, volume do tocador definido como 0%"
+msgstr ""
 
