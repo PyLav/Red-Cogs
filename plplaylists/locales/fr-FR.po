@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:26\n"
+"PO-Revision-Date: 2023-01-31 23:42\n"
 "Last-Translator: \n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -20,28 +20,28 @@ msgstr ""
 #: plplaylists/cog.py:47
 #, docstring
 msgid "PyLav playlist management commands"
-msgstr ""
+msgstr "Commandes de gestion de playlist PyLav"
 
 #: plplaylists/cog.py:55
 msgid "Control PyLav playlists"
-msgstr ""
+msgstr "Contrôler les playlists PyLav"
 
 #: plplaylists/cog.py:77
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies"
-msgstr ""
+msgstr "Afficher la version du rouage et ses dépendances PyLav"
 
 #: plplaylists/cog.py:92
 msgid "Library/Cog"
-msgstr ""
+msgstr "Bibliothèque/Engrenage"
 
 #: plplaylists/cog.py:93
 msgid "Version"
-msgstr ""
+msgstr "Version"
 
 #: plplaylists/cog.py:130
 msgid "Let's create a playlist!"
-msgstr ""
+msgstr "Créons une playlist !"
 
 #: plplaylists/cog.py:131
 msgid "(**1**) - Apply changes to playlist.\n"
@@ -50,41 +50,48 @@ msgid "(**1**) - Apply changes to playlist.\n"
 "(**4**) - Link this playlist to an existing playlist/album.\n"
 "(**5**) - Add all tracks from the queue to the playlist.\n\n"
 "If you want the playlist name to be as the original playlist simply set the URL but no name.\n\n"
-msgstr ""
+msgstr "(**1**) - Appliquer les modifications à la playlist.\n"
+"(**2**) - Annule les modifications apportées.\n"
+"(**3**) - Ajoutez un nom à la playlist.\n"
+"(**4**) - Lier cette playlist à une playlist/album existant.\n"
+"(**5**) - Ajoutez toutes les pistes de la file d’attente à la liste de lecture.\n\n"
+"Si vous souhaitez que le nom de la liste de lecture soit comme la liste de lecture d’origine, définissez simplement l’URL mais pas le nom.\n\n"
 
 #: plplaylists/cog.py:165
 msgid "Playlist not created"
-msgstr ""
+msgstr "Liste de lecture non créée"
 
 #: plplaylists/cog.py:166
 msgid "No tracks were provided in time."
-msgstr ""
+msgstr "Aucune trace n’a été fournie à temps."
 
 #: plplaylists/cog.py:179
 msgid "Playlist created"
-msgstr ""
+msgstr "Liste de lecture créée"
 
 #: plplaylists/cog.py:180
 msgid "Name: `{name}`\n"
 "ID: `{id}`\n"
 "Tracks: `{track_count}`"
-msgstr ""
+msgstr "Nom: '{name}`\n"
+"ID: '{id}`\n"
+"Pistes: '{track_count}`"
 
 #: plplaylists/cog.py:204
 msgid "You have no playlists"
-msgstr ""
+msgstr "Vous n’avez pas de playlists"
 
 #: plplaylists/cog.py:246 plplaylists/cog.py:607
 msgid "Nothing to save"
-msgstr ""
+msgstr "Rien à sauver"
 
 #: plplaylists/cog.py:247 plplaylists/cog.py:608
 msgid "There is nothing in the queue to save"
-msgstr ""
+msgstr "Il n’y a rien dans la file d’attente à enregistrer"
 
 #: plplaylists/cog.py:284 plplaylists/cog.py:545 plplaylists/cog.py:625
 msgid "{user}, playlist {playlist_name} cannot be managed by yourself"
-msgstr ""
+msgstr "{user}playlist {playlist_name} ne peut pas être géré par vous-même"
 
 #: plplaylists/cog.py:293
 msgid "(**1**){space} - Apply changes to playlist.\n"
@@ -107,7 +114,26 @@ msgid "(**1**){space} - Apply changes to playlist.\n"
 "The clear button will always be run first before any other operations.\n"
 "The URL button will always run last - Linking a playlist via the URL will overwrite any tracks added or removed to this playlist.\n\n"
 "If you interact with a button multiple times other than the add/remove buttons only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - Appliquer les modifications à la liste de lecture.\n"
+"(**2**){space} - Annulez toutes les modifications apportées et fermez le menu.\n"
+"(**3**){space} - Supprimer cette playlist.\n"
+"(**4**){space} - Supprimer toutes les pistes de cette playlist.\n"
+"(**5**){space} - Mettre à jour la playlist avec les dernières pistes.\n"
+"Veuillez noter que cette action ignorera toutes les pistes ajoutées / supprimées via ce menu.\n"
+"(**6**){space} - Changez le nom de la playlist.\n"
+"(**7**){space} - Lier cette playlist à une playlist/album existant.\n"
+"(**8**){space} - Ajouter une requête à cette playlist.\n"
+"(**9**){space} - Supprimer une requête de cette playlist.\n"
+"(**10**) - Télécharger le fichier de playlist.\n"
+"(**11**) - Ajoutez la liste de lecture actuelle à la file d’attente.\n"
+"(**12**) - Afficher les pistes dans la liste de lecture actuelle.\n"
+"(**13**) - Ajoutez des pistes de la file d’attente à cette liste de lecture.\n"
+"(**14**) - Supprimez les entrées en double dans la playlist.\n\n"
+"Les boutons d’ajout/suppression de pistes peuvent être utilisés plusieurs fois pour ajouter/supprimer plusieurs pistes et listes de lecture à la fois.\n\n"
+"Une requête est tout ce qui peut être joué par la commande play - n’importe quelle requête peut être utilisée par les boutons d’ajout/suppression\n\n"
+"Le bouton d’effacement sera toujours exécuté en premier avant toute autre opération.\n"
+"Le bouton URL fonctionnera toujours en dernier - Lier une liste de lecture via l’URL écrasera toutes les pistes ajoutées ou supprimées à cette liste de lecture.\n\n"
+"Si vous interagissez avec un bouton plusieurs fois autres que les boutons d’ajout/suppression, seule la dernière interaction prendra effet.\n\n\n"
 
 #: plplaylists/cog.py:319
 msgid "(**1**) - Close the menu.\n"
@@ -115,7 +141,11 @@ msgid "(**1**) - Close the menu.\n"
 "(**3**) - Download the playlist file.\n"
 "(**4**) - Add current playlist to the queue.\n"
 "(**5**) - Show tracks in current playlist.\n\n\n"
-msgstr ""
+msgstr "(**1**) - Fermez le menu.\n"
+"(**2**) - Mettez à jour la playlist avec les dernières pistes.\n"
+"(**3**) - Télécharger le fichier de playlist.\n"
+"(**4**) - Ajouter la liste de lecture actuelle à la file d’attente.\n"
+"(**5**) - Afficher les pistes dans la liste de lecture actuelle.\n\n\n"
 
 #: plplaylists/cog.py:327
 msgid "**__Currently managing__**:\n"
@@ -124,105 +154,114 @@ msgid "**__Currently managing__**:\n"
 "**Author**:{space}{space}{author}\n"
 "**Tracks**:{space}{space}{space}{tracks} tracks\n"
 "**URL**:{space}{space}{space}{space}{space}{url}\n"
-msgstr ""
+msgstr "**__Currently managing__**:\n"
+"**Nom**:{space}{space}{space}{playlist_name}\n"
+"**Portée**:{space}{space}{space}{scope}\n"
+"**Auteur**:{space}{space}{author}\n"
+"**Traces**:{space}{space}{space}{tracks} traces\n"
+"**URL**:{space}{space}{space}{space}{space}{url}\n"
 
 #: plplaylists/cog.py:345
 msgid "Let's manage: {playlist_name}"
-msgstr ""
+msgstr "Gérons: {playlist_name}"
 
 #: plplaylists/cog.py:347
 msgid "Let's take a look at: {playlist_name}"
-msgstr ""
+msgstr "Jetons un coup d’œil à: {playlist_name}"
 
 #: plplaylists/cog.py:354
 msgid "N/A"
-msgstr ""
+msgstr "N/A"
 
 #: plplaylists/cog.py:386 plplaylists/cog.py:555
 msgid "Playlist deleted"
-msgstr ""
+msgstr "Liste de lecture supprimée"
 
 #: plplaylists/cog.py:388 plplaylists/cog.py:557
 msgid "{user}, playlist {playlist_name} has been deleted"
-msgstr ""
+msgstr "{user}playlist {playlist_name} a été supprimé"
 
 #: plplaylists/cog.py:438
 msgid "Playlist **{playlist_name}** could not be updated with URL: <{url}>"
-msgstr ""
+msgstr "Playlist**{playlist_name}** n’a pas pu être mis à jour avec l’URL : <{url}>"
 
 #: plplaylists/cog.py:473
 msgid "\n"
 "{track_count} {track_plural} removed from the playlist"
-msgstr ""
+msgstr "\n"
+"{track_count} {track_plural} supprimé de la playlist"
 
 #: plplaylists/cog.py:474 plplaylists/cog.py:478 plplaylists/cog.py:644
 msgid "track"
-msgstr ""
+msgstr "piste"
 
 #: plplaylists/cog.py:474 plplaylists/cog.py:478 plplaylists/cog.py:644
 msgid "tracks"
-msgstr ""
+msgstr "traces"
 
 #: plplaylists/cog.py:477 plplaylists/cog.py:643
 msgid "\n"
 "{track_count} {track_plural} added to the playlist"
-msgstr ""
+msgstr "\n"
+"{track_count} {track_plural} ajouté à la playlist"
 
 #: plplaylists/cog.py:483 plplaylists/cog.py:650
 msgid "Playlist updated"
-msgstr ""
+msgstr "Playlist mise à jour"
 
 #: plplaylists/cog.py:484 plplaylists/cog.py:651
 msgid "{user}, playlist {playlist_name} has been updated.{extras}"
-msgstr ""
+msgstr "{user}playlist {playlist_name} a été mis à jour.{extras}"
 
 #: plplaylists/cog.py:496 plplaylists/cog.py:664
 msgid "Playlist unchanged"
-msgstr ""
+msgstr "Liste de lecture inchangée"
 
 #: plplaylists/cog.py:497 plplaylists/cog.py:665
 msgid "{user}, playlist {playlist_name} has not been updated"
-msgstr ""
+msgstr "{user}playlist {playlist_name} n’a pas été mis à jour"
 
 #: plplaylists/cog.py:693
 msgid "You must either provide a URL or attach a playlist file to upload a playlist"
-msgstr ""
+msgstr "Vous devez fournir une URL ou joindre un fichier de playlist pour télécharger une playlist"
 
 #: plplaylists/cog.py:705
 msgid "No valid playlist file provided"
-msgstr ""
+msgstr "Aucun fichier de playlist valide fourni"
 
 #: plplaylists/cog.py:714
 msgid "Multiple playlist files provided - Currently only 1 per message is allowed"
-msgstr ""
+msgstr "Plusieurs fichiers de playlist fournis - Actuellement, seulement 1 par message est autorisé"
 
 #: plplaylists/cog.py:731
 msgid "Failed to save any of the requested playlists"
-msgstr ""
+msgstr "Impossible d’enregistrer les listes de lecture demandées"
 
 #: plplaylists/cog.py:740
 msgid "Failed to save the following playlists:\n"
 "{invalid_playlists}"
-msgstr ""
+msgstr "Impossible d’enregistrer les sélections suivantes :\n"
+"{invalid_playlists}"
 
 #: plplaylists/cog.py:749
 msgid "Successfully saved the following playlists:\n"
 "{saved_playlists}"
-msgstr ""
+msgstr "Enregistrement réussi des listes de lecture suivantes :\n"
+"{saved_playlists}"
 
 #: plplaylists/cog.py:774
 msgid "You must be in a voice channel to allow me to connect"
-msgstr ""
+msgstr "Vous devez être dans un canal vocal pour me permettre de me connecter"
 
 #: plplaylists/cog.py:782
 msgid "I don't have permission to connect or speak in {channel}"
-msgstr ""
+msgstr "Je n’ai pas l’autorisation de me connecter ou de parler {channel}"
 
 #: plplaylists/cog.py:812
 msgid "Playlist"
-msgstr ""
+msgstr "Playlist"
 
 #: plplaylists/cog.py:817
 msgid "{track_count} tracks enqueued.{playlist_name}"
-msgstr ""
+msgstr "{track_count} pistes mises en file d’attente.{playlist_name}"
 

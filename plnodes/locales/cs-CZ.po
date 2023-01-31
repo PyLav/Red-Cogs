@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:26\n"
+"PO-Revision-Date: 2023-01-31 23:42\n"
 "Last-Translator: \n"
 "Language-Team: Czech\n"
 "MIME-Version: 1.0\n"
@@ -20,34 +20,34 @@ msgstr ""
 #: plnodes/cog.py:33
 #, docstring
 msgid "Manage the nodes used by PyLav"
-msgstr ""
+msgstr "Správa uzlů používaných PyLav"
 
 #: plnodes/cog.py:44
 #, docstring
 msgid "Configure PyLav Nodes"
-msgstr ""
+msgstr "Konfigurace uzlů PyLav"
 
 #: plnodes/cog.py:48
 #, docstring
 msgid "Show the version of the Cog and its PyLav dependencies"
-msgstr ""
+msgstr "Zobrazení verze ozubeného kola a jeho závislostí PyLav"
 
 #: plnodes/cog.py:64
 msgid "Library/Cog"
-msgstr ""
+msgstr "Knihovna/ozubené kolo"
 
 #: plnodes/cog.py:65
 msgid "Version"
-msgstr ""
+msgstr "Verze"
 
 #: plnodes/cog.py:78
 #, docstring
 msgid "Add a node to PyLav"
-msgstr ""
+msgstr "Přidání uzlu do PyLav"
 
 #: plnodes/cog.py:88
 msgid "Let's add a node to PyLav!"
-msgstr ""
+msgstr "Pojďme přidat uzel do PyLav!"
 
 #: plnodes/cog.py:89
 msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
@@ -61,7 +61,17 @@ msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
 "(**9**){space} - Set the connection timeout.\n"
 "(**10**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - Aplikujte změny a přidejte uzel do PyLav.\n"
+"(**2**){space} - Zrušte všechny provedené změny a zavřete nabídku.\n"
+"(**3**){space} - Přepínat mezi režimy vyhledávání a vyhledáváním a přehráváním.\n"
+"(**4**){space} - Přepínat mezi SSL zapnuto a vypnuto.\n"
+"(**5**){space} - Přidejte název uzlu.\n"
+"(**6**){space} - Přidejte adresu hostitele uzlu.\n"
+"(**7**){space} - Přidejte port, který uzel používá.\n"
+"(**8**){space} - Nastavte heslo pro uzel.\n"
+"(**9**){space} - Nastavte časový limit připojení.\n"
+"(**10**) – Vyberte, které zdroje chcete pro tento uzel zakázat (lze vybrat více zdrojů).\n"
+"Pokud s tlačítkem interagujete vícekrát, projeví se pouze poslední interakce.\n\n\n"
 
 #: plnodes/cog.py:137
 msgid "Added node {name} with the following settings:\n"
@@ -72,38 +82,46 @@ msgid "Added node {name} with the following settings:\n"
 "Search Only: {search_only}\n"
 "SSL: {ssl}\n"
 "Disabled Sources: {disabled_sources}\n"
-msgstr ""
+msgstr "Přidán uzel {name} s následujícím nastavením:\n"
+"Hostitel: {host}\n"
+"Přístav: {port}\n"
+"Heslo: {password}\n"
+"Časový limit obnovení: {resume_timeout}\n"
+"Pouze vyhledávání: {search_only}\n"
+"SSL: {ssl}\n"
+"Zakázané zdroje: {disabled_sources}\n"
 
 #: plnodes/cog.py:168 plnodes/cog.py:175
 msgid "Unable to add this node"
-msgstr ""
+msgstr "Tento uzel nelze přidat"
 
 #: plnodes/cog.py:181
 #, docstring
 msgid "Remove a node from a PyLav instance"
-msgstr ""
+msgstr "Odebrání uzlu z instance PyLav"
 
 #: plnodes/cog.py:193
 msgid "{name} is managed by PyLav and cannot be removed"
-msgstr ""
+msgstr "{name} je spravován PyLav a nelze jej odebrat"
 
 #: plnodes/cog.py:208
 msgid "Removed node {name}.\n\n"
 "{data}"
-msgstr ""
+msgstr "Odstraněný uzel {name}.\n\n"
+"{data}"
 
 #: plnodes/cog.py:216
 msgid "Removed node {name}, a DM was sent to you with the node details in case you wish to re-add it"
-msgstr ""
+msgstr "Odstraněný uzel {name}, DM vám byl zaslán s podrobnostmi o uzlu pro případ, že byste jej chtěli znovu přidat"
 
 #: plnodes/cog.py:226
 #, docstring
 msgid "Manage all nodes in a PyLav instance"
-msgstr ""
+msgstr "Správa všech uzlů v instanci PyLav"
 
 #: plnodes/cog.py:238
 msgid "Let's manage some nodes!"
-msgstr ""
+msgstr "Pojďme spravovat některé uzly!"
 
 #: plnodes/cog.py:239
 msgid "(**1**){space} - Cancel any changes made and close the menu.\n"
@@ -119,15 +137,27 @@ msgid "(**1**){space} - Cancel any changes made and close the menu.\n"
 "(**15**) - Remove this node.\n"
 "(**16**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - Zrušte všechny provedené změny a zavřete nabídku.\n"
+"(**6**){space} - Zobrazit zdroje povolené pro tento uzel.\n"
+"(**7**){space} - Aplikujte změny a přidejte uzel do PyLav.\n"
+"(**8**){space} - Přepínat mezi režimy vyhledávání a vyhledáváním a přehráváním.\n"
+"(**9**){space} - Přepínat mezi SSL zapnuto a vypnuto.\n"
+"(**10**) – Přidejte název uzlu.\n"
+"(**11**) – Přidejte adresu hostitele uzlu.\n"
+"(**12**) – Přidejte port, který uzel používá.\n"
+"(**13**) – Nastavte heslo pro uzel.\n"
+"(**14**) – Nastavte časový limit připojení.\n"
+"(**15**) – Odeberte tento uzel.\n"
+"(**16**) – Vyberte, které zdroje chcete pro tento uzel zakázat (lze vybrat více zdrojů).\n"
+"Pokud s tlačítkem interagujete vícekrát, projeví se pouze poslední interakce.\n\n\n"
 
 #: plnodes/cog.py:268
 msgid "{name} is managed by PyLav and cannot be modified with this command"
-msgstr ""
+msgstr "{name} je spravován pomocí PyLav a nelze jej upravit pomocí tohoto příkazu"
 
 #: plnodes/cog.py:280
 msgid "Removed node {name}"
-msgstr ""
+msgstr "Odstraněný uzel {name}"
 
 #: plnodes/cog.py:316
 msgid "Changed node {name} to the following settings:\n"
@@ -138,14 +168,21 @@ msgid "Changed node {name} to the following settings:\n"
 "Search Only: {search_only}\n"
 "SSL: {ssl}\n"
 "Disabled Sources: {disabled_sources}\n"
-msgstr ""
+msgstr "Změněný uzel {name} na následující nastavení:\n"
+"Hostitel: {host}\n"
+"Přístav: {port}\n"
+"Heslo: {password}\n"
+"Časový limit obnovení: {resume_timeout}\n"
+"Pouze vyhledávání: {search_only}\n"
+"SSL: {ssl}\n"
+"Zakázané zdroje: {disabled_sources}\n"
 
 #: plnodes/cog.py:343
 #, docstring
 msgid "List all nodes used by PyLav"
-msgstr ""
+msgstr "Seznam všech uzlů používaných PyLav"
 
 #: plnodes/cog.py:353
 msgid "No nodes added to PyLav"
-msgstr ""
+msgstr "Do PyLav nebyly přidány žádné uzly"
 

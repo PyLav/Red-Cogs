@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:26\n"
+"PO-Revision-Date: 2023-01-31 23:42\n"
 "Last-Translator: \n"
 "Language-Team: Greek\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: audio/cog.py:35
 #, docstring
 msgid "A Media player using the PyLav library"
-msgstr ""
+msgstr "Ένα πρόγραμμα αναπαραγωγής πολυμέσων που χρησιμοποιεί τη βιβλιοθήκη PyLav"
 
 #: audio/config_commands.py:41
 #, docstring
@@ -28,15 +28,18 @@ msgid "Notifies PyLav that a Player is having issues.\n\n"
 "        If enough (50%+ of currently playing players) report issues, PyLav will automatically\n"
 "        switch to a different node or restart the current node where possible.\n"
 "        "
-msgstr ""
+msgstr "Ειδοποιεί το PyLav ότι ένας παίκτης αντιμετωπίζει προβλήματα.\n\n"
+"        Εάν αρκετοί (50% + των παικτών που παίζουν αυτήν τη στιγμή) αναφέρουν προβλήματα, το PyLav θα αναφέρει αυτόματα\n"
+"        μεταβείτε σε διαφορετικό κόμβο ή επανεκκινήστε τον τρέχοντα κόμβο όπου είναι δυνατόν.\n"
+"        "
 
 #: audio/config_commands.py:49
 msgid "This server already voted recently, please try again in 10 minutes"
-msgstr ""
+msgstr "Αυτός ο διακομιστής έχει ήδη ψηφιστεί πρόσφατα, δοκιμάστε ξανά σε 10 λεπτά"
 
 #: audio/config_commands.py:60
 msgid "Thank you for your report"
-msgstr ""
+msgstr "Σας ευχαριστώ για την έκθεσή σας"
 
 #: audio/config_commands.py:70
 #, docstring
@@ -45,61 +48,65 @@ msgid "Removes a vote for a Player being down.\n\n"
 "        switch to a different node or restart the current node where possible.\n\n"
 "        This command is only useful if you previously voted for a node to be down and it is now back up.\n"
 "        "
-msgstr ""
+msgstr "Αφαιρεί μια ψήφο για έναν παίκτη που είναι εκτός λειτουργίας.\n\n"
+"        Εάν αρκετοί (50% + των παικτών που παίζουν αυτήν τη στιγμή) αναφέρουν προβλήματα, το PyLav θα αναφέρει αυτόματα\n"
+"        μεταβείτε σε διαφορετικό κόμβο ή επανεκκινήστε τον τρέχοντα κόμβο όπου είναι δυνατόν.\n\n"
+"        Αυτή η εντολή είναι χρήσιμη μόνο εάν προηγουμένως ψηφίσατε για να είναι εκτός λειτουργίας ένας κόμβος και τώρα είναι εφεδρικός.\n"
+"        "
 
 #: audio/config_commands.py:80
 msgid "There is no active votes for the current backend"
-msgstr ""
+msgstr "Δεν υπάρχουν ενεργές ψήφοι για το τρέχον backend"
 
 #: audio/config_commands.py:90
 msgid "Removed your report"
-msgstr ""
+msgstr "Καταργήθηκε η αναφορά σας"
 
 #: audio/config_commands.py:98
 #, docstring
 msgid "Show the version of the Cog and its PyLav dependencies"
-msgstr ""
+msgstr "Εμφάνιση της έκδοσης του Cog και των εξαρτήσεών του PyLav"
 
 #: audio/config_commands.py:114
 msgid "Library/Cog"
-msgstr ""
+msgstr "Βιβλιοθήκη/Γρανάζι"
 
 #: audio/config_commands.py:115
 msgid "Version"
-msgstr ""
+msgstr "Εκδοχή"
 
 #: audio/config_commands.py:129
 #, docstring
 msgid "Global configuration options"
-msgstr ""
+msgstr "Καθολικές επιλογές ρύθμισης παραμέτρων"
 
 #: audio/config_commands.py:133
 #, docstring
 msgid "Set the maximum volume a server can set"
-msgstr ""
+msgstr "Ορισμός της μέγιστης έντασης ήχου που μπορεί να ορίσει ένας διακομιστής"
 
 #: audio/config_commands.py:141 audio/config_commands.py:578
 #: audio/hybrid_commands.py:627
 msgid "Volume must be less than 1000"
-msgstr ""
+msgstr "Ο όγκος πρέπει να είναι μικρότερος από 1000"
 
 #: audio/config_commands.py:149 audio/config_commands.py:586
 #: audio/hybrid_commands.py:635
 msgid "Volume must be greater than 0"
-msgstr ""
+msgstr "Ο όγκος πρέπει να είναι μεγαλύτερος από 0"
 
 #: audio/config_commands.py:157 audio/config_commands.py:623
 msgid "Max volume set to {volume}%"
-msgstr ""
+msgstr "Μέγιστη ένταση ήχου ρυθμισμένη σε {volume}%"
 
 #: audio/config_commands.py:165 audio/config_commands.py:631
 #, docstring
 msgid "Set whether [botname] should deafen itself when playing"
-msgstr ""
+msgstr "Ορίστε εάν [botname] θα πρέπει να εκκωφανθεί όταν παίζει"
 
 #: audio/config_commands.py:174 audio/config_commands.py:657
 msgid "Deafen set to {deafen}"
-msgstr ""
+msgstr "Εκκωφαντικός ρυθμισμένος σε {deafen}"
 
 #: audio/config_commands.py:174 audio/config_commands.py:193
 #: audio/config_commands.py:212 audio/config_commands.py:229
@@ -108,7 +115,7 @@ msgstr ""
 #: audio/config_commands.py:719 audio/config_commands.py:753
 #: audio/config_commands.py:817 audio/config_commands.py:880
 msgid "Enabled"
-msgstr ""
+msgstr "Ενεργοποιημένη"
 
 #: audio/config_commands.py:174 audio/config_commands.py:193
 #: audio/config_commands.py:212 audio/config_commands.py:229
@@ -117,39 +124,39 @@ msgstr ""
 #: audio/config_commands.py:719 audio/config_commands.py:753
 #: audio/config_commands.py:817 audio/config_commands.py:880
 msgid "Disabled"
-msgstr ""
+msgstr "Ανάπηρος"
 
 #: audio/config_commands.py:182
 #, docstring
 msgid "Set whether the a server is allowed to enabled auto shuffle"
-msgstr ""
+msgstr "Ορισμός εάν ο διακομιστής θα επιτρέπεται να ενεργοποιεί την αυτόματη τυχαία σειρά"
 
 #: audio/config_commands.py:192 audio/config_commands.py:686
 msgid "Auto-Shuffle set to {shuffle}"
-msgstr ""
+msgstr "Η αυτόματη τυχαία σειρά έχει οριστεί σε {shuffle}"
 
 #: audio/config_commands.py:202 audio/config_commands.py:696
 #, docstring
 msgid "Set whether [botname] should allow users to shuffle the queue"
-msgstr ""
+msgstr "Ορίστε εάν [botname] Θα πρέπει να επιτρέπει στους χρήστες να ανακατεύουν την ουρά"
 
 #: audio/config_commands.py:212 audio/config_commands.py:719
 msgid "Shuffle set to {shuffle}"
-msgstr ""
+msgstr "Η τυχαία σειρά έχει ρυθμιστεί σε {shuffle}"
 
 #: audio/config_commands.py:220
 #, docstring
 msgid "Set whether [botname] should automatically play songs when the queue is empty"
-msgstr ""
+msgstr "Ορίστε εάν [botname] Θα πρέπει να αναπαράγει αυτόματα τραγούδια όταν η ουρά είναι κενή"
 
 #: audio/config_commands.py:229 audio/config_commands.py:753
 msgid "Auto-Play set to {auto}"
-msgstr ""
+msgstr "Η Αυτόματη αναπαραγωγή έχει οριστεί σε {auto}"
 
 #: audio/config_commands.py:237
 #, docstring
 msgid "Set whether [botname] should disconnect from the voice channel"
-msgstr ""
+msgstr "Ορίστε εάν [botname] θα πρέπει να αποσυνδεθεί από το κανάλι φωνής"
 
 #: audio/config_commands.py:247
 #, docstring
@@ -159,16 +166,21 @@ msgid "Set whether [botname] should disconnect from the voice channel when the q
 "            - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Ορίστε εάν [botname] θα πρέπει να αποσυνδεθεί από το κανάλι φωνής όταν η ουρά είναι κενή.\n\n"
+"        Επιχειρήματα:\n"
+"            - `<toggle>«: Κατά πόσον [botname] θα πρέπει να αποσυνδεθεί από το κανάλι φωνής όταν η ουρά είναι κενή.\n"
+"            - `<duration>': Πόσο περισσότερο μετά το άδειασμα της ουράς θα πρέπει να αποσυνδεθεί ο παίκτης. Η προεπιλογή είναι 60 δευτερόλεπτα.\n"
+"            Δέχεται δευτερόλεπτα, λεπτά, ώρες, ημέρες, εβδομάδες (εάν δεν καθορίζεται μονάδα, η διάρκεια θεωρείται ότι δίνεται σε δευτερόλεπτα)\n"
+"        "
 
 #: audio/config_commands.py:267 audio/config_commands.py:307
 #: audio/config_commands.py:811 audio/config_commands.py:873
 msgid " and players will be disconnected after {duration}"
-msgstr ""
+msgstr " και οι παίκτες θα αποσυνδεθούν μετά {duration}"
 
 #: audio/config_commands.py:272 audio/config_commands.py:816
 msgid "Disconnect from voice channel when queue is empty set to {empty}{extras}"
-msgstr ""
+msgstr "Αποσύνδεση από το κανάλι φωνής όταν η ουρά είναι κενή και έχει οριστεί σε {empty}{extras}"
 
 #: audio/config_commands.py:288
 #, docstring
@@ -178,149 +190,154 @@ msgid "Set whether [botname] should disconnect from the voice channel when alone
 "            - `<duration>`: How longer after detecting should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Ορίστε εάν [botname] θα πρέπει να αποσυνδεθεί από το κανάλι φωνής όταν είναι μόνος.\n\n"
+"        Επιχειρήματα:\n"
+"            - `<toggle>«: Κατά πόσον [botname] θα πρέπει να αποσυνδεθεί από το κανάλι φωνής όταν ανιχνεύσει ότι είναι μόνο του.\n"
+"            - `<duration>': Πόσο περισσότερο μετά την ανίχνευση θα πρέπει να αποσυνδεθεί ο παίκτης. Η προεπιλογή είναι 60 δευτερόλεπτα.\n"
+"            Δέχεται δευτερόλεπτα, λεπτά, ώρες, ημέρες, εβδομάδες (εάν δεν καθορίζεται μονάδα, η διάρκεια θεωρείται ότι δίνεται σε δευτερόλεπτα)\n"
+"        "
 
 #: audio/config_commands.py:313 audio/config_commands.py:879
 msgid "Disconnect from voice channel when alone set to {empty}{extras}"
-msgstr ""
+msgstr "Αποσύνδεση από το κανάλι φωνής όταν μόνος του έχει ρυθμιστεί σε {empty}{extras}"
 
 #: audio/config_commands.py:325
 #, docstring
 msgid "Server configuration options"
-msgstr ""
+msgstr "Επιλογές διαμόρφωσης διακομιστή"
 
 #: audio/config_commands.py:329
 #, docstring
 msgid "Add, remove or show the DJ roles and users for the server"
-msgstr ""
+msgstr "Προσθήκη, κατάργηση ή εμφάνιση των ρόλων DJ και των χρηστών για το διακομιστή"
 
 #: audio/config_commands.py:335
 #, docstring
 msgid "Add DJ roles or users to this server"
-msgstr ""
+msgstr "Προσθήκη ρόλων DJ ή χρηστών σε αυτόν τον διακομιστή"
 
 #: audio/config_commands.py:348
 msgid "Added {role} to the DJ roles"
-msgstr ""
+msgstr "Πρόσθεσαν {role} στους ρόλους DJ"
 
 #: audio/config_commands.py:351
 msgid "Added {user} to the DJ users"
-msgstr ""
+msgstr "Πρόσθεσαν {user} στους dj χρήστες"
 
 #: audio/config_commands.py:358
 msgid "Added {roles} to the DJ roles and {users} to the DJ users"
-msgstr ""
+msgstr "Πρόσθεσαν {roles} στους ρόλους DJ και {users} στους dj χρήστες"
 
 #: audio/config_commands.py:365
 msgid "Added {roles} to the DJ roles"
-msgstr ""
+msgstr "Πρόσθεσαν {roles} στους ρόλους DJ"
 
 #: audio/config_commands.py:369
 msgid "Added {users} to the DJ users"
-msgstr ""
+msgstr "Πρόσθεσαν {users} στους dj χρήστες"
 
 #: audio/config_commands.py:384
 #, docstring
 msgid "Remove DJ roles or users in this the server"
-msgstr ""
+msgstr "Καταργήστε ρόλους DJ ή χρήστες σε αυτόν τον διακομιστή"
 
 #: audio/config_commands.py:416
 msgid "Removed {roles} from the DJ roles and {users} from the DJ users, as well as {ints} from both"
-msgstr ""
+msgstr "Αφαιρεθεί {roles} από τους ρόλους dj και {users} από τους DJ χρήστες, καθώς και {ints} και από τα δύο"
 
 #: audio/config_commands.py:424
 msgid "Removed {roles} from the DJ roles and {users} from the DJ users"
-msgstr ""
+msgstr "Αφαιρεθεί {roles} από τους ρόλους dj και {users} από τους DJ χρήστες"
 
 #: audio/config_commands.py:429
 msgid "Removed {roles} from the DJ roles"
-msgstr ""
+msgstr "Αφαιρεθεί {roles} από τους ρόλους dj"
 
 #: audio/config_commands.py:433
 msgid "Removed {users} from the DJ users"
-msgstr ""
+msgstr "Αφαιρεθεί {users} από τους DJ χρήστες"
 
 #: audio/config_commands.py:437
 msgid "Removed {ints} from the DJ roles and users"
-msgstr ""
+msgstr "Αφαιρεθεί {ints} από τους ρόλους DJ και τους χρήστες"
 
 #: audio/config_commands.py:452
 msgid "Removed `{id}` from the DJ roles and users"
-msgstr ""
+msgstr "Καταργήθηκε '{id}» από τους ρόλους dj και τους χρήστες"
 
 #: audio/config_commands.py:454
 msgid "Removed {role} from the DJ roles"
-msgstr ""
+msgstr "Αφαιρεθεί {role} από τους ρόλους dj"
 
 #: audio/config_commands.py:457
 msgid "Removed {user} from the DJ users"
-msgstr ""
+msgstr "Αφαιρεθεί {user} από τους DJ χρήστες"
 
 #: audio/config_commands.py:463
 #, docstring
 msgid "List the DJ roles and users for the server"
-msgstr ""
+msgstr "Καταχωρίστε τους ρόλους DJ και τους χρήστες για το διακομιστή"
 
 #: audio/config_commands.py:514
 msgid "There are no DJ roles or users set in {server}"
-msgstr ""
+msgstr "Δεν υπάρχουν ρόλοι DJ ή χρήστες που έχουν οριστεί {server}"
 
 #: audio/config_commands.py:525 audio/config_commands.py:530
 msgid "DJ Roles"
-msgstr ""
+msgstr "Ρόλοι DJ"
 
 #: audio/config_commands.py:536 audio/config_commands.py:541
 msgid "DJ Users"
-msgstr ""
+msgstr "Χρήστες DJ"
 
 #: audio/config_commands.py:549
 #, docstring
 msgid "Clear the DJ roles and users for the server"
-msgstr ""
+msgstr "Διαγράψτε τους ρόλους DJ και τους χρήστες για το διακομιστή"
 
 #: audio/config_commands.py:561
 msgid "Cleared the DJ roles and users for {server}"
-msgstr ""
+msgstr "Εκκαθαρίστηκαν οι ρόλοι DJ και οι χρήστες για {server}"
 
 #: audio/config_commands.py:569
 #, docstring
 msgid "Set the maximum volume a user can set"
-msgstr ""
+msgstr "Ορισμός της μέγιστης έντασης ήχου που μπορεί να ορίσει ένας χρήστης"
 
 #: audio/config_commands.py:595 audio/config_commands.py:611
 msgid "Volume must be between 0 and {volume}%"
-msgstr ""
+msgstr "Η ένταση πρέπει να είναι μεταξύ 0 και {volume}%"
 
 #: audio/config_commands.py:640
 msgid "My owner told me to always deafen myself"
-msgstr ""
+msgstr "Ο ιδιοκτήτης μου μου είπε να εκκωφανθώ πάντα"
 
 #: audio/config_commands.py:665
 #, docstring
 msgid "Set whether [botname] should shuffle the queue after every new song added"
-msgstr ""
+msgstr "Ορίστε εάν [botname] Θα πρέπει να ανακατεύει την ουρά μετά από κάθε νέο τραγούδι που προστίθεται"
 
 #: audio/config_commands.py:673
 msgid "Auto-Shuffle is globally disabled"
-msgstr ""
+msgstr "Η αυτόματη τυχαία σειρά είναι παγκοσμίως απενεργοποιημένη"
 
 #: audio/config_commands.py:706
 msgid "Shuffle is globally disabled"
-msgstr ""
+msgstr "Το Shuffle είναι παγκοσμίως απενεργοποιημένο"
 
 #: audio/config_commands.py:727
 #, docstring
 msgid "Set whether the bot should automatically play songs when the queue is empty"
-msgstr ""
+msgstr "Ορίστε αν το bot θα αναπαράγει αυτόματα τραγούδια όταν η ουρά είναι κενή"
 
 #: audio/config_commands.py:736
 msgid "Auto-Play is globally disabled"
-msgstr ""
+msgstr "Η Αυτόματη αναπαραγωγή είναι παγκοσμίως απενεργοποιημένη"
 
 #: audio/config_commands.py:761
 #, docstring
 msgid "Set whether the bot should disconnect from the voice channel"
-msgstr ""
+msgstr "Ορίστε εάν το bot θα πρέπει να αποσυνδεθεί από το κανάλι φωνής"
 
 #: audio/config_commands.py:771
 #, docstring
@@ -332,11 +349,18 @@ msgid "Set whether the bot should disconnect from the voice channel when the que
 "            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be\n"
 "            given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Ορίστε εάν το bot θα πρέπει να αποσυνδεθεί από το κανάλι φωνής όταν η ουρά είναι κενή.\n\n"
+"        Επιχειρήματα:\n"
+"            - `<toggle>': Εάν το bot πρέπει να αποσυνδεθεί από το κανάλι φωνής όταν η ουρά είναι κενή.\n"
+"            - `<duration>': Πόσο περισσότερο μετά το άδειασμα της ουράς θα πρέπει να αποσυνδεθεί ο παίκτης. Η προεπιλογή είναι 60\n"
+"            Δευτερόλεπτα.\n"
+"            Δέχεται δευτερόλεπτα, λεπτά, ώρες, ημέρες, εβδομάδες (εάν δεν καθορίζεται μονάδα, η διάρκεια θεωρείται ότι είναι\n"
+"            δίνεται σε δευτερόλεπτα)\n"
+"        "
 
 #: audio/config_commands.py:789
 msgid "Disconnect when the queue finished is globally enabled and players will be disconnected after {delta}"
-msgstr ""
+msgstr "Αποσύνδεση όταν ολοκληρωθεί η ουρά αναμονής είναι καθολικά ενεργοποιημένη και οι παίκτες θα αποσυνδεθούν μετά {delta}"
 
 #: audio/config_commands.py:832
 #, docstring
@@ -348,148 +372,155 @@ msgid "Set whether the bot should disconnect from the voice channel when alone.\
 "            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be\n"
 "            given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Ορίστε εάν το bot θα πρέπει να αποσυνδεθεί από το κανάλι φωνής όταν είναι μόνο του.\n\n"
+"        Επιχειρήματα:\n"
+"            - `<toggle>': Εάν το bot πρέπει να αποσυνδεθεί από το κανάλι φωνής όταν εντοπίσει ότι είναι\n"
+"            μόνος.\n"
+"            - `<duration>': Πόσο περισσότερο μετά την ανίχνευση θα πρέπει να αποσυνδεθεί ο παίκτης. Η προεπιλογή είναι 60 δευτερόλεπτα.\n"
+"            Δέχεται δευτερόλεπτα, λεπτά, ώρες, ημέρες, εβδομάδες (εάν δεν καθορίζεται μονάδα, η διάρκεια θεωρείται ότι είναι\n"
+"            δίνεται σε δευτερόλεπτα)\n"
+"        "
 
 #: audio/config_commands.py:851
 msgid "Disconnect when alone is globally enabled and players will be disconnected after {delta}"
-msgstr ""
+msgstr "Αποσυνδεθείτε όταν η μόνη της είναι καθολικά ενεργοποιημένη και οι παίκτες θα αποσυνδεθούν μετά {delta}"
 
 #: audio/config_commands.py:889
 #, docstring
 msgid "Sets the Auto-Play playlist"
-msgstr ""
+msgstr "Ορίζει τη λίστα αναπαραγωγής Αυτόματης αναπαραγωγής"
 
 #: audio/config_commands.py:906
 msgid "Auto-Play playlist set to {playlist}"
-msgstr ""
+msgstr "Η λίστα αναπαραγωγής αυτόματης αναπαραγωγής έχει οριστεί σε {playlist}"
 
 #: audio/config_commands.py:916
 #, docstring
 msgid "Set the channel locks"
-msgstr ""
+msgstr "Ορισμός των κλειδαριών καναλιών"
 
 #: audio/config_commands.py:922
 #, docstring
 msgid "Set the channel lock for commands"
-msgstr ""
+msgstr "Ορισμός του κλειδώματος καναλιού για εντολές"
 
 #: audio/config_commands.py:937
 msgid "I don't have permission to send message or send embed links or read messages in {channel}"
-msgstr ""
+msgstr "Δεν έχω δικαίωμα αποστολής μηνύματος ή αποστολής συνδέσεων ενσωμάτωσης ή ανάγνωσης μηνυμάτων σε {channel}"
 
 #: audio/config_commands.py:954
 msgid "I will only listen to commands in {channel}"
-msgstr ""
+msgstr "Θα ακούω μόνο εντολές στο {channel}"
 
 #: audio/config_commands.py:962
 msgid "I will listen to commands in all channels I can see"
-msgstr ""
+msgstr "Θα ακούσω εντολές σε όλα τα κανάλια που μπορώ να δω"
 
 #: audio/config_commands.py:970
 #, docstring
 msgid "Set the channel lock for voice channels"
-msgstr ""
+msgstr "Ορισμός του κλειδώματος καναλιού για κανάλια φωνής"
 
 #: audio/config_commands.py:982 audio/hybrid_commands.py:107
 #: audio/player_commands.py:144
 msgid "I don't have permission to connect or speak in {channel}"
-msgstr ""
+msgstr "Δεν έχω δικαίωμα σύνδεσης ή ομιλίας {channel}"
 
 #: audio/config_commands.py:1000
 msgid "I will only be allowed to join {channel}"
-msgstr ""
+msgstr "Θα μου επιτραπεί μόνο να συμμετάσχω {channel}"
 
 #: audio/config_commands.py:1007
 msgid "I'm free to join any VC"
-msgstr ""
+msgstr "Είμαι ελεύθερος να συμμετάσχω σε οποιοδήποτε ΕΣ"
 
 #: audio/context_menus.py:27 audio/context_menus.py:143
 msgid "I can't play songs in DMs"
-msgstr ""
+msgstr "Δεν μπορώ να αναπαράγω τραγούδια σε DM"
 
 #: audio/context_menus.py:38 audio/context_menus.py:154
 msgid "You need to be a DJ to play tracks"
-msgstr ""
+msgstr "Πρέπει να είστε DJ για να παίξετε κομμάτια"
 
 #: audio/context_menus.py:55 audio/context_menus.py:169
 msgid "This command is not available in this channel. Please use {channel}"
-msgstr ""
+msgstr "Αυτή η εντολή δεν είναι διαθέσιμη σε αυτό το κανάλι. Παρακαλώ χρησιμοποιήστε {channel}"
 
 #: audio/context_menus.py:83
 msgid "I couldn't find any valid matches in the message"
-msgstr ""
+msgstr "Δεν μπόρεσα να βρω έγκυρες αντιστοιχίσεις στο μήνυμα"
 
 #: audio/context_menus.py:94
 msgid "I found multiple valid matches in the message"
-msgstr ""
+msgstr "Βρήκα πολλές έγκυρες αντιστοιχίσεις στο μήνυμα"
 
 #: audio/context_menus.py:103
 msgid "I found a single valid match in the message"
-msgstr ""
+msgstr "Βρήκα μια έγκυρη αντιστοιχία στο μήνυμα"
 
 #: audio/context_menus.py:186
 msgid "I couldn't find any supported activity {user} is taking part in"
-msgstr ""
+msgstr "Δεν μπόρεσα να βρω καμία υποστηριζόμενη δραστηριότητα {user} συμμετέχει σε"
 
 #: audio/context_menus.py:218
 msgid "Couldn't map {user}'s Apple Music track to a valid query"
-msgstr ""
+msgstr "Δεν ήταν δυνατή η χαρτογράφηση {user}Το κομμάτι της Apple Music σε ένα έγκυρο ερώτημα"
 
 #: audio/context_menus.py:234
 msgid "Couldn't find any tracks matching {query}"
-msgstr ""
+msgstr "Δεν ήταν δυνατή η εύρεση κομματιών που ταιριάζουν {query}"
 
 #: audio/context_menus.py:249
 msgid "Couldn't figure out what {user} is listening to"
-msgstr ""
+msgstr "Δεν μπορούσα να καταλάβω τι {user} ακούει"
 
 #: audio/hybrid_commands.py:83
 msgid "You need to provide a query to play"
-msgstr ""
+msgstr "Πρέπει να δώσετε ένα ερώτημα για να παίξετε"
 
 #: audio/hybrid_commands.py:97 audio/player_commands.py:134
 msgid "You must be in a voice channel to allow me to connect"
-msgstr ""
+msgstr "Πρέπει να βρίσκεστε σε ένα κανάλι φωνής για να μου επιτρέψετε να συνδεθώ"
 
 #: audio/hybrid_commands.py:154 audio/player_commands.py:225
 msgid "{track_count} tracks enqueued"
-msgstr ""
+msgstr "{track_count} κομμάτια με ουρά"
 
 #: audio/hybrid_commands.py:162 audio/player_commands.py:233
 msgid "{track} enqueued"
-msgstr ""
+msgstr "{track} στην ουρά"
 
 #: audio/hybrid_commands.py:173 audio/player_commands.py:244
 msgid "No tracks were found for your query"
-msgstr ""
+msgstr "Δεν βρέθηκαν κομμάτια για το ερώτημά σας"
 
 #: audio/hybrid_commands.py:236
 msgid "You need to be in a voice channel if you don't specify which channel I need to connect to"
-msgstr ""
+msgstr "Πρέπει να βρίσκεστε σε ένα κανάλι φωνής εάν δεν καθορίσετε σε ποιο κανάλι πρέπει να συνδεθώ"
 
 #: audio/hybrid_commands.py:248
 msgid "I don't have permission to connect to that channel"
-msgstr ""
+msgstr "Δεν έχω δικαίωμα σύνδεσης σε αυτό το κανάλι"
 
 #: audio/hybrid_commands.py:252
 msgid "I don't have permission to speak in {channel}"
-msgstr ""
+msgstr "Δεν έχω άδεια να μιλήσω {channel}"
 
 #: audio/hybrid_commands.py:255
 msgid "I don't have permission to connect to {channel}"
-msgstr ""
+msgstr "Δεν έχω δικαίωμα σύνδεσης σε {channel}"
 
 #: audio/hybrid_commands.py:268
 msgid "You don't have permission to connect to {channel}"
-msgstr ""
+msgstr "Δεν έχετε δικαίωμα σύνδεσης σε {channel}"
 
 #: audio/hybrid_commands.py:285
 msgid "I'm forced to only join {channel}"
-msgstr ""
+msgstr "Είμαι αναγκασμένος να συμμετάσχω μόνο {channel}"
 
 #: audio/hybrid_commands.py:293
 msgid "Connected to {channel}"
-msgstr ""
+msgstr "Συνδεδεμένος με {channel}"
 
 #: audio/hybrid_commands.py:313 audio/hybrid_commands.py:343
 #: audio/hybrid_commands.py:383 audio/hybrid_commands.py:417
@@ -498,150 +529,151 @@ msgstr ""
 #: audio/hybrid_commands.py:587 audio/hybrid_commands.py:642
 #: audio/hybrid_commands.py:686 audio/hybrid_commands.py:787
 msgid "No player detected"
-msgstr ""
+msgstr "Δεν εντοπίστηκε παίκτης"
 
 #: audio/hybrid_commands.py:320 audio/hybrid_commands.py:350
 #: audio/hybrid_commands.py:390
 msgid "Player is not currently playing anything"
-msgstr ""
+msgstr "Ο παίκτης δεν παίζει τίποτα αυτήν τη στιγμή"
 
 #: audio/hybrid_commands.py:358
 msgid "Skipped - {track}"
-msgstr ""
+msgstr "Παραλείπεται- {track}"
 
 #: audio/hybrid_commands.py:397
 msgid "Player stopped"
-msgstr ""
+msgstr "Ο παίκτης σταμάτησε"
 
 #: audio/hybrid_commands.py:425
 msgid "Disconnected from {channel}"
-msgstr ""
+msgstr "Αποσυνδεδεμένος από {channel}"
 
 #: audio/hybrid_commands.py:477
 msgid "There is nothing in the queue"
-msgstr ""
+msgstr "Δεν υπάρχει τίποτα στην ουρά"
 
 #: audio/hybrid_commands.py:485
 msgid "You are not allowed to shuffle the queue"
-msgstr ""
+msgstr "Δεν επιτρέπεται να ανακατεύετε την ουρά"
 
 #: audio/hybrid_commands.py:493
 msgid "{queue_size} tracks shuffled"
-msgstr ""
+msgstr "{queue_size} ανακατεμένα κομμάτια"
 
 #: audio/hybrid_commands.py:525
 msgid "Repeating the queue"
-msgstr ""
+msgstr "Επανάληψη της ουράς"
 
 #: audio/hybrid_commands.py:528
 msgid "Repeating disabled"
-msgstr ""
+msgstr "Η επανάληψη απενεργοποιήθηκε"
 
 #: audio/hybrid_commands.py:531
 msgid "Repeating {track}"
-msgstr ""
+msgstr "Επανάληψη {track}"
 
 #: audio/hybrid_commands.py:534
 msgid "current track"
-msgstr ""
+msgstr "τρέχουσα πίστα"
 
 #: audio/hybrid_commands.py:558
 msgid "Player already paused, did you mean to run `/resume`"
-msgstr ""
+msgstr "Ο παίκτης έχει ήδη σταματήσει, εννοούσατε να εκτελέσετε το '/resume'"
 
 #: audio/hybrid_commands.py:560
 msgid "Player already paused, did you mean to run `{prefix}{command}`"
-msgstr ""
+msgstr "Ο παίκτης έχει ήδη σταματήσει, εννοούσατε να τρέξετε '{prefix}{command}`"
 
 #: audio/hybrid_commands.py:571
 msgid "Player paused"
-msgstr ""
+msgstr "Ο παίκτης τέθηκε σε παύση"
 
 #: audio/hybrid_commands.py:593
 msgid "Player already resumed, did you mean to run `/pause`"
-msgstr ""
+msgstr "Ο παίκτης έχει ήδη ξαναρχίσει, εννοούσατε να εκτελέσετε '/pause'"
 
 #: audio/hybrid_commands.py:595
 msgid "Player already resumed, did you mean to run `{prefix}{command}`"
-msgstr ""
+msgstr "Ο παίκτης έχει ήδη ξαναρχίσει, εννοούσες να τρέξεις '{prefix}{command}`"
 
 #: audio/hybrid_commands.py:606
 msgid "Player resumed"
-msgstr ""
+msgstr "Ο παίκτης συνέχισε"
 
 #: audio/hybrid_commands.py:650
 msgid "Volume cannot be higher than {max_volume}"
-msgstr ""
+msgstr "Ο όγκος δεν μπορεί να είναι μεγαλύτερος από {max_volume}"
 
 #: audio/hybrid_commands.py:659 audio/utility_commands.py:62
 msgid "Player volume set to {volume}%"
-msgstr ""
+msgstr "Η ένταση ήχου του προγράμματος αναπαραγωγής έχει ρυθμιστεί σε {volume}%"
 
 #: audio/hybrid_commands.py:693
 msgid "Nothing playing"
-msgstr ""
+msgstr "Τίποτα δεν παίζει"
 
 #: audio/hybrid_commands.py:702 audio/hybrid_commands.py:711
 msgid "Unable to seek track"
-msgstr ""
+msgstr "Δεν είναι δυνατή η αναζήτηση πίστας"
 
 #: audio/hybrid_commands.py:703
 msgid "Can't seek on a stream"
-msgstr ""
+msgstr "Δεν είναι δυνατή η αναζήτηση σε ροή"
 
 #: audio/hybrid_commands.py:720
 msgid "Cannot seek when the player is paused"
-msgstr ""
+msgstr "Δεν είναι δυνατή η αναζήτηση όταν ο παίκτης είναι σε παύση"
 
 #: audio/hybrid_commands.py:733
 msgid "Moved {seconds}s to 00:00:00"
-msgstr ""
+msgstr "Μετακινηθεί {seconds}s έως 00:00:00"
 
 #: audio/hybrid_commands.py:740
 msgid "Moved {seconds}s to {time}"
-msgstr ""
+msgstr "Μετακινηθεί {seconds}ιθ έως {time}"
 
 #: audio/hybrid_commands.py:761
 msgid "Moved to {time}"
-msgstr ""
+msgstr "Μετακόμισε σε {time}"
 
 #: audio/hybrid_commands.py:795
 msgid "No previous in player history"
-msgstr ""
+msgstr "Δεν υπάρχει προηγούμενο στην ιστορία των παικτών"
 
 #: audio/hybrid_commands.py:803
 msgid "Playing previous track: {track}"
-msgstr ""
+msgstr "Παίζοντας το προηγούμενο κομμάτι: {track}"
 
 #: audio/player_commands.py:30
 msgid "Plays the specified track in the queue"
-msgstr ""
+msgstr "Αναπαράγει το καθορισμένο κομμάτι στην ουρά"
 
 #: audio/player_commands.py:50 audio/player_commands.py:269
 msgid "Queue is empty"
-msgstr ""
+msgstr "Η ουρά είναι κενή"
 
 #: audio/player_commands.py:59 audio/player_commands.py:282
 msgid "Track index must be between 1 and {size}"
-msgstr ""
+msgstr "Ο δείκτης τροχιάς πρέπει να είναι μεταξύ 1 και {size}"
 
 #: audio/player_commands.py:75 audio/player_commands.py:295
 msgid "There is no track in position {position}"
-msgstr ""
+msgstr "Δεν υπάρχει πίστα στη θέση της {position}"
 
 #: audio/player_commands.py:85
 msgid "{track} will play after {current} finishes ({eta})"
-msgstr ""
+msgstr "{track} θα παίξει μετά {current} τελειώματα ({eta})"
 
 #: audio/player_commands.py:103
 msgid "{track} will start now\n"
 "{current} has been skipped"
-msgstr ""
+msgstr "{track} θα ξεκινήσει τώρα\n"
+"{current} έχει παραλειφθεί"
 
 #: audio/player_commands.py:121
 #, docstring
 msgid "Enqueue a track at the top of the queue"
-msgstr ""
+msgstr "Δημιουργήστε μια πίστα στην κορυφή της ουράς"
 
 #: audio/player_commands.py:254
 #, docstring
@@ -649,50 +681,53 @@ msgid "\n"
 "        Remove the specified track from the queue.\n\n"
 "        If you specify the `remove_duplicates` argument, all tracks that are the same as your URL or the index track will be removed.\n"
 "        "
-msgstr ""
+msgstr "\n"
+"        Καταργήστε το καθορισμένο κομμάτι από την ουρά.\n\n"
+"        Εάν καθορίσετε το όρισμα \"remove_duplicates\", όλα τα κομμάτια που είναι ίδια με τη διεύθυνση URL ή το κομμάτι ευρετηρίου θα καταργηθούν.\n"
+"        "
 
 #: audio/player_commands.py:325
 msgid "{track} not found in queue"
-msgstr ""
+msgstr "{track} δεν βρέθηκε στην ουρά"
 
 #: audio/player_commands.py:335
 msgid "Removed {times} {entry_plural} of {track} from the queue"
-msgstr ""
+msgstr "Αφαιρεθεί {times} {entry_plural} από {track} από την ουρά"
 
 #: audio/player_commands.py:338
 msgid "entry"
-msgstr ""
+msgstr "είσοδος"
 
 #: audio/player_commands.py:338
 msgid "entries"
-msgstr ""
+msgstr "Καταχωρήσεις"
 
 #: audio/slash_commands.py:47
 #, docstring
 msgid "Search for a track then play the selected response"
-msgstr ""
+msgstr "Αναζητήστε ένα κομμάτι και, στη συνέχεια, αναπαραγάγετε την επιλεγμένη απάντηση"
 
 #: audio/slash_commands.py:53
 msgid "You haven't selected something to play"
-msgstr ""
+msgstr "Δεν έχετε επιλέξει κάτι για να παίξετε"
 
 #: audio/slash_commands.py:105
 msgid "Searching {service}"
-msgstr ""
+msgstr "Αναζήτηση {service}"
 
 #: audio/slash_commands.py:121 audio/slash_commands.py:132
 msgid "No results found on {service}"
-msgstr ""
+msgstr "Δεν βρέθηκαν αποτελέσματα στις {service}"
 
 #: audio/utility_commands.py:32
 msgid "Not connected to a voice channel"
-msgstr ""
+msgstr "Δεν είναι συνδεδεμένο σε κανάλι φωνής"
 
 #: audio/utility_commands.py:43
 msgid "Volume limit reached, player volume set to {volume}%"
-msgstr ""
+msgstr "Το όριο έντασης ήχου επιτεύχθηκε, η ένταση του παίκτη έχει ρυθμιστεί σε {volume}%"
 
 #: audio/utility_commands.py:54
 msgid "Minimum volume reached, player volume set to 0%"
-msgstr ""
+msgstr "Ελάχιστη ένταση, ένταση παίκτη ρυθμισμένη στο 0%"
 

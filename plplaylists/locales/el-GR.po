@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:26\n"
+"PO-Revision-Date: 2023-01-31 23:42\n"
 "Last-Translator: \n"
 "Language-Team: Greek\n"
 "MIME-Version: 1.0\n"
@@ -20,28 +20,28 @@ msgstr ""
 #: plplaylists/cog.py:47
 #, docstring
 msgid "PyLav playlist management commands"
-msgstr ""
+msgstr "Εντολές διαχείρισης λίστας αναπαραγωγής PyLav"
 
 #: plplaylists/cog.py:55
 msgid "Control PyLav playlists"
-msgstr ""
+msgstr "Ελέγξτε τις λίστες αναπαραγωγής PyLav"
 
 #: plplaylists/cog.py:77
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies"
-msgstr ""
+msgstr "Εμφάνιση της έκδοσης του Cog και των εξαρτήσεων PyLav"
 
 #: plplaylists/cog.py:92
 msgid "Library/Cog"
-msgstr ""
+msgstr "Βιβλιοθήκη/Γρανάζι"
 
 #: plplaylists/cog.py:93
 msgid "Version"
-msgstr ""
+msgstr "Εκδοχή"
 
 #: plplaylists/cog.py:130
 msgid "Let's create a playlist!"
-msgstr ""
+msgstr "Ας δημιουργήσουμε μια λίστα αναπαραγωγής!"
 
 #: plplaylists/cog.py:131
 msgid "(**1**) - Apply changes to playlist.\n"
@@ -50,41 +50,48 @@ msgid "(**1**) - Apply changes to playlist.\n"
 "(**4**) - Link this playlist to an existing playlist/album.\n"
 "(**5**) - Add all tracks from the queue to the playlist.\n\n"
 "If you want the playlist name to be as the original playlist simply set the URL but no name.\n\n"
-msgstr ""
+msgstr "(**1**) - Εφαρμογή αλλαγών στη λίστα αναπαραγωγής.\n"
+"(**2**) - Ακυρώστε τυχόν αλλαγές που έγιναν.\n"
+"(**3**) - Προσθέστε ένα όνομα στη λίστα αναπαραγωγής.\n"
+"(**4**) - Συνδέστε αυτήν τη λίστα αναπαραγωγής με μια υπάρχουσα λίστα αναπαραγωγής/άλμπουμ.\n"
+"(**5**) - Προσθέστε όλα τα κομμάτια από την ουρά στη λίστα αναπαραγωγής.\n\n"
+"Εάν θέλετε το όνομα της λίστας αναπαραγωγής να είναι ως η αρχική λίστα αναπαραγωγής, απλώς ορίστε τη διεύθυνση URL αλλά όχι το όνομα.\n\n"
 
 #: plplaylists/cog.py:165
 msgid "Playlist not created"
-msgstr ""
+msgstr "Η λίστα αναπαραγωγής δεν δημιουργήθηκε"
 
 #: plplaylists/cog.py:166
 msgid "No tracks were provided in time."
-msgstr ""
+msgstr "Δεν δόθηκαν κομμάτια εγκαίρως."
 
 #: plplaylists/cog.py:179
 msgid "Playlist created"
-msgstr ""
+msgstr "Δημιουργία λίστας αναπαραγωγής"
 
 #: plplaylists/cog.py:180
 msgid "Name: `{name}`\n"
 "ID: `{id}`\n"
 "Tracks: `{track_count}`"
-msgstr ""
+msgstr "Όνομα: «{name}`\n"
+"Κωδ: «{id}`\n"
+"Κομμάτια: '{track_count}`"
 
 #: plplaylists/cog.py:204
 msgid "You have no playlists"
-msgstr ""
+msgstr "Δεν έχετε λίστες αναπαραγωγής"
 
 #: plplaylists/cog.py:246 plplaylists/cog.py:607
 msgid "Nothing to save"
-msgstr ""
+msgstr "Τίποτα για εξοικονόμηση"
 
 #: plplaylists/cog.py:247 plplaylists/cog.py:608
 msgid "There is nothing in the queue to save"
-msgstr ""
+msgstr "Δεν υπάρχει τίποτα στην ουρά για αποθήκευση"
 
 #: plplaylists/cog.py:284 plplaylists/cog.py:545 plplaylists/cog.py:625
 msgid "{user}, playlist {playlist_name} cannot be managed by yourself"
-msgstr ""
+msgstr "{user}λίστα αναπαραγωγής {playlist_name} δεν μπορεί να αντιμετωπιστεί από τον εαυτό σας"
 
 #: plplaylists/cog.py:293
 msgid "(**1**){space} - Apply changes to playlist.\n"
@@ -107,7 +114,26 @@ msgid "(**1**){space} - Apply changes to playlist.\n"
 "The clear button will always be run first before any other operations.\n"
 "The URL button will always run last - Linking a playlist via the URL will overwrite any tracks added or removed to this playlist.\n\n"
 "If you interact with a button multiple times other than the add/remove buttons only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - Εφαρμόστε αλλαγές στη λίστα αναπαραγωγής.\n"
+"(**2**){space} - Ακυρώστε τυχόν αλλαγές που έγιναν και κλείστε το μενού.\n"
+"(**3**){space} - Διαγράψτε αυτήν τη λίστα αναπαραγωγής.\n"
+"(**4**){space} - Αφαιρέστε όλα τα κομμάτια από αυτήν τη λίστα αναπαραγωγής.\n"
+"(**5**){space} - Ενημερώστε τη λίστα αναπαραγωγής με τα πιο πρόσφατα κομμάτια.\n"
+"Λάβετε υπόψη ότι αυτή η ενέργεια θα αγνοήσει τυχόν κομμάτια που προστέθηκαν / καταργήθηκαν μέσω αυτού του μενού.\n"
+"(**6**){space} - Αλλάξτε το όνομα της λίστας αναπαραγωγής.\n"
+"(**7**){space} - Συνδέστε αυτήν τη λίστα αναπαραγωγής με μια υπάρχουσα λίστα αναπαραγωγής / άλμπουμ.\n"
+"(**8**){space} - Προσθέστε ένα ερώτημα σε αυτήν τη λίστα αναπαραγωγής.\n"
+"(**9**){space} - Καταργήστε ένα ερώτημα από αυτήν τη λίστα αναπαραγωγής.\n"
+"(**10**) - Κατεβάστε το αρχείο λίστας αναπαραγωγής.\n"
+"(**11**) - Προσθέστε την τρέχουσα λίστα αναπαραγωγής στην ουρά.\n"
+"(**12**) - Εμφάνιση κομματιών στην τρέχουσα λίστα αναπαραγωγής.\n"
+"(**13**) - Προσθέστε κομμάτια από την ουρά σε αυτήν τη λίστα αναπαραγωγής.\n"
+"(**14**) - Καταργήστε τις διπλές καταχωρήσεις στη λίστα αναπαραγωγής.\n\n"
+"Τα κουμπιά προσθήκης/αφαίρεσης κομματιού μπορούν να χρησιμοποιηθούν πολλές φορές για την προσθήκη/αφαίρεση πολλών κομματιών και λιστών αναπαραγωγής ταυτόχρονα.\n\n"
+"Ένα ερώτημα είναι οτιδήποτε μπορεί να αναπαραχθεί από την εντολή αναπαραγωγής - οποιοδήποτε ερώτημα μπορεί να χρησιμοποιηθεί από τα κουμπιά προσθήκης/κατάργησης\n\n"
+"Το κουμπί εκκαθάρισης θα εκτελείται πάντα πρώτο πριν από οποιαδήποτε άλλη λειτουργία.\n"
+"Το κουμπί URL θα εκτελείται πάντα τελευταίο - Η σύνδεση μιας λίστας αναπαραγωγής μέσω της διεύθυνσης URL θα αντικαταστήσει τυχόν κομμάτια που προστίθενται ή καταργούνται σε αυτήν τη λίστα αναπαραγωγής.\n\n"
+"Εάν αλληλεπιδράσετε με ένα κουμπί πολλές φορές εκτός από τα κουμπιά προσθήκης/κατάργησης, θα τεθεί σε ισχύ μόνο η τελευταία αλληλεπίδραση.\n\n\n"
 
 #: plplaylists/cog.py:319
 msgid "(**1**) - Close the menu.\n"
@@ -115,7 +141,11 @@ msgid "(**1**) - Close the menu.\n"
 "(**3**) - Download the playlist file.\n"
 "(**4**) - Add current playlist to the queue.\n"
 "(**5**) - Show tracks in current playlist.\n\n\n"
-msgstr ""
+msgstr "(**1**) - Κλείστε το μενού.\n"
+"(**2**) - Ενημερώστε τη λίστα αναπαραγωγής με τα πιο πρόσφατα κομμάτια.\n"
+"(**3**) - Κατεβάστε το αρχείο λίστας αναπαραγωγής.\n"
+"(**4**) - Προσθέστε την τρέχουσα λίστα αναπαραγωγής στην ουρά.\n"
+"(**5**) - Εμφάνιση κομματιών στην τρέχουσα λίστα αναπαραγωγής.\n\n\n"
 
 #: plplaylists/cog.py:327
 msgid "**__Currently managing__**:\n"
@@ -124,105 +154,114 @@ msgid "**__Currently managing__**:\n"
 "**Author**:{space}{space}{author}\n"
 "**Tracks**:{space}{space}{space}{tracks} tracks\n"
 "**URL**:{space}{space}{space}{space}{space}{url}\n"
-msgstr ""
+msgstr "**__Currently managing__**:\n"
+"**Όνομα**:{space}{space}{space}{playlist_name}\n"
+"**Εμβέλεια**:{space}{space}{space}{scope}\n"
+"**Συγγραφέας**:{space}{space}{author}\n"
+"**Κομμάτια**:{space}{space}{space}{tracks} Κομμάτια\n"
+"**Διεύθυνση URL**:{space}{space}{space}{space}{space}{url}\n"
 
 #: plplaylists/cog.py:345
 msgid "Let's manage: {playlist_name}"
-msgstr ""
+msgstr "Ας διαχειριστούμε: {playlist_name}"
 
 #: plplaylists/cog.py:347
 msgid "Let's take a look at: {playlist_name}"
-msgstr ""
+msgstr "Ας ρίξουμε μια ματιά: {playlist_name}"
 
 #: plplaylists/cog.py:354
 msgid "N/A"
-msgstr ""
+msgstr "Δ / υ"
 
 #: plplaylists/cog.py:386 plplaylists/cog.py:555
 msgid "Playlist deleted"
-msgstr ""
+msgstr "Η λίστα αναπαραγωγής διαγράφηκε"
 
 #: plplaylists/cog.py:388 plplaylists/cog.py:557
 msgid "{user}, playlist {playlist_name} has been deleted"
-msgstr ""
+msgstr "{user}λίστα αναπαραγωγής {playlist_name} έχει διαγραφεί"
 
 #: plplaylists/cog.py:438
 msgid "Playlist **{playlist_name}** could not be updated with URL: <{url}>"
-msgstr ""
+msgstr "Λίστα αναπαραγωγής**{playlist_name}** Δεν ήταν δυνατή η ενημέρωση με τη διεύθυνση URL: <{url}>"
 
 #: plplaylists/cog.py:473
 msgid "\n"
 "{track_count} {track_plural} removed from the playlist"
-msgstr ""
+msgstr "\n"
+"{track_count} {track_plural} καταργήθηκε από τη λίστα αναπαραγωγής"
 
 #: plplaylists/cog.py:474 plplaylists/cog.py:478 plplaylists/cog.py:644
 msgid "track"
-msgstr ""
+msgstr "ίχνος"
 
 #: plplaylists/cog.py:474 plplaylists/cog.py:478 plplaylists/cog.py:644
 msgid "tracks"
-msgstr ""
+msgstr "Κομμάτια"
 
 #: plplaylists/cog.py:477 plplaylists/cog.py:643
 msgid "\n"
 "{track_count} {track_plural} added to the playlist"
-msgstr ""
+msgstr "\n"
+"{track_count} {track_plural} προστέθηκε στη λίστα αναπαραγωγής"
 
 #: plplaylists/cog.py:483 plplaylists/cog.py:650
 msgid "Playlist updated"
-msgstr ""
+msgstr "Η λίστα αναπαραγωγής ενημερώθηκε"
 
 #: plplaylists/cog.py:484 plplaylists/cog.py:651
 msgid "{user}, playlist {playlist_name} has been updated.{extras}"
-msgstr ""
+msgstr "{user}λίστα αναπαραγωγής {playlist_name} έχει ενημερωθεί.{extras}"
 
 #: plplaylists/cog.py:496 plplaylists/cog.py:664
 msgid "Playlist unchanged"
-msgstr ""
+msgstr "Λίστα αναπαραγωγής αμετάβλητη"
 
 #: plplaylists/cog.py:497 plplaylists/cog.py:665
 msgid "{user}, playlist {playlist_name} has not been updated"
-msgstr ""
+msgstr "{user}λίστα αναπαραγωγής {playlist_name} δεν έχει ενημερωθεί"
 
 #: plplaylists/cog.py:693
 msgid "You must either provide a URL or attach a playlist file to upload a playlist"
-msgstr ""
+msgstr "Πρέπει είτε να καταχωρίσετε μια διεύθυνση URL είτε να επισυνάψετε ένα αρχείο λίστας αναπαραγωγής για να ανεβάσετε ένα playlist"
 
 #: plplaylists/cog.py:705
 msgid "No valid playlist file provided"
-msgstr ""
+msgstr "Δεν παρέχεται έγκυρο αρχείο λίστας αναπαραγωγής"
 
 #: plplaylists/cog.py:714
 msgid "Multiple playlist files provided - Currently only 1 per message is allowed"
-msgstr ""
+msgstr "Παρέχονται πολλά αρχεία λίστας αναπαραγωγής - Προς το παρόν επιτρέπεται μόνο 1 ανά μήνυμα"
 
 #: plplaylists/cog.py:731
 msgid "Failed to save any of the requested playlists"
-msgstr ""
+msgstr "Αποτυχία αποθήκευσης οποιασδήποτε από τις λίστες αναπαραγωγής που ζητήθηκαν"
 
 #: plplaylists/cog.py:740
 msgid "Failed to save the following playlists:\n"
 "{invalid_playlists}"
-msgstr ""
+msgstr "Αποτυχία αποθήκευσης των ακόλουθων λιστών αναπαραγωγής:\n"
+"{invalid_playlists}"
 
 #: plplaylists/cog.py:749
 msgid "Successfully saved the following playlists:\n"
 "{saved_playlists}"
-msgstr ""
+msgstr "Αποθήκευσε με επιτυχία τις ακόλουθες λίστες αναπαραγωγής:\n"
+"{saved_playlists}"
 
 #: plplaylists/cog.py:774
 msgid "You must be in a voice channel to allow me to connect"
-msgstr ""
+msgstr "Πρέπει να βρίσκεστε σε ένα κανάλι φωνής για να μου επιτρέψετε να συνδεθώ"
 
 #: plplaylists/cog.py:782
 msgid "I don't have permission to connect or speak in {channel}"
-msgstr ""
+msgstr "Δεν έχω δικαίωμα σύνδεσης ή ομιλίας {channel}"
 
 #: plplaylists/cog.py:812
 msgid "Playlist"
-msgstr ""
+msgstr "Λίστα αναπαραγωγής"
 
 #: plplaylists/cog.py:817
 msgid "{track_count} tracks enqueued.{playlist_name}"
-msgstr ""
+msgstr "{track_count} κομμάτια εγκιβωτισμένα.{playlist_name}"
 

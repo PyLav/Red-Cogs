@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:26\n"
+"PO-Revision-Date: 2023-01-31 23:42\n"
 "Last-Translator: \n"
 "Language-Team: Lithuanian\n"
 "MIME-Version: 1.0\n"
@@ -20,34 +20,34 @@ msgstr ""
 #: plnodes/cog.py:33
 #, docstring
 msgid "Manage the nodes used by PyLav"
-msgstr ""
+msgstr "Tvarkykite PyLav naudojamus mazgus"
 
 #: plnodes/cog.py:44
 #, docstring
 msgid "Configure PyLav Nodes"
-msgstr ""
+msgstr "Konfigūruokite PyLav mazgus"
 
 #: plnodes/cog.py:48
 #, docstring
 msgid "Show the version of the Cog and its PyLav dependencies"
-msgstr ""
+msgstr "Rodyti krumpliaračio versiją ir jo priklausomybes nuo PyLav"
 
 #: plnodes/cog.py:64
 msgid "Library/Cog"
-msgstr ""
+msgstr "Biblioteka / krumpliaratis"
 
 #: plnodes/cog.py:65
 msgid "Version"
-msgstr ""
+msgstr "Versija"
 
 #: plnodes/cog.py:78
 #, docstring
 msgid "Add a node to PyLav"
-msgstr ""
+msgstr "Pridėkite mazgą prie PyLav"
 
 #: plnodes/cog.py:88
 msgid "Let's add a node to PyLav!"
-msgstr ""
+msgstr "Pridėkime mazgą prie PyLav!"
 
 #: plnodes/cog.py:89
 msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
@@ -61,7 +61,17 @@ msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
 "(**9**){space} - Set the connection timeout.\n"
 "(**10**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - Taikykite pakeitimus ir pridėkite mazgą prie PyLav.\n"
+"(**2**){space} - Atšaukite visus atliktus pakeitimus ir uždarykite meniu.\n"
+"(**3**){space} - Perjunkite tik paieškos ir paieškos bei atkūrimo režimus.\n"
+"(**4**){space} - Perjungti SSL įjungimą ir išjungimą.\n"
+"(**5**){space} - Pridėkite pavadinimą prie mazgo.\n"
+"(**6**){space} - Pridėkite mazgo pagrindinio kompiuterio adresą.\n"
+"(**7**){space} - Pridėkite mazgo naudojamą prievadą.\n"
+"(**8**){space} - Nustatykite mazgo slaptažodį.\n"
+"(**9**){space} - Nustatykite ryšio skirtąjį laiką.\n"
+"(**10**) - Pasirinkite, kuriuos šaltinius išjungti šiam mazgui (galima pasirinkti kelis).\n"
+"Jei kelis kartus sąveikausite su mygtuku, įsigalios tik paskutinė sąveika.\n\n\n"
 
 #: plnodes/cog.py:137
 msgid "Added node {name} with the following settings:\n"
@@ -72,38 +82,46 @@ msgid "Added node {name} with the following settings:\n"
 "Search Only: {search_only}\n"
 "SSL: {ssl}\n"
 "Disabled Sources: {disabled_sources}\n"
-msgstr ""
+msgstr "Pridėtas mazgas {name} su šiais parametrais:\n"
+"Priimančiosios: {host}\n"
+"Uostas: {port}\n"
+"Slaptažodis: {password}\n"
+"Tęsti skirtąjį laiką: {resume_timeout}\n"
+"Tik ieškokite: {search_only}\n"
+"SSL: {ssl}\n"
+"Neįgalūs šaltiniai: {disabled_sources}\n"
 
 #: plnodes/cog.py:168 plnodes/cog.py:175
 msgid "Unable to add this node"
-msgstr ""
+msgstr "Nepavyksta pridėti šio mazgo"
 
 #: plnodes/cog.py:181
 #, docstring
 msgid "Remove a node from a PyLav instance"
-msgstr ""
+msgstr "Pašalinkite mazgą iš PyLav egzemplioriaus"
 
 #: plnodes/cog.py:193
 msgid "{name} is managed by PyLav and cannot be removed"
-msgstr ""
+msgstr "{name} valdo PyLav ir negali būti pašalintas"
 
 #: plnodes/cog.py:208
 msgid "Removed node {name}.\n\n"
 "{data}"
-msgstr ""
+msgstr "Pašalintas mazgas {name}.\n\n"
+"{data}"
 
 #: plnodes/cog.py:216
 msgid "Removed node {name}, a DM was sent to you with the node details in case you wish to re-add it"
-msgstr ""
+msgstr "Pašalintas mazgas {name}, jums buvo išsiųstas DM su mazgo informacija, jei norite jį iš naujo pridėti"
 
 #: plnodes/cog.py:226
 #, docstring
 msgid "Manage all nodes in a PyLav instance"
-msgstr ""
+msgstr "Valdykite visus \"PyLav\" egzemplioriaus mazgus"
 
 #: plnodes/cog.py:238
 msgid "Let's manage some nodes!"
-msgstr ""
+msgstr "Valdykime kai kuriuos mazgus!"
 
 #: plnodes/cog.py:239
 msgid "(**1**){space} - Cancel any changes made and close the menu.\n"
@@ -119,15 +137,27 @@ msgid "(**1**){space} - Cancel any changes made and close the menu.\n"
 "(**15**) - Remove this node.\n"
 "(**16**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - Atšaukite visus atliktus pakeitimus ir uždarykite meniu.\n"
+"(**6**){space} - Rodyti šiam mazgui įjungtus šaltinius.\n"
+"(**7**){space} - Taikykite pakeitimus ir pridėkite mazgą prie PyLav.\n"
+"(**8**){space} - Perjunkite tik paieškos ir paieškos bei atkūrimo režimus.\n"
+"(**9**){space} - Perjungti SSL įjungimą ir išjungimą.\n"
+"(**10**) - Pridėkite pavadinimą prie mazgo.\n"
+"(**11**) - Pridėkite mazgo pagrindinio kompiuterio adresą.\n"
+"(**12**) - Pridėkite mazgo naudojamą prievadą.\n"
+"(**13**) - Nustatykite mazgo slaptažodį.\n"
+"(**14**) - Nustatykite ryšio skirtąjį laiką.\n"
+"(**15**) - Pašalinkite šį mazgą.\n"
+"(**16**) - Pasirinkite, kuriuos šaltinius išjungti šiam mazgui (galima pasirinkti kelis).\n"
+"Jei kelis kartus sąveikausite su mygtuku, įsigalios tik paskutinė sąveika.\n\n\n"
 
 #: plnodes/cog.py:268
 msgid "{name} is managed by PyLav and cannot be modified with this command"
-msgstr ""
+msgstr "{name} valdo PyLav ir jo negalima modifikuoti naudojant šią komandą"
 
 #: plnodes/cog.py:280
 msgid "Removed node {name}"
-msgstr ""
+msgstr "Pašalintas mazgas {name}"
 
 #: plnodes/cog.py:316
 msgid "Changed node {name} to the following settings:\n"
@@ -138,14 +168,21 @@ msgid "Changed node {name} to the following settings:\n"
 "Search Only: {search_only}\n"
 "SSL: {ssl}\n"
 "Disabled Sources: {disabled_sources}\n"
-msgstr ""
+msgstr "Pakeistas mazgas {name} į šiuos parametrus:\n"
+"Priimančiosios: {host}\n"
+"Uostas: {port}\n"
+"Slaptažodis: {password}\n"
+"Tęsti skirtąjį laiką: {resume_timeout}\n"
+"Tik ieškokite: {search_only}\n"
+"SSL: {ssl}\n"
+"Neįgalūs šaltiniai: {disabled_sources}\n"
 
 #: plnodes/cog.py:343
 #, docstring
 msgid "List all nodes used by PyLav"
-msgstr ""
+msgstr "Išvardykite visus PyLav naudojamus mazgus"
 
 #: plnodes/cog.py:353
 msgid "No nodes added to PyLav"
-msgstr ""
+msgstr "Prie PyLav nepridėta jokių mazgų"
 

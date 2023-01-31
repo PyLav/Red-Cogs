@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:26\n"
+"PO-Revision-Date: 2023-01-31 23:42\n"
 "Last-Translator: \n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -20,54 +20,54 @@ msgstr ""
 #: plnotifier/cog.py:84
 #, docstring
 msgid "Listen to events from the PyLav player and send them as messages to the specified channel"
-msgstr ""
+msgstr "Dengarkan peristiwa dari pemutar PyLav dan kirimkan sebagai pesan ke saluran yang ditentukan"
 
 #: plnotifier/cog.py:227
 #, docstring
 msgid "Configure the PyLavNotifier cog"
-msgstr ""
+msgstr "Mengonfigurasi roda gigi PyLavNotifier"
 
 #: plnotifier/cog.py:231
 #, docstring
 msgid "Show the version of the Cog and its PyLav dependencies"
-msgstr ""
+msgstr "Memperlihatkan versi Cog dan dependensi PyLav-nya"
 
 #: plnotifier/cog.py:247
 msgid "Library/Cog"
-msgstr ""
+msgstr "Perpustakaan/Cog"
 
 #: plnotifier/cog.py:248
 msgid "Version"
-msgstr ""
+msgstr "Versi"
 
 #: plnotifier/cog.py:263
 #, docstring
 msgid "Set the notify channel for the player"
-msgstr ""
+msgstr "Mengatur saluran pemberitahuan untuk pemutar"
 
 #: plnotifier/cog.py:272 plnotifier/cog.py:327
 msgid "I do not have permission to manage webhooks in {channel}"
-msgstr ""
+msgstr "Saya tidak memiliki izin untuk mengelola webhook di {channel}"
 
 #: plnotifier/cog.py:286
 msgid "I do not have permission to create a thread in {channel}"
-msgstr ""
+msgstr "Saya tidak memiliki izin untuk membuat utas di {channel}"
 
 #: plnotifier/cog.py:295 plnotifier/cog.py:311 plnotifier/cog.py:336
 msgid "PyLavNotifier"
-msgstr ""
+msgstr "PyLavNotifier"
 
 #: plnotifier/cog.py:296 plnotifier/cog.py:314 plnotifier/cog.py:337
 msgid "PyLav Notifier - Requested by {author}"
-msgstr ""
+msgstr "PyLav Notifier - Diminta oleh {author}"
 
 #: plnotifier/cog.py:307
 msgid "This thread will be used by PyLav to post notifications about the player"
-msgstr ""
+msgstr "Utas ini akan digunakan oleh PyLav untuk memposting pemberitahuan tentang pemain"
 
 #: plnotifier/cog.py:351
 msgid "PyLavNotifier channel set to {channel}"
-msgstr ""
+msgstr "Saluran PyLavNotifier diatur ke {channel}"
 
 #: plnotifier/cog.py:361
 #, docstring
@@ -77,149 +77,164 @@ msgid "Set whether or not to notify for the specified event.\n\n"
 "            toggle -- Whether or not to notify upon receiving this event.\n"
 "            use_mention -- Whether or not to use a mention instead of the name for the action requested.\n"
 "        "
-msgstr ""
+msgstr "Atur apakah akan memberi tahu atau tidak untuk acara yang ditentukan.\n\n"
+"        Argumen:\n"
+"            event -- Acara yang akan disetel.\n"
+"            beralih -- Apakah akan memberi tahu atau tidak setelah menerima acara ini.\n"
+"            use_mention -- Apakah akan menggunakan penyebutan atau tidak alih-alih nama untuk tindakan yang diminta.\n"
+"        "
 
 #: plnotifier/cog.py:378
 msgid "Invalid event, possible events are:\n\n"
 "{events}"
-msgstr ""
+msgstr "Peristiwa tidak valid, kemungkinan peristiwa adalah:\n\n"
+"{events}"
 
 #: plnotifier/cog.py:395
 msgid "Event {event} set to {toggle}{extras}"
-msgstr ""
+msgstr "Peristiwa {event} Atur ke {toggle}{extras}"
 
 #: plnotifier/cog.py:397
 msgid "notify"
-msgstr ""
+msgstr "Memberitahu"
 
 #: plnotifier/cog.py:397
 msgid "do not notify"
-msgstr ""
+msgstr "jangan beri tahu"
 
 #: plnotifier/cog.py:398
 msgid " with mentions"
-msgstr ""
+msgstr " dengan menyebutkan"
 
 #: plnotifier/cog.py:398
 msgid " without mentions"
-msgstr ""
+msgstr " tanpa menyebutkan"
 
 #: plnotifier/cog.py:414
 msgid "Track Stuck Event"
-msgstr ""
+msgstr "Lacak Acara Terjebak"
 
 #: plnotifier/cog.py:415
 msgid "[Node={node}] {track} is stuck for {threshold} seconds, skipping"
-msgstr ""
+msgstr "[Simpul={node}] {track} macet untuk {threshold} detik, melompati"
 
 #: plnotifier/cog.py:440
 msgid "Track Exception Event"
-msgstr ""
+msgstr "Lacak Peristiwa Pengecualian"
 
 #: plnotifier/cog.py:441
 msgid "[Node={node}] There was an error while playing {track}:\n"
 "{exception}"
-msgstr ""
+msgstr "[Simpul={node}] Ada kesalahan saat bermain {track}:\n"
+"{exception}"
 
 #: plnotifier/cog.py:464
 msgid "the player reached the end of the tracks runtime"
-msgstr ""
+msgstr "pemain mencapai akhir runtime trek"
 
 #: plnotifier/cog.py:466
 msgid "a new track started playing"
-msgstr ""
+msgstr "lagu baru mulai diputar"
 
 #: plnotifier/cog.py:468
 msgid "it failed to start"
-msgstr ""
+msgstr "itu gagal untuk memulai"
 
 #: plnotifier/cog.py:470
 msgid "because the player was stopped"
-msgstr ""
+msgstr "karena pemain dihentikan"
 
 #: plnotifier/cog.py:472
 msgid "the node told it to stop"
-msgstr ""
+msgstr "node menyuruhnya berhenti"
 
 #: plnotifier/cog.py:475
 msgid "Track End Event"
-msgstr ""
+msgstr "Lacak Acara Akhir"
 
 #: plnotifier/cog.py:476
 msgid "[Node={node}] {track} has finished playing because {reason}"
-msgstr ""
+msgstr "[Simpul={node}] {track} telah selesai bermain karena {reason}"
 
 #: plnotifier/cog.py:503
 msgid "YouTube Music Track Start Event"
-msgstr ""
+msgstr "Acara Mulai Jalur Musik YouTube"
 
 #: plnotifier/cog.py:504
 msgid "[Node={node}] YouTube Music track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr ""
+msgstr "[Simpul={node}] Lagu YouTube Music: {track} sudah mulai bermain.\n"
+"Diminta oleh: {requester}"
 
 #: plnotifier/cog.py:533
 msgid "Deezer Track Start Event"
-msgstr ""
+msgstr "Acara Deezer Track Start"
 
 #: plnotifier/cog.py:534
 msgid "[Node={node}] Deezer track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr ""
+msgstr "[Simpul={node}] Jalur Deezer: {track} sudah mulai bermain.\n"
+"Diminta oleh: {requester}"
 
 #: plnotifier/cog.py:563
 msgid "Spotify Track Start Event"
-msgstr ""
+msgstr "Spotify Lacak Mulai Acara"
 
 #: plnotifier/cog.py:564
 msgid "[Node={node}] Spotify track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr ""
+msgstr "[Simpul={node}] Trek Spotify: {track} sudah mulai bermain.\n"
+"Diminta oleh: {requester}"
 
 #: plnotifier/cog.py:593
 msgid "Apple Music Track Start Event"
-msgstr ""
+msgstr "Acara Mulai Track Apple Music"
 
 #: plnotifier/cog.py:594
 msgid "[Node={node}] Apple Music track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr ""
+msgstr "[Simpul={node}] Trek Apple Music: {track} sudah mulai bermain.\n"
+"Diminta oleh: {requester}"
 
 #: plnotifier/cog.py:623
 msgid "Local Track Start Event"
-msgstr ""
+msgstr "Acara Mulai Jalur Lokal"
 
 #: plnotifier/cog.py:624
 msgid "[Node={node}] Local track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr ""
+msgstr "[Simpul={node}] Jalur lokal: {track} sudah mulai bermain.\n"
+"Diminta oleh: {requester}"
 
 #: plnotifier/cog.py:653
 msgid "HTTP Track Start Event"
-msgstr ""
+msgstr "Acara Mulai Jalur HTTP"
 
 #: plnotifier/cog.py:654
 msgid "[Node={node}] HTTP track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr ""
+msgstr "[Simpul={node}] Jalur HTTP: {track} sudah mulai bermain.\n"
+"Diminta oleh: {requester}"
 
 #: plnotifier/cog.py:683
 msgid "Text-To-Speech Track Start Event"
-msgstr ""
+msgstr "Acara Mulai Lacak Text-To-Speech"
 
 #: plnotifier/cog.py:684
 msgid "[Node={node}] Text-To-Speech track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr ""
+msgstr "[Simpul={node}] Jalur Text-To-Speech: {track} sudah mulai bermain.\n"
+"Diminta oleh: {requester}"
 
 #: plnotifier/cog.py:713
 msgid "YouTube Track Start Event"
-msgstr ""
+msgstr "Acara Mulai YouTube Track"
 
 #: plnotifier/cog.py:714
 msgid "[Node={node}] YouTube track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr ""
+msgstr "[Simpul={node}] Trek YouTube: {track} sudah mulai bermain.\n"
+"Diminta oleh: {requester}"
 
 #: plnotifier/cog.py:743 plnotifier/cog.py:776 plnotifier/cog.py:809
 #: plnotifier/cog.py:842 plnotifier/cog.py:875 plnotifier/cog.py:908
@@ -227,7 +242,7 @@ msgstr ""
 #: plnotifier/cog.py:1040 plnotifier/cog.py:1073 plnotifier/cog.py:1106
 #: plnotifier/cog.py:1139 plnotifier/cog.py:1172
 msgid "{source} Track Start Event"
-msgstr ""
+msgstr "{source} Lacak Mulai Acara"
 
 #: plnotifier/cog.py:744 plnotifier/cog.py:777 plnotifier/cog.py:810
 #: plnotifier/cog.py:843 plnotifier/cog.py:876 plnotifier/cog.py:909
@@ -236,290 +251,292 @@ msgstr ""
 #: plnotifier/cog.py:1140 plnotifier/cog.py:1173
 msgid "[Node={node}] {source} track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr ""
+msgstr "[Simpul={node}] {source} Melacak: {track} sudah mulai bermain.\n"
+"Diminta oleh: {requester}"
 
 #: plnotifier/cog.py:1205
 msgid "Track Skipped Event"
-msgstr ""
+msgstr "Lacak Acara yang Dilewati"
 
 #: plnotifier/cog.py:1206
 msgid "[Node={node}] {track} has been skipped.\n"
 "Requested by {requester}"
-msgstr ""
+msgstr "[Simpul={node}] {track} telah dilewati.\n"
+"Diminta oleh {requester}"
 
 #: plnotifier/cog.py:1235
 msgid "Track Seek Event"
-msgstr ""
+msgstr "Lacak Acara Pencarian"
 
 #: plnotifier/cog.py:1236
 msgid "[Node={node}] {requester} requested that {track} is sought from position {fro} to position {after}"
-msgstr ""
+msgstr "[Simpul={node}] {requester} meminta agar {track} dicari dari posisi {fro} ke posisi {after}"
 
 #: plnotifier/cog.py:1270
 msgid "Track Previous Requested Event"
-msgstr ""
+msgstr "Lacak Acara yang Diminta Sebelumnya"
 
 #: plnotifier/cog.py:1271
 msgid "[Node={node}] {requester} requested that the previous track {track} be played"
-msgstr ""
+msgstr "[Simpul={node}] {requester} meminta agar trek sebelumnya {track} dimainkan"
 
 #: plnotifier/cog.py:1300
 msgid "Tracks Requested Event"
-msgstr ""
+msgstr "Melacak acara yang diminta"
 
 #: plnotifier/cog.py:1301
 msgid "[Node={node}] {requester} added {track_count}  to the queue"
-msgstr ""
+msgstr "[Simpul={node}] {requester} Ditambahkan {track_count}  ke antrian"
 
 #: plnotifier/cog.py:1302
 msgid "{count} track"
-msgstr ""
+msgstr "{count} Melacak"
 
 #: plnotifier/cog.py:1327
 msgid "Track AutoPlay Event"
-msgstr ""
+msgstr "Lacak Acara AutoPlay"
 
 #: plnotifier/cog.py:1328
 msgid "[Node={node}] Auto-playing {track}"
-msgstr ""
+msgstr "[Simpul={node}] Putar otomatis {track}"
 
 #: plnotifier/cog.py:1355
 msgid "Track Resumed Event"
-msgstr ""
+msgstr "Lacak Acara yang Dilanjutkan"
 
 #: plnotifier/cog.py:1356
 msgid "[Node={node}] {requester} resumed {track}"
-msgstr ""
+msgstr "[Simpul={node}] {requester} Dilanjutkan {track}"
 
 #: plnotifier/cog.py:1385
 msgid "Queue Shuffled Event"
-msgstr ""
+msgstr "Antrean Acak Acara"
 
 #: plnotifier/cog.py:1386
 msgid "[Node={node}] {requester} shuffled the queue"
-msgstr ""
+msgstr "[Simpul={node}] {requester} mengocok antrian"
 
 #: plnotifier/cog.py:1408
 msgid "Queue End Event"
-msgstr ""
+msgstr "Acara Akhir Antrean"
 
 #: plnotifier/cog.py:1409
 msgid "[Node={node}] All tracks in the queue have been played"
-msgstr ""
+msgstr "[Simpul={node}] Semua trek dalam antrian telah diputar"
 
 #: plnotifier/cog.py:1436
 msgid "Tracks Removed Event"
-msgstr ""
+msgstr "Melacak peristiwa yang dihapus"
 
 #: plnotifier/cog.py:1437
 msgid "[Node={node}] {requester} removed {track_count} tracks from the queue"
-msgstr ""
+msgstr "[Simpul={node}] {requester} Dihapus {track_count} Trek dari antrian"
 
 #: plnotifier/cog.py:1464 plnotifier/cog.py:1944
 msgid "Player Paused Event"
-msgstr ""
+msgstr "Acara Jeda Pemain"
 
 #: plnotifier/cog.py:1465
 msgid "[Node={node}] {requester} paused the player"
-msgstr ""
+msgstr "[Simpul={node}] {requester} menjeda pemain"
 
 #: plnotifier/cog.py:1492
 msgid "Player Stopped Event"
-msgstr ""
+msgstr "Acara Dihentikan Pemain"
 
 #: plnotifier/cog.py:1493
 msgid "[Node={node}] {requester} stopped the player"
-msgstr ""
+msgstr "[Simpul={node}] {requester} menghentikan pemain"
 
 #: plnotifier/cog.py:1520 plnotifier/cog.py:1972
 msgid "Player Resumed Event"
-msgstr ""
+msgstr "Acara Dilanjutkan Pemain"
 
 #: plnotifier/cog.py:1521
 msgid "[Node={node}] {requester} resumed the player"
-msgstr ""
+msgstr "[Simpul={node}] {requester} melanjutkan pemain"
 
 #: plnotifier/cog.py:1548
 msgid "Player Moved Event"
-msgstr ""
+msgstr "Acara Pindah Pemain"
 
 #: plnotifier/cog.py:1549
 msgid "[Node={node}] {requester} moved the player from {before} to {after}"
-msgstr ""
+msgstr "[Simpul={node}] {requester} memindahkan pemain dari {before} ke {after}"
 
 #: plnotifier/cog.py:1576
 msgid "Player Disconnected Event"
-msgstr ""
+msgstr "Acara Pemutusan Pemain"
 
 #: plnotifier/cog.py:1577
 msgid "[Node={node}] {requester} disconnected the player"
-msgstr ""
+msgstr "[Simpul={node}] {requester} memutuskan sambungan pemutar"
 
 #: plnotifier/cog.py:1604
 msgid "Player Connected Event"
-msgstr ""
+msgstr "Acara Player Connected"
 
 #: plnotifier/cog.py:1605
 msgid "[Node={node}] {requester} connected the player"
-msgstr ""
+msgstr "[Simpul={node}] {requester} menghubungkan pemain"
 
 #: plnotifier/cog.py:1632
 msgid "Player Volume Changed Event"
-msgstr ""
+msgstr "Volume Pemain Mengubah Acara"
 
 #: plnotifier/cog.py:1633
 msgid "[Node={node}] {requester} changed the player's volume from {before} to {after}"
-msgstr ""
+msgstr "[Simpul={node}] {requester} mengubah volume pemain dari {before} ke {after}"
 
 #: plnotifier/cog.py:1662 plnotifier/cog.py:1672 plnotifier/cog.py:1682
 msgid "Player Repeat Event"
-msgstr ""
+msgstr "Acara Pengulangan Pemain"
 
 #: plnotifier/cog.py:1663
 msgid "[Node={node}] {requester} disabled repeat"
-msgstr ""
+msgstr "[Simpul={node}] {requester} pengulangan dinonaktifkan"
 
 #: plnotifier/cog.py:1673
 msgid "{requester} {status} repeat of the whole queue"
-msgstr ""
+msgstr "{requester} {status} ulangi seluruh antrian"
 
 #: plnotifier/cog.py:1674 plnotifier/cog.py:1685
 msgid "enabled"
-msgstr ""
+msgstr "Diaktifkan"
 
 #: plnotifier/cog.py:1674 plnotifier/cog.py:1685
 msgid "disabled"
-msgstr ""
+msgstr "cacat"
 
 #: plnotifier/cog.py:1683
 msgid "[Node={node}] {requester} {status} repeat for {track}"
-msgstr ""
+msgstr "[Simpul={node}] {requester} {status} ulangi untuk {track}"
 
 #: plnotifier/cog.py:1713
 msgid "Player Restored Event"
-msgstr ""
+msgstr "Acara yang Dipulihkan Pemain"
 
 #: plnotifier/cog.py:1714
 msgid "[Node={node}] {requester} restored the player"
-msgstr ""
+msgstr "[Simpul={node}] {requester} memulihkan pemain"
 
 #: plnotifier/cog.py:1737
 msgid "an intro section"
-msgstr ""
+msgstr "bagian intro"
 
 #: plnotifier/cog.py:1739
 msgid "an outro section"
-msgstr ""
+msgstr "bagian outro"
 
 #: plnotifier/cog.py:1741
 msgid "a preview section"
-msgstr ""
+msgstr "bagian pratinjau"
 
 #: plnotifier/cog.py:1743
 msgid "an off-topic section"
-msgstr ""
+msgstr "bagian di luar topik"
 
 #: plnotifier/cog.py:1745
 msgid "a filler section"
-msgstr ""
+msgstr "bagian pengisi"
 
 #: plnotifier/cog.py:1747
 msgid "a sponsor section"
-msgstr ""
+msgstr "Bagian Sponsor"
 
 #: plnotifier/cog.py:1749
 msgid "a self-promotion section"
-msgstr ""
+msgstr "Bagian promosi diri"
 
 #: plnotifier/cog.py:1751
 msgid "an interaction section"
-msgstr ""
+msgstr "bagian interaksi"
 
 #: plnotifier/cog.py:1755
 msgid "Sponsor Segment Skipped Event"
-msgstr ""
+msgstr "Acara yang Dilewati Segmen Sponsor"
 
 #: plnotifier/cog.py:1756
 msgid "[Node={node}] Sponsorblock: Skipped {category} running from {start}s to {to}s"
-msgstr ""
+msgstr "[Simpul={node}] Sponsorblock: Dilewati {category} berlari dari {start}s untuk {to}s"
 
 #: plnotifier/cog.py:1784
 msgid "Effect"
-msgstr ""
+msgstr "Efek"
 
 #: plnotifier/cog.py:1785
 msgid "Not changed"
-msgstr ""
+msgstr "Tidak berubah"
 
 #: plnotifier/cog.py:1786
 msgid "Values"
-msgstr ""
+msgstr "Nilai"
 
 #: plnotifier/cog.py:1826
 msgid "Filters Applied Event"
-msgstr ""
+msgstr "Memfilter Peristiwa yang Diterapkan"
 
 #: plnotifier/cog.py:1829
 msgid "None"
-msgstr ""
+msgstr "Tidak"
 
 #: plnotifier/cog.py:1830
 msgid "Currently Applied"
-msgstr ""
+msgstr "Saat Ini Diterapkan"
 
 #: plnotifier/cog.py:1832
 msgid "[Node={node}] {requester} changed the player filters"
-msgstr ""
+msgstr "[Simpul={node}] {requester} mengubah filter pemutar"
 
 #: plnotifier/cog.py:1852
 msgid "Node Connected Event"
-msgstr ""
+msgstr "Acara Node Connected"
 
 #: plnotifier/cog.py:1853
 msgid "Node {name} has been connected"
-msgstr ""
+msgstr "Simpul {name} telah terhubung"
 
 #: plnotifier/cog.py:1869
 msgid "Node Disconnected Event"
-msgstr ""
+msgstr "Peristiwa Node Terputus"
 
 #: plnotifier/cog.py:1870
 msgid "Node {name} has been disconnected with code {code} and reason: {reason}"
-msgstr ""
+msgstr "Simpul {name} telah terputus dengan kode {code} dan alasan: {reason}"
 
 #: plnotifier/cog.py:1892
 msgid "Node Changed Event"
-msgstr ""
+msgstr "Peristiwa Perubahan Node"
 
 #: plnotifier/cog.py:1893
 msgid "The node which the player is connected to changed from {fro} to {to}"
-msgstr ""
+msgstr "Node tempat pemutar terhubung berubah dari {fro} ke {to}"
 
 #: plnotifier/cog.py:1915
 msgid "WebSocket Closed Event"
-msgstr ""
+msgstr "Acara Tertutup WebSocket"
 
 #: plnotifier/cog.py:1916
 msgid "[Node={node}] The Lavalink websocket connection to Discord closed with code {code} and reason {reason}"
-msgstr ""
+msgstr "[Simpul={node}] Koneksi websocket Lavalink ke Discord ditutup dengan kode {code} dan alasan {reason}"
 
 #: plnotifier/cog.py:1945
 msgid "[Node={node}] {requester} automatically paused the player due to configured values"
-msgstr ""
+msgstr "[Simpul={node}] {requester} secara otomatis menjeda pemutar karena nilai yang dikonfigurasi"
 
 #: plnotifier/cog.py:1973
 msgid "[Node={node}] {requester} automatically resumed the player due to configured values"
-msgstr ""
+msgstr "[Simpul={node}] {requester} secara otomatis melanjutkan pemutar karena nilai yang dikonfigurasi"
 
 #: plnotifier/cog.py:2000 plnotifier/cog.py:2030
 msgid "Auto Player Disconnected Event"
-msgstr ""
+msgstr "Acara Pemutusan Pemutar Otomatis"
 
 #: plnotifier/cog.py:2001
 msgid "[Node={node}] {requester} automatically disconnected the player as there is no one listening"
-msgstr ""
+msgstr "[Simpul={node}] {requester} secara otomatis memutuskan sambungan pemutar karena tidak ada yang mendengarkan"
 
 #: plnotifier/cog.py:2031
 msgid "[Node={node}] {requester} automatically disconnected the player as the queue is empty"
-msgstr ""
+msgstr "[Simpul={node}] {requester} secara otomatis memutuskan sambungan pemutar saat antrian kosong"
 

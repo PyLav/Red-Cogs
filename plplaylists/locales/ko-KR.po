@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:26\n"
+"PO-Revision-Date: 2023-01-31 23:42\n"
 "Last-Translator: \n"
 "Language-Team: Korean\n"
 "MIME-Version: 1.0\n"
@@ -20,28 +20,28 @@ msgstr ""
 #: plplaylists/cog.py:47
 #, docstring
 msgid "PyLav playlist management commands"
-msgstr ""
+msgstr "PyLav 재생 목록 관리 명령"
 
 #: plplaylists/cog.py:55
 msgid "Control PyLav playlists"
-msgstr ""
+msgstr "PyLav 재생 목록 제어"
 
 #: plplaylists/cog.py:77
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies"
-msgstr ""
+msgstr "Cog의 버전과 PyLav 종속성을 표시합니다."
 
 #: plplaylists/cog.py:92
 msgid "Library/Cog"
-msgstr ""
+msgstr "도서관/톱니바퀴"
 
 #: plplaylists/cog.py:93
 msgid "Version"
-msgstr ""
+msgstr "버전"
 
 #: plplaylists/cog.py:130
 msgid "Let's create a playlist!"
-msgstr ""
+msgstr "재생 목록을 만들어 봅시다!"
 
 #: plplaylists/cog.py:131
 msgid "(**1**) - Apply changes to playlist.\n"
@@ -50,41 +50,48 @@ msgid "(**1**) - Apply changes to playlist.\n"
 "(**4**) - Link this playlist to an existing playlist/album.\n"
 "(**5**) - Add all tracks from the queue to the playlist.\n\n"
 "If you want the playlist name to be as the original playlist simply set the URL but no name.\n\n"
-msgstr ""
+msgstr "(**1**) - 재생 목록에 변경 사항을 적용합니다.\n"
+"(**2**) - 모든 변경 내용을 취소합니다.\n"
+"(**3**) - 재생 목록에 이름을 추가합니다.\n"
+"(**4**) - 이 재생 목록을 기존 재생 목록/앨범에 연결합니다.\n"
+"(**5**) - 대기열의 모든 트랙을 재생 목록에 추가합니다.\n\n"
+"재생 목록 이름을 원래 재생 목록으로 만들려면 URL을 설정하기만 하면 되지만 이름은 설정하지 않습니다.\n\n"
 
 #: plplaylists/cog.py:165
 msgid "Playlist not created"
-msgstr ""
+msgstr "재생 목록이 생성되지 않음"
 
 #: plplaylists/cog.py:166
 msgid "No tracks were provided in time."
-msgstr ""
+msgstr "제 시간에 트랙이 제공되지 않았습니다."
 
 #: plplaylists/cog.py:179
 msgid "Playlist created"
-msgstr ""
+msgstr "재생 목록 생성"
 
 #: plplaylists/cog.py:180
 msgid "Name: `{name}`\n"
 "ID: `{id}`\n"
 "Tracks: `{track_count}`"
-msgstr ""
+msgstr "이름: '{name}`\n"
+"아이디: '{id}`\n"
+"트랙: '{track_count}`"
 
 #: plplaylists/cog.py:204
 msgid "You have no playlists"
-msgstr ""
+msgstr "재생 목록이 없습니다"
 
 #: plplaylists/cog.py:246 plplaylists/cog.py:607
 msgid "Nothing to save"
-msgstr ""
+msgstr "저장할 것이 없다."
 
 #: plplaylists/cog.py:247 plplaylists/cog.py:608
 msgid "There is nothing in the queue to save"
-msgstr ""
+msgstr "큐에 저장할 항목이 없습니다."
 
 #: plplaylists/cog.py:284 plplaylists/cog.py:545 plplaylists/cog.py:625
 msgid "{user}, playlist {playlist_name} cannot be managed by yourself"
-msgstr ""
+msgstr "{user}재생 {playlist_name} 혼자서 관리 할 수 없습니다."
 
 #: plplaylists/cog.py:293
 msgid "(**1**){space} - Apply changes to playlist.\n"
@@ -107,7 +114,26 @@ msgid "(**1**){space} - Apply changes to playlist.\n"
 "The clear button will always be run first before any other operations.\n"
 "The URL button will always run last - Linking a playlist via the URL will overwrite any tracks added or removed to this playlist.\n\n"
 "If you interact with a button multiple times other than the add/remove buttons only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - 재생 목록에 변경 사항을 적용합니다.\n"
+"(**2**){space} - 변경 사항을 취소하고 메뉴를 닫습니다.\n"
+"(**3**){space} -이 재생 목록을 삭제하십시오.\n"
+"(**4**){space} -이 재생 목록에서 모든 트랙을 제거합니다.\n"
+"(**5**){space} - 재생 목록을 최신 트랙으로 업데이트하십시오.\n"
+"이 작업은 이 메뉴를 통해 추가/제거된 모든 트랙을 무시합니다.\n"
+"(**6**){space} - 재생 목록의 이름을 변경합니다.\n"
+"(**7**){space} -이 재생 목록을 기존 재생 목록 / 앨범에 연결합니다.\n"
+"(**8**){space} -이 재생 목록에 쿼리를 추가합니다.\n"
+"(**9**){space} - 이 재생 목록에서 쿼리를 제거합니다.\n"
+"(**10**) - 재생 목록 파일을 다운로드합니다.\n"
+"(**11**) - 현재 재생 목록을 대기열에 추가합니다.\n"
+"(**12**) - 현재 재생 목록의 트랙을 표시합니다.\n"
+"(**13**) - 대기열의 트랙을 이 재생 목록에 추가합니다.\n"
+"(**14**) - 재생 목록에서 중복 항목을 제거합니다.\n\n"
+"트랙 추가/제거 버튼을 여러 번 사용하여 한 번에 여러 트랙과 재생 목록을 추가/제거할 수 있습니다.\n\n"
+"쿼리는 play 명령으로 재생할 수있는 모든 것입니다 - 모든 쿼리는 추가 / 제거 버튼으로 사용할 수 있습니다.\n\n"
+"지우기 버튼은 항상 다른 작업보다 먼저 실행됩니다.\n"
+"URL 버튼은 항상 마지막에 실행됩니다 - URL을 통해 재생 목록을 연결하면이 재생 목록에 추가되거나 제거 된 모든 트랙을 덮어 씁니다.\n\n"
+"추가/제거 버튼 이외의 버튼과 여러 번 상호 작용하는 경우 마지막 상호 작용만 적용됩니다.\n\n\n"
 
 #: plplaylists/cog.py:319
 msgid "(**1**) - Close the menu.\n"
@@ -115,7 +141,11 @@ msgid "(**1**) - Close the menu.\n"
 "(**3**) - Download the playlist file.\n"
 "(**4**) - Add current playlist to the queue.\n"
 "(**5**) - Show tracks in current playlist.\n\n\n"
-msgstr ""
+msgstr "(**1**) - 메뉴를 닫습니다.\n"
+"(**2**) - 재생 목록을 최신 트랙으로 업데이트합니다.\n"
+"(**3**) - 재생 목록 파일을 다운로드합니다.\n"
+"(**4**) - 현재 재생 목록을 대기열에 추가합니다.\n"
+"(**5**) - 현재 재생 목록의 트랙을 표시합니다.\n\n\n"
 
 #: plplaylists/cog.py:327
 msgid "**__Currently managing__**:\n"
@@ -124,105 +154,114 @@ msgid "**__Currently managing__**:\n"
 "**Author**:{space}{space}{author}\n"
 "**Tracks**:{space}{space}{space}{tracks} tracks\n"
 "**URL**:{space}{space}{space}{space}{space}{url}\n"
-msgstr ""
+msgstr "**__Currently managing__**:\n"
+"**이름**:{space}{space}{space}{playlist_name}\n"
+"**범위**:{space}{space}{space}{scope}\n"
+"**저자**:{space}{space}{author}\n"
+"**트랙**:{space}{space}{space}{tracks} 트랙\n"
+"**URL**:{space}{space}{space}{space}{space}{url}\n"
 
 #: plplaylists/cog.py:345
 msgid "Let's manage: {playlist_name}"
-msgstr ""
+msgstr "관리하자 : {playlist_name}"
 
 #: plplaylists/cog.py:347
 msgid "Let's take a look at: {playlist_name}"
-msgstr ""
+msgstr "한 번 살펴 보겠습니다. {playlist_name}"
 
 #: plplaylists/cog.py:354
 msgid "N/A"
-msgstr ""
+msgstr "해당 없음"
 
 #: plplaylists/cog.py:386 plplaylists/cog.py:555
 msgid "Playlist deleted"
-msgstr ""
+msgstr "재생 목록이 삭제됨"
 
 #: plplaylists/cog.py:388 plplaylists/cog.py:557
 msgid "{user}, playlist {playlist_name} has been deleted"
-msgstr ""
+msgstr "{user}재생 {playlist_name} 이(가) 삭제되었습니다."
 
 #: plplaylists/cog.py:438
 msgid "Playlist **{playlist_name}** could not be updated with URL: <{url}>"
-msgstr ""
+msgstr "재생**{playlist_name}** URL로 업데이트 할 수 없습니다 : <{url}>"
 
 #: plplaylists/cog.py:473
 msgid "\n"
 "{track_count} {track_plural} removed from the playlist"
-msgstr ""
+msgstr "\n"
+"{track_count} {track_plural} 재생 목록에서 제거됨"
 
 #: plplaylists/cog.py:474 plplaylists/cog.py:478 plplaylists/cog.py:644
 msgid "track"
-msgstr ""
+msgstr "추적하다"
 
 #: plplaylists/cog.py:474 plplaylists/cog.py:478 plplaylists/cog.py:644
 msgid "tracks"
-msgstr ""
+msgstr "트랙"
 
 #: plplaylists/cog.py:477 plplaylists/cog.py:643
 msgid "\n"
 "{track_count} {track_plural} added to the playlist"
-msgstr ""
+msgstr "\n"
+"{track_count} {track_plural} 재생 목록에 추가됨"
 
 #: plplaylists/cog.py:483 plplaylists/cog.py:650
 msgid "Playlist updated"
-msgstr ""
+msgstr "재생 목록 업데이트"
 
 #: plplaylists/cog.py:484 plplaylists/cog.py:651
 msgid "{user}, playlist {playlist_name} has been updated.{extras}"
-msgstr ""
+msgstr "{user}재생 {playlist_name} 가 업데이트되었습니다.{extras}"
 
 #: plplaylists/cog.py:496 plplaylists/cog.py:664
 msgid "Playlist unchanged"
-msgstr ""
+msgstr "재생 목록 변경 안 함"
 
 #: plplaylists/cog.py:497 plplaylists/cog.py:665
 msgid "{user}, playlist {playlist_name} has not been updated"
-msgstr ""
+msgstr "{user}재생 {playlist_name} 업데이트되지 않았습니다."
 
 #: plplaylists/cog.py:693
 msgid "You must either provide a URL or attach a playlist file to upload a playlist"
-msgstr ""
+msgstr "재생 목록을 업로드하려면 URL을 제공하거나 재생 목록 파일을 첨부해야합니다."
 
 #: plplaylists/cog.py:705
 msgid "No valid playlist file provided"
-msgstr ""
+msgstr "유효한 재생 목록 파일이 제공되지 않았습니다."
 
 #: plplaylists/cog.py:714
 msgid "Multiple playlist files provided - Currently only 1 per message is allowed"
-msgstr ""
+msgstr "여러 재생 목록 파일 제공 - 현재 메시지당 1개만 허용됩니다."
 
 #: plplaylists/cog.py:731
 msgid "Failed to save any of the requested playlists"
-msgstr ""
+msgstr "요청한 재생 목록을 저장하지 못했습니다."
 
 #: plplaylists/cog.py:740
 msgid "Failed to save the following playlists:\n"
 "{invalid_playlists}"
-msgstr ""
+msgstr "다음 재생 목록을 저장하지 못했습니다.\n"
+"{invalid_playlists}"
 
 #: plplaylists/cog.py:749
 msgid "Successfully saved the following playlists:\n"
 "{saved_playlists}"
-msgstr ""
+msgstr "다음 재생 목록을 성공적으로 저장했습니다.\n"
+"{saved_playlists}"
 
 #: plplaylists/cog.py:774
 msgid "You must be in a voice channel to allow me to connect"
-msgstr ""
+msgstr "내가 연결할 수 있도록 음성 채널에 있어야 합니다."
 
 #: plplaylists/cog.py:782
 msgid "I don't have permission to connect or speak in {channel}"
-msgstr ""
+msgstr "연결하거나 발언할 수 있는 권한이 없습니다. {channel}"
 
 #: plplaylists/cog.py:812
 msgid "Playlist"
-msgstr ""
+msgstr "재생"
 
 #: plplaylists/cog.py:817
 msgid "{track_count} tracks enqueued.{playlist_name}"
-msgstr ""
+msgstr "{track_count} 대기열에 포함된 트랙.{playlist_name}"
 

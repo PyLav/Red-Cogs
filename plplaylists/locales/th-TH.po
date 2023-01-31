@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:26\n"
+"PO-Revision-Date: 2023-01-31 23:42\n"
 "Last-Translator: \n"
 "Language-Team: Thai\n"
 "MIME-Version: 1.0\n"
@@ -20,28 +20,28 @@ msgstr ""
 #: plplaylists/cog.py:47
 #, docstring
 msgid "PyLav playlist management commands"
-msgstr ""
+msgstr "คําสั่งการจัดการเพลย์ลิสต์ PyLav"
 
 #: plplaylists/cog.py:55
 msgid "Control PyLav playlists"
-msgstr ""
+msgstr "ควบคุมเพลย์ลิสต์ PyLav"
 
 #: plplaylists/cog.py:77
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies"
-msgstr ""
+msgstr "แสดงเวอร์ชันของ Cog และการพึ่งพา PyLav"
 
 #: plplaylists/cog.py:92
 msgid "Library/Cog"
-msgstr ""
+msgstr "ห้องสมุด/ฟันเฟือง"
 
 #: plplaylists/cog.py:93
 msgid "Version"
-msgstr ""
+msgstr "เวอร์ชัน"
 
 #: plplaylists/cog.py:130
 msgid "Let's create a playlist!"
-msgstr ""
+msgstr "มาสร้างเพลย์ลิสต์กันเถอะ!"
 
 #: plplaylists/cog.py:131
 msgid "(**1**) - Apply changes to playlist.\n"
@@ -50,41 +50,48 @@ msgid "(**1**) - Apply changes to playlist.\n"
 "(**4**) - Link this playlist to an existing playlist/album.\n"
 "(**5**) - Add all tracks from the queue to the playlist.\n\n"
 "If you want the playlist name to be as the original playlist simply set the URL but no name.\n\n"
-msgstr ""
+msgstr "(**1**) - ใช้การเปลี่ยนแปลงกับเพลย์ลิสต์\n"
+"(**2**) - ยกเลิกการเปลี่ยนแปลงใด ๆ ที่เกิดขึ้น\n"
+"(**3**) - เพิ่มชื่อลงในเพลย์ลิสต์\n"
+"(**4**) - เชื่อมโยงเพลย์ลิสต์นี้กับเพลย์ลิสต์/อัลบั้มที่มีอยู่\n"
+"(**5**) - เพิ่มแทร็กทั้งหมดจากคิวไปยังเพลย์ลิสต์\n\n"
+"หากคุณต้องการให้ชื่อเพลย์ลิสต์เป็นเพลย์ลิสต์ดั้งเดิมเพียงแค่ตั้งค่า URL แต่ไม่มีชื่อ\n\n"
 
 #: plplaylists/cog.py:165
 msgid "Playlist not created"
-msgstr ""
+msgstr "ไม่ได้สร้างเพลย์ลิสต์"
 
 #: plplaylists/cog.py:166
 msgid "No tracks were provided in time."
-msgstr ""
+msgstr "ไม่มีแทร็กให้ทันเวลา"
 
 #: plplaylists/cog.py:179
 msgid "Playlist created"
-msgstr ""
+msgstr "เพลย์ลิสต์ที่สร้างแล้ว"
 
 #: plplaylists/cog.py:180
 msgid "Name: `{name}`\n"
 "ID: `{id}`\n"
 "Tracks: `{track_count}`"
-msgstr ""
+msgstr "ชื่อ: '{name}`\n"
+"รหัส: '{id}`\n"
+"เพลง : '{track_count}`"
 
 #: plplaylists/cog.py:204
 msgid "You have no playlists"
-msgstr ""
+msgstr "คุณไม่มีเพลย์ลิสต์"
 
 #: plplaylists/cog.py:246 plplaylists/cog.py:607
 msgid "Nothing to save"
-msgstr ""
+msgstr "ไม่มีอะไรจะบันทึก"
 
 #: plplaylists/cog.py:247 plplaylists/cog.py:608
 msgid "There is nothing in the queue to save"
-msgstr ""
+msgstr "ไม่มีอะไรในคิวที่จะบันทึก"
 
 #: plplaylists/cog.py:284 plplaylists/cog.py:545 plplaylists/cog.py:625
 msgid "{user}, playlist {playlist_name} cannot be managed by yourself"
-msgstr ""
+msgstr "{user}เพลย์ลิสต์ {playlist_name} ไม่สามารถจัดการได้ด้วยตัวเอง"
 
 #: plplaylists/cog.py:293
 msgid "(**1**){space} - Apply changes to playlist.\n"
@@ -107,7 +114,26 @@ msgid "(**1**){space} - Apply changes to playlist.\n"
 "The clear button will always be run first before any other operations.\n"
 "The URL button will always run last - Linking a playlist via the URL will overwrite any tracks added or removed to this playlist.\n\n"
 "If you interact with a button multiple times other than the add/remove buttons only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - ใช้การเปลี่ยนแปลงกับเพลย์ลิสต์\n"
+"(**2**){space} - ยกเลิกการเปลี่ยนแปลงใด ๆ ที่ทําและปิดเมนู\n"
+"(**3**){space} - ลบเพลย์ลิสต์นี้\n"
+"(**4**){space} - ลบแทร็กทั้งหมดออกจากเพลย์ลิสต์นี้\n"
+"(**5**){space} - อัปเดตเพลย์ลิสต์ด้วยแทร็กล่าสุด\n"
+"โปรดทราบว่าการดําเนินการนี้จะละเว้นแทร็กใดๆ ที่เพิ่ม/นําออกผ่านเมนูนี้\n"
+"(**6**){space} - เปลี่ยนชื่อของเพลย์ลิสต์\n"
+"(**7**){space} - เชื่อมโยงเพลย์ลิสต์นี้กับเพลย์ลิสต์/อัลบั้มที่มีอยู่\n"
+"(**8**){space} - เพิ่มแบบสอบถามลงในเพลย์ลิสต์นี้\n"
+"(**9**){space} - ลบแบบสอบถามออกจากเพลย์ลิสต์นี้\n"
+"(**10**) - ดาวน์โหลดไฟล์เพลย์ลิสต์\n"
+"(**11**) - เพิ่มเพลย์ลิสต์ปัจจุบันลงในคิว\n"
+"(**12**) - แสดงแทร็กในเพลย์ลิสต์ปัจจุบัน\n"
+"(**13**) - เพิ่มแทร็กจากคิวลงในเพลย์ลิสต์นี้\n"
+"(**14**) - ลบรายการที่ซ้ํากันในเพลย์ลิสต์\n\n"
+"ปุ่มเพิ่ม/ลบแทร็กสามารถใช้ได้หลายครั้งเพื่อเพิ่ม/ลบหลายแทร็กและเพลย์ลิสต์พร้อมกัน\n\n"
+"แบบสอบถามคือสิ่งที่สามารถเล่นได้โดยคําสั่งเล่น - แบบสอบถามใด ๆ ที่สามารถใช้โดยปุ่มเพิ่ม / ลบได้\n\n"
+"ปุ่มล้างจะทํางานก่อนการดําเนินการอื่น ๆ เสมอ\n"
+"ปุ่ม URL จะทํางานล่าสุดเสมอ - การลิงก์เพลย์ลิสต์ผ่าน URL จะเขียนทับแทร็กใดๆ ที่เพิ่มหรือนําออกไปยังเพลย์ลิสต์นี้\n\n"
+"หากคุณโต้ตอบกับปุ่มหลายครั้งนอกเหนือจากปุ่มเพิ่ม/ลบเฉพาะการโต้ตอบล่าสุดเท่านั้นที่จะมีผล\n\n\n"
 
 #: plplaylists/cog.py:319
 msgid "(**1**) - Close the menu.\n"
@@ -115,7 +141,11 @@ msgid "(**1**) - Close the menu.\n"
 "(**3**) - Download the playlist file.\n"
 "(**4**) - Add current playlist to the queue.\n"
 "(**5**) - Show tracks in current playlist.\n\n\n"
-msgstr ""
+msgstr "(**1**) - ปิดเมนู\n"
+"(**2**) - อัปเดตเพลย์ลิสต์ด้วยแทร็กล่าสุด\n"
+"(**3**) - ดาวน์โหลดไฟล์เพลย์ลิสต์\n"
+"(**4**) - เพิ่มเพลย์ลิสต์ปัจจุบันลงในคิว\n"
+"(**5**) - แสดงแทร็กในเพลย์ลิสต์ปัจจุบัน\n\n\n"
 
 #: plplaylists/cog.py:327
 msgid "**__Currently managing__**:\n"
@@ -124,105 +154,114 @@ msgid "**__Currently managing__**:\n"
 "**Author**:{space}{space}{author}\n"
 "**Tracks**:{space}{space}{space}{tracks} tracks\n"
 "**URL**:{space}{space}{space}{space}{space}{url}\n"
-msgstr ""
+msgstr "**__Currently managing__**:\n"
+"**ชื่อ**:{space}{space}{space}{playlist_name}\n"
+"**ขอบเขต**:{space}{space}{space}{scope}\n"
+"**ผู้แต่ง**:{space}{space}{author}\n"
+"**แทร็ค**:{space}{space}{space}{tracks} แทร็ค\n"
+"**URL**:{space}{space}{space}{space}{space}{url}\n"
 
 #: plplaylists/cog.py:345
 msgid "Let's manage: {playlist_name}"
-msgstr ""
+msgstr "มาจัดการกัน: {playlist_name}"
 
 #: plplaylists/cog.py:347
 msgid "Let's take a look at: {playlist_name}"
-msgstr ""
+msgstr "ลองมาดูที่: {playlist_name}"
 
 #: plplaylists/cog.py:354
 msgid "N/A"
-msgstr ""
+msgstr "ไม่ระบุ"
 
 #: plplaylists/cog.py:386 plplaylists/cog.py:555
 msgid "Playlist deleted"
-msgstr ""
+msgstr "เพลย์ลิสต์ถูกลบแล้ว"
 
 #: plplaylists/cog.py:388 plplaylists/cog.py:557
 msgid "{user}, playlist {playlist_name} has been deleted"
-msgstr ""
+msgstr "{user}เพลย์ลิสต์ {playlist_name} ถูกลบไปแล้ว"
 
 #: plplaylists/cog.py:438
 msgid "Playlist **{playlist_name}** could not be updated with URL: <{url}>"
-msgstr ""
+msgstr "เพลย์ลิสต์**{playlist_name}** ไม่สามารถอัปเดตด้วย URL: <{url}>"
 
 #: plplaylists/cog.py:473
 msgid "\n"
 "{track_count} {track_plural} removed from the playlist"
-msgstr ""
+msgstr "\n"
+"{track_count} {track_plural} นําออกจากเพลย์ลิสต์แล้ว"
 
 #: plplaylists/cog.py:474 plplaylists/cog.py:478 plplaylists/cog.py:644
 msgid "track"
-msgstr ""
+msgstr "ลู่"
 
 #: plplaylists/cog.py:474 plplaylists/cog.py:478 plplaylists/cog.py:644
 msgid "tracks"
-msgstr ""
+msgstr "แทร็ค"
 
 #: plplaylists/cog.py:477 plplaylists/cog.py:643
 msgid "\n"
 "{track_count} {track_plural} added to the playlist"
-msgstr ""
+msgstr "\n"
+"{track_count} {track_plural} เพิ่มลงในเพลย์ลิสต์แล้ว"
 
 #: plplaylists/cog.py:483 plplaylists/cog.py:650
 msgid "Playlist updated"
-msgstr ""
+msgstr "อัปเดตเพลย์ลิสต์แล้ว"
 
 #: plplaylists/cog.py:484 plplaylists/cog.py:651
 msgid "{user}, playlist {playlist_name} has been updated.{extras}"
-msgstr ""
+msgstr "{user}เพลย์ลิสต์ {playlist_name} ได้รับการอัปเดตแล้ว{extras}"
 
 #: plplaylists/cog.py:496 plplaylists/cog.py:664
 msgid "Playlist unchanged"
-msgstr ""
+msgstr "เพลย์ลิสต์ไม่เปลี่ยนแปลง"
 
 #: plplaylists/cog.py:497 plplaylists/cog.py:665
 msgid "{user}, playlist {playlist_name} has not been updated"
-msgstr ""
+msgstr "{user}เพลย์ลิสต์ {playlist_name} ยังไม่ได้รับการปรับปรุง"
 
 #: plplaylists/cog.py:693
 msgid "You must either provide a URL or attach a playlist file to upload a playlist"
-msgstr ""
+msgstr "คุณต้องระบุ URL หรือแนบไฟล์เพลย์ลิสต์เพื่ออัปโหลดเพลย์ลิสต์"
 
 #: plplaylists/cog.py:705
 msgid "No valid playlist file provided"
-msgstr ""
+msgstr "ไม่มีไฟล์เพลย์ลิสต์ที่ถูกต้อง"
 
 #: plplaylists/cog.py:714
 msgid "Multiple playlist files provided - Currently only 1 per message is allowed"
-msgstr ""
+msgstr "มีไฟล์เพลย์ลิสต์หลายไฟล์ - ปัจจุบันอนุญาตเพียง 1 ไฟล์ต่อข้อความเท่านั้น"
 
 #: plplaylists/cog.py:731
 msgid "Failed to save any of the requested playlists"
-msgstr ""
+msgstr "ไม่สามารถบันทึกเพลย์ลิสต์ที่ร้องขอได้"
 
 #: plplaylists/cog.py:740
 msgid "Failed to save the following playlists:\n"
 "{invalid_playlists}"
-msgstr ""
+msgstr "ไม่สามารถบันทึกเพลย์ลิสต์ต่อไปนี้ได้:\n"
+"{invalid_playlists}"
 
 #: plplaylists/cog.py:749
 msgid "Successfully saved the following playlists:\n"
 "{saved_playlists}"
-msgstr ""
+msgstr "บันทึกเพลย์ลิสต์ต่อไปนี้สําเร็จแล้ว:\n"
+"{saved_playlists}"
 
 #: plplaylists/cog.py:774
 msgid "You must be in a voice channel to allow me to connect"
-msgstr ""
+msgstr "คุณต้องอยู่ในช่องเสียงเพื่อให้ฉันเชื่อมต่อได้"
 
 #: plplaylists/cog.py:782
 msgid "I don't have permission to connect or speak in {channel}"
-msgstr ""
+msgstr "ฉันไม่ได้รับอนุญาตให้เชื่อมต่อหรือพูดใน {channel}"
 
 #: plplaylists/cog.py:812
 msgid "Playlist"
-msgstr ""
+msgstr "เพลย์ลิสต์"
 
 #: plplaylists/cog.py:817
 msgid "{track_count} tracks enqueued.{playlist_name}"
-msgstr ""
+msgstr "{track_count} แทร็กที่เข้าคิว{playlist_name}"
 

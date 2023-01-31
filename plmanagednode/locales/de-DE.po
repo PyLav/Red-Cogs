@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:26\n"
+"PO-Revision-Date: 2023-01-31 23:42\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -20,67 +20,71 @@ msgstr ""
 #: plmanagednode/cog.py:34 plmanagednode/cog.py:46
 #, docstring
 msgid "Configure the managed Lavalink node used by PyLav"
-msgstr ""
+msgstr "Konfigurieren des verwalteten Lavalink-Knotens, der von PyLav verwendet wird"
 
 #: plmanagednode/cog.py:50
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies"
-msgstr ""
+msgstr "Zeigen Sie die Version des Zahnrads und seine PyLav-Abhängigkeiten an"
 
 #: plmanagednode/cog.py:66
 msgid "Library/Cog"
-msgstr ""
+msgstr "Bibliothek/Zahnrad"
 
 #: plmanagednode/cog.py:67
 msgid "Version"
-msgstr ""
+msgstr "Version"
 
 #: plmanagednode/cog.py:80
 #, docstring
 msgid "Update the managed Lavalink node"
-msgstr ""
+msgstr "Aktualisieren des verwalteten Lavalink-Knotens"
 
 #: plmanagednode/cog.py:92
 msgid "The managed Lavalink node is already up to date."
-msgstr ""
+msgstr "Der verwaltete Lavalink-Knoten ist bereits auf dem neuesten Stand."
 
 #: plmanagednode/cog.py:101
 msgid "Your node is out of date, to update please run `{prefix}{command} 1`."
-msgstr ""
+msgstr "Ihr Knoten ist veraltet, zum Aktualisieren führen Sie bitte '{prefix}{command} 1'."
 
 #: plmanagednode/cog.py:117
 msgid "The managed Lavalink node has been updated to version {version}."
-msgstr ""
+msgstr "Der verwaltete Lavalink-Knoten wurde auf Version aktualisiert {version}."
 
 #: plmanagednode/cog.py:127
 #, docstring
 msgid "Toggle the managed node on/off.\n\n"
 "        Changes will be applied after restarting [botname].\n"
 "        "
-msgstr ""
+msgstr "Schalten Sie den verwalteten Knoten ein/aus.\n\n"
+"        Änderungen werden nach dem Neustart übernommen [botname].\n"
+"        "
 
 #: plmanagednode/cog.py:142
 msgid "PyLav's managed node has been enabled."
-msgstr ""
+msgstr "Der verwaltete Knoten von PyLav wurde aktiviert."
 
 #: plmanagednode/cog.py:150
 msgid "PyLav's managed node has been disabled."
-msgstr ""
+msgstr "Der verwaltete Knoten von PyLav wurde deaktiviert."
 
 #: plmanagednode/cog.py:158
 #, docstring
 msgid "Toggle the managed node auto updates on/off.\n\n"
 "        Changes will be applied after restarting [botname].\n"
 "        "
-msgstr ""
+msgstr "Schalten Sie die automatischen Updates des verwalteten Knotens ein/aus.\n\n"
+"        Änderungen werden nach dem Neustart übernommen [botname].\n"
+"        "
 
 #: plmanagednode/cog.py:174
 msgid "PyLav's managed node auto updates have been enabled"
-msgstr ""
+msgstr "Die automatischen Updates der verwalteten Knoten von PyLav wurden aktiviert"
 
 #: plmanagednode/cog.py:184
 msgid "PyLav's managed node auto updates have been disabled"
-msgstr ""
+msgstr "Die automatischen Updates der verwalteten Knoten von PyLav wurden deaktiviert"
 
 #: plmanagednode/cog.py:194
 #, docstring
@@ -90,41 +94,46 @@ msgid "Set the managed Lavalink node maximum heap-size.\n\n"
 "        This value only represents the maximum amount of RAM allowed to be used at any given point, and does not mean\n"
 "        that the managed Lavalink node will always use this amount of RAM.\n"
 "        "
-msgstr ""
+msgstr "Legen Sie die maximale Heap-Größe des verwalteten Lavalink-Knotens fest.\n\n"
+"        Standardmäßig ist dieser Wert 2G des verfügbaren RAM auf dem Hostcomputer, dargestellt durch (65-1023M|1+G) (256M,\n"
+"        256G zum Beispiel)\n\n"
+"        Dieser Wert stellt nur die maximale Menge an RAM dar, die zu einem bestimmten Zeitpunkt verwendet werden darf, und bedeutet nicht, dass\n"
+"        , dass der verwaltete Lavalink-Knoten immer diese Menge an RAM verwendet.\n"
+"        "
 
 #: plmanagednode/cog.py:218
 msgid "Heap-size must be a valid measure of size, e.g. 256M, 256G"
-msgstr ""
+msgstr "Heap-Größe muss ein gültiges Maß für die Größe sein, z. B. 256M, 256G"
 
 #: plmanagednode/cog.py:228
 msgid "Heap-size must be at least 64M, however it is recommended to have it set to at least 1G"
-msgstr ""
+msgstr "Die Heap-Größe muss mindestens 64M betragen, es wird jedoch empfohlen, sie auf mindestens 1G einzustellen"
 
 #: plmanagednode/cog.py:240
 msgid "Heap-size must be less than your system RAM, You currently have {ram_in_bytes} of RAM available"
-msgstr ""
+msgstr "Heap-Größe muss kleiner sein als Ihr System-RAM, Sie haben derzeit {ram_in_bytes} Anzahl RAM verfügbar"
 
 #: plmanagednode/cog.py:252
 msgid "Heap-size must be less than {limit} due to your system limitations"
-msgstr ""
+msgstr "Heap-Größe muss kleiner sein als {limit} aufgrund Ihrer Systembeschränkungen"
 
 #: plmanagednode/cog.py:272
 msgid "Managed node's heap-size set to {bytes}."
-msgstr ""
+msgstr "Heap-Größe des verwalteten Knotens auf {bytes}."
 
 #: plmanagednode/cog.py:283
 #, docstring
 msgid "Change the managed node start up configs"
-msgstr ""
+msgstr "Ändern der Startkonfigurationen für verwaltete Knoten"
 
 #: plmanagednode/cog.py:287
 #, docstring
 msgid "Set the managed node host"
-msgstr ""
+msgstr "Festlegen des Hosts für verwaltete Knoten"
 
 #: plmanagednode/cog.py:299
 msgid "Managed node's host set to {host}."
-msgstr ""
+msgstr "Der Host des verwalteten Knotens ist auf {host}."
 
 #: plmanagednode/cog.py:310
 #, docstring
@@ -133,94 +142,99 @@ msgid "`Dangerous command` Set the managed Lavalink node's connection port.\n\n"
 "        conflict with the default port because you already have an application using port 2154 on this device.\n\n"
 "        The value by default is `2154`.\n"
 "        "
-msgstr ""
+msgstr "'Gefährlicher Befehl' Legen Sie den Verbindungsport des verwalteten Lavalink-Knotens fest.\n\n"
+"        Dieser Port ist der Port, an den der verwaltete Lavalink-Knoten bindet, Sie sollten dies nur ändern, wenn ein\n"
+"        Konflikt mit dem Standardport, da Sie bereits eine Anwendung haben, die Port 2154 auf diesem Gerät verwendet.\n\n"
+"        Der Wert ist standardmäßig '2154'.\n"
+"        "
 
 #: plmanagednode/cog.py:320
 msgid "The port must be between 1024 and 49151"
-msgstr ""
+msgstr "Der Port muss zwischen 1024 und 49151 liegen"
 
 #: plmanagednode/cog.py:332
 msgid "Managed node's port set to {port}."
-msgstr ""
+msgstr "Port des verwalteten Knotens auf {port}."
 
 #: plmanagednode/cog.py:340
 #, docstring
 msgid "Change the managed node plugins"
-msgstr ""
+msgstr "Ändern der Plug-ins für verwaltete Knoten"
 
 #: plmanagednode/cog.py:346
 #, docstring
 msgid "Disabled one of the available plugins"
-msgstr ""
+msgstr "Eines der verfügbaren Plugins wurde deaktiviert"
 
 #: plmanagednode/cog.py:362 plmanagednode/cog.py:474
 msgid "The plugin must be one of the following: {plugins}"
-msgstr ""
+msgstr "Das Plugin muss eines der folgenden sein: {plugins}"
 
 #: plmanagednode/cog.py:447
 msgid "Managed node's plugin {plugin} disabled."
-msgstr ""
+msgstr "Plugin des verwalteten Knotens {plugin} arbeitsunfähig."
 
 #: plmanagednode/cog.py:458
 #, docstring
 msgid "Enable one of the available plugins"
-msgstr ""
+msgstr "Aktivieren Sie eines der verfügbaren Plugins"
 
 #: plmanagednode/cog.py:507
 msgid "Managed node's plugin {plugin} enabled."
-msgstr ""
+msgstr "Plugin des verwalteten Knotens {plugin} ermöglichte."
 
 #: plmanagednode/cog.py:518
 #, docstring
 msgid "Update the managed node plugins"
-msgstr ""
+msgstr "Aktualisieren der Plugins für verwaltete Knoten"
 
 #: plmanagednode/cog.py:592
 msgid "{name} was updated from {old_value} to {new_value}\n"
-msgstr ""
+msgstr "{name} wurde aktualisiert von {old_value} An {new_value}\n"
 
 #: plmanagednode/cog.py:600
 msgid "Managed node's plugins updated.\n\n"
 "{updates}"
-msgstr ""
+msgstr "Die Plugins des verwalteten Knotens wurden aktualisiert.\n\n"
+"{updates}"
 
 #: plmanagednode/cog.py:611
 msgid "Managed node's plugins already up to date"
-msgstr ""
+msgstr "Plugins des verwalteten Knotens bereits auf dem neuesten Stand"
 
 #: plmanagednode/cog.py:619
 #, docstring
 msgid "Toggle the managed node sources"
-msgstr ""
+msgstr "Umschalten der verwalteten Knotenquellen"
 
 #: plmanagednode/cog.py:634
 msgid "Invalid source, {valid_list} are valid sources"
-msgstr ""
+msgstr "Ungültige Quelle, {valid_list} gültige Quellen sind"
 
 #: plmanagednode/cog.py:648 plmanagednode/cog.py:684
 msgid "enabled"
-msgstr ""
+msgstr "ermöglichte"
 
 #: plmanagednode/cog.py:648 plmanagednode/cog.py:684
 msgid "disabled"
-msgstr ""
+msgstr "arbeitsunfähig"
 
 #: plmanagednode/cog.py:651
 msgid "Managed node's {source} source set to {state}."
-msgstr ""
+msgstr "Verwaltete Knoten {source} Quelle festgelegt auf {state}."
 
 #: plmanagednode/cog.py:663
 #, docstring
 msgid "Toggle the managed node filters"
-msgstr ""
+msgstr "Umschalten der Filter für verwaltete Knoten"
 
 #: plmanagednode/cog.py:675
 msgid "Invalid source, {valid_list} are valid filters"
-msgstr ""
+msgstr "Ungültige Quelle, {valid_list} sind gültige Filter"
 
 #: plmanagednode/cog.py:687
 msgid "Managed node's {source} filter set to {state}."
-msgstr ""
+msgstr "Verwaltete Knoten {source} Filter gesetzt auf {state}."
 
 #: plmanagednode/cog.py:699
 #, docstring
@@ -238,262 +252,287 @@ msgid "Configure multiple settings for the managed node.\n\n"
 "        `youtubeSearchEnabled` : Boolean i.e True (Default True)\n"
 "        `soundcloudSearchEnabled` : Boolean i.e True (Default True)\n"
 "        "
-msgstr ""
+msgstr "Konfigurieren Sie mehrere Einstellungen für den verwalteten Knoten.\n\n"
+"        Ausführen '[p]plmanaged config server <setting> info', um Informationen über die Einstellungen und ihre Funktion anzuzeigen.\n\n"
+"        **Namen festlegen**:\n"
+"        'bufferDurationMs' : Ganzzahl, d.h. 400 (Standard 400) - Auf 0 gesetzt, um JDA-NAS zu deaktivieren\n"
+"        'frameBufferDurationMs' : Ganzzahl, d.h. 1000 (Standard 1000)\n"
+"        'trackStuckThresholdMs': Ganzzahl, d.h. 1000 (Standard 1000)\n"
+"        'youtubePlaylistLoadLimit': Ganzzahl, d.h. 1000 (Standard 1000)\n"
+"        'opusEncodingQuality': Ganzzahl, d.h. 10 (Standard 10)\n"
+"        'resamplingQuality' : String i.e LOW (Standard HIGH)\n"
+"        'useSeekGhosting' : Boolesch, d.h. True (Standard true)\n"
+"        'playerUpdateInterval' : Ganzzahl, d.h. 30 (Standard 30)\n"
+"        'youtubeSearchEnabled': Boolesch, d.h. True (Standard True)\n"
+"        'soundcloudSearchEnabled' : Boolesch, d.h. True (Standard true)\n"
+"        "
 
 #: plmanagednode/cog.py:739
 msgid "{Setting} is not a valid Setting; Options are:\n\n"
 "{setting_list}"
-msgstr ""
+msgstr "{Setting} ist keine gültige Einstellung; Folgende Optionen stehen zur Verfügung:\n\n"
+"{setting_list}"
 
 #: plmanagednode/cog.py:750
 msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses but will increase RAM usage. Minimum of 40ms, lower values may introduce pauses and stutters. Set to 0 to disable JDA-NAS. Accepted values: Range: 0 - 2,000"
-msgstr ""
+msgstr "Die Dauer des NAS-Puffers in Millisekunden. Höhere Werte schneiden besser gegen längere GC-Pausen ab, erhöhen jedoch die RAM-Auslastung. Mindestens 40ms, niedrigere Werte können zu Pausen und Ruckeln führen. Setzen Sie den Wert auf 0, um JDA-NAS zu deaktivieren. Akzeptierte Werte: Bereich: 0 - 2.000"
 
 #: plmanagednode/cog.py:756
 msgid "How many milliseconds of audio to keep buffered, Higher values increase RAM usage. Accepted values: Range: 1,000 - 10,000"
-msgstr ""
+msgstr "Wie viele Millisekunden Audio gepuffert werden sollen, höhere Werte erhöhen die RAM-Auslastung. Akzeptierte Werte: Bereich: 1.000 - 10.000"
 
 #: plmanagednode/cog.py:760
 msgid "The threshold in milliseconds for how long a track can be stuck. A track is stuck if does not return any audio data. Accepted values: Range: 5,000 - 20,000"
-msgstr ""
+msgstr "Der Schwellenwert in Millisekunden, wie lange eine Spur stecken bleiben kann. Eine Spur bleibt hängen, wenn keine Audiodaten zurückgegeben werden. Akzeptierte Werte: Bereich: 5.000 - 20.000"
 
 #: plmanagednode/cog.py:764
 msgid "Number of pages to return for a YouTube Playlist - Each page contains 100 songs. Accepted values: Range: 5 - 100"
-msgstr ""
+msgstr "Anzahl der Seiten, die für eine YouTube-Wiedergabeliste zurückgegeben werden sollen - Jede Seite enthält 100 Songs. Akzeptierte Werte: Bereich: 5 - 100"
 
 #: plmanagednode/cog.py:768
 msgid "Opus encoder quality. Valid values range from 0 to 10, where 10 is best quality but is the most expensive on the CPU"
-msgstr ""
+msgstr "Opus-Encoder-Qualität. Gültige Werte reichen von 0 bis 10, wobei 10 die beste Qualität, aber die teuerste auf der CPU ist"
 
 #: plmanagednode/cog.py:772
 msgid "Quality of resampling operations. Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU"
-msgstr ""
+msgstr "Qualität der Neustichproben. Gültige Werte sind LOW, MEDIUM und HIGH, wobei HIGH die meiste CPU beansprucht"
 
 #: plmanagednode/cog.py:776
 msgid "Seek ghosting is the effect where whilst a seek is in progress, the audio buffer is read from until empty, or until seek is ready. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
-msgstr ""
+msgstr "Seek-Ghosting ist der Effekt, bei dem während einer Suche der Audiopuffer gelesen wird, bis er leer ist oder bis die Suche bereit ist. Akzeptierte Werte für True: 'True', 't', '1', Akzeptierte Werte für False: 'False', 'f', '0'"
 
 #: plmanagednode/cog.py:781
 msgid "How frequently in seconds to send player updates to clients, affects the current position accuracy. Accepted values: Range: 1 - 86400"
-msgstr ""
+msgstr "Wie oft in Sekunden Spieleraktualisierungen an Clients gesendet werden, wirkt sich auf die aktuelle Positionsgenauigkeit aus. Akzeptierte Werte: Bereich: 1 - 86400"
 
 #: plmanagednode/cog.py:785
 msgid "Enable or disable YouTube searches within the node, this will affect AppleMusic, Spotify and any functionality dependant on YouTube. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
-msgstr ""
+msgstr "Aktivieren oder deaktivieren Sie die YouTube-Suche innerhalb des Knotens, dies wirkt sich auf AppleMusic, Spotify und alle von YouTube abhängigen Funktionen aus. Akzeptierte Werte für True: 'True', 't', '1', Akzeptierte Werte für False: 'False', 'f', '0'"
 
 #: plmanagednode/cog.py:790
 msgid "Enable or disable SoundCloud searches within the node, this will affect any functionality dependant on SoundCloud. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
-msgstr ""
+msgstr "Aktivieren oder deaktivieren Sie die SoundCloud-Suche innerhalb des Knotens, dies wirkt sich auf alle Funktionen aus, die von SoundCloud abhängig sind. Akzeptierte Werte für True: 'True', 't', '1', Akzeptierte Werte für False: 'False', 'f', '0'"
 
 #: plmanagednode/cog.py:799
 msgid "{Setting} info.\n\n"
 "{info}"
-msgstr ""
+msgstr "{Setting} Info.\n\n"
+"{info}"
 
 #: plmanagednode/cog.py:827
 msgid "{Setting} valid inputs are:\n\n"
 "Range between: {start} - {end}"
-msgstr ""
+msgstr "{Setting} Gültige Eingaben sind:\n\n"
+"Bereich zwischen: {start} - {end}"
 
 #: plmanagednode/cog.py:838
 msgid "{Setting} valid inputs are:\n\n"
 "{setting_list}"
-msgstr ""
+msgstr "{Setting} Gültige Eingaben sind:\n\n"
+"{setting_list}"
 
 #: plmanagednode/cog.py:857
 msgid "{Setting} set to {value}."
-msgstr ""
+msgstr "{Setting} Setzen Sie auf {value}."
 
 #: plmanagednode/cog.py:869
 #, docstring
 msgid "Configure Lavalink IP Rotation for rate limits.\n\n"
 "        Run `[p]plmanaged config iprotation 1` to remove the ip rotation\n"
 "        "
-msgstr ""
+msgstr "Konfigurieren Sie die Lavalink IP-Rotation für Ratenlimits.\n\n"
+"        Ausführen '[p]plmanaged config iprotation 1' zum Entfernen der IP-Rotation\n"
+"        "
 
 #: plmanagednode/cog.py:880
 msgid "Click the button below to configure the IP rotation for your node.\n"
 "More info at: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> and <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
-msgstr ""
+msgstr "Klicken Sie auf die Schaltfläche unten, um die IP-Rotation für Ihren Knoten zu konfigurieren.\n"
+"Mehr Infos unter: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> und <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
 
 #: plmanagednode/cog.py:898
 msgid "Removing the IP rotation from your node."
-msgstr ""
+msgstr "Entfernen der IP-Rotation von Ihrem Knoten."
 
 #: plmanagednode/cog.py:906
 #, docstring
 msgid "Link a Google account to Lavalink to bypass YouTube's age restriction\n\n"
 "        Run `[p]plmanaged config googleaccount 1` to remove the linked account.\n"
 "        "
-msgstr ""
+msgstr "Verknüpfen Sie ein Google-Konto mit Lavalink, um die Altersbeschränkung von YouTube zu umgehen\n\n"
+"        Ausführen '[p]plmanaged config googleaccount 1', um das verknüpfte Konto zu entfernen.\n"
+"        "
 
 #: plmanagednode/cog.py:917
 msgid "Click the button below to link a Google account to your node, if you have 2FA setup on this account you will need an app password instead\n"
 "More info at: <https://support.google.com/accounts/answer/185833>"
-msgstr ""
+msgstr "Klicken Sie auf die Schaltfläche unten, um ein Google-Konto mit Ihrem Knoten zu verknüpfen, wenn Sie 2FA für dieses Konto eingerichtet haben, benötigen Sie stattdessen ein App-Passwort\n"
+"Mehr Infos unter: <https://support.google.com/accounts/answer/185833>"
 
 #: plmanagednode/cog.py:936
 msgid "Unlinking Google account from your node."
-msgstr ""
+msgstr "Aufheben der Verknüpfung des Google-Kontos mit Ihrem Knoten."
 
 #: plmanagednode/cog.py:944
 #, docstring
 msgid "Configure a HTTP proxy for Lavalink\n\n"
 "        Run `[p]plmanaged config httpproxy 1` to remove the proxy.\n"
 "        "
-msgstr ""
+msgstr "Konfigurieren eines HTTP-Proxys für Lavalink\n\n"
+"        Ausführen '[p]plmanaged config httpproxy 1', um den Proxy zu entfernen.\n"
+"        "
 
 #: plmanagednode/cog.py:955
 msgid "Click the button below to configure a HTTP proxy for your node"
-msgstr ""
+msgstr "Klicken Sie auf die Schaltfläche unten, um einen HTTP-Proxy für Ihren Knoten zu konfigurieren."
 
 #: plmanagednode/cog.py:969
 msgid "Unlinking HTTP proxy from your node."
-msgstr ""
+msgstr "Heben Sie die Verknüpfung des HTTP-Proxys mit Ihrem Knoten auf."
 
 #: plmanagednode/view.py:38 plmanagednode/view.py:65 plmanagednode/view.py:98
 #: plmanagednode/view.py:179 plmanagednode/view.py:337
 #: plmanagednode/view.py:422
 msgid "You are not authorized to interact with this"
-msgstr ""
+msgstr "Sie sind nicht berechtigt, mit diesem zu interagieren"
 
 #: plmanagednode/view.py:125
 msgid "IP Rotation Configurator"
-msgstr ""
+msgstr "IP-Rotations-Konfigurator"
 
 #: plmanagednode/view.py:128
 msgid "IP Blocks"
-msgstr ""
+msgstr "IP-Sperren"
 
 #: plmanagednode/view.py:132
 msgid "1.0.0.0/8,...,... - Comma separated list of IP blocks"
-msgstr ""
+msgstr "1.0.0.0/8,...,... - Kommagetrennte Liste der IP-Blöcke"
 
 #: plmanagednode/view.py:137
 msgid "Rotation strategy"
-msgstr ""
+msgstr "Rotationsstrategie"
 
 #: plmanagednode/view.py:146
 msgid "Retry limit"
-msgstr ""
+msgstr "Wiederholungslimit"
 
 #: plmanagednode/view.py:149
 msgid "-1 = default, 0 = infinity, >0 = number of retries"
-msgstr ""
+msgstr "-1 = Standard, 0 = unendlich, >0 = Anzahl der Wiederholungen"
 
 #: plmanagednode/view.py:154
 msgid "IPs to exclude"
-msgstr ""
+msgstr "auszuschließende IPs"
 
 #: plmanagednode/view.py:157
 msgid "Comma separated list of IP to exclude from rotation"
-msgstr ""
+msgstr "Kommagetrennte Liste der IP, die von der Rotation ausgeschlossen werden sollen"
 
 #: plmanagednode/view.py:161
 msgid "Search trigger rotation"
-msgstr ""
+msgstr "Rotation des Suchauslösers"
 
 #: plmanagednode/view.py:164
 msgid "0 or 1 (0 = disabled, 1 = enabled)"
-msgstr ""
+msgstr "0 oder 1 (0 = deaktiviert, 1 = aktiviert)"
 
 #: plmanagednode/view.py:192
 msgid "Invalid IP block - {error}"
-msgstr ""
+msgstr "Ungültiger IP-Block - {error}"
 
 #: plmanagednode/view.py:205
 msgid "No IP blocks were provided"
-msgstr ""
+msgstr "Es wurden keine IP-Blöcke bereitgestellt"
 
 #: plmanagednode/view.py:220
 msgid "Invalid IP address - {error}"
-msgstr ""
+msgstr "Ungültige IP-Adresse - {error}"
 
 #: plmanagednode/view.py:239
 msgid "Invalid strategy, must be one of: {options}"
-msgstr ""
+msgstr "Ungültige Strategie, muss eine der folgenden sein: {options}"
 
 #: plmanagednode/view.py:255
 msgid "Invalid retry limit, must be a number greater than or equals to -1"
-msgstr ""
+msgstr "Ungültiger Wiederholungsgrenzwert, muss eine Zahl größer oder gleich -1 sein"
 
 #: plmanagednode/view.py:270
 msgid "Invalid search trigger, must be 0 or 1"
-msgstr ""
+msgstr "Ungültiger Suchauslöser, muss 0 oder 1 sein"
 
 #: plmanagednode/view.py:289
 msgid "IP rotation configuration saved."
-msgstr ""
+msgstr "IP-Rotationskonfiguration gespeichert."
 
 #: plmanagednode/view.py:310
 msgid "Google Account Configurator"
-msgstr ""
+msgstr "Google-Konto-Konfigurator"
 
 #: plmanagednode/view.py:313
 msgid "Email address"
-msgstr ""
+msgstr "E-Mail-Adresse"
 
 #: plmanagednode/view.py:316
 msgid "Your Google account email"
-msgstr ""
+msgstr "E-Mail-Adresse Ihres Google-Kontos"
 
 #: plmanagednode/view.py:321
 msgid "password"
-msgstr ""
+msgstr "Passwort"
 
 #: plmanagednode/view.py:324
 msgid "If you have 2FA you will need an app password"
-msgstr ""
+msgstr "Wenn Sie 2FA haben, benötigen Sie ein App-Passwort"
 
 #: plmanagednode/view.py:345
 msgid "Invalid email address"
-msgstr ""
+msgstr "Ungültige E-Mail-Adresse"
 
 #: plmanagednode/view.py:355
 msgid "Google account linked."
-msgstr ""
+msgstr "Google-Konto verknüpft."
 
 #: plmanagednode/view.py:376
 msgid "HTTP Proxy Configurator"
-msgstr ""
+msgstr "HTTP-Proxy-Konfigurator"
 
 #: plmanagednode/view.py:379
 msgid "Hostname"
-msgstr ""
+msgstr "Hostname"
 
 #: plmanagednode/view.py:382
 msgid "Hostname of the proxy, (ip or domain or localhost)"
-msgstr ""
+msgstr "Hostname des Proxys (IP oder Domain oder localhost)"
 
 #: plmanagednode/view.py:386
 msgid "Proxy port"
-msgstr ""
+msgstr "Proxy-Port"
 
 #: plmanagednode/view.py:389
 msgid "Proxy port, 3128 is the default for squidProxy"
-msgstr ""
+msgstr "Proxy-Port, 3128 ist der Standard für squidProxy"
 
 #: plmanagednode/view.py:395
 msgid "User"
-msgstr ""
+msgstr "Benutzer"
 
 #: plmanagednode/view.py:400
 msgid "Optional user for basic authentication fields, leave blank if you don't use basic auth"
-msgstr ""
+msgstr "Optionaler Benutzer für Standardauthentifizierungsfelder, leer lassen, wenn Sie keine einfache Authentifizierung verwenden"
 
 #: plmanagednode/view.py:404
 msgid "Password"
-msgstr ""
+msgstr "Passwort"
 
 #: plmanagednode/view.py:409
 msgid "Optional password for basic authentication fields, leave blank if you don't use basic auth"
-msgstr ""
+msgstr "Optionales Kennwort für Standardauthentifizierungsfelder, leer lassen, wenn Sie keine einfache Authentifizierung verwenden"
 
 #: plmanagednode/view.py:433
 msgid "Invalid port, must be a number between 0 and 65536"
-msgstr ""
+msgstr "Ungültiger Port, muss eine Zahl zwischen 0 und 65536 sein"
 
 #: plmanagednode/view.py:450
 msgid "HTTP proxy configuration saved."
-msgstr ""
+msgstr "HTTP-Proxy-Konfiguration gespeichert."
 

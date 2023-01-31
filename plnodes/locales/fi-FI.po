@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:26\n"
+"PO-Revision-Date: 2023-01-31 23:42\n"
 "Last-Translator: \n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
@@ -20,34 +20,34 @@ msgstr ""
 #: plnodes/cog.py:33
 #, docstring
 msgid "Manage the nodes used by PyLav"
-msgstr ""
+msgstr "Hallitse PyLavin käyttämiä solmuja"
 
 #: plnodes/cog.py:44
 #, docstring
 msgid "Configure PyLav Nodes"
-msgstr ""
+msgstr "Määritä PyLav-solmut"
 
 #: plnodes/cog.py:48
 #, docstring
 msgid "Show the version of the Cog and its PyLav dependencies"
-msgstr ""
+msgstr "Näytä hammaspyörän versio ja sen PyLav-riippuvuudet"
 
 #: plnodes/cog.py:64
 msgid "Library/Cog"
-msgstr ""
+msgstr "Kirjasto/hammasratas"
 
 #: plnodes/cog.py:65
 msgid "Version"
-msgstr ""
+msgstr "Versio"
 
 #: plnodes/cog.py:78
 #, docstring
 msgid "Add a node to PyLav"
-msgstr ""
+msgstr "Lisää solmu PyLaviin"
 
 #: plnodes/cog.py:88
 msgid "Let's add a node to PyLav!"
-msgstr ""
+msgstr "Lisätään solmu PyLaviin!"
 
 #: plnodes/cog.py:89
 msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
@@ -61,7 +61,17 @@ msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
 "(**9**){space} - Set the connection timeout.\n"
 "(**10**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - Käytä muutoksia ja lisää solmu PyLaviin.\n"
+"(**2**){space} - Peruuta tehdyt muutokset ja sulje valikko.\n"
+"(**3**){space} - Vaihda vain haku- ja haku- ja toistotilojen välillä.\n"
+"(**4**){space} - Vaihda SSL:n välillä päälle ja pois päältä.\n"
+"(**5**){space} - Lisää solmuun nimi.\n"
+"(**6**){space} - Lisää solmun isäntäosoite.\n"
+"(**7**){space} - Lisää solmun käyttämä portti.\n"
+"(**8**){space} - Aseta solmun salasana.\n"
+"(**9**){space} - Aseta yhteyden aikakatkaisu.\n"
+"(**10**) - Valitse, mitkä lähteet poistetaan käytöstä tässä solmussa (useita voidaan valita).\n"
+"Jos käytät painiketta useita kertoja, vain viimeinen vuorovaikutus tulee voimaan.\n\n\n"
 
 #: plnodes/cog.py:137
 msgid "Added node {name} with the following settings:\n"
@@ -72,38 +82,46 @@ msgid "Added node {name} with the following settings:\n"
 "Search Only: {search_only}\n"
 "SSL: {ssl}\n"
 "Disabled Sources: {disabled_sources}\n"
-msgstr ""
+msgstr "Lisätty solmu {name} seuraavilla asetuksilla:\n"
+"Isäntä: {host}\n"
+"Satama: {port}\n"
+"Salasana: {password}\n"
+"Jatka aikakatkaisua: {resume_timeout}\n"
+"Vain haku: {search_only}\n"
+"SSL: {ssl}\n"
+"Käytöstä poistetut lähteet: {disabled_sources}\n"
 
 #: plnodes/cog.py:168 plnodes/cog.py:175
 msgid "Unable to add this node"
-msgstr ""
+msgstr "Tätä solmua ei voi lisätä"
 
 #: plnodes/cog.py:181
 #, docstring
 msgid "Remove a node from a PyLav instance"
-msgstr ""
+msgstr "Solmun poistaminen PyLav-esiintymästä"
 
 #: plnodes/cog.py:193
 msgid "{name} is managed by PyLav and cannot be removed"
-msgstr ""
+msgstr "{name} jota hallinnoi PyLav, eikä sitä voi poistaa"
 
 #: plnodes/cog.py:208
 msgid "Removed node {name}.\n\n"
 "{data}"
-msgstr ""
+msgstr "Poistettu solmu {name}.\n\n"
+"{data}"
 
 #: plnodes/cog.py:216
 msgid "Removed node {name}, a DM was sent to you with the node details in case you wish to re-add it"
-msgstr ""
+msgstr "Poistettu solmu {name}, sinulle lähetettiin DM, jossa on solmun tiedot, jos haluat lisätä sen uudelleen"
 
 #: plnodes/cog.py:226
 #, docstring
 msgid "Manage all nodes in a PyLav instance"
-msgstr ""
+msgstr "Hallitse kaikkia solmuja PyLav-esiintymässä"
 
 #: plnodes/cog.py:238
 msgid "Let's manage some nodes!"
-msgstr ""
+msgstr "Hallitaan joitain solmuja!"
 
 #: plnodes/cog.py:239
 msgid "(**1**){space} - Cancel any changes made and close the menu.\n"
@@ -119,15 +137,27 @@ msgid "(**1**){space} - Cancel any changes made and close the menu.\n"
 "(**15**) - Remove this node.\n"
 "(**16**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - Peruuta tehdyt muutokset ja sulje valikko.\n"
+"(**6**){space} - Näytä lähteet, jotka on otettu käyttöön tässä solmussa.\n"
+"(**7**){space} - Käytä muutoksia ja lisää solmu PyLaviin.\n"
+"(**8**){space} - Vaihda vain haku- ja haku- ja toistotilojen välillä.\n"
+"(**9**){space} - Vaihda SSL:n välillä päälle ja pois päältä.\n"
+"(**10**) - Lisää solmulle nimi.\n"
+"(**11**) - Lisää solmun isäntäosoite.\n"
+"(**12**) - Lisää solmun käyttämä portti.\n"
+"(**13**) - Aseta solmun salasana.\n"
+"(**14**) - Aseta yhteyden aikakatkaisu.\n"
+"(**15**) - Poista tämä solmu.\n"
+"(**16**) - Valitse, mitkä lähteet poistetaan käytöstä tässä solmussa (useita voidaan valita).\n"
+"Jos käytät painiketta useita kertoja, vain viimeinen vuorovaikutus tulee voimaan.\n\n\n"
 
 #: plnodes/cog.py:268
 msgid "{name} is managed by PyLav and cannot be modified with this command"
-msgstr ""
+msgstr "{name} jota hallitsee PyLav, eikä sitä voi muokata tällä komennolla"
 
 #: plnodes/cog.py:280
 msgid "Removed node {name}"
-msgstr ""
+msgstr "Poistettu solmu {name}"
 
 #: plnodes/cog.py:316
 msgid "Changed node {name} to the following settings:\n"
@@ -138,14 +168,21 @@ msgid "Changed node {name} to the following settings:\n"
 "Search Only: {search_only}\n"
 "SSL: {ssl}\n"
 "Disabled Sources: {disabled_sources}\n"
-msgstr ""
+msgstr "Muutettu solmu {name} seuraaviin asetuksiin:\n"
+"Isäntä: {host}\n"
+"Satama: {port}\n"
+"Salasana: {password}\n"
+"Jatka aikakatkaisua: {resume_timeout}\n"
+"Vain haku: {search_only}\n"
+"SSL: {ssl}\n"
+"Käytöstä poistetut lähteet: {disabled_sources}\n"
 
 #: plnodes/cog.py:343
 #, docstring
 msgid "List all nodes used by PyLav"
-msgstr ""
+msgstr "Luettele kaikki PyLavin käyttämät solmut"
 
 #: plnodes/cog.py:353
 msgid "No nodes added to PyLav"
-msgstr ""
+msgstr "PyLaviin ei ole lisätty solmuja"
 
