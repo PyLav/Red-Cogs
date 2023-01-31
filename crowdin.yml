@@ -7,3 +7,6 @@ files:
 -   source: /**/messages.pot
     translation: /%original_path%/%locale%.po
     dest: cogs/%original_path%/%locale%.po
+    ignore:
+    -   tools/**/*.*
+    -   .github/**/*.*
