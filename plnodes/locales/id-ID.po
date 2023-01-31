@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:26\n"
+"PO-Revision-Date: 2023-01-31 23:42\n"
 "Last-Translator: \n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -20,34 +20,34 @@ msgstr ""
 #: plnodes/cog.py:33
 #, docstring
 msgid "Manage the nodes used by PyLav"
-msgstr ""
+msgstr "Mengelola node yang digunakan oleh PyLav"
 
 #: plnodes/cog.py:44
 #, docstring
 msgid "Configure PyLav Nodes"
-msgstr ""
+msgstr "Mengonfigurasi Node PyLav"
 
 #: plnodes/cog.py:48
 #, docstring
 msgid "Show the version of the Cog and its PyLav dependencies"
-msgstr ""
+msgstr "Memperlihatkan versi Cog dan dependensi PyLav-nya"
 
 #: plnodes/cog.py:64
 msgid "Library/Cog"
-msgstr ""
+msgstr "Perpustakaan/Cog"
 
 #: plnodes/cog.py:65
 msgid "Version"
-msgstr ""
+msgstr "Versi"
 
 #: plnodes/cog.py:78
 #, docstring
 msgid "Add a node to PyLav"
-msgstr ""
+msgstr "Menambahkan node ke PyLav"
 
 #: plnodes/cog.py:88
 msgid "Let's add a node to PyLav!"
-msgstr ""
+msgstr "Mari tambahkan node ke PyLav!"
 
 #: plnodes/cog.py:89
 msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
@@ -61,7 +61,17 @@ msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
 "(**9**){space} - Set the connection timeout.\n"
 "(**10**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - Terapkan perubahan dan tambahkan node ke PyLav.\n"
+"(**2**){space} - Batalkan setiap perubahan yang dilakukan dan tutup menu.\n"
+"(**3**){space} - Beralih antara mode pencarian saja dan pencarian dan pemutaran.\n"
+"(**4**){space} - Beralih antara SSL on dan off.\n"
+"(**5**){space} - Tambahkan nama ke node.\n"
+"(**6**){space} - Tambahkan alamat host node.\n"
+"(**7**){space} - Tambahkan port yang digunakan node.\n"
+"(**8**){space} - Atur kata sandi untuk node.\n"
+"(**9**){space} - Atur batas waktu koneksi.\n"
+"(**10**) - Pilih sumber mana yang akan dinonaktifkan untuk node ini (Beberapa dapat dipilih).\n"
+"Jika Anda berinteraksi dengan tombol beberapa kali, hanya interaksi terakhir yang akan berlaku.\n\n\n"
 
 #: plnodes/cog.py:137
 msgid "Added node {name} with the following settings:\n"
@@ -72,38 +82,46 @@ msgid "Added node {name} with the following settings:\n"
 "Search Only: {search_only}\n"
 "SSL: {ssl}\n"
 "Disabled Sources: {disabled_sources}\n"
-msgstr ""
+msgstr "Menambahkan node {name} dengan pengaturan berikut:\n"
+"Tuan rumah: {host}\n"
+"Pelabuhan: {port}\n"
+"Kata sandi: {password}\n"
+"Lanjutkan Batas Waktu: {resume_timeout}\n"
+"Hanya Pencarian: {search_only}\n"
+"SSL: {ssl}\n"
+"Sumber yang Dinonaktifkan: {disabled_sources}\n"
 
 #: plnodes/cog.py:168 plnodes/cog.py:175
 msgid "Unable to add this node"
-msgstr ""
+msgstr "Tidak dapat menambahkan node ini"
 
 #: plnodes/cog.py:181
 #, docstring
 msgid "Remove a node from a PyLav instance"
-msgstr ""
+msgstr "Menghapus node dari instans PyLav"
 
 #: plnodes/cog.py:193
 msgid "{name} is managed by PyLav and cannot be removed"
-msgstr ""
+msgstr "{name} dikelola oleh PyLav dan tidak dapat dihapus"
 
 #: plnodes/cog.py:208
 msgid "Removed node {name}.\n\n"
 "{data}"
-msgstr ""
+msgstr "Node yang dihapus {name}.\n\n"
+"{data}"
 
 #: plnodes/cog.py:216
 msgid "Removed node {name}, a DM was sent to you with the node details in case you wish to re-add it"
-msgstr ""
+msgstr "Node yang dihapus {name}, DM dikirimkan kepada Anda dengan detail node jika Anda ingin menambahkannya kembali"
 
 #: plnodes/cog.py:226
 #, docstring
 msgid "Manage all nodes in a PyLav instance"
-msgstr ""
+msgstr "Mengelola semua node dalam instans PyLav"
 
 #: plnodes/cog.py:238
 msgid "Let's manage some nodes!"
-msgstr ""
+msgstr "Mari kelola beberapa node!"
 
 #: plnodes/cog.py:239
 msgid "(**1**){space} - Cancel any changes made and close the menu.\n"
@@ -119,15 +137,27 @@ msgid "(**1**){space} - Cancel any changes made and close the menu.\n"
 "(**15**) - Remove this node.\n"
 "(**16**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - Batalkan setiap perubahan yang dilakukan dan tutup menu.\n"
+"(**6**){space} - Tampilkan sumber yang diaktifkan untuk node ini.\n"
+"(**7**){space} - Terapkan perubahan dan tambahkan node ke PyLav.\n"
+"(**8**){space} - Beralih antara mode pencarian saja dan pencarian dan pemutaran.\n"
+"(**9**){space} - Beralih antara SSL on dan off.\n"
+"(**10**) - Tambahkan nama ke node.\n"
+"(**11**) - Tambahkan alamat host node.\n"
+"(**12**) - Tambahkan port yang digunakan node.\n"
+"(**13**) - Atur kata sandi untuk node.\n"
+"(**14**) - Atur batas waktu koneksi.\n"
+"(**15**) - Hapus node ini.\n"
+"(**16**) - Pilih sumber mana yang akan dinonaktifkan untuk node ini (Beberapa dapat dipilih).\n"
+"Jika Anda berinteraksi dengan tombol beberapa kali, hanya interaksi terakhir yang akan berlaku.\n\n\n"
 
 #: plnodes/cog.py:268
 msgid "{name} is managed by PyLav and cannot be modified with this command"
-msgstr ""
+msgstr "{name} dikelola oleh PyLav dan tidak dapat dimodifikasi dengan perintah ini"
 
 #: plnodes/cog.py:280
 msgid "Removed node {name}"
-msgstr ""
+msgstr "Node yang dihapus {name}"
 
 #: plnodes/cog.py:316
 msgid "Changed node {name} to the following settings:\n"
@@ -138,14 +168,21 @@ msgid "Changed node {name} to the following settings:\n"
 "Search Only: {search_only}\n"
 "SSL: {ssl}\n"
 "Disabled Sources: {disabled_sources}\n"
-msgstr ""
+msgstr "Node yang diubah {name} ke pengaturan berikut:\n"
+"Tuan rumah: {host}\n"
+"Pelabuhan: {port}\n"
+"Kata sandi: {password}\n"
+"Lanjutkan Batas Waktu: {resume_timeout}\n"
+"Hanya Pencarian: {search_only}\n"
+"SSL: {ssl}\n"
+"Sumber yang Dinonaktifkan: {disabled_sources}\n"
 
 #: plnodes/cog.py:343
 #, docstring
 msgid "List all nodes used by PyLav"
-msgstr ""
+msgstr "Daftar semua node yang digunakan oleh PyLav"
 
 #: plnodes/cog.py:353
 msgid "No nodes added to PyLav"
-msgstr ""
+msgstr "Tidak ada node yang ditambahkan ke PyLav"
 

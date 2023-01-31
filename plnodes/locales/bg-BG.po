@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:26\n"
+"PO-Revision-Date: 2023-01-31 23:42\n"
 "Last-Translator: \n"
 "Language-Team: Bulgarian\n"
 "MIME-Version: 1.0\n"
@@ -20,34 +20,34 @@ msgstr ""
 #: plnodes/cog.py:33
 #, docstring
 msgid "Manage the nodes used by PyLav"
-msgstr ""
+msgstr "Управление на възлите, използвани от PyLav"
 
 #: plnodes/cog.py:44
 #, docstring
 msgid "Configure PyLav Nodes"
-msgstr ""
+msgstr "Конфигуриране на възли на PyLav"
 
 #: plnodes/cog.py:48
 #, docstring
 msgid "Show the version of the Cog and its PyLav dependencies"
-msgstr ""
+msgstr "Показване на версията на зъбното колело и неговите зависимости от PyLav"
 
 #: plnodes/cog.py:64
 msgid "Library/Cog"
-msgstr ""
+msgstr "Библиотека/Зъбно колело"
 
 #: plnodes/cog.py:65
 msgid "Version"
-msgstr ""
+msgstr "Версия"
 
 #: plnodes/cog.py:78
 #, docstring
 msgid "Add a node to PyLav"
-msgstr ""
+msgstr "Добавяне на възел към PyLav"
 
 #: plnodes/cog.py:88
 msgid "Let's add a node to PyLav!"
-msgstr ""
+msgstr "Нека добавим възел към PyLav!"
 
 #: plnodes/cog.py:89
 msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
@@ -61,7 +61,17 @@ msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
 "(**9**){space} - Set the connection timeout.\n"
 "(**10**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - Приложете промените и добавете възела към PyLav.\n"
+"(**2**){space} - Отменете всички направени промени и затворете менюто.\n"
+"(**3**){space} - Превключване между режимите само за търсене и търсене и възпроизвеждане.\n"
+"(**4**){space} - Превключване между SSL включване и изключване.\n"
+"(**5**){space} - Добавяне на име към възела.\n"
+"(**6**){space} - Добавете адреса на хоста на възела.\n"
+"(**7**){space} - Добавете порта, който възелът използва.\n"
+"(**8**){space} - Задайте паролата за възела.\n"
+"(**9**){space} - Задайте времето за изчакване на връзката.\n"
+"(**10**) - Изберете кои източници да деактивирате за този възел (може да се избере множествено).\n"
+"Ако взаимодействате с бутон няколко пъти, само последното взаимодействие ще влезе в сила.\n\n\n"
 
 #: plnodes/cog.py:137
 msgid "Added node {name} with the following settings:\n"
@@ -72,38 +82,46 @@ msgid "Added node {name} with the following settings:\n"
 "Search Only: {search_only}\n"
 "SSL: {ssl}\n"
 "Disabled Sources: {disabled_sources}\n"
-msgstr ""
+msgstr "Добавен възел {name} със следните настройки:\n"
+"Домакин: {host}\n"
+"Порт: {port}\n"
+"Парола: {password}\n"
+"Време на изчакване на възобновяване: {resume_timeout}\n"
+"Само за търсене: {search_only}\n"
+"SSL: {ssl}\n"
+"Забранени източници: {disabled_sources}\n"
 
 #: plnodes/cog.py:168 plnodes/cog.py:175
 msgid "Unable to add this node"
-msgstr ""
+msgstr "Този възел не може да бъде добавен"
 
 #: plnodes/cog.py:181
 #, docstring
 msgid "Remove a node from a PyLav instance"
-msgstr ""
+msgstr "Премахване на възел от екземпляр на PyLav"
 
 #: plnodes/cog.py:193
 msgid "{name} is managed by PyLav and cannot be removed"
-msgstr ""
+msgstr "{name} се управлява от PyLav и не може да бъде премахнат"
 
 #: plnodes/cog.py:208
 msgid "Removed node {name}.\n\n"
 "{data}"
-msgstr ""
+msgstr "Премахнат възел {name}.\n\n"
+"{data}"
 
 #: plnodes/cog.py:216
 msgid "Removed node {name}, a DM was sent to you with the node details in case you wish to re-add it"
-msgstr ""
+msgstr "Премахнат възел {name}, DM ви е изпратен с подробности за възела, в случай че желаете да го добавите отново"
 
 #: plnodes/cog.py:226
 #, docstring
 msgid "Manage all nodes in a PyLav instance"
-msgstr ""
+msgstr "Управление на всички възли в екземпляр на PyLav"
 
 #: plnodes/cog.py:238
 msgid "Let's manage some nodes!"
-msgstr ""
+msgstr "Нека да управляваме някои възли!"
 
 #: plnodes/cog.py:239
 msgid "(**1**){space} - Cancel any changes made and close the menu.\n"
@@ -119,15 +137,27 @@ msgid "(**1**){space} - Cancel any changes made and close the menu.\n"
 "(**15**) - Remove this node.\n"
 "(**16**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - Отменете всички направени промени и затворете менюто.\n"
+"(**6**){space} - Показване на източници, разрешени за този възел.\n"
+"(**7**){space} - Приложете промените и добавете възела към PyLav.\n"
+"(**8**){space} - Превключване между режимите само за търсене и търсене и възпроизвеждане.\n"
+"(**9**){space} - Превключване между SSL включване и изключване.\n"
+"(**10**) - Добавяне на име към възела.\n"
+"(**11**) - Добавете адреса на хоста на възела.\n"
+"(**12**) - Добавете порта, който възелът използва.\n"
+"(**13**) - Задайте паролата за възела.\n"
+"(**14**) - Задайте времето за изчакване на връзката.\n"
+"(**15**) - Премахване на този възел.\n"
+"(**16**) - Изберете кои източници да деактивирате за този възел (Може да се избере множествено).\n"
+"Ако взаимодействате с бутон няколко пъти, само последното взаимодействие ще влезе в сила.\n\n\n"
 
 #: plnodes/cog.py:268
 msgid "{name} is managed by PyLav and cannot be modified with this command"
-msgstr ""
+msgstr "{name} се управлява от PyLav и не може да се променя с тази команда"
 
 #: plnodes/cog.py:280
 msgid "Removed node {name}"
-msgstr ""
+msgstr "Премахнат възел {name}"
 
 #: plnodes/cog.py:316
 msgid "Changed node {name} to the following settings:\n"
@@ -138,14 +168,21 @@ msgid "Changed node {name} to the following settings:\n"
 "Search Only: {search_only}\n"
 "SSL: {ssl}\n"
 "Disabled Sources: {disabled_sources}\n"
-msgstr ""
+msgstr "Променен възел {name} към следните настройки:\n"
+"Домакин: {host}\n"
+"Порт: {port}\n"
+"Парола: {password}\n"
+"Време на изчакване на възобновяване: {resume_timeout}\n"
+"Само за търсене: {search_only}\n"
+"SSL: {ssl}\n"
+"Забранени източници: {disabled_sources}\n"
 
 #: plnodes/cog.py:343
 #, docstring
 msgid "List all nodes used by PyLav"
-msgstr ""
+msgstr "Списък на всички възли, използвани от PyLav"
 
 #: plnodes/cog.py:353
 msgid "No nodes added to PyLav"
-msgstr ""
+msgstr "Няма добавени възли към PyLav"
 

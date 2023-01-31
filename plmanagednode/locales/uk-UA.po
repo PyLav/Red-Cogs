@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:26\n"
+"PO-Revision-Date: 2023-01-31 23:42\n"
 "Last-Translator: \n"
 "Language-Team: Ukrainian\n"
 "MIME-Version: 1.0\n"
@@ -20,67 +20,71 @@ msgstr ""
 #: plmanagednode/cog.py:34 plmanagednode/cog.py:46
 #, docstring
 msgid "Configure the managed Lavalink node used by PyLav"
-msgstr ""
+msgstr "Налаштування керованого вузла Lavalink, який використовується PyLav"
 
 #: plmanagednode/cog.py:50
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies"
-msgstr ""
+msgstr "Покажіть версію гвинтика і його залежності PyLav"
 
 #: plmanagednode/cog.py:66
 msgid "Library/Cog"
-msgstr ""
+msgstr "Бібліотека/гвинтик"
 
 #: plmanagednode/cog.py:67
 msgid "Version"
-msgstr ""
+msgstr "Версія"
 
 #: plmanagednode/cog.py:80
 #, docstring
 msgid "Update the managed Lavalink node"
-msgstr ""
+msgstr "Оновлення керованого вузла Lavalink"
 
 #: plmanagednode/cog.py:92
 msgid "The managed Lavalink node is already up to date."
-msgstr ""
+msgstr "Керований вузол Lavalink вже актуальний."
 
 #: plmanagednode/cog.py:101
 msgid "Your node is out of date, to update please run `{prefix}{command} 1`."
-msgstr ""
+msgstr "Ваш вузол застарів, для оновлення, будь ласка, запустіть '{prefix}{command} 1'."
 
 #: plmanagednode/cog.py:117
 msgid "The managed Lavalink node has been updated to version {version}."
-msgstr ""
+msgstr "Керований вузол Lavalink оновлено до версії {version}."
 
 #: plmanagednode/cog.py:127
 #, docstring
 msgid "Toggle the managed node on/off.\n\n"
 "        Changes will be applied after restarting [botname].\n"
 "        "
-msgstr ""
+msgstr "Ввімкніть/вимкніть керований вузол.\n\n"
+"        Зміни будуть застосовані після перезапуску [botname].\n"
+"        "
 
 #: plmanagednode/cog.py:142
 msgid "PyLav's managed node has been enabled."
-msgstr ""
+msgstr "Керований вузол PyLav був увімкнений."
 
 #: plmanagednode/cog.py:150
 msgid "PyLav's managed node has been disabled."
-msgstr ""
+msgstr "Керований вузол PyLav був відключений."
 
 #: plmanagednode/cog.py:158
 #, docstring
 msgid "Toggle the managed node auto updates on/off.\n\n"
 "        Changes will be applied after restarting [botname].\n"
 "        "
-msgstr ""
+msgstr "Увімкніть/вимкніть автоматичне оновлення керованого вузла.\n\n"
+"        Зміни будуть застосовані після перезапуску [botname].\n"
+"        "
 
 #: plmanagednode/cog.py:174
 msgid "PyLav's managed node auto updates have been enabled"
-msgstr ""
+msgstr "Увімкнено автоматичне оновлення керованого вузла PyLav"
 
 #: plmanagednode/cog.py:184
 msgid "PyLav's managed node auto updates have been disabled"
-msgstr ""
+msgstr "Автоматичне оновлення керованого вузла PyLav було відключено"
 
 #: plmanagednode/cog.py:194
 #, docstring
@@ -90,41 +94,46 @@ msgid "Set the managed Lavalink node maximum heap-size.\n\n"
 "        This value only represents the maximum amount of RAM allowed to be used at any given point, and does not mean\n"
 "        that the managed Lavalink node will always use this amount of RAM.\n"
 "        "
-msgstr ""
+msgstr "Встановіть для керованого вузла Lavalink максимальний розмір купи.\n\n"
+"        За замовчуванням це значення становить 2G доступної оперативної пам'яті на головній машині, представленій (65-1023M|1+G) (256M,\n"
+"        256G, наприклад)\n\n"
+"        Це значення представляє лише максимальний обсяг оперативної пам'яті, дозволений до використання в будь-якій точці, і не означає\n"
+"        що керований вузол Lavalink завжди буде використовувати цей обсяг оперативної пам'яті.\n"
+"        "
 
 #: plmanagednode/cog.py:218
 msgid "Heap-size must be a valid measure of size, e.g. 256M, 256G"
-msgstr ""
+msgstr "Розмір купи повинен бути дійсною мірою розміру, наприклад, 256M, 256G"
 
 #: plmanagednode/cog.py:228
 msgid "Heap-size must be at least 64M, however it is recommended to have it set to at least 1G"
-msgstr ""
+msgstr "Розмір купи повинен бути не менше 64M, однак рекомендується, щоб він був встановлений принаймні на 1G"
 
 #: plmanagednode/cog.py:240
 msgid "Heap-size must be less than your system RAM, You currently have {ram_in_bytes} of RAM available"
-msgstr ""
+msgstr "Розмір купи повинен бути менше, ніж оперативна пам'ять вашої системи, у вас зараз є {ram_in_bytes} доступної оперативної пам'яті"
 
 #: plmanagednode/cog.py:252
 msgid "Heap-size must be less than {limit} due to your system limitations"
-msgstr ""
+msgstr "Розмір купи повинен бути менше {limit} через ваші системні обмеження"
 
 #: plmanagednode/cog.py:272
 msgid "Managed node's heap-size set to {bytes}."
-msgstr ""
+msgstr "Розмір купи керованого вузла встановлено на {bytes}."
 
 #: plmanagednode/cog.py:283
 #, docstring
 msgid "Change the managed node start up configs"
-msgstr ""
+msgstr "Зміна конфігурації запуску керованого вузла"
 
 #: plmanagednode/cog.py:287
 #, docstring
 msgid "Set the managed node host"
-msgstr ""
+msgstr "Встановлення хоста керованого вузла"
 
 #: plmanagednode/cog.py:299
 msgid "Managed node's host set to {host}."
-msgstr ""
+msgstr "Хост керованого вузла встановлено на {host}."
 
 #: plmanagednode/cog.py:310
 #, docstring
@@ -133,94 +142,99 @@ msgid "`Dangerous command` Set the managed Lavalink node's connection port.\n\n"
 "        conflict with the default port because you already have an application using port 2154 on this device.\n\n"
 "        The value by default is `2154`.\n"
 "        "
-msgstr ""
+msgstr "'Небезпечна команда' Встановіть порт з'єднання керованого вузла Lavalink.\n\n"
+"        Цей порт є портом, з яким зв'язується керований вузол Lavalink, ви повинні змінити це, лише якщо є\n"
+"        конфлікт з портом за замовчуванням, оскільки на цьому пристрої вже є програма, яка використовує порт 2154.\n\n"
+"        Значення за замовчуванням - '2154'.\n"
+"        "
 
 #: plmanagednode/cog.py:320
 msgid "The port must be between 1024 and 49151"
-msgstr ""
+msgstr "Порт повинен бути між 1024 і 49151"
 
 #: plmanagednode/cog.py:332
 msgid "Managed node's port set to {port}."
-msgstr ""
+msgstr "Для порту керованого вузла встановлено значення {port}."
 
 #: plmanagednode/cog.py:340
 #, docstring
 msgid "Change the managed node plugins"
-msgstr ""
+msgstr "Зміна плагінів керованих вузлів"
 
 #: plmanagednode/cog.py:346
 #, docstring
 msgid "Disabled one of the available plugins"
-msgstr ""
+msgstr "Вимкнено один з доступних плагінів"
 
 #: plmanagednode/cog.py:362 plmanagednode/cog.py:474
 msgid "The plugin must be one of the following: {plugins}"
-msgstr ""
+msgstr "Плагін повинен бути одним з наступних: {plugins}"
 
 #: plmanagednode/cog.py:447
 msgid "Managed node's plugin {plugin} disabled."
-msgstr ""
+msgstr "Плагін керованого вузла {plugin} Вимкнуто."
 
 #: plmanagednode/cog.py:458
 #, docstring
 msgid "Enable one of the available plugins"
-msgstr ""
+msgstr "Увімкніть один із доступних плагінів"
 
 #: plmanagednode/cog.py:507
 msgid "Managed node's plugin {plugin} enabled."
-msgstr ""
+msgstr "Плагін керованого вузла {plugin} Включений."
 
 #: plmanagednode/cog.py:518
 #, docstring
 msgid "Update the managed node plugins"
-msgstr ""
+msgstr "Оновлення плагінів керованого вузла"
 
 #: plmanagednode/cog.py:592
 msgid "{name} was updated from {old_value} to {new_value}\n"
-msgstr ""
+msgstr "{name} було оновлено з {old_value} до {new_value}\n"
 
 #: plmanagednode/cog.py:600
 msgid "Managed node's plugins updated.\n\n"
 "{updates}"
-msgstr ""
+msgstr "Плагіни керованого вузла оновлено.\n\n"
+"{updates}"
 
 #: plmanagednode/cog.py:611
 msgid "Managed node's plugins already up to date"
-msgstr ""
+msgstr "Плагіни керованого вузла вже оновлені"
 
 #: plmanagednode/cog.py:619
 #, docstring
 msgid "Toggle the managed node sources"
-msgstr ""
+msgstr "Переключення джерел керованого вузла"
 
 #: plmanagednode/cog.py:634
 msgid "Invalid source, {valid_list} are valid sources"
-msgstr ""
+msgstr "Недійсне джерело, {valid_list} є дійсними джерелами"
 
 #: plmanagednode/cog.py:648 plmanagednode/cog.py:684
 msgid "enabled"
-msgstr ""
+msgstr "Включений"
 
 #: plmanagednode/cog.py:648 plmanagednode/cog.py:684
 msgid "disabled"
-msgstr ""
+msgstr "Вимкнуто"
 
 #: plmanagednode/cog.py:651
 msgid "Managed node's {source} source set to {state}."
-msgstr ""
+msgstr "Керовані вузли {source} вихідне джерело встановлено на {state}."
 
 #: plmanagednode/cog.py:663
 #, docstring
 msgid "Toggle the managed node filters"
-msgstr ""
+msgstr "Переключення фільтрів керованих вузлів"
 
 #: plmanagednode/cog.py:675
 msgid "Invalid source, {valid_list} are valid filters"
-msgstr ""
+msgstr "Недійсне джерело, {valid_list} є дійсними фільтрами"
 
 #: plmanagednode/cog.py:687
 msgid "Managed node's {source} filter set to {state}."
-msgstr ""
+msgstr "Керовані вузли {source} фільтр, встановлений на {state}."
 
 #: plmanagednode/cog.py:699
 #, docstring
@@ -238,262 +252,287 @@ msgid "Configure multiple settings for the managed node.\n\n"
 "        `youtubeSearchEnabled` : Boolean i.e True (Default True)\n"
 "        `soundcloudSearchEnabled` : Boolean i.e True (Default True)\n"
 "        "
-msgstr ""
+msgstr "Налаштуйте кілька параметрів для керованого вузла.\n\n"
+"        Біг '[p]Сервер конфігурації PlManaged <setting> інформація, щоб показати інформацію про налаштування та про те, що вони роблять.\n\n"
+"        **Встановлення імен**:\n"
+"        'bufferDurationMs': ціле число, тобто 400 (за замовчуванням 400) - Встановіть значення 0, щоб вимкнути JDA-NAS\n"
+"        'frameBufferDurationMs' : Ціле число, тобто 1000 (за замовчуванням 1000)\n"
+"        'trackStuckThresholdMs': ціле число, тобто 1000 (за замовчуванням 1000)\n"
+"        \"youtubePlaylistLoadLimit\" : ціле число, тобто 1000 (за замовчуванням 1000)\n"
+"        'opusEncodingQuality' : Ціле число, тобто 10 (За замовчуванням 10)\n"
+"        \"дискретизаціяЯкість\": Рядок, тобто НИЗЬКИЙ (за замовчуванням ВИСОКИЙ)\n"
+"        'useSeekGhosting' : булевий, тобто істинний (за замовчуванням true)\n"
+"        'playerUpdateInterval': ціле число, тобто 30 (за замовчуванням 30)\n"
+"        'youtubeSearchEnabled' : булевий, тобто істинний (істина за замовчуванням)\n"
+"        'soundcloudSearchEnabled' : Булевий, тобто True (Default True)\n"
+"        "
 
 #: plmanagednode/cog.py:739
 msgid "{Setting} is not a valid Setting; Options are:\n\n"
 "{setting_list}"
-msgstr ""
+msgstr "{Setting} не є дійсним Налаштуванням; Варіанти такі:\n\n"
+"{setting_list}"
 
 #: plmanagednode/cog.py:750
 msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses but will increase RAM usage. Minimum of 40ms, lower values may introduce pauses and stutters. Set to 0 to disable JDA-NAS. Accepted values: Range: 0 - 2,000"
-msgstr ""
+msgstr "Тривалість роботи буфера NAS в мілісекундах. Вищі значення тарифу краще проти більш тривалих пауз GC, але збільшать використання оперативної пам'яті. Мінімум 40 мс, нижчі значення можуть вводити паузи та заїкання. Встановіть значення 0, щоб вимкнути JDA-NAS. Прийняті значення: діапазон: 0 - 2,000"
 
 #: plmanagednode/cog.py:756
 msgid "How many milliseconds of audio to keep buffered, Higher values increase RAM usage. Accepted values: Range: 1,000 - 10,000"
-msgstr ""
+msgstr "Скільки мілісекунд аудіо зберігати буферизованим, Вищі значення збільшують використання оперативної пам'яті. Прийняті значення: діапазон: 1,000 - 10,000"
 
 #: plmanagednode/cog.py:760
 msgid "The threshold in milliseconds for how long a track can be stuck. A track is stuck if does not return any audio data. Accepted values: Range: 5,000 - 20,000"
-msgstr ""
+msgstr "Поріг в мілісекундах на скільки часу може застрягти трек. Доріжка застрягає, якщо не повертає жодних аудіоданих. Прийняті значення: діапазон: 5,000 - 20,000"
 
 #: plmanagednode/cog.py:764
 msgid "Number of pages to return for a YouTube Playlist - Each page contains 100 songs. Accepted values: Range: 5 - 100"
-msgstr ""
+msgstr "Кількість сторінок, які потрібно повернути для списку відтворення YouTube - Кожна сторінка містить 100 пісень. Прийняті значення: діапазон: 5 до 100"
 
 #: plmanagednode/cog.py:768
 msgid "Opus encoder quality. Valid values range from 0 to 10, where 10 is best quality but is the most expensive on the CPU"
-msgstr ""
+msgstr "Якість кодера Opus. Допустимі значення варіюються від 0 до 10, де 10 - найкраща якість, але найдорожча на процесорі"
 
 #: plmanagednode/cog.py:772
 msgid "Quality of resampling operations. Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU"
-msgstr ""
+msgstr "Якість операцій дискретизації. Допустимими значеннями є LOW, AVERAGE і HIGH, де HIGH використовує найбільше ЦП"
 
 #: plmanagednode/cog.py:776
 msgid "Seek ghosting is the effect where whilst a seek is in progress, the audio buffer is read from until empty, or until seek is ready. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
-msgstr ""
+msgstr "Пошук привидів - це ефект, коли поки триває пошук, звуковий буфер читається з тих пір, поки не буде порожній, або поки пошук не буде готовий. Прийняті значення для true: 'True', 't', '1', Прийняті значення для false: 'False', 'f', '0'"
 
 #: plmanagednode/cog.py:781
 msgid "How frequently in seconds to send player updates to clients, affects the current position accuracy. Accepted values: Range: 1 - 86400"
-msgstr ""
+msgstr "Те, як часто за лічені секунди відправляти клієнтам оновлення плеєра, впливає на точність поточної позиції. Прийняті значення: діапазон: 1 - 86400"
 
 #: plmanagednode/cog.py:785
 msgid "Enable or disable YouTube searches within the node, this will affect AppleMusic, Spotify and any functionality dependant on YouTube. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
-msgstr ""
+msgstr "Увімкніть або вимкніть пошук YouTube у вузлі, це вплине на AppleMusic, Spotify та будь-які функції, що залежать від YouTube. Прийняті значення для true: 'True', 't', '1', Прийняті значення для false: 'False', 'f', '0'"
 
 #: plmanagednode/cog.py:790
 msgid "Enable or disable SoundCloud searches within the node, this will affect any functionality dependant on SoundCloud. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
-msgstr ""
+msgstr "Увімкніть або вимкніть пошук SoundCloud у вузлі, це вплине на будь-яку функціональність, що залежить від SoundCloud. Прийняті значення для true: 'True', 't', '1', Прийняті значення для false: 'False', 'f', '0'"
 
 #: plmanagednode/cog.py:799
 msgid "{Setting} info.\n\n"
 "{info}"
-msgstr ""
+msgstr "{Setting} Інформація.\n\n"
+"{info}"
 
 #: plmanagednode/cog.py:827
 msgid "{Setting} valid inputs are:\n\n"
 "Range between: {start} - {end}"
-msgstr ""
+msgstr "{Setting} Допустимими входами є:\n\n"
+"Діапазон між: {start} - {end}"
 
 #: plmanagednode/cog.py:838
 msgid "{Setting} valid inputs are:\n\n"
 "{setting_list}"
-msgstr ""
+msgstr "{Setting} Допустимими входами є:\n\n"
+"{setting_list}"
 
 #: plmanagednode/cog.py:857
 msgid "{Setting} set to {value}."
-msgstr ""
+msgstr "{Setting} установити в {value}."
 
 #: plmanagednode/cog.py:869
 #, docstring
 msgid "Configure Lavalink IP Rotation for rate limits.\n\n"
 "        Run `[p]plmanaged config iprotation 1` to remove the ip rotation\n"
 "        "
-msgstr ""
+msgstr "Налаштуйте обертання IP-адреси Lavalink для обмеження швидкості.\n\n"
+"        Біг '[p]Plmanaged config iprotation 1' для видалення обертання IP\n"
+"        "
 
 #: plmanagednode/cog.py:880
 msgid "Click the button below to configure the IP rotation for your node.\n"
 "More info at: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> and <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
-msgstr ""
+msgstr "Натисніть кнопку нижче, щоб налаштувати обертання IP для вашого вузла.\n"
+"Більше інформації за посиланням: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> і <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
 
 #: plmanagednode/cog.py:898
 msgid "Removing the IP rotation from your node."
-msgstr ""
+msgstr "Видалення обертання IP з вашого вузла."
 
 #: plmanagednode/cog.py:906
 #, docstring
 msgid "Link a Google account to Lavalink to bypass YouTube's age restriction\n\n"
 "        Run `[p]plmanaged config googleaccount 1` to remove the linked account.\n"
 "        "
-msgstr ""
+msgstr "Зв'яжіть обліковий запис Google із Lavalink, щоб обійти вікове обмеження YouTube\n\n"
+"        Біг '[p]plmanaged config googleaccount 1' для видалення пов'язаного облікового запису.\n"
+"        "
 
 #: plmanagednode/cog.py:917
 msgid "Click the button below to link a Google account to your node, if you have 2FA setup on this account you will need an app password instead\n"
 "More info at: <https://support.google.com/accounts/answer/185833>"
-msgstr ""
+msgstr "Натисніть кнопку нижче, щоб пов'язати обліковий запис Google зі своїм вузлом, якщо у вас є налаштування 2FA в цьому обліковому записі, замість цього вам знадобиться пароль програми\n"
+"Більше інформації за посиланням: <https://support.google.com/accounts/answer/185833>"
 
 #: plmanagednode/cog.py:936
 msgid "Unlinking Google account from your node."
-msgstr ""
+msgstr "Від'єднання облікового запису Google від вузла."
 
 #: plmanagednode/cog.py:944
 #, docstring
 msgid "Configure a HTTP proxy for Lavalink\n\n"
 "        Run `[p]plmanaged config httpproxy 1` to remove the proxy.\n"
 "        "
-msgstr ""
+msgstr "Налаштування HTTP-проксі для Lavalink\n\n"
+"        Біг '[p]plmanaged config httpproxy 1' для видалення проксі.\n"
+"        "
 
 #: plmanagednode/cog.py:955
 msgid "Click the button below to configure a HTTP proxy for your node"
-msgstr ""
+msgstr "Натисніть кнопку нижче, щоб налаштувати проксі HTTP для вашого вузла"
 
 #: plmanagednode/cog.py:969
 msgid "Unlinking HTTP proxy from your node."
-msgstr ""
+msgstr "Від'єднання HTTP-проксі від вузла."
 
 #: plmanagednode/view.py:38 plmanagednode/view.py:65 plmanagednode/view.py:98
 #: plmanagednode/view.py:179 plmanagednode/view.py:337
 #: plmanagednode/view.py:422
 msgid "You are not authorized to interact with this"
-msgstr ""
+msgstr "Ви не маєте права взаємодіяти з цим"
 
 #: plmanagednode/view.py:125
 msgid "IP Rotation Configurator"
-msgstr ""
+msgstr "Конфігуратор обертання IP"
 
 #: plmanagednode/view.py:128
 msgid "IP Blocks"
-msgstr ""
+msgstr "IP-блоки"
 
 #: plmanagednode/view.py:132
 msgid "1.0.0.0/8,...,... - Comma separated list of IP blocks"
-msgstr ""
+msgstr "1.0.0.0/8,...,... - Список блоків IP, розділених комами"
 
 #: plmanagednode/view.py:137
 msgid "Rotation strategy"
-msgstr ""
+msgstr "Стратегія ротації"
 
 #: plmanagednode/view.py:146
 msgid "Retry limit"
-msgstr ""
+msgstr "Обмеження повторної спроби"
 
 #: plmanagednode/view.py:149
 msgid "-1 = default, 0 = infinity, >0 = number of retries"
-msgstr ""
+msgstr "-1 = за замовчуванням, 0 = нескінченність, >0 = кількість повторних спроб"
 
 #: plmanagednode/view.py:154
 msgid "IPs to exclude"
-msgstr ""
+msgstr "IP-адреси для виключення"
 
 #: plmanagednode/view.py:157
 msgid "Comma separated list of IP to exclude from rotation"
-msgstr ""
+msgstr "Список IP, розділений комами, щоб виключити з обертання"
 
 #: plmanagednode/view.py:161
 msgid "Search trigger rotation"
-msgstr ""
+msgstr "Обертання тригера пошуку"
 
 #: plmanagednode/view.py:164
 msgid "0 or 1 (0 = disabled, 1 = enabled)"
-msgstr ""
+msgstr "0 або 1 (0 = відключено, 1 = включено)"
 
 #: plmanagednode/view.py:192
 msgid "Invalid IP block - {error}"
-msgstr ""
+msgstr "Недійсний блок IP - {error}"
 
 #: plmanagednode/view.py:205
 msgid "No IP blocks were provided"
-msgstr ""
+msgstr "Блоків IP не було надано"
 
 #: plmanagednode/view.py:220
 msgid "Invalid IP address - {error}"
-msgstr ""
+msgstr "Недійсна IP-адреса - {error}"
 
 #: plmanagednode/view.py:239
 msgid "Invalid strategy, must be one of: {options}"
-msgstr ""
+msgstr "Недійсна стратегія, повинна бути однією з: {options}"
 
 #: plmanagednode/view.py:255
 msgid "Invalid retry limit, must be a number greater than or equals to -1"
-msgstr ""
+msgstr "Неприпустиме обмеження повторної спроби має бути числом більше або дорівнює -1"
 
 #: plmanagednode/view.py:270
 msgid "Invalid search trigger, must be 0 or 1"
-msgstr ""
+msgstr "Неприпустимий тригер пошуку, має бути 0 або 1"
 
 #: plmanagednode/view.py:289
 msgid "IP rotation configuration saved."
-msgstr ""
+msgstr "Конфігурація обертання IP збережена."
 
 #: plmanagednode/view.py:310
 msgid "Google Account Configurator"
-msgstr ""
+msgstr "Конфігуратор облікових записів Google"
 
 #: plmanagednode/view.py:313
 msgid "Email address"
-msgstr ""
+msgstr "Адреса електронної пошти"
 
 #: plmanagednode/view.py:316
 msgid "Your Google account email"
-msgstr ""
+msgstr "Електронна пошта вашого облікового запису Google"
 
 #: plmanagednode/view.py:321
 msgid "password"
-msgstr ""
+msgstr "пароль"
 
 #: plmanagednode/view.py:324
 msgid "If you have 2FA you will need an app password"
-msgstr ""
+msgstr "Якщо у вас 2FA, вам знадобиться пароль програми"
 
 #: plmanagednode/view.py:345
 msgid "Invalid email address"
-msgstr ""
+msgstr "Недійсна адреса електронної пошти"
 
 #: plmanagednode/view.py:355
 msgid "Google account linked."
-msgstr ""
+msgstr "Обліковий запис Google пов'язаний."
 
 #: plmanagednode/view.py:376
 msgid "HTTP Proxy Configurator"
-msgstr ""
+msgstr "Конфігуратор проксі-сервера HTTP"
 
 #: plmanagednode/view.py:379
 msgid "Hostname"
-msgstr ""
+msgstr "Ім'я хоста"
 
 #: plmanagednode/view.py:382
 msgid "Hostname of the proxy, (ip or domain or localhost)"
-msgstr ""
+msgstr "Ім'я хоста проксі-сервера (ip, домен або localhost)"
 
 #: plmanagednode/view.py:386
 msgid "Proxy port"
-msgstr ""
+msgstr "Проксі-порт"
 
 #: plmanagednode/view.py:389
 msgid "Proxy port, 3128 is the default for squidProxy"
-msgstr ""
+msgstr "Проксі-порт, 3128 є типовим для squidProxy"
 
 #: plmanagednode/view.py:395
 msgid "User"
-msgstr ""
+msgstr "Користувач"
 
 #: plmanagednode/view.py:400
 msgid "Optional user for basic authentication fields, leave blank if you don't use basic auth"
-msgstr ""
+msgstr "Необов'язковий користувач для базових полів автентифікації, залиште порожнім, якщо ви не використовуєте базову автівку"
 
 #: plmanagednode/view.py:404
 msgid "Password"
-msgstr ""
+msgstr "Пароль"
 
 #: plmanagednode/view.py:409
 msgid "Optional password for basic authentication fields, leave blank if you don't use basic auth"
-msgstr ""
+msgstr "Необов'язковий пароль для базових полів автентифікації, залиште пустим, якщо ви не використовуєте базову автентифікацію"
 
 #: plmanagednode/view.py:433
 msgid "Invalid port, must be a number between 0 and 65536"
-msgstr ""
+msgstr "Недійсний порт, має бути число від 0 до 65536"
 
 #: plmanagednode/view.py:450
 msgid "HTTP proxy configuration saved."
-msgstr ""
+msgstr "Конфігурація проксі-сервера HTTP збережена."
 

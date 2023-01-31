@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:26\n"
+"PO-Revision-Date: 2023-01-31 23:42\n"
 "Last-Translator: \n"
 "Language-Team: Czech\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: audio/cog.py:35
 #, docstring
 msgid "A Media player using the PyLav library"
-msgstr ""
+msgstr "Přehrávač médií využívající knihovnu PyLav"
 
 #: audio/config_commands.py:41
 #, docstring
@@ -28,15 +28,18 @@ msgid "Notifies PyLav that a Player is having issues.\n\n"
 "        If enough (50%+ of currently playing players) report issues, PyLav will automatically\n"
 "        switch to a different node or restart the current node where possible.\n"
 "        "
-msgstr ""
+msgstr "Upozorní PyLav, že hráč má problémy.\n\n"
+"        Pokud dostatečný počet (50%+ aktuálně hrajících hráčů) nahlásí problémy, PyLav automaticky nahlásí\n"
+"        Pokud je to možné, přepněte na jiný uzel nebo restartujte aktuální uzel.\n"
+"        "
 
 #: audio/config_commands.py:49
 msgid "This server already voted recently, please try again in 10 minutes"
-msgstr ""
+msgstr "Tento server již nedávno hlasoval, zkuste to prosím znovu za 10 minut"
 
 #: audio/config_commands.py:60
 msgid "Thank you for your report"
-msgstr ""
+msgstr "Děkujeme za vaši zprávu"
 
 #: audio/config_commands.py:70
 #, docstring
@@ -45,61 +48,65 @@ msgid "Removes a vote for a Player being down.\n\n"
 "        switch to a different node or restart the current node where possible.\n\n"
 "        This command is only useful if you previously voted for a node to be down and it is now back up.\n"
 "        "
-msgstr ""
+msgstr "Odstraní hlas pro hráče, který je dole.\n\n"
+"        Pokud dostatečný počet (50%+ aktuálně hrajících hráčů) nahlásí problémy, PyLav automaticky nahlásí\n"
+"        Pokud je to možné, přepněte na jiný uzel nebo restartujte aktuální uzel.\n\n"
+"        Tento příkaz je užitečný pouze v případě, že jste dříve hlasovali pro to, aby byl uzel vypnutý a nyní je zálohován.\n"
+"        "
 
 #: audio/config_commands.py:80
 msgid "There is no active votes for the current backend"
-msgstr ""
+msgstr "Pro aktuální back-end nejsou aktivní žádné hlasy"
 
 #: audio/config_commands.py:90
 msgid "Removed your report"
-msgstr ""
+msgstr "Odebrali jste své hlášení"
 
 #: audio/config_commands.py:98
 #, docstring
 msgid "Show the version of the Cog and its PyLav dependencies"
-msgstr ""
+msgstr "Zobrazení verze ozubeného kola a jeho závislostí PyLav"
 
 #: audio/config_commands.py:114
 msgid "Library/Cog"
-msgstr ""
+msgstr "Knihovna/ozubené kolo"
 
 #: audio/config_commands.py:115
 msgid "Version"
-msgstr ""
+msgstr "Verze"
 
 #: audio/config_commands.py:129
 #, docstring
 msgid "Global configuration options"
-msgstr ""
+msgstr "Možnosti globální konfigurace"
 
 #: audio/config_commands.py:133
 #, docstring
 msgid "Set the maximum volume a server can set"
-msgstr ""
+msgstr "Nastavení maximální hlasitosti, kterou může server nastavit"
 
 #: audio/config_commands.py:141 audio/config_commands.py:578
 #: audio/hybrid_commands.py:627
 msgid "Volume must be less than 1000"
-msgstr ""
+msgstr "Objem musí být menší než 1000"
 
 #: audio/config_commands.py:149 audio/config_commands.py:586
 #: audio/hybrid_commands.py:635
 msgid "Volume must be greater than 0"
-msgstr ""
+msgstr "Hlasitost musí být větší než 0"
 
 #: audio/config_commands.py:157 audio/config_commands.py:623
 msgid "Max volume set to {volume}%"
-msgstr ""
+msgstr "Maximální hlasitost nastavena na {volume}%"
 
 #: audio/config_commands.py:165 audio/config_commands.py:631
 #, docstring
 msgid "Set whether [botname] should deafen itself when playing"
-msgstr ""
+msgstr "Nastavte, zda [botname] by měl při hraní sám ohlušit"
 
 #: audio/config_commands.py:174 audio/config_commands.py:657
 msgid "Deafen set to {deafen}"
-msgstr ""
+msgstr "Deafen nastaven na {deafen}"
 
 #: audio/config_commands.py:174 audio/config_commands.py:193
 #: audio/config_commands.py:212 audio/config_commands.py:229
@@ -108,7 +115,7 @@ msgstr ""
 #: audio/config_commands.py:719 audio/config_commands.py:753
 #: audio/config_commands.py:817 audio/config_commands.py:880
 msgid "Enabled"
-msgstr ""
+msgstr "Zpřístupněný"
 
 #: audio/config_commands.py:174 audio/config_commands.py:193
 #: audio/config_commands.py:212 audio/config_commands.py:229
@@ -117,39 +124,39 @@ msgstr ""
 #: audio/config_commands.py:719 audio/config_commands.py:753
 #: audio/config_commands.py:817 audio/config_commands.py:880
 msgid "Disabled"
-msgstr ""
+msgstr "Invalidní"
 
 #: audio/config_commands.py:182
 #, docstring
 msgid "Set whether the a server is allowed to enabled auto shuffle"
-msgstr ""
+msgstr "Nastavení, zda může server povolit automatické náhodné přehrávání"
 
 #: audio/config_commands.py:192 audio/config_commands.py:686
 msgid "Auto-Shuffle set to {shuffle}"
-msgstr ""
+msgstr "Automatické náhodné přehrávání nastavené na {shuffle}"
 
 #: audio/config_commands.py:202 audio/config_commands.py:696
 #, docstring
 msgid "Set whether [botname] should allow users to shuffle the queue"
-msgstr ""
+msgstr "Nastavte, zda [botname] by měl uživatelům umožnit náhodné pořadí fronty"
 
 #: audio/config_commands.py:212 audio/config_commands.py:719
 msgid "Shuffle set to {shuffle}"
-msgstr ""
+msgstr "Náhodné přehrávání nastaveno na {shuffle}"
 
 #: audio/config_commands.py:220
 #, docstring
 msgid "Set whether [botname] should automatically play songs when the queue is empty"
-msgstr ""
+msgstr "Nastavte, zda [botname] by měla automaticky přehrávat skladby, když je fronta prázdná"
 
 #: audio/config_commands.py:229 audio/config_commands.py:753
 msgid "Auto-Play set to {auto}"
-msgstr ""
+msgstr "Automatické přehrávání nastavené na {auto}"
 
 #: audio/config_commands.py:237
 #, docstring
 msgid "Set whether [botname] should disconnect from the voice channel"
-msgstr ""
+msgstr "Nastavte, zda [botname] by se měl odpojit od hlasového kanálu"
 
 #: audio/config_commands.py:247
 #, docstring
@@ -159,16 +166,21 @@ msgid "Set whether [botname] should disconnect from the voice channel when the q
 "            - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Nastavte, zda [botname] by se měl odpojit od hlasového kanálu, když je fronta prázdná.\n\n"
+"        Argumenty:\n"
+"            - `<toggle>\": Zda [botname] by se měl odpojit od hlasového kanálu, když je fronta prázdná.\n"
+"            - `<duration>': Jak dlouho po vyprázdnění fronty by měl být přehrávač odpojen. Výchozí hodnota je 60 sekund.\n"
+"            Přijímá sekundy, minuty, hodiny, dny, týdny (pokud není zadána žádná jednotka, předpokládá se, že doba trvání je uvedena v sekundách)\n"
+"        "
 
 #: audio/config_commands.py:267 audio/config_commands.py:307
 #: audio/config_commands.py:811 audio/config_commands.py:873
 msgid " and players will be disconnected after {duration}"
-msgstr ""
+msgstr " a hráči budou odpojeni po {duration}"
 
 #: audio/config_commands.py:272 audio/config_commands.py:816
 msgid "Disconnect from voice channel when queue is empty set to {empty}{extras}"
-msgstr ""
+msgstr "Odpojit se od hlasového kanálu, když je fronta prázdná, nastavte na {empty}{extras}"
 
 #: audio/config_commands.py:288
 #, docstring
@@ -178,149 +190,154 @@ msgid "Set whether [botname] should disconnect from the voice channel when alone
 "            - `<duration>`: How longer after detecting should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Nastavte, zda [botname] by se měl odpojit od hlasového kanálu, když je sám.\n\n"
+"        Argumenty:\n"
+"            - `<toggle>\": Zda [botname] by se měl odpojit od hlasového kanálu, když zjistí, že je sám.\n"
+"            - `<duration>': Jak dlouho po zjištění by měl být přehrávač odpojen. Výchozí hodnota je 60 sekund.\n"
+"            Přijímá sekundy, minuty, hodiny, dny, týdny (pokud není zadána žádná jednotka, předpokládá se, že doba trvání je uvedena v sekundách)\n"
+"        "
 
 #: audio/config_commands.py:313 audio/config_commands.py:879
 msgid "Disconnect from voice channel when alone set to {empty}{extras}"
-msgstr ""
+msgstr "Odpojit se od hlasového kanálu, když je samostatně nastaveno na {empty}{extras}"
 
 #: audio/config_commands.py:325
 #, docstring
 msgid "Server configuration options"
-msgstr ""
+msgstr "Možnosti konfigurace serveru"
 
 #: audio/config_commands.py:329
 #, docstring
 msgid "Add, remove or show the DJ roles and users for the server"
-msgstr ""
+msgstr "Přidání, odebrání nebo zobrazení rolí DJ a uživatelů serveru"
 
 #: audio/config_commands.py:335
 #, docstring
 msgid "Add DJ roles or users to this server"
-msgstr ""
+msgstr "Přidání rolí DJ nebo uživatelů na tento server"
 
 #: audio/config_commands.py:348
 msgid "Added {role} to the DJ roles"
-msgstr ""
+msgstr "Přidán {role} k rolím DJ"
 
 #: audio/config_commands.py:351
 msgid "Added {user} to the DJ users"
-msgstr ""
+msgstr "Přidán {user} uživatelům DJ"
 
 #: audio/config_commands.py:358
 msgid "Added {roles} to the DJ roles and {users} to the DJ users"
-msgstr ""
+msgstr "Přidán {roles} k rolím DJ a {users} uživatelům DJ"
 
 #: audio/config_commands.py:365
 msgid "Added {roles} to the DJ roles"
-msgstr ""
+msgstr "Přidán {roles} k rolím DJ"
 
 #: audio/config_commands.py:369
 msgid "Added {users} to the DJ users"
-msgstr ""
+msgstr "Přidán {users} uživatelům DJ"
 
 #: audio/config_commands.py:384
 #, docstring
 msgid "Remove DJ roles or users in this the server"
-msgstr ""
+msgstr "Odebrat DJ role nebo uživatele v tomto serveru"
 
 #: audio/config_commands.py:416
 msgid "Removed {roles} from the DJ roles and {users} from the DJ users, as well as {ints} from both"
-msgstr ""
+msgstr "Odstraněný {roles} z rolí DJ a {users} od uživatelů DJ, stejně jako {ints} od obou"
 
 #: audio/config_commands.py:424
 msgid "Removed {roles} from the DJ roles and {users} from the DJ users"
-msgstr ""
+msgstr "Odstraněný {roles} z rolí DJ a {users} od uživatelů DJ"
 
 #: audio/config_commands.py:429
 msgid "Removed {roles} from the DJ roles"
-msgstr ""
+msgstr "Odstraněný {roles} z rolí DJ"
 
 #: audio/config_commands.py:433
 msgid "Removed {users} from the DJ users"
-msgstr ""
+msgstr "Odstraněný {users} od uživatelů DJ"
 
 #: audio/config_commands.py:437
 msgid "Removed {ints} from the DJ roles and users"
-msgstr ""
+msgstr "Odstraněný {ints} od DJ rolí a uživatelů"
 
 #: audio/config_commands.py:452
 msgid "Removed `{id}` from the DJ roles and users"
-msgstr ""
+msgstr "Odstraněno '{id}' od DJ rolí a uživatelů"
 
 #: audio/config_commands.py:454
 msgid "Removed {role} from the DJ roles"
-msgstr ""
+msgstr "Odstraněný {role} z rolí DJ"
 
 #: audio/config_commands.py:457
 msgid "Removed {user} from the DJ users"
-msgstr ""
+msgstr "Odstraněný {user} od uživatelů DJ"
 
 #: audio/config_commands.py:463
 #, docstring
 msgid "List the DJ roles and users for the server"
-msgstr ""
+msgstr "Seznam rolí DJ a uživatelů serveru"
 
 #: audio/config_commands.py:514
 msgid "There are no DJ roles or users set in {server}"
-msgstr ""
+msgstr "Nejsou nastaveny žádné role DJ ani uživatelé {server}"
 
 #: audio/config_commands.py:525 audio/config_commands.py:530
 msgid "DJ Roles"
-msgstr ""
+msgstr "DJ role"
 
 #: audio/config_commands.py:536 audio/config_commands.py:541
 msgid "DJ Users"
-msgstr ""
+msgstr "Uživatelé DJ"
 
 #: audio/config_commands.py:549
 #, docstring
 msgid "Clear the DJ roles and users for the server"
-msgstr ""
+msgstr "Vymazání rolí DJ a uživatelů serveru"
 
 #: audio/config_commands.py:561
 msgid "Cleared the DJ roles and users for {server}"
-msgstr ""
+msgstr "Byly odstraněny role DJ a uživatelé pro {server}"
 
 #: audio/config_commands.py:569
 #, docstring
 msgid "Set the maximum volume a user can set"
-msgstr ""
+msgstr "Nastavení maximální hlasitosti, kterou může uživatel nastavit"
 
 #: audio/config_commands.py:595 audio/config_commands.py:611
 msgid "Volume must be between 0 and {volume}%"
-msgstr ""
+msgstr "Hlasitost musí být mezi 0 a {volume}%"
 
 #: audio/config_commands.py:640
 msgid "My owner told me to always deafen myself"
-msgstr ""
+msgstr "Můj majitel mi řekl, abych se vždy ohluchl"
 
 #: audio/config_commands.py:665
 #, docstring
 msgid "Set whether [botname] should shuffle the queue after every new song added"
-msgstr ""
+msgstr "Nastavte, zda [botname] by měla zamíchat frontu po každé přidané skladbě"
 
 #: audio/config_commands.py:673
 msgid "Auto-Shuffle is globally disabled"
-msgstr ""
+msgstr "Funkce Automatické náhodné přehrávání je globálně zakázána"
 
 #: audio/config_commands.py:706
 msgid "Shuffle is globally disabled"
-msgstr ""
+msgstr "Náhodné přehrávání je globálně zakázáno"
 
 #: audio/config_commands.py:727
 #, docstring
 msgid "Set whether the bot should automatically play songs when the queue is empty"
-msgstr ""
+msgstr "Nastavte, zda má robot automaticky přehrávat skladby, když je fronta prázdná"
 
 #: audio/config_commands.py:736
 msgid "Auto-Play is globally disabled"
-msgstr ""
+msgstr "Funkce automatického přehrávání je globálně zakázána"
 
 #: audio/config_commands.py:761
 #, docstring
 msgid "Set whether the bot should disconnect from the voice channel"
-msgstr ""
+msgstr "Nastavte, zda se má robot odpojit od hlasového kanálu"
 
 #: audio/config_commands.py:771
 #, docstring
@@ -332,11 +349,18 @@ msgid "Set whether the bot should disconnect from the voice channel when the que
 "            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be\n"
 "            given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Nastavte, zda se má robot odpojit od hlasového kanálu, když je fronta prázdná.\n\n"
+"        Argumenty:\n"
+"            - `<toggle>': Zda se má robot odpojit od hlasového kanálu, když je fronta prázdná.\n"
+"            - `<duration>': Jak dlouho po vyprázdnění fronty by měl být přehrávač odpojen. Výchozí hodnota je 60\n"
+"            sekundy.\n"
+"            Přijímá sekundy, minuty, hodiny, dny, týdny (pokud není zadána žádná jednotka, předpokládá se, že doba trvání je\n"
+"            podáno v sekundách)\n"
+"        "
 
 #: audio/config_commands.py:789
 msgid "Disconnect when the queue finished is globally enabled and players will be disconnected after {delta}"
-msgstr ""
+msgstr "Odpojení po dokončení fronty je globálně povoleno a hráči budou odpojeni po {delta}"
 
 #: audio/config_commands.py:832
 #, docstring
@@ -348,148 +372,155 @@ msgid "Set whether the bot should disconnect from the voice channel when alone.\
 "            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be\n"
 "            given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Nastavte, zda se má robot odpojit od hlasového kanálu, když je sám.\n\n"
+"        Argumenty:\n"
+"            - `<toggle>': Zda by se měl robot odpojit od hlasového kanálu, když zjistí, že je\n"
+"            sám.\n"
+"            - `<duration>': Jak dlouho po zjištění by měl být přehrávač odpojen. Výchozí hodnota je 60 sekund.\n"
+"            Přijímá sekundy, minuty, hodiny, dny, týdny (pokud není zadána žádná jednotka, předpokládá se, že doba trvání je\n"
+"            podáno v sekundách)\n"
+"        "
 
 #: audio/config_commands.py:851
 msgid "Disconnect when alone is globally enabled and players will be disconnected after {delta}"
-msgstr ""
+msgstr "Odpojení, když je sám globálně povoleno, a hráči budou odpojeni po {delta}"
 
 #: audio/config_commands.py:889
 #, docstring
 msgid "Sets the Auto-Play playlist"
-msgstr ""
+msgstr "Nastaví seznam stop automatického přehrávání"
 
 #: audio/config_commands.py:906
 msgid "Auto-Play playlist set to {playlist}"
-msgstr ""
+msgstr "Automaticky přehrávaný seznam skladeb nastavený na {playlist}"
 
 #: audio/config_commands.py:916
 #, docstring
 msgid "Set the channel locks"
-msgstr ""
+msgstr "Nastavení zámků kanálů"
 
 #: audio/config_commands.py:922
 #, docstring
 msgid "Set the channel lock for commands"
-msgstr ""
+msgstr "Nastavení zámku kanálu pro příkazy"
 
 #: audio/config_commands.py:937
 msgid "I don't have permission to send message or send embed links or read messages in {channel}"
-msgstr ""
+msgstr "Nemám oprávnění odesílat zprávy nebo odesílat odkazy pro vložení nebo číst zprávy v {channel}"
 
 #: audio/config_commands.py:954
 msgid "I will only listen to commands in {channel}"
-msgstr ""
+msgstr "Budu poslouchat pouze příkazy v {channel}"
 
 #: audio/config_commands.py:962
 msgid "I will listen to commands in all channels I can see"
-msgstr ""
+msgstr "Budu poslouchat příkazy ve všech kanálech, které vidím"
 
 #: audio/config_commands.py:970
 #, docstring
 msgid "Set the channel lock for voice channels"
-msgstr ""
+msgstr "Nastavení zámku kanálu pro hlasové kanály"
 
 #: audio/config_commands.py:982 audio/hybrid_commands.py:107
 #: audio/player_commands.py:144
 msgid "I don't have permission to connect or speak in {channel}"
-msgstr ""
+msgstr "Nemám oprávnění připojit se nebo mluvit {channel}"
 
 #: audio/config_commands.py:1000
 msgid "I will only be allowed to join {channel}"
-msgstr ""
+msgstr "Budu se moci připojit pouze {channel}"
 
 #: audio/config_commands.py:1007
 msgid "I'm free to join any VC"
-msgstr ""
+msgstr "Mohu se připojit k jakémukoli VC"
 
 #: audio/context_menus.py:27 audio/context_menus.py:143
 msgid "I can't play songs in DMs"
-msgstr ""
+msgstr "Nemohu přehrávat skladby v DM"
 
 #: audio/context_menus.py:38 audio/context_menus.py:154
 msgid "You need to be a DJ to play tracks"
-msgstr ""
+msgstr "Musíte být DJ, abyste mohli hrát skladby"
 
 #: audio/context_menus.py:55 audio/context_menus.py:169
 msgid "This command is not available in this channel. Please use {channel}"
-msgstr ""
+msgstr "Tento příkaz není v tomto kanálu k dispozici. Prosím, použijte {channel}"
 
 #: audio/context_menus.py:83
 msgid "I couldn't find any valid matches in the message"
-msgstr ""
+msgstr "Ve zprávě jsem nenašel žádné platné shody"
 
 #: audio/context_menus.py:94
 msgid "I found multiple valid matches in the message"
-msgstr ""
+msgstr "Ve zprávě jsem našel několik platných shod"
 
 #: audio/context_menus.py:103
 msgid "I found a single valid match in the message"
-msgstr ""
+msgstr "Ve zprávě jsem našel jednu platnou shodu"
 
 #: audio/context_menus.py:186
 msgid "I couldn't find any supported activity {user} is taking part in"
-msgstr ""
+msgstr "Nepodařilo se mi najít žádnou podporovanou aktivitu {user} se účastní"
 
 #: audio/context_menus.py:218
 msgid "Couldn't map {user}'s Apple Music track to a valid query"
-msgstr ""
+msgstr "Nelze mapovat {user}Skladba Apple Music na platný dotaz"
 
 #: audio/context_menus.py:234
 msgid "Couldn't find any tracks matching {query}"
-msgstr ""
+msgstr "Nelze najít žádné odpovídající skladby {query}"
 
 #: audio/context_menus.py:249
 msgid "Couldn't figure out what {user} is listening to"
-msgstr ""
+msgstr "Nemohl jsem přijít na to, co {user} poslouchá"
 
 #: audio/hybrid_commands.py:83
 msgid "You need to provide a query to play"
-msgstr ""
+msgstr "Musíte zadat dotaz pro přehrávání"
 
 #: audio/hybrid_commands.py:97 audio/player_commands.py:134
 msgid "You must be in a voice channel to allow me to connect"
-msgstr ""
+msgstr "Abyste mi umožnili připojení, musíte být v hlasovém kanálu"
 
 #: audio/hybrid_commands.py:154 audio/player_commands.py:225
 msgid "{track_count} tracks enqueued"
-msgstr ""
+msgstr "{track_count} Skladby ve frontě"
 
 #: audio/hybrid_commands.py:162 audio/player_commands.py:233
 msgid "{track} enqueued"
-msgstr ""
+msgstr "{track} Enqueued"
 
 #: audio/hybrid_commands.py:173 audio/player_commands.py:244
 msgid "No tracks were found for your query"
-msgstr ""
+msgstr "Pro váš dotaz nebyly nalezeny žádné stopy"
 
 #: audio/hybrid_commands.py:236
 msgid "You need to be in a voice channel if you don't specify which channel I need to connect to"
-msgstr ""
+msgstr "Pokud neurčíte, ke kterému kanálu se mám připojit, musíte být v hlasovém kanálu"
 
 #: audio/hybrid_commands.py:248
 msgid "I don't have permission to connect to that channel"
-msgstr ""
+msgstr "Nemám oprávnění k připojení k tomuto kanálu"
 
 #: audio/hybrid_commands.py:252
 msgid "I don't have permission to speak in {channel}"
-msgstr ""
+msgstr "Nemám povolení mluvit {channel}"
 
 #: audio/hybrid_commands.py:255
 msgid "I don't have permission to connect to {channel}"
-msgstr ""
+msgstr "Nemám oprávnění k připojení k {channel}"
 
 #: audio/hybrid_commands.py:268
 msgid "You don't have permission to connect to {channel}"
-msgstr ""
+msgstr "Nemáte oprávnění k připojení {channel}"
 
 #: audio/hybrid_commands.py:285
 msgid "I'm forced to only join {channel}"
-msgstr ""
+msgstr "Jsem nucen se pouze připojit {channel}"
 
 #: audio/hybrid_commands.py:293
 msgid "Connected to {channel}"
-msgstr ""
+msgstr "Připojeno k {channel}"
 
 #: audio/hybrid_commands.py:313 audio/hybrid_commands.py:343
 #: audio/hybrid_commands.py:383 audio/hybrid_commands.py:417
@@ -498,150 +529,151 @@ msgstr ""
 #: audio/hybrid_commands.py:587 audio/hybrid_commands.py:642
 #: audio/hybrid_commands.py:686 audio/hybrid_commands.py:787
 msgid "No player detected"
-msgstr ""
+msgstr "Nebyl zjištěn žádný hráč"
 
 #: audio/hybrid_commands.py:320 audio/hybrid_commands.py:350
 #: audio/hybrid_commands.py:390
 msgid "Player is not currently playing anything"
-msgstr ""
+msgstr "Přehrávač momentálně nic nehraje"
 
 #: audio/hybrid_commands.py:358
 msgid "Skipped - {track}"
-msgstr ""
+msgstr "Přeskočený- {track}"
 
 #: audio/hybrid_commands.py:397
 msgid "Player stopped"
-msgstr ""
+msgstr "Hráč se zastavil"
 
 #: audio/hybrid_commands.py:425
 msgid "Disconnected from {channel}"
-msgstr ""
+msgstr "Odpojeno od {channel}"
 
 #: audio/hybrid_commands.py:477
 msgid "There is nothing in the queue"
-msgstr ""
+msgstr "Ve frontě není nic"
 
 #: audio/hybrid_commands.py:485
 msgid "You are not allowed to shuffle the queue"
-msgstr ""
+msgstr "Není povoleno zamíchat frontu"
 
 #: audio/hybrid_commands.py:493
 msgid "{queue_size} tracks shuffled"
-msgstr ""
+msgstr "{queue_size} Skladby zamíchané"
 
 #: audio/hybrid_commands.py:525
 msgid "Repeating the queue"
-msgstr ""
+msgstr "Opakování fronty"
 
 #: audio/hybrid_commands.py:528
 msgid "Repeating disabled"
-msgstr ""
+msgstr "Opakování zakázáno"
 
 #: audio/hybrid_commands.py:531
 msgid "Repeating {track}"
-msgstr ""
+msgstr "Opakování {track}"
 
 #: audio/hybrid_commands.py:534
 msgid "current track"
-msgstr ""
+msgstr "Aktuální trať"
 
 #: audio/hybrid_commands.py:558
 msgid "Player already paused, did you mean to run `/resume`"
-msgstr ""
+msgstr "Přehrávač již pozastaven, měli jste na mysli spustit '/resume'"
 
 #: audio/hybrid_commands.py:560
 msgid "Player already paused, did you mean to run `{prefix}{command}`"
-msgstr ""
+msgstr "Hráč již pozastaven, chtěl jste spustit '{prefix}{command}`"
 
 #: audio/hybrid_commands.py:571
 msgid "Player paused"
-msgstr ""
+msgstr "Hráč se pozastavil"
 
 #: audio/hybrid_commands.py:593
 msgid "Player already resumed, did you mean to run `/pause`"
-msgstr ""
+msgstr "Přehrávač již pokračoval, měli jste na mysli spustit '/pause'"
 
 #: audio/hybrid_commands.py:595
 msgid "Player already resumed, did you mean to run `{prefix}{command}`"
-msgstr ""
+msgstr "Hráč již pokračoval, měli jste na mysli spustit '{prefix}{command}`"
 
 #: audio/hybrid_commands.py:606
 msgid "Player resumed"
-msgstr ""
+msgstr "Hráč pokračoval"
 
 #: audio/hybrid_commands.py:650
 msgid "Volume cannot be higher than {max_volume}"
-msgstr ""
+msgstr "Hlasitost nemůže být vyšší než {max_volume}"
 
 #: audio/hybrid_commands.py:659 audio/utility_commands.py:62
 msgid "Player volume set to {volume}%"
-msgstr ""
+msgstr "Hlasitost přehrávače nastavená na {volume}%"
 
 #: audio/hybrid_commands.py:693
 msgid "Nothing playing"
-msgstr ""
+msgstr "Nic nehraje"
 
 #: audio/hybrid_commands.py:702 audio/hybrid_commands.py:711
 msgid "Unable to seek track"
-msgstr ""
+msgstr "Nelze vyhledat stopu"
 
 #: audio/hybrid_commands.py:703
 msgid "Can't seek on a stream"
-msgstr ""
+msgstr "Nelze hledat na streamu"
 
 #: audio/hybrid_commands.py:720
 msgid "Cannot seek when the player is paused"
-msgstr ""
+msgstr "Nelze hledat, když je hráč pozastaven"
 
 #: audio/hybrid_commands.py:733
 msgid "Moved {seconds}s to 00:00:00"
-msgstr ""
+msgstr "Přestěhoval {seconds}s do 00:00:00"
 
 #: audio/hybrid_commands.py:740
 msgid "Moved {seconds}s to {time}"
-msgstr ""
+msgstr "Přestěhoval {seconds}s až {time}"
 
 #: audio/hybrid_commands.py:761
 msgid "Moved to {time}"
-msgstr ""
+msgstr "Přesunuto do {time}"
 
 #: audio/hybrid_commands.py:795
 msgid "No previous in player history"
-msgstr ""
+msgstr "Žádná předchozí v historii hráče"
 
 #: audio/hybrid_commands.py:803
 msgid "Playing previous track: {track}"
-msgstr ""
+msgstr "Přehrání předchozí skladby: {track}"
 
 #: audio/player_commands.py:30
 msgid "Plays the specified track in the queue"
-msgstr ""
+msgstr "Přehraje zadanou stopu ve frontě"
 
 #: audio/player_commands.py:50 audio/player_commands.py:269
 msgid "Queue is empty"
-msgstr ""
+msgstr "Fronta je prázdná"
 
 #: audio/player_commands.py:59 audio/player_commands.py:282
 msgid "Track index must be between 1 and {size}"
-msgstr ""
+msgstr "Index koleje musí být mezi 1 a {size}"
 
 #: audio/player_commands.py:75 audio/player_commands.py:295
 msgid "There is no track in position {position}"
-msgstr ""
+msgstr "Na místě není žádná stopa {position}"
 
 #: audio/player_commands.py:85
 msgid "{track} will play after {current} finishes ({eta})"
-msgstr ""
+msgstr "{track} bude hrát po {current} povrchové úpravy ({eta})"
 
 #: audio/player_commands.py:103
 msgid "{track} will start now\n"
 "{current} has been skipped"
-msgstr ""
+msgstr "{track} začne hned\n"
+"{current} byl přeskočen"
 
 #: audio/player_commands.py:121
 #, docstring
 msgid "Enqueue a track at the top of the queue"
-msgstr ""
+msgstr "Zařazení prošlé trasy do fronty do fronty"
 
 #: audio/player_commands.py:254
 #, docstring
@@ -649,50 +681,53 @@ msgid "\n"
 "        Remove the specified track from the queue.\n\n"
 "        If you specify the `remove_duplicates` argument, all tracks that are the same as your URL or the index track will be removed.\n"
 "        "
-msgstr ""
+msgstr "\n"
+"        Odeberte zadanou trasu z fronty.\n\n"
+"        Pokud zadáte argument remove_duplicates, budou odstraněny všechny stopy, které jsou stejné jako adresa URL nebo trasa indexu.\n"
+"        "
 
 #: audio/player_commands.py:325
 msgid "{track} not found in queue"
-msgstr ""
+msgstr "{track} Nenalezeno ve frontě"
 
 #: audio/player_commands.py:335
 msgid "Removed {times} {entry_plural} of {track} from the queue"
-msgstr ""
+msgstr "Odstraněný {times} {entry_plural} z {track} z fronty"
 
 #: audio/player_commands.py:338
 msgid "entry"
-msgstr ""
+msgstr "položka"
 
 #: audio/player_commands.py:338
 msgid "entries"
-msgstr ""
+msgstr "položky"
 
 #: audio/slash_commands.py:47
 #, docstring
 msgid "Search for a track then play the selected response"
-msgstr ""
+msgstr "Vyhledejte skladbu a přehrajte vybranou odpověď"
 
 #: audio/slash_commands.py:53
 msgid "You haven't selected something to play"
-msgstr ""
+msgstr "Nevybrali jste něco, co chcete přehrát"
 
 #: audio/slash_commands.py:105
 msgid "Searching {service}"
-msgstr ""
+msgstr "Hledání {service}"
 
 #: audio/slash_commands.py:121 audio/slash_commands.py:132
 msgid "No results found on {service}"
-msgstr ""
+msgstr "Nebyly nalezeny žádné výsledky {service}"
 
 #: audio/utility_commands.py:32
 msgid "Not connected to a voice channel"
-msgstr ""
+msgstr "Není připojen k hlasovému kanálu"
 
 #: audio/utility_commands.py:43
 msgid "Volume limit reached, player volume set to {volume}%"
-msgstr ""
+msgstr "Dosažen limit hlasitosti, hlasitost přehrávače nastavena na {volume}%"
 
 #: audio/utility_commands.py:54
 msgid "Minimum volume reached, player volume set to 0%"
-msgstr ""
+msgstr "Dosažena minimální hlasitost, hlasitost přehrávače nastavena na 0 %"
 

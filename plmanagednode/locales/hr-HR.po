@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:26\n"
+"PO-Revision-Date: 2023-01-31 23:42\n"
 "Last-Translator: \n"
 "Language-Team: Croatian\n"
 "MIME-Version: 1.0\n"
@@ -20,67 +20,71 @@ msgstr ""
 #: plmanagednode/cog.py:34 plmanagednode/cog.py:46
 #, docstring
 msgid "Configure the managed Lavalink node used by PyLav"
-msgstr ""
+msgstr "Konfiguriranje upravljanog čvora Lavalink koji koristi PyLav"
 
 #: plmanagednode/cog.py:50
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies"
-msgstr ""
+msgstr "Prikaži verziju Zupčanika i to su ovisnosti PyLava"
 
 #: plmanagednode/cog.py:66
 msgid "Library/Cog"
-msgstr ""
+msgstr "Biblioteka/Zupčanik"
 
 #: plmanagednode/cog.py:67
 msgid "Version"
-msgstr ""
+msgstr "Verzija"
 
 #: plmanagednode/cog.py:80
 #, docstring
 msgid "Update the managed Lavalink node"
-msgstr ""
+msgstr "Ažuriranje upravljanog čvora Lavalink"
 
 #: plmanagednode/cog.py:92
 msgid "The managed Lavalink node is already up to date."
-msgstr ""
+msgstr "Upravljani čvor Lavalink već je ažuran."
 
 #: plmanagednode/cog.py:101
 msgid "Your node is out of date, to update please run `{prefix}{command} 1`."
-msgstr ""
+msgstr "Vaš čvor je zastario, za ažuriranje pokrenite '{prefix}{command} 1'."
 
 #: plmanagednode/cog.py:117
 msgid "The managed Lavalink node has been updated to version {version}."
-msgstr ""
+msgstr "Upravljani čvor Lavalink ažuriran je u verziju {version}."
 
 #: plmanagednode/cog.py:127
 #, docstring
 msgid "Toggle the managed node on/off.\n\n"
 "        Changes will be applied after restarting [botname].\n"
 "        "
-msgstr ""
+msgstr "Uključivanje/isključivanje upravljanog čvora.\n\n"
+"        Promjene će se primijeniti nakon ponovnog pokretanja [botname].\n"
+"        "
 
 #: plmanagednode/cog.py:142
 msgid "PyLav's managed node has been enabled."
-msgstr ""
+msgstr "PyLav-ov upravljani čvor je omogućen."
 
 #: plmanagednode/cog.py:150
 msgid "PyLav's managed node has been disabled."
-msgstr ""
+msgstr "PyLav-ov upravljani čvor je onemogućen."
 
 #: plmanagednode/cog.py:158
 #, docstring
 msgid "Toggle the managed node auto updates on/off.\n\n"
 "        Changes will be applied after restarting [botname].\n"
 "        "
-msgstr ""
+msgstr "Uključivanje/isključivanje automatskih ažuriranja upravljanih čvorova.\n\n"
+"        Promjene će se primijeniti nakon ponovnog pokretanja [botname].\n"
+"        "
 
 #: plmanagednode/cog.py:174
 msgid "PyLav's managed node auto updates have been enabled"
-msgstr ""
+msgstr "Omogućena su automatska ažuriranja upravljanih čvorova na PyLav-u"
 
 #: plmanagednode/cog.py:184
 msgid "PyLav's managed node auto updates have been disabled"
-msgstr ""
+msgstr "PyLav-ova automatska ažuriranja upravljanih čvorova onemogućena su"
 
 #: plmanagednode/cog.py:194
 #, docstring
@@ -90,41 +94,46 @@ msgid "Set the managed Lavalink node maximum heap-size.\n\n"
 "        This value only represents the maximum amount of RAM allowed to be used at any given point, and does not mean\n"
 "        that the managed Lavalink node will always use this amount of RAM.\n"
 "        "
-msgstr ""
+msgstr "Postavite upravljani čvor Lavalink maksimalnu veličinu hrpe.\n\n"
+"        Prema zadanim postavkama, ova vrijednost je 2G dostupnog RAM-a u glavnom stroju predstavljenom (65-1023M|1+G) (256M,\n"
+"        256G na primjer)\n\n"
+"        Ova vrijednost predstavlja samo maksimalnu količinu RAM-a koja se smije koristiti u bilo kojem trenutku i ne znači\n"
+"        da će upravljani čvor Lavalink uvijek koristiti tu količinu RAM-a.\n"
+"        "
 
 #: plmanagednode/cog.py:218
 msgid "Heap-size must be a valid measure of size, e.g. 256M, 256G"
-msgstr ""
+msgstr "Veličina hrpe mora biti valjana mjera veličine, npr. 256M, 256G"
 
 #: plmanagednode/cog.py:228
 msgid "Heap-size must be at least 64M, however it is recommended to have it set to at least 1G"
-msgstr ""
+msgstr "Veličina hrpe mora biti najmanje 64M, no preporučuje se da se postavi na najmanje 1G"
 
 #: plmanagednode/cog.py:240
 msgid "Heap-size must be less than your system RAM, You currently have {ram_in_bytes} of RAM available"
-msgstr ""
+msgstr "Veličina hrpe mora biti manja od RAM-a vašeg sustava, trenutno imate {ram_in_bytes} RAM-a dostupan"
 
 #: plmanagednode/cog.py:252
 msgid "Heap-size must be less than {limit} due to your system limitations"
-msgstr ""
+msgstr "Veličina hrpe mora biti manja od {limit} zbog ograničenja sustava"
 
 #: plmanagednode/cog.py:272
 msgid "Managed node's heap-size set to {bytes}."
-msgstr ""
+msgstr "Veličina gomile upravljanog čvora postavljena na {bytes}."
 
 #: plmanagednode/cog.py:283
 #, docstring
 msgid "Change the managed node start up configs"
-msgstr ""
+msgstr "Promjena konfiguracija pokretanja upravljanog čvora"
 
 #: plmanagednode/cog.py:287
 #, docstring
 msgid "Set the managed node host"
-msgstr ""
+msgstr "Postavljanje glavnog računala upravljanog čvora"
 
 #: plmanagednode/cog.py:299
 msgid "Managed node's host set to {host}."
-msgstr ""
+msgstr "Glavno računalo upravljanog čvora postavljeno je na {host}."
 
 #: plmanagednode/cog.py:310
 #, docstring
@@ -133,94 +142,99 @@ msgid "`Dangerous command` Set the managed Lavalink node's connection port.\n\n"
 "        conflict with the default port because you already have an application using port 2154 on this device.\n\n"
 "        The value by default is `2154`.\n"
 "        "
-msgstr ""
+msgstr "\"Opasna naredba\" Postavite priključak za povezivanje upravljanog čvora Lavalink.\n\n"
+"        Ovaj priključak je priključak za koji se upravljani čvor Lavalink veže, to biste trebali promijeniti samo ako postoji\n"
+"        sukob sa zadanim priključkom jer već imate aplikaciju koja koristi priključak 2154 na ovom uređaju.\n\n"
+"        Vrijednost je prema zadanim postavkama \"2154\".\n"
+"        "
 
 #: plmanagednode/cog.py:320
 msgid "The port must be between 1024 and 49151"
-msgstr ""
+msgstr "Luka mora biti između 1024 i 49151"
 
 #: plmanagednode/cog.py:332
 msgid "Managed node's port set to {port}."
-msgstr ""
+msgstr "Priključak upravljanog čvora postavljen na {port}."
 
 #: plmanagednode/cog.py:340
 #, docstring
 msgid "Change the managed node plugins"
-msgstr ""
+msgstr "Promjena upravljanih dodataka čvorova"
 
 #: plmanagednode/cog.py:346
 #, docstring
 msgid "Disabled one of the available plugins"
-msgstr ""
+msgstr "Onemogućen je jedan od dostupnih dodataka"
 
 #: plmanagednode/cog.py:362 plmanagednode/cog.py:474
 msgid "The plugin must be one of the following: {plugins}"
-msgstr ""
+msgstr "Dodatak mora biti jedan od sljedećih: {plugins}"
 
 #: plmanagednode/cog.py:447
 msgid "Managed node's plugin {plugin} disabled."
-msgstr ""
+msgstr "Dodatak upravljanog čvora {plugin} onemogućen."
 
 #: plmanagednode/cog.py:458
 #, docstring
 msgid "Enable one of the available plugins"
-msgstr ""
+msgstr "Omogući jedan od dostupnih dodataka"
 
 #: plmanagednode/cog.py:507
 msgid "Managed node's plugin {plugin} enabled."
-msgstr ""
+msgstr "Dodatak upravljanog čvora {plugin} omogućen."
 
 #: plmanagednode/cog.py:518
 #, docstring
 msgid "Update the managed node plugins"
-msgstr ""
+msgstr "Ažuriranje dodataka upravljanih čvorova"
 
 #: plmanagednode/cog.py:592
 msgid "{name} was updated from {old_value} to {new_value}\n"
-msgstr ""
+msgstr "{name} ažurirano je iz {old_value} do {new_value}\n"
 
 #: plmanagednode/cog.py:600
 msgid "Managed node's plugins updated.\n\n"
 "{updates}"
-msgstr ""
+msgstr "Ažurirani su dodaci upravljanog čvora.\n\n"
+"{updates}"
 
 #: plmanagednode/cog.py:611
 msgid "Managed node's plugins already up to date"
-msgstr ""
+msgstr "Dodaci upravljanog čvora već su ažurni"
 
 #: plmanagednode/cog.py:619
 #, docstring
 msgid "Toggle the managed node sources"
-msgstr ""
+msgstr "Uključivanje/isključivanje izvora upravljanih čvorova"
 
 #: plmanagednode/cog.py:634
 msgid "Invalid source, {valid_list} are valid sources"
-msgstr ""
+msgstr "Izvor nije valjan, {valid_list} su valjani izvori"
 
 #: plmanagednode/cog.py:648 plmanagednode/cog.py:684
 msgid "enabled"
-msgstr ""
+msgstr "omogućen"
 
 #: plmanagednode/cog.py:648 plmanagednode/cog.py:684
 msgid "disabled"
-msgstr ""
+msgstr "onemogućen"
 
 #: plmanagednode/cog.py:651
 msgid "Managed node's {source} source set to {state}."
-msgstr ""
+msgstr "Upravljani čvorovi {source} izvor postavljen na {state}."
 
 #: plmanagednode/cog.py:663
 #, docstring
 msgid "Toggle the managed node filters"
-msgstr ""
+msgstr "Uključivanje/isključivanje filtara upravljanih čvorova"
 
 #: plmanagednode/cog.py:675
 msgid "Invalid source, {valid_list} are valid filters"
-msgstr ""
+msgstr "Izvor nije valjan, {valid_list} su valjani filtri"
 
 #: plmanagednode/cog.py:687
 msgid "Managed node's {source} filter set to {state}."
-msgstr ""
+msgstr "Upravljani čvorovi {source} filtar postavljen na {state}."
 
 #: plmanagednode/cog.py:699
 #, docstring
@@ -238,262 +252,287 @@ msgid "Configure multiple settings for the managed node.\n\n"
 "        `youtubeSearchEnabled` : Boolean i.e True (Default True)\n"
 "        `soundcloudSearchEnabled` : Boolean i.e True (Default True)\n"
 "        "
-msgstr ""
+msgstr "Konfiguriranje više postavki za upravljani čvor.\n\n"
+"        Pokreni '[p]plmanaged config poslužitelj <setting> informacije' za prikaz informacija o postavkama i onome što rade.\n\n"
+"        **Postavljanje naziva**:\n"
+"        'bufferDurationMs' : Cijeli broj tj. 400 (Zadano 400) - Postavljeno na 0 za onemogućavanje JDA-NAS-a\n"
+"        'frameBufferDurationMs' : Cijeli broj tj 1000 (Zadano 1000)\n"
+"        'trackStuckThresholdMs' : Cijeli broj tj.\n"
+"        'youtubePlaylistLoadLimit' : Cijeli broj tj 1000 (Zadano 1000)\n"
+"        'opusEncodingQuality' : Cijeli broj tj.\n"
+"        \"resamplingQuality\" : Niz tj LOW (Zadano VISOKO)\n"
+"        'useSeekGhosting' : Boolean tj True (Zadano istinito)\n"
+"        'playerUpdateInterval' : Cijeli broj tj.\n"
+"        'youtubeSearchEnabled' : Boolean tj True (Zadano istinito)\n"
+"        'soundcloudSearchEnabled' : Boolean tj True (Default True)\n"
+"        "
 
 #: plmanagednode/cog.py:739
 msgid "{Setting} is not a valid Setting; Options are:\n\n"
 "{setting_list}"
-msgstr ""
+msgstr "{Setting} nije valjana postavka; Mogućnosti su:\n\n"
+"{setting_list}"
 
 #: plmanagednode/cog.py:750
 msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses but will increase RAM usage. Minimum of 40ms, lower values may introduce pauses and stutters. Set to 0 to disable JDA-NAS. Accepted values: Range: 0 - 2,000"
-msgstr ""
+msgstr "Trajanje NAS međuspremnika u milisekundama. Više vrijednosti bolje prolaze u odnosu na dulje GC pauze, ali će povećati upotrebu RAM-a. Minimalno 40 ms, niže vrijednosti mogu uvesti stanke i mucanje. Postavite na 0 da biste onemogućili JDA-NAS. Prihvaćene vrijednosti: Raspon: 0 - 2.000"
 
 #: plmanagednode/cog.py:756
 msgid "How many milliseconds of audio to keep buffered, Higher values increase RAM usage. Accepted values: Range: 1,000 - 10,000"
-msgstr ""
+msgstr "Koliko milisekundi zvuka zadržati međuspremnik, veće vrijednosti povećavaju upotrebu RAM-a. Prihvaćene vrijednosti: Raspon: 1.000 - 10.000"
 
 #: plmanagednode/cog.py:760
 msgid "The threshold in milliseconds for how long a track can be stuck. A track is stuck if does not return any audio data. Accepted values: Range: 5,000 - 20,000"
-msgstr ""
+msgstr "Prag u milisekundama koliko dugo se staza može zaglaviti. Zapis se zaglavi ako ne vrati nikakve audio podatke. Prihvaćene vrijednosti: Raspon: 5.000 - 20.000"
 
 #: plmanagednode/cog.py:764
 msgid "Number of pages to return for a YouTube Playlist - Each page contains 100 songs. Accepted values: Range: 5 - 100"
-msgstr ""
+msgstr "Broj stranica za povratak za YouTube popis za reprodukciju - Svaka stranica sadrži 100 pjesama. Prihvaćene vrijednosti: Raspon: 5 - 100"
 
 #: plmanagednode/cog.py:768
 msgid "Opus encoder quality. Valid values range from 0 to 10, where 10 is best quality but is the most expensive on the CPU"
-msgstr ""
+msgstr "Kvaliteta opus kodera. Valjane vrijednosti kreću se od 0 do 10, gdje je 10 najkvalitetnijih, ali je najskuplje na CPU-u"
 
 #: plmanagednode/cog.py:772
 msgid "Quality of resampling operations. Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU"
-msgstr ""
+msgstr "Kvaliteta operacija preprodaje. Valjane vrijednosti su NISKE, SREDNJE i VISOKE, gdje HIGH koristi najviše CPU-a"
 
 #: plmanagednode/cog.py:776
 msgid "Seek ghosting is the effect where whilst a seek is in progress, the audio buffer is read from until empty, or until seek is ready. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
-msgstr ""
+msgstr "Traženje ghostinga je učinak u kojem se, dok je potraga u tijeku, audio međuspremnik čita od do praznog ili dok traženje ne bude spremno. Prihvaćene vrijednosti za True: 'True', 't', '1', Prihvaćene vrijednosti za False: 'False', 'f', '0'"
 
 #: plmanagednode/cog.py:781
 msgid "How frequently in seconds to send player updates to clients, affects the current position accuracy. Accepted values: Range: 1 - 86400"
-msgstr ""
+msgstr "Koliko često u sekundi slati ažuriranja igrača klijentima utječe na trenutnu točnost položaja. Prihvaćene vrijednosti: Raspon: 1 - 86400"
 
 #: plmanagednode/cog.py:785
 msgid "Enable or disable YouTube searches within the node, this will affect AppleMusic, Spotify and any functionality dependant on YouTube. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
-msgstr ""
+msgstr "Omogućite ili onemogućite pretraživanja YouTubea unutar čvora, to će utjecati na AppleMusic, Spotify i sve funkcije koje ovise o YouTubeu. Prihvaćene vrijednosti za True: 'True', 't', '1', Prihvaćene vrijednosti za False: 'False', 'f', '0'"
 
 #: plmanagednode/cog.py:790
 msgid "Enable or disable SoundCloud searches within the node, this will affect any functionality dependant on SoundCloud. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
-msgstr ""
+msgstr "Omogućite ili onemogućite SoundCloud pretraživanja unutar čvora, to će utjecati na bilo koju funkcionalnost koja ovisi o SoundCloudu. Prihvaćene vrijednosti za True: 'True', 't', '1', Prihvaćene vrijednosti za False: 'False', 'f', '0'"
 
 #: plmanagednode/cog.py:799
 msgid "{Setting} info.\n\n"
 "{info}"
-msgstr ""
+msgstr "{Setting} informacije.\n\n"
+"{info}"
 
 #: plmanagednode/cog.py:827
 msgid "{Setting} valid inputs are:\n\n"
 "Range between: {start} - {end}"
-msgstr ""
+msgstr "{Setting} valjani ulazi su:\n\n"
+"Raspon između: {start} - {end}"
 
 #: plmanagednode/cog.py:838
 msgid "{Setting} valid inputs are:\n\n"
 "{setting_list}"
-msgstr ""
+msgstr "{Setting} valjani ulazi su:\n\n"
+"{setting_list}"
 
 #: plmanagednode/cog.py:857
 msgid "{Setting} set to {value}."
-msgstr ""
+msgstr "{Setting} postavljeno na {value}."
 
 #: plmanagednode/cog.py:869
 #, docstring
 msgid "Configure Lavalink IP Rotation for rate limits.\n\n"
 "        Run `[p]plmanaged config iprotation 1` to remove the ip rotation\n"
 "        "
-msgstr ""
+msgstr "Konfigurirajte Lavalink IP rotaciju za ograničenja brzine.\n\n"
+"        Pokreni '[p]plmanaged config iprotation 1' za uklanjanje ip rotacije\n"
+"        "
 
 #: plmanagednode/cog.py:880
 msgid "Click the button below to configure the IP rotation for your node.\n"
 "More info at: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> and <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
-msgstr ""
+msgstr "Kliknite donji gumb da biste konfigurirali IP rotaciju za svoj čvor.\n"
+"Više informacija na: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> i <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
 
 #: plmanagednode/cog.py:898
 msgid "Removing the IP rotation from your node."
-msgstr ""
+msgstr "Uklanjanje IP rotacije iz čvora."
 
 #: plmanagednode/cog.py:906
 #, docstring
 msgid "Link a Google account to Lavalink to bypass YouTube's age restriction\n\n"
 "        Run `[p]plmanaged config googleaccount 1` to remove the linked account.\n"
 "        "
-msgstr ""
+msgstr "Povezivanje Google računa s Lavalinkom da biste zaobišli dobno ograničenje YouTubea\n\n"
+"        Pokreni '[p]plmanaged config googleaccount 1' za uklanjanje povezanog računa.\n"
+"        "
 
 #: plmanagednode/cog.py:917
 msgid "Click the button below to link a Google account to your node, if you have 2FA setup on this account you will need an app password instead\n"
 "More info at: <https://support.google.com/accounts/answer/185833>"
-msgstr ""
+msgstr "Kliknite donji gumb da biste povezali Google račun sa svojim čvorom, ako imate postavljanje 2FA na ovom računu, umjesto toga trebat će vam lozinka aplikacije\n"
+"Više informacija na: <https://support.google.com/accounts/answer/185833>"
 
 #: plmanagednode/cog.py:936
 msgid "Unlinking Google account from your node."
-msgstr ""
+msgstr "Prekidanje veze Google računa s čvorom."
 
 #: plmanagednode/cog.py:944
 #, docstring
 msgid "Configure a HTTP proxy for Lavalink\n\n"
 "        Run `[p]plmanaged config httpproxy 1` to remove the proxy.\n"
 "        "
-msgstr ""
+msgstr "Konfiguriranje HTTP proxyja za Lavalink\n\n"
+"        Pokreni '[p]plmanaged config httpproxy 1' za uklanjanje proxyja.\n"
+"        "
 
 #: plmanagednode/cog.py:955
 msgid "Click the button below to configure a HTTP proxy for your node"
-msgstr ""
+msgstr "Kliknite donji gumb da biste konfigurirali HTTP proxy za svoj čvor"
 
 #: plmanagednode/cog.py:969
 msgid "Unlinking HTTP proxy from your node."
-msgstr ""
+msgstr "Prekinite vezu HTTP proxyja s čvorom."
 
 #: plmanagednode/view.py:38 plmanagednode/view.py:65 plmanagednode/view.py:98
 #: plmanagednode/view.py:179 plmanagednode/view.py:337
 #: plmanagednode/view.py:422
 msgid "You are not authorized to interact with this"
-msgstr ""
+msgstr "Niste ovlašteni komunicirati s ovim"
 
 #: plmanagednode/view.py:125
 msgid "IP Rotation Configurator"
-msgstr ""
+msgstr "Konfigurator IP rotacije"
 
 #: plmanagednode/view.py:128
 msgid "IP Blocks"
-msgstr ""
+msgstr "IP blokovi"
 
 #: plmanagednode/view.py:132
 msgid "1.0.0.0/8,...,... - Comma separated list of IP blocks"
-msgstr ""
+msgstr "1.0.0.0/8,...,... - Popis IP blokova odvojenih zarezom"
 
 #: plmanagednode/view.py:137
 msgid "Rotation strategy"
-msgstr ""
+msgstr "Strategija rotacije"
 
 #: plmanagednode/view.py:146
 msgid "Retry limit"
-msgstr ""
+msgstr "Ograničenje ponovnog pokušaja"
 
 #: plmanagednode/view.py:149
 msgid "-1 = default, 0 = infinity, >0 = number of retries"
-msgstr ""
+msgstr "-1 = zadano, 0 = beskonačnost, >0 = broj ponovnih pokušaja"
 
 #: plmanagednode/view.py:154
 msgid "IPs to exclude"
-msgstr ""
+msgstr "IP-ovi za isključivanje"
 
 #: plmanagednode/view.py:157
 msgid "Comma separated list of IP to exclude from rotation"
-msgstr ""
+msgstr "Popis IP-a odvojen zarezom koji se isključuje iz rotacije"
 
 #: plmanagednode/view.py:161
 msgid "Search trigger rotation"
-msgstr ""
+msgstr "Rotacija okidača pretraživanja"
 
 #: plmanagednode/view.py:164
 msgid "0 or 1 (0 = disabled, 1 = enabled)"
-msgstr ""
+msgstr "0 ili 1 (0 = onemogućeno, 1 = omogućeno)"
 
 #: plmanagednode/view.py:192
 msgid "Invalid IP block - {error}"
-msgstr ""
+msgstr "IP blok nije valjan - {error}"
 
 #: plmanagednode/view.py:205
 msgid "No IP blocks were provided"
-msgstr ""
+msgstr "Nisu dostavljeni IP blokovi"
 
 #: plmanagednode/view.py:220
 msgid "Invalid IP address - {error}"
-msgstr ""
+msgstr "IP adresa nije valjana - {error}"
 
 #: plmanagednode/view.py:239
 msgid "Invalid strategy, must be one of: {options}"
-msgstr ""
+msgstr "Strategija koja nije valjana, mora biti jedna od: {options}"
 
 #: plmanagednode/view.py:255
 msgid "Invalid retry limit, must be a number greater than or equals to -1"
-msgstr ""
+msgstr "Ograničenje ponovnog pokušaja nije valjano, mora biti broj veći ili jednak -1"
 
 #: plmanagednode/view.py:270
 msgid "Invalid search trigger, must be 0 or 1"
-msgstr ""
+msgstr "Okidač pretraživanja nije valjan, mora biti 0 ili 1"
 
 #: plmanagednode/view.py:289
 msgid "IP rotation configuration saved."
-msgstr ""
+msgstr "Konfiguracija IP rotacije je spremljena."
 
 #: plmanagednode/view.py:310
 msgid "Google Account Configurator"
-msgstr ""
+msgstr "Konfigurator Google računa"
 
 #: plmanagednode/view.py:313
 msgid "Email address"
-msgstr ""
+msgstr "Adresa e-pošte"
 
 #: plmanagednode/view.py:316
 msgid "Your Google account email"
-msgstr ""
+msgstr "E-pošta vašeg Google računa"
 
 #: plmanagednode/view.py:321
 msgid "password"
-msgstr ""
+msgstr "lozinka"
 
 #: plmanagednode/view.py:324
 msgid "If you have 2FA you will need an app password"
-msgstr ""
+msgstr "Ako imate 2FA, trebat će vam lozinka za aplikaciju"
 
 #: plmanagednode/view.py:345
 msgid "Invalid email address"
-msgstr ""
+msgstr "Adresa e-pošte nije valjana"
 
 #: plmanagednode/view.py:355
 msgid "Google account linked."
-msgstr ""
+msgstr "Povezan Google račun."
 
 #: plmanagednode/view.py:376
 msgid "HTTP Proxy Configurator"
-msgstr ""
+msgstr "HTTP proxy konfigurator"
 
 #: plmanagednode/view.py:379
 msgid "Hostname"
-msgstr ""
+msgstr "Naziv glavnog računala"
 
 #: plmanagednode/view.py:382
 msgid "Hostname of the proxy, (ip or domain or localhost)"
-msgstr ""
+msgstr "Naziv glavnog računala proxyja (ip ili domena ili localhost)"
 
 #: plmanagednode/view.py:386
 msgid "Proxy port"
-msgstr ""
+msgstr "Proxy priključak"
 
 #: plmanagednode/view.py:389
 msgid "Proxy port, 3128 is the default for squidProxy"
-msgstr ""
+msgstr "Proxy priključak, 3128 je zadani za squidProxy"
 
 #: plmanagednode/view.py:395
 msgid "User"
-msgstr ""
+msgstr "Korisnik"
 
 #: plmanagednode/view.py:400
 msgid "Optional user for basic authentication fields, leave blank if you don't use basic auth"
-msgstr ""
+msgstr "Neobavezni korisnik za osnovna polja za provjeru autentičnosti, ostavite prazno ako ne koristite osnovnu provjeru autentičnosti"
 
 #: plmanagednode/view.py:404
 msgid "Password"
-msgstr ""
+msgstr "Lozinka"
 
 #: plmanagednode/view.py:409
 msgid "Optional password for basic authentication fields, leave blank if you don't use basic auth"
-msgstr ""
+msgstr "Neobavezna lozinka za osnovna polja provjere autentičnosti, ostavite prazno ako ne koristite osnovnu provjeru autentičnosti"
 
 #: plmanagednode/view.py:433
 msgid "Invalid port, must be a number between 0 and 65536"
-msgstr ""
+msgstr "Priključak nije valjan, mora biti broj između 0 i 65536"
 
 #: plmanagednode/view.py:450
 msgid "HTTP proxy configuration saved."
-msgstr ""
+msgstr "Konfiguracija HTTP proxy poslužitelja je spremljena."
 

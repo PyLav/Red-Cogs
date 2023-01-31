@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:26\n"
+"PO-Revision-Date: 2023-01-31 23:42\n"
 "Last-Translator: \n"
 "Language-Team: Lithuanian\n"
 "MIME-Version: 1.0\n"
@@ -20,54 +20,54 @@ msgstr ""
 #: plnotifier/cog.py:84
 #, docstring
 msgid "Listen to events from the PyLav player and send them as messages to the specified channel"
-msgstr ""
+msgstr "Klausykitės įvykių iš PyLav grotuvo ir siųskite juos kaip pranešimus į nurodytą kanalą"
 
 #: plnotifier/cog.py:227
 #, docstring
 msgid "Configure the PyLavNotifier cog"
-msgstr ""
+msgstr "Sukonfigūruokite \"PyLavNotifier\" krumpliaratį"
 
 #: plnotifier/cog.py:231
 #, docstring
 msgid "Show the version of the Cog and its PyLav dependencies"
-msgstr ""
+msgstr "Rodyti krumpliaračio versiją ir jo priklausomybes nuo PyLav"
 
 #: plnotifier/cog.py:247
 msgid "Library/Cog"
-msgstr ""
+msgstr "Biblioteka / krumpliaratis"
 
 #: plnotifier/cog.py:248
 msgid "Version"
-msgstr ""
+msgstr "Versija"
 
 #: plnotifier/cog.py:263
 #, docstring
 msgid "Set the notify channel for the player"
-msgstr ""
+msgstr "Nustatykite grotuvo pranešimo kanalą"
 
 #: plnotifier/cog.py:272 plnotifier/cog.py:327
 msgid "I do not have permission to manage webhooks in {channel}"
-msgstr ""
+msgstr "Neturiu leidimo valdyti žiniatinklio kabliukų {channel}"
 
 #: plnotifier/cog.py:286
 msgid "I do not have permission to create a thread in {channel}"
-msgstr ""
+msgstr "Neturiu leidimo kurti gijos {channel}"
 
 #: plnotifier/cog.py:295 plnotifier/cog.py:311 plnotifier/cog.py:336
 msgid "PyLavNotifier"
-msgstr ""
+msgstr "PyLavNotifier"
 
 #: plnotifier/cog.py:296 plnotifier/cog.py:314 plnotifier/cog.py:337
 msgid "PyLav Notifier - Requested by {author}"
-msgstr ""
+msgstr "\"PyLav Notifier\" - paprašė {author}"
 
 #: plnotifier/cog.py:307
 msgid "This thread will be used by PyLav to post notifications about the player"
-msgstr ""
+msgstr "Šią giją PyLav naudos pranešimams apie grotuvą skelbti"
 
 #: plnotifier/cog.py:351
 msgid "PyLavNotifier channel set to {channel}"
-msgstr ""
+msgstr "PyLavNotifier kanalas nustatytas į {channel}"
 
 #: plnotifier/cog.py:361
 #, docstring
@@ -77,149 +77,164 @@ msgid "Set whether or not to notify for the specified event.\n\n"
 "            toggle -- Whether or not to notify upon receiving this event.\n"
 "            use_mention -- Whether or not to use a mention instead of the name for the action requested.\n"
 "        "
-msgstr ""
+msgstr "Nustatykite, ar pranešti apie nurodytą įvykį.\n\n"
+"        Argumentai:\n"
+"            įvykis -- Įvykis, kurį reikia nustatyti.\n"
+"            perjungti -- Ar pranešti gavus šį įvykį.\n"
+"            use_mention -- Ar vietoj prašomo veiksmo pavadinimo naudoti paminėjimą, ar ne.\n"
+"        "
 
 #: plnotifier/cog.py:378
 msgid "Invalid event, possible events are:\n\n"
 "{events}"
-msgstr ""
+msgstr "Netinkamas įvykis, galimi įvykiai:\n\n"
+"{events}"
 
 #: plnotifier/cog.py:395
 msgid "Event {event} set to {toggle}{extras}"
-msgstr ""
+msgstr "Įvykis {event} nustatyta kaip {toggle}{extras}"
 
 #: plnotifier/cog.py:397
 msgid "notify"
-msgstr ""
+msgstr "Pranešti"
 
 #: plnotifier/cog.py:397
 msgid "do not notify"
-msgstr ""
+msgstr "nepranešti"
 
 #: plnotifier/cog.py:398
 msgid " with mentions"
-msgstr ""
+msgstr " su paminėjimais"
 
 #: plnotifier/cog.py:398
 msgid " without mentions"
-msgstr ""
+msgstr " be paminėjimų"
 
 #: plnotifier/cog.py:414
 msgid "Track Stuck Event"
-msgstr ""
+msgstr "Stebėkite įstrigusį įvykį"
 
 #: plnotifier/cog.py:415
 msgid "[Node={node}] {track} is stuck for {threshold} seconds, skipping"
-msgstr ""
+msgstr "[Mazgas={node}] {track} įstrigo {threshold} sekundės, praleidimas"
 
 #: plnotifier/cog.py:440
 msgid "Track Exception Event"
-msgstr ""
+msgstr "Stebėti išimties įvykį"
 
 #: plnotifier/cog.py:441
 msgid "[Node={node}] There was an error while playing {track}:\n"
 "{exception}"
-msgstr ""
+msgstr "[Mazgas={node}] Žaidžiant įvyko klaida {track}:\n"
+"{exception}"
 
 #: plnotifier/cog.py:464
 msgid "the player reached the end of the tracks runtime"
-msgstr ""
+msgstr "žaidėjas pasiekė takelių vykdymo laiko pabaigą"
 
 #: plnotifier/cog.py:466
 msgid "a new track started playing"
-msgstr ""
+msgstr "pradėjo groti naujas takelis"
 
 #: plnotifier/cog.py:468
 msgid "it failed to start"
-msgstr ""
+msgstr "nepavyko pradėti"
 
 #: plnotifier/cog.py:470
 msgid "because the player was stopped"
-msgstr ""
+msgstr "nes žaidėjas buvo sustabdytas"
 
 #: plnotifier/cog.py:472
 msgid "the node told it to stop"
-msgstr ""
+msgstr "mazgas liepė sustoti"
 
 #: plnotifier/cog.py:475
 msgid "Track End Event"
-msgstr ""
+msgstr "Stebėti pabaigos įvykį"
 
 #: plnotifier/cog.py:476
 msgid "[Node={node}] {track} has finished playing because {reason}"
-msgstr ""
+msgstr "[Mazgas={node}] {track} baigė groti, nes {reason}"
 
 #: plnotifier/cog.py:503
 msgid "YouTube Music Track Start Event"
-msgstr ""
+msgstr "\"YouTube\" muzikos takelio pradžios renginys"
 
 #: plnotifier/cog.py:504
 msgid "[Node={node}] YouTube Music track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr ""
+msgstr "[Mazgas={node}] \"YouTube\" muzikos takelis: {track} pradėjo žaisti.\n"
+"Paprašė: {requester}"
 
 #: plnotifier/cog.py:533
 msgid "Deezer Track Start Event"
-msgstr ""
+msgstr "\"Deezer Track\" pradžios renginys"
 
 #: plnotifier/cog.py:534
 msgid "[Node={node}] Deezer track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr ""
+msgstr "[Mazgas={node}] Deezer trasa: {track} pradėjo žaisti.\n"
+"Paprašė: {requester}"
 
 #: plnotifier/cog.py:563
 msgid "Spotify Track Start Event"
-msgstr ""
+msgstr "\"Spotify\" takelio pradžios įvykis"
 
 #: plnotifier/cog.py:564
 msgid "[Node={node}] Spotify track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr ""
+msgstr "[Mazgas={node}] \"Spotify\" takelis: {track} pradėjo žaisti.\n"
+"Paprašė: {requester}"
 
 #: plnotifier/cog.py:593
 msgid "Apple Music Track Start Event"
-msgstr ""
+msgstr "\"Apple Music Track\" pradžios renginys"
 
 #: plnotifier/cog.py:594
 msgid "[Node={node}] Apple Music track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr ""
+msgstr "[Mazgas={node}] Apple Music takelis: {track} pradėjo žaisti.\n"
+"Paprašė: {requester}"
 
 #: plnotifier/cog.py:623
 msgid "Local Track Start Event"
-msgstr ""
+msgstr "Vietinis takelio pradžios renginys"
 
 #: plnotifier/cog.py:624
 msgid "[Node={node}] Local track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr ""
+msgstr "[Mazgas={node}] Vietinis kelias: {track} pradėjo žaisti.\n"
+"Paprašė: {requester}"
 
 #: plnotifier/cog.py:653
 msgid "HTTP Track Start Event"
-msgstr ""
+msgstr "HTTP sekimo pradžios įvykis"
 
 #: plnotifier/cog.py:654
 msgid "[Node={node}] HTTP track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr ""
+msgstr "[Mazgas={node}] HTTP takelis: {track} pradėjo žaisti.\n"
+"Paprašė: {requester}"
 
 #: plnotifier/cog.py:683
 msgid "Text-To-Speech Track Start Event"
-msgstr ""
+msgstr "Teksto į kalbą sekimo pradžios įvykis"
 
 #: plnotifier/cog.py:684
 msgid "[Node={node}] Text-To-Speech track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr ""
+msgstr "[Mazgas={node}] Takelis \"Tekstas į kalbą\": {track} pradėjo žaisti.\n"
+"Paprašė: {requester}"
 
 #: plnotifier/cog.py:713
 msgid "YouTube Track Start Event"
-msgstr ""
+msgstr "\"YouTube\" takelio pradžios įvykis"
 
 #: plnotifier/cog.py:714
 msgid "[Node={node}] YouTube track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr ""
+msgstr "[Mazgas={node}] \"YouTube\" takelis: {track} pradėjo žaisti.\n"
+"Paprašė: {requester}"
 
 #: plnotifier/cog.py:743 plnotifier/cog.py:776 plnotifier/cog.py:809
 #: plnotifier/cog.py:842 plnotifier/cog.py:875 plnotifier/cog.py:908
@@ -227,7 +242,7 @@ msgstr ""
 #: plnotifier/cog.py:1040 plnotifier/cog.py:1073 plnotifier/cog.py:1106
 #: plnotifier/cog.py:1139 plnotifier/cog.py:1172
 msgid "{source} Track Start Event"
-msgstr ""
+msgstr "{source} Sekti pradžios įvykį"
 
 #: plnotifier/cog.py:744 plnotifier/cog.py:777 plnotifier/cog.py:810
 #: plnotifier/cog.py:843 plnotifier/cog.py:876 plnotifier/cog.py:909
@@ -236,290 +251,292 @@ msgstr ""
 #: plnotifier/cog.py:1140 plnotifier/cog.py:1173
 msgid "[Node={node}] {source} track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr ""
+msgstr "[Mazgas={node}] {source} Sekti: {track} pradėjo žaisti.\n"
+"Paprašė: {requester}"
 
 #: plnotifier/cog.py:1205
 msgid "Track Skipped Event"
-msgstr ""
+msgstr "Stebėti praleistą įvykį"
 
 #: plnotifier/cog.py:1206
 msgid "[Node={node}] {track} has been skipped.\n"
 "Requested by {requester}"
-msgstr ""
+msgstr "[Mazgas={node}] {track} buvo praleistas.\n"
+"Prašė {requester}"
 
 #: plnotifier/cog.py:1235
 msgid "Track Seek Event"
-msgstr ""
+msgstr "Stebėkite \"Seek Event\""
 
 #: plnotifier/cog.py:1236
 msgid "[Node={node}] {requester} requested that {track} is sought from position {fro} to position {after}"
-msgstr ""
+msgstr "[Mazgas={node}] {requester} paprašė, kad {track} ieškoma iš pozicijos {fro} į poziciją {after}"
 
 #: plnotifier/cog.py:1270
 msgid "Track Previous Requested Event"
-msgstr ""
+msgstr "Stebėkite ankstesnį pageidaujamą įvykį"
 
 #: plnotifier/cog.py:1271
 msgid "[Node={node}] {requester} requested that the previous track {track} be played"
-msgstr ""
+msgstr "[Mazgas={node}] {requester} paprašė, kad ankstesnis takelis {track} būti žaidžiamam"
 
 #: plnotifier/cog.py:1300
 msgid "Tracks Requested Event"
-msgstr ""
+msgstr "Seka prašomą įvykį"
 
 #: plnotifier/cog.py:1301
 msgid "[Node={node}] {requester} added {track_count}  to the queue"
-msgstr ""
+msgstr "[Mazgas={node}] {requester} Pridėta {track_count}  į eilę"
 
 #: plnotifier/cog.py:1302
 msgid "{count} track"
-msgstr ""
+msgstr "{count} Sekti"
 
 #: plnotifier/cog.py:1327
 msgid "Track AutoPlay Event"
-msgstr ""
+msgstr "Stebėkite automatinio paleidimo įvykį"
 
 #: plnotifier/cog.py:1328
 msgid "[Node={node}] Auto-playing {track}"
-msgstr ""
+msgstr "[Mazgas={node}] Automatinis paleidimas {track}"
 
 #: plnotifier/cog.py:1355
 msgid "Track Resumed Event"
-msgstr ""
+msgstr "Stebėkite atnaujintą įvykį"
 
 #: plnotifier/cog.py:1356
 msgid "[Node={node}] {requester} resumed {track}"
-msgstr ""
+msgstr "[Mazgas={node}] {requester} Atnaujintas {track}"
 
 #: plnotifier/cog.py:1385
 msgid "Queue Shuffled Event"
-msgstr ""
+msgstr "Eilės sumaišytas įvykis"
 
 #: plnotifier/cog.py:1386
 msgid "[Node={node}] {requester} shuffled the queue"
-msgstr ""
+msgstr "[Mazgas={node}] {requester} sumaišė eilę"
 
 #: plnotifier/cog.py:1408
 msgid "Queue End Event"
-msgstr ""
+msgstr "Eilės pabaigos įvykis"
 
 #: plnotifier/cog.py:1409
 msgid "[Node={node}] All tracks in the queue have been played"
-msgstr ""
+msgstr "[Mazgas={node}] Visi eilėje esantys takeliai buvo paleisti"
 
 #: plnotifier/cog.py:1436
 msgid "Tracks Removed Event"
-msgstr ""
+msgstr "Takeliai pašalinti įvykį"
 
 #: plnotifier/cog.py:1437
 msgid "[Node={node}] {requester} removed {track_count} tracks from the queue"
-msgstr ""
+msgstr "[Mazgas={node}] {requester} Pašalintas {track_count} Takeliai iš eilės"
 
 #: plnotifier/cog.py:1464 plnotifier/cog.py:1944
 msgid "Player Paused Event"
-msgstr ""
+msgstr "Žaidėjas pristabdė varžybas"
 
 #: plnotifier/cog.py:1465
 msgid "[Node={node}] {requester} paused the player"
-msgstr ""
+msgstr "[Mazgas={node}] {requester} pristabdė grotuvą"
 
 #: plnotifier/cog.py:1492
 msgid "Player Stopped Event"
-msgstr ""
+msgstr "Žaidėjas sustabdė įvykį"
 
 #: plnotifier/cog.py:1493
 msgid "[Node={node}] {requester} stopped the player"
-msgstr ""
+msgstr "[Mazgas={node}] {requester} sustabdė žaidėją"
 
 #: plnotifier/cog.py:1520 plnotifier/cog.py:1972
 msgid "Player Resumed Event"
-msgstr ""
+msgstr "Žaidėjas atnaujino varžybas"
 
 #: plnotifier/cog.py:1521
 msgid "[Node={node}] {requester} resumed the player"
-msgstr ""
+msgstr "[Mazgas={node}] {requester} atnaujino grotuvą"
 
 #: plnotifier/cog.py:1548
 msgid "Player Moved Event"
-msgstr ""
+msgstr "Žaidėjo perkėlimo įvykis"
 
 #: plnotifier/cog.py:1549
 msgid "[Node={node}] {requester} moved the player from {before} to {after}"
-msgstr ""
+msgstr "[Mazgas={node}] {requester} perkėlė žaidėją iš {before} į {after}"
 
 #: plnotifier/cog.py:1576
 msgid "Player Disconnected Event"
-msgstr ""
+msgstr "Žaidėjo atjungimo įvykis"
 
 #: plnotifier/cog.py:1577
 msgid "[Node={node}] {requester} disconnected the player"
-msgstr ""
+msgstr "[Mazgas={node}] {requester} atjungė grotuvą"
 
 #: plnotifier/cog.py:1604
 msgid "Player Connected Event"
-msgstr ""
+msgstr "Su žaidėju susijęs renginys"
 
 #: plnotifier/cog.py:1605
 msgid "[Node={node}] {requester} connected the player"
-msgstr ""
+msgstr "[Mazgas={node}] {requester} prijungė grotuvą"
 
 #: plnotifier/cog.py:1632
 msgid "Player Volume Changed Event"
-msgstr ""
+msgstr "Žaidėjo garsumo pasikeitimo įvykis"
 
 #: plnotifier/cog.py:1633
 msgid "[Node={node}] {requester} changed the player's volume from {before} to {after}"
-msgstr ""
+msgstr "[Mazgas={node}] {requester} pakeitė žaidėjo garsumą iš {before} į {after}"
 
 #: plnotifier/cog.py:1662 plnotifier/cog.py:1672 plnotifier/cog.py:1682
 msgid "Player Repeat Event"
-msgstr ""
+msgstr "Žaidėjo pakartojimo įvykis"
 
 #: plnotifier/cog.py:1663
 msgid "[Node={node}] {requester} disabled repeat"
-msgstr ""
+msgstr "[Mazgas={node}] {requester} išjungtas kartojimas"
 
 #: plnotifier/cog.py:1673
 msgid "{requester} {status} repeat of the whole queue"
-msgstr ""
+msgstr "{requester} {status} visos eilės pakartojimas"
 
 #: plnotifier/cog.py:1674 plnotifier/cog.py:1685
 msgid "enabled"
-msgstr ""
+msgstr "Įjungtas"
 
 #: plnotifier/cog.py:1674 plnotifier/cog.py:1685
 msgid "disabled"
-msgstr ""
+msgstr "Išjungta"
 
 #: plnotifier/cog.py:1683
 msgid "[Node={node}] {requester} {status} repeat for {track}"
-msgstr ""
+msgstr "[Mazgas={node}] {requester} {status} pakartokite {track}"
 
 #: plnotifier/cog.py:1713
 msgid "Player Restored Event"
-msgstr ""
+msgstr "Žaidėjo atkūrimo įvykis"
 
 #: plnotifier/cog.py:1714
 msgid "[Node={node}] {requester} restored the player"
-msgstr ""
+msgstr "[Mazgas={node}] {requester} atkūrė grotuvą"
 
 #: plnotifier/cog.py:1737
 msgid "an intro section"
-msgstr ""
+msgstr "įvadinis skyrius"
 
 #: plnotifier/cog.py:1739
 msgid "an outro section"
-msgstr ""
+msgstr "outro sekcija"
 
 #: plnotifier/cog.py:1741
 msgid "a preview section"
-msgstr ""
+msgstr "peržiūros sekcija"
 
 #: plnotifier/cog.py:1743
 msgid "an off-topic section"
-msgstr ""
+msgstr "ne temos skyrius"
 
 #: plnotifier/cog.py:1745
 msgid "a filler section"
-msgstr ""
+msgstr "užpildo sekcija"
 
 #: plnotifier/cog.py:1747
 msgid "a sponsor section"
-msgstr ""
+msgstr "rėmėjų sekcija"
 
 #: plnotifier/cog.py:1749
 msgid "a self-promotion section"
-msgstr ""
+msgstr "savireklamos skyrius"
 
 #: plnotifier/cog.py:1751
 msgid "an interaction section"
-msgstr ""
+msgstr "sąveikos skyrius"
 
 #: plnotifier/cog.py:1755
 msgid "Sponsor Segment Skipped Event"
-msgstr ""
+msgstr "Rėmėjų segmento praleistas renginys"
 
 #: plnotifier/cog.py:1756
 msgid "[Node={node}] Sponsorblock: Skipped {category} running from {start}s to {to}s"
-msgstr ""
+msgstr "[Mazgas={node}] Rėmėjų blokas: praleistas {category} bėga nuo {start}nuo s iki {to}s"
 
 #: plnotifier/cog.py:1784
 msgid "Effect"
-msgstr ""
+msgstr "Poveikis"
 
 #: plnotifier/cog.py:1785
 msgid "Not changed"
-msgstr ""
+msgstr "Nepasikeitė"
 
 #: plnotifier/cog.py:1786
 msgid "Values"
-msgstr ""
+msgstr "Reikšmės"
 
 #: plnotifier/cog.py:1826
 msgid "Filters Applied Event"
-msgstr ""
+msgstr "Filtrų pritaikytas įvykis"
 
 #: plnotifier/cog.py:1829
 msgid "None"
-msgstr ""
+msgstr "Joks"
 
 #: plnotifier/cog.py:1830
 msgid "Currently Applied"
-msgstr ""
+msgstr "Šiuo metu taikoma"
 
 #: plnotifier/cog.py:1832
 msgid "[Node={node}] {requester} changed the player filters"
-msgstr ""
+msgstr "[Mazgas={node}] {requester} Pakeitė leistuvo filtrus"
 
 #: plnotifier/cog.py:1852
 msgid "Node Connected Event"
-msgstr ""
+msgstr "Prie mazgo prijungtas įvykis"
 
 #: plnotifier/cog.py:1853
 msgid "Node {name} has been connected"
-msgstr ""
+msgstr "Mazgas {name} buvo prijungtas"
 
 #: plnotifier/cog.py:1869
 msgid "Node Disconnected Event"
-msgstr ""
+msgstr "Mazgo atjungimo įvykis"
 
 #: plnotifier/cog.py:1870
 msgid "Node {name} has been disconnected with code {code} and reason: {reason}"
-msgstr ""
+msgstr "Mazgas {name} buvo atjungtas nuo kodo {code} ir priežastis: {reason}"
 
 #: plnotifier/cog.py:1892
 msgid "Node Changed Event"
-msgstr ""
+msgstr "Mazgas pakeistas įvykis"
 
 #: plnotifier/cog.py:1893
 msgid "The node which the player is connected to changed from {fro} to {to}"
-msgstr ""
+msgstr "Mazgas, prie kurio prijungtas grotuvas, pasikeitė iš {fro} į {to}"
 
 #: plnotifier/cog.py:1915
 msgid "WebSocket Closed Event"
-msgstr ""
+msgstr "\"WebSocket\" uždaras renginys"
 
 #: plnotifier/cog.py:1916
 msgid "[Node={node}] The Lavalink websocket connection to Discord closed with code {code} and reason {reason}"
-msgstr ""
+msgstr "[Mazgas={node}] \"Lavalink websocket\" ryšys su \"Discord\" uždarytas kodu {code} ir priežastis {reason}"
 
 #: plnotifier/cog.py:1945
 msgid "[Node={node}] {requester} automatically paused the player due to configured values"
-msgstr ""
+msgstr "[Mazgas={node}] {requester} Automatiškai pristabdė grotuvą dėl sukonfigūruotų reikšmių"
 
 #: plnotifier/cog.py:1973
 msgid "[Node={node}] {requester} automatically resumed the player due to configured values"
-msgstr ""
+msgstr "[Mazgas={node}] {requester} automatiškai atnaujino grotuvą dėl sukonfigūruotų reikšmių"
 
 #: plnotifier/cog.py:2000 plnotifier/cog.py:2030
 msgid "Auto Player Disconnected Event"
-msgstr ""
+msgstr "Automatinio leistuvo atjungimo įvykis"
 
 #: plnotifier/cog.py:2001
 msgid "[Node={node}] {requester} automatically disconnected the player as there is no one listening"
-msgstr ""
+msgstr "[Mazgas={node}] {requester} automatiškai atjungė grotuvą, nes niekas nesiklauso"
 
 #: plnotifier/cog.py:2031
 msgid "[Node={node}] {requester} automatically disconnected the player as the queue is empty"
-msgstr ""
+msgstr "[Mazgas={node}] {requester} automatiškai atjungė grotuvą, nes eilė tuščia"
 

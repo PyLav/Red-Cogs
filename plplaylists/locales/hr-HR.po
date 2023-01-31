@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:26\n"
+"PO-Revision-Date: 2023-01-31 23:42\n"
 "Last-Translator: \n"
 "Language-Team: Croatian\n"
 "MIME-Version: 1.0\n"
@@ -20,28 +20,28 @@ msgstr ""
 #: plplaylists/cog.py:47
 #, docstring
 msgid "PyLav playlist management commands"
-msgstr ""
+msgstr "PyLav naredbe za upravljanje popisom za reproduciranje"
 
 #: plplaylists/cog.py:55
 msgid "Control PyLav playlists"
-msgstr ""
+msgstr "Kontrola PyLav popisa za reproduciranje"
 
 #: plplaylists/cog.py:77
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies"
-msgstr ""
+msgstr "Prikaži verziju Zupčanika i to su ovisnosti PyLava"
 
 #: plplaylists/cog.py:92
 msgid "Library/Cog"
-msgstr ""
+msgstr "Biblioteka/Zupčanik"
 
 #: plplaylists/cog.py:93
 msgid "Version"
-msgstr ""
+msgstr "Verzija"
 
 #: plplaylists/cog.py:130
 msgid "Let's create a playlist!"
-msgstr ""
+msgstr "Napravimo popis za reprodukciju!"
 
 #: plplaylists/cog.py:131
 msgid "(**1**) - Apply changes to playlist.\n"
@@ -50,41 +50,48 @@ msgid "(**1**) - Apply changes to playlist.\n"
 "(**4**) - Link this playlist to an existing playlist/album.\n"
 "(**5**) - Add all tracks from the queue to the playlist.\n\n"
 "If you want the playlist name to be as the original playlist simply set the URL but no name.\n\n"
-msgstr ""
+msgstr "(**1**) - Primijeni promjene na popis za reproduciranje.\n"
+"(**2**) - Otkažite sve izvršene promjene.\n"
+"(**3**) - Dodajte ime na popis za reproduciranje.\n"
+"(**4**) - Povežite ovaj popis za reproduciranje s postojećim popisom za reprodukciju/albumom.\n"
+"(**5**) - Dodajte sve zapise iz reda čekanja na popis za reproduciranje.\n\n"
+"Ako želite da naziv popisa za reproduciranje bude kao izvorni popis za reproduciranje, jednostavno postavite URL, ali bez naziva.\n\n"
 
 #: plplaylists/cog.py:165
 msgid "Playlist not created"
-msgstr ""
+msgstr "Popis za reproduciranje nije stvoren"
 
 #: plplaylists/cog.py:166
 msgid "No tracks were provided in time."
-msgstr ""
+msgstr "Tragovi nisu bili osigurani na vrijeme."
 
 #: plplaylists/cog.py:179
 msgid "Playlist created"
-msgstr ""
+msgstr "Stvoren popis za reproduciranje"
 
 #: plplaylists/cog.py:180
 msgid "Name: `{name}`\n"
 "ID: `{id}`\n"
 "Tracks: `{track_count}`"
-msgstr ""
+msgstr "Naziv: '{name}`\n"
+"Osobna iskaznica: '{id}`\n"
+"Pjesme: '{track_count}`"
 
 #: plplaylists/cog.py:204
 msgid "You have no playlists"
-msgstr ""
+msgstr "Nemate popise za reprodukciju"
 
 #: plplaylists/cog.py:246 plplaylists/cog.py:607
 msgid "Nothing to save"
-msgstr ""
+msgstr "Nema se što spasiti"
 
 #: plplaylists/cog.py:247 plplaylists/cog.py:608
 msgid "There is nothing in the queue to save"
-msgstr ""
+msgstr "U redu čekanja nema se što spremiti"
 
 #: plplaylists/cog.py:284 plplaylists/cog.py:545 plplaylists/cog.py:625
 msgid "{user}, playlist {playlist_name} cannot be managed by yourself"
-msgstr ""
+msgstr "{user}Popis {playlist_name} ne može se upravljati sami"
 
 #: plplaylists/cog.py:293
 msgid "(**1**){space} - Apply changes to playlist.\n"
@@ -107,7 +114,26 @@ msgid "(**1**){space} - Apply changes to playlist.\n"
 "The clear button will always be run first before any other operations.\n"
 "The URL button will always run last - Linking a playlist via the URL will overwrite any tracks added or removed to this playlist.\n\n"
 "If you interact with a button multiple times other than the add/remove buttons only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - Primijenite promjene na popis za reproduciranje.\n"
+"(**2**){space} - Otkažite sve izvršene promjene i zatvorite izbornik.\n"
+"(**3**){space} - Izbrišite ovaj popis za reproduciranje.\n"
+"(**4**){space} - Uklonite sve pjesme s ovog popisa za reproduciranje.\n"
+"(**5**){space} - Ažurirajte popis za reprodukciju najnovijim pjesmama.\n"
+"Imajte na umu da će ova akcija zanemariti sve zapise dodane /uklonjene putem ovog izbornika.\n"
+"(**6**){space} - Promijenite naziv popisa za reprodukciju.\n"
+"(**7**){space} - Povežite ovu reprodukcijsku listu s postojećim popisom/albumom za reprodukciju.\n"
+"(**8**){space} - Dodajte upit na ovaj popis za reproduciranje.\n"
+"(**9**){space} - Uklonite upit s ovog popisa za reproduciranje.\n"
+"(**10**) - Preuzmite datoteku popisa za reproduciranje.\n"
+"(**11**) - Dodajte trenutni popis za reproduciranje u red čekanja.\n"
+"(**12**) - Prikaži zapise na trenutnom popisu za reproduciranje.\n"
+"(**13**) - Dodajte zapise iz reda čekanja na ovaj popis za reproduciranje.\n"
+"(**14**) - Uklonite duplicirane unose na popisu za reproduciranje.\n\n"
+"Gumbi za dodavanje/uklanjanje zapisa mogu se koristiti više puta za dodavanje/uklanjanje više pjesama i popisa za reprodukciju odjednom.\n\n"
+"Upit je sve što se može reproducirati pomoću naredbe za reprodukciju - bilo koji upit može se koristiti pomoću gumba za dodavanje/uklanjanje\n\n"
+"Gumb za čišćenje uvijek će se prvo pokrenuti prije bilo koje druge operacije.\n"
+"Gumb URL uvijek će se izvoditi posljednji - Povezivanje popisa za reproduciranje putem URL-a prebrisat će sve zapise dodane ili uklonjene na ovaj popis za reproduciranje.\n\n"
+"Ako s gumbom stupite u interakciju više puta osim gumba za dodavanje/uklanjanje, stupit će na snagu samo posljednja interakcija.\n\n\n"
 
 #: plplaylists/cog.py:319
 msgid "(**1**) - Close the menu.\n"
@@ -115,7 +141,11 @@ msgid "(**1**) - Close the menu.\n"
 "(**3**) - Download the playlist file.\n"
 "(**4**) - Add current playlist to the queue.\n"
 "(**5**) - Show tracks in current playlist.\n\n\n"
-msgstr ""
+msgstr "(**1**) - Zatvorite izbornik.\n"
+"(**2**) - Ažurirajte popis za reprodukciju najnovijim pjesmama.\n"
+"(**3**) - Preuzmite datoteku popisa za reproduciranje.\n"
+"(**4**) - Dodajte trenutni popis za reproduciranje u red čekanja.\n"
+"(**5**) - Prikaži zapise na trenutnom popisu za reproduciranje.\n\n\n"
 
 #: plplaylists/cog.py:327
 msgid "**__Currently managing__**:\n"
@@ -124,105 +154,114 @@ msgid "**__Currently managing__**:\n"
 "**Author**:{space}{space}{author}\n"
 "**Tracks**:{space}{space}{space}{tracks} tracks\n"
 "**URL**:{space}{space}{space}{space}{space}{url}\n"
-msgstr ""
+msgstr "**__Currently managing__**:\n"
+"**Ime**:{space}{space}{space}{playlist_name}\n"
+"**Opseg**:{space}{space}{space}{scope}\n"
+"**Autor**:{space}{space}{author}\n"
+"**Pjesme**:{space}{space}{space}{tracks} Pjesme\n"
+"**URL**:{space}{space}{space}{space}{space}{url}\n"
 
 #: plplaylists/cog.py:345
 msgid "Let's manage: {playlist_name}"
-msgstr ""
+msgstr "Upravljajmo: {playlist_name}"
 
 #: plplaylists/cog.py:347
 msgid "Let's take a look at: {playlist_name}"
-msgstr ""
+msgstr "Pogledajmo: {playlist_name}"
 
 #: plplaylists/cog.py:354
 msgid "N/A"
-msgstr ""
+msgstr "N/A"
 
 #: plplaylists/cog.py:386 plplaylists/cog.py:555
 msgid "Playlist deleted"
-msgstr ""
+msgstr "Popis za reproduciranje je izbrisan"
 
 #: plplaylists/cog.py:388 plplaylists/cog.py:557
 msgid "{user}, playlist {playlist_name} has been deleted"
-msgstr ""
+msgstr "{user}Popis {playlist_name} je izbrisana"
 
 #: plplaylists/cog.py:438
 msgid "Playlist **{playlist_name}** could not be updated with URL: <{url}>"
-msgstr ""
+msgstr "Popis**{playlist_name}** nije moguće ažurirati URL-om: <{url}>"
 
 #: plplaylists/cog.py:473
 msgid "\n"
 "{track_count} {track_plural} removed from the playlist"
-msgstr ""
+msgstr "\n"
+"{track_count} {track_plural} uklonjeno s popisa za reproduciranje"
 
 #: plplaylists/cog.py:474 plplaylists/cog.py:478 plplaylists/cog.py:644
 msgid "track"
-msgstr ""
+msgstr "trag"
 
 #: plplaylists/cog.py:474 plplaylists/cog.py:478 plplaylists/cog.py:644
 msgid "tracks"
-msgstr ""
+msgstr "Pjesme"
 
 #: plplaylists/cog.py:477 plplaylists/cog.py:643
 msgid "\n"
 "{track_count} {track_plural} added to the playlist"
-msgstr ""
+msgstr "\n"
+"{track_count} {track_plural} dodano na popis za reproduciranje"
 
 #: plplaylists/cog.py:483 plplaylists/cog.py:650
 msgid "Playlist updated"
-msgstr ""
+msgstr "Ažuriran popis za reproduciranje"
 
 #: plplaylists/cog.py:484 plplaylists/cog.py:651
 msgid "{user}, playlist {playlist_name} has been updated.{extras}"
-msgstr ""
+msgstr "{user}Popis {playlist_name} je ažuriran.{extras}"
 
 #: plplaylists/cog.py:496 plplaylists/cog.py:664
 msgid "Playlist unchanged"
-msgstr ""
+msgstr "Popis za reproduciranje nepromijenjen"
 
 #: plplaylists/cog.py:497 plplaylists/cog.py:665
 msgid "{user}, playlist {playlist_name} has not been updated"
-msgstr ""
+msgstr "{user}Popis {playlist_name} nije ažurirano"
 
 #: plplaylists/cog.py:693
 msgid "You must either provide a URL or attach a playlist file to upload a playlist"
-msgstr ""
+msgstr "Da biste prenijeli popis za reproduciranje, morate navesti URL ili priložiti datoteku popisa za reproduciranje"
 
 #: plplaylists/cog.py:705
 msgid "No valid playlist file provided"
-msgstr ""
+msgstr "Nije navedena valjana datoteka popisa za reproduciranje"
 
 #: plplaylists/cog.py:714
 msgid "Multiple playlist files provided - Currently only 1 per message is allowed"
-msgstr ""
+msgstr "Dostupno je više datoteka popisa za reproduciranje – trenutno je dopušteno samo 1 po poruci"
 
 #: plplaylists/cog.py:731
 msgid "Failed to save any of the requested playlists"
-msgstr ""
+msgstr "Spremanje traženih popisa za reproduciranje nije uspjelo"
 
 #: plplaylists/cog.py:740
 msgid "Failed to save the following playlists:\n"
 "{invalid_playlists}"
-msgstr ""
+msgstr "Spremanje sljedećih popisa za reproduciranje nije uspjelo:\n"
+"{invalid_playlists}"
 
 #: plplaylists/cog.py:749
 msgid "Successfully saved the following playlists:\n"
 "{saved_playlists}"
-msgstr ""
+msgstr "Uspješno su spremljeni sljedeći popisi za reproduciranje:\n"
+"{saved_playlists}"
 
 #: plplaylists/cog.py:774
 msgid "You must be in a voice channel to allow me to connect"
-msgstr ""
+msgstr "Morate biti u glasovnom kanalu da biste mi omogućili povezivanje"
 
 #: plplaylists/cog.py:782
 msgid "I don't have permission to connect or speak in {channel}"
-msgstr ""
+msgstr "Nemam dozvolu za povezivanje ili govor {channel}"
 
 #: plplaylists/cog.py:812
 msgid "Playlist"
-msgstr ""
+msgstr "Popis"
 
 #: plplaylists/cog.py:817
 msgid "{track_count} tracks enqueued.{playlist_name}"
-msgstr ""
+msgstr "{track_count} pjesme zaviđene.{playlist_name}"
 

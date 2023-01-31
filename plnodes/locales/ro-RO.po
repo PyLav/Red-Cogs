@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:26\n"
+"PO-Revision-Date: 2023-01-31 23:42\n"
 "Last-Translator: \n"
 "Language-Team: Romanian\n"
 "MIME-Version: 1.0\n"
@@ -20,34 +20,34 @@ msgstr ""
 #: plnodes/cog.py:33
 #, docstring
 msgid "Manage the nodes used by PyLav"
-msgstr ""
+msgstr "Gestionați nodurile utilizate de PyLav"
 
 #: plnodes/cog.py:44
 #, docstring
 msgid "Configure PyLav Nodes"
-msgstr ""
+msgstr "Configurarea nodurilor PyLav"
 
 #: plnodes/cog.py:48
 #, docstring
 msgid "Show the version of the Cog and its PyLav dependencies"
-msgstr ""
+msgstr "Afișați versiunea Cog și dependențele sale PyLav"
 
 #: plnodes/cog.py:64
 msgid "Library/Cog"
-msgstr ""
+msgstr "Biblioteca / Cog"
 
 #: plnodes/cog.py:65
 msgid "Version"
-msgstr ""
+msgstr "Versiune"
 
 #: plnodes/cog.py:78
 #, docstring
 msgid "Add a node to PyLav"
-msgstr ""
+msgstr "Adăugarea unui nod la PyLav"
 
 #: plnodes/cog.py:88
 msgid "Let's add a node to PyLav!"
-msgstr ""
+msgstr "Să adăugăm un nod la PyLav!"
 
 #: plnodes/cog.py:89
 msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
@@ -61,7 +61,17 @@ msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
 "(**9**){space} - Set the connection timeout.\n"
 "(**10**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - Aplicați modificările și adăugați nodul la PyLav.\n"
+"(**2**){space} - Anulați orice modificări efectuate și închideți meniul.\n"
+"(**3**){space} - Comutați între modurile de căutare și căutare și redare.\n"
+"(**4**){space} - Comutați între SSL pornit și oprit.\n"
+"(**5**){space} - Adăugați un nume la nod.\n"
+"(**6**){space} - Adăugați adresa gazdă a nodului.\n"
+"(**7**){space} - Adăugați portul pe care îl folosește nodul.\n"
+"(**8**){space} - Setați parola pentru nod.\n"
+"(**9**){space} - Setați expirarea conexiunii.\n"
+"(**10**) - Selectați ce surse să dezactivați pentru acest nod (pot fi selectate mai multe).\n"
+"Dacă interacționați cu un buton de mai multe ori, numai ultima interacțiune va intra în vigoare.\n\n\n"
 
 #: plnodes/cog.py:137
 msgid "Added node {name} with the following settings:\n"
@@ -72,38 +82,46 @@ msgid "Added node {name} with the following settings:\n"
 "Search Only: {search_only}\n"
 "SSL: {ssl}\n"
 "Disabled Sources: {disabled_sources}\n"
-msgstr ""
+msgstr "Nod adăugat {name} cu următoarele setări:\n"
+"Gazdă: {host}\n"
+"Port: {port}\n"
+"Parolă: {password}\n"
+"Reluarea timeout-ului: {resume_timeout}\n"
+"Numai căutare: {search_only}\n"
+"SSL: {ssl}\n"
+"Surse dezactivate: {disabled_sources}\n"
 
 #: plnodes/cog.py:168 plnodes/cog.py:175
 msgid "Unable to add this node"
-msgstr ""
+msgstr "Imposibil de adăugat acest nod"
 
 #: plnodes/cog.py:181
 #, docstring
 msgid "Remove a node from a PyLav instance"
-msgstr ""
+msgstr "Eliminarea unui nod dintr-o instanță PyLav"
 
 #: plnodes/cog.py:193
 msgid "{name} is managed by PyLav and cannot be removed"
-msgstr ""
+msgstr "{name} este gestionat de PyLav și nu poate fi îndepărtat"
 
 #: plnodes/cog.py:208
 msgid "Removed node {name}.\n\n"
 "{data}"
-msgstr ""
+msgstr "Nod eliminat {name}.\n\n"
+"{data}"
 
 #: plnodes/cog.py:216
 msgid "Removed node {name}, a DM was sent to you with the node details in case you wish to re-add it"
-msgstr ""
+msgstr "Nod eliminat {name}, un DM a fost trimis la tine cu detaliile nodului în cazul în care doriți să-l re-adăugați"
 
 #: plnodes/cog.py:226
 #, docstring
 msgid "Manage all nodes in a PyLav instance"
-msgstr ""
+msgstr "Gestionarea tuturor nodurilor dintr-o instanță PyLav"
 
 #: plnodes/cog.py:238
 msgid "Let's manage some nodes!"
-msgstr ""
+msgstr "Să gestionăm niște noduri!"
 
 #: plnodes/cog.py:239
 msgid "(**1**){space} - Cancel any changes made and close the menu.\n"
@@ -119,15 +137,27 @@ msgid "(**1**){space} - Cancel any changes made and close the menu.\n"
 "(**15**) - Remove this node.\n"
 "(**16**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - Anulați orice modificări efectuate și închideți meniul.\n"
+"(**6**){space} - Afișați sursele activate pentru acest nod.\n"
+"(**7**){space} - Aplicați modificările și adăugați nodul la PyLav.\n"
+"(**8**){space} - Comutați între modurile de căutare și căutare și redare.\n"
+"(**9**){space} - Comutați între SSL pornit și oprit.\n"
+"(**10**) - Adăugați un nume la nod.\n"
+"(**11**) - Adăugați adresa gazdă a nodului.\n"
+"(**12**) - Adăugați portul pe care îl utilizează nodul.\n"
+"(**13**) - Setați parola pentru nod.\n"
+"(**14**) - Setați expirarea conexiunii.\n"
+"(**15**) - Eliminați acest nod.\n"
+"(**16**) - Selectați sursele de dezactivat pentru acest nod (pot fi selectate mai multe).\n"
+"Dacă interacționați cu un buton de mai multe ori, numai ultima interacțiune va intra în vigoare.\n\n\n"
 
 #: plnodes/cog.py:268
 msgid "{name} is managed by PyLav and cannot be modified with this command"
-msgstr ""
+msgstr "{name} este gestionat de PyLav și nu poate fi modificat cu această comandă"
 
 #: plnodes/cog.py:280
 msgid "Removed node {name}"
-msgstr ""
+msgstr "Nod eliminat {name}"
 
 #: plnodes/cog.py:316
 msgid "Changed node {name} to the following settings:\n"
@@ -138,14 +168,21 @@ msgid "Changed node {name} to the following settings:\n"
 "Search Only: {search_only}\n"
 "SSL: {ssl}\n"
 "Disabled Sources: {disabled_sources}\n"
-msgstr ""
+msgstr "Nod modificat {name} la următoarele setări:\n"
+"Gazdă: {host}\n"
+"Port: {port}\n"
+"Parolă: {password}\n"
+"Reluarea timeout-ului: {resume_timeout}\n"
+"Numai căutare: {search_only}\n"
+"SSL: {ssl}\n"
+"Surse dezactivate: {disabled_sources}\n"
 
 #: plnodes/cog.py:343
 #, docstring
 msgid "List all nodes used by PyLav"
-msgstr ""
+msgstr "Listați toate nodurile utilizate de PyLav"
 
 #: plnodes/cog.py:353
 msgid "No nodes added to PyLav"
-msgstr ""
+msgstr "Nu există noduri adăugate la PyLav"
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:26\n"
+"PO-Revision-Date: 2023-01-31 23:42\n"
 "Last-Translator: \n"
 "Language-Team: Lithuanian\n"
 "MIME-Version: 1.0\n"
@@ -20,28 +20,28 @@ msgstr ""
 #: plplaylists/cog.py:47
 #, docstring
 msgid "PyLav playlist management commands"
-msgstr ""
+msgstr "PyLav grojaraščio valdymo komandos"
 
 #: plplaylists/cog.py:55
 msgid "Control PyLav playlists"
-msgstr ""
+msgstr "Valdykite PyLav grojaraščius"
 
 #: plplaylists/cog.py:77
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies"
-msgstr ""
+msgstr "Rodyti krumpliaračio versiją ir tai yra PyLav priklausomybės"
 
 #: plplaylists/cog.py:92
 msgid "Library/Cog"
-msgstr ""
+msgstr "Biblioteka / krumpliaratis"
 
 #: plplaylists/cog.py:93
 msgid "Version"
-msgstr ""
+msgstr "Versija"
 
 #: plplaylists/cog.py:130
 msgid "Let's create a playlist!"
-msgstr ""
+msgstr "Sukurkime grojaraštį!"
 
 #: plplaylists/cog.py:131
 msgid "(**1**) - Apply changes to playlist.\n"
@@ -50,41 +50,48 @@ msgid "(**1**) - Apply changes to playlist.\n"
 "(**4**) - Link this playlist to an existing playlist/album.\n"
 "(**5**) - Add all tracks from the queue to the playlist.\n\n"
 "If you want the playlist name to be as the original playlist simply set the URL but no name.\n\n"
-msgstr ""
+msgstr "(**1**) - Taikyti pakeitimus grojaraščiui.\n"
+"(**2**) - Atšaukite visus atliktus pakeitimus.\n"
+"(**3**) - Pridėkite pavadinimą prie grojaraščio.\n"
+"(**4**) - Susiekite šį grojaraštį su esamu grojaraščiu / albumu.\n"
+"(**5**) - Pridėkite visus takelius iš eilės į grojaraštį.\n\n"
+"Jei norite, kad grojaraščio pavadinimas būtų kaip originalus grojaraštis, tiesiog nustatykite URL, bet ne pavadinimą.\n\n"
 
 #: plplaylists/cog.py:165
 msgid "Playlist not created"
-msgstr ""
+msgstr "Grojaraštis nesukurtas"
 
 #: plplaylists/cog.py:166
 msgid "No tracks were provided in time."
-msgstr ""
+msgstr "Jokie takeliai nebuvo pateikti laiku."
 
 #: plplaylists/cog.py:179
 msgid "Playlist created"
-msgstr ""
+msgstr "Sukurtas grojaraštis"
 
 #: plplaylists/cog.py:180
 msgid "Name: `{name}`\n"
 "ID: `{id}`\n"
 "Tracks: `{track_count}`"
-msgstr ""
+msgstr "Pavadinimas: \"{name}`\n"
+"ID: \"{id}`\n"
+"Takeliai: \"{track_count}`"
 
 #: plplaylists/cog.py:204
 msgid "You have no playlists"
-msgstr ""
+msgstr "Neturite grojaraščių"
 
 #: plplaylists/cog.py:246 plplaylists/cog.py:607
 msgid "Nothing to save"
-msgstr ""
+msgstr "Nėra ko taupyti"
 
 #: plplaylists/cog.py:247 plplaylists/cog.py:608
 msgid "There is nothing in the queue to save"
-msgstr ""
+msgstr "Eilėje nėra nieko, ką išsaugoti"
 
 #: plplaylists/cog.py:284 plplaylists/cog.py:545 plplaylists/cog.py:625
 msgid "{user}, playlist {playlist_name} cannot be managed by yourself"
-msgstr ""
+msgstr "{user}grojaraštis {playlist_name} negali būti valdomas pats"
 
 #: plplaylists/cog.py:293
 msgid "(**1**){space} - Apply changes to playlist.\n"
@@ -107,7 +114,26 @@ msgid "(**1**){space} - Apply changes to playlist.\n"
 "The clear button will always be run first before any other operations.\n"
 "The URL button will always run last - Linking a playlist via the URL will overwrite any tracks added or removed to this playlist.\n\n"
 "If you interact with a button multiple times other than the add/remove buttons only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - Taikyti grojaraščio pakeitimus.\n"
+"(**2**){space} - Atšaukite visus atliktus pakeitimus ir uždarykite meniu.\n"
+"(**3**){space} - Ištrinkite šį grojaraštį.\n"
+"(**4**){space} - Pašalinkite visus takelius iš šio grojaraščio.\n"
+"(**5**){space} - Atnaujinkite grojaraštį naujausiais takeliais.\n"
+"Atminkite, kad atliekant šį veiksmą bus nepaisoma jokių takelių, pridėtų / pašalintų naudojant šį meniu.\n"
+"(**6**){space} - Pakeiskite grojaraščio pavadinimą.\n"
+"(**7**){space} - Susiekite šį grojaraštį su esamu grojaraščiu/albumu.\n"
+"(**8**){space} - Pridėkite užklausą prie šio grojaraščio.\n"
+"(**9**){space} - Pašalinkite užklausą iš šio grojaraščio.\n"
+"(**10**) - Atsisiųskite grojaraščio failą.\n"
+"(**11**) - Pridėkite dabartinį grojaraštį prie eilės.\n"
+"(**12**) - Rodyti takelius dabartiniame grojaraštyje.\n"
+"(**13**) - Pridėkite takelius iš eilės į šį grojaraštį.\n"
+"(**14**) - Pašalinkite pasikartojančius įrašus grojaraštyje.\n\n"
+"Takelio pridėjimo / pašalinimo mygtukus galima naudoti kelis kartus, norint pridėti / pašalinti kelis takelius ir grojaraščius vienu metu.\n\n"
+"Užklausa yra viskas, ką galima paleisti naudojant paleidimo komandą - bet kurią užklausą gali naudoti pridėjimo / pašalinimo mygtukai\n\n"
+"Aiškus mygtukas visada bus paleistas pirmas prieš bet kokias kitas operacijas.\n"
+"URL mygtukas visada veiks paskutinis – susiejus grojaraštį per URL, bus perrašyti visi į šį grojaraštį įtraukti ar pašalinti takeliai.\n\n"
+"Jei sąveikaujate su mygtuku kelis kartus, išskyrus pridėjimo / pašalinimo mygtukus, įsigalios tik paskutinė sąveika.\n\n\n"
 
 #: plplaylists/cog.py:319
 msgid "(**1**) - Close the menu.\n"
@@ -115,7 +141,11 @@ msgid "(**1**) - Close the menu.\n"
 "(**3**) - Download the playlist file.\n"
 "(**4**) - Add current playlist to the queue.\n"
 "(**5**) - Show tracks in current playlist.\n\n\n"
-msgstr ""
+msgstr "(**1**) - Uždarykite meniu.\n"
+"(**2**) - Atnaujinkite grojaraštį naujausiais takeliais.\n"
+"(**3**) - Atsisiųskite grojaraščio failą.\n"
+"(**4**) - Į eilę įtraukite dabartinį grojaraštį.\n"
+"(**5**) - Rodyti takelius dabartiniame grojaraštyje.\n\n\n"
 
 #: plplaylists/cog.py:327
 msgid "**__Currently managing__**:\n"
@@ -124,105 +154,114 @@ msgid "**__Currently managing__**:\n"
 "**Author**:{space}{space}{author}\n"
 "**Tracks**:{space}{space}{space}{tracks} tracks\n"
 "**URL**:{space}{space}{space}{space}{space}{url}\n"
-msgstr ""
+msgstr "**__Currently managing__**:\n"
+"**Vardas, pavadinimas**:{space}{space}{space}{playlist_name}\n"
+"**Mastas**:{space}{space}{space}{scope}\n"
+"**Autorius**:{space}{space}{author}\n"
+"**Takelius**:{space}{space}{space}{tracks} Takelius\n"
+"**URL**:{space}{space}{space}{space}{space}{url}\n"
 
 #: plplaylists/cog.py:345
 msgid "Let's manage: {playlist_name}"
-msgstr ""
+msgstr "Valdykime: {playlist_name}"
 
 #: plplaylists/cog.py:347
 msgid "Let's take a look at: {playlist_name}"
-msgstr ""
+msgstr "Pažvelkime: {playlist_name}"
 
 #: plplaylists/cog.py:354
 msgid "N/A"
-msgstr ""
+msgstr "N/A"
 
 #: plplaylists/cog.py:386 plplaylists/cog.py:555
 msgid "Playlist deleted"
-msgstr ""
+msgstr "Grojaraštis ištrintas"
 
 #: plplaylists/cog.py:388 plplaylists/cog.py:557
 msgid "{user}, playlist {playlist_name} has been deleted"
-msgstr ""
+msgstr "{user}grojaraštis {playlist_name} išbraukta"
 
 #: plplaylists/cog.py:438
 msgid "Playlist **{playlist_name}** could not be updated with URL: <{url}>"
-msgstr ""
+msgstr "Grojaraštis**{playlist_name}** nepavyko atnaujinti naudojant URL: <{url}>"
 
 #: plplaylists/cog.py:473
 msgid "\n"
 "{track_count} {track_plural} removed from the playlist"
-msgstr ""
+msgstr "\n"
+"{track_count} {track_plural} pašalintas iš grojaraščio"
 
 #: plplaylists/cog.py:474 plplaylists/cog.py:478 plplaylists/cog.py:644
 msgid "track"
-msgstr ""
+msgstr "Sekti"
 
 #: plplaylists/cog.py:474 plplaylists/cog.py:478 plplaylists/cog.py:644
 msgid "tracks"
-msgstr ""
+msgstr "Takelius"
 
 #: plplaylists/cog.py:477 plplaylists/cog.py:643
 msgid "\n"
 "{track_count} {track_plural} added to the playlist"
-msgstr ""
+msgstr "\n"
+"{track_count} {track_plural} Pridėta prie grojaraščio"
 
 #: plplaylists/cog.py:483 plplaylists/cog.py:650
 msgid "Playlist updated"
-msgstr ""
+msgstr "Grojaraštis atnaujintas"
 
 #: plplaylists/cog.py:484 plplaylists/cog.py:651
 msgid "{user}, playlist {playlist_name} has been updated.{extras}"
-msgstr ""
+msgstr "{user}grojaraštis {playlist_name} buvo atnaujinta.{extras}"
 
 #: plplaylists/cog.py:496 plplaylists/cog.py:664
 msgid "Playlist unchanged"
-msgstr ""
+msgstr "Grojaraštis nepakitęs"
 
 #: plplaylists/cog.py:497 plplaylists/cog.py:665
 msgid "{user}, playlist {playlist_name} has not been updated"
-msgstr ""
+msgstr "{user}grojaraštis {playlist_name} nebuvo atnaujinta"
 
 #: plplaylists/cog.py:693
 msgid "You must either provide a URL or attach a playlist file to upload a playlist"
-msgstr ""
+msgstr "Norėdami įkelti grojaraštį, turite pateikti URL arba pridėti grojaraščio failą"
 
 #: plplaylists/cog.py:705
 msgid "No valid playlist file provided"
-msgstr ""
+msgstr "Nepateiktas galiojantis grojaraščio failas"
 
 #: plplaylists/cog.py:714
 msgid "Multiple playlist files provided - Currently only 1 per message is allowed"
-msgstr ""
+msgstr "Pateikti keli grojaraščio failai – šiuo metu leidžiamas tik 1 vienam pranešimui"
 
 #: plplaylists/cog.py:731
 msgid "Failed to save any of the requested playlists"
-msgstr ""
+msgstr "Nepavyko išsaugoti nė vieno iš prašomų grojaraščių"
 
 #: plplaylists/cog.py:740
 msgid "Failed to save the following playlists:\n"
 "{invalid_playlists}"
-msgstr ""
+msgstr "Nepavyko išsaugoti šių grojaraščių:\n"
+"{invalid_playlists}"
 
 #: plplaylists/cog.py:749
 msgid "Successfully saved the following playlists:\n"
 "{saved_playlists}"
-msgstr ""
+msgstr "Sėkmingai išsaugoti šie grojaraščiai:\n"
+"{saved_playlists}"
 
 #: plplaylists/cog.py:774
 msgid "You must be in a voice channel to allow me to connect"
-msgstr ""
+msgstr "Turite būti balso kanale, kad galėčiau prisijungti"
 
 #: plplaylists/cog.py:782
 msgid "I don't have permission to connect or speak in {channel}"
-msgstr ""
+msgstr "Neturiu leidimo prisijungti arba kalbėti {channel}"
 
 #: plplaylists/cog.py:812
 msgid "Playlist"
-msgstr ""
+msgstr "Grojaraštis"
 
 #: plplaylists/cog.py:817
 msgid "{track_count} tracks enqueued.{playlist_name}"
-msgstr ""
+msgstr "{track_count} takeliai į eilę.{playlist_name}"
 

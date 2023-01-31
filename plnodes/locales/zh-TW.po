@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:26\n"
+"PO-Revision-Date: 2023-01-31 23:42\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
@@ -20,34 +20,34 @@ msgstr ""
 #: plnodes/cog.py:33
 #, docstring
 msgid "Manage the nodes used by PyLav"
-msgstr ""
+msgstr "管理 PyLav 使用的節點"
 
 #: plnodes/cog.py:44
 #, docstring
 msgid "Configure PyLav Nodes"
-msgstr ""
+msgstr "配置 PyLav 節點"
 
 #: plnodes/cog.py:48
 #, docstring
 msgid "Show the version of the Cog and its PyLav dependencies"
-msgstr ""
+msgstr "顯示齒輪的版本及其 PyLav 依賴項"
 
 #: plnodes/cog.py:64
 msgid "Library/Cog"
-msgstr ""
+msgstr "庫/齒輪"
 
 #: plnodes/cog.py:65
 msgid "Version"
-msgstr ""
+msgstr "版本"
 
 #: plnodes/cog.py:78
 #, docstring
 msgid "Add a node to PyLav"
-msgstr ""
+msgstr "將節點添加到 PyLav"
 
 #: plnodes/cog.py:88
 msgid "Let's add a node to PyLav!"
-msgstr ""
+msgstr "讓我們向 PyLav 添加一個節點！"
 
 #: plnodes/cog.py:89
 msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
@@ -61,7 +61,17 @@ msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
 "(**9**){space} - Set the connection timeout.\n"
 "(**10**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - 應用更改並將節點添加到 PyLav。\n"
+"(**2**){space} - 取消所做的任何更改並關閉功能表。\n"
+"(**3**){space} - 在僅搜索模式和搜索和播放模式之間切換。\n"
+"(**4**){space} - 在 SSL 打開和關閉之間切換。\n"
+"(**5**){space} - 為節點添加名稱。\n"
+"(**6**){space} - 添加節點的主機位址。\n"
+"(**7**){space} - 新增節點使用的埠。\n"
+"(**8**){space} - 設定節點的密碼。\n"
+"(**9**){space} - 設置連接超時。\n"
+"（**10**） - 選擇要為此節點禁用的源（可以選擇多個）。\n"
+"如果多次與按鈕交互，則只有最後一次交互才會生效。\n\n\n"
 
 #: plnodes/cog.py:137
 msgid "Added node {name} with the following settings:\n"
@@ -72,38 +82,46 @@ msgid "Added node {name} with the following settings:\n"
 "Search Only: {search_only}\n"
 "SSL: {ssl}\n"
 "Disabled Sources: {disabled_sources}\n"
-msgstr ""
+msgstr "已添加節點 {name} 使用以下設定：\n"
+"主機： {host}\n"
+"港口： {port}\n"
+"密碼： {password}\n"
+"恢復逾時： {resume_timeout}\n"
+"僅搜尋： {search_only}\n"
+"SSL： {ssl}\n"
+"關閉來源： {disabled_sources}\n"
 
 #: plnodes/cog.py:168 plnodes/cog.py:175
 msgid "Unable to add this node"
-msgstr ""
+msgstr "無法添加此節點"
 
 #: plnodes/cog.py:181
 #, docstring
 msgid "Remove a node from a PyLav instance"
-msgstr ""
+msgstr "從 PyLav 實體中刪除節點"
 
 #: plnodes/cog.py:193
 msgid "{name} is managed by PyLav and cannot be removed"
-msgstr ""
+msgstr "{name} 由 PyLav 管理，無法刪除"
 
 #: plnodes/cog.py:208
 msgid "Removed node {name}.\n\n"
 "{data}"
-msgstr ""
+msgstr "已刪除的節點 {name}.\n\n"
+"{data}"
 
 #: plnodes/cog.py:216
 msgid "Removed node {name}, a DM was sent to you with the node details in case you wish to re-add it"
-msgstr ""
+msgstr "已刪除的節點 {name}，則向您發送了包含節點詳細資訊的DM，以防您希望重新添加它"
 
 #: plnodes/cog.py:226
 #, docstring
 msgid "Manage all nodes in a PyLav instance"
-msgstr ""
+msgstr "管理 PyLav 實例中的所有節點"
 
 #: plnodes/cog.py:238
 msgid "Let's manage some nodes!"
-msgstr ""
+msgstr "讓我們管理一些節點！"
 
 #: plnodes/cog.py:239
 msgid "(**1**){space} - Cancel any changes made and close the menu.\n"
@@ -119,15 +137,27 @@ msgid "(**1**){space} - Cancel any changes made and close the menu.\n"
 "(**15**) - Remove this node.\n"
 "(**16**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space} - 取消所做的任何更改並關閉功能表。\n"
+"(**6**){space} - 顯示為此節點啟用的源。\n"
+"(**7**){space} - 應用更改並將節點添加到 PyLav。\n"
+"(**8**){space} - 在僅搜索模式和搜索和播放模式之間切換。\n"
+"(**9**){space} - 在 SSL 打開和關閉之間切換。\n"
+"（**10**） - 向節點添加名稱。\n"
+"（**11**） - 添加節點的主機位址。\n"
+"（**12**） - 添加節點使用的埠。\n"
+"（**13**） - 設置節點的密碼。\n"
+"（**14**） - 設置連接超時。\n"
+"（**15**） - 刪除此節點。\n"
+"（**16**） - 選擇要為此節點禁用的源（可以選擇多個）。\n"
+"如果多次與按鈕交互，則只有最後一次交互才會生效。\n\n\n"
 
 #: plnodes/cog.py:268
 msgid "{name} is managed by PyLav and cannot be modified with this command"
-msgstr ""
+msgstr "{name} 由 PyLav 管理，不能使用此命令進行修改"
 
 #: plnodes/cog.py:280
 msgid "Removed node {name}"
-msgstr ""
+msgstr "已刪除的節點 {name}"
 
 #: plnodes/cog.py:316
 msgid "Changed node {name} to the following settings:\n"
@@ -138,14 +168,21 @@ msgid "Changed node {name} to the following settings:\n"
 "Search Only: {search_only}\n"
 "SSL: {ssl}\n"
 "Disabled Sources: {disabled_sources}\n"
-msgstr ""
+msgstr "已更改節點 {name} 到以下設定：\n"
+"主機： {host}\n"
+"港口： {port}\n"
+"密碼： {password}\n"
+"恢復逾時： {resume_timeout}\n"
+"僅搜尋： {search_only}\n"
+"SSL： {ssl}\n"
+"關閉來源： {disabled_sources}\n"
 
 #: plnodes/cog.py:343
 #, docstring
 msgid "List all nodes used by PyLav"
-msgstr ""
+msgstr "列出 PyLav 使用的所有節點"
 
 #: plnodes/cog.py:353
 msgid "No nodes added to PyLav"
-msgstr ""
+msgstr "沒有節點添加到 PyLav"
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:26\n"
+"PO-Revision-Date: 2023-01-31 23:42\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: audio/cog.py:35
 #, docstring
 msgid "A Media player using the PyLav library"
-msgstr ""
+msgstr "Trình phát đa phương tiện sử dụng thư viện PyLav"
 
 #: audio/config_commands.py:41
 #, docstring
@@ -28,15 +28,18 @@ msgid "Notifies PyLav that a Player is having issues.\n\n"
 "        If enough (50%+ of currently playing players) report issues, PyLav will automatically\n"
 "        switch to a different node or restart the current node where possible.\n"
 "        "
-msgstr ""
+msgstr "Thông báo cho PyLav rằng Người chơi đang gặp sự cố.\n\n"
+"        Nếu đủ (50% + người chơi hiện đang chơi) báo cáo sự cố, PyLav sẽ tự động\n"
+"        Chuyển sang một nút khác hoặc khởi động lại nút hiện tại nếu có thể.\n"
+"        "
 
 #: audio/config_commands.py:49
 msgid "This server already voted recently, please try again in 10 minutes"
-msgstr ""
+msgstr "Máy chủ này đã được bình chọn gần đây, vui lòng thử lại sau 10 phút"
 
 #: audio/config_commands.py:60
 msgid "Thank you for your report"
-msgstr ""
+msgstr "Cảm ơn bạn đã báo cáo của bạn"
 
 #: audio/config_commands.py:70
 #, docstring
@@ -45,61 +48,65 @@ msgid "Removes a vote for a Player being down.\n\n"
 "        switch to a different node or restart the current node where possible.\n\n"
 "        This command is only useful if you previously voted for a node to be down and it is now back up.\n"
 "        "
-msgstr ""
+msgstr "Xóa một phiếu bầu cho một Người chơi bị từ chối.\n\n"
+"        Nếu đủ (50% + người chơi hiện đang chơi) báo cáo sự cố, PyLav sẽ tự động\n"
+"        Chuyển sang một nút khác hoặc khởi động lại nút hiện tại nếu có thể.\n\n"
+"        Lệnh này chỉ hữu ích nếu trước đây bạn đã bỏ phiếu cho một nút bị hỏng và bây giờ nó đã được sao lưu.\n"
+"        "
 
 #: audio/config_commands.py:80
 msgid "There is no active votes for the current backend"
-msgstr ""
+msgstr "Không có phiếu bầu tích cực cho chương trình phụ trợ hiện tại"
 
 #: audio/config_commands.py:90
 msgid "Removed your report"
-msgstr ""
+msgstr "Đã xóa báo cáo của bạn"
 
 #: audio/config_commands.py:98
 #, docstring
 msgid "Show the version of the Cog and its PyLav dependencies"
-msgstr ""
+msgstr "Hiển thị phiên bản của Cog và các phụ thuộc PyLav của nó"
 
 #: audio/config_commands.py:114
 msgid "Library/Cog"
-msgstr ""
+msgstr "Thư viện / Cog"
 
 #: audio/config_commands.py:115
 msgid "Version"
-msgstr ""
+msgstr "Phiên bản"
 
 #: audio/config_commands.py:129
 #, docstring
 msgid "Global configuration options"
-msgstr ""
+msgstr "Tùy chọn cấu hình toàn cầu"
 
 #: audio/config_commands.py:133
 #, docstring
 msgid "Set the maximum volume a server can set"
-msgstr ""
+msgstr "Đặt âm lượng tối đa mà máy chủ có thể đặt"
 
 #: audio/config_commands.py:141 audio/config_commands.py:578
 #: audio/hybrid_commands.py:627
 msgid "Volume must be less than 1000"
-msgstr ""
+msgstr "Khối lượng phải nhỏ hơn 1000"
 
 #: audio/config_commands.py:149 audio/config_commands.py:586
 #: audio/hybrid_commands.py:635
 msgid "Volume must be greater than 0"
-msgstr ""
+msgstr "Thể tích phải lớn hơn 0"
 
 #: audio/config_commands.py:157 audio/config_commands.py:623
 msgid "Max volume set to {volume}%"
-msgstr ""
+msgstr "Âm lượng tối đa được đặt thành {volume}%"
 
 #: audio/config_commands.py:165 audio/config_commands.py:631
 #, docstring
 msgid "Set whether [botname] should deafen itself when playing"
-msgstr ""
+msgstr "Đặt xem [botname] nên tự điếc khi chơi"
 
 #: audio/config_commands.py:174 audio/config_commands.py:657
 msgid "Deafen set to {deafen}"
-msgstr ""
+msgstr "Deafen được đặt thành {deafen}"
 
 #: audio/config_commands.py:174 audio/config_commands.py:193
 #: audio/config_commands.py:212 audio/config_commands.py:229
@@ -108,7 +115,7 @@ msgstr ""
 #: audio/config_commands.py:719 audio/config_commands.py:753
 #: audio/config_commands.py:817 audio/config_commands.py:880
 msgid "Enabled"
-msgstr ""
+msgstr "Kích hoạt"
 
 #: audio/config_commands.py:174 audio/config_commands.py:193
 #: audio/config_commands.py:212 audio/config_commands.py:229
@@ -117,39 +124,39 @@ msgstr ""
 #: audio/config_commands.py:719 audio/config_commands.py:753
 #: audio/config_commands.py:817 audio/config_commands.py:880
 msgid "Disabled"
-msgstr ""
+msgstr "Tàn tật"
 
 #: audio/config_commands.py:182
 #, docstring
 msgid "Set whether the a server is allowed to enabled auto shuffle"
-msgstr ""
+msgstr "Đặt xem máy chủ có được phép bật tự động xáo trộn hay không"
 
 #: audio/config_commands.py:192 audio/config_commands.py:686
 msgid "Auto-Shuffle set to {shuffle}"
-msgstr ""
+msgstr "Tự động xáo trộn được đặt thành {shuffle}"
 
 #: audio/config_commands.py:202 audio/config_commands.py:696
 #, docstring
 msgid "Set whether [botname] should allow users to shuffle the queue"
-msgstr ""
+msgstr "Đặt xem [botname] sẽ cho phép người dùng xáo trộn hàng đợi"
 
 #: audio/config_commands.py:212 audio/config_commands.py:719
 msgid "Shuffle set to {shuffle}"
-msgstr ""
+msgstr "Xáo trộn được đặt thành {shuffle}"
 
 #: audio/config_commands.py:220
 #, docstring
 msgid "Set whether [botname] should automatically play songs when the queue is empty"
-msgstr ""
+msgstr "Đặt xem [botname] sẽ tự động phát các bài hát khi hàng đợi trống"
 
 #: audio/config_commands.py:229 audio/config_commands.py:753
 msgid "Auto-Play set to {auto}"
-msgstr ""
+msgstr "Tự động phát được đặt thành {auto}"
 
 #: audio/config_commands.py:237
 #, docstring
 msgid "Set whether [botname] should disconnect from the voice channel"
-msgstr ""
+msgstr "Đặt xem [botname] nên ngắt kết nối khỏi kênh thoại"
 
 #: audio/config_commands.py:247
 #, docstring
@@ -159,16 +166,21 @@ msgid "Set whether [botname] should disconnect from the voice channel when the q
 "            - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Đặt xem [botname] nên ngắt kết nối khỏi kênh thoại khi hàng đợi trống.\n\n"
+"        Lập luận:\n"
+"            - `<toggle>': Cho dù [botname] nên ngắt kết nối khỏi kênh thoại khi hàng đợi trống.\n"
+"            - `<duration>': Bao lâu sau khi hàng đợi trống nên ngắt kết nối người chơi. Mặc định là 60 giây.\n"
+"            Chấp nhận thứ hai, phút, giờ, ngày, tuần (nếu không có đơn vị nào được chỉ định, thời lượng được giả định là được đưa ra tính bằng giây)\n"
+"        "
 
 #: audio/config_commands.py:267 audio/config_commands.py:307
 #: audio/config_commands.py:811 audio/config_commands.py:873
 msgid " and players will be disconnected after {duration}"
-msgstr ""
+msgstr " và người chơi sẽ bị ngắt kết nối sau {duration}"
 
 #: audio/config_commands.py:272 audio/config_commands.py:816
 msgid "Disconnect from voice channel when queue is empty set to {empty}{extras}"
-msgstr ""
+msgstr "Ngắt kết nối khỏi kênh thoại khi hàng đợi trống được đặt thành {empty}{extras}"
 
 #: audio/config_commands.py:288
 #, docstring
@@ -178,149 +190,154 @@ msgid "Set whether [botname] should disconnect from the voice channel when alone
 "            - `<duration>`: How longer after detecting should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Đặt xem [botname] nên ngắt kết nối khỏi kênh thoại khi ở một mình.\n\n"
+"        Lập luận:\n"
+"            - `<toggle>': Cho dù [botname] nên ngắt kết nối khỏi kênh thoại khi phát hiện ra rằng nó chỉ có một mình.\n"
+"            - `<duration>': Bao lâu sau khi phát hiện người chơi nên bị ngắt kết nối. Mặc định là 60 giây.\n"
+"            Chấp nhận thứ hai, phút, giờ, ngày, tuần (nếu không có đơn vị nào được chỉ định, thời lượng được giả định là được đưa ra tính bằng giây)\n"
+"        "
 
 #: audio/config_commands.py:313 audio/config_commands.py:879
 msgid "Disconnect from voice channel when alone set to {empty}{extras}"
-msgstr ""
+msgstr "Ngắt kết nối khỏi kênh thoại khi một mình được đặt thành {empty}{extras}"
 
 #: audio/config_commands.py:325
 #, docstring
 msgid "Server configuration options"
-msgstr ""
+msgstr "Tùy chọn cấu hình máy chủ"
 
 #: audio/config_commands.py:329
 #, docstring
 msgid "Add, remove or show the DJ roles and users for the server"
-msgstr ""
+msgstr "Thêm, xóa hoặc hiển thị vai trò DJ và người dùng cho máy chủ"
 
 #: audio/config_commands.py:335
 #, docstring
 msgid "Add DJ roles or users to this server"
-msgstr ""
+msgstr "Thêm vai trò hoặc người dùng DJ vào máy chủ này"
 
 #: audio/config_commands.py:348
 msgid "Added {role} to the DJ roles"
-msgstr ""
+msgstr "Thêm {role} cho các vai trò DJ"
 
 #: audio/config_commands.py:351
 msgid "Added {user} to the DJ users"
-msgstr ""
+msgstr "Thêm {user} cho người dùng DJ"
 
 #: audio/config_commands.py:358
 msgid "Added {roles} to the DJ roles and {users} to the DJ users"
-msgstr ""
+msgstr "Thêm {roles} cho các vai trò DJ và {users} cho người dùng DJ"
 
 #: audio/config_commands.py:365
 msgid "Added {roles} to the DJ roles"
-msgstr ""
+msgstr "Thêm {roles} cho các vai trò DJ"
 
 #: audio/config_commands.py:369
 msgid "Added {users} to the DJ users"
-msgstr ""
+msgstr "Thêm {users} cho người dùng DJ"
 
 #: audio/config_commands.py:384
 #, docstring
 msgid "Remove DJ roles or users in this the server"
-msgstr ""
+msgstr "Xóa vai trò DJ hoặc người dùng trong máy chủ này"
 
 #: audio/config_commands.py:416
 msgid "Removed {roles} from the DJ roles and {users} from the DJ users, as well as {ints} from both"
-msgstr ""
+msgstr "Gỡ bỏ {roles} từ vai trò DJ và {users} từ người dùng DJ, cũng như {ints} từ cả hai"
 
 #: audio/config_commands.py:424
 msgid "Removed {roles} from the DJ roles and {users} from the DJ users"
-msgstr ""
+msgstr "Gỡ bỏ {roles} từ vai trò DJ và {users} từ người dùng DJ"
 
 #: audio/config_commands.py:429
 msgid "Removed {roles} from the DJ roles"
-msgstr ""
+msgstr "Gỡ bỏ {roles} từ vai trò DJ"
 
 #: audio/config_commands.py:433
 msgid "Removed {users} from the DJ users"
-msgstr ""
+msgstr "Gỡ bỏ {users} từ người dùng DJ"
 
 #: audio/config_commands.py:437
 msgid "Removed {ints} from the DJ roles and users"
-msgstr ""
+msgstr "Gỡ bỏ {ints} từ vai trò DJ và người dùng"
 
 #: audio/config_commands.py:452
 msgid "Removed `{id}` from the DJ roles and users"
-msgstr ""
+msgstr "Đã xóa '{id}'từ vai trò DJ và người dùng"
 
 #: audio/config_commands.py:454
 msgid "Removed {role} from the DJ roles"
-msgstr ""
+msgstr "Gỡ bỏ {role} từ vai trò DJ"
 
 #: audio/config_commands.py:457
 msgid "Removed {user} from the DJ users"
-msgstr ""
+msgstr "Gỡ bỏ {user} từ người dùng DJ"
 
 #: audio/config_commands.py:463
 #, docstring
 msgid "List the DJ roles and users for the server"
-msgstr ""
+msgstr "Liệt kê các vai trò và người dùng DJ cho máy chủ"
 
 #: audio/config_commands.py:514
 msgid "There are no DJ roles or users set in {server}"
-msgstr ""
+msgstr "Không có vai trò DJ hoặc người dùng nào được đặt trong {server}"
 
 #: audio/config_commands.py:525 audio/config_commands.py:530
 msgid "DJ Roles"
-msgstr ""
+msgstr "Vai trò DJ"
 
 #: audio/config_commands.py:536 audio/config_commands.py:541
 msgid "DJ Users"
-msgstr ""
+msgstr "Người dùng DJ"
 
 #: audio/config_commands.py:549
 #, docstring
 msgid "Clear the DJ roles and users for the server"
-msgstr ""
+msgstr "Xóa vai trò DJ và người dùng cho máy chủ"
 
 #: audio/config_commands.py:561
 msgid "Cleared the DJ roles and users for {server}"
-msgstr ""
+msgstr "Xóa vai trò DJ và người dùng cho {server}"
 
 #: audio/config_commands.py:569
 #, docstring
 msgid "Set the maximum volume a user can set"
-msgstr ""
+msgstr "Đặt âm lượng tối đa mà người dùng có thể đặt"
 
 #: audio/config_commands.py:595 audio/config_commands.py:611
 msgid "Volume must be between 0 and {volume}%"
-msgstr ""
+msgstr "Âm lượng phải nằm trong khoảng từ 0 đến {volume}%"
 
 #: audio/config_commands.py:640
 msgid "My owner told me to always deafen myself"
-msgstr ""
+msgstr "Chủ sở hữu của tôi nói với tôi rằng hãy luôn điếc tai"
 
 #: audio/config_commands.py:665
 #, docstring
 msgid "Set whether [botname] should shuffle the queue after every new song added"
-msgstr ""
+msgstr "Đặt xem [botname] nên xáo trộn hàng đợi sau mỗi bài hát mới được thêm vào"
 
 #: audio/config_commands.py:673
 msgid "Auto-Shuffle is globally disabled"
-msgstr ""
+msgstr "Tính năng Tự động xáo trộn bị tắt trên toàn cầu"
 
 #: audio/config_commands.py:706
 msgid "Shuffle is globally disabled"
-msgstr ""
+msgstr "Xáo trộn bị vô hiệu hóa trên toàn cầu"
 
 #: audio/config_commands.py:727
 #, docstring
 msgid "Set whether the bot should automatically play songs when the queue is empty"
-msgstr ""
+msgstr "Đặt xem bot có tự động phát bài hát khi hàng đợi trống không"
 
 #: audio/config_commands.py:736
 msgid "Auto-Play is globally disabled"
-msgstr ""
+msgstr "Tính năng Tự động phát bị tắt trên toàn cầu"
 
 #: audio/config_commands.py:761
 #, docstring
 msgid "Set whether the bot should disconnect from the voice channel"
-msgstr ""
+msgstr "Đặt xem bot có nên ngắt kết nối khỏi kênh thoại hay không"
 
 #: audio/config_commands.py:771
 #, docstring
@@ -332,11 +349,18 @@ msgid "Set whether the bot should disconnect from the voice channel when the que
 "            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be\n"
 "            given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Đặt xem bot có nên ngắt kết nối khỏi kênh thoại khi hàng đợi trống hay không.\n\n"
+"        Lập luận:\n"
+"            - `<toggle>': Liệu bot có nên ngắt kết nối khỏi kênh thoại khi hàng đợi trống hay không.\n"
+"            - `<duration>': Bao lâu sau khi hàng đợi trống nên ngắt kết nối người chơi. Mặc định là 60\n"
+"            Giây.\n"
+"            Chấp nhận giây, phút, giờ, ngày, tuần (nếu không có đơn vị nào được chỉ định, thời lượng được giả định là\n"
+"            được đưa ra trong vài giây)\n"
+"        "
 
 #: audio/config_commands.py:789
 msgid "Disconnect when the queue finished is globally enabled and players will be disconnected after {delta}"
-msgstr ""
+msgstr "Ngắt kết nối khi hàng đợi kết thúc được bật trên toàn cầu và người chơi sẽ bị ngắt kết nối sau {delta}"
 
 #: audio/config_commands.py:832
 #, docstring
@@ -348,148 +372,155 @@ msgid "Set whether the bot should disconnect from the voice channel when alone.\
 "            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be\n"
 "            given in seconds)\n"
 "        "
-msgstr ""
+msgstr "Đặt xem bot có nên ngắt kết nối khỏi kênh thoại khi ở một mình hay không.\n\n"
+"        Lập luận:\n"
+"            - `<toggle>': Liệu bot có nên ngắt kết nối khỏi kênh thoại khi phát hiện ra rằng đó là\n"
+"            một mình.\n"
+"            - `<duration>': Bao lâu sau khi phát hiện người chơi nên bị ngắt kết nối. Mặc định là 60 giây.\n"
+"            Chấp nhận giây, phút, giờ, ngày, tuần (nếu không có đơn vị nào được chỉ định, thời lượng được giả định là\n"
+"            được đưa ra trong vài giây)\n"
+"        "
 
 #: audio/config_commands.py:851
 msgid "Disconnect when alone is globally enabled and players will be disconnected after {delta}"
-msgstr ""
+msgstr "Ngắt kết nối khi một mình được bật trên toàn cầu và người chơi sẽ bị ngắt kết nối sau {delta}"
 
 #: audio/config_commands.py:889
 #, docstring
 msgid "Sets the Auto-Play playlist"
-msgstr ""
+msgstr "Đặt danh sách phát Tự động phát"
 
 #: audio/config_commands.py:906
 msgid "Auto-Play playlist set to {playlist}"
-msgstr ""
+msgstr "Danh sách phát Tự động phát được đặt thành {playlist}"
 
 #: audio/config_commands.py:916
 #, docstring
 msgid "Set the channel locks"
-msgstr ""
+msgstr "Đặt khóa kênh"
 
 #: audio/config_commands.py:922
 #, docstring
 msgid "Set the channel lock for commands"
-msgstr ""
+msgstr "Đặt khóa kênh cho các lệnh"
 
 #: audio/config_commands.py:937
 msgid "I don't have permission to send message or send embed links or read messages in {channel}"
-msgstr ""
+msgstr "Tôi không có quyền gửi tin nhắn hoặc gửi liên kết nhúng hoặc đọc thư trong {channel}"
 
 #: audio/config_commands.py:954
 msgid "I will only listen to commands in {channel}"
-msgstr ""
+msgstr "Tôi sẽ chỉ nghe các lệnh trong {channel}"
 
 #: audio/config_commands.py:962
 msgid "I will listen to commands in all channels I can see"
-msgstr ""
+msgstr "Tôi sẽ nghe các lệnh trong tất cả các kênh mà tôi có thể thấy"
 
 #: audio/config_commands.py:970
 #, docstring
 msgid "Set the channel lock for voice channels"
-msgstr ""
+msgstr "Đặt khóa kênh cho các kênh thoại"
 
 #: audio/config_commands.py:982 audio/hybrid_commands.py:107
 #: audio/player_commands.py:144
 msgid "I don't have permission to connect or speak in {channel}"
-msgstr ""
+msgstr "Tôi không có quyền kết nối hoặc nói chuyện {channel}"
 
 #: audio/config_commands.py:1000
 msgid "I will only be allowed to join {channel}"
-msgstr ""
+msgstr "Tôi sẽ chỉ được phép tham gia {channel}"
 
 #: audio/config_commands.py:1007
 msgid "I'm free to join any VC"
-msgstr ""
+msgstr "Tôi có thể tự do tham gia bất kỳ VC nào"
 
 #: audio/context_menus.py:27 audio/context_menus.py:143
 msgid "I can't play songs in DMs"
-msgstr ""
+msgstr "Tôi không thể phát bài hát ở chế độ DM"
 
 #: audio/context_menus.py:38 audio/context_menus.py:154
 msgid "You need to be a DJ to play tracks"
-msgstr ""
+msgstr "Bạn cần phải là một DJ để chơi các bản nhạc"
 
 #: audio/context_menus.py:55 audio/context_menus.py:169
 msgid "This command is not available in this channel. Please use {channel}"
-msgstr ""
+msgstr "Lệnh này không khả dụng trong kênh này. Vui lòng sử dụng {channel}"
 
 #: audio/context_menus.py:83
 msgid "I couldn't find any valid matches in the message"
-msgstr ""
+msgstr "Tôi không thể tìm thấy bất kỳ kết quả phù hợp nào trong thư"
 
 #: audio/context_menus.py:94
 msgid "I found multiple valid matches in the message"
-msgstr ""
+msgstr "Tôi đã tìm thấy nhiều kết quả phù hợp hợp lệ trong thư"
 
 #: audio/context_menus.py:103
 msgid "I found a single valid match in the message"
-msgstr ""
+msgstr "Tôi đã tìm thấy một kết quả trùng khớp hợp lệ duy nhất trong thư"
 
 #: audio/context_menus.py:186
 msgid "I couldn't find any supported activity {user} is taking part in"
-msgstr ""
+msgstr "Tôi không thể tìm thấy bất kỳ hoạt động nào được hỗ trợ {user} đang tham gia"
 
 #: audio/context_menus.py:218
 msgid "Couldn't map {user}'s Apple Music track to a valid query"
-msgstr ""
+msgstr "Không thể lập bản đồ {user}Bản nhạc Apple Music của bạn cho một truy vấn hợp lệ"
 
 #: audio/context_menus.py:234
 msgid "Couldn't find any tracks matching {query}"
-msgstr ""
+msgstr "Không thể tìm thấy bất kỳ bản nhạc nào phù hợp {query}"
 
 #: audio/context_menus.py:249
 msgid "Couldn't figure out what {user} is listening to"
-msgstr ""
+msgstr "Không thể tìm ra những gì {user} đang lắng nghe"
 
 #: audio/hybrid_commands.py:83
 msgid "You need to provide a query to play"
-msgstr ""
+msgstr "Bạn cần cung cấp một truy vấn để chơi"
 
 #: audio/hybrid_commands.py:97 audio/player_commands.py:134
 msgid "You must be in a voice channel to allow me to connect"
-msgstr ""
+msgstr "Bạn phải ở trong một kênh thoại để cho phép tôi kết nối"
 
 #: audio/hybrid_commands.py:154 audio/player_commands.py:225
 msgid "{track_count} tracks enqueued"
-msgstr ""
+msgstr "{track_count} các bản nhạc được xếp vào hàng đợi"
 
 #: audio/hybrid_commands.py:162 audio/player_commands.py:233
 msgid "{track} enqueued"
-msgstr ""
+msgstr "{track} được xếp vào hàng đợi"
 
 #: audio/hybrid_commands.py:173 audio/player_commands.py:244
 msgid "No tracks were found for your query"
-msgstr ""
+msgstr "Không tìm thấy bản nhạc nào cho truy vấn của bạn"
 
 #: audio/hybrid_commands.py:236
 msgid "You need to be in a voice channel if you don't specify which channel I need to connect to"
-msgstr ""
+msgstr "Bạn cần ở trong một kênh thoại nếu bạn không chỉ định kênh nào tôi cần kết nối"
 
 #: audio/hybrid_commands.py:248
 msgid "I don't have permission to connect to that channel"
-msgstr ""
+msgstr "Tôi không có quyền kết nối với kênh đó"
 
 #: audio/hybrid_commands.py:252
 msgid "I don't have permission to speak in {channel}"
-msgstr ""
+msgstr "Tôi không được phép nói chuyện {channel}"
 
 #: audio/hybrid_commands.py:255
 msgid "I don't have permission to connect to {channel}"
-msgstr ""
+msgstr "Tôi không có quyền kết nối với {channel}"
 
 #: audio/hybrid_commands.py:268
 msgid "You don't have permission to connect to {channel}"
-msgstr ""
+msgstr "Bạn không có quyền kết nối với {channel}"
 
 #: audio/hybrid_commands.py:285
 msgid "I'm forced to only join {channel}"
-msgstr ""
+msgstr "Tôi buộc phải chỉ tham gia {channel}"
 
 #: audio/hybrid_commands.py:293
 msgid "Connected to {channel}"
-msgstr ""
+msgstr "Đã kết nối với {channel}"
 
 #: audio/hybrid_commands.py:313 audio/hybrid_commands.py:343
 #: audio/hybrid_commands.py:383 audio/hybrid_commands.py:417
@@ -498,150 +529,151 @@ msgstr ""
 #: audio/hybrid_commands.py:587 audio/hybrid_commands.py:642
 #: audio/hybrid_commands.py:686 audio/hybrid_commands.py:787
 msgid "No player detected"
-msgstr ""
+msgstr "Không phát hiện thấy người chơi"
 
 #: audio/hybrid_commands.py:320 audio/hybrid_commands.py:350
 #: audio/hybrid_commands.py:390
 msgid "Player is not currently playing anything"
-msgstr ""
+msgstr "Người chơi hiện không chơi bất cứ thứ gì"
 
 #: audio/hybrid_commands.py:358
 msgid "Skipped - {track}"
-msgstr ""
+msgstr "Bỏ- {track}"
 
 #: audio/hybrid_commands.py:397
 msgid "Player stopped"
-msgstr ""
+msgstr "Người chơi đã dừng lại"
 
 #: audio/hybrid_commands.py:425
 msgid "Disconnected from {channel}"
-msgstr ""
+msgstr "Đã ngắt kết nối khỏi {channel}"
 
 #: audio/hybrid_commands.py:477
 msgid "There is nothing in the queue"
-msgstr ""
+msgstr "Không có gì trong hàng đợi"
 
 #: audio/hybrid_commands.py:485
 msgid "You are not allowed to shuffle the queue"
-msgstr ""
+msgstr "Bạn không được phép xáo trộn hàng đợi"
 
 #: audio/hybrid_commands.py:493
 msgid "{queue_size} tracks shuffled"
-msgstr ""
+msgstr "{queue_size} bản nhạc bị xáo trộn"
 
 #: audio/hybrid_commands.py:525
 msgid "Repeating the queue"
-msgstr ""
+msgstr "Lặp lại hàng đợi"
 
 #: audio/hybrid_commands.py:528
 msgid "Repeating disabled"
-msgstr ""
+msgstr "Lặp lại bị vô hiệu hóa"
 
 #: audio/hybrid_commands.py:531
 msgid "Repeating {track}"
-msgstr ""
+msgstr "Lặp lại {track}"
 
 #: audio/hybrid_commands.py:534
 msgid "current track"
-msgstr ""
+msgstr "Theo dõi hiện tại"
 
 #: audio/hybrid_commands.py:558
 msgid "Player already paused, did you mean to run `/resume`"
-msgstr ""
+msgstr "Người chơi đã tạm dừng, bạn có ý định chạy '/ tiếp tục'"
 
 #: audio/hybrid_commands.py:560
 msgid "Player already paused, did you mean to run `{prefix}{command}`"
-msgstr ""
+msgstr "Người chơi đã tạm dừng, bạn có ý định chạy '{prefix}{command}`"
 
 #: audio/hybrid_commands.py:571
 msgid "Player paused"
-msgstr ""
+msgstr "Người chơi bị tạm dừng"
 
 #: audio/hybrid_commands.py:593
 msgid "Player already resumed, did you mean to run `/pause`"
-msgstr ""
+msgstr "Người chơi đã được tiếp tục, bạn có ý định chạy '/ tạm dừng'"
 
 #: audio/hybrid_commands.py:595
 msgid "Player already resumed, did you mean to run `{prefix}{command}`"
-msgstr ""
+msgstr "Người chơi đã được tiếp tục, bạn có ý định chạy '{prefix}{command}`"
 
 #: audio/hybrid_commands.py:606
 msgid "Player resumed"
-msgstr ""
+msgstr "Người chơi tiếp tục"
 
 #: audio/hybrid_commands.py:650
 msgid "Volume cannot be higher than {max_volume}"
-msgstr ""
+msgstr "Âm lượng không được cao hơn {max_volume}"
 
 #: audio/hybrid_commands.py:659 audio/utility_commands.py:62
 msgid "Player volume set to {volume}%"
-msgstr ""
+msgstr "Âm lượng người chơi được đặt thành {volume}%"
 
 #: audio/hybrid_commands.py:693
 msgid "Nothing playing"
-msgstr ""
+msgstr "Không có gì chơi"
 
 #: audio/hybrid_commands.py:702 audio/hybrid_commands.py:711
 msgid "Unable to seek track"
-msgstr ""
+msgstr "Không thể tìm kiếm theo dõi"
 
 #: audio/hybrid_commands.py:703
 msgid "Can't seek on a stream"
-msgstr ""
+msgstr "Không thể tìm kiếm trên luồng"
 
 #: audio/hybrid_commands.py:720
 msgid "Cannot seek when the player is paused"
-msgstr ""
+msgstr "Không thể tìm kiếm khi người chơi bị tạm dừng"
 
 #: audio/hybrid_commands.py:733
 msgid "Moved {seconds}s to 00:00:00"
-msgstr ""
+msgstr "Di chuyển {seconds}s đến 00:00:00"
 
 #: audio/hybrid_commands.py:740
 msgid "Moved {seconds}s to {time}"
-msgstr ""
+msgstr "Di chuyển {seconds}s đến {time}"
 
 #: audio/hybrid_commands.py:761
 msgid "Moved to {time}"
-msgstr ""
+msgstr "Chuyển đến {time}"
 
 #: audio/hybrid_commands.py:795
 msgid "No previous in player history"
-msgstr ""
+msgstr "Không có trước đó trong lịch sử người chơi"
 
 #: audio/hybrid_commands.py:803
 msgid "Playing previous track: {track}"
-msgstr ""
+msgstr "Phát bản nhạc trước đó: {track}"
 
 #: audio/player_commands.py:30
 msgid "Plays the specified track in the queue"
-msgstr ""
+msgstr "Phát bản nhạc được chỉ định trong hàng đợi"
 
 #: audio/player_commands.py:50 audio/player_commands.py:269
 msgid "Queue is empty"
-msgstr ""
+msgstr "Hàng đợi trống"
 
 #: audio/player_commands.py:59 audio/player_commands.py:282
 msgid "Track index must be between 1 and {size}"
-msgstr ""
+msgstr "Chỉ số theo dõi phải nằm trong khoảng từ 1 đến {size}"
 
 #: audio/player_commands.py:75 audio/player_commands.py:295
 msgid "There is no track in position {position}"
-msgstr ""
+msgstr "Không có đường đua ở vị trí {position}"
 
 #: audio/player_commands.py:85
 msgid "{track} will play after {current} finishes ({eta})"
-msgstr ""
+msgstr "{track} sẽ chơi sau {current} Kết thúc ({eta})"
 
 #: audio/player_commands.py:103
 msgid "{track} will start now\n"
 "{current} has been skipped"
-msgstr ""
+msgstr "{track} sẽ bắt đầu ngay bây giờ\n"
+"{current} đã bị bỏ qua"
 
 #: audio/player_commands.py:121
 #, docstring
 msgid "Enqueue a track at the top of the queue"
-msgstr ""
+msgstr "Thêm một đường đua ở đầu hàng đợi"
 
 #: audio/player_commands.py:254
 #, docstring
@@ -649,50 +681,53 @@ msgid "\n"
 "        Remove the specified track from the queue.\n\n"
 "        If you specify the `remove_duplicates` argument, all tracks that are the same as your URL or the index track will be removed.\n"
 "        "
-msgstr ""
+msgstr "\n"
+"        Xóa theo dõi được chỉ định khỏi hàng đợi.\n\n"
+"        Nếu bạn chỉ định đối số \"remove_duplicates\", tất cả các kênh giống với URL của bạn hoặc phiên bản chỉ mục sẽ bị xóa.\n"
+"        "
 
 #: audio/player_commands.py:325
 msgid "{track} not found in queue"
-msgstr ""
+msgstr "{track} không tìm thấy trong hàng đợi"
 
 #: audio/player_commands.py:335
 msgid "Removed {times} {entry_plural} of {track} from the queue"
-msgstr ""
+msgstr "Gỡ bỏ {times} {entry_plural} của {track} từ hàng đợi"
 
 #: audio/player_commands.py:338
 msgid "entry"
-msgstr ""
+msgstr "mục"
 
 #: audio/player_commands.py:338
 msgid "entries"
-msgstr ""
+msgstr "Mục"
 
 #: audio/slash_commands.py:47
 #, docstring
 msgid "Search for a track then play the selected response"
-msgstr ""
+msgstr "Tìm kiếm bản nhạc sau đó phát phản hồi đã chọn"
 
 #: audio/slash_commands.py:53
 msgid "You haven't selected something to play"
-msgstr ""
+msgstr "Bạn chưa chọn nội dung nào đó để chơi"
 
 #: audio/slash_commands.py:105
 msgid "Searching {service}"
-msgstr ""
+msgstr "Tìm kiếm {service}"
 
 #: audio/slash_commands.py:121 audio/slash_commands.py:132
 msgid "No results found on {service}"
-msgstr ""
+msgstr "Không tìm thấy kết quả trên {service}"
 
 #: audio/utility_commands.py:32
 msgid "Not connected to a voice channel"
-msgstr ""
+msgstr "Không được kết nối với kênh thoại"
 
 #: audio/utility_commands.py:43
 msgid "Volume limit reached, player volume set to {volume}%"
-msgstr ""
+msgstr "Đã đạt đến giới hạn âm lượng, âm lượng người chơi được đặt thành {volume}%"
 
 #: audio/utility_commands.py:54
 msgid "Minimum volume reached, player volume set to 0%"
-msgstr ""
+msgstr "Âm lượng tối thiểu đạt được, âm lượng trình phát được đặt thành 0%"
 
