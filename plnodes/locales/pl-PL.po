@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:42\n"
+"PO-Revision-Date: 2023-02-01 00:10\n"
 "Last-Translator: \n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr "Zarządzaj węzłami używanymi przez PyLav"
 #: plnodes/cog.py:44
 #, docstring
 msgid "Configure PyLav Nodes"
-msgstr "Konfiguracja węzłów PyLav"
+msgstr "Konfiguruj węzły PyLav"
 
 #: plnodes/cog.py:48
 #, docstring
@@ -62,16 +62,16 @@ msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
 "(**10**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
 msgstr "(**1**){space} - Zastosuj zmiany i dodaj węzeł do PyLav.\n"
-"(**2**){space} - Anuluj wszelkie wprowadzone zmiany i zamknij menu.\n"
-"(**3**){space} - Przełączaj się między trybami tylko wyszukiwania oraz wyszukiwania i odtwarzania.\n"
-"(**4**){space} - Przełącz między włączonym i wyłączonym SSL.\n"
+"(**2**){space} - Anuluj dokonane zmiany i zamknij menu.\n"
+"(**3**){space} - Przełącz pomiędzy trybami wyszukiwania i odtwarzania.\n"
+"(**4**){space} - Przełącz pomiędzy SSL włączonym i wyłączonym.\n"
 "(**5**){space} - Dodaj nazwę do węzła.\n"
 "(**6**){space} - Dodaj adres hosta węzła.\n"
-"(**7**){space} - Dodaj port, z którego korzysta węzeł.\n"
+"(**7**){space} - Dodaj port użyty przez węzeł.\n"
 "(**8**){space} - Ustaw hasło dla węzła.\n"
 "(**9**){space} - Ustaw limit czasu połączenia.\n"
-"(**10**) - Wybierz źródła do wyłączenia dla tego węzła (można wybrać wiele).\n"
-"Jeśli użytkownik wielokrotnie korzysta z przycisku, zastosowanie będzie miała tylko ostatnia interakcja.\n\n\n"
+"(**10**) - Wybierz źródła, które chcesz wyłączyć dla tego węzła (można wybrać wiele źródeł).\n"
+"Jeśli używasz przycisku wiele razy, tylko ostatnia interakcja zacznie działać.\n\n\n"
 
 #: plnodes/cog.py:137
 msgid "Added node {name} with the following settings:\n"
@@ -83,12 +83,12 @@ msgid "Added node {name} with the following settings:\n"
 "SSL: {ssl}\n"
 "Disabled Sources: {disabled_sources}\n"
 msgstr "Dodano węzeł {name} z następującymi ustawieniami:\n"
-"Gospodarz: {host}\n"
+"Host: {host}\n"
 "Port: {port}\n"
 "Hasło: {password}\n"
-"Limit czasu wznawiania: {resume_timeout}\n"
-"Tylko wyszukiwanie: {search_only}\n"
-"Protokół SSL: {ssl}\n"
+"Czas: {resume_timeout}\n"
+"Wyszukaj tylko: {search_only}\n"
+"SSL: {ssl}\n"
 "Wyłączone źródła: {disabled_sources}\n"
 
 #: plnodes/cog.py:168 plnodes/cog.py:175
@@ -98,11 +98,11 @@ msgstr "Nie można dodać tego węzła"
 #: plnodes/cog.py:181
 #, docstring
 msgid "Remove a node from a PyLav instance"
-msgstr "Usuwanie węzła z instancji PyLav"
+msgstr "Usuń węzeł z instancji PyLav"
 
 #: plnodes/cog.py:193
 msgid "{name} is managed by PyLav and cannot be removed"
-msgstr "{name} jest zarządzany przez PyLav i nie można go usunąć"
+msgstr "{name} jest zarządzany przez PyLav i nie może być usunięty"
 
 #: plnodes/cog.py:208
 msgid "Removed node {name}.\n\n"
@@ -112,12 +112,12 @@ msgstr "Usunięto węzeł {name}.\n\n"
 
 #: plnodes/cog.py:216
 msgid "Removed node {name}, a DM was sent to you with the node details in case you wish to re-add it"
-msgstr "Usunięto węzeł {name}, DM został wysłany do Ciebie ze szczegółami węzła na wypadek, gdybyś chciał go ponownie dodać"
+msgstr "Usunięto węzeł {name}, DM został wysłany do Ciebie ze szczegółami węzła w przypadku, gdy chcesz go ponownie dodać"
 
 #: plnodes/cog.py:226
 #, docstring
 msgid "Manage all nodes in a PyLav instance"
-msgstr "Zarządzanie wszystkimi węzłami w instancji PyLav"
+msgstr "Zarządzaj wszystkimi węzłami w instancji PyLav"
 
 #: plnodes/cog.py:238
 msgid "Let's manage some nodes!"
@@ -137,23 +137,23 @@ msgid "(**1**){space} - Cancel any changes made and close the menu.\n"
 "(**15**) - Remove this node.\n"
 "(**16**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr "(**1**){space} - Anuluj wszelkie wprowadzone zmiany i zamknij menu.\n"
+msgstr "(**1**){space} - Anuluj wprowadzone zmiany i zamknij menu.\n"
 "(**6**){space} - Pokaż źródła włączone dla tego węzła.\n"
 "(**7**){space} - Zastosuj zmiany i dodaj węzeł do PyLav.\n"
-"(**8**){space} - Przełączaj się między trybami tylko wyszukiwania oraz wyszukiwania i odtwarzania.\n"
-"(**9**){space} - Przełącz między włączonym i wyłączonym SSL.\n"
+"(**8**){space} - Przełączanie pomiędzy trybami wyszukiwania i wyszukiwania i odtwarzania.\n"
+"(**9**){space} - Przełączanie między SSL włączone i wyłączone.\n"
 "(**10**) - Dodaj nazwę do węzła.\n"
 "(**11**) - Dodaj adres hosta węzła.\n"
-"(**12**) - Dodaj port używany przez węzeł.\n"
+"(**12**) - Dodaj port z którego korzysta węzeł.\n"
 "(**13**) - Ustaw hasło dla węzła.\n"
 "(**14**) - Ustaw limit czasu połączenia.\n"
 "(**15**) - Usuń ten węzeł.\n"
-"(**16**) - Wybierz źródła do wyłączenia dla tego węzła (można wybrać wiele).\n"
-"Jeśli użytkownik wielokrotnie korzysta z przycisku, zastosowanie będzie miała tylko ostatnia interakcja.\n\n\n"
+"(**16**) - Wybierz źródła, które chcesz wyłączyć dla tego węzła (można wybrać wiele źródeł).\n"
+"Jeśli używasz przycisku wielokrotnie, tylko ostatnia interakcja zacznie obowiązywać.\n\n\n"
 
 #: plnodes/cog.py:268
 msgid "{name} is managed by PyLav and cannot be modified with this command"
-msgstr "{name} jest zarządzany przez PyLav i nie może być modyfikowany za pomocą tego polecenia"
+msgstr "{name} jest zarządzany przez PyLav i nie może być modyfikowany za pomocą tej komendy"
 
 #: plnodes/cog.py:280
 msgid "Removed node {name}"
@@ -168,13 +168,13 @@ msgid "Changed node {name} to the following settings:\n"
 "Search Only: {search_only}\n"
 "SSL: {ssl}\n"
 "Disabled Sources: {disabled_sources}\n"
-msgstr "Zmieniony węzeł {name} do następujących ustawień:\n"
-"Gospodarz: {host}\n"
+msgstr "Zmieniono węzeł {name} do następujących ustawień:\n"
+"Host: {host}\n"
 "Port: {port}\n"
 "Hasło: {password}\n"
-"Limit czasu wznawiania: {resume_timeout}\n"
-"Tylko wyszukiwanie: {search_only}\n"
-"Protokół SSL: {ssl}\n"
+"Czas: {resume_timeout}\n"
+"Wyszukaj tylko: {search_only}\n"
+"SSL: {ssl}\n"
 "Wyłączone źródła: {disabled_sources}\n"
 
 #: plnodes/cog.py:343
@@ -184,5 +184,5 @@ msgstr "Lista wszystkich węzłów używanych przez PyLav"
 
 #: plnodes/cog.py:353
 msgid "No nodes added to PyLav"
-msgstr "Brak węzłów dodanych do PyLav"
+msgstr "Nie dodano żadnych węzłów do PyLav"
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:42\n"
+"PO-Revision-Date: 2023-02-01 00:10\n"
 "Last-Translator: \n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
@@ -20,12 +20,12 @@ msgstr ""
 #: plnotifier/cog.py:84
 #, docstring
 msgid "Listen to events from the PyLav player and send them as messages to the specified channel"
-msgstr "Kuuntele tapahtumia PyLav-soittimesta ja lähetä ne viesteinä määritetylle kanavalle"
+msgstr "Kuuntele PyLav soittimen tapahtumia ja lähetä ne viesteinä määrätylle kanavalle"
 
 #: plnotifier/cog.py:227
 #, docstring
 msgid "Configure the PyLavNotifier cog"
-msgstr "Määritä PyLavNotifier-hammasratas"
+msgstr "Aseta PyLavNotifierin koodi"
 
 #: plnotifier/cog.py:231
 #, docstring
@@ -47,11 +47,11 @@ msgstr "Aseta soittimen ilmoituskanava"
 
 #: plnotifier/cog.py:272 plnotifier/cog.py:327
 msgid "I do not have permission to manage webhooks in {channel}"
-msgstr "Minulla ei ole lupaa hallita webhookeja {channel}"
+msgstr "Minulla ei ole oikeutta hallita webkoukkuja {channel}"
 
 #: plnotifier/cog.py:286
 msgid "I do not have permission to create a thread in {channel}"
-msgstr "Minulla ei ole lupaa luoda säiettä {channel}"
+msgstr "Minulla ei ole oikeuksia luoda lankaa {channel}"
 
 #: plnotifier/cog.py:295 plnotifier/cog.py:311 plnotifier/cog.py:336
 msgid "PyLavNotifier"
@@ -59,15 +59,15 @@ msgstr "PyLavNotifier"
 
 #: plnotifier/cog.py:296 plnotifier/cog.py:314 plnotifier/cog.py:337
 msgid "PyLav Notifier - Requested by {author}"
-msgstr "PyLav Notifier - Pyytänyt {author}"
+msgstr "Pylav Ilmoittaja - Pyytänyt {author}"
 
 #: plnotifier/cog.py:307
 msgid "This thread will be used by PyLav to post notifications about the player"
-msgstr "PyLav käyttää tätä ketjua lähettääkseen ilmoituksia soittimesta"
+msgstr "PyLav käyttää tätä lankaa lähettääkseen ilmoituksia soittimesta"
 
 #: plnotifier/cog.py:351
 msgid "PyLavNotifier channel set to {channel}"
-msgstr "PyLavNotifier-kanava asetettu arvoon {channel}"
+msgstr "PyLavNotifier-kanava asetettu {channel}"
 
 #: plnotifier/cog.py:361
 #, docstring
@@ -77,26 +77,26 @@ msgid "Set whether or not to notify for the specified event.\n\n"
 "            toggle -- Whether or not to notify upon receiving this event.\n"
 "            use_mention -- Whether or not to use a mention instead of the name for the action requested.\n"
 "        "
-msgstr "Määritä, ilmoitetaanko määritetystä tapahtumasta vai ei.\n\n"
+msgstr "Määritä, ilmoitetaanko määrätylle tapahtumalle vai ei.\n\n"
 "        Argumentit:\n"
-"            tapahtuma - Määritettävä tapahtuma.\n"
-"            vaihda -- Ilmoitetaanko vai ei, kun vastaanotat tämän tapahtuman.\n"
-"            use_mention - Käytetäänkö pyydetyssä toiminnossa mainintaa nimen sijaan.\n"
+"            tapahtuma -- asetettu tapahtuma.\n"
+"            vaihda -- Ilmoittaako se tämän tapahtuman vastaanottamisen yhteydessä vai ei.\n"
+"            use_mention -- Käytetäänkö sitten mainintaa vai ei pyydetyn toimen nimen sijaan.\n"
 "        "
 
 #: plnotifier/cog.py:378
 msgid "Invalid event, possible events are:\n\n"
 "{events}"
-msgstr "Virheellinen tapahtuma, mahdollisia tapahtumia ovat:\n\n"
+msgstr "Virheellinen tapahtuma, mahdolliset tapahtumat ovat:\n\n"
 "{events}"
 
 #: plnotifier/cog.py:395
 msgid "Event {event} set to {toggle}{extras}"
-msgstr "Tapahtuma {event} Määritä arvoksi {toggle}{extras}"
+msgstr "Tapahtuma {event} asetettu {toggle}{extras}"
 
 #: plnotifier/cog.py:397
 msgid "notify"
-msgstr "ilmoittaa"
+msgstr "ilmoita"
 
 #: plnotifier/cog.py:397
 msgid "do not notify"
@@ -104,7 +104,7 @@ msgstr "älä ilmoita"
 
 #: plnotifier/cog.py:398
 msgid " with mentions"
-msgstr " maininnoilla"
+msgstr " jossa maininnat"
 
 #: plnotifier/cog.py:398
 msgid " without mentions"
@@ -112,58 +112,58 @@ msgstr " ilman mainintoja"
 
 #: plnotifier/cog.py:414
 msgid "Track Stuck Event"
-msgstr "Seuraa jumittunutta tapahtumaa"
+msgstr "Kappaleen Jumiin Tapahtuma"
 
 #: plnotifier/cog.py:415
 msgid "[Node={node}] {track} is stuck for {threshold} seconds, skipping"
-msgstr "[Solmu={node}] {track} on jumissa {threshold} sekuntia, ohittaminen"
+msgstr "[Node={node}] {track} on jumissa {threshold} sekunnin ajan, ohitetaan"
 
 #: plnotifier/cog.py:440
 msgid "Track Exception Event"
-msgstr "Seuraa poikkeustapahtumaa"
+msgstr "Kappaleen Poikkeuksen Tapahtuma"
 
 #: plnotifier/cog.py:441
 msgid "[Node={node}] There was an error while playing {track}:\n"
 "{exception}"
-msgstr "[Solmu={node}] Pelatessa tapahtui virhe {track}:\n"
+msgstr "[Node={node}] Tapahtui virhe toistettaessa {track}:\n"
 "{exception}"
 
 #: plnotifier/cog.py:464
 msgid "the player reached the end of the tracks runtime"
-msgstr "pelaaja saavutti raitojen ajonajan lopun"
+msgstr "pelaaja on saavuttanut kappaleiden loppua suoritettavan ajan"
 
 #: plnotifier/cog.py:466
 msgid "a new track started playing"
-msgstr "uusi kappale alkoi soida"
+msgstr "uusi kappale alkoi soittaa"
 
 #: plnotifier/cog.py:468
 msgid "it failed to start"
-msgstr "se ei käynnistynyt"
+msgstr "se ei onnistunut käynnistämään"
 
 #: plnotifier/cog.py:470
 msgid "because the player was stopped"
-msgstr "koska pelaaja pysäytettiin"
+msgstr "koska pelaaja on pysäytetty"
 
 #: plnotifier/cog.py:472
 msgid "the node told it to stop"
-msgstr "solmu käski sen pysähtyä"
+msgstr "solmu käski sen pysäyttää"
 
 #: plnotifier/cog.py:475
 msgid "Track End Event"
-msgstr "Seuraa lopputapahtumaa"
+msgstr "Kappaleen Päättymistapahtuma"
 
 #: plnotifier/cog.py:476
 msgid "[Node={node}] {track} has finished playing because {reason}"
-msgstr "[Solmu={node}] {track} on lopettanut pelaamisen, koska {reason}"
+msgstr "[Node={node}] {track} on pelannut loppuun koska {reason}"
 
 #: plnotifier/cog.py:503
 msgid "YouTube Music Track Start Event"
-msgstr "YouTube-musiikkikappaleiden aloitustapahtuma"
+msgstr "YouTube Musiikin Kappaleen Aloitustapahtuma"
 
 #: plnotifier/cog.py:504
 msgid "[Node={node}] YouTube Music track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Solmu={node}] YouTube Music -kappale: {track} on aloittanut pelaamisen.\n"
+msgstr "[Node={node}] YouTube Music track: {track} on alkanut soittaa.\n"
 "Pyytäjä: {requester}"
 
 #: plnotifier/cog.py:533
@@ -173,47 +173,47 @@ msgstr "Deezer Track Start -tapahtuma"
 #: plnotifier/cog.py:534
 msgid "[Node={node}] Deezer track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Solmu={node}] Deezer-kappale: {track} on aloittanut pelaamisen.\n"
-"Pyytäjä: {requester}"
+msgstr "[Node={node}] Deezer track: {track} on alkanut pelata.\n"
+"Pyytänyt: {requester}"
 
 #: plnotifier/cog.py:563
 msgid "Spotify Track Start Event"
-msgstr "Spotify-kappaleen aloitustapahtuma"
+msgstr "Spotifyn Kappaleen Aloitustapahtuma"
 
 #: plnotifier/cog.py:564
 msgid "[Node={node}] Spotify track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Solmu={node}] Spotify-kappale: {track} on aloittanut pelaamisen.\n"
+msgstr "[Node={node}] Spotify kappale: {track} on alkanut pelata.\n"
 "Pyytäjä: {requester}"
 
 #: plnotifier/cog.py:593
 msgid "Apple Music Track Start Event"
-msgstr "Apple Music -kappaleen aloitustapahtuma"
+msgstr "Apple Music Track Start -tapahtuma"
 
 #: plnotifier/cog.py:594
 msgid "[Node={node}] Apple Music track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Solmu={node}] Apple Music -kappale: {track} on aloittanut pelaamisen.\n"
-"Pyytäjä: {requester}"
+msgstr "[Node={node}] Apple Music track: {track} on alkanut soittaa.\n"
+"Pyytänyt: {requester}"
 
 #: plnotifier/cog.py:623
 msgid "Local Track Start Event"
-msgstr "Paikallisen radan aloitustapahtuma"
+msgstr "Paikallinen Kappaleen Aloitustapahtuma"
 
 #: plnotifier/cog.py:624
 msgid "[Node={node}] Local track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Solmu={node}] Paikallinen kappale: {track} on aloittanut pelaamisen.\n"
-"Pyytäjä: {requester}"
+msgstr "[Node={node}] Paikallinen kappale: {track} on alkanut pelata.\n"
+"Pyytänyt: {requester}"
 
 #: plnotifier/cog.py:653
 msgid "HTTP Track Start Event"
-msgstr "HTTP-radan aloitustapahtuma"
+msgstr "Http Kappaleen Aloitustapahtuma"
 
 #: plnotifier/cog.py:654
 msgid "[Node={node}] HTTP track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Solmu={node}] HTTP-raita: {track} on aloittanut pelaamisen.\n"
+msgstr "[Node={node}] HTTP-kappale: {track} on alkanut pelata.\n"
 "Pyytäjä: {requester}"
 
 #: plnotifier/cog.py:683
@@ -223,18 +223,18 @@ msgstr "Teksti puheeksi -seurannan aloitustapahtuma"
 #: plnotifier/cog.py:684
 msgid "[Node={node}] Text-To-Speech track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Solmu={node}] Teksti puheeksi -raita: {track} on aloittanut pelaamisen.\n"
+msgstr "[Node={node}] Teksti-puhe: {track} on alkanut pelata.\n"
 "Pyytäjä: {requester}"
 
 #: plnotifier/cog.py:713
 msgid "YouTube Track Start Event"
-msgstr "YouTube-seurannan aloitustapahtuma"
+msgstr "YouTube Kappaleen Aloitustapahtuma"
 
 #: plnotifier/cog.py:714
 msgid "[Node={node}] YouTube track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Solmu={node}] YouTube-kappale: {track} on aloittanut pelaamisen.\n"
-"Pyytäjä: {requester}"
+msgstr "[Node={node}] YouTube kappale: {track} on alkanut pelata.\n"
+"Pyytänyt: {requester}"
 
 #: plnotifier/cog.py:743 plnotifier/cog.py:776 plnotifier/cog.py:809
 #: plnotifier/cog.py:842 plnotifier/cog.py:875 plnotifier/cog.py:908
@@ -242,7 +242,7 @@ msgstr "[Solmu={node}] YouTube-kappale: {track} on aloittanut pelaamisen.\n"
 #: plnotifier/cog.py:1040 plnotifier/cog.py:1073 plnotifier/cog.py:1106
 #: plnotifier/cog.py:1139 plnotifier/cog.py:1172
 msgid "{source} Track Start Event"
-msgstr "{source} Seuraa aloitustapahtumaa"
+msgstr "{source} Kappaleen Aloitustapahtuma"
 
 #: plnotifier/cog.py:744 plnotifier/cog.py:777 plnotifier/cog.py:810
 #: plnotifier/cog.py:843 plnotifier/cog.py:876 plnotifier/cog.py:909
@@ -251,42 +251,42 @@ msgstr "{source} Seuraa aloitustapahtumaa"
 #: plnotifier/cog.py:1140 plnotifier/cog.py:1173
 msgid "[Node={node}] {source} track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Solmu={node}] {source} raita: {track} on aloittanut pelaamisen.\n"
-"Pyytäjä: {requester}"
+msgstr "[Node={node}] {source} kappaletta: {track} on alkanut pelata.\n"
+"Pyytänyt: {requester}"
 
 #: plnotifier/cog.py:1205
 msgid "Track Skipped Event"
-msgstr "Seuraa ohitettua tapahtumaa"
+msgstr "Seuraa Ohitettua Tapahtumaa"
 
 #: plnotifier/cog.py:1206
 msgid "[Node={node}] {track} has been skipped.\n"
 "Requested by {requester}"
-msgstr "[Solmu={node}] {track} on ohitettu.\n"
+msgstr "[Node={node}] {track} on ohitettu.\n"
 "Pyytänyt {requester}"
 
 #: plnotifier/cog.py:1235
 msgid "Track Seek Event"
-msgstr "Seuraa hakutapahtumaa"
+msgstr "Kappaleen Etsii Tapahtuma"
 
 #: plnotifier/cog.py:1236
 msgid "[Node={node}] {requester} requested that {track} is sought from position {fro} to position {after}"
-msgstr "[Solmu={node}] {requester} pyysi, että {track} haetaan asemasta {fro} sijaintiin {after}"
+msgstr "[Node={node}] {requester} pyysi, että {track} etsitään asemalta {fro} sijoittaaksesi {after}"
 
 #: plnotifier/cog.py:1270
 msgid "Track Previous Requested Event"
-msgstr "Seuraa edellistä pyydettyä tapahtumaa"
+msgstr "Kappaleen Edellinen Pyydetty Tapahtuma"
 
 #: plnotifier/cog.py:1271
 msgid "[Node={node}] {requester} requested that the previous track {track} be played"
-msgstr "[Solmu={node}] {requester} pyysi, että edellinen kappale {track} olla pelattu"
+msgstr "[Node={node}] {requester} pyysi, että edellinen kappale {track} toistetaan"
 
 #: plnotifier/cog.py:1300
 msgid "Tracks Requested Event"
-msgstr "Seuraa pyydettyä tapahtumaa"
+msgstr "Pyydetty Tapahtuma"
 
 #: plnotifier/cog.py:1301
 msgid "[Node={node}] {requester} added {track_count}  to the queue"
-msgstr "[Solmu={node}] {requester} lisätty {track_count}  jonoon"
+msgstr "[Node={node}] {requester} lisäsi {track_count}  jonoon"
 
 #: plnotifier/cog.py:1302
 msgid "{count} track"
@@ -294,111 +294,111 @@ msgstr "{count} raita"
 
 #: plnotifier/cog.py:1327
 msgid "Track AutoPlay Event"
-msgstr "Seuraa automaattisen toiston tapahtumaa"
+msgstr "Kappaleen AutoPlay-tapahtuma"
 
 #: plnotifier/cog.py:1328
 msgid "[Node={node}] Auto-playing {track}"
-msgstr "[Solmu={node}] Automaattinen toisto {track}"
+msgstr "[Node={node}] Näytetään automaattisesti {track}"
 
 #: plnotifier/cog.py:1355
 msgid "Track Resumed Event"
-msgstr "Seuraa jatkettua tapahtumaa"
+msgstr "Kappaleen Alusta"
 
 #: plnotifier/cog.py:1356
 msgid "[Node={node}] {requester} resumed {track}"
-msgstr "[Solmu={node}] {requester} Jatkaa {track}"
+msgstr "[Node={node}] {requester} jatkui {track}"
 
 #: plnotifier/cog.py:1385
 msgid "Queue Shuffled Event"
-msgstr "Jonon sekoitettu tapahtuma"
+msgstr "Sekoitettu Jono"
 
 #: plnotifier/cog.py:1386
 msgid "[Node={node}] {requester} shuffled the queue"
-msgstr "[Solmu={node}] {requester} sekoitti jonon"
+msgstr "[Node={node}] {requester} sekoitti jonon"
 
 #: plnotifier/cog.py:1408
 msgid "Queue End Event"
-msgstr "Jonon lopetustapahtuma"
+msgstr "Jonon Päättymistapahtuma"
 
 #: plnotifier/cog.py:1409
 msgid "[Node={node}] All tracks in the queue have been played"
-msgstr "[Solmu={node}] Kaikki jonossa olevat kappaleet on soitettu"
+msgstr "[Node={node}] Kaikki jonon kappaleet on soitettu"
 
 #: plnotifier/cog.py:1436
 msgid "Tracks Removed Event"
-msgstr "Jäljet poistettu tapahtuma"
+msgstr "Kappaleet Poistettu Tapahtuma"
 
 #: plnotifier/cog.py:1437
 msgid "[Node={node}] {requester} removed {track_count} tracks from the queue"
-msgstr "[Solmu={node}] {requester} kaukainen {track_count} Jäljet jonosta"
+msgstr "[Node={node}] {requester} poisti {track_count} kappaletta jonosta"
 
 #: plnotifier/cog.py:1464 plnotifier/cog.py:1944
 msgid "Player Paused Event"
-msgstr "Pelaaja keskeytti tapahtuman"
+msgstr "Pelaaja Keskeytetty Tapahtuma"
 
 #: plnotifier/cog.py:1465
 msgid "[Node={node}] {requester} paused the player"
-msgstr "[Solmu={node}] {requester} keskeytti pelaajan"
+msgstr "[Node={node}] {requester} keskeytti pelaajan"
 
 #: plnotifier/cog.py:1492
 msgid "Player Stopped Event"
-msgstr "Pelaaja pysäytti tapahtuman"
+msgstr "Soitin Pysäytetty Tapahtuma"
 
 #: plnotifier/cog.py:1493
 msgid "[Node={node}] {requester} stopped the player"
-msgstr "[Solmu={node}] {requester} pysäytti pelaajan"
+msgstr "[Node={node}] {requester} pysäytti pelaajan"
 
 #: plnotifier/cog.py:1520 plnotifier/cog.py:1972
 msgid "Player Resumed Event"
-msgstr "Pelaajan jatkama tapahtuma"
+msgstr "Soitin Jatkosi Tapahtumaa"
 
 #: plnotifier/cog.py:1521
 msgid "[Node={node}] {requester} resumed the player"
-msgstr "[Solmu={node}] {requester} jatkoi pelaajaa"
+msgstr "[Node={node}] {requester} jatkoi pelaajaa"
 
 #: plnotifier/cog.py:1548
 msgid "Player Moved Event"
-msgstr "Pelaajan siirtämä tapahtuma"
+msgstr "Pelaaja Siirretty Tapahtuma"
 
 #: plnotifier/cog.py:1549
 msgid "[Node={node}] {requester} moved the player from {before} to {after}"
-msgstr "[Solmu={node}] {requester} siirsi pelaajan kohteesta {before} jotta {after}"
+msgstr "[Node={node}] {requester} siirsi pelaajan {before} siirrosta {after}"
 
 #: plnotifier/cog.py:1576
 msgid "Player Disconnected Event"
-msgstr "Pelaajan yhteys katkaistu tapahtuma"
+msgstr "Pelaajan Yhteys Katkaistu"
 
 #: plnotifier/cog.py:1577
 msgid "[Node={node}] {requester} disconnected the player"
-msgstr "[Solmu={node}] {requester} katkaisi soittimen yhteyden"
+msgstr "[Node={node}] {requester} katkaisi yhteyden pelaajaan"
 
 #: plnotifier/cog.py:1604
 msgid "Player Connected Event"
-msgstr "Player Connected -tapahtuma"
+msgstr "Soittimen Yhdistetty Tapahtuma"
 
 #: plnotifier/cog.py:1605
 msgid "[Node={node}] {requester} connected the player"
-msgstr "[Solmu={node}] {requester} Yhdisti soittimen"
+msgstr "[Node={node}] {requester} yhdisti pelaajan"
 
 #: plnotifier/cog.py:1632
 msgid "Player Volume Changed Event"
-msgstr "Pelaajan äänenvoimakkuutta muuttanut tapahtuma"
+msgstr "Soittimen Äänenvoimakkuuden Muutettu Tapahtuma"
 
 #: plnotifier/cog.py:1633
 msgid "[Node={node}] {requester} changed the player's volume from {before} to {after}"
-msgstr "[Solmu={node}] {requester} muutti soittimen äänenvoimakkuutta {before} jotta {after}"
+msgstr "[Node={node}] {requester} muutti pelaajan äänenvoimakkuuden {before} arvoon {after}"
 
 #: plnotifier/cog.py:1662 plnotifier/cog.py:1672 plnotifier/cog.py:1682
 msgid "Player Repeat Event"
-msgstr "Pelaajan toistuva tapahtuma"
+msgstr "Toista Tapahtuma"
 
 #: plnotifier/cog.py:1663
 msgid "[Node={node}] {requester} disabled repeat"
-msgstr "[Solmu={node}] {requester} Käytöstä poistettu toisto"
+msgstr "[Node={node}] {requester} pois käytöstä"
 
 #: plnotifier/cog.py:1673
 msgid "{requester} {status} repeat of the whole queue"
-msgstr "{requester} {status} koko jonon toistaminen"
+msgstr "{requester} {status} toista koko jono"
 
 #: plnotifier/cog.py:1674 plnotifier/cog.py:1685
 msgid "enabled"
@@ -410,27 +410,27 @@ msgstr "vammainen"
 
 #: plnotifier/cog.py:1683
 msgid "[Node={node}] {requester} {status} repeat for {track}"
-msgstr "[Solmu={node}] {requester} {status} Toista {track}"
+msgstr "[Node={node}] {requester} {status} toista {track}"
 
 #: plnotifier/cog.py:1713
 msgid "Player Restored Event"
-msgstr "Pelaajan palauttama tapahtuma"
+msgstr "Soitin Palautettu Tapahtuma"
 
 #: plnotifier/cog.py:1714
 msgid "[Node={node}] {requester} restored the player"
-msgstr "[Solmu={node}] {requester} palautti soittimen"
+msgstr "[Node={node}] {requester} palautti pelaajan"
 
 #: plnotifier/cog.py:1737
 msgid "an intro section"
-msgstr "intro-osio"
+msgstr "intro osio"
 
 #: plnotifier/cog.py:1739
 msgid "an outro section"
-msgstr "Outro-osa"
+msgstr "a outro osio"
 
 #: plnotifier/cog.py:1741
 msgid "a preview section"
-msgstr "esikatseluosa"
+msgstr "esikatsele osiota"
 
 #: plnotifier/cog.py:1743
 msgid "an off-topic section"
@@ -438,27 +438,27 @@ msgstr "aiheen ulkopuolinen osio"
 
 #: plnotifier/cog.py:1745
 msgid "a filler section"
-msgstr "täyteaineen osa"
+msgstr "täyteosa ja täyteosa"
 
 #: plnotifier/cog.py:1747
 msgid "a sponsor section"
-msgstr "sponsori-osio"
+msgstr "a sponsori osio"
 
 #: plnotifier/cog.py:1749
 msgid "a self-promotion section"
-msgstr "itsensä mainostamisen osio"
+msgstr "itse menekinedistämisosuus"
 
 #: plnotifier/cog.py:1751
 msgid "an interaction section"
-msgstr "vuorovaikutus-osio"
+msgstr "joka on yhteisvaikutuskohta"
 
 #: plnotifier/cog.py:1755
 msgid "Sponsor Segment Skipped Event"
-msgstr "Sponsorisegmentin ohitettu tapahtuma"
+msgstr "Sponsorin Segmentti Ohitettu Tapahtuma"
 
 #: plnotifier/cog.py:1756
 msgid "[Node={node}] Sponsorblock: Skipped {category} running from {start}s to {to}s"
-msgstr "[Solmu={node}] Sponsorblock: Ohitettu {category} juoksee {start}s - {to}s"
+msgstr "[Node={node}] Sponsorohko: Ohitti {category} käynnissä {start}s:sta {to}s:ään"
 
 #: plnotifier/cog.py:1784
 msgid "Effect"
@@ -474,7 +474,7 @@ msgstr "Arvot"
 
 #: plnotifier/cog.py:1826
 msgid "Filters Applied Event"
-msgstr "Suodattimet käytetty tapahtuma"
+msgstr "Suodattimet Käytetty Tapahtuma"
 
 #: plnotifier/cog.py:1829
 msgid "None"
@@ -486,11 +486,11 @@ msgstr "Tällä hetkellä voimassa"
 
 #: plnotifier/cog.py:1832
 msgid "[Node={node}] {requester} changed the player filters"
-msgstr "[Solmu={node}] {requester} vaihtanut soittimen suodattimia"
+msgstr "[Node={node}] {requester} muutti soittimen suodattimia"
 
 #: plnotifier/cog.py:1852
 msgid "Node Connected Event"
-msgstr "Solmuun yhdistetty tapahtuma"
+msgstr "Solmu Yhdistetty Tapahtuma"
 
 #: plnotifier/cog.py:1853
 msgid "Node {name} has been connected"
@@ -498,45 +498,45 @@ msgstr "Solmu {name} on yhdistetty"
 
 #: plnotifier/cog.py:1869
 msgid "Node Disconnected Event"
-msgstr "Solmun yhteys katkaistu tapahtuma"
+msgstr "Solmun Yhteys Katkaistu Tapahtuma"
 
 #: plnotifier/cog.py:1870
 msgid "Node {name} has been disconnected with code {code} and reason: {reason}"
-msgstr "Solmu {name} on irrotettu koodilla {code} ja syy: {reason}"
+msgstr "Solmu {name} on katkaistu koodilla {code} ja syy: {reason}"
 
 #: plnotifier/cog.py:1892
 msgid "Node Changed Event"
-msgstr "Solmun muuttunut tapahtuma"
+msgstr "Solmun Muutettu Tapahtuma"
 
 #: plnotifier/cog.py:1893
 msgid "The node which the player is connected to changed from {fro} to {to}"
-msgstr "Solmu, johon soitin on kytketty, muuttui {fro} jotta {to}"
+msgstr "Solmu, johon pelaaja on yhdistetty, on vaihtunut numerosta {fro} arvoon {to}"
 
 #: plnotifier/cog.py:1915
 msgid "WebSocket Closed Event"
-msgstr "WebSocketin suljettu tapahtuma"
+msgstr "WebSocket Suljettu Tapahtuma"
 
 #: plnotifier/cog.py:1916
 msgid "[Node={node}] The Lavalink websocket connection to Discord closed with code {code} and reason {reason}"
-msgstr "[Solmu={node}] Lavalink websocket -yhteys Discordiin suljettu koodilla {code} ja perustelu {reason}"
+msgstr "[Node={node}] Lavalink websocket yhteys Discordiin suljettiin koodilla {code} ja syyllä {reason}"
 
 #: plnotifier/cog.py:1945
 msgid "[Node={node}] {requester} automatically paused the player due to configured values"
-msgstr "[Solmu={node}] {requester} keskeytti soittimen automaattisesti määritettyjen arvojen vuoksi"
+msgstr "[Node={node}] {requester} keskeytti pelaajan automaattisesti määritettyjen arvojen vuoksi"
 
 #: plnotifier/cog.py:1973
 msgid "[Node={node}] {requester} automatically resumed the player due to configured values"
-msgstr "[Solmu={node}] {requester} jatkoi soitinta automaattisesti määritettyjen arvojen vuoksi"
+msgstr "[Node={node}] {requester} jatkoi pelaajaa automaattisesti määritettyjen arvojen vuoksi"
 
 #: plnotifier/cog.py:2000 plnotifier/cog.py:2030
 msgid "Auto Player Disconnected Event"
-msgstr "Automaattisen soittimen yhteys katkaistu tapahtuma"
+msgstr "Automaattinen Pelaajan Yhteys Katkaistu"
 
 #: plnotifier/cog.py:2001
 msgid "[Node={node}] {requester} automatically disconnected the player as there is no one listening"
-msgstr "[Solmu={node}] {requester} katkaisi soittimen automaattisesti, koska kukaan ei kuuntele"
+msgstr "[Node={node}] {requester} katkaisi automaattisesti yhteyden pelaajaan, koska kukaan ei kuuntele"
 
 #: plnotifier/cog.py:2031
 msgid "[Node={node}] {requester} automatically disconnected the player as the queue is empty"
-msgstr "[Solmu={node}] {requester} katkaisi soittimen automaattisesti, kun jono on tyhjä"
+msgstr "[Node={node}] {requester} katkaisi automaattisesti yhteyden pelaajaan, koska jono on tyhjä"
 

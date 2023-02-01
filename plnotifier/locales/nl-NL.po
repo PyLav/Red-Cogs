@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:42\n"
+"PO-Revision-Date: 2023-02-01 00:10\n"
 "Last-Translator: \n"
 "Language-Team: Dutch\n"
 "MIME-Version: 1.0\n"
@@ -20,12 +20,12 @@ msgstr ""
 #: plnotifier/cog.py:84
 #, docstring
 msgid "Listen to events from the PyLav player and send them as messages to the specified channel"
-msgstr "Luister naar gebeurtenissen van de PyLav-speler en stuur ze als berichten naar het opgegeven kanaal"
+msgstr "Luister naar gebeurtenissen van de PyLav speler en stuur ze als berichten naar het opgegeven kanaal"
 
 #: plnotifier/cog.py:227
 #, docstring
 msgid "Configure the PyLavNotifier cog"
-msgstr "Het PyLavNotifier-tandwiel configureren"
+msgstr "Configureer de PyLavNotifier cog"
 
 #: plnotifier/cog.py:231
 #, docstring
@@ -43,7 +43,7 @@ msgstr "Versie"
 #: plnotifier/cog.py:263
 #, docstring
 msgid "Set the notify channel for the player"
-msgstr "Het meldingskanaal voor de speler instellen"
+msgstr "Stel het notificatie-kanaal voor de speler in"
 
 #: plnotifier/cog.py:272 plnotifier/cog.py:327
 msgid "I do not have permission to manage webhooks in {channel}"
@@ -55,7 +55,7 @@ msgstr "Ik heb geen toestemming om een thread te maken in {channel}"
 
 #: plnotifier/cog.py:295 plnotifier/cog.py:311 plnotifier/cog.py:336
 msgid "PyLavNotifier"
-msgstr "PyLavNotifier"
+msgstr "PyLavnotifier"
 
 #: plnotifier/cog.py:296 plnotifier/cog.py:314 plnotifier/cog.py:337
 msgid "PyLav Notifier - Requested by {author}"
@@ -63,11 +63,11 @@ msgstr "PyLav Notifier - Aangevraagd door {author}"
 
 #: plnotifier/cog.py:307
 msgid "This thread will be used by PyLav to post notifications about the player"
-msgstr "Deze thread wordt door PyLav gebruikt om meldingen over de speler te plaatsen"
+msgstr "Deze thread zal worden gebruikt door PyLav om meldingen over de speler te posten"
 
 #: plnotifier/cog.py:351
 msgid "PyLavNotifier channel set to {channel}"
-msgstr "PyLavNotifier-kanaal ingesteld op {channel}"
+msgstr "PyLavnotifier kanaal ingesteld op {channel}"
 
 #: plnotifier/cog.py:361
 #, docstring
@@ -77,11 +77,11 @@ msgid "Set whether or not to notify for the specified event.\n\n"
 "            toggle -- Whether or not to notify upon receiving this event.\n"
 "            use_mention -- Whether or not to use a mention instead of the name for the action requested.\n"
 "        "
-msgstr "Stel in of u al dan niet wilt melden voor de opgegeven gebeurtenis.\n\n"
+msgstr "Stel in of geen melding wordt gemaakt van de opgegeven gebeurtenis.\n\n"
 "        Argumenten:\n"
-"            gebeurtenis: de gebeurtenis die u wilt instellen.\n"
-"            schakelaar - Al dan niet op de hoogte stellen bij ontvangst van deze gebeurtenis.\n"
-"            use_mention - Het al dan niet gebruiken van een vermelding in plaats van de naam voor de gevraagde actie.\n"
+"            event -- Het evenement om in te stellen.\n"
+"            schakel uit -- Of er nu wel of niet een melding moet worden gemaakt van deze gebeurtenis.\n"
+"            use_mention -- Of u een vermelding wilt gebruiken in plaats van de naam van de gevraagde actie.\n"
 "        "
 
 #: plnotifier/cog.py:378
@@ -92,11 +92,11 @@ msgstr "Ongeldige gebeurtenis, mogelijke gebeurtenissen zijn:\n\n"
 
 #: plnotifier/cog.py:395
 msgid "Event {event} set to {toggle}{extras}"
-msgstr "Gebeurtenis {event} instellen op {toggle}{extras}"
+msgstr "Evenement {event} ingesteld op {toggle}{extras}"
 
 #: plnotifier/cog.py:397
 msgid "notify"
-msgstr "aankondigen"
+msgstr "melding"
 
 #: plnotifier/cog.py:397
 msgid "do not notify"
@@ -112,58 +112,58 @@ msgstr " zonder vermeldingen"
 
 #: plnotifier/cog.py:414
 msgid "Track Stuck Event"
-msgstr "Vastgelopen gebeurtenis bijhouden"
+msgstr "Track Vastzetten Evenement"
 
 #: plnotifier/cog.py:415
 msgid "[Node={node}] {track} is stuck for {threshold} seconds, skipping"
-msgstr "[Knooppunt={node}] {track} zit vast voor {threshold} seconden, overslaan"
+msgstr "[Node={node}] {track} is vastgelopen voor {threshold} seconden, overslaan"
 
 #: plnotifier/cog.py:440
 msgid "Track Exception Event"
-msgstr "Gebeurtenis Uitzondering bijhouden"
+msgstr "Track uitzondering gebeurtenis"
 
 #: plnotifier/cog.py:441
 msgid "[Node={node}] There was an error while playing {track}:\n"
 "{exception}"
-msgstr "[Knooppunt={node}] Er is een fout opgetreden tijdens het spelen {track}:\n"
+msgstr "[Node={node}] Er is een fout opgetreden tijdens het spelen van {track}:\n"
 "{exception}"
 
 #: plnotifier/cog.py:464
 msgid "the player reached the end of the tracks runtime"
-msgstr "de speler heeft het einde van de looptijd van het spoor bereikt"
+msgstr "de speler heeft het einde van de runtime van de tracks bereikt"
 
 #: plnotifier/cog.py:466
 msgid "a new track started playing"
-msgstr "een nieuw nummer is gaan spelen"
+msgstr "een nieuwe track begon te spelen"
 
 #: plnotifier/cog.py:468
 msgid "it failed to start"
-msgstr "het is niet gestart"
+msgstr "het kon niet starten"
 
 #: plnotifier/cog.py:470
 msgid "because the player was stopped"
-msgstr "omdat de speler werd tegengehouden"
+msgstr "omdat de speler is gestopt"
 
 #: plnotifier/cog.py:472
 msgid "the node told it to stop"
-msgstr "het knooppunt vertelde het te stoppen"
+msgstr "de node zei het om te stoppen"
 
 #: plnotifier/cog.py:475
 msgid "Track End Event"
-msgstr "Einde-evenement bijhouden"
+msgstr "Track einde evenement"
 
 #: plnotifier/cog.py:476
 msgid "[Node={node}] {track} has finished playing because {reason}"
-msgstr "[Knooppunt={node}] {track} is klaar met spelen omdat {reason}"
+msgstr "[Node={node}] {track} is klaar met spelen, omdat {reason}"
 
 #: plnotifier/cog.py:503
 msgid "YouTube Music Track Start Event"
-msgstr "YouTube Music Track Start-evenement"
+msgstr "YouTube Muziek Track Start Event"
 
 #: plnotifier/cog.py:504
 msgid "[Node={node}] YouTube Music track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Knooppunt={node}] YouTube Music-track: {track} is begonnen met spelen.\n"
+msgstr "[Node={node}] YouTube-muzieknummer: {track} is begonnen met spelen.\n"
 "Aangevraagd door: {requester}"
 
 #: plnotifier/cog.py:533
@@ -173,17 +173,17 @@ msgstr "Deezer Track Start Evenement"
 #: plnotifier/cog.py:534
 msgid "[Node={node}] Deezer track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Knooppunt={node}] Deezer spoor: {track} is begonnen met spelen.\n"
+msgstr "[Node={node}] Deezer track: {track} is begonnen met spelen.\n"
 "Aangevraagd door: {requester}"
 
 #: plnotifier/cog.py:563
 msgid "Spotify Track Start Event"
-msgstr "Spotify Track Start-evenement"
+msgstr "Spotify Track Start Evenement"
 
 #: plnotifier/cog.py:564
 msgid "[Node={node}] Spotify track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Knooppunt={node}] Spotify-track: {track} is begonnen met spelen.\n"
+msgstr "[Node={node}] Spotify track: {track} is begonnen met spelen.\n"
 "Aangevraagd door: {requester}"
 
 #: plnotifier/cog.py:593
@@ -193,47 +193,47 @@ msgstr "Apple Music Track Start-evenement"
 #: plnotifier/cog.py:594
 msgid "[Node={node}] Apple Music track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Knooppunt={node}] Apple Music-track: {track} is begonnen met spelen.\n"
+msgstr "[Node={node}] Apple Music track: {track} is begonnen met spelen.\n"
 "Aangevraagd door: {requester}"
 
 #: plnotifier/cog.py:623
 msgid "Local Track Start Event"
-msgstr "Lokaal trackstartevenement"
+msgstr "Lokale track start gebeurtenis"
 
 #: plnotifier/cog.py:624
 msgid "[Node={node}] Local track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Knooppunt={node}] Lokale track: {track} is begonnen met spelen.\n"
+msgstr "[Node={node}] Lokaal nummer: {track} is begonnen met spelen.\n"
 "Aangevraagd door: {requester}"
 
 #: plnotifier/cog.py:653
 msgid "HTTP Track Start Event"
-msgstr "HTTP Track Start-gebeurtenis"
+msgstr "HTTP Track start event"
 
 #: plnotifier/cog.py:654
 msgid "[Node={node}] HTTP track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Knooppunt={node}] HTTP-track: {track} is begonnen met spelen.\n"
+msgstr "[Node={node}] HTTP-track: {track} is begonnen met spelen.\n"
 "Aangevraagd door: {requester}"
 
 #: plnotifier/cog.py:683
 msgid "Text-To-Speech Track Start Event"
-msgstr "Startgebeurtenis tekst-naar-spraaktrack"
+msgstr "Tekst-Spraak Track Start Evenement"
 
 #: plnotifier/cog.py:684
 msgid "[Node={node}] Text-To-Speech track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Knooppunt={node}] Tekst-naar-spraak track: {track} is begonnen met spelen.\n"
+msgstr "[Node={node}] Tekst-To-Spraaknummer: {track} is begonnen met spelen.\n"
 "Aangevraagd door: {requester}"
 
 #: plnotifier/cog.py:713
 msgid "YouTube Track Start Event"
-msgstr "YouTube Track Start-evenement"
+msgstr "YouTube track start event"
 
 #: plnotifier/cog.py:714
 msgid "[Node={node}] YouTube track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Knooppunt={node}] YouTube-track: {track} is begonnen met spelen.\n"
+msgstr "[Node={node}] YouTube track: {track} is begonnen met spelen.\n"
 "Aangevraagd door: {requester}"
 
 #: plnotifier/cog.py:743 plnotifier/cog.py:776 plnotifier/cog.py:809
@@ -242,7 +242,7 @@ msgstr "[Knooppunt={node}] YouTube-track: {track} is begonnen met spelen.\n"
 #: plnotifier/cog.py:1040 plnotifier/cog.py:1073 plnotifier/cog.py:1106
 #: plnotifier/cog.py:1139 plnotifier/cog.py:1172
 msgid "{source} Track Start Event"
-msgstr "{source} Startgebeurtenis bijhouden"
+msgstr "{source} Track Start Evenement"
 
 #: plnotifier/cog.py:744 plnotifier/cog.py:777 plnotifier/cog.py:810
 #: plnotifier/cog.py:843 plnotifier/cog.py:876 plnotifier/cog.py:909
@@ -251,7 +251,7 @@ msgstr "{source} Startgebeurtenis bijhouden"
 #: plnotifier/cog.py:1140 plnotifier/cog.py:1173
 msgid "[Node={node}] {source} track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Knooppunt={node}] {source} spoor: {track} is begonnen met spelen.\n"
+msgstr "[Node={node}] {source} track: {track} is begonnen met spelen.\n"
 "Aangevraagd door: {requester}"
 
 #: plnotifier/cog.py:1205
@@ -261,84 +261,84 @@ msgstr "Track overgeslagen evenement"
 #: plnotifier/cog.py:1206
 msgid "[Node={node}] {track} has been skipped.\n"
 "Requested by {requester}"
-msgstr "[Knooppunt={node}] {track} is overgeslagen.\n"
+msgstr "[Node={node}] {track} is overgeslagen.\n"
 "Aangevraagd door {requester}"
 
 #: plnotifier/cog.py:1235
 msgid "Track Seek Event"
-msgstr "Zoekgebeurtenis bijhouden"
+msgstr "Volg Seek Evenement"
 
 #: plnotifier/cog.py:1236
 msgid "[Node={node}] {requester} requested that {track} is sought from position {fro} to position {after}"
-msgstr "[Knooppunt={node}] {requester} verzocht dat {track} wordt gezocht vanuit positie {fro} naar positie {after}"
+msgstr "[Node={node}] {requester} verzocht dat {track} wordt gezocht van positie {fro} tot positie {after}"
 
 #: plnotifier/cog.py:1270
 msgid "Track Previous Requested Event"
-msgstr "Eerder aangevraagde gebeurtenis bijhouden"
+msgstr "Track vorige gevraagde gebeurtenis"
 
 #: plnotifier/cog.py:1271
 msgid "[Node={node}] {requester} requested that the previous track {track} be played"
-msgstr "[Knooppunt={node}] {requester} verzocht dat het vorige spoor {track} worden gespeeld"
+msgstr "[Node={node}] {requester} heeft gevraagd om het vorige nummer {track} te spelen"
 
 #: plnotifier/cog.py:1300
 msgid "Tracks Requested Event"
-msgstr "Tracks aangevraagde gebeurtenis"
+msgstr "Tracks aangevraagd Evenement"
 
 #: plnotifier/cog.py:1301
 msgid "[Node={node}] {requester} added {track_count}  to the queue"
-msgstr "[Knooppunt={node}] {requester} toegevoegd {track_count}  naar de wachtrij"
+msgstr "[Node={node}] {requester} heeft {track_count}  toegevoegd aan de wachtrij"
 
 #: plnotifier/cog.py:1302
 msgid "{count} track"
-msgstr "{count} spoor"
+msgstr "{count} nummer"
 
 #: plnotifier/cog.py:1327
 msgid "Track AutoPlay Event"
-msgstr "Gebeurtenis Automatisch afspelen bijhouden"
+msgstr "Volg AutoPlay Evenement"
 
 #: plnotifier/cog.py:1328
 msgid "[Node={node}] Auto-playing {track}"
-msgstr "[Knooppunt={node}] Automatisch afspelen {track}"
+msgstr "[Node={node}] Automatisch afspelen {track}"
 
 #: plnotifier/cog.py:1355
 msgid "Track Resumed Event"
-msgstr "Hervattingsgebeurtenis bijhouden"
+msgstr "Track hervat evenement"
 
 #: plnotifier/cog.py:1356
 msgid "[Node={node}] {requester} resumed {track}"
-msgstr "[Knooppunt={node}] {requester} Hervat {track}"
+msgstr "[Node={node}] {requester} hervat {track}"
 
 #: plnotifier/cog.py:1385
 msgid "Queue Shuffled Event"
-msgstr "Gebeurtenis in de wachtrij geschud"
+msgstr "Wachtrij shuffled Evenement"
 
 #: plnotifier/cog.py:1386
 msgid "[Node={node}] {requester} shuffled the queue"
-msgstr "[Knooppunt={node}] {requester} de wachtrij door elkaar geschud"
+msgstr "[Node={node}] {requester} heeft de wachtrij geschud"
 
 #: plnotifier/cog.py:1408
 msgid "Queue End Event"
-msgstr "Gebeurtenis Wachtrij beëindigen"
+msgstr "Wachtrij Einde Event"
 
 #: plnotifier/cog.py:1409
 msgid "[Node={node}] All tracks in the queue have been played"
-msgstr "[Knooppunt={node}] Alle nummers in de wachtrij zijn afgespeeld"
+msgstr "[Node={node}] Alle nummers in de wachtrij zijn afgespeeld"
 
 #: plnotifier/cog.py:1436
 msgid "Tracks Removed Event"
-msgstr "Tracks verwijderd evenement"
+msgstr "Nummers verwijderd Evenement"
 
 #: plnotifier/cog.py:1437
 msgid "[Node={node}] {requester} removed {track_count} tracks from the queue"
-msgstr "[Knooppunt={node}] {requester} Verwijderd {track_count} tracks uit de wachtrij"
+msgstr "[Node={node}] {requester} heeft {track_count} nummers uit de wachtrij verwijderd"
 
 #: plnotifier/cog.py:1464 plnotifier/cog.py:1944
 msgid "Player Paused Event"
-msgstr "Gebeurtenis speler onderbroken"
+msgstr "Speler gepauzeerd evenement"
 
 #: plnotifier/cog.py:1465
 msgid "[Node={node}] {requester} paused the player"
-msgstr "[Knooppunt={node}] {requester} de speler gepauzeerd"
+msgstr "[Node={node}] {requester} heeft de speler gepauzeerd"
 
 #: plnotifier/cog.py:1492
 msgid "Player Stopped Event"
@@ -346,59 +346,59 @@ msgstr "Speler gestopt evenement"
 
 #: plnotifier/cog.py:1493
 msgid "[Node={node}] {requester} stopped the player"
-msgstr "[Knooppunt={node}] {requester} stopte de speler"
+msgstr "[Node={node}] {requester} heeft de speler gestopt"
 
 #: plnotifier/cog.py:1520 plnotifier/cog.py:1972
 msgid "Player Resumed Event"
-msgstr "Speler hervat evenement"
+msgstr "Speler hervat Evenement"
 
 #: plnotifier/cog.py:1521
 msgid "[Node={node}] {requester} resumed the player"
-msgstr "[Knooppunt={node}] {requester} hervatte de speler"
+msgstr "[Node={node}] {requester} heeft de speler hervat"
 
 #: plnotifier/cog.py:1548
 msgid "Player Moved Event"
-msgstr "Player Verplaatst Evenement"
+msgstr "Speler verplaatst evenement"
 
 #: plnotifier/cog.py:1549
 msgid "[Node={node}] {requester} moved the player from {before} to {after}"
-msgstr "[Knooppunt={node}] {requester} de speler verplaatst van {before} Aan {after}"
+msgstr "[Node={node}] {requester} heeft de speler verplaatst van {before} naar {after}"
 
 #: plnotifier/cog.py:1576
 msgid "Player Disconnected Event"
-msgstr "Gebeurtenis Speler verbroken"
+msgstr "Speler verbinding verbroken gebeurtenis"
 
 #: plnotifier/cog.py:1577
 msgid "[Node={node}] {requester} disconnected the player"
-msgstr "[Knooppunt={node}] {requester} de speler is losgekoppeld"
+msgstr "[Node={node}] {requester} heeft de speler losgekoppeld"
 
 #: plnotifier/cog.py:1604
 msgid "Player Connected Event"
-msgstr "Player Connected-evenement"
+msgstr "Speler Verbonden Event"
 
 #: plnotifier/cog.py:1605
 msgid "[Node={node}] {requester} connected the player"
-msgstr "[Knooppunt={node}] {requester} de speler aangesloten"
+msgstr "[Node={node}] {requester} heeft de speler aangesloten"
 
 #: plnotifier/cog.py:1632
 msgid "Player Volume Changed Event"
-msgstr "Gebeurtenis Spelervolume gewijzigd"
+msgstr "Speler Volume Gewijzigd Gebeurtenis"
 
 #: plnotifier/cog.py:1633
 msgid "[Node={node}] {requester} changed the player's volume from {before} to {after}"
-msgstr "[Knooppunt={node}] {requester} het volume van de speler gewijzigd van {before} Aan {after}"
+msgstr "[Node={node}] {requester} heeft het volume van de speler veranderd van {before} naar {after}"
 
 #: plnotifier/cog.py:1662 plnotifier/cog.py:1672 plnotifier/cog.py:1682
 msgid "Player Repeat Event"
-msgstr "Speler Herhalingsgebeurtenis"
+msgstr "Speler herhalen evenement"
 
 #: plnotifier/cog.py:1663
 msgid "[Node={node}] {requester} disabled repeat"
-msgstr "[Knooppunt={node}] {requester} uitgeschakelde herhaling"
+msgstr "[Node={node}] {requester} herhaalde uitgezet"
 
 #: plnotifier/cog.py:1673
 msgid "{requester} {status} repeat of the whole queue"
-msgstr "{requester} {status} herhaling van de hele wachtrij"
+msgstr "{requester} {status} herhaalt de hele wachtrij"
 
 #: plnotifier/cog.py:1674 plnotifier/cog.py:1685
 msgid "enabled"
@@ -410,19 +410,19 @@ msgstr "invalide"
 
 #: plnotifier/cog.py:1683
 msgid "[Node={node}] {requester} {status} repeat for {track}"
-msgstr "[Knooppunt={node}] {requester} {status} herhaal voor {track}"
+msgstr "[Node={node}] {requester} {status} herhalen voor {track}"
 
 #: plnotifier/cog.py:1713
 msgid "Player Restored Event"
-msgstr "Speler Hersteld Evenement"
+msgstr "Speler hersteld evenement"
 
 #: plnotifier/cog.py:1714
 msgid "[Node={node}] {requester} restored the player"
-msgstr "[Knooppunt={node}] {requester} herstelde de speler"
+msgstr "[Node={node}] {requester} heeft de speler hersteld"
 
 #: plnotifier/cog.py:1737
 msgid "an intro section"
-msgstr "een intro gedeelte"
+msgstr "een intro sectie"
 
 #: plnotifier/cog.py:1739
 msgid "an outro section"
@@ -430,7 +430,7 @@ msgstr "een outro sectie"
 
 #: plnotifier/cog.py:1741
 msgid "a preview section"
-msgstr "een voorbeeldsectie"
+msgstr "een sectie voorbeeld"
 
 #: plnotifier/cog.py:1743
 msgid "an off-topic section"
@@ -438,15 +438,15 @@ msgstr "een off-topic sectie"
 
 #: plnotifier/cog.py:1745
 msgid "a filler section"
-msgstr "een vulsectie"
+msgstr "een vuller sectie"
 
 #: plnotifier/cog.py:1747
 msgid "a sponsor section"
-msgstr "een sponsorsectie"
+msgstr "een sponsor sectie"
 
 #: plnotifier/cog.py:1749
 msgid "a self-promotion section"
-msgstr "een zelfpromotie sectie"
+msgstr "een zelf-promotie sectie"
 
 #: plnotifier/cog.py:1751
 msgid "an interaction section"
@@ -454,11 +454,11 @@ msgstr "een interactiesectie"
 
 #: plnotifier/cog.py:1755
 msgid "Sponsor Segment Skipped Event"
-msgstr "Sponsorsegment overgeslagen evenement"
+msgstr "Sponsor Segment overgeslagen evenement"
 
 #: plnotifier/cog.py:1756
 msgid "[Node={node}] Sponsorblock: Skipped {category} running from {start}s to {to}s"
-msgstr "[Knooppunt={node}] Sponsorblok: Overgeslagen {category} rennen van {start}s tot {to}s"
+msgstr "[Node={node}] Sponsorblock: Overslaan {category} op basis van {start}s naar {to}s"
 
 #: plnotifier/cog.py:1784
 msgid "Effect"
@@ -474,7 +474,7 @@ msgstr "Waarden"
 
 #: plnotifier/cog.py:1826
 msgid "Filters Applied Event"
-msgstr "Filters toegepaste gebeurtenis"
+msgstr "Toegepaste filters"
 
 #: plnotifier/cog.py:1829
 msgid "None"
@@ -486,7 +486,7 @@ msgstr "Momenteel toegepast"
 
 #: plnotifier/cog.py:1832
 msgid "[Node={node}] {requester} changed the player filters"
-msgstr "[Knooppunt={node}] {requester} de spelersfilters gewijzigd"
+msgstr "[Node={node}] {requester} heeft de spelers filters veranderd"
 
 #: plnotifier/cog.py:1852
 msgid "Node Connected Event"
@@ -494,49 +494,49 @@ msgstr "Gebeurtenis Verbonden knooppunt"
 
 #: plnotifier/cog.py:1853
 msgid "Node {name} has been connected"
-msgstr "Knoop {name} is aangesloten"
+msgstr "Node {name} is verbonden"
 
 #: plnotifier/cog.py:1869
 msgid "Node Disconnected Event"
-msgstr "Gebeurtenis Verbroken knooppunt"
+msgstr "Node losgekoppeld Evenement"
 
 #: plnotifier/cog.py:1870
 msgid "Node {name} has been disconnected with code {code} and reason: {reason}"
-msgstr "Knoop {name} is losgekoppeld met code {code} en reden: {reason}"
+msgstr "Node {name} is verbroken met code {code} en reden: {reason}"
 
 #: plnotifier/cog.py:1892
 msgid "Node Changed Event"
-msgstr "Gebeurtenis Gewijzigd knooppunt"
+msgstr "Knooppunt gewijzigd evenement"
 
 #: plnotifier/cog.py:1893
 msgid "The node which the player is connected to changed from {fro} to {to}"
-msgstr "Het knooppunt waarmee de speler is verbonden, is gewijzigd van {fro} Aan {to}"
+msgstr "De node waarmee de speler verbonden is veranderd van {fro} naar {to}"
 
 #: plnotifier/cog.py:1915
 msgid "WebSocket Closed Event"
-msgstr "WebSocket Gesloten Evenement"
+msgstr "WebSocket Gesloten Gebeurtenis"
 
 #: plnotifier/cog.py:1916
 msgid "[Node={node}] The Lavalink websocket connection to Discord closed with code {code} and reason {reason}"
-msgstr "[Knooppunt={node}] De Lavalink websocket verbinding met Discord afgesloten met code {code} en reden {reason}"
+msgstr "[Node={node}] De Lavalink websocket-verbinding met Discord gesloten met code {code} en reden {reason}"
 
 #: plnotifier/cog.py:1945
 msgid "[Node={node}] {requester} automatically paused the player due to configured values"
-msgstr "[Knooppunt={node}] {requester} automatisch gepauzeerd de speler vanwege geconfigureerde waarden"
+msgstr "[Node={node}] {requester} heeft de speler automatisch gepauzeerd vanwege geconfigureerde waarden"
 
 #: plnotifier/cog.py:1973
 msgid "[Node={node}] {requester} automatically resumed the player due to configured values"
-msgstr "[Knooppunt={node}] {requester} automatisch hervat de speler als gevolg van geconfigureerde waarden"
+msgstr "[Node={node}] {requester} heeft de speler automatisch hervat vanwege geconfigureerde waarden"
 
 #: plnotifier/cog.py:2000 plnotifier/cog.py:2030
 msgid "Auto Player Disconnected Event"
-msgstr "Gebeurtenis Auto Player disconnected"
+msgstr "Auto Speler verbinding verbroken gebeurtenis"
 
 #: plnotifier/cog.py:2001
 msgid "[Node={node}] {requester} automatically disconnected the player as there is no one listening"
-msgstr "[Knooppunt={node}] {requester} automatisch de speler losgekoppeld omdat er niemand luistert"
+msgstr "[Node={node}] {requester} heeft de speler automatisch ontkoppeld omdat er niemand luistert"
 
 #: plnotifier/cog.py:2031
 msgid "[Node={node}] {requester} automatically disconnected the player as the queue is empty"
-msgstr "[Knooppunt={node}] {requester} automatisch de speler losgekoppeld omdat de wachtrij leeg is"
+msgstr "[Node={node}] {requester} heeft de speler automatisch ontkoppeld omdat de wachtrij leeg is"
 

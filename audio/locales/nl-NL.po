@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:42\n"
+"PO-Revision-Date: 2023-02-01 00:10\n"
 "Last-Translator: \n"
 "Language-Team: Dutch\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: audio/cog.py:35
 #, docstring
 msgid "A Media player using the PyLav library"
-msgstr "Een mediaspeler met behulp van de PyLav-bibliotheek"
+msgstr "Een mediaspeler met behulp van de PyLav bibliotheek"
 
 #: audio/config_commands.py:41
 #, docstring
@@ -28,9 +28,9 @@ msgid "Notifies PyLav that a Player is having issues.\n\n"
 "        If enough (50%+ of currently playing players) report issues, PyLav will automatically\n"
 "        switch to a different node or restart the current node where possible.\n"
 "        "
-msgstr "Hiermee meldt PyLav dat een speler problemen ondervindt.\n\n"
-"        Als genoeg (50%+ van de spelers die momenteel spelen) problemen melden, zal PyLav automatisch\n"
-"        schakel over naar een ander knooppunt of start het huidige knooppunt waar mogelijk opnieuw op.\n"
+msgstr "Laat PyLav weten dat een Speler problemen heeft.\n\n"
+"        Als genoeg (50%+ van de huidige spelers) rapportageproblemen, PyLav zal automatisch\n"
+"        overschakelen naar een andere node of waar mogelijk de huidige node herstarten.\n"
 "        "
 
 #: audio/config_commands.py:49
@@ -39,7 +39,7 @@ msgstr "Deze server heeft onlangs al gestemd, probeer het over 10 minuten opnieu
 
 #: audio/config_commands.py:60
 msgid "Thank you for your report"
-msgstr "Bedankt voor de melding"
+msgstr "Bedankt voor uw melding"
 
 #: audio/config_commands.py:70
 #, docstring
@@ -48,24 +48,24 @@ msgid "Removes a vote for a Player being down.\n\n"
 "        switch to a different node or restart the current node where possible.\n\n"
 "        This command is only useful if you previously voted for a node to be down and it is now back up.\n"
 "        "
-msgstr "Hiermee verwijdert u een stem voor een speler die down is.\n\n"
-"        Als genoeg (50%+ van de spelers die momenteel spelen) problemen melden, zal PyLav automatisch\n"
-"        schakel over naar een ander knooppunt of start het huidige knooppunt waar mogelijk opnieuw op.\n\n"
-"        Deze opdracht is alleen nuttig als u eerder hebt gestemd voor een knooppunt om down te zijn en het nu weer omhoog is.\n"
+msgstr "Hiermee verwijdert u een stem voor een speler die omlaag is.\n\n"
+"        Als genoeg (50%+ van de huidige spelers) rapportageproblemen, PyLav zal automatisch\n"
+"        overschakelen naar een andere node of waar mogelijk de huidige node herstarten.\n\n"
+"        Deze opdracht is alleen handig als je eerder hebt gestemd op een knooppunt omlaag en het is nu terug naar boven.\n"
 "        "
 
 #: audio/config_commands.py:80
 msgid "There is no active votes for the current backend"
-msgstr "Er wordt niet actief gestemd voor de huidige backend"
+msgstr "Er zijn geen actieve stemmen voor de huidige backend"
 
 #: audio/config_commands.py:90
 msgid "Removed your report"
-msgstr "Uw rapport verwijderd"
+msgstr "Uw rapport is verwijderd"
 
 #: audio/config_commands.py:98
 #, docstring
 msgid "Show the version of the Cog and its PyLav dependencies"
-msgstr "Toon de versie van de Cog en zijn PyLav-afhankelijkheden"
+msgstr "Toon de versie van de Cog en zijn PyLav afhankelijkheden"
 
 #: audio/config_commands.py:114
 msgid "Library/Cog"
@@ -83,30 +83,30 @@ msgstr "Algemene configuratieopties"
 #: audio/config_commands.py:133
 #, docstring
 msgid "Set the maximum volume a server can set"
-msgstr "Het maximale volume instellen dat een server kan instellen"
+msgstr "Stel het maximale volume in dat een server kan instellen"
 
 #: audio/config_commands.py:141 audio/config_commands.py:578
 #: audio/hybrid_commands.py:627
 msgid "Volume must be less than 1000"
-msgstr "Het volume moet kleiner zijn dan 1000"
+msgstr "Volume moet kleiner zijn dan 1000"
 
 #: audio/config_commands.py:149 audio/config_commands.py:586
 #: audio/hybrid_commands.py:635
 msgid "Volume must be greater than 0"
-msgstr "Het volume moet groter zijn dan 0"
+msgstr "Volume moet groter zijn dan 0"
 
 #: audio/config_commands.py:157 audio/config_commands.py:623
 msgid "Max volume set to {volume}%"
-msgstr "Max volume ingesteld op {volume}%"
+msgstr "Max. volume ingesteld op {volume}%"
 
 #: audio/config_commands.py:165 audio/config_commands.py:631
 #, docstring
 msgid "Set whether [botname] should deafen itself when playing"
-msgstr "Instellen of [botname] moet zichzelf doven tijdens het spelen"
+msgstr "Stel in of [botname] zichzelf moet doven tijdens het spelen"
 
 #: audio/config_commands.py:174 audio/config_commands.py:657
 msgid "Deafen set to {deafen}"
-msgstr "Doof ingesteld op {deafen}"
+msgstr "Doven ingesteld op {deafen}"
 
 #: audio/config_commands.py:174 audio/config_commands.py:193
 #: audio/config_commands.py:212 audio/config_commands.py:229
@@ -124,21 +124,21 @@ msgstr "Ingeschakeld"
 #: audio/config_commands.py:719 audio/config_commands.py:753
 #: audio/config_commands.py:817 audio/config_commands.py:880
 msgid "Disabled"
-msgstr "Invalide"
+msgstr "Uitgeschakeld"
 
 #: audio/config_commands.py:182
 #, docstring
 msgid "Set whether the a server is allowed to enabled auto shuffle"
-msgstr "Instellen of een server automatisch schakelen mag inschakelen"
+msgstr "Instellen of een server toegestaan is om automatisch shuffle te activeren"
 
 #: audio/config_commands.py:192 audio/config_commands.py:686
 msgid "Auto-Shuffle set to {shuffle}"
-msgstr "Auto-Shuffle instellen op {shuffle}"
+msgstr "Auto-Shuffle ingesteld op {shuffle}"
 
 #: audio/config_commands.py:202 audio/config_commands.py:696
 #, docstring
 msgid "Set whether [botname] should allow users to shuffle the queue"
-msgstr "Instellen of [botname] moet gebruikers in staat stellen de wachtrij te shufflen"
+msgstr "Stel in of [botname] gebruikers moet toestaan de wachtrij te shufflen"
 
 #: audio/config_commands.py:212 audio/config_commands.py:719
 msgid "Shuffle set to {shuffle}"
@@ -147,16 +147,16 @@ msgstr "Shuffle ingesteld op {shuffle}"
 #: audio/config_commands.py:220
 #, docstring
 msgid "Set whether [botname] should automatically play songs when the queue is empty"
-msgstr "Instellen of [botname] moet automatisch nummers afspelen wanneer de wachtrij leeg is"
+msgstr "Stel in of [botname] automatisch nummers afspeelt wanneer de wachtrij leeg is"
 
 #: audio/config_commands.py:229 audio/config_commands.py:753
 msgid "Auto-Play set to {auto}"
-msgstr "Automatisch afspelen ingesteld op {auto}"
+msgstr "Automatisch spelen ingesteld op {auto}"
 
 #: audio/config_commands.py:237
 #, docstring
 msgid "Set whether [botname] should disconnect from the voice channel"
-msgstr "Instellen of [botname] moet de verbinding met het spraakkanaal verbreken"
+msgstr "Stel in of [botname] de verbinding met het spraakkanaal moet verbreken"
 
 #: audio/config_commands.py:247
 #, docstring
@@ -166,21 +166,21 @@ msgid "Set whether [botname] should disconnect from the voice channel when the q
 "            - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr "Instellen of [botname] moet de verbinding met het spraakkanaal verbreken wanneer de wachtrij leeg is.\n\n"
+msgstr "Stel in of [botname] de verbinding met het spraakkanaal moet verbreken als de wachtrij leeg is.\n\n"
 "        Argumenten:\n"
-"            - `<toggle>': Of [botname] moet de verbinding met het spraakkanaal verbreken wanneer de wachtrij leeg is.\n"
-"            - `<duration>': Hoe lang nadat de wachtrij leeg is, moet de speler worden losgekoppeld. Standaard is 60 seconden.\n"
-"            Accepteert tweede, minuten, uren, dagen, weken (als er geen eenheid is opgegeven, wordt aangenomen dat de duur in seconden wordt gegeven)\n"
+"            - `<toggle>`: Of [botname] de verbinding moet verbreken met het spraakkanaal wanneer de wachtrij leeg is.\n"
+"            - `<duration>`: Hoe langer nadat de wachtrij leeg is, moet de verbinding van de speler worden verbroken. Standaard is 60 seconden.\n"
+"            Accepteert seconde, minuten, uren, dagen, weken (als geen eenheid is opgegeven, de duur wordt aangenomen in seconden)\n"
 "        "
 
 #: audio/config_commands.py:267 audio/config_commands.py:307
 #: audio/config_commands.py:811 audio/config_commands.py:873
 msgid " and players will be disconnected after {duration}"
-msgstr " en spelers worden losgekoppeld na {duration}"
+msgstr " en spelers zullen na {duration} ontkoppeld worden"
 
 #: audio/config_commands.py:272 audio/config_commands.py:816
 msgid "Disconnect from voice channel when queue is empty set to {empty}{extras}"
-msgstr "De verbinding met het spraakkanaal verbreken wanneer de wachtrij leeg is ingesteld op {empty}{extras}"
+msgstr "Verbinding verbreken met spraakkanaal wanneer wachtrij leeg is ingesteld op {empty}{extras}"
 
 #: audio/config_commands.py:288
 #, docstring
@@ -190,101 +190,101 @@ msgid "Set whether [botname] should disconnect from the voice channel when alone
 "            - `<duration>`: How longer after detecting should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr "Instellen of [botname] moet de verbinding met het spraakkanaal verbreken wanneer u alleen bent.\n\n"
+msgstr "Stel in of [botname] de verbinding met het spraakkanaal moet verbreken wanneer alleen.\n\n"
 "        Argumenten:\n"
-"            - `<toggle>': Of [botname] moet de verbinding met het spraakkanaal verbreken wanneer het detecteert dat het alleen is.\n"
-"            - `<duration>': Hoe lang na detectie moet de speler worden losgekoppeld. Standaard is 60 seconden.\n"
-"            Accepteert tweede, minuten, uren, dagen, weken (als er geen eenheid is opgegeven, wordt aangenomen dat de duur in seconden wordt gegeven)\n"
+"            - `<toggle>`: Of [botname] de verbinding moet verbreken met het spraakkanaal wanneer het detecteert dat het alleen is.\n"
+"            - `<duration>`: Hoe langer na detecting moet de verbinding van de speler worden verbroken. Standaard is 60 seconden.\n"
+"            Accepteert seconde, minuten, uren, dagen, weken (als geen eenheid is opgegeven, de duur wordt aangenomen in seconden)\n"
 "        "
 
 #: audio/config_commands.py:313 audio/config_commands.py:879
 msgid "Disconnect from voice channel when alone set to {empty}{extras}"
-msgstr "De verbinding met het spraakkanaal verbreken wanneer deze alleen is ingesteld op {empty}{extras}"
+msgstr "Verbinding verbreken met spraakkanaal wanneer alleen ingesteld op {empty}{extras}"
 
 #: audio/config_commands.py:325
 #, docstring
 msgid "Server configuration options"
-msgstr "Opties voor serverconfiguratie"
+msgstr "Server configuratie opties"
 
 #: audio/config_commands.py:329
 #, docstring
 msgid "Add, remove or show the DJ roles and users for the server"
-msgstr "De DJ-functies en -gebruikers voor de server toevoegen, verwijderen of weergeven"
+msgstr "Toevoegen, verwijderen of tonen van de DJ rollen en gebruikers van de server"
 
 #: audio/config_commands.py:335
 #, docstring
 msgid "Add DJ roles or users to this server"
-msgstr "DJ-functies of -gebruikers toevoegen aan deze server"
+msgstr "Voeg DJ rollen of gebruikers toe aan deze server"
 
 #: audio/config_commands.py:348
 msgid "Added {role} to the DJ roles"
-msgstr "Toegevoegd {role} naar de DJ rollen"
+msgstr "{role} is toegevoegd aan de DJ rollen"
 
 #: audio/config_commands.py:351
 msgid "Added {user} to the DJ users"
-msgstr "Toegevoegd {user} aan de DJ-gebruikers"
+msgstr "{user} is toegevoegd aan de DJ gebruikers"
 
 #: audio/config_commands.py:358
 msgid "Added {roles} to the DJ roles and {users} to the DJ users"
-msgstr "Toegevoegd {roles} naar de DJ rollen en {users} aan de DJ-gebruikers"
+msgstr "{roles} is toegevoegd aan de DJ rollen en {users} aan de DJ gebruikers"
 
 #: audio/config_commands.py:365
 msgid "Added {roles} to the DJ roles"
-msgstr "Toegevoegd {roles} naar de DJ rollen"
+msgstr "{roles} is toegevoegd aan de DJ rollen"
 
 #: audio/config_commands.py:369
 msgid "Added {users} to the DJ users"
-msgstr "Toegevoegd {users} aan de DJ-gebruikers"
+msgstr "{users} is toegevoegd aan de DJ gebruikers"
 
 #: audio/config_commands.py:384
 #, docstring
 msgid "Remove DJ roles or users in this the server"
-msgstr "Dj-functies of gebruikers verwijderen in deze server"
+msgstr "Verwijder de DJ rollen of gebruikers in de server"
 
 #: audio/config_commands.py:416
 msgid "Removed {roles} from the DJ roles and {users} from the DJ users, as well as {ints} from both"
-msgstr "Verwijderd {roles} van de DJ-rollen en {users} van de DJ-gebruikers, evenals {ints} van beide"
+msgstr "Verwijderde {roles} van de DJ rollen en {users} van de DJ gebruikers, evenals {ints} van beide"
 
 #: audio/config_commands.py:424
 msgid "Removed {roles} from the DJ roles and {users} from the DJ users"
-msgstr "Verwijderd {roles} van de DJ-rollen en {users} van de DJ-gebruikers"
+msgstr "Verwijderd {roles} van de DJ rollen en {users} van de DJ gebruikers"
 
 #: audio/config_commands.py:429
 msgid "Removed {roles} from the DJ roles"
-msgstr "Verwijderd {roles} van de DJ-rollen"
+msgstr "{roles} is verwijderd van de DJ rollen"
 
 #: audio/config_commands.py:433
 msgid "Removed {users} from the DJ users"
-msgstr "Verwijderd {users} van de DJ-gebruikers"
+msgstr "Verwijderd {users} van de DJ gebruikers"
 
 #: audio/config_commands.py:437
 msgid "Removed {ints} from the DJ roles and users"
-msgstr "Verwijderd {ints} van de DJ-rollen en gebruikers"
+msgstr "{ints} is verwijderd van de DJ rollen en gebruikers"
 
 #: audio/config_commands.py:452
 msgid "Removed `{id}` from the DJ roles and users"
-msgstr "Verwijderd '{id}' van de DJ rollen en gebruikers"
+msgstr "Verwijderd{id}` van de DJ rollen en gebruikers"
 
 #: audio/config_commands.py:454
 msgid "Removed {role} from the DJ roles"
-msgstr "Verwijderd {role} van de DJ-rollen"
+msgstr "{role} is verwijderd van de DJ rollen"
 
 #: audio/config_commands.py:457
 msgid "Removed {user} from the DJ users"
-msgstr "Verwijderd {user} van de DJ-gebruikers"
+msgstr "Verwijderd {user} van de DJ gebruikers"
 
 #: audio/config_commands.py:463
 #, docstring
 msgid "List the DJ roles and users for the server"
-msgstr "De DJ-functies en -gebruikers voor de server weergeven"
+msgstr "Laat de DJ rollen en gebruikers zien voor de server"
 
 #: audio/config_commands.py:514
 msgid "There are no DJ roles or users set in {server}"
-msgstr "Er zijn geen DJ-rollen of gebruikers ingesteld {server}"
+msgstr "Er zijn geen DJ rollen of gebruikers ingesteld in {server}"
 
 #: audio/config_commands.py:525 audio/config_commands.py:530
 msgid "DJ Roles"
-msgstr "DJ Rollen"
+msgstr "DJ rollen"
 
 #: audio/config_commands.py:536 audio/config_commands.py:541
 msgid "DJ Users"
@@ -293,51 +293,51 @@ msgstr "DJ-gebruikers"
 #: audio/config_commands.py:549
 #, docstring
 msgid "Clear the DJ roles and users for the server"
-msgstr "Wis de DJ-functies en gebruikers voor de server"
+msgstr "Leeg de DJ rollen en gebruikers voor de server"
 
 #: audio/config_commands.py:561
 msgid "Cleared the DJ roles and users for {server}"
-msgstr "De DJ-rollen en gebruikers gewist voor {server}"
+msgstr "De DJ rollen en gebruikers gewist voor {server}"
 
 #: audio/config_commands.py:569
 #, docstring
 msgid "Set the maximum volume a user can set"
-msgstr "Het maximale volume instellen dat een gebruiker kan instellen"
+msgstr "Stel het maximale volume in dat een gebruiker kan instellen"
 
 #: audio/config_commands.py:595 audio/config_commands.py:611
 msgid "Volume must be between 0 and {volume}%"
-msgstr "Volume moet tussen 0 en {volume}%"
+msgstr "Volume moet tussen 0 en {volume} % zijn"
 
 #: audio/config_commands.py:640
 msgid "My owner told me to always deafen myself"
-msgstr "Mijn baasje zei dat ik mezelf altijd doof moest houden."
+msgstr "Mijn eigenaar zei dat ik altijd mezelf doof moest houden"
 
 #: audio/config_commands.py:665
 #, docstring
 msgid "Set whether [botname] should shuffle the queue after every new song added"
-msgstr "Instellen of [botname] zou de wachtrij moeten door elkaar schudden na elk nieuw nummer dat is toegevoegd"
+msgstr "Stel in of [botname] de wachtrij moet schudden nadat elk nieuw nummer is toegevoegd"
 
 #: audio/config_commands.py:673
 msgid "Auto-Shuffle is globally disabled"
-msgstr "Auto-Shuffle is wereldwijd uitgeschakeld"
+msgstr "Auto-Shuffle is globaal uitgeschakeld"
 
 #: audio/config_commands.py:706
 msgid "Shuffle is globally disabled"
-msgstr "Shuffle is wereldwijd uitgeschakeld"
+msgstr "Shuffle is globaal uitgeschakeld"
 
 #: audio/config_commands.py:727
 #, docstring
 msgid "Set whether the bot should automatically play songs when the queue is empty"
-msgstr "Instellen of de bot automatisch nummers moet afspelen wanneer de wachtrij leeg is"
+msgstr "Instellen of de bot automatisch nummers afspeelt wanneer de wachtrij leeg is"
 
 #: audio/config_commands.py:736
 msgid "Auto-Play is globally disabled"
-msgstr "Automatisch afspelen is wereldwijd uitgeschakeld"
+msgstr "Auto-Play is globaal uitgeschakeld"
 
 #: audio/config_commands.py:761
 #, docstring
 msgid "Set whether the bot should disconnect from the voice channel"
-msgstr "Instellen of de bot de verbinding met het spraakkanaal moet verbreken"
+msgstr "Stel in of de bot de verbinding met het spraakkanaal moet verbreken"
 
 #: audio/config_commands.py:771
 #, docstring
@@ -349,18 +349,18 @@ msgid "Set whether the bot should disconnect from the voice channel when the que
 "            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be\n"
 "            given in seconds)\n"
 "        "
-msgstr "Stel in of de bot de verbinding met het spraakkanaal moet verbreken wanneer de wachtrij leeg is.\n\n"
+msgstr "Stel in of de bot de verbinding met het spraakkanaal moet verbreken als de wachtrij leeg is.\n\n"
 "        Argumenten:\n"
-"            - `<toggle>': Of de bot de verbinding met het spraakkanaal moet verbreken wanneer de wachtrij leeg is.\n"
-"            - `<duration>': Hoe lang nadat de wachtrij leeg is, moet de speler worden losgekoppeld. Standaard is 60\n"
-"            Seconden.\n"
-"            Accepteert seconden, minuten, uren, dagen, weken (als er geen eenheid is opgegeven, wordt aangenomen dat de duur\n"
+"            -<toggle>`: Of de bot de verbinding moet verbreken met het spraakkanaal wanneer de wachtrij leeg is.\n"
+"            - `<duration>`: Hoe langer nadat de wachtrij leeg is moet de verbinding van de speler worden verbroken. Standaard is 60\n"
+"            seconden.\n"
+"            Accepteert seconden, minuten, uren, dagen, weken (als er geen eenheid is opgegeven, de duur wordt aangenomen\n"
 "            gegeven in seconden)\n"
 "        "
 
 #: audio/config_commands.py:789
 msgid "Disconnect when the queue finished is globally enabled and players will be disconnected after {delta}"
-msgstr "De verbinding verbreken wanneer de wachtrij is voltooid, is globaal ingeschakeld en spelers worden verbroken nadat {delta}"
+msgstr "Verbreek de verbinding wanneer de wachtrij volledig is ingeschakeld en spelers worden verbroken na {delta}"
 
 #: audio/config_commands.py:832
 #, docstring
@@ -372,71 +372,71 @@ msgid "Set whether the bot should disconnect from the voice channel when alone.\
 "            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be\n"
 "            given in seconds)\n"
 "        "
-msgstr "Stel in of de bot de verbinding met het spraakkanaal moet verbreken wanneer hij alleen is.\n\n"
+msgstr "Stel in of de bot de verbinding met het spraakkanaal moet verbreken wanneer hij alleen.\n\n"
 "        Argumenten:\n"
-"            - `<toggle>': Of de bot de verbinding met het spraakkanaal moet verbreken wanneer deze detecteert dat dit het geval is\n"
-"            alleen.\n"
-"            - `<duration>': Hoe lang na detectie moet de speler worden losgekoppeld. Standaard is 60 seconden.\n"
-"            Accepteert seconden, minuten, uren, dagen, weken (als er geen eenheid is opgegeven, wordt aangenomen dat de duur\n"
+"            -<toggle>`: Of de bot de verbinding moet verbreken van het spraakkanaal wanneer het detecteert dat het alleen\n"
+"            is.\n"
+"            - `<duration>`: Hoe langer na detecting moet de verbinding van de speler worden verbroken. Standaard is 60 seconden.\n"
+"            Accepteert seconden, minuten, uren, dagen, weken (als er geen eenheid is opgegeven, de duur wordt aangenomen\n"
 "            gegeven in seconden)\n"
 "        "
 
 #: audio/config_commands.py:851
 msgid "Disconnect when alone is globally enabled and players will be disconnected after {delta}"
-msgstr "De verbinding verbreken wanneer alleen is wereldwijd ingeschakeld en spelers worden verbroken na {delta}"
+msgstr "Verbreek de verbinding wanneer alleen ingeschakeld is en spelers zullen verbroken worden na {delta}"
 
 #: audio/config_commands.py:889
 #, docstring
 msgid "Sets the Auto-Play playlist"
-msgstr "De afspeellijst automatisch afspelen instellen"
+msgstr "Stelt de Auto-Play afspeellijst in"
 
 #: audio/config_commands.py:906
 msgid "Auto-Play playlist set to {playlist}"
-msgstr "Afspeellijst automatisch afspelen ingesteld op {playlist}"
+msgstr "Auto-Play afspeellijst ingesteld op {playlist}"
 
 #: audio/config_commands.py:916
 #, docstring
 msgid "Set the channel locks"
-msgstr "De kanaalvergrendelingen instellen"
+msgstr "Kanaalvergrendelingen instellen"
 
 #: audio/config_commands.py:922
 #, docstring
 msgid "Set the channel lock for commands"
-msgstr "De kanaalvergrendeling voor opdrachten instellen"
+msgstr "Stel het kanaalvergrendeling voor opdrachten in"
 
 #: audio/config_commands.py:937
 msgid "I don't have permission to send message or send embed links or read messages in {channel}"
-msgstr "Ik ben niet gemachtigd om berichten te verzenden of koppelingen insluiten te verzenden of berichten te lezen in {channel}"
+msgstr "Ik heb geen toestemming om berichten te verzenden of ingesloten links of berichten te lezen in {channel}"
 
 #: audio/config_commands.py:954
 msgid "I will only listen to commands in {channel}"
-msgstr "Ik luister alleen naar commando's in {channel}"
+msgstr "Ik zal alleen luisteren naar commando's in {channel}"
 
 #: audio/config_commands.py:962
 msgid "I will listen to commands in all channels I can see"
-msgstr "Ik luister naar commando's in alle kanalen die ik kan zien"
+msgstr "Ik zal luisteren naar commando's in alle kanalen die ik kan zien"
 
 #: audio/config_commands.py:970
 #, docstring
 msgid "Set the channel lock for voice channels"
-msgstr "De kanaalvergrendeling voor spraakkanalen instellen"
+msgstr "Kanaalvergrendeling voor spraakkanalen instellen"
 
 #: audio/config_commands.py:982 audio/hybrid_commands.py:107
 #: audio/player_commands.py:144
 msgid "I don't have permission to connect or speak in {channel}"
-msgstr "Ik heb geen toestemming om verbinding te maken of te spreken in {channel}"
+msgstr "Ik heb geen toestemming om te verbinden of te spreken in {channel}"
 
 #: audio/config_commands.py:1000
 msgid "I will only be allowed to join {channel}"
-msgstr "Ik mag alleen meedoen {channel}"
+msgstr "Ik mag alleen lid worden van {channel}"
 
 #: audio/config_commands.py:1007
 msgid "I'm free to join any VC"
-msgstr "Ik ben vrij om lid te worden van elke VC"
+msgstr "Ik ben vrij om lid te worden van een VC"
 
 #: audio/context_menus.py:27 audio/context_menus.py:143
 msgid "I can't play songs in DMs"
-msgstr "Ik kan geen nummers afspelen in DM's"
+msgstr "Ik kan geen nummers afspelen in DM"
 
 #: audio/context_menus.py:38 audio/context_menus.py:154
 msgid "You need to be a DJ to play tracks"
@@ -444,7 +444,7 @@ msgstr "Je moet een DJ zijn om nummers af te spelen"
 
 #: audio/context_menus.py:55 audio/context_menus.py:169
 msgid "This command is not available in this channel. Please use {channel}"
-msgstr "Deze opdracht is niet beschikbaar in dit kanaal. Gelieve {channel}"
+msgstr "Deze opdracht is niet beschikbaar in dit kanaal. Gebruik {channel}"
 
 #: audio/context_menus.py:83
 msgid "I couldn't find any valid matches in the message"
@@ -452,51 +452,51 @@ msgstr "Ik kon geen geldige overeenkomsten vinden in het bericht"
 
 #: audio/context_menus.py:94
 msgid "I found multiple valid matches in the message"
-msgstr "Ik heb meerdere geldige overeenkomsten gevonden in het bericht"
+msgstr "Ik vond meerdere geldige overeenkomsten in het bericht"
 
 #: audio/context_menus.py:103
 msgid "I found a single valid match in the message"
-msgstr "Ik heb één geldige overeenkomst gevonden in het bericht"
+msgstr "Ik heb één geldige match gevonden in het bericht"
 
 #: audio/context_menus.py:186
 msgid "I couldn't find any supported activity {user} is taking part in"
-msgstr "Ik kon geen ondersteunde activiteit vinden {user} neemt deel aan"
+msgstr "Ik kon geen enkele ondersteunde activiteit vinden waaraan {user} deelneemt"
 
 #: audio/context_menus.py:218
 msgid "Couldn't map {user}'s Apple Music track to a valid query"
-msgstr "Kan niet in kaart brengen {user}'s Apple Music track naar een geldige query"
+msgstr "Kan Apple Music track van {user}niet in een geldige zoekopdracht opnemen"
 
 #: audio/context_menus.py:234
 msgid "Couldn't find any tracks matching {query}"
-msgstr "Kan geen tracks vinden die overeenkomen {query}"
+msgstr "Kon geen nummers vinden die overeenkomen met {query}"
 
 #: audio/context_menus.py:249
 msgid "Couldn't figure out what {user} is listening to"
-msgstr "Kon niet achterhalen wat {user} luistert naar"
+msgstr "Kon niet uitvinden waar {user} naar luistert"
 
 #: audio/hybrid_commands.py:83
 msgid "You need to provide a query to play"
-msgstr "U moet een query opgeven om af te spelen"
+msgstr "U moet een query opgeven om te kunnen spelen"
 
 #: audio/hybrid_commands.py:97 audio/player_commands.py:134
 msgid "You must be in a voice channel to allow me to connect"
-msgstr "Je moet in een spraakkanaal zijn om me in staat te stellen verbinding te maken"
+msgstr "Je moet in een spraakkanaal zitten om me toe te staan verbinding te maken"
 
 #: audio/hybrid_commands.py:154 audio/player_commands.py:225
 msgid "{track_count} tracks enqueued"
-msgstr "{track_count} tracks enqueued"
+msgstr "{track_count} tracks in wachtrij"
 
 #: audio/hybrid_commands.py:162 audio/player_commands.py:233
 msgid "{track} enqueued"
-msgstr "{track} enqueued"
+msgstr "{track} in wachtrij"
 
 #: audio/hybrid_commands.py:173 audio/player_commands.py:244
 msgid "No tracks were found for your query"
-msgstr "Er zijn geen tracks gevonden voor uw zoekopdracht"
+msgstr "Er zijn geen nummers gevonden voor uw zoekopdracht"
 
 #: audio/hybrid_commands.py:236
 msgid "You need to be in a voice channel if you don't specify which channel I need to connect to"
-msgstr "Je moet in een spraakkanaal zijn als je niet opgeeft met welk kanaal ik verbinding moet maken"
+msgstr "Je moet in een spraakkanaal zitten als je niet opgeeft met welk kanaal ik verbinding moet maken"
 
 #: audio/hybrid_commands.py:248
 msgid "I don't have permission to connect to that channel"
@@ -504,7 +504,7 @@ msgstr "Ik heb geen toestemming om verbinding te maken met dat kanaal"
 
 #: audio/hybrid_commands.py:252
 msgid "I don't have permission to speak in {channel}"
-msgstr "Ik heb geen toestemming om in te spreken {channel}"
+msgstr "Ik heb geen toestemming om te spreken in {channel}"
 
 #: audio/hybrid_commands.py:255
 msgid "I don't have permission to connect to {channel}"
@@ -512,11 +512,11 @@ msgstr "Ik heb geen toestemming om verbinding te maken met {channel}"
 
 #: audio/hybrid_commands.py:268
 msgid "You don't have permission to connect to {channel}"
-msgstr "U bent niet gemachtigd om verbinding te maken met {channel}"
+msgstr "Je hebt geen toestemming om te verbinden met {channel}"
 
 #: audio/hybrid_commands.py:285
 msgid "I'm forced to only join {channel}"
-msgstr "Ik ben gedwongen om alleen mee te doen {channel}"
+msgstr "Ik ben gedwongen alleen toe te treden {channel}"
 
 #: audio/hybrid_commands.py:293
 msgid "Connected to {channel}"
@@ -534,11 +534,11 @@ msgstr "Geen speler gedetecteerd"
 #: audio/hybrid_commands.py:320 audio/hybrid_commands.py:350
 #: audio/hybrid_commands.py:390
 msgid "Player is not currently playing anything"
-msgstr "Speler speelt momenteel niets"
+msgstr "Speler speelt momenteel niets af"
 
 #: audio/hybrid_commands.py:358
 msgid "Skipped - {track}"
-msgstr "Overgeslagen- {track}"
+msgstr "Overgeslagen - {track}"
 
 #: audio/hybrid_commands.py:397
 msgid "Player stopped"
@@ -546,7 +546,7 @@ msgstr "Speler gestopt"
 
 #: audio/hybrid_commands.py:425
 msgid "Disconnected from {channel}"
-msgstr "Verbinding verbroken van {channel}"
+msgstr "Losgekoppeld van {channel}"
 
 #: audio/hybrid_commands.py:477
 msgid "There is nothing in the queue"
@@ -554,19 +554,19 @@ msgstr "Er staat niets in de wachtrij"
 
 #: audio/hybrid_commands.py:485
 msgid "You are not allowed to shuffle the queue"
-msgstr "Het is niet toegestaan om de wachtrij door elkaar te schudden"
+msgstr "Het is niet toegestaan om de wachtrij te schudden"
 
 #: audio/hybrid_commands.py:493
 msgid "{queue_size} tracks shuffled"
-msgstr "{queue_size} tracks geschud"
+msgstr "{queue_size} nummers verschoven"
 
 #: audio/hybrid_commands.py:525
 msgid "Repeating the queue"
-msgstr "De wachtrij herhalen"
+msgstr "Herhaal de wachtrij"
 
 #: audio/hybrid_commands.py:528
 msgid "Repeating disabled"
-msgstr "Herhalen uitgeschakeld"
+msgstr "Herhalingen uitgeschakeld"
 
 #: audio/hybrid_commands.py:531
 msgid "Repeating {track}"
@@ -578,11 +578,11 @@ msgstr "huidige track"
 
 #: audio/hybrid_commands.py:558
 msgid "Player already paused, did you mean to run `/resume`"
-msgstr "Speler al gepauzeerd, bedoelde je '/hervatten' uit te voeren"
+msgstr "Speler al gepauzeerd, wilde je `/resume` uitvoeren"
 
 #: audio/hybrid_commands.py:560
 msgid "Player already paused, did you mean to run `{prefix}{command}`"
-msgstr "Speler al gepauzeerd, bedoelde je te rennen '{prefix}{command}`"
+msgstr "Speler is al gepauzeerd, wilde je `{prefix}{command} ` uitvoeren"
 
 #: audio/hybrid_commands.py:571
 msgid "Player paused"
@@ -590,11 +590,11 @@ msgstr "Speler gepauzeerd"
 
 #: audio/hybrid_commands.py:593
 msgid "Player already resumed, did you mean to run `/pause`"
-msgstr "Speler al hervat, bedoelde je '/pauze' uit te voeren"
+msgstr "Speler al hervat, wilde je `/pauze` uitvoeren"
 
 #: audio/hybrid_commands.py:595
 msgid "Player already resumed, did you mean to run `{prefix}{command}`"
-msgstr "Speler al hervat, bedoelde je te lopen '{prefix}{command}`"
+msgstr "Speler is al hervat, wilde je `{prefix}{command} ` uitvoeren"
 
 #: audio/hybrid_commands.py:606
 msgid "Player resumed"
@@ -602,23 +602,23 @@ msgstr "Speler hervat"
 
 #: audio/hybrid_commands.py:650
 msgid "Volume cannot be higher than {max_volume}"
-msgstr "Volume mag niet hoger zijn dan {max_volume}"
+msgstr "Volume kan niet hoger zijn dan {max_volume}"
 
 #: audio/hybrid_commands.py:659 audio/utility_commands.py:62
 msgid "Player volume set to {volume}%"
-msgstr "Spelervolume ingesteld op {volume}%"
+msgstr "Speler volume ingesteld op {volume}%"
 
 #: audio/hybrid_commands.py:693
 msgid "Nothing playing"
-msgstr "Niets spelen"
+msgstr "Niets afgespeeld"
 
 #: audio/hybrid_commands.py:702 audio/hybrid_commands.py:711
 msgid "Unable to seek track"
-msgstr "Kan geen spoor zoeken"
+msgstr "Kan geen track zoeken"
 
 #: audio/hybrid_commands.py:703
 msgid "Can't seek on a stream"
-msgstr "Kan niet zoeken op een stream"
+msgstr "Kan niet zoeken in een stream"
 
 #: audio/hybrid_commands.py:720
 msgid "Cannot seek when the player is paused"
@@ -626,11 +626,11 @@ msgstr "Kan niet zoeken wanneer de speler is gepauzeerd"
 
 #: audio/hybrid_commands.py:733
 msgid "Moved {seconds}s to 00:00:00"
-msgstr "Ontroerd {seconds}s tot 00:00:00"
+msgstr "Verplaatst {seconds}s naar 00:00"
 
 #: audio/hybrid_commands.py:740
 msgid "Moved {seconds}s to {time}"
-msgstr "Ontroerd {seconds}s tot {time}"
+msgstr "{seconds}s verplaatst naar {time}"
 
 #: audio/hybrid_commands.py:761
 msgid "Moved to {time}"
@@ -638,11 +638,11 @@ msgstr "Verplaatst naar {time}"
 
 #: audio/hybrid_commands.py:795
 msgid "No previous in player history"
-msgstr "Geen verleden in de geschiedenis van spelers"
+msgstr "Geen eerdere in spelersgeschiedenis"
 
 #: audio/hybrid_commands.py:803
 msgid "Playing previous track: {track}"
-msgstr "Vorig nummer afspelen: {track}"
+msgstr "Vorige nummer wordt afgespeeld: {track}"
 
 #: audio/player_commands.py:30
 msgid "Plays the specified track in the queue"
@@ -654,15 +654,15 @@ msgstr "Wachtrij is leeg"
 
 #: audio/player_commands.py:59 audio/player_commands.py:282
 msgid "Track index must be between 1 and {size}"
-msgstr "Track index moet tussen 1 en {size}"
+msgstr "Track index moet tussen 1 en {size} liggen"
 
 #: audio/player_commands.py:75 audio/player_commands.py:295
 msgid "There is no track in position {position}"
-msgstr "Er is geen spoor in positie {position}"
+msgstr "Er is geen track in positie {position}"
 
 #: audio/player_commands.py:85
 msgid "{track} will play after {current} finishes ({eta})"
-msgstr "{track} speelt na {current} afwerkingen ({eta})"
+msgstr "{track} wordt afgespeeld na voltooiing van {current} ({eta})"
 
 #: audio/player_commands.py:103
 msgid "{track} will start now\n"
@@ -673,7 +673,7 @@ msgstr "{track} start nu\n"
 #: audio/player_commands.py:121
 #, docstring
 msgid "Enqueue a track at the top of the queue"
-msgstr "Volg een track bovenaan de wachtrij"
+msgstr "Zet een nummer bovenaan de wachtrij in de wachtrij"
 
 #: audio/player_commands.py:254
 #, docstring
@@ -683,24 +683,24 @@ msgid "\n"
 "        "
 msgstr "\n"
 "        Verwijder de opgegeven track uit de wachtrij.\n\n"
-"        Als u het argument 'remove_duplicates' opgeeft, worden alle tracks die hetzelfde zijn als uw URL of de indextrack verwijderd.\n"
+"        Als je het `remove_duplicates` argument opgeeft, alle nummers die hetzelfde zijn als uw URL of de index track zal worden verwijderd.\n"
 "        "
 
 #: audio/player_commands.py:325
 msgid "{track} not found in queue"
-msgstr "{track} niet gevonden in wachtrij"
+msgstr "{track} niet gevonden in de wachtrij"
 
 #: audio/player_commands.py:335
 msgid "Removed {times} {entry_plural} of {track} from the queue"
-msgstr "Verwijderd {times} {entry_plural} van {track} uit de wachtrij"
+msgstr "{times} {entry_plural} van {track} verwijderd uit de wachtrij"
 
 #: audio/player_commands.py:338
 msgid "entry"
-msgstr "ingang"
+msgstr "invoer"
 
 #: audio/player_commands.py:338
 msgid "entries"
-msgstr "Posten"
+msgstr "invoergegevens"
 
 #: audio/slash_commands.py:47
 #, docstring
@@ -713,7 +713,7 @@ msgstr "Je hebt niet iets geselecteerd om te spelen"
 
 #: audio/slash_commands.py:105
 msgid "Searching {service}"
-msgstr "Zoeken {service}"
+msgstr "{service} zoeken"
 
 #: audio/slash_commands.py:121 audio/slash_commands.py:132
 msgid "No results found on {service}"
@@ -725,9 +725,9 @@ msgstr "Niet verbonden met een spraakkanaal"
 
 #: audio/utility_commands.py:43
 msgid "Volume limit reached, player volume set to {volume}%"
-msgstr "Volumelimiet bereikt, spelervolume ingesteld op {volume}%"
+msgstr "Volumelimiet bereikt, zet speler volume op {volume}%"
 
 #: audio/utility_commands.py:54
 msgid "Minimum volume reached, player volume set to 0%"
-msgstr "Minimaal volume bereikt, spelervolume ingesteld op 0%"
+msgstr "Minimum volume bereikt, speler volume ingesteld op 0%"
 

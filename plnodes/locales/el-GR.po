@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:42\n"
+"PO-Revision-Date: 2023-02-01 00:10\n"
 "Last-Translator: \n"
 "Language-Team: Greek\n"
 "MIME-Version: 1.0\n"
@@ -20,12 +20,12 @@ msgstr ""
 #: plnodes/cog.py:33
 #, docstring
 msgid "Manage the nodes used by PyLav"
-msgstr "Διαχειριστείτε τους κόμβους που χρησιμοποιούνται από το PyLav"
+msgstr "Διαχείριση των κόμβων που χρησιμοποιούνται από την PyLav"
 
 #: plnodes/cog.py:44
 #, docstring
 msgid "Configure PyLav Nodes"
-msgstr "Ρύθμιση παραμέτρων κόμβων PyLav"
+msgstr "Ρύθμιση Κόμβων PyLav"
 
 #: plnodes/cog.py:48
 #, docstring
@@ -47,7 +47,7 @@ msgstr "Προσθήκη κόμβου στο PyLav"
 
 #: plnodes/cog.py:88
 msgid "Let's add a node to PyLav!"
-msgstr "Ας προσθέσουμε έναν κόμβο στο PyLav!"
+msgstr "Ας προσθέσουμε έναν κόμβο στην PyLav!"
 
 #: plnodes/cog.py:89
 msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
@@ -61,17 +61,17 @@ msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
 "(**9**){space} - Set the connection timeout.\n"
 "(**10**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr "(**1**){space} - Εφαρμόστε αλλαγές και προσθέστε τον κόμβο στο PyLav.\n"
-"(**2**){space} - Ακυρώστε τυχόν αλλαγές που έγιναν και κλείστε το μενού.\n"
-"(**3**){space} - Εναλλαγή μεταξύ των λειτουργιών μόνο αναζήτησης και αναζήτησης και αναπαραγωγής.\n"
-"(**4**){space} - Εναλλαγή μεταξύ ενεργοποίησης και απενεργοποίησης SSL.\n"
-"(**5**){space} - Προσθέστε ένα όνομα στον κόμβο.\n"
+msgstr "(**1**){space} - Εφαρμογή αλλαγών και προσθήκη του κόμβου στο PyLav.\n"
+"(**2**){space} - Ακύρωση τυχόν αλλαγών που έγιναν και κλείσιμο του μενού.\n"
+"(**3**){space} - Εναλλαγή μεταξύ λειτουργιών αναζήτησης και αναπαραγωγής.\n"
+"(**4**){space} - Εναλλαγή μεταξύ SSL και απενεργοποίησης.\n"
+"(**5**){space} - Προσθήκη ονόματος στον κόμβο.\n"
 "(**6**){space} - Προσθέστε τη διεύθυνση κεντρικού υπολογιστή του κόμβου.\n"
 "(**7**){space} - Προσθέστε τη θύρα που χρησιμοποιεί ο κόμβος.\n"
 "(**8**){space} - Ορίστε τον κωδικό πρόσβασης για τον κόμβο.\n"
 "(**9**){space} - Ορίστε το χρονικό όριο σύνδεσης.\n"
-"(**10**) - Επιλέξτε ποιες πηγές θα απενεργοποιήσετε για αυτόν τον κόμβο (μπορεί να επιλεγεί πολλαπλές).\n"
-"Εάν αλληλεπιδράσετε με ένα κουμπί πολλές φορές, θα τεθεί σε ισχύ μόνο η τελευταία αλληλεπίδραση.\n\n\n"
+"(**10**) - Επιλέξτε ποιες πηγές θα απενεργοποιήσετε για αυτόν τον κόμβο (μπορεί να επιλεγεί πολλαπλάσιο).\n"
+"Εάν αλληλεπιδράσετε με ένα κουμπί πολλές φορές, μόνο η τελευταία αλληλεπίδραση θα τεθεί σε ισχύ.\n\n\n"
 
 #: plnodes/cog.py:137
 msgid "Added node {name} with the following settings:\n"
@@ -83,13 +83,13 @@ msgid "Added node {name} with the following settings:\n"
 "SSL: {ssl}\n"
 "Disabled Sources: {disabled_sources}\n"
 msgstr "Προστέθηκε κόμβος {name} με τις ακόλουθες ρυθμίσεις:\n"
-"Κεντρικός υπολογιστής: {host}\n"
-"Λιμάνι: {port}\n"
-"Κωδικός πρόσβασης: {password}\n"
-"Λήξη χρονικού ορίου συνέχισης: {resume_timeout}\n"
-"Αναζήτηση μόνο: {search_only}\n"
-"ΥΓ: {ssl}\n"
-"Πηγές ατόμων με ειδικές ανάγκες: {disabled_sources}\n"
+"Host: {host}\n"
+"Θύρα: {port}\n"
+"Κωδικός: {password}\n"
+"Συνέχιση Timeout: {resume_timeout}\n"
+"Αναζήτηση Μόνο: {search_only}\n"
+"SSL: {ssl}\n"
+"Πηγές Απενεργοποιημένες: {disabled_sources}\n"
 
 #: plnodes/cog.py:168 plnodes/cog.py:175
 msgid "Unable to add this node"
@@ -98,21 +98,21 @@ msgstr "Δεν είναι δυνατή η προσθήκη αυτού του κ�
 #: plnodes/cog.py:181
 #, docstring
 msgid "Remove a node from a PyLav instance"
-msgstr "Κατάργηση ενός κόμβου από μια παρουσία PyLav"
+msgstr "Αφαίρεση ενός κόμβου από μια παρουσία PyLav"
 
 #: plnodes/cog.py:193
 msgid "{name} is managed by PyLav and cannot be removed"
-msgstr "{name} διαχειρίζεται η PyLav και δεν είναι δυνατή η κατάργησή του"
+msgstr "{name} διαχειρίζεται η PyLav και δεν μπορεί να αφαιρεθεί"
 
 #: plnodes/cog.py:208
 msgid "Removed node {name}.\n\n"
 "{data}"
-msgstr "Αφαιρέθηκε ο κόμβος {name}.\n\n"
+msgstr "Αφαιρέθηκε κόμβος {name}.\n\n"
 "{data}"
 
 #: plnodes/cog.py:216
 msgid "Removed node {name}, a DM was sent to you with the node details in case you wish to re-add it"
-msgstr "Αφαιρέθηκε ο κόμβος {name}, σας στάλθηκε ένα DM με τα στοιχεία του κόμβου σε περίπτωση που θέλετε να το προσθέσετε ξανά"
+msgstr "Αφαιρέθηκε ο κόμβος {name}, ένα DM σας στάλθηκε με τις λεπτομέρειες του κόμβου σε περίπτωση που θέλετε να τον ξαναπροσθέσετε"
 
 #: plnodes/cog.py:226
 #, docstring
@@ -137,27 +137,27 @@ msgid "(**1**){space} - Cancel any changes made and close the menu.\n"
 "(**15**) - Remove this node.\n"
 "(**16**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr "(**1**){space} - Ακυρώστε τυχόν αλλαγές που έγιναν και κλείστε το μενού.\n"
-"(**6**){space} - Εμφάνιση πηγών ενεργοποιημένων για αυτόν τον κόμβο.\n"
-"(**7**){space} - Εφαρμόστε αλλαγές και προσθέστε τον κόμβο στο PyLav.\n"
-"(**8**){space} - Εναλλαγή μεταξύ των λειτουργιών μόνο αναζήτησης και αναζήτησης και αναπαραγωγής.\n"
-"(**9**){space} - Εναλλαγή μεταξύ ενεργοποίησης και απενεργοποίησης SSL.\n"
+msgstr "(**1**){space} - Ακύρωση τυχόν αλλαγών που έγιναν και κλείσιμο του μενού.\n"
+"(**6**){space} - Ενεργοποίηση πηγών για αυτόν τον κόμβο.\n"
+"(**7**){space} - Εφαρμογή αλλαγών και προσθήκη του κόμβου στην PyLav.\n"
+"(**8**){space} - Εναλλαγή μεταξύ λειτουργιών αναζήτησης και αναπαραγωγής.\n"
+"(**9**){space} - Εναλλαγή μεταξύ SSL και ανενεργού.\n"
 "(**10**) - Προσθέστε ένα όνομα στον κόμβο.\n"
 "(**11**) - Προσθέστε τη διεύθυνση κεντρικού υπολογιστή του κόμβου.\n"
 "(**12**) - Προσθέστε τη θύρα που χρησιμοποιεί ο κόμβος.\n"
 "(**13**) - Ορίστε τον κωδικό πρόσβασης για τον κόμβο.\n"
 "(**14**) - Ορίστε το χρονικό όριο σύνδεσης.\n"
-"(**15**) - Καταργήστε αυτόν τον κόμβο.\n"
-"(**16**) - Επιλέξτε ποιες πηγές θα απενεργοποιήσετε για αυτόν τον κόμβο (μπορεί να επιλεγεί πολλαπλή).\n"
-"Εάν αλληλεπιδράσετε με ένα κουμπί πολλές φορές, θα τεθεί σε ισχύ μόνο η τελευταία αλληλεπίδραση.\n\n\n"
+"(**15**) - Αφαιρέστε αυτόν τον κόμβο.\n"
+"(**16**) - Επιλέξτε ποιες πηγές θα απενεργοποιήσετε για αυτόν τον κόμβο (μπορεί να επιλεγεί πολλαπλάσιο).\n"
+"Εάν αλληλεπιδράσετε με ένα κουμπί πολλές φορές, μόνο η τελευταία αλληλεπίδραση θα τεθεί σε ισχύ.\n\n\n"
 
 #: plnodes/cog.py:268
 msgid "{name} is managed by PyLav and cannot be modified with this command"
-msgstr "{name} διαχειρίζεται η PyLav και δεν είναι δυνατή η τροποποίησή της με αυτήν την εντολή"
+msgstr "Η διαχείριση του {name} γίνεται από την PyLav και δεν μπορεί να τροποποιηθεί με αυτή την εντολή"
 
 #: plnodes/cog.py:280
 msgid "Removed node {name}"
-msgstr "Αφαιρέθηκε ο κόμβος {name}"
+msgstr "Ο κόμβος {name} που αφαιρέθηκε"
 
 #: plnodes/cog.py:316
 msgid "Changed node {name} to the following settings:\n"
@@ -168,21 +168,21 @@ msgid "Changed node {name} to the following settings:\n"
 "Search Only: {search_only}\n"
 "SSL: {ssl}\n"
 "Disabled Sources: {disabled_sources}\n"
-msgstr "Αλλαγή κόμβου {name} στις ακόλουθες ρυθμίσεις:\n"
-"Κεντρικός υπολογιστής: {host}\n"
-"Λιμάνι: {port}\n"
-"Κωδικός πρόσβασης: {password}\n"
-"Λήξη χρονικού ορίου συνέχισης: {resume_timeout}\n"
-"Αναζήτηση μόνο: {search_only}\n"
-"ΥΓ: {ssl}\n"
-"Πηγές ατόμων με ειδικές ανάγκες: {disabled_sources}\n"
+msgstr "Άλλαξε τον κόμβο {name} στις ακόλουθες ρυθμίσεις:\n"
+"Host: {host}\n"
+"Θύρα: {port}\n"
+"Κωδικός: {password}\n"
+"Συνέχιση Timeout: {resume_timeout}\n"
+"Αναζήτηση Μόνο: {search_only}\n"
+"SSL: {ssl}\n"
+"Πηγές Απενεργοποιημένες: {disabled_sources}\n"
 
 #: plnodes/cog.py:343
 #, docstring
 msgid "List all nodes used by PyLav"
-msgstr "Απαριθμήστε όλους τους κόμβους που χρησιμοποιούνται από το PyLav"
+msgstr "Λίστα όλων των κόμβων που χρησιμοποιούνται από το PyLav"
 
 #: plnodes/cog.py:353
 msgid "No nodes added to PyLav"
-msgstr "Δεν προστέθηκαν κόμβοι στο PyLav"
+msgstr "Δεν έχουν προστεθεί κόμβοι στο PyLav"
 

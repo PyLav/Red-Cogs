@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:42\n"
+"PO-Revision-Date: 2023-02-01 00:10\n"
 "Last-Translator: \n"
 "Language-Team: Greek\n"
 "MIME-Version: 1.0\n"
@@ -20,12 +20,12 @@ msgstr ""
 #: plnotifier/cog.py:84
 #, docstring
 msgid "Listen to events from the PyLav player and send them as messages to the specified channel"
-msgstr "Ακούστε συμβάντα από τη συσκευή αναπαραγωγής PyLav και στείλτε τα ως μηνύματα στο συγκεκριμένο κανάλι"
+msgstr "Ακούστε τα γεγονότα από το PyLav player και στείλτε τα ως μηνύματα στο συγκεκριμένο κανάλι"
 
 #: plnotifier/cog.py:227
 #, docstring
 msgid "Configure the PyLavNotifier cog"
-msgstr "Ρύθμιση παραμέτρων του γραναζιού PyLavNotifier"
+msgstr "Ρύθμιση του κώδικα PyLavNotifier"
 
 #: plnotifier/cog.py:231
 #, docstring
@@ -43,15 +43,15 @@ msgstr "Εκδοχή"
 #: plnotifier/cog.py:263
 #, docstring
 msgid "Set the notify channel for the player"
-msgstr "Ορισμός του καναλιού ειδοποίησης για το πρόγραμμα αναπαραγωγής"
+msgstr "Ορίστε το κανάλι ειδοποίησης για τον παίκτη"
 
 #: plnotifier/cog.py:272 plnotifier/cog.py:327
 msgid "I do not have permission to manage webhooks in {channel}"
-msgstr "Δεν έχω δικαίωμα διαχείρισης webhooks στο {channel}"
+msgstr "Δεν έχω άδεια να διαχειριστώ webhooks στο {channel}"
 
 #: plnotifier/cog.py:286
 msgid "I do not have permission to create a thread in {channel}"
-msgstr "Δεν έχω δικαίωμα να δημιουργήσω ένα νήμα στο {channel}"
+msgstr "Δεν έχω άδεια για να δημιουργήσω ένα νήμα στο {channel}"
 
 #: plnotifier/cog.py:295 plnotifier/cog.py:311 plnotifier/cog.py:336
 msgid "PyLavNotifier"
@@ -59,15 +59,15 @@ msgstr "PyLavΝοητής"
 
 #: plnotifier/cog.py:296 plnotifier/cog.py:314 plnotifier/cog.py:337
 msgid "PyLav Notifier - Requested by {author}"
-msgstr "PyLav Κοινοποιητής - Ζητήθηκε από {author}"
+msgstr "Ειδοποιητής PyLav - Ζητήθηκε από {author}"
 
 #: plnotifier/cog.py:307
 msgid "This thread will be used by PyLav to post notifications about the player"
-msgstr "Αυτό το νήμα θα χρησιμοποιηθεί από το PyLav για να δημοσιεύσετε ειδοποιήσεις σχετικά με τον παίκτη"
+msgstr "Αυτό το νήμα θα χρησιμοποιηθεί από την PyLav για να δημοσιεύσει ειδοποιήσεις σχετικά με τον παίκτη"
 
 #: plnotifier/cog.py:351
 msgid "PyLavNotifier channel set to {channel}"
-msgstr "Το κανάλι PyLavNotifier έχει οριστεί σε {channel}"
+msgstr "Το κανάλι PyLavNotifier ορίστηκε σε {channel}"
 
 #: plnotifier/cog.py:361
 #, docstring
@@ -77,30 +77,30 @@ msgid "Set whether or not to notify for the specified event.\n\n"
 "            toggle -- Whether or not to notify upon receiving this event.\n"
 "            use_mention -- Whether or not to use a mention instead of the name for the action requested.\n"
 "        "
-msgstr "Ορίστε εάν θα ειδοποιείται ή όχι για το καθορισμένο συμβάν.\n\n"
-"        Επιχειρήματα:\n"
-"            εκδήλωση -- Το συμβάν που θα οριστεί.\n"
-"            εναλλαγή -- Εάν θα ειδοποιήσετε ή όχι κατά τη λήψη αυτού του συμβάντος.\n"
-"            use_mention -- Εάν θα χρησιμοποιηθεί ή όχι μια αναφορά αντί για το όνομα για την ενέργεια που ζητήθηκε.\n"
+msgstr "Ορίστε αν θα ειδοποιηθεί ή όχι για το συγκεκριμένο γεγονός.\n\n"
+"        Παράμετροι:\n"
+"            εκδήλωση -- Η εκδήλωση που θα καθοριστεί.\n"
+"            εναλλαγή -- Εάν θα ειδοποιηθεί ή όχι κατά τη λήψη αυτού του γεγονότος.\n"
+"            use_mention -- Εάν θα χρησιμοποιηθεί ή όχι μια αναφορά αντί για το όνομα της ενέργειας που ζητήθηκε.\n"
 "        "
 
 #: plnotifier/cog.py:378
 msgid "Invalid event, possible events are:\n\n"
 "{events}"
-msgstr "Μη έγκυρο συμβάν, πιθανά συμβάντα είναι:\n\n"
+msgstr "Μη έγκυρη εκδήλωση, πιθανές εκδηλώσεις είναι:\n\n"
 "{events}"
 
 #: plnotifier/cog.py:395
 msgid "Event {event} set to {toggle}{extras}"
-msgstr "Γεγονός {event} ρυθμισμένο σε {toggle}{extras}"
+msgstr "Η εκδήλωση {event} ορίστηκε σε {toggle}{extras}"
 
 #: plnotifier/cog.py:397
 msgid "notify"
-msgstr "γνωστοποιώ"
+msgstr "ειδοποίηση"
 
 #: plnotifier/cog.py:397
 msgid "do not notify"
-msgstr "Μην ειδοποιείτε"
+msgstr "δεν ειδοποιούν"
 
 #: plnotifier/cog.py:398
 msgid " with mentions"
@@ -112,7 +112,7 @@ msgstr " χωρίς αναφορές"
 
 #: plnotifier/cog.py:414
 msgid "Track Stuck Event"
-msgstr "Παρακολούθηση συμβάντος που έχει κολλήσει"
+msgstr "Εκδήλωση Κομματιού Stuck"
 
 #: plnotifier/cog.py:415
 msgid "[Node={node}] {track} is stuck for {threshold} seconds, skipping"
@@ -120,25 +120,25 @@ msgstr "[Κόμβος={node}] {track} έχει κολλήσει για {threshol
 
 #: plnotifier/cog.py:440
 msgid "Track Exception Event"
-msgstr "Παρακολούθηση συμβάντος εξαίρεσης"
+msgstr "Παρακολούθηση Συμβάντος Εξαίρεσης"
 
 #: plnotifier/cog.py:441
 msgid "[Node={node}] There was an error while playing {track}:\n"
 "{exception}"
-msgstr "[Κόμβος={node}] Παρουσιάστηκε σφάλμα κατά την αναπαραγωγή {track}:\n"
+msgstr "[Κόμβος={node}] Υπήρξε σφάλμα κατά την αναπαραγωγή {track}:\n"
 "{exception}"
 
 #: plnotifier/cog.py:464
 msgid "the player reached the end of the tracks runtime"
-msgstr "Ο παίκτης έφτασε στο τέλος του χρόνου εκτέλεσης των κομματιών"
+msgstr "ο παίκτης έφτασε στο τέλος των κομματιών"
 
 #: plnotifier/cog.py:466
 msgid "a new track started playing"
-msgstr "Ένα νέο κομμάτι άρχισε να παίζει"
+msgstr "ένα νέο κομμάτι ξεκίνησε να παίζει"
 
 #: plnotifier/cog.py:468
 msgid "it failed to start"
-msgstr "Απέτυχε να ξεκινήσει"
+msgstr "απέτυχε να ξεκινήσει"
 
 #: plnotifier/cog.py:470
 msgid "because the player was stopped"
@@ -146,94 +146,94 @@ msgstr "επειδή ο παίκτης σταμάτησε"
 
 #: plnotifier/cog.py:472
 msgid "the node told it to stop"
-msgstr "Ο κόμβος του είπε να σταματήσει"
+msgstr "ο κόμβος του είπε να σταματήσει"
 
 #: plnotifier/cog.py:475
 msgid "Track End Event"
-msgstr "Παρακολούθηση συμβάντος λήξης"
+msgstr "Παρακολούθηση Τελικού Γεγονότος"
 
 #: plnotifier/cog.py:476
 msgid "[Node={node}] {track} has finished playing because {reason}"
-msgstr "[Κόμβος={node}] {track} έχει τελειώσει το παιχνίδι επειδή {reason}"
+msgstr "[Κόμβος={node}] {track} ολοκλήρωσε την αναπαραγωγή επειδή {reason}"
 
 #: plnotifier/cog.py:503
 msgid "YouTube Music Track Start Event"
-msgstr "Εκδήλωση έναρξης μουσικού κομματιού YouTube"
+msgstr "Εκδήλωση Εκκίνησης Μουσικού Κομματιού Youtube"
 
 #: plnotifier/cog.py:504
 msgid "[Node={node}] YouTube Music track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Κόμβος={node}] Μουσικό κομμάτι YouTube: {track} έχει αρχίσει να παίζει.\n"
+msgstr "[Κόμβος={node}] YouTube Μουσική κομμάτι: {track} άρχισε να παίζει.\n"
 "Ζητήθηκε από: {requester}"
 
 #: plnotifier/cog.py:533
 msgid "Deezer Track Start Event"
-msgstr "Συμβάν εκκίνησης πίστας Deezer"
+msgstr "Εκκίνηση Κομματιού Deezer"
 
 #: plnotifier/cog.py:534
 msgid "[Node={node}] Deezer track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Κόμβος={node}] Κομμάτι deezer: {track} έχει αρχίσει να παίζει.\n"
+msgstr "[Κόμβος={node}] Κομμάτι Deezer: {track} ξεκίνησε να παίζει.\n"
 "Ζητήθηκε από: {requester}"
 
 #: plnotifier/cog.py:563
 msgid "Spotify Track Start Event"
-msgstr "Συμβάν έναρξης πίστας Spotify"
+msgstr "Εκκίνηση Κομματιού Spotify"
 
 #: plnotifier/cog.py:564
 msgid "[Node={node}] Spotify track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Κόμβος={node}] Κομμάτι Spotify: {track} έχει αρχίσει να παίζει.\n"
+msgstr "[Κόμβος={node}] Κομμάτι Spotify: {track} άρχισε να παίζει.\n"
 "Ζητήθηκε από: {requester}"
 
 #: plnotifier/cog.py:593
 msgid "Apple Music Track Start Event"
-msgstr "Εκδήλωση έναρξης κομματιού μουσικής Apple"
+msgstr "Apple Music Track Εκδήλωση Εκκίνησης"
 
 #: plnotifier/cog.py:594
 msgid "[Node={node}] Apple Music track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Κόμβος={node}] Κομμάτι μουσικής της Apple: {track} έχει αρχίσει να παίζει.\n"
+msgstr "[Κόμβος ={node}] Κομμάτι Apple Music: {track} άρχισε να παίζει.\n"
 "Ζητήθηκε από: {requester}"
 
 #: plnotifier/cog.py:623
 msgid "Local Track Start Event"
-msgstr "Εκδήλωση έναρξης τοπικής πίστας"
+msgstr "Εκτέλεση Τοπικού Κομματιού"
 
 #: plnotifier/cog.py:624
 msgid "[Node={node}] Local track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Κόμβος={node}] Τοπική πίστα: {track} έχει αρχίσει να παίζει.\n"
+msgstr "[Κόμβος={node}] Τοπικό κομμάτι: {track} ξεκίνησε να παίζει.\n"
 "Ζητήθηκε από: {requester}"
 
 #: plnotifier/cog.py:653
 msgid "HTTP Track Start Event"
-msgstr "Συμβάν έναρξης παρακολούθησης HTTP"
+msgstr "Εκκίνηση Κομματιού HTTP"
 
 #: plnotifier/cog.py:654
 msgid "[Node={node}] HTTP track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Κόμβος={node}] Κομμάτι HTTP: {track} έχει αρχίσει να παίζει.\n"
+msgstr "[Κόμβος ={node}] HTTP κομμάτι: {track} ξεκίνησε να παίζει.\n"
 "Ζητήθηκε από: {requester}"
 
 #: plnotifier/cog.py:683
 msgid "Text-To-Speech Track Start Event"
-msgstr "Συμβάν έναρξης παρακολούθησης κειμένου σε ομιλία"
+msgstr "Κείμενο-Σε-Ομιλία Παρακολούθηση Εκδήλωση"
 
 #: plnotifier/cog.py:684
 msgid "[Node={node}] Text-To-Speech track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Κόμβος={node}] Κομμάτι κειμένου σε ομιλία: {track} έχει αρχίσει να παίζει.\n"
+msgstr "[Κόμβος={node}] Κείμενο σε ομιλία κομμάτι: {track} ξεκίνησε να παίζει.\n"
 "Ζητήθηκε από: {requester}"
 
 #: plnotifier/cog.py:713
 msgid "YouTube Track Start Event"
-msgstr "Εκδήλωση έναρξης πίστας YouTube"
+msgstr "Εκδήλωση Εκκίνησης Κομματιού Youtube"
 
 #: plnotifier/cog.py:714
 msgid "[Node={node}] YouTube track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Κόμβος={node}] Κομμάτι στο YouTube: {track} έχει αρχίσει να παίζει.\n"
+msgstr "[Κόμβος ={node}] YouTube κομμάτι: {track} ξεκίνησε να παίζει.\n"
 "Ζητήθηκε από: {requester}"
 
 #: plnotifier/cog.py:743 plnotifier/cog.py:776 plnotifier/cog.py:809
@@ -242,7 +242,7 @@ msgstr "[Κόμβος={node}] Κομμάτι στο YouTube: {track} έχει α
 #: plnotifier/cog.py:1040 plnotifier/cog.py:1073 plnotifier/cog.py:1106
 #: plnotifier/cog.py:1139 plnotifier/cog.py:1172
 msgid "{source} Track Start Event"
-msgstr "{source} Παρακολούθηση συμβάντος έναρξης"
+msgstr "{source} Εκκίνηση Κομματιού"
 
 #: plnotifier/cog.py:744 plnotifier/cog.py:777 plnotifier/cog.py:810
 #: plnotifier/cog.py:843 plnotifier/cog.py:876 plnotifier/cog.py:909
@@ -251,50 +251,50 @@ msgstr "{source} Παρακολούθηση συμβάντος έναρξης"
 #: plnotifier/cog.py:1140 plnotifier/cog.py:1173
 msgid "[Node={node}] {source} track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Κόμβος={node}] {source} ίχνος: {track} έχει αρχίσει να παίζει.\n"
+msgstr "[Κόμβος={node}] {source} κομμάτι: {track} άρχισε να παίζει.\n"
 "Ζητήθηκε από: {requester}"
 
 #: plnotifier/cog.py:1205
 msgid "Track Skipped Event"
-msgstr "Παρακολούθηση συμβάντος που παραλείφθηκε"
+msgstr "Κομμάτι Που Παραλήφθηκε Γεγονός"
 
 #: plnotifier/cog.py:1206
 msgid "[Node={node}] {track} has been skipped.\n"
 "Requested by {requester}"
-msgstr "[Κόμβος={node}] {track} έχει παραλειφθεί.\n"
+msgstr "[Κόμβος={node}] {track} παραλείφθηκε.\n"
 "Ζητήθηκε από {requester}"
 
 #: plnotifier/cog.py:1235
 msgid "Track Seek Event"
-msgstr "Παρακολούθηση εκδήλωσης αναζήτησης"
+msgstr "Παρακολούθηση Αναζήτησης Γεγονότος"
 
 #: plnotifier/cog.py:1236
 msgid "[Node={node}] {requester} requested that {track} is sought from position {fro} to position {after}"
-msgstr "[Κόμβος={node}] {requester} ζήτησε από την {track} αναζητείται από τη θέση {fro} στη θέση {after}"
+msgstr "[Κόμβος={node}] {requester} ζήτησε η {track} να αναζητηθεί από τη θέση {fro} στη θέση {after}"
 
 #: plnotifier/cog.py:1270
 msgid "Track Previous Requested Event"
-msgstr "Παρακολούθηση προηγούμενου συμβάντος που ζητήθηκε"
+msgstr "Παρακολούθηση Προηγούμενου Αιτούμενου Γεγονότος"
 
 #: plnotifier/cog.py:1271
 msgid "[Node={node}] {requester} requested that the previous track {track} be played"
-msgstr "[Κόμβος={node}] {requester} ζήτησε από το προηγούμενο κομμάτι {track} να παιχτεί"
+msgstr "[Κόμβος={node}] {requester} ζήτησε να παιχτεί το προηγούμενο κομμάτι {track}"
 
 #: plnotifier/cog.py:1300
 msgid "Tracks Requested Event"
-msgstr "Παρακολούθηση συμβάντος που ζητήθηκε"
+msgstr "Κομμάτια Που Ζητούνται Γεγονότα"
 
 #: plnotifier/cog.py:1301
 msgid "[Node={node}] {requester} added {track_count}  to the queue"
-msgstr "[Κόμβος={node}] {requester} Πρόσθεσαν {track_count}  στην ουρά"
+msgstr "[Κόμβος={node}] {requester} πρόσθεσε {track_count}  στην ουρά"
 
 #: plnotifier/cog.py:1302
 msgid "{count} track"
-msgstr "{count} ίχνος"
+msgstr "{count} κομμάτι"
 
 #: plnotifier/cog.py:1327
 msgid "Track AutoPlay Event"
-msgstr "Παρακολούθηση συμβάντος Αυτόματης εκτέλεσης"
+msgstr "Παρακολούθηση Συμβάντος Αυτόματης Αναπαραγωγής"
 
 #: plnotifier/cog.py:1328
 msgid "[Node={node}] Auto-playing {track}"
@@ -302,23 +302,23 @@ msgstr "[Κόμβος={node}] Αυτόματη αναπαραγωγή {track}"
 
 #: plnotifier/cog.py:1355
 msgid "Track Resumed Event"
-msgstr "Παρακολούθηση επανάληψης συμβάντος"
+msgstr "Παρακολούθηση Συνέχιση Γεγονότος"
 
 #: plnotifier/cog.py:1356
 msgid "[Node={node}] {requester} resumed {track}"
-msgstr "[Κόμβος={node}] {requester} Επαναλαμβάνεται {track}"
+msgstr "[Κόμβος={node}] {requester} συνεχίστηκε {track}"
 
 #: plnotifier/cog.py:1385
 msgid "Queue Shuffled Event"
-msgstr "Συμβάν ανακατέματος ουράς αναμονής"
+msgstr "Ανακατευμένο Γεγονός Ουράς"
 
 #: plnotifier/cog.py:1386
 msgid "[Node={node}] {requester} shuffled the queue"
-msgstr "[Κόμβος={node}] {requester} Ανακάτεψε την ουρά"
+msgstr "[Κόμβος={node}] {requester} ανακατέψαμε την ουρά"
 
 #: plnotifier/cog.py:1408
 msgid "Queue End Event"
-msgstr "Συμβάν τερματισμού ουράς"
+msgstr "Τέλος Γεγονότος Ουράς"
 
 #: plnotifier/cog.py:1409
 msgid "[Node={node}] All tracks in the queue have been played"
@@ -326,23 +326,23 @@ msgstr "[Κόμβος={node}] Όλα τα κομμάτια στην ουρά έ�
 
 #: plnotifier/cog.py:1436
 msgid "Tracks Removed Event"
-msgstr "Παρακολούθηση συμβάντος που καταργήθηκε"
+msgstr "Κομμάτια Αφαιρέθηκαν Γεγονότα"
 
 #: plnotifier/cog.py:1437
 msgid "[Node={node}] {requester} removed {track_count} tracks from the queue"
-msgstr "[Κόμβος={node}] {requester} Αφαιρεθεί {track_count} παρακολουθεί από την ουρά"
+msgstr "[Κόμβος={node}] {requester} αφαιρέθηκαν {track_count} κομμάτια από την ουρά"
 
 #: plnotifier/cog.py:1464 plnotifier/cog.py:1944
 msgid "Player Paused Event"
-msgstr "Συμβάν σε παύση παίκτη"
+msgstr "Γεγονός Σε Παύση Παίκτη"
 
 #: plnotifier/cog.py:1465
 msgid "[Node={node}] {requester} paused the player"
-msgstr "[Κόμβος={node}] {requester} τέθηκε σε παύση το πρόγραμμα αναπαραγωγής"
+msgstr "[Κόμβος={node}] {requester} σταμάτησε τον παίκτη"
 
 #: plnotifier/cog.py:1492
 msgid "Player Stopped Event"
-msgstr "Συμβάν διακοπής παίκτη"
+msgstr "Ο Παίκτης Σταμάτησε Το Γεγονός"
 
 #: plnotifier/cog.py:1493
 msgid "[Node={node}] {requester} stopped the player"
@@ -350,7 +350,7 @@ msgstr "[Κόμβος={node}] {requester} σταμάτησε τον παίκτη
 
 #: plnotifier/cog.py:1520 plnotifier/cog.py:1972
 msgid "Player Resumed Event"
-msgstr "Επανάληψη εκδήλωσης παίκτη"
+msgstr "Παίκτης Συνέχισε Το Γεγονός"
 
 #: plnotifier/cog.py:1521
 msgid "[Node={node}] {requester} resumed the player"
@@ -358,47 +358,47 @@ msgstr "[Κόμβος={node}] {requester} συνέχισε τον παίκτη"
 
 #: plnotifier/cog.py:1548
 msgid "Player Moved Event"
-msgstr "Συμβάν μετακίνησης παίκτη"
+msgstr "Παίκτης Μετακινήθηκε Γεγονός"
 
 #: plnotifier/cog.py:1549
 msgid "[Node={node}] {requester} moved the player from {before} to {after}"
-msgstr "[Κόμβος={node}] {requester} μετακίνησε τον παίκτη από {before} προς {after}"
+msgstr "[Κόμβος={node}] {requester} μετακίνησε τον παίκτη από {before} σε {after}"
 
 #: plnotifier/cog.py:1576
 msgid "Player Disconnected Event"
-msgstr "Αποσυνδεδεμένο συμβάν παίκτη"
+msgstr "Ο Παίκτης Αποσυνδέθηκε Γεγονός"
 
 #: plnotifier/cog.py:1577
 msgid "[Node={node}] {requester} disconnected the player"
-msgstr "[Κόμβος={node}] {requester} αποσυνδεδεμένος ο παίκτης"
+msgstr "[Κόμβος={node}] {requester} αποσυνδέθηκε ο παίκτης"
 
 #: plnotifier/cog.py:1604
 msgid "Player Connected Event"
-msgstr "Συνδεδεμένο συμβάν προγράμματος αναπαραγωγής"
+msgstr "Συνδεδεμένος Παίκτης Γεγονότος"
 
 #: plnotifier/cog.py:1605
 msgid "[Node={node}] {requester} connected the player"
-msgstr "[Κόμβος={node}] {requester} συνέδεσε τη συσκευή αναπαραγωγής"
+msgstr "[Κόμβος={node}] {requester} συνδέθηκε με τον παίκτη"
 
 #: plnotifier/cog.py:1632
 msgid "Player Volume Changed Event"
-msgstr "Συμβάν αλλαγής έντασης ήχου παίκτη"
+msgstr "Η Ένταση Του Παίκτη Άλλαξε Το Γεγονός"
 
 #: plnotifier/cog.py:1633
 msgid "[Node={node}] {requester} changed the player's volume from {before} to {after}"
-msgstr "[Κόμβος={node}] {requester} άλλαξε την ένταση ήχου του παίκτη από {before} προς {after}"
+msgstr "[Κόμβος={node}] {requester} άλλαξε την ένταση του παίκτη από {before} σε {after}"
 
 #: plnotifier/cog.py:1662 plnotifier/cog.py:1672 plnotifier/cog.py:1682
 msgid "Player Repeat Event"
-msgstr "Επαναληπτικό συμβάν παίκτη"
+msgstr "Επανάληψη Γεγονότος Παίκτη"
 
 #: plnotifier/cog.py:1663
 msgid "[Node={node}] {requester} disabled repeat"
-msgstr "[Κόμβος={node}] {requester} Απενεργοποιημένη επανάληψη"
+msgstr "[Κόμβος={node}] {requester} απενεργοποιήθηκε επανάληψη"
 
 #: plnotifier/cog.py:1673
 msgid "{requester} {status} repeat of the whole queue"
-msgstr "{requester} {status} Επανάληψη ολόκληρης της ουράς"
+msgstr "{requester} {status} επανάληψη ολόκληρης της ουράς"
 
 #: plnotifier/cog.py:1674 plnotifier/cog.py:1685
 msgid "enabled"
@@ -414,11 +414,11 @@ msgstr "[Κόμβος={node}] {requester} {status} επαναλάβετε για
 
 #: plnotifier/cog.py:1713
 msgid "Player Restored Event"
-msgstr "Συμβάν που αποκαταστάθηκε από το πρόγραμμα αναπαραγωγής"
+msgstr "Επαναφέρετε Το Γεγονός"
 
 #: plnotifier/cog.py:1714
 msgid "[Node={node}] {requester} restored the player"
-msgstr "[Κόμβος={node}] {requester} Αποκαταστάθηκε το πρόγραμμα αναπαραγωγής"
+msgstr "[Κόμβος={node}] {requester} επανέφερε τον παίκτη"
 
 #: plnotifier/cog.py:1737
 msgid "an intro section"
@@ -426,7 +426,7 @@ msgstr "μια εισαγωγική ενότητα"
 
 #: plnotifier/cog.py:1739
 msgid "an outro section"
-msgstr "ένα τμήμα outro"
+msgstr "μια ενότητα outro"
 
 #: plnotifier/cog.py:1741
 msgid "a preview section"
@@ -434,19 +434,19 @@ msgstr "μια ενότητα προεπισκόπησης"
 
 #: plnotifier/cog.py:1743
 msgid "an off-topic section"
-msgstr "μια ενότητα εκτός θέματος"
+msgstr "μια εκτός θέματος ενότητα"
 
 #: plnotifier/cog.py:1745
 msgid "a filler section"
-msgstr "ένα τμήμα πλήρωσης"
+msgstr "ένα τμήμα πληρώσεως"
 
 #: plnotifier/cog.py:1747
 msgid "a sponsor section"
-msgstr "τμήμα χορηγών"
+msgstr "τμήμα χορηγού"
 
 #: plnotifier/cog.py:1749
 msgid "a self-promotion section"
-msgstr "ένα τμήμα αυτοπροβολής"
+msgstr "τμήμα αυτοπροώθησης"
 
 #: plnotifier/cog.py:1751
 msgid "an interaction section"
@@ -454,11 +454,11 @@ msgstr "μια ενότητα αλληλεπίδρασης"
 
 #: plnotifier/cog.py:1755
 msgid "Sponsor Segment Skipped Event"
-msgstr "Παραλειφθείσα εκδήλωση τμήματος χορηγού"
+msgstr "Τμήμα Χορηγού Παραλήφθηκε Γεγονός"
 
 #: plnotifier/cog.py:1756
 msgid "[Node={node}] Sponsorblock: Skipped {category} running from {start}s to {to}s"
-msgstr "[Κόμβος={node}] Αποκλεισμός χορηγών: Παραλείφθηκε {category} που τρέχει από {start}ιθ έως {to}s"
+msgstr "[Κόμβος={node}] Χορηγός: Παραλήφθηκε {category} τρέχει από {start}s σε {to}s"
 
 #: plnotifier/cog.py:1784
 msgid "Effect"
@@ -474,7 +474,7 @@ msgstr "Αξιεσ"
 
 #: plnotifier/cog.py:1826
 msgid "Filters Applied Event"
-msgstr "Φίλτρα εφαρμοσμένου συμβάντος"
+msgstr "Εφαρμοσμένο Γεγονός Φίλτρων"
 
 #: plnotifier/cog.py:1829
 msgid "None"
@@ -486,57 +486,57 @@ msgstr "Εφαρμόζεται επί του παρόντος"
 
 #: plnotifier/cog.py:1832
 msgid "[Node={node}] {requester} changed the player filters"
-msgstr "[Κόμβος={node}] {requester} Άλλαξε τα φίλτρα του προγράμματος αναπαραγωγής"
+msgstr "[Κόμβος={node}] {requester} άλλαξε τα φίλτρα παίκτη"
 
 #: plnotifier/cog.py:1852
 msgid "Node Connected Event"
-msgstr "Συνδεδεμένο συμβάν κόμβου"
+msgstr "Συνδεδεμένος Κόμβος Γεγονός"
 
 #: plnotifier/cog.py:1853
 msgid "Node {name} has been connected"
-msgstr "Κόμβος {name} έχει συνδεθεί"
+msgstr "Ο κόμβος {name} έχει συνδεθεί"
 
 #: plnotifier/cog.py:1869
 msgid "Node Disconnected Event"
-msgstr "Συμβάν αποσύνδεσης κόμβου"
+msgstr "Αποσυνδεδεμένο Γεγονός Κόμβου"
 
 #: plnotifier/cog.py:1870
 msgid "Node {name} has been disconnected with code {code} and reason: {reason}"
-msgstr "Κόμβος {name} έχει αποσυνδεθεί από τον κωδικό {code} και λόγος: {reason}"
+msgstr "Ο κόμβος {name} έχει αποσυνδεθεί με κωδικό {code} και λόγο: {reason}"
 
 #: plnotifier/cog.py:1892
 msgid "Node Changed Event"
-msgstr "Συμβάν αλλαγής κόμβου"
+msgstr "Ο Κόμβος Άλλαξε Γεγονός"
 
 #: plnotifier/cog.py:1893
 msgid "The node which the player is connected to changed from {fro} to {to}"
-msgstr "Ο κόμβος στον οποίο είναι συνδεδεμένος ο παίκτης άλλαξε από {fro} προς {to}"
+msgstr "Ο κόμβος στον οποίο είναι συνδεδεμένος ο παίκτης από {fro} σε {to}"
 
 #: plnotifier/cog.py:1915
 msgid "WebSocket Closed Event"
-msgstr "WebSocket Κλειστή Εκδήλωση"
+msgstr "WebSocket Κλειστό Γεγονός"
 
 #: plnotifier/cog.py:1916
 msgid "[Node={node}] The Lavalink websocket connection to Discord closed with code {code} and reason {reason}"
-msgstr "[Κόμβος={node}] Η σύνδεση ιστού Lavalink με το Discord έκλεισε με κώδικα {code} και λόγος {reason}"
+msgstr "[Κόμβος={node}] Η σύνδεση Lavalink websocket στο Discord έκλεισε με κωδικό {code} και λόγο {reason}"
 
 #: plnotifier/cog.py:1945
 msgid "[Node={node}] {requester} automatically paused the player due to configured values"
-msgstr "[Κόμβος={node}] {requester} Τέθηκε αυτόματα σε παύση το πρόγραμμα αναπαραγωγής λόγω ρυθμισμένων τιμών"
+msgstr "[Κόμβος={node}] {requester} σταμάτησε αυτόματα τον παίκτη λόγω ρυθμισμένων τιμών"
 
 #: plnotifier/cog.py:1973
 msgid "[Node={node}] {requester} automatically resumed the player due to configured values"
-msgstr "[Κόμβος={node}] {requester} Ξανάρχισε αυτόματα το πρόγραμμα αναπαραγωγής λόγω ρυθμισμένων τιμών"
+msgstr "[Κόμβος={node}] {requester} συνέχισε αυτόματα τον παίκτη λόγω ρυθμισμένων τιμών"
 
 #: plnotifier/cog.py:2000 plnotifier/cog.py:2030
 msgid "Auto Player Disconnected Event"
-msgstr "Συμβάν αποσύνδεσης αυτόματου προγράμματος αναπαραγωγής"
+msgstr "Αυτόματη Αποσύνδεση Γεγονότος"
 
 #: plnotifier/cog.py:2001
 msgid "[Node={node}] {requester} automatically disconnected the player as there is no one listening"
-msgstr "[Κόμβος={node}] {requester} Αποσυνδέεται αυτόματα το πρόγραμμα αναπαραγωγής, καθώς δεν ακούει κανείς"
+msgstr "[Κόμβος={node}] {requester} αυτόματα αποσυνδέθηκε ο παίκτης καθώς δεν υπάρχει κανένας που να ακούει"
 
 #: plnotifier/cog.py:2031
 msgid "[Node={node}] {requester} automatically disconnected the player as the queue is empty"
-msgstr "[Κόμβος={node}] {requester} Αποσυνδέεται αυτόματα το πρόγραμμα αναπαραγωγής καθώς η ουρά είναι κενή"
+msgstr "[Κόμβος={node}] {requester} αυτόματα αποσυνδέθηκε ο παίκτης καθώς η ουρά είναι κενή"
 

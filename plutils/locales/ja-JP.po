@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:42\n"
+"PO-Revision-Date: 2023-02-01 00:10\n"
 "Last-Translator: \n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -47,12 +47,12 @@ msgstr "ボットで使用できるスラッシュを表示します。\n\n"
 #: plutils/cog.py:133
 #, docstring
 msgid "Get info about specific things"
-msgstr "特定の事柄に関する情報を取得する"
+msgstr "特定のものに関する情報を取得する"
 
 #: plutils/cog.py:137
 #, docstring
 msgid "Get the base64 of the current track"
-msgstr "現在のトラックのbase64を取得する"
+msgstr "現在のトラックの base64 を取得"
 
 #: plutils/cog.py:145 plutils/cog.py:177 plutils/cog.py:209 plutils/cog.py:240
 #: plutils/cog.py:273
@@ -66,7 +66,7 @@ msgstr "何も再生されていません"
 #: plutils/cog.py:168
 #, docstring
 msgid "Get the author of the current track"
-msgstr "現在のトラックの作成者を取得する"
+msgstr "現在のトラックの作者を取得する"
 
 #: plutils/cog.py:200
 #, docstring
@@ -90,52 +90,52 @@ msgstr "プレイヤー情報を取得できません"
 #: plutils/cog.py:309
 #, docstring
 msgid "Decode a track's base64 string into a JSON object"
-msgstr "トラックの base64 文字列を JSON オブジェクトにデコードする"
+msgstr "トラックの base64 文字列を JSON オブジェクトにデコードします"
 
 #: plutils/cog.py:318
 msgid "Invalid base64 string"
-msgstr "無効な base64 文字列"
+msgstr "base64文字列が無効です"
 
 #: plutils/cog.py:334
 #, docstring
 msgid "Manage the query cache"
-msgstr "クエリ キャッシュを管理する"
+msgstr "クエリキャッシュの管理"
 
 #: plutils/cog.py:338
 #, docstring
 msgid "Clear the query cache"
-msgstr "クエリ キャッシュをクリアする"
+msgstr "クエリキャッシュをクリア"
 
 #: plutils/cog.py:345 plutils/cog.py:374 plutils/cog.py:387
 msgid "Query cache cleared"
-msgstr "クエリ キャッシュがクリアされました"
+msgstr "クエリのキャッシュをクリアしました"
 
 #: plutils/cog.py:351
 #, docstring
 msgid "Clear the query cache older than a number of days"
-msgstr "日数より古いクエリ キャッシュをクリアする"
+msgstr "日数より古いクエリキャッシュをクリアする"
 
 #: plutils/cog.py:359
 msgid "Days must be less than 31"
-msgstr "日数は 31 日未満でなければなりません"
+msgstr "日数は31未満でなければなりません"
 
 #: plutils/cog.py:367
 msgid "Days must be greater than 1"
-msgstr "日数は 1 より大きくなければなりません"
+msgstr "日数は1より大きくなければなりません"
 
 #: plutils/cog.py:380
 #, docstring
 msgid "Clear the query cache for a query"
-msgstr "クエリのクエリ キャッシュをクリアする"
+msgstr "クエリのクエリキャッシュをクリアする"
 
 #: plutils/cog.py:393
 #, docstring
 msgid "Get the size of the query cache"
-msgstr "クエリ キャッシュのサイズを取得する"
+msgstr "クエリキャッシュのサイズを取得します"
 
 #: plutils/cog.py:400
 msgid "Query cache size: `{size}`"
-msgstr "クエリ キャッシュ サイズ: '{size}`"
+msgstr "クエリのキャッシュサイズ: `{size}`"
 
 #: plutils/cog.py:411
 #, docstring
@@ -144,15 +144,15 @@ msgid "Start memory tracing\n\n"
 "        `[p]plutils trace 1` turns on tracing\n"
 "        `[p]plutils trace` shows the current status of tracing\n"
 "        "
-msgstr "メモリトレースの開始\n\n"
-"        `[p]plutils trace 0' はトレースをオフにします\n"
-"        `[p]plutils trace 1' はトレースをオンにします\n"
-"        `[p]plutils トレース」は、トレースの現在のステータスを示します\n"
+msgstr "メモリートレースを開始する\n\n"
+"        `[p]plutils trace 0` がトレースをオフにする\n"
+"        `[p]plutils trace 1` がトレースをオンにする\n"
+"        `[p]plutils trace` はトレースの現在の状態を示している\n"
 "        "
 
 #: plutils/cog.py:425
 msgid "Stopped memory tracing"
-msgstr "メモリトレースの停止"
+msgstr "メモリトレースを停止しました"
 
 #: plutils/cog.py:434
 msgid "Started memory tracing"
@@ -174,18 +174,18 @@ msgid "Set the logger level\n\n"
 "        5: Verbose\n"
 "        6: Trace\n"
 "        "
-msgstr "ロガーレベルを設定する\n\n"
-"        レベルは次のとおりです。\n"
+msgstr "ロガーレベル\n\n"
+"        を設定します:\n"
 "        0: クリティカル\n"
 "        1: エラー\n"
 "        2: 警告\n"
 "        3: 情報\n"
-"        4: デバッグ\n"
-"        5: 詳細\n"
+"        4:デバッグ\n"
+"        5: 冗長\n"
 "        6: トレース\n"
 "        "
 
 #: plutils/cog.py:486
 msgid "Logger level set to `{level}`"
-msgstr "ロガー レベルを '{level}`"
+msgstr "ロガーレベルを`{level}`に設定しました"
 

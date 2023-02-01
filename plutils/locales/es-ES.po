@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:42\n"
+"PO-Revision-Date: 2023-02-01 00:09\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -40,8 +40,8 @@ msgstr "Versión"
 msgid "Show the slashes available in the bot.\n\n"
 "        Author: TrustyJAID#0001 via code block on Discord channel.\n"
 "        "
-msgstr "Mostrar las barras diagonales disponibles en el bot.\n\n"
-"        Autor: TrustyJAID#0001 a través del bloque de código en el canal Discord.\n"
+msgstr "Mostrar las barras disponibles en el bot.\n\n"
+"        Autor: TrustyJAID#0001 vía bloque de código en el canal de Discord.\n"
 "        "
 
 #: plutils/cog.py:133
@@ -52,7 +52,7 @@ msgstr "Obtener información sobre cosas específicas"
 #: plutils/cog.py:137
 #, docstring
 msgid "Get the base64 of the current track"
-msgstr "Obtenga la base64 de la pista actual"
+msgstr "Obtener la base64 de la pista actual"
 
 #: plutils/cog.py:145 plutils/cog.py:177 plutils/cog.py:209 plutils/cog.py:240
 #: plutils/cog.py:273
@@ -71,40 +71,40 @@ msgstr "Obtener el autor de la pista actual"
 #: plutils/cog.py:200
 #, docstring
 msgid "Get the title of the current track"
-msgstr "Obtén el título de la canción actual"
+msgstr "Obtener el título de la pista actual"
 
 #: plutils/cog.py:232
 #, docstring
 msgid "Get the source of the current track"
-msgstr "Obtener el origen de la pista actual"
+msgstr "Obtener la fuente de la pista actual"
 
 #: plutils/cog.py:264
 #, docstring
 msgid "Get the API of the current track"
-msgstr "Obtenga la API de la pista actual"
+msgstr "Obtener la API de la pista actual"
 
 #: plutils/cog.py:284 plutils/cog.py:293
 msgid "Unable to get player info"
-msgstr "No se puede obtener la información del jugador"
+msgstr "No se puede obtener información del jugador"
 
 #: plutils/cog.py:309
 #, docstring
 msgid "Decode a track's base64 string into a JSON object"
-msgstr "Descodificar la cadena base64 de una pista en un objeto JSON"
+msgstr "Decodifica la cadena base64 de un rastro en un objeto JSON"
 
 #: plutils/cog.py:318
 msgid "Invalid base64 string"
-msgstr "Cadena base64 no válida"
+msgstr "Cadena base64 inválida"
 
 #: plutils/cog.py:334
 #, docstring
 msgid "Manage the query cache"
-msgstr "Administrar la memoria caché de consultas"
+msgstr "Administrar la caché de consultas"
 
 #: plutils/cog.py:338
 #, docstring
 msgid "Clear the query cache"
-msgstr "Borrar la memoria caché de consultas"
+msgstr "Limpiar la caché de consultas"
 
 #: plutils/cog.py:345 plutils/cog.py:374 plutils/cog.py:387
 msgid "Query cache cleared"
@@ -113,11 +113,11 @@ msgstr "Caché de consultas borrada"
 #: plutils/cog.py:351
 #, docstring
 msgid "Clear the query cache older than a number of days"
-msgstr "Borrar la memoria caché de consultas anterior a varios días"
+msgstr "Borrar la caché de consultas anteriores a un número de días"
 
 #: plutils/cog.py:359
 msgid "Days must be less than 31"
-msgstr "Los días deben ser inferiores a 31"
+msgstr "Los días deben ser menores de 31"
 
 #: plutils/cog.py:367
 msgid "Days must be greater than 1"
@@ -126,16 +126,16 @@ msgstr "Los días deben ser mayores que 1"
 #: plutils/cog.py:380
 #, docstring
 msgid "Clear the query cache for a query"
-msgstr "Borrar la memoria caché de consulta de una consulta"
+msgstr "Borrar la caché de consultas de una consulta"
 
 #: plutils/cog.py:393
 #, docstring
 msgid "Get the size of the query cache"
-msgstr "Obtener el tamaño de la memoria caché de consultas"
+msgstr "Obtener el tamaño de la caché de consultas"
 
 #: plutils/cog.py:400
 msgid "Query cache size: `{size}`"
-msgstr "Tamaño de caché de consulta: '{size}`"
+msgstr "Tamaño de la caché de consulta: `{size}`"
 
 #: plutils/cog.py:411
 #, docstring
@@ -145,22 +145,22 @@ msgid "Start memory tracing\n\n"
 "        `[p]plutils trace` shows the current status of tracing\n"
 "        "
 msgstr "Iniciar el seguimiento de memoria\n\n"
-"        `[p]Plutils Trace 0' desactiva el seguimiento\n"
-"        `[p]Plutils Trace 1' activa el trazado\n"
-"        `[p]plutils trace' muestra el estado actual del rastreo\n"
+"        `[p]plutils trace 0` desactiva el rastreo\n"
+"        `[p]plutils trace 1` activa el rastreo\n"
+"        `[p]plutils trace` muestra el estado actual del rastreo\n"
 "        "
 
 #: plutils/cog.py:425
 msgid "Stopped memory tracing"
-msgstr "Seguimiento de memoria detenido"
+msgstr "Rastreo de memoria detenido"
 
 #: plutils/cog.py:434
 msgid "Started memory tracing"
-msgstr "Se ha iniciado el seguimiento de la memoria"
+msgstr "Rastreo de memoria iniciado"
 
 #: plutils/cog.py:443
 msgid "You need to start tracing first"
-msgstr "Primero debe comenzar a rastrear"
+msgstr "Necesitas empezar a rastrear primero"
 
 #: plutils/cog.py:455
 #, docstring
@@ -174,18 +174,18 @@ msgid "Set the logger level\n\n"
 "        5: Verbose\n"
 "        6: Trace\n"
 "        "
-msgstr "Establecer el nivel del registrador\n\n"
+msgstr "Establece el nivel del registrador\n\n"
 "        Los niveles son los siguientes:\n"
 "        0: Crítico\n"
 "        1: Error\n"
 "        2: Advertencia\n"
 "        3: Información\n"
-"        4: Depurar\n"
-"        5: Detallado\n"
-"        6: Traza\n"
+"        4: Depurgar\n"
+"        5: Detectar\n"
+"        6: rastrear\n"
 "        "
 
 #: plutils/cog.py:486
 msgid "Logger level set to `{level}`"
-msgstr "Nivel del registrador establecido en '{level}`"
+msgstr "Nivel de Logger establecido a `{level}`"
 
