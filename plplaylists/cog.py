@@ -325,7 +325,7 @@ class PyLavPlaylists(
             )
 
         playlist_info = _(
-            "**__Currently managing__**:\n"
+            "__**Currently managing**__:\n"
             "**Name**:{space}{space}{space}{playlist_name}\n"
             "**Scope**:{space}{space}{space}{scope}\n"
             "**Author**:{space}{space}{author}\n"
