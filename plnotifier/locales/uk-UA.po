@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:42\n"
+"PO-Revision-Date: 2023-02-01 00:10\n"
 "Last-Translator: \n"
 "Language-Team: Ukrainian\n"
 "MIME-Version: 1.0\n"
@@ -20,12 +20,12 @@ msgstr ""
 #: plnotifier/cog.py:84
 #, docstring
 msgid "Listen to events from the PyLav player and send them as messages to the specified channel"
-msgstr "Слухайте події з плеєра PyLav і відправляйте їх у вигляді повідомлень на вказаний канал"
+msgstr "Прослуховувати події з плеєра PyLav і надсилати їх як повідомлення на вказаний канал"
 
 #: plnotifier/cog.py:227
 #, docstring
 msgid "Configure the PyLavNotifier cog"
-msgstr "Налаштування зубчастого гвинтика PyLavNotifier"
+msgstr "Налаштування кога PyLavNotifier"
 
 #: plnotifier/cog.py:231
 #, docstring
@@ -43,31 +43,31 @@ msgstr "Версія"
 #: plnotifier/cog.py:263
 #, docstring
 msgid "Set the notify channel for the player"
-msgstr "Настроювання каналу сповіщення для програвача"
+msgstr "Встановити канал сповіщення для гравця"
 
 #: plnotifier/cog.py:272 plnotifier/cog.py:327
 msgid "I do not have permission to manage webhooks in {channel}"
-msgstr "У мене немає дозволу на керування веб-хуками в {channel}"
+msgstr "У мене немає дозволу керувати вебгаками в {channel}"
 
 #: plnotifier/cog.py:286
 msgid "I do not have permission to create a thread in {channel}"
-msgstr "У мене немає дозволу на створення ланцюжка в {channel}"
+msgstr "Я не маю дозволу на створення теми в {channel}"
 
 #: plnotifier/cog.py:295 plnotifier/cog.py:311 plnotifier/cog.py:336
 msgid "PyLavNotifier"
-msgstr "PyLavNotifier"
+msgstr "Пілавовий нотиф"
 
 #: plnotifier/cog.py:296 plnotifier/cog.py:314 plnotifier/cog.py:337
 msgid "PyLav Notifier - Requested by {author}"
-msgstr "Сповіщувач PyLav - Запит {author}"
+msgstr "PyLav Notifier - Запитано {author}"
 
 #: plnotifier/cog.py:307
 msgid "This thread will be used by PyLav to post notifications about the player"
-msgstr "Цей потік буде використовуватися PyLav для розміщення повідомлень про плеєр"
+msgstr "Цей потік використовуватиметься PyLav для публікації сповіщень про програвач"
 
 #: plnotifier/cog.py:351
 msgid "PyLavNotifier channel set to {channel}"
-msgstr "Для каналу PyLavNotifier встановлено значення {channel}"
+msgstr "Канал PyLavNotifier встановлено на {channel}"
 
 #: plnotifier/cog.py:361
 #, docstring
@@ -77,34 +77,34 @@ msgid "Set whether or not to notify for the specified event.\n\n"
 "            toggle -- Whether or not to notify upon receiving this event.\n"
 "            use_mention -- Whether or not to use a mention instead of the name for the action requested.\n"
 "        "
-msgstr "Установіть, чи потрібно сповіщати про вказану подію.\n\n"
+msgstr "Виберіть, чи сповіщати про певну подію.\n\n"
 "        Аргументи:\n"
-"            подія -- Подія, яку потрібно встановити.\n"
-"            переключити -- Повідомляти чи ні після отримання цієї події.\n"
-"            use_mention -- Використовувати чи ні згадку замість назви для запитуваної дії.\n"
+"            подія - до набору.\n"
+"            перемикач -- Повідомляти чи ні про отримання цієї події.\n"
+"            use_mention - Використовувати згадку замість назви для запитаної дії.\n"
 "        "
 
 #: plnotifier/cog.py:378
 msgid "Invalid event, possible events are:\n\n"
 "{events}"
-msgstr "Недійсна подія, можливими подіями є:\n\n"
+msgstr "Неприпустима подія, можливі події:\n\n"
 "{events}"
 
 #: plnotifier/cog.py:395
 msgid "Event {event} set to {toggle}{extras}"
-msgstr "Подія {event} установити в {toggle}{extras}"
+msgstr "Захід {event} встановлено на {toggle}{extras}"
 
 #: plnotifier/cog.py:397
 msgid "notify"
-msgstr "Повідомити"
+msgstr "сповіщати"
 
 #: plnotifier/cog.py:397
 msgid "do not notify"
-msgstr "не повідомляти"
+msgstr "не сповіщати"
 
 #: plnotifier/cog.py:398
 msgid " with mentions"
-msgstr " зі згадками"
+msgstr " із згадками"
 
 #: plnotifier/cog.py:398
 msgid " without mentions"
@@ -112,29 +112,29 @@ msgstr " без згадок"
 
 #: plnotifier/cog.py:414
 msgid "Track Stuck Event"
-msgstr "Відстежити застряглу подію"
+msgstr "Подія Відстеження"
 
 #: plnotifier/cog.py:415
 msgid "[Node={node}] {track} is stuck for {threshold} seconds, skipping"
-msgstr "[Вузол={node}] {track} застряг за {threshold} секунд, пропуск"
+msgstr "[Node={node}] {track} застряг на {threshold} секунд, пропускаючи"
 
 #: plnotifier/cog.py:440
 msgid "Track Exception Event"
-msgstr "Відстежити подію винятків"
+msgstr "Захід Відстеження Виключення"
 
 #: plnotifier/cog.py:441
 msgid "[Node={node}] There was an error while playing {track}:\n"
 "{exception}"
-msgstr "[Вузол={node}] Під час гри сталася помилка {track}:\n"
+msgstr "[Node={node}] Сталася помилка під час гри {track}:\n"
 "{exception}"
 
 #: plnotifier/cog.py:464
 msgid "the player reached the end of the tracks runtime"
-msgstr "гравець дійшов до кінця виконання треків"
+msgstr "гравець досяг кінця маршрутів під час виконання"
 
 #: plnotifier/cog.py:466
 msgid "a new track started playing"
-msgstr "Почав відтворюватися новий трек"
+msgstr "новий трек почав грати"
 
 #: plnotifier/cog.py:468
 msgid "it failed to start"
@@ -142,99 +142,99 @@ msgstr "не вдалося запустити"
 
 #: plnotifier/cog.py:470
 msgid "because the player was stopped"
-msgstr "тому що гравця зупинили"
+msgstr "тому що гравець був зупинений"
 
 #: plnotifier/cog.py:472
 msgid "the node told it to stop"
-msgstr "вузол сказав йому зупинитися"
+msgstr "вузол сказав йому зупинити"
 
 #: plnotifier/cog.py:475
 msgid "Track End Event"
-msgstr "Відстежити кінцеву подію"
+msgstr "Відстеження події закінчення"
 
 #: plnotifier/cog.py:476
 msgid "[Node={node}] {track} has finished playing because {reason}"
-msgstr "[Вузол={node}] {track} закінчив грати, тому що {reason}"
+msgstr "[Вузол ={node}] {track} закінчив грати, оскільки {reason}"
 
 #: plnotifier/cog.py:503
 msgid "YouTube Music Track Start Event"
-msgstr "Початок музичного треку YouTube"
+msgstr "Захід Старт музичних доріжок YouTube"
 
 #: plnotifier/cog.py:504
 msgid "[Node={node}] YouTube Music track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Вузол={node}] Музичний трек YouTube: {track} почав грати.\n"
-"На вимогу: {requester}"
+msgstr "[Node={node}] YouTube трек: {track} почав грати.\n"
+"Запитано: {requester}"
 
 #: plnotifier/cog.py:533
 msgid "Deezer Track Start Event"
-msgstr "Deezer Track Start Event"
+msgstr "Захід початку дії Маршруту Deezer"
 
 #: plnotifier/cog.py:534
 msgid "[Node={node}] Deezer track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Вузол={node}] Трек Deezer: {track} почав грати.\n"
-"На вимогу: {requester}"
+msgstr "[Node={node}] Маршрут Deezer: {track} почав грати.\n"
+"Запитано: {requester}"
 
 #: plnotifier/cog.py:563
 msgid "Spotify Track Start Event"
-msgstr "Початок події Spotify Track"
+msgstr "Подія запуску Spotify"
 
 #: plnotifier/cog.py:564
 msgid "[Node={node}] Spotify track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Вузол={node}] Трек Spotify: {track} почав грати.\n"
-"На вимогу: {requester}"
+msgstr "[Node={node}] Spotify трек: {track} почав грати.\n"
+"Запитано: {requester}"
 
 #: plnotifier/cog.py:593
 msgid "Apple Music Track Start Event"
-msgstr "Початок події Apple Music Track"
+msgstr "Захід запуску Apple Music Track"
 
 #: plnotifier/cog.py:594
 msgid "[Node={node}] Apple Music track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Вузол={node}] Музичний трек Apple: {track} почав грати.\n"
-"На вимогу: {requester}"
+msgstr "[Node={node}] Трек Apple Music : {track} почав грати.\n"
+"Запитано: {requester}"
 
 #: plnotifier/cog.py:623
 msgid "Local Track Start Event"
-msgstr "Локальна подія початку треку"
+msgstr "Захід Місцева Відтворення Маршруту"
 
 #: plnotifier/cog.py:624
 msgid "[Node={node}] Local track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Вузол={node}] Місцева траса: {track} почав грати.\n"
-"На вимогу: {requester}"
+msgstr "[Node={node}] Локальний трек: {track} почав грати.\n"
+"Запитано: {requester}"
 
 #: plnotifier/cog.py:653
 msgid "HTTP Track Start Event"
-msgstr "HTTP Трек Початок події"
+msgstr "Запуск події HTTP-треку"
 
 #: plnotifier/cog.py:654
 msgid "[Node={node}] HTTP track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Вузол={node}] HTTP-трек: {track} почав грати.\n"
-"На вимогу: {requester}"
+msgstr "[Node={node}] HTTP трек: {track} почав грати.\n"
+"Запитано: {requester}"
 
 #: plnotifier/cog.py:683
 msgid "Text-To-Speech Track Start Event"
-msgstr "Початок події відстеження тексту в мовлення"
+msgstr "Подія початку синтезу мовлення"
 
 #: plnotifier/cog.py:684
 msgid "[Node={node}] Text-To-Speech track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Вузол={node}] Доріжка перетворення тексту в мову: {track} почав грати.\n"
-"На вимогу: {requester}"
+msgstr "[Node={node}] Text-To-Speech: {track} почав грати.\n"
+"Запитано: {requester}"
 
 #: plnotifier/cog.py:713
 msgid "YouTube Track Start Event"
-msgstr "Початок події YouTube"
+msgstr "Захід Початок руху YouTube треків"
 
 #: plnotifier/cog.py:714
 msgid "[Node={node}] YouTube track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Вузол={node}] Трек YouTube: {track} почав грати.\n"
-"На вимогу: {requester}"
+msgstr "[Node={node}] YouTube трек: {track} почав грати.\n"
+"Запитано: {requester}"
 
 #: plnotifier/cog.py:743 plnotifier/cog.py:776 plnotifier/cog.py:809
 #: plnotifier/cog.py:842 plnotifier/cog.py:875 plnotifier/cog.py:908
@@ -242,7 +242,7 @@ msgstr "[Вузол={node}] Трек YouTube: {track} почав грати.\n"
 #: plnotifier/cog.py:1040 plnotifier/cog.py:1073 plnotifier/cog.py:1106
 #: plnotifier/cog.py:1139 plnotifier/cog.py:1172
 msgid "{source} Track Start Event"
-msgstr "{source} Відстежити подію початку"
+msgstr "{source} подія початку пісні"
 
 #: plnotifier/cog.py:744 plnotifier/cog.py:777 plnotifier/cog.py:810
 #: plnotifier/cog.py:843 plnotifier/cog.py:876 plnotifier/cog.py:909
@@ -251,42 +251,42 @@ msgstr "{source} Відстежити подію початку"
 #: plnotifier/cog.py:1140 plnotifier/cog.py:1173
 msgid "[Node={node}] {source} track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Вузол={node}] {source} трек: {track} почав грати.\n"
-"На вимогу: {requester}"
+msgstr "[Node={node}] {source} трек: {track} почав грати.\n"
+"Вимагає: {requester}"
 
 #: plnotifier/cog.py:1205
 msgid "Track Skipped Event"
-msgstr "Відстежити пропущену подію"
+msgstr "Подія Пропущена пісні"
 
 #: plnotifier/cog.py:1206
 msgid "[Node={node}] {track} has been skipped.\n"
 "Requested by {requester}"
-msgstr "[Вузол={node}] {track} був пропущений.\n"
-"На запит {requester}"
+msgstr "[Node={node}] {track} була пропущена.\n"
+"Запитано {requester}"
 
 #: plnotifier/cog.py:1235
 msgid "Track Seek Event"
-msgstr "Відстежити подію пошуку"
+msgstr "Захід Пошук пісні"
 
 #: plnotifier/cog.py:1236
 msgid "[Node={node}] {requester} requested that {track} is sought from position {fro} to position {after}"
-msgstr "[Вузол={node}] {requester} просив, щоб {track} домагається з позиції {fro} на посаду {after}"
+msgstr "[Node={node}] {requester} просить надіслати запит {track} з позиції {fro} на позицію {after}"
 
 #: plnotifier/cog.py:1270
 msgid "Track Previous Requested Event"
-msgstr "Відстеження попередньої запитуваної події"
+msgstr "Попередня запитана подія"
 
 #: plnotifier/cog.py:1271
 msgid "[Node={node}] {requester} requested that the previous track {track} be played"
-msgstr "[Вузол={node}] {requester} запитав про те, щоб попередній трек {track} бути зіграним"
+msgstr "[Node={node}] {requester} просив програти попередній трек {track}"
 
 #: plnotifier/cog.py:1300
 msgid "Tracks Requested Event"
-msgstr "Відстежує запитувану подію"
+msgstr "Зах. запитані стеки"
 
 #: plnotifier/cog.py:1301
 msgid "[Node={node}] {requester} added {track_count}  to the queue"
-msgstr "[Вузол={node}] {requester} Додано {track_count}  до черги"
+msgstr "[Node={node}] {requester} додано {track_count}  до черги"
 
 #: plnotifier/cog.py:1302
 msgid "{count} track"
@@ -294,111 +294,111 @@ msgstr "{count} трек"
 
 #: plnotifier/cog.py:1327
 msgid "Track AutoPlay Event"
-msgstr "Відстежити подію автовідтворення"
+msgstr "Подія Автовідтворення"
 
 #: plnotifier/cog.py:1328
 msgid "[Node={node}] Auto-playing {track}"
-msgstr "[Вузол={node}] Автоматичне відтворення {track}"
+msgstr "[Node={node}] Автоматично грає {track}"
 
 #: plnotifier/cog.py:1355
 msgid "Track Resumed Event"
-msgstr "Відстежити відновлену подію"
+msgstr "Подія Відслідковування продовжена"
 
 #: plnotifier/cog.py:1356
 msgid "[Node={node}] {requester} resumed {track}"
-msgstr "[Вузол={node}] {requester} Відновив {track}"
+msgstr "[Вузол:{node}] відновлено {requester} {track}"
 
 #: plnotifier/cog.py:1385
 msgid "Queue Shuffled Event"
-msgstr "Перетасована черга події"
+msgstr "Захід Змішана Черга"
 
 #: plnotifier/cog.py:1386
 msgid "[Node={node}] {requester} shuffled the queue"
-msgstr "[Вузол={node}] {requester} перетасували чергу"
+msgstr "[Node={node}] {requester} поміщається в чергу"
 
 #: plnotifier/cog.py:1408
 msgid "Queue End Event"
-msgstr "Подія кінця черги"
+msgstr "Захід Завершення Черги"
 
 #: plnotifier/cog.py:1409
 msgid "[Node={node}] All tracks in the queue have been played"
-msgstr "[Вузол={node}] Всі треки в черзі відтворені"
+msgstr "[Node={node}] Відтворюється всі композиції в черзі"
 
 #: plnotifier/cog.py:1436
 msgid "Tracks Removed Event"
-msgstr "Треки видаленої події"
+msgstr "Захід Видалені треки"
 
 #: plnotifier/cog.py:1437
 msgid "[Node={node}] {requester} removed {track_count} tracks from the queue"
-msgstr "[Вузол={node}] {requester} Видалені {track_count} Доріжки з черги"
+msgstr "[Node={node}] {requester} видалив {track_count} треків з черги"
 
 #: plnotifier/cog.py:1464 plnotifier/cog.py:1944
 msgid "Player Paused Event"
-msgstr "Гравець призупинив подію"
+msgstr "Подія Гравця призупинено"
 
 #: plnotifier/cog.py:1465
 msgid "[Node={node}] {requester} paused the player"
-msgstr "[Вузол={node}] {requester} призупинив гравця"
+msgstr "[Вузол:{node}] {requester} призупинив гравця"
 
 #: plnotifier/cog.py:1492
 msgid "Player Stopped Event"
-msgstr "Гравець зупинив подію"
+msgstr "Подія Гравця зупинена"
 
 #: plnotifier/cog.py:1493
 msgid "[Node={node}] {requester} stopped the player"
-msgstr "[Вузол={node}] {requester} зупинив гравця"
+msgstr "[Вузол:{node}] {requester} зупинив гравця"
 
 #: plnotifier/cog.py:1520 plnotifier/cog.py:1972
 msgid "Player Resumed Event"
-msgstr "Гравець відновив подію"
+msgstr "Гравець відновив Подію"
 
 #: plnotifier/cog.py:1521
 msgid "[Node={node}] {requester} resumed the player"
-msgstr "[Вузол={node}] {requester} відновив роботу плеєра"
+msgstr "[Вузол:{node}] {requester} відновив гравця"
 
 #: plnotifier/cog.py:1548
 msgid "Player Moved Event"
-msgstr "Подія, переміщена гравцем"
+msgstr "Переміщення гравця"
 
 #: plnotifier/cog.py:1549
 msgid "[Node={node}] {requester} moved the player from {before} to {after}"
-msgstr "[Вузол={node}] {requester} перемістив гравця з {before} до {after}"
+msgstr "[Вузол:{node}] {requester} перемістив гравця з {before} в {after}"
 
 #: plnotifier/cog.py:1576
 msgid "Player Disconnected Event"
-msgstr "Подія відключеного гравця"
+msgstr "Подія Від'єднаного гравця"
 
 #: plnotifier/cog.py:1577
 msgid "[Node={node}] {requester} disconnected the player"
-msgstr "[Вузол={node}] {requester} від'єднав плеєр"
+msgstr "[Вузол:{node}] {requester} відключено гравця"
 
 #: plnotifier/cog.py:1604
 msgid "Player Connected Event"
-msgstr "Подія, пов'язана з гравцем"
+msgstr "Підключені події гравця"
 
 #: plnotifier/cog.py:1605
 msgid "[Node={node}] {requester} connected the player"
-msgstr "[Вузол={node}] {requester} підключили плеєр"
+msgstr "[Вузол:{node}] {requester} підключив гравця"
 
 #: plnotifier/cog.py:1632
 msgid "Player Volume Changed Event"
-msgstr "Зміна гучності гравця"
+msgstr "Обсяг гравця змінено"
 
 #: plnotifier/cog.py:1633
 msgid "[Node={node}] {requester} changed the player's volume from {before} to {after}"
-msgstr "[Вузол={node}] {requester} змінив гучність плеєра з {before} до {after}"
+msgstr "[Вузол:{node}] {requester} змінив гучність гравця з {before} на {after}"
 
 #: plnotifier/cog.py:1662 plnotifier/cog.py:1672 plnotifier/cog.py:1682
 msgid "Player Repeat Event"
-msgstr "Повторна подія гравця"
+msgstr "Подія повторення гравця"
 
 #: plnotifier/cog.py:1663
 msgid "[Node={node}] {requester} disabled repeat"
-msgstr "[Вузол={node}] {requester} вимкнено повторення"
+msgstr "[Node={node}] {requester} вимкнули повторення"
 
 #: plnotifier/cog.py:1673
 msgid "{requester} {status} repeat of the whole queue"
-msgstr "{requester} {status} повторення всієї черги"
+msgstr "{requester} {status} повторює всю чергу"
 
 #: plnotifier/cog.py:1674 plnotifier/cog.py:1685
 msgid "enabled"
@@ -410,55 +410,55 @@ msgstr "Вимкнуто"
 
 #: plnotifier/cog.py:1683
 msgid "[Node={node}] {requester} {status} repeat for {track}"
-msgstr "[Вузол={node}] {requester} {status} Повторіть значення для {track}"
+msgstr "[Node={node}] {requester} {status} повторити за {track}"
 
 #: plnotifier/cog.py:1713
 msgid "Player Restored Event"
-msgstr "Відновлена подія гравця"
+msgstr "Відновлені події Відтворено гравцем"
 
 #: plnotifier/cog.py:1714
 msgid "[Node={node}] {requester} restored the player"
-msgstr "[Вузол={node}] {requester} відновив плеєр"
+msgstr "[Node={node}] {requester} відновив гравця"
 
 #: plnotifier/cog.py:1737
 msgid "an intro section"
-msgstr "вступний розділ"
+msgstr "інтро"
 
 #: plnotifier/cog.py:1739
 msgid "an outro section"
-msgstr "аутро-секція"
+msgstr "розділ outro"
 
 #: plnotifier/cog.py:1741
 msgid "a preview section"
-msgstr "розділ попереднього перегляду"
+msgstr "попередній розділ"
 
 #: plnotifier/cog.py:1743
 msgid "an off-topic section"
-msgstr "розділ, що не стосується теми"
+msgstr "розділ поза темою"
 
 #: plnotifier/cog.py:1745
 msgid "a filler section"
-msgstr "заливна секція"
+msgstr "розділ пролювача"
 
 #: plnotifier/cog.py:1747
 msgid "a sponsor section"
-msgstr "спонсорська секція"
+msgstr "секція спонсора"
 
 #: plnotifier/cog.py:1749
 msgid "a self-promotion section"
-msgstr "розділ самореклами"
+msgstr "розділ самозаохочення"
 
 #: plnotifier/cog.py:1751
 msgid "an interaction section"
-msgstr "розділ взаємодії"
+msgstr "секція взаємодії"
 
 #: plnotifier/cog.py:1755
 msgid "Sponsor Segment Skipped Event"
-msgstr "Спонсорський сегмент пропущеної події"
+msgstr "Подія Сегмента Спонсору"
 
 #: plnotifier/cog.py:1756
 msgid "[Node={node}] Sponsorblock: Skipped {category} running from {start}s to {to}s"
-msgstr "[Вузол={node}] Спонсорський блок: Пропущено {category} біжить від {start}и до {to}s"
+msgstr "[Node={node}] Спонсорблок : Пропущено {category} працює з {start}s до {to}s"
 
 #: plnotifier/cog.py:1784
 msgid "Effect"
@@ -474,7 +474,7 @@ msgstr "Значення"
 
 #: plnotifier/cog.py:1826
 msgid "Filters Applied Event"
-msgstr "Фільтри застосованої події"
+msgstr "Застосовані фільтри події"
 
 #: plnotifier/cog.py:1829
 msgid "None"
@@ -486,57 +486,57 @@ msgstr "В даний час застосовується"
 
 #: plnotifier/cog.py:1832
 msgid "[Node={node}] {requester} changed the player filters"
-msgstr "[Вузол={node}] {requester} змінено фільтри програвача"
+msgstr "[Node={node}] {requester} змінив фільтри гравця"
 
 #: plnotifier/cog.py:1852
 msgid "Node Connected Event"
-msgstr "Подія, пов'язана з вузлом"
+msgstr "Підключені події в вузла"
 
 #: plnotifier/cog.py:1853
 msgid "Node {name} has been connected"
-msgstr "Вузол {name} підключено"
+msgstr "Вузол \" {name} \" був підключений"
 
 #: plnotifier/cog.py:1869
 msgid "Node Disconnected Event"
-msgstr "Подія, що відключається вузлом"
+msgstr "Подія від'єднана вузла"
 
 #: plnotifier/cog.py:1870
 msgid "Node {name} has been disconnected with code {code} and reason: {reason}"
-msgstr "Вузол {name} було відключено за допомогою коду {code} і причина: {reason}"
+msgstr "Вузол \" {name} \" був відключений з кодом {code} та причина: {reason}"
 
 #: plnotifier/cog.py:1892
 msgid "Node Changed Event"
-msgstr "Зміна вузла події"
+msgstr "Подія вузла змінено"
 
 #: plnotifier/cog.py:1893
 msgid "The node which the player is connected to changed from {fro} to {to}"
-msgstr "Вузол, до якого підключений плеєр, змінено з {fro} до {to}"
+msgstr "Вузол, в який гравець підключений до змінення з {fro} на {to}"
 
 #: plnotifier/cog.py:1915
 msgid "WebSocket Closed Event"
-msgstr "Закрита подія WebSocket"
+msgstr "Захід WebSocket закритий"
 
 #: plnotifier/cog.py:1916
 msgid "[Node={node}] The Lavalink websocket connection to Discord closed with code {code} and reason {reason}"
-msgstr "[Вузол={node}] Підключення вебсокета Lavalink до Discord закрито кодом {code} і причина {reason}"
+msgstr "[Node={node}] З'єднання webсокету Lavalink з Discord закрито кодом {code} та через {reason}"
 
 #: plnotifier/cog.py:1945
 msgid "[Node={node}] {requester} automatically paused the player due to configured values"
-msgstr "[Вузол={node}] {requester} автоматично призупинено роботу плеєра через налаштованих значень"
+msgstr "[Node={node}] {requester} автоматично призупинили гравця через налаштовані значення"
 
 #: plnotifier/cog.py:1973
 msgid "[Node={node}] {requester} automatically resumed the player due to configured values"
-msgstr "[Вузол={node}] {requester} автоматично відновився плеєр за рахунок налаштованих значень"
+msgstr "[Node={node}] {requester} автоматично відновив гравця через налаштовані значення"
 
 #: plnotifier/cog.py:2000 plnotifier/cog.py:2030
 msgid "Auto Player Disconnected Event"
-msgstr "Подія автоматичного відключення програвача"
+msgstr "Авто Від'єднана подія гравця"
 
 #: plnotifier/cog.py:2001
 msgid "[Node={node}] {requester} automatically disconnected the player as there is no one listening"
-msgstr "[Вузол={node}] {requester} автоматичне відключення плеєра, так як ніхто не слухає"
+msgstr "[Node={node}] {requester} автоматично відключає гравця через відсутність жодного прослуховування"
 
 #: plnotifier/cog.py:2031
 msgid "[Node={node}] {requester} automatically disconnected the player as the queue is empty"
-msgstr "[Вузол={node}] {requester} автоматичне відключення плеєра, так як черга порожня"
+msgstr "[Node={node}] {requester} автоматично відключає гравця через пусту чергу"
 

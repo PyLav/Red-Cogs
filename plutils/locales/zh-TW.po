@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:42\n"
+"PO-Revision-Date: 2023-02-01 00:10\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: plutils/cog.py:58 plutils/cog.py:68
 #, docstring
 msgid "Utility commands for PyLav"
-msgstr "PyLav 的實用程式命令"
+msgstr "PyLav 的實用命令"
 
 #: plutils/cog.py:72
 #, docstring
@@ -41,18 +41,18 @@ msgid "Show the slashes available in the bot.\n\n"
 "        Author: TrustyJAID#0001 via code block on Discord channel.\n"
 "        "
 msgstr "顯示機器人中可用的斜杠。\n\n"
-"        作者： TrustyJAID#0001 通過 Discord 頻道上的代碼塊。\n"
+"        作者：TrustyJAID#0001 通過 Discord 頻道上的代碼。\n"
 "        "
 
 #: plutils/cog.py:133
 #, docstring
 msgid "Get info about specific things"
-msgstr "獲取有關特定內容的資訊"
+msgstr "獲取有關特定事物的資訊"
 
 #: plutils/cog.py:137
 #, docstring
 msgid "Get the base64 of the current track"
-msgstr "獲取當前軌道的base64"
+msgstr "獲取當前曲目的base64"
 
 #: plutils/cog.py:145 plutils/cog.py:177 plutils/cog.py:209 plutils/cog.py:240
 #: plutils/cog.py:273
@@ -81,43 +81,43 @@ msgstr "獲取當前曲目的來源"
 #: plutils/cog.py:264
 #, docstring
 msgid "Get the API of the current track"
-msgstr "獲取當前軌道的 API"
+msgstr "獲取當前曲目的API"
 
 #: plutils/cog.py:284 plutils/cog.py:293
 msgid "Unable to get player info"
-msgstr "無法獲取玩家資訊"
+msgstr "無法獲取播放器信息"
 
 #: plutils/cog.py:309
 #, docstring
 msgid "Decode a track's base64 string into a JSON object"
-msgstr "將軌道的base64字串解碼為 JSON 物件"
+msgstr "將軌道的 base64 字符串解碼為 JSON 對象"
 
 #: plutils/cog.py:318
 msgid "Invalid base64 string"
-msgstr "無效的base64字串"
+msgstr "無效的 base64 字符串"
 
 #: plutils/cog.py:334
 #, docstring
 msgid "Manage the query cache"
-msgstr "管理查詢快取"
+msgstr "查詢託管點緩存"
 
 #: plutils/cog.py:338
 #, docstring
 msgid "Clear the query cache"
-msgstr "清除查詢快取"
+msgstr "清除查詢緩存"
 
 #: plutils/cog.py:345 plutils/cog.py:374 plutils/cog.py:387
 msgid "Query cache cleared"
-msgstr "查詢快取已清除"
+msgstr "查詢緩存已清除"
 
 #: plutils/cog.py:351
 #, docstring
 msgid "Clear the query cache older than a number of days"
-msgstr "清除超過天數的查詢緩存"
+msgstr "清除早於一定天數的查詢緩存"
 
 #: plutils/cog.py:359
 msgid "Days must be less than 31"
-msgstr "天數必須少於31天"
+msgstr "天數必須小於 31"
 
 #: plutils/cog.py:367
 msgid "Days must be greater than 1"
@@ -131,11 +131,11 @@ msgstr "清除查詢的查詢緩存"
 #: plutils/cog.py:393
 #, docstring
 msgid "Get the size of the query cache"
-msgstr "獲取查詢快取的大小"
+msgstr "獲取查詢緩存的大小"
 
 #: plutils/cog.py:400
 msgid "Query cache size: `{size}`"
-msgstr "查詢快取大小： '{size}`"
+msgstr "查詢緩存大小：`{size}`"
 
 #: plutils/cog.py:411
 #, docstring
@@ -144,23 +144,23 @@ msgid "Start memory tracing\n\n"
 "        `[p]plutils trace 1` turns on tracing\n"
 "        `[p]plutils trace` shows the current status of tracing\n"
 "        "
-msgstr "啟動記憶體跟蹤\n\n"
-"        `[p]Plutils 追蹤 0' 關閉追蹤\n"
-"        `[p]Plutils Track 1' 打開跟蹤\n"
-"        `[p]Plutils Trace'顯示跟蹤的當前狀態\n"
+msgstr "開始追蹤記憶體\n\n"
+"        `[p]plutils trace 0` 關閉跟蹤\n"
+"        `[p]plutils trace 1` 打開跟蹤\n"
+"        `[p]plutils trace` 顯示跟蹤的當前狀態\n"
 "        "
 
 #: plutils/cog.py:425
 msgid "Stopped memory tracing"
-msgstr "已停止記憶體跟蹤"
+msgstr "停止追蹤記憶體"
 
 #: plutils/cog.py:434
 msgid "Started memory tracing"
-msgstr "已啟動記憶體跟蹤"
+msgstr "開始追蹤記憶體"
 
 #: plutils/cog.py:443
 msgid "You need to start tracing first"
-msgstr "您需要先開始跟蹤"
+msgstr "您需要先開始追蹤"
 
 #: plutils/cog.py:455
 #, docstring
@@ -175,17 +175,17 @@ msgid "Set the logger level\n\n"
 "        6: Trace\n"
 "        "
 msgstr "設置記錄器級別\n\n"
-"        級別如下：\n"
+"        等級如下：\n"
 "        0：嚴重\n"
 "        1：錯誤\n"
 "        2：警告\n"
-"        3：資訊\n"
-"        4：調試\n"
-"        5：詳細\n"
+"        3：信息\n"
+"        4：除錯\n"
+"        5：冗長\n"
 "        6：跟蹤\n"
 "        "
 
 #: plutils/cog.py:486
 msgid "Logger level set to `{level}`"
-msgstr "記錄器等級設定為 '{level}`"
+msgstr "記錄器級別設置為“{level}”"
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:42\n"
+"PO-Revision-Date: 2023-02-01 00:33\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian\n"
 "MIME-Version: 1.0\n"
@@ -20,12 +20,12 @@ msgstr ""
 #: plnotifier/cog.py:84
 #, docstring
 msgid "Listen to events from the PyLav player and send them as messages to the specified channel"
-msgstr "Lytt til hendelser fra PyLav-spilleren og send dem som meldinger til den angitte kanalen"
+msgstr "Lytt til hendelser fra PyLav spilleren og send dem som meldinger til den angitte kanalen"
 
 #: plnotifier/cog.py:227
 #, docstring
 msgid "Configure the PyLavNotifier cog"
-msgstr "Konfigurer PyLavNotifier-tannhjulet"
+msgstr "Konfigurer PyLavNotifier cog"
 
 #: plnotifier/cog.py:231
 #, docstring
@@ -43,7 +43,7 @@ msgstr "Versjon"
 #: plnotifier/cog.py:263
 #, docstring
 msgid "Set the notify channel for the player"
-msgstr "Angi varslingskanalen for spilleren"
+msgstr "Sett varslingskanal for spilleren"
 
 #: plnotifier/cog.py:272 plnotifier/cog.py:327
 msgid "I do not have permission to manage webhooks in {channel}"
@@ -59,15 +59,15 @@ msgstr "PyLavNotifier"
 
 #: plnotifier/cog.py:296 plnotifier/cog.py:314 plnotifier/cog.py:337
 msgid "PyLav Notifier - Requested by {author}"
-msgstr "PyLav-varsler - forespurt av {author}"
+msgstr "PyLav Notifier - forespurt av {author}"
 
 #: plnotifier/cog.py:307
 msgid "This thread will be used by PyLav to post notifications about the player"
-msgstr "Denne tråden vil bli brukt av PyLav til å legge inn varsler om spilleren"
+msgstr "Denne tråden vil bli brukt av PyLav for å legge inn varsler om spilleren"
 
 #: plnotifier/cog.py:351
 msgid "PyLavNotifier channel set to {channel}"
-msgstr "PyLavNotifier-kanal satt til {channel}"
+msgstr "PyLavNotifier kanal satt til {channel}"
 
 #: plnotifier/cog.py:361
 #, docstring
@@ -77,30 +77,30 @@ msgid "Set whether or not to notify for the specified event.\n\n"
 "            toggle -- Whether or not to notify upon receiving this event.\n"
 "            use_mention -- Whether or not to use a mention instead of the name for the action requested.\n"
 "        "
-msgstr "Angi om du vil varsle om den angitte hendelsen eller ikke.\n\n"
-"        Argumenter:\n"
-"            hendelse - Hendelsen som skal angis.\n"
-"            veksle - Om du vil varsle når du mottar denne hendelsen.\n"
-"            use_mention - Om du vil bruke en omtale i stedet for navnet på handlingen som er forespurt.\n"
+msgstr "Angi om du skal varsle for den angitte hendelsen eller ikke.\n\n"
+"        Arguments:\n"
+"            event -- The event to set.\n"
+"            veksle -- Om du vil varsle når du mottar denne hendelsen eller ikke.\n"
+"            brukere_mention -- Om du vil bruke en omtale i stedet for navnet på handlingen forespurt.\n"
 "        "
 
 #: plnotifier/cog.py:378
 msgid "Invalid event, possible events are:\n\n"
 "{events}"
-msgstr "Ugyldig hendelse, mulige hendelser er:\n\n"
+msgstr "Ugyldige hendelser, mulige hendelser er:\n\n"
 "{events}"
 
 #: plnotifier/cog.py:395
 msgid "Event {event} set to {toggle}{extras}"
-msgstr "Begivenhet {event} satt til {toggle}{extras}"
+msgstr "Hendelse {event} satt til {toggle}{extras}"
 
 #: plnotifier/cog.py:397
 msgid "notify"
-msgstr "Varsle"
+msgstr "notifikasjon"
 
 #: plnotifier/cog.py:397
 msgid "do not notify"
-msgstr "Ikke varsle"
+msgstr "ikke varsle"
 
 #: plnotifier/cog.py:398
 msgid " with mentions"
@@ -108,37 +108,37 @@ msgstr " med omtaler"
 
 #: plnotifier/cog.py:398
 msgid " without mentions"
-msgstr " uten omtale"
+msgstr " uten nevner"
 
 #: plnotifier/cog.py:414
 msgid "Track Stuck Event"
-msgstr "Spor hendelsen som står fast"
+msgstr "Spor taus hendelse"
 
 #: plnotifier/cog.py:415
 msgid "[Node={node}] {track} is stuck for {threshold} seconds, skipping"
-msgstr "[Node={node}] {track} er fast for {threshold} sekunder, hoppe over"
+msgstr "[Node={node}] {track} er sittende fast i {threshold} sekunder, hopper over"
 
 #: plnotifier/cog.py:440
 msgid "Track Exception Event"
-msgstr "Spor unntakshendelse"
+msgstr "Spor unntak arrangement"
 
 #: plnotifier/cog.py:441
 msgid "[Node={node}] There was an error while playing {track}:\n"
 "{exception}"
-msgstr "[Node={node}] Det oppstod en feil under avspilling {track}:\n"
+msgstr "[Node={node}] Det oppsto en feil under avspilling {track}:\n"
 "{exception}"
 
 #: plnotifier/cog.py:464
 msgid "the player reached the end of the tracks runtime"
-msgstr "spilleren nådde slutten av sporene kjøretid"
+msgstr "spilleren nådde slutten av sporet runtid"
 
 #: plnotifier/cog.py:466
 msgid "a new track started playing"
-msgstr "Et nytt spor begynte å spille"
+msgstr "et nytt spor har begynt å spille"
 
 #: plnotifier/cog.py:468
 msgid "it failed to start"
-msgstr "det kunne ikke starte"
+msgstr "det feilet å starte"
 
 #: plnotifier/cog.py:470
 msgid "because the player was stopped"
@@ -150,25 +150,25 @@ msgstr "noden ba den om å stoppe"
 
 #: plnotifier/cog.py:475
 msgid "Track End Event"
-msgstr "Spor slutthendelse"
+msgstr "Spor slutt hendelse"
 
 #: plnotifier/cog.py:476
 msgid "[Node={node}] {track} has finished playing because {reason}"
-msgstr "[Node={node}] {track} er ferdig med å spille fordi {reason}"
+msgstr "[Node={node}] {track} har spilt ferdig fordi {reason}"
 
 #: plnotifier/cog.py:503
 msgid "YouTube Music Track Start Event"
-msgstr "Start arrangement for YouTube Music-spor"
+msgstr "YouTube Musikkspor Start Arrangement"
 
 #: plnotifier/cog.py:504
 msgid "[Node={node}] YouTube Music track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Node={node}] YouTube Music-spor: {track} har begynt å spille.\n"
+msgstr "[Node={node}] YouTube Musikk spor: {track} har begynt å spille.\n"
 "Forespurt av: {requester}"
 
 #: plnotifier/cog.py:533
 msgid "Deezer Track Start Event"
-msgstr "Deezer Track Start-arrangement"
+msgstr "Deezer slepestrek start event"
 
 #: plnotifier/cog.py:534
 msgid "[Node={node}] Deezer track: {track} has started playing.\n"
@@ -178,27 +178,27 @@ msgstr "[Node={node}] Deezer spor: {track} har begynt å spille.\n"
 
 #: plnotifier/cog.py:563
 msgid "Spotify Track Start Event"
-msgstr "Spotify Track Start-arrangement"
+msgstr "Spotify Slepestrek Start hendelse"
 
 #: plnotifier/cog.py:564
 msgid "[Node={node}] Spotify track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Node={node}] Spotify-spor: {track} har begynt å spille.\n"
+msgstr "[Node={node}] Spotify spor: {track} har begynt å spille.\n"
 "Forespurt av: {requester}"
 
 #: plnotifier/cog.py:593
 msgid "Apple Music Track Start Event"
-msgstr "Apple Music-spor Start-arrangement"
+msgstr "Apple Music Track Start event"
 
 #: plnotifier/cog.py:594
 msgid "[Node={node}] Apple Music track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Node={node}] Apple Music-spor: {track} har begynt å spille.\n"
+msgstr "[Node={node}] Apple Musikk spor: {track} har begynt å spille.\n"
 "Forespurt av: {requester}"
 
 #: plnotifier/cog.py:623
 msgid "Local Track Start Event"
-msgstr "Startarrangement for lokale spor"
+msgstr "Start Start lokale spor"
 
 #: plnotifier/cog.py:624
 msgid "[Node={node}] Local track: {track} has started playing.\n"
@@ -208,7 +208,7 @@ msgstr "[Node={node}] Lokalt spor: {track} har begynt å spille.\n"
 
 #: plnotifier/cog.py:653
 msgid "HTTP Track Start Event"
-msgstr "HTTP Track Start-hendelse"
+msgstr "HTTP-spor start hendelse"
 
 #: plnotifier/cog.py:654
 msgid "[Node={node}] HTTP track: {track} has started playing.\n"
@@ -218,22 +218,22 @@ msgstr "[Node={node}] HTTP-spor: {track} har begynt å spille.\n"
 
 #: plnotifier/cog.py:683
 msgid "Text-To-Speech Track Start Event"
-msgstr "Starthendelse for tekst-til-tale-sporing"
+msgstr "Tekst-Til-Tale Spor Start hendelse"
 
 #: plnotifier/cog.py:684
 msgid "[Node={node}] Text-To-Speech track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Node={node}] Tekst-til-tale-spor: {track} har begynt å spille.\n"
+msgstr "[Merk={node}] Text-To-Speech spor: {track} har startet å spille.\n"
 "Forespurt av: {requester}"
 
 #: plnotifier/cog.py:713
 msgid "YouTube Track Start Event"
-msgstr "YouTube Track Start Event"
+msgstr "YouTube Spor Start hendelse"
 
 #: plnotifier/cog.py:714
 msgid "[Node={node}] YouTube track: {track} has started playing.\n"
 "Requested by: {requester}"
-msgstr "[Node={node}] YouTube-spor: {track} har begynt å spille.\n"
+msgstr "[Node={node}] YouTube spor: {track} har begynt å spille.\n"
 "Forespurt av: {requester}"
 
 #: plnotifier/cog.py:743 plnotifier/cog.py:776 plnotifier/cog.py:809
@@ -256,7 +256,7 @@ msgstr "[Node={node}] {source} spor: {track} har begynt å spille.\n"
 
 #: plnotifier/cog.py:1205
 msgid "Track Skipped Event"
-msgstr "Spor hoppet over hendelse"
+msgstr "Spor hoppet over arrangementet"
 
 #: plnotifier/cog.py:1206
 msgid "[Node={node}] {track} has been skipped.\n"
@@ -266,15 +266,15 @@ msgstr "[Node={node}] {track} har blitt hoppet over.\n"
 
 #: plnotifier/cog.py:1235
 msgid "Track Seek Event"
-msgstr "Spor søk hendelse"
+msgstr "Spor søk-event"
 
 #: plnotifier/cog.py:1236
 msgid "[Node={node}] {requester} requested that {track} is sought from position {fro} to position {after}"
-msgstr "[Node={node}] {requester} bedt om at {track} søkes fra stilling {fro} til posisjon {after}"
+msgstr "[Node={node}] {requester} ba om at {track} søkes fra posisjon {fro} til posisjon {after}"
 
 #: plnotifier/cog.py:1270
 msgid "Track Previous Requested Event"
-msgstr "Spor tidligere forespurt hendelse"
+msgstr "Spor forrige forespurte hendelse"
 
 #: plnotifier/cog.py:1271
 msgid "[Node={node}] {requester} requested that the previous track {track} be played"
@@ -282,11 +282,11 @@ msgstr "[Node={node}] {requester} bedt om at forrige spor {track} spilles"
 
 #: plnotifier/cog.py:1300
 msgid "Tracks Requested Event"
-msgstr "Sporer forespurt hendelse"
+msgstr "Spor forespurt hendelse"
 
 #: plnotifier/cog.py:1301
 msgid "[Node={node}] {requester} added {track_count}  to the queue"
-msgstr "[Node={node}] {requester} Lagt {track_count}  til køen"
+msgstr "[Node={node}] {requester} la til {track_count}  i køen"
 
 #: plnotifier/cog.py:1302
 msgid "{count} track"
@@ -294,11 +294,11 @@ msgstr "{count} spor"
 
 #: plnotifier/cog.py:1327
 msgid "Track AutoPlay Event"
-msgstr "Spor Autokjør-hendelse"
+msgstr "Spor AutoPlay hendelse"
 
 #: plnotifier/cog.py:1328
 msgid "[Node={node}] Auto-playing {track}"
-msgstr "[Node={node}] Automatisk avspilling {track}"
+msgstr "[Node={node}] Auto-avspilling {track}"
 
 #: plnotifier/cog.py:1355
 msgid "Track Resumed Event"
@@ -306,23 +306,23 @@ msgstr "Spor gjenopptatt hendelse"
 
 #: plnotifier/cog.py:1356
 msgid "[Node={node}] {requester} resumed {track}"
-msgstr "[Node={node}] {requester} Gjenopptatt {track}"
+msgstr "[Node={node}] {requester} gjenopptatt {track}"
 
 #: plnotifier/cog.py:1385
 msgid "Queue Shuffled Event"
-msgstr "Blandet-arrangement i kø"
+msgstr "Kø vekslet begivenhet"
 
 #: plnotifier/cog.py:1386
 msgid "[Node={node}] {requester} shuffled the queue"
-msgstr "[Node={node}] {requester} stokket køen"
+msgstr "[Node={node}] {requester} stokk om køen"
 
 #: plnotifier/cog.py:1408
 msgid "Queue End Event"
-msgstr "Køavslutningshendelse"
+msgstr "Avslutt kø event"
 
 #: plnotifier/cog.py:1409
 msgid "[Node={node}] All tracks in the queue have been played"
-msgstr "[Node={node}] Alle sporene i køen er spilt"
+msgstr "[Node={node}] Alle spor i køen har blitt spilt"
 
 #: plnotifier/cog.py:1436
 msgid "Tracks Removed Event"
@@ -330,19 +330,19 @@ msgstr "Spor fjernet hendelse"
 
 #: plnotifier/cog.py:1437
 msgid "[Node={node}] {requester} removed {track_count} tracks from the queue"
-msgstr "[Node={node}] {requester} Fjernet {track_count} Spor fra køen"
+msgstr "[Node={node}] {requester} fjernet {track_count} spor fra køen"
 
 #: plnotifier/cog.py:1464 plnotifier/cog.py:1944
 msgid "Player Paused Event"
-msgstr "Spiller satt på pause"
+msgstr "Spilleren pauset hendelse"
 
 #: plnotifier/cog.py:1465
 msgid "[Node={node}] {requester} paused the player"
-msgstr "[Node={node}] {requester} satte spilleren på pause"
+msgstr "[Node={node}] {requester} pauset spilleren"
 
 #: plnotifier/cog.py:1492
 msgid "Player Stopped Event"
-msgstr "Spillerstoppet hendelse"
+msgstr "Spilleren stoppet hendelse"
 
 #: plnotifier/cog.py:1493
 msgid "[Node={node}] {requester} stopped the player"
@@ -350,7 +350,7 @@ msgstr "[Node={node}] {requester} stoppet spilleren"
 
 #: plnotifier/cog.py:1520 plnotifier/cog.py:1972
 msgid "Player Resumed Event"
-msgstr "Spilleren gjenopptatt Event"
+msgstr "Spilleren gjenopptatt hendelse"
 
 #: plnotifier/cog.py:1521
 msgid "[Node={node}] {requester} resumed the player"
@@ -358,7 +358,7 @@ msgstr "[Node={node}] {requester} gjenopptok spilleren"
 
 #: plnotifier/cog.py:1548
 msgid "Player Moved Event"
-msgstr "Spiller flyttet hendelse"
+msgstr "Avspiller Flyttet Hendelse"
 
 #: plnotifier/cog.py:1549
 msgid "[Node={node}] {requester} moved the player from {before} to {after}"
@@ -366,11 +366,11 @@ msgstr "[Node={node}] {requester} flyttet spilleren fra {before} til {after}"
 
 #: plnotifier/cog.py:1576
 msgid "Player Disconnected Event"
-msgstr "Spiller frakoblet hendelse"
+msgstr "Spilleren frakoblet hendelse"
 
 #: plnotifier/cog.py:1577
 msgid "[Node={node}] {requester} disconnected the player"
-msgstr "[Node={node}] {requester} koblet fra spilleren"
+msgstr "[Node={node}] {requester} frakoblet spilleren"
 
 #: plnotifier/cog.py:1604
 msgid "Player Connected Event"
@@ -378,11 +378,11 @@ msgstr "Spillertilkoblet hendelse"
 
 #: plnotifier/cog.py:1605
 msgid "[Node={node}] {requester} connected the player"
-msgstr "[Node={node}] {requester} koblet til spilleren"
+msgstr "[Node={node}] {requester} koblet spilleren"
 
 #: plnotifier/cog.py:1632
 msgid "Player Volume Changed Event"
-msgstr "Endret spillervolum"
+msgstr "Spillervolum endret hendelse"
 
 #: plnotifier/cog.py:1633
 msgid "[Node={node}] {requester} changed the player's volume from {before} to {after}"
@@ -390,15 +390,15 @@ msgstr "[Node={node}] {requester} endret spillerens volum fra {before} til {afte
 
 #: plnotifier/cog.py:1662 plnotifier/cog.py:1672 plnotifier/cog.py:1682
 msgid "Player Repeat Event"
-msgstr "Gjentatt hendelse for spiller"
+msgstr "Spilleren gjenta-hendelse"
 
 #: plnotifier/cog.py:1663
 msgid "[Node={node}] {requester} disabled repeat"
-msgstr "[Node={node}] {requester} deaktivert gjenta"
+msgstr "[Node={node}] {requester} deaktiverte gjenta"
 
 #: plnotifier/cog.py:1673
 msgid "{requester} {status} repeat of the whole queue"
-msgstr "{requester} {status} Gjentakelse av hele køen"
+msgstr "{requester} {status} gjenta av hele køen"
 
 #: plnotifier/cog.py:1674 plnotifier/cog.py:1685
 msgid "enabled"
@@ -414,7 +414,7 @@ msgstr "[Node={node}] {requester} {status} gjenta for {track}"
 
 #: plnotifier/cog.py:1713
 msgid "Player Restored Event"
-msgstr "Spiller gjenopprettet hendelse"
+msgstr "Spilleren gjenopprettet hendelse"
 
 #: plnotifier/cog.py:1714
 msgid "[Node={node}] {requester} restored the player"
@@ -422,23 +422,23 @@ msgstr "[Node={node}] {requester} gjenopprettet spilleren"
 
 #: plnotifier/cog.py:1737
 msgid "an intro section"
-msgstr "En introseksjon"
+msgstr "en intro inneksjon"
 
 #: plnotifier/cog.py:1739
 msgid "an outro section"
-msgstr "en outro-seksjon"
+msgstr "en outro seksjon"
 
 #: plnotifier/cog.py:1741
 msgid "a preview section"
-msgstr "En forhåndsvisningsdel"
+msgstr "en forhåndsvisningsdel"
 
 #: plnotifier/cog.py:1743
 msgid "an off-topic section"
-msgstr "En off-topic-seksjon"
+msgstr "en off-topic seksjon"
 
 #: plnotifier/cog.py:1745
 msgid "a filler section"
-msgstr "en fyllstoffseksjon"
+msgstr "en fyllprofil"
 
 #: plnotifier/cog.py:1747
 msgid "a sponsor section"
@@ -446,19 +446,19 @@ msgstr "en sponsor seksjon"
 
 #: plnotifier/cog.py:1749
 msgid "a self-promotion section"
-msgstr "En egenreklame-seksjon"
+msgstr "en selvforfremmende seksjon"
 
 #: plnotifier/cog.py:1751
 msgid "an interaction section"
-msgstr "En samhandlingsdel"
+msgstr "et samspill"
 
 #: plnotifier/cog.py:1755
 msgid "Sponsor Segment Skipped Event"
-msgstr "Sponsor segment hoppet over arrangementet"
+msgstr "Sponsor Segment Hoppet over arrangementet"
 
 #: plnotifier/cog.py:1756
 msgid "[Node={node}] Sponsorblock: Skipped {category} running from {start}s to {to}s"
-msgstr "[Node={node}] Sponsorblock: Hoppet over {category} kjører fra {start}s til {to}s"
+msgstr "[Node={node}] Sponsorblokk: Hoppet over {category} fra {start}s til {to}s"
 
 #: plnotifier/cog.py:1784
 msgid "Effect"
@@ -474,7 +474,7 @@ msgstr "Verdier"
 
 #: plnotifier/cog.py:1826
 msgid "Filters Applied Event"
-msgstr "Filtrerer brukt hendelse"
+msgstr "Filtre anvendt hendelse"
 
 #: plnotifier/cog.py:1829
 msgid "None"
@@ -494,23 +494,23 @@ msgstr "Node-tilkoblet hendelse"
 
 #: plnotifier/cog.py:1853
 msgid "Node {name} has been connected"
-msgstr "Node {name} har blitt koblet til"
+msgstr "Node {name} har blitt tilkoblet"
 
 #: plnotifier/cog.py:1869
 msgid "Node Disconnected Event"
-msgstr "Hendelse uten kobling av node"
+msgstr "Noden frakoblet hendelse"
 
 #: plnotifier/cog.py:1870
 msgid "Node {name} has been disconnected with code {code} and reason: {reason}"
-msgstr "Node {name} har blitt koblet fra med kode {code} og grunn: {reason}"
+msgstr "Node {name} har blitt koblet fra koden {code} og grunnen: {reason}"
 
 #: plnotifier/cog.py:1892
 msgid "Node Changed Event"
-msgstr "Node endret hendelse"
+msgstr "Noden endret hendelse"
 
 #: plnotifier/cog.py:1893
 msgid "The node which the player is connected to changed from {fro} to {to}"
-msgstr "Noden som spilleren er koblet til, endret fra {fro} til {to}"
+msgstr "Noden som spilleren er koblet til har blitt endret fra {fro} til {to}"
 
 #: plnotifier/cog.py:1915
 msgid "WebSocket Closed Event"
@@ -518,7 +518,7 @@ msgstr "WebSocket lukket hendelse"
 
 #: plnotifier/cog.py:1916
 msgid "[Node={node}] The Lavalink websocket connection to Discord closed with code {code} and reason {reason}"
-msgstr "[Node={node}] Lavalink websocket-tilkoblingen til Discord lukket med kode {code} og fornuft {reason}"
+msgstr "[Node={node}] Lavalink websocket tilkobling til Discord lukket med koden {code} og årsaken {reason}"
 
 #: plnotifier/cog.py:1945
 msgid "[Node={node}] {requester} automatically paused the player due to configured values"
@@ -530,7 +530,7 @@ msgstr "[Node={node}] {requester} gjenopptok spilleren automatisk på grunn av k
 
 #: plnotifier/cog.py:2000 plnotifier/cog.py:2030
 msgid "Auto Player Disconnected Event"
-msgstr "Hendelsen Automatisk avspiller frakoblet"
+msgstr "Auto Spiller frakoblet hendelse"
 
 #: plnotifier/cog.py:2001
 msgid "[Node={node}] {requester} automatically disconnected the player as there is no one listening"
@@ -538,5 +538,5 @@ msgstr "[Node={node}] {requester} koblet automatisk fra spilleren, da det ikke e
 
 #: plnotifier/cog.py:2031
 msgid "[Node={node}] {requester} automatically disconnected the player as the queue is empty"
-msgstr "[Node={node}] {requester} Koblet spilleren automatisk fra siden køen er tom"
+msgstr "[Node={node}] {requester} kobler automatisk fra spilleren fordi køen er tom"
 

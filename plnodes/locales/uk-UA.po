@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:42\n"
+"PO-Revision-Date: 2023-02-01 00:10\n"
 "Last-Translator: \n"
 "Language-Team: Ukrainian\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: plnodes/cog.py:33
 #, docstring
 msgid "Manage the nodes used by PyLav"
-msgstr "Управління вузлами, використовуваними PyLav"
+msgstr "Керування вузлами що використовуються в PyLav"
 
 #: plnodes/cog.py:44
 #, docstring
@@ -43,11 +43,11 @@ msgstr "Версія"
 #: plnodes/cog.py:78
 #, docstring
 msgid "Add a node to PyLav"
-msgstr "Додавання вузла в PyLav"
+msgstr "Додати вузол до PyLav"
 
 #: plnodes/cog.py:88
 msgid "Let's add a node to PyLav!"
-msgstr "Додамо вузол в PyLav!"
+msgstr "Давайте додамо вузол до PyLav!"
 
 #: plnodes/cog.py:89
 msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
@@ -61,17 +61,17 @@ msgid "(**1**){space} - Apply changes and add the node to PyLav.\n"
 "(**9**){space} - Set the connection timeout.\n"
 "(**10**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr "(**1**){space} - Застосуйте зміни і додайте вузол в PyLav.\n"
-"(**2**){space} - Скасуйте будь-які внесені зміни і закрийте меню.\n"
-"(**3**){space} - Переключення між режимами лише пошуку та пошуку та відтворення.\n"
-"(**4**){space} - Перемикайтеся між увімкненням і вимкненням SSL.\n"
-"(**5**){space} - Додайте ім'я до вузла.\n"
-"(**6**){space} - Додайте адресу хоста вузла.\n"
-"(**7**){space} - Додайте порт, який використовує вузол.\n"
-"(**8**){space} - Встановіть пароль на вузол.\n"
-"(**9**){space} - Встановіть тайм-аут з'єднання.\n"
-"(**10**) - Виберіть, які джерела відключити для цього вузла (можна вибрати Кілька).\n"
-"Якщо ви взаємодієте з кнопкою кілька разів, почне діяти тільки остання взаємодія.\n\n\n"
+msgstr "(**1**){space} - Застосувати зміни і додати вузол до PyLav.\n"
+"(**2**){space} - Скасування всіх змін, внесених та закриття меню.\n"
+"(**3**){space} - переключитися між режимами пошуку і відтворення.\n"
+"(**4**){space} - Перемикач між SSL та вимкненим.\n"
+"(**5**){space} - Додати назву на вузол.\n"
+"(**6**){space} - Додати адресу хоста вузла.\n"
+"(**7**){space} - Додати порт використовується вузол.\n"
+"(**8**){space} - Встановити пароль для вузла.\n"
+"(**9**){space} - Встановіть час підключення.\n"
+"(**10**) - Виберіть, які джерела для цього вузла (множинний вибір можна вибрати).\n"
+"Якщо ви взаємодієте з кнопкою кілька разів, лише остання взаємодія набуде чинності.\n\n\n"
 
 #: plnodes/cog.py:137
 msgid "Added node {name} with the following settings:\n"
@@ -83,45 +83,45 @@ msgid "Added node {name} with the following settings:\n"
 "SSL: {ssl}\n"
 "Disabled Sources: {disabled_sources}\n"
 msgstr "Доданий вузол {name} з наступними налаштуваннями:\n"
-"Господар: {host}\n"
+"Хост: {host}\n"
 "Порт: {port}\n"
 "Пароль: {password}\n"
-"Тайм-аут резюме: {resume_timeout}\n"
-"Пошук лише: {search_only}\n"
+"Час відновлення: {resume_timeout}\n"
+"Швидко Пошук: {search_only}\n"
 "SSL: {ssl}\n"
-"Відключені джерела: {disabled_sources}\n"
+"Вимкнених джерел: {disabled_sources}\n"
 
 #: plnodes/cog.py:168 plnodes/cog.py:175
 msgid "Unable to add this node"
-msgstr "Не вдається додати цей вузол"
+msgstr "Не вдалося додати цей вузол"
 
 #: plnodes/cog.py:181
 #, docstring
 msgid "Remove a node from a PyLav instance"
-msgstr "Видалення вузла з екземпляра PyLav"
+msgstr "Видалити вузол із екземпляра PyLav"
 
 #: plnodes/cog.py:193
 msgid "{name} is managed by PyLav and cannot be removed"
-msgstr "{name} управляється PyLav і не може бути видалений"
+msgstr "{name} керує PyLav і не може бути видалений"
 
 #: plnodes/cog.py:208
 msgid "Removed node {name}.\n\n"
 "{data}"
-msgstr "Видалений вузол {name}.\n\n"
+msgstr "Видалено вузол {name}.\n\n"
 "{data}"
 
 #: plnodes/cog.py:216
 msgid "Removed node {name}, a DM was sent to you with the node details in case you wish to re-add it"
-msgstr "Видалений вузол {name}, вам було надіслано DM з деталями вузла на випадок, якщо ви захочете його повторно додати"
+msgstr "Видалений вузол {name}, DM був відправлений вам з подробицями вузла в разі повторного додавання його"
 
 #: plnodes/cog.py:226
 #, docstring
 msgid "Manage all nodes in a PyLav instance"
-msgstr "Керування всіма вузлами в екземплярі PyLav"
+msgstr "Керувати всіма вузлами в екземплярі PyLav"
 
 #: plnodes/cog.py:238
 msgid "Let's manage some nodes!"
-msgstr "Давайте керуватимемо деякими вузлами!"
+msgstr "Давайте керувати вузлами!"
 
 #: plnodes/cog.py:239
 msgid "(**1**){space} - Cancel any changes made and close the menu.\n"
@@ -137,23 +137,23 @@ msgid "(**1**){space} - Cancel any changes made and close the menu.\n"
 "(**15**) - Remove this node.\n"
 "(**16**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr "(**1**){space} - Скасуйте будь-які внесені зміни і закрийте меню.\n"
-"(**6**){space} - Показати джерела, включені для цього вузла.\n"
-"(**7**){space} - Застосуйте зміни і додайте вузол в PyLav.\n"
-"(**8**){space} - Переключення між режимами лише пошуку та пошуку та відтворення.\n"
-"(**9**){space} - Перемикайтеся між увімкненням і вимкненням SSL.\n"
-"(**10**) - Додайте ім'я до вузла.\n"
-"(**11**) - Додайте адресу хоста вузла.\n"
-"(**12**) - Додайте порт, який використовує вузол.\n"
-"(**13**) - Встановіть пароль для вузла.\n"
-"(**14**) - Встановіть тайм-аут з'єднання.\n"
-"(**15**) - Видаліть цей вузол.\n"
-"(**16**) - Виберіть, які джерела відключити для цього вузла (можна вибрати Multiple ).\n"
-"Якщо ви взаємодієте з кнопкою кілька разів, почне діяти тільки остання взаємодія.\n\n\n"
+msgstr "(**1**){space} - Скасуйте всі зміни, внесені та закривайте меню.\n"
+"(**6**){space} - Показати джерела активні для цього вузла.\n"
+"(**7**){space} - Застосувати зміни і додати вузол до PyLav.\n"
+"(**8**){space} - Перемикач між режимами пошуку і пошуку й відтворення.\n"
+"(**9**){space} - вмикається між SSL і вимикається.\n"
+"(**10**) - Додати назву на вузол.\n"
+"(**11**) - Додати адресу хоста вузла.\n"
+"(**12**) - Додати порт, який використовує.\n"
+"(**13**) - Встановити пароль для вузла.\n"
+"(**14**) - Встановити час підключення.\n"
+"(**15**) - Видалити цей вузол.\n"
+"(**16**) - Виберіть, які джерела відключають для цього вузла (декілька можна вибрати).\n"
+"Якщо ви взаємодієте з кнопкою кілька разів, лише остання взаємодія набуде чинності.\n\n\n"
 
 #: plnodes/cog.py:268
 msgid "{name} is managed by PyLav and cannot be modified with this command"
-msgstr "{name} управляється PyLav і не може бути змінений за допомогою цієї команди"
+msgstr "{name} керує PyLav і не може бути змінений цією командою"
 
 #: plnodes/cog.py:280
 msgid "Removed node {name}"
@@ -168,21 +168,21 @@ msgid "Changed node {name} to the following settings:\n"
 "Search Only: {search_only}\n"
 "SSL: {ssl}\n"
 "Disabled Sources: {disabled_sources}\n"
-msgstr "Змінений вузол {name} до наступних налаштувань:\n"
-"Господар: {host}\n"
+msgstr "Вузол {name} на наступні налаштування:\n"
+"Хост: {host}\n"
 "Порт: {port}\n"
 "Пароль: {password}\n"
-"Тайм-аут резюме: {resume_timeout}\n"
-"Пошук лише: {search_only}\n"
+"Час відновлення: {resume_timeout}\n"
+"Пошук: {search_only}\n"
 "SSL: {ssl}\n"
-"Відключені джерела: {disabled_sources}\n"
+"Вимкнених джерел: {disabled_sources}\n"
 
 #: plnodes/cog.py:343
 #, docstring
 msgid "List all nodes used by PyLav"
-msgstr "Перерахуйте всі вузли, які використовує PyLav"
+msgstr "Список всіх вузлів, які використовуються в PyLav"
 
 #: plnodes/cog.py:353
 msgid "No nodes added to PyLav"
-msgstr "До PyLav не додано вузлів"
+msgstr "Не додано вузлів до PyLav"
 

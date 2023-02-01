@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
-"POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:42\n"
+"POT-Creation-Date: 2023-02-01 00:31+0000\n"
+"PO-Revision-Date: 2023-02-01 00:33\n"
 "Last-Translator: \n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -20,16 +20,16 @@ msgstr ""
 #: plplaylists/cog.py:47
 #, docstring
 msgid "PyLav playlist management commands"
-msgstr "PyLavプレイリスト管理コマンド"
+msgstr "PyLav プレイリスト管理コマンド"
 
 #: plplaylists/cog.py:55
 msgid "Control PyLav playlists"
-msgstr "PyLavプレイリストを制御する"
+msgstr "PyLav プレイリストの制御"
 
 #: plplaylists/cog.py:77
 #, docstring
 msgid "Show the version of the Cog and it's PyLav dependencies"
-msgstr "コグのバージョンとそのPyLav依存関係を表示する"
+msgstr "Cog のバージョンと PyLav の依存関係を表示する"
 
 #: plplaylists/cog.py:92
 msgid "Library/Cog"
@@ -41,7 +41,7 @@ msgstr "バージョン"
 
 #: plplaylists/cog.py:130
 msgid "Let's create a playlist!"
-msgstr "プレイリストを作成しましょう!"
+msgstr "プレイリストを作ってみよう！"
 
 #: plplaylists/cog.py:131
 msgid "(**1**) - Apply changes to playlist.\n"
@@ -59,23 +59,23 @@ msgstr "(**1**) - プレイリストに変更を適用します。\n"
 
 #: plplaylists/cog.py:165
 msgid "Playlist not created"
-msgstr "プレイリストが作成されない"
+msgstr "プレイリストが作成されていません"
 
 #: plplaylists/cog.py:166
 msgid "No tracks were provided in time."
-msgstr "時間内にトラックが提供されませんでした。"
+msgstr "時間内に線路は設けられていない。"
 
 #: plplaylists/cog.py:179
 msgid "Playlist created"
-msgstr "プレイリスト作成"
+msgstr "プレイリストを作成しました"
 
 #: plplaylists/cog.py:180
 msgid "Name: `{name}`\n"
 "ID: `{id}`\n"
 "Tracks: `{track_count}`"
-msgstr "名前: '{name}`\n"
-"ID: '{id}`\n"
-"トラック: '{track_count}`"
+msgstr "名前: `{name}`\n"
+"ID: `{id}`\n"
+"トラック: `{track_count}`"
 
 #: plplaylists/cog.py:204
 msgid "You have no playlists"
@@ -83,15 +83,15 @@ msgstr "プレイリストがありません"
 
 #: plplaylists/cog.py:246 plplaylists/cog.py:607
 msgid "Nothing to save"
-msgstr "保存するものはありません"
+msgstr "保存するものがありません"
 
 #: plplaylists/cog.py:247 plplaylists/cog.py:608
 msgid "There is nothing in the queue to save"
-msgstr "キューに保存するものがありません"
+msgstr "保存するキューには何もありません"
 
 #: plplaylists/cog.py:284 plplaylists/cog.py:545 plplaylists/cog.py:625
 msgid "{user}, playlist {playlist_name} cannot be managed by yourself"
-msgstr "{user}プレイリスト {playlist_name} 自分で管理することはできません"
+msgstr "{user}、プレイリスト {playlist_name} は自分では管理できません"
 
 #: plplaylists/cog.py:293
 msgid "(**1**){space} - Apply changes to playlist.\n"
@@ -148,18 +148,13 @@ msgstr "(**1**) - メニューを閉じます。\n"
 "(**5**) - 現在のプレイリストのトラックを表示します。\n\n\n"
 
 #: plplaylists/cog.py:327
-msgid "**__Currently managing__**:\n"
+msgid "__**Currently managing**__:\n"
 "**Name**:{space}{space}{space}{playlist_name}\n"
 "**Scope**:{space}{space}{space}{scope}\n"
 "**Author**:{space}{space}{author}\n"
 "**Tracks**:{space}{space}{space}{tracks} tracks\n"
 "**URL**:{space}{space}{space}{space}{space}{url}\n"
-msgstr "**__Currently managing__**:\n"
-"**名前**：{space}{space}{space}{playlist_name}\n"
-"**スコープ**：{space}{space}{space}{scope}\n"
-"**著者**：{space}{space}{author}\n"
-"**跡**：{space}{space}{space}{tracks} 跡\n"
-"**リンク先**:{space}{space}{space}{space}{space}{url}\n"
+msgstr ""
 
 #: plplaylists/cog.py:345
 msgid "Let's manage: {playlist_name}"
@@ -167,7 +162,7 @@ msgstr "管理しましょう: {playlist_name}"
 
 #: plplaylists/cog.py:347
 msgid "Let's take a look at: {playlist_name}"
-msgstr "見てみましょう: {playlist_name}"
+msgstr "{playlist_name} を見てみましょう。"
 
 #: plplaylists/cog.py:354
 msgid "N/A"
@@ -175,21 +170,21 @@ msgstr "該当なし"
 
 #: plplaylists/cog.py:386 plplaylists/cog.py:555
 msgid "Playlist deleted"
-msgstr "プレイリストが削除されました"
+msgstr "プレイリストを削除しました"
 
 #: plplaylists/cog.py:388 plplaylists/cog.py:557
 msgid "{user}, playlist {playlist_name} has been deleted"
-msgstr "{user}プレイリスト {playlist_name} は削除されました"
+msgstr "{user}、プレイリスト {playlist_name} が削除されました"
 
 #: plplaylists/cog.py:438
 msgid "Playlist **{playlist_name}** could not be updated with URL: <{url}>"
-msgstr "プレイリスト**{playlist_name}** URL で更新できませんでした: <{url}>"
+msgstr "プレイリスト **{playlist_name}** URL: <{url} > で更新できませんでした"
 
 #: plplaylists/cog.py:473
 msgid "\n"
 "{track_count} {track_plural} removed from the playlist"
 msgstr "\n"
-"{track_count} {track_plural} プレイリストから削除されました"
+"{track_count} {track_plural} がプレイリストから削除されました"
 
 #: plplaylists/cog.py:474 plplaylists/cog.py:478 plplaylists/cog.py:644
 msgid "track"
@@ -197,13 +192,13 @@ msgstr "トラック"
 
 #: plplaylists/cog.py:474 plplaylists/cog.py:478 plplaylists/cog.py:644
 msgid "tracks"
-msgstr "跡"
+msgstr "トラック"
 
 #: plplaylists/cog.py:477 plplaylists/cog.py:643
 msgid "\n"
 "{track_count} {track_plural} added to the playlist"
 msgstr "\n"
-"{track_count} {track_plural} プレイリストに追加されました"
+"{track_count} {track_plural} がプレイリストに追加されました"
 
 #: plplaylists/cog.py:483 plplaylists/cog.py:650
 msgid "Playlist updated"
@@ -211,7 +206,7 @@ msgstr "プレイリストが更新されました"
 
 #: plplaylists/cog.py:484 plplaylists/cog.py:651
 msgid "{user}, playlist {playlist_name} has been updated.{extras}"
-msgstr "{user}プレイリスト {playlist_name} が更新されました。{extras}"
+msgstr "{user}、プレイリスト {playlist_name} が更新されました。{extras}"
 
 #: plplaylists/cog.py:496 plplaylists/cog.py:664
 msgid "Playlist unchanged"
@@ -219,34 +214,34 @@ msgstr "プレイリストは変更されていません"
 
 #: plplaylists/cog.py:497 plplaylists/cog.py:665
 msgid "{user}, playlist {playlist_name} has not been updated"
-msgstr "{user}プレイリスト {playlist_name} 更新されていません"
+msgstr "{user}、プレイリスト {playlist_name} が更新されていません"
 
 #: plplaylists/cog.py:693
 msgid "You must either provide a URL or attach a playlist file to upload a playlist"
-msgstr "プレイリストをアップロードするには、URLを指定するか、プレイリストファイルを添付する必要があります"
+msgstr "プレイリストをアップロードするには、URLまたはプレイリストファイルを添付する必要があります"
 
 #: plplaylists/cog.py:705
 msgid "No valid playlist file provided"
-msgstr "有効なプレイリストファイルが指定されていません"
+msgstr "有効なプレイリストファイルが提供されていません"
 
 #: plplaylists/cog.py:714
 msgid "Multiple playlist files provided - Currently only 1 per message is allowed"
-msgstr "複数のプレイリストファイルを提供 - 現在、メッセージごとに1つだけが許可されています"
+msgstr "複数のプレイリストファイルが提供されています - 現在、1つのメッセージにつき1つのみ許可されています"
 
 #: plplaylists/cog.py:731
 msgid "Failed to save any of the requested playlists"
-msgstr "要求されたプレイリストを保存できませんでした"
+msgstr "要求されたプレイリストの保存に失敗しました"
 
 #: plplaylists/cog.py:740
 msgid "Failed to save the following playlists:\n"
 "{invalid_playlists}"
-msgstr "次のプレイリストを保存できませんでした。\n"
+msgstr "次のプレイリストを保存できませんでした:\n"
 "{invalid_playlists}"
 
 #: plplaylists/cog.py:749
 msgid "Successfully saved the following playlists:\n"
 "{saved_playlists}"
-msgstr "次のプレイリストが正常に保存されました。\n"
+msgstr "次のプレイリストを正常に保存しました:\n"
 "{saved_playlists}"
 
 #: plplaylists/cog.py:774
@@ -263,5 +258,5 @@ msgstr "プレイリスト"
 
 #: plplaylists/cog.py:817
 msgid "{track_count} tracks enqueued.{playlist_name}"
-msgstr "{track_count} トラックがエンキューされました。{playlist_name}"
+msgstr "{track_count} がキューに追加されました。{playlist_name}"
 

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
-"POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:42\n"
+"POT-Creation-Date: 2023-02-01 00:31+0000\n"
+"PO-Revision-Date: 2023-02-01 00:33\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
@@ -50,12 +50,12 @@ msgid "(**1**) - Apply changes to playlist.\n"
 "(**4**) - Link this playlist to an existing playlist/album.\n"
 "(**5**) - Add all tracks from the queue to the playlist.\n\n"
 "If you want the playlist name to be as the original playlist simply set the URL but no name.\n\n"
-msgstr "(**1**) - Применить изменения к плейлисту.\n"
-"(**2**) - Отмена внесенных изменений.\n"
+msgstr "(**1**) - Применить изменения в плейлист.\n"
+"(**2**) - Отменить любые внесенные изменения.\n"
 "(**3**) - Добавить имя в плейлист.\n"
-"(**4**) - Свяжите этот плейлист с существующим плейлистом/альбомом.\n"
-"(**5**) - Добавить все треки из очереди в плейлист.\n\n"
-"Если вы хотите, чтобы имя плейлиста было таким же, как у исходного плейлиста, просто задайте URL-адрес, но без имени.\n\n"
+"(**4**) - привязать этот плейлист к существующему плейлисту/альбому.\n"
+"(**5**) - добавить все треки из очереди в плейлист.\n\n"
+"Если вы хотите, чтобы имя плейлиста было оригинальным плейлистом просто установите URL-адрес, но без имени\n\n"
 
 #: plplaylists/cog.py:165
 msgid "Playlist not created"
@@ -63,7 +63,7 @@ msgstr "Плейлист не создан"
 
 #: plplaylists/cog.py:166
 msgid "No tracks were provided in time."
-msgstr "Никаких следов не было предоставлено вовремя."
+msgstr "Не было представлено ни одного трека вовремя."
 
 #: plplaylists/cog.py:179
 msgid "Playlist created"
@@ -73,9 +73,9 @@ msgstr "Плейлист создан"
 msgid "Name: `{name}`\n"
 "ID: `{id}`\n"
 "Tracks: `{track_count}`"
-msgstr "Имя: '{name}`\n"
-"Идентификатор: '{id}`\n"
-"Треки: '{track_count}`"
+msgstr "Имя: `{name}`\n"
+"ID: `{id}`\n"
+"Треки: `{track_count}`"
 
 #: plplaylists/cog.py:204
 msgid "You have no playlists"
@@ -83,15 +83,15 @@ msgstr "У вас нет плейлистов"
 
 #: plplaylists/cog.py:246 plplaylists/cog.py:607
 msgid "Nothing to save"
-msgstr "Нечего экономить"
+msgstr "Нечего сохранять"
 
 #: plplaylists/cog.py:247 plplaylists/cog.py:608
 msgid "There is nothing in the queue to save"
-msgstr "В очереди нет ничего, что можно было бы сохранить"
+msgstr "В очереди нет ничего для сохранения"
 
 #: plplaylists/cog.py:284 plplaylists/cog.py:545 plplaylists/cog.py:625
 msgid "{user}, playlist {playlist_name} cannot be managed by yourself"
-msgstr "{user}Список воспроизведения {playlist_name} не может управляться самостоятельно"
+msgstr "{user}, плейлист {playlist_name} не может управляться сами собой"
 
 #: plplaylists/cog.py:293
 msgid "(**1**){space} - Apply changes to playlist.\n"
@@ -114,26 +114,26 @@ msgid "(**1**){space} - Apply changes to playlist.\n"
 "The clear button will always be run first before any other operations.\n"
 "The URL button will always run last - Linking a playlist via the URL will overwrite any tracks added or removed to this playlist.\n\n"
 "If you interact with a button multiple times other than the add/remove buttons only the last interaction will take effect.\n\n\n"
-msgstr "(**1**){space} - Применение изменений к плейлисту.\n"
-"(**2**){space} - Отмените все внесенные изменения и закройте меню.\n"
-"(**3**){space} - Удалить этот плейлист.\n"
-"(**4**){space} - Удалить все треки из этого плейлиста.\n"
-"(**5**){space} - Обновление плейлиста последними треками.\n"
-"Обратите внимание, что это действие будет игнорировать любые треки, добавленные / удаленные через это меню.\n"
-"(**6**){space} - Изменение названия плейлиста.\n"
-"(**7**){space} - Свяжите этот плейлист с существующим плейлистом/альбомом.\n"
-"(**8**){space} - Добавить запрос в этот плейлист.\n"
+msgstr "(**1**){space} - Применить изменения в плейлист.\n"
+"(**2**){space} - Отменить все сделанные изменения и закрыть меню.\n"
+"(**3**){space} - Удалите этот плейлист.\n"
+"(**4**){space} - Удалите все треки из этого плейлиста.\n"
+"(**5**){space} - Обновите список воспроизведения последними треками.\n"
+"Обратите внимание, что это действие будет игнорировать любые треки, добавленные/удаленные через это меню.\n"
+"(**6**){space} - Измените имя плейлиста.\n"
+"(**7**){space} - Привязать этот плейлист к существующему плейлисту/альбому.\n"
+"(**8**){space} - Добавить запрос к этому плейлисту.\n"
 "(**9**){space} - Удалить запрос из этого плейлиста.\n"
 "(**10**) - Скачать файл плейлиста.\n"
-"(**11**) - Добавить текущий плейлист в очередь.\n"
-"(**12**) - Показать треки в текущем плейлисте.\n"
-"(**13**) - Добавить треки из очереди в этот плейлист.\n"
-"(**14**) - Удаление дубликатов записей в плейлисте.\n\n"
-"Кнопки добавления/удаления треков можно использовать несколько раз для добавления/удаления нескольких треков и плейлистов одновременно.\n\n"
-"Запрос - это все, что воспроизводится командой play - любой запрос может быть использован кнопками добавления/удаления\n\n"
-"Кнопка очистки всегда будет запускаться первой перед любыми другими операциями.\n"
-"Кнопка URL всегда будет работать последней - Связывание плейлиста через URL-адрес перезапишет все треки, добавленные или удаленные в этот плейлист.\n\n"
-"Если вы взаимодействуете с кнопкой несколько раз, кроме кнопок добавления/удаления, только последнее взаимодействие вступит в силу.\n\n\n"
+"(**11**) - Добавить текущий список воспроизведения в очередь.\n"
+"(**12**) - Показать треки в текущем плейлисте\n"
+"(**13**) - добавить треки из очереди в этот плейлист.\n"
+"(**14**) - Удаление дубликатов в плейлисте.\n\n"
+"Кнопки добавления/удаления трека могут использоваться несколько раз для добавления/удаления нескольких треков и списков воспроизведения одновременно.\n\n"
+"Запрос воспроизводится командой воспроизведения - любой запрос может быть использован кнопками добавления/удаления\n\n"
+"Кнопка \"Очистить\" всегда будет выполняться перед любыми другими операциями.\n"
+"Кнопка URL всегда будет запущена в последний раз - привязка плейлиста по URL-адресу перезапишет все треки, добавленные или удаленные в этот плейлист.\n\n"
+"Если вы взаимодействуете с кнопкой несколько раз, кроме добавления/удаления кнопок только последнее взаимодействие вступит в силу.\n\n\n"
 
 #: plplaylists/cog.py:319
 msgid "(**1**) - Close the menu.\n"
@@ -142,24 +142,19 @@ msgid "(**1**) - Close the menu.\n"
 "(**4**) - Add current playlist to the queue.\n"
 "(**5**) - Show tracks in current playlist.\n\n\n"
 msgstr "(**1**) - Закройте меню.\n"
-"(**2**) - Обновите плейлист последними треками.\n"
-"(**3**) - Скачать файл плейлиста.\n"
-"(**4**) - Добавить текущий плейлист в очередь.\n"
-"(**5**) - Показать треки в текущем плейлисте.\n\n\n"
+"(**2**) - обновите список воспроизведения с последними треками\n"
+"(**3**) - скачайте файл списка.\n"
+"(**4**) - Добавить текущий список воспроизведения в очередь.\n"
+"(**5**) - Показать треки в текущем плейлистере.\n\n\n"
 
 #: plplaylists/cog.py:327
-msgid "**__Currently managing__**:\n"
+msgid "__**Currently managing**__:\n"
 "**Name**:{space}{space}{space}{playlist_name}\n"
 "**Scope**:{space}{space}{space}{scope}\n"
 "**Author**:{space}{space}{author}\n"
 "**Tracks**:{space}{space}{space}{tracks} tracks\n"
 "**URL**:{space}{space}{space}{space}{space}{url}\n"
-msgstr "**__Currently managing__**:\n"
-"**Имя**:{space}{space}{space}{playlist_name}\n"
-"**Размах**:{space}{space}{space}{scope}\n"
-"**Автор**:{space}{space}{author}\n"
-"**Треков**:{space}{space}{space}{tracks} Треков\n"
-"**URL**:{space}{space}{space}{space}{space}{url}\n"
+msgstr ""
 
 #: plplaylists/cog.py:345
 msgid "Let's manage: {playlist_name}"
@@ -167,7 +162,7 @@ msgstr "Давайте управляем: {playlist_name}"
 
 #: plplaylists/cog.py:347
 msgid "Let's take a look at: {playlist_name}"
-msgstr "Давайте посмотрим: {playlist_name}"
+msgstr "Давайте посмотрим на: {playlist_name}"
 
 #: plplaylists/cog.py:354
 msgid "N/A"
@@ -179,31 +174,31 @@ msgstr "Плейлист удален"
 
 #: plplaylists/cog.py:388 plplaylists/cog.py:557
 msgid "{user}, playlist {playlist_name} has been deleted"
-msgstr "{user}Список воспроизведения {playlist_name} был удален"
+msgstr "{user}, плейлист {playlist_name} был удален"
 
 #: plplaylists/cog.py:438
 msgid "Playlist **{playlist_name}** could not be updated with URL: <{url}>"
-msgstr "Список воспроизведения**{playlist_name}** не удалось обновить с помощью URL: <{url}>"
+msgstr "Плейлист **{playlist_name}** не может быть обновлен с URL: <{url}>"
 
 #: plplaylists/cog.py:473
 msgid "\n"
 "{track_count} {track_plural} removed from the playlist"
 msgstr "\n"
-"{track_count} {track_plural} удалено из плейлиста"
+"{track_count} {track_plural} удален из плейлиста"
 
 #: plplaylists/cog.py:474 plplaylists/cog.py:478 plplaylists/cog.py:644
 msgid "track"
-msgstr "дорожка"
+msgstr "трек"
 
 #: plplaylists/cog.py:474 plplaylists/cog.py:478 plplaylists/cog.py:644
 msgid "tracks"
-msgstr "Треков"
+msgstr "треки"
 
 #: plplaylists/cog.py:477 plplaylists/cog.py:643
 msgid "\n"
 "{track_count} {track_plural} added to the playlist"
 msgstr "\n"
-"{track_count} {track_plural} добавлено в плейлист"
+"{track_count} {track_plural} добавлен в плейлист"
 
 #: plplaylists/cog.py:483 plplaylists/cog.py:650
 msgid "Playlist updated"
@@ -211,31 +206,31 @@ msgstr "Плейлист обновлен"
 
 #: plplaylists/cog.py:484 plplaylists/cog.py:651
 msgid "{user}, playlist {playlist_name} has been updated.{extras}"
-msgstr "{user}Список воспроизведения {playlist_name} был обновлен.{extras}"
+msgstr "{user}, плейлист {playlist_name} был обновлен.{extras}"
 
 #: plplaylists/cog.py:496 plplaylists/cog.py:664
 msgid "Playlist unchanged"
-msgstr "Плейлист без изменений"
+msgstr "Плейлист не изменен"
 
 #: plplaylists/cog.py:497 plplaylists/cog.py:665
 msgid "{user}, playlist {playlist_name} has not been updated"
-msgstr "{user}Список воспроизведения {playlist_name} не был обновлен"
+msgstr "{user}, плейлист {playlist_name} не был обновлен"
 
 #: plplaylists/cog.py:693
 msgid "You must either provide a URL or attach a playlist file to upload a playlist"
-msgstr "Для загрузки плейлиста необходимо указать URL-адрес или прикрепить файл плейлиста."
+msgstr "Для загрузки плейлиста необходимо указать URL или прикрепить файл плейлиста"
 
 #: plplaylists/cog.py:705
 msgid "No valid playlist file provided"
-msgstr "Не предоставлен действительный файл плейлиста"
+msgstr "Нет допустимого файла плейлиста"
 
 #: plplaylists/cog.py:714
 msgid "Multiple playlist files provided - Currently only 1 per message is allowed"
-msgstr "Предоставляется несколько файлов плейлиста - В настоящее время допускается только 1 на сообщение"
+msgstr "Предоставлено несколько файлов плейлиста - В настоящее время разрешено только 1 на каждое сообщение"
 
 #: plplaylists/cog.py:731
 msgid "Failed to save any of the requested playlists"
-msgstr "Не удалось сохранить ни один из запрошенных плейлистов"
+msgstr "Не удалось сохранить любой из запрошенных плейлистов"
 
 #: plplaylists/cog.py:740
 msgid "Failed to save the following playlists:\n"
@@ -246,7 +241,7 @@ msgstr "Не удалось сохранить следующие плейлис
 #: plplaylists/cog.py:749
 msgid "Successfully saved the following playlists:\n"
 "{saved_playlists}"
-msgstr "Успешно сохранены следующие плейлисты:\n"
+msgstr "Следующие плейлисты успешно сохранены:\n"
 "{saved_playlists}"
 
 #: plplaylists/cog.py:774
@@ -259,9 +254,9 @@ msgstr "У меня нет разрешения на подключение ил
 
 #: plplaylists/cog.py:812
 msgid "Playlist"
-msgstr "Список воспроизведения"
+msgstr "Плейлист"
 
 #: plplaylists/cog.py:817
 msgid "{track_count} tracks enqueued.{playlist_name}"
-msgstr "{track_count} треки поставлены в очередь.{playlist_name}"
+msgstr "{track_count} треков в очереди{playlist_name}."
 

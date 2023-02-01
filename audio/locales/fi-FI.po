@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:42\n"
+"PO-Revision-Date: 2023-02-01 00:10\n"
 "Last-Translator: \n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: audio/cog.py:35
 #, docstring
 msgid "A Media player using the PyLav library"
-msgstr "Mediasoitin, joka käyttää PyLav-kirjastoa"
+msgstr "Media soitin, joka käyttää Pylav kirjastoa"
 
 #: audio/config_commands.py:41
 #, docstring
@@ -29,8 +29,8 @@ msgid "Notifies PyLav that a Player is having issues.\n\n"
 "        switch to a different node or restart the current node where possible.\n"
 "        "
 msgstr "Ilmoittaa PyLaville, että pelaajalla on ongelmia.\n\n"
-"        Jos tarpeeksi (50%+ tällä hetkellä pelaavista pelaajista) ilmoittaa ongelmista, PyLav ilmoittaa automaattisesti\n"
-"        Vaihda toiseen solmuun tai käynnistä nykyinen solmu uudelleen, jos mahdollista.\n"
+"        Jos tarpeeksi (50 %+ tällä hetkellä pelaavia pelaajia) raportoi ongelmista, PyLav vaihtaa automaattisesti\n"
+"        toiseen solmuun tai käynnistää nykyisen solmun uudelleen mahdollisuuksien mukaan.\n"
 "        "
 
 #: audio/config_commands.py:49
@@ -48,28 +48,28 @@ msgid "Removes a vote for a Player being down.\n\n"
 "        switch to a different node or restart the current node where possible.\n\n"
 "        This command is only useful if you previously voted for a node to be down and it is now back up.\n"
 "        "
-msgstr "Poistaa äänen, jossa pelaaja on alhaalla.\n\n"
-"        Jos tarpeeksi (50%+ tällä hetkellä pelaavista pelaajista) ilmoittaa ongelmista, PyLav ilmoittaa automaattisesti\n"
-"        Vaihda toiseen solmuun tai käynnistä nykyinen solmu uudelleen, jos mahdollista.\n\n"
-"        Tämä komento on hyödyllinen vain, jos äänestit aiemmin solmun olevan alhaalla ja se on nyt varmuuskopioitu.\n"
+msgstr "Poistaa äänen, jos pelaaja on alhaalla.\n\n"
+"        Jos tarpeeksi (50 %+ tällä hetkellä pelaavia pelaajia) raportoi ongelmista, PyLav vaihtaa automaattisesti\n"
+"        toiseen solmuun tai käynnistää nykyisen solmun uudelleen mahdollisuuksien mukaan.\n\n"
+"        Tämä komento on hyödyllinen vain, jos olet aiemmin äänestänyt solmun olevan alas ja se on nyt takaisin päälle.\n"
 "        "
 
 #: audio/config_commands.py:80
 msgid "There is no active votes for the current backend"
-msgstr "Nykyiselle taustajärjestelmälle ei ole aktiivisia äänestyksiä"
+msgstr "Nykyiselle taustaosalle ei ole aktiivisia ääniä"
 
 #: audio/config_commands.py:90
 msgid "Removed your report"
-msgstr "Poistettu ilmianto"
+msgstr "Poistettu raporttisi"
 
 #: audio/config_commands.py:98
 #, docstring
 msgid "Show the version of the Cog and its PyLav dependencies"
-msgstr "Näytä hammaspyörän versio ja sen PyLav-riippuvuudet"
+msgstr "Näytä versio Cog ja sen PyLav riippuvuudet"
 
 #: audio/config_commands.py:114
 msgid "Library/Cog"
-msgstr "Kirjasto/hammasratas"
+msgstr "Kirjasto/Kokki"
 
 #: audio/config_commands.py:115
 msgid "Version"
@@ -78,35 +78,35 @@ msgstr "Versio"
 #: audio/config_commands.py:129
 #, docstring
 msgid "Global configuration options"
-msgstr "Yleiset määritysvaihtoehdot"
+msgstr "Yleiset asetukset"
 
 #: audio/config_commands.py:133
 #, docstring
 msgid "Set the maximum volume a server can set"
-msgstr "Aseta enimmäisäänenvoimakkuus, jonka palvelin voi asettaa"
+msgstr "Aseta suurin äänenvoimakkuus jonka palvelin voi asettaa"
 
 #: audio/config_commands.py:141 audio/config_commands.py:578
 #: audio/hybrid_commands.py:627
 msgid "Volume must be less than 1000"
-msgstr "Tilavuuden on oltava alle 1000"
+msgstr "Tilavuuden on oltava pienempi kuin 1000"
 
 #: audio/config_commands.py:149 audio/config_commands.py:586
 #: audio/hybrid_commands.py:635
 msgid "Volume must be greater than 0"
-msgstr "Tilavuuden on oltava suurempi kuin 0"
+msgstr "Äänenvoimakkuuden on oltava suurempi kuin 0"
 
 #: audio/config_commands.py:157 audio/config_commands.py:623
 msgid "Max volume set to {volume}%"
-msgstr "Suurin äänenvoimakkuus on asetettu arvoon {volume}%"
+msgstr "Maksimi äänenvoimakkuus asetettu {volume}%"
 
 #: audio/config_commands.py:165 audio/config_commands.py:631
 #, docstring
 msgid "Set whether [botname] should deafen itself when playing"
-msgstr "Määritä, onko [botname] pitäisi kuurottaa itsensä pelatessaan"
+msgstr "Määritä, pitäisikö [botname] kuurota itsensä soitettaessa"
 
 #: audio/config_commands.py:174 audio/config_commands.py:657
 msgid "Deafen set to {deafen}"
-msgstr "Deafen asetettu arvoon {deafen}"
+msgstr "Kuurot asetettu {deafen}"
 
 #: audio/config_commands.py:174 audio/config_commands.py:193
 #: audio/config_commands.py:212 audio/config_commands.py:229
@@ -124,39 +124,39 @@ msgstr "Käytössä"
 #: audio/config_commands.py:719 audio/config_commands.py:753
 #: audio/config_commands.py:817 audio/config_commands.py:880
 msgid "Disabled"
-msgstr "Vammainen"
+msgstr "Pois Käytöstä"
 
 #: audio/config_commands.py:182
 #, docstring
 msgid "Set whether the a server is allowed to enabled auto shuffle"
-msgstr "Määritä, saako palvelin ottaa automaattisen sekoituksen käyttöön"
+msgstr "Määritä, onko palvelin sallittu ottaa käyttöön automaattinen sekoitus"
 
 #: audio/config_commands.py:192 audio/config_commands.py:686
 msgid "Auto-Shuffle set to {shuffle}"
-msgstr "Automaattinen sekoitus -asetuksena {shuffle}"
+msgstr "Sekoitus asetettu arvoon {shuffle}"
 
 #: audio/config_commands.py:202 audio/config_commands.py:696
 #, docstring
 msgid "Set whether [botname] should allow users to shuffle the queue"
-msgstr "Määritä, onko [botname] pitäisi sallia käyttäjien sekoittaa jonoa"
+msgstr "Aseta onko [botname] sallittava käyttäjien sekoittaa jono"
 
 #: audio/config_commands.py:212 audio/config_commands.py:719
 msgid "Shuffle set to {shuffle}"
-msgstr "Sekoita asetuksena {shuffle}"
+msgstr "Sekoita joukkoon {shuffle}"
 
 #: audio/config_commands.py:220
 #, docstring
 msgid "Set whether [botname] should automatically play songs when the queue is empty"
-msgstr "Määritä, onko [botname] pitäisi toistaa kappaleita automaattisesti, kun jono on tyhjä"
+msgstr "Määritä, pitäisikö [botname] soittaa kappaleita automaattisesti, kun jono on tyhjä"
 
 #: audio/config_commands.py:229 audio/config_commands.py:753
 msgid "Auto-Play set to {auto}"
-msgstr "Automaattinen toisto -asetuksena {auto}"
+msgstr "Automaattinen toisto asetettu {auto}"
 
 #: audio/config_commands.py:237
 #, docstring
 msgid "Set whether [botname] should disconnect from the voice channel"
-msgstr "Määritä, onko [botname] pitäisi katkaista yhteys äänikanavaan"
+msgstr "Määritä, pitäisikö [botname] katkaista yhteys äänikanavaan"
 
 #: audio/config_commands.py:247
 #, docstring
@@ -166,21 +166,21 @@ msgid "Set whether [botname] should disconnect from the voice channel when the q
 "            - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr "Määritä, onko [botname] pitäisi katkaista yhteys äänikanavaan, kun jono on tyhjä.\n\n"
+msgstr "Määritä, pitäisikö [botname] katkaista yhteys puhekanavaan, kun jono on tyhjä.\n\n"
 "        Argumentit:\n"
-"            - `<toggle>\": Onko [botname] pitäisi katkaista yhteys äänikanavaan, kun jono on tyhjä.\n"
-"            - `<duration>': Kuinka kauan jonon tyhjenemisen jälkeen pelaajan yhteys pitäisi katkaista. Oletusarvo on 60 sekuntia.\n"
-"            Hyväksyy toisen, minuutit, tunnit, päivät, viikot (jos yksikköä ei ole määritetty, keston oletetaan olevan sekunteina)\n"
+"            - `<toggle>`: Jos [botname] katkaisee yhteyden äänikanavasta, kun jono on tyhjä.\n"
+"            - `<duration>`: Kuinka kauemmin jonon jälkeen tyhjä pelaajan yhteys katkaistaan. Oletus on 60 sekuntia.\n"
+"            Hyväksyy toisen, minuutin, tunnin, päivän, viikon (jos yksikköä ei ole määritelty, oletetaan, että kesto on annettu sekunteina)\n"
 "        "
 
 #: audio/config_commands.py:267 audio/config_commands.py:307
 #: audio/config_commands.py:811 audio/config_commands.py:873
 msgid " and players will be disconnected after {duration}"
-msgstr " ja pelaajien yhteys katkaistaan sen jälkeen, kun {duration}"
+msgstr " ja pelaajat katkeavat yhteyden {duration} jälkeen"
 
 #: audio/config_commands.py:272 audio/config_commands.py:816
 msgid "Disconnect from voice channel when queue is empty set to {empty}{extras}"
-msgstr "Katkaise yhteys äänikanavaan, kun jono on tyhjä -asetuksena {empty}{extras}"
+msgstr "Katkaise yhteys puhekanavaan, kun jono on tyhjä asetettu {empty}{extras}"
 
 #: audio/config_commands.py:288
 #, docstring
@@ -190,101 +190,101 @@ msgid "Set whether [botname] should disconnect from the voice channel when alone
 "            - `<duration>`: How longer after detecting should the player be disconnected. Default is 60 seconds.\n"
 "            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr "Määritä, onko [botname] pitäisi katkaista yhteys äänikanavaan yksin ollessaan.\n\n"
+msgstr "Määritä, pitäisikö [botname] katkaista yhteys äänikanavaan, kun yksin.\n\n"
 "        Argumentit:\n"
-"            - `<toggle>\": Onko [botname] pitäisi katkaista yhteys äänikanavaan, kun se havaitsee, että se on yksin.\n"
-"            - `<duration>': Kuinka kauemmin havaitsemisen jälkeen pelaajan yhteys tulisi katkaista. Oletusarvo on 60 sekuntia.\n"
-"            Hyväksyy toisen, minuutit, tunnit, päivät, viikot (jos yksikköä ei ole määritetty, keston oletetaan olevan sekunteina)\n"
+"            - `<toggle>`: Onko [botname] irrotettava äänikanavasta, kun se havaitsee että se on yksin.\n"
+"            - `<duration>`: Kuinka kauan havainnon jälkeen soitin pitäisi irrottaa. Oletus on 60 sekuntia.\n"
+"            Hyväksyy toisen, minuutin, tunnin, päivän, viikon (jos yksikköä ei ole määritelty, oletetaan, että kesto on annettu sekunteina)\n"
 "        "
 
 #: audio/config_commands.py:313 audio/config_commands.py:879
 msgid "Disconnect from voice channel when alone set to {empty}{extras}"
-msgstr "Katkaise yhteys äänikanavaan, kun se on yksin -asetuksena {empty}{extras}"
+msgstr "Katkaise yhteys puhekanavaan, kun se on asetettu {empty}{extras}"
 
 #: audio/config_commands.py:325
 #, docstring
 msgid "Server configuration options"
-msgstr "Palvelimen määritysvaihtoehdot"
+msgstr "Palvelimen asetukset"
 
 #: audio/config_commands.py:329
 #, docstring
 msgid "Add, remove or show the DJ roles and users for the server"
-msgstr "Palvelimen DJ-roolien ja käyttäjien lisääminen, poistaminen tai näyttäminen"
+msgstr "Lisää, poista tai näytä DJ roolit ja käyttäjät palvelimelle"
 
 #: audio/config_commands.py:335
 #, docstring
 msgid "Add DJ roles or users to this server"
-msgstr "DJ-roolien tai -käyttäjien lisääminen tähän palvelimeen"
+msgstr "Lisää DJ rooleja tai käyttäjiä tähän palvelimeen"
 
 #: audio/config_commands.py:348
 msgid "Added {role} to the DJ roles"
-msgstr "Lisätty {role} DJ-rooleihin"
+msgstr "Lisätty {role} DJ rooleihin"
 
 #: audio/config_commands.py:351
 msgid "Added {user} to the DJ users"
-msgstr "Lisätty {user} DJ-käyttäjille"
+msgstr "Lisätty {user} DJ käyttäjille"
 
 #: audio/config_commands.py:358
 msgid "Added {roles} to the DJ roles and {users} to the DJ users"
-msgstr "Lisätty {roles} DJ-rooleihin ja {users} DJ-käyttäjille"
+msgstr "Lisätty {roles} DJ rooleihin ja {users} DJ käyttäjille"
 
 #: audio/config_commands.py:365
 msgid "Added {roles} to the DJ roles"
-msgstr "Lisätty {roles} DJ-rooleihin"
+msgstr "Lisätty {roles} DJ rooleihin"
 
 #: audio/config_commands.py:369
 msgid "Added {users} to the DJ users"
-msgstr "Lisätty {users} DJ-käyttäjille"
+msgstr "Lisätty {users} DJ käyttäjille"
 
 #: audio/config_commands.py:384
 #, docstring
 msgid "Remove DJ roles or users in this the server"
-msgstr "Poista DJ-roolit tai käyttäjät tästä palvelimesta"
+msgstr "Poista DJ roolit tai käyttäjät tässä palvelimessa"
 
 #: audio/config_commands.py:416
 msgid "Removed {roles} from the DJ roles and {users} from the DJ users, as well as {ints} from both"
-msgstr "Kaukainen {roles} DJ-rooleista ja {users} DJ-käyttäjiltä sekä {ints} molemmista"
+msgstr "Poistettu {roles} DJ rooleista ja {users} DJ käyttäjiltä sekä {ints} molemmilta"
 
 #: audio/config_commands.py:424
 msgid "Removed {roles} from the DJ roles and {users} from the DJ users"
-msgstr "Kaukainen {roles} DJ-rooleista ja {users} DJ-käyttäjiltä"
+msgstr "Poistettu {roles} DJ rooleista ja {users} DJ käyttäjiltä"
 
 #: audio/config_commands.py:429
 msgid "Removed {roles} from the DJ roles"
-msgstr "Kaukainen {roles} DJ-rooleista"
+msgstr "Poistettu {roles} DJ rooleista"
 
 #: audio/config_commands.py:433
 msgid "Removed {users} from the DJ users"
-msgstr "Kaukainen {users} DJ-käyttäjiltä"
+msgstr "Poistettu {users} DJ käyttäjiltä"
 
 #: audio/config_commands.py:437
 msgid "Removed {ints} from the DJ roles and users"
-msgstr "Kaukainen {ints} DJ-rooleista ja käyttäjistä"
+msgstr "Poistettu {ints} DJ rooleista ja käyttäjistä"
 
 #: audio/config_commands.py:452
 msgid "Removed `{id}` from the DJ roles and users"
-msgstr "Poistettu '{id}' DJ-rooleista ja käyttäjistä"
+msgstr "Poistettu `{id}` DJ rooleista ja käyttäjistä"
 
 #: audio/config_commands.py:454
 msgid "Removed {role} from the DJ roles"
-msgstr "Kaukainen {role} DJ-rooleista"
+msgstr "Poistettu {role} DJ rooleista"
 
 #: audio/config_commands.py:457
 msgid "Removed {user} from the DJ users"
-msgstr "Kaukainen {user} DJ-käyttäjiltä"
+msgstr "Poistettu {user} DJ käyttäjiltä"
 
 #: audio/config_commands.py:463
 #, docstring
 msgid "List the DJ roles and users for the server"
-msgstr "Luettele palvelimen DJ-roolit ja käyttäjät"
+msgstr "Listaa DJ roolit ja käyttäjät palvelimelle"
 
 #: audio/config_commands.py:514
 msgid "There are no DJ roles or users set in {server}"
-msgstr "DJ-rooleja tai käyttäjiä ei ole asetettu {server}"
+msgstr "DJ rooleja tai käyttäjiä ei ole asetettu {server}"
 
 #: audio/config_commands.py:525 audio/config_commands.py:530
 msgid "DJ Roles"
-msgstr "DJ-roolit"
+msgstr "DJ Roolit"
 
 #: audio/config_commands.py:536 audio/config_commands.py:541
 msgid "DJ Users"
@@ -293,46 +293,46 @@ msgstr "DJ-käyttäjät"
 #: audio/config_commands.py:549
 #, docstring
 msgid "Clear the DJ roles and users for the server"
-msgstr "Tyhjennä palvelimen DJ-roolit ja käyttäjät"
+msgstr "Tyhjennä DJ roolit ja käyttäjät palvelimelle"
 
 #: audio/config_commands.py:561
 msgid "Cleared the DJ roles and users for {server}"
-msgstr "Tyhjensi DJ-roolit ja käyttäjät {server}"
+msgstr "DJ roolit ja käyttäjät tyhjennetty {server}"
 
 #: audio/config_commands.py:569
 #, docstring
 msgid "Set the maximum volume a user can set"
-msgstr "Aseta enimmäisäänenvoimakkuus, jonka käyttäjä voi asettaa"
+msgstr "Aseta suurin äänenvoimakkuus jonka käyttäjä voi asettaa"
 
 #: audio/config_commands.py:595 audio/config_commands.py:611
 msgid "Volume must be between 0 and {volume}%"
-msgstr "Tilavuuden on oltava välillä 0 ja {volume}%"
+msgstr "Äänenvoimakkuuden on oltava välillä 0 - {volume}%"
 
 #: audio/config_commands.py:640
 msgid "My owner told me to always deafen myself"
-msgstr "Omistajani käski minun aina kuurouttaa itseni"
+msgstr "Omistajani käski minua aina kuuromaan itseäni"
 
 #: audio/config_commands.py:665
 #, docstring
 msgid "Set whether [botname] should shuffle the queue after every new song added"
-msgstr "Määritä, onko [botname] pitäisi sekoittaa jonoa jokaisen lisätyn uuden kappaleen jälkeen"
+msgstr "Määritä, pitäisikö [botname] sekoittaa jono jokaisen uuden kappaleen jälkeen"
 
 #: audio/config_commands.py:673
 msgid "Auto-Shuffle is globally disabled"
-msgstr "Automaattinen sekoitus on maailmanlaajuisesti poistettu käytöstä"
+msgstr "Automaattinen Shuffle on pois päältä"
 
 #: audio/config_commands.py:706
 msgid "Shuffle is globally disabled"
-msgstr "Shuffle on maailmanlaajuisesti poistettu käytöstä"
+msgstr "Sekoitus on poistettu käytöstä maailmanlaajuisesti"
 
 #: audio/config_commands.py:727
 #, docstring
 msgid "Set whether the bot should automatically play songs when the queue is empty"
-msgstr "Määritä, toistaako botti kappaleita automaattisesti, kun jono on tyhjä"
+msgstr "Määritä, pitäisikö botin soittaa kappaleita automaattisesti, kun jono on tyhjä"
 
 #: audio/config_commands.py:736
 msgid "Auto-Play is globally disabled"
-msgstr "Automaattinen toisto on maailmanlaajuisesti poistettu käytöstä"
+msgstr "Automaattinen toisto on poistettu käytöstä maailmanlaajuisesti"
 
 #: audio/config_commands.py:761
 #, docstring
@@ -349,18 +349,18 @@ msgid "Set whether the bot should disconnect from the voice channel when the que
 "            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be\n"
 "            given in seconds)\n"
 "        "
-msgstr "Määritä, katkaiseeko botti yhteyden äänikanavaan, kun jono on tyhjä.\n\n"
+msgstr "Määritä, pitäisikö botti irrottaa äänikanavasta, kun jono on tyhjä.\n\n"
 "        Argumentit:\n"
-"            - `<toggle>': Pitääkö botin katkaista yhteys äänikanavaan, kun jono on tyhjä.\n"
-"            - `<duration>': Kuinka kauan jonon tyhjenemisen jälkeen pelaajan yhteys pitäisi katkaista. Oletusarvo on 60\n"
-"            Sekuntia.\n"
-"            Hyväksyy sekunnit, minuutit, tunnit, päivät, viikot (jos yksikköä ei ole määritetty, keston oletetaan olevan\n"
-"            annetaan sekunneissa)\n"
+"            - `<toggle>`: Onko botti irrotettava puhekanavasta, kun jono on tyhjä.\n"
+"            - `<duration>`: Kuinka kauemmin kun jono on tyhjä, jos soitin irrotetaan. Oletus on 60\n"
+"            sekuntia.\n"
+"            Hyväksyy sekunteja, minuutteja, tunteja, päiviä, viikkoja (jos yksikköä ei ole määritelty) oletetaan, että kesto on\n"
+"            annettu sekunteina)\n"
 "        "
 
 #: audio/config_commands.py:789
 msgid "Disconnect when the queue finished is globally enabled and players will be disconnected after {delta}"
-msgstr "Katkaise yhteys, kun jono on päättynyt, ja pelaajien yhteys katkaistaan sen jälkeen, kun {delta}"
+msgstr "Katkaise yhteys, kun jono on valmis maailmanlaajuisesti käytössä ja pelaajat poistetaan {delta} jälkeen"
 
 #: audio/config_commands.py:832
 #, docstring
@@ -372,27 +372,27 @@ msgid "Set whether the bot should disconnect from the voice channel when alone.\
 "            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be\n"
 "            given in seconds)\n"
 "        "
-msgstr "Määritä, pitäisikö botin katkaista yhteys äänikanavaan yksin.\n\n"
+msgstr "Määritä, pitäisikö botti irrottaa äänikanavasta, kun se on yksin.\n\n"
 "        Argumentit:\n"
-"            - `<toggle>': Pitäisikö botin katkaista yhteys äänikanavaan, kun se havaitsee, että se on\n"
+"            - `<toggle>`: Onko botti irrotettava puhekanavasta, kun se havaitsee että se on\n"
 "            yksin.\n"
-"            - `<duration>': Kuinka kauemmin havaitsemisen jälkeen pelaajan yhteys tulisi katkaista. Oletusarvo on 60 sekuntia.\n"
-"            Hyväksyy sekunnit, minuutit, tunnit, päivät, viikot (jos yksikköä ei ole määritetty, keston oletetaan olevan\n"
-"            annetaan sekunneissa)\n"
+"            - `<duration>`: Kuinka kauan havainnon jälkeen soitin pitäisi irrottaa. Oletus on 60 sekuntia.\n"
+"            Hyväksyy sekunteja, minuutteja, tunteja, päiviä, viikkoja (jos yksikköä ei ole määritelty) oletetaan, että kesto on\n"
+"            annettu sekunteina)\n"
 "        "
 
 #: audio/config_commands.py:851
 msgid "Disconnect when alone is globally enabled and players will be disconnected after {delta}"
-msgstr "Katkaise yhteys, kun yksin on maailmanlaajuisesti käytössä ja pelaajien yhteys katkeaa sen jälkeen, kun {delta}"
+msgstr "Katkaise yhteys, kun yksin on käytössä maailmanlaajuisesti ja pelaajat katkeavat yhteyden {delta} jälkeen"
 
 #: audio/config_commands.py:889
 #, docstring
 msgid "Sets the Auto-Play playlist"
-msgstr "Asettaa automaattisen toiston soittolistan"
+msgstr "Asettaa automaattisen soittolistan"
 
 #: audio/config_commands.py:906
 msgid "Auto-Play playlist set to {playlist}"
-msgstr "Automaattisen toiston soittoluettelon asetuksena {playlist}"
+msgstr "Soittolista asetettu arvoon {playlist}"
 
 #: audio/config_commands.py:916
 #, docstring
@@ -402,125 +402,125 @@ msgstr "Aseta kanavan lukot"
 #: audio/config_commands.py:922
 #, docstring
 msgid "Set the channel lock for commands"
-msgstr "Aseta komentojen kanavalukko"
+msgstr "Aseta kanavan lukitus komennoille"
 
 #: audio/config_commands.py:937
 msgid "I don't have permission to send message or send embed links or read messages in {channel}"
-msgstr "Minulla ei ole oikeutta lähettää viestejä, upottaa linkkejä tai lukea viestejä {channel}"
+msgstr "Minulla ei ole oikeutta lähettää viestiä tai lähettää upotettuja linkkejä tai lukea viestejä {channel}"
 
 #: audio/config_commands.py:954
 msgid "I will only listen to commands in {channel}"
-msgstr "Kuuntelen vain komentoja {channel}"
+msgstr "Kuuntelen vain komentoja kohteessa {channel}"
 
 #: audio/config_commands.py:962
 msgid "I will listen to commands in all channels I can see"
-msgstr "Kuuntelen komentoja kaikilla näkemilläni kanavilla"
+msgstr "Aion kuunnella komentoja kaikissa kanavissa voin nähdä"
 
 #: audio/config_commands.py:970
 #, docstring
 msgid "Set the channel lock for voice channels"
-msgstr "Aseta kanavalukko äänikanaville"
+msgstr "Aseta kanavan lukitus äänikanaville"
 
 #: audio/config_commands.py:982 audio/hybrid_commands.py:107
 #: audio/player_commands.py:144
 msgid "I don't have permission to connect or speak in {channel}"
-msgstr "Minulla ei ole oikeutta muodostaa yhteyttä tai puhua {channel}"
+msgstr "Minulla ei ole oikeuksia muodostaa yhteyttä tai puhua {channel}"
 
 #: audio/config_commands.py:1000
 msgid "I will only be allowed to join {channel}"
-msgstr "Saan liittyä vain {channel}"
+msgstr "Saanen liittyä vain jäseneksi {channel}"
 
 #: audio/config_commands.py:1007
 msgid "I'm free to join any VC"
-msgstr "Olen vapaa liittymään mihin tahansa VC: hen"
+msgstr "Olen vapaa liittymään mihin tahansa VC"
 
 #: audio/context_menus.py:27 audio/context_menus.py:143
 msgid "I can't play songs in DMs"
-msgstr "En voi toistaa kappaleita DM-viesteissä"
+msgstr "En voi soittaa kappaleita DM:issä"
 
 #: audio/context_menus.py:38 audio/context_menus.py:154
 msgid "You need to be a DJ to play tracks"
-msgstr "Sinun on oltava DJ, jotta voit toistaa kappaleita"
+msgstr "Sinun täytyy olla DJ soittaaksesi kappaleita"
 
 #: audio/context_menus.py:55 audio/context_menus.py:169
 msgid "This command is not available in this channel. Please use {channel}"
-msgstr "Tämä komento ei ole käytettävissä tällä kanavalla. Ole hyvä ja käytä {channel}"
+msgstr "Tämä komento ei ole käytettävissä tällä kanavalla. Käytä {channel}"
 
 #: audio/context_menus.py:83
 msgid "I couldn't find any valid matches in the message"
-msgstr "En löytänyt viestistä kelvollisia vastaavuuksia"
+msgstr "En löytänyt yhtään sopivaa ottelua viestistä"
 
 #: audio/context_menus.py:94
 msgid "I found multiple valid matches in the message"
-msgstr "Löysin viestistä useita kelvollisia vastaavuuksia"
+msgstr "Löysin viestissä useita kelvollisia otteluita"
 
 #: audio/context_menus.py:103
 msgid "I found a single valid match in the message"
-msgstr "Löysin viestistä yhden kelvollisen vastaavuuden"
+msgstr "Löysin yhden kelvollisen täsmäytyksen viestissä"
 
 #: audio/context_menus.py:186
 msgid "I couldn't find any supported activity {user} is taking part in"
-msgstr "En löytänyt tuettua toimintaa {user} osallistuu"
+msgstr "En löytänyt yhtään tuettua toimintaa {user} osallistuu"
 
 #: audio/context_menus.py:218
 msgid "Couldn't map {user}'s Apple Music track to a valid query"
-msgstr "Karttaa ei löytynyt {user}Apple Music -kappale kelvolliseen kyselyyn"
+msgstr "Kohdetta {user}Apple Music ei voitu kartoittaa kelvolliseen kyselyyn"
 
 #: audio/context_menus.py:234
 msgid "Couldn't find any tracks matching {query}"
-msgstr "Vastaavia kappaleita ei löytynyt {query}"
+msgstr "Ei löytynyt yhtään kohdistettua kappaletta {query}"
 
 #: audio/context_menus.py:249
 msgid "Couldn't figure out what {user} is listening to"
-msgstr "Ei voinut selvittää mitä {user} kuuntelee"
+msgstr "Ei voitu selvittää, mitä {user} kuuntelee"
 
 #: audio/hybrid_commands.py:83
 msgid "You need to provide a query to play"
-msgstr "Sinun on annettava kysely, jotta voit pelata"
+msgstr "Sinun täytyy antaa kysely pelataksesi"
 
 #: audio/hybrid_commands.py:97 audio/player_commands.py:134
 msgid "You must be in a voice channel to allow me to connect"
-msgstr "Sinun on oltava äänikanavalla, jotta voin muodostaa yhteyden"
+msgstr "Sinun täytyy olla äänikanavalla, jotta voin muodostaa yhteyden"
 
 #: audio/hybrid_commands.py:154 audio/player_commands.py:225
 msgid "{track_count} tracks enqueued"
-msgstr "{track_count} jonossa olevat kappaleet"
+msgstr "{track_count} kappaletta jonossa"
 
 #: audio/hybrid_commands.py:162 audio/player_commands.py:233
 msgid "{track} enqueued"
-msgstr "{track} jonossa"
+msgstr "{track} asetettu jonoon"
 
 #: audio/hybrid_commands.py:173 audio/player_commands.py:244
 msgid "No tracks were found for your query"
-msgstr "Kyselylle ei löytynyt kappaleita"
+msgstr "Etsintäsi varten ei löytynyt kappaleita"
 
 #: audio/hybrid_commands.py:236
 msgid "You need to be in a voice channel if you don't specify which channel I need to connect to"
-msgstr "Sinun on oltava äänikanavalla, jos et määritä, mihin kanavaan minun on muodostettava yhteys"
+msgstr "Sinun täytyy olla äänikanavalla, jos et määritä, mihin kanavaan minun täytyy olla yhteydessä"
 
 #: audio/hybrid_commands.py:248
 msgid "I don't have permission to connect to that channel"
-msgstr "Minulla ei ole oikeutta muodostaa yhteyttä kyseiseen kanavaan"
+msgstr "Minulla ei ole oikeuksia muodostaa yhteyttä tuohon kanavaan"
 
 #: audio/hybrid_commands.py:252
 msgid "I don't have permission to speak in {channel}"
-msgstr "Minulla ei ole lupaa puhua {channel}"
+msgstr "Minulla ei ole oikeutta puhua {channel}"
 
 #: audio/hybrid_commands.py:255
 msgid "I don't have permission to connect to {channel}"
-msgstr "Minulla ei ole lupaa muodostaa yhteyttä {channel}"
+msgstr "Minulla ei ole oikeutta muodostaa yhteyttä {channel}"
 
 #: audio/hybrid_commands.py:268
 msgid "You don't have permission to connect to {channel}"
-msgstr "Sinulla ei ole oikeutta muodostaa yhteyttä {channel}"
+msgstr "Sinulla ei ole oikeuksia muodostaa yhteyttä {channel}"
 
 #: audio/hybrid_commands.py:285
 msgid "I'm forced to only join {channel}"
-msgstr "Minun on pakko liittyä vain {channel}"
+msgstr "Jouduin liittymään vain {channel}"
 
 #: audio/hybrid_commands.py:293
 msgid "Connected to {channel}"
-msgstr "Yhdistetty {channel}"
+msgstr "Yhdistetty kohteeseen {channel}"
 
 #: audio/hybrid_commands.py:313 audio/hybrid_commands.py:343
 #: audio/hybrid_commands.py:383 audio/hybrid_commands.py:417
@@ -534,15 +534,15 @@ msgstr "Pelaajaa ei havaittu"
 #: audio/hybrid_commands.py:320 audio/hybrid_commands.py:350
 #: audio/hybrid_commands.py:390
 msgid "Player is not currently playing anything"
-msgstr "Pelaaja ei pelaa tällä hetkellä mitään"
+msgstr "Pelaaja ei tällä hetkellä pelaa mitään"
 
 #: audio/hybrid_commands.py:358
 msgid "Skipped - {track}"
-msgstr "Ohitetaan- {track}"
+msgstr "Ohitettu - {track}"
 
 #: audio/hybrid_commands.py:397
 msgid "Player stopped"
-msgstr "Pelaaja pysähtyi"
+msgstr "Soitin pysäytetty"
 
 #: audio/hybrid_commands.py:425
 msgid "Disconnected from {channel}"
@@ -554,23 +554,23 @@ msgstr "Jonossa ei ole mitään"
 
 #: audio/hybrid_commands.py:485
 msgid "You are not allowed to shuffle the queue"
-msgstr "Et saa sekoittaa jonoa"
+msgstr "Sinulla ei ole oikeutta sekoittaa jonoa"
 
 #: audio/hybrid_commands.py:493
 msgid "{queue_size} tracks shuffled"
-msgstr "{queue_size} kappaleet sekoitettuna"
+msgstr "{queue_size} kappaletta sekoitettu"
 
 #: audio/hybrid_commands.py:525
 msgid "Repeating the queue"
-msgstr "Jonon toistaminen"
+msgstr "Toistetaan jono"
 
 #: audio/hybrid_commands.py:528
 msgid "Repeating disabled"
-msgstr "Toistuva käytöstä poistaminen"
+msgstr "Toistuminen pois käytöstä"
 
 #: audio/hybrid_commands.py:531
 msgid "Repeating {track}"
-msgstr "Toistaminen {track}"
+msgstr "Toistetaan {track}"
 
 #: audio/hybrid_commands.py:534
 msgid "current track"
@@ -578,27 +578,27 @@ msgstr "nykyinen raita"
 
 #: audio/hybrid_commands.py:558
 msgid "Player already paused, did you mean to run `/resume`"
-msgstr "Pelaaja on jo keskeyttänyt, tarkoititko suorittaa '/resume'"
+msgstr "Pelaaja on jo keskeytetty, tarkoittaako sinun suorittaa `/resume`"
 
 #: audio/hybrid_commands.py:560
 msgid "Player already paused, did you mean to run `{prefix}{command}`"
-msgstr "Pelaaja on jo keskeyttänyt, tarkoititko juosta '{prefix}{command}`"
+msgstr "Pelaaja on jo keskeytetty, aiot suorittaa `{prefix}{command}`"
 
 #: audio/hybrid_commands.py:571
 msgid "Player paused"
-msgstr "Pelaaja keskeytti"
+msgstr "Soitin keskeytetty"
 
 #: audio/hybrid_commands.py:593
 msgid "Player already resumed, did you mean to run `/pause`"
-msgstr "Pelaaja on jo jatkanut, tarkoititko suorittaa '/pause'"
+msgstr "Soitin on jo jatkettu, aiot ajaa `/pause`"
 
 #: audio/hybrid_commands.py:595
 msgid "Player already resumed, did you mean to run `{prefix}{command}`"
-msgstr "Pelaaja on jo jatkanut, tarkoititko juosta '{prefix}{command}`"
+msgstr "Soitin on jo jatkettu, aiot suorittaa `{prefix}{command}`"
 
 #: audio/hybrid_commands.py:606
 msgid "Player resumed"
-msgstr "Pelaaja jatkoi"
+msgstr "Soitin jatkettu"
 
 #: audio/hybrid_commands.py:650
 msgid "Volume cannot be higher than {max_volume}"
@@ -606,31 +606,31 @@ msgstr "Äänenvoimakkuus ei voi olla suurempi kuin {max_volume}"
 
 #: audio/hybrid_commands.py:659 audio/utility_commands.py:62
 msgid "Player volume set to {volume}%"
-msgstr "Soittimen äänenvoimakkuus on asetettu arvoon {volume}%"
+msgstr "Soittimen äänenvoimakkuus asetettu {volume}%"
 
 #: audio/hybrid_commands.py:693
 msgid "Nothing playing"
-msgstr "Mikään ei pelaa"
+msgstr "Ei soita"
 
 #: audio/hybrid_commands.py:702 audio/hybrid_commands.py:711
 msgid "Unable to seek track"
-msgstr "Jäljitystä ei voi etsiä"
+msgstr "Kappaletta ei voitu hakea"
 
 #: audio/hybrid_commands.py:703
 msgid "Can't seek on a stream"
-msgstr "Ei voi etsiä streamista"
+msgstr "Virtaa ei voi hakea"
 
 #: audio/hybrid_commands.py:720
 msgid "Cannot seek when the player is paused"
-msgstr "Ei voi hakea, kun pelaaja on keskeytetty"
+msgstr "Ei voida etsiä, kun soitin on keskeytetty"
 
 #: audio/hybrid_commands.py:733
 msgid "Moved {seconds}s to 00:00:00"
-msgstr "Siirretty {seconds}s - 00:00:00"
+msgstr "Siirretty {seconds}s klo: 00:00"
 
 #: audio/hybrid_commands.py:740
 msgid "Moved {seconds}s to {time}"
-msgstr "Siirretty {seconds}s - {time}"
+msgstr "Siirretty {seconds}s kohteeseen {time}"
 
 #: audio/hybrid_commands.py:761
 msgid "Moved to {time}"
@@ -638,15 +638,15 @@ msgstr "Siirretty kohteeseen {time}"
 
 #: audio/hybrid_commands.py:795
 msgid "No previous in player history"
-msgstr "Ei aiempaa pelaajahistoriassa"
+msgstr "Ei edellinen soittimen historiassa"
 
 #: audio/hybrid_commands.py:803
 msgid "Playing previous track: {track}"
-msgstr "Edellisen kappaleen toistaminen: {track}"
+msgstr "Toistetaan edellistä kappaletta: {track}"
 
 #: audio/player_commands.py:30
 msgid "Plays the specified track in the queue"
-msgstr "Toistaa määritetyn raidan jonossa"
+msgstr "Soittaa määritetyn kappaleen jonossa"
 
 #: audio/player_commands.py:50 audio/player_commands.py:269
 msgid "Queue is empty"
@@ -654,15 +654,15 @@ msgstr "Jono on tyhjä"
 
 #: audio/player_commands.py:59 audio/player_commands.py:282
 msgid "Track index must be between 1 and {size}"
-msgstr "Radan indeksin on oltava välillä 1 ja {size}"
+msgstr "Kappaleen indeksin on oltava välillä 1 - {size}"
 
 #: audio/player_commands.py:75 audio/player_commands.py:295
 msgid "There is no track in position {position}"
-msgstr "Radalla ei ole asentoa {position}"
+msgstr "Paikassa {position} ei ole raitaa"
 
 #: audio/player_commands.py:85
 msgid "{track} will play after {current} finishes ({eta})"
-msgstr "{track} Pelaa sen jälkeen {current} viimeistelyt ({eta})"
+msgstr "{track} soittaa {current} päättymisen jälkeen ({eta})"
 
 #: audio/player_commands.py:103
 msgid "{track} will start now\n"
@@ -673,7 +673,7 @@ msgstr "{track} alkaa nyt\n"
 #: audio/player_commands.py:121
 #, docstring
 msgid "Enqueue a track at the top of the queue"
-msgstr "Jonon yläosassa olevan raidan asettaminen jonoon"
+msgstr "Jonota raita jonon yläreunassa olevaan reunaan"
 
 #: audio/player_commands.py:254
 #, docstring
@@ -683,37 +683,37 @@ msgid "\n"
 "        "
 msgstr "\n"
 "        Poista määritetty raita jonosta.\n\n"
-"        Jos määrität remove_duplicates-argumentin, kaikki URL-osoitteesi tai hakemistokanavasi kanssa samat raidat poistetaan.\n"
+"        Jos määrität `remove_duplicates` argumentin, kaikki kappaleet, jotka ovat samat kuin URL-osoite tai indeksiraita poistetaan.\n"
 "        "
 
 #: audio/player_commands.py:325
 msgid "{track} not found in queue"
-msgstr "{track} ei löydy jonosta"
+msgstr "{track} ei löytynyt jonosta"
 
 #: audio/player_commands.py:335
 msgid "Removed {times} {entry_plural} of {track} from the queue"
-msgstr "Kaukainen {times} {entry_plural} ja {track} jonosta"
+msgstr "Poistettu {times} {entry_plural} / {track} jonosta"
 
 #: audio/player_commands.py:338
 msgid "entry"
-msgstr "merkintä"
+msgstr "kohta"
 
 #: audio/player_commands.py:338
 msgid "entries"
-msgstr "Merkinnät"
+msgstr "merkinnät"
 
 #: audio/slash_commands.py:47
 #, docstring
 msgid "Search for a track then play the selected response"
-msgstr "Hae raitaa ja toista sitten valittu vastaus"
+msgstr "Etsi kappaletta ja toista valittu vastaus"
 
 #: audio/slash_commands.py:53
 msgid "You haven't selected something to play"
-msgstr "Et ole valinnut jotain pelattavaa"
+msgstr "Et ole valinnut jotain toistettavaa"
 
 #: audio/slash_commands.py:105
 msgid "Searching {service}"
-msgstr "Tutkiva {service}"
+msgstr "Etsitään {service}"
 
 #: audio/slash_commands.py:121 audio/slash_commands.py:132
 msgid "No results found on {service}"
@@ -721,13 +721,13 @@ msgstr "Tuloksia ei löytynyt {service}"
 
 #: audio/utility_commands.py:32
 msgid "Not connected to a voice channel"
-msgstr "Ei ole yhteydessä äänikanavaan"
+msgstr "Ei yhdistetty äänikanavaan"
 
 #: audio/utility_commands.py:43
 msgid "Volume limit reached, player volume set to {volume}%"
-msgstr "Äänenvoimakkuusraja saavutettu, pelaajan äänenvoimakkuus asetettu arvoon {volume}%"
+msgstr "Äänenvoimakkuuden raja saavutettu, soittimen äänenvoimakkuus asetettu {volume}%"
 
 #: audio/utility_commands.py:54
 msgid "Minimum volume reached, player volume set to 0%"
-msgstr "Pienin saavutettu äänenvoimakkuus, pelaajan äänenvoimakkuus asetettu 0%: iin"
+msgstr "Pienin äänenvoimakkuus saavutettu, soittimen äänenvoimakkuus asetettu 0%"
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:42\n"
+"PO-Revision-Date: 2023-02-01 00:10\n"
 "Last-Translator: \n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: audio/cog.py:35
 #, docstring
 msgid "A Media player using the PyLav library"
-msgstr "PyLavライブラリを使用するメディアプレーヤー"
+msgstr "PyLav ライブラリを使用したメディアプレーヤー。"
 
 #: audio/config_commands.py:41
 #, docstring
@@ -35,7 +35,7 @@ msgstr "プレイヤーに問題があることをPyLavに通知します。\n\n
 
 #: audio/config_commands.py:49
 msgid "This server already voted recently, please try again in 10 minutes"
-msgstr "このサーバーはすでに最近投票しました。10分後にもう一度やり直してください"
+msgstr "このサーバーはすでに最近投票されています。10分後にもう一度お試しください"
 
 #: audio/config_commands.py:60
 msgid "Thank you for your report"
@@ -56,20 +56,20 @@ msgstr "プレイヤーがダウンしたことに対する投票を削除しま
 
 #: audio/config_commands.py:80
 msgid "There is no active votes for the current backend"
-msgstr "現在のバックエンドに対するアクティブな投票はありません"
+msgstr "現在のバックエンドに有効な投票はありません"
 
 #: audio/config_commands.py:90
 msgid "Removed your report"
-msgstr "報告を削除しました"
+msgstr "レポートを削除しました"
 
 #: audio/config_commands.py:98
 #, docstring
 msgid "Show the version of the Cog and its PyLav dependencies"
-msgstr "歯車とそのPyLav依存関係のバージョンを表示する"
+msgstr "Cog と PyLav の依存関係のバージョンを表示する"
 
 #: audio/config_commands.py:114
 msgid "Library/Cog"
-msgstr "ライブラリ/コグ"
+msgstr "ライブラリ/Cog"
 
 #: audio/config_commands.py:115
 msgid "Version"
@@ -78,35 +78,35 @@ msgstr "バージョン"
 #: audio/config_commands.py:129
 #, docstring
 msgid "Global configuration options"
-msgstr "グローバル構成オプション"
+msgstr "グローバル設定オプション"
 
 #: audio/config_commands.py:133
 #, docstring
 msgid "Set the maximum volume a server can set"
-msgstr "サーバーが設定できる最大音量を設定する"
+msgstr "サーバーが設定できる最大音量を設定します"
 
 #: audio/config_commands.py:141 audio/config_commands.py:578
 #: audio/hybrid_commands.py:627
 msgid "Volume must be less than 1000"
-msgstr "ボリュームは 1000 未満である必要があります"
+msgstr "音量は1000未満でなければなりません"
 
 #: audio/config_commands.py:149 audio/config_commands.py:586
 #: audio/hybrid_commands.py:635
 msgid "Volume must be greater than 0"
-msgstr "ボリュームは 0 より大きくなければなりません"
+msgstr "ボリュームは0より大きくなければなりません"
 
 #: audio/config_commands.py:157 audio/config_commands.py:623
 msgid "Max volume set to {volume}%"
-msgstr "最大音量をに設定 {volume}%"
+msgstr "最大音量を {volume} % に設定しました"
 
 #: audio/config_commands.py:165 audio/config_commands.py:631
 #, docstring
 msgid "Set whether [botname] should deafen itself when playing"
-msgstr "設定するかどうか [botname] 遊ぶときに耳が聞こえないはずです"
+msgstr "[botname] を再生中にスピーカーをミュートするかどうかを設定します"
 
 #: audio/config_commands.py:174 audio/config_commands.py:657
 msgid "Deafen set to {deafen}"
-msgstr "聴覚障害者は {deafen}"
+msgstr "スピーカーミュートを {deafen} に設定しました"
 
 #: audio/config_commands.py:174 audio/config_commands.py:193
 #: audio/config_commands.py:212 audio/config_commands.py:229
@@ -129,11 +129,11 @@ msgstr "無効"
 #: audio/config_commands.py:182
 #, docstring
 msgid "Set whether the a server is allowed to enabled auto shuffle"
-msgstr "サーバーで自動シャッフルを有効にすることを許可するかどうかを設定します"
+msgstr "サーバーが自動シャッフルを有効にするかどうかを設定します"
 
 #: audio/config_commands.py:192 audio/config_commands.py:686
 msgid "Auto-Shuffle set to {shuffle}"
-msgstr "自動シャッフルをに設定 {shuffle}"
+msgstr "{shuffle} に自動シャッフルを設定しました"
 
 #: audio/config_commands.py:202 audio/config_commands.py:696
 #, docstring
@@ -142,7 +142,7 @@ msgstr "設定するかどうか [botname] ユーザーがキューをシャッ�
 
 #: audio/config_commands.py:212 audio/config_commands.py:719
 msgid "Shuffle set to {shuffle}"
-msgstr "シャッフルを {shuffle}"
+msgstr "シャッフルを {shuffle} に設定しました"
 
 #: audio/config_commands.py:220
 #, docstring
@@ -151,12 +151,12 @@ msgstr "設定するかどうか [botname] キューが空のときに自動的�
 
 #: audio/config_commands.py:229 audio/config_commands.py:753
 msgid "Auto-Play set to {auto}"
-msgstr "自動再生を に設定 {auto}"
+msgstr "{auto} に自動再生を設定しました"
 
 #: audio/config_commands.py:237
 #, docstring
 msgid "Set whether [botname] should disconnect from the voice channel"
-msgstr "設定するかどうか [botname] 音声チャネルから切断する必要があります"
+msgstr "[botname] をボイスチャンネルから切断するかどうかを設定する"
 
 #: audio/config_commands.py:247
 #, docstring
@@ -176,11 +176,11 @@ msgstr "設定するかどうか [botname] キューが空のときに音声チ�
 #: audio/config_commands.py:267 audio/config_commands.py:307
 #: audio/config_commands.py:811 audio/config_commands.py:873
 msgid " and players will be disconnected after {duration}"
-msgstr " その後、プレイヤーは切断されます {duration}"
+msgstr " {duration} 後にプレイヤーは切断されます"
 
 #: audio/config_commands.py:272 audio/config_commands.py:816
 msgid "Disconnect from voice channel when queue is empty set to {empty}{extras}"
-msgstr "キューが空のときに音声チャネルから切断する に設定 {empty}{extras}"
+msgstr "キューが {empty}{extras} に設定されている場合、ボイスチャンネルから切断します。"
 
 #: audio/config_commands.py:288
 #, docstring
@@ -199,7 +199,7 @@ msgstr "設定するかどうか [botname] 単独で音声チャネルから切�
 
 #: audio/config_commands.py:313 audio/config_commands.py:879
 msgid "Disconnect from voice channel when alone set to {empty}{extras}"
-msgstr "単独で音声チャネルから切断する {empty}{extras}"
+msgstr "{empty}{extras} に単独で設定した場合、ボイスチャンネルから切断します"
 
 #: audio/config_commands.py:325
 #, docstring
@@ -209,82 +209,82 @@ msgstr "サーバー構成オプション"
 #: audio/config_commands.py:329
 #, docstring
 msgid "Add, remove or show the DJ roles and users for the server"
-msgstr "サーバーのDJロールとユーザーを追加、削除、または表示する"
+msgstr "サーバーの DJ ロールとユーザーを追加、削除、または表示"
 
 #: audio/config_commands.py:335
 #, docstring
 msgid "Add DJ roles or users to this server"
-msgstr "このサーバーにDJの役割またはユーザーを追加する"
+msgstr "このサーバーにDJロールまたはユーザーを追加"
 
 #: audio/config_commands.py:348
 msgid "Added {role} to the DJ roles"
-msgstr "追加 {role} DJの役割に"
+msgstr "DJロールに {role} を追加しました"
 
 #: audio/config_commands.py:351
 msgid "Added {user} to the DJ users"
-msgstr "追加 {user} DJユーザーの皆様へ"
+msgstr "DJユーザーに {user} を追加しました"
 
 #: audio/config_commands.py:358
 msgid "Added {roles} to the DJ roles and {users} to the DJ users"
-msgstr "追加 {roles} DJの役割と {users} DJユーザーの皆様へ"
+msgstr "DJユーザーに {roles} を、 {users} を追加しました"
 
 #: audio/config_commands.py:365
 msgid "Added {roles} to the DJ roles"
-msgstr "追加 {roles} DJの役割に"
+msgstr "DJロールに {roles} を追加しました"
 
 #: audio/config_commands.py:369
 msgid "Added {users} to the DJ users"
-msgstr "追加 {users} DJユーザーの皆様へ"
+msgstr "DJユーザーに {users} を追加しました"
 
 #: audio/config_commands.py:384
 #, docstring
 msgid "Remove DJ roles or users in this the server"
-msgstr "このサーバーのDJロールまたはユーザーを削除します"
+msgstr "サーバー内のDJロールまたはユーザーを削除します"
 
 #: audio/config_commands.py:416
 msgid "Removed {roles} from the DJ roles and {users} from the DJ users, as well as {ints} from both"
-msgstr "削除 {roles} DJの役割から、そして {users} DJユーザーからだけでなく、 {ints} 両方から"
+msgstr "DJロールから {roles} を、DJユーザーから {users} を、両方から {ints} を削除しました"
 
 #: audio/config_commands.py:424
 msgid "Removed {roles} from the DJ roles and {users} from the DJ users"
-msgstr "削除 {roles} DJの役割から、そして {users} DJユーザーから"
+msgstr "DJロールから {roles} を、DJユーザーから {users} を削除しました"
 
 #: audio/config_commands.py:429
 msgid "Removed {roles} from the DJ roles"
-msgstr "削除 {roles} DJの役割から"
+msgstr "DJロールから {roles} を削除しました"
 
 #: audio/config_commands.py:433
 msgid "Removed {users} from the DJ users"
-msgstr "削除 {users} DJユーザーから"
+msgstr "DJユーザーから {users} を削除しました"
 
 #: audio/config_commands.py:437
 msgid "Removed {ints} from the DJ roles and users"
-msgstr "削除 {ints} DJの役割とユーザーから"
+msgstr "DJロールとユーザーから {ints} を削除しました"
 
 #: audio/config_commands.py:452
 msgid "Removed `{id}` from the DJ roles and users"
-msgstr "削除 '{id}' DJ の役割とユーザーから"
+msgstr "DJロールとユーザーから`{id}`を削除しました"
 
 #: audio/config_commands.py:454
 msgid "Removed {role} from the DJ roles"
-msgstr "削除 {role} DJの役割から"
+msgstr "DJロールから {role} を削除しました"
 
 #: audio/config_commands.py:457
 msgid "Removed {user} from the DJ users"
-msgstr "削除 {user} DJユーザーから"
+msgstr "DJユーザーから {user} を削除しました"
 
 #: audio/config_commands.py:463
 #, docstring
 msgid "List the DJ roles and users for the server"
-msgstr "サーバーのDJロールとユーザーを一覧表示する"
+msgstr "サーバーのDJロールとユーザーの一覧"
 
 #: audio/config_commands.py:514
 msgid "There are no DJ roles or users set in {server}"
-msgstr "DJの役割やユーザーが設定されていません {server}"
+msgstr "DJロールやユーザーが {server}に設定されていません"
 
 #: audio/config_commands.py:525 audio/config_commands.py:530
 msgid "DJ Roles"
-msgstr "DJの役割"
+msgstr "DJ ロール"
 
 #: audio/config_commands.py:536 audio/config_commands.py:541
 msgid "DJ Users"
@@ -293,51 +293,51 @@ msgstr "DJユーザー"
 #: audio/config_commands.py:549
 #, docstring
 msgid "Clear the DJ roles and users for the server"
-msgstr "サーバーのDJロールとユーザーをクリアする"
+msgstr "サーバーの DJ ロールとユーザーをクリアする"
 
 #: audio/config_commands.py:561
 msgid "Cleared the DJ roles and users for {server}"
-msgstr "DJの役割とユーザーをクリアしました {server}"
+msgstr "{server} の DJ ロールとユーザーをクリアしました"
 
 #: audio/config_commands.py:569
 #, docstring
 msgid "Set the maximum volume a user can set"
-msgstr "ユーザーが設定できる最大音量を設定する"
+msgstr "ユーザーが設定できる最大音量を設定します"
 
 #: audio/config_commands.py:595 audio/config_commands.py:611
 msgid "Volume must be between 0 and {volume}%"
-msgstr "ボリュームは 0 から {volume}%"
+msgstr "音量は 0 から {volume} % の間でなければなりません"
 
 #: audio/config_commands.py:640
 msgid "My owner told me to always deafen myself"
-msgstr "私の所有者は私にいつも耳が聞こえないように言いました"
+msgstr "私の所有者は、常に自分自身を聞くように私に言った"
 
 #: audio/config_commands.py:665
 #, docstring
 msgid "Set whether [botname] should shuffle the queue after every new song added"
-msgstr "設定するかどうか [botname] 新しい曲が追加されるたびにキューをシャッフルする必要があります"
+msgstr "新しい曲が追加された後、 [botname] がキューをシャッフルするかどうか設定"
 
 #: audio/config_commands.py:673
 msgid "Auto-Shuffle is globally disabled"
-msgstr "自動シャッフルはグローバルに無効になっています"
+msgstr "自動シャッフルはグローバルで無効になっています"
 
 #: audio/config_commands.py:706
 msgid "Shuffle is globally disabled"
-msgstr "シャッフルはグローバルに無効になっています"
+msgstr "シャッフルはグローバルで無効です"
 
 #: audio/config_commands.py:727
 #, docstring
 msgid "Set whether the bot should automatically play songs when the queue is empty"
-msgstr "キューが空のときにボットが自動的に曲を再生するかどうかを設定します"
+msgstr "キューが空の場合、ボットが自動的に曲を再生するかどうかを設定します"
 
 #: audio/config_commands.py:736
 msgid "Auto-Play is globally disabled"
-msgstr "自動再生はグローバルに無効になっています"
+msgstr "自動再生はグローバルで無効になっています"
 
 #: audio/config_commands.py:761
 #, docstring
 msgid "Set whether the bot should disconnect from the voice channel"
-msgstr "ボットを音声チャネルから切断するかどうかを設定する"
+msgstr "ボットがボイスチャンネルから切断するかどうかを設定します"
 
 #: audio/config_commands.py:771
 #, docstring
@@ -360,7 +360,7 @@ msgstr "キューが空のときにボットを音声チャネルから切断す
 
 #: audio/config_commands.py:789
 msgid "Disconnect when the queue finished is globally enabled and players will be disconnected after {delta}"
-msgstr "キューが終了したら切断するとグローバルに有効になり、プレイヤーは後に切断されます {delta}"
+msgstr "キューがグローバルに有効化され、 {delta} 後にプレイヤーが切断されます。"
 
 #: audio/config_commands.py:832
 #, docstring
@@ -383,112 +383,112 @@ msgstr "ボットが単独で音声チャネルから切断する必要がある
 
 #: audio/config_commands.py:851
 msgid "Disconnect when alone is globally enabled and players will be disconnected after {delta}"
-msgstr "単独でグローバルに有効になっているときに切断し、プレーヤーは後に切断されます {delta}"
+msgstr "単独でグローバルに有効になっている場合は切断し、プレイヤーは {delta} 後に切断されます"
 
 #: audio/config_commands.py:889
 #, docstring
 msgid "Sets the Auto-Play playlist"
-msgstr "自動再生プレイリストを設定します"
+msgstr "自動再生プレイリストを設定"
 
 #: audio/config_commands.py:906
 msgid "Auto-Play playlist set to {playlist}"
-msgstr "自動再生プレイリストを {playlist}"
+msgstr "プレイリストを {playlist} に自動再生する"
 
 #: audio/config_commands.py:916
 #, docstring
 msgid "Set the channel locks"
-msgstr "チャンネルロックを設定する"
+msgstr "チャンネルロックを設定"
 
 #: audio/config_commands.py:922
 #, docstring
 msgid "Set the channel lock for commands"
-msgstr "コマンドのチャネルロックを設定する"
+msgstr "コマンドのチャンネルロックを設定"
 
 #: audio/config_commands.py:937
 msgid "I don't have permission to send message or send embed links or read messages in {channel}"
-msgstr "メッセージを送信したり、埋め込みリンクを送信したり、メッセージを読んだりする権限がありません。 {channel}"
+msgstr "{channel} でメッセージを送信したり、埋め込みリンクを送信したり、メッセージを読んだりする権限がありません。"
 
 #: audio/config_commands.py:954
 msgid "I will only listen to commands in {channel}"
-msgstr "私はコマンドを聞くだけです {channel}"
+msgstr "{channel} でのみコマンドを聞くことができます"
 
 #: audio/config_commands.py:962
 msgid "I will listen to commands in all channels I can see"
-msgstr "私は私が見ることができるすべてのチャンネルでコマンドを聞きます"
+msgstr "私が見ることができるすべてのチャンネルのコマンドを聴きます"
 
 #: audio/config_commands.py:970
 #, docstring
 msgid "Set the channel lock for voice channels"
-msgstr "音声チャネルのチャネル ロックを設定する"
+msgstr "ボイスチャンネルのチャンネルロックを設定"
 
 #: audio/config_commands.py:982 audio/hybrid_commands.py:107
 #: audio/player_commands.py:144
 msgid "I don't have permission to connect or speak in {channel}"
-msgstr "接続または発言する権限がありません {channel}"
+msgstr "{channel} に接続または話す権限がありません。"
 
 #: audio/config_commands.py:1000
 msgid "I will only be allowed to join {channel}"
-msgstr "参加のみが許可されます {channel}"
+msgstr "{channel} のみ参加できます"
 
 #: audio/config_commands.py:1007
 msgid "I'm free to join any VC"
-msgstr "私はどのVCにも自由に参加できます"
+msgstr "VCに自由に参加できます"
 
 #: audio/context_menus.py:27 audio/context_menus.py:143
 msgid "I can't play songs in DMs"
-msgstr "DM で曲を再生できない"
+msgstr "DMで曲を再生できません"
 
 #: audio/context_menus.py:38 audio/context_menus.py:154
 msgid "You need to be a DJ to play tracks"
-msgstr "トラックを再生するにはDJである必要があります"
+msgstr "トラックを再生するにはDJになる必要があります"
 
 #: audio/context_menus.py:55 audio/context_menus.py:169
 msgid "This command is not available in this channel. Please use {channel}"
-msgstr "このコマンドは、このチャネルでは使用できません。ご利用ください {channel}"
+msgstr "このコマンドはこのチャンネルでは使用できません。 {channel} を使用してください。"
 
 #: audio/context_menus.py:83
 msgid "I couldn't find any valid matches in the message"
-msgstr "メッセージに有効な一致が見つかりませんでした"
+msgstr "メッセージ内に有効な一致が見つかりませんでした"
 
 #: audio/context_menus.py:94
 msgid "I found multiple valid matches in the message"
-msgstr "メッセージに複数の有効な一致が見つかりました"
+msgstr "メッセージ内に複数の有効な一致が見つかりました"
 
 #: audio/context_menus.py:103
 msgid "I found a single valid match in the message"
-msgstr "メッセージに有効な一致が 1 つ見つかりました"
+msgstr "メッセージ内に有効な一致を見つけました"
 
 #: audio/context_menus.py:186
 msgid "I couldn't find any supported activity {user} is taking part in"
-msgstr "サポートされているアクティビティが見つかりませんでした {user} に参加しています"
+msgstr "サポートされているアクティビティ {user} が見つかりませんでした"
 
 #: audio/context_menus.py:218
 msgid "Couldn't map {user}'s Apple Music track to a valid query"
-msgstr "マップできませんでした {user}のアップルミュージックトラックを有効なクエリに"
+msgstr "{user}の Apple Music トラックを有効なクエリにマップできませんでした"
 
 #: audio/context_menus.py:234
 msgid "Couldn't find any tracks matching {query}"
-msgstr "一致するトラックが見つかりませんでした {query}"
+msgstr "{query} に一致するトラックが見つかりませんでした"
 
 #: audio/context_menus.py:249
 msgid "Couldn't figure out what {user} is listening to"
-msgstr "何がわからなかった {user} を聞いている"
+msgstr "{user} が聴いている内容が分かりませんでした"
 
 #: audio/hybrid_commands.py:83
 msgid "You need to provide a query to play"
-msgstr "再生するにはクエリを提供する必要があります"
+msgstr "プレイするためにクエリを指定する必要があります"
 
 #: audio/hybrid_commands.py:97 audio/player_commands.py:134
 msgid "You must be in a voice channel to allow me to connect"
-msgstr "接続できるようにするには、音声チャネルにいる必要があります"
+msgstr "接続を許可するにはボイスチャンネルにいる必要があります"
 
 #: audio/hybrid_commands.py:154 audio/player_commands.py:225
 msgid "{track_count} tracks enqueued"
-msgstr "{track_count} エンキューされたトラック"
+msgstr "{track_count} がキューに追加されました。"
 
 #: audio/hybrid_commands.py:162 audio/player_commands.py:233
 msgid "{track} enqueued"
-msgstr "{track} エンキュー"
+msgstr "{track} がキューに追加されました"
 
 #: audio/hybrid_commands.py:173 audio/player_commands.py:244
 msgid "No tracks were found for your query"
@@ -496,31 +496,31 @@ msgstr "クエリのトラックが見つかりませんでした"
 
 #: audio/hybrid_commands.py:236
 msgid "You need to be in a voice channel if you don't specify which channel I need to connect to"
-msgstr "接続する必要があるチャネルを指定しない場合は、音声チャネルにいる必要があります"
+msgstr "接続するチャンネルを指定しない場合は、音声チャンネルにする必要があります。"
 
 #: audio/hybrid_commands.py:248
 msgid "I don't have permission to connect to that channel"
-msgstr "そのチャネルに接続する権限がありません"
+msgstr "そのチャンネルに接続する権限がありません"
 
 #: audio/hybrid_commands.py:252
 msgid "I don't have permission to speak in {channel}"
-msgstr "発言する許可がありません {channel}"
+msgstr "{channel} で話す権限がありません。"
 
 #: audio/hybrid_commands.py:255
 msgid "I don't have permission to connect to {channel}"
-msgstr "接続する権限がありません {channel}"
+msgstr "{channel} に接続する権限がありません"
 
 #: audio/hybrid_commands.py:268
 msgid "You don't have permission to connect to {channel}"
-msgstr "接続する権限がありません {channel}"
+msgstr "{channel} に接続する権限がありません。"
 
 #: audio/hybrid_commands.py:285
 msgid "I'm forced to only join {channel}"
-msgstr "参加のみを余儀なくされています {channel}"
+msgstr "{channel} のみ参加を余儀なくされています"
 
 #: audio/hybrid_commands.py:293
 msgid "Connected to {channel}"
-msgstr "接続先 {channel}"
+msgstr "{channel} に接続しました"
 
 #: audio/hybrid_commands.py:313 audio/hybrid_commands.py:343
 #: audio/hybrid_commands.py:383 audio/hybrid_commands.py:417
@@ -529,16 +529,16 @@ msgstr "接続先 {channel}"
 #: audio/hybrid_commands.py:587 audio/hybrid_commands.py:642
 #: audio/hybrid_commands.py:686 audio/hybrid_commands.py:787
 msgid "No player detected"
-msgstr "プレイヤーが検出されませんでした"
+msgstr "プレイヤーが見つかりませんでした"
 
 #: audio/hybrid_commands.py:320 audio/hybrid_commands.py:350
 #: audio/hybrid_commands.py:390
 msgid "Player is not currently playing anything"
-msgstr "プレーヤーは現在何もプレイしていません"
+msgstr "プレイヤーは現在何も再生していません"
 
 #: audio/hybrid_commands.py:358
 msgid "Skipped - {track}"
-msgstr "スキップ- {track}"
+msgstr "スキップ - {track}"
 
 #: audio/hybrid_commands.py:397
 msgid "Player stopped"
@@ -546,7 +546,7 @@ msgstr "プレイヤーが停止しました"
 
 #: audio/hybrid_commands.py:425
 msgid "Disconnected from {channel}"
-msgstr "切断元 {channel}"
+msgstr "{channel} から切断されました"
 
 #: audio/hybrid_commands.py:477
 msgid "There is nothing in the queue"
@@ -554,23 +554,23 @@ msgstr "キューには何もありません"
 
 #: audio/hybrid_commands.py:485
 msgid "You are not allowed to shuffle the queue"
-msgstr "キューをシャッフルすることはできません"
+msgstr "キューをシャッフルする権限がありません"
 
 #: audio/hybrid_commands.py:493
 msgid "{queue_size} tracks shuffled"
-msgstr "{queue_size} シャッフルされたトラック"
+msgstr "{queue_size} トラックシャッフル"
 
 #: audio/hybrid_commands.py:525
 msgid "Repeating the queue"
-msgstr "キューの繰り返し"
+msgstr "キューを繰り返す"
 
 #: audio/hybrid_commands.py:528
 msgid "Repeating disabled"
-msgstr "繰り返し無効"
+msgstr "リピートは無効です"
 
 #: audio/hybrid_commands.py:531
 msgid "Repeating {track}"
-msgstr "繰り返し {track}"
+msgstr "{track} を繰り返す"
 
 #: audio/hybrid_commands.py:534
 msgid "current track"
@@ -578,23 +578,23 @@ msgstr "現在のトラック"
 
 #: audio/hybrid_commands.py:558
 msgid "Player already paused, did you mean to run `/resume`"
-msgstr "プレイヤーはすでに一時停止しています。「/ resume」を実行するつもりでしたか"
+msgstr "プレイヤーは既に一時停止しています。`/resume`を実行するつもりですか？"
 
 #: audio/hybrid_commands.py:560
 msgid "Player already paused, did you mean to run `{prefix}{command}`"
-msgstr "プレイヤーはすでに一時停止しています、あなたは走るつもりでしたか '{prefix}{command}`"
+msgstr "プレイヤーは既に一時停止しています。`{prefix}{command}`を実行するつもりですか？"
 
 #: audio/hybrid_commands.py:571
 msgid "Player paused"
-msgstr "プレイヤーが一時停止しました"
+msgstr "プレイヤーを一時停止しました"
 
 #: audio/hybrid_commands.py:593
 msgid "Player already resumed, did you mean to run `/pause`"
-msgstr "プレイヤーはすでに再開されていますが、「/ pause」を実行するつもりでしたか"
+msgstr "プレイヤーは既に再開されています。`/pause`を実行しますか？"
 
 #: audio/hybrid_commands.py:595
 msgid "Player already resumed, did you mean to run `{prefix}{command}`"
-msgstr "プレイヤーはすでに再開しました、あなたは走るつもりでしたか '{prefix}{command}`"
+msgstr "プレイヤーはすでに再開されています。`{prefix}{command}`を実行するつもりですか？"
 
 #: audio/hybrid_commands.py:606
 msgid "Player resumed"
@@ -602,51 +602,51 @@ msgstr "プレイヤーが再開されました"
 
 #: audio/hybrid_commands.py:650
 msgid "Volume cannot be higher than {max_volume}"
-msgstr "ボリュームをそれより大きくすることはできません {max_volume}"
+msgstr "音量は {max_volume} より大きくすることはできません"
 
 #: audio/hybrid_commands.py:659 audio/utility_commands.py:62
 msgid "Player volume set to {volume}%"
-msgstr "プレーヤーの音量をに設定 {volume}%"
+msgstr "プレーヤーの音量を {volume} % に設定しました"
 
 #: audio/hybrid_commands.py:693
 msgid "Nothing playing"
-msgstr "何も再生されていません"
+msgstr "再生中のものはありません"
 
 #: audio/hybrid_commands.py:702 audio/hybrid_commands.py:711
 msgid "Unable to seek track"
-msgstr "トラックを探すことができません"
+msgstr "曲をシークできません"
 
 #: audio/hybrid_commands.py:703
 msgid "Can't seek on a stream"
-msgstr "ストリームをシークできない"
+msgstr "ストリームをシークできません"
 
 #: audio/hybrid_commands.py:720
 msgid "Cannot seek when the player is paused"
-msgstr "プレイヤーが一時停止しているときにシークできません"
+msgstr "プレイヤーが一時停止中はシークできません"
 
 #: audio/hybrid_commands.py:733
 msgid "Moved {seconds}s to 00:00:00"
-msgstr "移動 {seconds}s から 00:00:00"
+msgstr "{seconds}秒を 00:00:00 に移動しました"
 
 #: audio/hybrid_commands.py:740
 msgid "Moved {seconds}s to {time}"
-msgstr "移動 {seconds}sから {time}"
+msgstr "{seconds}秒で {time} に移動しました"
 
 #: audio/hybrid_commands.py:761
 msgid "Moved to {time}"
-msgstr "移動先 {time}"
+msgstr "{time} に移動しました"
 
 #: audio/hybrid_commands.py:795
 msgid "No previous in player history"
-msgstr "プレイヤー履歴に前歴なし"
+msgstr "プレイヤーの履歴に過去がありません"
 
 #: audio/hybrid_commands.py:803
 msgid "Playing previous track: {track}"
-msgstr "前のトラックを再生する: {track}"
+msgstr "前のトラックを再生: {track}"
 
 #: audio/player_commands.py:30
 msgid "Plays the specified track in the queue"
-msgstr "キュー内の指定されたトラックを再生します。"
+msgstr "キュー内で指定したトラックを再生"
 
 #: audio/player_commands.py:50 audio/player_commands.py:269
 msgid "Queue is empty"
@@ -654,26 +654,26 @@ msgstr "キューが空です"
 
 #: audio/player_commands.py:59 audio/player_commands.py:282
 msgid "Track index must be between 1 and {size}"
-msgstr "トラックインデックスは1から {size}"
+msgstr "トラックインデックスは1から {size}の間でなければなりません"
 
 #: audio/player_commands.py:75 audio/player_commands.py:295
 msgid "There is no track in position {position}"
-msgstr "所定の位置にトラックがありません {position}"
+msgstr "位置 {position} にトラックがありません"
 
 #: audio/player_commands.py:85
 msgid "{track} will play after {current} finishes ({eta})"
-msgstr "{track} 後に再生されます {current} 終了 ({eta})"
+msgstr "{track} は {current} 終了後に再生されます ({eta})"
 
 #: audio/player_commands.py:103
 msgid "{track} will start now\n"
 "{current} has been skipped"
-msgstr "{track} 今すぐ開始します\n"
-"{current} はスキップされました"
+msgstr "{track} は今から始まります\n"
+"{current} がスキップされました"
 
 #: audio/player_commands.py:121
 #, docstring
 msgid "Enqueue a track at the top of the queue"
-msgstr "キューの先頭にあるトラックをキューに入れる"
+msgstr "キューの上部にトラックをキューに入れる"
 
 #: audio/player_commands.py:254
 #, docstring
@@ -688,46 +688,46 @@ msgstr "\n"
 
 #: audio/player_commands.py:325
 msgid "{track} not found in queue"
-msgstr "{track} キューに見つかりません"
+msgstr "{track} がキューに見つかりません"
 
 #: audio/player_commands.py:335
 msgid "Removed {times} {entry_plural} of {track} from the queue"
-msgstr "削除 {times} {entry_plural} の {track} キューから"
+msgstr "キューから {times} {entry_plural} の {track} を削除しました"
 
 #: audio/player_commands.py:338
 msgid "entry"
-msgstr "エントリ"
+msgstr "項目"
 
 #: audio/player_commands.py:338
 msgid "entries"
-msgstr "エントリ"
+msgstr "項目"
 
 #: audio/slash_commands.py:47
 #, docstring
 msgid "Search for a track then play the selected response"
-msgstr "トラックを検索し、選択した応答を再生する"
+msgstr "トラックを検索し、選択した応答を再生します"
 
 #: audio/slash_commands.py:53
 msgid "You haven't selected something to play"
-msgstr "プレイするものを選択していません"
+msgstr "プレイするものが選択されていません"
 
 #: audio/slash_commands.py:105
 msgid "Searching {service}"
-msgstr "探訪 {service}"
+msgstr "{service} を検索中"
 
 #: audio/slash_commands.py:121 audio/slash_commands.py:132
 msgid "No results found on {service}"
-msgstr "結果が見つかりません {service}"
+msgstr "{service} に結果が見つかりませんでした"
 
 #: audio/utility_commands.py:32
 msgid "Not connected to a voice channel"
-msgstr "音声チャネルに接続されていない"
+msgstr "音声チャンネルに接続されていません"
 
 #: audio/utility_commands.py:43
 msgid "Volume limit reached, player volume set to {volume}%"
-msgstr "音量制限に達し、プレーヤーの音量をに設定 {volume}%"
+msgstr "音量制限に達しました。プレイヤーの音量を {volume} %に設定しました"
 
 #: audio/utility_commands.py:54
 msgid "Minimum volume reached, player volume set to 0%"
-msgstr "最小音量に達し、プレーヤーの音量を0%に設定"
+msgstr "最小音量に達し、プレーヤーの音量が 0% に設定されています"
 

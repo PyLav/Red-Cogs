@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-01-31 23:42\n"
+"PO-Revision-Date: 2023-02-01 00:10\n"
 "Last-Translator: \n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: plutils/cog.py:58 plutils/cog.py:68
 #, docstring
 msgid "Utility commands for PyLav"
-msgstr "PyLavin apuohjelmakomennot"
+msgstr "Hyödyllisyyskomennot PyLavia varten"
 
 #: plutils/cog.py:72
 #, docstring
@@ -40,19 +40,19 @@ msgstr "Versio"
 msgid "Show the slashes available in the bot.\n\n"
 "        Author: TrustyJAID#0001 via code block on Discord channel.\n"
 "        "
-msgstr "Näytä botissa käytettävissä olevat vinoviivat.\n\n"
-"        Kirjoittaja: TrustyJAID # 0001 Discord-kanavan koodilohkon kautta.\n"
+msgstr "Näytä slashes saatavilla botissa.\n\n"
+"        Tekijä: TrustyJAID#0001 koodilohkon kautta Discord-kanavalla.\n"
 "        "
 
 #: plutils/cog.py:133
 #, docstring
 msgid "Get info about specific things"
-msgstr "Hanki tietoja tietyistä asioista"
+msgstr "Hanki tietoa tietyistä asioista"
 
 #: plutils/cog.py:137
 #, docstring
 msgid "Get the base64 of the current track"
-msgstr "Hanki nykyisen raidan perusta64"
+msgstr "Hanki nykyisen kappaleen perus64"
 
 #: plutils/cog.py:145 plutils/cog.py:177 plutils/cog.py:209 plutils/cog.py:240
 #: plutils/cog.py:273
@@ -66,31 +66,31 @@ msgstr "Mikään ei pelaa"
 #: plutils/cog.py:168
 #, docstring
 msgid "Get the author of the current track"
-msgstr "Hanki nykyisen raidan tekijä"
+msgstr "Hanki nykyisen kappaleen tekijä"
 
 #: plutils/cog.py:200
 #, docstring
 msgid "Get the title of the current track"
-msgstr "Hanki nykyisen kappaleen nimi"
+msgstr "Hanki nykyisen kappaleen otsikko"
 
 #: plutils/cog.py:232
 #, docstring
 msgid "Get the source of the current track"
-msgstr "Hanki nykyisen raidan lähde"
+msgstr "Hanki nykyisen kappaleen lähde"
 
 #: plutils/cog.py:264
 #, docstring
 msgid "Get the API of the current track"
-msgstr "Hanki nykyisen raidan API"
+msgstr "Hanki nykyisen kappaleen API"
 
 #: plutils/cog.py:284 plutils/cog.py:293
 msgid "Unable to get player info"
-msgstr "Pelaajatietoja ei voi saada"
+msgstr "Pelaajan tietoja ei saada"
 
 #: plutils/cog.py:309
 #, docstring
 msgid "Decode a track's base64 string into a JSON object"
-msgstr "Raidan base64-merkkijonon purkaminen JSON-objektiksi"
+msgstr "Purkaa kappaleen base64-merkkijono JSON-objektiksi"
 
 #: plutils/cog.py:318
 msgid "Invalid base64 string"
@@ -99,7 +99,7 @@ msgstr "Virheellinen base64-merkkijono"
 #: plutils/cog.py:334
 #, docstring
 msgid "Manage the query cache"
-msgstr "Kyselyn välimuistin hallinta"
+msgstr "Hallinnoi kyselyn välimuistia"
 
 #: plutils/cog.py:338
 #, docstring
@@ -113,7 +113,7 @@ msgstr "Kyselyn välimuisti tyhjennetty"
 #: plutils/cog.py:351
 #, docstring
 msgid "Clear the query cache older than a number of days"
-msgstr "Tyhjennä kyselyn välimuisti, joka on vanhempi kuin useita päiviä"
+msgstr "Tyhjennä kyselyn välimuisti joka on vanhempi kuin useita päiviä"
 
 #: plutils/cog.py:359
 msgid "Days must be less than 31"
@@ -126,16 +126,16 @@ msgstr "Päivien on oltava suurempia kuin 1"
 #: plutils/cog.py:380
 #, docstring
 msgid "Clear the query cache for a query"
-msgstr "Kyselyn välimuistin tyhjentäminen"
+msgstr "Tyhjennä kyselyn välimuisti saadaksesi kyselyn"
 
 #: plutils/cog.py:393
 #, docstring
 msgid "Get the size of the query cache"
-msgstr "Hae kyselyn välimuistin koko"
+msgstr "Hanki kyselyn koko kätkö"
 
 #: plutils/cog.py:400
 msgid "Query cache size: `{size}`"
-msgstr "Kyselyvälimuistin koko: '{size}`"
+msgstr "Kyselyn välimuistin koko: `{size}`"
 
 #: plutils/cog.py:411
 #, docstring
@@ -144,10 +144,10 @@ msgid "Start memory tracing\n\n"
 "        `[p]plutils trace 1` turns on tracing\n"
 "        `[p]plutils trace` shows the current status of tracing\n"
 "        "
-msgstr "Aloita muistin jäljitys\n\n"
-"        `[p]plutils trace 0' sammuttaa jäljityksen\n"
-"        `[p]plutils jäljittää 1' kytkeytyy jäljitykseen\n"
-"        `[p]plutils trace\" näyttää jäljityksen nykytilan\n"
+msgstr "Aloita muistin jäljittäminen\n\n"
+"        `[p]plutils 0` sammuttaa jäljittämisen\n"
+"        `[p]plutils trace 1` -kierrosta jäljittäessä\n"
+"        `[p]plutils trace` näyttää jäljittämisen nykyisen tilan\n"
 "        "
 
 #: plutils/cog.py:425
@@ -156,11 +156,11 @@ msgstr "Pysäytetty muistin jäljitys"
 
 #: plutils/cog.py:434
 msgid "Started memory tracing"
-msgstr "Aloitti muistin jäljityksen"
+msgstr "Aloitettu muistin jäljitys"
 
 #: plutils/cog.py:443
 msgid "You need to start tracing first"
-msgstr "Sinun on aloitettava jäljitys ensin"
+msgstr "Sinun täytyy aloittaa jäljitys ensin"
 
 #: plutils/cog.py:455
 #, docstring
@@ -187,5 +187,5 @@ msgstr "Loggerin tason asettaminen\n\n"
 
 #: plutils/cog.py:486
 msgid "Logger level set to `{level}`"
-msgstr "Loggerin tasoksi on asetettu '{level}`"
+msgstr "Loggerin taso asetettu `{level}`"
 
