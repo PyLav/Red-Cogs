@@ -1,0 +1,820 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: pylav\n"
+"POT-Creation-Date: 2023-02-02 22:16+0000\n"
+"PO-Revision-Date: 2023-02-02 22:33\n"
+"Last-Translator: \n"
+"Language-Team: Hindi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.4.2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: pylav\n"
+"X-Crowdin-Project-ID: 535244\n"
+"X-Crowdin-Language: hi\n"
+"X-Crowdin-File: /cogs/audio/locales/messages.pot\n"
+"X-Crowdin-File-ID: 3301\n"
+"Language: hi_IN\n"
+
+#: audio/cog.py:35
+#, docstring
+msgid "A Media player using the PyLav library"
+msgstr "PyLav लाइब्रेरी का उपयोग करने वाला एक मीडिया प्लेयर"
+
+#: audio/cog.py:49
+msgid "Play from Spotify or Apple Music"
+msgstr "Spotify या Apple Music से खेलें"
+
+#: audio/cog.py:52
+msgid "Play from this message"
+msgstr "इस संदेश से चलाएँ"
+
+#: audio/config_commands.py:41
+#, docstring
+msgid "Notifies PyLav that a Player is having issues.\n\n"
+"        If enough (50% or more of currently playing players) report issues, PyLav will automatically\n"
+"        switch to a different node or restart the current node where possible.\n"
+"        "
+msgstr "PyLav को सूचित करता है कि एक खिलाड़ी को समस्या हो रही है।\n\n"
+"        यदि पर्याप्त (वर्तमान में खेलने वाले खिलाड़ियों का 50% या अधिक) समस्याओं की रिपोर्ट करता है, तो PyLav स्वचालित रूप से\n"
+"        एक अलग नोड पर स्विच करें या जहां संभव हो वर्तमान नोड को पुनरारंभ करें।\n"
+"        "
+
+#: audio/config_commands.py:49
+msgid "This server already voted recently. Please, try again in 10 minutes."
+msgstr "इस सर्वर ने हाल ही में मतदान किया है। कृपया, 10 मिनट में पुन: प्रयास करें."
+
+#: audio/config_commands.py:60
+msgid "Thank you for your report."
+msgstr "अपनी रिपोर्ट के लिए धन्यवाद।"
+
+#: audio/config_commands.py:70
+#, docstring
+msgid "Removes a vote for a Player being down.\n\n"
+"        If enough (50% or more of currently active players) report issues, PyLav will automatically\n"
+"        switch to a different node or restart the current node where possible.\n\n"
+"        This command is only valid if your server previously voted for a node to be down and is now back up.\n"
+"        "
+msgstr "किसी खिलाड़ी के नीचे होने के लिए एक वोट हटा देता है।\n\n"
+"        यदि पर्याप्त (वर्तमान में सक्रिय खिलाड़ियों का 50% या अधिक) रिपोर्ट समस्याओं की रिपोर्ट करता है, तो PyLav स्वचालित रूप से\n"
+"        एक अलग नोड पर स्विच करें या जहां संभव हो वर्तमान नोड को पुनरारंभ करें।\n\n"
+"        यह आदेश केवल तभी मान्य होता है जब आपके सर्वर ने पहले किसी नोड को डाउन करने के लिए मतदान किया हो और अब बैकअप हो।\n"
+"        "
+
+#: audio/config_commands.py:80
+msgid "There are no active votes for the current audio node."
+msgstr "वर्तमान ऑडियो नोड के लिए कोई सक्रिय वोट नहीं हैं।"
+
+#: audio/config_commands.py:90
+msgid "I have removed your report."
+msgstr "मैंने आपकी रिपोर्ट हटा दी है।"
+
+#: audio/config_commands.py:98
+#, docstring
+msgid "Show the version of the Cog and its PyLav dependencies."
+msgstr "कॉग और उसकी PyLav निर्भरताओं का संस्करण दिखाएँ."
+
+#: audio/config_commands.py:114
+msgid "Library / Cog"
+msgstr "पुस्तकालय /"
+
+#: audio/config_commands.py:115
+msgid "Version"
+msgstr "संस्करण"
+
+#: audio/config_commands.py:129
+#, docstring
+msgid "Global configuration options, which apply to all servers."
+msgstr "वैश्विक कॉन्फ़िगरेशन विकल्प, जो सभी सर्वरों पर लागू होते हैं।"
+
+#: audio/config_commands.py:133
+#, docstring
+msgid "Set the maximum volume a server can set"
+msgstr "वह अधिकतम वॉल्यूम सेट करें जिसे सर्वर सेट कर सकता है"
+
+#: audio/config_commands.py:141
+msgid "You have to specify a volume less than or equal to 1,000%."
+msgstr "आपको 1,000% से कम या उसके बराबर वॉल्यूम निर्दिष्ट करना होगा।"
+
+#: audio/config_commands.py:149
+msgid "You have to specify a volume greater than 0%."
+msgstr "आपको 0% से अधिक वॉल्यूम निर्दिष्ट करना होगा।"
+
+#: audio/config_commands.py:157
+msgid "The maximum volume I will allow anyone in any server to set is {volume_value}%"
+msgstr "अधिकतम वॉल्यूम जो मैं किसी भी सर्वर में किसी को भी सेट करने की अनुमति दूंगा वह है {volume_value}%"
+
+#: audio/config_commands.py:167 audio/config_commands.py:667
+#, docstring
+msgid "Set whether I should deafen myself when playing."
+msgstr "सेट करें कि क्या मुझे खेलते समय खुद को बहरा होना चाहिए।"
+
+#: audio/config_commands.py:176
+msgid "From now on, I will deafen myself when joining a voice channel."
+msgstr "अब से, मैं एक वॉयस चैनल में शामिल होने पर खुद को बहरा कर लूंगा।"
+
+#: audio/config_commands.py:178
+msgid "From now on, I will no longer deafen myself when joining a voice channel."
+msgstr "अब से, मैं अब वॉयस चैनल में शामिल होने पर खुद को बहरा नहीं करूंगा।"
+
+#: audio/config_commands.py:186
+#, docstring
+msgid "Set whether the server is allowed to enable auto shuffle."
+msgstr "सेट करें कि सर्वर को ऑटो फेरबदल सक्षम करने की अनुमति है या नहीं।"
+
+#: audio/config_commands.py:196
+msgid "From now on, I will auto shuffle my track queue when new songs are added."
+msgstr "अब से, जब नए गाने जोड़े जाएंगे तो मैं अपनी ट्रैक कतार में स्वत: फेरबदल करूंगा।"
+
+#: audio/config_commands.py:198
+msgid "From now on, I will no longer auto shuffle my track queue when new songs are added."
+msgstr "अब से, जब नए गाने जोड़े जाएंगे तो मैं अपनी ट्रैक कतार में ऑटो फेरबदल नहीं करूंगा।"
+
+#: audio/config_commands.py:206 audio/config_commands.py:735
+#, docstring
+msgid "Set whether I should allow users to shuffle the queue"
+msgstr "सेट करें कि क्या मुझे उपयोगकर्ताओं को कतार में फेरबदल करने की अनुमति देनी चाहिए"
+
+#: audio/config_commands.py:216
+msgid "From now on, I will allow users to shuffle the queue."
+msgstr "अब से, मैं उपयोगकर्ताओं को कतार में फेरबदल करने की अनुमति दूंगा।"
+
+#: audio/config_commands.py:218
+msgid "From now on, I will no longer allow users to shuffle the queue."
+msgstr "अब से, मैं अब उपयोगकर्ताओं को कतार में फेरबदल करने की अनुमति नहीं दूंगा।"
+
+#: audio/config_commands.py:226
+#, docstring
+msgid "Set whether I should automatically play songs when the queue is empty."
+msgstr "सेट करें कि कतार खाली होने पर मुझे स्वचालित रूप से गाने बजाने चाहिए या नहीं।"
+
+#: audio/config_commands.py:235
+msgid "From now on, I will automatically play songs from the specified playlist when the queue is empty."
+msgstr "अब से, कतार खाली होने पर मैं स्वचालित रूप से निर्दिष्ट प्लेलिस्ट से गाने चलाऊंगा।"
+
+#: audio/config_commands.py:239
+msgid "From now on, I will no longer automatically play songs from the specified playlist when the queue is empty."
+msgstr "अब से, मैं अब कतार खाली होने पर निर्दिष्ट प्लेलिस्ट से स्वचालित रूप से गाने नहीं चलाऊंगा।"
+
+#: audio/config_commands.py:249
+#, docstring
+msgid "Set whether I should disconnect from the voice channel."
+msgstr "सेट करें कि क्या मुझे वॉयस चैनल से डिस्कनेक्ट करना चाहिए।"
+
+#: audio/config_commands.py:259
+#, docstring
+msgid "Set whether I should disconnect from the voice channel when the queue is empty.\n\n"
+"        Arguments:\n"
+"            - `<toggle>`: Whether I should disconnect from the voice channel when the queue is empty.\n"
+"            - `<duration>`: How long after the queue is empty should the player be disconnected? The default is 60 seconds.\n"
+"            Accepts second, minutes, hours, days and weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
+"        "
+msgstr "सेट करें कि कतार खाली होने पर मुझे वॉयस चैनल से डिस्कनेक्ट करना चाहिए या नहीं।\n\n"
+"        तर्क:\n"
+"            - `<toggle>': क्या कतार खाली होने पर मुझे वॉयस चैनल से डिस्कनेक्ट कर देना चाहिए।\n"
+"            - `<duration>': कतार खाली होने के बाद खिलाड़ी को कितनी देर तक डिस्कनेक्ट किया जाना चाहिए? डिफ़ॉल्ट 60 सेकंड है।\n"
+"            सेकंड, मिनट, घंटे, दिन और सप्ताह स्वीकार करता है (यदि कोई इकाई निर्दिष्ट नहीं है, तो अवधि को सेकंड में दिया जाना माना जाता है)\n"
+"        "
+
+#: audio/config_commands.py:279 audio/config_commands.py:853
+msgid "I will disconnect from the voice channel when the queue is empty after {time_to_dc}."
+msgstr "बाद में कतार खाली होने पर मैं वॉयस चैनल से डिस्कनेक्ट कर दूंगा {time_to_dc}."
+
+#: audio/config_commands.py:283 audio/config_commands.py:857
+msgid "I will disconnect from the voice channel when the queue is empty after 60 seconds."
+msgstr "60 सेकंड के बाद कतार खाली होने पर मैं वॉयस चैनल से डिस्कनेक्ट कर दूंगा।"
+
+#: audio/config_commands.py:285 audio/config_commands.py:859
+msgid "I will no longer disconnect from the voice channel when the queue is empty."
+msgstr "जब कतार खाली होगी तो मैं वॉयस चैनल से डिस्कनेक्ट नहीं करूंगा।"
+
+#: audio/config_commands.py:302
+#, docstring
+msgid "Set whether I should disconnect from the voice channel when alone.\n\n"
+"        Arguments:\n"
+"            - `<toggle>`: Whether I should disconnect from the voice channel when I detect that I am alone in a voice channel.\n"
+"            - `<duration>`: How longer after detecting should the player be disconnected? The default is 60 seconds.\n"
+"            Accepts second, minutes, hours, days and weeks.\n"
+"            If no unit is specified, the duration is assumed to be given in seconds.\n"
+"        "
+msgstr "सेट करें कि क्या मुझे अकेले होने पर वॉयस चैनल से डिस्कनेक्ट करना चाहिए।\n\n"
+"        तर्क:\n"
+"            - `<toggle>': क्या मुझे वॉयस चैनल से डिस्कनेक्ट करना चाहिए जब मुझे पता चलता है कि मैं वॉयस चैनल में अकेला हूं।\n"
+"            - `<duration>': पता लगाने के बाद खिलाड़ी को कितने समय तक डिस्कनेक्ट किया जाना चाहिए? डिफ़ॉल्ट 60 सेकंड है।\n"
+"            दूसरा, मिनट, घंटे, दिन और सप्ताह स्वीकार करता है।\n"
+"            यदि कोई इकाई निर्दिष्ट नहीं की जाती है, तो अवधि को सेकंड में दिया जाना माना जाता है।\n"
+"        "
+
+#: audio/config_commands.py:323 audio/config_commands.py:919
+msgid "I will disconnect from the voice channel when alone after {time_to_dc}."
+msgstr "मैं बाद में अकेले होने पर वॉयस चैनल से डिस्कनेक्ट हो जाऊंगा {time_to_dc}."
+
+#: audio/config_commands.py:327 audio/config_commands.py:923
+msgid "I will disconnect from the voice channel when alone after 60 seconds."
+msgstr "मैं 60 सेकंड के बाद अकेले होने पर वॉयस चैनल से डिस्कनेक्ट हो जाऊंगा।"
+
+#: audio/config_commands.py:329 audio/config_commands.py:925
+msgid "I will no longer disconnect from the voice channel when alone."
+msgstr "मैं अब अकेले होने पर वॉयस चैनल से डिस्कनेक्ट नहीं करूंगा।"
+
+#: audio/config_commands.py:343
+#, docstring
+msgid "Server configuration options."
+msgstr "सर्वर कॉन्फ़िगरेशन विकल्प."
+
+#: audio/config_commands.py:347
+#, docstring
+msgid "Add, remove or show the disc jockey roles and users for this server."
+msgstr "इस सर्वर के लिए डिस्क जॉकी भूमिकाएँ और उपयोगकर्ता जोड़ें, निकालें या दिखाएँ."
+
+#: audio/config_commands.py:353
+#, docstring
+msgid "Add disc jockey roles or users to this server."
+msgstr "डिस्क जॉकी भूमिकाएँ या उपयोगकर्ता इस सर्वर पर जोड़ें."
+
+#: audio/config_commands.py:366 audio/config_commands.py:385
+msgid "Added {role_list} to the disc jockey roles."
+msgstr "अतिरिक्त {role_list} डिस्क जॉकी भूमिकाओं के लिए।"
+
+#: audio/config_commands.py:369 audio/config_commands.py:391
+msgid "Added {user_list} to the disc jockey users."
+msgstr "अतिरिक्त {user_list} डिस्क जॉकी उपयोगकर्ताओं के लिए।"
+
+#: audio/config_commands.py:376
+msgid "Added {role_list} to the disc jockey roles and {user_list} to the disc jockey users."
+msgstr "अतिरिक्त {role_list} डिस्क जॉकी भूमिकाओं के लिए और {user_list} डिस्क जॉकी उपयोगकर्ताओं के लिए।"
+
+#: audio/config_commands.py:408
+#, docstring
+msgid "Remove disc jockey roles or users in this server."
+msgstr "इस सर्वर में डिस्क जॉकी भूमिकाएँ या उपयोगकर्ता निकालें."
+
+#: audio/config_commands.py:440
+msgid "I have removed {role_list} from the disc jockey roles and {user_list} from the disc jockey users, as well as {number_list} from the disc jockey roles and users."
+msgstr "मैंने हटा दिया है {role_list} डिस्क जॉकी भूमिकाओं से और {user_list} डिस्क जॉकी उपयोगकर्ताओं से, साथ ही {number_list} डिस्क जॉकी भूमिकाओं और उपयोगकर्ताओं से।"
+
+#: audio/config_commands.py:448
+msgid "I have removed {role_list} from the disc jockey roles and {user_list} from the disc jockey users."
+msgstr "मैंने हटा दिया है {role_list} डिस्क जॉकी भूमिकाओं से और {user_list} डिस्क जॉकी उपयोगकर्ताओं से।"
+
+#: audio/config_commands.py:455
+msgid "I have removed {role_list} from the disc jockey roles."
+msgstr "मैंने हटा दिया है {role_list} डिस्क जॉकी भूमिकाओं से।"
+
+#: audio/config_commands.py:461
+msgid "I have removed {user_list} from the disc jockey users."
+msgstr "मैंने हटा दिया है {user_list} डिस्क जॉकी उपयोगकर्ताओं से।"
+
+#: audio/config_commands.py:467
+msgid "I have removed {user_or_role_id_list} from the disc jockey roles and users."
+msgstr "मैंने हटा दिया है {user_or_role_id_list} डिस्क जॉकी भूमिकाओं और उपयोगकर्ताओं से।"
+
+#: audio/config_commands.py:482
+msgid "I have Removed `{user_or_role_id}` from the disc jockey roles and users."
+msgstr "मैंने हटा दिया है'{user_or_role_id}' डिस्क जॉकी भूमिकाओं और उपयोगकर्ताओं से।"
+
+#: audio/config_commands.py:486
+msgid "I have removed {role_name} from the disc jockey roles."
+msgstr "मैंने हटा दिया है {role_name} डिस्क जॉकी भूमिकाओं से।"
+
+#: audio/config_commands.py:489
+msgid "I have removed {user_name} from the disc jockey users."
+msgstr "मैंने हटा दिया है {user_name} डिस्क जॉकी उपयोगकर्ताओं से।"
+
+#: audio/config_commands.py:495
+#, docstring
+msgid "List the disc jockey roles and users for this server."
+msgstr "इस सर्वर के लिए डिस्क जॉकी भूमिकाएँ और उपयोगकर्ताओं को सूचीबद्ध करें."
+
+#: audio/config_commands.py:546
+msgid "There are no disc jockey roles or disc jockey users set in this server."
+msgstr "इस सर्वर में कोई डिस्क जॉकी भूमिकाएँ या डिस्क जॉकी उपयोगकर्ता सेट नहीं हैं."
+
+#: audio/config_commands.py:557 audio/config_commands.py:562
+msgid "Disc Jockey Roles"
+msgstr "डिस्क जॉकी की भूमिकाएँ"
+
+#: audio/config_commands.py:568 audio/config_commands.py:573
+msgid "Disc Jockey Users"
+msgstr "डिस्क जॉकी उपयोगकर्ता"
+
+#: audio/config_commands.py:581
+#, docstring
+msgid "Clear the disc jockey roles and users for this server."
+msgstr "इस सर्वर के लिए डिस्क जॉकी भूमिकाएँ और उपयोगकर्ता साफ़ करें."
+
+#: audio/config_commands.py:593
+msgid "I have removed all disc jockey roles and users from this server."
+msgstr "मैंने इस सर्वर से सभी डिस्क जॉकी भूमिकाओं और उपयोगकर्ताओं को हटा दिया है।"
+
+#: audio/config_commands.py:601
+#, docstring
+msgid "Set the maximum volume a user can set."
+msgstr "उपयोगकर्ता द्वारा सेट की जा सकने वाली अधिकतम मात्रा सेट करें."
+
+#: audio/config_commands.py:610
+msgid "Volume must be less than 1,000%."
+msgstr "वॉल्यूम 1,000% से कम होना चाहिए।"
+
+#: audio/config_commands.py:618
+msgid "Volume must be greater than 0%."
+msgstr "वॉल्यूम 0% से अधिक होना चाहिए।"
+
+#: audio/config_commands.py:627
+msgid "My owner has told me that server-specific volume must be between 0% and {volume_value}%."
+msgstr "मेरे मालिक ने मुझे बताया है कि सर्वर-विशिष्ट वॉल्यूम 0% और के बीच होना चाहिए {volume_value}%."
+
+#: audio/config_commands.py:645
+msgid "Volume must be between 0% and {volume_value}%."
+msgstr "वॉल्यूम 0% और 2% के बीच होना चाहिए {volume_value}%."
+
+#: audio/config_commands.py:659
+msgid "Max volume set to {volume_value}%."
+msgstr "अधिकतम वॉल्यूम सेट {volume_value}%."
+
+#: audio/config_commands.py:676
+msgid "My owner is forcing me to deafen myself when playing."
+msgstr "मेरा मालिक मुझे खेलते समय खुद को बहरा करने के लिए मजबूर कर रहा है।"
+
+#: audio/config_commands.py:693
+msgid "I will deafen myself when joining voice channels on this server."
+msgstr "इस सर्वर पर वॉयस चैनलों में शामिल होने पर मैं खुद को बहरा कर दूंगा।"
+
+#: audio/config_commands.py:695
+msgid "I will no longer deafen myself when joining voice channels on this server."
+msgstr "मैं अब इस सर्वर पर वॉयस चैनलों में शामिल होने पर खुद को बहरा नहीं करूंगा।"
+
+#: audio/config_commands.py:703
+#, docstring
+msgid "Set whether I should shuffle the queue after adding every new song."
+msgstr "सेट करें कि क्या मुझे हर नए गीत को जोड़ने के बाद कतार में फेरबदल करना चाहिए।"
+
+#: audio/config_commands.py:711
+msgid "My owner has turned off the auto shuffle capability for all servers."
+msgstr "मेरे मालिक ने सभी सर्वरों के लिए ऑटो फेरबदल क्षमता बंद कर दी है।"
+
+#: audio/config_commands.py:725
+msgid "Auto shuffle turned on for this server"
+msgstr "इस सर्वर के लिए ऑटो फेरबदल चालू"
+
+#: audio/config_commands.py:727
+msgid "Auto shuffle turned off for this server"
+msgstr "इस सर्वर के लिए ऑटो फेरबदल बंद कर दिया गया"
+
+#: audio/config_commands.py:745
+msgid "My owner has turned off the shuffle capability for all servers."
+msgstr "मेरे मालिक ने सभी सर्वरों के लिए फेरबदल क्षमता बंद कर दी है।"
+
+#: audio/config_commands.py:758
+msgid "Shuffling turned on for this server"
+msgstr "इस सर्वर के लिए फेरबदल चालू"
+
+#: audio/config_commands.py:760
+msgid "Shuffling turned off for this server"
+msgstr "इस सर्वर के लिए फेरबदल बंद कर दिया गया"
+
+#: audio/config_commands.py:768
+#, docstring
+msgid "Set whether the bot should automatically play songs when the queue is empty."
+msgstr "सेट करें कि कतार खाली होने पर बॉट को स्वचालित रूप से गाने चलाने चाहिए या नहीं।"
+
+#: audio/config_commands.py:777
+msgid "My owner has turned off the autoplay capability for all servers."
+msgstr "मेरे मालिक ने सभी सर्वरों के लिए ऑटोप्ले क्षमता बंद कर दी है।"
+
+#: audio/config_commands.py:794
+msgid "From now on, I will automatically play songs when the queue is empty."
+msgstr "अब से कतार खाली होने पर मैं स्वत: ही गाने बजाऊंगा।"
+
+#: audio/config_commands.py:796
+msgid "From now on, I will no longer automatically play songs when the queue is empty."
+msgstr "अब से, कतार खाली होने पर मैं स्वचालित रूप से गाने नहीं बजाऊंगा।"
+
+#: audio/config_commands.py:804
+#, docstring
+msgid "Set whether the bot should disconnect from the voice channel"
+msgstr "सेट करें कि बॉट को वॉयस चैनल से डिस्कनेक्ट करना चाहिए या नहीं"
+
+#: audio/config_commands.py:814
+#, docstring
+msgid "Set whether I should disconnect from the voice channel when the queue is empty.\n\n"
+"        Arguments:\n"
+"            - `<toggle>`: I should disconnect from the voice channel when the queue is empty.\n"
+"            - `<duration>`: How long after the queue is empty should I disconnect?\n"
+"            The Default is 60 seconds.\n"
+"            Accept seconds, minutes, hours, days, and weeks.\n"
+"            If no unit is specified, the duration is assumed to be seconds.\n"
+"        "
+msgstr "सेट करें कि कतार खाली होने पर मुझे वॉयस चैनल से डिस्कनेक्ट करना चाहिए या नहीं।\n\n"
+"        तर्क:\n"
+"            - `<toggle>': कतार खाली होने पर मुझे वॉयस चैनल से डिस्कनेक्ट कर देना चाहिए।\n"
+"            - `<duration>': कतार खाली होने के बाद मुझे कितनी देर तक डिस्कनेक्ट करना चाहिए?\n"
+"            डिफ़ॉल्ट 60 सेकंड है।\n"
+"            सेकंड, मिनट, घंटे, दिन और सप्ताह स्वीकार करें।\n"
+"            यदि कोई इकाई निर्दिष्ट नहीं है, तो अवधि को सेकंड माना जाता है।\n"
+"        "
+
+#: audio/config_commands.py:832
+msgid "My owner has told me to disconnect from the voice channel when the queue is empty after {time_to_dc}."
+msgstr "मेरे मालिक ने मुझे वॉयस चैनल से डिस्कनेक्ट करने के लिए कहा है जब कतार खाली हो {time_to_dc}."
+
+#: audio/config_commands.py:877
+#, docstring
+msgid "Set whether I should disconnect from the voice channel when alone.\n\n"
+"        Arguments:\n"
+"            - `<toggle>`: I should disconnect from the voice channel when it detects that it is\n"
+"            alone.\n"
+"            - `<duration>`: How longer after detecting should I disconnect?\n"
+"            The Default is 60 seconds.\n"
+"            Accept seconds, minutes, hours, days, and weeks.\n"
+"            If no unit is specified, the duration is assumed to be seconds.\n"
+"        "
+msgstr "सेट करें कि क्या मुझे अकेले होने पर वॉयस चैनल से डिस्कनेक्ट करना चाहिए।\n\n"
+"        तर्क:\n"
+"            - `<toggle>': मुझे वॉयस चैनल से डिस्कनेक्ट करना चाहिए जब उसे पता चलता है कि यह है\n"
+"            अकेला।\n"
+"            - `<duration>': पता लगाने के बाद मुझे कितने समय तक डिस्कनेक्ट करना चाहिए?\n"
+"            डिफ़ॉल्ट 60 सेकंड है।\n"
+"            सेकंड, मिनट, घंटे, दिन और सप्ताह स्वीकार करें।\n"
+"            यदि कोई इकाई निर्दिष्ट नहीं है, तो अवधि को सेकंड माना जाता है।\n"
+"        "
+
+#: audio/config_commands.py:897
+msgid "My owner has told me to disconnect from the voice channel when alone after {time_to_dc}."
+msgstr "मेरे मालिक ने मुझे वॉयस चैनल से डिस्कनेक्ट करने के लिए कहा है, जब मैं अकेला रहूं। {time_to_dc}."
+
+#: audio/config_commands.py:937
+#, docstring
+msgid "Specify a playlist to be used for autoplay."
+msgstr "ऑटोप्ले के लिए उपयोग की जाने वाली प्लेलिस्ट निर्दिष्ट करें।"
+
+#: audio/config_commands.py:954
+msgid "From now on, I will use {playlist_name} to select songs for autoplay."
+msgstr "अब से, मैं उपयोग करूंगा {playlist_name} ऑटोप्ले के लिए गाने का चयन करने के लिए।"
+
+#: audio/config_commands.py:964
+#, docstring
+msgid "Restrict which channels where I can be used."
+msgstr "प्रतिबंधित करें कि कौन से चैनल जहां मेरा उपयोग किया जा सकता है।"
+
+#: audio/config_commands.py:970
+#, docstring
+msgid "Restrict me only to accept PyLav commands executed from the specified channel."
+msgstr "मुझे केवल निर्दिष्ट चैनल से निष्पादित PyLav आदेशों को स्वीकार करने के लिए प्रतिबंधित करें।"
+
+#: audio/config_commands.py:985
+msgid "I do not have permission to send messages or send embed links or read messages in {channel_name}."
+msgstr "मुझे संदेश भेजने या एम्बेड लिंक भेजने या संदेश पढ़ने की अनुमति नहीं है {channel_name}."
+
+#: audio/config_commands.py:1002
+msgid "I will only accept PyLav commands executed from {channel_name}."
+msgstr "मैं केवल PyLav आदेशों को स्वीकार करूंगा {channel_name}."
+
+#: audio/config_commands.py:1012
+msgid "I will accept PyLav commands executed in all channels I can see in the server."
+msgstr "मैं सर्वर में देखे जा सकने वाले सभी चैनलों में निष्पादित पाइलाव कमांड स्वीकार करूंगा।"
+
+#: audio/config_commands.py:1020
+#, docstring
+msgid "Restrict me only to join the specified voice channel."
+msgstr "मुझे केवल निर्दिष्ट वॉयस चैनल में शामिल होने के लिए प्रतिबंधित करें।"
+
+#: audio/config_commands.py:1032 audio/hybrid_commands.py:107
+#: audio/player_commands.py:150
+msgid "I do not have permission to connect or speak in {channel_name}."
+msgstr "मुझे कनेक्ट करने या बोलने की अनुमति नहीं है {channel_name}."
+
+#: audio/config_commands.py:1050
+msgid "I will only be allowed to join {channel_name}."
+msgstr "मुझे केवल शामिल होने की अनुमति दी जाएगी। {channel_name}."
+
+#: audio/config_commands.py:1060
+msgid "I am allowed to join any voice channel in the server."
+msgstr "मुझे सर्वर में किसी भी वॉयस चैनल में शामिल होने की अनुमति है।"
+
+#: audio/context_menus.py:27 audio/context_menus.py:130
+msgid "I can not play songs in direct messages, sorry, try again in a server."
+msgstr "मैं सीधे संदेशों में गाने नहीं चला सकता, क्षमा करें, सर्वर में फिर से प्रयास करें।"
+
+#: audio/context_menus.py:38
+msgid "You need to be a disc jockey in this server to play tracks in this server."
+msgstr "इस सर्वर में ट्रैक चलाने के लिए आपको इस सर्वर में डिस्क जॉकी होना आवश्यक है."
+
+#: audio/context_menus.py:55 audio/context_menus.py:156
+msgid "This command is not available in this channel, please use {channel_name}."
+msgstr "यह आदेश इस चैनल में उपलब्ध नहीं है, कृपया उपयोग करें {channel_name}."
+
+#: audio/context_menus.py:82
+msgid "I could not find any suitable matches in this message."
+msgstr "मुझे इस संदेश में कोई उपयुक्त मेल नहीं मिला।"
+
+#: audio/context_menus.py:84
+msgid "I found many suitable matches in this message."
+msgstr "मुझे इस संदेश में कई उपयुक्त मिलान मिले।"
+
+#: audio/context_menus.py:86
+msgid "I found a single suitable match in this message."
+msgstr "मुझे इस संदेश में एक उपयुक्त मिलान मिला।"
+
+#: audio/context_menus.py:141
+msgid "You need to be a disc jockey to play tracks in this server."
+msgstr "इस सर्वर में ट्रैक खेलने के लिए आपको डिस्क जॉकी होना आवश्यक है."
+
+#: audio/context_menus.py:173
+msgid "I could not find any supported activity in the activities {user_name} is partaking."
+msgstr "मुझे गतिविधियों में कोई समर्थित गतिविधि नहीं मिली {user_name} भाग ले रहा है।"
+
+#: audio/context_menus.py:205
+msgid "I could not find a valid Apple Music track in the activity {user_name} is partaking in."
+msgstr "मुझे गतिविधि में एक मान्य Apple Music ट्रैक नहीं मिला {user_name} इसमें भाग ले रहा है।"
+
+#: audio/context_menus.py:221
+msgid "I could not find any tracks matching {query_value}."
+msgstr "मुझे मेल खाने वाला कोई ट्रैक नहीं मिला {query_value}."
+
+#: audio/context_menus.py:238
+msgid "I could not figure out what {user_name} is listening to."
+msgstr "मैं समझ नहीं सका कि क्या {user_name} सुन रहा है।"
+
+#: audio/hybrid_commands.py:83
+msgid "You need to give me a query to enqueue."
+msgstr "आपको मुझे पूछताछ करने के लिए एक प्रश्न देने की आवश्यकता है।"
+
+#: audio/hybrid_commands.py:97 audio/player_commands.py:140
+msgid "You must be in a voice channel to allow me to connect"
+msgstr "मुझे कनेक्ट करने की अनुमति देने के लिए आपको एक वॉयस चैनल में होना चाहिए"
+
+#: audio/hybrid_commands.py:154
+msgid "{number_of_tracks} tracks enqueued."
+msgstr "{number_of_tracks} पटरियों पर कतार लगी हुई थी।"
+
+#: audio/hybrid_commands.py:162
+msgid "{track_name} enqueued"
+msgstr "{track_name} enqueued"
+
+#: audio/hybrid_commands.py:173 audio/player_commands.py:252
+msgid "No tracks were found for your query."
+msgstr "आपकी क्वेरी के लिए कोई ट्रैक नहीं मिले."
+
+#: audio/hybrid_commands.py:236
+msgid "You need to be in a voice channel if you do not specify which channel I should connect to."
+msgstr "यदि आप निर्दिष्ट नहीं करते हैं कि मुझे किस चैनल से कनेक्ट करना चाहिए तो आपको वॉयस चैनल में रहने की आवश्यकता है।"
+
+#: audio/hybrid_commands.py:248
+msgid "I do not have permission to connect to {channel_name}."
+msgstr "मुझे कनेक्ट करने की अनुमति नहीं है {channel_name}."
+
+#: audio/hybrid_commands.py:252
+msgid "I do not have permission to speak in {channel_name}."
+msgstr "मुझे बोलने की अनुमति नहीं है। {channel_name}."
+
+#: audio/hybrid_commands.py:270
+msgid "You do not have permission to connect to {channel_name}."
+msgstr "आपको कनेक्ट करने की अनुमति नहीं है {channel_name}."
+
+#: audio/hybrid_commands.py:287
+msgid "I have been told only to join {channel_name} on this server."
+msgstr "मुझे केवल शामिल होने के लिए कहा गया है {channel_name} इस सर्वर पर।"
+
+#: audio/hybrid_commands.py:297
+msgid "I have successfully connected to {channel_name}."
+msgstr "मैं सफलतापूर्वक किससे कनेक्ट हो गया हूँ? {channel_name}."
+
+#: audio/hybrid_commands.py:323 audio/hybrid_commands.py:348
+#: audio/hybrid_commands.py:382 audio/hybrid_commands.py:413
+#: audio/hybrid_commands.py:446 audio/hybrid_commands.py:473
+#: audio/hybrid_commands.py:523 audio/hybrid_commands.py:559
+#: audio/hybrid_commands.py:598 audio/hybrid_commands.py:655
+#: audio/hybrid_commands.py:702 audio/hybrid_commands.py:711
+#: audio/hybrid_commands.py:810
+msgid "I am not currently playing anything on this server."
+msgstr "मैं वर्तमान में इस सर्वर पर कुछ भी नहीं खेल रहा हूं।"
+
+#: audio/hybrid_commands.py:356
+msgid "I have skipped {track_name} as requested."
+msgstr "मैंने छोड़ दिया है {track_name} जैसा कि अनुरोध किया गया है।"
+
+#: audio/hybrid_commands.py:390
+msgid "I have stopped the playback and cleared the queue as requested."
+msgstr "मैंने प्लेबैक बंद कर दिया है और अनुरोध के अनुसार कतार को साफ़ कर दिया है।"
+
+#: audio/hybrid_commands.py:422
+msgid "I have disconnected from {channel_name} as requested."
+msgstr "मैंने डिस्कनेक्ट कर दिया है {channel_name} जैसा कि अनुरोध किया गया है।"
+
+#: audio/hybrid_commands.py:481
+msgid "The server queue is currently empty."
+msgstr "सर्वर कतार वर्तमान में रिक्त है."
+
+#: audio/hybrid_commands.py:489
+msgid "You are not allowed to shuffle the queue."
+msgstr "आपको कतार में फेरबदल करने की अनुमति नहीं है।"
+
+#: audio/hybrid_commands.py:497
+msgid "{queue_size} tracks shuffled."
+msgstr "{queue_size} पटरियों में फेरबदल किया गया।"
+
+#: audio/hybrid_commands.py:531
+msgid "I will now repeat the entire queue."
+msgstr "मैं अब पूरी कतार दोहराऊंगा।"
+
+#: audio/hybrid_commands.py:534
+msgid "I will no longer repeat any tracks."
+msgstr "मैं अब किसी भी ट्रैक को नहीं दोहराऊंगा।"
+
+#: audio/hybrid_commands.py:537
+msgid "I will now repeat {track_name}."
+msgstr "अब मैं दोहराऊंगा {track_name}."
+
+#: audio/hybrid_commands.py:540
+msgid "the current track"
+msgstr "वर्तमान ट्रैक"
+
+#: audio/hybrid_commands.py:565
+msgid "The player is already paused, did you mean to run `{bot_command_prefix}{command_name}`"
+msgstr "खिलाड़ी पहले से ही रुका हुआ है, क्या आप दौड़ना चाहते थे'{bot_command_prefix}{command_name}`"
+
+#: audio/hybrid_commands.py:580
+msgid "I have now paused the player as requested."
+msgstr "मैंने अब अनुरोध के अनुसार खिलाड़ी को रोक दिया है।"
+
+#: audio/hybrid_commands.py:604
+msgid "Player already resumed, did you mean to run `{bot_command_prefix}{command_name}`"
+msgstr "खिलाड़ी पहले ही फिर से शुरू हो चुका है, क्या आपका मतलब दौड़ना था'{bot_command_prefix}{command_name}`"
+
+#: audio/hybrid_commands.py:617
+msgid "I have now resumed the player as requested."
+msgstr "मैंने अब अनुरोध के अनुसार खिलाड़ी को फिर से शुरू कर दिया है।"
+
+#: audio/hybrid_commands.py:639
+msgid "Volume must be less than 1,000%"
+msgstr "वॉल्यूम 1,000% से कम होना चाहिए"
+
+#: audio/hybrid_commands.py:647
+msgid "Volume must be greater than 0%"
+msgstr "वॉल्यूम 0% से अधिक होना चाहिए"
+
+#: audio/hybrid_commands.py:664
+msgid "Volume can not be higher than {max_volume_value}%."
+msgstr "आयतन इससे अधिक नहीं हो सकता {max_volume_value}%."
+
+#: audio/hybrid_commands.py:673
+msgid "Player volume has been set to {volume_value}%."
+msgstr "प्लेयर वॉल्यूम सेट किया गया है {volume_value}%."
+
+#: audio/hybrid_commands.py:721
+msgid "Unable to seek track"
+msgstr "ट्रैक की तलाश करने में असमर्थ"
+
+#: audio/hybrid_commands.py:722
+msgid "I am unable to seek this track as it is a stream."
+msgstr "मैं इस ट्रैक की तलाश करने में असमर्थ हूं क्योंकि यह एक धारा है।"
+
+#: audio/hybrid_commands.py:730
+msgid "Unable to seek track."
+msgstr "ट्रैक की तलाश करने में असमर्थ।"
+
+#: audio/hybrid_commands.py:739
+msgid "I can not seek the current track while the player is paused."
+msgstr "मैं मौजूदा ट्रैक की तलाश नहीं कर सकता जबकि खिलाड़ी रुका हुआ है।"
+
+#: audio/hybrid_commands.py:764
+msgid "I have moved the current track forward {number_of_seconds} seconds to the end of the track."
+msgstr "मैंने मौजूदा ट्रैक को आगे बढ़ा दिया है {number_of_seconds} ट्रैक के अंत में सेकंड।"
+
+#: audio/hybrid_commands.py:768
+msgid "I have moved the current track forward {number_of_seconds} seconds to position {timestamp_value}."
+msgstr "मैंने मौजूदा ट्रैक को आगे बढ़ा दिया है {number_of_seconds} स्थिति में सेकंड {timestamp_value}."
+
+#: audio/hybrid_commands.py:773
+msgid "I have moved the current track back {number_of_seconds} seconds to the beginning."
+msgstr "मैंने वर्तमान ट्रैक को वापस स्थानांतरित कर दिया है {number_of_seconds} शुरुआत में सेकंड।"
+
+#: audio/hybrid_commands.py:777
+msgid "I have moved the current track back {number_of_seconds} seconds to position {timestamp_value}."
+msgstr "मैंने वर्तमान ट्रैक को वापस स्थानांतरित कर दिया है {number_of_seconds} स्थिति में सेकंड {timestamp_value}."
+
+#: audio/hybrid_commands.py:781
+msgid "I have moved the current track to the beginning."
+msgstr "मैंने वर्तमान ट्रैक को शुरुआत में स्थानांतरित कर दिया है।"
+
+#: audio/hybrid_commands.py:819
+msgid "The history of tracks is currently empty."
+msgstr "पटरियों का इतिहास वर्तमान में खाली है।"
+
+#: audio/hybrid_commands.py:827
+msgid "Playing previous track: {track_name}"
+msgstr "पिछला ट्रैक खेलना: {track_name}"
+
+#: audio/player_commands.py:30
+msgid "Plays the specified track from the queue."
+msgstr "कतार से निर्दिष्ट ट्रैक चलाता है।"
+
+#: audio/player_commands.py:50
+msgid "There are no songs in the queue."
+msgstr "कतार में कोई गीत नहीं है।"
+
+#: audio/player_commands.py:59
+msgid "Track index must be between 1 and {size_of_queue}"
+msgstr "ट्रैक इंडेक्स 1 और 1 के बीच होना चाहिए {size_of_queue}"
+
+#: audio/player_commands.py:77
+msgid "There are no tracks in position {queue_position_value}."
+msgstr "स्थिति में कोई ट्रैक नहीं हैं {queue_position_value}."
+
+#: audio/player_commands.py:89
+msgid "{track_name} will play after {current_track_name} finishes ({estimated_time_value})."
+msgstr "{track_name} बाद में खेलेंगे {current_track_name} अंत ({estimated_time_value})."
+
+#: audio/player_commands.py:109
+msgid "{track_name} will start now\n"
+"{current_track_name} has been skipped."
+msgstr "{track_name} अब शुरू होगा\n"
+"{current_track_name} छोड़ दिया गया है।"
+
+#: audio/player_commands.py:127
+#, docstring
+msgid "Enqueue a track at the top of the queue."
+msgstr "कतार के शीर्ष पर एक ट्रैक बनाएं।"
+
+#: audio/player_commands.py:231
+msgid "{number_of_tracks} tracks have been enqueued."
+msgstr "{number_of_tracks} पटरियों को कतारबद्ध किया गया है।"
+
+#: audio/player_commands.py:241
+msgid "{track_name} has been enqueued."
+msgstr "{track_name} कतार में खड़ा कर दिया गया है।"
+
+#: audio/player_commands.py:262
+#, docstring
+msgid "\n"
+"        Remove the specified track from the queue.\n\n"
+"        If you specify the `remove_duplicates` argument, all tracks that are the same as your URL or the index track will be removed.\n"
+"        "
+msgstr "\n"
+"        निर्दिष्ट ट्रैक को कतार से निकालें.\n\n"
+"        यदि आप 'remove_duplicates' तर्क निर्दिष्ट करते हैं, तो आपके URL या अनुक्रमणिका ट्रैक के समान सभी ट्रैक हटा दिए जाएँगे.\n"
+"        "
+
+#: audio/player_commands.py:277
+msgid "Queue is empty."
+msgstr "कतार खाली है।"
+
+#: audio/player_commands.py:290
+msgid "Track index must be between 1 and {queue_size}."
+msgstr "ट्रैक इंडेक्स 1 और 1 के बीच होना चाहिए {queue_size}."
+
+#: audio/player_commands.py:305
+msgid "There is no track in position {position_value}."
+msgstr "स्थिति में कोई ट्रैक नहीं है {position_value}."
+
+#: audio/player_commands.py:337
+msgid "{track_name} not found in queue."
+msgstr "{track_name} कतार में नहीं पाया गया।"
+
+#: audio/player_commands.py:349
+msgid "No tracks were removed from the queue."
+msgstr "कतार से कोई ट्रैक नहीं हटाया गया।"
+
+#: audio/player_commands.py:357
+msgid "I have removed a single entry of {track_name} from the queue."
+msgstr "मैंने एक प्रविष्टि हटा दी है {track_name} कतार से।"
+
+#: audio/player_commands.py:367
+msgid "I have removed {number_of_entries} entries of {track_name} from the queue."
+msgstr "मैंने हटा दिया है {number_of_entries} की प्रविष्टियाँ {track_name} कतार से।"
+
+#: audio/slash_commands.py:48
+#, docstring
+msgid "Search for a track then play the selected response."
+msgstr "ट्रैक खोजें, फिर चयनित प्रतिसाद चलाएँ."
+
+#: audio/slash_commands.py:54
+msgid "You have not selected something to play."
+msgstr "आपने खेलने के लिए कुछ नहीं चुना है।"
+
+#: audio/slash_commands.py:109
+msgid "Searching {service_name}"
+msgstr "खोज {service_name}"
+
+#: audio/slash_commands.py:125 audio/slash_commands.py:138
+msgid "No results found on {service_name}"
+msgstr "कोई परिणाम नहीं मिला {service_name}"
+
+#: audio/utility_commands.py:32
+msgid "I am not connected to a voice channel."
+msgstr "मैं वॉयस चैनल से जुड़ा नहीं हूं।"
+
+#: audio/utility_commands.py:43
+msgid "Volume limit reached, player volume set to {volume_value}%"
+msgstr "वॉल्यूम सीमा पूरी हो गई, प्लेयर वॉल्यूम सेट {volume_value}%"
+
+#: audio/utility_commands.py:54
+msgid "Minimum volume reached, player volume set to 0%"
+msgstr "न्यूनतम वॉल्यूम तक पहुंच गया, खिलाड़ी वॉल्यूम 0% पर सेट"
+
+#: audio/utility_commands.py:62
+msgid "Player volume set to {volume_value}%"
+msgstr "प्लेयर वॉल्यूम सेट पर {volume_value}%"
+

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
-"POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-02-01 00:09\n"
+"POT-Creation-Date: 2023-02-02 22:16+0000\n"
+"PO-Revision-Date: 2023-02-02 22:33\n"
 "Last-Translator: \n"
 "Language-Team: Bulgarian\n"
 "MIME-Version: 1.0\n"
@@ -28,8 +28,8 @@ msgid "Show the version of the Cog and it's PyLav dependencies"
 msgstr "Показване на версията на зъбното колело и неговите зависимости на PyLav"
 
 #: plmanagednode/cog.py:66
-msgid "Library/Cog"
-msgstr "Библиотека/Зъбно колело"
+msgid "Library / Cog"
+msgstr "Библиотека / Зъбно колело"
 
 #: plmanagednode/cog.py:67
 msgid "Version"
@@ -45,40 +45,40 @@ msgid "The managed Lavalink node is already up to date."
 msgstr "Управляваният възел Lavalink вече е актуален."
 
 #: plmanagednode/cog.py:101
-msgid "Your node is out of date, to update please run `{prefix}{command} 1`."
-msgstr "Вашият възел е остарял, за да актуализирате, моля, стартирайте '{prefix}{command} 1'."
+msgid "Your node is out of date, to update please run `{bot_command_prefix}{command_name} 1`."
+msgstr "Вашият възел е остарял, за да актуализирате, моля, стартирайте '{bot_command_prefix}{command_name} 1'."
 
-#: plmanagednode/cog.py:117
-msgid "The managed Lavalink node has been updated to version {version}."
-msgstr "Управляваният възел Lavalink е актуализиран до версия {version}."
+#: plmanagednode/cog.py:119
+msgid "The managed Lavalink node has been updated to version {version_value}."
+msgstr "Управляваният възел Lavalink е актуализиран до версия {version_value}."
 
-#: plmanagednode/cog.py:127
+#: plmanagednode/cog.py:129
 #, docstring
 msgid "Toggle the managed node on/off.\n\n"
-"        Changes will be applied after restarting [botname].\n"
+"        Changes will be applied after I restart.\n"
 "        "
 msgstr "Включете / изключете управлявания възел.\n\n"
-"        Промените ще бъдат приложени след рестартиране [botname].\n"
+"        Промените ще бъдат приложени след рестартиране.\n"
 "        "
 
-#: plmanagednode/cog.py:142
+#: plmanagednode/cog.py:144
 msgid "PyLav's managed node has been enabled."
 msgstr "Управляваният възел на PyLav е активиран."
 
-#: plmanagednode/cog.py:150
+#: plmanagednode/cog.py:152
 msgid "PyLav's managed node has been disabled."
 msgstr "Управляваният възел на PyLav е деактивиран."
 
-#: plmanagednode/cog.py:158
+#: plmanagednode/cog.py:160
 #, docstring
 msgid "Toggle the managed node auto updates on/off.\n\n"
-"        Changes will be applied after restarting [botname].\n"
+"        Changes will be applied after I restart.\n"
 "        "
 msgstr "Включете / изключете автоматичните актуализации на управлявания възел.\n\n"
-"        Промените ще бъдат приложени след рестартиране [botname].\n"
+"        Промените ще бъдат приложени след рестартиране.\n"
 "        "
 
-#: plmanagednode/cog.py:174
+#: plmanagednode/cog.py:176
 msgid "PyLav's managed node auto updates have been enabled"
 msgstr "Автоматичните актуализации на управляваните възли на PyLav са разрешени"
 
@@ -86,7 +86,7 @@ msgstr "Автоматичните актуализации на управля�
 msgid "PyLav's managed node auto updates have been disabled"
 msgstr "Автоматичните актуализации на управляваните възли на PyLav са деактивирани"
 
-#: plmanagednode/cog.py:194
+#: plmanagednode/cog.py:192
 #, docstring
 msgid "Set the managed Lavalink node maximum heap-size.\n\n"
 "        By default, this value is 2G of available RAM in the host machine represented by (65-1023M|1+G) (256M,\n"
@@ -101,41 +101,41 @@ msgstr "Задайте максималния размер на купчинат
 "        че управляваният възел Lavalink винаги ще използва това количество RAM.\n"
 "        "
 
-#: plmanagednode/cog.py:218
+#: plmanagednode/cog.py:216
 msgid "Heap-size must be a valid measure of size, e.g. 256M, 256G"
 msgstr "Размерът на купчината трябва да бъде валидна мярка за размер, например 256M, 256G"
 
-#: plmanagednode/cog.py:228
+#: plmanagednode/cog.py:226
 msgid "Heap-size must be at least 64M, however it is recommended to have it set to at least 1G"
 msgstr "Размерът на купчината трябва да бъде най-малко 64M, но се препоръчва да бъде настроен на поне 1G"
 
-#: plmanagednode/cog.py:240
-msgid "Heap-size must be less than your system RAM, You currently have {ram_in_bytes} of RAM available"
-msgstr "Размерът на купчината трябва да е по-малък от системната ви RAM, В момента имате {ram_in_bytes} Налична RAM памет"
+#: plmanagednode/cog.py:238
+msgid "Heap-size must be less than your system RAM, You currently have {ram_in_bytes_value} of RAM available"
+msgstr "Размерът на купчината трябва да е по-малък от системната ви RAM, В момента имате {ram_in_bytes_value} Налична RAM памет"
 
-#: plmanagednode/cog.py:252
-msgid "Heap-size must be less than {limit} due to your system limitations"
-msgstr "Размерът на купчината трябва да бъде по-малък от {limit} Поради системните ограничения"
+#: plmanagednode/cog.py:250
+msgid "Heap-size must be less than {limit_value} due to your system limitations"
+msgstr "Размерът на купчината трябва да бъде по-малък от {limit_value} Поради системните ограничения"
 
-#: plmanagednode/cog.py:272
-msgid "Managed node's heap-size set to {bytes}."
-msgstr "Размерът на купчината на управлявания възел е настроен на {bytes}."
+#: plmanagednode/cog.py:270
+msgid "Managed node's heap-size set to {bytes_value}."
+msgstr "Размерът на купчината на управлявания възел е настроен на {bytes_value}."
 
-#: plmanagednode/cog.py:283
+#: plmanagednode/cog.py:280
 #, docstring
 msgid "Change the managed node start up configs"
 msgstr "Промяна на конфигурациите за стартиране на управляван възел"
 
-#: plmanagednode/cog.py:287
+#: plmanagednode/cog.py:284
 #, docstring
 msgid "Set the managed node host"
 msgstr "Задаване на хоста на управлявания възел"
 
-#: plmanagednode/cog.py:299
-msgid "Managed node's host set to {host}."
-msgstr "Хостът на управлявания възел е настроен на {host}."
+#: plmanagednode/cog.py:296
+msgid "Managed node's host set to {host_value}."
+msgstr "Хостът на управлявания възел е настроен на {host_value}."
 
-#: plmanagednode/cog.py:310
+#: plmanagednode/cog.py:306
 #, docstring
 msgid "`Dangerous command` Set the managed Lavalink node's connection port.\n\n"
 "        This port is the port the managed Lavalink node binds to, you should only change this if there is a\n"
@@ -148,95 +148,99 @@ msgstr "\"Опасна команда\" Задайте порта за връз�
 "        Стойността по подразбиране е \"2154\".\n"
 "        "
 
-#: plmanagednode/cog.py:320
+#: plmanagednode/cog.py:316
 msgid "The port must be between 1024 and 49151"
 msgstr "Пристанището трябва да бъде между 1024 и 49151"
 
-#: plmanagednode/cog.py:332
-msgid "Managed node's port set to {port}."
-msgstr "Портът на управлявания възел е настроен на {port}."
+#: plmanagednode/cog.py:328
+msgid "Managed node's port set to {port_value}."
+msgstr "Портът на управлявания възел е настроен на {port_value}."
 
-#: plmanagednode/cog.py:340
+#: plmanagednode/cog.py:336
 #, docstring
 msgid "Change the managed node plugins"
 msgstr "Промяна на приставките за управлявани възли"
 
-#: plmanagednode/cog.py:346
+#: plmanagednode/cog.py:342
 #, docstring
 msgid "Disabled one of the available plugins"
 msgstr "Деактивиране на един от наличните плъгини"
 
-#: plmanagednode/cog.py:362 plmanagednode/cog.py:474
-msgid "The plugin must be one of the following: {plugins}"
-msgstr "Приставката трябва да бъде едно от следните: {plugins}"
+#: plmanagednode/cog.py:358
+msgid "The plugin must be one of the following: {plugins_value}"
+msgstr "Приставката трябва да бъде едно от следните: {plugins_value}"
 
-#: plmanagednode/cog.py:447
-msgid "Managed node's plugin {plugin} disabled."
-msgstr "Приставка за управляван възел {plugin} инвалид."
+#: plmanagednode/cog.py:443
+msgid "Managed node plugin {plugin_value} disabled."
+msgstr "Приставка за управляван възел {plugin_value} инвалид."
 
-#: plmanagednode/cog.py:458
+#: plmanagednode/cog.py:453
 #, docstring
 msgid "Enable one of the available plugins"
 msgstr "Активиране на един от наличните плъгини"
 
-#: plmanagednode/cog.py:507
-msgid "Managed node's plugin {plugin} enabled."
-msgstr "Приставка за управляван възел {plugin} Разрешено."
+#: plmanagednode/cog.py:469
+msgid "The plugin must be one of the following: {plugins}"
+msgstr "Приставката трябва да бъде едно от следните: {plugins}"
 
-#: plmanagednode/cog.py:518
+#: plmanagednode/cog.py:502
+msgid "Managed node plugin {plugin_value} enabled."
+msgstr "Приставка за управляван възел {plugin_value} Разрешено."
+
+#: plmanagednode/cog.py:512
 #, docstring
 msgid "Update the managed node plugins"
 msgstr "Актуализиране на приставките за управлявани възли"
 
-#: plmanagednode/cog.py:592
-msgid "{name} was updated from {old_value} to {new_value}\n"
-msgstr "{name} е актуализиран от {old_value} да {new_value}\n"
+#: plmanagednode/cog.py:586
+msgid "{name_value} was updated from {old_value} to {new_value}\n"
+msgstr "{name_value} е актуализиран от {old_value} да {new_value}\n"
 
-#: plmanagednode/cog.py:600
-msgid "Managed node's plugins updated.\n\n"
-"{updates}"
-msgstr "Актуализирани са плъгините на управлявания възел.\n\n"
-"{updates}"
+#: plmanagednode/cog.py:594
+msgid "Managed node plugins updated.\n\n"
+"{update_values}"
+msgstr "Управляваните приставки за възли са актуализирани.\n\n"
+"{update_values}"
 
-#: plmanagednode/cog.py:611
+#: plmanagednode/cog.py:604
 msgid "Managed node's plugins already up to date"
 msgstr "Приставките на управлявания възел вече са актуални"
 
-#: plmanagednode/cog.py:619
+#: plmanagednode/cog.py:612
 #, docstring
 msgid "Toggle the managed node sources"
 msgstr "Превключване на източниците на управлявани възли"
 
-#: plmanagednode/cog.py:634
-msgid "Invalid source, {valid_list} are valid sources"
-msgstr "Невалиден източник, {valid_list} са валидни източници"
+#: plmanagednode/cog.py:627
+msgid "Invalid source, {valid_list_value} are valid sources"
+msgstr "Невалиден източник, {valid_list_value} са валидни източници"
 
-#: plmanagednode/cog.py:648 plmanagednode/cog.py:684
+#: plmanagednode/cog.py:641 plmanagednode/cog.py:676
 msgid "enabled"
 msgstr "Разрешено"
 
-#: plmanagednode/cog.py:648 plmanagednode/cog.py:684
+#: plmanagednode/cog.py:641 plmanagednode/cog.py:676
 msgid "disabled"
 msgstr "инвалид"
 
-#: plmanagednode/cog.py:651
-msgid "Managed node's {source} source set to {state}."
-msgstr "Управлявани възли {source} източник, зададен на {state}."
+#: plmanagednode/cog.py:644
+msgid "Managed node {source_value} source set to {state_value}."
+msgstr "Управляван възел {source_value} източник, зададен на {state_value}."
 
-#: plmanagednode/cog.py:663
+#: plmanagednode/cog.py:655
 #, docstring
 msgid "Toggle the managed node filters"
 msgstr "Превключване на филтрите на управляваните възли"
 
-#: plmanagednode/cog.py:675
-msgid "Invalid source, {valid_list} are valid filters"
-msgstr "Невалиден източник, {valid_list} са валидни филтри"
+#: plmanagednode/cog.py:667
+msgid "Invalid source, {valid_list_value} are valid filters"
+msgstr "Невалиден източник, {valid_list_value} са валидни филтри"
 
-#: plmanagednode/cog.py:687
-msgid "Managed node's {source} filter set to {state}."
-msgstr "Управлявани възли {source} филтър, настроен на {state}."
+#: plmanagednode/cog.py:679
+msgid "Managed node {source_value} filter set to {state_value}."
+msgstr "Управляван възел {source_value} филтър, настроен на {state_value}."
 
-#: plmanagednode/cog.py:699
+#: plmanagednode/cog.py:690
 #, docstring
 msgid "Configure multiple settings for the managed node.\n\n"
 "        Run `[p]plmanaged config server <setting> info` to show info about the settings and what they do.\n\n"
@@ -267,75 +271,75 @@ msgstr "Конфигуриране на няколко настройки за �
 "        'soundcloudSearchEnabled' : булев т.е. вярно (по подразбиране вярно)\n"
 "        "
 
-#: plmanagednode/cog.py:739
-msgid "{Setting} is not a valid Setting; Options are:\n\n"
-"{setting_list}"
-msgstr "{Setting} не е валидна настройка; Опциите са:\n\n"
-"{setting_list}"
+#: plmanagednode/cog.py:730
+msgid "{Setting_value} is not a valid Setting; Options are:\n\n"
+"{setting_list_value}"
+msgstr "{Setting_value} не е валидна настройка; Опциите са:\n\n"
+"{setting_list_value}"
 
-#: plmanagednode/cog.py:750
+#: plmanagednode/cog.py:743
 msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses but will increase RAM usage. Minimum of 40ms, lower values may introduce pauses and stutters. Set to 0 to disable JDA-NAS. Accepted values: Range: 0 - 2,000"
 msgstr "Продължителността на NAS буфера в милисекунди. По-високите стойности се справят по-добре срещу по-дългите GC паузи, но ще увеличат използването на RAM. Минимум 40ms, по-ниските стойности могат да въведат паузи и заеквания. Задайте на 0, за да деактивирате JDA-NAS. Приети стойности: Диапазон: 0 - 2,000"
 
-#: plmanagednode/cog.py:756
+#: plmanagednode/cog.py:749
 msgid "How many milliseconds of audio to keep buffered, Higher values increase RAM usage. Accepted values: Range: 1,000 - 10,000"
 msgstr "Колко милисекунди аудио да се поддържа буфериран, По-високите стойности увеличават използването на RAM. Приети стойности: Диапазон: 1,000 - 10,000"
 
-#: plmanagednode/cog.py:760
+#: plmanagednode/cog.py:753
 msgid "The threshold in milliseconds for how long a track can be stuck. A track is stuck if does not return any audio data. Accepted values: Range: 5,000 - 20,000"
 msgstr "Прагът в милисекунди за това колко дълго може да се забие една писта. Пистата е заседнала, ако не върне никакви аудио данни. Приети стойности: Диапазон: 5,000 - 20,000"
 
-#: plmanagednode/cog.py:764
+#: plmanagednode/cog.py:757
 msgid "Number of pages to return for a YouTube Playlist - Each page contains 100 songs. Accepted values: Range: 5 - 100"
 msgstr "Брой страници, които да се върнат за плейлист в YouTube - Всяка страница съдържа 100 песни. Приети стойности: Диапазон: 5 - 100"
 
-#: plmanagednode/cog.py:768
-msgid "Opus encoder quality. Valid values range from 0 to 10, where 10 is best quality but is the most expensive on the CPU"
-msgstr "Opus енкодер качество. Валидните стойности варират от 0 до 10, където 10 е най-доброто качество, но е най-скъпо на процесора"
+#: plmanagednode/cog.py:761
+msgid "Opus encoder quality. Valid values range from 0 to 10, where 10 is the best quality but is the most expensive on the CPU."
+msgstr "Opus енкодер качество. Валидните стойности варират от 0 до 10, където 10 е най-доброто качество, но е най-скъпото на процесора."
 
-#: plmanagednode/cog.py:772
-msgid "Quality of resampling operations. Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU"
-msgstr "Качество на операциите по повторно вземане на проби. Валидните стойности са LOW, MEDIUM и HIGH, където HIGH използва най-много процесор"
+#: plmanagednode/cog.py:765
+msgid "Quality of resampling operations. Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU."
+msgstr "Качество на операциите по повторно вземане на проби. Валидните стойности са LOW, MEDIUM и HIGH, където HIGH използва най-много процесор."
 
-#: plmanagednode/cog.py:776
+#: plmanagednode/cog.py:769
 msgid "Seek ghosting is the effect where whilst a seek is in progress, the audio buffer is read from until empty, or until seek is ready. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "Seek ghosting е ефектът, при който, докато търсенето е в ход, аудио буферът се чете от до изпразване или докато търсенето е готово. Приети стойности за True: 'True', 't', '1', Приети стойности за False: 'False', 'f', '0'"
 
-#: plmanagednode/cog.py:781
+#: plmanagednode/cog.py:774
 msgid "How frequently in seconds to send player updates to clients, affects the current position accuracy. Accepted values: Range: 1 - 86400"
 msgstr "Колко често за секунди да изпращате актуализации на играчите на клиентите, влияе върху точността на текущата позиция. Приети стойности: Диапазон: 1 - 86400"
 
-#: plmanagednode/cog.py:785
-msgid "Enable or disable YouTube searches within the node, this will affect AppleMusic, Spotify and any functionality dependant on YouTube. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
-msgstr "Активирайте или деактивирайте търсенията в YouTube в рамките на възела, това ще засегне AppleMusic, Spotify и всяка функционалност, зависеща от YouTube. Приети стойности за True: 'True', 't', '1', Приети стойности за False: 'False', 'f', '0'"
+#: plmanagednode/cog.py:778
+msgid "Enable or disable YouTube searches within the node, this will affect AppleMusic, Spotify and any functionality dependent on YouTube. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
+msgstr "Активирайте или деактивирайте търсенията в YouTube във възела, това ще засегне AppleMusic, Spotify и всяка функционалност, зависеща от YouTube. Приети стойности за True: 'True', 't', '1', Приети стойности за False: 'False', 'f', '0'"
 
-#: plmanagednode/cog.py:790
-msgid "Enable or disable SoundCloud searches within the node, this will affect any functionality dependant on SoundCloud. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
-msgstr "Активирайте или деактивирайте търсенето в SoundCloud в рамките на възела, това ще засегне всяка функционалност, зависеща от SoundCloud. Приети стойности за True: 'True', 't', '1', Приети стойности за False: 'False', 'f', '0'"
+#: plmanagednode/cog.py:783
+msgid "Enable or disable SoundCloud searches within the node, this will affect any functionality dependent on SoundCloud. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
+msgstr "Активирайте или деактивирайте търсенето в SoundCloud в рамките на възела, това ще засегне всяка функционалност, зависима от SoundCloud. Приети стойности за True: 'True', 't', '1', Приети стойности за False: 'False', 'f', '0'"
 
-#: plmanagednode/cog.py:799
-msgid "{Setting} info.\n\n"
-"{info}"
-msgstr "{Setting} Информация.\n\n"
-"{info}"
+#: plmanagednode/cog.py:792
+msgid "{Setting_value} info.\n\n"
+"{info_value}"
+msgstr "{Setting_value} Информация.\n\n"
+"{info_value}"
 
-#: plmanagednode/cog.py:827
-msgid "{Setting} valid inputs are:\n\n"
-"Range between: {start} - {end}"
-msgstr "{Setting} валидни входове са:\n\n"
-"Диапазон между: {start} - {end}"
+#: plmanagednode/cog.py:820
+msgid "{Setting_value} valid inputs are:\n\n"
+"Range between: {start_value} - {end_value}"
+msgstr "{Setting_value} валидни входове са:\n\n"
+"Диапазон между: {start_value} - {end_value}"
 
-#: plmanagednode/cog.py:838
-msgid "{Setting} valid inputs are:\n\n"
-"{setting_list}"
-msgstr "{Setting} валидни входове са:\n\n"
-"{setting_list}"
+#: plmanagednode/cog.py:831
+msgid "{Setting_value} valid inputs are:\n\n"
+"{setting_list_value}"
+msgstr "{Setting_value} валидни входове са:\n\n"
+"{setting_list_value}"
 
-#: plmanagednode/cog.py:857
-msgid "{Setting} set to {value}."
-msgstr "{Setting} задай на {value}."
+#: plmanagednode/cog.py:850
+msgid "{Setting_value} set to {value}."
+msgstr "{Setting_value} задай на {value}."
 
-#: plmanagednode/cog.py:869
+#: plmanagednode/cog.py:861
 #, docstring
 msgid "Configure Lavalink IP Rotation for rate limits.\n\n"
 "        Run `[p]plmanaged config iprotation 1` to remove the ip rotation\n"
@@ -344,17 +348,17 @@ msgstr "Конфигуриране на Lavalink IP ротация за огра
 "        Бягай \"[p]plmanaged config iprotation 1' за премахване на ip завъртането\n"
 "        "
 
-#: plmanagednode/cog.py:880
+#: plmanagednode/cog.py:872
 msgid "Click the button below to configure the IP rotation for your node.\n"
-"More info at: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> and <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
+"More info at: {url_value_1} and {url_value_2}"
 msgstr "Щракнете върху бутона по-долу, за да конфигурирате IP завъртането за вашия възел.\n"
-"Повече информация на: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> и <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
+"Повече информация на: {url_value_1} и {url_value_2}"
 
-#: plmanagednode/cog.py:898
+#: plmanagednode/cog.py:893
 msgid "Removing the IP rotation from your node."
 msgstr "Премахване на IP ротацията от вашия възел."
 
-#: plmanagednode/cog.py:906
+#: plmanagednode/cog.py:901
 #, docstring
 msgid "Link a Google account to Lavalink to bypass YouTube's age restriction\n\n"
 "        Run `[p]plmanaged config googleaccount 1` to remove the linked account.\n"
@@ -363,17 +367,17 @@ msgstr "Свържете профил в Google с Lavalink, за да заоб�
 "        Бягай \"[p]plmanaged config googleaccount 1' за премахване на свързания акаунт.\n"
 "        "
 
-#: plmanagednode/cog.py:917
+#: plmanagednode/cog.py:912
 msgid "Click the button below to link a Google account to your node, if you have 2FA setup on this account you will need an app password instead\n"
 "More info at: <https://support.google.com/accounts/answer/185833>"
 msgstr "Кликнете върху бутона по-долу, за да свържете профил в Google с вашия възел, ако имате настройка 2FA в този профил, вместо това ще ви е необходима парола за приложение\n"
 "Повече информация на: <https://support.google.com/accounts/answer/185833>"
 
-#: plmanagednode/cog.py:936
+#: plmanagednode/cog.py:931
 msgid "Unlinking Google account from your node."
 msgstr "Премахване на връзката с профила в Google от вашия възел."
 
-#: plmanagednode/cog.py:944
+#: plmanagednode/cog.py:939
 #, docstring
 msgid "Configure a HTTP proxy for Lavalink\n\n"
 "        Run `[p]plmanaged config httpproxy 1` to remove the proxy.\n"
@@ -382,75 +386,78 @@ msgstr "Конфигуриране на HTTP прокси сървър за Lava
 "        Бягай \"[p]plmanaged config httpproxy 1' за премахване на прокси сървъра.\n"
 "        "
 
-#: plmanagednode/cog.py:955
+#: plmanagednode/cog.py:950
 msgid "Click the button below to configure a HTTP proxy for your node"
 msgstr "Щракнете върху бутона по-долу, за да конфигурирате HTTP прокси сървър за вашия възел"
 
-#: plmanagednode/cog.py:969
+#: plmanagednode/cog.py:964
 msgid "Unlinking HTTP proxy from your node."
 msgstr "Премахване на връзката с HTTP прокси сървър от вашия възел."
 
 #: plmanagednode/view.py:38 plmanagednode/view.py:65 plmanagednode/view.py:98
-#: plmanagednode/view.py:179 plmanagednode/view.py:337
-#: plmanagednode/view.py:422
-msgid "You are not authorized to interact with this"
-msgstr "Не сте упълномощени да взаимодействате с това"
+msgid "You are not authorized to interact with this."
+msgstr "Вие не сте упълномощени да взаимодействате с това."
 
 #: plmanagednode/view.py:125
-msgid "IP Rotation Configurator"
-msgstr "Конфигуратор за завъртане на IP"
+msgid "IP Rotation Configurator."
+msgstr "Конфигуратор за завъртане на IP."
 
 #: plmanagednode/view.py:128
-msgid "IP Blocks"
-msgstr "IP блокове"
+msgid "IP Blocks."
+msgstr "IP блокове."
 
 #: plmanagednode/view.py:132
 msgid "1.0.0.0/8,...,... - Comma separated list of IP blocks"
 msgstr "1.0.0.0/8,...,... - Разделен със запетая списък на IP блокове"
 
 #: plmanagednode/view.py:137
-msgid "Rotation strategy"
-msgstr "Стратегия за ротация"
+msgid "Rotation strategy."
+msgstr "Ротационна стратегия."
 
 #: plmanagednode/view.py:146
-msgid "Retry limit"
-msgstr "Лимит за повторен опит"
+msgid "Retry limit."
+msgstr "Лимит за повторен опит."
 
 #: plmanagednode/view.py:149
 msgid "-1 = default, 0 = infinity, >0 = number of retries"
 msgstr "-1 = по подразбиране, 0 = безкрайност, >0 = брой повторни опити"
 
 #: plmanagednode/view.py:154
-msgid "IPs to exclude"
-msgstr "IP адреси за изключване"
+msgid "IPs to exclude."
+msgstr "IP адреси, които да се изключат."
 
 #: plmanagednode/view.py:157
 msgid "Comma separated list of IP to exclude from rotation"
 msgstr "Разделен със запетая списък на IP за изключване от завъртане"
 
 #: plmanagednode/view.py:161
-msgid "Search trigger rotation"
-msgstr "Завъртане на спусъка за търсене"
+msgid "Search trigger rotation."
+msgstr "Завъртане на спусъка за търсене."
 
 #: plmanagednode/view.py:164
 msgid "0 or 1 (0 = disabled, 1 = enabled)"
 msgstr "0 или 1 (0 = деактивиран, 1 = активиран)"
 
+#: plmanagednode/view.py:179 plmanagednode/view.py:337
+#: plmanagednode/view.py:422
+msgid "You are not authorized to interact with this"
+msgstr "Не сте упълномощени да взаимодействате с това"
+
 #: plmanagednode/view.py:192
-msgid "Invalid IP block - {error}"
-msgstr "Невалиден IP блок - {error}"
+msgid "Invalid IP block - {error_value}"
+msgstr "Невалиден IP блок - {error_value}"
 
 #: plmanagednode/view.py:205
 msgid "No IP blocks were provided"
 msgstr "Не са предоставени IP блокове"
 
 #: plmanagednode/view.py:220
-msgid "Invalid IP address - {error}"
-msgstr "Невалиден IP адрес - {error}"
+msgid "Invalid IP address - {error_value}"
+msgstr "Невалиден IP адрес - {error_value}"
 
 #: plmanagednode/view.py:239
-msgid "Invalid strategy, must be one of: {options}"
-msgstr "Невалидна стратегия, трябва да бъде една от: {options}"
+msgid "Invalid strategy, must be one of: {options_value}"
+msgstr "Невалидна стратегия, трябва да бъде една от: {options_value}"
 
 #: plmanagednode/view.py:255
 msgid "Invalid retry limit, must be a number greater than or equals to -1"
