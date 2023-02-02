@@ -150,7 +150,7 @@ class PyLavPlaylists(
             tracks = [track.encoded async for track in AsyncIter(tracks_response.tracks)]
             url = url.query_identifier
             name = name or tracks_response.playlistInfo.name or f"{context.message.id}"
-            artwork = tracks_response.pluginInfo.artworkURL
+            artwork = tracks_response.pluginInfo.artworkUrl
         else:
             artwork = None
             if add_queue and context.player:
