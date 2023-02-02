@@ -40,13 +40,13 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
     async def command_playerset_down(self, context: PyLavContext) -> None:
         """Notifies PyLav that a Player is having issues.
 
-        If enough (50%+ of currently playing players) report issues, PyLav will automatically
+        If enough (50% or more of currently playing players) report issues, PyLav will automatically
         switch to a different node or restart the current node where possible.
         """
         if context.player.voted():
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("This server already voted recently, please try again in 10 minutes"),
+                    description=_("This server already voted recently. Please, try again in 10 minutes."),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -57,7 +57,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         await context.player.change_to_best_node(forced=True, skip_position_fetch=True)
         await context.send(
             embed=await context.pylav.construct_embed(
-                description=_("Thank you for your report"),
+                description=_("Thank you for your report."),
                 messageable=context,
             ),
             ephemeral=True,
@@ -69,15 +69,15 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
     async def command_playerset_up(self, context: PyLavContext) -> None:
         """Removes a vote for a Player being down.
 
-        If enough (50%+ of currently playing players) report issues, PyLav will automatically
+        If enough (50% or more of currently active players) report issues, PyLav will automatically
         switch to a different node or restart the current node where possible.
 
-        This command is only useful if you previously voted for a node to be down and it is now back up.
+        This command is only valid if your server previously voted for a node to be down and is now back up.
         """
         if not context.player.voted():
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("There is no active votes for the current backend"),
+                    description=_("There are no active votes for the current audio node."),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -87,7 +87,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         context.player.unvote_node_down()
         await context.send(
             embed=await context.pylav.construct_embed(
-                description=_("Removed your report"),
+                description=_("I have removed your report."),
                 messageable=context,
             ),
             ephemeral=True,
@@ -95,7 +95,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
     @command_playerset.command(name="version")
     async def command_playerset_version(self, context: PyLavContext) -> None:
-        """Show the version of the Cog and its PyLav dependencies"""
+        """Show the version of the Cog and its PyLav dependencies."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -111,7 +111,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
                     tabulate(
                         data,
                         headers=(
-                            EightBitANSI.paint_yellow(_("Library/Cog"), bold=True, underline=True),
+                            EightBitANSI.paint_yellow(_("Library / Cog"), bold=True, underline=True),
                             EightBitANSI.paint_yellow(_("Version"), bold=True, underline=True),
                         ),
                         tablefmt="fancy_grid",
@@ -126,7 +126,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
     @commands.is_owner()
     @command_playerset.group(name="global", aliases=["owner"])
     async def command_playerset_global(self, context: PyLavContext) -> None:
-        """Global configuration options"""
+        """Global configuration options, which apply to all servers."""
 
     @command_playerset_global.command(name="vol", aliases=["volume"])
     async def command_playerset_global_volume(self, context: PyLavContext, volume: int) -> None:
@@ -138,15 +138,15 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         if volume > 1000:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("Volume must be less than 1000"), messageable=context
+                    description=_("You have to specify a volume less than or equal to 1,000%."), messageable=context
                 ),
                 ephemeral=True,
             )
             return
-        elif volume < 0:
+        elif volume <= 0:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("Volume must be greater than 0"), messageable=context
+                    description=_("You have to specify a volume greater than 0%."), messageable=context
                 ),
                 ephemeral=True,
             )
@@ -154,7 +154,9 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         await self.pylav.player_manager.global_config.update_max_volume(volume)
         await context.send(
             embed=await self.pylav.construct_embed(
-                description=_("Max volume set to {volume}%").format(volume=humanize_number(volume)),
+                description=_("The maximum volume I will allow anyone in any server to set is {volume_value}%").format(
+                    volume_value=humanize_number(volume)
+                ),
                 messageable=context,
             ),
             ephemeral=True,
@@ -162,7 +164,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
     @command_playerset_global.command(name="deafen", aliases=["deaf"])
     async def command_playerset_global_deafen(self, context: PyLavContext, toggle: bool) -> None:
-        """Set whether [botname] should deafen itself when playing"""
+        """Set whether I should deafen myself when playing."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -171,7 +173,9 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         await self.pylav.player_manager.global_config.update_self_deaf(toggle)
         await context.send(
             embed=await self.pylav.construct_embed(
-                description=_("Deafen set to {deafen}").format(deafen=_("Enabled") if toggle else _("Disabled")),
+                description=_("From now on, I will deafen myself when joining a voice channel.")
+                if toggle
+                else _("From now on, I will no longer deafen myself when joining a voice channel."),
                 messageable=context,
             ),
             ephemeral=True,
@@ -179,7 +183,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
     @command_playerset_global.command(name="autoshuffle")
     async def command_playerset_global_autoshuffle(self, context: PyLavContext, toggle: bool) -> None:
-        """Set whether the a server is allowed to enabled auto shuffle"""
+        """Set whether the server is allowed to enable auto shuffle."""
 
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -189,9 +193,9 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         await self.pylav.player_manager.global_config.update_auto_shuffle(toggle)
         await context.send(
             embed=await self.pylav.construct_embed(
-                description=_("Auto-Shuffle set to {shuffle}").format(
-                    shuffle=_("Enabled") if toggle else _("Disabled")
-                ),
+                description=_("From now on, I will auto shuffle my track queue when new songs are added.")
+                if toggle
+                else _("From now on, I will no longer auto shuffle my track queue when new songs are added."),
                 messageable=context,
             ),
             ephemeral=True,
@@ -199,7 +203,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
     @command_playerset_global.command(name="shuffle")
     async def command_playerset_global_shuffle(self, context: PyLavContext, toggle: bool) -> None:
-        """Set whether [botname] should allow users to shuffle the queue"""
+        """Set whether I should allow users to shuffle the queue"""
 
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -209,7 +213,9 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         await self.pylav.player_manager.global_config.update_shuffle(toggle)
         await context.send(
             embed=await self.pylav.construct_embed(
-                description=_("Shuffle set to {shuffle}").format(shuffle=_("Enabled") if toggle else _("Disabled")),
+                description=_("From now on, I will allow users to shuffle the queue.")
+                if toggle
+                else _("From now on, I will no longer allow users to shuffle the queue."),
                 messageable=context,
             ),
             ephemeral=True,
@@ -217,7 +223,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
     @command_playerset_global.command(name="auto")
     async def command_playerset_global_auto(self, context: PyLavContext, toggle: bool) -> None:
-        """Set whether [botname] should automatically play songs when the queue is empty"""
+        """Set whether I should automatically play songs when the queue is empty."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -226,7 +232,13 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         await self.pylav.player_manager.global_config.update_auto_play(toggle)
         await context.send(
             embed=await self.pylav.construct_embed(
-                description=_("Auto-Play set to {auto}").format(auto=_("Enabled") if toggle else _("Disabled")),
+                description=_(
+                    "From now on, I will automatically play songs from the specified playlist when the queue is empty."
+                )
+                if toggle
+                else _(
+                    "From now on, I will no longer automatically play songs from the specified playlist when the queue is empty."
+                ),
                 messageable=context,
             ),
             ephemeral=True,
@@ -234,7 +246,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
     @command_playerset_global.group(name="dc")
     async def command_playerset_global_dc(self, context: PyLavContext) -> None:
-        """Set whether [botname] should disconnect from the voice channel"""
+        """Set whether I should disconnect from the voice channel."""
 
     @command_playerset_global_dc.command(name="empty")
     async def command_playerset_global_dc_empty(
@@ -244,12 +256,12 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         *,
         after: TimedeltaConverter(default_unit="seconds", minimum=datetime.timedelta(seconds=60)) = None,  # noqa
     ) -> None:
-        """Set whether [botname] should disconnect from the voice channel when the queue is empty.
+        """Set whether I should disconnect from the voice channel when the queue is empty.
 
         Arguments:
-            - `<toggle>`: Whether [botname] should disconnect from the voice channel when the queue is empty.
-            - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60 seconds.
-            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)
+            - `<toggle>`: Whether I should disconnect from the voice channel when the queue is empty.
+            - `<duration>`: How long after the queue is empty should the player be disconnected? The default is 60 seconds.
+            Accepts second, minutes, hours, days and weeks (if no unit is specified, the duration is assumed to be given in seconds)
         """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -262,16 +274,18 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
                 "time": after.total_seconds() if after else 60,
             }
         )
-        if after:
-            timedelta_str = humanize_timedelta(timedelta=after)
-            extras = _(" and players will be disconnected after {duration}").format(duration=timedelta_str)
+        if toggle:
+            if after:
+                message = _(
+                    "I will disconnect from the voice channel when the queue is empty after {time_to_dc}."
+                ).format(time_to_dc=humanize_timedelta(timedelta=after))
+            else:
+                message = _("I will disconnect from the voice channel when the queue is empty after 60 seconds.")
         else:
-            extras = ""
+            message = _("I will no longer disconnect from the voice channel when the queue is empty.")
         await context.send(
             embed=await self.pylav.construct_embed(
-                description=_("Disconnect from voice channel when queue is empty set to {empty}{extras}").format(
-                    empty=_("Enabled") if toggle else _("Disabled"), extras=extras
-                ),
+                description=message,
                 messageable=context,
             ),
             ephemeral=True,
@@ -285,12 +299,13 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         *,
         after: TimedeltaConverter(default_unit="seconds", minimum=datetime.timedelta(seconds=60)) = None,  # noqa
     ) -> None:
-        """Set whether [botname] should disconnect from the voice channel when alone.
+        """Set whether I should disconnect from the voice channel when alone.
 
         Arguments:
-            - `<toggle>`: Whether [botname] should disconnect from the voice channel when it detects that it is alone.
-            - `<duration>`: How longer after detecting should the player be disconnected. Default is 60 seconds.
-            Accepts second, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)
+            - `<toggle>`: Whether I should disconnect from the voice channel when I detect that I am alone in a voice channel.
+            - `<duration>`: How longer after detecting should the player be disconnected? The default is 60 seconds.
+            Accepts second, minutes, hours, days and weeks.
+            If no unit is specified, the duration is assumed to be given in seconds.
         """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -302,17 +317,20 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
                 "time": after.total_seconds() if after else 60,
             }
         )
-        if after:
-            timedelta_str = humanize_timedelta(timedelta=after)
-            extras = _(" and players will be disconnected after {duration}").format(duration=timedelta_str)
+
+        if toggle:
+            if after:
+                message = _("I will disconnect from the voice channel when alone after {time_to_dc}.").format(
+                    time_to_dc=humanize_timedelta(timedelta=after)
+                )
+            else:
+                message = _("I will disconnect from the voice channel when alone after 60 seconds.")
         else:
-            extras = ""
+            message = _("I will no longer disconnect from the voice channel when alone.")
 
         await context.send(
             embed=await self.pylav.construct_embed(
-                description=_("Disconnect from voice channel when alone set to {empty}{extras}").format(
-                    empty=_("Enabled") if toggle else _("Disabled"), extras=extras
-                ),
+                description=message,
                 messageable=context,
             ),
             ephemeral=True,
@@ -322,17 +340,17 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
     @commands.guild_only()
     @command_playerset.group(name="server", aliases=["guild"])
     async def command_playerset_server(self, context: PyLavContext) -> None:
-        """Server configuration options"""
+        """Server configuration options."""
 
     @command_playerset_server.group(name="dj")
     async def command_playerset_server_dj(self, context: PyLavContext) -> None:
-        """Add, remove or show the DJ roles and users for the server"""
+        """Add, remove or show the disc jockey roles and users for this server."""
 
     @command_playerset_server_dj.command(name="add")
     async def command_playerset_server_dj_add(
         self, context: PyLavContext, roles_or_users: commands.Greedy[discord.Role | discord.Member]
     ) -> None:
-        """Add DJ roles or users to this server"""
+        """Add disc jockey roles or users to this server."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -345,28 +363,34 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         if len(roles_or_users) == 1:
             role_or_user = roles_or_users[0]
             if isinstance(role_or_user, discord.Role):
-                message = _("Added {role} to the DJ roles").format(role=role_or_user.mention)
+                message = _("Added {role_list} to the disc jockey roles.").format(role_list=role_or_user.mention)
                 await config.add_to_dj_roles(role_or_user)
             else:
-                message = _("Added {user} to the DJ users").format(user=role_or_user.mention)
+                message = _("Added {user_list} to the disc jockey users.").format(user_list=role_or_user.mention)
                 await config.bulk_add_dj_users(role_or_user)
         else:
             roles = {r for r in roles_or_users if isinstance(r, discord.Role)}
             users = {u for u in roles_or_users if isinstance(u, discord.Member)}
             message = None
             if roles and users:
-                message = _("Added {roles} to the DJ roles and {users} to the DJ users").format(
-                    roles=humanize_list([r.mention for r in roles]),
-                    users=humanize_list([u.mention for u in users]),
+                message = _(
+                    "Added {role_list} to the disc jockey roles and {user_list} to the disc jockey users."
+                ).format(
+                    role_list=humanize_list([r.mention for r in roles]),
+                    user_list=humanize_list([u.mention for u in users]),
                 )
 
             if roles:
                 if not message:
-                    message = _("Added {roles} to the DJ roles").format(roles=humanize_list([r.mention for r in roles]))
+                    message = _("Added {role_list} to the disc jockey roles.").format(
+                        role_list=humanize_list([r.mention for r in roles])
+                    )
                 await config.bulk_add_dj_roles(*roles)
             if users:
                 if not message:
-                    message = _("Added {users} to the DJ users").format(users=humanize_list([u.mention for u in users]))
+                    message = _("Added {user_list} to the disc jockey users.").format(
+                        user_list=humanize_list([u.mention for u in users])
+                    )
                 await config.bulk_add_dj_users(*users)
 
         await context.send(
@@ -381,7 +405,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
     async def command_playerset_server_dj_remove(
         self, context: PyLavContext, roles_or_users: commands.Greedy[discord.Role | discord.Member | int]
     ) -> None:
-        """Remove DJ roles or users in this the server"""
+        """Remove disc jockey roles or users in this server."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -414,28 +438,34 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         message = None
         if roles and users and ints:
             message = _(
-                "Removed {roles} from the DJ roles and {users} from the DJ users, as well as {ints} from both"
+                "I have removed {role_list} from the disc jockey roles and {user_list} from the disc jockey users, as well as {number_list} from the disc jockey roles and users."
             ).format(
-                roles=humanize_list([r.mention for r in roles]),
-                users=humanize_list([u.mention for u in users]),
-                ints=humanize_list([str(i) for i in ints]),
+                role_list=humanize_list([r.mention for r in roles]),
+                user_list=humanize_list([u.mention for u in users]),
+                number_list=humanize_list([str(i) for i in ints]),
             )
         elif roles and users:
-            message = _("Removed {roles} from the DJ roles and {users} from the DJ users").format(
-                roles=humanize_list([r.mention for r in roles]), users=humanize_list([u.mention for u in users])
+            message = _(
+                "I have removed {role_list} from the disc jockey roles and {user_list} from the disc jockey users."
+            ).format(
+                role_list=humanize_list([r.mention for r in roles]), user_list=humanize_list([u.mention for u in users])
             )
         if roles:
             if not message:
-                message = _("Removed {roles} from the DJ roles").format(roles=humanize_list([r.mention for r in roles]))
+                message = _("I have removed {role_list} from the disc jockey roles.").format(
+                    role_list=humanize_list([r.mention for r in roles])
+                )
             await config.bulk_remove_dj_roles(*roles)
         if users:
             if not message:
-                message = _("Removed {users} from the DJ users").format(users=humanize_list([u.mention for u in users]))
+                message = _("I have removed {user_list} from the disc jockey users.").format(
+                    user_list=humanize_list([u.mention for u in users])
+                )
             await config.bulk_remove_dj_users(*users)
         if ints:
             if not message:
-                message = _("Removed {ints} from the DJ roles and users").format(
-                    ints=humanize_list([str(u) for u in users])
+                message = _("I have removed {user_or_role_id_list} from the disc jockey roles and users.").format(
+                    user_or_role_id_list=humanize_list([str(u) for u in users])
                 )
             await config.bulk_remove_dj_users(*[discord.Object(id=i) for i in ints])
             await config.bulk_remove_dj_roles(*[discord.Object(id=i) for i in ints])
@@ -449,18 +479,20 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         if isinstance(role_or_user, int):
             await config.remove_from_dj_roles(typing.cast(discord.Role, discord.Object(id=role_or_user)))
             await config.remove_from_dj_users(typing.cast(discord.Member, discord.Object(id=role_or_user)))
-            message = _("Removed `{id}` from the DJ roles and users").format(id=role_or_user)
+            message = _("I have Removed `{user_or_role_id}` from the disc jockey roles and users.").format(
+                user_or_role_id=role_or_user
+            )
         elif isinstance(role_or_user, discord.Role):
-            message = _("Removed {role} from the DJ roles").format(role=role_or_user.mention)
+            message = _("I have removed {role_name} from the disc jockey roles.").format(role_name=role_or_user.mention)
             await config.remove_from_dj_roles(role_or_user)
         else:
-            message = _("Removed {user} from the DJ users").format(user=role_or_user.mention)
+            message = _("I have removed {user_name} from the disc jockey users.").format(user_name=role_or_user.mention)
             await config.remove_from_dj_users(role_or_user)
         return message
 
     @command_playerset_server_dj.command(name="list")
     async def command_playerset_server_dj_list(self, context: PyLavContext) -> None:
-        """List the DJ roles and users for the server"""
+        """List the disc jockey roles and users for this server."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -511,7 +543,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         if not dj_roles and not dj_user:
             await context.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("There are no DJ roles or users set in {server}").format(server=context.guild.name),
+                    description=_("There are no disc jockey roles or disc jockey users set in this server."),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -522,23 +554,23 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
         pages = []
         if dj_roles_string_list:
-            string += EightBitANSI.paint_yellow(_("DJ Roles"), bold=True, underline=True)
+            string += EightBitANSI.paint_yellow(_("Disc Jockey Roles"), bold=True, underline=True)
             for line in dj_roles_string_list:
                 if len(string) + len(line) > 3000:
                     pages.append(string)
                     string = ""
-                    string += EightBitANSI.paint_yellow(_("DJ Roles"), bold=True, underline=True)
+                    string += EightBitANSI.paint_yellow(_("Disc Jockey Roles"), bold=True, underline=True)
                 string += f"\n{line}"
 
         if dj_user_string_list:
             if string:
                 string += "\n\n"
-            string += EightBitANSI.paint_yellow(_("DJ Users"), bold=True, underline=True)
+            string += EightBitANSI.paint_yellow(_("Disc Jockey Users"), bold=True, underline=True)
             for line in dj_user_string_list:
                 if len(string) + len(line) > 3000:
                     pages.append(string)
                     string = ""
-                    string += EightBitANSI.paint_yellow(_("DJ Users"), bold=True, underline=True)
+                    string += EightBitANSI.paint_yellow(_("Disc Jockey Users"), bold=True, underline=True)
                 string += f"\n{line}"
         if string:
             pages.append(string)
@@ -546,7 +578,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
     @command_playerset_server_dj.command(name="clear")
     async def command_playerset_server_dj_clear(self, context: PyLavContext) -> None:
-        """Clear the DJ roles and users for the server"""
+        """Clear the disc jockey roles and users for this server."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -558,7 +590,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
         await context.send(
             embed=await self.pylav.construct_embed(
-                description=_("Cleared the DJ roles and users for {server}").format(server=context.guild.name),
+                description=_("I have removed all disc jockey roles and users from this server."),
                 messageable=context,
             ),
             ephemeral=True,
@@ -566,7 +598,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
     @command_playerset_server.command(name="vol", aliases=["volume"])
     async def command_playerset_server_volume(self, context: PyLavContext, volume: int) -> None:
-        """Set the maximum volume a user can set"""
+        """Set the maximum volume a user can set."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -575,15 +607,15 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         if volume > 1000:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("Volume must be less than 1000"), messageable=context
+                    description=_("Volume must be less than 1,000%."), messageable=context
                 ),
                 ephemeral=True,
             )
             return
-        elif volume < 0:
+        elif volume <= 0:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("Volume must be greater than 0"), messageable=context
+                    description=_("Volume must be greater than 0%."), messageable=context
                 ),
                 ephemeral=True,
             )
@@ -592,8 +624,10 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         if volume > await self.pylav.player_manager.global_config.fetch_max_volume():
             await context.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("Volume must be between 0 and {volume}%").format(
-                        volume=humanize_number(await self.pylav.player_manager.global_config.fetch_max_volume())
+                    description=_(
+                        "My owner has told me that server-specific volume must be between 0% and {volume_value}%."
+                    ).format(
+                        volume_value=humanize_number(await self.pylav.player_manager.global_config.fetch_max_volume())
                     ),
                     messageable=context,
                 ),
@@ -608,7 +642,9 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         if volume > max_volume:
             await context.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("Volume must be between 0 and {volume}%").format(volume=humanize_number(max_volume)),
+                    description=_("Volume must be between 0% and {volume_value}%.").format(
+                        volume_value=humanize_number(max_volume)
+                    ),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -620,7 +656,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
             await context.player.set_volume(volume, requester=context.author)
         await context.send(
             embed=await self.pylav.construct_embed(
-                description=_("Max volume set to {volume}%").format(volume=humanize_number(volume)),
+                description=_("Max volume set to {volume_value}%.").format(volume_value=humanize_number(volume)),
                 messageable=context,
             ),
             ephemeral=True,
@@ -628,7 +664,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
     @command_playerset_server.command(name="deafen", aliases=["deaf"])
     async def command_playerset_server_deafen(self, context: PyLavContext, toggle: bool) -> None:
-        """Set whether [botname] should deafen itself when playing"""
+        """Set whether I should deafen myself when playing."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -637,7 +673,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         if await self.pylav.player_manager.global_config.fetch_self_deaf() is True:
             await context.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("My owner told me to always deafen myself"),
+                    description=_("My owner is forcing me to deafen myself when playing."),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -654,7 +690,9 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
             await config.update_self_deaf(toggle)
         await context.send(
             embed=await self.pylav.construct_embed(
-                description=_("Deafen set to {deafen}").format(deafen=_("Enabled") if toggle else _("Disabled")),
+                description=_("I will deafen myself when joining voice channels on this server.")
+                if toggle
+                else _("I will no longer deafen myself when joining voice channels on this server."),
                 messageable=context,
             ),
             ephemeral=True,
@@ -662,7 +700,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
     @command_playerset_server.command(name="autoshuffle")
     async def command_playerset_server_autoshuffle(self, context: PyLavContext, toggle: bool) -> None:
-        """Set whether [botname] should shuffle the queue after every new song added"""
+        """Set whether I should shuffle the queue after adding every new song."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -670,7 +708,8 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         if await self.pylav.player_manager.global_config.fetch_auto_shuffle() is False:
             await context.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("Auto-Shuffle is globally disabled"), messageable=context
+                    description=_("My owner has turned off the auto shuffle capability for all servers."),
+                    messageable=context,
                 ),
                 ephemeral=True,
             )
@@ -683,9 +722,9 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
             await config.update_auto_shuffle(toggle)
         await context.send(
             embed=await self.pylav.construct_embed(
-                description=_("Auto-Shuffle set to {shuffle}").format(
-                    shuffle=_("Enabled") if toggle else _("Disabled")
-                ),
+                description=_("Auto shuffle turned on for this server")
+                if toggle
+                else _("Auto shuffle turned off for this server"),
                 messageable=context,
             ),
             ephemeral=True,
@@ -693,7 +732,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
     @command_playerset_server.command(name="shuffle")
     async def command_playerset_server_shuffle(self, context: PyLavContext, toggle: bool) -> None:
-        """Set whether [botname] should allow users to shuffle the queue"""
+        """Set whether I should allow users to shuffle the queue"""
 
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -703,7 +742,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         if (await self.pylav.player_manager.global_config.fetch_shuffle()) is False:
             await context.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("Shuffle is globally disabled"),
+                    description=_("My owner has turned off the shuffle capability for all servers."),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -716,7 +755,9 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
             await config.update_shuffle(toggle)
         await context.send(
             embed=await self.pylav.construct_embed(
-                description=_("Shuffle set to {shuffle}").format(shuffle=_("Enabled") if toggle else _("Disabled")),
+                description=_("Shuffling turned on for this server")
+                if toggle
+                else _("Shuffling turned off for this server"),
                 messageable=context,
             ),
             ephemeral=True,
@@ -724,7 +765,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
     @command_playerset_server.command(name="auto")
     async def command_playerset_server_auto(self, context: PyLavContext, toggle: bool) -> None:
-        """Set whether the bot should automatically play songs when the queue is empty"""
+        """Set whether the bot should automatically play songs when the queue is empty."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -733,7 +774,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         if await self.pylav.player_manager.global_config.fetch_auto_play() is False:
             await context.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("Auto-Play is globally disabled"),
+                    description=_("My owner has turned off the autoplay capability for all servers."),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -750,7 +791,9 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
             await config.update_auto_play(toggle)
         await context.send(
             embed=await self.pylav.construct_embed(
-                description=_("Auto-Play set to {auto}").format(auto=_("Enabled") if toggle else _("Disabled")),
+                description=_("From now on, I will automatically play songs when the queue is empty.")
+                if toggle
+                else _("From now on, I will no longer automatically play songs when the queue is empty."),
                 messageable=context,
             ),
             ephemeral=True,
@@ -768,14 +811,14 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         *,
         after: TimedeltaConverter(default_unit="seconds", minimum=datetime.timedelta(seconds=60)) = None,  # noqa
     ) -> None:
-        """Set whether the bot should disconnect from the voice channel when the queue is empty.
+        """Set whether I should disconnect from the voice channel when the queue is empty.
 
         Arguments:
-            - `<toggle>`: Whether the bot should disconnect from the voice channel when the queue is empty.
-            - `<duration>`: How longer after the queue is empty should the player be disconnected. Default is 60
-            seconds.
-            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be
-            given in seconds)
+            - `<toggle>`: I should disconnect from the voice channel when the queue is empty.
+            - `<duration>`: How long after the queue is empty should I disconnect?
+            The Default is 60 seconds.
+            Accept seconds, minutes, hours, days, and weeks.
+            If no unit is specified, the duration is assumed to be seconds.
         """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -787,9 +830,8 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
             await context.send(
                 embed=await self.pylav.construct_embed(
                     description=_(
-                        "Disconnect when the queue finished is globally enabled "
-                        "and players will be disconnected after {delta}"
-                    ).format(delta=humanize_timedelta(timedelta=datetime.timedelta(seconds=global_timer))),
+                        "My owner has told me to disconnect from the voice channel when the queue is empty after {time_to_dc}."
+                    ).format(time_to_dc=humanize_timedelta(timedelta=datetime.timedelta(seconds=global_timer))),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -806,16 +848,19 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
                 "time": after.total_seconds() if after else 60,
             }
         )
-        if after:
-            timedelta_str = humanize_timedelta(timedelta=after)
-            extras = _(" and players will be disconnected after {duration}").format(duration=timedelta_str)
+        if toggle:
+            if after:
+                message = _(
+                    "I will disconnect from the voice channel when the queue is empty after {time_to_dc}."
+                ).format(time_to_dc=humanize_timedelta(timedelta=after))
+            else:
+                message = _("I will disconnect from the voice channel when the queue is empty after 60 seconds.")
         else:
-            extras = ""
+            message = _("I will no longer disconnect from the voice channel when the queue is empty.")
+
         await context.send(
             embed=await self.pylav.construct_embed(
-                description=_("Disconnect from voice channel when queue is empty set to {empty}{extras}").format(
-                    empty=_("Enabled") if toggle else _("Disabled"), extras=extras
-                ),
+                description=message,
                 messageable=context,
             ),
             ephemeral=True,
@@ -829,14 +874,15 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         *,
         after: TimedeltaConverter(default_unit="seconds", minimum=datetime.timedelta(seconds=60)) = None,  # noqa
     ) -> None:
-        """Set whether the bot should disconnect from the voice channel when alone.
+        """Set whether I should disconnect from the voice channel when alone.
 
         Arguments:
-            - `<toggle>`: Whether the bot should disconnect from the voice channel when it detects that it is
+            - `<toggle>`: I should disconnect from the voice channel when it detects that it is
             alone.
-            - `<duration>`: How longer after detecting should the player be disconnected. Default is 60 seconds.
-            Accepts seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be
-            given in seconds)
+            - `<duration>`: How longer after detecting should I disconnect?
+            The Default is 60 seconds.
+            Accept seconds, minutes, hours, days, and weeks.
+            If no unit is specified, the duration is assumed to be seconds.
         """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -849,8 +895,8 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
             await context.send(
                 embed=await self.pylav.construct_embed(
                     description=_(
-                        "Disconnect when alone is globally enabled and players will be disconnected after {delta}"
-                    ).format(delta=humanize_timedelta(timedelta=datetime.timedelta(seconds=global_timer))),
+                        "My owner has told me to disconnect from the voice channel when alone after {time_to_dc}."
+                    ).format(time_to_dc=humanize_timedelta(timedelta=datetime.timedelta(seconds=global_timer))),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -868,17 +914,19 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
                 "time": after.total_seconds() if after else 60,
             }
         )
-        if after:
-            timedelta_str = humanize_timedelta(timedelta=after)
-            extras = _(" and players will be disconnected after {duration}").format(duration=timedelta_str)
+        if toggle:
+            if after:
+                message = _("I will disconnect from the voice channel when alone after {time_to_dc}.").format(
+                    time_to_dc=humanize_timedelta(timedelta=after)
+                )
+            else:
+                message = _("I will disconnect from the voice channel when alone after 60 seconds.")
         else:
-            extras = ""
+            message = _("I will no longer disconnect from the voice channel when alone.")
 
         await context.send(
             embed=await self.pylav.construct_embed(
-                description=_("Disconnect from voice channel when alone set to {empty}{extras}").format(
-                    empty=_("Enabled") if toggle else _("Disabled"), extras=extras
-                ),
+                description=message,
                 messageable=context,
             ),
             ephemeral=True,
@@ -886,7 +934,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
     @command_playerset_server.command(name="playlist")
     async def command_playerset_server_playlist(self, context: PyLavContext, *, playlist: PlaylistConverter) -> None:
-        """Sets the Auto-Play playlist"""
+        """Specify a playlist to be used for autoplay."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -903,8 +951,8 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
         await context.send(
             embed=await self.pylav.construct_embed(
-                description=_("Auto-Play playlist set to {playlist}").format(
-                    playlist=bold(await playlist.fetch_name())
+                description=_("From now on, I will use {playlist_name} to select songs for autoplay.").format(
+                    playlist_name=bold(await playlist.fetch_name())
                 ),
                 messageable=context,
             ),
@@ -913,13 +961,13 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
     @command_playerset_server.group(name="lock")
     async def command_playerset_server_lock(self, context: PyLavContext):
-        """Set the channel locks"""
+        """Restrict which channels where I can be used."""
 
     @command_playerset_server_lock.command(name="commands")
     async def command_playerset_server_lock_commands(
         self, context: PyLavContext, *, channel: discord.TextChannel | discord.Thread | discord.VoiceChannel = None
     ):
-        """Set the channel lock for commands"""
+        """Restrict me only to accept PyLav commands executed from the specified channel."""
 
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -935,8 +983,8 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
             await context.send(
                 embed=await context.pylav.construct_embed(
                     description=_(
-                        "I don't have permission to send message or send embed links or read messages in {channel}"
-                    ).format(channel=channel.mention),
+                        "I do not have permission to send messages or send embed links or read messages in {channel_name}."
+                    ).format(channel_name=channel.mention),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -951,7 +999,9 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         if channel:
             await context.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("I will only listen to commands in {channel}").format(channel=channel.mention),
+                    description=_("I will only accept PyLav commands executed from {channel_name}.").format(
+                        channel_name=channel.mention
+                    ),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -959,7 +1009,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
             return
         await context.send(
             embed=await self.pylav.construct_embed(
-                description=_("I will listen to commands in all channels I can see"),
+                description=_("I will accept PyLav commands executed in all channels I can see in the server."),
                 messageable=context,
             ),
             ephemeral=True,
@@ -967,7 +1017,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
     @command_playerset_server_lock.command(name="voice", aliases=["vc"])
     async def command_playerset_server_lock_vc(self, context: PyLavContext, *, channel: discord.VoiceChannel = None):
-        """Set the channel lock for voice channels"""
+        """Restrict me only to join the specified voice channel."""
 
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -979,8 +1029,8 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         ):
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("I don't have permission to connect or speak in {channel}").format(
-                        channel=channel.mention
+                    description=_("I do not have permission to connect or speak in {channel_name}.").format(
+                        channel_name=channel.mention
                     ),
                     messageable=context,
                 ),
@@ -997,13 +1047,17 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         if channel:
             await context.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("I will only be allowed to join {channel}").format(channel=channel.mention),
+                    description=_("I will only be allowed to join {channel_name}.").format(
+                        channel_name=channel.mention
+                    ),
                     messageable=context,
                 ),
                 ephemeral=True,
             )
             return
         await context.send(
-            embed=await self.pylav.construct_embed(description=_("I'm free to join any VC"), messageable=context),
+            embed=await self.pylav.construct_embed(
+                description=_("I am allowed to join any voice channel in the server."), messageable=context
+            ),
             ephemeral=True,
         )

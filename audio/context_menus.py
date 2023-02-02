@@ -24,7 +24,7 @@ class ContextMenus(DISCORD_COG_TYPE_MIXIN):
         if not interaction.guild:
             await interaction.followup.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("I can't play songs in DMs"),
+                    description=_("I can not play songs in direct messages, sorry, try again in a server."),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -35,7 +35,7 @@ class ContextMenus(DISCORD_COG_TYPE_MIXIN):
         if not is_dj:
             await interaction.followup.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("You need to be a DJ to play tracks"),
+                    description=_("You need to be a disc jockey in this server to play tracks in this server."),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -52,10 +52,10 @@ class ContextMenus(DISCORD_COG_TYPE_MIXIN):
             await interaction.followup.send(
                 embed=await self.pylav.construct_embed(
                     messageable=interaction,
-                    description=_("This command is not available in this channel. Please use {channel}").format(
-                        channel=channel.mention
+                    description=_("This command is not available in this channel, please use {channel_name}.").format(
+                        channel_name=channel.mention
                         if (channel := interaction.guild.get_channel_or_thread(channel_id))
-                        else None
+                        else channel_id
                     ),
                 ),
                 ephemeral=True,
@@ -77,35 +77,22 @@ class ContextMenus(DISCORD_COG_TYPE_MIXIN):
         for attachment in message.attachments:
             if valid_query_attachment(attachment.filename):
                 valid_matches.add(attachment.url)
-        if not valid_matches:
-            await interaction.followup.send(
-                embed=await self.pylav.construct_embed(
-                    description=_("I couldn't find any valid matches in the message"),
-                    messageable=interaction,
-                ),
-                ephemeral=True,
-                wait=True,
-            )
-            return
 
-        if len(valid_matches) > 1:
-            await interaction.followup.send(
-                embed=await self.pylav.construct_embed(
-                    description=_("I found multiple valid matches in the message"),
-                    messageable=interaction,
-                ),
-                ephemeral=True,
-                wait=True,
-            )
+        if not valid_matches:
+            message = _("I could not find any suitable matches in this message.")
+        elif len(valid_matches) > 1:
+            message = _("I found many suitable matches in this message.")
         else:
-            await interaction.followup.send(
-                embed=await self.pylav.construct_embed(
-                    description=_("I found a single valid match in the message"),
-                    messageable=interaction,
-                ),
-                ephemeral=True,
-                wait=True,
-            )
+            message = _("I found a single suitable match in this message.")
+
+        await interaction.followup.send(
+            embed=await self.pylav.construct_embed(
+                description=message,
+                messageable=interaction,
+            ),
+            ephemeral=True,
+            wait=True,
+        )
 
         await self.command_play.callback(self, interaction, query="\n".join(valid_matches))  # type: ignore
 
@@ -140,7 +127,7 @@ class ContextMenus(DISCORD_COG_TYPE_MIXIN):
         if not interaction.guild:
             await interaction.followup.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("I can't play songs in DMs"),
+                    description=_("I can not play songs in direct messages, sorry, try again in a server."),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -151,7 +138,7 @@ class ContextMenus(DISCORD_COG_TYPE_MIXIN):
         if not is_dj:
             await interaction.followup.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("You need to be a DJ to play tracks"),
+                    description=_("You need to be a disc jockey to play tracks in this server."),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -166,26 +153,26 @@ class ContextMenus(DISCORD_COG_TYPE_MIXIN):
             await interaction.followup.send(
                 embed=await self.pylav.construct_embed(
                     messageable=interaction,
-                    description=_("This command is not available in this channel. Please use {channel}").format(
-                        channel=channel.mention
+                    description=_("This command is not available in this channel, please use {channel_name}.").format(
+                        channel_name=channel.mention
                         if (channel := interaction.guild.get_channel_or_thread(channel_id))
-                        else None
+                        else channel_id
                     ),
                 ),
                 ephemeral=True,
                 wait=True,
             )
             return
-        # The member returned by this interaction doesn't have any activities
+        # The member returned by this interaction doesn't have any activities.
         member = interaction.guild.get_member(member.id)
         spotify_activity = next((a for a in member.activities if isinstance(a, discord.Spotify)), None)
         apple_music_activity = next((a for a in member.activities if a.name in ["Apple Music", "Cider"]), None)
         if not apple_music_activity and not spotify_activity:
             await interaction.followup.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("I couldn't find any supported activity {user} is taking part in").format(
-                        user=member.mention
-                    ),
+                    description=_(
+                        "I could not find any supported activity in the activities {user_name} is partaking."
+                    ).format(user_name=member.mention),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -215,9 +202,9 @@ class ContextMenus(DISCORD_COG_TYPE_MIXIN):
             if not search_string:
                 await interaction.followup.send(
                     embed=await self.pylav.construct_embed(
-                        description=_("Couldn't map {user}'s Apple Music track to a valid query").format(
-                            user=member.mention
-                        ),
+                        description=_(
+                            "I could not find a valid Apple Music track in the activity {user_name} is partaking in."
+                        ).format(user_name=member.mention),
                         messageable=interaction,
                     ),
                     ephemeral=True,
@@ -231,7 +218,9 @@ class ContextMenus(DISCORD_COG_TYPE_MIXIN):
             if not response.tracks:
                 await interaction.followup.send(
                     embed=await self.pylav.construct_embed(
-                        description=_("Couldn't find any tracks matching {query}").format(query=search_string),
+                        description=_("I could not find any tracks matching {query_value}.").format(
+                            query_value=search_string
+                        ),
                         messageable=interaction,
                     ),
                     ephemeral=True,
@@ -246,7 +235,9 @@ class ContextMenus(DISCORD_COG_TYPE_MIXIN):
         else:
             await interaction.followup.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("Couldn't figure out what {user} is listening to").format(user=member.mention),
+                    description=_("I could not figure out what {user_name} is listening to.").format(
+                        user_name=member.mention
+                    ),
                     messageable=interaction,
                 ),
                 ephemeral=True,

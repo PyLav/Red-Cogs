@@ -27,15 +27,15 @@ _ = Translator("PyLavPlayer", Path(__file__))
 class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
     @commands.command(
         name="bump",
-        description=shorten_string(max_length=100, string=_("Plays the specified track in the queue")),
+        description=shorten_string(max_length=100, string=_("Plays the specified track from the queue.")),
     )
     @commands.guild_only()
     @invoker_is_dj()
     async def command_bump(self, context: PyLavContext, queue_number: int, after_current: bool = False):
         """
-        Plays the specified track in the queue.
+        Plays the specified track from the queue.
 
-        If you specify the `after_current` argument, the track will be played after the current track, otherwise it will replace the current track
+        If you specify the `after_current` argument, the track will be played after the current track; otherwise, it will replace the current track.
         """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -47,7 +47,7 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
         if player.queue.empty():
             await context.send(
                 embed=await context.construct_embed(
-                    description=shorten_string(max_length=100, string=_("Queue is empty")),
+                    description=shorten_string(max_length=100, string=_("There are no songs in the queue.")),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -56,7 +56,9 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
         if queue_number < 1 or queue_number > player.queue.size():
             await context.send(
                 embed=await context.construct_embed(
-                    description=_("Track index must be between 1 and {size}").format(size=player.queue.size()),
+                    description=_("Track index must be between 1 and {size_of_queue}").format(
+                        size_of_queue=player.queue.size()
+                    ),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -72,7 +74,9 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
         if not track:
             await context.send(
                 embed=await context.construct_embed(
-                    description=_("There is no track in position {position}").format(position=queue_number),
+                    description=_("There are no tracks in position {queue_position_value}.").format(
+                        queue_position_value=queue_number
+                    ),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -82,10 +86,12 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
             await player.move_track(track, context.author, 0)
             await context.send(
                 embed=await context.construct_embed(
-                    description=_("{track} will play after {current} finishes ({eta})").format(
-                        track=await track.get_track_display_name(with_url=True),
-                        current=await player.current.get_track_display_name(with_url=True),
-                        eta=discord.utils.format_dt(
+                    description=_(
+                        "{track_name} will play after {current_track_name} finishes ({estimated_time_value})."
+                    ).format(
+                        track_name=await track.get_track_display_name(with_url=True),
+                        current_track_name=await player.current.get_track_display_name(with_url=True),
+                        estimated_time_value=discord.utils.format_dt(
                             get_now_utc()
                             + datetime.timedelta(
                                 milliseconds=await player.current.duration() - await player.fetch_position()
@@ -100,9 +106,9 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
         else:
             await context.send(
                 embed=await context.construct_embed(
-                    description=_("{track} will start now\n{current} has been skipped").format(
-                        track=await track.get_track_display_name(with_url=True),
-                        current=await player.current.get_track_display_name(with_url=True),
+                    description=_("{track_name} will start now\n{current_track_name} has been skipped.").format(
+                        track_name=await track.get_track_display_name(with_url=True),
+                        current_track_name=await player.current.get_track_display_name(with_url=True),
                     ),
                     messageable=context,
                 ),
@@ -112,13 +118,13 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
 
     @commands.command(
         name="playnext",
-        description=shorten_string(max_length=100, string=_("Enqueue a track at the top of the queue")),
+        description=shorten_string(max_length=100, string=_("Enqueue a track at the top of the queue.")),
         aliases=["pn"],
     )
     @commands.guild_only()
     @invoker_is_dj()
     async def command_playnext(self, context: PyLavContext, *, query: str):
-        """Enqueue a track at the top of the queue"""
+        """Enqueue a track at the top of the queue."""
         if isinstance(context, discord.Interaction) and not context.response.is_done():
             await context.response.defer(ephemeral=True)
 
@@ -141,8 +147,8 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
             ):
                 await context.send(
                     embed=await self.pylav.construct_embed(
-                        description=_("I don't have permission to connect or speak in {channel}").format(
-                            channel=channel.mention
+                        description=_("I do not have permission to connect or speak in {channel_name}.").format(
+                            channel_name=channel.mention
                         ),
                         messageable=context,
                     ),
@@ -222,7 +228,9 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
         if total_tracks_enqueue > 1:
             await context.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("{track_count} tracks enqueued").format(track_count=total_tracks_enqueue),
+                    description=_("{number_of_tracks} tracks have been enqueued.").format(
+                        number_of_tracks=total_tracks_enqueue
+                    ),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -230,8 +238,8 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
         elif total_tracks_enqueue == 1:
             await context.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("{track} enqueued").format(
-                        track=await single_track.get_track_display_name(with_url=True)
+                    description=_("{track_name} has been enqueued.").format(
+                        track_name=await single_track.get_track_display_name(with_url=True)
                     ),
                     thumbnail=await single_track.artworkUrl(),
                     messageable=context,
@@ -241,13 +249,13 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
         else:
             await context.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("No tracks were found for your query"),
+                    description=_("No tracks were found for your query."),
                     messageable=context,
                 ),
                 ephemeral=True,
             )
 
-    @commands.command(name="remove", description=_("Remove the specified track from the queue"))
+    @commands.command(name="remove", description=_("Remove the specified track from the queue."))
     @commands.guild_only()
     @invoker_is_dj()
     async def command_remove(self, context: PyLavContext, track_url_or_index: str, remove_duplicates: bool = False):
@@ -266,7 +274,7 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
         queue_number = None
         if player.queue.empty():
             await context.send(
-                embed=await context.construct_embed(description=_("Queue is empty"), messageable=context),
+                embed=await context.construct_embed(description=_("Queue is empty."), messageable=context),
                 ephemeral=True,
             )
             return
@@ -279,7 +287,9 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
             if queue_number < 1 or queue_number > player.queue.size():
                 await context.send(
                     embed=await context.construct_embed(
-                        description=_("Track index must be between 1 and {size}").format(size=player.queue.size()),
+                        description=_("Track index must be between 1 and {queue_size}.").format(
+                            queue_size=player.queue.size()
+                        ),
                         messageable=context,
                     ),
                     ephemeral=True,
@@ -292,7 +302,9 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
             if not track:
                 await context.send(
                     embed=await context.construct_embed(
-                        description=_("There is no track in position {position}").format(position=queue_number),
+                        description=_("There is no track in position {position_value}.").format(
+                            position_value=queue_number
+                        ),
                         messageable=context,
                     ),
                     ephemeral=True,
@@ -322,22 +334,41 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
             if not number_removed:
                 await context.send(
                     embed=await context.construct_embed(
-                        description=_("{track} not found in queue").format(
-                            track=await track.get_track_display_name(with_url=True)
+                        description=_("{track_name} not found in queue.").format(
+                            track_name=await track.get_track_display_name(with_url=True)
                         ),
                         messageable=context,
                     ),
                     ephemeral=True,
                 )
                 return
-        await context.send(
-            embed=await context.construct_embed(
-                description=_("Removed {times} {entry_plural} of {track} from the queue").format(
-                    times=number_removed,
-                    track=await track.get_track_display_name(with_url=True),
-                    entry_plural=_("entry") if number_removed == 1 else _("entries"),
+
+        if number_removed == 0:
+            await context.send(
+                embed=await context.construct_embed(
+                    description=_("No tracks were removed from the queue."),
+                    messageable=context,
                 ),
-                messageable=context,
-            ),
-            ephemeral=True,
-        )
+                ephemeral=True,
+            )
+        elif number_removed == 1:
+            await context.send(
+                embed=await context.construct_embed(
+                    description=_("I have removed a single entry of {track_name} from the queue.").format(
+                        track_name=await track.get_track_display_name(with_url=True)
+                    ),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+        else:
+            await context.send(
+                embed=await context.construct_embed(
+                    description=_("I have removed {number_of_entries} entries of {track_name} from the queue.").format(
+                        track_name=await track.get_track_display_name(with_url=True),
+                        number_of_entries=number_removed,
+                    ),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )

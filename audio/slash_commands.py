@@ -10,6 +10,7 @@ from discord.ext.commands import HybridCommand
 from expiringdict import ExpiringDict
 from redbot.core.i18n import Translator
 
+from pylav.constants.config import DEFAULT_SEARCH_SOURCE
 from pylav.constants.regex import SOURCE_INPUT_MATCH_SEARCH
 from pylav.extension.red.utils.decorators import invoker_is_dj
 from pylav.helpers.format.strings import shorten_string
@@ -28,7 +29,7 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN):
 
     @app_commands.command(
         name="search",
-        description=shorten_string(max_length=100, string=_("Search for a track, then play the selected response")),
+        description=shorten_string(max_length=100, string=_("Search for a track, then play the selected response.")),
     )
     @app_commands.describe(
         source=shorten_string(max_length=100, string=_("Where to search in")),
@@ -44,13 +45,13 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN):
             "Deezer", "YouTube Music", "Spotify", "Apple Music", "SoundCloud", "YouTube", "Yandex Music"
         ] = None,
     ):
-        """Search for a track then play the selected response"""
+        """Search for a track then play the selected response."""
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         if query == "FqgqQW21tQ@#1g2fasf2":
             return await interaction.followup.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("You haven't selected something to play"),
+                    description=_("You have not selected something to play."),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -84,25 +85,28 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN):
             "ymsearch:": "yandexmusic",
         }
         inv_map = {v: k for k, v in prefix_mapping.items()}
+        fallback_search = f"{DEFAULT_SEARCH_SOURCE}:"
+        fallback_source = next(k for k, v in prefix_mapping.items() if v == DEFAULT_SEARCH_SOURCE)
+        fallback_feature = feature_mapping[fallback_search]
         if options := data.get("options", []):
             value_list = [v for v in options if v.get("name") == "source"]
             if value_list and (value := value_list[0].get("value")):
-                prefix = prefix_mapping.get(value, "dzsearch:")
+                prefix = prefix_mapping.get(value, fallback_search)
             else:
-                prefix = "dzsearch:"
+                prefix = fallback_search
         else:
-            prefix = "dzsearch:"
+            prefix = fallback_search
         match = SOURCE_INPUT_MATCH_SEARCH.match(current)
         service = match.group("search_source") if match else None
         if not service:
             current = prefix + current
-        feature = feature_mapping.get(prefix, "deezer")
+        feature = feature_mapping.get(prefix, fallback_feature)
         if not (match := SOURCE_INPUT_MATCH_SEARCH.match(current)) or not match.group("search_query"):
             return [
                 Choice(
                     name=shorten_string(
                         max_length=100,
-                        string=_("Searching {service}").format(service=inv_map.get(prefix, "Deezer")),
+                        string=_("Searching {service_name}").format(service_name=inv_map.get(prefix, fallback_source)),
                     ),
                     value="FqgqQW21tQ@#1g2fasf2",
                 )
@@ -118,7 +122,9 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN):
                 Choice(
                     name=shorten_string(
                         max_length=100,
-                        string=_("No results found on {service}").format(service=inv_map.get(prefix, "Deezer")),
+                        string=_("No results found on {service_name}").format(
+                            service_name=inv_map.get(prefix, fallback_source)
+                        ),
                     ),
                     value="FqgqQW21tQ@#1g2fasf2",
                 )
@@ -129,7 +135,9 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN):
                 Choice(
                     name=shorten_string(
                         max_length=100,
-                        string=_("No results found on {service}").format(service=inv_map.get(prefix, "Deezer")),
+                        string=_("No results found on {service_name}").format(
+                            service_name=inv_map.get(prefix, fallback_source)
+                        ),
                     ),
                     value="FqgqQW21tQ@#1g2fasf2",
                 )
