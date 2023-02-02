@@ -1,9 +1,18 @@
-name: automerge
+name: Auto Merge Translations
 on:
     pull_request:
+    -   labeled
+    -   edited
+    -   reopened
+    -   synchronize
+    -   ready_for_review
+    -   unlocked
+    -   review_request_removed
     pull_request_review:
         types:
         -   submitted
+        -   edited
+    status:
 jobs:
     automerge:
         runs-on: ubuntu-latest
