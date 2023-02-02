@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
-"POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-02-01 00:10\n"
+"POT-Creation-Date: 2023-02-02 22:16+0000\n"
+"PO-Revision-Date: 2023-02-02 22:33\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese\n"
 "MIME-Version: 1.0\n"
@@ -28,7 +28,7 @@ msgid "Show the version of the Cog and its PyLav dependencies"
 msgstr "Hiển thị phiên bản của Cog và các phụ thuộc PyLav của nó"
 
 #: plutils/cog.py:88
-msgid "Library/Cog"
+msgid "Library / Cog"
 msgstr "Thư viện / Cog"
 
 #: plutils/cog.py:89
@@ -54,90 +54,90 @@ msgstr "Nhận thông tin về những điều cụ thể"
 msgid "Get the base64 of the current track"
 msgstr "Nhận base64 của bản nhạc hiện tại"
 
-#: plutils/cog.py:145 plutils/cog.py:177 plutils/cog.py:209 plutils/cog.py:240
-#: plutils/cog.py:273
+#: plutils/cog.py:145 plutils/cog.py:179 plutils/cog.py:213 plutils/cog.py:246
+#: plutils/cog.py:281
 msgid "Not connected to a voice channel"
 msgstr "Không được kết nối với kênh thoại"
 
-#: plutils/cog.py:153 plutils/cog.py:185 plutils/cog.py:217 plutils/cog.py:248
-msgid "Nothing playing"
-msgstr "Không có gì chơi"
+#: plutils/cog.py:154 plutils/cog.py:188 plutils/cog.py:222 plutils/cog.py:255
+msgid "I am not currently playing anything on this server."
+msgstr "Tôi hiện không chơi bất cứ thứ gì trên máy chủ này."
 
-#: plutils/cog.py:168
+#: plutils/cog.py:170
 #, docstring
 msgid "Get the author of the current track"
 msgstr "Nhận tác giả của bản nhạc hiện tại"
 
-#: plutils/cog.py:200
+#: plutils/cog.py:204
 #, docstring
 msgid "Get the title of the current track"
 msgstr "Lấy tiêu đề của bản nhạc hiện tại"
 
-#: plutils/cog.py:232
+#: plutils/cog.py:238
 #, docstring
 msgid "Get the source of the current track"
 msgstr "Lấy nguồn của bản nhạc hiện tại"
 
-#: plutils/cog.py:264
+#: plutils/cog.py:272
 #, docstring
 msgid "Get the API of the current track"
 msgstr "Tải API của bản nhạc hiện tại"
 
-#: plutils/cog.py:284 plutils/cog.py:293
+#: plutils/cog.py:292 plutils/cog.py:301
 msgid "Unable to get player info"
 msgstr "Không thể lấy thông tin người chơi"
 
-#: plutils/cog.py:309
+#: plutils/cog.py:317
 #, docstring
 msgid "Decode a track's base64 string into a JSON object"
 msgstr "Giải mã chuỗi base64 của bản nhạc thành đối tượng JSON"
 
-#: plutils/cog.py:318
+#: plutils/cog.py:326
 msgid "Invalid base64 string"
 msgstr "Chuỗi base64 không hợp lệ"
 
-#: plutils/cog.py:334
+#: plutils/cog.py:342
 #, docstring
 msgid "Manage the query cache"
 msgstr "Quản lý bộ đệm ẩn truy vấn"
 
-#: plutils/cog.py:338
+#: plutils/cog.py:346
 #, docstring
 msgid "Clear the query cache"
 msgstr "Xóa bộ đệm ẩn truy vấn"
 
-#: plutils/cog.py:345 plutils/cog.py:374 plutils/cog.py:387
+#: plutils/cog.py:353 plutils/cog.py:382 plutils/cog.py:395
 msgid "Query cache cleared"
 msgstr "Đã xóa bộ nhớ cache truy vấn"
 
-#: plutils/cog.py:351
+#: plutils/cog.py:359
 #, docstring
 msgid "Clear the query cache older than a number of days"
 msgstr "Xóa bộ đệm ẩn truy vấn cũ hơn một số ngày"
 
-#: plutils/cog.py:359
+#: plutils/cog.py:367
 msgid "Days must be less than 31"
 msgstr "Số ngày phải dưới 31"
 
-#: plutils/cog.py:367
+#: plutils/cog.py:375
 msgid "Days must be greater than 1"
 msgstr "Số ngày phải lớn hơn 1"
 
-#: plutils/cog.py:380
+#: plutils/cog.py:388
 #, docstring
 msgid "Clear the query cache for a query"
 msgstr "Xóa bộ đệm ẩn truy vấn cho truy vấn"
 
-#: plutils/cog.py:393
+#: plutils/cog.py:401
 #, docstring
 msgid "Get the size of the query cache"
 msgstr "Lấy kích cỡ của bộ đệm ẩn truy vấn"
 
-#: plutils/cog.py:400
-msgid "Query cache size: `{size}`"
-msgstr "Kích thước bộ nhớ cache truy vấn: '{size}`"
+#: plutils/cog.py:408
+msgid "Query cache size: `{size_value}`"
+msgstr "Kích thước bộ nhớ cache truy vấn: '{size_value}`"
 
-#: plutils/cog.py:411
+#: plutils/cog.py:419
 #, docstring
 msgid "Start memory tracing\n\n"
 "        `[p]plutils trace 0` turns off tracing\n"
@@ -150,19 +150,19 @@ msgstr "Bắt đầu theo dõi bộ nhớ\n\n"
 "        `[p]dấu vết plutils 'hiển thị tình trạng truy tìm hiện tại\n"
 "        "
 
-#: plutils/cog.py:425
+#: plutils/cog.py:433
 msgid "Stopped memory tracing"
 msgstr "Đã dừng theo dõi bộ nhớ"
 
-#: plutils/cog.py:434
+#: plutils/cog.py:442
 msgid "Started memory tracing"
 msgstr "Bắt đầu theo dõi bộ nhớ"
 
-#: plutils/cog.py:443
+#: plutils/cog.py:451
 msgid "You need to start tracing first"
 msgstr "Bạn cần bắt đầu theo dõi trước"
 
-#: plutils/cog.py:455
+#: plutils/cog.py:463
 #, docstring
 msgid "Set the logger level\n\n"
 "        Levels are the following:\n"
@@ -185,7 +185,7 @@ msgstr "Đặt cấp độ logger\n\n"
 "        6: Theo dõi\n"
 "        "
 
-#: plutils/cog.py:486
-msgid "Logger level set to `{level}`"
-msgstr "Cấp độ logger được đặt thành '{level}`"
+#: plutils/cog.py:494
+msgid "Logger level set to `{level_value}`"
+msgstr "Cấp độ logger được đặt thành '{level_value}`"
 

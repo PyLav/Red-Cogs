@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
-"POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-02-01 00:10\n"
+"POT-Creation-Date: 2023-02-02 22:16+0000\n"
+"PO-Revision-Date: 2023-02-02 22:33\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -33,8 +33,8 @@ msgid "Show the version of the Cog and its PyLav dependencies"
 msgstr "Anzeigen der Version des Zahnrads und seiner PyLav-Abhängigkeiten"
 
 #: plconfig/cog.py:64
-msgid "Library/Cog"
-msgstr "Bibliothek/Zahnrad"
+msgid "Library / Cog"
+msgstr "Bibliothek / Zahnrad"
 
 #: plconfig/cog.py:65
 msgid "Version"
@@ -45,39 +45,39 @@ msgstr "Version"
 msgid "Show the config values"
 msgstr "Konfigurationswerte anzeigen"
 
-#: plconfig/cog.py:85 plconfig/view.py:57
-msgid "PyLav Config"
+#: plconfig/cog.py:85
+msgid "PyLav Configuration"
 msgstr "PyLav Konfiguration"
 
 #: plconfig/cog.py:88
 msgid "Get information about the PyLav library settings"
 msgstr "Erhalte Informationen über die PyLav Bibliothekseinstellungen"
 
-#: plconfig/cog.py:92 plconfig/view.py:123
-msgid "Global Player Config"
-msgstr "Globale Spieler-Konfiguration"
+#: plconfig/cog.py:92
+msgid "Global Player Configuration"
+msgstr "Global Player-Konfiguration"
 
 #: plconfig/cog.py:95
 msgid "Get information about bot owner configured settings for the players"
 msgstr "Erhalte Informationen über die konfigurierten Bot-Besitzer Einstellungen für die Spieler"
 
-#: plconfig/cog.py:103 plconfig/view.py:194
-msgid "Context Player Config"
-msgstr "Kontext-Spieler-Konfiguration"
+#: plconfig/cog.py:103
+msgid "Context Player Configuration"
+msgstr "Konfiguration des Kontext-Players"
 
 #: plconfig/cog.py:107
 msgid "Get information about contextual settings for the player, accounting for the global settings"
 msgstr "Erhalte Informationen über Kontexteinstellungen für den Spieler, Accounting für die globalen Einstellungen"
 
-#: plconfig/cog.py:114 plconfig/view.py:339
-msgid "Server Player Config"
-msgstr "Server-Player-Konfiguration"
+#: plconfig/cog.py:114
+msgid "Server Player Configuration"
+msgstr "Konfiguration des Server-Players"
 
 #: plconfig/cog.py:118
 msgid "Get information about server configured settings for the player"
 msgstr "Informationen über Server-konfigurierte Einstellungen für den Player erhalten"
 
-#: plconfig/cog.py:126 plconfig/view.py:378
+#: plconfig/cog.py:126 plconfig/view.py:396
 msgid "Playlist Tasks"
 msgstr "Wiedergabelisten Aufgaben"
 
@@ -93,7 +93,7 @@ msgstr "PyLav Pfade"
 msgid "Get information about PyLav paths"
 msgstr "Erhalte Informationen über PyLav Pfade"
 
-#: plconfig/cog.py:147 plconfig/view.py:474
+#: plconfig/cog.py:147 plconfig/view.py:492
 msgid "Managed Node Config"
 msgstr "Verwaltete Knoten-Konfiguration"
 
@@ -103,45 +103,45 @@ msgstr "Erhalte Informationen über den Knoten PyLav Lavalink"
 
 #: plconfig/cog.py:160
 #, docstring
-msgid "Checks if a user or role is considered a DJ"
-msgstr "Prüft, ob ein Benutzer oder eine Rolle als DJ angesehen wird"
+msgid "Checks if a user or role is considered a disc jockey"
+msgstr "Überprüft, ob ein Benutzer oder eine Rolle als Discjockey gilt"
 
 #: plconfig/cog.py:171
-msgid "{role} is a DJ role"
-msgstr "{role} ist eine DJ-Rolle"
+msgid "{role_name_value} is a disc jockey role"
+msgstr "{role_name_value} ist eine Discjockey-Rolle"
 
 #: plconfig/cog.py:173
-msgid "{role} is not a DJ role"
-msgstr "{role} ist keine DJ-Rolle"
+msgid "{role_name_value} is not a disc jockey role"
+msgstr "{role_name_value} ist keine Discjockey-Rolle"
 
 #: plconfig/cog.py:178
-msgid "{user} is a DJ"
-msgstr "{user} ist ein DJ"
+msgid "{user_name_value} is a disc jockey"
+msgstr "{user_name_value} ist ein Discjockey"
 
 #: plconfig/cog.py:180
-msgid "{user} is not a DJ"
-msgstr "{user} ist kein DJ"
+msgid "{user_name_value} is not a disc jockey"
+msgstr "{user_name_value} ist kein Discjockey"
 
 #: plconfig/cog.py:193
 #, docstring
 msgid "Set the local tracks folder for PyLav.\n\n"
-"        Changes will be applied after restarting the [botname].\n"
+"        Changes will be applied after I restart.\n"
 "        "
-msgstr "Legen Sie den lokalen Track-Ordner für Pylak fest.\n\n"
-"        Änderungen werden nach einem Neustart des [botname]angewendet.\n"
+msgstr "Legen Sie den lokalen Tracks-Ordner für PyLav fest.\n\n"
+"        Die Änderungen werden nach dem Neustart übernommen.\n"
 "        "
 
 #: plconfig/cog.py:205
-msgid "{folder} is not a folder"
-msgstr "{folder} ist kein Ordner"
+msgid "{folder_path_value} is not a folder"
+msgstr "{folder_path_value} ist kein Ordner"
 
 #: plconfig/cog.py:219
-msgid "{folder} does not exist, run the command again with the create argument set to 1 to automatically create this folder"
-msgstr "{folder} existiert nicht, führen Sie den Befehl erneut mit dem Erstellungsargument 1 aus, um diesen Ordner automatisch anzulegen"
+msgid "{folder_path_value} does not exist, run the command again with the create argument set to 1 to automatically create this folder"
+msgstr "{folder_path_value} nicht vorhanden ist, führen Sie den Befehl erneut aus, wobei das Argument create auf 1 gesetzt ist, um diesen Ordner automatisch zu erstellen"
 
 #: plconfig/cog.py:237
-msgid "PyLav's local tracks folder has been set to {folder}"
-msgstr "Der Ordner der lokalen Spuren von Pylau wurde auf {folder} gesetzt"
+msgid "PyLav's local tracks folder has been set to {folder_path_value}"
+msgstr "Der lokale Tracks-Ordner von PyLav wurde auf {folder_path_value}"
 
 #: plconfig/cog.py:248
 #, docstring
@@ -151,10 +151,10 @@ msgstr "Verwaltete Knotenkonfiguration ändern"
 #: plconfig/cog.py:252
 #, docstring
 msgid "Toggle the managed node on/off.\n\n"
-"        Changes will be applied after restarting the [botname].\n"
+"        Changes will be applied after I restart.\n"
 "        "
-msgstr "Schaltet den verwalteten Knoten ein/aus.\n\n"
-"        Änderungen werden nach einem Neustart des [botname]angewendet.\n"
+msgstr "Schalten Sie den verwalteten Knoten ein/aus.\n\n"
+"        Die Änderungen werden nach dem Neustart übernommen.\n"
 "        "
 
 #: plconfig/cog.py:268
@@ -168,10 +168,10 @@ msgstr "PyLavs verwalteter Knoten wurde deaktiviert"
 #: plconfig/cog.py:284
 #, docstring
 msgid "Toggle the managed node auto updates on/off.\n\n"
-"        Changes will be applied after restarting [botname].\n"
+"        Changes will be applied after I restart.\n"
 "        "
 msgstr "Schalten Sie die automatischen Updates des verwalteten Knotens ein/aus.\n\n"
-"        Änderungen werden nach dem Neustart übernommen [botname].\n"
+"        Die Änderungen werden nach dem Neustart übernommen.\n"
 "        "
 
 #: plconfig/cog.py:300
@@ -220,55 +220,55 @@ msgstr "Anleitung zum Setzen der Spotify-API-Token"
 
 #: plconfig/cog.py:388
 msgid "1. Go to Spotify developers and log in with your Spotify account.\n"
-"(https://developer.spotify.com/dashboard/applications)\n"
+"({spotify_url_value})\n"
 "2. Click \"Create An App\".\n"
 "3. Fill out the form provided with your app name, etc.\n"
 "4. When asked if you're developing commercial integration select \"No\".\n"
 "5. Accept the terms and conditions.\n"
 "6. Copy your client ID and your client secret into:\n"
-"`{prefix}set api spotify client_id <your_client_id_here> client_secret <your_client_secret_here>`"
+"  {command_name_value}"
 msgstr "1. Gehen Sie zu Spotify-Entwicklern und melden Sie sich mit Ihrem Spotify-Konto an.\n"
-"(https://developer.spotify. om/Dashboard/Anwendungen)\n"
-"2. Klicken Sie auf \"Eine App erstellen\".\n"
-"3. Füllen Sie das Formular aus, das mit Ihrem App-Namen angegeben ist, usw.\n"
-"4. Wenn Sie gefragt werden, ob Sie kommerzielle Integration entwickeln, wählen Sie \"Nein\".\n"
-"5. Akzeptieren Sie die Allgemeinen Geschäftsbedingungen\n"
-"6. Kopiere deine Client-ID und dein Client-Geheimnis in:\n"
-"`{prefix}setze api spotify client_id <your_client_id_here> client_secret <your_client_secret_here>`"
+"({spotify_url_value})\n"
+"2. Klicken Sie auf \"App erstellen\".\n"
+"3. Füllen Sie das Formular mit Ihrem App-Namen usw. aus.\n"
+"4. Wenn Sie gefragt werden, ob Sie eine kommerzielle Integration entwickeln, wählen Sie \"Nein\".\n"
+"5. Akzeptieren Sie die Allgemeinen Geschäftsbedingungen.\n"
+"6. Kopieren Sie Ihre Client-ID und Ihren geheimen Clientschlüssel in:\n"
+"  {command_name_value}"
 
-#: plconfig/cog.py:409
+#: plconfig/cog.py:412
 #, docstring
 msgid "Manage active players"
 msgstr "Aktive Spieler verwalten"
 
-#: plconfig/cog.py:418
-msgid "No active player in {name}"
-msgstr "Kein aktiver Spieler in {name}"
+#: plconfig/cog.py:421
+msgid "No active player in {server_name_value}."
+msgstr "Kein aktiver Spieler in {server_name_value}."
 
-#: plconfig/cog.py:427
-msgid "No connected players"
-msgstr "Keine verbundenen Spieler"
+#: plconfig/cog.py:432
+msgid "No connected players."
+msgstr "Keine verbundenen Player."
 
-#: plconfig/cog.py:444
+#: plconfig/cog.py:449
 #, docstring
-msgid "Toggle whether or not to change [botname]'s activity"
-msgstr "Umschalten ob die Aktivität von [botname]geändert werden soll oder nicht"
+msgid "Toggle whether or not I should update my Discord activity when playing tracks."
+msgstr "Schalten Sie um, ob ich meine Discord-Aktivität aktualisieren soll, wenn ich Titel abspiele."
 
-#: plconfig/cog.py:455
-msgid "PyLav will change bot activity"
-msgstr "PyLav wird die Bot-Aktivität ändern"
+#: plconfig/cog.py:460
+msgid "PyLav will change bot activity."
+msgstr "PyLav ändert die Bot-Aktivität."
 
-#: plconfig/cog.py:464
-msgid "PyLav will no longer change the bot activity"
-msgstr "PyLav wird die Bot-Aktivität nicht mehr ändern"
+#: plconfig/cog.py:469
+msgid "PyLav will no longer change the bot activity."
+msgstr "PyLav ändert die Bot-Aktivität nicht mehr."
 
-#: plconfig/view.py:27 plconfig/view.py:69 plconfig/view.py:140
-#: plconfig/view.py:211 plconfig/view.py:430
+#: plconfig/view.py:27 plconfig/view.py:69 plconfig/view.py:146
+#: plconfig/view.py:223 plconfig/view.py:448
 msgid "Enabled"
 msgstr "Ermöglichte"
 
-#: plconfig/view.py:28 plconfig/view.py:70 plconfig/view.py:141
-#: plconfig/view.py:212 plconfig/view.py:431
+#: plconfig/view.py:28 plconfig/view.py:70 plconfig/view.py:147
+#: plconfig/view.py:224 plconfig/view.py:449
 msgid "Disabled"
 msgstr "Arbeitsunfähig"
 
@@ -298,199 +298,219 @@ msgid "Use Bundled\n"
 msgstr "Verwende gebündelte\n"
 "lava.link Knoten"
 
-#: plconfig/view.py:58 plconfig/view.py:124 plconfig/view.py:195
-#: plconfig/view.py:340 plconfig/view.py:475
+#: plconfig/view.py:57
+msgid "PyLav Config"
+msgstr "PyLav Konfiguration"
+
+#: plconfig/view.py:58 plconfig/view.py:130 plconfig/view.py:207
+#: plconfig/view.py:358 plconfig/view.py:493
 msgid "Value"
 msgstr "Wert"
 
-#: plconfig/view.py:73 plconfig/view.py:154 plconfig/view.py:258
+#: plconfig/view.py:73 plconfig/view.py:160 plconfig/view.py:270
 msgid "Volume"
 msgstr "Lautstärke"
 
-#: plconfig/view.py:75 plconfig/view.py:155 plconfig/view.py:259
+#: plconfig/view.py:75 plconfig/view.py:161 plconfig/view.py:271
 msgid "Maximum Volume"
 msgstr "Maximale Lautstärke"
 
-#: plconfig/view.py:77 plconfig/view.py:157 plconfig/view.py:261
+#: plconfig/view.py:77 plconfig/view.py:163 plconfig/view.py:273
 msgid "AutoPlay"
 msgstr "Automatische Wiedergabe"
 
-#: plconfig/view.py:81 plconfig/view.py:160 plconfig/view.py:277
+#: plconfig/view.py:81 plconfig/view.py:166 plconfig/view.py:289
 msgid "Shuffling"
 msgstr "Schlurfend"
 
-#: plconfig/view.py:85 plconfig/view.py:161 plconfig/view.py:281
+#: plconfig/view.py:85 plconfig/view.py:167 plconfig/view.py:293
 msgid "Auto Shuffle"
 msgstr "Automatische Zufallswiedergabe"
 
-#: plconfig/view.py:89 plconfig/view.py:162 plconfig/view.py:285
+#: plconfig/view.py:89 plconfig/view.py:168 plconfig/view.py:297
 msgid "Auto Deafen"
 msgstr "Auto Deafen"
 
-#: plconfig/view.py:93 plconfig/view.py:164 plconfig/view.py:289
+#: plconfig/view.py:93 plconfig/view.py:170 plconfig/view.py:301
 msgid "Auto Disconnect"
 msgstr "Automatisch trennen"
 
-#: plconfig/view.py:95 plconfig/view.py:103 plconfig/view.py:111
-#: plconfig/view.py:166 plconfig/view.py:174 plconfig/view.py:182
-#: plconfig/view.py:291 plconfig/view.py:299 plconfig/view.py:307
-msgid "{enabled}\n"
-"{timer} seconds"
-msgstr "{enabled}\n"
-"{timer} Sekunden"
+#: plconfig/view.py:95 plconfig/view.py:105 plconfig/view.py:115
+#: plconfig/view.py:172 plconfig/view.py:182 plconfig/view.py:192
+#: plconfig/view.py:303 plconfig/view.py:313 plconfig/view.py:323
+msgid "{setting_stats_value}\n"
+"{setting_timer_value} seconds"
+msgstr "{setting_stats_value}\n"
+"{setting_timer_value} Nachschlag"
 
-#: plconfig/view.py:101 plconfig/view.py:172 plconfig/view.py:297
+#: plconfig/view.py:103 plconfig/view.py:180 plconfig/view.py:311
 msgid "Auto Alone Pause"
 msgstr "Automatische Alleinpause"
 
-#: plconfig/view.py:109 plconfig/view.py:180 plconfig/view.py:305
+#: plconfig/view.py:113 plconfig/view.py:190 plconfig/view.py:321
 msgid "Auto Alone Disconnect"
 msgstr "Automatisch allein trennen"
 
-#: plconfig/view.py:137 plconfig/view.py:208
+#: plconfig/view.py:129
+msgid "Global Player Config"
+msgstr "Globale Spieler-Konfiguration"
+
+#: plconfig/view.py:143 plconfig/view.py:220
 msgid "You need to be in a server to be able to show this page."
 msgstr "Sie müssen in einem Server sein, um diese Seite anzeigen zu können."
 
-#: plconfig/view.py:229 plconfig/view.py:245
-msgid "Too many to show ({count})"
-msgstr "Zu viele zum Anzeigen ({count})"
+#: plconfig/view.py:206
+msgid "Context Player Config"
+msgstr "Kontext-Spieler-Konfiguration"
 
-#: plconfig/view.py:248 plconfig/view.py:253 plconfig/view.py:316
-#: plconfig/view.py:322 plconfig/view.py:328
+#: plconfig/view.py:241
+msgid "Too many to show ({number_of_users_value})"
+msgstr "Zu viele, um sie anzuzeigen ({number_of_users_value})"
+
+#: plconfig/view.py:257
+msgid "Too many to show ({number_of_roles_value})"
+msgstr "Zu viele, um sie anzuzeigen ({number_of_roles_value})"
+
+#: plconfig/view.py:260 plconfig/view.py:265 plconfig/view.py:334
+#: plconfig/view.py:340 plconfig/view.py:346
 msgid "None"
 msgstr "Nichts"
 
-#: plconfig/view.py:265
+#: plconfig/view.py:277
 msgid "AutoPlay Playlist"
 msgstr "Auto-Wiedergabeliste"
 
-#: plconfig/view.py:269
+#: plconfig/view.py:281
 msgid "Loop track"
 msgstr "Loop-Track"
 
-#: plconfig/view.py:273
+#: plconfig/view.py:285
 msgid "Loop Queue"
 msgstr "Schleifen-Warteschlange"
 
-#: plconfig/view.py:313
+#: plconfig/view.py:331
 msgid "Forced Voice Channel"
 msgstr "Erzwungener Sprachkanal"
 
-#: plconfig/view.py:319
+#: plconfig/view.py:337
 msgid "Forced Command Channel"
 msgstr "Erzwungener Befehlskanal"
 
-#: plconfig/view.py:325
+#: plconfig/view.py:343
 msgid "Forced Notification Channel"
 msgstr "Erzwungener Benachrichtigungskanal"
 
-#: plconfig/view.py:330
+#: plconfig/view.py:348
 msgid "DJ Users"
 msgstr "DJ-Benutzer"
 
-#: plconfig/view.py:331
+#: plconfig/view.py:349
 msgid "DJ Roles"
 msgstr "DJ-Rollen"
 
-#: plconfig/view.py:354
+#: plconfig/view.py:357
+msgid "Server Player Config"
+msgstr "Server-Player-Konfiguration"
+
+#: plconfig/view.py:372
 msgid "Next Bundled\n"
 "Playlist Update"
 msgstr "Nächstes\n"
 "Playlist-Update"
 
-#: plconfig/view.py:360
+#: plconfig/view.py:378
 msgid "Next Bundled External\n"
 "Playlist Update"
 msgstr "Nächstes externes Paket\n"
 "Playlist-Update"
 
-#: plconfig/view.py:366
+#: plconfig/view.py:384
 msgid "Next External\n"
 "Playlist Update"
 msgstr "Nächstes externes\n"
 "Playlist-Update"
 
-#: plconfig/view.py:379
+#: plconfig/view.py:397
 msgid "Date and Time (UTC)"
 msgstr "Datum und Uhrzeit (UTC)"
 
-#: plconfig/view.py:392
+#: plconfig/view.py:410
 msgid "You need to be the bot owner to be able to show this page."
 msgstr "Du musst der Bot-Eigentümer sein, um diese Seite anzeigen zu können."
 
-#: plconfig/view.py:398
+#: plconfig/view.py:416
 msgid "Config Folder"
 msgstr "Konfigurationsordner"
 
-#: plconfig/view.py:400
+#: plconfig/view.py:418
 msgid "Local Tracks"
 msgstr "Lokale Tracks"
 
-#: plconfig/view.py:403
+#: plconfig/view.py:421
 msgid "Lavalink Folder"
 msgstr "Lavalink-Ordner"
 
-#: plconfig/view.py:405
+#: plconfig/view.py:423
 msgid "Java Executable"
 msgstr "Ausführbare Java-Datei"
 
-#: plconfig/view.py:409
+#: plconfig/view.py:427
 msgid "Not Found"
 msgstr "Nicht gefunden"
 
-#: plconfig/view.py:419
+#: plconfig/view.py:437
 msgid "Paths"
 msgstr "Pfade"
 
-#: plconfig/view.py:420
+#: plconfig/view.py:438
 msgid "Path"
 msgstr "Pfad"
 
-#: plconfig/view.py:439
+#: plconfig/view.py:457
 msgid "Java"
 msgstr "Jalta"
 
-#: plconfig/view.py:443
+#: plconfig/view.py:461
 msgid "Lavaplayer"
 msgstr "Lavaplayer"
 
-#: plconfig/view.py:447
+#: plconfig/view.py:465
 msgid "Lavalink Branch"
 msgstr "Lavalink-Zweig"
 
-#: plconfig/view.py:451
+#: plconfig/view.py:469
 msgid "Lavalink Version"
 msgstr "Lavalink-Version"
 
-#: plconfig/view.py:455
+#: plconfig/view.py:473
 msgid "Lavalink Build"
 msgstr "Lavalink-Bau"
 
-#: plconfig/view.py:458
+#: plconfig/view.py:476
 msgid "Build Time"
 msgstr "Bauzeit"
 
-#: plconfig/view.py:460
+#: plconfig/view.py:478
 msgid "Commit"
 msgstr "Übertragen"
 
-#: plconfig/view.py:464
+#: plconfig/view.py:482
 msgid "Auto Update"
 msgstr "Auto-Update"
 
-#: plconfig/view.py:502
+#: plconfig/view.py:520
 msgid "Select an option from the dropdown menu below."
 msgstr "Wählen Sie eine Option aus dem Dropdown-Menü unten."
 
-#: plconfig/view.py:518
+#: plconfig/view.py:536
 msgid "Pick an option to view"
 msgstr "Wählen Sie eine Option zum Anzeigen aus"
 
-#: plconfig/view.py:528
+#: plconfig/view.py:546
 msgid "You are not authorized to interact with this option"
 msgstr "Sie sind nicht berechtigt, mit dieser Option zu interagieren"
 
-#: plconfig/view.py:558
+#: plconfig/view.py:576
 msgid "You are not authorized to interact with this"
 msgstr "Sie sind nicht berechtigt, mit diesem zu interagieren"
 

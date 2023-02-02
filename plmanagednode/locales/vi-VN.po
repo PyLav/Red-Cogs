@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
-"POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-02-01 00:10\n"
+"POT-Creation-Date: 2023-02-02 22:16+0000\n"
+"PO-Revision-Date: 2023-02-02 22:33\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese\n"
 "MIME-Version: 1.0\n"
@@ -28,7 +28,7 @@ msgid "Show the version of the Cog and it's PyLav dependencies"
 msgstr "Hiển thị phiên bản của Cog và đó là phụ thuộc PyLav"
 
 #: plmanagednode/cog.py:66
-msgid "Library/Cog"
+msgid "Library / Cog"
 msgstr "Thư viện / Cog"
 
 #: plmanagednode/cog.py:67
@@ -45,40 +45,40 @@ msgid "The managed Lavalink node is already up to date."
 msgstr "Nút Lavalink được quản lý đã được cập nhật."
 
 #: plmanagednode/cog.py:101
-msgid "Your node is out of date, to update please run `{prefix}{command} 1`."
-msgstr "Nút của bạn đã lỗi thời, để cập nhật, vui lòng chạy '{prefix}{command} 1'."
+msgid "Your node is out of date, to update please run `{bot_command_prefix}{command_name} 1`."
+msgstr "Nút của bạn đã lỗi thời, để cập nhật, vui lòng chạy '{bot_command_prefix}{command_name} 1'."
 
-#: plmanagednode/cog.py:117
-msgid "The managed Lavalink node has been updated to version {version}."
-msgstr "Nút Lavalink được quản lý đã được cập nhật lên phiên bản {version}."
+#: plmanagednode/cog.py:119
+msgid "The managed Lavalink node has been updated to version {version_value}."
+msgstr "Nút Lavalink được quản lý đã được cập nhật lên phiên bản {version_value}."
 
-#: plmanagednode/cog.py:127
+#: plmanagednode/cog.py:129
 #, docstring
 msgid "Toggle the managed node on/off.\n\n"
-"        Changes will be applied after restarting [botname].\n"
+"        Changes will be applied after I restart.\n"
 "        "
 msgstr "Bật/tắt nút được quản lý.\n\n"
-"        Các thay đổi sẽ được áp dụng sau khi khởi động lại [botname].\n"
+"        Các thay đổi sẽ được áp dụng sau khi tôi khởi động lại.\n"
 "        "
 
-#: plmanagednode/cog.py:142
+#: plmanagednode/cog.py:144
 msgid "PyLav's managed node has been enabled."
 msgstr "Nút được quản lý của PyLav đã được bật."
 
-#: plmanagednode/cog.py:150
+#: plmanagednode/cog.py:152
 msgid "PyLav's managed node has been disabled."
 msgstr "Nút được quản lý của PyLav đã bị vô hiệu hóa."
 
-#: plmanagednode/cog.py:158
+#: plmanagednode/cog.py:160
 #, docstring
 msgid "Toggle the managed node auto updates on/off.\n\n"
-"        Changes will be applied after restarting [botname].\n"
+"        Changes will be applied after I restart.\n"
 "        "
 msgstr "Bật/tắt cập nhật tự động nút được quản lý.\n\n"
-"        Các thay đổi sẽ được áp dụng sau khi khởi động lại [botname].\n"
+"        Các thay đổi sẽ được áp dụng sau khi tôi khởi động lại.\n"
 "        "
 
-#: plmanagednode/cog.py:174
+#: plmanagednode/cog.py:176
 msgid "PyLav's managed node auto updates have been enabled"
 msgstr "Cập nhật tự động nút được quản lý của PyLav đã được bật"
 
@@ -86,7 +86,7 @@ msgstr "Cập nhật tự động nút được quản lý của PyLav đã đư
 msgid "PyLav's managed node auto updates have been disabled"
 msgstr "Cập nhật tự động nút được quản lý của PyLav đã bị vô hiệu hóa"
 
-#: plmanagednode/cog.py:194
+#: plmanagednode/cog.py:192
 #, docstring
 msgid "Set the managed Lavalink node maximum heap-size.\n\n"
 "        By default, this value is 2G of available RAM in the host machine represented by (65-1023M|1+G) (256M,\n"
@@ -101,41 +101,41 @@ msgstr "Đặt kích thước đống tối đa nút Lavalink được quản l�
 "        rằng nút Lavalink được quản lý sẽ luôn sử dụng dung lượng RAM này.\n"
 "        "
 
-#: plmanagednode/cog.py:218
+#: plmanagednode/cog.py:216
 msgid "Heap-size must be a valid measure of size, e.g. 256M, 256G"
 msgstr "Kích thước đống phải là thước đo kích thước hợp lệ, ví dụ: 256M, 256G"
 
-#: plmanagednode/cog.py:228
+#: plmanagednode/cog.py:226
 msgid "Heap-size must be at least 64M, however it is recommended to have it set to at least 1G"
 msgstr "Kích thước đống phải ít nhất là 64M, tuy nhiên bạn nên đặt nó thành ít nhất 1G"
 
-#: plmanagednode/cog.py:240
-msgid "Heap-size must be less than your system RAM, You currently have {ram_in_bytes} of RAM available"
-msgstr "Kích thước đống phải nhỏ hơn RAM hệ thống của bạn, Bạn hiện có {ram_in_bytes} RAM có sẵn"
+#: plmanagednode/cog.py:238
+msgid "Heap-size must be less than your system RAM, You currently have {ram_in_bytes_value} of RAM available"
+msgstr "Kích thước đống phải nhỏ hơn RAM hệ thống của bạn, Bạn hiện có {ram_in_bytes_value} RAM có sẵn"
 
-#: plmanagednode/cog.py:252
-msgid "Heap-size must be less than {limit} due to your system limitations"
-msgstr "Kích thước đống phải nhỏ hơn {limit} do giới hạn hệ thống của bạn"
+#: plmanagednode/cog.py:250
+msgid "Heap-size must be less than {limit_value} due to your system limitations"
+msgstr "Kích thước đống phải nhỏ hơn {limit_value} do giới hạn hệ thống của bạn"
 
-#: plmanagednode/cog.py:272
-msgid "Managed node's heap-size set to {bytes}."
-msgstr "Kích thước heap của nút được quản lý được đặt thành {bytes}."
+#: plmanagednode/cog.py:270
+msgid "Managed node's heap-size set to {bytes_value}."
+msgstr "Kích thước heap của nút được quản lý được đặt thành {bytes_value}."
 
-#: plmanagednode/cog.py:283
+#: plmanagednode/cog.py:280
 #, docstring
 msgid "Change the managed node start up configs"
 msgstr "Thay đổi cấu hình khởi động nút được quản lý"
 
-#: plmanagednode/cog.py:287
+#: plmanagednode/cog.py:284
 #, docstring
 msgid "Set the managed node host"
 msgstr "Đặt máy chủ nút được quản lý"
 
-#: plmanagednode/cog.py:299
-msgid "Managed node's host set to {host}."
-msgstr "Máy chủ của nút được quản lý được đặt thành {host}."
+#: plmanagednode/cog.py:296
+msgid "Managed node's host set to {host_value}."
+msgstr "Máy chủ của nút được quản lý được đặt thành {host_value}."
 
-#: plmanagednode/cog.py:310
+#: plmanagednode/cog.py:306
 #, docstring
 msgid "`Dangerous command` Set the managed Lavalink node's connection port.\n\n"
 "        This port is the port the managed Lavalink node binds to, you should only change this if there is a\n"
@@ -148,95 +148,99 @@ msgstr "'Lệnh nguy hiểm' Đặt cổng kết nối của nút Lavalink đư�
 "        Giá trị theo mặc định là '2154'.\n"
 "        "
 
-#: plmanagednode/cog.py:320
+#: plmanagednode/cog.py:316
 msgid "The port must be between 1024 and 49151"
 msgstr "Cổng phải nằm trong khoảng từ 1024 đến 49151"
 
-#: plmanagednode/cog.py:332
-msgid "Managed node's port set to {port}."
-msgstr "Cổng của nút được quản lý được đặt thành {port}."
+#: plmanagednode/cog.py:328
+msgid "Managed node's port set to {port_value}."
+msgstr "Cổng của nút được quản lý được đặt thành {port_value}."
 
-#: plmanagednode/cog.py:340
+#: plmanagednode/cog.py:336
 #, docstring
 msgid "Change the managed node plugins"
 msgstr "Thay đổi các plugin nút được quản lý"
 
-#: plmanagednode/cog.py:346
+#: plmanagednode/cog.py:342
 #, docstring
 msgid "Disabled one of the available plugins"
 msgstr "Vô hiệu hóa một trong các plugin có sẵn"
 
-#: plmanagednode/cog.py:362 plmanagednode/cog.py:474
-msgid "The plugin must be one of the following: {plugins}"
-msgstr "Plugin phải là một trong những plugin sau: {plugins}"
+#: plmanagednode/cog.py:358
+msgid "The plugin must be one of the following: {plugins_value}"
+msgstr "Plugin phải là một trong những plugin sau: {plugins_value}"
 
-#: plmanagednode/cog.py:447
-msgid "Managed node's plugin {plugin} disabled."
-msgstr "Plugin của nút được quản lý {plugin} tàn tật."
+#: plmanagednode/cog.py:443
+msgid "Managed node plugin {plugin_value} disabled."
+msgstr "Plugin nút được quản lý {plugin_value} tàn tật."
 
-#: plmanagednode/cog.py:458
+#: plmanagednode/cog.py:453
 #, docstring
 msgid "Enable one of the available plugins"
 msgstr "Bật một trong các plugin có sẵn"
 
-#: plmanagednode/cog.py:507
-msgid "Managed node's plugin {plugin} enabled."
-msgstr "Plugin của nút được quản lý {plugin} Kích hoạt."
+#: plmanagednode/cog.py:469
+msgid "The plugin must be one of the following: {plugins}"
+msgstr "Plugin phải là một trong những plugin sau: {plugins}"
 
-#: plmanagednode/cog.py:518
+#: plmanagednode/cog.py:502
+msgid "Managed node plugin {plugin_value} enabled."
+msgstr "Plugin nút được quản lý {plugin_value} Kích hoạt."
+
+#: plmanagednode/cog.py:512
 #, docstring
 msgid "Update the managed node plugins"
 msgstr "Cập nhật các plugin nút được quản lý"
 
-#: plmanagednode/cog.py:592
-msgid "{name} was updated from {old_value} to {new_value}\n"
-msgstr "{name} đã được cập nhật từ {old_value} đến {new_value}\n"
+#: plmanagednode/cog.py:586
+msgid "{name_value} was updated from {old_value} to {new_value}\n"
+msgstr "{name_value} đã được cập nhật từ {old_value} đến {new_value}\n"
 
-#: plmanagednode/cog.py:600
-msgid "Managed node's plugins updated.\n\n"
-"{updates}"
-msgstr "Đã cập nhật các plugin của nút được quản lý.\n\n"
-"{updates}"
+#: plmanagednode/cog.py:594
+msgid "Managed node plugins updated.\n\n"
+"{update_values}"
+msgstr "Các plugin nút được quản lý được cập nhật.\n\n"
+"{update_values}"
 
-#: plmanagednode/cog.py:611
+#: plmanagednode/cog.py:604
 msgid "Managed node's plugins already up to date"
 msgstr "Các plugin của nút được quản lý đã được cập nhật"
 
-#: plmanagednode/cog.py:619
+#: plmanagednode/cog.py:612
 #, docstring
 msgid "Toggle the managed node sources"
 msgstr "Chuyển đổi các nguồn nút được quản lý"
 
-#: plmanagednode/cog.py:634
-msgid "Invalid source, {valid_list} are valid sources"
-msgstr "Nguồn không hợp lệ, {valid_list} là những nguồn hợp lệ"
+#: plmanagednode/cog.py:627
+msgid "Invalid source, {valid_list_value} are valid sources"
+msgstr "Nguồn không hợp lệ, {valid_list_value} là những nguồn hợp lệ"
 
-#: plmanagednode/cog.py:648 plmanagednode/cog.py:684
+#: plmanagednode/cog.py:641 plmanagednode/cog.py:676
 msgid "enabled"
 msgstr "Kích hoạt"
 
-#: plmanagednode/cog.py:648 plmanagednode/cog.py:684
+#: plmanagednode/cog.py:641 plmanagednode/cog.py:676
 msgid "disabled"
 msgstr "tàn tật"
 
-#: plmanagednode/cog.py:651
-msgid "Managed node's {source} source set to {state}."
-msgstr "Nút được quản lý {source} nguồn được đặt thành {state}."
+#: plmanagednode/cog.py:644
+msgid "Managed node {source_value} source set to {state_value}."
+msgstr "Nút được quản lý {source_value} nguồn được đặt thành {state_value}."
 
-#: plmanagednode/cog.py:663
+#: plmanagednode/cog.py:655
 #, docstring
 msgid "Toggle the managed node filters"
 msgstr "Chuyển đổi bộ lọc nút được quản lý"
 
-#: plmanagednode/cog.py:675
-msgid "Invalid source, {valid_list} are valid filters"
-msgstr "Nguồn không hợp lệ, {valid_list} là những bộ lọc hợp lệ"
+#: plmanagednode/cog.py:667
+msgid "Invalid source, {valid_list_value} are valid filters"
+msgstr "Nguồn không hợp lệ, {valid_list_value} là những bộ lọc hợp lệ"
 
-#: plmanagednode/cog.py:687
-msgid "Managed node's {source} filter set to {state}."
-msgstr "Nút được quản lý {source} bộ lọc được đặt thành {state}."
+#: plmanagednode/cog.py:679
+msgid "Managed node {source_value} filter set to {state_value}."
+msgstr "Nút được quản lý {source_value} bộ lọc được đặt thành {state_value}."
 
-#: plmanagednode/cog.py:699
+#: plmanagednode/cog.py:690
 #, docstring
 msgid "Configure multiple settings for the managed node.\n\n"
 "        Run `[p]plmanaged config server <setting> info` to show info about the settings and what they do.\n\n"
@@ -267,75 +271,75 @@ msgstr "Định cấu hình nhiều cài đặt cho nút được quản lý.\n\
 "        'soundcloudSearchEnabled' : Boolean tức là True (Mặc định đúng)\n"
 "        "
 
-#: plmanagednode/cog.py:739
-msgid "{Setting} is not a valid Setting; Options are:\n\n"
-"{setting_list}"
-msgstr "{Setting} không phải là Cài đặt hợp lệ; Các tùy chọn là:\n\n"
-"{setting_list}"
+#: plmanagednode/cog.py:730
+msgid "{Setting_value} is not a valid Setting; Options are:\n\n"
+"{setting_list_value}"
+msgstr "{Setting_value} không phải là Cài đặt hợp lệ; Các tùy chọn là:\n\n"
+"{setting_list_value}"
 
-#: plmanagednode/cog.py:750
+#: plmanagednode/cog.py:743
 msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses but will increase RAM usage. Minimum of 40ms, lower values may introduce pauses and stutters. Set to 0 to disable JDA-NAS. Accepted values: Range: 0 - 2,000"
 msgstr "Thời lượng của bộ đệm NAS tính bằng mili giây. Giá trị cao hơn có giá tốt hơn so với thời gian tạm dừng GC lâu hơn nhưng sẽ tăng mức sử dụng RAM. Tối thiểu 40ms, các giá trị thấp hơn có thể gây ra tạm dừng và giật hình. Đặt thành 0 để tắt JDA-NAS. Giá trị được chấp nhận: Phạm vi: 0 - 2.000"
 
-#: plmanagednode/cog.py:756
+#: plmanagednode/cog.py:749
 msgid "How many milliseconds of audio to keep buffered, Higher values increase RAM usage. Accepted values: Range: 1,000 - 10,000"
 msgstr "Có bao nhiêu mili giây âm thanh để giữ bộ đệm, Giá trị cao hơn làm tăng mức sử dụng RAM. Giá trị được chấp nhận: Phạm vi: 1.000 - 10.000"
 
-#: plmanagednode/cog.py:760
+#: plmanagednode/cog.py:753
 msgid "The threshold in milliseconds for how long a track can be stuck. A track is stuck if does not return any audio data. Accepted values: Range: 5,000 - 20,000"
 msgstr "Ngưỡng tính bằng mili giây cho thời gian một bản nhạc có thể bị kẹt. Một bản nhạc bị kẹt nếu không trả về bất kỳ dữ liệu âm thanh nào. Giá trị được chấp nhận: Phạm vi: 5.000 - 20.000"
 
-#: plmanagednode/cog.py:764
+#: plmanagednode/cog.py:757
 msgid "Number of pages to return for a YouTube Playlist - Each page contains 100 songs. Accepted values: Range: 5 - 100"
 msgstr "Số trang để quay lại Danh sách phát trên YouTube - Mỗi trang chứa 100 bài hát. Giá trị được chấp nhận: Phạm vi: 5 - 100"
 
-#: plmanagednode/cog.py:768
-msgid "Opus encoder quality. Valid values range from 0 to 10, where 10 is best quality but is the most expensive on the CPU"
-msgstr "Chất lượng bộ mã hóa Opus. Giá trị hợp lệ nằm trong khoảng từ 0 đến 10, trong đó 10 là chất lượng tốt nhất nhưng đắt nhất trên CPU"
+#: plmanagednode/cog.py:761
+msgid "Opus encoder quality. Valid values range from 0 to 10, where 10 is the best quality but is the most expensive on the CPU."
+msgstr "Chất lượng bộ mã hóa Opus. Các giá trị hợp lệ nằm trong khoảng từ 0 đến 10, trong đó 10 là chất lượng tốt nhất nhưng đắt nhất trên CPU."
 
-#: plmanagednode/cog.py:772
-msgid "Quality of resampling operations. Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU"
-msgstr "Chất lượng của các hoạt động lấy mẫu lại. Giá trị hợp lệ là THẤP, TRUNG BÌNH và CAO, trong đó CAO sử dụng nhiều CPU nhất"
+#: plmanagednode/cog.py:765
+msgid "Quality of resampling operations. Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU."
+msgstr "Chất lượng của các hoạt động lấy mẫu lại. Giá trị hợp lệ là THẤP, TRUNG BÌNH và CAO, trong đó CAO sử dụng nhiều CPU nhất."
 
-#: plmanagednode/cog.py:776
+#: plmanagednode/cog.py:769
 msgid "Seek ghosting is the effect where whilst a seek is in progress, the audio buffer is read from until empty, or until seek is ready. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "Tìm kiếm bóng ma là hiệu ứng trong khi tìm kiếm đang diễn ra, bộ đệm âm thanh được đọc từ khi trống rỗng hoặc cho đến khi tìm kiếm sẵn sàng. Giá trị được chấp nhận cho True: \"True\", \"t\", \"1\", Giá trị được chấp nhận cho False: \"False\", \"f\", \"0\""
 
-#: plmanagednode/cog.py:781
+#: plmanagednode/cog.py:774
 msgid "How frequently in seconds to send player updates to clients, affects the current position accuracy. Accepted values: Range: 1 - 86400"
 msgstr "Tần suất trong vài giây để gửi cập nhật người chơi cho khách hàng, ảnh hưởng đến độ chính xác của vị trí hiện tại. Giá trị được chấp nhận: Phạm vi: 1 - 86400"
 
-#: plmanagednode/cog.py:785
-msgid "Enable or disable YouTube searches within the node, this will affect AppleMusic, Spotify and any functionality dependant on YouTube. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
+#: plmanagednode/cog.py:778
+msgid "Enable or disable YouTube searches within the node, this will affect AppleMusic, Spotify and any functionality dependent on YouTube. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "Bật hoặc tắt tìm kiếm YouTube trong nút, điều này sẽ ảnh hưởng đến AppleMusic, Spotify và bất kỳ chức năng nào phụ thuộc vào YouTube. Giá trị được chấp nhận cho True: \"True\", \"t\", \"1\", Giá trị được chấp nhận cho False: \"False\", \"f\", \"0\""
 
-#: plmanagednode/cog.py:790
-msgid "Enable or disable SoundCloud searches within the node, this will affect any functionality dependant on SoundCloud. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
+#: plmanagednode/cog.py:783
+msgid "Enable or disable SoundCloud searches within the node, this will affect any functionality dependent on SoundCloud. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "Bật hoặc tắt tìm kiếm SoundCloud trong nút, điều này sẽ ảnh hưởng đến bất kỳ chức năng nào phụ thuộc vào SoundCloud. Giá trị được chấp nhận cho True: \"True\", \"t\", \"1\", Giá trị được chấp nhận cho False: \"False\", \"f\", \"0\""
 
-#: plmanagednode/cog.py:799
-msgid "{Setting} info.\n\n"
-"{info}"
-msgstr "{Setting} Thông tin.\n\n"
-"{info}"
+#: plmanagednode/cog.py:792
+msgid "{Setting_value} info.\n\n"
+"{info_value}"
+msgstr "{Setting_value} Thông tin.\n\n"
+"{info_value}"
 
-#: plmanagednode/cog.py:827
-msgid "{Setting} valid inputs are:\n\n"
-"Range between: {start} - {end}"
-msgstr "{Setting} Đầu vào hợp lệ là:\n\n"
-"Phạm vi giữa: {start} - {end}"
+#: plmanagednode/cog.py:820
+msgid "{Setting_value} valid inputs are:\n\n"
+"Range between: {start_value} - {end_value}"
+msgstr "{Setting_value} Đầu vào hợp lệ là:\n\n"
+"Phạm vi giữa: {start_value} - {end_value}"
 
-#: plmanagednode/cog.py:838
-msgid "{Setting} valid inputs are:\n\n"
-"{setting_list}"
-msgstr "{Setting} Đầu vào hợp lệ là:\n\n"
-"{setting_list}"
+#: plmanagednode/cog.py:831
+msgid "{Setting_value} valid inputs are:\n\n"
+"{setting_list_value}"
+msgstr "{Setting_value} Đầu vào hợp lệ là:\n\n"
+"{setting_list_value}"
 
-#: plmanagednode/cog.py:857
-msgid "{Setting} set to {value}."
-msgstr "{Setting} Đặt thành {value}."
+#: plmanagednode/cog.py:850
+msgid "{Setting_value} set to {value}."
+msgstr "{Setting_value} Đặt thành {value}."
 
-#: plmanagednode/cog.py:869
+#: plmanagednode/cog.py:861
 #, docstring
 msgid "Configure Lavalink IP Rotation for rate limits.\n\n"
 "        Run `[p]plmanaged config iprotation 1` to remove the ip rotation\n"
@@ -344,17 +348,17 @@ msgstr "Cấu hình Lavalink IP Rotation cho các giới hạn tốc độ.\n\n"
 "        Chạy '[p]Cấu hình plmanaged iprotation 1 'để loại bỏ xoay IP\n"
 "        "
 
-#: plmanagednode/cog.py:880
+#: plmanagednode/cog.py:872
 msgid "Click the button below to configure the IP rotation for your node.\n"
-"More info at: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> and <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
+"More info at: {url_value_1} and {url_value_2}"
 msgstr "Nhấp vào nút bên dưới để định cấu hình xoay vòng IP cho nút của bạn.\n"
-"Xem thêm thông tin tại: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> và <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
+"Xem thêm thông tin tại: {url_value_1} và {url_value_2}"
 
-#: plmanagednode/cog.py:898
+#: plmanagednode/cog.py:893
 msgid "Removing the IP rotation from your node."
 msgstr "Xóa xoay vòng IP khỏi nút của bạn."
 
-#: plmanagednode/cog.py:906
+#: plmanagednode/cog.py:901
 #, docstring
 msgid "Link a Google account to Lavalink to bypass YouTube's age restriction\n\n"
 "        Run `[p]plmanaged config googleaccount 1` to remove the linked account.\n"
@@ -363,17 +367,17 @@ msgstr "Liên kết tài khoản Google với Lavalink để vượt qua giới 
 "        Chạy '[p]plmanaged config googleaccount 1' để loại bỏ các tài khoản được liên kết.\n"
 "        "
 
-#: plmanagednode/cog.py:917
+#: plmanagednode/cog.py:912
 msgid "Click the button below to link a Google account to your node, if you have 2FA setup on this account you will need an app password instead\n"
 "More info at: <https://support.google.com/accounts/answer/185833>"
 msgstr "Nhấp vào nút bên dưới để liên kết tài khoản Google với nút của bạn, nếu bạn đã thiết lập 2FA trên tài khoản này, bạn sẽ cần mật khẩu ứng dụng để thay thế\n"
 "Xem thêm thông tin tại: <https://support.google.com/accounts/answer/185833>"
 
-#: plmanagednode/cog.py:936
+#: plmanagednode/cog.py:931
 msgid "Unlinking Google account from your node."
 msgstr "Hủy liên kết tài khoản Google khỏi nút của bạn."
 
-#: plmanagednode/cog.py:944
+#: plmanagednode/cog.py:939
 #, docstring
 msgid "Configure a HTTP proxy for Lavalink\n\n"
 "        Run `[p]plmanaged config httpproxy 1` to remove the proxy.\n"
@@ -382,75 +386,78 @@ msgstr "Cấu hình HTTP proxy cho Lavalink\n\n"
 "        Chạy '[p]plmanaged config httpproxy 1' để loại bỏ proxy.\n"
 "        "
 
-#: plmanagednode/cog.py:955
+#: plmanagednode/cog.py:950
 msgid "Click the button below to configure a HTTP proxy for your node"
 msgstr "Nhấp vào nút bên dưới để định cấu hình HTTP proxy cho nút của bạn"
 
-#: plmanagednode/cog.py:969
+#: plmanagednode/cog.py:964
 msgid "Unlinking HTTP proxy from your node."
 msgstr "Hủy liên kết HTTP proxy khỏi nút của bạn."
 
 #: plmanagednode/view.py:38 plmanagednode/view.py:65 plmanagednode/view.py:98
-#: plmanagednode/view.py:179 plmanagednode/view.py:337
-#: plmanagednode/view.py:422
-msgid "You are not authorized to interact with this"
-msgstr "Bạn không được phép tương tác với điều này"
+msgid "You are not authorized to interact with this."
+msgstr "Bạn không được phép tương tác với điều này."
 
 #: plmanagednode/view.py:125
-msgid "IP Rotation Configurator"
-msgstr "Bộ cấu hình xoay IP"
+msgid "IP Rotation Configurator."
+msgstr "Cấu hình xoay IP."
 
 #: plmanagednode/view.py:128
-msgid "IP Blocks"
-msgstr "Khối IP"
+msgid "IP Blocks."
+msgstr "Khối IP."
 
 #: plmanagednode/view.py:132
 msgid "1.0.0.0/8,...,... - Comma separated list of IP blocks"
 msgstr "1.0.0.0/8,...,... - Danh sách các khối IP được phân tách bằng dấu phẩy"
 
 #: plmanagednode/view.py:137
-msgid "Rotation strategy"
-msgstr "Chiến lược xoay vòng"
+msgid "Rotation strategy."
+msgstr "Chiến lược xoay vòng."
 
 #: plmanagednode/view.py:146
-msgid "Retry limit"
-msgstr "Giới hạn thử lại"
+msgid "Retry limit."
+msgstr "Thử lại giới hạn."
 
 #: plmanagednode/view.py:149
 msgid "-1 = default, 0 = infinity, >0 = number of retries"
 msgstr "-1 = mặc định, 0 = vô cực, >0 = số lần thử lại"
 
 #: plmanagednode/view.py:154
-msgid "IPs to exclude"
-msgstr "IP cần loại trừ"
+msgid "IPs to exclude."
+msgstr "IP để loại trừ."
 
 #: plmanagednode/view.py:157
 msgid "Comma separated list of IP to exclude from rotation"
 msgstr "Danh sách IP được phân tách bằng dấu phẩy để loại trừ khỏi xoay"
 
 #: plmanagednode/view.py:161
-msgid "Search trigger rotation"
-msgstr "Xoay kích hoạt tìm kiếm"
+msgid "Search trigger rotation."
+msgstr "Xoay kích hoạt tìm kiếm."
 
 #: plmanagednode/view.py:164
 msgid "0 or 1 (0 = disabled, 1 = enabled)"
 msgstr "0 hoặc 1 (0 = bị vô hiệu hóa, 1 = đã bật)"
 
+#: plmanagednode/view.py:179 plmanagednode/view.py:337
+#: plmanagednode/view.py:422
+msgid "You are not authorized to interact with this"
+msgstr "Bạn không được phép tương tác với điều này"
+
 #: plmanagednode/view.py:192
-msgid "Invalid IP block - {error}"
-msgstr "Khối IP không hợp lệ - {error}"
+msgid "Invalid IP block - {error_value}"
+msgstr "Khối IP không hợp lệ - {error_value}"
 
 #: plmanagednode/view.py:205
 msgid "No IP blocks were provided"
 msgstr "Không có khối IP nào được cung cấp"
 
 #: plmanagednode/view.py:220
-msgid "Invalid IP address - {error}"
-msgstr "Địa chỉ IP không hợp lệ - {error}"
+msgid "Invalid IP address - {error_value}"
+msgstr "Địa chỉ IP không hợp lệ - {error_value}"
 
 #: plmanagednode/view.py:239
-msgid "Invalid strategy, must be one of: {options}"
-msgstr "Chiến lược không hợp lệ, phải là một trong những chiến lược sau: {options}"
+msgid "Invalid strategy, must be one of: {options_value}"
+msgstr "Chiến lược không hợp lệ, phải là một trong những chiến lược sau: {options_value}"
 
 #: plmanagednode/view.py:255
 msgid "Invalid retry limit, must be a number greater than or equals to -1"

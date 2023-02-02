@@ -1,0 +1,545 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: pylav\n"
+"POT-Creation-Date: 2023-02-02 22:16+0000\n"
+"PO-Revision-Date: 2023-02-02 22:33\n"
+"Last-Translator: \n"
+"Language-Team: Romanian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.4.2\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100>0 && n%100<20)) ? 1 : 2);\n"
+"X-Crowdin-Project: pylav\n"
+"X-Crowdin-Project-ID: 535244\n"
+"X-Crowdin-Language: ro\n"
+"X-Crowdin-File: /cogs/plmanagednode/locales/messages.pot\n"
+"X-Crowdin-File-ID: 3323\n"
+"Language: ro_RO\n"
+
+#: plmanagednode/cog.py:34 plmanagednode/cog.py:46
+#, docstring
+msgid "Configure the managed Lavalink node used by PyLav"
+msgstr "Configurați nodul gestionat Lavalink utilizat de PyLav"
+
+#: plmanagednode/cog.py:50
+#, docstring
+msgid "Show the version of the Cog and it's PyLav dependencies"
+msgstr "Afișați versiunea cogului și dependențele PyLav"
+
+#: plmanagednode/cog.py:66
+msgid "Library / Cog"
+msgstr "Biblioteca / Cog"
+
+#: plmanagednode/cog.py:67
+msgid "Version"
+msgstr "Versiune"
+
+#: plmanagednode/cog.py:80
+#, docstring
+msgid "Update the managed Lavalink node"
+msgstr "Actualizați nodul gestionat Lavalink"
+
+#: plmanagednode/cog.py:92
+msgid "The managed Lavalink node is already up to date."
+msgstr "Nodul gestionat Lavalink este deja actualizat."
+
+#: plmanagednode/cog.py:101
+msgid "Your node is out of date, to update please run `{bot_command_prefix}{command_name} 1`."
+msgstr "Nodul dumneavoastră este învechit, pentru a actualiza vă rugăm să executați \"{bot_command_prefix}{command_name} 1'."
+
+#: plmanagednode/cog.py:119
+msgid "The managed Lavalink node has been updated to version {version_value}."
+msgstr "Nodul Lavalink gestionat a fost actualizat la versiune {version_value}."
+
+#: plmanagednode/cog.py:129
+#, docstring
+msgid "Toggle the managed node on/off.\n\n"
+"        Changes will be applied after I restart.\n"
+"        "
+msgstr "Comutați nodul gestionat on/off.\n\n"
+"        Modificările vor fi aplicate după ce repornesc.\n"
+"        "
+
+#: plmanagednode/cog.py:144
+msgid "PyLav's managed node has been enabled."
+msgstr "Nodul gestionat de PyLavs a fost activat."
+
+#: plmanagednode/cog.py:152
+msgid "PyLav's managed node has been disabled."
+msgstr "Nodul gestionat de PyLave a fost dezactivat."
+
+#: plmanagednode/cog.py:160
+#, docstring
+msgid "Toggle the managed node auto updates on/off.\n\n"
+"        Changes will be applied after I restart.\n"
+"        "
+msgstr "Comutați actualizările automate ale nodului gestionat on/off.\n\n"
+"        Modificările vor fi aplicate după ce repornesc.\n"
+"        "
+
+#: plmanagednode/cog.py:176
+msgid "PyLav's managed node auto updates have been enabled"
+msgstr "Actualizările modulului automat gestionate de PyLave au fost activate"
+
+#: plmanagednode/cog.py:184
+msgid "PyLav's managed node auto updates have been disabled"
+msgstr "Actualizările modulului automat gestionate de PyLave au fost dezactivate"
+
+#: plmanagednode/cog.py:192
+#, docstring
+msgid "Set the managed Lavalink node maximum heap-size.\n\n"
+"        By default, this value is 2G of available RAM in the host machine represented by (65-1023M|1+G) (256M,\n"
+"        256G for example)\n\n"
+"        This value only represents the maximum amount of RAM allowed to be used at any given point, and does not mean\n"
+"        that the managed Lavalink node will always use this amount of RAM.\n"
+"        "
+msgstr "Setați nodul Lavalink gestionat dimensiunea maximă a heap-ului.\n\n"
+"        În mod implicit, această valoare este 2G de RAM disponibile în mașina gazdă reprezentată de (65-1023M|1 +G) (256M,\n"
+"        256G, de exemplu)\n\n"
+"        Această valoare reprezintă doar cantitatea maximă de memorie RAM care poate fi utilizată în orice moment și nu înseamnă că\n"
+"        că nodul Lavalink gestionat va utiliza întotdeauna această cantitate de RAM.\n"
+"        "
+
+#: plmanagednode/cog.py:216
+msgid "Heap-size must be a valid measure of size, e.g. 256M, 256G"
+msgstr "Dimensiunea casei trebuie să fie o măsură validă a dimensiunii, de exemplu 256M, 256G"
+
+#: plmanagednode/cog.py:226
+msgid "Heap-size must be at least 64M, however it is recommended to have it set to at least 1G"
+msgstr "Mărimea capului trebuie să fie de cel puțin 64M, cu toate acestea se recomandă ca acesta să fie setat la cel puțin 1G"
+
+#: plmanagednode/cog.py:238
+msgid "Heap-size must be less than your system RAM, You currently have {ram_in_bytes_value} of RAM available"
+msgstr "Heap-size trebuie să fie mai mică decât memoria RAM a sistemului dvs., Aveți în prezent {ram_in_bytes_value} de RAM disponibile"
+
+#: plmanagednode/cog.py:250
+msgid "Heap-size must be less than {limit_value} due to your system limitations"
+msgstr "Dimensiunea mormanului trebuie să fie mai mică decât {limit_value} din cauza limitărilor de sistem"
+
+#: plmanagednode/cog.py:270
+msgid "Managed node's heap-size set to {bytes_value}."
+msgstr "Dimensiunea heap-ului nodului gestionat este setată la {bytes_value}."
+
+#: plmanagednode/cog.py:280
+#, docstring
+msgid "Change the managed node start up configs"
+msgstr "Modifică configurările modulului de pornire gestionat"
+
+#: plmanagednode/cog.py:284
+#, docstring
+msgid "Set the managed node host"
+msgstr "Setaţi modulul de găzduire gestionat"
+
+#: plmanagednode/cog.py:296
+msgid "Managed node's host set to {host_value}."
+msgstr "Gazdă nod gestionat setat la {host_value}."
+
+#: plmanagednode/cog.py:306
+#, docstring
+msgid "`Dangerous command` Set the managed Lavalink node's connection port.\n\n"
+"        This port is the port the managed Lavalink node binds to, you should only change this if there is a\n"
+"        conflict with the default port because you already have an application using port 2154 on this device.\n\n"
+"        The value by default is `2154`.\n"
+"        "
+msgstr "`Comanda periculoasă` Setează portul de conectare Lavalink gestionat.\n\n"
+"        Acest port este portul la care nodul Lavalink se leagă ar trebui să schimbați acest lucru doar dacă există un conflict\n"
+"        cu portul implicit deoarece aveți deja o aplicație care folosește portul 2154 pe acest dispozitiv.\n\n"
+"        Valoarea implicită este `2154`.\n"
+"        "
+
+#: plmanagednode/cog.py:316
+msgid "The port must be between 1024 and 49151"
+msgstr "Portul trebuie să fie între 1024 şi 49151"
+
+#: plmanagednode/cog.py:328
+msgid "Managed node's port set to {port_value}."
+msgstr "Portul nodului gestionat setat la {port_value}."
+
+#: plmanagednode/cog.py:336
+#, docstring
+msgid "Change the managed node plugins"
+msgstr "Schimbă plugin-urile cu nod gestionat"
+
+#: plmanagednode/cog.py:342
+#, docstring
+msgid "Disabled one of the available plugins"
+msgstr "S-a dezactivat unul dintre plugin-urile disponibile"
+
+#: plmanagednode/cog.py:358
+msgid "The plugin must be one of the following: {plugins_value}"
+msgstr "Plugin-ul trebuie să fie una dintre următoarele: {plugins_value}"
+
+#: plmanagednode/cog.py:443
+msgid "Managed node plugin {plugin_value} disabled."
+msgstr "Plugin nod gestionat {plugin_value} dezactivat."
+
+#: plmanagednode/cog.py:453
+#, docstring
+msgid "Enable one of the available plugins"
+msgstr "Activați unul dintre plugin-urile disponibile"
+
+#: plmanagednode/cog.py:469
+msgid "The plugin must be one of the following: {plugins}"
+msgstr "Plugin-ul trebuie să fie unul dintre următoarele: {plugins}"
+
+#: plmanagednode/cog.py:502
+msgid "Managed node plugin {plugin_value} enabled."
+msgstr "Plugin nod gestionat {plugin_value} Activat."
+
+#: plmanagednode/cog.py:512
+#, docstring
+msgid "Update the managed node plugins"
+msgstr "Actualizați modulele gestionate"
+
+#: plmanagednode/cog.py:586
+msgid "{name_value} was updated from {old_value} to {new_value}\n"
+msgstr "{name_value} a fost actualizat de la {old_value} spre {new_value}\n"
+
+#: plmanagednode/cog.py:594
+msgid "Managed node plugins updated.\n\n"
+"{update_values}"
+msgstr "Plugin-uri de nod gestionate actualizate.\n\n"
+"{update_values}"
+
+#: plmanagednode/cog.py:604
+msgid "Managed node's plugins already up to date"
+msgstr "Plugin-urile nodului sunt deja actualizate"
+
+#: plmanagednode/cog.py:612
+#, docstring
+msgid "Toggle the managed node sources"
+msgstr "Comută sursele nodului gestionat"
+
+#: plmanagednode/cog.py:627
+msgid "Invalid source, {valid_list_value} are valid sources"
+msgstr "Sursă nevalidă, {valid_list_value} sunt surse valide"
+
+#: plmanagednode/cog.py:641 plmanagednode/cog.py:676
+msgid "enabled"
+msgstr "Activat"
+
+#: plmanagednode/cog.py:641 plmanagednode/cog.py:676
+msgid "disabled"
+msgstr "dezactivat"
+
+#: plmanagednode/cog.py:644
+msgid "Managed node {source_value} source set to {state_value}."
+msgstr "Nod gestionat {source_value} sursă setată la {state_value}."
+
+#: plmanagednode/cog.py:655
+#, docstring
+msgid "Toggle the managed node filters"
+msgstr "Comută filtrele de nod gestionate"
+
+#: plmanagednode/cog.py:667
+msgid "Invalid source, {valid_list_value} are valid filters"
+msgstr "Sursă nevalidă, {valid_list_value} sunt filtre valide"
+
+#: plmanagednode/cog.py:679
+msgid "Managed node {source_value} filter set to {state_value}."
+msgstr "Nod gestionat {source_value} filtru setat la {state_value}."
+
+#: plmanagednode/cog.py:690
+#, docstring
+msgid "Configure multiple settings for the managed node.\n\n"
+"        Run `[p]plmanaged config server <setting> info` to show info about the settings and what they do.\n\n"
+"        **Setting names**:\n"
+"        `bufferDurationMs` : Integer i.e 400 (Default 400) - Set to 0 to disable JDA-NAS\n"
+"        `frameBufferDurationMs` : Integer i.e 1000 (Default 1000)\n"
+"        `trackStuckThresholdMs` : Integer i.e 1000 (Default 1000)\n"
+"        `youtubePlaylistLoadLimit` : Integer i.e 1000 (Default 1000)\n"
+"        `opusEncodingQuality` : Integer i.e 10 (Default 10)\n"
+"        `resamplingQuality` : String i.e LOW (Default HIGH)\n"
+"        `useSeekGhosting` : Boolean i.e True (Default True)\n"
+"        `playerUpdateInterval` : Integer i.e 30 (Default 30)\n"
+"        `youtubeSearchEnabled` : Boolean i.e True (Default True)\n"
+"        `soundcloudSearchEnabled` : Boolean i.e True (Default True)\n"
+"        "
+msgstr "Configuraţi setări multiple pentru modulul gestionat.\n\n"
+"        Rulați `[p]plmanaged config server <setting> info` pentru a afișa informații despre setări și ceea ce fac.\n\n"
+"        **Setarea numelor**:\n"
+"        `bufferDurationMs` : Integer i. 400 (Default 400) - Setat la 0 pentru a dezactiva JDA-NAS\n"
+"        `frameworkBufferDurationMs` : Integer i. 1000 (Implicit 1000)\n"
+"        `trackStuckThresholdMs`: Integer i. 1000 (Default 1000)\n"
+"        `youtubePlaylistLoadLimit` : Integer i. 1000 (Default 1000)\n"
+"        `opusEncodingQuality` : Integer i. 10 (Default 10)\n"
+"        `resamplingQuality` : String i. LOW (Default HIGH)\n"
+"        `useSeekGhosting` : Boolean i. True (Default True)\n"
+"        `playerUpdateInterval` : Integer i. 30 (Default 30)\n"
+"        `youtubeSearchEnabled` : Boolean i. True (Default True)\n"
+"        `soundcloudSearchEnabled` : Boolean i. Adevărat (Default)\n"
+"        "
+
+#: plmanagednode/cog.py:730
+msgid "{Setting_value} is not a valid Setting; Options are:\n\n"
+"{setting_list_value}"
+msgstr "{Setting_value} nu este o Setare validă; Opțiunile sunt:\n\n"
+"{setting_list_value}"
+
+#: plmanagednode/cog.py:743
+msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses but will increase RAM usage. Minimum of 40ms, lower values may introduce pauses and stutters. Set to 0 to disable JDA-NAS. Accepted values: Range: 0 - 2,000"
+msgstr "Durata tamponului NAS în milisecunde. Valorile mai mari merg mai bine împotriva unor pauze GC mai lungi, dar vor crește utilizarea RAM. Minim 40ms, valori mai mici pot introduce pauze și stutter. Setat la 0 pentru a dezactiva JDA-NAS. Valori acceptate: Interval: 0 - 2,000"
+
+#: plmanagednode/cog.py:749
+msgid "How many milliseconds of audio to keep buffered, Higher values increase RAM usage. Accepted values: Range: 1,000 - 10,000"
+msgstr "Câte milisecunde de audio pentru a păstra buff-uri, valorile mai mari cresc utilizarea RAM. Valori acceptate: Interval: 1000 - 10,000"
+
+#: plmanagednode/cog.py:753
+msgid "The threshold in milliseconds for how long a track can be stuck. A track is stuck if does not return any audio data. Accepted values: Range: 5,000 - 20,000"
+msgstr "Pragul în milisecunde pentru cât timp o pistă poate fi blocată. O piesă este blocată dacă nu returnează date audio. Valorile acceptate: 5000 - 20,000"
+
+#: plmanagednode/cog.py:757
+msgid "Number of pages to return for a YouTube Playlist - Each page contains 100 songs. Accepted values: Range: 5 - 100"
+msgstr "Numărul de pagini pentru a reveni pentru o listă de redare YouTube - Fiecare pagină conține 100 de melodii. Valori acceptate: Intervale: 5 - 100"
+
+#: plmanagednode/cog.py:761
+msgid "Opus encoder quality. Valid values range from 0 to 10, where 10 is the best quality but is the most expensive on the CPU."
+msgstr "Opus encoder de calitate. Valorile valide variază de la 0 la 10, unde 10 este cea mai bună calitate, dar este cel mai scump de pe procesor."
+
+#: plmanagednode/cog.py:765
+msgid "Quality of resampling operations. Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU."
+msgstr "Calitatea operațiunilor de reeșantionare. Valorile valide sunt LOW, MEDIUM și HIGH, unde HIGH utilizează cel mai mult CPU."
+
+#: plmanagednode/cog.py:769
+msgid "Seek ghosting is the effect where whilst a seek is in progress, the audio buffer is read from until empty, or until seek is ready. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
+msgstr "Căutați fantomă este efectul în care, în timp ce o căutare este în desfășurare, tamponul audio este citit de până la gol sau până când căutarea este gata. Valorile acceptate pentru Adevărat: `True`, `t`, `1`, Valori acceptate pentru False: `False`, `f`, `0`"
+
+#: plmanagednode/cog.py:774
+msgid "How frequently in seconds to send player updates to clients, affects the current position accuracy. Accepted values: Range: 1 - 86400"
+msgstr "Cât de frecvent în câteva secunde pentru a trimite jucătorului actualizări către clienți, afectează precizia curentă a poziției. Valori acceptate: Interval: 1 - 86400"
+
+#: plmanagednode/cog.py:778
+msgid "Enable or disable YouTube searches within the node, this will affect AppleMusic, Spotify and any functionality dependent on YouTube. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
+msgstr "Activați sau dezactivați căutările YouTube în cadrul nodului, acest lucru va afecta AppleMusic, Spotify și orice funcționalitate dependentă de YouTube. Valori acceptate pentru True: \"Adevărat\", \"nu\", \"1\", Valori acceptate pentru fals: \"Fals\", \"f\", \"0\""
+
+#: plmanagednode/cog.py:783
+msgid "Enable or disable SoundCloud searches within the node, this will affect any functionality dependent on SoundCloud. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
+msgstr "Activați sau dezactivați căutările SoundCloud în cadrul nodului, acest lucru va afecta orice funcționalitate dependentă de SoundCloud. Valori acceptate pentru True: \"Adevărat\", \"nu\", \"1\", Valori acceptate pentru fals: \"Fals\", \"f\", \"0\""
+
+#: plmanagednode/cog.py:792
+msgid "{Setting_value} info.\n\n"
+"{info_value}"
+msgstr "{Setting_value} Informaţii.\n\n"
+"{info_value}"
+
+#: plmanagednode/cog.py:820
+msgid "{Setting_value} valid inputs are:\n\n"
+"Range between: {start_value} - {end_value}"
+msgstr "{Setting_value} intrările valide sunt:\n\n"
+"Intervalul dintre: {start_value} - {end_value}"
+
+#: plmanagednode/cog.py:831
+msgid "{Setting_value} valid inputs are:\n\n"
+"{setting_list_value}"
+msgstr "{Setting_value} intrările valide sunt:\n\n"
+"{setting_list_value}"
+
+#: plmanagednode/cog.py:850
+msgid "{Setting_value} set to {value}."
+msgstr "{Setting_value} setat la {value}."
+
+#: plmanagednode/cog.py:861
+#, docstring
+msgid "Configure Lavalink IP Rotation for rate limits.\n\n"
+"        Run `[p]plmanaged config iprotation 1` to remove the ip rotation\n"
+"        "
+msgstr "Configurați rotația IP Lavalink pentru limitele ratei.\n\n"
+"        Rulați[p]plmanaged config iprotation 1` pentru a elimina rotația ip\n"
+"        "
+
+#: plmanagednode/cog.py:872
+msgid "Click the button below to configure the IP rotation for your node.\n"
+"More info at: {url_value_1} and {url_value_2}"
+msgstr "Faceți clic pe butonul de mai jos pentru a configura rotația IP pentru nodul dvs.\n"
+"Mai multe informații la: {url_value_1} și {url_value_2}"
+
+#: plmanagednode/cog.py:893
+msgid "Removing the IP rotation from your node."
+msgstr "Eliminare rotație IP din nodul tău."
+
+#: plmanagednode/cog.py:901
+#, docstring
+msgid "Link a Google account to Lavalink to bypass YouTube's age restriction\n\n"
+"        Run `[p]plmanaged config googleaccount 1` to remove the linked account.\n"
+"        "
+msgstr "Conectați un cont Google la Lavalink pentru a ocoli restricția de vârstă a YouTube\n\n"
+"        Rulați[p]plmanaged config googleaccount 1` pentru a elimina contul asociat.\n"
+"        "
+
+#: plmanagednode/cog.py:912
+msgid "Click the button below to link a Google account to your node, if you have 2FA setup on this account you will need an app password instead\n"
+"More info at: <https://support.google.com/accounts/answer/185833>"
+msgstr "Faceți clic pe butonul de mai jos pentru a conecta un cont Google la modulul dvs., dacă aveți configurare 2FA pe acest cont, veți avea nevoie de o parolă a aplicației în loc de\n"
+"Mai multe informații la: <https://support.google.com/accounts/answer/185833>"
+
+#: plmanagednode/cog.py:931
+msgid "Unlinking Google account from your node."
+msgstr "Deconectarea contului Google din modulul dvs."
+
+#: plmanagednode/cog.py:939
+#, docstring
+msgid "Configure a HTTP proxy for Lavalink\n\n"
+"        Run `[p]plmanaged config httpproxy 1` to remove the proxy.\n"
+"        "
+msgstr "Configurați un proxy HTTP pentru Lavalink\n\n"
+"        Rulați `[p]plmanaged config httpproxy 1` pentru a elimina proxy-ul.\n"
+"        "
+
+#: plmanagednode/cog.py:950
+msgid "Click the button below to configure a HTTP proxy for your node"
+msgstr "Faceţi clic pe butonul de mai jos pentru a configura un proxy HTTP pentru modulul dvs"
+
+#: plmanagednode/cog.py:964
+msgid "Unlinking HTTP proxy from your node."
+msgstr "Deconectarea proxy HTTP de pe nodul dvs."
+
+#: plmanagednode/view.py:38 plmanagednode/view.py:65 plmanagednode/view.py:98
+msgid "You are not authorized to interact with this."
+msgstr "Nu sunteți autorizat să interacționați cu acest lucru."
+
+#: plmanagednode/view.py:125
+msgid "IP Rotation Configurator."
+msgstr "Configurator de rotație IP."
+
+#: plmanagednode/view.py:128
+msgid "IP Blocks."
+msgstr "Blocuri IP."
+
+#: plmanagednode/view.py:132
+msgid "1.0.0.0/8,...,... - Comma separated list of IP blocks"
+msgstr "1.0.0.0/8,...,... - Lista de blocuri IP separate prin virgulă"
+
+#: plmanagednode/view.py:137
+msgid "Rotation strategy."
+msgstr "Strategia de rotație."
+
+#: plmanagednode/view.py:146
+msgid "Retry limit."
+msgstr "Reîncercați limita."
+
+#: plmanagednode/view.py:149
+msgid "-1 = default, 0 = infinity, >0 = number of retries"
+msgstr "-1 = implicit, 0 = infinit, >0 = numărul de reîncercări"
+
+#: plmanagednode/view.py:154
+msgid "IPs to exclude."
+msgstr "IP-uri pentru a exclude."
+
+#: plmanagednode/view.py:157
+msgid "Comma separated list of IP to exclude from rotation"
+msgstr "Lista IP-urilor separate prin virgulă pentru a fi excluse din rotație"
+
+#: plmanagednode/view.py:161
+msgid "Search trigger rotation."
+msgstr "Rotirea declanșatorului de căutare."
+
+#: plmanagednode/view.py:164
+msgid "0 or 1 (0 = disabled, 1 = enabled)"
+msgstr "0 sau 1 (0 = dezactivat, 1 = activat)"
+
+#: plmanagednode/view.py:179 plmanagednode/view.py:337
+#: plmanagednode/view.py:422
+msgid "You are not authorized to interact with this"
+msgstr "Nu sunteți autorizat să interacționați cu acest"
+
+#: plmanagednode/view.py:192
+msgid "Invalid IP block - {error_value}"
+msgstr "Bloc IP nevalid - {error_value}"
+
+#: plmanagednode/view.py:205
+msgid "No IP blocks were provided"
+msgstr "Nu au fost furnizate blocuri IP"
+
+#: plmanagednode/view.py:220
+msgid "Invalid IP address - {error_value}"
+msgstr "Adresă IP nevalidă - {error_value}"
+
+#: plmanagednode/view.py:239
+msgid "Invalid strategy, must be one of: {options_value}"
+msgstr "Strategia nevalidă, trebuie să fie una dintre: {options_value}"
+
+#: plmanagednode/view.py:255
+msgid "Invalid retry limit, must be a number greater than or equals to -1"
+msgstr "Limită de reîncercare invalidă, trebuie să fie un număr mai mare sau egal cu -1"
+
+#: plmanagednode/view.py:270
+msgid "Invalid search trigger, must be 0 or 1"
+msgstr "Declanșator căutare nevalid, trebuie să fie 0 sau 1"
+
+#: plmanagednode/view.py:289
+msgid "IP rotation configuration saved."
+msgstr "Rotatia IP a fost salvata."
+
+#: plmanagednode/view.py:310
+msgid "Google Account Configurator"
+msgstr "Configurator Cont Google"
+
+#: plmanagednode/view.py:313
+msgid "Email address"
+msgstr "Adresa de e-mail"
+
+#: plmanagednode/view.py:316
+msgid "Your Google account email"
+msgstr "E-mailul contului dvs. Google"
+
+#: plmanagednode/view.py:321
+msgid "password"
+msgstr "parolă"
+
+#: plmanagednode/view.py:324
+msgid "If you have 2FA you will need an app password"
+msgstr "Dacă aveți 2FA veți avea nevoie de o parolă pentru aplicație"
+
+#: plmanagednode/view.py:345
+msgid "Invalid email address"
+msgstr "Adresă de e-mail nevalidă"
+
+#: plmanagednode/view.py:355
+msgid "Google account linked."
+msgstr "Contul Google este conectat."
+
+#: plmanagednode/view.py:376
+msgid "HTTP Proxy Configurator"
+msgstr "Configurator Proxy HTTP"
+
+#: plmanagednode/view.py:379
+msgid "Hostname"
+msgstr "Nume gazdă"
+
+#: plmanagednode/view.py:382
+msgid "Hostname of the proxy, (ip or domain or localhost)"
+msgstr "Nume gazdă proxy, (ip sau domeniu sau localhost)"
+
+#: plmanagednode/view.py:386
+msgid "Proxy port"
+msgstr "Port proxy"
+
+#: plmanagednode/view.py:389
+msgid "Proxy port, 3128 is the default for squidProxy"
+msgstr "Portul proxy, 3128 este implicit pentru caldProxy"
+
+#: plmanagednode/view.py:395
+msgid "User"
+msgstr "Utilizator"
+
+#: plmanagednode/view.py:400
+msgid "Optional user for basic authentication fields, leave blank if you don't use basic auth"
+msgstr "Utilizator opțional pentru câmpurile de autentificare de bază, lăsați necompletat dacă nu utilizați autorizare de bază"
+
+#: plmanagednode/view.py:404
+msgid "Password"
+msgstr "Parolă"
+
+#: plmanagednode/view.py:409
+msgid "Optional password for basic authentication fields, leave blank if you don't use basic auth"
+msgstr "Parolă opțională pentru câmpurile de autentificare de bază, lăsați necompletat dacă nu utilizați autentificare de bază"
+
+#: plmanagednode/view.py:433
+msgid "Invalid port, must be a number between 0 and 65536"
+msgstr "Portul nevalid, trebuie să fie un număr între 0 și 65536"
+
+#: plmanagednode/view.py:450
+msgid "HTTP proxy configuration saved."
+msgstr "Configurare HTTP proxy salvată."
+

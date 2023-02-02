@@ -1,0 +1,556 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: pylav\n"
+"POT-Creation-Date: 2023-02-02 22:16+0000\n"
+"PO-Revision-Date: 2023-02-02 22:33\n"
+"Last-Translator: \n"
+"Language-Team: Turkish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.4.2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: pylav\n"
+"X-Crowdin-Project-ID: 535244\n"
+"X-Crowdin-Language: tr\n"
+"X-Crowdin-File: /cogs/plnotifier/locales/messages.pot\n"
+"X-Crowdin-File-ID: 3351\n"
+"Language: tr_TR\n"
+
+#: plnotifier/cog.py:84
+#, docstring
+msgid "Listen to events from the PyLav player and send them as messages to the specified channel"
+msgstr "PyLav oynatıcıdan olayları dinleyin ve bunları belirtilen kanala mesaj olarak gönderin"
+
+#: plnotifier/cog.py:227
+#, docstring
+msgid "Configure the PyLavNotifier cog"
+msgstr "PyLavNotifier dişlisini yapılandırma"
+
+#: plnotifier/cog.py:231
+#, docstring
+msgid "Show the version of the Cog and its PyLav dependencies"
+msgstr "Cog sürümünü ve PyLav bağımlılıklarını gösterme"
+
+#: plnotifier/cog.py:247
+msgid "Library / Cog"
+msgstr "Kütüphane / Dişli"
+
+#: plnotifier/cog.py:248
+msgid "Version"
+msgstr "Sürüm"
+
+#: plnotifier/cog.py:263
+#, docstring
+msgid "Set the notify channel for the player"
+msgstr "Oynatıcı için bildirim kanalını ayarlama"
+
+#: plnotifier/cog.py:272
+msgid "I do not have permission to manage webhooks in {channel_value}."
+msgstr "Web kancalarını yönetme iznim yok {channel_value}."
+
+#: plnotifier/cog.py:286
+msgid "I do not have permission to create a thread in {channel_value}."
+msgstr "İçinde iş parçacığı oluşturma iznim yok {channel_value}."
+
+#: plnotifier/cog.py:295 plnotifier/cog.py:311 plnotifier/cog.py:336
+msgid "PyLavNotifier"
+msgstr "PyLavNotifier"
+
+#: plnotifier/cog.py:296 plnotifier/cog.py:314 plnotifier/cog.py:337
+msgid "PyLav Notifier - Requested by {author_value}"
+msgstr "PyLav Notifier - İsteyen {author_value}"
+
+#: plnotifier/cog.py:307
+msgid "This thread will be used by PyLav to post notifications about the player."
+msgstr "Bu konu, PyLav tarafından oyuncu hakkında bildirimler göndermek için kullanılacaktır."
+
+#: plnotifier/cog.py:327
+msgid "I do not have permission to manage webhooks in {channel_value}"
+msgstr "Web kancalarını yönetme iznim yok {channel_value}"
+
+#: plnotifier/cog.py:351
+msgid "PyLavNotifier channel set to {channel_value}"
+msgstr "PyLavNotifier kanalı {channel_value}"
+
+#: plnotifier/cog.py:361
+#, docstring
+msgid "Set whether or not to notify for the specified event.\n\n"
+"        Arguments:\n"
+"            event -- The event to set.\n"
+"            toggle -- Whether or not to notify upon receiving this event.\n"
+"            use_mention -- Whether or not to use a mention instead of the name for the action requested.\n"
+"        "
+msgstr "Belirtilen olay için bildirim yapılıp yapılmayacağını ayarlayın.\n\n"
+"        Bağımsız değişken:\n"
+"            event -- Ayarlanacak olay.\n"
+"            geçiş -- Bu olayı aldıktan sonra bildirimde bulunup bulunmayacağı.\n"
+"            use_mention -- İstenen eylemin adı yerine bir söz kullanılıp kullanılmayacağı.\n"
+"        "
+
+#: plnotifier/cog.py:378
+msgid "Invalid event, possible events are:\n\n"
+"{events_value}"
+msgstr "Geçersiz olay, olası olaylar şunlardır:\n\n"
+"{events_value}"
+
+#: plnotifier/cog.py:395
+msgid "Event {event_value} set to {toggle_value}{extras_value}"
+msgstr "Olay {event_value} olarak ayarlayın {toggle_value}{extras_value}"
+
+#: plnotifier/cog.py:397
+msgid "notify"
+msgstr "bildirmek"
+
+#: plnotifier/cog.py:397
+msgid "do not notify"
+msgstr "bildirme"
+
+#: plnotifier/cog.py:398
+msgid " with mentions"
+msgstr " sözlerle"
+
+#: plnotifier/cog.py:400
+msgid " without mentions"
+msgstr " bahsetmeden"
+
+#: plnotifier/cog.py:418
+msgid "Track Stuck Event"
+msgstr "Sıkışmış Olayı İzle"
+
+#: plnotifier/cog.py:419
+msgid "[Node={node_value}] {track_value} is stuck for {threshold_value} seconds, skipping"
+msgstr "[Düğüm={node_value}] {track_value} için sıkışmış {threshold_value} saniye, atlama"
+
+#: plnotifier/cog.py:446
+msgid "Track Exception Event"
+msgstr "Özel Durum Olayını İzle"
+
+#: plnotifier/cog.py:447
+msgid "[Node={node_value}] There was an error while playing {track_value}:\n"
+"{exception_value}"
+msgstr "[Düğüm={node_value}] Oynarken bir hata oluştu {track_value}:\n"
+"{exception_value}"
+
+#: plnotifier/cog.py:472
+msgid "the player reached the end of the tracks runtime"
+msgstr "Oynatıcı, parça çalışma süresinin sonuna ulaştıysa"
+
+#: plnotifier/cog.py:474
+msgid "a new track started playing"
+msgstr "yeni bir parça çalmaya başladı"
+
+#: plnotifier/cog.py:476
+msgid "it failed to start"
+msgstr "başlatılamadı"
+
+#: plnotifier/cog.py:478
+msgid "because the player was stopped"
+msgstr "çünkü oyuncu durduruldu"
+
+#: plnotifier/cog.py:480
+msgid "the node told it to stop"
+msgstr "düğüm durmasını söyledi"
+
+#: plnotifier/cog.py:483
+msgid "Track End Event"
+msgstr "Parça Sonu Etkinliği"
+
+#: plnotifier/cog.py:484
+msgid "[Node={node_value}] {track_value} has finished playing because {reason_value}"
+msgstr "[Düğüm={node_value}] {track_value} oynamayı bitirdi çünkü {reason_value}"
+
+#: plnotifier/cog.py:513
+msgid "YouTube Music Track Start Event"
+msgstr "YouTube Müzik Parçası Başlangıç Etkinliği"
+
+#: plnotifier/cog.py:514
+msgid "[Node={node_value}] YouTube Music track: {track_value} has started playing.\n"
+"Requested by: {requester_value}"
+msgstr "[Düğüm={node_value}] YouTube Müzik parçası: {track_value} oynamaya başladı.\n"
+"Talep eden: {requester_value}"
+
+#: plnotifier/cog.py:545
+msgid "Deezer Track Start Event"
+msgstr "Deezer Track Başlangıç Etkinliği"
+
+#: plnotifier/cog.py:546
+msgid "[Node={node_value}] Deezer track: {track_value} has started playing.\n"
+"Requested by: {requester_value}"
+msgstr "[Düğüm={node_value}] Deezer parçası: {track_value} oynamaya başladı.\n"
+"Talep eden: {requester_value}"
+
+#: plnotifier/cog.py:577
+msgid "Spotify Track Start Event"
+msgstr "Spotify Parça Başlangıç Etkinliği"
+
+#: plnotifier/cog.py:578
+msgid "[Node={node_value}] Spotify track: {track_value} has started playing.\n"
+"Requested by: {requester_value}"
+msgstr "[Düğüm={node_value}] Spotify parçası: {track_value} oynamaya başladı.\n"
+"Talep eden: {requester_value}"
+
+#: plnotifier/cog.py:609
+msgid "Apple Music Track Start Event"
+msgstr "Apple Music Parça Başlangıç Etkinliği"
+
+#: plnotifier/cog.py:610
+msgid "[Node={node_value}] Apple Music track: {track_value} has started playing.\n"
+"Requested by: {requester_value}"
+msgstr "[Düğüm={node_value}] Apple Music parçası: {track_value} oynamaya başladı.\n"
+"Talep eden: {requester_value}"
+
+#: plnotifier/cog.py:641
+msgid "Local Track Start Event"
+msgstr "Yerel Pist Başlangıç Etkinliği"
+
+#: plnotifier/cog.py:642
+msgid "[Node={node_value}] Local track: {track_value} has started playing.\n"
+"Requested by: {requester_value}"
+msgstr "[Düğüm={node_value}] Yerel parça: {track_value} oynamaya başladı.\n"
+"Talep eden: {requester_value}"
+
+#: plnotifier/cog.py:673
+msgid "HTTP Track Start Event"
+msgstr "HTTP İzleme Başlangıç Etkinliği"
+
+#: plnotifier/cog.py:674
+msgid "[Node={node_value}] HTTP track: {track_value} has started playing.\n"
+"Requested by: {requester_value}"
+msgstr "[Düğüm={node_value}] HTTP izleme: {track_value} oynamaya başladı.\n"
+"Talep eden: {requester_value}"
+
+#: plnotifier/cog.py:705
+msgid "Text-To-Speech Track Start Event"
+msgstr "Metin Okuma İzleme Başlangıç Etkinliği"
+
+#: plnotifier/cog.py:706
+msgid "[Node={node_value}] Text-To-Speech track: {track_value} has started playing.\n"
+"Requested by: {requester_value}"
+msgstr "[Düğüm={node_value}] Metin Okuma yolu: {track_value} oynamaya başladı.\n"
+"Talep eden: {requester_value}"
+
+#: plnotifier/cog.py:735
+msgid "YouTube Track Start Event"
+msgstr "YouTube Parça Başlangıcı Etkinliği"
+
+#: plnotifier/cog.py:736
+msgid "[Node={node_value}] YouTube track: {track_value} has started playing.\n"
+"Requested by: {requester_value}"
+msgstr "[Düğüm={node_value}] YouTube parçası: {track_value} oynamaya başladı.\n"
+"Talep eden: {requester_value}"
+
+#: plnotifier/cog.py:765 plnotifier/cog.py:798 plnotifier/cog.py:831
+#: plnotifier/cog.py:864 plnotifier/cog.py:930 plnotifier/cog.py:963
+#: plnotifier/cog.py:996 plnotifier/cog.py:1029 plnotifier/cog.py:1062
+#: plnotifier/cog.py:1095 plnotifier/cog.py:1128 plnotifier/cog.py:1161
+#: plnotifier/cog.py:1194
+msgid "{source_value} Track Start Event"
+msgstr "{source_value} Parça Başlangıç Etkinliği"
+
+#: plnotifier/cog.py:766 plnotifier/cog.py:799 plnotifier/cog.py:832
+#: plnotifier/cog.py:865 plnotifier/cog.py:931 plnotifier/cog.py:964
+#: plnotifier/cog.py:997 plnotifier/cog.py:1030 plnotifier/cog.py:1063
+#: plnotifier/cog.py:1096 plnotifier/cog.py:1129 plnotifier/cog.py:1162
+#: plnotifier/cog.py:1195
+msgid "[Node={node_value}] {source_value} track: {track_value} has started playing.\n"
+"Requested by: {requester_value}"
+msgstr "[Düğüm={node_value}] {source_value} iz: {track_value} oynamaya başladı.\n"
+"Talep eden: {requester_value}"
+
+#: plnotifier/cog.py:897
+msgid "{source} Track Start Event"
+msgstr "{source} Parça Başlangıç Etkinliği"
+
+#: plnotifier/cog.py:898
+msgid "[Node={node}] {source} track: {track} has started playing.\n"
+"Requested by: {requester}"
+msgstr "[Düğüm={node}] {source} iz: {track} oynamaya başladı.\n"
+"Talep eden: {requester}"
+
+#: plnotifier/cog.py:1227
+msgid "Track Skipped Event"
+msgstr "Atlanan Olayı İzle"
+
+#: plnotifier/cog.py:1228
+msgid "[Node={node_value}] {track_value} has been skipped.\n"
+"Requested by {requester_value}"
+msgstr "[Düğüm={node_value}] {track_value} atlanmıştır.\n"
+"Talep eden: {requester_value}"
+
+#: plnotifier/cog.py:1259
+msgid "Track Seek Event"
+msgstr "Parça Arama Etkinliği"
+
+#: plnotifier/cog.py:1260
+msgid "[Node={node_value}] {requester_value} requested that {track_value} is sought from position {from_value} to position {after_value}"
+msgstr "[Düğüm={node_value}] {requester_value} talep etti {track_value} pozisyonundan aranır {from_value} pozisyonuna {after_value}"
+
+#: plnotifier/cog.py:1294
+msgid "Track Previous Requested Event"
+msgstr "Önceki İstenen Etkinliği İzle"
+
+#: plnotifier/cog.py:1295
+msgid "[Node={node_value}] {requester_value} requested that the previous track {track_value} be played"
+msgstr "[Düğüm={node_value}] {requester_value} önceki parçanın {track_value} oynanacak"
+
+#: plnotifier/cog.py:1326
+msgid "Tracks Requested Event"
+msgstr "İstenen Olayı İzler"
+
+#: plnotifier/cog.py:1327
+msgid "[Node={node_value}] {requester_value} added {track_count_value} to the queue"
+msgstr "[Düğüm={node_value}] {requester_value} eklendi {track_count_value} kuyruğa"
+
+#: plnotifier/cog.py:1328
+msgid "{count_value} track"
+msgstr "{count_value} iz"
+
+#: plnotifier/cog.py:1353
+msgid "Track AutoPlay Event"
+msgstr "Otomatik Oynatma Etkinliğini İzle"
+
+#: plnotifier/cog.py:1354
+msgid "[Node={node_value}] Auto-playing {track_value}"
+msgstr "[Düğüm={node_value}] Otomatik oynatma {track_value}"
+
+#: plnotifier/cog.py:1382
+msgid "Track Resumed Event"
+msgstr "Devam Eden Etkinliği İzle"
+
+#: plnotifier/cog.py:1383
+msgid "[Node={node_value}] {requester_value} resumed {track_value}"
+msgstr "[Düğüm={node_value}] {requester_value} Devam {track_value}"
+
+#: plnotifier/cog.py:1412
+msgid "Queue Shuffled Event"
+msgstr "Kuyruk Karıştırılmış Olay"
+
+#: plnotifier/cog.py:1413
+msgid "[Node={node_value}] {requester_value} shuffled the queue"
+msgstr "[Düğüm={node_value}] {requester_value} kuyruğu karıştırdı"
+
+#: plnotifier/cog.py:1435
+msgid "Queue End Event"
+msgstr "Kuyruk Sonu Olayı"
+
+#: plnotifier/cog.py:1436
+msgid "[Node={node_value}] All tracks in the queue have been played"
+msgstr "[Düğüm={node_value}] Kuyruktaki tüm parçalar çalındı"
+
+#: plnotifier/cog.py:1463
+msgid "Tracks Removed Event"
+msgstr "Kaldırılan Etkinliği İzler"
+
+#: plnotifier/cog.py:1464
+msgid "[Node={node_value}] {requester_value} removed {track_count_value} tracks from the queue"
+msgstr "[Düğüm={node_value}] {requester_value} Kaldırıldı {track_count_value} kuyruktaki izler"
+
+#: plnotifier/cog.py:1491 plnotifier/cog.py:1976
+msgid "Player Paused Event"
+msgstr "Oyuncu Duraklatılmış Etkinliği"
+
+#: plnotifier/cog.py:1492
+msgid "[Node={node_value}] {requester_value} paused the player"
+msgstr "[Düğüm={node_value}] {requester_value} oynatıcıyı duraklattı"
+
+#: plnotifier/cog.py:1519
+msgid "Player Stopped Event"
+msgstr "Oyuncu Durduruldu Etkinliği"
+
+#: plnotifier/cog.py:1520
+msgid "[Node={node_value}] {requester_value} stopped the player"
+msgstr "[Düğüm={node_value}] {requester_value} oyuncuyu durdurdu"
+
+#: plnotifier/cog.py:1547 plnotifier/cog.py:2004
+msgid "Player Resumed Event"
+msgstr "Oyuncu Devam Eden Etkinlik"
+
+#: plnotifier/cog.py:1548
+msgid "[Node={node_value}] {requester_value} resumed the player"
+msgstr "[Düğüm={node_value}] {requester_value} oyuncuyu devam ettirdi"
+
+#: plnotifier/cog.py:1575
+msgid "Player Moved Event"
+msgstr "Oyuncu Taşındı Etkinliği"
+
+#: plnotifier/cog.py:1576
+msgid "[Node={node_value}] {requester_value} moved the player from {before_value} to {after_value}"
+msgstr "[Düğüm={node_value}] {requester_value} oyuncuyu taşıdı {before_value} Hedef {after_value}"
+
+#: plnotifier/cog.py:1608
+msgid "Player Disconnected Event"
+msgstr "Oyuncunun Bağlantısı Kesildi Etkinliği"
+
+#: plnotifier/cog.py:1609
+msgid "[Node={node}] {requester} disconnected the player"
+msgstr "[Düğüm={node}] {requester} oynatıcının bağlantısı kesildi"
+
+#: plnotifier/cog.py:1636
+msgid "Player Connected Event"
+msgstr "Oyuncu Bağlantılı Etkinlik"
+
+#: plnotifier/cog.py:1637
+msgid "[Node={node}] {requester} connected the player"
+msgstr "[Düğüm={node}] {requester} oynatıcıyı bağladı"
+
+#: plnotifier/cog.py:1664
+msgid "Player Volume Changed Event"
+msgstr "Oyuncu Ses Düzeyi Değişti Olayı"
+
+#: plnotifier/cog.py:1665
+msgid "[Node={node}] {requester} changed the player's volume from {before} to {after}"
+msgstr "[Düğüm={node}] {requester} oyuncunun ses düzeyini değiştirdi {before} Hedef {after}"
+
+#: plnotifier/cog.py:1694 plnotifier/cog.py:1704 plnotifier/cog.py:1714
+msgid "Player Repeat Event"
+msgstr "Oyuncu Tekrar Etkinliği"
+
+#: plnotifier/cog.py:1695
+msgid "[Node={node}] {requester} disabled repeat"
+msgstr "[Düğüm={node}] {requester} engelli tekrarı"
+
+#: plnotifier/cog.py:1705
+msgid "{requester} {status} repeat of the whole queue"
+msgstr "{requester} {status} tüm kuyruğun tekrarı"
+
+#: plnotifier/cog.py:1706 plnotifier/cog.py:1717
+msgid "enabled"
+msgstr "Etkin"
+
+#: plnotifier/cog.py:1706 plnotifier/cog.py:1717
+msgid "disabled"
+msgstr "sakat"
+
+#: plnotifier/cog.py:1715
+msgid "[Node={node}] {requester} {status} repeat for {track}"
+msgstr "[Düğüm={node}] {requester} {status} için tekrarla {track}"
+
+#: plnotifier/cog.py:1745
+msgid "Player Restored Event"
+msgstr "Oyuncu Geri Yüklenen Etkinliği"
+
+#: plnotifier/cog.py:1746
+msgid "[Node={node}] {requester} restored the player"
+msgstr "[Düğüm={node}] {requester} oynatıcıyı geri yükledi"
+
+#: plnotifier/cog.py:1769
+msgid "an intro section"
+msgstr "giriş bölümü"
+
+#: plnotifier/cog.py:1771
+msgid "an outro section"
+msgstr "bir outro bölümü"
+
+#: plnotifier/cog.py:1773
+msgid "a preview section"
+msgstr "önizleme bölümü"
+
+#: plnotifier/cog.py:1775
+msgid "an off-topic section"
+msgstr "konu dışı bir bölüm"
+
+#: plnotifier/cog.py:1777
+msgid "a filler section"
+msgstr "dolgu bölümü"
+
+#: plnotifier/cog.py:1779
+msgid "a sponsor section"
+msgstr "sponsor bölümü"
+
+#: plnotifier/cog.py:1781
+msgid "a self-promotion section"
+msgstr "kendini tanıtma bölümü"
+
+#: plnotifier/cog.py:1783
+msgid "an interaction section"
+msgstr "etkileşim bölümü"
+
+#: plnotifier/cog.py:1787
+msgid "Sponsor Segment Skipped Event"
+msgstr "Sponsor Segmenti Atlanan Etkinlik"
+
+#: plnotifier/cog.py:1788
+msgid "[Node={node}] Sponsorblock: Skipped {category} running from {start}s to {to}s"
+msgstr "[Düğüm={node}] Sponsorblock: Atlandı {category} 'den kaçmak {start}s için {to}s"
+
+#: plnotifier/cog.py:1816
+msgid "Effect"
+msgstr "Etki"
+
+#: plnotifier/cog.py:1817
+msgid "Not changed"
+msgstr "Değişmedi"
+
+#: plnotifier/cog.py:1818
+msgid "Values"
+msgstr "Değer"
+
+#: plnotifier/cog.py:1858
+msgid "Filters Applied Event"
+msgstr "Uygulanan Filtre Olayı"
+
+#: plnotifier/cog.py:1861
+msgid "None"
+msgstr "Hiç kimse"
+
+#: plnotifier/cog.py:1862
+msgid "Currently Applied"
+msgstr "Şu Anda Uygulananlar"
+
+#: plnotifier/cog.py:1864
+msgid "[Node={node}] {requester} changed the player filters"
+msgstr "[Düğüm={node}] {requester} oynatıcı filtrelerini değiştirdi"
+
+#: plnotifier/cog.py:1884
+msgid "Node Connected Event"
+msgstr "Düğüm Bağlantılı Olay"
+
+#: plnotifier/cog.py:1885
+msgid "Node {name} has been connected"
+msgstr "Düğüm {name} bağlandı"
+
+#: plnotifier/cog.py:1901
+msgid "Node Disconnected Event"
+msgstr "Düğüm Bağlantısı Kesilmiş Olay"
+
+#: plnotifier/cog.py:1902
+msgid "Node {name} has been disconnected with code {code} and reason: {reason}"
+msgstr "Düğüm {name} kod ile bağlantısı kesildi {code} ve nedeni: {reason}"
+
+#: plnotifier/cog.py:1924
+msgid "Node Changed Event"
+msgstr "Düğüm Değiştirme Olayı"
+
+#: plnotifier/cog.py:1925
+msgid "The node which the player is connected to changed from {fro} to {to}"
+msgstr "Oynatıcının bağlı olduğu düğüm değiştirildi {fro} Hedef {to}"
+
+#: plnotifier/cog.py:1947
+msgid "WebSocket Closed Event"
+msgstr "WebSocket Kapalı Olayı"
+
+#: plnotifier/cog.py:1948
+msgid "[Node={node}] The Lavalink websocket connection to Discord closed with code {code} and reason {reason}"
+msgstr "[Düğüm={node}] Discord'a Lavalink web soketi bağlantısı kodla kapatıldı {code} ve sebep {reason}"
+
+#: plnotifier/cog.py:1977
+msgid "[Node={node}] {requester} automatically paused the player due to configured values"
+msgstr "[Düğüm={node}] {requester} yapılandırılan değerler nedeniyle oynatıcıyı otomatik olarak duraklattı"
+
+#: plnotifier/cog.py:2005
+msgid "[Node={node}] {requester} automatically resumed the player due to configured values"
+msgstr "[Düğüm={node}] {requester} yapılandırılan değerler nedeniyle oynatıcıyı otomatik olarak devam ettirdi"
+
+#: plnotifier/cog.py:2032 plnotifier/cog.py:2062
+msgid "Auto Player Disconnected Event"
+msgstr "Otomatik Oynatıcı Bağlantısı Kesildi Olayı"
+
+#: plnotifier/cog.py:2033
+msgid "[Node={node}] {requester} automatically disconnected the player as there is no one listening"
+msgstr "[Düğüm={node}] {requester} dinleyen kimse olmadığı için oynatıcının bağlantısını otomatik olarak kesti"
+
+#: plnotifier/cog.py:2063
+msgid "[Node={node}] {requester} automatically disconnected the player as the queue is empty"
+msgstr "[Düğüm={node}] {requester} kuyruk boş olduğu için oynatıcının bağlantısı otomatik olarak kesilir"
+

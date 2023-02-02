@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
-"POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-02-01 00:10\n"
+"POT-Creation-Date: 2023-02-02 22:16+0000\n"
+"PO-Revision-Date: 2023-02-02 22:33\n"
 "Last-Translator: \n"
 "Language-Team: Lithuanian\n"
 "MIME-Version: 1.0\n"
@@ -28,7 +28,7 @@ msgid "Show the version of the Cog and it's PyLav dependencies"
 msgstr "Rodyti krumpliaračio versiją ir tai yra PyLav priklausomybės"
 
 #: plmanagednode/cog.py:66
-msgid "Library/Cog"
+msgid "Library / Cog"
 msgstr "Biblioteka / krumpliaratis"
 
 #: plmanagednode/cog.py:67
@@ -45,40 +45,40 @@ msgid "The managed Lavalink node is already up to date."
 msgstr "Valdomas Lavalink mazgas jau yra atnaujintas."
 
 #: plmanagednode/cog.py:101
-msgid "Your node is out of date, to update please run `{prefix}{command} 1`."
-msgstr "Jūsų mazgas pasenęs, norėdami atnaujinti, paleiskite '{prefix}{command} 1'."
+msgid "Your node is out of date, to update please run `{bot_command_prefix}{command_name} 1`."
+msgstr "Jūsų mazgas pasenęs, norėdami atnaujinti, paleiskite '{bot_command_prefix}{command_name} 1'."
 
-#: plmanagednode/cog.py:117
-msgid "The managed Lavalink node has been updated to version {version}."
-msgstr "Valdomas Lavalink mazgas buvo atnaujintas į versiją {version}."
+#: plmanagednode/cog.py:119
+msgid "The managed Lavalink node has been updated to version {version_value}."
+msgstr "Valdomas Lavalink mazgas buvo atnaujintas į versiją {version_value}."
 
-#: plmanagednode/cog.py:127
+#: plmanagednode/cog.py:129
 #, docstring
 msgid "Toggle the managed node on/off.\n\n"
-"        Changes will be applied after restarting [botname].\n"
+"        Changes will be applied after I restart.\n"
 "        "
 msgstr "Įjunkite / išjunkite valdomą mazgą.\n\n"
-"        Pakeitimai bus pritaikyti paleidus iš naujo [botname].\n"
+"        Pakeitimai bus pritaikyti po to, kai paleisiu iš naujo.\n"
 "        "
 
-#: plmanagednode/cog.py:142
+#: plmanagednode/cog.py:144
 msgid "PyLav's managed node has been enabled."
 msgstr "\"PyLav\" valdomas mazgas buvo įjungtas."
 
-#: plmanagednode/cog.py:150
+#: plmanagednode/cog.py:152
 msgid "PyLav's managed node has been disabled."
 msgstr "PyLav valdomas mazgas buvo išjungtas."
 
-#: plmanagednode/cog.py:158
+#: plmanagednode/cog.py:160
 #, docstring
 msgid "Toggle the managed node auto updates on/off.\n\n"
-"        Changes will be applied after restarting [botname].\n"
+"        Changes will be applied after I restart.\n"
 "        "
 msgstr "Įjunkite / išjunkite valdomo mazgo automatinius naujinimus.\n\n"
-"        Pakeitimai bus pritaikyti paleidus iš naujo [botname].\n"
+"        Pakeitimai bus pritaikyti po to, kai paleisiu iš naujo.\n"
 "        "
 
-#: plmanagednode/cog.py:174
+#: plmanagednode/cog.py:176
 msgid "PyLav's managed node auto updates have been enabled"
 msgstr "Įjungti \"PyLav\" valdomų mazgų automatiniai atnaujinimai"
 
@@ -86,7 +86,7 @@ msgstr "Įjungti \"PyLav\" valdomų mazgų automatiniai atnaujinimai"
 msgid "PyLav's managed node auto updates have been disabled"
 msgstr "\"PyLav\" valdomų mazgų automatiniai atnaujinimai buvo išjungti"
 
-#: plmanagednode/cog.py:194
+#: plmanagednode/cog.py:192
 #, docstring
 msgid "Set the managed Lavalink node maximum heap-size.\n\n"
 "        By default, this value is 2G of available RAM in the host machine represented by (65-1023M|1+G) (256M,\n"
@@ -101,41 +101,41 @@ msgstr "Nustatykite valdomo Lavalink mazgo maksimalų krūvos dydį.\n\n"
 "        kad valdomas Lavalink mazgas visada naudos šį RAM kiekį.\n"
 "        "
 
-#: plmanagednode/cog.py:218
+#: plmanagednode/cog.py:216
 msgid "Heap-size must be a valid measure of size, e.g. 256M, 256G"
 msgstr "Krūvos dydis turi būti galiojantis dydžio matas, pvz., 256M, 256G"
 
-#: plmanagednode/cog.py:228
+#: plmanagednode/cog.py:226
 msgid "Heap-size must be at least 64M, however it is recommended to have it set to at least 1G"
 msgstr "Krūvos dydis turi būti ne mažesnis kaip 64M, tačiau rekomenduojama, kad jis būtų nustatytas bent 1G"
 
-#: plmanagednode/cog.py:240
-msgid "Heap-size must be less than your system RAM, You currently have {ram_in_bytes} of RAM available"
-msgstr "Krūvos dydis turi būti mažesnis nei jūsų sistemos RAM, Šiuo metu turite {ram_in_bytes} laisvos RAM"
+#: plmanagednode/cog.py:238
+msgid "Heap-size must be less than your system RAM, You currently have {ram_in_bytes_value} of RAM available"
+msgstr "Krūvos dydis turi būti mažesnis nei jūsų sistemos RAM, Šiuo metu turite {ram_in_bytes_value} laisvos RAM"
 
-#: plmanagednode/cog.py:252
-msgid "Heap-size must be less than {limit} due to your system limitations"
-msgstr "Krūvos dydis turi būti mažesnis nei {limit} dėl jūsų sistemos apribojimų"
+#: plmanagednode/cog.py:250
+msgid "Heap-size must be less than {limit_value} due to your system limitations"
+msgstr "Krūvos dydis turi būti mažesnis nei {limit_value} dėl jūsų sistemos apribojimų"
 
-#: plmanagednode/cog.py:272
-msgid "Managed node's heap-size set to {bytes}."
-msgstr "Valdomo mazgo krūvos dydis nustatytas kaip {bytes}."
+#: plmanagednode/cog.py:270
+msgid "Managed node's heap-size set to {bytes_value}."
+msgstr "Valdomo mazgo krūvos dydis nustatytas kaip {bytes_value}."
 
-#: plmanagednode/cog.py:283
+#: plmanagednode/cog.py:280
 #, docstring
 msgid "Change the managed node start up configs"
 msgstr "Pakeiskite valdomo mazgo paleidimo konfigūracijas"
 
-#: plmanagednode/cog.py:287
+#: plmanagednode/cog.py:284
 #, docstring
 msgid "Set the managed node host"
 msgstr "Nustatykite valdomo mazgo pagrindinį kompiuterį"
 
-#: plmanagednode/cog.py:299
-msgid "Managed node's host set to {host}."
-msgstr "Valdomo mazgo pagrindinis kompiuteris nustatytas į {host}."
+#: plmanagednode/cog.py:296
+msgid "Managed node's host set to {host_value}."
+msgstr "Valdomo mazgo pagrindinis kompiuteris nustatytas į {host_value}."
 
-#: plmanagednode/cog.py:310
+#: plmanagednode/cog.py:306
 #, docstring
 msgid "`Dangerous command` Set the managed Lavalink node's connection port.\n\n"
 "        This port is the port the managed Lavalink node binds to, you should only change this if there is a\n"
@@ -148,95 +148,99 @@ msgstr "\"Pavojinga komanda\" Nustatykite valdomą \"Lavalink\" mazgo ryšio pri
 "        Pagal numatytuosius nustatymus reikšmė yra \"2154\".\n"
 "        "
 
-#: plmanagednode/cog.py:320
+#: plmanagednode/cog.py:316
 msgid "The port must be between 1024 and 49151"
 msgstr "Uostas turi būti tarp 1024 ir 49151"
 
-#: plmanagednode/cog.py:332
-msgid "Managed node's port set to {port}."
-msgstr "Valdomo mazgo prievadas nustatytas į {port}."
+#: plmanagednode/cog.py:328
+msgid "Managed node's port set to {port_value}."
+msgstr "Valdomo mazgo prievadas nustatytas į {port_value}."
 
-#: plmanagednode/cog.py:340
+#: plmanagednode/cog.py:336
 #, docstring
 msgid "Change the managed node plugins"
 msgstr "Pakeiskite valdomo mazgo papildinius"
 
-#: plmanagednode/cog.py:346
+#: plmanagednode/cog.py:342
 #, docstring
 msgid "Disabled one of the available plugins"
 msgstr "Išjungtas vienas iš galimų papildinių"
 
-#: plmanagednode/cog.py:362 plmanagednode/cog.py:474
-msgid "The plugin must be one of the following: {plugins}"
-msgstr "Papildinys turi būti vienas iš šių: {plugins}"
+#: plmanagednode/cog.py:358
+msgid "The plugin must be one of the following: {plugins_value}"
+msgstr "Papildinys turi būti vienas iš šių: {plugins_value}"
 
-#: plmanagednode/cog.py:447
-msgid "Managed node's plugin {plugin} disabled."
-msgstr "Valdomo mazgo papildinys {plugin} Išjungta."
+#: plmanagednode/cog.py:443
+msgid "Managed node plugin {plugin_value} disabled."
+msgstr "Valdomo mazgo papildinys {plugin_value} Išjungta."
 
-#: plmanagednode/cog.py:458
+#: plmanagednode/cog.py:453
 #, docstring
 msgid "Enable one of the available plugins"
 msgstr "Įgalinkite vieną iš galimų papildinių"
 
-#: plmanagednode/cog.py:507
-msgid "Managed node's plugin {plugin} enabled."
-msgstr "Valdomo mazgo papildinys {plugin} Įjungtas."
+#: plmanagednode/cog.py:469
+msgid "The plugin must be one of the following: {plugins}"
+msgstr "Papildinys turi būti vienas iš šių: {plugins}"
 
-#: plmanagednode/cog.py:518
+#: plmanagednode/cog.py:502
+msgid "Managed node plugin {plugin_value} enabled."
+msgstr "Valdomo mazgo papildinys {plugin_value} Įjungtas."
+
+#: plmanagednode/cog.py:512
 #, docstring
 msgid "Update the managed node plugins"
 msgstr "Atnaujinkite valdomo mazgo papildinius"
 
-#: plmanagednode/cog.py:592
-msgid "{name} was updated from {old_value} to {new_value}\n"
-msgstr "{name} buvo atnaujinta iš {old_value} į {new_value}\n"
+#: plmanagednode/cog.py:586
+msgid "{name_value} was updated from {old_value} to {new_value}\n"
+msgstr "{name_value} buvo atnaujinta iš {old_value} į {new_value}\n"
 
-#: plmanagednode/cog.py:600
-msgid "Managed node's plugins updated.\n\n"
-"{updates}"
-msgstr "Atnaujinti valdomo mazgo papildiniai.\n\n"
-"{updates}"
+#: plmanagednode/cog.py:594
+msgid "Managed node plugins updated.\n\n"
+"{update_values}"
+msgstr "Atnaujinti valdomų mazgų papildiniai.\n\n"
+"{update_values}"
 
-#: plmanagednode/cog.py:611
+#: plmanagednode/cog.py:604
 msgid "Managed node's plugins already up to date"
 msgstr "Valdomo mazgo papildiniai jau atnaujinti"
 
-#: plmanagednode/cog.py:619
+#: plmanagednode/cog.py:612
 #, docstring
 msgid "Toggle the managed node sources"
 msgstr "Valdomų mazgų šaltinių perjungimas"
 
-#: plmanagednode/cog.py:634
-msgid "Invalid source, {valid_list} are valid sources"
-msgstr "Netinkamas šaltinis, {valid_list} yra tinkami šaltiniai"
+#: plmanagednode/cog.py:627
+msgid "Invalid source, {valid_list_value} are valid sources"
+msgstr "Netinkamas šaltinis, {valid_list_value} yra tinkami šaltiniai"
 
-#: plmanagednode/cog.py:648 plmanagednode/cog.py:684
+#: plmanagednode/cog.py:641 plmanagednode/cog.py:676
 msgid "enabled"
 msgstr "Įjungtas"
 
-#: plmanagednode/cog.py:648 plmanagednode/cog.py:684
+#: plmanagednode/cog.py:641 plmanagednode/cog.py:676
 msgid "disabled"
 msgstr "Išjungta"
 
-#: plmanagednode/cog.py:651
-msgid "Managed node's {source} source set to {state}."
-msgstr "Valdomo mazgo {source} šaltinis nustatytas kaip {state}."
+#: plmanagednode/cog.py:644
+msgid "Managed node {source_value} source set to {state_value}."
+msgstr "Valdomas mazgas {source_value} šaltinis nustatytas kaip {state_value}."
 
-#: plmanagednode/cog.py:663
+#: plmanagednode/cog.py:655
 #, docstring
 msgid "Toggle the managed node filters"
 msgstr "Valdomų mazgų filtrų perjungimas"
 
-#: plmanagednode/cog.py:675
-msgid "Invalid source, {valid_list} are valid filters"
-msgstr "Netinkamas šaltinis, {valid_list} yra tinkami filtrai"
+#: plmanagednode/cog.py:667
+msgid "Invalid source, {valid_list_value} are valid filters"
+msgstr "Netinkamas šaltinis, {valid_list_value} yra tinkami filtrai"
 
-#: plmanagednode/cog.py:687
-msgid "Managed node's {source} filter set to {state}."
-msgstr "Valdomo mazgo {source} filtras nustatytas kaip {state}."
+#: plmanagednode/cog.py:679
+msgid "Managed node {source_value} filter set to {state_value}."
+msgstr "Valdomas mazgas {source_value} filtras nustatytas kaip {state_value}."
 
-#: plmanagednode/cog.py:699
+#: plmanagednode/cog.py:690
 #, docstring
 msgid "Configure multiple settings for the managed node.\n\n"
 "        Run `[p]plmanaged config server <setting> info` to show info about the settings and what they do.\n\n"
@@ -267,75 +271,75 @@ msgstr "Konfigūruokite kelis valdomo mazgo parametrus.\n\n"
 "        \"soundcloudSearchEnabled\" : Bulio logika, t. y. teisinga (numatytoji teisinga)\n"
 "        "
 
-#: plmanagednode/cog.py:739
-msgid "{Setting} is not a valid Setting; Options are:\n\n"
-"{setting_list}"
-msgstr "{Setting} nėra tinkamas nustatymas; Parinktys yra šios:\n\n"
-"{setting_list}"
+#: plmanagednode/cog.py:730
+msgid "{Setting_value} is not a valid Setting; Options are:\n\n"
+"{setting_list_value}"
+msgstr "{Setting_value} nėra tinkamas nustatymas; Parinktys yra šios:\n\n"
+"{setting_list_value}"
 
-#: plmanagednode/cog.py:750
+#: plmanagednode/cog.py:743
 msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses but will increase RAM usage. Minimum of 40ms, lower values may introduce pauses and stutters. Set to 0 to disable JDA-NAS. Accepted values: Range: 0 - 2,000"
 msgstr "NAS buferio trukmė milisekundėmis. Didesnės vertės geriau tinka ilgesnėms GC pauzėms, tačiau padidins RAM naudojimą. Mažiausiai 40 ms, mažesnės vertės gali sukelti pauzes ir mikčiojimą. Nustatykite 0, kad išjungtumėte JDA-NAS. Priimtos vertės: Diapazonas: 0 - 2,000"
 
-#: plmanagednode/cog.py:756
+#: plmanagednode/cog.py:749
 msgid "How many milliseconds of audio to keep buffered, Higher values increase RAM usage. Accepted values: Range: 1,000 - 10,000"
 msgstr "Kiek milisekundžių garso išlaikyti buferį, Didesnės vertės padidina RAM naudojimą. Priimtos vertės: Diapazonas: 1,000 - 10,000"
 
-#: plmanagednode/cog.py:760
+#: plmanagednode/cog.py:753
 msgid "The threshold in milliseconds for how long a track can be stuck. A track is stuck if does not return any audio data. Accepted values: Range: 5,000 - 20,000"
 msgstr "Slenkstis milisekundėmis, kiek laiko takelis gali būti įstrigęs. Takelis užstringa, jei negrąžina jokių garso duomenų. Priimtos vertės: Diapazonas: 5,000 - 20,000"
 
-#: plmanagednode/cog.py:764
+#: plmanagednode/cog.py:757
 msgid "Number of pages to return for a YouTube Playlist - Each page contains 100 songs. Accepted values: Range: 5 - 100"
 msgstr "Puslapių, kuriuos reikia grąžinti už \"YouTube\" grojaraštį, skaičius – kiekviename puslapyje yra 100 dainų. Priimtos vertės: Diapazonas: 5 - 100"
 
-#: plmanagednode/cog.py:768
-msgid "Opus encoder quality. Valid values range from 0 to 10, where 10 is best quality but is the most expensive on the CPU"
-msgstr "Opus kodavimo įrenginio kokybė. Galiojančios vertės svyruoja nuo 0 iki 10, kur 10 yra geriausios kokybės, bet yra brangiausias procesoriuje"
+#: plmanagednode/cog.py:761
+msgid "Opus encoder quality. Valid values range from 0 to 10, where 10 is the best quality but is the most expensive on the CPU."
+msgstr "Opus kodavimo įrenginio kokybė. Galiojančios vertės svyruoja nuo 0 iki 10, kur 10 yra geriausia kokybė, bet yra brangiausia procesoriuje."
 
-#: plmanagednode/cog.py:772
-msgid "Quality of resampling operations. Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU"
-msgstr "Mėginių ėmimo operacijų kokybė. Leistinos reikšmės yra LOW, MEDIUM ir HIGH, kur HIGH naudoja daugiausia procesoriaus"
+#: plmanagednode/cog.py:765
+msgid "Quality of resampling operations. Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU."
+msgstr "Mėginių ėmimo operacijų kokybė. Leistinos reikšmės yra LOW, MEDIUM ir HIGH, kur HIGH naudoja daugiausia procesoriaus."
 
-#: plmanagednode/cog.py:776
+#: plmanagednode/cog.py:769
 msgid "Seek ghosting is the effect where whilst a seek is in progress, the audio buffer is read from until empty, or until seek is ready. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "\"Seek ghosting\" yra efektas, kai, kol vyksta ieškojimas, garso buferis skaitomas nuo tuščio iki tuščio arba kol ieškoma yra paruošta. Priimtinos \"True\" reikšmės: \"True\", \"t\", \"1\", \"Accepted values for False\": \"False\", \"f\", \"0\""
 
-#: plmanagednode/cog.py:781
+#: plmanagednode/cog.py:774
 msgid "How frequently in seconds to send player updates to clients, affects the current position accuracy. Accepted values: Range: 1 - 86400"
 msgstr "Tai, kaip dažnai per kelias sekundes siunčiami žaidėjų atnaujinimai klientams, turi įtakos dabartinės padėties tikslumui. Priimtos vertės: Diapazonas: 1 - 86400"
 
-#: plmanagednode/cog.py:785
-msgid "Enable or disable YouTube searches within the node, this will affect AppleMusic, Spotify and any functionality dependant on YouTube. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
-msgstr "Įjunkite arba išjunkite \"YouTube\" paieškas mazge, tai turės įtakos \"AppleMusic\", \"Spotify\" ir bet kokioms nuo \"YouTube\" priklausančioms funkcijoms. Priimtinos \"True\" reikšmės: \"True\", \"t\", \"1\", \"Accepted values for False\": \"False\", \"f\", \"0\""
+#: plmanagednode/cog.py:778
+msgid "Enable or disable YouTube searches within the node, this will affect AppleMusic, Spotify and any functionality dependent on YouTube. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
+msgstr "Įjunkite arba išjunkite \"YouTube\" paieškas mazge, tai turės įtakos \"AppleMusic\", \"Spotify\" ir visoms nuo \"YouTube\" priklausančioms funkcijoms. Priimtinos \"True\" reikšmės: \"True\", \"t\", \"1\", \"Accepted values for False\": \"False\", \"f\", \"0\""
 
-#: plmanagednode/cog.py:790
-msgid "Enable or disable SoundCloud searches within the node, this will affect any functionality dependant on SoundCloud. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
+#: plmanagednode/cog.py:783
+msgid "Enable or disable SoundCloud searches within the node, this will affect any functionality dependent on SoundCloud. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "Įjunkite arba išjunkite \"SoundCloud\" paieškas mazge, tai turės įtakos visoms funkcijoms, priklausančioms nuo \"SoundCloud\". Priimtinos \"True\" reikšmės: \"True\", \"t\", \"1\", \"Accepted values for False\": \"False\", \"f\", \"0\""
 
-#: plmanagednode/cog.py:799
-msgid "{Setting} info.\n\n"
-"{info}"
-msgstr "{Setting} Informacija.\n\n"
-"{info}"
+#: plmanagednode/cog.py:792
+msgid "{Setting_value} info.\n\n"
+"{info_value}"
+msgstr "{Setting_value} Informacija.\n\n"
+"{info_value}"
 
-#: plmanagednode/cog.py:827
-msgid "{Setting} valid inputs are:\n\n"
-"Range between: {start} - {end}"
-msgstr "{Setting} Leistini duomenys yra šie:\n\n"
-"Diapazonas tarp: {start} - {end}"
+#: plmanagednode/cog.py:820
+msgid "{Setting_value} valid inputs are:\n\n"
+"Range between: {start_value} - {end_value}"
+msgstr "{Setting_value} Leistini duomenys yra šie:\n\n"
+"Diapazonas tarp: {start_value} - {end_value}"
 
-#: plmanagednode/cog.py:838
-msgid "{Setting} valid inputs are:\n\n"
-"{setting_list}"
-msgstr "{Setting} Leistini duomenys yra šie:\n\n"
-"{setting_list}"
+#: plmanagednode/cog.py:831
+msgid "{Setting_value} valid inputs are:\n\n"
+"{setting_list_value}"
+msgstr "{Setting_value} Leistini duomenys yra šie:\n\n"
+"{setting_list_value}"
 
-#: plmanagednode/cog.py:857
-msgid "{Setting} set to {value}."
-msgstr "{Setting} nustatyta kaip {value}."
+#: plmanagednode/cog.py:850
+msgid "{Setting_value} set to {value}."
+msgstr "{Setting_value} nustatyta kaip {value}."
 
-#: plmanagednode/cog.py:869
+#: plmanagednode/cog.py:861
 #, docstring
 msgid "Configure Lavalink IP Rotation for rate limits.\n\n"
 "        Run `[p]plmanaged config iprotation 1` to remove the ip rotation\n"
@@ -344,17 +348,17 @@ msgstr "Sukonfigūruokite \"Lavalink IP Rotation\" greičio apribojimams.\n\n"
 "        Bėk '[p]plmanaged config iprotation 1', kad pašalintumėte IP sukimąsi\n"
 "        "
 
-#: plmanagednode/cog.py:880
+#: plmanagednode/cog.py:872
 msgid "Click the button below to configure the IP rotation for your node.\n"
-"More info at: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> and <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
+"More info at: {url_value_1} and {url_value_2}"
 msgstr "Spustelėkite žemiau esantį mygtuką, kad sukonfigūruotumėte mazgo IP pasukimą.\n"
-"Daugiau informacijos: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> ir <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
+"Daugiau informacijos: {url_value_1} ir {url_value_2}"
 
-#: plmanagednode/cog.py:898
+#: plmanagednode/cog.py:893
 msgid "Removing the IP rotation from your node."
 msgstr "IP pasukimo pašalinimas iš mazgo."
 
-#: plmanagednode/cog.py:906
+#: plmanagednode/cog.py:901
 #, docstring
 msgid "Link a Google account to Lavalink to bypass YouTube's age restriction\n\n"
 "        Run `[p]plmanaged config googleaccount 1` to remove the linked account.\n"
@@ -363,17 +367,17 @@ msgstr "\"Google\" paskyros susiejimas su \"Lavalink\", kad būtų išvengta \"Y
 "        Bėk '[p]plmanaged config googleaccount 1', kad pašalintumėte susietą paskyrą.\n"
 "        "
 
-#: plmanagednode/cog.py:917
+#: plmanagednode/cog.py:912
 msgid "Click the button below to link a Google account to your node, if you have 2FA setup on this account you will need an app password instead\n"
 "More info at: <https://support.google.com/accounts/answer/185833>"
 msgstr "Spustelėkite žemiau esantį mygtuką, kad susietumėte \"Google\" paskyrą su mazgu, jei šioje paskyroje turite 2FA sąranką, jums reikės programos slaptažodžio\n"
 "Daugiau informacijos: <https://support.google.com/accounts/answer/185833>"
 
-#: plmanagednode/cog.py:936
+#: plmanagednode/cog.py:931
 msgid "Unlinking Google account from your node."
 msgstr "\"Google\" paskyros atsiejimas nuo mazgo."
 
-#: plmanagednode/cog.py:944
+#: plmanagednode/cog.py:939
 #, docstring
 msgid "Configure a HTTP proxy for Lavalink\n\n"
 "        Run `[p]plmanaged config httpproxy 1` to remove the proxy.\n"
@@ -382,75 +386,78 @@ msgstr "HTTP tarpinio serverio konfigūravimas \"Lavalink\"\n\n"
 "        Bėk '[p]plmanaged config httpproxy 1', kad pašalintumėte tarpinį serverį.\n"
 "        "
 
-#: plmanagednode/cog.py:955
+#: plmanagednode/cog.py:950
 msgid "Click the button below to configure a HTTP proxy for your node"
 msgstr "Spustelėkite žemiau esantį mygtuką, kad sukonfigūruotumėte HTTP tarpinį serverį savo mazgui"
 
-#: plmanagednode/cog.py:969
+#: plmanagednode/cog.py:964
 msgid "Unlinking HTTP proxy from your node."
 msgstr "HTTP tarpinio serverio atsiejimas nuo mazgo."
 
 #: plmanagednode/view.py:38 plmanagednode/view.py:65 plmanagednode/view.py:98
-#: plmanagednode/view.py:179 plmanagednode/view.py:337
-#: plmanagednode/view.py:422
-msgid "You are not authorized to interact with this"
-msgstr "Jūs neturite teisės su tuo bendrauti"
+msgid "You are not authorized to interact with this."
+msgstr "Jūs neturite teisės su tuo bendrauti."
 
 #: plmanagednode/view.py:125
-msgid "IP Rotation Configurator"
-msgstr "IP pasukimo konfigūratorius"
+msgid "IP Rotation Configurator."
+msgstr "IP sukimosi konfigūratorius."
 
 #: plmanagednode/view.py:128
-msgid "IP Blocks"
-msgstr "IP blokai"
+msgid "IP Blocks."
+msgstr "IP blokai."
 
 #: plmanagednode/view.py:132
 msgid "1.0.0.0/8,...,... - Comma separated list of IP blocks"
 msgstr "1.0.0.0/8,...,... - Kableliais atskirtas IP blokų sąrašas"
 
 #: plmanagednode/view.py:137
-msgid "Rotation strategy"
-msgstr "Rotacijos strategija"
+msgid "Rotation strategy."
+msgstr "Rotacijos strategija."
 
 #: plmanagednode/view.py:146
-msgid "Retry limit"
-msgstr "Pakartotinio bandymo limitas"
+msgid "Retry limit."
+msgstr "Pakartotinio bandymo limitas."
 
 #: plmanagednode/view.py:149
 msgid "-1 = default, 0 = infinity, >0 = number of retries"
 msgstr "-1 = numatytasis, 0 = begalybė, >0 = pakartotinių bandymų skaičius"
 
 #: plmanagednode/view.py:154
-msgid "IPs to exclude"
-msgstr "IP, kuriuos reikia išskirti"
+msgid "IPs to exclude."
+msgstr "IP, kuriuos reikia išskirti."
 
 #: plmanagednode/view.py:157
 msgid "Comma separated list of IP to exclude from rotation"
 msgstr "Kableliais atskirtas IP sąrašas, kurio negalima įtraukti į sukimąsi"
 
 #: plmanagednode/view.py:161
-msgid "Search trigger rotation"
-msgstr "Paieškos paleidiklio pasukimas"
+msgid "Search trigger rotation."
+msgstr "Paieškos paleidiklio pasukimas."
 
 #: plmanagednode/view.py:164
 msgid "0 or 1 (0 = disabled, 1 = enabled)"
 msgstr "0 arba 1 (0 = išjungta, 1 = įjungta)"
 
+#: plmanagednode/view.py:179 plmanagednode/view.py:337
+#: plmanagednode/view.py:422
+msgid "You are not authorized to interact with this"
+msgstr "Jūs neturite teisės su tuo bendrauti"
+
 #: plmanagednode/view.py:192
-msgid "Invalid IP block - {error}"
-msgstr "Netinkamas IP blokas - {error}"
+msgid "Invalid IP block - {error_value}"
+msgstr "Netinkamas IP blokas - {error_value}"
 
 #: plmanagednode/view.py:205
 msgid "No IP blocks were provided"
 msgstr "IP blokai nebuvo pateikti"
 
 #: plmanagednode/view.py:220
-msgid "Invalid IP address - {error}"
-msgstr "Neteisingas IP adresas - {error}"
+msgid "Invalid IP address - {error_value}"
+msgstr "Neteisingas IP adresas - {error_value}"
 
 #: plmanagednode/view.py:239
-msgid "Invalid strategy, must be one of: {options}"
-msgstr "Netinkama strategija turi būti viena iš: {options}"
+msgid "Invalid strategy, must be one of: {options_value}"
+msgstr "Netinkama strategija turi būti viena iš: {options_value}"
 
 #: plmanagednode/view.py:255
 msgid "Invalid retry limit, must be a number greater than or equals to -1"

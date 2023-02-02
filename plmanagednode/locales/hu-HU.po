@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
-"POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-02-01 00:10\n"
+"POT-Creation-Date: 2023-02-02 22:16+0000\n"
+"PO-Revision-Date: 2023-02-02 22:33\n"
 "Last-Translator: \n"
 "Language-Team: Hungarian\n"
 "MIME-Version: 1.0\n"
@@ -28,8 +28,8 @@ msgid "Show the version of the Cog and it's PyLav dependencies"
 msgstr "A Cog verziójának és PyLav-függőségeinek megjelenítése"
 
 #: plmanagednode/cog.py:66
-msgid "Library/Cog"
-msgstr "Könyvtár/fogaskerék"
+msgid "Library / Cog"
+msgstr "Könyvtár / Fogaskerekű"
 
 #: plmanagednode/cog.py:67
 msgid "Version"
@@ -45,40 +45,40 @@ msgid "The managed Lavalink node is already up to date."
 msgstr "A kezelt Lavalink csomópont már naprakész."
 
 #: plmanagednode/cog.py:101
-msgid "Your node is out of date, to update please run `{prefix}{command} 1`."
-msgstr "A csomópont elavult, a frissítéshez futtassa a '{prefix}{command} 1'."
+msgid "Your node is out of date, to update please run `{bot_command_prefix}{command_name} 1`."
+msgstr "A csomópont elavult, a frissítéshez futtassa a '{bot_command_prefix}{command_name} 1'."
 
-#: plmanagednode/cog.py:117
-msgid "The managed Lavalink node has been updated to version {version}."
-msgstr "A felügyelt Lavalink csomópont frissítve lett a verzióra {version}."
+#: plmanagednode/cog.py:119
+msgid "The managed Lavalink node has been updated to version {version_value}."
+msgstr "A felügyelt Lavalink csomópont frissítve lett a verzióra {version_value}."
 
-#: plmanagednode/cog.py:127
+#: plmanagednode/cog.py:129
 #, docstring
 msgid "Toggle the managed node on/off.\n\n"
-"        Changes will be applied after restarting [botname].\n"
+"        Changes will be applied after I restart.\n"
 "        "
 msgstr "Kapcsolja be/ki a felügyelt csomópontot.\n\n"
-"        A módosítások az újraindítás után kerülnek alkalmazásra [botname].\n"
+"        A módosítások az újraindítás után lesznek alkalmazva.\n"
 "        "
 
-#: plmanagednode/cog.py:142
+#: plmanagednode/cog.py:144
 msgid "PyLav's managed node has been enabled."
 msgstr "A PyLav felügyelt csomópontja engedélyezve van."
 
-#: plmanagednode/cog.py:150
+#: plmanagednode/cog.py:152
 msgid "PyLav's managed node has been disabled."
 msgstr "A PyLav felügyelt csomópontja le van tiltva."
 
-#: plmanagednode/cog.py:158
+#: plmanagednode/cog.py:160
 #, docstring
 msgid "Toggle the managed node auto updates on/off.\n\n"
-"        Changes will be applied after restarting [botname].\n"
+"        Changes will be applied after I restart.\n"
 "        "
 msgstr "Kapcsolja be/ki a felügyelt csomópont automatikus frissítéseit.\n\n"
-"        A módosítások az újraindítás után kerülnek alkalmazásra [botname].\n"
+"        A módosítások az újraindítás után lesznek alkalmazva.\n"
 "        "
 
-#: plmanagednode/cog.py:174
+#: plmanagednode/cog.py:176
 msgid "PyLav's managed node auto updates have been enabled"
 msgstr "A PyLav felügyelt csomópontjának automatikus frissítései engedélyezve vannak"
 
@@ -86,7 +86,7 @@ msgstr "A PyLav felügyelt csomópontjának automatikus frissítései engedélye
 msgid "PyLav's managed node auto updates have been disabled"
 msgstr "A PyLav felügyelt csomópontjának automatikus frissítései le vannak tiltva"
 
-#: plmanagednode/cog.py:194
+#: plmanagednode/cog.py:192
 #, docstring
 msgid "Set the managed Lavalink node maximum heap-size.\n\n"
 "        By default, this value is 2G of available RAM in the host machine represented by (65-1023M|1+G) (256M,\n"
@@ -101,41 +101,41 @@ msgstr "Állítsa be a felügyelt Lavalink csomópont maximális halommemória-m
 "        hogy a kezelt Lavalink csomópont mindig ezt a RAM-mennyiséget fogja használni.\n"
 "        "
 
-#: plmanagednode/cog.py:218
+#: plmanagednode/cog.py:216
 msgid "Heap-size must be a valid measure of size, e.g. 256M, 256G"
 msgstr "A halomméretnek érvényes méretmérőnek kell lennie, pl. 256M, 256G"
 
-#: plmanagednode/cog.py:228
+#: plmanagednode/cog.py:226
 msgid "Heap-size must be at least 64M, however it is recommended to have it set to at least 1G"
 msgstr "A halomméretnek legalább 64 M-nek kell lennie, azonban ajánlott, hogy legalább 1 G-ra állítsa"
 
-#: plmanagednode/cog.py:240
-msgid "Heap-size must be less than your system RAM, You currently have {ram_in_bytes} of RAM available"
-msgstr "A halomméretnek kisebbnek kell lennie, mint a rendszer RAM-ja, Jelenleg van {ram_in_bytes} rendelkezésre álló RAM-ból"
+#: plmanagednode/cog.py:238
+msgid "Heap-size must be less than your system RAM, You currently have {ram_in_bytes_value} of RAM available"
+msgstr "A halomméretnek kisebbnek kell lennie, mint a rendszer RAM-ja, Jelenleg van {ram_in_bytes_value} rendelkezésre álló RAM-ból"
 
-#: plmanagednode/cog.py:252
-msgid "Heap-size must be less than {limit} due to your system limitations"
-msgstr "A halomméretnek kisebbnek kell lennie, mint {limit} a rendszer korlátai miatt"
+#: plmanagednode/cog.py:250
+msgid "Heap-size must be less than {limit_value} due to your system limitations"
+msgstr "A halomméretnek kisebbnek kell lennie, mint {limit_value} a rendszer korlátai miatt"
 
-#: plmanagednode/cog.py:272
-msgid "Managed node's heap-size set to {bytes}."
-msgstr "A felügyelt csomópont halommemória-mérete a következőre van beállítva: {bytes}."
+#: plmanagednode/cog.py:270
+msgid "Managed node's heap-size set to {bytes_value}."
+msgstr "A felügyelt csomópont halommemória-mérete a következőre van beállítva: {bytes_value}."
 
-#: plmanagednode/cog.py:283
+#: plmanagednode/cog.py:280
 #, docstring
 msgid "Change the managed node start up configs"
 msgstr "A felügyelt csomópont indítási konfigurációinak módosítása"
 
-#: plmanagednode/cog.py:287
+#: plmanagednode/cog.py:284
 #, docstring
 msgid "Set the managed node host"
 msgstr "A felügyelt csomópont gazdagépének beállítása"
 
-#: plmanagednode/cog.py:299
-msgid "Managed node's host set to {host}."
-msgstr "A felügyelt csomópont gazdagépe a következőre van beállítva: {host}."
+#: plmanagednode/cog.py:296
+msgid "Managed node's host set to {host_value}."
+msgstr "A felügyelt csomópont gazdagépe a következőre van beállítva: {host_value}."
 
-#: plmanagednode/cog.py:310
+#: plmanagednode/cog.py:306
 #, docstring
 msgid "`Dangerous command` Set the managed Lavalink node's connection port.\n\n"
 "        This port is the port the managed Lavalink node binds to, you should only change this if there is a\n"
@@ -148,95 +148,99 @@ msgstr "\"Veszélyes parancs\" Állítsa be a felügyelt Lavalink csomópont csa
 "        Az alapértelmezett érték \"2154\".\n"
 "        "
 
-#: plmanagednode/cog.py:320
+#: plmanagednode/cog.py:316
 msgid "The port must be between 1024 and 49151"
 msgstr "A portnak 1024 és 49151 között kell lennie"
 
-#: plmanagednode/cog.py:332
-msgid "Managed node's port set to {port}."
-msgstr "A felügyelt csomópont portja a következőre van beállítva: {port}."
+#: plmanagednode/cog.py:328
+msgid "Managed node's port set to {port_value}."
+msgstr "A felügyelt csomópont portja a következőre van beállítva: {port_value}."
 
-#: plmanagednode/cog.py:340
+#: plmanagednode/cog.py:336
 #, docstring
 msgid "Change the managed node plugins"
 msgstr "A felügyelt csomópont beépülő moduljainak módosítása"
 
-#: plmanagednode/cog.py:346
+#: plmanagednode/cog.py:342
 #, docstring
 msgid "Disabled one of the available plugins"
 msgstr "Letiltotta az egyik elérhető bővítményt"
 
-#: plmanagednode/cog.py:362 plmanagednode/cog.py:474
-msgid "The plugin must be one of the following: {plugins}"
-msgstr "A bővítménynek a következők egyikének kell lennie: {plugins}"
+#: plmanagednode/cog.py:358
+msgid "The plugin must be one of the following: {plugins_value}"
+msgstr "A bővítménynek a következők egyikének kell lennie: {plugins_value}"
 
-#: plmanagednode/cog.py:447
-msgid "Managed node's plugin {plugin} disabled."
-msgstr "Felügyelt csomópont beépülő modulja {plugin} fogyatékos."
+#: plmanagednode/cog.py:443
+msgid "Managed node plugin {plugin_value} disabled."
+msgstr "Felügyelt csomópont beépülő modul {plugin_value} fogyatékos."
 
-#: plmanagednode/cog.py:458
+#: plmanagednode/cog.py:453
 #, docstring
 msgid "Enable one of the available plugins"
 msgstr "Engedélyezze az elérhető bővítmények egyikét"
 
-#: plmanagednode/cog.py:507
-msgid "Managed node's plugin {plugin} enabled."
-msgstr "Felügyelt csomópont beépülő modulja {plugin} Engedélyezve."
+#: plmanagednode/cog.py:469
+msgid "The plugin must be one of the following: {plugins}"
+msgstr "A bővítménynek a következők egyikének kell lennie: {plugins}"
 
-#: plmanagednode/cog.py:518
+#: plmanagednode/cog.py:502
+msgid "Managed node plugin {plugin_value} enabled."
+msgstr "Felügyelt csomópont beépülő modul {plugin_value} Engedélyezve."
+
+#: plmanagednode/cog.py:512
 #, docstring
 msgid "Update the managed node plugins"
 msgstr "A felügyelt csomópont beépülő moduljainak frissítése"
 
-#: plmanagednode/cog.py:592
-msgid "{name} was updated from {old_value} to {new_value}\n"
-msgstr "{name} frissítve lett innen: {old_value} hoz {new_value}\n"
+#: plmanagednode/cog.py:586
+msgid "{name_value} was updated from {old_value} to {new_value}\n"
+msgstr "{name_value} frissítve lett innen: {old_value} hoz {new_value}\n"
 
-#: plmanagednode/cog.py:600
-msgid "Managed node's plugins updated.\n\n"
-"{updates}"
-msgstr "A felügyelt csomópont beépülő moduljai frissültek.\n\n"
-"{updates}"
+#: plmanagednode/cog.py:594
+msgid "Managed node plugins updated.\n\n"
+"{update_values}"
+msgstr "A felügyelt csomópont beépülő moduljai frissítve lettek.\n\n"
+"{update_values}"
 
-#: plmanagednode/cog.py:611
+#: plmanagednode/cog.py:604
 msgid "Managed node's plugins already up to date"
 msgstr "A felügyelt csomópont beépülő moduljai már naprakészek"
 
-#: plmanagednode/cog.py:619
+#: plmanagednode/cog.py:612
 #, docstring
 msgid "Toggle the managed node sources"
 msgstr "A felügyelt csomópontforrások váltása"
 
-#: plmanagednode/cog.py:634
-msgid "Invalid source, {valid_list} are valid sources"
-msgstr "Érvénytelen forrás, {valid_list} érvényes források"
+#: plmanagednode/cog.py:627
+msgid "Invalid source, {valid_list_value} are valid sources"
+msgstr "Érvénytelen forrás, {valid_list_value} érvényes források"
 
-#: plmanagednode/cog.py:648 plmanagednode/cog.py:684
+#: plmanagednode/cog.py:641 plmanagednode/cog.py:676
 msgid "enabled"
 msgstr "Engedélyezve"
 
-#: plmanagednode/cog.py:648 plmanagednode/cog.py:684
+#: plmanagednode/cog.py:641 plmanagednode/cog.py:676
 msgid "disabled"
 msgstr "fogyatékos"
 
-#: plmanagednode/cog.py:651
-msgid "Managed node's {source} source set to {state}."
-msgstr "Felügyelt csomópontok {source} forrás beállítása {state}."
+#: plmanagednode/cog.py:644
+msgid "Managed node {source_value} source set to {state_value}."
+msgstr "Felügyelt csomópont {source_value} forrás beállítása {state_value}."
 
-#: plmanagednode/cog.py:663
+#: plmanagednode/cog.py:655
 #, docstring
 msgid "Toggle the managed node filters"
 msgstr "A felügyelt csomópontszűrők váltása"
 
-#: plmanagednode/cog.py:675
-msgid "Invalid source, {valid_list} are valid filters"
-msgstr "Érvénytelen forrás, {valid_list} érvényes szűrők"
+#: plmanagednode/cog.py:667
+msgid "Invalid source, {valid_list_value} are valid filters"
+msgstr "Érvénytelen forrás, {valid_list_value} érvényes szűrők"
 
-#: plmanagednode/cog.py:687
-msgid "Managed node's {source} filter set to {state}."
-msgstr "Felügyelt csomópontok {source} szűrő beállítása {state}."
+#: plmanagednode/cog.py:679
+msgid "Managed node {source_value} filter set to {state_value}."
+msgstr "Felügyelt csomópont {source_value} szűrő beállítása {state_value}."
 
-#: plmanagednode/cog.py:699
+#: plmanagednode/cog.py:690
 #, docstring
 msgid "Configure multiple settings for the managed node.\n\n"
 "        Run `[p]plmanaged config server <setting> info` to show info about the settings and what they do.\n\n"
@@ -267,75 +271,75 @@ msgstr "Konfiguráljon több beállítást a felügyelt csomóponthoz.\n\n"
 "        'soundcloudSearchEnabled' : Logikai azaz Igaz (alapértelmezett igaz)\n"
 "        "
 
-#: plmanagednode/cog.py:739
-msgid "{Setting} is not a valid Setting; Options are:\n\n"
-"{setting_list}"
-msgstr "{Setting} nem érvényes Beállítás; A lehetőségek a következők:\n\n"
-"{setting_list}"
+#: plmanagednode/cog.py:730
+msgid "{Setting_value} is not a valid Setting; Options are:\n\n"
+"{setting_list_value}"
+msgstr "{Setting_value} nem érvényes Beállítás; A lehetőségek a következők:\n\n"
+"{setting_list_value}"
 
-#: plmanagednode/cog.py:750
+#: plmanagednode/cog.py:743
 msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses but will increase RAM usage. Minimum of 40ms, lower values may introduce pauses and stutters. Set to 0 to disable JDA-NAS. Accepted values: Range: 0 - 2,000"
 msgstr "A NAS-puffer időtartama ezredmásodpercben. A magasabb értékek jobban teljesítenek a hosszabb GC-szünetek ellen, de növelik a RAM-használatot. Legalább 40 ms, az alacsonyabb értékek szüneteket és dadogásokat okozhatnak. Állítsa 0-ra a JDA-NAS letiltásához. Elfogadott értékek: Tartomány: 0 - 2 000"
 
-#: plmanagednode/cog.py:756
+#: plmanagednode/cog.py:749
 msgid "How many milliseconds of audio to keep buffered, Higher values increase RAM usage. Accepted values: Range: 1,000 - 10,000"
 msgstr "Hány ezredmásodpercnyi hangot kell pufferelni, a magasabb értékek növelik a RAM-használatot. Elfogadott értékek: Tartomány: 1 000 - 10 000"
 
-#: plmanagednode/cog.py:760
+#: plmanagednode/cog.py:753
 msgid "The threshold in milliseconds for how long a track can be stuck. A track is stuck if does not return any audio data. Accepted values: Range: 5,000 - 20,000"
 msgstr "A küszöbérték ezredmásodpercben, hogy mennyi ideig lehet elakadni egy pályán. Egy sáv elakad, ha nem ad vissza hangadatokat. Elfogadott értékek: Tartomány: 5 000 - 20 000"
 
-#: plmanagednode/cog.py:764
+#: plmanagednode/cog.py:757
 msgid "Number of pages to return for a YouTube Playlist - Each page contains 100 songs. Accepted values: Range: 5 - 100"
 msgstr "YouTube-lejátszási listához visszaküldendő oldalak száma – Minden oldal 100 dalt tartalmaz. Elfogadott értékek: Tartomány: 5 - 100"
 
-#: plmanagednode/cog.py:768
-msgid "Opus encoder quality. Valid values range from 0 to 10, where 10 is best quality but is the most expensive on the CPU"
-msgstr "Opus kódoló minősége. Az érvényes értékek 0 és 10 között vannak, ahol a 10 a legjobb minőség, de a legdrágább a CPU-n"
+#: plmanagednode/cog.py:761
+msgid "Opus encoder quality. Valid values range from 0 to 10, where 10 is the best quality but is the most expensive on the CPU."
+msgstr "Opus kódoló minősége. Az érvényes értékek 0 és 10 között mozognak, ahol a 10 a legjobb minőség, de a legdrágább a CPU-n."
 
-#: plmanagednode/cog.py:772
-msgid "Quality of resampling operations. Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU"
-msgstr "Az újramintavételi műveletek minősége. Az érvényes értékek: LOW, MEDIUM és HIGH, ahol a HIGH használja a legtöbb CPU-t"
+#: plmanagednode/cog.py:765
+msgid "Quality of resampling operations. Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU."
+msgstr "Az újramintavételi műveletek minősége. Az érvényes értékek: LOW, MEDIUM és HIGH, ahol a HIGH használja a legtöbb CPU-t."
 
-#: plmanagednode/cog.py:776
+#: plmanagednode/cog.py:769
 msgid "Seek ghosting is the effect where whilst a seek is in progress, the audio buffer is read from until empty, or until seek is ready. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "A szellemkép keresése az a hatás, amikor a keresés folyamatban van, a hangpuffert addig olvassák be, amíg ki nem ürül, vagy amíg a keresés készen áll. Az Igaz érték elfogadott értékei: \"Igaz\", \"t\", \"1\", Hamis elfogadott értékei: \"Hamis\", \"f\", \"0\""
 
-#: plmanagednode/cog.py:781
+#: plmanagednode/cog.py:774
 msgid "How frequently in seconds to send player updates to clients, affects the current position accuracy. Accepted values: Range: 1 - 86400"
 msgstr "Az, hogy milyen gyakran kell másodpercben elküldeni a játékosfrissítéseket az ügyfeleknek, befolyásolja az aktuális pozíció pontosságát. Elfogadott értékek: Tartomány: 1 - 86400"
 
-#: plmanagednode/cog.py:785
-msgid "Enable or disable YouTube searches within the node, this will affect AppleMusic, Spotify and any functionality dependant on YouTube. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
+#: plmanagednode/cog.py:778
+msgid "Enable or disable YouTube searches within the node, this will affect AppleMusic, Spotify and any functionality dependent on YouTube. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "Engedélyezze vagy tiltsa le a YouTube-kereséseket a csomóponton belül, ez hatással lesz az AppleMusicra, a Spotify-ra és a YouTube-tól függő funkciókra. Az Igaz érték elfogadott értékei: \"Igaz\", \"t\", \"1\", Hamis elfogadott értékei: \"Hamis\", \"f\", \"0\""
 
-#: plmanagednode/cog.py:790
-msgid "Enable or disable SoundCloud searches within the node, this will affect any functionality dependant on SoundCloud. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
+#: plmanagednode/cog.py:783
+msgid "Enable or disable SoundCloud searches within the node, this will affect any functionality dependent on SoundCloud. Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
 msgstr "Engedélyezze vagy tiltsa le a SoundCloud kereséseket a csomóponton belül, ez hatással lesz a SoundCloudtól függő funkciókra. Az Igaz érték elfogadott értékei: \"Igaz\", \"t\", \"1\", Hamis elfogadott értékei: \"Hamis\", \"f\", \"0\""
 
-#: plmanagednode/cog.py:799
-msgid "{Setting} info.\n\n"
-"{info}"
-msgstr "{Setting} infó.\n\n"
-"{info}"
+#: plmanagednode/cog.py:792
+msgid "{Setting_value} info.\n\n"
+"{info_value}"
+msgstr "{Setting_value} infó.\n\n"
+"{info_value}"
 
-#: plmanagednode/cog.py:827
-msgid "{Setting} valid inputs are:\n\n"
-"Range between: {start} - {end}"
-msgstr "{Setting} Az érvényes bemenetek a következők:\n\n"
-"A következők közötti tartomány: {start} - {end}"
+#: plmanagednode/cog.py:820
+msgid "{Setting_value} valid inputs are:\n\n"
+"Range between: {start_value} - {end_value}"
+msgstr "{Setting_value} Az érvényes bemenetek a következők:\n\n"
+"A következők közötti tartomány: {start_value} - {end_value}"
 
-#: plmanagednode/cog.py:838
-msgid "{Setting} valid inputs are:\n\n"
-"{setting_list}"
-msgstr "{Setting} Az érvényes bemenetek a következők:\n\n"
-"{setting_list}"
+#: plmanagednode/cog.py:831
+msgid "{Setting_value} valid inputs are:\n\n"
+"{setting_list_value}"
+msgstr "{Setting_value} Az érvényes bemenetek a következők:\n\n"
+"{setting_list_value}"
 
-#: plmanagednode/cog.py:857
-msgid "{Setting} set to {value}."
-msgstr "{Setting} Beállítás: {value}."
+#: plmanagednode/cog.py:850
+msgid "{Setting_value} set to {value}."
+msgstr "{Setting_value} Beállítás: {value}."
 
-#: plmanagednode/cog.py:869
+#: plmanagednode/cog.py:861
 #, docstring
 msgid "Configure Lavalink IP Rotation for rate limits.\n\n"
 "        Run `[p]plmanaged config iprotation 1` to remove the ip rotation\n"
@@ -344,17 +348,17 @@ msgstr "Konfigurálja a Lavalink IP-rotációt a sebességkorlátokhoz.\n\n"
 "        Fuss '[p]Plmanaged Config IProtation 1' az IP-rotáció eltávolításához\n"
 "        "
 
-#: plmanagednode/cog.py:880
+#: plmanagednode/cog.py:872
 msgid "Click the button below to configure the IP rotation for your node.\n"
-"More info at: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> and <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
+"More info at: {url_value_1} and {url_value_2}"
 msgstr "Kattintson az alábbi gombra a csomópont IP-rotációjának konfigurálásához.\n"
-"További információ: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> és <https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
+"További információ: {url_value_1} és {url_value_2}"
 
-#: plmanagednode/cog.py:898
+#: plmanagednode/cog.py:893
 msgid "Removing the IP rotation from your node."
 msgstr "Az IP-rotáció eltávolítása a csomópontról."
 
-#: plmanagednode/cog.py:906
+#: plmanagednode/cog.py:901
 #, docstring
 msgid "Link a Google account to Lavalink to bypass YouTube's age restriction\n\n"
 "        Run `[p]plmanaged config googleaccount 1` to remove the linked account.\n"
@@ -363,17 +367,17 @@ msgstr "Google-fiók összekapcsolása a Lavalinkkel, hogy megkerülje a YouTube
 "        Fuss '[p]plmanaged config googleaccount 1' az összekapcsolt fiók eltávolításához.\n"
 "        "
 
-#: plmanagednode/cog.py:917
+#: plmanagednode/cog.py:912
 msgid "Click the button below to link a Google account to your node, if you have 2FA setup on this account you will need an app password instead\n"
 "More info at: <https://support.google.com/accounts/answer/185833>"
 msgstr "Kattintson az alábbi gombra egy Google-fiók és a csomópont összekapcsolásához, ha 2FA beállítás van ezen a fiókon, akkor inkább egy alkalmazásjelszóra lesz szüksége\n"
 "További információ: <https://support.google.com/accounts/answer/185833>"
 
-#: plmanagednode/cog.py:936
+#: plmanagednode/cog.py:931
 msgid "Unlinking Google account from your node."
 msgstr "A Google-fiók leválasztása a csomópontról."
 
-#: plmanagednode/cog.py:944
+#: plmanagednode/cog.py:939
 #, docstring
 msgid "Configure a HTTP proxy for Lavalink\n\n"
 "        Run `[p]plmanaged config httpproxy 1` to remove the proxy.\n"
@@ -382,75 +386,78 @@ msgstr "HTTP-proxy konfigurálása a Lavalinkhez\n\n"
 "        Fuss '[p]plmanaged config httpproxy 1' a proxy eltávolításához.\n"
 "        "
 
-#: plmanagednode/cog.py:955
+#: plmanagednode/cog.py:950
 msgid "Click the button below to configure a HTTP proxy for your node"
 msgstr "Kattintson az alábbi gombra a csomópont HTTP-proxyjának konfigurálásához"
 
-#: plmanagednode/cog.py:969
+#: plmanagednode/cog.py:964
 msgid "Unlinking HTTP proxy from your node."
 msgstr "A HTTP-proxy leválasztása a csomópontról."
 
 #: plmanagednode/view.py:38 plmanagednode/view.py:65 plmanagednode/view.py:98
-#: plmanagednode/view.py:179 plmanagednode/view.py:337
-#: plmanagednode/view.py:422
-msgid "You are not authorized to interact with this"
-msgstr "Ön nem jogosult arra, hogy ezzel kapcsolatba lépjen"
+msgid "You are not authorized to interact with this."
+msgstr "Ön nem jogosult arra, hogy ezzel interakcióba lépjen."
 
 #: plmanagednode/view.py:125
-msgid "IP Rotation Configurator"
-msgstr "IP-rotációs konfigurátor"
+msgid "IP Rotation Configurator."
+msgstr "IP-rotációs konfigurátor."
 
 #: plmanagednode/view.py:128
-msgid "IP Blocks"
-msgstr "IP-blokkok"
+msgid "IP Blocks."
+msgstr "IP-blokkok."
 
 #: plmanagednode/view.py:132
 msgid "1.0.0.0/8,...,... - Comma separated list of IP blocks"
 msgstr "1.0.0.0/8,...,... - Az IP-blokkok vesszővel elválasztott listája"
 
 #: plmanagednode/view.py:137
-msgid "Rotation strategy"
-msgstr "Rotációs stratégia"
+msgid "Rotation strategy."
+msgstr "Rotációs stratégia."
 
 #: plmanagednode/view.py:146
-msgid "Retry limit"
-msgstr "Újrapróbálkozási korlát"
+msgid "Retry limit."
+msgstr "Újrapróbálkozási korlát."
 
 #: plmanagednode/view.py:149
 msgid "-1 = default, 0 = infinity, >0 = number of retries"
 msgstr "-1 = alapértelmezett, 0 = végtelen, >0 = újrapróbálkozások száma"
 
 #: plmanagednode/view.py:154
-msgid "IPs to exclude"
-msgstr "Kizárni kívánt IP-címek"
+msgid "IPs to exclude."
+msgstr "Az IP-k kizárása."
 
 #: plmanagednode/view.py:157
 msgid "Comma separated list of IP to exclude from rotation"
 msgstr "Az elforgatásból kizárni kívánt IP-címek vesszővel elválasztott listája"
 
 #: plmanagednode/view.py:161
-msgid "Search trigger rotation"
-msgstr "Keresési eseményindító elforgatása"
+msgid "Search trigger rotation."
+msgstr "Keresési eseményindító rotációja."
 
 #: plmanagednode/view.py:164
 msgid "0 or 1 (0 = disabled, 1 = enabled)"
 msgstr "0 vagy 1 (0 = letiltva, 1 = engedélyezve)"
 
+#: plmanagednode/view.py:179 plmanagednode/view.py:337
+#: plmanagednode/view.py:422
+msgid "You are not authorized to interact with this"
+msgstr "Ön nem jogosult arra, hogy ezzel kapcsolatba lépjen"
+
 #: plmanagednode/view.py:192
-msgid "Invalid IP block - {error}"
-msgstr "Érvénytelen IP-blokk - {error}"
+msgid "Invalid IP block - {error_value}"
+msgstr "Érvénytelen IP-blokk - {error_value}"
 
 #: plmanagednode/view.py:205
 msgid "No IP blocks were provided"
 msgstr "Nem biztosítottak IP-blokkokat"
 
 #: plmanagednode/view.py:220
-msgid "Invalid IP address - {error}"
-msgstr "Érvénytelen IP-cím - {error}"
+msgid "Invalid IP address - {error_value}"
+msgstr "Érvénytelen IP-cím - {error_value}"
 
 #: plmanagednode/view.py:239
-msgid "Invalid strategy, must be one of: {options}"
-msgstr "Érvénytelen stratégia, a következők egyikének kell lennie: {options}"
+msgid "Invalid strategy, must be one of: {options_value}"
+msgstr "Érvénytelen stratégia, a következők egyikének kell lennie: {options_value}"
 
 #: plmanagednode/view.py:255
 msgid "Invalid retry limit, must be a number greater than or equals to -1"
