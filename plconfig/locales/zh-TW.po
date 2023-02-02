@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
-"POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-02-01 00:33\n"
+"POT-Creation-Date: 2023-02-02 22:16+0000\n"
+"PO-Revision-Date: 2023-02-02 22:33\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
@@ -33,8 +33,8 @@ msgid "Show the version of the Cog and its PyLav dependencies"
 msgstr "顯示齒輪的版本及其 PyLav 依賴項"
 
 #: plconfig/cog.py:64
-msgid "Library/Cog"
-msgstr "庫/齒輪"
+msgid "Library / Cog"
+msgstr "圖書館/齒輪"
 
 #: plconfig/cog.py:65
 msgid "Version"
@@ -45,39 +45,39 @@ msgstr "版本"
 msgid "Show the config values"
 msgstr "顯示配置數值"
 
-#: plconfig/cog.py:85 plconfig/view.py:57
-msgid "PyLav Config"
-msgstr "PyLav 設置"
+#: plconfig/cog.py:85
+msgid "PyLav Configuration"
+msgstr "PyLav 配置"
 
 #: plconfig/cog.py:88
 msgid "Get information about the PyLav library settings"
 msgstr "獲取有關 PyLav 資料庫設定的資訊"
 
-#: plconfig/cog.py:92 plconfig/view.py:123
-msgid "Global Player Config"
-msgstr "播放器全域設置"
+#: plconfig/cog.py:92
+msgid "Global Player Configuration"
+msgstr "全球玩家配置"
 
 #: plconfig/cog.py:95
 msgid "Get information about bot owner configured settings for the players"
 msgstr "獲取有關機器人擁有者為播放器配置設定的資訊"
 
-#: plconfig/cog.py:103 plconfig/view.py:194
-msgid "Context Player Config"
-msgstr "播放器上下文配置"
+#: plconfig/cog.py:103
+msgid "Context Player Configuration"
+msgstr "上下文播放器配置"
 
 #: plconfig/cog.py:107
 msgid "Get information about contextual settings for the player, accounting for the global settings"
 msgstr "獲取有關播放器上下文設置的資訊，並考慮全局設置"
 
-#: plconfig/cog.py:114 plconfig/view.py:339
-msgid "Server Player Config"
-msgstr "伺務器播放器設置"
+#: plconfig/cog.py:114
+msgid "Server Player Configuration"
+msgstr "伺服器播放機配置"
 
 #: plconfig/cog.py:118
 msgid "Get information about server configured settings for the player"
 msgstr "獲取有關播放器的伺務器配置設定詳細資料"
 
-#: plconfig/cog.py:126 plconfig/view.py:378
+#: plconfig/cog.py:126 plconfig/view.py:396
 msgid "Playlist Tasks"
 msgstr "播放列表任務"
 
@@ -93,7 +93,7 @@ msgstr "PyLav 路徑"
 msgid "Get information about PyLav paths"
 msgstr "獲得有關 PyLav 路徑的相關資訊"
 
-#: plconfig/cog.py:147 plconfig/view.py:474
+#: plconfig/cog.py:147 plconfig/view.py:492
 msgid "Managed Node Config"
 msgstr "託管節點配置"
 
@@ -103,45 +103,45 @@ msgstr "獲取有關託管 PyLav Lavalink 節點的資訊"
 
 #: plconfig/cog.py:160
 #, docstring
-msgid "Checks if a user or role is considered a DJ"
-msgstr "檢查成員或身分組是否有 DJ 功能"
+msgid "Checks if a user or role is considered a disc jockey"
+msgstr "檢查使用者或角色是否被視為唱片騎師"
 
 #: plconfig/cog.py:171
-msgid "{role} is a DJ role"
-msgstr "{role} 是 DJ身分組"
+msgid "{role_name_value} is a disc jockey role"
+msgstr "{role_name_value} 是唱片騎師角色"
 
 #: plconfig/cog.py:173
-msgid "{role} is not a DJ role"
-msgstr "{role} 不是一個 DJ 身分組"
+msgid "{role_name_value} is not a disc jockey role"
+msgstr "{role_name_value} 不是唱片騎師角色"
 
 #: plconfig/cog.py:178
-msgid "{user} is a DJ"
-msgstr "{user} 為 DJ成員"
+msgid "{user_name_value} is a disc jockey"
+msgstr "{user_name_value} 是唱片騎師"
 
 #: plconfig/cog.py:180
-msgid "{user} is not a DJ"
-msgstr "{user} 不是 DJ 成員"
+msgid "{user_name_value} is not a disc jockey"
+msgstr "{user_name_value} 不是唱片騎師"
 
 #: plconfig/cog.py:193
 #, docstring
 msgid "Set the local tracks folder for PyLav.\n\n"
-"        Changes will be applied after restarting the [botname].\n"
+"        Changes will be applied after I restart.\n"
 "        "
-msgstr "為 PyLav 設置本地曲目文件夾。\n\n"
-"        重新啟動 [botname] 後將應用更改。\n"
+msgstr "為 PyLav 設定本地曲目資料夾。\n\n"
+"        重新啟動後將應用更改。\n"
 "        "
 
 #: plconfig/cog.py:205
-msgid "{folder} is not a folder"
-msgstr "{folder} 不是一個資料夾"
+msgid "{folder_path_value} is not a folder"
+msgstr "{folder_path_value} 不是資料夾"
 
 #: plconfig/cog.py:219
-msgid "{folder} does not exist, run the command again with the create argument set to 1 to automatically create this folder"
-msgstr "{folder} 不存在，將create參數設置為1再次運行命令來自動創建該資料夾"
+msgid "{folder_path_value} does not exist, run the command again with the create argument set to 1 to automatically create this folder"
+msgstr "{folder_path_value} 不存在，請在 create 參數設置為 1 的情況下再次運行該命令以自動建立此資料夾"
 
 #: plconfig/cog.py:237
-msgid "PyLav's local tracks folder has been set to {folder}"
-msgstr "PyLav 的本地歌目文件夾已設置為 {folder}"
+msgid "PyLav's local tracks folder has been set to {folder_path_value}"
+msgstr "PyLav 的本地曲目資料夾已設置為 {folder_path_value}"
 
 #: plconfig/cog.py:248
 #, docstring
@@ -151,10 +151,10 @@ msgstr "更改已託管節點配置"
 #: plconfig/cog.py:252
 #, docstring
 msgid "Toggle the managed node on/off.\n\n"
-"        Changes will be applied after restarting the [botname].\n"
+"        Changes will be applied after I restart.\n"
 "        "
 msgstr "打開/關閉受管節點。\n\n"
-"        重新啟動 [botname] 後將應用更改。\n"
+"        重新啟動後將應用更改。\n"
 "        "
 
 #: plconfig/cog.py:268
@@ -168,10 +168,10 @@ msgstr "PyLav 的託管節點已被禁用"
 #: plconfig/cog.py:284
 #, docstring
 msgid "Toggle the managed node auto updates on/off.\n\n"
-"        Changes will be applied after restarting [botname].\n"
+"        Changes will be applied after I restart.\n"
 "        "
 msgstr "打開/關閉受管節點自動更新。\n\n"
-"        重新啟動後將應用更改 [botname].\n"
+"        重新啟動後將應用更改。\n"
 "        "
 
 #: plconfig/cog.py:300
@@ -220,55 +220,55 @@ msgstr "有關如何設置 Spotify API token的說明"
 
 #: plconfig/cog.py:388
 msgid "1. Go to Spotify developers and log in with your Spotify account.\n"
-"(https://developer.spotify.com/dashboard/applications)\n"
+"({spotify_url_value})\n"
 "2. Click \"Create An App\".\n"
 "3. Fill out the form provided with your app name, etc.\n"
 "4. When asked if you're developing commercial integration select \"No\".\n"
 "5. Accept the terms and conditions.\n"
 "6. Copy your client ID and your client secret into:\n"
-"`{prefix}set api spotify client_id <your_client_id_here> client_secret <your_client_secret_here>`"
-msgstr "1. 至 Spotify 開發人員頁面並使用您的 Spotify 帳戶登錄。\n"
-"(https://developer.spotify.com/dashboard/applications)\n"
-"2. 點擊“Create An App”。\n"
-"3.填寫您的應用程序名稱等提供的表格。\n"
+"  {command_name_value}"
+msgstr "1. 轉到 Spotify 開發人員並使用您的 Spotify 帳戶登錄。\n"
+"({spotify_url_value})\n"
+"2. 按兩下「創建應用程式」。\n"
+"3. 填寫隨附的應用名稱等的表單。\n"
 "4. 當詢問您是否正在開發商業集成時，請選擇“否”。\n"
 "5. 接受條款和條件。\n"
-"6. 將您的客戶端 ID 和客戶端密碼複製到：\n"
-"`{prefix}set api spotify client_id <your_client_id_here> client_secret <your_client_secret_here>`"
+"6. 將您的用戶端 ID 和用戶端金鑰複製到：\n"
+"  {command_name_value}"
 
-#: plconfig/cog.py:409
+#: plconfig/cog.py:412
 #, docstring
 msgid "Manage active players"
 msgstr "管理播放器"
 
-#: plconfig/cog.py:418
-msgid "No active player in {name}"
-msgstr "沒有活躍的玩家 {name}"
+#: plconfig/cog.py:421
+msgid "No active player in {server_name_value}."
+msgstr "沒有活躍的玩家 {server_name_value}."
 
-#: plconfig/cog.py:427
-msgid "No connected players"
-msgstr "沒有已連線的播放器"
+#: plconfig/cog.py:432
+msgid "No connected players."
+msgstr "沒有連接的玩家。"
 
-#: plconfig/cog.py:444
+#: plconfig/cog.py:449
 #, docstring
-msgid "Toggle whether or not to change [botname]'s activity"
-msgstr "切換是否更改 [botname] 的活動"
+msgid "Toggle whether or not I should update my Discord activity when playing tracks."
+msgstr "切換我是否應該在播放曲目時更新我的 Discord 活動。"
 
-#: plconfig/cog.py:455
-msgid "PyLav will change bot activity"
-msgstr "PyLav 將改變機器人活動"
+#: plconfig/cog.py:460
+msgid "PyLav will change bot activity."
+msgstr "PyLav 將更改機器人活動。"
 
-#: plconfig/cog.py:464
-msgid "PyLav will no longer change the bot activity"
-msgstr "PyLav 將不再更改機器人活動"
+#: plconfig/cog.py:469
+msgid "PyLav will no longer change the bot activity."
+msgstr "PyLav 將不再更改機器人活動。"
 
-#: plconfig/view.py:27 plconfig/view.py:69 plconfig/view.py:140
-#: plconfig/view.py:211 plconfig/view.py:430
+#: plconfig/view.py:27 plconfig/view.py:69 plconfig/view.py:146
+#: plconfig/view.py:223 plconfig/view.py:448
 msgid "Enabled"
 msgstr "啟用"
 
-#: plconfig/view.py:28 plconfig/view.py:70 plconfig/view.py:141
-#: plconfig/view.py:212 plconfig/view.py:431
+#: plconfig/view.py:28 plconfig/view.py:70 plconfig/view.py:147
+#: plconfig/view.py:224 plconfig/view.py:449
 msgid "Disabled"
 msgstr "禁用"
 
@@ -298,199 +298,219 @@ msgid "Use Bundled\n"
 msgstr "使用綁定\n"
 "lava.link 節點"
 
-#: plconfig/view.py:58 plconfig/view.py:124 plconfig/view.py:195
-#: plconfig/view.py:340 plconfig/view.py:475
+#: plconfig/view.py:57
+msgid "PyLav Config"
+msgstr "PyLav 設置"
+
+#: plconfig/view.py:58 plconfig/view.py:130 plconfig/view.py:207
+#: plconfig/view.py:358 plconfig/view.py:493
 msgid "Value"
 msgstr "價值"
 
-#: plconfig/view.py:73 plconfig/view.py:154 plconfig/view.py:258
+#: plconfig/view.py:73 plconfig/view.py:160 plconfig/view.py:270
 msgid "Volume"
 msgstr "音量"
 
-#: plconfig/view.py:75 plconfig/view.py:155 plconfig/view.py:259
+#: plconfig/view.py:75 plconfig/view.py:161 plconfig/view.py:271
 msgid "Maximum Volume"
 msgstr "最大音量"
 
-#: plconfig/view.py:77 plconfig/view.py:157 plconfig/view.py:261
+#: plconfig/view.py:77 plconfig/view.py:163 plconfig/view.py:273
 msgid "AutoPlay"
 msgstr "自動播放"
 
-#: plconfig/view.py:81 plconfig/view.py:160 plconfig/view.py:277
+#: plconfig/view.py:81 plconfig/view.py:166 plconfig/view.py:289
 msgid "Shuffling"
 msgstr "隨機播放"
 
-#: plconfig/view.py:85 plconfig/view.py:161 plconfig/view.py:281
+#: plconfig/view.py:85 plconfig/view.py:167 plconfig/view.py:293
 msgid "Auto Shuffle"
 msgstr "自動隨機播放"
 
-#: plconfig/view.py:89 plconfig/view.py:162 plconfig/view.py:285
+#: plconfig/view.py:89 plconfig/view.py:168 plconfig/view.py:297
 msgid "Auto Deafen"
 msgstr "自動拒聽"
 
-#: plconfig/view.py:93 plconfig/view.py:164 plconfig/view.py:289
+#: plconfig/view.py:93 plconfig/view.py:170 plconfig/view.py:301
 msgid "Auto Disconnect"
 msgstr "自動斷開連接"
 
-#: plconfig/view.py:95 plconfig/view.py:103 plconfig/view.py:111
-#: plconfig/view.py:166 plconfig/view.py:174 plconfig/view.py:182
-#: plconfig/view.py:291 plconfig/view.py:299 plconfig/view.py:307
-msgid "{enabled}\n"
-"{timer} seconds"
-msgstr "{enabled}\n"
-"{timer} 秒"
+#: plconfig/view.py:95 plconfig/view.py:105 plconfig/view.py:115
+#: plconfig/view.py:172 plconfig/view.py:182 plconfig/view.py:192
+#: plconfig/view.py:303 plconfig/view.py:313 plconfig/view.py:323
+msgid "{setting_stats_value}\n"
+"{setting_timer_value} seconds"
+msgstr "{setting_stats_value}\n"
+"{setting_timer_value} 秒"
 
-#: plconfig/view.py:101 plconfig/view.py:172 plconfig/view.py:297
+#: plconfig/view.py:103 plconfig/view.py:180 plconfig/view.py:311
 msgid "Auto Alone Pause"
 msgstr "單獨時自動暫停播放"
 
-#: plconfig/view.py:109 plconfig/view.py:180 plconfig/view.py:305
+#: plconfig/view.py:113 plconfig/view.py:190 plconfig/view.py:321
 msgid "Auto Alone Disconnect"
 msgstr "單獨時自動斷開連接"
 
-#: plconfig/view.py:137 plconfig/view.py:208
+#: plconfig/view.py:129
+msgid "Global Player Config"
+msgstr "播放器全域設置"
+
+#: plconfig/view.py:143 plconfig/view.py:220
 msgid "You need to be in a server to be able to show this page."
 msgstr "您需要在伺務器中才能顯示此頁面。"
 
-#: plconfig/view.py:229 plconfig/view.py:245
-msgid "Too many to show ({count})"
-msgstr "無法顯示太多（{count}）"
+#: plconfig/view.py:206
+msgid "Context Player Config"
+msgstr "播放器上下文配置"
 
-#: plconfig/view.py:248 plconfig/view.py:253 plconfig/view.py:316
-#: plconfig/view.py:322 plconfig/view.py:328
+#: plconfig/view.py:241
+msgid "Too many to show ({number_of_users_value})"
+msgstr "太多而無法顯示 （{number_of_users_value})"
+
+#: plconfig/view.py:257
+msgid "Too many to show ({number_of_roles_value})"
+msgstr "太多而無法顯示 （{number_of_roles_value})"
+
+#: plconfig/view.py:260 plconfig/view.py:265 plconfig/view.py:334
+#: plconfig/view.py:340 plconfig/view.py:346
 msgid "None"
 msgstr "沒有"
 
-#: plconfig/view.py:265
+#: plconfig/view.py:277
 msgid "AutoPlay Playlist"
 msgstr "自動播放播放清單"
 
-#: plconfig/view.py:269
+#: plconfig/view.py:281
 msgid "Loop track"
 msgstr "循環播放歌曲"
 
-#: plconfig/view.py:273
+#: plconfig/view.py:285
 msgid "Loop Queue"
 msgstr "循環播放清單"
 
-#: plconfig/view.py:313
+#: plconfig/view.py:331
 msgid "Forced Voice Channel"
 msgstr "綁定專用語音頻道"
 
-#: plconfig/view.py:319
+#: plconfig/view.py:337
 msgid "Forced Command Channel"
 msgstr "綁定專用指令頻道"
 
-#: plconfig/view.py:325
+#: plconfig/view.py:343
 msgid "Forced Notification Channel"
 msgstr "綁定通知專用頻道"
 
-#: plconfig/view.py:330
+#: plconfig/view.py:348
 msgid "DJ Users"
 msgstr "DJ 使用者"
 
-#: plconfig/view.py:331
+#: plconfig/view.py:349
 msgid "DJ Roles"
 msgstr "DJ角色"
 
-#: plconfig/view.py:354
+#: plconfig/view.py:357
+msgid "Server Player Config"
+msgstr "伺務器播放器設置"
+
+#: plconfig/view.py:372
 msgid "Next Bundled\n"
 "Playlist Update"
 msgstr "下一個捆綁\n"
 "更新播放列表"
 
-#: plconfig/view.py:360
+#: plconfig/view.py:378
 msgid "Next Bundled External\n"
 "Playlist Update"
 msgstr "下一個外部捆綁\n"
 "更新播放列表"
 
-#: plconfig/view.py:366
+#: plconfig/view.py:384
 msgid "Next External\n"
 "Playlist Update"
 msgstr "下一個外部\n"
 "播放列表更新"
 
-#: plconfig/view.py:379
+#: plconfig/view.py:397
 msgid "Date and Time (UTC)"
 msgstr "日期和時間 (UTC)"
 
-#: plconfig/view.py:392
+#: plconfig/view.py:410
 msgid "You need to be the bot owner to be able to show this page."
 msgstr "您必需為機器人擁有者才能顯示此頁面。"
 
-#: plconfig/view.py:398
+#: plconfig/view.py:416
 msgid "Config Folder"
 msgstr "配置資料夾"
 
-#: plconfig/view.py:400
+#: plconfig/view.py:418
 msgid "Local Tracks"
 msgstr "本地曲目"
 
-#: plconfig/view.py:403
+#: plconfig/view.py:421
 msgid "Lavalink Folder"
 msgstr "Lavalink 資料夾"
 
-#: plconfig/view.py:405
+#: plconfig/view.py:423
 msgid "Java Executable"
 msgstr "Java 可執行文件"
 
-#: plconfig/view.py:409
+#: plconfig/view.py:427
 msgid "Not Found"
 msgstr "未找到"
 
-#: plconfig/view.py:419
+#: plconfig/view.py:437
 msgid "Paths"
 msgstr "路徑"
 
-#: plconfig/view.py:420
+#: plconfig/view.py:438
 msgid "Path"
 msgstr "路徑"
 
-#: plconfig/view.py:439
+#: plconfig/view.py:457
 msgid "Java"
 msgstr "爪哇島"
 
-#: plconfig/view.py:443
+#: plconfig/view.py:461
 msgid "Lavaplayer"
 msgstr "熔岩播放器"
 
-#: plconfig/view.py:447
+#: plconfig/view.py:465
 msgid "Lavalink Branch"
 msgstr "Lavalink 分支"
 
-#: plconfig/view.py:451
+#: plconfig/view.py:469
 msgid "Lavalink Version"
 msgstr "Lavalink 版本"
 
-#: plconfig/view.py:455
+#: plconfig/view.py:473
 msgid "Lavalink Build"
 msgstr "Lavalink 組態"
 
-#: plconfig/view.py:458
+#: plconfig/view.py:476
 msgid "Build Time"
 msgstr "建構時間"
 
-#: plconfig/view.py:460
+#: plconfig/view.py:478
 msgid "Commit"
 msgstr "提交"
 
-#: plconfig/view.py:464
+#: plconfig/view.py:482
 msgid "Auto Update"
 msgstr "自動更新"
 
-#: plconfig/view.py:502
+#: plconfig/view.py:520
 msgid "Select an option from the dropdown menu below."
 msgstr "從下方的下拉選單中選擇一個選項。"
 
-#: plconfig/view.py:518
+#: plconfig/view.py:536
 msgid "Pick an option to view"
 msgstr "選擇一個選項來查看"
 
-#: plconfig/view.py:528
+#: plconfig/view.py:546
 msgid "You are not authorized to interact with this option"
 msgstr "您無權限與此選項互動"
 
-#: plconfig/view.py:558
+#: plconfig/view.py:576
 msgid "You are not authorized to interact with this"
 msgstr "您無權與此互動"
 

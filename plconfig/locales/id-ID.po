@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
-"POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-02-01 00:10\n"
+"POT-Creation-Date: 2023-02-02 22:16+0000\n"
+"PO-Revision-Date: 2023-02-02 22:33\n"
 "Last-Translator: \n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -33,8 +33,8 @@ msgid "Show the version of the Cog and its PyLav dependencies"
 msgstr "Memperlihatkan versi Cog dan dependensi PyLav-nya"
 
 #: plconfig/cog.py:64
-msgid "Library/Cog"
-msgstr "Perpustakaan/Cog"
+msgid "Library / Cog"
+msgstr "Perpustakaan / Cog"
 
 #: plconfig/cog.py:65
 msgid "Version"
@@ -45,39 +45,39 @@ msgstr "Versi"
 msgid "Show the config values"
 msgstr "Memperlihatkan nilai konfigurasi"
 
-#: plconfig/cog.py:85 plconfig/view.py:57
-msgid "PyLav Config"
+#: plconfig/cog.py:85
+msgid "PyLav Configuration"
 msgstr "Konfigurasi PyLav"
 
 #: plconfig/cog.py:88
 msgid "Get information about the PyLav library settings"
 msgstr "Mendapatkan informasi tentang pengaturan library PyLav"
 
-#: plconfig/cog.py:92 plconfig/view.py:123
-msgid "Global Player Config"
+#: plconfig/cog.py:92
+msgid "Global Player Configuration"
 msgstr "Konfigurasi Pemain Global"
 
 #: plconfig/cog.py:95
 msgid "Get information about bot owner configured settings for the players"
 msgstr "Dapatkan informasi tentang pengaturan yang dikonfigurasi pemilik bot untuk para pemain"
 
-#: plconfig/cog.py:103 plconfig/view.py:194
-msgid "Context Player Config"
+#: plconfig/cog.py:103
+msgid "Context Player Configuration"
 msgstr "Konfigurasi Pemutar Konteks"
 
 #: plconfig/cog.py:107
 msgid "Get information about contextual settings for the player, accounting for the global settings"
 msgstr "Dapatkan informasi tentang pengaturan kontekstual untuk pemain, dengan memperhitungkan pengaturan global"
 
-#: plconfig/cog.py:114 plconfig/view.py:339
-msgid "Server Player Config"
-msgstr "Konfigurasi Pemain Server"
+#: plconfig/cog.py:114
+msgid "Server Player Configuration"
+msgstr "Konfigurasi Pemutar Server"
 
 #: plconfig/cog.py:118
 msgid "Get information about server configured settings for the player"
 msgstr "Dapatkan informasi tentang pengaturan yang dikonfigurasi server untuk pemutar"
 
-#: plconfig/cog.py:126 plconfig/view.py:378
+#: plconfig/cog.py:126 plconfig/view.py:396
 msgid "Playlist Tasks"
 msgstr "Tugas Daftar Putar"
 
@@ -93,7 +93,7 @@ msgstr "Jalur PyLav"
 msgid "Get information about PyLav paths"
 msgstr "Dapatkan informasi tentang jalur PyLav"
 
-#: plconfig/cog.py:147 plconfig/view.py:474
+#: plconfig/cog.py:147 plconfig/view.py:492
 msgid "Managed Node Config"
 msgstr "Konfigurasi Node Terkelola"
 
@@ -103,45 +103,45 @@ msgstr "Mendapatkan informasi tentang node PyLav Lavalink Terkelola"
 
 #: plconfig/cog.py:160
 #, docstring
-msgid "Checks if a user or role is considered a DJ"
-msgstr "Memeriksa apakah pengguna atau peran dianggap sebagai DJ"
+msgid "Checks if a user or role is considered a disc jockey"
+msgstr "Memeriksa apakah pengguna atau peran dianggap sebagai disc jockey"
 
 #: plconfig/cog.py:171
-msgid "{role} is a DJ role"
-msgstr "{role} adalah peran DJ"
+msgid "{role_name_value} is a disc jockey role"
+msgstr "{role_name_value} adalah peran disc jockey"
 
 #: plconfig/cog.py:173
-msgid "{role} is not a DJ role"
-msgstr "{role} bukan peran DJ"
+msgid "{role_name_value} is not a disc jockey role"
+msgstr "{role_name_value} bukan peran disc jockey"
 
 #: plconfig/cog.py:178
-msgid "{user} is a DJ"
-msgstr "{user} adalah seorang DJ"
+msgid "{user_name_value} is a disc jockey"
+msgstr "{user_name_value} adalah seorang disc jockey"
 
 #: plconfig/cog.py:180
-msgid "{user} is not a DJ"
-msgstr "{user} bukan DJ"
+msgid "{user_name_value} is not a disc jockey"
+msgstr "{user_name_value} bukan disc jockey"
 
 #: plconfig/cog.py:193
 #, docstring
 msgid "Set the local tracks folder for PyLav.\n\n"
-"        Changes will be applied after restarting the [botname].\n"
+"        Changes will be applied after I restart.\n"
 "        "
 msgstr "Atur folder trek lokal untuk PyLav.\n\n"
-"        Perubahan akan diterapkan setelah memulai ulang [botname].\n"
+"        Perubahan akan diterapkan setelah saya restart.\n"
 "        "
 
 #: plconfig/cog.py:205
-msgid "{folder} is not a folder"
-msgstr "{folder} bukan folder"
+msgid "{folder_path_value} is not a folder"
+msgstr "{folder_path_value} bukan folder"
 
 #: plconfig/cog.py:219
-msgid "{folder} does not exist, run the command again with the create argument set to 1 to automatically create this folder"
-msgstr "{folder} tidak ada, jalankan perintah lagi dengan argumen create diatur ke 1 untuk secara otomatis membuat folder ini"
+msgid "{folder_path_value} does not exist, run the command again with the create argument set to 1 to automatically create this folder"
+msgstr "{folder_path_value} tidak ada, jalankan perintah lagi dengan argumen create diatur ke 1 untuk secara otomatis membuat folder ini"
 
 #: plconfig/cog.py:237
-msgid "PyLav's local tracks folder has been set to {folder}"
-msgstr "Folder trek lokal PyLav telah diatur ke {folder}"
+msgid "PyLav's local tracks folder has been set to {folder_path_value}"
+msgstr "Folder trek lokal PyLav telah diatur ke {folder_path_value}"
 
 #: plconfig/cog.py:248
 #, docstring
@@ -151,10 +151,10 @@ msgstr "Mengubah konfigurasi node terkelola"
 #: plconfig/cog.py:252
 #, docstring
 msgid "Toggle the managed node on/off.\n\n"
-"        Changes will be applied after restarting the [botname].\n"
+"        Changes will be applied after I restart.\n"
 "        "
 msgstr "Aktifkan/nonaktifkan simpul terkelola.\n\n"
-"        Perubahan akan diterapkan setelah memulai ulang [botname].\n"
+"        Perubahan akan diterapkan setelah saya restart.\n"
 "        "
 
 #: plconfig/cog.py:268
@@ -168,10 +168,10 @@ msgstr "Node terkelola PyLav telah dinonaktifkan"
 #: plconfig/cog.py:284
 #, docstring
 msgid "Toggle the managed node auto updates on/off.\n\n"
-"        Changes will be applied after restarting [botname].\n"
+"        Changes will be applied after I restart.\n"
 "        "
 msgstr "Aktifkan/nonaktifkan pembaruan otomatis node terkelola.\n\n"
-"        Perubahan akan diterapkan setelah memulai ulang [botname].\n"
+"        Perubahan akan diterapkan setelah saya restart.\n"
 "        "
 
 #: plconfig/cog.py:300
@@ -220,55 +220,55 @@ msgstr "Petunjuk tentang cara mengatur Token API Spotify"
 
 #: plconfig/cog.py:388
 msgid "1. Go to Spotify developers and log in with your Spotify account.\n"
-"(https://developer.spotify.com/dashboard/applications)\n"
+"({spotify_url_value})\n"
 "2. Click \"Create An App\".\n"
 "3. Fill out the form provided with your app name, etc.\n"
 "4. When asked if you're developing commercial integration select \"No\".\n"
 "5. Accept the terms and conditions.\n"
 "6. Copy your client ID and your client secret into:\n"
-"`{prefix}set api spotify client_id <your_client_id_here> client_secret <your_client_secret_here>`"
+"  {command_name_value}"
 msgstr "1. Buka pengembang Spotify dan masuk dengan akun Spotify Anda.\n"
-"(https://developer.spotify.com/dashboard/applications)\n"
+"({spotify_url_value})\n"
 "2. Klik \"Buat Aplikasi\".\n"
 "3. Isi formulir yang disediakan dengan nama aplikasi Anda, dll.\n"
 "4. Ketika ditanya apakah Anda sedang mengembangkan integrasi komersial, pilih \"Tidak\".\n"
 "5. Terima syarat dan ketentuan.\n"
 "6. Salin ID klien Anda dan rahasia klien Anda ke dalam:\n"
-"`{prefix}Atur client_id Spotify <your_client_id_here> client_secret <your_client_secret_here>`"
+"  {command_name_value}"
 
-#: plconfig/cog.py:409
+#: plconfig/cog.py:412
 #, docstring
 msgid "Manage active players"
 msgstr "Kelola pemain aktif"
 
-#: plconfig/cog.py:418
-msgid "No active player in {name}"
-msgstr "Tidak ada pemain aktif di {name}"
+#: plconfig/cog.py:421
+msgid "No active player in {server_name_value}."
+msgstr "Tidak ada pemain aktif di {server_name_value}."
 
-#: plconfig/cog.py:427
-msgid "No connected players"
-msgstr "Tidak ada pemain yang terhubung"
+#: plconfig/cog.py:432
+msgid "No connected players."
+msgstr "Tidak ada pemain yang terhubung."
 
-#: plconfig/cog.py:444
+#: plconfig/cog.py:449
 #, docstring
-msgid "Toggle whether or not to change [botname]'s activity"
-msgstr "Beralih apakah akan berubah atau tidak [botname]aktivitas"
+msgid "Toggle whether or not I should update my Discord activity when playing tracks."
+msgstr "Alihkan apakah saya harus memperbarui aktivitas Discord saya saat memutar trek atau tidak."
 
-#: plconfig/cog.py:455
-msgid "PyLav will change bot activity"
-msgstr "PyLav akan mengubah aktivitas bot"
+#: plconfig/cog.py:460
+msgid "PyLav will change bot activity."
+msgstr "PyLav akan mengubah aktivitas bot."
 
-#: plconfig/cog.py:464
-msgid "PyLav will no longer change the bot activity"
-msgstr "PyLav tidak akan lagi mengubah aktivitas bot"
+#: plconfig/cog.py:469
+msgid "PyLav will no longer change the bot activity."
+msgstr "PyLav tidak akan lagi mengubah aktivitas bot."
 
-#: plconfig/view.py:27 plconfig/view.py:69 plconfig/view.py:140
-#: plconfig/view.py:211 plconfig/view.py:430
+#: plconfig/view.py:27 plconfig/view.py:69 plconfig/view.py:146
+#: plconfig/view.py:223 plconfig/view.py:448
 msgid "Enabled"
 msgstr "Diaktifkan"
 
-#: plconfig/view.py:28 plconfig/view.py:70 plconfig/view.py:141
-#: plconfig/view.py:212 plconfig/view.py:431
+#: plconfig/view.py:28 plconfig/view.py:70 plconfig/view.py:147
+#: plconfig/view.py:224 plconfig/view.py:449
 msgid "Disabled"
 msgstr "Cacat"
 
@@ -298,199 +298,219 @@ msgid "Use Bundled\n"
 msgstr "Gunakan Bundel\n"
 "lava.link Node"
 
-#: plconfig/view.py:58 plconfig/view.py:124 plconfig/view.py:195
-#: plconfig/view.py:340 plconfig/view.py:475
+#: plconfig/view.py:57
+msgid "PyLav Config"
+msgstr "Konfigurasi PyLav"
+
+#: plconfig/view.py:58 plconfig/view.py:130 plconfig/view.py:207
+#: plconfig/view.py:358 plconfig/view.py:493
 msgid "Value"
 msgstr "Nilai"
 
-#: plconfig/view.py:73 plconfig/view.py:154 plconfig/view.py:258
+#: plconfig/view.py:73 plconfig/view.py:160 plconfig/view.py:270
 msgid "Volume"
 msgstr "Jilid"
 
-#: plconfig/view.py:75 plconfig/view.py:155 plconfig/view.py:259
+#: plconfig/view.py:75 plconfig/view.py:161 plconfig/view.py:271
 msgid "Maximum Volume"
 msgstr "Volume Maksimum"
 
-#: plconfig/view.py:77 plconfig/view.py:157 plconfig/view.py:261
+#: plconfig/view.py:77 plconfig/view.py:163 plconfig/view.py:273
 msgid "AutoPlay"
 msgstr "putar otomatis"
 
-#: plconfig/view.py:81 plconfig/view.py:160 plconfig/view.py:277
+#: plconfig/view.py:81 plconfig/view.py:166 plconfig/view.py:289
 msgid "Shuffling"
 msgstr "Menyeret"
 
-#: plconfig/view.py:85 plconfig/view.py:161 plconfig/view.py:281
+#: plconfig/view.py:85 plconfig/view.py:167 plconfig/view.py:293
 msgid "Auto Shuffle"
 msgstr "Pengocokan Otomatis"
 
-#: plconfig/view.py:89 plconfig/view.py:162 plconfig/view.py:285
+#: plconfig/view.py:89 plconfig/view.py:168 plconfig/view.py:297
 msgid "Auto Deafen"
 msgstr "Tuli Otomatis"
 
-#: plconfig/view.py:93 plconfig/view.py:164 plconfig/view.py:289
+#: plconfig/view.py:93 plconfig/view.py:170 plconfig/view.py:301
 msgid "Auto Disconnect"
 msgstr "Pemutusan Otomatis"
 
-#: plconfig/view.py:95 plconfig/view.py:103 plconfig/view.py:111
-#: plconfig/view.py:166 plconfig/view.py:174 plconfig/view.py:182
-#: plconfig/view.py:291 plconfig/view.py:299 plconfig/view.py:307
-msgid "{enabled}\n"
-"{timer} seconds"
-msgstr "{enabled}\n"
-"{timer} Detik"
+#: plconfig/view.py:95 plconfig/view.py:105 plconfig/view.py:115
+#: plconfig/view.py:172 plconfig/view.py:182 plconfig/view.py:192
+#: plconfig/view.py:303 plconfig/view.py:313 plconfig/view.py:323
+msgid "{setting_stats_value}\n"
+"{setting_timer_value} seconds"
+msgstr "{setting_stats_value}\n"
+"{setting_timer_value} Detik"
 
-#: plconfig/view.py:101 plconfig/view.py:172 plconfig/view.py:297
+#: plconfig/view.py:103 plconfig/view.py:180 plconfig/view.py:311
 msgid "Auto Alone Pause"
 msgstr "Jeda Otomatis Sendiri"
 
-#: plconfig/view.py:109 plconfig/view.py:180 plconfig/view.py:305
+#: plconfig/view.py:113 plconfig/view.py:190 plconfig/view.py:321
 msgid "Auto Alone Disconnect"
 msgstr "Pemutusan Sambungan Otomatis Sendiri"
 
-#: plconfig/view.py:137 plconfig/view.py:208
+#: plconfig/view.py:129
+msgid "Global Player Config"
+msgstr "Konfigurasi Pemain Global"
+
+#: plconfig/view.py:143 plconfig/view.py:220
 msgid "You need to be in a server to be able to show this page."
 msgstr "Anda harus berada di server untuk dapat menampilkan halaman ini."
 
-#: plconfig/view.py:229 plconfig/view.py:245
-msgid "Too many to show ({count})"
-msgstr "Terlalu banyak untuk ditampilkan ({count})"
+#: plconfig/view.py:206
+msgid "Context Player Config"
+msgstr "Konfigurasi Pemutar Konteks"
 
-#: plconfig/view.py:248 plconfig/view.py:253 plconfig/view.py:316
-#: plconfig/view.py:322 plconfig/view.py:328
+#: plconfig/view.py:241
+msgid "Too many to show ({number_of_users_value})"
+msgstr "Terlalu banyak untuk ditampilkan ({number_of_users_value})"
+
+#: plconfig/view.py:257
+msgid "Too many to show ({number_of_roles_value})"
+msgstr "Terlalu banyak untuk ditampilkan ({number_of_roles_value})"
+
+#: plconfig/view.py:260 plconfig/view.py:265 plconfig/view.py:334
+#: plconfig/view.py:340 plconfig/view.py:346
 msgid "None"
 msgstr "Tidak"
 
-#: plconfig/view.py:265
+#: plconfig/view.py:277
 msgid "AutoPlay Playlist"
 msgstr "Daftar Putar Otomatis"
 
-#: plconfig/view.py:269
+#: plconfig/view.py:281
 msgid "Loop track"
 msgstr "Jalur loop"
 
-#: plconfig/view.py:273
+#: plconfig/view.py:285
 msgid "Loop Queue"
 msgstr "Antrean Loop"
 
-#: plconfig/view.py:313
+#: plconfig/view.py:331
 msgid "Forced Voice Channel"
 msgstr "Saluran Suara Paksa"
 
-#: plconfig/view.py:319
+#: plconfig/view.py:337
 msgid "Forced Command Channel"
 msgstr "Saluran Perintah Paksa"
 
-#: plconfig/view.py:325
+#: plconfig/view.py:343
 msgid "Forced Notification Channel"
 msgstr "Saluran Notifikasi Paksa"
 
-#: plconfig/view.py:330
+#: plconfig/view.py:348
 msgid "DJ Users"
 msgstr "Pengguna DJ"
 
-#: plconfig/view.py:331
+#: plconfig/view.py:349
 msgid "DJ Roles"
 msgstr "Peran DJ"
 
-#: plconfig/view.py:354
+#: plconfig/view.py:357
+msgid "Server Player Config"
+msgstr "Konfigurasi Pemain Server"
+
+#: plconfig/view.py:372
 msgid "Next Bundled\n"
 "Playlist Update"
 msgstr "Berikutnya Dibundel\n"
 "Pembaruan Daftar Putar"
 
-#: plconfig/view.py:360
+#: plconfig/view.py:378
 msgid "Next Bundled External\n"
 "Playlist Update"
 msgstr "Eksternal Bundel Berikutnya\n"
 "Pembaruan Daftar Putar"
 
-#: plconfig/view.py:366
+#: plconfig/view.py:384
 msgid "Next External\n"
 "Playlist Update"
 msgstr "Eksternal Berikutnya\n"
 "Pembaruan Daftar Putar"
 
-#: plconfig/view.py:379
+#: plconfig/view.py:397
 msgid "Date and Time (UTC)"
 msgstr "Tanggal dan Waktu (UTC)"
 
-#: plconfig/view.py:392
+#: plconfig/view.py:410
 msgid "You need to be the bot owner to be able to show this page."
 msgstr "Anda harus menjadi pemilik bot untuk dapat menampilkan halaman ini."
 
-#: plconfig/view.py:398
+#: plconfig/view.py:416
 msgid "Config Folder"
 msgstr "Folder Konfigurasi"
 
-#: plconfig/view.py:400
+#: plconfig/view.py:418
 msgid "Local Tracks"
 msgstr "Jalur Lokal"
 
-#: plconfig/view.py:403
+#: plconfig/view.py:421
 msgid "Lavalink Folder"
 msgstr "Lavalink Folder"
 
-#: plconfig/view.py:405
+#: plconfig/view.py:423
 msgid "Java Executable"
 msgstr "Java Dapat Dieksekusi"
 
-#: plconfig/view.py:409
+#: plconfig/view.py:427
 msgid "Not Found"
 msgstr "Tidak Ditemukan"
 
-#: plconfig/view.py:419
+#: plconfig/view.py:437
 msgid "Paths"
 msgstr "Jalan"
 
-#: plconfig/view.py:420
+#: plconfig/view.py:438
 msgid "Path"
 msgstr "Jalan"
 
-#: plconfig/view.py:439
+#: plconfig/view.py:457
 msgid "Java"
 msgstr "Jawa"
 
-#: plconfig/view.py:443
+#: plconfig/view.py:461
 msgid "Lavaplayer"
 msgstr "Lavaplayer"
 
-#: plconfig/view.py:447
+#: plconfig/view.py:465
 msgid "Lavalink Branch"
 msgstr "Cabang Lavalink"
 
-#: plconfig/view.py:451
+#: plconfig/view.py:469
 msgid "Lavalink Version"
 msgstr "Versi Lavalink"
 
-#: plconfig/view.py:455
+#: plconfig/view.py:473
 msgid "Lavalink Build"
 msgstr "Lavalink Membangun"
 
-#: plconfig/view.py:458
+#: plconfig/view.py:476
 msgid "Build Time"
 msgstr "Waktu Bangun"
 
-#: plconfig/view.py:460
+#: plconfig/view.py:478
 msgid "Commit"
 msgstr "Melakukan"
 
-#: plconfig/view.py:464
+#: plconfig/view.py:482
 msgid "Auto Update"
 msgstr "Pembaruan Otomatis"
 
-#: plconfig/view.py:502
+#: plconfig/view.py:520
 msgid "Select an option from the dropdown menu below."
 msgstr "Pilih opsi dari menu tarik-turun di bawah ini."
 
-#: plconfig/view.py:518
+#: plconfig/view.py:536
 msgid "Pick an option to view"
 msgstr "Pilih opsi untuk ditampilkan"
 
-#: plconfig/view.py:528
+#: plconfig/view.py:546
 msgid "You are not authorized to interact with this option"
 msgstr "Anda tidak berwenang untuk berinteraksi dengan opsi ini"
 
-#: plconfig/view.py:558
+#: plconfig/view.py:576
 msgid "You are not authorized to interact with this"
 msgstr "Anda tidak berwenang untuk berinteraksi dengan ini"
 

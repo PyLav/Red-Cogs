@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
-"POT-Creation-Date: 2023-01-31 23:26+0000\n"
-"PO-Revision-Date: 2023-02-01 00:10\n"
+"POT-Creation-Date: 2023-02-02 22:16+0000\n"
+"PO-Revision-Date: 2023-02-02 22:33\n"
 "Last-Translator: \n"
 "Language-Team: Ukrainian\n"
 "MIME-Version: 1.0\n"
@@ -33,8 +33,8 @@ msgid "Show the version of the Cog and its PyLav dependencies"
 msgstr "Показати версію гвинтика і його залежностей PyLav"
 
 #: plconfig/cog.py:64
-msgid "Library/Cog"
-msgstr "Бібліотека/гвинтик"
+msgid "Library / Cog"
+msgstr "Бібліотека / Гвинтик"
 
 #: plconfig/cog.py:65
 msgid "Version"
@@ -45,39 +45,39 @@ msgstr "Версія"
 msgid "Show the config values"
 msgstr "Показати значення конфігурації"
 
-#: plconfig/cog.py:85 plconfig/view.py:57
-msgid "PyLav Config"
-msgstr "ПіЛав Конфіг"
+#: plconfig/cog.py:85
+msgid "PyLav Configuration"
+msgstr "Конфігурація PyLav"
 
 #: plconfig/cog.py:88
 msgid "Get information about the PyLav library settings"
 msgstr "Отримати інформацію про параметри бібліотеки PyLav"
 
-#: plconfig/cog.py:92 plconfig/view.py:123
-msgid "Global Player Config"
-msgstr "Глобальні налаштування гравця"
+#: plconfig/cog.py:92
+msgid "Global Player Configuration"
+msgstr "Глобальна конфігурація гравця"
 
 #: plconfig/cog.py:95
 msgid "Get information about bot owner configured settings for the players"
 msgstr "Отримати інформацію про налаштовані настройки власника бота для гравців"
 
-#: plconfig/cog.py:103 plconfig/view.py:194
-msgid "Context Player Config"
-msgstr "Конфігурація контексту плеєра"
+#: plconfig/cog.py:103
+msgid "Context Player Configuration"
+msgstr "Конфігурація контекстного програвача"
 
 #: plconfig/cog.py:107
 msgid "Get information about contextual settings for the player, accounting for the global settings"
 msgstr "Отримати інформацію про контекстні налаштування гравця, в обліковому записі глобальних налаштувань"
 
-#: plconfig/cog.py:114 plconfig/view.py:339
-msgid "Server Player Config"
-msgstr "Конфігурація програвача"
+#: plconfig/cog.py:114
+msgid "Server Player Configuration"
+msgstr "Конфігурація серверного програвача"
 
 #: plconfig/cog.py:118
 msgid "Get information about server configured settings for the player"
 msgstr "Отримати інформацію про налаштовані параметри сервера для гравця"
 
-#: plconfig/cog.py:126 plconfig/view.py:378
+#: plconfig/cog.py:126 plconfig/view.py:396
 msgid "Playlist Tasks"
 msgstr "Завдання списку відтворення"
 
@@ -93,7 +93,7 @@ msgstr "Шляхи для Пілава"
 msgid "Get information about PyLav paths"
 msgstr "Отримати інформацію про шляхи PyLav"
 
-#: plconfig/cog.py:147 plconfig/view.py:474
+#: plconfig/cog.py:147 plconfig/view.py:492
 msgid "Managed Node Config"
 msgstr "Керована конфігурація вузла"
 
@@ -103,45 +103,45 @@ msgstr "Отримати інформацію про вузол Managed PyLav La
 
 #: plconfig/cog.py:160
 #, docstring
-msgid "Checks if a user or role is considered a DJ"
-msgstr "Перевіряє, чи користувач або роль вважаються DJ"
+msgid "Checks if a user or role is considered a disc jockey"
+msgstr "Перевіряє, чи вважається користувач або роль диск-жокеєм"
 
 #: plconfig/cog.py:171
-msgid "{role} is a DJ role"
-msgstr "{role} є роллю DJ"
+msgid "{role_name_value} is a disc jockey role"
+msgstr "{role_name_value} — роль диск-жокея"
 
 #: plconfig/cog.py:173
-msgid "{role} is not a DJ role"
-msgstr "{role} не є роллю DJ"
+msgid "{role_name_value} is not a disc jockey role"
+msgstr "{role_name_value} не є роллю диск-жокея"
 
 #: plconfig/cog.py:178
-msgid "{user} is a DJ"
-msgstr "{user} є DJ"
+msgid "{user_name_value} is a disc jockey"
+msgstr "{user_name_value} — диск-жокей"
 
 #: plconfig/cog.py:180
-msgid "{user} is not a DJ"
-msgstr "{user} не є DJ"
+msgid "{user_name_value} is not a disc jockey"
+msgstr "{user_name_value} не є диск-жокеєм"
 
 #: plconfig/cog.py:193
 #, docstring
 msgid "Set the local tracks folder for PyLav.\n\n"
-"        Changes will be applied after restarting the [botname].\n"
+"        Changes will be applied after I restart.\n"
 "        "
-msgstr "Встановити теку локальних треків для PyLav. Після перезавантаження\n\n"
-"        будуть застосовані зміни [botname].\n"
+msgstr "Встановіть локальну папку треків для PyLav.\n\n"
+"        Зміни будуть застосовані після того, як я перезавантажу.\n"
 "        "
 
 #: plconfig/cog.py:205
-msgid "{folder} is not a folder"
-msgstr "{folder} не є текою"
+msgid "{folder_path_value} is not a folder"
+msgstr "{folder_path_value} це не папка"
 
 #: plconfig/cog.py:219
-msgid "{folder} does not exist, run the command again with the create argument set to 1 to automatically create this folder"
-msgstr "{folder} не існує, запустіть команду знову з набором нового аргументу в 1 для автоматичного створення цієї папки"
+msgid "{folder_path_value} does not exist, run the command again with the create argument set to 1 to automatically create this folder"
+msgstr "{folder_path_value} не існує, знову запустіть команду з аргументом створення, встановленим на 1, щоб автоматично створити цю папку"
 
 #: plconfig/cog.py:237
-msgid "PyLav's local tracks folder has been set to {folder}"
-msgstr "Тека місцевих треків PyLava встановлена на {folder}"
+msgid "PyLav's local tracks folder has been set to {folder_path_value}"
+msgstr "Локальна папка треків PyLav була встановлена на {folder_path_value}"
 
 #: plconfig/cog.py:248
 #, docstring
@@ -151,11 +151,11 @@ msgstr "Змінити керовану конфігурацію вузла"
 #: plconfig/cog.py:252
 #, docstring
 msgid "Toggle the managed node on/off.\n\n"
-"        Changes will be applied after restarting the [botname].\n"
+"        Changes will be applied after I restart.\n"
 "        "
-msgstr "Вимкнення керованого вузла увімк./вимк.\n\n"
-"        Зміни будуть застосовані після перезавантаження [botname].\n"
-".        "
+msgstr "Ввімкніть/вимкніть керований вузол.\n\n"
+"        Зміни будуть застосовані після того, як я перезавантажу.\n"
+"        "
 
 #: plconfig/cog.py:268
 msgid "PyLav's managed node has been enabled"
@@ -168,10 +168,10 @@ msgstr "Керувати вузлом ПіЛави вимкнено"
 #: plconfig/cog.py:284
 #, docstring
 msgid "Toggle the managed node auto updates on/off.\n\n"
-"        Changes will be applied after restarting [botname].\n"
+"        Changes will be applied after I restart.\n"
 "        "
 msgstr "Увімкніть/вимкніть автоматичне оновлення керованого вузла.\n\n"
-"        Зміни будуть застосовані після перезапуску [botname].\n"
+"        Зміни будуть застосовані після того, як я перезавантажу.\n"
 "        "
 
 #: plconfig/cog.py:300
@@ -220,55 +220,55 @@ msgstr "Інструкції щодо налаштування токенів Sp
 
 #: plconfig/cog.py:388
 msgid "1. Go to Spotify developers and log in with your Spotify account.\n"
-"(https://developer.spotify.com/dashboard/applications)\n"
+"({spotify_url_value})\n"
 "2. Click \"Create An App\".\n"
 "3. Fill out the form provided with your app name, etc.\n"
 "4. When asked if you're developing commercial integration select \"No\".\n"
 "5. Accept the terms and conditions.\n"
 "6. Copy your client ID and your client secret into:\n"
-"`{prefix}set api spotify client_id <your_client_id_here> client_secret <your_client_secret_here>`"
-msgstr "1. Перейдіть до розробників Spotify і увійдіть разом із вашим обліковим записом Spotify\n"
-"(https://developer.spotify. om/dashboard/applications)\n"
-"2. Натисніть «Створити програму».\n"
-"3. Заповніть форму за допомогою назви додатку і т. д\n"
-"4. Коли вас запитують, чи ви розробляєте комерційну інтеграцію обираєте \"Ні\".\n"
-"5. Прийміть умови і умови\n"
-". Скопіюйте ID Вашого клієнта і Ваш клієнт в секрет:\n"
-"`{prefix}встановити значення api spotify client_id <your_client_id_here> client_secre <your_client_secret_here>"
+"  {command_name_value}"
+msgstr "1. Перейдіть до розробників Spotify і увійдіть у свій обліковий запис Spotify.\n"
+"({spotify_url_value})\n"
+"2. Натисніть \"Створити додаток\".\n"
+"3. Заповніть форму, вказану з назвою вашого додатка тощо.\n"
+"4. На запитання, чи розробляєте ви комерційну інтеграцію, виберіть \"Ні\".\n"
+"5. Прийміть умови.\n"
+"6. Скопіюйте ідентифікатор клієнта та секрет клієнта в:\n"
+"  {command_name_value}"
 
-#: plconfig/cog.py:409
+#: plconfig/cog.py:412
 #, docstring
 msgid "Manage active players"
 msgstr "Керування активними гравцями"
 
-#: plconfig/cog.py:418
-msgid "No active player in {name}"
-msgstr "Немає активного гравця у {name}"
+#: plconfig/cog.py:421
+msgid "No active player in {server_name_value}."
+msgstr "Немає активного гравця в {server_name_value}."
 
-#: plconfig/cog.py:427
-msgid "No connected players"
-msgstr "Немає підключених гравців"
+#: plconfig/cog.py:432
+msgid "No connected players."
+msgstr "Немає підключених гравців."
 
-#: plconfig/cog.py:444
+#: plconfig/cog.py:449
 #, docstring
-msgid "Toggle whether or not to change [botname]'s activity"
-msgstr "Перемкнути чи ні значення для зміни активності [botname]"
+msgid "Toggle whether or not I should update my Discord activity when playing tracks."
+msgstr "Переключіть, чи слід мені оновлювати свою активність Discord під час відтворення треків."
 
-#: plconfig/cog.py:455
-msgid "PyLav will change bot activity"
-msgstr "PyLav змінить діяльність бота"
+#: plconfig/cog.py:460
+msgid "PyLav will change bot activity."
+msgstr "PyLav змінить активність ботів."
 
-#: plconfig/cog.py:464
-msgid "PyLav will no longer change the bot activity"
-msgstr "PyLav більше не змінить діяльність бота"
+#: plconfig/cog.py:469
+msgid "PyLav will no longer change the bot activity."
+msgstr "PyLav більше не буде змінювати активність бота."
 
-#: plconfig/view.py:27 plconfig/view.py:69 plconfig/view.py:140
-#: plconfig/view.py:211 plconfig/view.py:430
+#: plconfig/view.py:27 plconfig/view.py:69 plconfig/view.py:146
+#: plconfig/view.py:223 plconfig/view.py:448
 msgid "Enabled"
 msgstr "Включений"
 
-#: plconfig/view.py:28 plconfig/view.py:70 plconfig/view.py:141
-#: plconfig/view.py:212 plconfig/view.py:431
+#: plconfig/view.py:28 plconfig/view.py:70 plconfig/view.py:147
+#: plconfig/view.py:224 plconfig/view.py:449
 msgid "Disabled"
 msgstr "Вимкнуто"
 
@@ -298,199 +298,219 @@ msgid "Use Bundled\n"
 msgstr "Використовувати вбудовані\n"
 "lava.link Вузли"
 
-#: plconfig/view.py:58 plconfig/view.py:124 plconfig/view.py:195
-#: plconfig/view.py:340 plconfig/view.py:475
+#: plconfig/view.py:57
+msgid "PyLav Config"
+msgstr "ПіЛав Конфіг"
+
+#: plconfig/view.py:58 plconfig/view.py:130 plconfig/view.py:207
+#: plconfig/view.py:358 plconfig/view.py:493
 msgid "Value"
 msgstr "Цінність"
 
-#: plconfig/view.py:73 plconfig/view.py:154 plconfig/view.py:258
+#: plconfig/view.py:73 plconfig/view.py:160 plconfig/view.py:270
 msgid "Volume"
 msgstr "Об'єм"
 
-#: plconfig/view.py:75 plconfig/view.py:155 plconfig/view.py:259
+#: plconfig/view.py:75 plconfig/view.py:161 plconfig/view.py:271
 msgid "Maximum Volume"
 msgstr "Максимальний обсяг"
 
-#: plconfig/view.py:77 plconfig/view.py:157 plconfig/view.py:261
+#: plconfig/view.py:77 plconfig/view.py:163 plconfig/view.py:273
 msgid "AutoPlay"
 msgstr "Автовідтворення"
 
-#: plconfig/view.py:81 plconfig/view.py:160 plconfig/view.py:277
+#: plconfig/view.py:81 plconfig/view.py:166 plconfig/view.py:289
 msgid "Shuffling"
 msgstr "Перетасовки"
 
-#: plconfig/view.py:85 plconfig/view.py:161 plconfig/view.py:281
+#: plconfig/view.py:85 plconfig/view.py:167 plconfig/view.py:293
 msgid "Auto Shuffle"
 msgstr "Автоматичне тасування"
 
-#: plconfig/view.py:89 plconfig/view.py:162 plconfig/view.py:285
+#: plconfig/view.py:89 plconfig/view.py:168 plconfig/view.py:297
 msgid "Auto Deafen"
 msgstr "автоматичне оглушення"
 
-#: plconfig/view.py:93 plconfig/view.py:164 plconfig/view.py:289
+#: plconfig/view.py:93 plconfig/view.py:170 plconfig/view.py:301
 msgid "Auto Disconnect"
 msgstr "Автоматичне відключення"
 
-#: plconfig/view.py:95 plconfig/view.py:103 plconfig/view.py:111
-#: plconfig/view.py:166 plconfig/view.py:174 plconfig/view.py:182
-#: plconfig/view.py:291 plconfig/view.py:299 plconfig/view.py:307
-msgid "{enabled}\n"
-"{timer} seconds"
-msgstr "{enabled}\n"
-"{timer} секунд"
+#: plconfig/view.py:95 plconfig/view.py:105 plconfig/view.py:115
+#: plconfig/view.py:172 plconfig/view.py:182 plconfig/view.py:192
+#: plconfig/view.py:303 plconfig/view.py:313 plconfig/view.py:323
+msgid "{setting_stats_value}\n"
+"{setting_timer_value} seconds"
+msgstr "{setting_stats_value}\n"
+"{setting_timer_value} Секунд"
 
-#: plconfig/view.py:101 plconfig/view.py:172 plconfig/view.py:297
+#: plconfig/view.py:103 plconfig/view.py:180 plconfig/view.py:311
 msgid "Auto Alone Pause"
 msgstr "Автоматична пауза"
 
-#: plconfig/view.py:109 plconfig/view.py:180 plconfig/view.py:305
+#: plconfig/view.py:113 plconfig/view.py:190 plconfig/view.py:321
 msgid "Auto Alone Disconnect"
 msgstr "Авто роз'єднання"
 
-#: plconfig/view.py:137 plconfig/view.py:208
+#: plconfig/view.py:129
+msgid "Global Player Config"
+msgstr "Глобальні налаштування гравця"
+
+#: plconfig/view.py:143 plconfig/view.py:220
 msgid "You need to be in a server to be able to show this page."
 msgstr "Ви повинні бути на сервері, щоб показувати цю сторінку."
 
-#: plconfig/view.py:229 plconfig/view.py:245
-msgid "Too many to show ({count})"
-msgstr "Занадто багато для показу ({count})"
+#: plconfig/view.py:206
+msgid "Context Player Config"
+msgstr "Конфігурація контексту плеєра"
 
-#: plconfig/view.py:248 plconfig/view.py:253 plconfig/view.py:316
-#: plconfig/view.py:322 plconfig/view.py:328
+#: plconfig/view.py:241
+msgid "Too many to show ({number_of_users_value})"
+msgstr "Забагато для показу ({number_of_users_value})"
+
+#: plconfig/view.py:257
+msgid "Too many to show ({number_of_roles_value})"
+msgstr "Забагато для показу ({number_of_roles_value})"
+
+#: plconfig/view.py:260 plconfig/view.py:265 plconfig/view.py:334
+#: plconfig/view.py:340 plconfig/view.py:346
 msgid "None"
 msgstr "Ніхто"
 
-#: plconfig/view.py:265
+#: plconfig/view.py:277
 msgid "AutoPlay Playlist"
 msgstr "Автозапуск списку відтворення"
 
-#: plconfig/view.py:269
+#: plconfig/view.py:281
 msgid "Loop track"
 msgstr "Маршрут циклу"
 
-#: plconfig/view.py:273
+#: plconfig/view.py:285
 msgid "Loop Queue"
 msgstr "Черга циклів"
 
-#: plconfig/view.py:313
+#: plconfig/view.py:331
 msgid "Forced Voice Channel"
 msgstr "Примусово голосовий канал"
 
-#: plconfig/view.py:319
+#: plconfig/view.py:337
 msgid "Forced Command Channel"
 msgstr "Примусово командний канал"
 
-#: plconfig/view.py:325
+#: plconfig/view.py:343
 msgid "Forced Notification Channel"
 msgstr "Примусовий канал сповіщень"
 
-#: plconfig/view.py:330
+#: plconfig/view.py:348
 msgid "DJ Users"
 msgstr "Користувачі діджеїв"
 
-#: plconfig/view.py:331
+#: plconfig/view.py:349
 msgid "DJ Roles"
 msgstr "Ролі діджея"
 
-#: plconfig/view.py:354
+#: plconfig/view.py:357
+msgid "Server Player Config"
+msgstr "Конфігурація програвача"
+
+#: plconfig/view.py:372
 msgid "Next Bundled\n"
 "Playlist Update"
 msgstr "Наступний зібраний\n"
 "Оновлення списку відтворення"
 
-#: plconfig/view.py:360
+#: plconfig/view.py:378
 msgid "Next Bundled External\n"
 "Playlist Update"
 msgstr "Наступний вбудований зовнішній\n"
 "список відтворення - оновлення"
 
-#: plconfig/view.py:366
+#: plconfig/view.py:384
 msgid "Next External\n"
 "Playlist Update"
 msgstr "Наступний зовнішній\n"
 "Оновлення плейліста"
 
-#: plconfig/view.py:379
+#: plconfig/view.py:397
 msgid "Date and Time (UTC)"
 msgstr "Дата і час (за Грінвічем)"
 
-#: plconfig/view.py:392
+#: plconfig/view.py:410
 msgid "You need to be the bot owner to be able to show this page."
 msgstr "Ви повинні бути власником бота, щоб мати можливість показати цю сторінку."
 
-#: plconfig/view.py:398
+#: plconfig/view.py:416
 msgid "Config Folder"
 msgstr "Папка для налаштувань"
 
-#: plconfig/view.py:400
+#: plconfig/view.py:418
 msgid "Local Tracks"
 msgstr "Локальні треки"
 
-#: plconfig/view.py:403
+#: plconfig/view.py:421
 msgid "Lavalink Folder"
 msgstr "Лавалінкова папка"
 
-#: plconfig/view.py:405
+#: plconfig/view.py:423
 msgid "Java Executable"
 msgstr "Java виконуваний файл"
 
-#: plconfig/view.py:409
+#: plconfig/view.py:427
 msgid "Not Found"
 msgstr "Не знайдено"
 
-#: plconfig/view.py:419
+#: plconfig/view.py:437
 msgid "Paths"
 msgstr "Шляхи"
 
-#: plconfig/view.py:420
+#: plconfig/view.py:438
 msgid "Path"
 msgstr "Шлях"
 
-#: plconfig/view.py:439
+#: plconfig/view.py:457
 msgid "Java"
 msgstr "Ява"
 
-#: plconfig/view.py:443
+#: plconfig/view.py:461
 msgid "Lavaplayer"
 msgstr "Лавапшар"
 
-#: plconfig/view.py:447
+#: plconfig/view.py:465
 msgid "Lavalink Branch"
 msgstr "Лавалінк-Бранч"
 
-#: plconfig/view.py:451
+#: plconfig/view.py:469
 msgid "Lavalink Version"
 msgstr "Лавалінк версія"
 
-#: plconfig/view.py:455
+#: plconfig/view.py:473
 msgid "Lavalink Build"
 msgstr "Лаваленк"
 
-#: plconfig/view.py:458
+#: plconfig/view.py:476
 msgid "Build Time"
 msgstr "Час будівництва"
 
-#: plconfig/view.py:460
+#: plconfig/view.py:478
 msgid "Commit"
 msgstr "Вперед"
 
-#: plconfig/view.py:464
+#: plconfig/view.py:482
 msgid "Auto Update"
 msgstr "Автоматичне оновлення"
 
-#: plconfig/view.py:502
+#: plconfig/view.py:520
 msgid "Select an option from the dropdown menu below."
 msgstr "Виберіть пункт з випадаючого меню нижче."
 
-#: plconfig/view.py:518
+#: plconfig/view.py:536
 msgid "Pick an option to view"
 msgstr "Виберіть параметр для перегляду"
 
-#: plconfig/view.py:528
+#: plconfig/view.py:546
 msgid "You are not authorized to interact with this option"
 msgstr "Ви не маєте права на взаємодію з цією опцією"
 
-#: plconfig/view.py:558
+#: plconfig/view.py:576
 msgid "You are not authorized to interact with this"
 msgstr "Ви не маєте права взаємодіяти з цим"
 
