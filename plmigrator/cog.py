@@ -66,8 +66,8 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
         await context.send(
             content=_(
                 "Migration of Audio cog settings to PyLav complete. "
-                "Restart the bot for it to take effect.\n{requester}"
-            ).format(requester=context.author.mention),
+                "Restart the bot for it to take effect.\n{requester_value}"
+            ).format(requester_value=context.author.mention),
             ephemeral=True,
         )
 
@@ -156,7 +156,9 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
             except PermissionError:
                 await context.send(
                     embed=await self.pylav.construct_embed(
-                        description=_("I don't have permission to access {folder}").format(folder=localtracks_path)
+                        description=_("I don't have permission to access {folder_value}").format(
+                            folder_value=localtracks_path
+                        )
                     )
                 )
         if await audio_config.status():

@@ -61,7 +61,7 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
                     tabulate(
                         data,
                         headers=(
-                            EightBitANSI.paint_yellow(_("Library/Cog"), bold=True, underline=True),
+                            EightBitANSI.paint_yellow(_("Library / Cog"), bold=True, underline=True),
                             EightBitANSI.paint_yellow(_("Version"), bold=True, underline=True),
                         ),
                         tablefmt="fancy_grid",
@@ -82,14 +82,14 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
             await context.defer(ephemeral=True)
         options = [
             SelectOption(
-                label=shorten_string(max_length=100, string=_("PyLav Config")),
+                label=shorten_string(max_length=100, string=_("PyLav Configuration")),
                 value="pylav_config",
                 description=shorten_string(
                     max_length=100, string=_("Get information about the PyLav library settings")
                 ),
             ),
             SelectOption(
-                label=shorten_string(max_length=100, string=_("Global Player Config")),
+                label=shorten_string(max_length=100, string=_("Global Player Configuration")),
                 value="global_player_config",
                 description=shorten_string(
                     max_length=100, string=_("Get information about bot owner configured settings for the players")
@@ -100,7 +100,7 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
             options.extend(
                 [
                     SelectOption(
-                        label=shorten_string(max_length=100, string=_("Context Player Config")),
+                        label=shorten_string(max_length=100, string=_("Context Player Configuration")),
                         value="context_player_config",
                         description=shorten_string(
                             max_length=100,
@@ -111,7 +111,7 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
                         ),
                     ),
                     SelectOption(
-                        label=shorten_string(max_length=100, string=_("Server Player Config")),
+                        label=shorten_string(max_length=100, string=_("Server Player Configuration")),
                         value="server_player_config",
                         description=shorten_string(
                             max_length=100,
@@ -157,7 +157,7 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
     @command_plset.command(name="dj")
     @commands.guild_only()
     async def command_plset_dj(self, context: PyLavContext, *, role_or_member: discord.Role | discord.Member):
-        """Checks if a user or role is considered a DJ"""
+        """Checks if a user or role is considered a disc jockey"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -168,16 +168,16 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
             dj_roles = dj_roles.union(await config.fetch_dj_users())
             is_dj = role_or_member.id in dj_roles if dj_roles else True
             message = (
-                _("{role} is a DJ role").format(role=role_or_member.mention)
+                _("{role_name_value} is a disc jockey role").format(role_name_value=role_or_member.mention)
                 if is_dj
-                else _("{role} is not a DJ role").format(role=role_or_member.mention)
+                else _("{role_name_value} is not a disc jockey role").format(role_name_value=role_or_member.mention)
             )
         else:
             is_dj = await self.bot.pylav.is_dj(user=role_or_member, guild=context.guild, bot=self.bot)
             message = (
-                _("{user} is a DJ").format(user=role_or_member.mention)
+                _("{user_name_value} is a disc jockey").format(user_name_value=role_or_member.mention)
                 if is_dj
-                else _("{user} is not a DJ").format(user=role_or_member.mention)
+                else _("{user_name_value} is not a disc jockey").format(user_name_value=role_or_member.mention)
             )
         await context.send(
             embed=await self.pylav.construct_embed(
@@ -192,7 +192,7 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
     async def command_plset_tracks(self, context: PyLavContext, create: bool, *, folder: str) -> None:
         """Set the local tracks folder for PyLav.
 
-        Changes will be applied after restarting the [botname].
+        Changes will be applied after I restart.
         """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -202,8 +202,8 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
         if await path.is_file():
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("{folder} is not a folder").format(
-                        folder=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
+                    description=_("{folder_path_value} is not a folder").format(
+                        folder_path_value=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
                     ),
                     messageable=context,
                 ),
@@ -217,13 +217,13 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
             await context.send(
                 embed=await context.pylav.construct_embed(
                     description=_(
-                        "{folder} does not exist, "
+                        "{folder_path_value} does not exist, "
                         "run the command again with "
                         "the create argument "
                         "set to 1 to automatically "
                         "create this folder"
                     ).format(
-                        folder=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
+                        folder_path_value=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
                     ),
                     messageable=context,
                 ),
@@ -234,8 +234,8 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
         await self.pylav.update_localtracks_folder(folder=path)
         await context.send(
             embed=await context.pylav.construct_embed(
-                description=_("PyLav's local tracks folder has been set to {folder}").format(
-                    folder=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
+                description=_("PyLav's local tracks folder has been set to {folder_path_value}").format(
+                    folder_path_value=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
                 ),
                 messageable=context,
             ),
@@ -251,7 +251,7 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
     async def command_plset_node_toggle(self, context: PyLavContext) -> None:
         """Toggle the managed node on/off.
 
-        Changes will be applied after restarting the [botname].
+        Changes will be applied after I restart.
         """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -283,7 +283,7 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
     async def command_plset_node_updates(self, context: PyLavContext) -> None:
         """Toggle the managed node auto updates on/off.
 
-        Changes will be applied after restarting [botname].
+        Changes will be applied after I restart.
         """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -387,15 +387,18 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
         """Instructions on how to set the Spotify API Tokens"""
         message = _(
             "1. Go to Spotify developers and log in with your Spotify account.\n"
-            "(https://developer.spotify.com/dashboard/applications)\n"
+            "({spotify_url_value})\n"
             '2. Click "Create An App".\n'
             "3. Fill out the form provided with your app name, etc.\n"
             '4. When asked if you\'re developing commercial integration select "No".\n'
             "5. Accept the terms and conditions.\n"
             "6. Copy your client ID and your client secret into:\n"
-            "`{prefix}set api spotify client_id <your_client_id_here> "
-            "client_secret <your_client_secret_here>`"
-        ).format(prefix=context.clean_prefix)
+            "  {command_name_value}"
+        ).format(
+            bot_command_prefix=context.clean_prefix,
+            spotify_url_value="https://developer.spotify.com/dashboard/applications",
+            command_name_value="`{bot_command_prefix}set api spotify client_id <client_id_value> client_secret <client_secret_value>`",
+        )
         await context.send(
             embed=await context.pylav.construct_embed(
                 description=message,
@@ -415,7 +418,9 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
         if server and (self.pylav.player_manager.get(server.id) is None):
             await context.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("No active player in {name}").format(bold(server.name)),
+                    description=_("No active player in {server_name_value}.").format(
+                        server_name_value=bold(server.name)
+                    ),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -424,7 +429,7 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
         elif not self.pylav.player_manager.connected_players:
             await context.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("No connected players"),
+                    description=_("No connected players."),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -441,7 +446,7 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
     @command_plset.command(name="activity")
     @commands.is_owner()
     async def command_plset_activity(self, context: PyLavContext) -> None:
-        """Toggle whether or not to change [botname]'s activity"""
+        """Toggle whether or not I should update my Discord activity when playing tracks."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -452,7 +457,7 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
         if not current:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("PyLav will change bot activity"),
+                    description=_("PyLav will change bot activity."),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -461,7 +466,7 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
             await self.bot.change_presence(activity=None)
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("PyLav will no longer change the bot activity"),
+                    description=_("PyLav will no longer change the bot activity."),
                     messageable=context,
                 ),
                 ephemeral=True,

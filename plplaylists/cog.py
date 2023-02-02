@@ -89,7 +89,7 @@ class PyLavPlaylists(
                     tabulate(
                         data,
                         headers=(
-                            EightBitANSI.paint_yellow(_("Library/Cog"), bold=True, underline=True),
+                            EightBitANSI.paint_yellow(_("Library / Cog"), bold=True, underline=True),
                             EightBitANSI.paint_yellow(_("Version"), bold=True, underline=True),
                         ),
                         tablefmt="fancy_grid",
@@ -177,8 +177,8 @@ class PyLavPlaylists(
         await context.send(
             embed=await context.pylav.construct_embed(
                 title=_("Playlist created"),
-                description=_("Name: `{name}`\nID: `{id}`\nTracks: `{track_count}`").format(
-                    name=name, id=context.message.id, track_count=len(tracks)
+                description=_("Name: `{name_value}`\nIdentifier: `{id_value}`\nTracks: `{track_count_value}`").format(
+                    name_value=name, id_value=context.message.id, track_count_value=len(tracks)
                 ),
                 messageable=context,
                 thumbnail=artwork,
@@ -281,8 +281,9 @@ class PyLavPlaylists(
             await context.send(
                 embed=await context.pylav.construct_embed(
                     messageable=context,
-                    description=_("{user}, playlist {playlist_name} cannot be managed by yourself").format(
-                        user=context.author.mention, playlist_name=await playlist.get_name_formatted(with_url=True)
+                    description=_("{user_value}, playlist {playlist_name_value} cannot be managed by yourself").format(
+                        user_value=context.author.mention,
+                        playlist_name_value=await playlist.get_name_formatted(with_url=True),
                     ),
                 ),
                 ephemeral=True,
@@ -291,16 +292,16 @@ class PyLavPlaylists(
 
         if manageable:
             info_description = _(
-                "(**1**){space} - Apply changes to playlist.\n"
-                "(**2**){space} - Cancel any changes made and close the menu.\n"
-                "(**3**){space} - Delete this playlist.\n"
-                "(**4**){space} - Remove all tracks from this playlist.\n"
-                "(**5**){space} - Update the playlist with the latest tracks.\n"
+                "(**1**){space_value} - Apply changes to playlist.\n"
+                "(**2**){space_value} - Cancel any changes made and close the menu.\n"
+                "(**3**){space_value} - Delete this playlist.\n"
+                "(**4**){space_value} - Remove all tracks from this playlist.\n"
+                "(**5**){space_value} - Update the playlist with the latest tracks.\n"
                 "Please note that this action will ignore any tracks added/removed via this menu.\n"
-                "(**6**){space} - Change the name of the playlist.\n"
-                "(**7**){space} - Link this playlist to an existing playlist/album.\n"
-                "(**8**){space} - Add a query to this playlist.\n"
-                "(**9**){space} - Remove a query from this playlist.\n"
+                "(**6**){space_value} - Change the name of the playlist.\n"
+                "(**7**){space_value} - Link this playlist to an existing playlist/album.\n"
+                "(**8**){space_value} - Add a query to this playlist.\n"
+                "(**9**){space_value} - Remove a query from this playlist.\n"
                 "(**10**) - Download the playlist file.\n"
                 "(**11**) - Add current playlist to the queue.\n"
                 "(**12**) - Show tracks in current playlist.\n"
@@ -326,11 +327,11 @@ class PyLavPlaylists(
 
         playlist_info = _(
             "__**Currently managing**__:\n"
-            "**Name**:{space}{space}{space}{playlist_name}\n"
-            "**Scope**:{space}{space}{space}{scope}\n"
-            "**Author**:{space}{space}{author}\n"
-            "**Tracks**:{space}{space}{space}{tracks} tracks\n"
-            "**URL**:{space}{space}{space}{space}{space}{url}\n"
+            "**Name**:{space_value}{space_value}{space_value}{playlist_name_value}\n"
+            "**Scope**:{space_value}{space_value}{space_value}{scope_value}\n"
+            "**Author**:{space_value}{space_value}{author_value}\n"
+            "**Tracks**:{space_value}{space_value}{space_value}{tracks_value} tracks\n"
+            "**URL**:{space_value}{space_value}{space_value}{space_value}{space_value}{url_value}\n"
         )
         playlist_prompt = PlaylistManageFlow(
             cog=self,
@@ -342,18 +343,18 @@ class PyLavPlaylists(
         if not (invoked_with_delete or invoked_with_queue):
             name = await playlist.fetch_name()
             if manageable:
-                title = _("Let's manage: {playlist_name}").format(playlist_name=name)
+                title = _("Let's manage: {playlist_name_value}").format(playlist_name_value=name)
             else:
-                title = _("Let's take a look at: {playlist_name}").format(playlist_name=name)
+                title = _("Let's take a look at: {playlist_name_value}").format(playlist_name_value=name)
             description = info_description + playlist_info
 
             description = description.format(
-                playlist_name=await playlist.get_name_formatted(with_url=True),
-                scope=await playlist.get_scope_name(bot=self.bot, mention=True, guild=context.guild),
-                author=await playlist.get_author_name(bot=self.bot, mention=True),
-                url=await playlist.fetch_url() or _("N/A"),
-                tracks=await playlist.size(),
-                space="\N{EN SPACE}",
+                playlist_name_value=await playlist.get_name_formatted(with_url=True),
+                scope_value=await playlist.get_scope_name(bot=self.bot, mention=True, guild=context.guild),
+                author_value=await playlist.get_author_name(bot=self.bot, mention=True),
+                url_value=await playlist.fetch_url() or _("N/A"),
+                tracks_value=await playlist.size(),
+                space_value="\N{EN SPACE}",
             )
 
             await playlist_prompt.start(ctx=context, title=title, description=description)
@@ -385,8 +386,9 @@ class PyLavPlaylists(
                 embed=await context.pylav.construct_embed(
                     title=_("Playlist deleted"),
                     messageable=context,
-                    description=_("{user}, playlist {playlist_name} has been deleted").format(
-                        user=context.author.mention, playlist_name=await playlist.get_name_formatted(with_url=True)
+                    description=_("{user_value}, playlist {playlist_name_value} has been deleted").format(
+                        user_value=context.author.mention,
+                        playlist_name_value=await playlist.get_name_formatted(with_url=True),
                     ),
                 ),
                 ephemeral=True,
@@ -436,8 +438,11 @@ class PyLavPlaylists(
                             embed=await context.pylav.construct_embed(
                                 messageable=context,
                                 description=_(
-                                    "Playlist **{playlist_name}** could not be updated with URL: <{url}>"
-                                ).format(playlist_name=await playlist.get_name_formatted(with_url=True), url=url),
+                                    "Playlist {playlist_name_value} could not be updated with URL: <{url_value}>"
+                                ).format(
+                                    playlist_name_value=bold(await playlist.get_name_formatted(with_url=True)),
+                                    url_value=url,
+                                ),
                             ),
                             ephemeral=True,
                         )
@@ -470,21 +475,24 @@ class PyLavPlaylists(
         if changed:
             extras = ""
             if tracks_removed:
-                extras += _("\n{track_count} {track_plural} removed from the playlist").format(
-                    track_count=tracks_removed, track_plural=_("track") if tracks_removed == 1 else _("tracks")
+                extras += _("\n{track_count_value} {track_plural_value} removed from the playlist").format(
+                    track_count_value=tracks_removed,
+                    track_plural_value=_("track") if tracks_removed == 1 else _("tracks"),
                 )
             if tracks_added:
-                extras += _("\n{track_count} {track_plural} added to the playlist").format(
-                    track_count=tracks_added, track_plural=_("track") if tracks_added == 1 else _("tracks")
+                extras += _("\n{track_count_value} {track_plural_value} added to the playlist").format(
+                    track_count_value=tracks_added, track_plural_value=_("track") if tracks_added == 1 else _("tracks")
                 )
             await context.send(
                 embed=await context.pylav.construct_embed(
                     messageable=context,
                     title=_("Playlist updated"),
-                    description=_("{user}, playlist {playlist_name} has been updated.{extras}").format(
-                        user=context.author.mention,
-                        playlist_name=await playlist.get_name_formatted(with_url=True),
-                        extras=extras,
+                    description=_(
+                        "{user_value}, playlist {playlist_name_value} has been updated.{extras_value}"
+                    ).format(
+                        user_value=context.author.mention,
+                        playlist_name_value=await playlist.get_name_formatted(with_url=True),
+                        extras_value=extras,
                     ),
                 ),
                 ephemeral=True,
@@ -494,8 +502,9 @@ class PyLavPlaylists(
                 embed=await context.pylav.construct_embed(
                     messageable=context,
                     title=_("Playlist unchanged"),
-                    description=_("{user}, playlist {playlist_name} has not been updated").format(
-                        user=context.author.mention, playlist_name=await playlist.get_name_formatted(with_url=True)
+                    description=_("{user_value}, playlist {playlist_name_value} has not been updated").format(
+                        user_value=context.author.mention,
+                        playlist_name_value=await playlist.get_name_formatted(with_url=True),
                     ),
                 ),
                 ephemeral=True,
@@ -542,8 +551,9 @@ class PyLavPlaylists(
             await context.send(
                 embed=await context.pylav.construct_embed(
                     messageable=context,
-                    description=_("{user}, playlist {playlist_name} cannot be managed by yourself").format(
-                        user=context.author.mention, playlist_name=await playlist.get_name_formatted(with_url=True)
+                    description=_("{user_value}, playlist {playlist_name_value} cannot be managed by yourself").format(
+                        user_value=context.author.mention,
+                        playlist_name_value=await playlist.get_name_formatted(with_url=True),
                     ),
                 ),
                 ephemeral=True,
@@ -554,8 +564,9 @@ class PyLavPlaylists(
             embed=await context.pylav.construct_embed(
                 title=_("Playlist deleted"),
                 messageable=context,
-                description=_("{user}, playlist {playlist_name} has been deleted").format(
-                    user=context.author.mention, playlist_name=await playlist.get_name_formatted(with_url=True)
+                description=_("{user_value}, playlist {playlist_name_value} has been deleted").format(
+                    user_value=context.author.mention,
+                    playlist_name_value=await playlist.get_name_formatted(with_url=True),
                 ),
             ),
             ephemeral=True,
@@ -622,8 +633,9 @@ class PyLavPlaylists(
             await context.send(
                 embed=await context.pylav.construct_embed(
                     messageable=context,
-                    description=_("{user}, playlist {playlist_name} cannot be managed by yourself").format(
-                        user=context.author.mention, playlist_name=await playlist.get_name_formatted(with_url=True)
+                    description=_("{user_value}, playlist {playlist_name_value} cannot be managed by yourself").format(
+                        user_value=context.author.mention,
+                        playlist_name_value=await playlist.get_name_formatted(with_url=True),
                     ),
                 ),
                 ephemeral=True,
@@ -640,18 +652,20 @@ class PyLavPlaylists(
         if changed:
             extras = ""
             if tracks_added:
-                extras += _("\n{track_count} {track_plural} added to the playlist").format(
-                    track_count=tracks_added, track_plural=_("track") if tracks_added == 1 else _("tracks")
+                extras += _("\n{track_count_value} {track_plural_value} added to the playlist").format(
+                    track_count_value=tracks_added, track_plural_value=_("track") if tracks_added == 1 else _("tracks")
                 )
 
             await context.send(
                 embed=await context.pylav.construct_embed(
                     messageable=context,
                     title=_("Playlist updated"),
-                    description=_("{user}, playlist {playlist_name} has been updated.{extras}").format(
-                        user=context.author.mention,
-                        playlist_name=await playlist.get_name_formatted(with_url=True),
-                        extras=extras,
+                    description=_(
+                        "{user_value}, playlist {playlist_name_value} has been updated.{extras_value}"
+                    ).format(
+                        user_value=context.author.mention,
+                        playlist_name_value=await playlist.get_name_formatted(with_url=True),
+                        extra_values=extras,
                     ),
                 ),
                 ephemeral=True,
@@ -662,8 +676,9 @@ class PyLavPlaylists(
                 embed=await context.pylav.construct_embed(
                     messageable=context,
                     title=_("Playlist unchanged"),
-                    description=_("{user}, playlist {playlist_name} has not been updated").format(
-                        user=context.author.mention, playlist_name=await playlist.get_name_formatted(with_url=True)
+                    description=_("{user_value}, playlist {playlist_name_value} has not been updated").format(
+                        user_value=context.author.mention,
+                        playlist_name_value=await playlist.get_name_formatted(with_url=True),
                     ),
                 ),
                 ephemeral=True,
@@ -737,8 +752,8 @@ class PyLavPlaylists(
             await context.send(
                 embed=await context.pylav.construct_embed(
                     messageable=context,
-                    description=_("Failed to save the following playlists:\n{invalid_playlists}").format(
-                        invalid_playlists=humanize_list(list(invalid_playlists_urls))
+                    description=_("Failed to save the following playlists:\n{invalid_playlists_value}").format(
+                        invalid_playlists_value=humanize_list(list(invalid_playlists_urls))
                     ),
                 ),
                 ephemeral=True,
@@ -746,8 +761,8 @@ class PyLavPlaylists(
         await context.send(
             embed=await context.pylav.construct_embed(
                 messageable=context,
-                description=_("Successfully saved the following playlists:\n{saved_playlists}").format(
-                    saved_playlists=humanize_list(saved_playlists)
+                description=_("Successfully saved the following playlists:\n{saved_playlists_value}").format(
+                    saved_playlists_value=humanize_list(saved_playlists)
                 ),
             ),
             ephemeral=True,
@@ -779,8 +794,8 @@ class PyLavPlaylists(
             if not ((permission := channel.permissions_for(context.me)) and permission.connect and permission.speak):
                 await context.send(
                     embed=await context.pylav.construct_embed(
-                        description=_("I don't have permission to connect or speak in {channel}").format(
-                            channel=channel.mention
+                        description=_("I do not have permission to connect or speak in {channel_value}").format(
+                            channel_value=channel.mention
                         ),
                         messageable=context,
                     ),
@@ -814,8 +829,8 @@ class PyLavPlaylists(
         await context.send(
             embed=await context.pylav.construct_embed(
                 messageable=context,
-                description=_("{track_count} tracks enqueued.{playlist_name}").format(
-                    track_count=track_count, playlist_name=playlist_name
+                description=_("{track_count_value} tracks enqueued.{playlist_name_value}").format(
+                    track_count_value=track_count, playlist_name_value=playlist_name
                 ),
             ),
             ephemeral=True,

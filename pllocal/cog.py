@@ -130,7 +130,7 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
                     tabulate(
                         data,
                         headers=(
-                            EightBitANSI.paint_yellow(_("Library/Cog"), bold=True, underline=True),
+                            EightBitANSI.paint_yellow(_("Library / Cog"), bold=True, underline=True),
                             EightBitANSI.paint_yellow(_("Version"), bold=True, underline=True),
                         ),
                         tablefmt="fancy_grid",
@@ -155,7 +155,9 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
             embed=await self.pylav.construct_embed(
                 description=shorten_string(
                     max_length=100,
-                    string=_("Local track list updated {number} currently present").format(number=len(self.cache)),
+                    string=_("Local track list updated {number_value} currently present").format(
+                        number_value=len(self.cache)
+                    ),
                 ),
                 messageable=context,
             ),
@@ -188,7 +190,9 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
         if entry not in self.cache:
             await send(
                 embed=await self.pylav.construct_embed(
-                    description=_("{query} is not a valid local file or folder").format(query=entry),
+                    description=_("{user_input_query_value} is not a valid local file or folder").format(
+                        user_input_query_value=entry
+                    ),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -217,8 +221,8 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
             ):
                 await send(
                     embed=await self.pylav.construct_embed(
-                        description=_("I don't have permission to connect or speak in {channel}").format(
-                            channel=channel.mention
+                        description=_("I don't have permission to connect or speak in {channel_value}").format(
+                            channel_value=channel.mention
                         ),
                         messageable=interaction,
                     ),
@@ -242,7 +246,7 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
         if count > 1:
             await send(
                 embed=await self.pylav.construct_embed(
-                    description=_("{track_count} tracks enqueued").format(track_count=count),
+                    description=_("{track_count_value} tracks enqueued.").format(track_count_value=count),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -250,8 +254,8 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
         elif count == 1:
             await send(
                 embed=await self.pylav.construct_embed(
-                    description=_("{track} enqueued").format(
-                        track=await single_track.get_track_display_name(with_url=True)
+                    description=_("{track_name_value} enqueued.").format(
+                        track_name_value=await single_track.get_track_display_name(with_url=True)
                     ),
                     messageable=interaction,
                 ),
@@ -260,7 +264,7 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
         else:
             await send(
                 embed=await self.pylav.construct_embed(
-                    description=_("No tracks were found for your query"),
+                    description=_("No tracks were found for your query."),
                     messageable=interaction,
                 ),
                 ephemeral=True,

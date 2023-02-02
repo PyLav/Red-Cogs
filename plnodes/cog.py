@@ -61,7 +61,7 @@ class PyLavNodes(DISCORD_COG_TYPE_MIXIN):
                     tabulate(
                         data,
                         headers=(
-                            EightBitANSI.paint_yellow(_("Library/Cog"), bold=True, underline=True),
+                            EightBitANSI.paint_yellow(_("Library / Cog"), bold=True, underline=True),
                             EightBitANSI.paint_yellow(_("Version"), bold=True, underline=True),
                         ),
                         tablefmt="fancy_grid",
@@ -87,20 +87,20 @@ class PyLavNodes(DISCORD_COG_TYPE_MIXIN):
         )
         title = _("Let's add a node to PyLav!")
         info_description = _(
-            "(**1**){space} - Apply changes and add the node to PyLav.\n"
-            "(**2**){space} - Cancel any changes made and close the menu.\n"
-            "(**3**){space} - Toggle between search-only and search and playback modes.\n"
-            "(**4**){space} - Toggle between SSL on and off.\n"
-            "(**5**){space} - Add a name to the node.\n"
-            "(**6**){space} - Add the host address of the node.\n"
-            "(**7**){space} - Add the port the node uses.\n"
-            "(**8**){space} - Set the password for the node.\n"
-            "(**9**){space} - Set the connection timeout.\n"
+            "(**1**){space_value} - Apply changes and add the node to PyLav.\n"
+            "(**2**){space_value} - Cancel any changes made and close the menu.\n"
+            "(**3**){space_value} - Toggle between search-only and search and playback modes.\n"
+            "(**4**){space_value} - Toggle between SSL on and off.\n"
+            "(**5**){space_value} - Add a name to the node.\n"
+            "(**6**){space_value} - Add the host address of the node.\n"
+            "(**7**){space_value} - Add the port the node uses.\n"
+            "(**8**){space_value} - Set the password for the node.\n"
+            "(**9**){space_value} - Set the connection timeout.\n"
             "(**10**) - Select which sources to disable for this node (Multiple can be selected).\n"
             "If you interact with a button multiple times, "
             "only the last interaction will take effect.\n\n\n"
         ).format(
-            space="\N{EN SPACE}",
+            space_value="\N{EN SPACE}",
         )
         await menu.start(context, description=info_description, title=title)
         with contextlib.suppress(asyncio.TimeoutError):
@@ -135,23 +135,23 @@ class PyLavNodes(DISCORD_COG_TYPE_MIXIN):
             )
             embed = await self.pylav.construct_embed(
                 description=_(
-                    "Added node {name} with the following settings:\n"
-                    "Host: {host}\n"
-                    "Port: {port}\n"
-                    "Password: {password}\n"
-                    "Resume Timeout: {resume_timeout}\n"
-                    "Search Only: {search_only}\n"
-                    "SSL: {ssl}\n"
-                    "Disabled Sources: {disabled_sources}\n"
+                    "Added node {name_value} with the following settings:\n"
+                    "Host: {host_value}\n"
+                    "Port: {port_value}\n"
+                    "Password: {password_value}\n"
+                    "Resume Timeout: {resume_timeout_value}\n"
+                    "Search Only: {search_only_value}\n"
+                    "SSL: {ssl_value}\n"
+                    "Disabled Sources: {disabled_sources_value}\n"
                 ).format(
-                    name=inline(menu.name),
-                    host=menu.host,
-                    port=menu.port,
-                    password=menu.password,
-                    resume_timeout=menu.resume_timeout,
-                    search_only=menu.search_only,
-                    ssl=menu.ssl,
-                    disabled_sources=humanize_list(list(disabled_capabilities)),
+                    name_value=inline(menu.name),
+                    host_value=menu.host,
+                    port_value=menu.port,
+                    password_value=menu.password,
+                    resume_timeout_value=menu.resume_timeout,
+                    search_only_value=menu.search_only,
+                    ssl_value=menu.ssl,
+                    disabled_sources_value=humanize_list(list(disabled_capabilities)),
                 ),
                 messageable=context.channel,
             )
@@ -190,7 +190,9 @@ class PyLavNodes(DISCORD_COG_TYPE_MIXIN):
         if node.identifier in BUNDLED_NODES_IDS_HOST_MAPPING:
             await context.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("{name} is managed by PyLav and cannot be removed").format(name=node.name),
+                    description=_("{name_value} is managed by PyLav and cannot be removed.").format(
+                        name_value=node.name
+                    ),
                     messageable=context.channel,
                 ),
                 ephemeral=True,
@@ -205,8 +207,9 @@ class PyLavNodes(DISCORD_COG_TYPE_MIXIN):
             node_data["server"].update(yaml["lavalink"]["server"])
         await context.author.send(
             embed=await self.pylav.construct_embed(
-                description=_("Removed node {name}.\n\n{data}").format(
-                    name=node_data["name"], data=box(lang="json", text=json.dumps(node_data, indent=2, sort_keys=True))
+                description=_("Removed node {name_value}.\n\n{data_value}").format(
+                    name_value=node_data["name"],
+                    data_value=box(lang="json", text=json.dumps(node_data, indent=2, sort_keys=True)),
                 ),
                 messageable=context.channel,
             )
@@ -214,8 +217,8 @@ class PyLavNodes(DISCORD_COG_TYPE_MIXIN):
         await context.send(
             embed=await self.pylav.construct_embed(
                 description=_(
-                    "Removed node {name}, a DM was sent to you with the node details in case you wish to re-add it"
-                ).format(name=node_data["name"]),
+                    "Removed node {name_value}, a direct message was sent to you with the node details in case you wish to re-add it"
+                ).format(name_value=node_data["name"]),
                 messageable=context.channel,
             ),
             ephemeral=True,
@@ -237,11 +240,11 @@ class PyLavNodes(DISCORD_COG_TYPE_MIXIN):
         )
         title = _("Let's manage some nodes!")
         info_description = _(
-            "(**1**){space} - Cancel any changes made and close the menu.\n"
-            "(**6**){space} - Show sources enabled for this node.\n"
-            "(**7**){space} - Apply changes and add the node to PyLav.\n"
-            "(**8**){space} - Toggle between search-only and search and playback modes.\n"
-            "(**9**){space} - Toggle between SSL on and off.\n"
+            "(**1**){space_value} - Cancel any changes made and close the menu.\n"
+            "(**6**){space_value} - Show sources enabled for this node.\n"
+            "(**7**){space_value} - Apply changes and add the node to PyLav.\n"
+            "(**8**){space_value} - Toggle between search-only and search and playback modes.\n"
+            "(**9**){space_value} - Toggle between SSL on and off.\n"
             "(**10**) - Add a name to the node.\n"
             "(**11**) - Add the host address of the node.\n"
             "(**12**) - Add the port the node uses.\n"
@@ -252,7 +255,7 @@ class PyLavNodes(DISCORD_COG_TYPE_MIXIN):
             "If you interact with a button multiple times, "
             "only the last interaction will take effect.\n\n\n"
         ).format(
-            space="\N{EN SPACE}",
+            space_value="\N{EN SPACE}",
         )
         await menu.start(context, description=info_description, title=title)
         with contextlib.suppress(asyncio.TimeoutError):
@@ -265,8 +268,8 @@ class PyLavNodes(DISCORD_COG_TYPE_MIXIN):
         if node.managed or node.identifier in BUNDLED_NODES_IDS_HOST_MAPPING or node.identifier == 31415:
             await context.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("{name} is managed by PyLav and cannot be modified with this command").format(
-                        name=node.name
+                    description=_("{name_value} is managed by PyLav and cannot be modified with this command.").format(
+                        name_value=node.name
                     ),
                     messageable=context.channel,
                 ),
@@ -277,7 +280,7 @@ class PyLavNodes(DISCORD_COG_TYPE_MIXIN):
             await self.pylav.remove_node(node.identifier)
             await context.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("Removed node {name}").format(name=node.name),
+                    description=_("Removed node {name_value}").format(name_value=node.name),
                     messageable=context.channel,
                 ),
                 ephemeral=True,
@@ -314,23 +317,23 @@ class PyLavNodes(DISCORD_COG_TYPE_MIXIN):
         await self.pylav.add_node(**(await node.config.get_connection_args()))
         embed = await self.pylav.construct_embed(
             description=_(
-                "Changed node {name} to the following settings:\n"
-                "Host: {host}\n"
-                "Port: {port}\n"
-                "Password: {password}\n"
-                "Resume Timeout: {resume_timeout}\n"
-                "Search Only: {search_only}\n"
-                "SSL: {ssl}\n"
-                "Disabled Sources: {disabled_sources}\n"
+                "Changed node {name_value} to the following settings:\n"
+                "Host: {host_value}\n"
+                "Port: {port_value}\n"
+                "Password: {password_value}\n"
+                "Resume Timeout: {resume_timeout_value}\n"
+                "Search Only: {search_only_value}\n"
+                "SSL: {ssl_value}\n"
+                "Disabled Sources: {disabled_sources_value}\n"
             ).format(
-                name=inline(menu.name),
-                host=menu.host,
-                port=menu.port,
-                password=menu.password,
-                resume_timeout=menu.resume_timeout,
-                search_only=menu.search_only,
-                ssl=menu.ssl,
-                disabled_sources=humanize_list(list(disabled_capabilities)),
+                name_value=inline(menu.name),
+                host_value=menu.host,
+                port_value=menu.port,
+                password_value=menu.password,
+                resume_timeout_value=menu.resume_timeout,
+                search_only_value=menu.search_only,
+                ssl_value=menu.ssl,
+                disabled_sources_value=humanize_list(list(disabled_capabilities)),
             ),
             messageable=context.channel,
         )

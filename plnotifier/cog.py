@@ -244,7 +244,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
                     tabulate(
                         data,
                         headers=(
-                            EightBitANSI.paint_yellow(_("Library/Cog"), bold=True, underline=True),
+                            EightBitANSI.paint_yellow(_("Library / Cog"), bold=True, underline=True),
                             EightBitANSI.paint_yellow(_("Version"), bold=True, underline=True),
                         ),
                         tablefmt="fancy_grid",
@@ -269,8 +269,8 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             if not channel.permissions_for(context.guild.me).manage_webhooks:
                 await context.send(
                     embed=await self.pylav.construct_embed(
-                        description=_("I do not have permission to manage webhooks in {channel}").format(
-                            channel=channel.mention
+                        description=_("I do not have permission to manage webhooks in {channel_value}.").format(
+                            channel_value=channel.mention
                         ),
                         messageable=context,
                     ),
@@ -283,8 +283,8 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             ):
                 await context.send(
                     embed=await self.pylav.construct_embed(
-                        description=_("I do not have permission to create a thread in {channel}").format(
-                            channel=channel.mention
+                        description=_("I do not have permission to create a thread in {channel_value}.").format(
+                            channel_value=channel.mention
                         ),
                         messageable=context,
                     ),
@@ -293,7 +293,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
                 return
             webhook = await channel.create_webhook(
                 name=_("PyLavNotifier"),
-                reason=_("PyLav Notifier - Requested by {author}").format(author=context.author),
+                reason=_("PyLav Notifier - Requested by {author_value}").format(author_value=context.author),
             )
             existing_thread = None
             if isinstance(channel, discord.VoiceChannel):
@@ -304,14 +304,14 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
                         existing_thread = thread
             if not existing_thread:
                 message = await channel.send(
-                    _("This thread will be used by PyLav to post notifications about the player")
+                    _("This thread will be used by PyLav to post notifications about the player.")
                 )
                 existing_thread = await channel.create_thread(
                     invitable=False,
                     name=_("PyLavNotifier"),
                     message=message,
                     auto_archive_duration=10080,
-                    reason=_("PyLav Notifier - Requested by {author}").format(author=context.author),
+                    reason=_("PyLav Notifier - Requested by {author_value}").format(author_value=context.author),
                 )
             if old_url := await self._config.webhook_url():
                 with contextlib.suppress(discord.HTTPException):
@@ -324,8 +324,8 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             if not channel.parent.permissions_for(context.guild.me).manage_webhooks:
                 await context.send(
                     embed=await self.pylav.construct_embed(
-                        description=_("I do not have permission to manage webhooks in {channel}").format(
-                            channel=channel.parent.mention
+                        description=_("I do not have permission to manage webhooks in {channel_value}").format(
+                            channel_value=channel.parent.mention
                         ),
                         messageable=context,
                     ),
@@ -334,7 +334,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
                 return
             webhook = await channel.parent.create_webhook(
                 name=_("PyLavNotifier"),
-                reason=_("PyLav Notifier - Requested by {author}").format(author=context.author),
+                reason=_("PyLav Notifier - Requested by {author_value}").format(author_value=context.author),
             )
             await self._config.webhook_url.set(webhook.url)
             self._webhook_cache[context.guild.id] = webhook
@@ -348,7 +348,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             await self._config.notify_channel_id.set(channel.id)
         await context.send(
             embed=await context.pylav.construct_embed(
-                description=_("PyLavNotifier channel set to {channel}").format(channel=channel.mention),
+                description=_("PyLavNotifier channel set to {channel_value}").format(channel_value=channel.mention),
                 messageable=context,
             ),
             ephemeral=True,
@@ -375,8 +375,8 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
         if event not in possible_events:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("Invalid event, possible events are:\n\n{events}").format(
-                        events=humanize_list(sorted(list(map(inline, possible_events)), key=str.lower))
+                    description=_("Invalid event, possible events are:\n\n{events_value}").format(
+                        events_value=humanize_list(sorted(list(map(inline, possible_events)), key=str.lower))
                     ),
                     messageable=context,
                 ),
@@ -392,10 +392,14 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
 
         await context.send(
             embed=await context.pylav.construct_embed(
-                description=_("Event {event} set to {toggle}{extras}").format(
-                    event=inline(event),
-                    toggle=_("notify") if toggle else _("do not notify"),
-                    extras=_(" with mentions") if use_mention and toggle else _(" without mentions") if toggle else "",
+                description=_("Event {event_value} set to {toggle_value}{extras_value}").format(
+                    event_value=inline(event),
+                    toggle_value=_("notify") if toggle else _("do not notify"),
+                    extras_value=_(" with mentions")
+                    if use_mention and toggle
+                    else _(" without mentions")
+                    if toggle
+                    else "",
                 ),
                 messageable=context,
             ),
@@ -412,10 +416,12 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
         self._message_queue[channel].append(
             await self.pylav.construct_embed(
                 title=_("Track Stuck Event"),
-                description=_("[Node={node}] {track} is stuck for {threshold} seconds, skipping").format(
-                    track=await event.track.get_track_display_name(with_url=True),
-                    threshold=event.threshold // 1000,
-                    node=event.node.name,
+                description=_(
+                    "[Node={node_value}] {track_value} is stuck for {threshold_value} seconds, skipping"
+                ).format(
+                    track_value=await event.track.get_track_display_name(with_url=True),
+                    threshold_value=event.threshold // 1000,
+                    node_value=event.node.name,
                 ),
                 messageable=channel,
             )
@@ -438,10 +444,12 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
         self._message_queue[channel].append(
             await self.pylav.construct_embed(
                 title=_("Track Exception Event"),
-                description=_("[Node={node}] There was an error while playing {track}:\n{exception}").format(
-                    track=await event.track.get_track_display_name(with_url=True),
-                    exception=event.exception,
-                    node=event.node.name,
+                description=_(
+                    "[Node={node_value}] There was an error while playing {track_value}:\n{exception_value}"
+                ).format(
+                    track_value=await event.track.get_track_display_name(with_url=True),
+                    exception_value=event.exception,
+                    node_value=event.node.name,
                 ),
                 messageable=channel,
             )
@@ -473,8 +481,10 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
         self._message_queue[channel].append(
             await self.pylav.construct_embed(
                 title=_("Track End Event"),
-                description=_("[Node={node}] {track} has finished playing because {reason}").format(
-                    track=await event.track.get_track_display_name(with_url=True), reason=reason, node=event.node.name
+                description=_("[Node={node_value}] {track_value} has finished playing because {reason_value}").format(
+                    track_value=await event.track.get_track_display_name(with_url=True),
+                    reason_value=reason,
+                    node_value=event.node.name,
                 ),
                 messageable=channel,
             )
@@ -502,9 +512,11 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             await self.pylav.construct_embed(
                 title=_("YouTube Music Track Start Event"),
                 description=_(
-                    "[Node={node}] YouTube Music track: {track} has started playing.\nRequested by: {requester}"
+                    "[Node={node_value}] YouTube Music track: {track_value} has started playing.\nRequested by: {requester_value}"
                 ).format(
-                    track=await event.track.get_track_display_name(with_url=True), requester=user, node=event.node.name
+                    track_value=await event.track.get_track_display_name(with_url=True),
+                    requester_value=user,
+                    node_value=event.node.name,
                 ),
                 messageable=channel,
             )
@@ -532,9 +544,11 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             await self.pylav.construct_embed(
                 title=_("Deezer Track Start Event"),
                 description=_(
-                    "[Node={node}] Deezer track: {track} has started playing.\nRequested by: {requester}"
+                    "[Node={node_value}] Deezer track: {track_value} has started playing.\nRequested by: {requester_value}"
                 ).format(
-                    track=await event.track.get_track_display_name(with_url=True), requester=user, node=event.node.name
+                    track_value=await event.track.get_track_display_name(with_url=True),
+                    requester_value=user,
+                    node_value=event.node.name,
                 ),
                 messageable=channel,
             )
@@ -562,9 +576,11 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             await self.pylav.construct_embed(
                 title=_("Spotify Track Start Event"),
                 description=_(
-                    "[Node={node}] Spotify track: {track} has started playing.\nRequested by: {requester}"
+                    "[Node={node_value}] Spotify track: {track_value} has started playing.\nRequested by: {requester_value}"
                 ).format(
-                    track=await event.track.get_track_display_name(with_url=True), requester=user, node=event.node.name
+                    track_value=await event.track.get_track_display_name(with_url=True),
+                    requester_value=user,
+                    node_value=event.node.name,
                 ),
                 messageable=channel,
             )
@@ -592,9 +608,11 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             await self.pylav.construct_embed(
                 title=_("Apple Music Track Start Event"),
                 description=_(
-                    "[Node={node}] Apple Music track: {track} has started playing.\nRequested by: {requester}"
+                    "[Node={node_value}] Apple Music track: {track_value} has started playing.\nRequested by: {requester_value}"
                 ).format(
-                    track=await event.track.get_track_display_name(with_url=True), requester=user, node=event.node.name
+                    track_value=await event.track.get_track_display_name(with_url=True),
+                    requester_value=user,
+                    node_value=event.node.name,
                 ),
                 messageable=channel,
             )
@@ -622,9 +640,11 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             await self.pylav.construct_embed(
                 title=_("Local Track Start Event"),
                 description=_(
-                    "[Node={node}] Local track: {track} has started playing.\nRequested by: {requester}"
+                    "[Node={node_value}] Local track: {track_value} has started playing.\nRequested by: {requester_value}"
                 ).format(
-                    track=await event.track.get_track_display_name(with_url=True), requester=user, node=event.node.name
+                    track_value=await event.track.get_track_display_name(with_url=True),
+                    requester_value=user,
+                    node_value=event.node.name,
                 ),
                 messageable=channel,
             )
@@ -652,9 +672,11 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             await self.pylav.construct_embed(
                 title=_("HTTP Track Start Event"),
                 description=_(
-                    "[Node={node}] HTTP track: {track} has started playing.\nRequested by: {requester}"
+                    "[Node={node_value}] HTTP track: {track_value} has started playing.\nRequested by: {requester_value}"
                 ).format(
-                    track=await event.track.get_track_display_name(with_url=True), requester=user, node=event.node.name
+                    track_value=await event.track.get_track_display_name(with_url=True),
+                    requester_value=user,
+                    node_value=event.node.name,
                 ),
                 messageable=channel,
             )
@@ -682,7 +704,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             await self.pylav.construct_embed(
                 title=_("Text-To-Speech Track Start Event"),
                 description=_(
-                    "[Node={node}] Text-To-Speech track: {track} has started playing.\nRequested by: {requester}"
+                    "[Node={node_value}] Text-To-Speech track: {track_value} has started playing.\nRequested by: {requester_value}"
                 ).format(
                     track=await event.track.get_track_display_name(with_url=True), requester=user, node=event.node.name
                 ),
@@ -712,7 +734,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             await self.pylav.construct_embed(
                 title=_("YouTube Track Start Event"),
                 description=_(
-                    "[Node={node}] YouTube track: {track} has started playing.\nRequested by: {requester}"
+                    "[Node={node_value}] YouTube track: {track_value} has started playing.\nRequested by: {requester_value}"
                 ).format(
                     track=await event.track.get_track_display_name(with_url=True), requester=user, node=event.node.name
                 ),
@@ -740,14 +762,14 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             user = event.track.requester or self.bot.user
         self._message_queue[channel].append(
             await self.pylav.construct_embed(
-                title=_("{source} Track Start Event").format(source=await event.track.query_source()),
+                title=_("{source_value} Track Start Event").format(source_value=await event.track.query_source()),
                 description=_(
-                    "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
+                    "[Node={node_value}] {source_value} track: {track_value} has started playing.\nRequested by: {requester_value}"
                 ).format(
-                    track=await event.track.get_track_display_name(with_url=True),
-                    requester=user,
-                    node=event.node.name,
-                    source=await event.track.query_source(),
+                    track_value=await event.track.get_track_display_name(with_url=True),
+                    requester_value=user,
+                    node_value=event.node.name,
+                    source_value=await event.track.query_source(),
                 ),
                 messageable=channel,
             )
@@ -773,14 +795,14 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             user = event.track.requester or self.bot.user
         self._message_queue[channel].append(
             await self.pylav.construct_embed(
-                title=_("{source} Track Start Event").format(source=await event.track.query_source()),
+                title=_("{source_value} Track Start Event").format(source_value=await event.track.query_source()),
                 description=_(
-                    "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
+                    "[Node={node_value}] {source_value} track: {track_value} has started playing.\nRequested by: {requester_value}"
                 ).format(
-                    track=await event.track.get_track_display_name(with_url=True),
-                    requester=user,
-                    node=event.node.name,
-                    source=await event.track.query_source(),
+                    track_value=await event.track.get_track_display_name(with_url=True),
+                    requester_value=user,
+                    node_value=event.node.name,
+                    source_value=await event.track.query_source(),
                 ),
                 messageable=channel,
             )
@@ -806,14 +828,14 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             user = event.track.requester or self.bot.user
         self._message_queue[channel].append(
             await self.pylav.construct_embed(
-                title=_("{source} Track Start Event").format(source=await event.track.query_source()),
+                title=_("{source_value} Track Start Event").format(source_value=await event.track.query_source()),
                 description=_(
-                    "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
+                    "[Node={node_value}] {source_value} track: {track_value} has started playing.\nRequested by: {requester_value}"
                 ).format(
-                    track=await event.track.get_track_display_name(with_url=True),
-                    requester=user,
-                    node=event.node.name,
-                    source=await event.track.query_source(),
+                    track_value=await event.track.get_track_display_name(with_url=True),
+                    requester_value=user,
+                    node_value=event.node.name,
+                    source_value=await event.track.query_source(),
                 ),
                 messageable=channel,
             )
@@ -839,14 +861,14 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             user = event.track.requester or self.bot.user
         self._message_queue[channel].append(
             await self.pylav.construct_embed(
-                title=_("{source} Track Start Event").format(source=await event.track.query_source()),
+                title=_("{source_value} Track Start Event").format(source_value=await event.track.query_source()),
                 description=_(
-                    "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
+                    "[Node={node_value}] {source_value} track: {track_value} has started playing.\nRequested by: {requester_value}"
                 ).format(
-                    track=await event.track.get_track_display_name(with_url=True),
-                    requester=user,
-                    source=await event.track.query_source(),
-                    node=event.node.name,
+                    track_value=await event.track.get_track_display_name(with_url=True),
+                    requester_value=user,
+                    node_value=event.node.name,
+                    source_value=await event.track.query_source(),
                 ),
                 messageable=channel,
             )
@@ -905,14 +927,14 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             user = event.track.requester or self.bot.user
         self._message_queue[channel].append(
             await self.pylav.construct_embed(
-                title=_("{source} Track Start Event").format(source=await event.track.query_source()),
+                title=_("{source_value} Track Start Event").format(source_value=await event.track.query_source()),
                 description=_(
-                    "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
+                    "[Node={node_value}] {source_value} track: {track_value} has started playing.\nRequested by: {requester_value}"
                 ).format(
-                    track=await event.track.get_track_display_name(with_url=True),
-                    requester=user,
-                    source=await event.track.query_source(),
-                    node=event.node.name,
+                    track_value=await event.track.get_track_display_name(with_url=True),
+                    requester_value=user,
+                    node_value=event.node.name,
+                    source_value=await event.track.query_source(),
                 ),
                 messageable=channel,
             )
@@ -938,14 +960,14 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             user = event.track.requester or self.bot.user
         self._message_queue[channel].append(
             await self.pylav.construct_embed(
-                title=_("{source} Track Start Event").format(source=await event.track.query_source()),
+                title=_("{source_value} Track Start Event").format(source_value=await event.track.query_source()),
                 description=_(
-                    "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
+                    "[Node={node_value}] {source_value} track: {track_value} has started playing.\nRequested by: {requester_value}"
                 ).format(
-                    track=await event.track.get_track_display_name(with_url=True),
-                    requester=user,
-                    source=await event.track.query_source(),
-                    node=event.node.name,
+                    track_value=await event.track.get_track_display_name(with_url=True),
+                    requester_value=user,
+                    node_value=event.node.name,
+                    source_value=await event.track.query_source(),
                 ),
                 messageable=channel,
             )
@@ -971,14 +993,14 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             user = event.track.requester or self.bot.user
         self._message_queue[channel].append(
             await self.pylav.construct_embed(
-                title=_("{source} Track Start Event").format(source=await event.track.query_source()),
+                title=_("{source_value} Track Start Event").format(source_value=await event.track.query_source()),
                 description=_(
-                    "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
+                    "[Node={node_value}] {source_value} track: {track_value} has started playing.\nRequested by: {requester_value}"
                 ).format(
-                    track=await event.track.get_track_display_name(with_url=True),
-                    requester=user,
-                    source=await event.track.query_source(),
-                    node=event.node.name,
+                    track_value=await event.track.get_track_display_name(with_url=True),
+                    requester_value=user,
+                    node_value=event.node.name,
+                    source_value=await event.track.query_source(),
                 ),
                 messageable=channel,
             )
@@ -1004,14 +1026,14 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             user = event.track.requester or self.bot.user
         self._message_queue[channel].append(
             await self.pylav.construct_embed(
-                title=_("{source} Track Start Event").format(source=await event.track.query_source()),
+                title=_("{source_value} Track Start Event").format(source_value=await event.track.query_source()),
                 description=_(
-                    "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
+                    "[Node={node_value}] {source_value} track: {track_value} has started playing.\nRequested by: {requester_value}"
                 ).format(
-                    track=await event.track.get_track_display_name(with_url=True),
-                    requester=user,
-                    source=await event.track.query_source(),
-                    node=event.node.name,
+                    track_value=await event.track.get_track_display_name(with_url=True),
+                    requester_value=user,
+                    node_value=event.node.name,
+                    source_value=await event.track.query_source(),
                 ),
                 messageable=channel,
             )
@@ -1037,14 +1059,14 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             user = event.track.requester or self.bot.user
         self._message_queue[channel].append(
             await self.pylav.construct_embed(
-                title=_("{source} Track Start Event").format(source=await event.track.query_source()),
+                title=_("{source_value} Track Start Event").format(source_value=await event.track.query_source()),
                 description=_(
-                    "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
+                    "[Node={node_value}] {source_value} track: {track_value} has started playing.\nRequested by: {requester_value}"
                 ).format(
-                    track=await event.track.get_track_display_name(with_url=True),
-                    requester=user,
-                    source=await event.track.query_source(),
-                    node=event.node.name,
+                    track_value=await event.track.get_track_display_name(with_url=True),
+                    requester_value=user,
+                    node_value=event.node.name,
+                    source_value=await event.track.query_source(),
                 ),
                 messageable=channel,
             )
@@ -1070,14 +1092,14 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             user = event.track.requester or self.bot.user
         self._message_queue[channel].append(
             await self.pylav.construct_embed(
-                title=_("{source} Track Start Event").format(source=await event.track.query_source()),
+                title=_("{source_value} Track Start Event").format(source_value=await event.track.query_source()),
                 description=_(
-                    "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
+                    "[Node={node_value}] {source_value} track: {track_value} has started playing.\nRequested by: {requester_value}"
                 ).format(
-                    track=await event.track.get_track_display_name(with_url=True),
-                    requester=user,
-                    source=await event.track.query_source(),
-                    node=event.node.name,
+                    track_value=await event.track.get_track_display_name(with_url=True),
+                    requester_value=user,
+                    node_value=event.node.name,
+                    source_value=await event.track.query_source(),
                 ),
                 messageable=channel,
             )
@@ -1103,14 +1125,14 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             user = event.track.requester or self.bot.user
         self._message_queue[channel].append(
             await self.pylav.construct_embed(
-                title=_("{source} Track Start Event").format(source=await event.track.query_source()),
+                title=_("{source_value} Track Start Event").format(source_value=await event.track.query_source()),
                 description=_(
-                    "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
+                    "[Node={node_value}] {source_value} track: {track_value} has started playing.\nRequested by: {requester_value}"
                 ).format(
-                    track=await event.track.get_track_display_name(with_url=True),
-                    requester=user,
-                    source=await event.track.query_source(),
-                    node=event.node.name,
+                    track_value=await event.track.get_track_display_name(with_url=True),
+                    requester_value=user,
+                    node_value=event.node.name,
+                    source_value=await event.track.query_source(),
                 ),
                 messageable=channel,
             )
@@ -1136,14 +1158,14 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             user = event.track.requester or self.bot.user
         self._message_queue[channel].append(
             await self.pylav.construct_embed(
-                title=_("{source} Track Start Event").format(source=await event.track.query_source()),
+                title=_("{source_value} Track Start Event").format(source_value=await event.track.query_source()),
                 description=_(
-                    "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
+                    "[Node={node_value}] {source_value} track: {track_value} has started playing.\nRequested by: {requester_value}"
                 ).format(
-                    track=await event.track.get_track_display_name(with_url=True),
-                    requester=user,
-                    source=await event.track.query_source(),
-                    node=event.node.name,
+                    track_value=await event.track.get_track_display_name(with_url=True),
+                    requester_value=user,
+                    node_value=event.node.name,
+                    source_value=await event.track.query_source(),
                 ),
                 messageable=channel,
             )
@@ -1169,14 +1191,14 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             user = event.track.requester or self.bot.user
         self._message_queue[channel].append(
             await self.pylav.construct_embed(
-                title=_("{source} Track Start Event").format(source=await event.track.query_source()),
+                title=_("{source_value} Track Start Event").format(source_value=await event.track.query_source()),
                 description=_(
-                    "[Node={node}] {source} track: {track} has started playing.\nRequested by: {requester}"
+                    "[Node={node_value}] {source_value} track: {track_value} has started playing.\nRequested by: {requester_value}"
                 ).format(
-                    track=await event.track.get_track_display_name(with_url=True),
-                    requester=user,
-                    source=await event.track.query_source(),
-                    node=event.node.name,
+                    track_value=await event.track.get_track_display_name(with_url=True),
+                    requester_value=user,
+                    node_value=event.node.name,
+                    source_value=await event.track.query_source(),
                 ),
                 messageable=channel,
             )
@@ -1203,10 +1225,12 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
         self._message_queue[channel].append(
             await self.pylav.construct_embed(
                 title=_("Track Skipped Event"),
-                description=_("[Node={node}] {track} has been skipped.\nRequested by {requester}").format(
-                    track=await event.track.get_track_display_name(with_url=True),
-                    requester=user,
-                    node=event.player.node.name,
+                description=_(
+                    "[Node={node_value}] {track_value} has been skipped.\nRequested by {requester_value}"
+                ).format(
+                    track_value=await event.track.get_track_display_name(with_url=True),
+                    requester_value=user,
+                    node_value=event.player.node.name,
                 ),
                 messageable=channel,
             )
@@ -1234,14 +1258,14 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             await self.pylav.construct_embed(
                 title=_("Track Seek Event"),
                 description=_(
-                    "[Node={node}] {requester} requested that {track} "
-                    "is sought from position {fro} to position {after}"
+                    "[Node={node_value}] {requester_value} requested that {track_value} "
+                    "is sought from position {from_value} to position {after_value}"
                 ).format(
-                    track=await event.track.get_track_display_name(with_url=True),
-                    fro=format_time_dd_hh_mm_ss(event.before),
-                    after=format_time_dd_hh_mm_ss(event.after),
-                    requester=user,
-                    node=event.player.node.name,
+                    track_value=await event.track.get_track_display_name(with_url=True),
+                    from_value=format_time_dd_hh_mm_ss(event.before),
+                    after_value=format_time_dd_hh_mm_ss(event.after),
+                    requester_value=user,
+                    node_value=event.player.node.name,
                 ),
                 messageable=channel,
             )
@@ -1268,10 +1292,12 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
         self._message_queue[channel].append(
             await self.pylav.construct_embed(
                 title=_("Track Previous Requested Event"),
-                description=_("[Node={node}] {requester} requested that the previous track {track} be played").format(
-                    track=await event.track.get_track_display_name(with_url=True),
-                    requester=user,
-                    node=event.player.node.name,
+                description=_(
+                    "[Node={node_value}] {requester_value} requested that the previous track {track_value} be played"
+                ).format(
+                    track_value=await event.track.get_track_display_name(with_url=True),
+                    requester_value=user,
+                    node_value=event.player.node.name,
                 ),
                 messageable=channel,
             )
@@ -1298,12 +1324,12 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
         self._message_queue[channel].append(
             await self.pylav.construct_embed(
                 title=_("Tracks Requested Event"),
-                description=_("[Node={node}] {requester} added {track_count}  to the queue").format(
-                    track_count=_("{count} track").format(count=count)
+                description=_("[Node={node_value}] {requester_value} added {track_count_value} to the queue").format(
+                    track_count=_("{count_value} track").format(count=count)
                     if (count := len(event.tracks)) > 1
                     else await event.tracks[0].get_track_display_name(with_url=True),
-                    requester=user,
-                    node=event.player.node.name,
+                    requester_value=user,
+                    node_value=event.player.node.name,
                 ),
                 messageable=channel,
             )
@@ -1325,8 +1351,9 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
         self._message_queue[channel].append(
             await self.pylav.construct_embed(
                 title=_("Track AutoPlay Event"),
-                description=_("[Node={node}] Auto-playing {track}").format(
-                    track=await event.track.get_track_display_name(with_url=True), node=event.player.node.name
+                description=_("[Node={node_value}] Auto-playing {track_value}").format(
+                    track_value=await event.track.get_track_display_name(with_url=True),
+                    node_value=event.player.node.name,
                 ),
                 messageable=channel,
             )
@@ -1353,10 +1380,10 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
         self._message_queue[channel].append(
             await self.pylav.construct_embed(
                 title=_("Track Resumed Event"),
-                description=_("[Node={node}] {requester} resumed {track}").format(
-                    track=await event.track.get_track_display_name(with_url=True),
-                    requester=user,
-                    node=event.player.node.name,
+                description=_("[Node={node_value}] {requester_value} resumed {track_value}").format(
+                    track_value=await event.track.get_track_display_name(with_url=True),
+                    requester_value=user,
+                    node_value=event.player.node.name,
                 ),
                 messageable=channel,
             )
@@ -1383,8 +1410,8 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
         self._message_queue[channel].append(
             await self.pylav.construct_embed(
                 title=_("Queue Shuffled Event"),
-                description=_("[Node={node}] {requester} shuffled the queue").format(
-                    requester=user, node=event.player.node.name
+                description=_("[Node={node_value}] {requester_value} shuffled the queue").format(
+                    requester_value=user, node_value=event.player.node.name
                 ),
                 messageable=channel,
             )
@@ -1406,8 +1433,8 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
         self._message_queue[channel].append(
             await self.pylav.construct_embed(
                 title=_("Queue End Event"),
-                description=_("[Node={node}] All tracks in the queue have been played").format(
-                    node=event.player.node.name
+                description=_("[Node={node_value}] All tracks in the queue have been played").format(
+                    node_value=event.player.node.name
                 ),
                 messageable=channel,
             )
@@ -1434,9 +1461,9 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
         self._message_queue[channel].append(
             await self.pylav.construct_embed(
                 title=_("Tracks Removed Event"),
-                description=_("[Node={node}] {requester} removed {track_count} tracks from the queue").format(
-                    track_count=len(event.tracks), requester=user, node=event.player.node.name
-                ),
+                description=_(
+                    "[Node={node_value}] {requester_value} removed {track_count_value} tracks from the queue"
+                ).format(track_count_value=len(event.tracks), requester_value=user, node_value=event.player.node.name),
                 messageable=channel,
             )
         )
@@ -1462,8 +1489,8 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
         self._message_queue[channel].append(
             await self.pylav.construct_embed(
                 title=_("Player Paused Event"),
-                description=_("[Node={node}] {requester} paused the player").format(
-                    requester=user, node=event.player.node.name
+                description=_("[Node={node_value}] {requester_value} paused the player").format(
+                    requester_value=user, node_value=event.player.node.name
                 ),
                 messageable=channel,
             )
@@ -1490,8 +1517,8 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
         self._message_queue[channel].append(
             await self.pylav.construct_embed(
                 title=_("Player Stopped Event"),
-                description=_("[Node={node}] {requester} stopped the player").format(
-                    requester=user, node=event.player.node.name
+                description=_("[Node={node_value}] {requester_value} stopped the player").format(
+                    requester_value=user, node_value=event.player.node.name
                 ),
                 messageable=channel,
             )
@@ -1518,8 +1545,8 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
         self._message_queue[channel].append(
             await self.pylav.construct_embed(
                 title=_("Player Resumed Event"),
-                description=_("[Node={node}] {requester} resumed the player").format(
-                    requester=user, node=event.player.node.name
+                description=_("[Node={node_value}] {requester_value} resumed the player").format(
+                    requester_value=user, node_value=event.player.node.name
                 ),
                 messageable=channel,
             )
@@ -1546,8 +1573,13 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
         self._message_queue[channel].append(
             await self.pylav.construct_embed(
                 title=_("Player Moved Event"),
-                description=_("[Node={node}] {requester} moved the player from {before} to {after}").format(
-                    requester=user, before=event.before, after=event.after, node=event.player.node.name
+                description=_(
+                    "[Node={node_value}] {requester_value} moved the player from {before_value} to {after_value}"
+                ).format(
+                    requester_value=user,
+                    before_value=event.before,
+                    after_value=event.after,
+                    node_value=event.player.node.name,
                 ),
                 messageable=channel,
             )

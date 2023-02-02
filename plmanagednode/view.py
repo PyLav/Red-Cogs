@@ -35,12 +35,12 @@ class ConfigureIPRotationView(discord.ui.View):
 
     async def interaction_check(self, interaction: DISCORD_INTERACTION_TYPE) -> bool:
         if not await self.bot.is_owner(interaction.user):
-            await interaction.response.send_message(_("You are not authorized to interact with this"), ephemeral=True)
+            await interaction.response.send_message(_("You are not authorized to interact with this."), ephemeral=True)
             return False
         return True
 
     @discord.ui.button(
-        label=shorten_string(max_length=100, string=_("Configure IP Rotation")),
+        label=shorten_string(max_length=100, string=_("Configure IP Rotation.")),
         style=discord.ButtonStyle.grey,
     )
     async def add_ip_block(self, interaction: DISCORD_INTERACTION_TYPE, button: discord.ui.Button):
@@ -62,12 +62,12 @@ class ConfigureGoogleAccountView(discord.ui.View):
 
     async def interaction_check(self, interaction: DISCORD_INTERACTION_TYPE) -> bool:
         if not await self.bot.is_owner(interaction.user):
-            await interaction.response.send_message(_("You are not authorized to interact with this"), ephemeral=True)
+            await interaction.response.send_message(_("You are not authorized to interact with this."), ephemeral=True)
             return False
         return True
 
     @discord.ui.button(
-        label=shorten_string(max_length=100, string=_("Link Google Account")),
+        label=shorten_string(max_length=100, string=_("Link Google Account.")),
         style=discord.ButtonStyle.grey,
     )
     async def link_account(self, interaction: DISCORD_INTERACTION_TYPE, button: discord.ui.Button):
@@ -95,12 +95,12 @@ class ConfigureHTTPProxyView(discord.ui.View):
 
     async def interaction_check(self, interaction: DISCORD_INTERACTION_TYPE) -> bool:
         if not await self.bot.is_owner(interaction.user):
-            await interaction.response.send_message(_("You are not authorized to interact with this"), ephemeral=True)
+            await interaction.response.send_message(_("You are not authorized to interact with this."), ephemeral=True)
             return False
         return True
 
     @discord.ui.button(
-        label=shorten_string(max_length=100, string=_("Configure HTTP Proxy")),
+        label=shorten_string(max_length=100, string=_("Configure HTTP Proxy.")),
         style=discord.ButtonStyle.grey,
     )
     async def configure_proxy(self, interaction: DISCORD_INTERACTION_TYPE, button: discord.ui.Button):
@@ -122,10 +122,10 @@ class ConfigureIPRotationModal(discord.ui.Modal):
         self.cog = cog
         self.prefix = prefix
 
-        super().__init__(title=shorten_string(max_length=100, string=_("IP Rotation Configurator")))
+        super().__init__(title=shorten_string(max_length=100, string=_("IP Rotation Configurator.")))
 
         self.ip_blocks = discord.ui.TextInput(
-            label=shorten_string(max_length=100, string=_("IP Blocks")),
+            label=shorten_string(max_length=100, string=_("IP Blocks.")),
             style=discord.TextStyle.long,
             required=True,
             placeholder=shorten_string(
@@ -134,7 +134,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
         )
 
         self.strategy = discord.ui.TextInput(
-            label=shorten_string(max_length=100, string=_("Rotation strategy")),
+            label=shorten_string(max_length=100, string=_("Rotation strategy.")),
             style=discord.TextStyle.long,
             required=True,
             placeholder="RotateOnBan | LoadBalance | NanoSwitch | RotatingNanoSwitch",
@@ -143,7 +143,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
         )
 
         self.retry_limit = discord.ui.TextInput(
-            label=shorten_string(max_length=100, string=_("Retry limit")),
+            label=shorten_string(max_length=100, string=_("Retry limit.")),
             style=discord.TextStyle.short,
             required=False,
             placeholder=shorten_string(max_length=100, string=_("-1 = default, 0 = infinity, >0 = number of retries")),
@@ -151,14 +151,14 @@ class ConfigureIPRotationModal(discord.ui.Modal):
             max_length=3,
         )
         self.excluded_ips = discord.ui.TextInput(
-            label=shorten_string(max_length=100, string=_("IPs to exclude")),
+            label=shorten_string(max_length=100, string=_("IPs to exclude.")),
             required=False,
             style=discord.TextStyle.short,
             placeholder=shorten_string(max_length=100, string=_("Comma separated list of IP to exclude from rotation")),
         )
 
         self.search_trigger = discord.ui.TextInput(
-            label=shorten_string(max_length=100, string=_("Search trigger rotation")),
+            label=shorten_string(max_length=100, string=_("Search trigger rotation.")),
             style=discord.TextStyle.short,
             required=False,
             placeholder=shorten_string(max_length=100, string=_("0 or 1 (0 = disabled, 1 = enabled)")),
@@ -189,7 +189,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
             except netaddr.core.AddrFormatError as exc:
                 return await send_method(
                     embed=await self.bot.pylav.construct_embed(
-                        description=_("Invalid IP block - {error}").format(exc),
+                        description=_("Invalid IP block - {error_value}").format(error_value=exc),
                         messageable=interaction,
                     ),
                     ephemeral=True,
@@ -217,7 +217,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
 
                 return await send_method(
                     embed=await self.bot.pylav.construct_embed(
-                        description=_("Invalid IP address - {error}").format(exc),
+                        description=_("Invalid IP address - {error_value}").format(error_value=exc),
                         messageable=interaction,
                     ),
                     ephemeral=True,
@@ -236,8 +236,8 @@ class ConfigureIPRotationModal(discord.ui.Modal):
         if strategy not in stategy_mapping:
             return await send_method(
                 embed=await self.bot.pylav.construct_embed(
-                    description=_("Invalid strategy, must be one of: {options}").format(
-                        options=humanize_list(list(stategy_mapping.values()))
+                    description=_("Invalid strategy, must be one of: {options_value}").format(
+                        options_value=humanize_list(list(stategy_mapping.values()))
                     ),
                     messageable=interaction,
                 ),

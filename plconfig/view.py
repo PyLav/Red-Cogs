@@ -92,7 +92,9 @@ class EmbedGenerator:
             (
                 EightBitANSI.paint_white(_("Auto Disconnect")),
                 EightBitANSI.paint_green(
-                    _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=global_config["empty_queue_dc"].time)
+                    _("{setting_stats_value}\n{setting_timer_value} seconds").format(
+                        setting_stats_value=enabled, setting_timer_value=global_config["empty_queue_dc"].time
+                    )
                 )
                 if global_config["empty_queue_dc"].enabled
                 else disabled,
@@ -100,7 +102,9 @@ class EmbedGenerator:
             (
                 EightBitANSI.paint_white(_("Auto Alone Pause")),
                 EightBitANSI.paint_green(
-                    _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=global_config["alone_pause"].time)
+                    _("{setting_stats_value}\n{setting_timer_value} seconds").format(
+                        setting_stats_value=enabled, setting_timer_value=global_config["alone_pause"].time
+                    )
                 )
                 if global_config["alone_pause"].enabled
                 else disabled,
@@ -108,7 +112,9 @@ class EmbedGenerator:
             (
                 EightBitANSI.paint_white(_("Auto Alone Disconnect")),
                 EightBitANSI.paint_green(
-                    _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=global_config["alone_dc"].time)
+                    _("{setting_stats_value}\n{setting_timer_value} seconds").format(
+                        setting_stats_value=enabled, setting_timer_value=global_config["alone_dc"].time
+                    )
                 )
                 if global_config["alone_dc"].enabled
                 else disabled,
@@ -163,7 +169,9 @@ class EmbedGenerator:
             (
                 EightBitANSI.paint_white(_("Auto Disconnect")),
                 EightBitANSI.paint_green(
-                    _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=ac_empty_queue_dc.time)
+                    _("{setting_stats_value}\n{setting_timer_value} seconds").format(
+                        setting_stats_value=enabled, setting_timer_value=ac_empty_queue_dc.time
+                    )
                 )
                 if ac_empty_queue_dc.enabled
                 else disabled,
@@ -171,7 +179,9 @@ class EmbedGenerator:
             (
                 EightBitANSI.paint_white(_("Auto Alone Pause")),
                 EightBitANSI.paint_green(
-                    _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=ac_alone_pause.time)
+                    _("{setting_stats_value}\n{setting_timer_value} seconds").format(
+                        setting_stats_value=enabled, setting_timer_value=ac_alone_pause.time
+                    )
                 )
                 if ac_alone_pause.enabled
                 else disabled,
@@ -179,7 +189,9 @@ class EmbedGenerator:
             (
                 EightBitANSI.paint_white(_("Auto Alone Disconnect")),
                 EightBitANSI.paint_green(
-                    _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=ac_alone_dc.time)
+                    _("{setting_stats_value}\n{setting_timer_value} seconds").format(
+                        setting_stats_value=enabled, setting_timer_value=ac_alone_dc.time
+                    )
                 )
                 if ac_alone_dc.enabled
                 else disabled,
@@ -226,7 +238,7 @@ class EmbedGenerator:
                 ]
             )
             if len(config["dj_users"]) <= 5
-            else _("Too many to show ({count})").format(count=len(config["dj_users"]))
+            else _("Too many to show ({number_of_users_value})").format(number_of_users_value=len(config["dj_users"]))
         )
 
         dj_role_str = (
@@ -242,7 +254,7 @@ class EmbedGenerator:
                 ]
             )
             if len(config["dj_roles"]) <= 5
-            else _("Too many to show ({count})").format(count=len(config["dj_roles"]))
+            else _("Too many to show ({number_of_roles_value})").format(number_of_roles_value=len(config["dj_roles"]))
         )
         if len(config["dj_users"]) == 0:
             dj_user_str = EightBitANSI.paint_red(_("None"))
@@ -288,7 +300,9 @@ class EmbedGenerator:
             (
                 EightBitANSI.paint_white(_("Auto Disconnect")),
                 EightBitANSI.paint_green(
-                    _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=config["empty_queue_dc"].time)
+                    _("{setting_stats_value}\n{setting_timer_value} seconds").format(
+                        setting_stats_value=enabled, setting_timer_value=config["empty_queue_dc"].time
+                    )
                 )
                 if config["empty_queue_dc"].enabled
                 else disabled,
@@ -296,7 +310,9 @@ class EmbedGenerator:
             (
                 EightBitANSI.paint_white(_("Auto Alone Pause")),
                 EightBitANSI.paint_green(
-                    _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=config["alone_pause"].time)
+                    _("{setting_stats_value}\n{setting_timer_value} seconds").format(
+                        setting_stats_value=enabled, setting_timer_value=config["alone_pause"].time
+                    )
                 )
                 if config["alone_pause"].enabled
                 else disabled,
@@ -304,7 +320,9 @@ class EmbedGenerator:
             (
                 EightBitANSI.paint_white(_("Auto Alone Disconnect")),
                 EightBitANSI.paint_green(
-                    _("{enabled}\n{timer} seconds").format(enabled=enabled, timer=config["alone_dc"].time)
+                    _("{setting_stats_value}\n{setting_timer_value} seconds").format(
+                        setting_stats_value=enabled, setting_timer_value=config["alone_dc"].time
+                    )
                 )
                 if config["alone_dc"].enabled
                 else disabled,

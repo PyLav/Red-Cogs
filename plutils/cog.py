@@ -85,7 +85,7 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
                     tabulate(
                         data,
                         headers=(
-                            EightBitANSI.paint_yellow(_("Library/Cog"), bold=True, underline=True),
+                            EightBitANSI.paint_yellow(_("Library / Cog"), bold=True, underline=True),
                             EightBitANSI.paint_yellow(_("Version"), bold=True, underline=True),
                         ),
                         tablefmt="fancy_grid",
@@ -150,7 +150,9 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
 
         if not context.player.current:
             await context.send(
-                embed=await context.pylav.construct_embed(description=_("Nothing playing"), messageable=context),
+                embed=await context.pylav.construct_embed(
+                    description=_("I am not currently playing anything on this server."), messageable=context
+                ),
                 ephemeral=True,
             )
             return
@@ -182,7 +184,9 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
 
         if not context.player.current:
             await context.send(
-                embed=await context.pylav.construct_embed(description=_("Nothing playing"), messageable=context),
+                embed=await context.pylav.construct_embed(
+                    description=_("I am not currently playing anything on this server."), messageable=context
+                ),
                 ephemeral=True,
             )
             return
@@ -214,7 +218,9 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
 
         if not context.player.current:
             await context.send(
-                embed=await context.pylav.construct_embed(description=_("Nothing playing"), messageable=context),
+                embed=await context.pylav.construct_embed(
+                    description=_("I am not currently playing anything on this server."), messageable=context
+                ),
                 ephemeral=True,
             )
             return
@@ -245,7 +251,9 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
 
         if not context.player.current:
             await context.send(
-                embed=await context.pylav.construct_embed(description=_("Nothing playing"), messageable=context),
+                embed=await context.pylav.construct_embed(
+                    description=_("I am not currently playing anything on this server."), messageable=context
+                ),
                 ephemeral=True,
             )
             return
@@ -397,8 +405,8 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
             await context.defer(ephemeral=True)
         await context.send(
             embed=await context.pylav.construct_embed(
-                description=_("Query cache size: `{size}`").format(
-                    size=humanize_number(await self.pylav.query_cache_manager.size())
+                description=_("Query cache size: `{size_value}`").format(
+                    size_value=humanize_number(await self.pylav.query_cache_manager.size())
                 ),
                 messageable=context,
             ),
@@ -483,7 +491,9 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
         logger.setLevel(level_map[level])
         await context.send(
             embed=await context.pylav.construct_embed(
-                description=_("Logger level set to `{level}`").format(level=logging.getLevelName(logger.level)),
+                description=_("Logger level set to `{level_value}`").format(
+                    level_value=logging.getLevelName(logger.level)
+                ),
                 messageable=context,
             ),
             ephemeral=True,

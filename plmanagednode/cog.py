@@ -63,7 +63,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
                     tabulate(
                         data,
                         headers=(
-                            EightBitANSI.paint_yellow(_("Library/Cog"), bold=True, underline=True),
+                            EightBitANSI.paint_yellow(_("Library / Cog"), bold=True, underline=True),
                             EightBitANSI.paint_yellow(_("Version"), bold=True, underline=True),
                         ),
                         tablefmt="fancy_grid",
@@ -98,9 +98,11 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         if update == 0:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("Your node is out of date, to update please run `{prefix}{command} 1`.").format(
-                        prefix=context.clean_prefix,
-                        command=self.command_plmanaged_update.qualified_name,
+                    description=_(
+                        "Your node is out of date, to update please run `{bot_command_prefix}{command_name} 1`."
+                    ).format(
+                        bot_command_prefix=context.clean_prefix,
+                        command_name=self.command_plmanaged_update.qualified_name,
                     ),
                     messageable=context,
                 ),
@@ -114,8 +116,8 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
 
         await context.send(
             embed=await context.pylav.construct_embed(
-                description=_("The managed Lavalink node has been updated to version {version}.").format(
-                    version=number,
+                description=_("The managed Lavalink node has been updated to version {version_value}.").format(
+                    version_value=number,
                 ),
                 messageable=context,
             ),
@@ -126,7 +128,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
     async def command_plmanaged_toggle(self, context: PyLavContext) -> None:
         """Toggle the managed node on/off.
 
-        Changes will be applied after restarting [botname].
+        Changes will be applied after I restart.
         """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -139,7 +141,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         if current:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("PyLav's managed node has been enabled.").format(prefix=context.clean_prefix),
+                    description=_("PyLav's managed node has been enabled."),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -147,7 +149,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         else:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("PyLav's managed node has been disabled.").format(prefix=context.clean_prefix),
+                    description=_("PyLav's managed node has been disabled."),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -157,7 +159,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
     async def ccommand_plmanaged_updates(self, context: PyLavContext) -> None:
         """Toggle the managed node auto updates on/off.
 
-        Changes will be applied after restarting [botname].
+        Changes will be applied after I restart.
         """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -171,9 +173,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         if current:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("PyLav's managed node auto updates have been enabled" "").format(
-                        prefix=context.clean_prefix
-                    ),
+                    description=_("PyLav's managed node auto updates have been enabled"),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -181,9 +181,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         else:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("PyLav's managed node auto updates have been disabled" "").format(
-                        prefix=context.clean_prefix
-                    ),
+                    description=_("PyLav's managed node auto updates have been disabled"),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -239,8 +237,8 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
                         embed=await context.pylav.construct_embed(
                             description=_(
                                 "Heap-size must be less than your system RAM, "
-                                "You currently have {ram_in_bytes} of RAM available"
-                            ).format(ram_in_bytes=inline(humanize.naturalsize(total_ram))),
+                                "You currently have {ram_in_bytes_value} of RAM available"
+                            ).format(ram_in_bytes_value=inline(humanize.naturalsize(total_ram))),
                             messageable=context,
                         ),
                         ephemeral=True,
@@ -249,9 +247,9 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
                 else:
                     await context.send(
                         embed=await context.pylav.construct_embed(
-                            description=_("Heap-size must be less than {limit} due to your system limitations").format(
-                                limit=inline(humanize.naturalsize(total_ram))
-                            )
+                            description=_(
+                                "Heap-size must be less than {limit_value} due to your system limitations"
+                            ).format(limit_value=inline(humanize.naturalsize(total_ram)))
                         ),
                         ephemeral=True,
                     )
@@ -269,9 +267,8 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         await global_config.update_extras(extras)
         await context.send(
             embed=await context.pylav.construct_embed(
-                description=_("Managed node's heap-size set to {bytes}.").format(
-                    bytes=inline(size),
-                    prefix=context.clean_prefix,
+                description=_("Managed node's heap-size set to {bytes_value}.").format(
+                    bytes_value=inline(size),
                 ),
                 messageable=context,
             ),
@@ -296,9 +293,8 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         await config.update_yaml(data)
         await context.send(
             embed=await context.pylav.construct_embed(
-                description=_("Managed node's host set to {host}.").format(
-                    host=inline(host),
-                    prefix=context.clean_prefix,
+                description=_("Managed node's host set to {host_value}.").format(
+                    host_value=inline(host),
                 ),
                 messageable=context,
             ),
@@ -329,7 +325,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         await config.update_yaml(data)
         await context.send(
             embed=await context.pylav.construct_embed(
-                description=_("Managed node's port set to {port}.").format(port=port, prefix=context.clean_prefix),
+                description=_("Managed node's port set to {port_value}.").format(port_value=port),
                 messageable=context,
             ),
             ephemeral=True,
@@ -359,8 +355,8 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         if plugin_str not in plugins:
             return await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("The plugin must be one of the following: {plugins}").format(
-                        plugins=inline(humanize_list(plugins))
+                    description=_("The plugin must be one of the following: {plugins_value}").format(
+                        plugins_value=inline(humanize_list(plugins))
                     ),
                     messageable=context,
                 ),
@@ -444,9 +440,8 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         await config.update_yaml(data)
         await context.send(
             embed=await context.pylav.construct_embed(
-                description=_("Managed node's plugin {plugin} disabled.").format(
-                    plugin=inline(plugin_str),
-                    prefix=context.clean_prefix,
+                description=_("Managed node plugin {plugin_value} disabled.").format(
+                    plugin_value=inline(plugin_str),
                 ),
                 messageable=context,
             ),
@@ -504,9 +499,8 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         await config.update_yaml(data)
         await context.send(
             embed=await context.pylav.construct_embed(
-                description=_("Managed node's plugin {plugin} enabled.").format(
-                    plugin=inline(plugin_str),
-                    prefix=context.clean_prefix,
+                description=_("Managed node plugin {plugin_value} enabled.").format(
+                    plugin_value=inline(plugin_str),
                 ),
                 messageable=context,
             ),
@@ -589,17 +583,16 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
                         elif sub_key == "new_value":
                             new_value = value
                     if all([old_value, new_value]):
-                        update_string += _("{name} was updated from {old_value} to {new_value}\n").format(
+                        update_string += _("{name_value} was updated from {old_value} to {new_value}\n").format(
                             old_value=old_value.split(":")[-1],
                             new_value=bold(new_value.split(":")[-1]),
-                            name=bold(old_value.split(":")[-2]),
+                            name_value=bold(old_value.split(":")[-2]),
                         )
             await config.update_yaml(data)
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("Managed node's plugins updated.\n\n{updates}").format(
-                        updates=update_string,
-                        prefix=context.clean_prefix,
+                    description=_("Managed node plugins updated.\n\n{update_values}").format(
+                        updates_value=update_string,
                     ),
                     messageable=context,
                 ),
@@ -631,8 +624,8 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         if source not in valid_sources:
             return await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("Invalid source, {valid_list} are valid sources").format(
-                        valid_list=humanize_list(sorted(list(map(inline, valid_sources.keys())), key=str.lower))
+                    description=_("Invalid source, {valid_list_value} are valid sources").format(
+                        valid_list_value=humanize_list(sorted(list(map(inline, valid_sources.keys())), key=str.lower))
                     ),
                     messageable=context,
                 ),
@@ -648,10 +641,9 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         state = _("enabled") if state else _("disabled")
         await context.send(
             embed=await context.pylav.construct_embed(
-                description=_("Managed node's {source} source set to {state}.").format(
-                    source=inline(source),
-                    state=state,
-                    prefix=context.clean_prefix,
+                description=_("Managed node {source_value} source set to {state_value}.").format(
+                    source_value=inline(source),
+                    state_value=state,
                 ),
                 messageable=context,
             ),
@@ -672,8 +664,8 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         if filter_name not in valid_filters:
             return await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("Invalid source, {valid_list} are valid filters").format(
-                        valid_list=humanize_list(sorted(list(map(inline, valid_filters.keys())), key=str.lower))
+                    description=_("Invalid source, {valid_list_value} are valid filters").format(
+                        valid_list_value=humanize_list(sorted(list(map(inline, valid_filters.keys())), key=str.lower))
                     ),
                     messageable=context,
                 ),
@@ -684,10 +676,9 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         state = _("enabled") if state else _("disabled")
         await context.send(
             embed=await context.pylav.construct_embed(
-                description=_("Managed node's {source} filter set to {state}.").format(
-                    source=inline(filter_name),
-                    state=state,
-                    prefix=context.clean_prefix,
+                description=_("Managed node {source_value} filter set to {state_value}.").format(
+                    source_value=inline(filter_name),
+                    state_value=state,
                 ),
                 messageable=context,
             ),
@@ -736,8 +727,10 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         if setting is None:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("{Setting} is not a valid Setting; Options are:\n\n{setting_list}").format(
-                        setting=user_input, setting_list=humanize_list(list(setting_case_map.values()))
+                    description=_(
+                        "{Setting_value} is not a valid Setting; Options are:\n\n{setting_list_value}"
+                    ).format(
+                        setting_value=user_input, setting_list_value=humanize_list(list(setting_case_map.values()))
                     ),
                     messageable=context,
                 ),
@@ -767,11 +760,11 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
                 ),
                 "opusEncodingQuality": _(
                     "Opus encoder quality. "
-                    "Valid values range from 0 to 10, where 10 is best quality but is the most expensive on the CPU"
+                    "Valid values range from 0 to 10, where 10 is the best quality but is the most expensive on the CPU."
                 ),
                 "resamplingQuality": _(
                     "Quality of resampling operations. "
-                    "Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU"
+                    "Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU."
                 ),
                 "useSeekGhosting": _(
                     "Seek ghosting is the effect where whilst a seek is in progress, "
@@ -784,20 +777,20 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
                 ),
                 "youtubeSearchEnabled": _(
                     "Enable or disable YouTube searches within the node, "
-                    "this will affect AppleMusic, Spotify and any functionality dependant on YouTube. "
+                    "this will affect AppleMusic, Spotify and any functionality dependent on YouTube. "
                     "Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
                 ),
                 "soundcloudSearchEnabled": _(
                     "Enable or disable SoundCloud searches within the node, "
-                    "this will affect any functionality dependant on SoundCloud. "
+                    "this will affect any functionality dependent on SoundCloud. "
                     "Accepted values for True: `True`, `t`, `1`, Accepted values for False: `False`, `f`, `0`"
                 ),
             }
 
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("{Setting} info.\n\n{info}").format(
-                        setting=setting, info=setting_description_map.get(setting)
+                    description=_("{Setting_value} info.\n\n{info_value}").format(
+                        setting_value=setting, info_value=setting_description_map.get(setting)
                     ),
                     messageable=context,
                 ),
@@ -824,9 +817,9 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
             if value not in range(possible_values[0], possible_values[0] + 1):
                 await context.send(
                     embed=await context.pylav.construct_embed(
-                        description=_("{Setting} valid inputs are:\n\nRange between: {start} - {end}").format(
-                            setting=setting, start=possible_values[0], end=possible_values[1]
-                        ),
+                        description=_(
+                            "{Setting_value} valid inputs are:\n\nRange between: {start_value} - {end_value}"
+                        ).format(setting_value=setting, start_value=possible_values[0], end_value=possible_values[1]),
                         messageable=context,
                     ),
                     ephemeral=True,
@@ -835,8 +828,8 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         elif value not in possible_values:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("{Setting} valid inputs are:\n\n{setting_list}").format(
-                        setting=setting, setting_list=humanize_list(possible_values)
+                    description=_("{Setting_value} valid inputs are:\n\n{setting_list_value}").format(
+                        setting_value=setting, setting_list_value=humanize_list(possible_values)
                     ),
                     messageable=context,
                 ),
@@ -854,10 +847,9 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         await config.update_yaml(data)
         await context.send(
             embed=await context.pylav.construct_embed(
-                description=_("{Setting} set to {value}.").format(
-                    setting=setting,
+                description=_("{Setting_value} set to {value}.").format(
+                    setting_value=setting,
                     value=value,
-                    prefix=context.clean_prefix,
                 ),
                 messageable=context,
             ),
@@ -879,8 +871,11 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
                 embed=await context.pylav.construct_embed(
                     description=_(
                         "Click the button below to configure the IP rotation for your node.\n"
-                        "More info at: <https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md> and "
-                        "<https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>"
+                        "More info at: {url_value_1} and {url_value_2}"
+                        ""
+                    ).format(
+                        url_value_1="<https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md>",
+                        url_value_2="<https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>",
                     ),
                     messageable=context,
                 ),
