@@ -33,7 +33,7 @@ repos:
     -   id: check-json
     -   id: check-symlinks
 -   repo: https://github.com/PyCQA/autoflake
-    rev: v2.0.0
+    rev: v2.0.1
     hooks:
     -   id: autoflake
         args: [--remove-all-unused-imports, --recursive, --in-place, --remove-unused-variables, --ignore-init-module-imports, --remove-duplicate-keys]
@@ -49,7 +49,7 @@ repos:
         files: \.py$
         args: [--count, --select, 'E9,F7,F82,F406,F821,T003', --show-source]
 -   repo: https://github.com/humitos/mirrors-autoflake
-    rev: v1.3
+    rev: v1.1
     hooks:
     -   id: autoflake
         files: \.py$
@@ -75,7 +75,7 @@ repos:
     hooks:
     -   id: blacken-docs
 -   repo: https://github.com/sourcery-ai/sourcery
-    rev: v1.0.3
+    rev: v1.0.4b23
     hooks:
     -   id: sourcery
         args: [--diff=git diff HEAD, --in-place, --no-summary]
@@ -96,7 +96,7 @@ repos:
 -   repo: https://github.com/psf/black
     # The `refs/tags/<tag>:refs/tags/<tag>` is needed for black's required-version to work:
     # https://github.com/psf/black/issues/2493#issuecomment-1081987650
-    rev: 22.12.0
+    rev: 23.1.0
     hooks:
     -   id: black
 -   repo: https://github.com/Pierre-Sassoulas/black-disable-checker
