@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
-"POT-Creation-Date: 2023-02-02 22:16+0000\n"
-"PO-Revision-Date: 2023-02-02 22:33\n"
+"POT-Creation-Date: 2023-02-03 20:16+0000\n"
+"PO-Revision-Date: 2023-02-03 20:17\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese\n"
 "MIME-Version: 1.0\n"
@@ -17,118 +17,100 @@ msgstr ""
 "X-Crowdin-File-ID: 3321\n"
 "Language: vi_VN\n"
 
-#: plnodes/cog.py:33
+#: plnodes/cog.py:32
 #, docstring
 msgid "Manage the nodes used by PyLav"
 msgstr "Quản lý các nút được sử dụng bởi PyLav"
 
-#: plnodes/cog.py:44
+#: plnodes/cog.py:43
 #, docstring
 msgid "Configure PyLav Nodes"
 msgstr "Định cấu hình các nút PyLav"
 
-#: plnodes/cog.py:48
+#: plnodes/cog.py:47
 #, docstring
-msgid "Show the version of the Cog and its PyLav dependencies"
-msgstr "Hiển thị phiên bản của Cog và các phụ thuộc PyLav của nó"
+msgid "Show the version of the Cog and PyLav"
+msgstr ""
 
-#: plnodes/cog.py:64
+#: plnodes/cog.py:63
 msgid "Library / Cog"
 msgstr "Thư viện / Cog"
 
-#: plnodes/cog.py:65
+#: plnodes/cog.py:64
 msgid "Version"
 msgstr "Phiên bản"
 
-#: plnodes/cog.py:78
+#: plnodes/cog.py:77
 #, docstring
 msgid "Add a node to PyLav"
 msgstr "Thêm một nút vào PyLav"
 
-#: plnodes/cog.py:88
-msgid "Let's add a node to PyLav!"
-msgstr "Hãy thêm một node vào PyLav!"
+#: plnodes/cog.py:87
+msgid "Let us add a node to PyLav!"
+msgstr ""
 
-#: plnodes/cog.py:89
-msgid "(**1**){space_value} - Apply changes and add the node to PyLav.\n"
-"(**2**){space_value} - Cancel any changes made and close the menu.\n"
-"(**3**){space_value} - Toggle between search-only and search and playback modes.\n"
-"(**4**){space_value} - Toggle between SSL on and off.\n"
-"(**5**){space_value} - Add a name to the node.\n"
-"(**6**){space_value} - Add the host address of the node.\n"
-"(**7**){space_value} - Add the port the node uses.\n"
-"(**8**){space_value} - Set the password for the node.\n"
-"(**9**){space_value} - Set the connection timeout.\n"
+#: plnodes/cog.py:88
+msgid "(**1**){space_variable_do_not_translate} - Apply changes and add the node to PyLav.\n"
+"(**2**){space_variable_do_not_translate} - Cancel any changes made and close the menu.\n"
+"(**3**){space_variable_do_not_translate} - Toggle between search-only and search and playback modes.\n"
+"(**4**){space_variable_do_not_translate} - Toggle between SSL on and off.\n"
+"(**5**){space_variable_do_not_translate} - Add a name to the node.\n"
+"(**6**){space_variable_do_not_translate} - Add the host address of the node.\n"
+"(**7**){space_variable_do_not_translate} - Add the port the node uses.\n"
+"(**8**){space_variable_do_not_translate} - Set the password for the node.\n"
+"(**9**){space_variable_do_not_translate} - Set the connection timeout.\n"
 "(**10**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr "(**1**){space_value} - Áp dụng các thay đổi và thêm nút vào PyLav.\n"
-"(**2**){space_value} - Hủy bất kỳ thay đổi nào đã thực hiện và đóng menu.\n"
-"(**3**){space_value} - Chuyển đổi giữa chế độ chỉ tìm kiếm và tìm kiếm và phát lại.\n"
-"(**4**){space_value} - Chuyển đổi giữa SSL bật và tắt.\n"
-"(**5**){space_value} - Thêm tên vào nút.\n"
-"(**6**){space_value} - Thêm địa chỉ máy chủ của nút.\n"
-"(**7**){space_value} - Thêm cổng mà nút sử dụng.\n"
-"(**8**){space_value} - Đặt mật khẩu cho nút.\n"
-"(**9**){space_value} - Đặt thời gian chờ kết nối.\n"
-"(**10**) - Chọn nguồn cần tắt cho nút này (Có thể chọn Nhiều nguồn).\n"
-"Nếu bạn tương tác với một nút nhiều lần, chỉ tương tác cuối cùng mới có hiệu lực.\n\n\n"
+msgstr ""
 
-#: plnodes/cog.py:137
-msgid "Added node {name_value} with the following settings:\n"
-"Host: {host_value}\n"
-"Port: {port_value}\n"
-"Password: {password_value}\n"
-"Resume Timeout: {resume_timeout_value}\n"
-"Search Only: {search_only_value}\n"
-"SSL: {ssl_value}\n"
-"Disabled Sources: {disabled_sources_value}\n"
-msgstr "Đã thêm nút {name_value} với các cài đặt sau:\n"
-"Chủ nhà: {host_value}\n"
-"Cảng: {port_value}\n"
-"Mật khẩu: {password_value}\n"
-"Tiếp tục hết thời gian chờ: {resume_timeout_value}\n"
-"Chỉ tìm kiếm: {search_only_value}\n"
-"SSL: {ssl_value}\n"
-"Nguồn bị vô hiệu hóa: {disabled_sources_value}\n"
+#: plnodes/cog.py:134
+msgid "I have added the {name_variable_do_not_translate} node with the following settings:\n"
+"Host: {host_variable_do_not_translate}\n"
+"Port: {port_variable_do_not_translate}\n"
+"Password: {password_variable_do_not_translate}\n"
+"Resume Timeout: {resume_timeout_variable_do_not_translate}\n"
+"Search Only: {search_only_variable_do_not_translate}\n"
+"SSL: {ssl_variable_do_not_translate}\n"
+"Disabled Sources: {disabled_sources_variable_do_not_translate}\n"
+msgstr ""
 
-#: plnodes/cog.py:168 plnodes/cog.py:175
-msgid "Unable to add this node"
-msgstr "Không thể thêm nút này"
+#: plnodes/cog.py:165 plnodes/cog.py:172
+msgid "I am unable to add this node"
+msgstr ""
 
-#: plnodes/cog.py:181
+#: plnodes/cog.py:178
 #, docstring
 msgid "Remove a node from a PyLav instance"
 msgstr "Xóa một nút khỏi phiên bản PyLav"
 
-#: plnodes/cog.py:193
-msgid "{name_value} is managed by PyLav and cannot be removed."
-msgstr "{name_value} được quản lý bởi PyLav và không thể gỡ bỏ."
+#: plnodes/cog.py:190
+msgid "{name_variable_do_not_translate} is managed by PyLav and cannot be removed."
+msgstr ""
 
-#: plnodes/cog.py:210
-msgid "Removed node {name_value}.\n\n"
-"{data_value}"
-msgstr "Nút đã xóa {name_value}.\n\n"
-"{data_value}"
+#: plnodes/cog.py:207
+msgid "I have removed the {name_variable_do_not_translate} node.\n\n"
+"{data_variable_do_not_translate}"
+msgstr ""
 
-#: plnodes/cog.py:219
-msgid "Removed node {name_value}, a direct message was sent to you with the node details in case you wish to re-add it"
-msgstr "Nút đã xóa {name_value}, một tin nhắn trực tiếp đã được gửi cho bạn với các chi tiết nút trong trường hợp bạn muốn thêm lại nó"
+#: plnodes/cog.py:220
+msgid "I have removed the {name_variable_do_not_translate} node. A direct message was sent to you with the node details in case you wish to re-add it."
+msgstr ""
 
-#: plnodes/cog.py:229
+#: plnodes/cog.py:230
 #, docstring
 msgid "Manage all nodes in a PyLav instance"
 msgstr "Quản lý tất cả các nút trong một phiên bản PyLav"
 
-#: plnodes/cog.py:241
-msgid "Let's manage some nodes!"
-msgstr "Hãy quản lý một số node!"
-
 #: plnodes/cog.py:242
-msgid "(**1**){space_value} - Cancel any changes made and close the menu.\n"
-"(**6**){space_value} - Show sources enabled for this node.\n"
-"(**7**){space_value} - Apply changes and add the node to PyLav.\n"
-"(**8**){space_value} - Toggle between search-only and search and playback modes.\n"
-"(**9**){space_value} - Toggle between SSL on and off.\n"
+msgid "Let us manage some nodes!"
+msgstr ""
+
+#: plnodes/cog.py:243
+msgid "(**1**){space_variable_do_not_translate} - Cancel any changes made and close the menu.\n"
+"(**6**){space_variable_do_not_translate} - Show sources enabled for this node.\n"
+"(**7**){space_variable_do_not_translate} - Apply changes and add the node to PyLav.\n"
+"(**8**){space_variable_do_not_translate} - Toggle between search-only and search and playback modes.\n"
+"(**9**){space_variable_do_not_translate} - Toggle between SSL on and off.\n"
 "(**10**) - Add a name to the node.\n"
 "(**11**) - Add the host address of the node.\n"
 "(**12**) - Add the port the node uses.\n"
@@ -137,52 +119,33 @@ msgid "(**1**){space_value} - Cancel any changes made and close the menu.\n"
 "(**15**) - Remove this node.\n"
 "(**16**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr "(**1**){space_value} - Hủy bất kỳ thay đổi nào đã thực hiện và đóng menu.\n"
-"(**6**){space_value} - Hiển thị các nguồn được bật cho nút này.\n"
-"(**7**){space_value} - Áp dụng các thay đổi và thêm nút vào PyLav.\n"
-"(**8**){space_value} - Chuyển đổi giữa chế độ chỉ tìm kiếm và tìm kiếm và phát lại.\n"
-"(**9**){space_value} - Chuyển đổi giữa SSL bật và tắt.\n"
-"(**10**) - Thêm tên vào nút.\n"
-"(**11**) - Thêm địa chỉ máy chủ của nút.\n"
-"(**12**) - Thêm cổng mà nút sử dụng.\n"
-"(**13**) - Đặt mật khẩu cho nút.\n"
-"(**14**) - Đặt thời gian chờ kết nối.\n"
-"(**15**) - Xóa nút này.\n"
-"(**16**) - Chọn nguồn cần tắt cho nút này (Có thể chọn Nhiều nguồn).\n"
-"Nếu bạn tương tác với một nút nhiều lần, chỉ tương tác cuối cùng mới có hiệu lực.\n\n\n"
+msgstr ""
 
-#: plnodes/cog.py:271
-msgid "{name_value} is managed by PyLav and cannot be modified with this command."
-msgstr "{name_value} được quản lý bởi PyLav và không thể sửa đổi bằng lệnh này."
+#: plnodes/cog.py:272
+msgid "{name_variable_do_not_translate} is managed by PyLav, and I can not modify it."
+msgstr ""
 
-#: plnodes/cog.py:283
-msgid "Removed node {name_value}"
-msgstr "Nút đã xóa {name_value}"
+#: plnodes/cog.py:284
+msgid "I have removed the {name_variable_do_not_translate} node."
+msgstr ""
 
-#: plnodes/cog.py:319
-msgid "Changed node {name_value} to the following settings:\n"
-"Host: {host_value}\n"
-"Port: {port_value}\n"
-"Password: {password_value}\n"
-"Resume Timeout: {resume_timeout_value}\n"
-"Search Only: {search_only_value}\n"
-"SSL: {ssl_value}\n"
-"Disabled Sources: {disabled_sources_value}\n"
-msgstr "Nút đã thay đổi {name_value} vào các cài đặt sau:\n"
-"Chủ nhà: {host_value}\n"
-"Cảng: {port_value}\n"
-"Mật khẩu: {password_value}\n"
-"Tiếp tục hết thời gian chờ: {resume_timeout_value}\n"
-"Chỉ tìm kiếm: {search_only_value}\n"
-"SSL: {ssl_value}\n"
-"Nguồn bị vô hiệu hóa: {disabled_sources_value}\n"
+#: plnodes/cog.py:322
+msgid "I have changed the {name_variable_do_not_translate} node to the following settings:\n"
+"Host: {host_variable_do_not_translate}\n"
+"Port: {port_variable_do_not_translate}\n"
+"Password: {password_variable_do_not_translate}\n"
+"Resume Timeout: {resume_timeout_variable_do_not_translate}\n"
+"Search Only: {search_only_variable_do_not_translate}\n"
+"SSL: {ssl_variable_do_not_translate}\n"
+"Disabled Sources: {disabled_sources_variable_do_not_translate}\n"
+msgstr ""
 
-#: plnodes/cog.py:346
+#: plnodes/cog.py:349
 #, docstring
 msgid "List all nodes used by PyLav"
 msgstr "Liệt kê tất cả các nút được PyLav sử dụng"
 
-#: plnodes/cog.py:356
-msgid "No nodes added to PyLav"
-msgstr "Không có nút nào được thêm vào PyLav"
+#: plnodes/cog.py:359
+msgid "No nodes were added to PyLav."
+msgstr ""
 

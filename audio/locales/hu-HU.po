@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
-"POT-Creation-Date: 2023-02-02 22:16+0000\n"
-"PO-Revision-Date: 2023-02-02 22:33\n"
+"POT-Creation-Date: 2023-02-03 20:16+0000\n"
+"PO-Revision-Date: 2023-02-03 20:17\n"
 "Last-Translator: \n"
 "Language-Team: Hungarian\n"
 "MIME-Version: 1.0\n"
@@ -30,7 +30,7 @@ msgstr "Lejátszás a Spotify-ból vagy az Apple Music-ból"
 msgid "Play from this message"
 msgstr "Lejátszás ebből az üzenetből"
 
-#: audio/config_commands.py:41
+#: audio/config_commands.py:40
 #, docstring
 msgid "Notifies PyLav that a Player is having issues.\n\n"
 "        If enough (50% or more of currently playing players) report issues, PyLav will automatically\n"
@@ -41,15 +41,15 @@ msgstr "Értesíti a PyLav-ot, hogy egy játékosnak problémái vannak.\n\n"
 "        Váltson másik csomópontra, vagy ha lehetséges, indítsa újra az aktuális csomópontot.\n"
 "        "
 
-#: audio/config_commands.py:49
+#: audio/config_commands.py:48
 msgid "This server already voted recently. Please, try again in 10 minutes."
 msgstr "Ez a szerver már nemrég szavazott. Kérjük, próbálja újra 10 perc múlva."
 
-#: audio/config_commands.py:60
+#: audio/config_commands.py:59
 msgid "Thank you for your report."
 msgstr "Köszönöm a jelentést."
 
-#: audio/config_commands.py:70
+#: audio/config_commands.py:69
 #, docstring
 msgid "Removes a vote for a Player being down.\n\n"
 "        If enough (50% or more of currently active players) report issues, PyLav will automatically\n"
@@ -62,107 +62,107 @@ msgstr "Eltávolítja a szavazatot, ha egy játékos leesik.\n\n"
 "        Ez a parancs csak akkor érvényes, ha a kiszolgáló korábban megszavazta, hogy egy csomópont leálljon, és most újra működik.\n"
 "        "
 
-#: audio/config_commands.py:80
+#: audio/config_commands.py:79
 msgid "There are no active votes for the current audio node."
 msgstr "Az aktuális hangcsomópontra nincsenek aktív szavazatok."
 
-#: audio/config_commands.py:90
+#: audio/config_commands.py:89
 msgid "I have removed your report."
 msgstr "Eltávolítottam a jelentését."
 
-#: audio/config_commands.py:98
+#: audio/config_commands.py:97
 #, docstring
-msgid "Show the version of the Cog and its PyLav dependencies."
-msgstr "A fogaskerekű verziójának és PyLav-függőségeinek megjelenítése."
+msgid "Show the version of the Cog and PyLav"
+msgstr ""
 
-#: audio/config_commands.py:114
+#: audio/config_commands.py:113
 msgid "Library / Cog"
 msgstr "Könyvtár / Fogaskerekű"
 
-#: audio/config_commands.py:115
+#: audio/config_commands.py:114
 msgid "Version"
 msgstr "Verzió"
 
-#: audio/config_commands.py:129
+#: audio/config_commands.py:128
 #, docstring
-msgid "Global configuration options, which apply to all servers."
-msgstr "Globális konfigurációs beállítások, amelyek minden kiszolgálóra vonatkoznak."
+msgid "Bot-wide settings."
+msgstr ""
 
-#: audio/config_commands.py:133
+#: audio/config_commands.py:132
 #, docstring
 msgid "Set the maximum volume a server can set"
 msgstr "A kiszolgáló által beállítható maximális kötet beállítása"
 
-#: audio/config_commands.py:141
+#: audio/config_commands.py:140
 msgid "You have to specify a volume less than or equal to 1,000%."
 msgstr "1,000% -nál kisebb vagy azzal egyenlő kötetet kell megadnia."
 
-#: audio/config_commands.py:149
-msgid "You have to specify a volume greater than 0%."
-msgstr "0%-nál nagyobb kötetet kell megadnia."
+#: audio/config_commands.py:148 audio/config_commands.py:626
+msgid "The maximum volume must be greater than 0%."
+msgstr ""
 
-#: audio/config_commands.py:157
-msgid "The maximum volume I will allow anyone in any server to set is {volume_value}%"
-msgstr "A maximális hangerő, amelyet bármely kiszolgálón bárki számára engedélyezek, a következő: {volume_value}%"
+#: audio/config_commands.py:156
+msgid "The maximum volume I will allow anyone in any server is now set to {volume_variable_do_not_translate}%"
+msgstr ""
 
-#: audio/config_commands.py:167 audio/config_commands.py:667
+#: audio/config_commands.py:166 audio/config_commands.py:679
 #, docstring
 msgid "Set whether I should deafen myself when playing."
 msgstr "Állítsa be, hogy süketítsem-e magam játék közben."
 
-#: audio/config_commands.py:176
+#: audio/config_commands.py:175
 msgid "From now on, I will deafen myself when joining a voice channel."
 msgstr "Mostantól megsüketítem magam, amikor csatlakozom egy hangcsatornához."
 
-#: audio/config_commands.py:178
+#: audio/config_commands.py:177
 msgid "From now on, I will no longer deafen myself when joining a voice channel."
 msgstr "Mostantól nem fogom tovább süketíteni magam, amikor csatlakozom egy hangcsatornához."
 
-#: audio/config_commands.py:186
+#: audio/config_commands.py:185
 #, docstring
 msgid "Set whether the server is allowed to enable auto shuffle."
 msgstr "Állítsa be, hogy a kiszolgáló engedélyezheti-e az automatikus keverést."
 
-#: audio/config_commands.py:196
+#: audio/config_commands.py:195
 msgid "From now on, I will auto shuffle my track queue when new songs are added."
 msgstr "Mostantól automatikusan megkeverem a számsoromat, amikor új dalokat adnak hozzá."
 
-#: audio/config_commands.py:198
+#: audio/config_commands.py:197
 msgid "From now on, I will no longer auto shuffle my track queue when new songs are added."
 msgstr "Mostantól nem fogom automatikusan megkeverni a számsoromat, amikor új dalokat adnak hozzá."
 
-#: audio/config_commands.py:206 audio/config_commands.py:735
+#: audio/config_commands.py:205 audio/config_commands.py:747
 #, docstring
 msgid "Set whether I should allow users to shuffle the queue"
 msgstr "Annak beállítása, hogy engedélyezzem-e a felhasználóknak a várólista keverését"
 
-#: audio/config_commands.py:216
+#: audio/config_commands.py:215
 msgid "From now on, I will allow users to shuffle the queue."
 msgstr "Mostantól lehetővé teszem a felhasználók számára, hogy megkeverjék a sort."
 
-#: audio/config_commands.py:218
+#: audio/config_commands.py:217
 msgid "From now on, I will no longer allow users to shuffle the queue."
 msgstr "Mostantól nem fogom megengedni, hogy a felhasználók megkeverjék a sort."
 
-#: audio/config_commands.py:226
+#: audio/config_commands.py:225
 #, docstring
 msgid "Set whether I should automatically play songs when the queue is empty."
 msgstr "Állítsa be, hogy automatikusan lejátsszam-e a dalokat, ha a várólista üres."
 
-#: audio/config_commands.py:235
+#: audio/config_commands.py:234
 msgid "From now on, I will automatically play songs from the specified playlist when the queue is empty."
 msgstr "Mostantól automatikusan lejátszom a megadott lejátszási lista dalait, ha a sor üres."
 
-#: audio/config_commands.py:239
+#: audio/config_commands.py:238
 msgid "From now on, I will no longer automatically play songs from the specified playlist when the queue is empty."
 msgstr "Mostantól nem fogom automatikusan lejátszani a megadott lejátszási lista dalait, ha a sor üres."
 
-#: audio/config_commands.py:249
+#: audio/config_commands.py:248
 #, docstring
 msgid "Set whether I should disconnect from the voice channel."
 msgstr "Állítsa be, hogy le kell-e választanom a hangcsatornát."
 
-#: audio/config_commands.py:259
+#: audio/config_commands.py:258
 #, docstring
 msgid "Set whether I should disconnect from the voice channel when the queue is empty.\n\n"
 "        Arguments:\n"
@@ -177,19 +177,19 @@ msgstr "Állítsa be, hogy bontsam-e a kapcsolatot a hangcsatornával, ha a vár
 "            Másodpercet, percet, órát, napot és hetet fogad el (ha nincs megadva mértékegység, az időtartamot másodpercben kell megadni)\n"
 "        "
 
-#: audio/config_commands.py:279 audio/config_commands.py:853
-msgid "I will disconnect from the voice channel when the queue is empty after {time_to_dc}."
-msgstr "Leválasztom a hangcsatornát, ha a várólista üres {time_to_dc}."
+#: audio/config_commands.py:278 audio/config_commands.py:869
+msgid "I will disconnect from the voice channel when the queue is empty after {time_to_dc_variable_do_not_translate}."
+msgstr ""
 
-#: audio/config_commands.py:283 audio/config_commands.py:857
+#: audio/config_commands.py:282 audio/config_commands.py:873
 msgid "I will disconnect from the voice channel when the queue is empty after 60 seconds."
 msgstr "Leválasztom a hangcsatornát, ha a sor 60 másodperc múlva üres."
 
-#: audio/config_commands.py:285 audio/config_commands.py:859
+#: audio/config_commands.py:284 audio/config_commands.py:875
 msgid "I will no longer disconnect from the voice channel when the queue is empty."
 msgstr "A továbbiakban nem bontom a kapcsolatot a hangcsatornával, ha a várólista üres."
 
-#: audio/config_commands.py:302
+#: audio/config_commands.py:301
 #, docstring
 msgid "Set whether I should disconnect from the voice channel when alone.\n\n"
 "        Arguments:\n"
@@ -206,197 +206,193 @@ msgstr "Állítsa be, hogy egyedül legyen-e leválasztanom a hangcsatornáról.
 "            Ha nincs megadva mértékegység, az időtartamot másodpercben kell megadni.\n"
 "        "
 
-#: audio/config_commands.py:323 audio/config_commands.py:919
-msgid "I will disconnect from the voice channel when alone after {time_to_dc}."
-msgstr "Kikapcsolom a hangcsatornát, ha egyedül vagyok utána {time_to_dc}."
+#: audio/config_commands.py:322 audio/config_commands.py:939
+msgid "I will disconnect from the voice channel when alone after {time_to_dc_variable_do_not_translate}."
+msgstr ""
 
-#: audio/config_commands.py:327 audio/config_commands.py:923
+#: audio/config_commands.py:326 audio/config_commands.py:943
 msgid "I will disconnect from the voice channel when alone after 60 seconds."
 msgstr "60 másodperc múlva egyedül lekapcsolom a hangcsatornát."
 
-#: audio/config_commands.py:329 audio/config_commands.py:925
+#: audio/config_commands.py:328 audio/config_commands.py:945
 msgid "I will no longer disconnect from the voice channel when alone."
 msgstr "Egyedül már nem fogok lekapcsolódni a hangcsatornáról."
 
-#: audio/config_commands.py:343
+#: audio/config_commands.py:342
 #, docstring
-msgid "Server configuration options."
-msgstr "Kiszolgálókonfigurációs beállítások."
+msgid "Server-specific settings."
+msgstr ""
 
-#: audio/config_commands.py:347
+#: audio/config_commands.py:346
 #, docstring
 msgid "Add, remove or show the disc jockey roles and users for this server."
 msgstr "Adja hozzá, távolítsa el vagy jelenítse meg a lemez zsoké szerepköreit és felhasználóit ehhez a szerverhez."
 
-#: audio/config_commands.py:353
+#: audio/config_commands.py:352
 #, docstring
 msgid "Add disc jockey roles or users to this server."
 msgstr "Adjon hozzá lemezlovas szerepköröket vagy felhasználókat ehhez a kiszolgálóhoz."
 
-#: audio/config_commands.py:366 audio/config_commands.py:385
-msgid "Added {role_list} to the disc jockey roles."
-msgstr "Hozzáadott {role_list} a lemezlovas szerepekhez."
+#: audio/config_commands.py:365 audio/config_commands.py:388
+msgid "I have added {role_list_variable_do_not_translate} to the disc jockey roles."
+msgstr ""
 
-#: audio/config_commands.py:369 audio/config_commands.py:391
-msgid "Added {user_list} to the disc jockey users."
-msgstr "Hozzáadott {user_list} a lemezlovas felhasználóknak."
+#: audio/config_commands.py:370 audio/config_commands.py:394
+msgid "I have added {user_list_variable_do_not_translate} to the disc jockey users."
+msgstr ""
 
-#: audio/config_commands.py:376
-msgid "Added {role_list} to the disc jockey roles and {user_list} to the disc jockey users."
-msgstr "Hozzáadott {role_list} a lemezlovas szerepekhez és {user_list} a lemezlovas felhasználóknak."
+#: audio/config_commands.py:379
+msgid "I have added {role_list_variable_do_not_translate} to the disc jockey roles and {user_list_variable_do_not_translate} to the disc jockey users."
+msgstr ""
 
-#: audio/config_commands.py:408
+#: audio/config_commands.py:411
 #, docstring
 msgid "Remove disc jockey roles or users in this server."
 msgstr "Távolítsa el a lemezlovas szerepköröket vagy felhasználókat ezen a kiszolgálón."
 
-#: audio/config_commands.py:440
-msgid "I have removed {role_list} from the disc jockey roles and {user_list} from the disc jockey users, as well as {number_list} from the disc jockey roles and users."
-msgstr "Eltávolítottam {role_list} a lemezlovas szerepekből és {user_list} a lemezlovas felhasználóktól, valamint a {number_list} a lemezlovas szerepeiből és felhasználóiból."
+#: audio/config_commands.py:443
+msgid "I have removed {role_list_variable_do_not_translate} from the disc jockey roles and {user_list_variable_do_not_translate} from the disc jockey users, as well as {number_list_variable_do_not_translate} from the disc jockey roles and users."
+msgstr ""
 
-#: audio/config_commands.py:448
-msgid "I have removed {role_list} from the disc jockey roles and {user_list} from the disc jockey users."
-msgstr "Eltávolítottam {role_list} a lemezlovas szerepekből és {user_list} a lemezlovas felhasználóktól."
+#: audio/config_commands.py:451
+msgid "I have removed {role_list_variable_do_not_translate} from the disc jockey roles and {user_list_variable_do_not_translate} from the disc jockey users."
+msgstr ""
 
-#: audio/config_commands.py:455
-msgid "I have removed {role_list} from the disc jockey roles."
-msgstr "Eltávolítottam {role_list} a lemezlovas szerepekből."
+#: audio/config_commands.py:459
+msgid "I have removed {role_list_variable_do_not_translate} from the disc jockey roles."
+msgstr ""
 
-#: audio/config_commands.py:461
-msgid "I have removed {user_list} from the disc jockey users."
-msgstr "Eltávolítottam {user_list} a lemezlovas felhasználóktól."
+#: audio/config_commands.py:465
+msgid "I have removed {user_list_variable_do_not_translate} from the disc jockey users."
+msgstr ""
 
-#: audio/config_commands.py:467
-msgid "I have removed {user_or_role_id_list} from the disc jockey roles and users."
-msgstr "Eltávolítottam {user_or_role_id_list} a lemezlovas szerepeiből és felhasználóiból."
-
-#: audio/config_commands.py:482
-msgid "I have Removed `{user_or_role_id}` from the disc jockey roles and users."
-msgstr "Eltávolítottam '{user_or_role_id}' a lemezlovas szerepekből és felhasználókból."
+#: audio/config_commands.py:471
+msgid "I have removed {user_or_role_id_list_variable_do_not_translate} from the disc jockey roles and users."
+msgstr ""
 
 #: audio/config_commands.py:486
-msgid "I have removed {role_name} from the disc jockey roles."
-msgstr "Eltávolítottam {role_name} a lemezlovas szerepekből."
+msgid "I have Removed `{user_or_role_id_variable_do_not_translate}` from the disc jockey roles and users."
+msgstr ""
 
-#: audio/config_commands.py:489
-msgid "I have removed {user_name} from the disc jockey users."
-msgstr "Eltávolítottam {user_name} a lemezlovas felhasználóktól."
+#: audio/config_commands.py:490
+msgid "I have removed {role_name_variable_do_not_translate} from the disc jockey roles."
+msgstr ""
 
 #: audio/config_commands.py:495
+msgid "I have removed {user_name_variable_do_not_translate} from the disc jockey users."
+msgstr ""
+
+#: audio/config_commands.py:503
 #, docstring
 msgid "List the disc jockey roles and users for this server."
 msgstr "Sorolja fel a lemez zsoké szerepköreit és felhasználóit ehhez a szerverhez."
 
-#: audio/config_commands.py:546
+#: audio/config_commands.py:554
 msgid "There are no disc jockey roles or disc jockey users set in this server."
 msgstr "Ezen a kiszolgálón nincsenek lemezlovas szerepek vagy lemezlovas felhasználók."
 
-#: audio/config_commands.py:557 audio/config_commands.py:562
+#: audio/config_commands.py:565 audio/config_commands.py:570
 msgid "Disc Jockey Roles"
 msgstr "Lemezlovas szerepek"
 
-#: audio/config_commands.py:568 audio/config_commands.py:573
+#: audio/config_commands.py:576 audio/config_commands.py:581
 msgid "Disc Jockey Users"
 msgstr "Disc Jockey felhasználók"
 
-#: audio/config_commands.py:581
+#: audio/config_commands.py:589
 #, docstring
 msgid "Clear the disc jockey roles and users for this server."
 msgstr "Törölje a lemez zsoké szerepköreit és felhasználóit ehhez a kiszolgálóhoz."
 
-#: audio/config_commands.py:593
+#: audio/config_commands.py:601
 msgid "I have removed all disc jockey roles and users from this server."
 msgstr "Eltávolítottam az összes lemezlovas szerepkört és felhasználót erről a szerverről."
 
-#: audio/config_commands.py:601
+#: audio/config_commands.py:609
 #, docstring
 msgid "Set the maximum volume a user can set."
 msgstr "Állítsa be a felhasználó által beállítható maximális hangerőt."
 
-#: audio/config_commands.py:610
-msgid "Volume must be less than 1,000%."
-msgstr "A térfogatnak 1,000% -nál kisebbnek kell lennie."
-
 #: audio/config_commands.py:618
-msgid "Volume must be greater than 0%."
-msgstr "A térfogatnak 0% -nál nagyobbnak kell lennie."
+msgid "The maximum volume must be less than 1,000%."
+msgstr ""
 
-#: audio/config_commands.py:627
-msgid "My owner has told me that server-specific volume must be between 0% and {volume_value}%."
-msgstr "A tulajdonosom azt mondta nekem, hogy a kiszolgálóspecifikus kötetnek 0% és {volume_value}%."
+#: audio/config_commands.py:635
+msgid "My owner has told me that server-specific volume must be between 0% and {volume_variable_do_not_translate}%."
+msgstr ""
 
-#: audio/config_commands.py:645
-msgid "Volume must be between 0% and {volume_value}%."
-msgstr "A térfogatnak 0% és {volume_value}%."
+#: audio/config_commands.py:655
+msgid "The maximum volume must be between 0% and {volume_variable_do_not_translate}%."
+msgstr ""
 
-#: audio/config_commands.py:659
-msgid "Max volume set to {volume_value}%."
-msgstr "A maximális hangerő beállítása {volume_value}%."
+#: audio/config_commands.py:669
+msgid "The maximum volume users can set in this server is now {volume_variable_do_not_translate}%."
+msgstr ""
 
-#: audio/config_commands.py:676
-msgid "My owner is forcing me to deafen myself when playing."
-msgstr "A gazdám arra kényszerít, hogy játék közben megsüketítsem magam."
+#: audio/config_commands.py:688
+msgid "My owner has requested that I always deafen myself when joining a voice channel."
+msgstr ""
 
-#: audio/config_commands.py:693
+#: audio/config_commands.py:705
 msgid "I will deafen myself when joining voice channels on this server."
 msgstr "Megsüketítem magam, amikor csatlakozom a hangcsatornákhoz ezen a szerveren."
 
-#: audio/config_commands.py:695
+#: audio/config_commands.py:707
 msgid "I will no longer deafen myself when joining voice channels on this server."
 msgstr "Többé nem fogom megsüketíteni magam, amikor csatlakozom a hangcsatornákhoz ezen a szerveren."
 
-#: audio/config_commands.py:703
+#: audio/config_commands.py:715
 #, docstring
 msgid "Set whether I should shuffle the queue after adding every new song."
 msgstr "Állítsa be, hogy minden új dal hozzáadása után keverjem-e a sort."
 
-#: audio/config_commands.py:711
+#: audio/config_commands.py:723
 msgid "My owner has turned off the auto shuffle capability for all servers."
 msgstr "A tulajdonosom kikapcsolta az automatikus keverési képességet az összes kiszolgálón."
 
-#: audio/config_commands.py:725
-msgid "Auto shuffle turned on for this server"
-msgstr "Az automatikus keverés be van kapcsolva ezen a kiszolgálón"
+#: audio/config_commands.py:737
+msgid "Auto shuffle turned on for this server."
+msgstr ""
 
-#: audio/config_commands.py:727
-msgid "Auto shuffle turned off for this server"
-msgstr "Az automatikus keverés ki van kapcsolva ennél a kiszolgálón"
+#: audio/config_commands.py:739
+msgid "Auto shuffle turned off for this server."
+msgstr ""
 
-#: audio/config_commands.py:745
+#: audio/config_commands.py:757
 msgid "My owner has turned off the shuffle capability for all servers."
 msgstr "A tulajdonosom kikapcsolta a keverési képességet az összes szerveren."
 
-#: audio/config_commands.py:758
-msgid "Shuffling turned on for this server"
-msgstr "A keverés be van kapcsolva ezen a kiszolgálón"
+#: audio/config_commands.py:770
+msgid "Shuffling turned on for this server."
+msgstr ""
 
-#: audio/config_commands.py:760
-msgid "Shuffling turned off for this server"
-msgstr "A keverés ki van kapcsolva ezen a kiszolgálón"
+#: audio/config_commands.py:772
+msgid "Shuffling turned off for this server."
+msgstr ""
 
-#: audio/config_commands.py:768
+#: audio/config_commands.py:780
 #, docstring
 msgid "Set whether the bot should automatically play songs when the queue is empty."
 msgstr "Állítsa be, hogy a robot automatikusan lejátssza-e a dalokat, amikor a várólista üres."
 
-#: audio/config_commands.py:777
+#: audio/config_commands.py:789
 msgid "My owner has turned off the autoplay capability for all servers."
 msgstr "A tulajdonosom kikapcsolta az automatikus lejátszási képességet az összes szerveren."
 
-#: audio/config_commands.py:794
+#: audio/config_commands.py:806
 msgid "From now on, I will automatically play songs when the queue is empty."
 msgstr "Mostantól automatikusan lejátszom a dalokat, ha a sor üres."
 
-#: audio/config_commands.py:796
+#: audio/config_commands.py:808
 msgid "From now on, I will no longer automatically play songs when the queue is empty."
 msgstr "Mostantól nem fogok automatikusan dalokat lejátszani, ha a sor üres."
 
-#: audio/config_commands.py:804
+#: audio/config_commands.py:816
 #, docstring
 msgid "Set whether the bot should disconnect from the voice channel"
 msgstr "Annak beállítása, hogy a robot bontsa-e a kapcsolatot a hangcsatornával"
 
-#: audio/config_commands.py:814
+#: audio/config_commands.py:826
 #, docstring
 msgid "Set whether I should disconnect from the voice channel when the queue is empty.\n\n"
 "        Arguments:\n"
@@ -415,11 +411,11 @@ msgstr "Állítsa be, hogy bontsam-e a kapcsolatot a hangcsatornával, ha a vár
 "            Ha nincs megadva egység, a program az időtartamot másodpercnek tekinti.\n"
 "        "
 
-#: audio/config_commands.py:832
-msgid "My owner has told me to disconnect from the voice channel when the queue is empty after {time_to_dc}."
-msgstr "A tulajdonosom azt mondta, hogy bontsam a kapcsolatot a hangcsatornával, ha a várólista üres {time_to_dc}."
+#: audio/config_commands.py:844
+msgid "My owner has told me to disconnect from the voice channel when the queue is empty after {time_to_dc_variable_do_not_translate}."
+msgstr ""
 
-#: audio/config_commands.py:877
+#: audio/config_commands.py:893
 #, docstring
 msgid "Set whether I should disconnect from the voice channel when alone.\n\n"
 "        Arguments:\n"
@@ -440,272 +436,273 @@ msgstr "Állítsa be, hogy egyedül legyen-e leválasztanom a hangcsatornáról.
 "            Ha nincs megadva egység, a program az időtartamot másodpercnek tekinti.\n"
 "        "
 
-#: audio/config_commands.py:897
-msgid "My owner has told me to disconnect from the voice channel when alone after {time_to_dc}."
-msgstr "A tulajdonosom azt mondta, hogy bontsam a kapcsolatot a hangcsatornával, amikor egyedül vagyok {time_to_dc}."
+#: audio/config_commands.py:913
+msgid "My owner has told me to disconnect from the voice channel when alone after {time_to_dc_variable_do_not_translate}."
+msgstr ""
 
-#: audio/config_commands.py:937
+#: audio/config_commands.py:957
 #, docstring
 msgid "Specify a playlist to be used for autoplay."
 msgstr "Adja meg az automatikus lejátszáshoz használni kívánt lejátszási listát."
 
-#: audio/config_commands.py:954
-msgid "From now on, I will use {playlist_name} to select songs for autoplay."
-msgstr "Mostantól használni fogom {playlist_name} az automatikus lejátszáshoz szükséges dalok kiválasztásához."
+#: audio/config_commands.py:974
+msgid "From now on, I will use {playlist_name_variable_do_not_translate} to select songs for autoplay."
+msgstr ""
 
-#: audio/config_commands.py:964
+#: audio/config_commands.py:984
 #, docstring
 msgid "Restrict which channels where I can be used."
 msgstr "Korlátozza, hogy mely csatornákat használhatom."
 
-#: audio/config_commands.py:970
+#: audio/config_commands.py:990
 #, docstring
 msgid "Restrict me only to accept PyLav commands executed from the specified channel."
 msgstr "Csak a megadott csatornáról végrehajtott PyLav-parancsok elfogadására korlátozzon."
 
-#: audio/config_commands.py:985
-msgid "I do not have permission to send messages or send embed links or read messages in {channel_name}."
-msgstr "Nincs engedélyem üzenetek küldésére, hivatkozások beágyazására vagy üzenetek olvasására {channel_name}."
+#: audio/config_commands.py:1005
+msgid "I do not have permission to send messages or send embed links or read messages in {channel_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/config_commands.py:1002
-msgid "I will only accept PyLav commands executed from {channel_name}."
-msgstr "Csak a következő helyről végrehajtott PyLav parancsokat fogadom el: {channel_name}."
+#: audio/config_commands.py:1022
+msgid "I will only accept PyLav commands executed from {channel_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/config_commands.py:1012
+#: audio/config_commands.py:1032
 msgid "I will accept PyLav commands executed in all channels I can see in the server."
 msgstr "Elfogadom a szerveren látható összes csatornán végrehajtott PyLav parancsokat."
 
-#: audio/config_commands.py:1020
+#: audio/config_commands.py:1040
 #, docstring
 msgid "Restrict me only to join the specified voice channel."
 msgstr "Csak a megadott hangcsatornához való csatlakozásra korlátozzon."
 
-#: audio/config_commands.py:1032 audio/hybrid_commands.py:107
-#: audio/player_commands.py:150
-msgid "I do not have permission to connect or speak in {channel_name}."
-msgstr "Nincs engedélyem arra, hogy csatlakozzak vagy beszéljek {channel_name}."
+#: audio/config_commands.py:1052 audio/hybrid_commands.py:108
+#: audio/player_commands.py:156
+msgid "I do not have permission to connect or speak in {channel_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/config_commands.py:1050
-msgid "I will only be allowed to join {channel_name}."
-msgstr "Csak csatlakozni tudok {channel_name}."
+#: audio/config_commands.py:1070
+msgid "I will only be allowed to join {channel_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/config_commands.py:1060
+#: audio/config_commands.py:1080
 msgid "I am allowed to join any voice channel in the server."
 msgstr "A szerver bármely hangcsatornájához csatlakozhatok."
 
-#: audio/context_menus.py:27 audio/context_menus.py:130
-msgid "I can not play songs in direct messages, sorry, try again in a server."
-msgstr "Nem tudok dalokat lejátszani közvetlen üzenetekben, sajnálom, próbálkozzon újra egy szerveren."
+#: audio/context_menus.py:27 audio/context_menus.py:133
+msgid "I can not play songs in direct messages. Sorry, try again on a server."
+msgstr ""
 
 #: audio/context_menus.py:38
 msgid "You need to be a disc jockey in this server to play tracks in this server."
 msgstr "Lemezlovasnak kell lenned ezen a szerveren, hogy zeneszámokat játszhass ezen a szerveren."
 
-#: audio/context_menus.py:55 audio/context_menus.py:156
-msgid "This command is not available in this channel, please use {channel_name}."
-msgstr "Ez a parancs nem érhető el ebben a csatornában, kérjük, használja {channel_name}."
+#: audio/context_menus.py:55 audio/context_menus.py:159
+msgid "This command is unavailable in this channel. Please use {channel_name_variable_do_not_translate} instead."
+msgstr ""
 
-#: audio/context_menus.py:82
+#: audio/context_menus.py:84
 msgid "I could not find any suitable matches in this message."
 msgstr "Ebben az üzenetben nem találtam megfelelő egyezést."
 
-#: audio/context_menus.py:84
+#: audio/context_menus.py:86
 msgid "I found many suitable matches in this message."
 msgstr "Sok megfelelő egyezést találtam ebben az üzenetben."
 
-#: audio/context_menus.py:86
+#: audio/context_menus.py:88
 msgid "I found a single suitable match in this message."
 msgstr "Ebben az üzenetben egyetlen megfelelő egyezést találtam."
 
-#: audio/context_menus.py:141
+#: audio/context_menus.py:144
 msgid "You need to be a disc jockey to play tracks in this server."
 msgstr "Lemezlovasnak kell lenned ahhoz, hogy zeneszámokat játszhass ezen a szerveren."
 
-#: audio/context_menus.py:173
-msgid "I could not find any supported activity in the activities {user_name} is partaking."
-msgstr "Nem találtam támogatott tevékenységet a tevékenységekben {user_name} részesedik."
+#: audio/context_menus.py:178
+msgid "I could not find any supported activity in the activities {user_name_variable_do_not_translate} is partaking."
+msgstr ""
 
-#: audio/context_menus.py:205
-msgid "I could not find a valid Apple Music track in the activity {user_name} is partaking in."
-msgstr "Nem találtam érvényes Apple Music zeneszámot a tevékenységben {user_name} részt vesz."
+#: audio/context_menus.py:210
+msgid "I could not find a valid Apple Music track in the activity {user_name_variable_do_not_translate} is partaking in."
+msgstr ""
 
-#: audio/context_menus.py:221
-msgid "I could not find any tracks matching {query_value}."
-msgstr "Nem találtam egyező nyomvonalat {query_value}."
+#: audio/context_menus.py:226
+msgid "I could not find any tracks matching {query_variable_do_not_translate}."
+msgstr ""
 
-#: audio/context_menus.py:238
-msgid "I could not figure out what {user_name} is listening to."
-msgstr "Nem tudtam rájönni, hogy mi {user_name} hallgat."
+#: audio/context_menus.py:243
+msgid "I could not figure out what {user_name_variable_do_not_translate} is listening to."
+msgstr ""
 
 #: audio/hybrid_commands.py:83
 msgid "You need to give me a query to enqueue."
 msgstr "Meg kell adnia nekem egy lekérdezést a sorba állításhoz."
 
-#: audio/hybrid_commands.py:97 audio/player_commands.py:140
-msgid "You must be in a voice channel to allow me to connect"
-msgstr "Hangcsatornában kell lennie ahhoz, hogy csatlakozhassak"
+#: audio/hybrid_commands.py:97
+msgid "You must be in a voice channel, so I can connect to it."
+msgstr ""
 
-#: audio/hybrid_commands.py:154
-msgid "{number_of_tracks} tracks enqueued."
-msgstr "{number_of_tracks} pályák sorba kerültek."
+#: audio/hybrid_commands.py:155
+msgid "{track_name_variable_do_not_translate} enqueued."
+msgstr ""
 
-#: audio/hybrid_commands.py:162
-msgid "{track_name} enqueued"
-msgstr "{track_name} sorba állítva"
-
-#: audio/hybrid_commands.py:173 audio/player_commands.py:252
+#: audio/hybrid_commands.py:160 audio/player_commands.py:258
 msgid "No tracks were found for your query."
 msgstr "A rendszer nem talált nyomokat a lekérdezéshez."
 
-#: audio/hybrid_commands.py:236
+#: audio/hybrid_commands.py:162
+msgid "{number_of_tracks_variable_do_not_translate} tracks enqueued."
+msgstr ""
+
+#: audio/hybrid_commands.py:231
 msgid "You need to be in a voice channel if you do not specify which channel I should connect to."
 msgstr "Hangcsatornában kell lennie, ha nem adja meg, hogy melyik csatornához csatlakozzak."
 
-#: audio/hybrid_commands.py:248
-msgid "I do not have permission to connect to {channel_name}."
-msgstr "Nincs engedélyem a csatlakozáshoz {channel_name}."
+#: audio/hybrid_commands.py:243
+msgid "I do not have permission to connect to {channel_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/hybrid_commands.py:252
-msgid "I do not have permission to speak in {channel_name}."
-msgstr "Nincs engedélyem arra, hogy felszólaljak {channel_name}."
+#: audio/hybrid_commands.py:247
+msgid "I do not have permission to speak in {channel_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/hybrid_commands.py:270
-msgid "You do not have permission to connect to {channel_name}."
-msgstr "Nincs engedélye a csatlakozásra {channel_name}."
+#: audio/hybrid_commands.py:265
+msgid "You do not have permission to connect to {channel_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/hybrid_commands.py:287
-msgid "I have been told only to join {channel_name} on this server."
-msgstr "Csak azt mondták, hogy csatlakozzak {channel_name} ezen a kiszolgálón."
+#: audio/hybrid_commands.py:282
+msgid "I have been told only to join {channel_name_variable_do_not_translate} on this server."
+msgstr ""
 
-#: audio/hybrid_commands.py:297
-msgid "I have successfully connected to {channel_name}."
-msgstr "Sikeresen csatlakoztam a következőhöz: {channel_name}."
+#: audio/hybrid_commands.py:292
+msgid "I have successfully connected to {channel_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/hybrid_commands.py:323 audio/hybrid_commands.py:348
-#: audio/hybrid_commands.py:382 audio/hybrid_commands.py:413
-#: audio/hybrid_commands.py:446 audio/hybrid_commands.py:473
-#: audio/hybrid_commands.py:523 audio/hybrid_commands.py:559
-#: audio/hybrid_commands.py:598 audio/hybrid_commands.py:655
-#: audio/hybrid_commands.py:702 audio/hybrid_commands.py:711
-#: audio/hybrid_commands.py:810
+#: audio/hybrid_commands.py:318 audio/hybrid_commands.py:343
+#: audio/hybrid_commands.py:379 audio/hybrid_commands.py:410
+#: audio/hybrid_commands.py:443 audio/hybrid_commands.py:470
+#: audio/hybrid_commands.py:522 audio/hybrid_commands.py:561
+#: audio/hybrid_commands.py:599 audio/hybrid_commands.py:657
+#: audio/hybrid_commands.py:708 audio/hybrid_commands.py:717
+#: audio/hybrid_commands.py:826
 msgid "I am not currently playing anything on this server."
 msgstr "Jelenleg nem játszom semmit ezen a szerveren."
 
-#: audio/hybrid_commands.py:356
-msgid "I have skipped {track_name} as requested."
-msgstr "Kihagytam {track_name} a kérésnek megfelelően."
+#: audio/hybrid_commands.py:351
+msgid "I have skipped {track_name_variable_do_not_translate} as requested."
+msgstr ""
 
-#: audio/hybrid_commands.py:390
+#: audio/hybrid_commands.py:387
 msgid "I have stopped the playback and cleared the queue as requested."
 msgstr "Leállítottam a lejátszást, és a kérésnek megfelelően töröltem a várólistát."
 
-#: audio/hybrid_commands.py:422
-msgid "I have disconnected from {channel_name} as requested."
-msgstr "Megszakadt a kapcsolatom {channel_name} a kérésnek megfelelően."
+#: audio/hybrid_commands.py:419
+msgid "I have disconnected from {channel_name_variable_do_not_translate} as requested."
+msgstr ""
 
-#: audio/hybrid_commands.py:481
+#: audio/hybrid_commands.py:478
 msgid "The server queue is currently empty."
 msgstr "A kiszolgálói várólista jelenleg üres."
 
-#: audio/hybrid_commands.py:489
+#: audio/hybrid_commands.py:486
 msgid "You are not allowed to shuffle the queue."
 msgstr "A várólistát nem keverheti össze."
 
-#: audio/hybrid_commands.py:497
-msgid "{queue_size} tracks shuffled."
-msgstr "{queue_size} a pályák megkeveredtek."
+#: audio/hybrid_commands.py:494
+msgid "{queue_size_variable_do_not_translate} tracks shuffled."
+msgstr ""
 
-#: audio/hybrid_commands.py:531
-msgid "I will now repeat the entire queue."
-msgstr "Most megismétlem az egész sort."
+#: audio/hybrid_commands.py:530
+msgid "From now on, I will now repeat the entire queue."
+msgstr ""
 
-#: audio/hybrid_commands.py:534
-msgid "I will no longer repeat any tracks."
-msgstr "A továbbiakban nem ismétlem meg a számokat."
+#: audio/hybrid_commands.py:533
+msgid "From now on, I will no longer repeat any tracks."
+msgstr ""
 
 #: audio/hybrid_commands.py:537
-msgid "I will now repeat {track_name}."
-msgstr "Most megismétlem {track_name}."
+msgid "From now on, I will now repeat {track_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/hybrid_commands.py:540
-msgid "the current track"
-msgstr "az aktuális pálya"
+#: audio/hybrid_commands.py:543
+msgid "From now on, I will now repeat the current track."
+msgstr ""
 
-#: audio/hybrid_commands.py:565
-msgid "The player is already paused, did you mean to run `{bot_command_prefix}{command_name}`"
-msgstr "A játékos már szünetel, úgy értette, hogy futni fog '{bot_command_prefix}{command_name}`"
+#: audio/hybrid_commands.py:567
+msgid "The player is already paused, did you mean to run {command_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/hybrid_commands.py:580
+#: audio/hybrid_commands.py:581
 msgid "I have now paused the player as requested."
 msgstr "Most a kérésnek megfelelően szüneteltettem a játékost."
 
-#: audio/hybrid_commands.py:604
-msgid "Player already resumed, did you mean to run `{bot_command_prefix}{command_name}`"
-msgstr "A játékos már folytatta, úgy gondolta, hogy futni fog '{bot_command_prefix}{command_name}`"
+#: audio/hybrid_commands.py:605
+msgid "The player already resumed, did you mean to run {command_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/hybrid_commands.py:617
+#: audio/hybrid_commands.py:619
 msgid "I have now resumed the player as requested."
 msgstr "Most a kérésnek megfelelően folytattam a játékost."
 
-#: audio/hybrid_commands.py:639
-msgid "Volume must be less than 1,000%"
-msgstr "A térfogatnak 1,000% -nál kisebbnek kell lennie"
+#: audio/hybrid_commands.py:641
+msgid "I can not set the volume above 1,000%."
+msgstr ""
 
-#: audio/hybrid_commands.py:647
-msgid "Volume must be greater than 0%"
-msgstr "A térfogatnak 0%-nál nagyobbnak kell lennie"
+#: audio/hybrid_commands.py:649
+msgid "I can not set the volume lower than 0%"
+msgstr ""
 
-#: audio/hybrid_commands.py:664
-msgid "Volume can not be higher than {max_volume_value}%."
-msgstr "A hangerő nem lehet nagyobb, mint {max_volume_value}%."
+#: audio/hybrid_commands.py:666
+msgid "I have been told to restrict the maximum volume to {max_volume_variable_do_not_translate}%."
+msgstr ""
 
-#: audio/hybrid_commands.py:673
-msgid "Player volume has been set to {volume_value}%."
-msgstr "A játékosok száma a következőre van állítva: {volume_value}%."
+#: audio/hybrid_commands.py:677
+msgid "I have set the player volume to {volume_variable_do_not_translate}%."
+msgstr ""
 
-#: audio/hybrid_commands.py:721
+#: audio/hybrid_commands.py:727 audio/hybrid_commands.py:736
+#: audio/hybrid_commands.py:749
 msgid "Unable to seek track"
 msgstr "Nem lehet nyomot keresni"
 
-#: audio/hybrid_commands.py:722
-msgid "I am unable to seek this track as it is a stream."
-msgstr "Nem tudom keresni ezt a pályát, mivel ez egy patak."
+#: audio/hybrid_commands.py:728
+msgid "I can not seek this track as the server reports it is a live stream."
+msgstr ""
 
-#: audio/hybrid_commands.py:730
-msgid "Unable to seek track."
-msgstr "Nem lehet nyomot keresni."
+#: audio/hybrid_commands.py:737
+msgid "I can not seek this track as the server report that this track does not support seeking."
+msgstr ""
 
-#: audio/hybrid_commands.py:739
+#: audio/hybrid_commands.py:750
 msgid "I can not seek the current track while the player is paused."
 msgstr "Nem tudom megkeresni az aktuális számot, amíg a lejátszó szünetel."
 
-#: audio/hybrid_commands.py:764
-msgid "I have moved the current track forward {number_of_seconds} seconds to the end of the track."
-msgstr "Előremozdítottam a jelenlegi pályát {number_of_seconds} másodpercig a pálya végéig."
+#: audio/hybrid_commands.py:778
+msgid "I have moved the current track forward {number_of_seconds_variable_do_not_translate} seconds to the end of the track."
+msgstr ""
 
-#: audio/hybrid_commands.py:768
-msgid "I have moved the current track forward {number_of_seconds} seconds to position {timestamp_value}."
-msgstr "Előremozdítottam a jelenlegi pályát {number_of_seconds} másodpercek alatt a pozícióig {timestamp_value}."
+#: audio/hybrid_commands.py:782
+msgid "I have moved the current track forward {number_of_seconds} seconds to position {timestamp_variable_do_not_translate}."
+msgstr ""
 
-#: audio/hybrid_commands.py:773
-msgid "I have moved the current track back {number_of_seconds} seconds to the beginning."
-msgstr "Visszahelyeztem az aktuális pályát {number_of_seconds} másodpercekkel az elejéig."
+#: audio/hybrid_commands.py:787
+msgid "I have moved the current track back {number_of_seconds_variable_do_not_translate} seconds to the beginning."
+msgstr ""
 
-#: audio/hybrid_commands.py:777
-msgid "I have moved the current track back {number_of_seconds} seconds to position {timestamp_value}."
-msgstr "Visszahelyeztem az aktuális pályát {number_of_seconds} másodpercek alatt a pozícióig {timestamp_value}."
+#: audio/hybrid_commands.py:791
+msgid "I have moved the current track back {number_of_seconds} seconds to position {timestamp_variable_do_not_translate}."
+msgstr ""
 
-#: audio/hybrid_commands.py:781
+#: audio/hybrid_commands.py:797
 msgid "I have moved the current track to the beginning."
 msgstr "A jelenlegi pályát áthelyeztem az elejére."
 
-#: audio/hybrid_commands.py:819
+#: audio/hybrid_commands.py:835
 msgid "The history of tracks is currently empty."
 msgstr "A pályák története jelenleg üres."
 
-#: audio/hybrid_commands.py:827
-msgid "Playing previous track: {track_name}"
-msgstr "Az előző szám lejátszása: {track_name}"
+#: audio/hybrid_commands.py:843
+msgid "Playing previous track: {track_name_variable_do_not_translate}."
+msgstr ""
 
 #: audio/player_commands.py:30
 msgid "Plays the specified track from the queue."
@@ -716,37 +713,40 @@ msgid "There are no songs in the queue."
 msgstr "Nincsenek dalok a sorban."
 
 #: audio/player_commands.py:59
-msgid "Track index must be between 1 and {size_of_queue}"
-msgstr "A vágányindexnek 1 és {size_of_queue}"
+msgid "Track index must be between 1 and {size_of_queue_variable_do_not_translate}"
+msgstr ""
 
 #: audio/player_commands.py:77
-msgid "There are no tracks in position {queue_position_value}."
-msgstr "Nincsenek pályák a helyén {queue_position_value}."
+msgid "There are no tracks in position {queue_position_variable_do_not_translate}."
+msgstr ""
 
 #: audio/player_commands.py:89
-msgid "{track_name} will play after {current_track_name} finishes ({estimated_time_value})."
-msgstr "{track_name} utána fog játszani {current_track_name} befejezi ({estimated_time_value})."
+msgid "{track_name_variable_do_not_translate} will play after {current_track_name_variable_do_not_translate} finishes ({estimated_time_variable_do_not_translate})."
+msgstr ""
 
-#: audio/player_commands.py:109
-msgid "{track_name} will start now\n"
-"{current_track_name} has been skipped."
-msgstr "{track_name} most kezdődik\n"
-"{current_track_name} kimaradt."
+#: audio/player_commands.py:111
+msgid "{track_name_variable_do_not_translate} will start now\n"
+"{current_track_name_variable_do_not_translate} has been skipped."
+msgstr ""
 
-#: audio/player_commands.py:127
+#: audio/player_commands.py:133
 #, docstring
 msgid "Enqueue a track at the top of the queue."
 msgstr "Sorba kell állítani egy számot a sor tetején."
 
-#: audio/player_commands.py:231
-msgid "{number_of_tracks} tracks have been enqueued."
-msgstr "{number_of_tracks} a pályák sorba kerültek."
+#: audio/player_commands.py:146
+msgid "You must be in a voice channel to allow me to connect"
+msgstr "Hangcsatornában kell lennie ahhoz, hogy csatlakozhassak"
 
-#: audio/player_commands.py:241
-msgid "{track_name} has been enqueued."
-msgstr "{track_name} sorba került."
+#: audio/player_commands.py:237
+msgid "{number_of_tracks_variable_do_not_translate} tracks have been enqueued."
+msgstr ""
 
-#: audio/player_commands.py:262
+#: audio/player_commands.py:247
+msgid "{track_name_variable_do_not_translate} has been enqueued."
+msgstr ""
+
+#: audio/player_commands.py:268
 #, docstring
 msgid "\n"
 "        Remove the specified track from the queue.\n\n"
@@ -757,33 +757,33 @@ msgstr "\n"
 "        Ha megadja a \"remove_duplicates\" argumentumot, a rendszer eltávolítja az összes olyan számot, amely megegyezik az URL-lel vagy az indexsávval.\n"
 "        "
 
-#: audio/player_commands.py:277
+#: audio/player_commands.py:283
 msgid "Queue is empty."
 msgstr "A várólista üres."
 
-#: audio/player_commands.py:290
-msgid "Track index must be between 1 and {queue_size}."
-msgstr "A vágányindexnek 1 és {queue_size}."
+#: audio/player_commands.py:296
+msgid "Track index must be between 1 and {queue_size_variable_do_not_translate}."
+msgstr ""
 
-#: audio/player_commands.py:305
-msgid "There is no track in position {position_value}."
-msgstr "Nincs pálya a helyén {position_value}."
+#: audio/player_commands.py:311
+msgid "There is no track in position {position_variable_do_not_translate}."
+msgstr ""
 
-#: audio/player_commands.py:337
-msgid "{track_name} not found in queue."
-msgstr "{track_name} nem található a sorban."
+#: audio/player_commands.py:343
+msgid "{track_name_variable_do_not_translate} not found in queue."
+msgstr ""
 
-#: audio/player_commands.py:349
+#: audio/player_commands.py:355
 msgid "No tracks were removed from the queue."
 msgstr "Egyetlen szám sem lett eltávolítva a sorból."
 
-#: audio/player_commands.py:357
-msgid "I have removed a single entry of {track_name} from the queue."
-msgstr "Eltávolítottam egyetlen bejegyzést {track_name} a sorból."
+#: audio/player_commands.py:363
+msgid "I have removed a single entry of {track_name_variable_do_not_translate} from the queue."
+msgstr ""
 
-#: audio/player_commands.py:367
-msgid "I have removed {number_of_entries} entries of {track_name} from the queue."
-msgstr "Eltávolítottam {number_of_entries} bejegyzések {track_name} a sorból."
+#: audio/player_commands.py:373
+msgid "I have removed {number_of_entries_variable_do_not_translate} entries of {track_name_variable_do_not_translate} from the queue."
+msgstr ""
 
 #: audio/slash_commands.py:48
 #, docstring
@@ -795,26 +795,26 @@ msgid "You have not selected something to play."
 msgstr "Nem választott ki valamit a játékhoz."
 
 #: audio/slash_commands.py:109
-msgid "Searching {service_name}"
-msgstr "Kutatás {service_name}"
+msgid "Searching {service_name_variable_do_not_translate}"
+msgstr ""
 
-#: audio/slash_commands.py:125 audio/slash_commands.py:138
-msgid "No results found on {service_name}"
-msgstr "Nincs találat a következőn: {service_name}"
+#: audio/slash_commands.py:127 audio/slash_commands.py:140
+msgid "No results found on {service_name_variable_do_not_translate}"
+msgstr ""
 
 #: audio/utility_commands.py:32
 msgid "I am not connected to a voice channel."
 msgstr "Nem csatlakozom hangcsatornához."
 
 #: audio/utility_commands.py:43
-msgid "Volume limit reached, player volume set to {volume_value}%"
-msgstr "Elért hangerőkorlát, a játékos hangereje {volume_value}%"
+msgid "Volume limit reached, player volume set to {volume_variable_do_not_translate}%"
+msgstr ""
 
 #: audio/utility_commands.py:54
 msgid "Minimum volume reached, player volume set to 0%"
 msgstr "Minimális elért hangerő, a játékosok hangereje 0%-ra állítva"
 
 #: audio/utility_commands.py:62
-msgid "Player volume set to {volume_value}%"
-msgstr "A lejátszó hangereje a következőre van állítva: {volume_value}%"
+msgid "Player volume set to {volume_variable_do_not_translate}%"
+msgstr ""
 

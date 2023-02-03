@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
-"POT-Creation-Date: 2023-02-02 22:16+0000\n"
-"PO-Revision-Date: 2023-02-02 22:33\n"
+"POT-Creation-Date: 2023-02-03 20:16+0000\n"
+"PO-Revision-Date: 2023-02-03 20:17\n"
 "Last-Translator: \n"
 "Language-Team: Thai\n"
 "MIME-Version: 1.0\n"
@@ -30,7 +30,7 @@ msgstr "เล่นจาก Spotify หรือแอปเปิ้ลมิ
 msgid "Play from this message"
 msgstr "เล่นจากข้อความนี้"
 
-#: audio/config_commands.py:41
+#: audio/config_commands.py:40
 #, docstring
 msgid "Notifies PyLav that a Player is having issues.\n\n"
 "        If enough (50% or more of currently playing players) report issues, PyLav will automatically\n"
@@ -41,15 +41,15 @@ msgstr "แจ้ง PyLav ว่าผู้เล่นกําลังม�
 "        สลับไปยังโหนดอื่นหรือรีสตาร์ทโหนดปัจจุบันหากเป็นไปได้\n"
 "        "
 
-#: audio/config_commands.py:49
+#: audio/config_commands.py:48
 msgid "This server already voted recently. Please, try again in 10 minutes."
 msgstr "เซิร์ฟเวอร์นี้โหวตแล้วเมื่อเร็ว ๆ นี้ กรุณา, ลองอีกครั้งใน 10 นาที."
 
-#: audio/config_commands.py:60
+#: audio/config_commands.py:59
 msgid "Thank you for your report."
 msgstr "ขอบคุณสำหรับการแจ้งของคุณ"
 
-#: audio/config_commands.py:70
+#: audio/config_commands.py:69
 #, docstring
 msgid "Removes a vote for a Player being down.\n\n"
 "        If enough (50% or more of currently active players) report issues, PyLav will automatically\n"
@@ -62,107 +62,107 @@ msgstr "ลบการโหวตสําหรับผู้เล่นท
 "        คําสั่งนี้จะใช้ได้เฉพาะเมื่อเซิร์ฟเวอร์ของคุณก่อนหน้านี้โหวตให้โหนดจะลง และขณะนี้มีการสํารองข้อมูล\n"
 "        "
 
-#: audio/config_commands.py:80
+#: audio/config_commands.py:79
 msgid "There are no active votes for the current audio node."
 msgstr "ไม่มีการโหวตที่ใช้งานอยู่สําหรับโหนดเสียงปัจจุบัน"
 
-#: audio/config_commands.py:90
+#: audio/config_commands.py:89
 msgid "I have removed your report."
 msgstr "ฉันได้ลบรายงานของคุณแล้ว"
 
-#: audio/config_commands.py:98
+#: audio/config_commands.py:97
 #, docstring
-msgid "Show the version of the Cog and its PyLav dependencies."
-msgstr "แสดงเวอร์ชันของ Cog และการพึ่งพา PyLav"
+msgid "Show the version of the Cog and PyLav"
+msgstr ""
 
-#: audio/config_commands.py:114
+#: audio/config_commands.py:113
 msgid "Library / Cog"
 msgstr "ห้องสมุด / ฟันเฟือง"
 
-#: audio/config_commands.py:115
+#: audio/config_commands.py:114
 msgid "Version"
 msgstr "เวอร์ชัน"
 
-#: audio/config_commands.py:129
+#: audio/config_commands.py:128
 #, docstring
-msgid "Global configuration options, which apply to all servers."
-msgstr "ตัวเลือกการกําหนดค่าส่วนกลาง ซึ่งใช้กับเซิร์ฟเวอร์ทั้งหมด"
+msgid "Bot-wide settings."
+msgstr ""
 
-#: audio/config_commands.py:133
+#: audio/config_commands.py:132
 #, docstring
 msgid "Set the maximum volume a server can set"
 msgstr "ตั้งค่าระดับเสียงสูงสุดที่เซิร์ฟเวอร์สามารถตั้งค่าได้"
 
-#: audio/config_commands.py:141
+#: audio/config_commands.py:140
 msgid "You have to specify a volume less than or equal to 1,000%."
 msgstr "คุณต้องระบุไดรฟ์ข้อมูลที่น้อยกว่าหรือเท่ากับ 1,000%"
 
-#: audio/config_commands.py:149
-msgid "You have to specify a volume greater than 0%."
-msgstr "คุณต้องระบุไดรฟ์ข้อมูลที่มากกว่า 0%"
+#: audio/config_commands.py:148 audio/config_commands.py:626
+msgid "The maximum volume must be greater than 0%."
+msgstr ""
 
-#: audio/config_commands.py:157
-msgid "The maximum volume I will allow anyone in any server to set is {volume_value}%"
-msgstr "ปริมาณสูงสุดที่ฉันจะอนุญาตให้ทุกคนในเซิร์ฟเวอร์ใด ๆ ที่จะตั้งค่าเป็น {volume_value}%"
+#: audio/config_commands.py:156
+msgid "The maximum volume I will allow anyone in any server is now set to {volume_variable_do_not_translate}%"
+msgstr ""
 
-#: audio/config_commands.py:167 audio/config_commands.py:667
+#: audio/config_commands.py:166 audio/config_commands.py:679
 #, docstring
 msgid "Set whether I should deafen myself when playing."
 msgstr "ตั้งค่าว่าฉันควรหูหนวกตัวเองเมื่อเล่นหรือไม่"
 
-#: audio/config_commands.py:176
+#: audio/config_commands.py:175
 msgid "From now on, I will deafen myself when joining a voice channel."
 msgstr "จากนี้ไปฉันจะหูหนวกตัวเองเมื่อเข้าร่วมช่องเสียง"
 
-#: audio/config_commands.py:178
+#: audio/config_commands.py:177
 msgid "From now on, I will no longer deafen myself when joining a voice channel."
 msgstr "จากนี้ไปฉันจะไม่หูหนวกอีกต่อไปเมื่อเข้าร่วมช่องเสียง"
 
-#: audio/config_commands.py:186
+#: audio/config_commands.py:185
 #, docstring
 msgid "Set whether the server is allowed to enable auto shuffle."
 msgstr "ตั้งค่าว่าจะอนุญาตให้เซิร์ฟเวอร์เปิดใช้งานการสุ่มอัตโนมัติหรือไม่"
 
-#: audio/config_commands.py:196
+#: audio/config_commands.py:195
 msgid "From now on, I will auto shuffle my track queue when new songs are added."
 msgstr "จากนี้ไปฉันจะสุ่มคิวแทร็กของฉันโดยอัตโนมัติเมื่อมีการเพิ่มเพลงใหม่"
 
-#: audio/config_commands.py:198
+#: audio/config_commands.py:197
 msgid "From now on, I will no longer auto shuffle my track queue when new songs are added."
 msgstr "จากนี้ไปฉันจะไม่สุ่มคิวแทร็กของฉันโดยอัตโนมัติอีกต่อไปเมื่อมีการเพิ่มเพลงใหม่"
 
-#: audio/config_commands.py:206 audio/config_commands.py:735
+#: audio/config_commands.py:205 audio/config_commands.py:747
 #, docstring
 msgid "Set whether I should allow users to shuffle the queue"
 msgstr "ตั้งค่าว่าฉันควรอนุญาตให้ผู้ใช้สลับคิวหรือไม่"
 
-#: audio/config_commands.py:216
+#: audio/config_commands.py:215
 msgid "From now on, I will allow users to shuffle the queue."
 msgstr "จากนี้ไปฉันจะอนุญาตให้ผู้ใช้สลับคิว"
 
-#: audio/config_commands.py:218
+#: audio/config_commands.py:217
 msgid "From now on, I will no longer allow users to shuffle the queue."
 msgstr "จากนี้ไปฉันจะไม่อนุญาตให้ผู้ใช้สลับคิวอีกต่อไป"
 
-#: audio/config_commands.py:226
+#: audio/config_commands.py:225
 #, docstring
 msgid "Set whether I should automatically play songs when the queue is empty."
 msgstr "ตั้งค่าว่าฉันควรเล่นเพลงโดยอัตโนมัติเมื่อคิวว่างเปล่าหรือไม่"
 
-#: audio/config_commands.py:235
+#: audio/config_commands.py:234
 msgid "From now on, I will automatically play songs from the specified playlist when the queue is empty."
 msgstr "จากนี้ไปฉันจะเล่นเพลงจากเพลย์ลิสต์ที่ระบุโดยอัตโนมัติเมื่อคิวว่างเปล่า"
 
-#: audio/config_commands.py:239
+#: audio/config_commands.py:238
 msgid "From now on, I will no longer automatically play songs from the specified playlist when the queue is empty."
 msgstr "จากนี้ไปฉันจะไม่เล่นเพลงจากเพลย์ลิสต์ที่ระบุโดยอัตโนมัติอีกต่อไปเมื่อคิวว่างเปล่า"
 
-#: audio/config_commands.py:249
+#: audio/config_commands.py:248
 #, docstring
 msgid "Set whether I should disconnect from the voice channel."
 msgstr "ตั้งค่าว่าฉันควรตัดการเชื่อมต่อจากช่องเสียงหรือไม่"
 
-#: audio/config_commands.py:259
+#: audio/config_commands.py:258
 #, docstring
 msgid "Set whether I should disconnect from the voice channel when the queue is empty.\n\n"
 "        Arguments:\n"
@@ -177,19 +177,19 @@ msgstr "ตั้งค่าว่าฉันควรยกเลิกกา
 "            ยอมรับวินาทีนาทีชั่วโมงวันและสัปดาห์ (หากไม่มีการระบุหน่วยระยะเวลาจะถูกสันนิษฐานว่าได้รับเป็นวินาที)\n"
 "        "
 
-#: audio/config_commands.py:279 audio/config_commands.py:853
-msgid "I will disconnect from the voice channel when the queue is empty after {time_to_dc}."
-msgstr "ฉันจะตัดการเชื่อมต่อจากช่องเสียงเมื่อคิวว่างเปล่าหลังจาก {time_to_dc}."
+#: audio/config_commands.py:278 audio/config_commands.py:869
+msgid "I will disconnect from the voice channel when the queue is empty after {time_to_dc_variable_do_not_translate}."
+msgstr ""
 
-#: audio/config_commands.py:283 audio/config_commands.py:857
+#: audio/config_commands.py:282 audio/config_commands.py:873
 msgid "I will disconnect from the voice channel when the queue is empty after 60 seconds."
 msgstr "ฉันจะตัดการเชื่อมต่อจากช่องเสียงเมื่อคิวว่างเปล่าหลังจาก 60 วินาที"
 
-#: audio/config_commands.py:285 audio/config_commands.py:859
+#: audio/config_commands.py:284 audio/config_commands.py:875
 msgid "I will no longer disconnect from the voice channel when the queue is empty."
 msgstr "ฉันจะไม่ตัดการเชื่อมต่อจากช่องเสียงอีกต่อไปเมื่อคิวว่างเปล่า"
 
-#: audio/config_commands.py:302
+#: audio/config_commands.py:301
 #, docstring
 msgid "Set whether I should disconnect from the voice channel when alone.\n\n"
 "        Arguments:\n"
@@ -206,197 +206,193 @@ msgstr "ตั้งค่าว่าฉันควรตัดการเช
 "            หากไม่มีการระบุหน่วยระยะเวลาจะถูกสันนิษฐานว่าได้รับเป็นวินาที\n"
 "        "
 
-#: audio/config_commands.py:323 audio/config_commands.py:919
-msgid "I will disconnect from the voice channel when alone after {time_to_dc}."
-msgstr "ฉันจะตัดการเชื่อมต่อจากช่องเสียงเมื่ออยู่คนเดียวหลังจากนั้น {time_to_dc}."
+#: audio/config_commands.py:322 audio/config_commands.py:939
+msgid "I will disconnect from the voice channel when alone after {time_to_dc_variable_do_not_translate}."
+msgstr ""
 
-#: audio/config_commands.py:327 audio/config_commands.py:923
+#: audio/config_commands.py:326 audio/config_commands.py:943
 msgid "I will disconnect from the voice channel when alone after 60 seconds."
 msgstr "ฉันจะตัดการเชื่อมต่อจากช่องเสียงเมื่ออยู่คนเดียวหลังจาก 60 วินาที"
 
-#: audio/config_commands.py:329 audio/config_commands.py:925
+#: audio/config_commands.py:328 audio/config_commands.py:945
 msgid "I will no longer disconnect from the voice channel when alone."
 msgstr "ฉันจะไม่ตัดการเชื่อมต่อจากช่องเสียงอีกต่อไปเมื่ออยู่คนเดียว"
 
-#: audio/config_commands.py:343
+#: audio/config_commands.py:342
 #, docstring
-msgid "Server configuration options."
-msgstr "ตัวเลือกการกําหนดค่าเซิร์ฟเวอร์"
+msgid "Server-specific settings."
+msgstr ""
 
-#: audio/config_commands.py:347
+#: audio/config_commands.py:346
 #, docstring
 msgid "Add, remove or show the disc jockey roles and users for this server."
 msgstr "เพิ่ม เอาออก หรือแสดงบทบาทดิสก์จ๊อกกี้และผู้ใช้สําหรับเซิร์ฟเวอร์นี้"
 
-#: audio/config_commands.py:353
+#: audio/config_commands.py:352
 #, docstring
 msgid "Add disc jockey roles or users to this server."
 msgstr "เพิ่มบทบาทดิสก์จ็อกกี้หรือผู้ใช้ไปยังเซิร์ฟเวอร์นี้"
 
-#: audio/config_commands.py:366 audio/config_commands.py:385
-msgid "Added {role_list} to the disc jockey roles."
-msgstr "เพิ่ม {role_list} กับบทบาทจ๊อกกี้ดิสก์"
+#: audio/config_commands.py:365 audio/config_commands.py:388
+msgid "I have added {role_list_variable_do_not_translate} to the disc jockey roles."
+msgstr ""
 
-#: audio/config_commands.py:369 audio/config_commands.py:391
-msgid "Added {user_list} to the disc jockey users."
-msgstr "เพิ่ม {user_list} ให้กับผู้ใช้ดิสก์จ๊อกกี้"
+#: audio/config_commands.py:370 audio/config_commands.py:394
+msgid "I have added {user_list_variable_do_not_translate} to the disc jockey users."
+msgstr ""
 
-#: audio/config_commands.py:376
-msgid "Added {role_list} to the disc jockey roles and {user_list} to the disc jockey users."
-msgstr "เพิ่ม {role_list} กับบทบาทจ๊อกกี้ดิสก์และ {user_list} ให้กับผู้ใช้ดิสก์จ๊อกกี้"
+#: audio/config_commands.py:379
+msgid "I have added {role_list_variable_do_not_translate} to the disc jockey roles and {user_list_variable_do_not_translate} to the disc jockey users."
+msgstr ""
 
-#: audio/config_commands.py:408
+#: audio/config_commands.py:411
 #, docstring
 msgid "Remove disc jockey roles or users in this server."
 msgstr "เอาบทบาทจ็อกกี้ดิสก์หรือผู้ใช้ในเซิร์ฟเวอร์นี้"
 
-#: audio/config_commands.py:440
-msgid "I have removed {role_list} from the disc jockey roles and {user_list} from the disc jockey users, as well as {number_list} from the disc jockey roles and users."
-msgstr "ฉันลบแล้ว {role_list} จากบทบาทดีเจและ {user_list} จากผู้ใช้ดิสก์จ๊อกกี้เช่นเดียวกับ {number_list} จากบทบาทดิสก์จ๊อกกี้และผู้ใช้"
+#: audio/config_commands.py:443
+msgid "I have removed {role_list_variable_do_not_translate} from the disc jockey roles and {user_list_variable_do_not_translate} from the disc jockey users, as well as {number_list_variable_do_not_translate} from the disc jockey roles and users."
+msgstr ""
 
-#: audio/config_commands.py:448
-msgid "I have removed {role_list} from the disc jockey roles and {user_list} from the disc jockey users."
-msgstr "ฉันลบแล้ว {role_list} จากบทบาทดีเจและ {user_list} จากผู้ใช้ดิสก์จ๊อกกี้"
+#: audio/config_commands.py:451
+msgid "I have removed {role_list_variable_do_not_translate} from the disc jockey roles and {user_list_variable_do_not_translate} from the disc jockey users."
+msgstr ""
 
-#: audio/config_commands.py:455
-msgid "I have removed {role_list} from the disc jockey roles."
-msgstr "ฉันลบแล้ว {role_list} จากบทบาทจ๊อกกี้ดิสก์"
+#: audio/config_commands.py:459
+msgid "I have removed {role_list_variable_do_not_translate} from the disc jockey roles."
+msgstr ""
 
-#: audio/config_commands.py:461
-msgid "I have removed {user_list} from the disc jockey users."
-msgstr "ฉันลบแล้ว {user_list} จากผู้ใช้ดิสก์จ๊อกกี้"
+#: audio/config_commands.py:465
+msgid "I have removed {user_list_variable_do_not_translate} from the disc jockey users."
+msgstr ""
 
-#: audio/config_commands.py:467
-msgid "I have removed {user_or_role_id_list} from the disc jockey roles and users."
-msgstr "ฉันลบแล้ว {user_or_role_id_list} จากบทบาทดิสก์จ๊อกกี้และผู้ใช้"
-
-#: audio/config_commands.py:482
-msgid "I have Removed `{user_or_role_id}` from the disc jockey roles and users."
-msgstr "ฉันได้ลบ'{user_or_role_id}' จากบทบาทจ๊อกกี้ดิสก์และผู้ใช้"
+#: audio/config_commands.py:471
+msgid "I have removed {user_or_role_id_list_variable_do_not_translate} from the disc jockey roles and users."
+msgstr ""
 
 #: audio/config_commands.py:486
-msgid "I have removed {role_name} from the disc jockey roles."
-msgstr "ฉันลบแล้ว {role_name} จากบทบาทจ๊อกกี้ดิสก์"
+msgid "I have Removed `{user_or_role_id_variable_do_not_translate}` from the disc jockey roles and users."
+msgstr ""
 
-#: audio/config_commands.py:489
-msgid "I have removed {user_name} from the disc jockey users."
-msgstr "ฉันลบแล้ว {user_name} จากผู้ใช้ดิสก์จ๊อกกี้"
+#: audio/config_commands.py:490
+msgid "I have removed {role_name_variable_do_not_translate} from the disc jockey roles."
+msgstr ""
 
 #: audio/config_commands.py:495
+msgid "I have removed {user_name_variable_do_not_translate} from the disc jockey users."
+msgstr ""
+
+#: audio/config_commands.py:503
 #, docstring
 msgid "List the disc jockey roles and users for this server."
 msgstr "แสดงรายการบทบาทดิสก์จ็อกกี้และผู้ใช้สําหรับเซิร์ฟเวอร์นี้"
 
-#: audio/config_commands.py:546
+#: audio/config_commands.py:554
 msgid "There are no disc jockey roles or disc jockey users set in this server."
 msgstr "ไม่มีบทบาทดิสก์จ๊อกกี้หรือผู้ใช้ดิสก์จ๊อกกี้ที่กําหนดไว้ในเซิร์ฟเวอร์นี้"
 
-#: audio/config_commands.py:557 audio/config_commands.py:562
+#: audio/config_commands.py:565 audio/config_commands.py:570
 msgid "Disc Jockey Roles"
 msgstr "บทบาทดิสก์จ๊อกกี้"
 
-#: audio/config_commands.py:568 audio/config_commands.py:573
+#: audio/config_commands.py:576 audio/config_commands.py:581
 msgid "Disc Jockey Users"
 msgstr "ผู้ใช้ดิสก์จ๊อกกี้"
 
-#: audio/config_commands.py:581
+#: audio/config_commands.py:589
 #, docstring
 msgid "Clear the disc jockey roles and users for this server."
 msgstr "ล้างบทบาทดิสก์จ๊อกกี้และผู้ใช้สําหรับเซิร์ฟเวอร์นี้"
 
-#: audio/config_commands.py:593
+#: audio/config_commands.py:601
 msgid "I have removed all disc jockey roles and users from this server."
 msgstr "ฉันได้ลบบทบาทจ๊อกกี้ดิสก์และผู้ใช้ทั้งหมดออกจากเซิร์ฟเวอร์นี้แล้ว"
 
-#: audio/config_commands.py:601
+#: audio/config_commands.py:609
 #, docstring
 msgid "Set the maximum volume a user can set."
 msgstr "ตั้งค่าระดับเสียงสูงสุดที่ผู้ใช้สามารถตั้งค่าได้"
 
-#: audio/config_commands.py:610
-msgid "Volume must be less than 1,000%."
-msgstr "ปริมาณต้องน้อยกว่า 1,000%"
-
 #: audio/config_commands.py:618
-msgid "Volume must be greater than 0%."
-msgstr "ปริมาณต้องมากกว่า 0%"
+msgid "The maximum volume must be less than 1,000%."
+msgstr ""
 
-#: audio/config_commands.py:627
-msgid "My owner has told me that server-specific volume must be between 0% and {volume_value}%."
-msgstr "เจ้าของของฉันบอกฉันว่าไดรฟ์ข้อมูลเฉพาะเซิร์ฟเวอร์ต้องอยู่ระหว่าง 0% ถึง {volume_value}%."
+#: audio/config_commands.py:635
+msgid "My owner has told me that server-specific volume must be between 0% and {volume_variable_do_not_translate}%."
+msgstr ""
 
-#: audio/config_commands.py:645
-msgid "Volume must be between 0% and {volume_value}%."
-msgstr "ปริมาณต้องอยู่ระหว่าง 0% ถึง {volume_value}%."
+#: audio/config_commands.py:655
+msgid "The maximum volume must be between 0% and {volume_variable_do_not_translate}%."
+msgstr ""
 
-#: audio/config_commands.py:659
-msgid "Max volume set to {volume_value}%."
-msgstr "ตั้งค่าระดับเสียงสูงสุดเป็น {volume_value}%."
+#: audio/config_commands.py:669
+msgid "The maximum volume users can set in this server is now {volume_variable_do_not_translate}%."
+msgstr ""
 
-#: audio/config_commands.py:676
-msgid "My owner is forcing me to deafen myself when playing."
-msgstr "เจ้าของของฉันบังคับให้ฉันหูหนวกตัวเองเมื่อเล่น"
+#: audio/config_commands.py:688
+msgid "My owner has requested that I always deafen myself when joining a voice channel."
+msgstr ""
 
-#: audio/config_commands.py:693
+#: audio/config_commands.py:705
 msgid "I will deafen myself when joining voice channels on this server."
 msgstr "ฉันจะหูหนวกตัวเองเมื่อเข้าร่วมช่องเสียงบนเซิร์ฟเวอร์นี้"
 
-#: audio/config_commands.py:695
+#: audio/config_commands.py:707
 msgid "I will no longer deafen myself when joining voice channels on this server."
 msgstr "ฉันจะไม่หูหนวกตัวเองอีกต่อไปเมื่อเข้าร่วมช่องเสียงบนเซิร์ฟเวอร์นี้"
 
-#: audio/config_commands.py:703
+#: audio/config_commands.py:715
 #, docstring
 msgid "Set whether I should shuffle the queue after adding every new song."
 msgstr "ตั้งค่าว่าฉันควรสลับคิวหลังจากเพิ่มเพลงใหม่ทุกเพลงหรือไม่"
 
-#: audio/config_commands.py:711
+#: audio/config_commands.py:723
 msgid "My owner has turned off the auto shuffle capability for all servers."
 msgstr "เจ้าของของฉันได้ปิดความสามารถในการสับเปลี่ยนอัตโนมัติสําหรับเซิร์ฟเวอร์ทั้งหมด"
 
-#: audio/config_commands.py:725
-msgid "Auto shuffle turned on for this server"
-msgstr "สุ่มอัตโนมัติเปิดอยู่สําหรับเซิร์ฟเวอร์นี้"
+#: audio/config_commands.py:737
+msgid "Auto shuffle turned on for this server."
+msgstr ""
 
-#: audio/config_commands.py:727
-msgid "Auto shuffle turned off for this server"
-msgstr "การสุ่มอัตโนมัติถูกปิดสําหรับเซิร์ฟเวอร์นี้"
+#: audio/config_commands.py:739
+msgid "Auto shuffle turned off for this server."
+msgstr ""
 
-#: audio/config_commands.py:745
+#: audio/config_commands.py:757
 msgid "My owner has turned off the shuffle capability for all servers."
 msgstr "เจ้าของของฉันได้ปิดความสามารถในการสับเปลี่ยนสําหรับเซิร์ฟเวอร์ทั้งหมด"
 
-#: audio/config_commands.py:758
-msgid "Shuffling turned on for this server"
-msgstr "การสับเปลี่ยนเปิดอยู่สําหรับเซิร์ฟเวอร์นี้"
+#: audio/config_commands.py:770
+msgid "Shuffling turned on for this server."
+msgstr ""
 
-#: audio/config_commands.py:760
-msgid "Shuffling turned off for this server"
-msgstr "การสับเปลี่ยนถูกปิดสําหรับเซิร์ฟเวอร์นี้"
+#: audio/config_commands.py:772
+msgid "Shuffling turned off for this server."
+msgstr ""
 
-#: audio/config_commands.py:768
+#: audio/config_commands.py:780
 #, docstring
 msgid "Set whether the bot should automatically play songs when the queue is empty."
 msgstr "ตั้งค่าว่าบอทควรเล่นเพลงโดยอัตโนมัติเมื่อคิวว่างเปล่าหรือไม่"
 
-#: audio/config_commands.py:777
+#: audio/config_commands.py:789
 msgid "My owner has turned off the autoplay capability for all servers."
 msgstr "เจ้าของของฉันได้ปิดความสามารถในการเล่นอัตโนมัติสําหรับเซิร์ฟเวอร์ทั้งหมด"
 
-#: audio/config_commands.py:794
+#: audio/config_commands.py:806
 msgid "From now on, I will automatically play songs when the queue is empty."
 msgstr "จากนี้ไปฉันจะเล่นเพลงโดยอัตโนมัติเมื่อคิวว่างเปล่า"
 
-#: audio/config_commands.py:796
+#: audio/config_commands.py:808
 msgid "From now on, I will no longer automatically play songs when the queue is empty."
 msgstr "จากนี้ไปฉันจะไม่เล่นเพลงโดยอัตโนมัติอีกต่อไปเมื่อคิวว่างเปล่า"
 
-#: audio/config_commands.py:804
+#: audio/config_commands.py:816
 #, docstring
 msgid "Set whether the bot should disconnect from the voice channel"
 msgstr "ตั้งค่าว่าบอทควรตัดการเชื่อมต่อจากช่องสัญญาณเสียงหรือไม่"
 
-#: audio/config_commands.py:814
+#: audio/config_commands.py:826
 #, docstring
 msgid "Set whether I should disconnect from the voice channel when the queue is empty.\n\n"
 "        Arguments:\n"
@@ -415,11 +411,11 @@ msgstr "ตั้งค่าว่าฉันควรยกเลิกกา
 "            หากไม่มีการระบุหน่วยระยะเวลาจะถือว่าเป็นวินาที\n"
 "        "
 
-#: audio/config_commands.py:832
-msgid "My owner has told me to disconnect from the voice channel when the queue is empty after {time_to_dc}."
-msgstr "เจ้าของของฉันบอกให้ฉันตัดการเชื่อมต่อจากช่องเสียงเมื่อคิวว่างเปล่าหลังจาก {time_to_dc}."
+#: audio/config_commands.py:844
+msgid "My owner has told me to disconnect from the voice channel when the queue is empty after {time_to_dc_variable_do_not_translate}."
+msgstr ""
 
-#: audio/config_commands.py:877
+#: audio/config_commands.py:893
 #, docstring
 msgid "Set whether I should disconnect from the voice channel when alone.\n\n"
 "        Arguments:\n"
@@ -440,272 +436,273 @@ msgstr "ตั้งค่าว่าฉันควรตัดการเช
 "            หากไม่มีการระบุหน่วยระยะเวลาจะถือว่าเป็นวินาที\n"
 "        "
 
-#: audio/config_commands.py:897
-msgid "My owner has told me to disconnect from the voice channel when alone after {time_to_dc}."
-msgstr "เจ้าของของฉันบอกให้ฉันตัดการเชื่อมต่อจากช่องเสียงเมื่ออยู่คนเดียวหลังจากนั้น {time_to_dc}."
+#: audio/config_commands.py:913
+msgid "My owner has told me to disconnect from the voice channel when alone after {time_to_dc_variable_do_not_translate}."
+msgstr ""
 
-#: audio/config_commands.py:937
+#: audio/config_commands.py:957
 #, docstring
 msgid "Specify a playlist to be used for autoplay."
 msgstr "ระบุเพลย์ลิสต์ที่จะใช้สําหรับการเล่นอัตโนมัติ"
 
-#: audio/config_commands.py:954
-msgid "From now on, I will use {playlist_name} to select songs for autoplay."
-msgstr "จากนี้ไปฉันจะใช้ {playlist_name} เพื่อเลือกเพลงสําหรับเล่นอัตโนมัติ"
+#: audio/config_commands.py:974
+msgid "From now on, I will use {playlist_name_variable_do_not_translate} to select songs for autoplay."
+msgstr ""
 
-#: audio/config_commands.py:964
+#: audio/config_commands.py:984
 #, docstring
 msgid "Restrict which channels where I can be used."
 msgstr "จํากัดช่องทางที่ฉันสามารถใช้ได้"
 
-#: audio/config_commands.py:970
+#: audio/config_commands.py:990
 #, docstring
 msgid "Restrict me only to accept PyLav commands executed from the specified channel."
 msgstr "จํากัด ฉันเท่านั้นที่จะยอมรับคําสั่ง PyLav ที่ดําเนินการจากช่องทางที่ระบุ"
 
-#: audio/config_commands.py:985
-msgid "I do not have permission to send messages or send embed links or read messages in {channel_name}."
-msgstr "ฉันไม่มีสิทธิ์ในการส่งข้อความหรือส่งลิงก์ฝังตัวหรืออ่านข้อความใน {channel_name}."
+#: audio/config_commands.py:1005
+msgid "I do not have permission to send messages or send embed links or read messages in {channel_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/config_commands.py:1002
-msgid "I will only accept PyLav commands executed from {channel_name}."
-msgstr "ฉันจะยอมรับคําสั่ง PyLav ที่ดําเนินการจาก {channel_name}."
+#: audio/config_commands.py:1022
+msgid "I will only accept PyLav commands executed from {channel_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/config_commands.py:1012
+#: audio/config_commands.py:1032
 msgid "I will accept PyLav commands executed in all channels I can see in the server."
 msgstr "ฉันจะยอมรับคําสั่ง PyLav ที่ดําเนินการในทุกช่องทางที่ฉันเห็นในเซิร์ฟเวอร์"
 
-#: audio/config_commands.py:1020
+#: audio/config_commands.py:1040
 #, docstring
 msgid "Restrict me only to join the specified voice channel."
 msgstr "จํากัด ฉันเพื่อเข้าร่วมช่องเสียงที่ระบุเท่านั้น"
 
-#: audio/config_commands.py:1032 audio/hybrid_commands.py:107
-#: audio/player_commands.py:150
-msgid "I do not have permission to connect or speak in {channel_name}."
-msgstr "ฉันไม่ได้รับอนุญาตให้เชื่อมต่อหรือพูดใน {channel_name}."
+#: audio/config_commands.py:1052 audio/hybrid_commands.py:108
+#: audio/player_commands.py:156
+msgid "I do not have permission to connect or speak in {channel_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/config_commands.py:1050
-msgid "I will only be allowed to join {channel_name}."
-msgstr "ฉันจะได้รับอนุญาตให้เข้าร่วมเท่านั้น {channel_name}."
+#: audio/config_commands.py:1070
+msgid "I will only be allowed to join {channel_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/config_commands.py:1060
+#: audio/config_commands.py:1080
 msgid "I am allowed to join any voice channel in the server."
 msgstr "ฉันได้รับอนุญาตให้เข้าร่วมช่องเสียงใด ๆ ในเซิร์ฟเวอร์"
 
-#: audio/context_menus.py:27 audio/context_menus.py:130
-msgid "I can not play songs in direct messages, sorry, try again in a server."
-msgstr "ฉันไม่สามารถเล่นเพลงในข้อความโดยตรงขออภัยลองอีกครั้งในเซิร์ฟเวอร์"
+#: audio/context_menus.py:27 audio/context_menus.py:133
+msgid "I can not play songs in direct messages. Sorry, try again on a server."
+msgstr ""
 
 #: audio/context_menus.py:38
 msgid "You need to be a disc jockey in this server to play tracks in this server."
 msgstr "คุณต้องเป็นจ๊อกกี้ดิสก์ในเซิร์ฟเวอร์นี้เพื่อเล่นแทร็กในเซิร์ฟเวอร์นี้"
 
-#: audio/context_menus.py:55 audio/context_menus.py:156
-msgid "This command is not available in this channel, please use {channel_name}."
-msgstr "คําสั่งนี้ไม่สามารถใช้ได้ในช่องนี้โปรดใช้ {channel_name}."
+#: audio/context_menus.py:55 audio/context_menus.py:159
+msgid "This command is unavailable in this channel. Please use {channel_name_variable_do_not_translate} instead."
+msgstr ""
 
-#: audio/context_menus.py:82
+#: audio/context_menus.py:84
 msgid "I could not find any suitable matches in this message."
 msgstr "ฉันไม่สามารถหาคู่ที่เหมาะสมใด ๆ ในข้อความนี้"
 
-#: audio/context_menus.py:84
+#: audio/context_menus.py:86
 msgid "I found many suitable matches in this message."
 msgstr "ฉันพบการจับคู่ที่เหมาะสมมากมายในข้อความนี้"
 
-#: audio/context_menus.py:86
+#: audio/context_menus.py:88
 msgid "I found a single suitable match in this message."
 msgstr "ฉันพบการจับคู่ที่เหมาะสมเพียงรายการเดียวในข้อความนี้"
 
-#: audio/context_menus.py:141
+#: audio/context_menus.py:144
 msgid "You need to be a disc jockey to play tracks in this server."
 msgstr "คุณต้องเป็นจ๊อกกี้ดิสก์เพื่อเล่นแทร็กในเซิร์ฟเวอร์นี้"
 
-#: audio/context_menus.py:173
-msgid "I could not find any supported activity in the activities {user_name} is partaking."
-msgstr "ฉันไม่พบกิจกรรมที่ได้รับการสนับสนุนในกิจกรรม {user_name} กําลังเป็นส่วนหนึ่ง"
+#: audio/context_menus.py:178
+msgid "I could not find any supported activity in the activities {user_name_variable_do_not_translate} is partaking."
+msgstr ""
 
-#: audio/context_menus.py:205
-msgid "I could not find a valid Apple Music track in the activity {user_name} is partaking in."
-msgstr "ฉันไม่พบแทร็ก Apple Music ที่ถูกต้องในกิจกรรม {user_name} กําลังเข้าร่วม"
+#: audio/context_menus.py:210
+msgid "I could not find a valid Apple Music track in the activity {user_name_variable_do_not_translate} is partaking in."
+msgstr ""
 
-#: audio/context_menus.py:221
-msgid "I could not find any tracks matching {query_value}."
-msgstr "ฉันไม่พบแทร็กใด ๆ ที่ตรงกัน {query_value}."
+#: audio/context_menus.py:226
+msgid "I could not find any tracks matching {query_variable_do_not_translate}."
+msgstr ""
 
-#: audio/context_menus.py:238
-msgid "I could not figure out what {user_name} is listening to."
-msgstr "ฉันไม่สามารถคิดออกว่าอะไร {user_name} กําลังฟังอยู่"
+#: audio/context_menus.py:243
+msgid "I could not figure out what {user_name_variable_do_not_translate} is listening to."
+msgstr ""
 
 #: audio/hybrid_commands.py:83
 msgid "You need to give me a query to enqueue."
 msgstr "คุณต้องให้ฉันแบบสอบถามเพื่อ enqueue"
 
-#: audio/hybrid_commands.py:97 audio/player_commands.py:140
-msgid "You must be in a voice channel to allow me to connect"
-msgstr "คุณต้องอยู่ในช่องเสียงเพื่อให้ฉันเชื่อมต่อได้"
+#: audio/hybrid_commands.py:97
+msgid "You must be in a voice channel, so I can connect to it."
+msgstr ""
 
-#: audio/hybrid_commands.py:154
-msgid "{number_of_tracks} tracks enqueued."
-msgstr "{number_of_tracks} แทร็กที่เข้าคิว"
+#: audio/hybrid_commands.py:155
+msgid "{track_name_variable_do_not_translate} enqueued."
+msgstr ""
 
-#: audio/hybrid_commands.py:162
-msgid "{track_name} enqueued"
-msgstr "{track_name} เข้าคิว"
-
-#: audio/hybrid_commands.py:173 audio/player_commands.py:252
+#: audio/hybrid_commands.py:160 audio/player_commands.py:258
 msgid "No tracks were found for your query."
 msgstr "ไม่พบแทร็กสําหรับข้อความค้นหาของคุณ"
 
-#: audio/hybrid_commands.py:236
+#: audio/hybrid_commands.py:162
+msgid "{number_of_tracks_variable_do_not_translate} tracks enqueued."
+msgstr ""
+
+#: audio/hybrid_commands.py:231
 msgid "You need to be in a voice channel if you do not specify which channel I should connect to."
 msgstr "คุณต้องอยู่ในช่องเสียงหากคุณไม่ได้ระบุว่าฉันควรเชื่อมต่อช่องใด"
 
-#: audio/hybrid_commands.py:248
-msgid "I do not have permission to connect to {channel_name}."
-msgstr "ฉันไม่ได้รับอนุญาตให้เชื่อมต่อกับ {channel_name}."
+#: audio/hybrid_commands.py:243
+msgid "I do not have permission to connect to {channel_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/hybrid_commands.py:252
-msgid "I do not have permission to speak in {channel_name}."
-msgstr "ฉันไม่ได้รับอนุญาตให้พูดใน {channel_name}."
+#: audio/hybrid_commands.py:247
+msgid "I do not have permission to speak in {channel_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/hybrid_commands.py:270
-msgid "You do not have permission to connect to {channel_name}."
-msgstr "คุณไม่ได้รับอนุญาตให้เชื่อมต่อกับ {channel_name}."
+#: audio/hybrid_commands.py:265
+msgid "You do not have permission to connect to {channel_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/hybrid_commands.py:287
-msgid "I have been told only to join {channel_name} on this server."
-msgstr "ฉันได้รับคําสั่งให้เข้าร่วมเท่านั้น {channel_name} บนเซิร์ฟเวอร์นี้"
+#: audio/hybrid_commands.py:282
+msgid "I have been told only to join {channel_name_variable_do_not_translate} on this server."
+msgstr ""
 
-#: audio/hybrid_commands.py:297
-msgid "I have successfully connected to {channel_name}."
-msgstr "ฉันเชื่อมต่อกับ {channel_name}."
+#: audio/hybrid_commands.py:292
+msgid "I have successfully connected to {channel_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/hybrid_commands.py:323 audio/hybrid_commands.py:348
-#: audio/hybrid_commands.py:382 audio/hybrid_commands.py:413
-#: audio/hybrid_commands.py:446 audio/hybrid_commands.py:473
-#: audio/hybrid_commands.py:523 audio/hybrid_commands.py:559
-#: audio/hybrid_commands.py:598 audio/hybrid_commands.py:655
-#: audio/hybrid_commands.py:702 audio/hybrid_commands.py:711
-#: audio/hybrid_commands.py:810
+#: audio/hybrid_commands.py:318 audio/hybrid_commands.py:343
+#: audio/hybrid_commands.py:379 audio/hybrid_commands.py:410
+#: audio/hybrid_commands.py:443 audio/hybrid_commands.py:470
+#: audio/hybrid_commands.py:522 audio/hybrid_commands.py:561
+#: audio/hybrid_commands.py:599 audio/hybrid_commands.py:657
+#: audio/hybrid_commands.py:708 audio/hybrid_commands.py:717
+#: audio/hybrid_commands.py:826
 msgid "I am not currently playing anything on this server."
 msgstr "ฉันไม่ได้กําลังเล่นอะไรบนเซิร์ฟเวอร์นี้"
 
-#: audio/hybrid_commands.py:356
-msgid "I have skipped {track_name} as requested."
-msgstr "ฉันข้ามไปแล้ว {track_name} ตามที่ร้องขอ"
+#: audio/hybrid_commands.py:351
+msgid "I have skipped {track_name_variable_do_not_translate} as requested."
+msgstr ""
 
-#: audio/hybrid_commands.py:390
+#: audio/hybrid_commands.py:387
 msgid "I have stopped the playback and cleared the queue as requested."
 msgstr "ฉันได้หยุดการเล่นและล้างคิวตามที่ร้องขอ"
 
-#: audio/hybrid_commands.py:422
-msgid "I have disconnected from {channel_name} as requested."
-msgstr "ฉันตัดการเชื่อมต่อจาก {channel_name} ตามที่ร้องขอ"
+#: audio/hybrid_commands.py:419
+msgid "I have disconnected from {channel_name_variable_do_not_translate} as requested."
+msgstr ""
 
-#: audio/hybrid_commands.py:481
+#: audio/hybrid_commands.py:478
 msgid "The server queue is currently empty."
 msgstr "คิวเซิร์ฟเวอร์ว่างเปล่าอยู่ในขณะนี้"
 
-#: audio/hybrid_commands.py:489
+#: audio/hybrid_commands.py:486
 msgid "You are not allowed to shuffle the queue."
 msgstr "คุณไม่ได้รับอนุญาตให้สลับคิว"
 
-#: audio/hybrid_commands.py:497
-msgid "{queue_size} tracks shuffled."
-msgstr "{queue_size} แทร็กสับเปลี่ยน"
+#: audio/hybrid_commands.py:494
+msgid "{queue_size_variable_do_not_translate} tracks shuffled."
+msgstr ""
 
-#: audio/hybrid_commands.py:531
-msgid "I will now repeat the entire queue."
-msgstr "ตอนนี้ฉันจะทําซ้ําคิวทั้งหมด"
+#: audio/hybrid_commands.py:530
+msgid "From now on, I will now repeat the entire queue."
+msgstr ""
 
-#: audio/hybrid_commands.py:534
-msgid "I will no longer repeat any tracks."
-msgstr "ฉันจะไม่ทําซ้ําแทร็กใด ๆ อีกต่อไป"
+#: audio/hybrid_commands.py:533
+msgid "From now on, I will no longer repeat any tracks."
+msgstr ""
 
 #: audio/hybrid_commands.py:537
-msgid "I will now repeat {track_name}."
-msgstr "ตอนนี้ฉันจะทําซ้ํา {track_name}."
+msgid "From now on, I will now repeat {track_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/hybrid_commands.py:540
-msgid "the current track"
-msgstr "แทร็กปัจจุบัน"
+#: audio/hybrid_commands.py:543
+msgid "From now on, I will now repeat the current track."
+msgstr ""
 
-#: audio/hybrid_commands.py:565
-msgid "The player is already paused, did you mean to run `{bot_command_prefix}{command_name}`"
-msgstr "ผู้เล่นถูกหยุดชั่วคราวแล้วคุณหมายถึงการวิ่ง '{bot_command_prefix}{command_name}`"
+#: audio/hybrid_commands.py:567
+msgid "The player is already paused, did you mean to run {command_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/hybrid_commands.py:580
+#: audio/hybrid_commands.py:581
 msgid "I have now paused the player as requested."
 msgstr "ตอนนี้ฉันได้หยุดผู้เล่นชั่วคราวตามที่ร้องขอ"
 
-#: audio/hybrid_commands.py:604
-msgid "Player already resumed, did you mean to run `{bot_command_prefix}{command_name}`"
-msgstr "ผู้เล่นกลับมาแล้วคุณหมายถึงการทํางาน'{bot_command_prefix}{command_name}`"
+#: audio/hybrid_commands.py:605
+msgid "The player already resumed, did you mean to run {command_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/hybrid_commands.py:617
+#: audio/hybrid_commands.py:619
 msgid "I have now resumed the player as requested."
 msgstr "ตอนนี้ฉันกลับมาเล่นต่อตามที่ร้องขอแล้ว"
 
-#: audio/hybrid_commands.py:639
-msgid "Volume must be less than 1,000%"
-msgstr "ปริมาณต้องน้อยกว่า 1,000%"
+#: audio/hybrid_commands.py:641
+msgid "I can not set the volume above 1,000%."
+msgstr ""
 
-#: audio/hybrid_commands.py:647
-msgid "Volume must be greater than 0%"
-msgstr "ปริมาณต้องมากกว่า 0%"
+#: audio/hybrid_commands.py:649
+msgid "I can not set the volume lower than 0%"
+msgstr ""
 
-#: audio/hybrid_commands.py:664
-msgid "Volume can not be higher than {max_volume_value}%."
-msgstr "ปริมาณต้องไม่สูงกว่า {max_volume_value}%."
+#: audio/hybrid_commands.py:666
+msgid "I have been told to restrict the maximum volume to {max_volume_variable_do_not_translate}%."
+msgstr ""
 
-#: audio/hybrid_commands.py:673
-msgid "Player volume has been set to {volume_value}%."
-msgstr "ระดับเสียงของโปรแกรมเล่นถูกตั้งค่าเป็น {volume_value}%."
+#: audio/hybrid_commands.py:677
+msgid "I have set the player volume to {volume_variable_do_not_translate}%."
+msgstr ""
 
-#: audio/hybrid_commands.py:721
+#: audio/hybrid_commands.py:727 audio/hybrid_commands.py:736
+#: audio/hybrid_commands.py:749
 msgid "Unable to seek track"
 msgstr "ไม่สามารถค้นหาเส้นทางได้"
 
-#: audio/hybrid_commands.py:722
-msgid "I am unable to seek this track as it is a stream."
-msgstr "ฉันไม่สามารถค้นหาแทร็กนี้ได้เนื่องจากเป็นสตรีม"
+#: audio/hybrid_commands.py:728
+msgid "I can not seek this track as the server reports it is a live stream."
+msgstr ""
 
-#: audio/hybrid_commands.py:730
-msgid "Unable to seek track."
-msgstr "ไม่สามารถตามหาร่องรอยได้"
+#: audio/hybrid_commands.py:737
+msgid "I can not seek this track as the server report that this track does not support seeking."
+msgstr ""
 
-#: audio/hybrid_commands.py:739
+#: audio/hybrid_commands.py:750
 msgid "I can not seek the current track while the player is paused."
 msgstr "ฉันไม่สามารถค้นหาแทร็กปัจจุบันในขณะที่ผู้เล่นหยุดชั่วคราว"
 
-#: audio/hybrid_commands.py:764
-msgid "I have moved the current track forward {number_of_seconds} seconds to the end of the track."
-msgstr "ฉันได้ย้ายแทร็กปัจจุบันไปข้างหน้า {number_of_seconds} วินาทีถึงจุดสิ้นสุดของแทร็ก"
+#: audio/hybrid_commands.py:778
+msgid "I have moved the current track forward {number_of_seconds_variable_do_not_translate} seconds to the end of the track."
+msgstr ""
 
-#: audio/hybrid_commands.py:768
-msgid "I have moved the current track forward {number_of_seconds} seconds to position {timestamp_value}."
-msgstr "ฉันได้ย้ายแทร็กปัจจุบันไปข้างหน้า {number_of_seconds} วินาทีสู่ตําแหน่ง {timestamp_value}."
+#: audio/hybrid_commands.py:782
+msgid "I have moved the current track forward {number_of_seconds} seconds to position {timestamp_variable_do_not_translate}."
+msgstr ""
 
-#: audio/hybrid_commands.py:773
-msgid "I have moved the current track back {number_of_seconds} seconds to the beginning."
-msgstr "ฉันได้ย้ายแทร็กปัจจุบันกลับมาแล้ว {number_of_seconds} วินาทีถึงจุดเริ่มต้น"
+#: audio/hybrid_commands.py:787
+msgid "I have moved the current track back {number_of_seconds_variable_do_not_translate} seconds to the beginning."
+msgstr ""
 
-#: audio/hybrid_commands.py:777
-msgid "I have moved the current track back {number_of_seconds} seconds to position {timestamp_value}."
-msgstr "ฉันได้ย้ายแทร็กปัจจุบันกลับมาแล้ว {number_of_seconds} วินาทีสู่ตําแหน่ง {timestamp_value}."
+#: audio/hybrid_commands.py:791
+msgid "I have moved the current track back {number_of_seconds} seconds to position {timestamp_variable_do_not_translate}."
+msgstr ""
 
-#: audio/hybrid_commands.py:781
+#: audio/hybrid_commands.py:797
 msgid "I have moved the current track to the beginning."
 msgstr "ฉันได้ย้ายแทร็กปัจจุบันไปที่จุดเริ่มต้น"
 
-#: audio/hybrid_commands.py:819
+#: audio/hybrid_commands.py:835
 msgid "The history of tracks is currently empty."
 msgstr "ประวัติของแทร็กว่างเปล่าในขณะนี้"
 
-#: audio/hybrid_commands.py:827
-msgid "Playing previous track: {track_name}"
-msgstr "การเล่นแทร็กก่อนหน้า: {track_name}"
+#: audio/hybrid_commands.py:843
+msgid "Playing previous track: {track_name_variable_do_not_translate}."
+msgstr ""
 
 #: audio/player_commands.py:30
 msgid "Plays the specified track from the queue."
@@ -716,37 +713,40 @@ msgid "There are no songs in the queue."
 msgstr "ไม่มีเพลงในคิว"
 
 #: audio/player_commands.py:59
-msgid "Track index must be between 1 and {size_of_queue}"
-msgstr "ดัชนีการติดตามต้องอยู่ระหว่าง 1 ถึง {size_of_queue}"
+msgid "Track index must be between 1 and {size_of_queue_variable_do_not_translate}"
+msgstr ""
 
 #: audio/player_commands.py:77
-msgid "There are no tracks in position {queue_position_value}."
-msgstr "ไม่มีแทร็กในตําแหน่ง {queue_position_value}."
+msgid "There are no tracks in position {queue_position_variable_do_not_translate}."
+msgstr ""
 
 #: audio/player_commands.py:89
-msgid "{track_name} will play after {current_track_name} finishes ({estimated_time_value})."
-msgstr "{track_name} จะเล่นหลังจาก {current_track_name} เสร็จสิ้น ({estimated_time_value})."
+msgid "{track_name_variable_do_not_translate} will play after {current_track_name_variable_do_not_translate} finishes ({estimated_time_variable_do_not_translate})."
+msgstr ""
 
-#: audio/player_commands.py:109
-msgid "{track_name} will start now\n"
-"{current_track_name} has been skipped."
-msgstr "{track_name} จะเริ่มตอนนี้\n"
-"{current_track_name} ถูกข้ามไป"
+#: audio/player_commands.py:111
+msgid "{track_name_variable_do_not_translate} will start now\n"
+"{current_track_name_variable_do_not_translate} has been skipped."
+msgstr ""
 
-#: audio/player_commands.py:127
+#: audio/player_commands.py:133
 #, docstring
 msgid "Enqueue a track at the top of the queue."
 msgstr "จัดคิวแทร็กที่ด้านบนของคิว"
 
-#: audio/player_commands.py:231
-msgid "{number_of_tracks} tracks have been enqueued."
-msgstr "{number_of_tracks} แทร็กได้รับการจัดคิว"
+#: audio/player_commands.py:146
+msgid "You must be in a voice channel to allow me to connect"
+msgstr "คุณต้องอยู่ในช่องเสียงเพื่อให้ฉันเชื่อมต่อได้"
 
-#: audio/player_commands.py:241
-msgid "{track_name} has been enqueued."
-msgstr "{track_name} ได้รับการจัดคิว"
+#: audio/player_commands.py:237
+msgid "{number_of_tracks_variable_do_not_translate} tracks have been enqueued."
+msgstr ""
 
-#: audio/player_commands.py:262
+#: audio/player_commands.py:247
+msgid "{track_name_variable_do_not_translate} has been enqueued."
+msgstr ""
+
+#: audio/player_commands.py:268
 #, docstring
 msgid "\n"
 "        Remove the specified track from the queue.\n\n"
@@ -757,33 +757,33 @@ msgstr "\n"
 "        หากคุณระบุอาร์กิวเมนต์ \"remove_duplicates\" ระบบจะนําแทร็กทั้งหมดที่เหมือนกับ URL หรือแทร็กดัชนีออก\n"
 "        "
 
-#: audio/player_commands.py:277
+#: audio/player_commands.py:283
 msgid "Queue is empty."
 msgstr "คิวว่างเปล่า"
 
-#: audio/player_commands.py:290
-msgid "Track index must be between 1 and {queue_size}."
-msgstr "ดัชนีการติดตามต้องอยู่ระหว่าง 1 ถึง {queue_size}."
+#: audio/player_commands.py:296
+msgid "Track index must be between 1 and {queue_size_variable_do_not_translate}."
+msgstr ""
 
-#: audio/player_commands.py:305
-msgid "There is no track in position {position_value}."
-msgstr "ไม่มีแทร็กในตําแหน่ง {position_value}."
+#: audio/player_commands.py:311
+msgid "There is no track in position {position_variable_do_not_translate}."
+msgstr ""
 
-#: audio/player_commands.py:337
-msgid "{track_name} not found in queue."
-msgstr "{track_name} ไม่พบในคิว"
+#: audio/player_commands.py:343
+msgid "{track_name_variable_do_not_translate} not found in queue."
+msgstr ""
 
-#: audio/player_commands.py:349
+#: audio/player_commands.py:355
 msgid "No tracks were removed from the queue."
 msgstr "ไม่มีการลบแทร็กออกจากคิว"
 
-#: audio/player_commands.py:357
-msgid "I have removed a single entry of {track_name} from the queue."
-msgstr "ฉันได้ลบรายการเดียวของ {track_name} จากคิว"
+#: audio/player_commands.py:363
+msgid "I have removed a single entry of {track_name_variable_do_not_translate} from the queue."
+msgstr ""
 
-#: audio/player_commands.py:367
-msgid "I have removed {number_of_entries} entries of {track_name} from the queue."
-msgstr "ฉันลบแล้ว {number_of_entries} รายการของ {track_name} จากคิว"
+#: audio/player_commands.py:373
+msgid "I have removed {number_of_entries_variable_do_not_translate} entries of {track_name_variable_do_not_translate} from the queue."
+msgstr ""
 
 #: audio/slash_commands.py:48
 #, docstring
@@ -795,26 +795,26 @@ msgid "You have not selected something to play."
 msgstr "คุณยังไม่ได้เลือกอะไรที่จะเล่น"
 
 #: audio/slash_commands.py:109
-msgid "Searching {service_name}"
-msgstr "ค้น หา {service_name}"
+msgid "Searching {service_name_variable_do_not_translate}"
+msgstr ""
 
-#: audio/slash_commands.py:125 audio/slash_commands.py:138
-msgid "No results found on {service_name}"
-msgstr "ไม่พบผลลัพธ์บน {service_name}"
+#: audio/slash_commands.py:127 audio/slash_commands.py:140
+msgid "No results found on {service_name_variable_do_not_translate}"
+msgstr ""
 
 #: audio/utility_commands.py:32
 msgid "I am not connected to a voice channel."
 msgstr "ฉันไม่ได้เชื่อมต่อกับช่องสัญญาณเสียง"
 
 #: audio/utility_commands.py:43
-msgid "Volume limit reached, player volume set to {volume_value}%"
-msgstr "ถึงขีดจํากัดระดับเสียง, ระดับเสียงของผู้เล่นตั้งค่าเป็น {volume_value}%"
+msgid "Volume limit reached, player volume set to {volume_variable_do_not_translate}%"
+msgstr ""
 
 #: audio/utility_commands.py:54
 msgid "Minimum volume reached, player volume set to 0%"
 msgstr "ระดับเสียงต่ําสุดถึงระดับเสียงของผู้เล่นตั้งไว้ที่ 0%"
 
 #: audio/utility_commands.py:62
-msgid "Player volume set to {volume_value}%"
-msgstr "ตั้งค่าระดับเสียงของโปรแกรมเล่นเป็น {volume_value}%"
+msgid "Player volume set to {volume_variable_do_not_translate}%"
+msgstr ""
 

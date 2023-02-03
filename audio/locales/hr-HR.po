@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
-"POT-Creation-Date: 2023-02-02 22:16+0000\n"
-"PO-Revision-Date: 2023-02-02 22:33\n"
+"POT-Creation-Date: 2023-02-03 20:16+0000\n"
+"PO-Revision-Date: 2023-02-03 20:17\n"
 "Last-Translator: \n"
 "Language-Team: Croatian\n"
 "MIME-Version: 1.0\n"
@@ -30,7 +30,7 @@ msgstr "Reproduciraj sa servisa Spotify ili Apple Music"
 msgid "Play from this message"
 msgstr "Reproduciraj iz ove poruke"
 
-#: audio/config_commands.py:41
+#: audio/config_commands.py:40
 #, docstring
 msgid "Notifies PyLav that a Player is having issues.\n\n"
 "        If enough (50% or more of currently playing players) report issues, PyLav will automatically\n"
@@ -41,15 +41,15 @@ msgstr "Obavještava PyLav da igrač ima problema.\n\n"
 "        prebacite se na drugi čvor ili ponovno pokrenite trenutni čvor gdje je to moguće.\n"
 "        "
 
-#: audio/config_commands.py:49
+#: audio/config_commands.py:48
 msgid "This server already voted recently. Please, try again in 10 minutes."
 msgstr "Ovaj poslužitelj je već nedavno glasao. Pokušajte ponovo za 10 minuta."
 
-#: audio/config_commands.py:60
+#: audio/config_commands.py:59
 msgid "Thank you for your report."
 msgstr "Hvala vam na izvještaju."
 
-#: audio/config_commands.py:70
+#: audio/config_commands.py:69
 #, docstring
 msgid "Removes a vote for a Player being down.\n\n"
 "        If enough (50% or more of currently active players) report issues, PyLav will automatically\n"
@@ -62,107 +62,107 @@ msgstr "Uklanja glas za igrača koji je pao.\n\n"
 "        Ova naredba vrijedi samo ako je poslužitelj prethodno glasao za isključenje čvora i sada je sigurnosno kopiran.\n"
 "        "
 
-#: audio/config_commands.py:80
+#: audio/config_commands.py:79
 msgid "There are no active votes for the current audio node."
 msgstr "Nema aktivnih glasova za trenutni audio čvor."
 
-#: audio/config_commands.py:90
+#: audio/config_commands.py:89
 msgid "I have removed your report."
 msgstr "Uklonio sam vaš izvještaj."
 
-#: audio/config_commands.py:98
+#: audio/config_commands.py:97
 #, docstring
-msgid "Show the version of the Cog and its PyLav dependencies."
-msgstr "Pokažite verziju Zupčanika i njegove PyLav ovisnosti."
+msgid "Show the version of the Cog and PyLav"
+msgstr ""
 
-#: audio/config_commands.py:114
+#: audio/config_commands.py:113
 msgid "Library / Cog"
 msgstr "Knjižnica / Zupčanik"
 
-#: audio/config_commands.py:115
+#: audio/config_commands.py:114
 msgid "Version"
 msgstr "Verzija"
 
-#: audio/config_commands.py:129
+#: audio/config_commands.py:128
 #, docstring
-msgid "Global configuration options, which apply to all servers."
-msgstr "Globalne konfiguracijske opcije koje se primjenjuju na sve poslužitelje."
+msgid "Bot-wide settings."
+msgstr ""
 
-#: audio/config_commands.py:133
+#: audio/config_commands.py:132
 #, docstring
 msgid "Set the maximum volume a server can set"
 msgstr "Postavi maksimalnu glasnoću koju server može postaviti"
 
-#: audio/config_commands.py:141
+#: audio/config_commands.py:140
 msgid "You have to specify a volume less than or equal to 1,000%."
 msgstr "Morate navesti jedinicu manju ili jednaku 1000%."
 
-#: audio/config_commands.py:149
-msgid "You have to specify a volume greater than 0%."
-msgstr "Morate navesti jedinicu veću od 0%."
+#: audio/config_commands.py:148 audio/config_commands.py:626
+msgid "The maximum volume must be greater than 0%."
+msgstr ""
 
-#: audio/config_commands.py:157
-msgid "The maximum volume I will allow anyone in any server to set is {volume_value}%"
-msgstr "Maksimalna jedinica koju ću dopustiti bilo kome na bilo kojem poslužitelju da postavi je {volume_value}%"
+#: audio/config_commands.py:156
+msgid "The maximum volume I will allow anyone in any server is now set to {volume_variable_do_not_translate}%"
+msgstr ""
 
-#: audio/config_commands.py:167 audio/config_commands.py:667
+#: audio/config_commands.py:166 audio/config_commands.py:679
 #, docstring
 msgid "Set whether I should deafen myself when playing."
 msgstr "Postavi da li bih se trebao zaglušiti dok igram."
 
-#: audio/config_commands.py:176
+#: audio/config_commands.py:175
 msgid "From now on, I will deafen myself when joining a voice channel."
 msgstr "Od sada ću se zaglušiti kada se pridružim glasovnom kanalu."
 
-#: audio/config_commands.py:178
+#: audio/config_commands.py:177
 msgid "From now on, I will no longer deafen myself when joining a voice channel."
 msgstr "Od sada se više neću zaglušivati kada se pridružim glasovnom kanalu."
 
-#: audio/config_commands.py:186
+#: audio/config_commands.py:185
 #, docstring
 msgid "Set whether the server is allowed to enable auto shuffle."
 msgstr "Postavite je li poslužitelju dopušteno omogućiti automatsko miješanje."
 
-#: audio/config_commands.py:196
+#: audio/config_commands.py:195
 msgid "From now on, I will auto shuffle my track queue when new songs are added."
 msgstr "Od sada ću automatski izmiješati red čekanja na pjesmi kada se dodaju nove pjesme."
 
-#: audio/config_commands.py:198
+#: audio/config_commands.py:197
 msgid "From now on, I will no longer auto shuffle my track queue when new songs are added."
 msgstr "Od sada više neću automatski mijenjati red čekanja na pjesmi kada se dodaju nove pjesme."
 
-#: audio/config_commands.py:206 audio/config_commands.py:735
+#: audio/config_commands.py:205 audio/config_commands.py:747
 #, docstring
 msgid "Set whether I should allow users to shuffle the queue"
 msgstr "Postavljanje trebam li korisnicima dopustiti miješanje reda čekanja"
 
-#: audio/config_commands.py:216
+#: audio/config_commands.py:215
 msgid "From now on, I will allow users to shuffle the queue."
 msgstr "Od sada ću korisnicima dopustiti miješanje reda čekanja."
 
-#: audio/config_commands.py:218
+#: audio/config_commands.py:217
 msgid "From now on, I will no longer allow users to shuffle the queue."
 msgstr "Od sada više neću dopustiti korisnicima da miješaju red čekanja."
 
-#: audio/config_commands.py:226
+#: audio/config_commands.py:225
 #, docstring
 msgid "Set whether I should automatically play songs when the queue is empty."
 msgstr "Postavite trebam li automatski reproducirati pjesme kada je red čekanja prazan."
 
-#: audio/config_commands.py:235
+#: audio/config_commands.py:234
 msgid "From now on, I will automatically play songs from the specified playlist when the queue is empty."
 msgstr "Od sada ću automatski reproducirati pjesme s navedenog popisa za reprodukciju kada je red čekanja prazan."
 
-#: audio/config_commands.py:239
+#: audio/config_commands.py:238
 msgid "From now on, I will no longer automatically play songs from the specified playlist when the queue is empty."
 msgstr "Od sada više neću automatski reproducirati pjesme s navedenog popisa za reproduciranje kada je red čekanja prazan."
 
-#: audio/config_commands.py:249
+#: audio/config_commands.py:248
 #, docstring
 msgid "Set whether I should disconnect from the voice channel."
 msgstr "Postavite trebam li prekinuti vezu s glasovnim kanalom."
 
-#: audio/config_commands.py:259
+#: audio/config_commands.py:258
 #, docstring
 msgid "Set whether I should disconnect from the voice channel when the queue is empty.\n\n"
 "        Arguments:\n"
@@ -177,19 +177,19 @@ msgstr "Postavite trebam li prekinuti vezu s glasovnim kanalom kada je red čeka
 "            Prihvaća drugi, minute, sate, dane i tjedne (ako nije navedena jedinica, pretpostavlja se da će trajanje biti dano u sekundama)\n"
 "        "
 
-#: audio/config_commands.py:279 audio/config_commands.py:853
-msgid "I will disconnect from the voice channel when the queue is empty after {time_to_dc}."
-msgstr "Prekinut ću vezu s glasovnim kanalom kada je red prazan nakon toga {time_to_dc}."
+#: audio/config_commands.py:278 audio/config_commands.py:869
+msgid "I will disconnect from the voice channel when the queue is empty after {time_to_dc_variable_do_not_translate}."
+msgstr ""
 
-#: audio/config_commands.py:283 audio/config_commands.py:857
+#: audio/config_commands.py:282 audio/config_commands.py:873
 msgid "I will disconnect from the voice channel when the queue is empty after 60 seconds."
 msgstr "Odspojit ću se s glasovnog kanala kada je red prazan nakon 60 sekundi."
 
-#: audio/config_commands.py:285 audio/config_commands.py:859
+#: audio/config_commands.py:284 audio/config_commands.py:875
 msgid "I will no longer disconnect from the voice channel when the queue is empty."
 msgstr "Više se neću isključiti iz glasovnog kanala kada je red prazan."
 
-#: audio/config_commands.py:302
+#: audio/config_commands.py:301
 #, docstring
 msgid "Set whether I should disconnect from the voice channel when alone.\n\n"
 "        Arguments:\n"
@@ -206,197 +206,193 @@ msgstr "Postavite trebam li se isključiti s glasovnog kanala kad sam sam.\n\n"
 "            Ako nije navedena jedinica, pretpostavlja se da će trajanje biti dano u sekundama.\n"
 "        "
 
-#: audio/config_commands.py:323 audio/config_commands.py:919
-msgid "I will disconnect from the voice channel when alone after {time_to_dc}."
-msgstr "Odvojit ću se od glasovnog kanala kad sam nakon toga sam {time_to_dc}."
+#: audio/config_commands.py:322 audio/config_commands.py:939
+msgid "I will disconnect from the voice channel when alone after {time_to_dc_variable_do_not_translate}."
+msgstr ""
 
-#: audio/config_commands.py:327 audio/config_commands.py:923
+#: audio/config_commands.py:326 audio/config_commands.py:943
 msgid "I will disconnect from the voice channel when alone after 60 seconds."
 msgstr "Isključit ću se iz glasovnog kanala kad sam sam nakon 60 sekundi."
 
-#: audio/config_commands.py:329 audio/config_commands.py:925
+#: audio/config_commands.py:328 audio/config_commands.py:945
 msgid "I will no longer disconnect from the voice channel when alone."
 msgstr "Više se neću odvajati od glasovnog kanala kad sam sam."
 
-#: audio/config_commands.py:343
+#: audio/config_commands.py:342
 #, docstring
-msgid "Server configuration options."
-msgstr "Mogućnosti konfiguracije poslužitelja."
+msgid "Server-specific settings."
+msgstr ""
 
-#: audio/config_commands.py:347
+#: audio/config_commands.py:346
 #, docstring
 msgid "Add, remove or show the disc jockey roles and users for this server."
 msgstr "Dodajte, uklonite ili prikažite uloge i korisnike disk džokeja za ovaj poslužitelj."
 
-#: audio/config_commands.py:353
+#: audio/config_commands.py:352
 #, docstring
 msgid "Add disc jockey roles or users to this server."
 msgstr "Dodajte uloge ili korisnike disk džokeja na ovaj poslužitelj."
 
-#: audio/config_commands.py:366 audio/config_commands.py:385
-msgid "Added {role_list} to the disc jockey roles."
-msgstr "Dodan {role_list} do uloga disk džokeja."
+#: audio/config_commands.py:365 audio/config_commands.py:388
+msgid "I have added {role_list_variable_do_not_translate} to the disc jockey roles."
+msgstr ""
 
-#: audio/config_commands.py:369 audio/config_commands.py:391
-msgid "Added {user_list} to the disc jockey users."
-msgstr "Dodan {user_list} korisnicima disk džokeja."
+#: audio/config_commands.py:370 audio/config_commands.py:394
+msgid "I have added {user_list_variable_do_not_translate} to the disc jockey users."
+msgstr ""
 
-#: audio/config_commands.py:376
-msgid "Added {role_list} to the disc jockey roles and {user_list} to the disc jockey users."
-msgstr "Dodan {role_list} na uloge disk džokeja i {user_list} korisnicima disk džokeja."
+#: audio/config_commands.py:379
+msgid "I have added {role_list_variable_do_not_translate} to the disc jockey roles and {user_list_variable_do_not_translate} to the disc jockey users."
+msgstr ""
 
-#: audio/config_commands.py:408
+#: audio/config_commands.py:411
 #, docstring
 msgid "Remove disc jockey roles or users in this server."
 msgstr "Uklonite uloge disk džokeja ili korisnike na ovom poslužitelju."
 
-#: audio/config_commands.py:440
-msgid "I have removed {role_list} from the disc jockey roles and {user_list} from the disc jockey users, as well as {number_list} from the disc jockey roles and users."
-msgstr "Uklonio sam {role_list} iz uloga disk džokeja i {user_list} od korisnika disk džokeja, kao i od korisnika disk džo {number_list} iz uloga disk džokeja i korisnika."
+#: audio/config_commands.py:443
+msgid "I have removed {role_list_variable_do_not_translate} from the disc jockey roles and {user_list_variable_do_not_translate} from the disc jockey users, as well as {number_list_variable_do_not_translate} from the disc jockey roles and users."
+msgstr ""
 
-#: audio/config_commands.py:448
-msgid "I have removed {role_list} from the disc jockey roles and {user_list} from the disc jockey users."
-msgstr "Uklonio sam {role_list} iz uloga disk džokeja i {user_list} od korisnika disk džokeja."
+#: audio/config_commands.py:451
+msgid "I have removed {role_list_variable_do_not_translate} from the disc jockey roles and {user_list_variable_do_not_translate} from the disc jockey users."
+msgstr ""
 
-#: audio/config_commands.py:455
-msgid "I have removed {role_list} from the disc jockey roles."
-msgstr "Uklonio sam {role_list} iz uloga disk džokeja."
+#: audio/config_commands.py:459
+msgid "I have removed {role_list_variable_do_not_translate} from the disc jockey roles."
+msgstr ""
 
-#: audio/config_commands.py:461
-msgid "I have removed {user_list} from the disc jockey users."
-msgstr "Uklonio sam {user_list} od korisnika disk džokeja."
+#: audio/config_commands.py:465
+msgid "I have removed {user_list_variable_do_not_translate} from the disc jockey users."
+msgstr ""
 
-#: audio/config_commands.py:467
-msgid "I have removed {user_or_role_id_list} from the disc jockey roles and users."
-msgstr "Uklonio sam {user_or_role_id_list} iz uloga disk džokeja i korisnika."
-
-#: audio/config_commands.py:482
-msgid "I have Removed `{user_or_role_id}` from the disc jockey roles and users."
-msgstr "Uklonio sam '{user_or_role_id}\" od uloga disk džokeja i korisnika."
+#: audio/config_commands.py:471
+msgid "I have removed {user_or_role_id_list_variable_do_not_translate} from the disc jockey roles and users."
+msgstr ""
 
 #: audio/config_commands.py:486
-msgid "I have removed {role_name} from the disc jockey roles."
-msgstr "Uklonio sam {role_name} iz uloga disk džokeja."
+msgid "I have Removed `{user_or_role_id_variable_do_not_translate}` from the disc jockey roles and users."
+msgstr ""
 
-#: audio/config_commands.py:489
-msgid "I have removed {user_name} from the disc jockey users."
-msgstr "Uklonio sam {user_name} od korisnika disk džokeja."
+#: audio/config_commands.py:490
+msgid "I have removed {role_name_variable_do_not_translate} from the disc jockey roles."
+msgstr ""
 
 #: audio/config_commands.py:495
+msgid "I have removed {user_name_variable_do_not_translate} from the disc jockey users."
+msgstr ""
+
+#: audio/config_commands.py:503
 #, docstring
 msgid "List the disc jockey roles and users for this server."
 msgstr "Navedite uloge disk džokeja i korisnike za ovaj poslužitelj."
 
-#: audio/config_commands.py:546
+#: audio/config_commands.py:554
 msgid "There are no disc jockey roles or disc jockey users set in this server."
 msgstr "Na ovom poslužitelju nema postavljenih uloga disk džokeja ili korisnika disk džokeja."
 
-#: audio/config_commands.py:557 audio/config_commands.py:562
+#: audio/config_commands.py:565 audio/config_commands.py:570
 msgid "Disc Jockey Roles"
 msgstr "Uloge džokeja diska"
 
-#: audio/config_commands.py:568 audio/config_commands.py:573
+#: audio/config_commands.py:576 audio/config_commands.py:581
 msgid "Disc Jockey Users"
 msgstr "Korisnici disk džokeja"
 
-#: audio/config_commands.py:581
+#: audio/config_commands.py:589
 #, docstring
 msgid "Clear the disc jockey roles and users for this server."
 msgstr "Očistite uloge disk džokeja i korisnike za ovaj poslužitelj."
 
-#: audio/config_commands.py:593
+#: audio/config_commands.py:601
 msgid "I have removed all disc jockey roles and users from this server."
 msgstr "Uklonio sam sve uloge i korisnike disk džokeja s ovog poslužitelja."
 
-#: audio/config_commands.py:601
+#: audio/config_commands.py:609
 #, docstring
 msgid "Set the maximum volume a user can set."
 msgstr "Postavite maksimalnu jedinicu koju korisnik može postaviti."
 
-#: audio/config_commands.py:610
-msgid "Volume must be less than 1,000%."
-msgstr "Glasnoća mora biti manja od 1.000%."
-
 #: audio/config_commands.py:618
-msgid "Volume must be greater than 0%."
-msgstr "Glasnoća mora biti veća od 0%."
+msgid "The maximum volume must be less than 1,000%."
+msgstr ""
 
-#: audio/config_commands.py:627
-msgid "My owner has told me that server-specific volume must be between 0% and {volume_value}%."
-msgstr "Vlasnik mi je rekao da jedinica specifična za poslužitelj mora biti između 0% i {volume_value}%."
+#: audio/config_commands.py:635
+msgid "My owner has told me that server-specific volume must be between 0% and {volume_variable_do_not_translate}%."
+msgstr ""
 
-#: audio/config_commands.py:645
-msgid "Volume must be between 0% and {volume_value}%."
-msgstr "Glasnoća mora biti između 0% i {volume_value}%."
+#: audio/config_commands.py:655
+msgid "The maximum volume must be between 0% and {volume_variable_do_not_translate}%."
+msgstr ""
 
-#: audio/config_commands.py:659
-msgid "Max volume set to {volume_value}%."
-msgstr "Maksimalna glasnoća postavljena na {volume_value}%."
+#: audio/config_commands.py:669
+msgid "The maximum volume users can set in this server is now {volume_variable_do_not_translate}%."
+msgstr ""
 
-#: audio/config_commands.py:676
-msgid "My owner is forcing me to deafen myself when playing."
-msgstr "Moj vlasnik me prisiljava da se zaglušim dok igram."
+#: audio/config_commands.py:688
+msgid "My owner has requested that I always deafen myself when joining a voice channel."
+msgstr ""
 
-#: audio/config_commands.py:693
+#: audio/config_commands.py:705
 msgid "I will deafen myself when joining voice channels on this server."
 msgstr "Zaglušit ću se prilikom pridruživanja glasovnim kanalima na ovom poslužitelju."
 
-#: audio/config_commands.py:695
+#: audio/config_commands.py:707
 msgid "I will no longer deafen myself when joining voice channels on this server."
 msgstr "Više se neću zaglušivati kada se pridružim glasovnim kanalima na ovom poslužitelju."
 
-#: audio/config_commands.py:703
+#: audio/config_commands.py:715
 #, docstring
 msgid "Set whether I should shuffle the queue after adding every new song."
 msgstr "Postavite trebam li izmiješati red čekanja nakon dodavanja svake nove pjesme."
 
-#: audio/config_commands.py:711
+#: audio/config_commands.py:723
 msgid "My owner has turned off the auto shuffle capability for all servers."
 msgstr "Moj vlasnik je isključio mogućnost automatskog miješanja za sve poslužitelje."
 
-#: audio/config_commands.py:725
-msgid "Auto shuffle turned on for this server"
-msgstr "Automatsko miješanje uključeno za ovaj poslužitelj"
+#: audio/config_commands.py:737
+msgid "Auto shuffle turned on for this server."
+msgstr ""
 
-#: audio/config_commands.py:727
-msgid "Auto shuffle turned off for this server"
-msgstr "Automatsko miješanje isključeno za ovaj poslužitelj"
+#: audio/config_commands.py:739
+msgid "Auto shuffle turned off for this server."
+msgstr ""
 
-#: audio/config_commands.py:745
+#: audio/config_commands.py:757
 msgid "My owner has turned off the shuffle capability for all servers."
 msgstr "Moj vlasnik je isključio mogućnost miješanja za sve servere."
 
-#: audio/config_commands.py:758
-msgid "Shuffling turned on for this server"
-msgstr "Za ovaj poslužitelj uključeno je miješanje"
+#: audio/config_commands.py:770
+msgid "Shuffling turned on for this server."
+msgstr ""
 
-#: audio/config_commands.py:760
-msgid "Shuffling turned off for this server"
-msgstr "Miješanje je isključeno za ovaj poslužitelj"
+#: audio/config_commands.py:772
+msgid "Shuffling turned off for this server."
+msgstr ""
 
-#: audio/config_commands.py:768
+#: audio/config_commands.py:780
 #, docstring
 msgid "Set whether the bot should automatically play songs when the queue is empty."
 msgstr "Postavite treba li bot automatski reproducirati pjesme kada je red čekanja prazan."
 
-#: audio/config_commands.py:777
+#: audio/config_commands.py:789
 msgid "My owner has turned off the autoplay capability for all servers."
 msgstr "Moj vlasnik je isključio mogućnost automatske reprodukcije za sve poslužitelje."
 
-#: audio/config_commands.py:794
+#: audio/config_commands.py:806
 msgid "From now on, I will automatically play songs when the queue is empty."
 msgstr "Od sada ću automatski reproducirati pjesme kad red bude prazan."
 
-#: audio/config_commands.py:796
+#: audio/config_commands.py:808
 msgid "From now on, I will no longer automatically play songs when the queue is empty."
 msgstr "Od sada više neću automatski puštati pjesme kad je red prazan."
 
-#: audio/config_commands.py:804
+#: audio/config_commands.py:816
 #, docstring
 msgid "Set whether the bot should disconnect from the voice channel"
 msgstr "Postavite treba li se bot odspojit iz glasovnog kanala"
 
-#: audio/config_commands.py:814
+#: audio/config_commands.py:826
 #, docstring
 msgid "Set whether I should disconnect from the voice channel when the queue is empty.\n\n"
 "        Arguments:\n"
@@ -415,11 +411,11 @@ msgstr "Postavite trebam li prekinuti vezu s glasovnim kanalom kada je red čeka
 "            Ako nije navedena nijedna jedinica, pretpostavlja se da je trajanje sekunde.\n"
 "        "
 
-#: audio/config_commands.py:832
-msgid "My owner has told me to disconnect from the voice channel when the queue is empty after {time_to_dc}."
-msgstr "Vlasnik mi je rekao da prekinem vezu s glasovnim kanalom kada je red prazan nakon toga {time_to_dc}."
+#: audio/config_commands.py:844
+msgid "My owner has told me to disconnect from the voice channel when the queue is empty after {time_to_dc_variable_do_not_translate}."
+msgstr ""
 
-#: audio/config_commands.py:877
+#: audio/config_commands.py:893
 #, docstring
 msgid "Set whether I should disconnect from the voice channel when alone.\n\n"
 "        Arguments:\n"
@@ -440,272 +436,273 @@ msgstr "Postavite trebam li se isključiti s glasovnog kanala kad sam sam.\n\n"
 "            Ako nije navedena nijedna jedinica, pretpostavlja se da je trajanje sekunde.\n"
 "        "
 
-#: audio/config_commands.py:897
-msgid "My owner has told me to disconnect from the voice channel when alone after {time_to_dc}."
-msgstr "Vlasnik mi je rekao da se isključim s glasovnog kanala kad sam sam nakon toga {time_to_dc}."
+#: audio/config_commands.py:913
+msgid "My owner has told me to disconnect from the voice channel when alone after {time_to_dc_variable_do_not_translate}."
+msgstr ""
 
-#: audio/config_commands.py:937
+#: audio/config_commands.py:957
 #, docstring
 msgid "Specify a playlist to be used for autoplay."
 msgstr "Navedite popis za reproduciranje koji će se koristiti za automatsku reprodukciju."
 
-#: audio/config_commands.py:954
-msgid "From now on, I will use {playlist_name} to select songs for autoplay."
-msgstr "Od sada ću koristiti {playlist_name} da biste odabrali pjesme za automatsku reprodukciju."
+#: audio/config_commands.py:974
+msgid "From now on, I will use {playlist_name_variable_do_not_translate} to select songs for autoplay."
+msgstr ""
 
-#: audio/config_commands.py:964
+#: audio/config_commands.py:984
 #, docstring
 msgid "Restrict which channels where I can be used."
 msgstr "Ograničite koje kanale na kojima se mogu koristiti."
 
-#: audio/config_commands.py:970
+#: audio/config_commands.py:990
 #, docstring
 msgid "Restrict me only to accept PyLav commands executed from the specified channel."
 msgstr "Ograniči me samo na prihvaćanje PyLav naredbi izvršenih s navedenog kanala."
 
-#: audio/config_commands.py:985
-msgid "I do not have permission to send messages or send embed links or read messages in {channel_name}."
-msgstr "Nemam dozvolu za slanje poruka ili slanje veza za ugradnju ili čitanje poruka u {channel_name}."
+#: audio/config_commands.py:1005
+msgid "I do not have permission to send messages or send embed links or read messages in {channel_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/config_commands.py:1002
-msgid "I will only accept PyLav commands executed from {channel_name}."
-msgstr "Prihvatit ću samo PyLav naredbe izvršene od {channel_name}."
+#: audio/config_commands.py:1022
+msgid "I will only accept PyLav commands executed from {channel_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/config_commands.py:1012
+#: audio/config_commands.py:1032
 msgid "I will accept PyLav commands executed in all channels I can see in the server."
 msgstr "Prihvatit ću PyLav naredbe izvršene na svim kanalima koje mogu vidjeti na poslužitelju."
 
-#: audio/config_commands.py:1020
+#: audio/config_commands.py:1040
 #, docstring
 msgid "Restrict me only to join the specified voice channel."
 msgstr "Ograničite me samo da se pridružim navedenom govornom kanalu."
 
-#: audio/config_commands.py:1032 audio/hybrid_commands.py:107
-#: audio/player_commands.py:150
-msgid "I do not have permission to connect or speak in {channel_name}."
-msgstr "Nemam dozvolu za povezivanje ili govor u programu {channel_name}."
+#: audio/config_commands.py:1052 audio/hybrid_commands.py:108
+#: audio/player_commands.py:156
+msgid "I do not have permission to connect or speak in {channel_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/config_commands.py:1050
-msgid "I will only be allowed to join {channel_name}."
-msgstr "Samo ću se smjeti pridružiti. {channel_name}."
+#: audio/config_commands.py:1070
+msgid "I will only be allowed to join {channel_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/config_commands.py:1060
+#: audio/config_commands.py:1080
 msgid "I am allowed to join any voice channel in the server."
 msgstr "Dopušteno mi je da se pridružim bilo kojem glasovnom kanalu na poslužitelju."
 
-#: audio/context_menus.py:27 audio/context_menus.py:130
-msgid "I can not play songs in direct messages, sorry, try again in a server."
-msgstr "Ne mogu reproducirati pjesme u izravnim porukama, žao mi je, pokušajte ponovno na poslužitelju."
+#: audio/context_menus.py:27 audio/context_menus.py:133
+msgid "I can not play songs in direct messages. Sorry, try again on a server."
+msgstr ""
 
 #: audio/context_menus.py:38
 msgid "You need to be a disc jockey in this server to play tracks in this server."
 msgstr "Da biste reproducirali pjesme na ovom poslužitelju, morate biti disk džokej na ovom poslužitelju."
 
-#: audio/context_menus.py:55 audio/context_menus.py:156
-msgid "This command is not available in this channel, please use {channel_name}."
-msgstr "Ova naredba nije dostupna na ovom kanalu, koristite {channel_name}."
+#: audio/context_menus.py:55 audio/context_menus.py:159
+msgid "This command is unavailable in this channel. Please use {channel_name_variable_do_not_translate} instead."
+msgstr ""
 
-#: audio/context_menus.py:82
+#: audio/context_menus.py:84
 msgid "I could not find any suitable matches in this message."
 msgstr "Nisam mogao naći prikladne podudarnosti u ovoj poruci."
 
-#: audio/context_menus.py:84
+#: audio/context_menus.py:86
 msgid "I found many suitable matches in this message."
 msgstr "Pronašao sam mnogo prikladnih podudaranja u ovoj poruci."
 
-#: audio/context_menus.py:86
+#: audio/context_menus.py:88
 msgid "I found a single suitable match in this message."
 msgstr "Našao sam jednu prikladnu podudarnost u ovoj poruci."
 
-#: audio/context_menus.py:141
+#: audio/context_menus.py:144
 msgid "You need to be a disc jockey to play tracks in this server."
 msgstr "Morate biti disk džokej da biste reproducirali pjesme na ovom poslužitelju."
 
-#: audio/context_menus.py:173
-msgid "I could not find any supported activity in the activities {user_name} is partaking."
-msgstr "Nisam mogao pronaći nijednu podržanu aktivnost u aktivnostima {user_name} je blagovanje."
+#: audio/context_menus.py:178
+msgid "I could not find any supported activity in the activities {user_name_variable_do_not_translate} is partaking."
+msgstr ""
 
-#: audio/context_menus.py:205
-msgid "I could not find a valid Apple Music track in the activity {user_name} is partaking in."
-msgstr "U aktivnosti nisam mogao pronaći valjani apple music zapis {user_name} sudjeluje u."
+#: audio/context_menus.py:210
+msgid "I could not find a valid Apple Music track in the activity {user_name_variable_do_not_translate} is partaking in."
+msgstr ""
 
-#: audio/context_menus.py:221
-msgid "I could not find any tracks matching {query_value}."
-msgstr "Nisam mogao naći tragove koji se podudaraju. {query_value}."
+#: audio/context_menus.py:226
+msgid "I could not find any tracks matching {query_variable_do_not_translate}."
+msgstr ""
 
-#: audio/context_menus.py:238
-msgid "I could not figure out what {user_name} is listening to."
-msgstr "Nisam mogao shvatiti što. {user_name} je slušanje."
+#: audio/context_menus.py:243
+msgid "I could not figure out what {user_name_variable_do_not_translate} is listening to."
+msgstr ""
 
 #: audio/hybrid_commands.py:83
 msgid "You need to give me a query to enqueue."
 msgstr "Moraš mi dati upit da ga ostavim."
 
-#: audio/hybrid_commands.py:97 audio/player_commands.py:140
-msgid "You must be in a voice channel to allow me to connect"
-msgstr "Morate biti u glasovnom kanalu kako bi se povezao"
+#: audio/hybrid_commands.py:97
+msgid "You must be in a voice channel, so I can connect to it."
+msgstr ""
 
-#: audio/hybrid_commands.py:154
-msgid "{number_of_tracks} tracks enqueued."
-msgstr "{number_of_tracks} pjesme zaviđene."
+#: audio/hybrid_commands.py:155
+msgid "{track_name_variable_do_not_translate} enqueued."
+msgstr ""
 
-#: audio/hybrid_commands.py:162
-msgid "{track_name} enqueued"
-msgstr "{track_name} enqueued"
-
-#: audio/hybrid_commands.py:173 audio/player_commands.py:252
+#: audio/hybrid_commands.py:160 audio/player_commands.py:258
 msgid "No tracks were found for your query."
 msgstr "Za vaš upit nisu pronađeni zapisi."
 
-#: audio/hybrid_commands.py:236
+#: audio/hybrid_commands.py:162
+msgid "{number_of_tracks_variable_do_not_translate} tracks enqueued."
+msgstr ""
+
+#: audio/hybrid_commands.py:231
 msgid "You need to be in a voice channel if you do not specify which channel I should connect to."
 msgstr "Morate biti na glasovnom kanalu ako ne odredite na koji kanal bih se trebao povezati."
 
-#: audio/hybrid_commands.py:248
-msgid "I do not have permission to connect to {channel_name}."
-msgstr "Nemam dozvolu za povezivanje s {channel_name}."
+#: audio/hybrid_commands.py:243
+msgid "I do not have permission to connect to {channel_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/hybrid_commands.py:252
-msgid "I do not have permission to speak in {channel_name}."
-msgstr "Nemam dozvolu da govorim u {channel_name}."
+#: audio/hybrid_commands.py:247
+msgid "I do not have permission to speak in {channel_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/hybrid_commands.py:270
-msgid "You do not have permission to connect to {channel_name}."
-msgstr "Nemate dozvolu za povezivanje s {channel_name}."
+#: audio/hybrid_commands.py:265
+msgid "You do not have permission to connect to {channel_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/hybrid_commands.py:287
-msgid "I have been told only to join {channel_name} on this server."
-msgstr "Rečeno mi je samo da se pridružim. {channel_name} na ovom poslužitelju."
+#: audio/hybrid_commands.py:282
+msgid "I have been told only to join {channel_name_variable_do_not_translate} on this server."
+msgstr ""
 
-#: audio/hybrid_commands.py:297
-msgid "I have successfully connected to {channel_name}."
-msgstr "Uspješno sam se povezao s {channel_name}."
+#: audio/hybrid_commands.py:292
+msgid "I have successfully connected to {channel_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/hybrid_commands.py:323 audio/hybrid_commands.py:348
-#: audio/hybrid_commands.py:382 audio/hybrid_commands.py:413
-#: audio/hybrid_commands.py:446 audio/hybrid_commands.py:473
-#: audio/hybrid_commands.py:523 audio/hybrid_commands.py:559
-#: audio/hybrid_commands.py:598 audio/hybrid_commands.py:655
-#: audio/hybrid_commands.py:702 audio/hybrid_commands.py:711
-#: audio/hybrid_commands.py:810
+#: audio/hybrid_commands.py:318 audio/hybrid_commands.py:343
+#: audio/hybrid_commands.py:379 audio/hybrid_commands.py:410
+#: audio/hybrid_commands.py:443 audio/hybrid_commands.py:470
+#: audio/hybrid_commands.py:522 audio/hybrid_commands.py:561
+#: audio/hybrid_commands.py:599 audio/hybrid_commands.py:657
+#: audio/hybrid_commands.py:708 audio/hybrid_commands.py:717
+#: audio/hybrid_commands.py:826
 msgid "I am not currently playing anything on this server."
 msgstr "Trenutno ne igram ništa na ovom poslužitelju."
 
-#: audio/hybrid_commands.py:356
-msgid "I have skipped {track_name} as requested."
-msgstr "Preskočio sam {track_name} kao što je zatraženo."
+#: audio/hybrid_commands.py:351
+msgid "I have skipped {track_name_variable_do_not_translate} as requested."
+msgstr ""
 
-#: audio/hybrid_commands.py:390
+#: audio/hybrid_commands.py:387
 msgid "I have stopped the playback and cleared the queue as requested."
 msgstr "Zaustavio sam reprodukciju i očistio red kako sam tražio."
 
-#: audio/hybrid_commands.py:422
-msgid "I have disconnected from {channel_name} as requested."
-msgstr "Prekinuo sam vezu s {channel_name} kao što je zatraženo."
+#: audio/hybrid_commands.py:419
+msgid "I have disconnected from {channel_name_variable_do_not_translate} as requested."
+msgstr ""
 
-#: audio/hybrid_commands.py:481
+#: audio/hybrid_commands.py:478
 msgid "The server queue is currently empty."
 msgstr "Red čekanja poslužitelja trenutno je prazan."
 
-#: audio/hybrid_commands.py:489
+#: audio/hybrid_commands.py:486
 msgid "You are not allowed to shuffle the queue."
 msgstr "Nije vam dopušteno miješanje reda čekanja."
 
-#: audio/hybrid_commands.py:497
-msgid "{queue_size} tracks shuffled."
-msgstr "{queue_size} tragovi su izmiješani."
+#: audio/hybrid_commands.py:494
+msgid "{queue_size_variable_do_not_translate} tracks shuffled."
+msgstr ""
 
-#: audio/hybrid_commands.py:531
-msgid "I will now repeat the entire queue."
-msgstr "Sada ću ponoviti cijeli red."
+#: audio/hybrid_commands.py:530
+msgid "From now on, I will now repeat the entire queue."
+msgstr ""
 
-#: audio/hybrid_commands.py:534
-msgid "I will no longer repeat any tracks."
-msgstr "Neću više ponavljati nikakve tragove."
+#: audio/hybrid_commands.py:533
+msgid "From now on, I will no longer repeat any tracks."
+msgstr ""
 
 #: audio/hybrid_commands.py:537
-msgid "I will now repeat {track_name}."
-msgstr "Sada ću ponoviti {track_name}."
+msgid "From now on, I will now repeat {track_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/hybrid_commands.py:540
-msgid "the current track"
-msgstr "trenutna pjesma"
+#: audio/hybrid_commands.py:543
+msgid "From now on, I will now repeat the current track."
+msgstr ""
 
-#: audio/hybrid_commands.py:565
-msgid "The player is already paused, did you mean to run `{bot_command_prefix}{command_name}`"
-msgstr "Igrač je već pauziran, jeste li mislili trčati '{bot_command_prefix}{command_name}`"
+#: audio/hybrid_commands.py:567
+msgid "The player is already paused, did you mean to run {command_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/hybrid_commands.py:580
+#: audio/hybrid_commands.py:581
 msgid "I have now paused the player as requested."
 msgstr "Sada sam pauzirao igrača kako sam tražio."
 
-#: audio/hybrid_commands.py:604
-msgid "Player already resumed, did you mean to run `{bot_command_prefix}{command_name}`"
-msgstr "Igrač je već nastavio, jeste li mislili trčati '{bot_command_prefix}{command_name}`"
+#: audio/hybrid_commands.py:605
+msgid "The player already resumed, did you mean to run {command_name_variable_do_not_translate}."
+msgstr ""
 
-#: audio/hybrid_commands.py:617
+#: audio/hybrid_commands.py:619
 msgid "I have now resumed the player as requested."
 msgstr "Sada sam nastavio s igračem kako sam tražio."
 
-#: audio/hybrid_commands.py:639
-msgid "Volume must be less than 1,000%"
-msgstr "Volumen mora biti manji od 1.000%"
+#: audio/hybrid_commands.py:641
+msgid "I can not set the volume above 1,000%."
+msgstr ""
 
-#: audio/hybrid_commands.py:647
-msgid "Volume must be greater than 0%"
-msgstr "Glasnoća mora biti veća od 0%"
+#: audio/hybrid_commands.py:649
+msgid "I can not set the volume lower than 0%"
+msgstr ""
 
-#: audio/hybrid_commands.py:664
-msgid "Volume can not be higher than {max_volume_value}%."
-msgstr "Glasnoća ne može biti veća od {max_volume_value}%."
+#: audio/hybrid_commands.py:666
+msgid "I have been told to restrict the maximum volume to {max_volume_variable_do_not_translate}%."
+msgstr ""
 
-#: audio/hybrid_commands.py:673
-msgid "Player volume has been set to {volume_value}%."
-msgstr "Glasnoća igrača postavljena je na {volume_value}%."
+#: audio/hybrid_commands.py:677
+msgid "I have set the player volume to {volume_variable_do_not_translate}%."
+msgstr ""
 
-#: audio/hybrid_commands.py:721
+#: audio/hybrid_commands.py:727 audio/hybrid_commands.py:736
+#: audio/hybrid_commands.py:749
 msgid "Unable to seek track"
 msgstr "Nije moguće micati pjesmu"
 
-#: audio/hybrid_commands.py:722
-msgid "I am unable to seek this track as it is a stream."
-msgstr "Ne mogu tražiti ovu pjesmu jer je to potok."
+#: audio/hybrid_commands.py:728
+msgid "I can not seek this track as the server reports it is a live stream."
+msgstr ""
 
-#: audio/hybrid_commands.py:730
-msgid "Unable to seek track."
-msgstr "Nije moguće tražiti trag."
+#: audio/hybrid_commands.py:737
+msgid "I can not seek this track as the server report that this track does not support seeking."
+msgstr ""
 
-#: audio/hybrid_commands.py:739
+#: audio/hybrid_commands.py:750
 msgid "I can not seek the current track while the player is paused."
 msgstr "Ne mogu tražiti trenutnu stazu dok je igrač pauziran."
 
-#: audio/hybrid_commands.py:764
-msgid "I have moved the current track forward {number_of_seconds} seconds to the end of the track."
-msgstr "Pomaknuo sam trenutnu stazu naprijed {number_of_seconds} sekundi do kraja staze."
+#: audio/hybrid_commands.py:778
+msgid "I have moved the current track forward {number_of_seconds_variable_do_not_translate} seconds to the end of the track."
+msgstr ""
 
-#: audio/hybrid_commands.py:768
-msgid "I have moved the current track forward {number_of_seconds} seconds to position {timestamp_value}."
-msgstr "Pomaknuo sam trenutnu stazu naprijed {number_of_seconds} sekunde do položaja {timestamp_value}."
+#: audio/hybrid_commands.py:782
+msgid "I have moved the current track forward {number_of_seconds} seconds to position {timestamp_variable_do_not_translate}."
+msgstr ""
 
-#: audio/hybrid_commands.py:773
-msgid "I have moved the current track back {number_of_seconds} seconds to the beginning."
-msgstr "Pomaknuo sam trenutnu pjesmu natrag {number_of_seconds} sekundi do početka."
+#: audio/hybrid_commands.py:787
+msgid "I have moved the current track back {number_of_seconds_variable_do_not_translate} seconds to the beginning."
+msgstr ""
 
-#: audio/hybrid_commands.py:777
-msgid "I have moved the current track back {number_of_seconds} seconds to position {timestamp_value}."
-msgstr "Pomaknuo sam trenutnu pjesmu natrag {number_of_seconds} sekunde do položaja {timestamp_value}."
+#: audio/hybrid_commands.py:791
+msgid "I have moved the current track back {number_of_seconds} seconds to position {timestamp_variable_do_not_translate}."
+msgstr ""
 
-#: audio/hybrid_commands.py:781
+#: audio/hybrid_commands.py:797
 msgid "I have moved the current track to the beginning."
 msgstr "Pomaknuo sam trenutnu stazu na početak."
 
-#: audio/hybrid_commands.py:819
+#: audio/hybrid_commands.py:835
 msgid "The history of tracks is currently empty."
 msgstr "Povijest pjesama trenutno je prazna."
 
-#: audio/hybrid_commands.py:827
-msgid "Playing previous track: {track_name}"
-msgstr "Reproduciranje prethodne pjesme: {track_name}"
+#: audio/hybrid_commands.py:843
+msgid "Playing previous track: {track_name_variable_do_not_translate}."
+msgstr ""
 
 #: audio/player_commands.py:30
 msgid "Plays the specified track from the queue."
@@ -716,37 +713,40 @@ msgid "There are no songs in the queue."
 msgstr "Nema pjesama u redu čekanja."
 
 #: audio/player_commands.py:59
-msgid "Track index must be between 1 and {size_of_queue}"
-msgstr "Indeks zapisa mora biti između 1 i {size_of_queue}"
+msgid "Track index must be between 1 and {size_of_queue_variable_do_not_translate}"
+msgstr ""
 
 #: audio/player_commands.py:77
-msgid "There are no tracks in position {queue_position_value}."
-msgstr "Nema tragova na položaju {queue_position_value}."
+msgid "There are no tracks in position {queue_position_variable_do_not_translate}."
+msgstr ""
 
 #: audio/player_commands.py:89
-msgid "{track_name} will play after {current_track_name} finishes ({estimated_time_value})."
-msgstr "{track_name} igrat će se nakon {current_track_name} završava ({estimated_time_value})."
+msgid "{track_name_variable_do_not_translate} will play after {current_track_name_variable_do_not_translate} finishes ({estimated_time_variable_do_not_translate})."
+msgstr ""
 
-#: audio/player_commands.py:109
-msgid "{track_name} will start now\n"
-"{current_track_name} has been skipped."
-msgstr "{track_name} počet će sada\n"
-"{current_track_name} je preskočen."
+#: audio/player_commands.py:111
+msgid "{track_name_variable_do_not_translate} will start now\n"
+"{current_track_name_variable_do_not_translate} has been skipped."
+msgstr ""
 
-#: audio/player_commands.py:127
+#: audio/player_commands.py:133
 #, docstring
 msgid "Enqueue a track at the top of the queue."
 msgstr "Označite pjesmu na vrhu reda čekanja."
 
-#: audio/player_commands.py:231
-msgid "{number_of_tracks} tracks have been enqueued."
-msgstr "{number_of_tracks} Tragovi su zaviđeni."
+#: audio/player_commands.py:146
+msgid "You must be in a voice channel to allow me to connect"
+msgstr "Morate biti u glasovnom kanalu kako bi se povezao"
 
-#: audio/player_commands.py:241
-msgid "{track_name} has been enqueued."
-msgstr "{track_name} je zaokružen."
+#: audio/player_commands.py:237
+msgid "{number_of_tracks_variable_do_not_translate} tracks have been enqueued."
+msgstr ""
 
-#: audio/player_commands.py:262
+#: audio/player_commands.py:247
+msgid "{track_name_variable_do_not_translate} has been enqueued."
+msgstr ""
+
+#: audio/player_commands.py:268
 #, docstring
 msgid "\n"
 "        Remove the specified track from the queue.\n\n"
@@ -757,33 +757,33 @@ msgstr "\n"
 "        Ako navedete argument `remove_duplicates`, sve pjesme koje su iste kao Vaš URL ili indeksna pjesma će biti uklonjene.\n"
 "        "
 
-#: audio/player_commands.py:277
+#: audio/player_commands.py:283
 msgid "Queue is empty."
 msgstr "Red čekanja je prazan."
 
-#: audio/player_commands.py:290
-msgid "Track index must be between 1 and {queue_size}."
-msgstr "Indeks zapisa mora biti između 1 i {queue_size}."
+#: audio/player_commands.py:296
+msgid "Track index must be between 1 and {queue_size_variable_do_not_translate}."
+msgstr ""
 
-#: audio/player_commands.py:305
-msgid "There is no track in position {position_value}."
-msgstr "Nema zapisa na mjestu {position_value}."
+#: audio/player_commands.py:311
+msgid "There is no track in position {position_variable_do_not_translate}."
+msgstr ""
 
-#: audio/player_commands.py:337
-msgid "{track_name} not found in queue."
-msgstr "{track_name} nije pronađeno u redu čekanja."
+#: audio/player_commands.py:343
+msgid "{track_name_variable_do_not_translate} not found in queue."
+msgstr ""
 
-#: audio/player_commands.py:349
+#: audio/player_commands.py:355
 msgid "No tracks were removed from the queue."
 msgstr "Nijedan zapis nije uklonjen iz reda čekanja."
 
-#: audio/player_commands.py:357
-msgid "I have removed a single entry of {track_name} from the queue."
-msgstr "Uklonio sam jedan unos {track_name} iz reda čekanja."
+#: audio/player_commands.py:363
+msgid "I have removed a single entry of {track_name_variable_do_not_translate} from the queue."
+msgstr ""
 
-#: audio/player_commands.py:367
-msgid "I have removed {number_of_entries} entries of {track_name} from the queue."
-msgstr "Uklonio sam {number_of_entries} unosi od {track_name} iz reda čekanja."
+#: audio/player_commands.py:373
+msgid "I have removed {number_of_entries_variable_do_not_translate} entries of {track_name_variable_do_not_translate} from the queue."
+msgstr ""
 
 #: audio/slash_commands.py:48
 #, docstring
@@ -795,26 +795,26 @@ msgid "You have not selected something to play."
 msgstr "Niste odabrali nešto za igranje."
 
 #: audio/slash_commands.py:109
-msgid "Searching {service_name}"
-msgstr "Pretraživanje {service_name}"
+msgid "Searching {service_name_variable_do_not_translate}"
+msgstr ""
 
-#: audio/slash_commands.py:125 audio/slash_commands.py:138
-msgid "No results found on {service_name}"
-msgstr "Nisu pronađeni rezultati na {service_name}"
+#: audio/slash_commands.py:127 audio/slash_commands.py:140
+msgid "No results found on {service_name_variable_do_not_translate}"
+msgstr ""
 
 #: audio/utility_commands.py:32
 msgid "I am not connected to a voice channel."
 msgstr "Nisam povezan s glasovnim kanalom."
 
 #: audio/utility_commands.py:43
-msgid "Volume limit reached, player volume set to {volume_value}%"
-msgstr "Dosegnuto ograničenje glasnoće, glasnoća igrača postavljena na {volume_value}%"
+msgid "Volume limit reached, player volume set to {volume_variable_do_not_translate}%"
+msgstr ""
 
 #: audio/utility_commands.py:54
 msgid "Minimum volume reached, player volume set to 0%"
 msgstr "Dosegnuta je minimalna glasnoća, glasnoća playera postavljena je na 0%"
 
 #: audio/utility_commands.py:62
-msgid "Player volume set to {volume_value}%"
-msgstr "Glasnoća playera postavljena na {volume_value}%"
+msgid "Player volume set to {volume_variable_do_not_translate}%"
+msgstr ""
 
