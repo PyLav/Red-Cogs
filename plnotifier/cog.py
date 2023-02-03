@@ -228,7 +228,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
 
     @command_plnotify.command(name="version")
     async def command_plnotify_version(self, context: PyLavContext) -> None:
-        """Show the version of the Cog and its PyLav dependencies"""
+        """Show the version of the Cog and PyLav"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():

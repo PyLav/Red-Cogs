@@ -175,7 +175,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
             interaction.user
         ):  # Prevent non-bot owners from somehow acquiring and saving the modal.
             return await interaction.response.send_message(
-                _("You are not authorized to interact with this"), ephemeral=True
+                _("You are not authorized to interact with this."), ephemeral=True
             )
         await interaction.response.defer(ephemeral=True)
 
@@ -186,9 +186,9 @@ class ConfigureIPRotationModal(discord.ui.Modal):
             except netaddr.core.AddrFormatError as exc:
                 return await send_method(
                     embed=await self.bot.pylav.construct_embed(
-                        description=_("Invalid IP block - {error_variable_do_not_translate}").format(
-                            error_variable_do_not_translate=exc
-                        ),
+                        description=_(
+                            "The IP block you have provided is not valid; {error_variable_do_not_translate}."
+                        ).format(error_variable_do_not_translate=exc),
                         messageable=interaction,
                     ),
                     ephemeral=True,
@@ -198,10 +198,9 @@ class ConfigureIPRotationModal(discord.ui.Modal):
             ip_blocks = []
 
         if not ip_blocks:
-
             return await send_method(
                 embed=await self.bot.pylav.construct_embed(
-                    description=_("No IP blocks were provided"),
+                    description=_("No IP blocks were provided."),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -211,12 +210,11 @@ class ConfigureIPRotationModal(discord.ui.Modal):
             try:
                 excluded_ips = list(map(str, map(IPAddress, set(self.ip_blocks.value.split(",")))))
             except netaddr.core.AddrFormatError as exc:
-
                 return await send_method(
                     embed=await self.bot.pylav.construct_embed(
-                        description=_("Invalid IP address - {error_variable_do_not_translate}").format(
-                            error_variable_do_not_translate=exc
-                        ),
+                        description=_(
+                            "The IP address you have provided is not valid; {error_variable_do_not_translate}"
+                        ).format(error_variable_do_not_translate=exc),
                         messageable=interaction,
                     ),
                     ephemeral=True,
@@ -235,9 +233,9 @@ class ConfigureIPRotationModal(discord.ui.Modal):
         if strategy not in stategy_mapping:
             return await send_method(
                 embed=await self.bot.pylav.construct_embed(
-                    description=_("Invalid strategy, must be one of: {options_variable_do_not_translate}").format(
-                        options_variable_do_not_translate=humanize_list(list(stategy_mapping.values()))
-                    ),
+                    description=_(
+                        "The strategy you provided is invalid. You must be one of: {options_variable_do_not_translate}."
+                    ).format(options_variable_do_not_translate=humanize_list(list(stategy_mapping.values()))),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -251,7 +249,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
         except ValueError:
             return await send_method(
                 embed=await self.bot.pylav.construct_embed(
-                    description=_("Invalid retry limit, must be a number greater than or equals to -1"),
+                    description=_("The retry limit must be a number greater than or equal to -1."),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -266,7 +264,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
         except ValueError:
             return await send_method(
                 embed=await self.bot.pylav.construct_embed(
-                    description=_("Invalid search trigger, must be 0 or 1"),
+                    description=_("The search trigger must be 0 or 1."),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -285,7 +283,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
         await config.update_yaml(yaml_data)
         return await send_method(
             embed=await self.bot.pylav.construct_embed(
-                description=_("IP rotation configuration saved."),
+                description=_("IP rotation settings saved."),
                 messageable=interaction,
             ),
             ephemeral=True,
@@ -320,7 +318,9 @@ class ConfigureGoogleAccountModal(discord.ui.Modal):
             label=shorten_string(max_length=100, string=_("password")),
             style=discord.TextStyle.short,
             required=True,
-            placeholder=shorten_string(max_length=100, string=_("If you have 2FA you will need an app password")),
+            placeholder=shorten_string(
+                max_length=100, string=_("If you have 2FA you will need an application password")
+            ),
             min_length=8,
             max_length=100,
         )
@@ -378,7 +378,7 @@ class ConfigureHTTPProxyModal(discord.ui.Modal):
             label=shorten_string(max_length=100, string=_("Hostname")),
             style=discord.TextStyle.short,
             required=True,
-            placeholder=shorten_string(max_length=100, string=_("Hostname of the proxy, (ip or domain or localhost)")),
+            placeholder=shorten_string(max_length=100, string=_("Hostname of the proxy, (IP or domain or localhost)")),
         )
 
         self.port = discord.ui.TextInput(
@@ -396,7 +396,9 @@ class ConfigureHTTPProxyModal(discord.ui.Modal):
             required=False,
             placeholder=shorten_string(
                 max_length=100,
-                string=_("Optional user for basic authentication fields, leave blank if you don't use basic auth"),
+                string=_(
+                    "Optional user for basic authentication fields. Leave blank if you do not use basic authentication"
+                ),
             ),
         )
         self.password = discord.ui.TextInput(
@@ -405,7 +407,9 @@ class ConfigureHTTPProxyModal(discord.ui.Modal):
             required=False,
             placeholder=shorten_string(
                 max_length=100,
-                string=_("Optional password for basic authentication fields, leave blank if you don't use basic auth"),
+                string=_(
+                    "Optional password for basic authentication fields. Leave blank if you do not use basic authentication."
+                ),
             ),
         )
         self.add_item(self.host)
@@ -429,7 +433,7 @@ class ConfigureHTTPProxyModal(discord.ui.Modal):
         except ValueError:
             return await send_method(
                 embed=await self.bot.pylav.construct_embed(
-                    description=_("Invalid port, must be a number between 0 and 65536"),
+                    description=_("The port provided is not valid. It must be between 0 and 65536."),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -446,7 +450,7 @@ class ConfigureHTTPProxyModal(discord.ui.Modal):
         await config.update_yaml(yaml_data)
         return await send_method(
             embed=await self.bot.pylav.construct_embed(
-                description=_("HTTP proxy configuration saved."),
+                description=_("HTTP proxy settings saved."),
                 messageable=interaction,
             ),
             ephemeral=True,

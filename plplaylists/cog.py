@@ -72,7 +72,7 @@ class PyLavPlaylists(
     @slash_playlist.command(name="version")
     @app_commands.guild_only()
     async def slash_playlist_version(self, interaction: DISCORD_INTERACTION_TYPE) -> None:
-        """Show the version of the Cog and it's PyLav dependencies"""
+        """Show the version of the Cog and PyLav"""
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
@@ -125,7 +125,7 @@ class PyLavPlaylists(
                 timeout=120,
             )
 
-            title = _("Let's create a playlist!")
+            title = _("Let us create a playlist!")
             description = _(
                 "(**1**) - Apply changes to playlist.\n"
                 "(**2**) - Cancel any changes made.\n"
@@ -160,7 +160,7 @@ class PyLavPlaylists(
         if not tracks and timed_out:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    title=_("Playlist not created"),
+                    title=_("I did not create this playlist."),
                     description=_("No tracks were provided in time."),
                     messageable=context,
                 ),
@@ -174,7 +174,7 @@ class PyLavPlaylists(
         )
         await context.send(
             embed=await context.pylav.construct_embed(
-                title=_("Playlist created"),
+                title=_("I have created a new playlist."),
                 description=_(
                     "Name: `{name_variable_do_not_translate}`\nIdentifier: `{id_variable_do_not_translate}`\nTracks: `{track_count_variable_do_not_translate}`"
                 ).format(
@@ -246,7 +246,7 @@ class PyLavPlaylists(
                 embed=await context.pylav.construct_embed(
                     messageable=context,
                     title=_("Nothing to save"),
-                    description=_("There is nothing in the queue to save"),
+                    description=_("There is nothing in the queue to save."),
                 ),
                 ephemeral=True,
             )
@@ -284,7 +284,7 @@ class PyLavPlaylists(
                 embed=await context.pylav.construct_embed(
                     messageable=context,
                     description=_(
-                        "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} cannot be managed by yourself"
+                        "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} cannot be managed by yourself."
                     ).format(
                         user_variable_do_not_translate=context.author.mention,
                         playlist_name_variable_do_not_translate=await playlist.get_name_formatted(with_url=True),
@@ -347,11 +347,11 @@ class PyLavPlaylists(
         if not (invoked_with_delete or invoked_with_queue):
             name = await playlist.fetch_name()
             if manageable:
-                title = _("Let's manage: {playlist_name_variable_do_not_translate}").format(
+                title = _("Let us manage: {playlist_name_variable_do_not_translate}.").format(
                     playlist_name_variable_do_not_translate=name
                 )
             else:
-                title = _("Let's take a look at: {playlist_name_variable_do_not_translate}").format(
+                title = _("Let us take a look at: {playlist_name_variable_do_not_translate}.").format(
                     playlist_name_variable_do_not_translate=name
                 )
             description = info_description + playlist_info
@@ -386,10 +386,10 @@ class PyLavPlaylists(
             await playlist.delete()
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    title=_("Playlist deleted"),
+                    title=_("I have deleted a playlist."),
                     messageable=context,
                     description=_(
-                        "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has been deleted"
+                        "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has been deleted."
                     ).format(
                         user_variable_do_not_translate=context.author.mention,
                         playlist_name_variable_do_not_translate=await playlist.get_name_formatted(with_url=True),
@@ -442,12 +442,12 @@ class PyLavPlaylists(
                             embed=await context.pylav.construct_embed(
                                 messageable=context,
                                 description=_(
-                                    "Playlist {playlist_name_variable_do_not_translate} could not be updated with URL: <{url_variable_do_not_translate}>"
+                                    "Playlist {playlist_name_variable_do_not_translate} could not be updated with URL: {url_variable_do_not_translate}"
                                 ).format(
                                     playlist_name_variable_do_not_translate=bold(
                                         await playlist.get_name_formatted(with_url=True)
                                     ),
-                                    url_variable_do_not_translate=url,
+                                    url_variable_do_not_translate=f"<{url}>",
                                 ),
                             ),
                             ephemeral=True,
@@ -481,25 +481,27 @@ class PyLavPlaylists(
         if changed:
             extras = ""
             if tracks_removed:
-                extras += _(
-                    "\n{track_count_variable_do_not_translate} {track_plural_variable_do_not_translate} removed from the playlist"
-                ).format(
-                    track_count_variable_do_not_translate=tracks_removed,
-                    track_plural_variable_do_not_translate=_("track") if tracks_removed == 1 else _("tracks"),
-                )
+                match tracks_removed:
+                    case 1:
+                        extras += _("\n1 track was removed from the playlist.")
+                    case __:
+                        extras += _(
+                            "\n{track_count_variable_do_not_translate} tracks were removed from the playlist."
+                        ).format(track_count_variable_do_not_translate=tracks_removed)
             if tracks_added:
-                extras += _(
-                    "\n{track_count_variable_do_not_translate} {track_plural_variable_do_not_translate} added to the playlist"
-                ).format(
-                    track_count_variable_do_not_translate=tracks_added,
-                    track_plural_variable_do_not_translate=_("track") if tracks_added == 1 else _("tracks"),
-                )
+                match tracks_added:
+                    case 1:
+                        extras += _("\n1 track was added to the playlist.")
+                    case __:
+                        extras += _(
+                            "\n{track_count_variable_do_not_translate} tracks were added to the playlist."
+                        ).format(track_count_variable_do_not_translate=tracks_added)
             await context.send(
                 embed=await context.pylav.construct_embed(
                     messageable=context,
                     title=_("Playlist updated"),
                     description=_(
-                        "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has been updated.{extras_variable_do_not_translate}"
+                        "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has been updated.{extras_variable_do_not_translate}."
                     ).format(
                         user_variable_do_not_translate=context.author.mention,
                         playlist_name_variable_do_not_translate=await playlist.get_name_formatted(with_url=True),
@@ -514,7 +516,7 @@ class PyLavPlaylists(
                     messageable=context,
                     title=_("Playlist unchanged"),
                     description=_(
-                        "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has not been updated"
+                        "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has not been updated."
                     ).format(
                         user_variable_do_not_translate=context.author.mention,
                         playlist_name_variable_do_not_translate=await playlist.get_name_formatted(with_url=True),
@@ -565,7 +567,7 @@ class PyLavPlaylists(
                 embed=await context.pylav.construct_embed(
                     messageable=context,
                     description=_(
-                        "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} cannot be managed by yourself"
+                        "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} cannot be managed by yourself."
                     ).format(
                         user_variable_do_not_translate=context.author.mention,
                         playlist_name_variable_do_not_translate=await playlist.get_name_formatted(with_url=True),
@@ -580,7 +582,7 @@ class PyLavPlaylists(
                 title=_("Playlist deleted"),
                 messageable=context,
                 description=_(
-                    "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has been deleted"
+                    "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has been deleted."
                 ).format(
                     user_variable_do_not_translate=context.author.mention,
                     playlist_name_variable_do_not_translate=await playlist.get_name_formatted(with_url=True),
@@ -633,7 +635,7 @@ class PyLavPlaylists(
                 embed=await context.pylav.construct_embed(
                     messageable=context,
                     title=_("Nothing to save"),
-                    description=_("There is nothing in the queue to save"),
+                    description=_("There is nothing in the queue to save."),
                 ),
                 ephemeral=True,
             )
@@ -651,7 +653,7 @@ class PyLavPlaylists(
                 embed=await context.pylav.construct_embed(
                     messageable=context,
                     description=_(
-                        "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} cannot be managed by yourself"
+                        "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} cannot be managed by yourself."
                     ).format(
                         user_variable_do_not_translate=context.author.mention,
                         playlist_name_variable_do_not_translate=await playlist.get_name_formatted(with_url=True),
@@ -671,19 +673,22 @@ class PyLavPlaylists(
         if changed:
             extras = ""
             if tracks_added:
-                extras += _(
-                    "\n{track_count_variable_do_not_translate} {track_plural_variable_do_not_translate} added to the playlist"
-                ).format(
-                    track_count_variable_do_not_translate=tracks_added,
-                    track_plural_variable_do_not_translate=_("track") if tracks_added == 1 else _("tracks"),
-                )
+                match tracks_added:
+                    case 1:
+                        extras += _("\n1 track was added to the playlist.")
+                    case __:
+                        extras += _(
+                            "\n{track_count_variable_do_not_translate} tracks were added to the playlist."
+                        ).format(
+                            track_count_variable_do_not_translate=tracks_added,
+                        )
 
             await context.send(
                 embed=await context.pylav.construct_embed(
                     messageable=context,
                     title=_("Playlist updated"),
                     description=_(
-                        "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has been updated.{extras_variable_do_not_translate}"
+                        "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has been updated.{extras_variable_do_not_translate}."
                     ).format(
                         user_variable_do_not_translate=context.author.mention,
                         playlist_name_variable_do_not_translate=await playlist.get_name_formatted(with_url=True),
@@ -729,7 +734,7 @@ class PyLavPlaylists(
             await context.send(
                 embed=await context.pylav.construct_embed(
                     messageable=context,
-                    description=_("You must either provide a URL or attach a playlist file to upload a playlist"),
+                    description=_("You must either provide a URL or attach a playlist file to upload a playlist."),
                 ),
                 ephemeral=True,
             )
@@ -750,7 +755,7 @@ class PyLavPlaylists(
             await context.send(
                 embed=await context.pylav.construct_embed(
                     messageable=context,
-                    description=_("Multiple playlist files provided - Currently only 1 per message is allowed"),
+                    description=_("Multiple playlist files are provided. Currently, only 1 per message is allowed."),
                 ),
                 ephemeral=True,
             )
@@ -767,7 +772,7 @@ class PyLavPlaylists(
         if not saved_playlists:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    messageable=context, description=_("Failed to save any of the requested playlists")
+                    messageable=context, description=_("Failed to save any of the requested playlists.")
                 ),
                 ephemeral=True,
             )
@@ -777,7 +782,7 @@ class PyLavPlaylists(
                 embed=await context.pylav.construct_embed(
                     messageable=context,
                     description=_(
-                        "Failed to save the following playlists:\n{invalid_playlists_variable_do_not_translate}"
+                        "Failed to save the following playlists:\n{invalid_playlists_variable_do_not_translate}."
                     ).format(invalid_playlists_variable_do_not_translate=humanize_list(list(invalid_playlists_urls))),
                 ),
                 ephemeral=True,
@@ -786,7 +791,7 @@ class PyLavPlaylists(
             embed=await context.pylav.construct_embed(
                 messageable=context,
                 description=_(
-                    "Successfully saved the following playlists:\n{saved_playlists_variable_do_not_translate}"
+                    "Successfully saved the following playlists:\n{saved_playlists_variable_do_not_translate}."
                 ).format(saved_playlists_variable_do_not_translate=humanize_list(saved_playlists)),
             ),
             ephemeral=True,
@@ -810,7 +815,7 @@ class PyLavPlaylists(
                 if not channel:
                     await context.send(
                         embed=await context.pylav.construct_embed(
-                            messageable=context, description=_("You must be in a voice channel to allow me to connect")
+                            messageable=context, description=_("You must be in a voice channel to allow me to connect.")
                         ),
                         ephemeral=True,
                     )
@@ -819,7 +824,7 @@ class PyLavPlaylists(
                 await context.send(
                     embed=await context.pylav.construct_embed(
                         description=_(
-                            "I do not have permission to connect or speak in {channel_variable_do_not_translate}"
+                            "I do not have permission to connect or speak in {channel_variable_do_not_translate}."
                         ).format(channel_variable_do_not_translate=channel.mention),
                         messageable=context,
                     ),
@@ -854,7 +859,7 @@ class PyLavPlaylists(
             embed=await context.pylav.construct_embed(
                 messageable=context,
                 description=_(
-                    "{track_count_variable_do_not_translate} tracks enqueued.{playlist_name_variable_do_not_translate}"
+                    "{track_count_variable_do_not_translate} tracks enqueued.{playlist_name_variable_do_not_translate}."
                 ).format(
                     track_count_variable_do_not_translate=track_count,
                     playlist_name_variable_do_not_translate=playlist_name,

@@ -114,7 +114,7 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
 
     @command_pllocalset.command(name="version")
     async def command_pllocalset_version(self, context: PyLavContext) -> None:
-        """Show the version of the Cog and its PyLav dependencies"""
+        """Show the version of the Cog and PyLav"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -155,9 +155,9 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
             embed=await self.pylav.construct_embed(
                 description=shorten_string(
                     max_length=100,
-                    string=_("Local track list updated {number_variable_do_not_translate} currently present").format(
-                        number_variable_do_not_translate=len(self.cache)
-                    ),
+                    string=_(
+                        "I have updated my local track cache. There are now {number_variable_do_not_translate} tracks present."
+                    ).format(number_variable_do_not_translate=len(self.cache)),
                 ),
                 messageable=context,
             ),
@@ -191,7 +191,7 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
             await send(
                 embed=await self.pylav.construct_embed(
                     description=_(
-                        "{user_input_query_variable_do_not_translate} is not a valid local file or folder"
+                        "{user_input_query_variable_do_not_translate} is not a valid local file or folder."
                     ).format(user_input_query_variable_do_not_translate=entry),
                     messageable=interaction,
                 ),
@@ -208,7 +208,7 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
                 if not channel:
                     await send(
                         embed=await self.pylav.construct_embed(
-                            description=_("You must be in a voice channel to allow me to connect"),
+                            description=_("You must be in a voice channel, so I can connect to it."),
                             messageable=interaction,
                         ),
                         ephemeral=True,
@@ -222,7 +222,7 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
                 await send(
                     embed=await self.pylav.construct_embed(
                         description=_(
-                            "I don't have permission to connect or speak in {channel_variable_do_not_translate}"
+                            "I do not have permission to connect or speak in {channel_variable_do_not_translate}."
                         ).format(channel_variable_do_not_translate=channel.mention),
                         messageable=interaction,
                     ),
@@ -243,34 +243,24 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
         if not (player.is_playing or player.queue.empty()):
             await player.next(requester=author)
 
-        if count > 1:
-            await send(
-                embed=await self.pylav.construct_embed(
-                    description=_("{track_count_variable_do_not_translate} tracks enqueued.").format(
-                        track_count_variable_do_not_translate=count
-                    ),
-                    messageable=interaction,
-                ),
-                ephemeral=True,
-            )
-        elif count == 1:
-            await send(
-                embed=await self.pylav.construct_embed(
-                    description=_("{track_name_variable_do_not_translate} enqueued.").format(
-                        track_name_variable_do_not_translate=await single_track.get_track_display_name(with_url=True)
-                    ),
-                    messageable=interaction,
-                ),
-                ephemeral=True,
-            )
-        else:
-            await send(
-                embed=await self.pylav.construct_embed(
-                    description=_("No tracks were found for your query."),
-                    messageable=interaction,
-                ),
-                ephemeral=True,
-            )
+        match count:
+            case 0:
+                description = _("No tracks were found for your query.")
+            case 1:
+                description = _("{track_name_variable_do_not_translate} enqueued.").format(
+                    track_name_variable_do_not_translate=await single_track.get_track_display_name(with_url=True)
+                )
+            case __:
+                description = _("I have enqueued {track_count_variable_do_not_translate} tracks.").format(
+                    track_count_variable_do_not_translate=count
+                )
+        await send(
+            embed=await self.pylav.construct_embed(
+                description=description,
+                messageable=interaction,
+            ),
+            ephemeral=True,
+        )
 
     @slash_local.autocomplete("entry")
     async def slash_local_autocomplete_entry(self, interaction: DISCORD_INTERACTION_TYPE, current: str):

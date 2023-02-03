@@ -82,7 +82,7 @@ class PyLavRadio(DISCORD_COG_TYPE_MIXIN):
         if not stations:
             await context.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("The Radio Browser functionality is currently unavailable"), messageable=context
+                    description=_("The Radio Browser functionality is currently unavailable."), messageable=context
                 ),
                 ephemeral=True,
             )
@@ -105,7 +105,8 @@ class PyLavRadio(DISCORD_COG_TYPE_MIXIN):
                 if not channel:
                     await send(
                         embed=await self.pylav.construct_embed(
-                            description=_("You must be in a voice channel to allow me to connect"), messageable=context
+                            description=_("You must be in a voice channel, so I can connect to it."),
+                            messageable=context,
                         ),
                         ephemeral=True,
                     )
@@ -116,7 +117,7 @@ class PyLavRadio(DISCORD_COG_TYPE_MIXIN):
                 await send(
                     embed=await self.pylav.construct_embed(
                         description=_(
-                            "I don't have permission to connect or speak in {channel_variable_do_not_translate}"
+                            "I do not have permission to connect or speak in {channel_variable_do_not_translate}."
                         ).format(channel_variable_do_not_translate=channel.mention),
                         messageable=context,
                     ),

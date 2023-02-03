@@ -30,7 +30,7 @@ _ = Translator("PyLavPlayer", __file__)
 class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
     @commands.group(name="playerset")
     async def command_playerset(self, context: PyLavContext) -> None:
-        """Player configuration commands"""
+        """Player settings commands"""
 
     @command_playerset.command(name="down")
     @commands.cooldown(1, 600, commands.BucketType.guild)
@@ -94,7 +94,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
     @command_playerset.command(name="version")
     async def command_playerset_version(self, context: PyLavContext) -> None:
-        """Show the version of the Cog and its PyLav dependencies."""
+        """Show the version of the Cog and PyLav"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -125,7 +125,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
     @commands.is_owner()
     @command_playerset.group(name="global", aliases=["owner"])
     async def command_playerset_global(self, context: PyLavContext) -> None:
-        """Global configuration options, which apply to all servers."""
+        """Bot-wide settings."""
 
     @command_playerset_global.command(name="vol", aliases=["volume"])
     async def command_playerset_global_volume(self, context: PyLavContext, volume: int) -> None:
@@ -145,7 +145,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         elif volume <= 0:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("You have to specify a volume greater than 0%."), messageable=context
+                    description=_("The maximum volume must be greater than 0%."), messageable=context
                 ),
                 ephemeral=True,
             )
@@ -154,7 +154,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         await context.send(
             embed=await self.pylav.construct_embed(
                 description=_(
-                    "The maximum volume I will allow anyone in any server to set is {volume_variable_do_not_translate}%"
+                    "The maximum volume I will allow anyone in any server is now set to {volume_variable_do_not_translate}%"
                 ).format(volume_variable_do_not_translate=humanize_number(volume)),
                 messageable=context,
             ),
@@ -339,7 +339,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
     @commands.guild_only()
     @command_playerset.group(name="server", aliases=["guild"])
     async def command_playerset_server(self, context: PyLavContext) -> None:
-        """Server configuration options."""
+        """Server-specific settings."""
 
     @command_playerset_server.group(name="dj")
     async def command_playerset_server_dj(self, context: PyLavContext) -> None:
@@ -362,12 +362,12 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         if len(roles_or_users) == 1:
             role_or_user = roles_or_users[0]
             if isinstance(role_or_user, discord.Role):
-                message = _("Added {role_list_variable_do_not_translate} to the disc jockey roles.").format(
+                message = _("I have added {role_list_variable_do_not_translate} to the disc jockey roles.").format(
                     role_list_variable_do_not_translate=role_or_user.mention
                 )
                 await config.add_to_dj_roles(role_or_user)
             else:
-                message = _("Added {user_list_variable_do_not_translate} to the disc jockey users.").format(
+                message = _("I have added {user_list_variable_do_not_translate} to the disc jockey users.").format(
                     user_list_variable_do_not_translate=role_or_user.mention
                 )
                 await config.bulk_add_dj_users(role_or_user)
@@ -377,7 +377,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
             message = None
             if roles and users:
                 message = _(
-                    "Added {role_list_variable_do_not_translate} to the disc jockey roles and {user_list_variable_do_not_translate} to the disc jockey users."
+                    "I have added {role_list_variable_do_not_translate} to the disc jockey roles and {user_list_variable_do_not_translate} to the disc jockey users."
                 ).format(
                     role_list_variable_do_not_translate=humanize_list([r.mention for r in roles]),
                     user_list_variable_do_not_translate=humanize_list([u.mention for u in users]),
@@ -385,13 +385,13 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
             if roles:
                 if not message:
-                    message = _("Added {role_list_variable_do_not_translate} to the disc jockey roles.").format(
+                    message = _("I have added {role_list_variable_do_not_translate} to the disc jockey roles.").format(
                         role_list_variable_do_not_translate=humanize_list([r.mention for r in roles])
                     )
                 await config.bulk_add_dj_roles(*roles)
             if users:
                 if not message:
-                    message = _("Added {user_list_variable_do_not_translate} to the disc jockey users.").format(
+                    message = _("I have added {user_list_variable_do_not_translate} to the disc jockey users.").format(
                         user_list_variable_do_not_translate=humanize_list([u.mention for u in users])
                     )
                 await config.bulk_add_dj_users(*users)
@@ -615,7 +615,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         if volume > 1000:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("Volume must be less than 1,000%."), messageable=context
+                    description=_("The maximum volume must be less than 1,000%."), messageable=context
                 ),
                 ephemeral=True,
             )
@@ -623,7 +623,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         elif volume <= 0:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("Volume must be greater than 0%."), messageable=context
+                    description=_("The maximum volume must be greater than 0%."), messageable=context
                 ),
                 ephemeral=True,
             )
@@ -652,9 +652,9 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         if volume > max_volume:
             await context.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("Volume must be between 0% and {volume_variable_do_not_translate}%.").format(
-                        volume_variable_do_not_translate=humanize_number(max_volume)
-                    ),
+                    description=_(
+                        "The maximum volume must be between 0% and {volume_variable_do_not_translate}%."
+                    ).format(volume_variable_do_not_translate=humanize_number(max_volume)),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -666,9 +666,9 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
             await context.player.set_volume(volume, requester=context.author)
         await context.send(
             embed=await self.pylav.construct_embed(
-                description=_("Max volume set to {volume_variable_do_not_translate}%.").format(
-                    volume_variable_do_not_translate=humanize_number(volume)
-                ),
+                description=_(
+                    "The maximum volume users can set in this server is now {volume_variable_do_not_translate}%."
+                ).format(volume_variable_do_not_translate=humanize_number(volume)),
                 messageable=context,
             ),
             ephemeral=True,
@@ -685,7 +685,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         if await self.pylav.player_manager.global_config.fetch_self_deaf() is True:
             await context.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("My owner is forcing me to deafen myself when playing."),
+                    description=_("My owner has requested that I always deafen myself when joining a voice channel."),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -734,9 +734,9 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
             await config.update_auto_shuffle(toggle)
         await context.send(
             embed=await self.pylav.construct_embed(
-                description=_("Auto shuffle turned on for this server")
+                description=_("Auto shuffle turned on for this server.")
                 if toggle
-                else _("Auto shuffle turned off for this server"),
+                else _("Auto shuffle turned off for this server."),
                 messageable=context,
             ),
             ephemeral=True,
@@ -767,9 +767,9 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
             await config.update_shuffle(toggle)
         await context.send(
             embed=await self.pylav.construct_embed(
-                description=_("Shuffling turned on for this server")
+                description=_("Shuffling turned on for this server.")
                 if toggle
-                else _("Shuffling turned off for this server"),
+                else _("Shuffling turned off for this server."),
                 messageable=context,
             ),
             ephemeral=True,

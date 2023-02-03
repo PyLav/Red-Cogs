@@ -32,7 +32,7 @@ _ = Translator("PyLavMigrator", Path(__file__))
 
 @cog_i18n(_)
 class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
-    """Copy Red's Audio settings over to PyLav"""
+    """Copy the Red Audio settings over to PyLav"""
 
     lavalink: Client
 
@@ -47,7 +47,7 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
     async def command_pylavmigrate(self, context: PyLavContext, confirm: bool, /) -> None:
         """Migrate Audio settings to PyLav
 
-        Please note that this will replace any config already in PyLav.
+        Please note that this will replace any settings already in PyLav.
 
         If you are sure you want to proceed please run this command again with the confirm argument set to 1
         i.e `[p]pylavmigrate 1`
@@ -155,7 +155,7 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
             except PermissionError:
                 await context.send(
                     embed=await self.pylav.construct_embed(
-                        description=_("I don't have permission to access {folder_variable_do_not_translate}.").format(
+                        description=_("I do not have permission to access {folder_variable_do_not_translate}.").format(
                             folder_variable_do_not_translate=localtracks_path
                         )
                     )

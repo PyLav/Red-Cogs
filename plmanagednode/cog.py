@@ -47,7 +47,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
 
     @command_plmanaged.command(name="version")
     async def command_plmanaged_version(self, context: PyLavContext) -> None:
-        """Show the version of the Cog and it's PyLav dependencies"""
+        """Show the version of the Cog and PyLav"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -142,7 +142,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         if current:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("PyLav's managed node has been enabled."),
+                    description=_("The PyLav managed node has been enabled."),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -150,7 +150,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         else:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("PyLav's managed node has been disabled."),
+                    description=_("The PyLav managed node has been disabled."),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -174,7 +174,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         if current:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("PyLav's managed node auto updates have been enabled"),
+                    description=_("The PyLav managed node auto updates have been enabled."),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -182,7 +182,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         else:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("PyLav's managed node auto updates have been disabled"),
+                    description=_("The  PyLav managed node auto updates have been disabled."),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -268,7 +268,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         await global_config.update_extras(extras)
         await context.send(
             embed=await context.pylav.construct_embed(
-                description=_("Managed node's heap-size set to {bytes_variable_do_not_translate}.").format(
+                description=_("The Managed node heap-size set to {bytes_variable_do_not_translate}.").format(
                     bytes_variable_do_not_translate=inline(size),
                 ),
                 messageable=context,
@@ -276,7 +276,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
             ephemeral=True,
         )
 
-    @command_plmanaged.group(name="config")
+    @command_plmanaged.group(name="Settings", aliases=["config", "set"])
     async def command_plmanaged_config(self, context: PyLavContext):
         """Change the managed node start up configs"""
 
@@ -294,7 +294,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         await config.update_yaml(data)
         await context.send(
             embed=await context.pylav.construct_embed(
-                description=_("Managed node's host set to {host_variable_do_not_translate}.").format(
+                description=_("The Managed node host set to {host_variable_do_not_translate}.").format(
                     host_variable_do_not_translate=inline(host),
                 ),
                 messageable=context,
@@ -304,7 +304,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
 
     @command_plmanaged_config.command(name="port")
     async def command_plmanaged_config_port(self, context: PyLavContext, port: int):
-        """`Dangerous command` Set the managed Lavalink node's connection port.
+        """`Dangerous command` Set the managed Lavalink node connection port.
 
         This port is the port the managed Lavalink node binds to, you should only change this if there is a
         conflict with the default port because you already have an application using port 2154 on this device.
@@ -326,7 +326,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         await config.update_yaml(data)
         await context.send(
             embed=await context.pylav.construct_embed(
-                description=_("Managed node's port set to {port_variable_do_not_translate}.").format(
+                description=_("The managed node port set to {port_variable_do_not_translate}.").format(
                     port_variable_do_not_translate=port
                 ),
                 messageable=context,
@@ -606,7 +606,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         else:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("Managed node's plugins already up to date"),
+                    description=_("The managed node plugins are already up to date."),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -702,7 +702,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
     async def command_plmanaged_config_server(self, context: PyLavContext, setting: str, value: str):
         """Configure multiple settings for the managed node.
 
-        Run `[p]plmanaged config server <setting> info` to show info about the settings and what they do.
+        Run `[p]plmanaged settings server <setting> info` to show info about the settings and what they do.
 
         **Setting names**:
         `bufferDurationMs` : Integer i.e 400 (Default 400) - Set to 0 to disable JDA-NAS
@@ -884,7 +884,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
     async def command_plmanaged_config_iprotation(self, context: PyLavContext, *, reset: bool = False):
         """Configure Lavalink IP Rotation for rate limits.
 
-        Run `[p]plmanaged config iprotation 1` to remove the ip rotation
+        Run `[p]plmanaged settings iprotation 1` to remove the ip rotation
         """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -922,9 +922,9 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
 
     @command_plmanaged_config.command(name="googleaccount", aliases=["ga"])
     async def command_plmanaged_config_googleaccount(self, context: PyLavContext, *, reset: bool = False):
-        """Link a Google account to Lavalink to bypass YouTube's age restriction
+        """Link a Google account to Lavalink to bypass the YouTube age restriction.
 
-        Run `[p]plmanaged config googleaccount 1` to remove the linked account.
+        Run `[p]plmanaged settings googleaccount 1` to remove the linked account.
         """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -935,7 +935,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
                 embed=await context.pylav.construct_embed(
                     description=_(
                         "Click the button below to link a Google account to your node, "
-                        "if you have 2FA setup on this account you will need an app password instead"
+                        "if you have 2FA setup on this account you will need an application password instead"
                         "\nMore info at: <https://support.google.com/accounts/answer/185833>"
                     ),
                     messageable=context,
@@ -962,7 +962,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
     async def command_plmanaged_config_httpproxy(self, context: PyLavContext, *, reset: bool = False):
         """Configure a HTTP proxy for Lavalink
 
-        Run `[p]plmanaged config httpproxy 1` to remove the proxy.
+        Run `[p]plmanaged settings httpproxy 1` to remove the proxy.
         """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)

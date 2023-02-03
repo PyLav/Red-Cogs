@@ -44,7 +44,7 @@ class PyLavNodes(DISCORD_COG_TYPE_MIXIN):
 
     @command_plnode.command(name="version")
     async def command_plnode_version(self, context: PyLavContext) -> None:
-        """Show the version of the Cog and its PyLav dependencies"""
+        """Show the version of the Cog and PyLav"""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
@@ -84,7 +84,7 @@ class PyLavNodes(DISCORD_COG_TYPE_MIXIN):
             cog=self,
             original_author=context.author,
         )
-        title = _("Let's add a node to PyLav!")
+        title = _("Let us add a node to PyLav!")
         info_description = _(
             "(**1**){space_variable_do_not_translate} - Apply changes and add the node to PyLav.\n"
             "(**2**){space_variable_do_not_translate} - Cancel any changes made and close the menu.\n"
@@ -132,7 +132,7 @@ class PyLavNodes(DISCORD_COG_TYPE_MIXIN):
             )
             embed = await self.pylav.construct_embed(
                 description=_(
-                    "Added node {name_variable_do_not_translate} with the following settings:\n"
+                    "I have added the {name_variable_do_not_translate} node with the following settings:\n"
                     "Host: {host_variable_do_not_translate}\n"
                     "Port: {port_variable_do_not_translate}\n"
                     "Password: {password_variable_do_not_translate}\n"
@@ -162,14 +162,14 @@ class PyLavNodes(DISCORD_COG_TYPE_MIXIN):
             if menu.last_interaction:
                 await menu.last_interaction.followup.send(
                     embed=await self.pylav.construct_embed(
-                        description=_("Unable to add this node"), messageable=context.channel
+                        description=_("I am unable to add this node"), messageable=context.channel
                     ),
                     ephemeral=True,
                 )
             else:
                 await context.author.send(
                     embed=await self.pylav.construct_embed(
-                        description=_("Unable to add this node"), messageable=context.channel
+                        description=_("I am unable to add this node"), messageable=context.channel
                     ),
                 )
 
@@ -205,7 +205,7 @@ class PyLavNodes(DISCORD_COG_TYPE_MIXIN):
         await context.author.send(
             embed=await self.pylav.construct_embed(
                 description=_(
-                    "Removed node {name_variable_do_not_translate}.\n\n{data_variable_do_not_translate}"
+                    "I have removed the {name_variable_do_not_translate} node.\n\n{data_variable_do_not_translate}"
                 ).format(
                     name_variable_do_not_translate=node_data["name"],
                     data_variable_do_not_translate=box(
@@ -218,7 +218,7 @@ class PyLavNodes(DISCORD_COG_TYPE_MIXIN):
         await context.send(
             embed=await self.pylav.construct_embed(
                 description=_(
-                    "Removed node {name_variable_do_not_translate}, a direct message was sent to you with the node details in case you wish to re-add it"
+                    "I have removed the {name_variable_do_not_translate} node. A direct message was sent to you with the node details in case you wish to re-add it."
                 ).format(name_variable_do_not_translate=node_data["name"]),
                 messageable=context.channel,
             ),
@@ -239,7 +239,7 @@ class PyLavNodes(DISCORD_COG_TYPE_MIXIN):
             timeout=300,
             source=NodeManageSource(cog=self),
         )
-        title = _("Let's manage some nodes!")
+        title = _("Let us manage some nodes!")
         info_description = _(
             "(**1**){space_variable_do_not_translate} - Cancel any changes made and close the menu.\n"
             "(**6**){space_variable_do_not_translate} - Show sources enabled for this node.\n"
@@ -270,7 +270,7 @@ class PyLavNodes(DISCORD_COG_TYPE_MIXIN):
             await context.send(
                 embed=await self.pylav.construct_embed(
                     description=_(
-                        "{name_variable_do_not_translate} is managed by PyLav and cannot be modified with this command."
+                        "{name_variable_do_not_translate} is managed by PyLav, and I can not modify it."
                     ).format(name_variable_do_not_translate=node.name),
                     messageable=context.channel,
                 ),
@@ -281,7 +281,7 @@ class PyLavNodes(DISCORD_COG_TYPE_MIXIN):
             await self.pylav.remove_node(node.identifier)
             await context.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("Removed node {name_variable_do_not_translate}").format(
+                    description=_("I have removed the {name_variable_do_not_translate} node.").format(
                         name_variable_do_not_translate=node.name
                     ),
                     messageable=context.channel,
@@ -320,7 +320,7 @@ class PyLavNodes(DISCORD_COG_TYPE_MIXIN):
         await self.pylav.add_node(**(await node.config.get_connection_args()))
         embed = await self.pylav.construct_embed(
             description=_(
-                "Changed node {name_variable_do_not_translate} to the following settings:\n"
+                "I have changed the {name_variable_do_not_translate} node to the following settings:\n"
                 "Host: {host_variable_do_not_translate}\n"
                 "Port: {port_variable_do_not_translate}\n"
                 "Password: {password_variable_do_not_translate}\n"
@@ -356,7 +356,7 @@ class PyLavNodes(DISCORD_COG_TYPE_MIXIN):
         if not self.pylav.node_manager.nodes:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("No nodes added to PyLav"), messageable=context
+                    description=_("No nodes were added to PyLav."), messageable=context
                 ),
                 ephemeral=True,
             )

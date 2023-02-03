@@ -94,7 +94,8 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                 if not channel:
                     await context.send(
                         embed=await self.pylav.construct_embed(
-                            description=_("You must be in a voice channel to allow me to connect"), messageable=context
+                            description=_("You must be in a voice channel, so I can connect to it."),
+                            messageable=context,
                         ),
                         ephemeral=True,
                     )
@@ -148,35 +149,27 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         await self._process_play_message(context, single_track, total_tracks_enqueue)
 
     async def _process_play_message(self, context, single_track, total_tracks_enqueue):
-        if total_tracks_enqueue > 1:
-            await context.send(
-                embed=await self.pylav.construct_embed(
-                    description=_("{number_of_tracks_variable_do_not_translate} tracks enqueued.").format(
-                        number_of_tracks_variable_do_not_translate=total_tracks_enqueue
-                    ),
-                    messageable=context,
-                ),
-                ephemeral=True,
-            )
-        elif total_tracks_enqueue == 1:
-            await context.send(
-                embed=await self.pylav.construct_embed(
-                    description=_("{track_name_variable_do_not_translate} enqueued").format(
-                        track_name_variable_do_not_translate=await single_track.get_track_display_name(with_url=True)
-                    ),
-                    thumbnail=await single_track.artworkUrl(),
-                    messageable=context,
-                ),
-                ephemeral=True,
-            )
-        else:
-            await context.send(
-                embed=await self.pylav.construct_embed(
-                    description=_("No tracks were found for your query."),
-                    messageable=context,
-                ),
-                ephemeral=True,
-            )
+        artwork = None
+        match total_tracks_enqueue:
+            case 1:
+                description = _("{track_name_variable_do_not_translate} enqueued.").format(
+                    track_name_variable_do_not_translate=await single_track.get_track_display_name(with_url=True)
+                )
+                artwork = await single_track.artworkUrl()
+            case 0:
+                description = _("No tracks were found for your query.")
+            case __:
+                description = _("{number_of_tracks_variable_do_not_translate} tracks enqueued.").format(
+                    number_of_tracks_variable_do_not_translate=total_tracks_enqueue
+                )
+        await context.send(
+            embed=await self.pylav.construct_embed(
+                description=description,
+                thumbnail=artwork,
+                messageable=context,
+            ),
+            ephemeral=True,
+        )
 
     async def _process_play_non_search_queries(
         self, context, non_search_queries, player, single_track, total_tracks_enqueue
@@ -534,17 +527,20 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
 
         if queue:
             await context.player.set_repeat("queue", True, context.author)
-            msg = _("I will now repeat the entire queue.")
+            msg = _("From now on, I will now repeat the entire queue.")
         elif await context.player.is_repeating():
             await context.player.set_repeat("disable", False, context.author)
-            msg = _("I will no longer repeat any tracks.")
+            msg = _("From now on, I will no longer repeat any tracks.")
         else:
             await context.player.set_repeat("current", True, context.author)
-            msg = _("I will now repeat {track_name_variable_do_not_translate}.").format(
-                track_name_variable_do_not_translate=await context.player.current.get_track_display_name(with_url=True)
-                if context.player.current
-                else _("the current track")
-            )
+            if context.player.current:
+                msg = _("From now on, I will now repeat {track_name_variable_do_not_translate}.").format(
+                    track_name_variable_do_not_translate=await context.player.current.get_track_display_name(
+                        with_url=True
+                    )
+                )
+            else:
+                msg = _("From now on, I will now repeat the current track.")
         await context.send(
             embed=await context.pylav.construct_embed(description=msg, messageable=context), ephemeral=True
         )
@@ -569,9 +565,9 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             return
         if context.player.paused:
             description = _(
-                "The player is already paused, did you mean to run `{command_name_variable_do_not_translate}`."
+                "The player is already paused, did you mean to run {command_name_variable_do_not_translate}."
             ).format(
-                command_name_variable_do_not_translate=f"{'/' if context.interaction else context.clean_prefix}{self.command_resume.qualified_name}",
+                command_name_variable_do_not_translate=f"`{'/' if context.interaction else context.clean_prefix}{self.command_resume.qualified_name}`",
             )
             await context.send(
                 embed=await context.pylav.construct_embed(description=description, messageable=context),
@@ -607,9 +603,9 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             return
         if not context.player.paused:
             description = _(
-                "Player already resumed, did you mean to run `{command_name_variable_do_not_translate}`."
+                "The player already resumed, did you mean to run {command_name_variable_do_not_translate}."
             ).format(
-                command_name_variable_do_not_translate=f"{'/' if context.interaction else context.clean_prefix}{self.command_pause.qualified_name}",
+                command_name_variable_do_not_translate=f"`{'/' if context.interaction else context.clean_prefix}{self.command_pause.qualified_name}`",
             )
             await context.send(
                 embed=await context.pylav.construct_embed(description=description, messageable=context),
@@ -642,7 +638,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         if volume > 1000:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("Volume must be less than 1,000%"), messageable=context
+                    description=_("I can not set the volume above 1,000%."), messageable=context
                 ),
                 ephemeral=True,
             )
@@ -650,7 +646,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         elif volume <= 0:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("Volume must be greater than 0%"), messageable=context
+                    description=_("I can not set the volume lower than 0%"), messageable=context
                 ),
                 ephemeral=True,
             )
@@ -667,9 +663,9 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         if volume > max_volume:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("Volume can not be higher than {max_volume_variable_do_not_translate}%.").format(
-                        max_volume=max_volume
-                    ),
+                    description=_(
+                        "I have been told to restrict the maximum volume to {max_volume_variable_do_not_translate}%."
+                    ).format(max_volume=max_volume),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -678,7 +674,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         await context.player.set_volume(volume, requester=context.author)
         await context.send(
             embed=await context.pylav.construct_embed(
-                description=_("Player volume has been set to {volume_variable_do_not_translate}%.").format(
+                description=_("I have set the player volume to {volume_variable_do_not_translate}%.").format(
                     volume_variable_do_not_translate=volume
                 ),
                 messageable=context,
@@ -729,7 +725,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                 await context.send(
                     embed=await context.pylav.construct_embed(
                         title=_("Unable to seek track"),
-                        description=_("I am unable to seek this track as it is a stream."),
+                        description=_("I can not seek this track as the server reports it is a live stream."),
                         messageable=context,
                     ),
                     ephemeral=True,
@@ -737,7 +733,11 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             else:
                 await context.send(
                     embed=await context.pylav.construct_embed(
-                        description=_("Unable to seek track."), messageable=context
+                        title=_("Unable to seek track"),
+                        description=_(
+                            "I can not seek this track as the server report that this track does not support seeking."
+                        ),
+                        messageable=context,
                     ),
                     ephemeral=True,
                 )
@@ -746,7 +746,9 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         if context.player.paused:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("I can not seek the current track while the player is paused."), messageable=context
+                    title=_("Unable to seek track"),
+                    description=_("I can not seek the current track while the player is paused."),
+                    messageable=context,
                 ),
                 ephemeral=True,
             )
@@ -758,7 +760,9 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                 seek_ms = 0
             else:
                 seek_ms = (await context.player.fetch_position()) + seek * 1000
-        except ValueError:  # Taken from https://github.com/Cog-Creators/Red-DiscordBot/blob/ec55622418810731e1ee2ede1569f81f9bddeeec/redbot/cogs/audio/core/utilities/miscellaneous.py#L28
+        except (
+            ValueError
+        ):  # Taken from https://github.com/Cog-Creators/Red-DiscordBot/blob/ec55622418810731e1ee2ede1569f81f9bddeeec/redbot/cogs/audio/core/utilities/miscellaneous.py#L28
             match = _RE_TIME_CONVERTER.match(seek)
             if match is not None:
                 hr = int(match.group(1)) if match.group(1) else 0
@@ -836,7 +840,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         await context.player.previous(requester=context.author)
         await context.send(
             embed=await context.pylav.construct_embed(
-                description=_("Playing previous track: {track_name_variable_do_not_translate}").format(
+                description=_("Playing previous track: {track_name_variable_do_not_translate}.").format(
                     track_name_variable_do_not_translate=await context.player.current.get_track_display_name(
                         with_url=True
                     )

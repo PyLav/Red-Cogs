@@ -24,7 +24,7 @@ class ContextMenus(DISCORD_COG_TYPE_MIXIN):
         if not interaction.guild:
             await interaction.followup.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("I can not play songs in direct messages, sorry, try again in a server."),
+                    description=_("I can not play songs in direct messages. Sorry, try again on a server."),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -53,7 +53,7 @@ class ContextMenus(DISCORD_COG_TYPE_MIXIN):
                 embed=await self.pylav.construct_embed(
                     messageable=interaction,
                     description=_(
-                        "This command is not available in this channel, please use {channel_name_variable_do_not_translate}."
+                        "This command is unavailable in this channel. Please use {channel_name_variable_do_not_translate} instead."
                     ).format(
                         channel_name_variable_do_not_translate=channel.mention
                         if (channel := interaction.guild.get_channel_or_thread(channel_id))
@@ -130,7 +130,7 @@ class ContextMenus(DISCORD_COG_TYPE_MIXIN):
         if not interaction.guild:
             await interaction.followup.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("I can not play songs in direct messages, sorry, try again in a server."),
+                    description=_("I can not play songs in direct messages. Sorry, try again on a server."),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -157,7 +157,7 @@ class ContextMenus(DISCORD_COG_TYPE_MIXIN):
                 embed=await self.pylav.construct_embed(
                     messageable=interaction,
                     description=_(
-                        "This command is not available in this channel, please use {channel_name_variable_do_not_translate}."
+                        "This command is unavailable in this channel. Please use {channel_name_variable_do_not_translate} instead."
                     ).format(
                         channel_name_variable_do_not_translate=channel.mention
                         if (channel := interaction.guild.get_channel_or_thread(channel_id))
