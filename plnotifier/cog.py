@@ -154,6 +154,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             player_auto_disconnected=dict(enabled=True, mention=True),
             player_auto_disconnected_empty_queue=dict(enabled=True, mention=True),
             webhook_url=None,
+            webhook_channel_id=None,
         )
         self._message_queue: dict[
             discord.TextChannel | discord.VoiceChannel | discord.Thread, list[discord.Embed]
@@ -218,7 +219,9 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
 
         LOGGER.trace("Sending up to last 10 embeds to %s channels", len(dispatch_mapping))
 
-        await asyncio.gather(*[send(embeds=embeds) for send, embeds in dispatch_mapping.items()])
+        await asyncio.gather(
+            *[send(embeds=embeds) for send, embeds in dispatch_mapping.items()], return_exceptions=True
+        )
 
     @commands.guildowner_or_permissions(manage_guild=True)
     @commands.guild_only()
@@ -317,36 +320,53 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
                         author_variable_do_not_translate=context.author
                     ),
                 )
-            if old_url := await self._config.webhook_url():
-                with contextlib.suppress(discord.HTTPException):
-                    await discord.Webhook.from_url(url=old_url, session=self._session).delete()
-
-            await self._config.webhook_url.set(webhook.url)
-            self._webhook_cache[context.guild.id] = webhook
             channel = existing_thread
-        else:
-            if not channel.parent.permissions_for(context.guild.me).manage_webhooks:
-                await context.send(
-                    embed=await self.pylav.construct_embed(
-                        description=_(
-                            "I do not have permission to manage webhooks in {channel_variable_do_not_translate}."
-                        ).format(channel_variable_do_not_translate=channel.parent.mention),
-                        messageable=context,
-                    ),
-                    ephemeral=True,
-                )
-                return
-            webhook = await channel.parent.create_webhook(
-                name=_("PyLavNotifier"),
-                reason=_("PyLav Notifier - Requested by {author_variable_do_not_translate}.").format(
-                    author_variable_do_not_translate=context.author
-                ),
-            )
-            await self._config.webhook_url.set(webhook.url)
+            if old_url := await self._config.guild(context.guild).webhook_url():
+                with contextlib.suppress(discord.HTTPException):
+                    await discord.Webhook.from_url(url=old_url, session=self._session).delete(
+                        reason=_("A new webhook was being created.")
+                    )
+
+            await self._config.guild(context.guild).webhook_url.set(webhook.url)
+            await self._config.guild(context.guild).webhook_channel_id.set(channel.id)
             self._webhook_cache[context.guild.id] = webhook
+        else:
+            existing_webhook_url = await self._config.guild(context.guild).webhook_url()
+            existing_webhook_channel_id = await self._config.guild(context.guild).webhook_channel_id()
+            webhook = (
+                discord.Webhook.from_url(url=existing_webhook_url, session=self._session)
+                if channel.id == existing_webhook_channel_id
+                else None
+            )
+            if not webhook:
+                if not channel.parent.permissions_for(context.guild.me).manage_webhooks:
+                    await context.send(
+                        embed=await self.pylav.construct_embed(
+                            description=_(
+                                "I do not have permission to manage webhooks in {channel_variable_do_not_translate}."
+                            ).format(channel_variable_do_not_translate=channel.parent.mention),
+                            messageable=context,
+                        ),
+                        ephemeral=True,
+                    )
+                    return
+                webhook_channel = channel.parent
+                webhook = await webhook_channel.create_webhook(
+                    name=_("PyLavNotifier"),
+                    reason=_("PyLav Notifier - Requested by {author_variable_do_not_translate}.").format(
+                        author_variable_do_not_translate=context.author
+                    ),
+                )
+                if existing_webhook_url:
+                    with contextlib.suppress(discord.HTTPException):
+                        await discord.Webhook.from_url(url=existing_webhook_url, session=self._session).delete(
+                            reason=_("A new webhook was being created.")
+                        )
+                await self._config.guild(context.guild).webhook_url.set(webhook.url)
+                await self._config.guild(context.guild).webhook_channel_id.set(webhook_channel.id)
+        self._webhook_cache[context.guild.id] = webhook
         if context.player:
             config = context.player.config
-            context.channel = channel
         else:
             config = self.pylav.player_config_manager.get_config(context.guild.id)
         await config.update_notify_channel_id(channel.id if channel else 0)
@@ -480,26 +500,47 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
         notify, mention = data["enabled"], data["mention"]
         if not notify:
             return
-        if event.reason == "FINISHED":
-            reason = _("the player reached the end of the tracks runtime")
-        elif event.reason == "REPLACED":
-            reason = _("a new track started playing")
-        elif event.reason == "LOAD_FAILED":
-            reason = _("it failed to start")
-        elif event.reason == "STOPPED":
-            reason = _("because the player was stopped")
-        else:  # CLEANUP
-            reason = _("the node told it to stop")
+        match event.reason:
+            case "FINISHED":
+                message = _(
+                    "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing because the player reached the end of the tracks runtime."
+                ).format(
+                    track_variable_do_not_translate=await event.track.get_track_display_name(with_url=True),
+                    node_variable_do_not_translate=event.node.name,
+                )
+            case "REPLACED":
+                message = _(
+                    "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing because a new track started playing."
+                ).format(
+                    track_variable_do_not_translate=await event.track.get_track_display_name(with_url=True),
+                    node_variable_do_not_translate=event.node.name,
+                )
+            case "LOAD_FAILED":
+                message = _(
+                    "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing because it failed to start."
+                ).format(
+                    track_variable_do_not_translate=await event.track.get_track_display_name(with_url=True),
+                    node_variable_do_not_translate=event.node.name,
+                )
+            case "STOPPED":
+                message = _(
+                    "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing becausethe player was stopped."
+                ).format(
+                    track_variable_do_not_translate=await event.track.get_track_display_name(with_url=True),
+                    node_variable_do_not_translate=event.node.name,
+                )
+            case __:
+                message = _(
+                    "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing becausethe node told it to stop."
+                ).format(
+                    track_variable_do_not_translate=await event.track.get_track_display_name(with_url=True),
+                    node_variable_do_not_translate=event.node.name,
+                )
+
         self._message_queue[channel].append(
             await self.pylav.construct_embed(
                 title=_("Track End Event"),
-                description=_(
-                    "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing because {reason_variable_do_not_translate}"
-                ).format(
-                    track_variable_do_not_translate=await event.track.get_track_display_name(with_url=True),
-                    reason_variable_do_not_translate=reason,
-                    node_variable_do_not_translate=event.node.name,
-                ),
+                description=message,
                 messageable=channel,
             )
         )
@@ -1371,9 +1412,9 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             await self.pylav.construct_embed(
                 title=_("Tracks Requested Event"),
                 description=_(
-                    "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} added {track_count_variable_do_not_translate} to the queue"
+                    "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} added {track_count_variable_do_not_translate} to the queue."
                 ).format(
-                    track_count=_("{count_variable_do_not_translate} track").format(
+                    track_count_variable_do_not_translate=_("{count_variable_do_not_translate} track").format(
                         count_variable_do_not_translate=count
                     )
                     if (count := len(event.tracks)) > 1
@@ -1402,7 +1443,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             await self.pylav.construct_embed(
                 title=_("Track AutoPlay Event"),
                 description=_(
-                    "[Node={node_variable_do_not_translate}] Auto-playing {track_variable_do_not_translate}"
+                    "[Node={node_variable_do_not_translate}] Auto playing {track_variable_do_not_translate}."
                 ).format(
                     track_variable_do_not_translate=await event.track.get_track_display_name(with_url=True),
                     node_variable_do_not_translate=event.player.node.name,
