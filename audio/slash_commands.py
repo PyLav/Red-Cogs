@@ -145,7 +145,7 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN):
                 )
             ]
         choices = []
-        node = await interaction.client.pylav.get_my_node()
+        node = interaction.client.pylav.get_my_node()
         if node is None:
             node = await interaction.client.pylav.node_manager.find_best_node(feature=feature)
 
