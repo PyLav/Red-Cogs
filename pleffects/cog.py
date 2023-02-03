@@ -1031,7 +1031,9 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
         await context.send(
             embed=await self.pylav.construct_embed(
                 messageable=context,
-                description=_("Preset has been set to {name}").format(name=equalizer.name),
+                description=_("Preset has been set to {name_variable_do_not_translate}").format(
+                    name_variable_do_not_translate=equalizer.name
+                ),
             ),
             ephemeral=True,
         )

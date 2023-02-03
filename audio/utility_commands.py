@@ -40,9 +40,9 @@ class UtilityCommands(DISCORD_COG_TYPE_MIXIN):
             await context.player.set_volume(max_volume, requester=context.author)
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("Volume limit reached, player volume set to {volume_value}%").format(
-                        volume_value=humanize_number(context.player.volume)
-                    ),
+                    description=_(
+                        "Volume limit reached, player volume set to {volume_variable_do_not_translate}%"
+                    ).format(volume_variable_do_not_translate=humanize_number(context.player.volume)),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -59,7 +59,9 @@ class UtilityCommands(DISCORD_COG_TYPE_MIXIN):
             await context.player.set_volume(new_vol, requester=context.author)
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("Player volume set to {volume_value}%").format(volume_value=new_vol),
+                    description=_("Player volume set to {volume_variable_do_not_translate}%").format(
+                        volume_variable_do_not_translate=new_vol
+                    ),
                     messageable=context,
                 ),
                 ephemeral=True,

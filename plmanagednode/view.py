@@ -3,7 +3,6 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-import asyncstdlib
 import discord
 import netaddr
 from netaddr import IPAddress, IPNetwork
@@ -183,13 +182,13 @@ class ConfigureIPRotationModal(discord.ui.Modal):
         send_method = interaction.followup.send
         if self.ip_blocks.value:
             try:
-                ip_blocks = await asyncstdlib.list(
-                    asyncstdlib.map(str, asyncstdlib.map(IPNetwork, set(self.ip_blocks.value.split(","))))
-                )
+                ip_blocks = list(map(str, map(IPNetwork, set(self.ip_blocks.value.split(",")))))
             except netaddr.core.AddrFormatError as exc:
                 return await send_method(
                     embed=await self.bot.pylav.construct_embed(
-                        description=_("Invalid IP block - {error_value}").format(error_value=exc),
+                        description=_("Invalid IP block - {error_variable_do_not_translate}").format(
+                            error_variable_do_not_translate=exc
+                        ),
                         messageable=interaction,
                     ),
                     ephemeral=True,
@@ -210,14 +209,14 @@ class ConfigureIPRotationModal(discord.ui.Modal):
             )
         if self.ip_blocks.value:
             try:
-                excluded_ips = await asyncstdlib.list(
-                    asyncstdlib.map(str, asyncstdlib.map(IPAddress, set(self.ip_blocks.value.split(","))))
-                )
+                excluded_ips = list(map(str, map(IPAddress, set(self.ip_blocks.value.split(",")))))
             except netaddr.core.AddrFormatError as exc:
 
                 return await send_method(
                     embed=await self.bot.pylav.construct_embed(
-                        description=_("Invalid IP address - {error_value}").format(error_value=exc),
+                        description=_("Invalid IP address - {error_variable_do_not_translate}").format(
+                            error_variable_do_not_translate=exc
+                        ),
                         messageable=interaction,
                     ),
                     ephemeral=True,
@@ -236,8 +235,8 @@ class ConfigureIPRotationModal(discord.ui.Modal):
         if strategy not in stategy_mapping:
             return await send_method(
                 embed=await self.bot.pylav.construct_embed(
-                    description=_("Invalid strategy, must be one of: {options_value}").format(
-                        options_value=humanize_list(list(stategy_mapping.values()))
+                    description=_("Invalid strategy, must be one of: {options_variable_do_not_translate}").format(
+                        options_variable_do_not_translate=humanize_list(list(stategy_mapping.values()))
                     ),
                     messageable=interaction,
                 ),
@@ -286,7 +285,7 @@ class ConfigureIPRotationModal(discord.ui.Modal):
         await config.update_yaml(yaml_data)
         return await send_method(
             embed=await self.bot.pylav.construct_embed(
-                description=_("IP rotation configuration saved.").format(prefix=self.prefix),
+                description=_("IP rotation configuration saved."),
                 messageable=interaction,
             ),
             ephemeral=True,
@@ -447,7 +446,7 @@ class ConfigureHTTPProxyModal(discord.ui.Modal):
         await config.update_yaml(yaml_data)
         return await send_method(
             embed=await self.bot.pylav.construct_embed(
-                description=_("HTTP proxy configuration saved.").format(prefix=self.prefix),
+                description=_("HTTP proxy configuration saved."),
                 messageable=interaction,
             ),
             ephemeral=True,

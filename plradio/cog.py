@@ -115,9 +115,9 @@ class PyLavRadio(DISCORD_COG_TYPE_MIXIN):
             ):
                 await send(
                     embed=await self.pylav.construct_embed(
-                        description=_("I don't have permission to connect or speak in {channel_value}").format(
-                            channel_value=channel.mention
-                        ),
+                        description=_(
+                            "I don't have permission to connect or speak in {channel_variable_do_not_translate}"
+                        ).format(channel_variable_do_not_translate=channel.mention),
                         messageable=context,
                     ),
                     ephemeral=True,

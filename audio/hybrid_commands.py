@@ -104,9 +104,9 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             ):
                 await context.send(
                     embed=await self.pylav.construct_embed(
-                        description=_("I do not have permission to connect or speak in {channel_name}.").format(
-                            channel_name=channel.mention
-                        ),
+                        description=_(
+                            "I do not have permission to connect or speak in {channel_name_variable_do_not_translate}."
+                        ).format(channel_name_variable_do_not_translate=channel.mention),
                         messageable=context,
                     ),
                     ephemeral=True,
@@ -151,7 +151,9 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         if total_tracks_enqueue > 1:
             await context.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("{number_of_tracks} tracks enqueued.").format(number_of_tracks=total_tracks_enqueue),
+                    description=_("{number_of_tracks_variable_do_not_translate} tracks enqueued.").format(
+                        number_of_tracks_variable_do_not_translate=total_tracks_enqueue
+                    ),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -159,8 +161,8 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         elif total_tracks_enqueue == 1:
             await context.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("{track_name} enqueued").format(
-                        track_name=await single_track.get_track_display_name(with_url=True)
+                    description=_("{track_name_variable_do_not_translate} enqueued").format(
+                        track_name_variable_do_not_translate=await single_track.get_track_display_name(with_url=True)
                     ),
                     thumbnail=await single_track.artworkUrl(),
                     messageable=context,
@@ -245,13 +247,13 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             actual_channel = channel_
         if not ((permission := actual_channel.permissions_for(context.me)) and permission.connect and permission.speak):
             if permission.connect:
-                description = _("I do not have permission to connect to {channel_name}.").format(
-                    channel_name=actual_channel.mention
-                )
+                description = _(
+                    "I do not have permission to connect to {channel_name_variable_do_not_translate}."
+                ).format(channel_name_variable_do_not_translate=actual_channel.mention)
             else:
-                description = _("I do not have permission to speak in {channel_name}.").format(
-                    channel_name=actual_channel.mention
-                )
+                description = _(
+                    "I do not have permission to speak in {channel_name_variable_do_not_translate}."
+                ).format(channel_name_variable_do_not_translate=actual_channel.mention)
             await context.send(
                 embed=await context.pylav.construct_embed(
                     description=description,
@@ -267,9 +269,9 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         ):
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("You do not have permission to connect to {channel_name}.").format(
-                        channel_name=actual_channel.mention
-                    ),
+                    description=_(
+                        "You do not have permission to connect to {channel_name_variable_do_not_translate}."
+                    ).format(channel_name_variable_do_not_translate=actual_channel.mention),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -284,9 +286,9 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         if (vc := await player.forced_vc()) and channel != actual_channel:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("I have been told only to join {channel_name} on this server.").format(
-                        channel_name=vc.mention
-                    ),
+                    description=_(
+                        "I have been told only to join {channel_name_variable_do_not_translate} on this server."
+                    ).format(channel_name_variable_do_not_translate=vc.mention),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -294,8 +296,8 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         else:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("I have successfully connected to {channel_name}.").format(
-                        channel_name=player.channel.mention
+                    description=_("I have successfully connected to {channel_name_variable_do_not_translate}.").format(
+                        channel_name_variable_do_not_translate=player.channel.mention
                     ),
                     messageable=context,
                 ),
@@ -353,8 +355,10 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         if context.player.current:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("I have skipped {track_name} as requested.").format(
-                        track_name=await context.player.current.get_track_display_name(with_url=True)
+                    description=_("I have skipped {track_name_variable_do_not_translate} as requested.").format(
+                        track_name_variable_do_not_translate=await context.player.current.get_track_display_name(
+                            with_url=True
+                        )
                     ),
                     thumbnail=await context.player.current.artworkUrl(),
                     messageable=context,
@@ -419,8 +423,8 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         await context.player.disconnect(requester=context.author)
         await context.send(
             embed=await context.pylav.construct_embed(
-                description=_("I have disconnected from {channel_name} as requested.").format(
-                    channel_name=channel.mention
+                description=_("I have disconnected from {channel_name_variable_do_not_translate} as requested.").format(
+                    channel_name_variable_do_not_translate=channel.mention
                 ),
                 messageable=context,
             ),
@@ -494,7 +498,9 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         await context.player.shuffle_queue(context.author.id)
         await context.send(
             embed=await context.pylav.construct_embed(
-                description=_("{queue_size} tracks shuffled.").format(queue_size=context.player.queue.size()),
+                description=_("{queue_size_variable_do_not_translate} tracks shuffled.").format(
+                    queue_size_variable_do_not_translate=context.player.queue.size()
+                ),
                 messageable=context,
             ),
             ephemeral=True,
@@ -534,8 +540,8 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             msg = _("I will no longer repeat any tracks.")
         else:
             await context.player.set_repeat("current", True, context.author)
-            msg = _("I will now repeat {track_name}.").format(
-                track_name=await context.player.current.get_track_display_name(with_url=True)
+            msg = _("I will now repeat {track_name_variable_do_not_translate}.").format(
+                track_name_variable_do_not_translate=await context.player.current.get_track_display_name(with_url=True)
                 if context.player.current
                 else _("the current track")
             )
@@ -563,10 +569,9 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             return
         if context.player.paused:
             description = _(
-                "The player is already paused, did you mean to run `{bot_command_prefix}{command_name}`"
+                "The player is already paused, did you mean to run `{command_name_variable_do_not_translate}`."
             ).format(
-                bot_command_prefix="/" if context.interaction else context.clean_prefix,
-                command_name=self.command_resume.qualified_name,
+                command_name_variable_do_not_translate=f"{'/' if context.interaction else context.clean_prefix}{self.command_resume.qualified_name}",
             )
             await context.send(
                 embed=await context.pylav.construct_embed(description=description, messageable=context),
@@ -601,9 +606,10 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             )
             return
         if not context.player.paused:
-            description = _("Player already resumed, did you mean to run `{bot_command_prefix}{command_name}`").format(
-                bot_command_prefix="/" if context.interaction else context.clean_prefix,
-                command_name=self.command_pause.qualified_name,
+            description = _(
+                "Player already resumed, did you mean to run `{command_name_variable_do_not_translate}`."
+            ).format(
+                command_name_variable_do_not_translate=f"{'/' if context.interaction else context.clean_prefix}{self.command_pause.qualified_name}",
             )
             await context.send(
                 embed=await context.pylav.construct_embed(description=description, messageable=context),
@@ -661,7 +667,9 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         if volume > max_volume:
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("Volume can not be higher than {max_volume_value}%.").format(max_volume=max_volume),
+                    description=_("Volume can not be higher than {max_volume_variable_do_not_translate}%.").format(
+                        max_volume=max_volume
+                    ),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -670,7 +678,9 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         await context.player.set_volume(volume, requester=context.author)
         await context.send(
             embed=await context.pylav.construct_embed(
-                description=_("Player volume has been set to {volume_value}%.").format(volume_value=volume),
+                description=_("Player volume has been set to {volume_variable_do_not_translate}%.").format(
+                    volume_variable_do_not_translate=volume
+                ),
                 messageable=context,
             ),
             ephemeral=True,
@@ -762,21 +772,23 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         if seek > 0:
             if seek_ms >= await context.player.current.duration():
                 message = _(
-                    "I have moved the current track forward {number_of_seconds} seconds to the end of the track."
-                ).format(number_of_seconds=seek)
+                    "I have moved the current track forward {number_of_seconds_variable_do_not_translate} seconds to the end of the track."
+                ).format(number_of_seconds_variable_do_not_translate=seek)
             else:
                 message = _(
-                    "I have moved the current track forward {number_of_seconds} seconds to position {timestamp_value}."
-                ).format(timestamp_value=format_time_dd_hh_mm_ss(seek_ms), number_of_seconds=seek)
+                    "I have moved the current track forward {number_of_seconds} seconds to position {timestamp_variable_do_not_translate}."
+                ).format(timestamp_variable_do_not_translate=format_time_dd_hh_mm_ss(seek_ms), number_of_seconds=seek)
         elif seek < 0:
             if seek_ms <= 0:
-                message = _("I have moved the current track back {number_of_seconds} seconds to the beginning.").format(
-                    number_of_seconds=abs(seek)
-                )
+                message = _(
+                    "I have moved the current track back {number_of_seconds_variable_do_not_translate} seconds to the beginning."
+                ).format(number_of_seconds_variable_do_not_translate=abs(seek))
             else:
                 message = _(
-                    "I have moved the current track back {number_of_seconds} seconds to position {timestamp_value}."
-                ).format(timestamp_value=format_time_dd_hh_mm_ss(seek_ms), number_of_seconds=abs(seek))
+                    "I have moved the current track back {number_of_seconds} seconds to position {timestamp_variable_do_not_translate}."
+                ).format(
+                    timestamp_variable_do_not_translate=format_time_dd_hh_mm_ss(seek_ms), number_of_seconds=abs(seek)
+                )
         else:
             message = _("I have moved the current track to the beginning.")
 
@@ -824,8 +836,10 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         await context.player.previous(requester=context.author)
         await context.send(
             embed=await context.pylav.construct_embed(
-                description=_("Playing previous track: {track_name}").format(
-                    track_name=await context.player.current.get_track_display_name(with_url=True)
+                description=_("Playing previous track: {track_name_variable_do_not_translate}").format(
+                    track_name_variable_do_not_translate=await context.player.current.get_track_display_name(
+                        with_url=True
+                    )
                 ),
                 thumbnail=await context.player.current.artworkUrl(),
                 messageable=context,

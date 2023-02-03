@@ -155,8 +155,8 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
             embed=await self.pylav.construct_embed(
                 description=shorten_string(
                     max_length=100,
-                    string=_("Local track list updated {number_value} currently present").format(
-                        number_value=len(self.cache)
+                    string=_("Local track list updated {number_variable_do_not_translate} currently present").format(
+                        number_variable_do_not_translate=len(self.cache)
                     ),
                 ),
                 messageable=context,
@@ -190,9 +190,9 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
         if entry not in self.cache:
             await send(
                 embed=await self.pylav.construct_embed(
-                    description=_("{user_input_query_value} is not a valid local file or folder").format(
-                        user_input_query_value=entry
-                    ),
+                    description=_(
+                        "{user_input_query_variable_do_not_translate} is not a valid local file or folder"
+                    ).format(user_input_query_variable_do_not_translate=entry),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -221,9 +221,9 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
             ):
                 await send(
                     embed=await self.pylav.construct_embed(
-                        description=_("I don't have permission to connect or speak in {channel_value}").format(
-                            channel_value=channel.mention
-                        ),
+                        description=_(
+                            "I don't have permission to connect or speak in {channel_variable_do_not_translate}"
+                        ).format(channel_variable_do_not_translate=channel.mention),
                         messageable=interaction,
                     ),
                     ephemeral=True,
@@ -246,7 +246,9 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
         if count > 1:
             await send(
                 embed=await self.pylav.construct_embed(
-                    description=_("{track_count_value} tracks enqueued.").format(track_count_value=count),
+                    description=_("{track_count_variable_do_not_translate} tracks enqueued.").format(
+                        track_count_variable_do_not_translate=count
+                    ),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -254,8 +256,8 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
         elif count == 1:
             await send(
                 embed=await self.pylav.construct_embed(
-                    description=_("{track_name_value} enqueued.").format(
-                        track_name_value=await single_track.get_track_display_name(with_url=True)
+                    description=_("{track_name_variable_do_not_translate} enqueued.").format(
+                        track_name_variable_do_not_translate=await single_track.get_track_display_name(with_url=True)
                     ),
                     messageable=interaction,
                 ),

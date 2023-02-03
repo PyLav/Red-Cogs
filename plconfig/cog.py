@@ -168,16 +168,24 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
             dj_roles = dj_roles.union(await config.fetch_dj_users())
             is_dj = role_or_member.id in dj_roles if dj_roles else True
             message = (
-                _("{role_name_value} is a disc jockey role").format(role_name_value=role_or_member.mention)
+                _("{role_name_variable_do_not_translate} is a disc jockey role").format(
+                    role_name_variable_do_not_translate=role_or_member.mention
+                )
                 if is_dj
-                else _("{role_name_value} is not a disc jockey role").format(role_name_value=role_or_member.mention)
+                else _("{role_name_variable_do_not_translate} is not a disc jockey role").format(
+                    role_name_variable_do_not_translate=role_or_member.mention
+                )
             )
         else:
             is_dj = await self.bot.pylav.is_dj(user=role_or_member, guild=context.guild, bot=self.bot)
             message = (
-                _("{user_name_value} is a disc jockey").format(user_name_value=role_or_member.mention)
+                _("{user_name_variable_do_not_translate} is a disc jockey").format(
+                    user_name_variable_do_not_translate=role_or_member.mention
+                )
                 if is_dj
-                else _("{user_name_value} is not a disc jockey").format(user_name_value=role_or_member.mention)
+                else _("{user_name_variable_do_not_translate} is not a disc jockey").format(
+                    user_name_variable_do_not_translate=role_or_member.mention
+                )
             )
         await context.send(
             embed=await self.pylav.construct_embed(
@@ -202,8 +210,10 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
         if await path.is_file():
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("{folder_path_value} is not a folder").format(
-                        folder_path_value=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
+                    description=_("{folder_path_variable_do_not_translate} is not a folder").format(
+                        folder_path_variable_do_not_translate=inline(
+                            f"{await discord.utils.maybe_coroutine(path.absolute)}"
+                        ),
                     ),
                     messageable=context,
                 ),
@@ -217,13 +227,15 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
             await context.send(
                 embed=await context.pylav.construct_embed(
                     description=_(
-                        "{folder_path_value} does not exist, "
+                        "{folder_path_variable_do_not_translate} does not exist, "
                         "run the command again with "
                         "the create argument "
                         "set to 1 to automatically "
                         "create this folder"
                     ).format(
-                        folder_path_value=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
+                        folder_path_variable_do_not_translate=inline(
+                            f"{await discord.utils.maybe_coroutine(path.absolute)}"
+                        ),
                     ),
                     messageable=context,
                 ),
@@ -234,8 +246,12 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
         await self.pylav.update_localtracks_folder(folder=path)
         await context.send(
             embed=await context.pylav.construct_embed(
-                description=_("PyLav's local tracks folder has been set to {folder_path_value}").format(
-                    folder_path_value=inline(f"{await discord.utils.maybe_coroutine(path.absolute)}"),
+                description=_(
+                    "PyLav's local tracks folder has been set to {folder_path_variable_do_not_translate}"
+                ).format(
+                    folder_path_variable_do_not_translate=inline(
+                        f"{await discord.utils.maybe_coroutine(path.absolute)}"
+                    ),
                 ),
                 messageable=context,
             ),
@@ -387,17 +403,16 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
         """Instructions on how to set the Spotify API Tokens"""
         message = _(
             "1. Go to Spotify developers and log in with your Spotify account.\n"
-            "({spotify_url_value})\n"
+            "({spotify_url_variable_do_not_translate})\n"
             '2. Click "Create An App".\n'
             "3. Fill out the form provided with your app name, etc.\n"
             '4. When asked if you\'re developing commercial integration select "No".\n'
             "5. Accept the terms and conditions.\n"
             "6. Copy your client ID and your client secret into:\n"
-            "  {command_name_value}"
+            "  `{command_name_variable_do_not_translate}`"
         ).format(
-            bot_command_prefix=context.clean_prefix,
-            spotify_url_value="https://developer.spotify.com/dashboard/applications",
-            command_name_value="`{bot_command_prefix}set api spotify client_id <client_id_value> client_secret <client_secret_value>`",
+            spotify_url_variable_do_not_translate="https://developer.spotify.com/dashboard/applications",
+            command_name_variable_do_not_translate=f"`{context.clean_prefix}set api spotify client_id <client_id_value> client_secret <client_secret_value>`",
         )
         await context.send(
             embed=await context.pylav.construct_embed(
@@ -418,8 +433,8 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
         if server and (self.pylav.player_manager.get(server.id) is None):
             await context.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("No active player in {server_name_value}.").format(
-                        server_name_value=bold(server.name)
+                    description=_("No active player in {server_name_variable_do_not_translate}.").format(
+                        server_name_variable_do_not_translate=bold(server.name)
                     ),
                     messageable=context,
                 ),

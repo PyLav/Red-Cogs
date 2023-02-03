@@ -1,11 +1,10 @@
 from __future__ import annotations
 
 import datetime
+import heapq
 import typing
 
-import asyncstdlib
 import discord
-from asyncstdlib import heapq
 from redbot.core import commands
 from redbot.core.commands import TimedeltaConverter
 from redbot.core.i18n import Translator, cog_i18n
@@ -154,9 +153,9 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         await self.pylav.player_manager.global_config.update_max_volume(volume)
         await context.send(
             embed=await self.pylav.construct_embed(
-                description=_("The maximum volume I will allow anyone in any server to set is {volume_value}%").format(
-                    volume_value=humanize_number(volume)
-                ),
+                description=_(
+                    "The maximum volume I will allow anyone in any server to set is {volume_variable_do_not_translate}%"
+                ).format(volume_variable_do_not_translate=humanize_number(volume)),
                 messageable=context,
             ),
             ephemeral=True,
@@ -277,8 +276,8 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         if toggle:
             if after:
                 message = _(
-                    "I will disconnect from the voice channel when the queue is empty after {time_to_dc}."
-                ).format(time_to_dc=humanize_timedelta(timedelta=after))
+                    "I will disconnect from the voice channel when the queue is empty after {time_to_dc_variable_do_not_translate}."
+                ).format(time_to_dc_variable_do_not_translate=humanize_timedelta(timedelta=after))
             else:
                 message = _("I will disconnect from the voice channel when the queue is empty after 60 seconds.")
         else:
@@ -320,9 +319,9 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
         if toggle:
             if after:
-                message = _("I will disconnect from the voice channel when alone after {time_to_dc}.").format(
-                    time_to_dc=humanize_timedelta(timedelta=after)
-                )
+                message = _(
+                    "I will disconnect from the voice channel when alone after {time_to_dc_variable_do_not_translate}."
+                ).format(time_to_dc_variable_do_not_translate=humanize_timedelta(timedelta=after))
             else:
                 message = _("I will disconnect from the voice channel when alone after 60 seconds.")
         else:
@@ -363,10 +362,14 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         if len(roles_or_users) == 1:
             role_or_user = roles_or_users[0]
             if isinstance(role_or_user, discord.Role):
-                message = _("Added {role_list} to the disc jockey roles.").format(role_list=role_or_user.mention)
+                message = _("Added {role_list_variable_do_not_translate} to the disc jockey roles.").format(
+                    role_list_variable_do_not_translate=role_or_user.mention
+                )
                 await config.add_to_dj_roles(role_or_user)
             else:
-                message = _("Added {user_list} to the disc jockey users.").format(user_list=role_or_user.mention)
+                message = _("Added {user_list_variable_do_not_translate} to the disc jockey users.").format(
+                    user_list_variable_do_not_translate=role_or_user.mention
+                )
                 await config.bulk_add_dj_users(role_or_user)
         else:
             roles = {r for r in roles_or_users if isinstance(r, discord.Role)}
@@ -374,22 +377,22 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
             message = None
             if roles and users:
                 message = _(
-                    "Added {role_list} to the disc jockey roles and {user_list} to the disc jockey users."
+                    "Added {role_list_variable_do_not_translate} to the disc jockey roles and {user_list_variable_do_not_translate} to the disc jockey users."
                 ).format(
-                    role_list=humanize_list([r.mention for r in roles]),
-                    user_list=humanize_list([u.mention for u in users]),
+                    role_list_variable_do_not_translate=humanize_list([r.mention for r in roles]),
+                    user_list_variable_do_not_translate=humanize_list([u.mention for u in users]),
                 )
 
             if roles:
                 if not message:
-                    message = _("Added {role_list} to the disc jockey roles.").format(
-                        role_list=humanize_list([r.mention for r in roles])
+                    message = _("Added {role_list_variable_do_not_translate} to the disc jockey roles.").format(
+                        role_list_variable_do_not_translate=humanize_list([r.mention for r in roles])
                     )
                 await config.bulk_add_dj_roles(*roles)
             if users:
                 if not message:
-                    message = _("Added {user_list} to the disc jockey users.").format(
-                        user_list=humanize_list([u.mention for u in users])
+                    message = _("Added {user_list_variable_do_not_translate} to the disc jockey users.").format(
+                        user_list_variable_do_not_translate=humanize_list([u.mention for u in users])
                     )
                 await config.bulk_add_dj_users(*users)
 
@@ -438,35 +441,36 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         message = None
         if roles and users and ints:
             message = _(
-                "I have removed {role_list} from the disc jockey roles and {user_list} from the disc jockey users, as well as {number_list} from the disc jockey roles and users."
+                "I have removed {role_list_variable_do_not_translate} from the disc jockey roles and {user_list_variable_do_not_translate} from the disc jockey users, as well as {number_list_variable_do_not_translate} from the disc jockey roles and users."
             ).format(
-                role_list=humanize_list([r.mention for r in roles]),
-                user_list=humanize_list([u.mention for u in users]),
-                number_list=humanize_list([str(i) for i in ints]),
+                role_list_variable_do_not_translate=humanize_list([r.mention for r in roles]),
+                user_list_variable_do_not_translate=humanize_list([u.mention for u in users]),
+                number_list_variable_do_not_translate=humanize_list([str(i) for i in ints]),
             )
         elif roles and users:
             message = _(
-                "I have removed {role_list} from the disc jockey roles and {user_list} from the disc jockey users."
+                "I have removed {role_list_variable_do_not_translate} from the disc jockey roles and {user_list_variable_do_not_translate} from the disc jockey users."
             ).format(
-                role_list=humanize_list([r.mention for r in roles]), user_list=humanize_list([u.mention for u in users])
+                role_list_variable_do_not_translate=humanize_list([r.mention for r in roles]),
+                user_list_variable_do_not_translate=humanize_list([u.mention for u in users]),
             )
         if roles:
             if not message:
-                message = _("I have removed {role_list} from the disc jockey roles.").format(
-                    role_list=humanize_list([r.mention for r in roles])
+                message = _("I have removed {role_list_variable_do_not_translate} from the disc jockey roles.").format(
+                    role_list_variable_do_not_translate=humanize_list([r.mention for r in roles])
                 )
             await config.bulk_remove_dj_roles(*roles)
         if users:
             if not message:
-                message = _("I have removed {user_list} from the disc jockey users.").format(
-                    user_list=humanize_list([u.mention for u in users])
+                message = _("I have removed {user_list_variable_do_not_translate} from the disc jockey users.").format(
+                    user_list_variable_do_not_translate=humanize_list([u.mention for u in users])
                 )
             await config.bulk_remove_dj_users(*users)
         if ints:
             if not message:
-                message = _("I have removed {user_or_role_id_list} from the disc jockey roles and users.").format(
-                    user_or_role_id_list=humanize_list([str(u) for u in users])
-                )
+                message = _(
+                    "I have removed {user_or_role_id_list_variable_do_not_translate} from the disc jockey roles and users."
+                ).format(user_or_role_id_list_variable_do_not_translate=humanize_list([str(u) for u in users]))
             await config.bulk_remove_dj_users(*[discord.Object(id=i) for i in ints])
             await config.bulk_remove_dj_roles(*[discord.Object(id=i) for i in ints])
         return message
@@ -479,14 +483,18 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         if isinstance(role_or_user, int):
             await config.remove_from_dj_roles(typing.cast(discord.Role, discord.Object(id=role_or_user)))
             await config.remove_from_dj_users(typing.cast(discord.Member, discord.Object(id=role_or_user)))
-            message = _("I have Removed `{user_or_role_id}` from the disc jockey roles and users.").format(
-                user_or_role_id=role_or_user
-            )
+            message = _(
+                "I have Removed `{user_or_role_id_variable_do_not_translate}` from the disc jockey roles and users."
+            ).format(user_or_role_id_variable_do_not_translate=role_or_user)
         elif isinstance(role_or_user, discord.Role):
-            message = _("I have removed {role_name} from the disc jockey roles.").format(role_name=role_or_user.mention)
+            message = _("I have removed {role_name_variable_do_not_translate} from the disc jockey roles.").format(
+                role_name_variable_do_not_translate=role_or_user.mention
+            )
             await config.remove_from_dj_roles(role_or_user)
         else:
-            message = _("I have removed {user_name} from the disc jockey users.").format(user_name=role_or_user.mention)
+            message = _("I have removed {user_name_variable_do_not_translate} from the disc jockey users.").format(
+                user_name_variable_do_not_translate=role_or_user.mention
+            )
             await config.remove_from_dj_users(role_or_user)
         return message
 
@@ -498,10 +506,10 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
 
-        async def role_sorter(role: discord.Role | int) -> float:
+        def role_sorter(role: discord.Role | int) -> float:
             return float("-inf") if isinstance(role, int) else role.position
 
-        async def user_sorter(user: discord.Member | int) -> float:
+        def user_sorter(user: discord.Member | int) -> float:
             return float("-inf") if isinstance(user, int) else user.top_role.position
 
         config = self.pylav.player_config_manager.get_config(context.guild.id)
@@ -509,7 +517,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
             (role_object if (role_object := context.guild.get_role(role)) else role)
             for role in await config.fetch_dj_roles()
         }
-        dj_roles = await heapq.nlargest(asyncstdlib.iter(dj_roles), key=role_sorter, n=len(dj_roles))
+        dj_roles = heapq.nlargest(len(dj_roles), iter(dj_roles), key=role_sorter)
         dj_roles_chunks = [dj_roles[i : i + 3] for i in range(0, len(dj_roles), 3)]
         dj_roles_string_list = [
             " || ".join(
@@ -526,7 +534,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
             (member_object if (member_object := context.guild.get_member(member)) else member)
             for member in await config.fetch_dj_users()
         }
-        dj_user = await heapq.nlargest(asyncstdlib.iter(dj_user), key=user_sorter, n=len(dj_user))
+        dj_user = heapq.nlargest(len(dj_user), iter(dj_user), key=user_sorter)
         dj_user_chunks = [dj_user[i : i + 3] for i in range(0, len(dj_user), 3)]
         dj_user_string_list = [
             " || ".join(
@@ -625,9 +633,11 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
             await context.send(
                 embed=await self.pylav.construct_embed(
                     description=_(
-                        "My owner has told me that server-specific volume must be between 0% and {volume_value}%."
+                        "My owner has told me that server-specific volume must be between 0% and {volume_variable_do_not_translate}%."
                     ).format(
-                        volume_value=humanize_number(await self.pylav.player_manager.global_config.fetch_max_volume())
+                        volume_variable_do_not_translate=humanize_number(
+                            await self.pylav.player_manager.global_config.fetch_max_volume()
+                        )
                     ),
                     messageable=context,
                 ),
@@ -642,8 +652,8 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         if volume > max_volume:
             await context.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("Volume must be between 0% and {volume_value}%.").format(
-                        volume_value=humanize_number(max_volume)
+                    description=_("Volume must be between 0% and {volume_variable_do_not_translate}%.").format(
+                        volume_variable_do_not_translate=humanize_number(max_volume)
                     ),
                     messageable=context,
                 ),
@@ -656,7 +666,9 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
             await context.player.set_volume(volume, requester=context.author)
         await context.send(
             embed=await self.pylav.construct_embed(
-                description=_("Max volume set to {volume_value}%.").format(volume_value=humanize_number(volume)),
+                description=_("Max volume set to {volume_variable_do_not_translate}%.").format(
+                    volume_variable_do_not_translate=humanize_number(volume)
+                ),
                 messageable=context,
             ),
             ephemeral=True,
@@ -830,8 +842,12 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
             await context.send(
                 embed=await self.pylav.construct_embed(
                     description=_(
-                        "My owner has told me to disconnect from the voice channel when the queue is empty after {time_to_dc}."
-                    ).format(time_to_dc=humanize_timedelta(timedelta=datetime.timedelta(seconds=global_timer))),
+                        "My owner has told me to disconnect from the voice channel when the queue is empty after {time_to_dc_variable_do_not_translate}."
+                    ).format(
+                        time_to_dc_variable_do_not_translate=humanize_timedelta(
+                            timedelta=datetime.timedelta(seconds=global_timer)
+                        )
+                    ),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -851,8 +867,8 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         if toggle:
             if after:
                 message = _(
-                    "I will disconnect from the voice channel when the queue is empty after {time_to_dc}."
-                ).format(time_to_dc=humanize_timedelta(timedelta=after))
+                    "I will disconnect from the voice channel when the queue is empty after {time_to_dc_variable_do_not_translate}."
+                ).format(time_to_dc_variable_do_not_translate=humanize_timedelta(timedelta=after))
             else:
                 message = _("I will disconnect from the voice channel when the queue is empty after 60 seconds.")
         else:
@@ -895,8 +911,12 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
             await context.send(
                 embed=await self.pylav.construct_embed(
                     description=_(
-                        "My owner has told me to disconnect from the voice channel when alone after {time_to_dc}."
-                    ).format(time_to_dc=humanize_timedelta(timedelta=datetime.timedelta(seconds=global_timer))),
+                        "My owner has told me to disconnect from the voice channel when alone after {time_to_dc_variable_do_not_translate}."
+                    ).format(
+                        time_to_dc_variable_do_not_translate=humanize_timedelta(
+                            timedelta=datetime.timedelta(seconds=global_timer)
+                        )
+                    ),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -916,9 +936,9 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         )
         if toggle:
             if after:
-                message = _("I will disconnect from the voice channel when alone after {time_to_dc}.").format(
-                    time_to_dc=humanize_timedelta(timedelta=after)
-                )
+                message = _(
+                    "I will disconnect from the voice channel when alone after {time_to_dc_variable_do_not_translate}."
+                ).format(time_to_dc_variable_do_not_translate=humanize_timedelta(timedelta=after))
             else:
                 message = _("I will disconnect from the voice channel when alone after 60 seconds.")
         else:
@@ -951,9 +971,9 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
 
         await context.send(
             embed=await self.pylav.construct_embed(
-                description=_("From now on, I will use {playlist_name} to select songs for autoplay.").format(
-                    playlist_name=bold(await playlist.fetch_name())
-                ),
+                description=_(
+                    "From now on, I will use {playlist_name_variable_do_not_translate} to select songs for autoplay."
+                ).format(playlist_name_variable_do_not_translate=bold(await playlist.fetch_name())),
                 messageable=context,
             ),
             ephemeral=True,
@@ -983,8 +1003,8 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
             await context.send(
                 embed=await context.pylav.construct_embed(
                     description=_(
-                        "I do not have permission to send messages or send embed links or read messages in {channel_name}."
-                    ).format(channel_name=channel.mention),
+                        "I do not have permission to send messages or send embed links or read messages in {channel_name_variable_do_not_translate}."
+                    ).format(channel_name_variable_do_not_translate=channel.mention),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -999,9 +1019,9 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         if channel:
             await context.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("I will only accept PyLav commands executed from {channel_name}.").format(
-                        channel_name=channel.mention
-                    ),
+                    description=_(
+                        "I will only accept PyLav commands executed from {channel_name_variable_do_not_translate}."
+                    ).format(channel_name_variable_do_not_translate=channel.mention),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -1029,9 +1049,9 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         ):
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("I do not have permission to connect or speak in {channel_name}.").format(
-                        channel_name=channel.mention
-                    ),
+                    description=_(
+                        "I do not have permission to connect or speak in {channel_name_variable_do_not_translate}."
+                    ).format(channel_name_variable_do_not_translate=channel.mention),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -1047,8 +1067,8 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         if channel:
             await context.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("I will only be allowed to join {channel_name}.").format(
-                        channel_name=channel.mention
+                    description=_("I will only be allowed to join {channel_name_variable_do_not_translate}.").format(
+                        channel_name_variable_do_not_translate=channel.mention
                     ),
                     messageable=context,
                 ),

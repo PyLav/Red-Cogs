@@ -106,7 +106,9 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN):
                 Choice(
                     name=shorten_string(
                         max_length=100,
-                        string=_("Searching {service_name}").format(service_name=inv_map.get(prefix, fallback_source)),
+                        string=_("Searching {service_name_variable_do_not_translate}").format(
+                            service_name_variable_do_not_translate=inv_map.get(prefix, fallback_source)
+                        ),
                     ),
                     value="FqgqQW21tQ@#1g2fasf2",
                 )
@@ -122,8 +124,8 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN):
                 Choice(
                     name=shorten_string(
                         max_length=100,
-                        string=_("No results found on {service_name}").format(
-                            service_name=inv_map.get(prefix, fallback_source)
+                        string=_("No results found on {service_name_variable_do_not_translate}").format(
+                            service_name_variable_do_not_translate=inv_map.get(prefix, fallback_source)
                         ),
                     ),
                     value="FqgqQW21tQ@#1g2fasf2",
@@ -135,8 +137,8 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN):
                 Choice(
                     name=shorten_string(
                         max_length=100,
-                        string=_("No results found on {service_name}").format(
-                            service_name=inv_map.get(prefix, fallback_source)
+                        string=_("No results found on {service_name_variable_do_not_translate}").format(
+                            service_name_variable_do_not_translate=inv_map.get(prefix, fallback_source)
                         ),
                     ),
                     value="FqgqQW21tQ@#1g2fasf2",

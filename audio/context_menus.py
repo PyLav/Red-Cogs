@@ -52,8 +52,10 @@ class ContextMenus(DISCORD_COG_TYPE_MIXIN):
             await interaction.followup.send(
                 embed=await self.pylav.construct_embed(
                     messageable=interaction,
-                    description=_("This command is not available in this channel, please use {channel_name}.").format(
-                        channel_name=channel.mention
+                    description=_(
+                        "This command is not available in this channel, please use {channel_name_variable_do_not_translate}."
+                    ).format(
+                        channel_name_variable_do_not_translate=channel.mention
                         if (channel := interaction.guild.get_channel_or_thread(channel_id))
                         else channel_id
                     ),
@@ -96,7 +98,8 @@ class ContextMenus(DISCORD_COG_TYPE_MIXIN):
 
         await self.command_play.callback(self, interaction, query="\n".join(valid_matches))  # type: ignore
 
-    async def _reconstruct_msg_content(self, message):
+    @staticmethod
+    async def _reconstruct_msg_content(message):
         content = message.content.strip()
         for embed in message.embeds:
             if embed.description:
@@ -153,8 +156,10 @@ class ContextMenus(DISCORD_COG_TYPE_MIXIN):
             await interaction.followup.send(
                 embed=await self.pylav.construct_embed(
                     messageable=interaction,
-                    description=_("This command is not available in this channel, please use {channel_name}.").format(
-                        channel_name=channel.mention
+                    description=_(
+                        "This command is not available in this channel, please use {channel_name_variable_do_not_translate}."
+                    ).format(
+                        channel_name_variable_do_not_translate=channel.mention
                         if (channel := interaction.guild.get_channel_or_thread(channel_id))
                         else channel_id
                     ),
@@ -171,8 +176,8 @@ class ContextMenus(DISCORD_COG_TYPE_MIXIN):
             await interaction.followup.send(
                 embed=await self.pylav.construct_embed(
                     description=_(
-                        "I could not find any supported activity in the activities {user_name} is partaking."
-                    ).format(user_name=member.mention),
+                        "I could not find any supported activity in the activities {user_name_variable_do_not_translate} is partaking."
+                    ).format(user_name_variable_do_not_translate=member.mention),
                     messageable=interaction,
                 ),
                 ephemeral=True,
@@ -203,8 +208,8 @@ class ContextMenus(DISCORD_COG_TYPE_MIXIN):
                 await interaction.followup.send(
                     embed=await self.pylav.construct_embed(
                         description=_(
-                            "I could not find a valid Apple Music track in the activity {user_name} is partaking in."
-                        ).format(user_name=member.mention),
+                            "I could not find a valid Apple Music track in the activity {user_name_variable_do_not_translate} is partaking in."
+                        ).format(user_name_variable_do_not_translate=member.mention),
                         messageable=interaction,
                     ),
                     ephemeral=True,
@@ -218,8 +223,8 @@ class ContextMenus(DISCORD_COG_TYPE_MIXIN):
             if not response.tracks:
                 await interaction.followup.send(
                     embed=await self.pylav.construct_embed(
-                        description=_("I could not find any tracks matching {query_value}.").format(
-                            query_value=search_string
+                        description=_("I could not find any tracks matching {query_variable_do_not_translate}.").format(
+                            query_variable_do_not_translate=search_string
                         ),
                         messageable=interaction,
                     ),
@@ -235,9 +240,9 @@ class ContextMenus(DISCORD_COG_TYPE_MIXIN):
         else:
             await interaction.followup.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("I could not figure out what {user_name} is listening to.").format(
-                        user_name=member.mention
-                    ),
+                    description=_(
+                        "I could not figure out what {user_name_variable_do_not_translate} is listening to."
+                    ).format(user_name_variable_do_not_translate=member.mention),
                     messageable=interaction,
                 ),
                 ephemeral=True,

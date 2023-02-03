@@ -56,8 +56,8 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
         if queue_number < 1 or queue_number > player.queue.size():
             await context.send(
                 embed=await context.construct_embed(
-                    description=_("Track index must be between 1 and {size_of_queue}").format(
-                        size_of_queue=player.queue.size()
+                    description=_("Track index must be between 1 and {size_of_queue_variable_do_not_translate}").format(
+                        size_of_queue_variable_do_not_translate=player.queue.size()
                     ),
                     messageable=context,
                 ),
@@ -74,8 +74,8 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
         if not track:
             await context.send(
                 embed=await context.construct_embed(
-                    description=_("There are no tracks in position {queue_position_value}.").format(
-                        queue_position_value=queue_number
+                    description=_("There are no tracks in position {queue_position_variable_do_not_translate}.").format(
+                        queue_position_variable_do_not_translate=queue_number
                     ),
                     messageable=context,
                 ),
@@ -87,11 +87,13 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
             await context.send(
                 embed=await context.construct_embed(
                     description=_(
-                        "{track_name} will play after {current_track_name} finishes ({estimated_time_value})."
+                        "{track_name_variable_do_not_translate} will play after {current_track_name_variable_do_not_translate} finishes ({estimated_time_variable_do_not_translate})."
                     ).format(
-                        track_name=await track.get_track_display_name(with_url=True),
-                        current_track_name=await player.current.get_track_display_name(with_url=True),
-                        estimated_time_value=discord.utils.format_dt(
+                        track_name_variable_do_not_translate=await track.get_track_display_name(with_url=True),
+                        current_track_name_variable_do_not_translate=await player.current.get_track_display_name(
+                            with_url=True
+                        ),
+                        estimated_time_variable_do_not_translate=discord.utils.format_dt(
                             get_now_utc()
                             + datetime.timedelta(
                                 milliseconds=await player.current.duration() - await player.fetch_position()
@@ -106,9 +108,13 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
         else:
             await context.send(
                 embed=await context.construct_embed(
-                    description=_("{track_name} will start now\n{current_track_name} has been skipped.").format(
-                        track_name=await track.get_track_display_name(with_url=True),
-                        current_track_name=await player.current.get_track_display_name(with_url=True),
+                    description=_(
+                        "{track_name_variable_do_not_translate} will start now\n{current_track_name_variable_do_not_translate} has been skipped."
+                    ).format(
+                        track_name_variable_do_not_translate=await track.get_track_display_name(with_url=True),
+                        current_track_name_variable_do_not_translate=await player.current.get_track_display_name(
+                            with_url=True
+                        ),
                     ),
                     messageable=context,
                 ),
@@ -147,9 +153,9 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
             ):
                 await context.send(
                     embed=await self.pylav.construct_embed(
-                        description=_("I do not have permission to connect or speak in {channel_name}.").format(
-                            channel_name=channel.mention
-                        ),
+                        description=_(
+                            "I do not have permission to connect or speak in {channel_name_variable_do_not_translate}."
+                        ).format(channel_name_variable_do_not_translate=channel.mention),
                         messageable=context,
                     ),
                     ephemeral=True,
@@ -228,8 +234,8 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
         if total_tracks_enqueue > 1:
             await context.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("{number_of_tracks} tracks have been enqueued.").format(
-                        number_of_tracks=total_tracks_enqueue
+                    description=_("{number_of_tracks_variable_do_not_translate} tracks have been enqueued.").format(
+                        number_of_tracks_variable_do_not_translate=total_tracks_enqueue
                     ),
                     messageable=context,
                 ),
@@ -238,8 +244,8 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
         elif total_tracks_enqueue == 1:
             await context.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("{track_name} has been enqueued.").format(
-                        track_name=await single_track.get_track_display_name(with_url=True)
+                    description=_("{track_name_variable_do_not_translate} has been enqueued.").format(
+                        track_name_variable_do_not_translate=await single_track.get_track_display_name(with_url=True)
                     ),
                     thumbnail=await single_track.artworkUrl(),
                     messageable=context,
@@ -287,9 +293,9 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
             if queue_number < 1 or queue_number > player.queue.size():
                 await context.send(
                     embed=await context.construct_embed(
-                        description=_("Track index must be between 1 and {queue_size}.").format(
-                            queue_size=player.queue.size()
-                        ),
+                        description=_(
+                            "Track index must be between 1 and {queue_size_variable_do_not_translate}."
+                        ).format(queue_size_variable_do_not_translate=player.queue.size()),
                         messageable=context,
                     ),
                     ephemeral=True,
@@ -302,8 +308,8 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
             if not track:
                 await context.send(
                     embed=await context.construct_embed(
-                        description=_("There is no track in position {position_value}.").format(
-                            position_value=queue_number
+                        description=_("There is no track in position {position_variable_do_not_translate}.").format(
+                            position_variable_do_not_translate=queue_number
                         ),
                         messageable=context,
                     ),
@@ -334,8 +340,8 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
             if not number_removed:
                 await context.send(
                     embed=await context.construct_embed(
-                        description=_("{track_name} not found in queue.").format(
-                            track_name=await track.get_track_display_name(with_url=True)
+                        description=_("{track_name_variable_do_not_translate} not found in queue.").format(
+                            track_name_variable_do_not_translate=await track.get_track_display_name(with_url=True)
                         ),
                         messageable=context,
                     ),
@@ -354,9 +360,9 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
         elif number_removed == 1:
             await context.send(
                 embed=await context.construct_embed(
-                    description=_("I have removed a single entry of {track_name} from the queue.").format(
-                        track_name=await track.get_track_display_name(with_url=True)
-                    ),
+                    description=_(
+                        "I have removed a single entry of {track_name_variable_do_not_translate} from the queue."
+                    ).format(track_name_variable_do_not_translate=await track.get_track_display_name(with_url=True)),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -364,9 +370,11 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
         else:
             await context.send(
                 embed=await context.construct_embed(
-                    description=_("I have removed {number_of_entries} entries of {track_name} from the queue.").format(
-                        track_name=await track.get_track_display_name(with_url=True),
-                        number_of_entries=number_removed,
+                    description=_(
+                        "I have removed {number_of_entries_variable_do_not_translate} entries of {track_name_variable_do_not_translate} from the queue."
+                    ).format(
+                        track_name_variable_do_not_translate=await track.get_track_display_name(with_url=True),
+                        number_of_entries_variable_do_not_translate=number_removed,
                     ),
                     messageable=context,
                 ),

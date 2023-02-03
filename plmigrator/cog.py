@@ -24,7 +24,6 @@ from pylav.extension.red.utils import recursive_merge
 from pylav.logging import getLogger
 from pylav.players.tracks.encoder import async_bulk_re_encoder
 from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE_MIXIN
-from pylav.utils.vendor.redbot import AsyncIter
 
 LOGGER = getLogger("PyLav.cog.Migrator")
 
@@ -60,14 +59,14 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
             return
         audio_config, playlist_api = await self._init_audio_cog_dependencies()
         await self._process_global_settings(audio_config, context)
-        async for guild, guild_config in AsyncIter((await audio_config.all_guilds()).items()):
+        for guild, guild_config in (await audio_config.all_guilds()).items():
             await self._process_server_settings(guild, guild_config)
         await self._process_playlists(playlist_api)
         await context.send(
             content=_(
                 "Migration of Audio cog settings to PyLav complete. "
-                "Restart the bot for it to take effect.\n{requester_value}"
-            ).format(requester_value=context.author.mention),
+                "Restart the bot for it to take effect.\n{requester_variable_do_not_translate}."
+            ).format(requester_variable_do_not_translate=context.author.mention),
             ephemeral=True,
         )
 
@@ -84,7 +83,7 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
                         playlists
                 """
         row_results = await asyncio.to_thread(playlist_api.database.cursor().execute, query)
-        async for row in AsyncIter(row_results):
+        for row in row_results:
             pl = PlaylistFetchResult(*row)
             try:
                 if pl.playlist_id == 42069:
@@ -156,8 +155,8 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
             except PermissionError:
                 await context.send(
                     embed=await self.pylav.construct_embed(
-                        description=_("I don't have permission to access {folder_value}").format(
-                            folder_value=localtracks_path
+                        description=_("I don't have permission to access {folder_variable_do_not_translate}.").format(
+                            folder_variable_do_not_translate=localtracks_path
                         )
                     )
                 )

@@ -92,8 +92,11 @@ class EmbedGenerator:
             (
                 EightBitANSI.paint_white(_("Auto Disconnect")),
                 EightBitANSI.paint_green(
-                    _("{setting_stats_value}\n{setting_timer_value} seconds").format(
-                        setting_stats_value=enabled, setting_timer_value=global_config["empty_queue_dc"].time
+                    _(
+                        "{setting_stats_variable_do_not_translate}\n{setting_timer_variable_do_not_translate} seconds"
+                    ).format(
+                        setting_stats_variable_do_not_translate=enabled,
+                        setting_timer_variable_do_not_translate=global_config["empty_queue_dc"].time,
                     )
                 )
                 if global_config["empty_queue_dc"].enabled
@@ -102,8 +105,11 @@ class EmbedGenerator:
             (
                 EightBitANSI.paint_white(_("Auto Alone Pause")),
                 EightBitANSI.paint_green(
-                    _("{setting_stats_value}\n{setting_timer_value} seconds").format(
-                        setting_stats_value=enabled, setting_timer_value=global_config["alone_pause"].time
+                    _(
+                        "{setting_stats_variable_do_not_translate}\n{setting_timer_variable_do_not_translate} seconds"
+                    ).format(
+                        setting_stats_variable_do_not_translate=enabled,
+                        setting_timer_variable_do_not_translate=global_config["alone_pause"].time,
                     )
                 )
                 if global_config["alone_pause"].enabled
@@ -112,8 +118,11 @@ class EmbedGenerator:
             (
                 EightBitANSI.paint_white(_("Auto Alone Disconnect")),
                 EightBitANSI.paint_green(
-                    _("{setting_stats_value}\n{setting_timer_value} seconds").format(
-                        setting_stats_value=enabled, setting_timer_value=global_config["alone_dc"].time
+                    _(
+                        "{setting_stats_variable_do_not_translate}\n{setting_timer_variable_do_not_translate} seconds"
+                    ).format(
+                        setting_stats_variable_do_not_translate=enabled,
+                        setting_timer_variable_do_not_translate=global_config["alone_dc"].time,
                     )
                 )
                 if global_config["alone_dc"].enabled
@@ -169,8 +178,11 @@ class EmbedGenerator:
             (
                 EightBitANSI.paint_white(_("Auto Disconnect")),
                 EightBitANSI.paint_green(
-                    _("{setting_stats_value}\n{setting_timer_value} seconds").format(
-                        setting_stats_value=enabled, setting_timer_value=ac_empty_queue_dc.time
+                    _(
+                        "{setting_stats_variable_do_not_translate}\n{setting_timer_variable_do_not_translate} seconds"
+                    ).format(
+                        setting_stats_variable_do_not_translate=enabled,
+                        setting_timer_variable_do_not_translate=ac_empty_queue_dc.time,
                     )
                 )
                 if ac_empty_queue_dc.enabled
@@ -179,8 +191,11 @@ class EmbedGenerator:
             (
                 EightBitANSI.paint_white(_("Auto Alone Pause")),
                 EightBitANSI.paint_green(
-                    _("{setting_stats_value}\n{setting_timer_value} seconds").format(
-                        setting_stats_value=enabled, setting_timer_value=ac_alone_pause.time
+                    _(
+                        "{setting_stats_variable_do_not_translate}\n{setting_timer_variable_do_not_translate} seconds"
+                    ).format(
+                        setting_stats_variable_do_not_translate=enabled,
+                        setting_timer_variable_do_not_translate=ac_alone_pause.time,
                     )
                 )
                 if ac_alone_pause.enabled
@@ -189,8 +204,11 @@ class EmbedGenerator:
             (
                 EightBitANSI.paint_white(_("Auto Alone Disconnect")),
                 EightBitANSI.paint_green(
-                    _("{setting_stats_value}\n{setting_timer_value} seconds").format(
-                        setting_stats_value=enabled, setting_timer_value=ac_alone_dc.time
+                    _(
+                        "{setting_stats_variable_do_not_translate}\n{setting_timer_variable_do_not_translate} seconds"
+                    ).format(
+                        setting_stats_variable_do_not_translate=enabled,
+                        setting_timer_variable_do_not_translate=ac_alone_dc.time,
                     )
                 )
                 if ac_alone_dc.enabled
@@ -238,7 +256,9 @@ class EmbedGenerator:
                 ]
             )
             if len(config["dj_users"]) <= 5
-            else _("Too many to show ({number_of_users_value})").format(number_of_users_value=len(config["dj_users"]))
+            else _("Too many to show ({number_of_users_variable_do_not_translate})").format(
+                number_of_users_variable_do_not_translate=len(config["dj_users"])
+            )
         )
 
         dj_role_str = (
@@ -254,7 +274,9 @@ class EmbedGenerator:
                 ]
             )
             if len(config["dj_roles"]) <= 5
-            else _("Too many to show ({number_of_roles_value})").format(number_of_roles_value=len(config["dj_roles"]))
+            else _("Too many to show ({number_of_roles_variable_do_not_translate})").format(
+                number_of_roles_variable_do_not_translate=len(config["dj_roles"])
+            )
         )
         if len(config["dj_users"]) == 0:
             dj_user_str = EightBitANSI.paint_red(_("None"))
@@ -300,8 +322,11 @@ class EmbedGenerator:
             (
                 EightBitANSI.paint_white(_("Auto Disconnect")),
                 EightBitANSI.paint_green(
-                    _("{setting_stats_value}\n{setting_timer_value} seconds").format(
-                        setting_stats_value=enabled, setting_timer_value=config["empty_queue_dc"].time
+                    _(
+                        "{setting_stats_variable_do_not_translate}\n{setting_timer_variable_do_not_translate} seconds"
+                    ).format(
+                        setting_stats_variable_do_not_translate=enabled,
+                        setting_timer_variable_do_not_translate=config["empty_queue_dc"].time,
                     )
                 )
                 if config["empty_queue_dc"].enabled
@@ -310,8 +335,11 @@ class EmbedGenerator:
             (
                 EightBitANSI.paint_white(_("Auto Alone Pause")),
                 EightBitANSI.paint_green(
-                    _("{setting_stats_value}\n{setting_timer_value} seconds").format(
-                        setting_stats_value=enabled, setting_timer_value=config["alone_pause"].time
+                    _(
+                        "{setting_stats_variable_do_not_translate}\n{setting_timer_variable_do_not_translate} seconds"
+                    ).format(
+                        setting_stats_variable_do_not_translate=enabled,
+                        setting_timer_variable_do_not_translate=config["alone_pause"].time,
                     )
                 )
                 if config["alone_pause"].enabled
@@ -320,8 +348,11 @@ class EmbedGenerator:
             (
                 EightBitANSI.paint_white(_("Auto Alone Disconnect")),
                 EightBitANSI.paint_green(
-                    _("{setting_stats_value}\n{setting_timer_value} seconds").format(
-                        setting_stats_value=enabled, setting_timer_value=config["alone_dc"].time
+                    _(
+                        "{setting_stats_variable_do_not_translate}\n{setting_timer_variable_do_not_translate} seconds"
+                    ).format(
+                        setting_stats_variable_do_not_translate=enabled,
+                        setting_timer_variable_do_not_translate=config["alone_dc"].time,
                     )
                 )
                 if config["alone_dc"].enabled

@@ -405,8 +405,8 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
             await context.defer(ephemeral=True)
         await context.send(
             embed=await context.pylav.construct_embed(
-                description=_("Query cache size: `{size_value}`").format(
-                    size_value=humanize_number(await self.pylav.query_cache_manager.size())
+                description=_("Query cache size: `{size_variable_do_not_translate}`").format(
+                    size_variable_do_not_translate=humanize_number(await self.pylav.query_cache_manager.size())
                 ),
                 messageable=context,
             ),
@@ -491,8 +491,8 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
         logger.setLevel(level_map[level])
         await context.send(
             embed=await context.pylav.construct_embed(
-                description=_("Logger level set to `{level_value}`").format(
-                    level_value=logging.getLevelName(logger.level)
+                description=_("Logger level set to `{level_variable_do_not_translate}`").format(
+                    level_variable_do_not_translate=logging.getLevelName(logger.level)
                 ),
                 messageable=context,
             ),

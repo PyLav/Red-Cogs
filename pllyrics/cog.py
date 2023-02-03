@@ -90,8 +90,8 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
             embed=await context.pylav.construct_embed(
                 description=box(
                     EightBitANSI.paint_yellow(
-                        _("Timed lyrics are now {enabled_or_disabled_value}").format(
-                            enabled_or_disabled_value=EightBitANSI.paint_red(_("disabled"))
+                        _("Timed lyrics are now {enabled_or_disabled_variable_do_not_translate}.").format(
+                            enabled_or_disabled_variable_do_not_translate=EightBitANSI.paint_red(_("disabled"))
                             if current
                             else EightBitANSI.paint_green(_("enabled"))
                         )
@@ -113,8 +113,8 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
             embed=await context.pylav.construct_embed(
                 description=box(
                     EightBitANSI.paint_yellow(
-                        _("Sending full lyrics on track start {state_value}").format(
-                            state_value=EightBitANSI.paint_red(_("disabled"))
+                        _("Sending full lyrics on track start {state_variable_do_not_translate}.").format(
+                            state_variable_do_not_translate=EightBitANSI.paint_red(_("disabled"))
                             if current
                             else EightBitANSI.paint_green(_("enabled"))
                         )
@@ -135,7 +135,9 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
             await self._config.guild(context.guild).lyrics.channel.set(channel.id)
             await context.send(
                 embed=await context.pylav.construct_embed(
-                    description=_("Lyrics channel set to {channel_value}").format(channel_value=channel.mention),
+                    description=_("Lyrics channel set to {channel_variable_do_not_translate}").format(
+                        channel_variable_do_not_translate=channel.mention
+                    ),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -201,7 +203,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                 return
             await channel.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("Error: {error_value}").format(error_value=e),
+                    description=_("Error: {error_variable_do_not_translate}").format(error_variable_do_not_translate=e),
                     messageable=channel,
                 ),
             )
@@ -211,7 +213,9 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                 return
             await channel.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("API Error: {error_value}").format(error_value=response.error),
+                    description=_("API Error: {error_variable_do_not_translate}").format(
+                        error_variable_do_not_translate=response.error
+                    ),
                     messageable=channel,
                 ),
             )
@@ -238,35 +242,47 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
             for i, page in enumerate(pagify(lyrics, delims=["\n"], page_length=3950), start=1):
                 embed_list.append(
                     await self.pylav.construct_embed(
-                        title=_("{extras_value}Lyrics for {title_value}{author_value} - Part {page_value}").format(
-                            title_value=await track.title(),
-                            page_value=i,
-                            extras_value="" if exact else _("(Guess) "),
-                            author_value=_(" by {name_value}").format(name_value=await track.author())
+                        title=_(
+                            "{extras_variable_do_not_translate}Lyrics for {title_variable_do_not_translate}{author_variable_do_not_translate} - Part {page_variable_do_not_translate}"
+                        ).format(
+                            title_variable_do_not_translate=await track.title(),
+                            page_variable_do_not_translate=i,
+                            extras_variable_do_not_translate="" if exact else _("(Guess) "),
+                            author_variable_do_not_translate=_(" by {name_variable_do_not_translate}").format(
+                                name_variable_do_not_translate=await track.author()
+                            )
                             if show_author
                             else "",
                         ),
                         description=page,
                         url=await track.uri(),
                         messageable=channel,
-                        footer=_("Lyrics provided by {provider_value}").format(provider_value=response.provider),
+                        footer=_("Lyrics provided by {provider_variable_do_not_translate}").format(
+                            provider_variable_do_not_translate=response.provider
+                        ),
                     )
                 )
             await channel.send(embeds=embed_list)
         else:
             await channel.send(
                 embed=await self.pylav.construct_embed(
-                    title=_("{extras_value}Lyrics for {title_value}{author_value}").format(
-                        title_value=await track.title(),
-                        extras_value="" if exact else _("(Guess) "),
-                        author_value=_(" by {name_value}").format(name_value=await track.author())
+                    title=_(
+                        "{extras_variable_do_not_translate}Lyrics for {title_variable_do_not_translate}{author_variable_do_not_translate}"
+                    ).format(
+                        title_variable_do_not_translate=await track.title(),
+                        extras_variable_do_not_translate="" if exact else _("(Guess) "),
+                        author_variable_do_not_translate=_(" by {name_variable_do_not_translate}").format(
+                            name_variable_do_not_translate=await track.author()
+                        )
                         if show_author
                         else "",
                     ),
                     url=await track.uri(),
                     description=lyrics,
                     messageable=channel,
-                    footer=_("Lyrics provided by {provider_value}").format(provider_value=response.provider),
+                    footer=_("Lyrics provided by {provider_variable_do_not_translate}").format(
+                        provider_variable_do_not_translate=response.provider
+                    ),
                 )
             )
 
@@ -311,21 +327,31 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
 
             await channel.send(
                 embed=await self.pylav.construct_embed(
-                    title=_("{extras_value}Lyrics for {title_value}{author_value}").format(
-                        title_value=await track.title(),
-                        extras_value="" if exact else _("(Guess) "),
-                        author_value=_(" by {name_value}").format(name_value=await track.author())
+                    title=_(
+                        "{extras_variable_do_not_translate}Lyrics for {title_variable_do_not_translate}{author_variable_do_not_translate}"
+                    ).format(
+                        title_variable_do_not_translate=await track.title(),
+                        extras_variable_do_not_translate="" if exact else _("(Guess) "),
+                        author_variable_do_not_translate=_(" by {name_variable_do_not_translate}").format(
+                            name_variable_do_not_translate=await track.author()
+                        )
                         if show_author
                         else "",
                     ),
                     url=await track.uri(),
-                    description=_("{lyrics_value}\n\nPosition: {duration_value} until {until_value}").format(
-                        lyrics_value=message_content,
-                        duration_value=format_time_dd_hh_mm_ss(start_point) if start_point else _("Start"),
-                        until_value=format_time_dd_hh_mm_ss(start_point + delta),
+                    description=_(
+                        "{lyrics_variable_do_not_translate}\n\nPosition: {duration_variable_do_not_translate} until {until_variable_do_not_translate}"
+                    ).format(
+                        lyrics_variable_do_not_translate=message_content,
+                        duration_variable_do_not_translate=format_time_dd_hh_mm_ss(start_point)
+                        if start_point
+                        else _("Start"),
+                        until_variable_do_not_translate=format_time_dd_hh_mm_ss(start_point + delta),
                     ),
                     messageable=channel,
-                    footer=_("Lyrics provided by {provider_value}").format(provider_value=response.provider),
+                    footer=_("Lyrics provided by {provider_variable_do_not_translate}").format(
+                        provider_variable_do_not_translate=response.provider
+                    ),
                 )
             )
             await asyncio.sleep(sleep_duration // 1000)
