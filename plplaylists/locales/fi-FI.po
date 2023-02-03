@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-02-03 20:16+0000\n"
-"PO-Revision-Date: 2023-02-03 20:20\n"
+"PO-Revision-Date: 2023-02-03 21:03\n"
 "Last-Translator: \n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
@@ -41,7 +41,7 @@ msgstr "Versio"
 
 #: plplaylists/cog.py:128
 msgid "Let us create a playlist!"
-msgstr ""
+msgstr "Anna meidän luoda soittolista!"
 
 #: plplaylists/cog.py:129
 msgid "(**1**) - Apply changes to playlist.\n"
@@ -59,7 +59,7 @@ msgstr "(**1**) - Soittolistaan tehdyt muutokset.\n"
 
 #: plplaylists/cog.py:163
 msgid "I did not create this playlist."
-msgstr ""
+msgstr "En luonut tätä soittolistaa."
 
 #: plplaylists/cog.py:164
 msgid "No tracks were provided in time."
@@ -67,13 +67,15 @@ msgstr "Kappaleita ei annettu ajoissa."
 
 #: plplaylists/cog.py:177
 msgid "I have created a new playlist."
-msgstr ""
+msgstr "Olen luonut uuden soittolistan."
 
 #: plplaylists/cog.py:178
 msgid "Name: `{name_variable_do_not_translate}`\n"
 "Identifier: `{id_variable_do_not_translate}`\n"
 "Tracks: `{track_count_variable_do_not_translate}`"
-msgstr ""
+msgstr "Nimi: '{name_variable_do_not_translate}`\n"
+"Tunniste: \"{id_variable_do_not_translate}`\n"
+"Kappaleet: '{track_count_variable_do_not_translate}`"
 
 #: plplaylists/cog.py:206
 msgid "You have no playlists"
@@ -85,11 +87,11 @@ msgstr "Ei tallennettavaa"
 
 #: plplaylists/cog.py:249 plplaylists/cog.py:638
 msgid "There is nothing in the queue to save."
-msgstr ""
+msgstr "Jonossa ei ole mitään tallennettavaa."
 
 #: plplaylists/cog.py:286 plplaylists/cog.py:569 plplaylists/cog.py:655
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} cannot be managed by yourself."
-msgstr ""
+msgstr "{user_variable_do_not_translate}soittolista {playlist_name_variable_do_not_translate} ei voi hallita itse."
 
 #: plplaylists/cog.py:298
 msgid "(**1**){space_variable_do_not_translate} - Apply changes to playlist.\n"
@@ -112,7 +114,26 @@ msgid "(**1**){space_variable_do_not_translate} - Apply changes to playlist.\n"
 "The clear button will always be run first before any other operations.\n"
 "The URL button will always run last - Linking a playlist via the URL will overwrite any tracks added or removed to this playlist.\n\n"
 "If you interact with a button multiple times other than the add/remove buttons only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space_variable_do_not_translate} - Ota muutokset käyttöön soittolistassa.\n"
+"(**2**){space_variable_do_not_translate} - Peruuta tehdyt muutokset ja sulje valikko.\n"
+"(**3**){space_variable_do_not_translate} - Poista tämä soittolista.\n"
+"(**4**){space_variable_do_not_translate} - Poista kaikki kappaleet tästä soittolistasta.\n"
+"(**5**){space_variable_do_not_translate} - Päivitä soittolista uusimmilla kappaleilla.\n"
+"Huomaa, että tämä toiminto ohittaa kaikki tämän valikon kautta lisätyt/poistetut kappaleet.\n"
+"(**6**){space_variable_do_not_translate} - Muuta soittolistan nimeä.\n"
+"(**7**){space_variable_do_not_translate} - Linkitä tämä soittolista olemassa olevaan soittolistaan/albumiin.\n"
+"(**8**){space_variable_do_not_translate} - Lisää kysely tähän soittolistaan.\n"
+"(**9**){space_variable_do_not_translate} - Poista kysely tästä soittolistasta.\n"
+"(**10**) - Lataa soittolistatiedosto.\n"
+"(**11**) - Lisää nykyinen soittolista jonoon.\n"
+"(**12**) - Näytä kappaleet nykyisessä soittolistassa.\n"
+"(**13**) - Lisää kappaleita jonosta tähän soittolistaan.\n"
+"(**14**) - Poista päällekkäiset merkinnät soittolistasta.\n\n"
+"Lisää / poista raita -painikkeita voidaan käyttää useita kertoja useiden kappaleiden ja soittolistojen lisäämiseen / poistamiseen kerralla.\n\n"
+"Kysely on mitä tahansa toistettavissa toistokomennolla - mitä tahansa kyselyä voidaan käyttää lisää/poista-painikkeilla\n\n"
+"Tyhjennyspainike suoritetaan aina ensin ennen muita toimintoja.\n"
+"URL-painike toimii aina viimeisenä - Soittolistan linkittäminen URL-osoitteen kautta korvaa kaikki tähän soittolistaan lisätyt tai poistetut kappaleet.\n\n"
+"Jos käytät painiketta useita kertoja muita kertoja kuin lisäys- tai poistopainikkeita, vain viimeinen vuorovaikutus tulee voimaan.\n\n\n"
 
 #: plplaylists/cog.py:324
 msgid "(**1**) - Close the menu.\n"
@@ -133,15 +154,20 @@ msgid "__**Currently managing**__:\n"
 "**Author**:{space_variable_do_not_translate}{space_variable_do_not_translate}{author_variable_do_not_translate}\n"
 "**Tracks**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{tracks_variable_do_not_translate} tracks\n"
 "**URL**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{url_variable_do_not_translate}\n"
-msgstr ""
+msgstr "__**Tällä hetkellä hallinnassa**__:\n"
+"**Nimi**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{playlist_name_variable_do_not_translate}\n"
+"**Laajuus**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{scope_variable_do_not_translate}\n"
+"**Tekijä**:{space_variable_do_not_translate}{space_variable_do_not_translate}{author_variable_do_not_translate}\n"
+"**Kappaleita**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{tracks_variable_do_not_translate} Kappaleita\n"
+"**URL**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{url_variable_do_not_translate}\n"
 
 #: plplaylists/cog.py:350
 msgid "Let us manage: {playlist_name_variable_do_not_translate}."
-msgstr ""
+msgstr "Anna meidän hallita: {playlist_name_variable_do_not_translate}."
 
 #: plplaylists/cog.py:354
 msgid "Let us take a look at: {playlist_name_variable_do_not_translate}."
-msgstr ""
+msgstr "Katsotaanpa: {playlist_name_variable_do_not_translate}."
 
 #: plplaylists/cog.py:365
 msgid "N/A"
@@ -149,35 +175,39 @@ msgstr "E/A"
 
 #: plplaylists/cog.py:389
 msgid "I have deleted a playlist."
-msgstr ""
+msgstr "Olen poistanut soittolistan."
 
 #: plplaylists/cog.py:391 plplaylists/cog.py:584
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has been deleted."
-msgstr ""
+msgstr "{user_variable_do_not_translate}soittolista {playlist_name_variable_do_not_translate} on poistettu."
 
 #: plplaylists/cog.py:444
 msgid "Playlist {playlist_name_variable_do_not_translate} could not be updated with URL: {url_variable_do_not_translate}"
-msgstr ""
+msgstr "Soittolista {playlist_name_variable_do_not_translate} ei voitu päivittää URL-osoitteella: {url_variable_do_not_translate}"
 
 #: plplaylists/cog.py:486
 msgid "\n"
 "1 track was removed from the playlist."
-msgstr ""
+msgstr "\n"
+"1 kappale poistettiin soittolistalta."
 
 #: plplaylists/cog.py:488
 msgid "\n"
 "{track_count_variable_do_not_translate} tracks were removed from the playlist."
-msgstr ""
+msgstr "\n"
+"{track_count_variable_do_not_translate} kappaleet poistettiin soittolistalta."
 
 #: plplaylists/cog.py:494 plplaylists/cog.py:678
 msgid "\n"
 "1 track was added to the playlist."
-msgstr ""
+msgstr "\n"
+"Soittolistaan lisättiin 1 kappale."
 
 #: plplaylists/cog.py:496 plplaylists/cog.py:680
 msgid "\n"
 "{track_count_variable_do_not_translate} tracks were added to the playlist."
-msgstr ""
+msgstr "\n"
+"{track_count_variable_do_not_translate} kappaleet lisättiin soittolistaan."
 
 #: plplaylists/cog.py:502 plplaylists/cog.py:689
 msgid "Playlist updated"
@@ -185,7 +215,7 @@ msgstr "Soittolista päivitetty"
 
 #: plplaylists/cog.py:503 plplaylists/cog.py:690
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has been updated.{extras_variable_do_not_translate}."
-msgstr ""
+msgstr "{user_variable_do_not_translate}soittolista {playlist_name_variable_do_not_translate} on päivitetty.{extras_variable_do_not_translate}."
 
 #: plplaylists/cog.py:517 plplaylists/cog.py:705
 msgid "Playlist unchanged"
@@ -193,7 +223,7 @@ msgstr "Soittolista ennallaan"
 
 #: plplaylists/cog.py:518
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has not been updated."
-msgstr ""
+msgstr "{user_variable_do_not_translate}soittolista {playlist_name_variable_do_not_translate} ei ole päivitetty."
 
 #: plplaylists/cog.py:582
 msgid "Playlist deleted"
@@ -201,11 +231,11 @@ msgstr "Soittolista poistettu"
 
 #: plplaylists/cog.py:706
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has not been updated"
-msgstr ""
+msgstr "{user_variable_do_not_translate}soittolista {playlist_name_variable_do_not_translate} ei ole päivitetty"
 
 #: plplaylists/cog.py:737
 msgid "You must either provide a URL or attach a playlist file to upload a playlist."
-msgstr ""
+msgstr "Sinun on joko annettava URL-osoite tai liitettävä soittolistatiedosto, jotta voit ladata soittolistan."
 
 #: plplaylists/cog.py:749
 msgid "No valid playlist file provided"
@@ -213,29 +243,31 @@ msgstr "Ei kelvollista soittolistatiedostoa annettu"
 
 #: plplaylists/cog.py:758
 msgid "Multiple playlist files are provided. Currently, only 1 per message is allowed."
-msgstr ""
+msgstr "Mukana on useita soittolistatiedostoja. Tällä hetkellä vain 1 per viesti on sallittu."
 
 #: plplaylists/cog.py:775
 msgid "Failed to save any of the requested playlists."
-msgstr ""
+msgstr "Pyydettyjen soittolistojen tallentaminen epäonnistui."
 
 #: plplaylists/cog.py:784
 msgid "Failed to save the following playlists:\n"
 "{invalid_playlists_variable_do_not_translate}."
-msgstr ""
+msgstr "Seuraavien soittolistojen tallentaminen epäonnistui:\n"
+"{invalid_playlists_variable_do_not_translate}."
 
 #: plplaylists/cog.py:793
 msgid "Successfully saved the following playlists:\n"
 "{saved_playlists_variable_do_not_translate}."
-msgstr ""
+msgstr "Seuraavien soittolistojen tallentaminen onnistui:\n"
+"{saved_playlists_variable_do_not_translate}."
 
 #: plplaylists/cog.py:818
 msgid "You must be in a voice channel to allow me to connect."
-msgstr ""
+msgstr "Sinun on oltava äänikanavalla, jotta voin muodostaa yhteyden."
 
 #: plplaylists/cog.py:826
 msgid "I do not have permission to connect or speak in {channel_variable_do_not_translate}."
-msgstr ""
+msgstr "Minulla ei ole lupaa muodostaa yhteyttä tai puhua {channel_variable_do_not_translate}."
 
 #: plplaylists/cog.py:856
 msgid "Playlist"
@@ -243,5 +275,5 @@ msgstr "Soittolista"
 
 #: plplaylists/cog.py:861
 msgid "{track_count_variable_do_not_translate} tracks enqueued.{playlist_name_variable_do_not_translate}."
-msgstr ""
+msgstr "{track_count_variable_do_not_translate} kappaleet jonossa.{playlist_name_variable_do_not_translate}."
 

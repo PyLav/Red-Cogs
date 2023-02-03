@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-02-03 20:16+0000\n"
-"PO-Revision-Date: 2023-02-03 20:20\n"
+"PO-Revision-Date: 2023-02-03 21:03\n"
 "Last-Translator: \n"
 "Language-Team: Korean\n"
 "MIME-Version: 1.0\n"
@@ -46,11 +46,11 @@ msgstr "관리되는 Lavalink 노드가 이미 최신 상태입니다."
 
 #: plmanagednode/cog.py:101
 msgid "Your node is out of date, to update please run `{command_name_variable_do_not_translate}`."
-msgstr ""
+msgstr "노드가 오래되었습니다. 업데이트하려면 '{command_name_variable_do_not_translate}`."
 
 #: plmanagednode/cog.py:118
 msgid "The managed Lavalink node has been updated to version {version_variable_do_not_translate}."
-msgstr ""
+msgstr "관리되는 Lavalink 노드가 버전으로 업데이트되었습니다. {version_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:130
 #, docstring
@@ -63,11 +63,11 @@ msgstr "관리 노드를 켜기/끄기로 전환합니다.\n\n"
 
 #: plmanagednode/cog.py:145
 msgid "The PyLav managed node has been enabled."
-msgstr ""
+msgstr "PyLav 관리 노드가 활성화되었습니다."
 
 #: plmanagednode/cog.py:153
 msgid "The PyLav managed node has been disabled."
-msgstr ""
+msgstr "PyLav 관리 노드가 비활성화되었습니다."
 
 #: plmanagednode/cog.py:161
 #, docstring
@@ -80,11 +80,11 @@ msgstr "관리 노드 자동 업데이트를 켜거나 끕니다.\n\n"
 
 #: plmanagednode/cog.py:177
 msgid "The PyLav managed node auto updates have been enabled."
-msgstr ""
+msgstr "PyLav 관리 노드 자동 업데이트가 활성화되었습니다."
 
 #: plmanagednode/cog.py:185
 msgid "The  PyLav managed node auto updates have been disabled."
-msgstr ""
+msgstr "PyLav 관리 노드 자동 업데이트가 비활성화되었습니다."
 
 #: plmanagednode/cog.py:193
 #, docstring
@@ -111,15 +111,15 @@ msgstr "힙 크기는 64M 이상이어야 하지만 최소 1G로 설정하는 �
 
 #: plmanagednode/cog.py:239
 msgid "Heap-size must be less than your system RAM, You currently have {ram_in_bytes_variable_do_not_translate} of RAM available"
-msgstr ""
+msgstr "힙 크기는 시스템 RAM보다 작아야합니다. {ram_in_bytes_variable_do_not_translate} 사용 가능한 RAM 수"
 
 #: plmanagednode/cog.py:251
 msgid "Heap-size must be less than {limit_variable_do_not_translate} due to your system limitations"
-msgstr ""
+msgstr "힙 크기는 다음보다 작아야 합니다. {limit_variable_do_not_translate} 시스템 제한으로 인해"
 
 #: plmanagednode/cog.py:271
 msgid "The Managed node heap-size set to {bytes_variable_do_not_translate}."
-msgstr ""
+msgstr "관리 노드 힙 크기가 다음으로 설정됨 {bytes_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:281
 #, docstring
@@ -133,7 +133,7 @@ msgstr "관리 노드 호스트 설정"
 
 #: plmanagednode/cog.py:297
 msgid "The Managed node host set to {host_variable_do_not_translate}."
-msgstr ""
+msgstr "관리 노드 호스트가 다음으로 설정됨 {host_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:307
 #, docstring
@@ -142,7 +142,11 @@ msgid "`Dangerous command` Set the managed Lavalink node connection port.\n\n"
 "        conflict with the default port because you already have an application using port 2154 on this device.\n\n"
 "        The value by default is `2154`.\n"
 "        "
-msgstr ""
+msgstr "'위험한 명령' 관리되는 Lavalink 노드 연결 포트를 설정합니다.\n\n"
+"        이 포트는 관리되는 Lavalink 노드가 바인딩하는 포트이며, 있는 경우에만 변경해야 합니다.\n"
+"        이 장치에 포트 2154를 사용하는 응용 프로그램이 이미 있으므로 기본 포트와 충돌합니다.\n\n"
+"        기본값은 '2154'입니다.\n"
+"        "
 
 #: plmanagednode/cog.py:317
 msgid "The port must be between 1024 and 49151"
@@ -150,7 +154,7 @@ msgstr "포트는 1024에서 49151 사이여야 합니다."
 
 #: plmanagednode/cog.py:329
 msgid "The managed node port set to {port_variable_do_not_translate}."
-msgstr ""
+msgstr "관리 노드 포트로 설정된 {port_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:339
 #, docstring
@@ -164,11 +168,11 @@ msgstr "사용 가능한 플러그인 중 하나를 비활성화했습니다."
 
 #: plmanagednode/cog.py:361 plmanagednode/cog.py:472
 msgid "The plugin must be one of the following: {plugins_variable_do_not_translate}"
-msgstr ""
+msgstr "플러그인은 다음 중 하나여야 합니다. {plugins_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:446
 msgid "Managed node plugin {plugin_variable_do_not_translate} disabled."
-msgstr ""
+msgstr "관리 노드 플러그인 {plugin_variable_do_not_translate} 비활성화."
 
 #: plmanagednode/cog.py:456
 #, docstring
@@ -177,7 +181,7 @@ msgstr "사용 가능한 플러그인 중 하나를 활성화합니다."
 
 #: plmanagednode/cog.py:505
 msgid "Managed node plugin {plugin_variable_do_not_translate} enabled."
-msgstr ""
+msgstr "관리 노드 플러그인 {plugin_variable_do_not_translate} 사용."
 
 #: plmanagednode/cog.py:515
 #, docstring
@@ -186,16 +190,17 @@ msgstr "관리 노드 플러그인 업데이트"
 
 #: plmanagednode/cog.py:589
 msgid "{name_variable_do_not_translate} was updated from {old_variable_do_not_translate} to {new_variable_do_not_translate}\n"
-msgstr ""
+msgstr "{name_variable_do_not_translate} 에서 업데이트되었습니다. {old_variable_do_not_translate} 받는 사람 {new_variable_do_not_translate}\n"
 
 #: plmanagednode/cog.py:599
 msgid "Managed node plugins updated.\n\n"
 "{update_variable_do_not_translate}"
-msgstr ""
+msgstr "관리 노드 플러그인이 업데이트되었습니다.\n\n"
+"{update_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:609
 msgid "The managed node plugins are already up to date."
-msgstr ""
+msgstr "관리 노드 플러그인이 이미 최신 상태입니다."
 
 #: plmanagednode/cog.py:617
 #, docstring
@@ -204,7 +209,7 @@ msgstr "관리 노드 소스 전환"
 
 #: plmanagednode/cog.py:632
 msgid "Invalid source, {valid_list_variable_do_not_translate} are valid sources"
-msgstr ""
+msgstr "잘못된 소스, {valid_list_variable_do_not_translate} 유효한 출처입니다."
 
 #: plmanagednode/cog.py:648 plmanagednode/cog.py:687
 msgid "enabled"
@@ -216,7 +221,7 @@ msgstr "비활성화"
 
 #: plmanagednode/cog.py:651
 msgid "Managed node {source_variable_do_not_translate} source set to {state_variable_do_not_translate}."
-msgstr ""
+msgstr "관리 노드 {source_variable_do_not_translate} 소스가 다음으로 설정됨 {state_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:664
 #, docstring
@@ -225,11 +230,11 @@ msgstr "관리 노드 필터 전환"
 
 #: plmanagednode/cog.py:676
 msgid "Invalid source, {valid_list_variable_do_not_translate} are valid filters"
-msgstr ""
+msgstr "잘못된 소스, {valid_list_variable_do_not_translate} 유효한 필터입니다."
 
 #: plmanagednode/cog.py:690
 msgid "Managed node {source_variable_do_not_translate} filter set to {state_variable_do_not_translate}."
-msgstr ""
+msgstr "관리 노드 {source_variable_do_not_translate} 필터로 설정 {state_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:703
 #, docstring
@@ -247,12 +252,26 @@ msgid "Configure multiple settings for the managed node.\n\n"
 "        `youtubeSearchEnabled` : Boolean i.e True (Default True)\n"
 "        `soundcloudSearchEnabled` : Boolean i.e True (Default True)\n"
 "        "
-msgstr ""
+msgstr "관리 노드에 대한 다중 설정을 구성하십시오.\n\n"
+"        실행 '[p]PLMANAGED 설정 서버 <setting> info'를 사용하여 설정 및 수행하는 작업에 대한 정보를 표시합니다.\n\n"
+"        **이름 설정**:\n"
+"        'bufferDurationMs': 정수, 즉 400(기본값 400) - JDA-NAS를 비활성화하려면 0으로 설정합니다.\n"
+"        'frameBufferDurationMs': 정수, 즉 1000 (기본값 1000)\n"
+"        'trackStuckThresholdMs': 정수, 즉 1000 (기본값 1000)\n"
+"        'youtubePlaylistLoadLimit': 정수, 즉 1000 (기본값 1000)\n"
+"        'opus인코딩품질': 정수, 즉 10(기본값 10)\n"
+"        '리샘플링 품질': 문자열, 즉 낮음 (기본값 높음)\n"
+"        'useSeekGhosting': 부울 즉 참 (기본값 참)\n"
+"        '플레이어 업데이트 간격' : 정수, 즉 30(기본값 30)\n"
+"        'youtubeSearchEnabled': 부울 즉 참 (기본값 참)\n"
+"        'soundcloudSearchEnabled' : 부울 즉 참 (기본값 참)\n"
+"        "
 
 #: plmanagednode/cog.py:743
 msgid "{Setting_variable_do_not_translate} is not a valid Setting; Options are:\n\n"
 "{setting_list_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} 은(는) 유효한 설정이 아닙니다. 옵션은 다음과 같습니다.\n\n"
+"{setting_list_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:757
 msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses but will increase RAM usage. Minimum of 40ms, lower values may introduce pauses and stutters. Set to 0 to disable JDA-NAS. Accepted values: Range: 0 - 2,000"
@@ -297,33 +316,39 @@ msgstr "노드 내에서 사운드 클라우드 검색을 활성화 또는 비�
 #: plmanagednode/cog.py:806
 msgid "{Setting_variable_do_not_translate} info.\n\n"
 "{info_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} 정보.\n\n"
+"{info_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:837
 msgid "{Setting_variable_do_not_translate} valid inputs are:\n\n"
 "Range between: {start_variable_do_not_translate} - {end_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} 유효한 입력은 다음과 같습니다.\n\n"
+"범위 사이: {start_variable_do_not_translate} - {end_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:852
 msgid "{Setting_variable_do_not_translate} valid inputs are:\n\n"
 "{setting_list_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} 유효한 입력은 다음과 같습니다.\n\n"
+"{setting_list_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:874
 msgid "{Setting_variable_do_not_translate} set to {value_variable_do_not_translate}."
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} 로 설정 {value_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:885
 #, docstring
 msgid "Configure Lavalink IP Rotation for rate limits.\n\n"
 "        Run `[p]plmanaged settings iprotation 1` to remove the ip rotation\n"
 "        "
-msgstr ""
+msgstr "속도 제한에 대해 Lavalink IP 회전을 구성합니다.\n\n"
+"        실행 '[p]PLMANAGED 설정 IP 회전 1'을 사용하여 IP 회전을 제거합니다.\n"
+"        "
 
 #: plmanagednode/cog.py:896
 msgid "Click the button below to configure the IP rotation for your node.\n"
 "More info at: {url_value_1_variable_do_not_translate} and {url_value_2_variable_do_not_translate}"
-msgstr ""
+msgstr "아래 버튼을 클릭하여 노드에 대한 IP 교체를 구성합니다.\n"
+"더 많은 정보 : {url_value_1_variable_do_not_translate} 그리고 {url_value_2_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:917
 msgid "Removing the IP rotation from your node."
@@ -334,12 +359,15 @@ msgstr "노드에서 IP 회전을 제거합니다."
 msgid "Link a Google account to Lavalink to bypass the YouTube age restriction.\n\n"
 "        Run `[p]plmanaged settings googleaccount 1` to remove the linked account.\n"
 "        "
-msgstr ""
+msgstr "구글 계정을 라바링크에 연결하면 유튜브 연령 제한을 우회할 수 있습니다.\n\n"
+"        실행 '[p]PLMANAGED 설정 구글 계정 1'을 클릭하여 연결된 계정을 제거합니다.\n"
+"        "
 
 #: plmanagednode/cog.py:936
 msgid "Click the button below to link a Google account to your node, if you have 2FA setup on this account you will need an application password instead\n"
 "More info at: <https://support.google.com/accounts/answer/185833>"
-msgstr ""
+msgstr "아래 버튼을 클릭하여 Google 계정을 노드에 연결하고,이 계정에 2FA가 설정된 경우 대신 애플리케이션 암호가 필요합니다.\n"
+"더 많은 정보 : <https://support.google.com/accounts/answer/185833>"
 
 #: plmanagednode/cog.py:955
 msgid "Unlinking Google account from your node."
@@ -350,7 +378,9 @@ msgstr "노드에서 Google 계정 연결을 해제합니다."
 msgid "Configure a HTTP proxy for Lavalink\n\n"
 "        Run `[p]plmanaged settings httpproxy 1` to remove the proxy.\n"
 "        "
-msgstr ""
+msgstr "라발링크에 대한 HTTP 프록시 구성\n\n"
+"        실행 '[p]plmanaged settings httpproxy 1'을 사용하여 프록시를 제거합니다.\n"
+"        "
 
 #: plmanagednode/cog.py:974
 msgid "Click the button below to configure a HTTP proxy for your node"
@@ -407,31 +437,31 @@ msgstr "0 또는 1(0 = 사용 안 함, 1 = 사용)"
 
 #: plmanagednode/view.py:189
 msgid "The IP block you have provided is not valid; {error_variable_do_not_translate}."
-msgstr ""
+msgstr "제공한 IP 블록이 유효하지 않습니다. {error_variable_do_not_translate}."
 
 #: plmanagednode/view.py:203
 msgid "No IP blocks were provided."
-msgstr ""
+msgstr "IP 블록이 제공되지 않았습니다."
 
 #: plmanagednode/view.py:215
 msgid "The IP address you have provided is not valid; {error_variable_do_not_translate}"
-msgstr ""
+msgstr "제공한 IP 주소가 유효하지 않습니다. {error_variable_do_not_translate}"
 
 #: plmanagednode/view.py:236
 msgid "The strategy you provided is invalid. You must be one of: {options_variable_do_not_translate}."
-msgstr ""
+msgstr "제공한 전략이 잘못되었습니다. 다음 중 하나여야 합니다. {options_variable_do_not_translate}."
 
 #: plmanagednode/view.py:252
 msgid "The retry limit must be a number greater than or equal to -1."
-msgstr ""
+msgstr "재시도 제한은 -1보다 크거나 같은 숫자여야 합니다."
 
 #: plmanagednode/view.py:267
 msgid "The search trigger must be 0 or 1."
-msgstr ""
+msgstr "검색 트리거는 0 또는 1이어야 합니다."
 
 #: plmanagednode/view.py:286
 msgid "IP rotation settings saved."
-msgstr ""
+msgstr "IP 회전 설정이 저장되었습니다."
 
 #: plmanagednode/view.py:307
 msgid "Google Account Configurator"
@@ -451,7 +481,7 @@ msgstr "암호"
 
 #: plmanagednode/view.py:322
 msgid "If you have 2FA you will need an application password"
-msgstr ""
+msgstr "2FA가있는 경우 애플리케이션 암호가 필요합니다."
 
 #: plmanagednode/view.py:336 plmanagednode/view.py:425
 msgid "You are not authorized to interact with this"
@@ -475,7 +505,7 @@ msgstr "호스트 이름"
 
 #: plmanagednode/view.py:381
 msgid "Hostname of the proxy, (IP or domain or localhost)"
-msgstr ""
+msgstr "프록시의 호스트 이름(IP 또는 도메인 또는 로컬 호스트)"
 
 #: plmanagednode/view.py:385
 msgid "Proxy port"
@@ -491,7 +521,7 @@ msgstr "사용자"
 
 #: plmanagednode/view.py:399
 msgid "Optional user for basic authentication fields. Leave blank if you do not use basic authentication"
-msgstr ""
+msgstr "기본 인증 필드에 대한 선택적 사용자입니다. 기본 인증을 사용하지 않는 경우 비워 둡니다."
 
 #: plmanagednode/view.py:405
 msgid "Password"
@@ -499,13 +529,13 @@ msgstr "암호"
 
 #: plmanagednode/view.py:410
 msgid "Optional password for basic authentication fields. Leave blank if you do not use basic authentication."
-msgstr ""
+msgstr "기본 인증 필드에 대한 선택적 암호입니다. 기본 인증을 사용하지 않는 경우 비워 둡니다."
 
 #: plmanagednode/view.py:436
 msgid "The port provided is not valid. It must be between 0 and 65536."
-msgstr ""
+msgstr "제공된 포트가 올바르지 않습니다. 0에서 65536 사이여야 합니다."
 
 #: plmanagednode/view.py:453
 msgid "HTTP proxy settings saved."
-msgstr ""
+msgstr "HTTP 프록시 설정이 저장되었습니다."
 

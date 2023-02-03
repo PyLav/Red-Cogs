@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-02-03 20:16+0000\n"
-"PO-Revision-Date: 2023-02-03 20:20\n"
+"PO-Revision-Date: 2023-02-03 21:03\n"
 "Last-Translator: \n"
 "Language-Team: Dutch\n"
 "MIME-Version: 1.0\n"
@@ -41,7 +41,7 @@ msgstr "Versie"
 
 #: plplaylists/cog.py:128
 msgid "Let us create a playlist!"
-msgstr ""
+msgstr "Laat ons een afspeellijst maken!"
 
 #: plplaylists/cog.py:129
 msgid "(**1**) - Apply changes to playlist.\n"
@@ -59,7 +59,7 @@ msgstr "(**1**) - Toepassen van wijzigingen op de afspeellijst.\n"
 
 #: plplaylists/cog.py:163
 msgid "I did not create this playlist."
-msgstr ""
+msgstr "Ik heb deze afspeellijst niet gemaakt."
 
 #: plplaylists/cog.py:164
 msgid "No tracks were provided in time."
@@ -67,13 +67,15 @@ msgstr "Er werden geen nummers op tijd geleverd."
 
 #: plplaylists/cog.py:177
 msgid "I have created a new playlist."
-msgstr ""
+msgstr "Ik heb een nieuwe afspeellijst gemaakt."
 
 #: plplaylists/cog.py:178
 msgid "Name: `{name_variable_do_not_translate}`\n"
 "Identifier: `{id_variable_do_not_translate}`\n"
 "Tracks: `{track_count_variable_do_not_translate}`"
-msgstr ""
+msgstr "Naam: '{name_variable_do_not_translate}`\n"
+"Identificatiecode: '{id_variable_do_not_translate}`\n"
+"Sporen: '{track_count_variable_do_not_translate}`"
 
 #: plplaylists/cog.py:206
 msgid "You have no playlists"
@@ -85,11 +87,11 @@ msgstr "Niets op te slaan"
 
 #: plplaylists/cog.py:249 plplaylists/cog.py:638
 msgid "There is nothing in the queue to save."
-msgstr ""
+msgstr "Er is niets in de wachtrij om op te slaan."
 
 #: plplaylists/cog.py:286 plplaylists/cog.py:569 plplaylists/cog.py:655
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} cannot be managed by yourself."
-msgstr ""
+msgstr "{user_variable_do_not_translate}afspeellijst {playlist_name_variable_do_not_translate} kan niet door uzelf worden beheerd."
 
 #: plplaylists/cog.py:298
 msgid "(**1**){space_variable_do_not_translate} - Apply changes to playlist.\n"
@@ -112,7 +114,26 @@ msgid "(**1**){space_variable_do_not_translate} - Apply changes to playlist.\n"
 "The clear button will always be run first before any other operations.\n"
 "The URL button will always run last - Linking a playlist via the URL will overwrite any tracks added or removed to this playlist.\n\n"
 "If you interact with a button multiple times other than the add/remove buttons only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space_variable_do_not_translate} - Pas wijzigingen toe op de afspeellijst.\n"
+"(**2**){space_variable_do_not_translate} - Annuleer alle aangebrachte wijzigingen en sluit het menu.\n"
+"(**3**){space_variable_do_not_translate} - Verwijder deze afspeellijst.\n"
+"(**4**){space_variable_do_not_translate} - Verwijder alle nummers uit deze afspeellijst.\n"
+"(**5**){space_variable_do_not_translate} - Update de afspeellijst met de nieuwste nummers.\n"
+"Houd er rekening mee dat deze actie alle tracks negeert die via dit menu zijn toegevoegd / verwijderd.\n"
+"(**6**){space_variable_do_not_translate} - Wijzig de naam van de afspeellijst.\n"
+"(**7**){space_variable_do_not_translate} - Koppel deze afspeellijst aan een bestaande afspeellijst/album.\n"
+"(**8**){space_variable_do_not_translate} - Voeg een query toe aan deze afspeellijst.\n"
+"(**9**){space_variable_do_not_translate} - Verwijder een query uit deze afspeellijst.\n"
+"(**10**) - Download het afspeellijstbestand.\n"
+"(**11**) - Voeg de huidige afspeellijst toe aan de wachtrij.\n"
+"(**12**) - Toon nummers in de huidige afspeellijst.\n"
+"(**13**) - Voeg nummers uit de wachtrij toe aan deze afspeellijst.\n"
+"(**14**) - Verwijder dubbele vermeldingen in de afspeellijst.\n\n"
+"De trackknoppen voor toevoegen/verwijderen kunnen meerdere keren worden gebruikt om meerdere nummers en afspeellijsten tegelijk toe te voegen/te verwijderen.\n\n"
+"Een query is alles wat kan worden afgespeeld met de play-opdracht - elke query kan worden gebruikt door de add / remove-knoppen\n\n"
+"De knop Wissen wordt altijd eerst uitgevoerd voordat u andere bewerkingen uitvoert.\n"
+"De URL-knop wordt altijd als laatste uitgevoerd - Als u een afspeellijst via de URL koppelt, worden alle nummers die aan deze afspeellijst zijn toegevoegd of verwijderd, overschreven.\n\n"
+"Als u meerdere keren met een knop werkt, behalve met de knoppen toevoegen/verwijderen, wordt alleen de laatste interactie van kracht.\n\n\n"
 
 #: plplaylists/cog.py:324
 msgid "(**1**) - Close the menu.\n"
@@ -133,15 +154,20 @@ msgid "__**Currently managing**__:\n"
 "**Author**:{space_variable_do_not_translate}{space_variable_do_not_translate}{author_variable_do_not_translate}\n"
 "**Tracks**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{tracks_variable_do_not_translate} tracks\n"
 "**URL**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{url_variable_do_not_translate}\n"
-msgstr ""
+msgstr "__**Momenteel beheren**__:\n"
+"**Naam**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{playlist_name_variable_do_not_translate}\n"
+"**Draagwijdte**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{scope_variable_do_not_translate}\n"
+"**Auteur**:{space_variable_do_not_translate}{space_variable_do_not_translate}{author_variable_do_not_translate}\n"
+"**Tracks**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{tracks_variable_do_not_translate} Tracks\n"
+"**URL**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{url_variable_do_not_translate}\n"
 
 #: plplaylists/cog.py:350
 msgid "Let us manage: {playlist_name_variable_do_not_translate}."
-msgstr ""
+msgstr "Laat ons beheren: {playlist_name_variable_do_not_translate}."
 
 #: plplaylists/cog.py:354
 msgid "Let us take a look at: {playlist_name_variable_do_not_translate}."
-msgstr ""
+msgstr "Laten we eens kijken naar: {playlist_name_variable_do_not_translate}."
 
 #: plplaylists/cog.py:365
 msgid "N/A"
@@ -149,35 +175,39 @@ msgstr "N/B"
 
 #: plplaylists/cog.py:389
 msgid "I have deleted a playlist."
-msgstr ""
+msgstr "Ik heb een afspeellijst verwijderd."
 
 #: plplaylists/cog.py:391 plplaylists/cog.py:584
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has been deleted."
-msgstr ""
+msgstr "{user_variable_do_not_translate}afspeellijst {playlist_name_variable_do_not_translate} is verwijderd."
 
 #: plplaylists/cog.py:444
 msgid "Playlist {playlist_name_variable_do_not_translate} could not be updated with URL: {url_variable_do_not_translate}"
-msgstr ""
+msgstr "Afspeellijst {playlist_name_variable_do_not_translate} kan niet worden bijgewerkt met URL: {url_variable_do_not_translate}"
 
 #: plplaylists/cog.py:486
 msgid "\n"
 "1 track was removed from the playlist."
-msgstr ""
+msgstr "\n"
+"1 track is verwijderd uit de afspeellijst."
 
 #: plplaylists/cog.py:488
 msgid "\n"
 "{track_count_variable_do_not_translate} tracks were removed from the playlist."
-msgstr ""
+msgstr "\n"
+"{track_count_variable_do_not_translate} nummers zijn uit de afspeellijst verwijderd."
 
 #: plplaylists/cog.py:494 plplaylists/cog.py:678
 msgid "\n"
 "1 track was added to the playlist."
-msgstr ""
+msgstr "\n"
+"Er is 1 track toegevoegd aan de playlist."
 
 #: plplaylists/cog.py:496 plplaylists/cog.py:680
 msgid "\n"
 "{track_count_variable_do_not_translate} tracks were added to the playlist."
-msgstr ""
+msgstr "\n"
+"{track_count_variable_do_not_translate} nummers zijn toegevoegd aan de afspeellijst."
 
 #: plplaylists/cog.py:502 plplaylists/cog.py:689
 msgid "Playlist updated"
@@ -185,7 +215,7 @@ msgstr "Afspeellijst bijgewerkt"
 
 #: plplaylists/cog.py:503 plplaylists/cog.py:690
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has been updated.{extras_variable_do_not_translate}."
-msgstr ""
+msgstr "{user_variable_do_not_translate}afspeellijst {playlist_name_variable_do_not_translate} is bijgewerkt.{extras_variable_do_not_translate}."
 
 #: plplaylists/cog.py:517 plplaylists/cog.py:705
 msgid "Playlist unchanged"
@@ -193,7 +223,7 @@ msgstr "Afspeellijst ongewijzigd"
 
 #: plplaylists/cog.py:518
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has not been updated."
-msgstr ""
+msgstr "{user_variable_do_not_translate}afspeellijst {playlist_name_variable_do_not_translate} is niet bijgewerkt."
 
 #: plplaylists/cog.py:582
 msgid "Playlist deleted"
@@ -201,11 +231,11 @@ msgstr "Afspeellijst verwijderd"
 
 #: plplaylists/cog.py:706
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has not been updated"
-msgstr ""
+msgstr "{user_variable_do_not_translate}afspeellijst {playlist_name_variable_do_not_translate} is niet bijgewerkt"
 
 #: plplaylists/cog.py:737
 msgid "You must either provide a URL or attach a playlist file to upload a playlist."
-msgstr ""
+msgstr "U moet een URL opgeven of een afspeellijstbestand bijvoegen om een afspeellijst te uploaden."
 
 #: plplaylists/cog.py:749
 msgid "No valid playlist file provided"
@@ -213,29 +243,31 @@ msgstr "Geen geldig afspeellijst bestand opgegeven"
 
 #: plplaylists/cog.py:758
 msgid "Multiple playlist files are provided. Currently, only 1 per message is allowed."
-msgstr ""
+msgstr "Er zijn meerdere afspeellijstbestanden beschikbaar. Momenteel is slechts 1 per bericht toegestaan."
 
 #: plplaylists/cog.py:775
 msgid "Failed to save any of the requested playlists."
-msgstr ""
+msgstr "Kan geen van de gevraagde afspeellijsten opslaan."
 
 #: plplaylists/cog.py:784
 msgid "Failed to save the following playlists:\n"
 "{invalid_playlists_variable_do_not_translate}."
-msgstr ""
+msgstr "Kan de volgende afspeellijsten niet opslaan:\n"
+"{invalid_playlists_variable_do_not_translate}."
 
 #: plplaylists/cog.py:793
 msgid "Successfully saved the following playlists:\n"
 "{saved_playlists_variable_do_not_translate}."
-msgstr ""
+msgstr "De volgende afspeellijsten zijn opgeslagen:\n"
+"{saved_playlists_variable_do_not_translate}."
 
 #: plplaylists/cog.py:818
 msgid "You must be in a voice channel to allow me to connect."
-msgstr ""
+msgstr "Je moet in een spraakkanaal zijn om me in staat te stellen verbinding te maken."
 
 #: plplaylists/cog.py:826
 msgid "I do not have permission to connect or speak in {channel_variable_do_not_translate}."
-msgstr ""
+msgstr "Ik heb geen toestemming om verbinding te maken of te spreken in {channel_variable_do_not_translate}."
 
 #: plplaylists/cog.py:856
 msgid "Playlist"
@@ -243,5 +275,5 @@ msgstr "Afspeellijst"
 
 #: plplaylists/cog.py:861
 msgid "{track_count_variable_do_not_translate} tracks enqueued.{playlist_name_variable_do_not_translate}."
-msgstr ""
+msgstr "{track_count_variable_do_not_translate} sporen onderzocht.{playlist_name_variable_do_not_translate}."
 

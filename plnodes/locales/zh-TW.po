@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-02-03 20:16+0000\n"
-"PO-Revision-Date: 2023-02-03 20:20\n"
+"PO-Revision-Date: 2023-02-03 21:03\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
@@ -47,7 +47,7 @@ msgstr "為 PyLav 添加節點"
 
 #: plnodes/cog.py:87
 msgid "Let us add a node to PyLav!"
-msgstr ""
+msgstr "讓我們向 PyLav 添加一個節點！"
 
 #: plnodes/cog.py:88
 msgid "(**1**){space_variable_do_not_translate} - Apply changes and add the node to PyLav.\n"
@@ -61,7 +61,17 @@ msgid "(**1**){space_variable_do_not_translate} - Apply changes and add the node
 "(**9**){space_variable_do_not_translate} - Set the connection timeout.\n"
 "(**10**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space_variable_do_not_translate} - 應用更改並將節點添加到 PyLav。\n"
+"(**2**){space_variable_do_not_translate} - 取消所做的任何更改並關閉功能表。\n"
+"(**3**){space_variable_do_not_translate} - 在僅搜索模式和搜索和播放模式之間切換。\n"
+"(**4**){space_variable_do_not_translate} - 在 SSL 打開和關閉之間切換。\n"
+"(**5**){space_variable_do_not_translate} - 為節點添加名稱。\n"
+"(**6**){space_variable_do_not_translate} - 添加節點的主機位址。\n"
+"(**7**){space_variable_do_not_translate} - 新增節點使用的埠。\n"
+"(**8**){space_variable_do_not_translate} - 設定節點的密碼。\n"
+"(**9**){space_variable_do_not_translate} - 設置連接超時。\n"
+"（**10**） - 選擇要為此節點禁用的源（可以選擇多個）。\n"
+"如果多次與按鈕交互，則只有最後一次交互才會生效。\n\n\n"
 
 #: plnodes/cog.py:134
 msgid "I have added the {name_variable_do_not_translate} node with the following settings:\n"
@@ -72,11 +82,18 @@ msgid "I have added the {name_variable_do_not_translate} node with the following
 "Search Only: {search_only_variable_do_not_translate}\n"
 "SSL: {ssl_variable_do_not_translate}\n"
 "Disabled Sources: {disabled_sources_variable_do_not_translate}\n"
-msgstr ""
+msgstr "我添加了 {name_variable_do_not_translate} 具有以下設定的節點：\n"
+"主機： {host_variable_do_not_translate}\n"
+"港口： {port_variable_do_not_translate}\n"
+"密碼： {password_variable_do_not_translate}\n"
+"恢復逾時： {resume_timeout_variable_do_not_translate}\n"
+"僅搜尋： {search_only_variable_do_not_translate}\n"
+"SSL： {ssl_variable_do_not_translate}\n"
+"關閉來源： {disabled_sources_variable_do_not_translate}\n"
 
 #: plnodes/cog.py:165 plnodes/cog.py:172
 msgid "I am unable to add this node"
-msgstr ""
+msgstr "我無法添加此節點"
 
 #: plnodes/cog.py:178
 #, docstring
@@ -85,16 +102,17 @@ msgstr "從 PyLav 實例中刪除節點"
 
 #: plnodes/cog.py:190
 msgid "{name_variable_do_not_translate} is managed by PyLav and cannot be removed."
-msgstr ""
+msgstr "{name_variable_do_not_translate} 由 PyLav 管理，無法刪除。"
 
 #: plnodes/cog.py:207
 msgid "I have removed the {name_variable_do_not_translate} node.\n\n"
 "{data_variable_do_not_translate}"
-msgstr ""
+msgstr "我已經刪除了 {name_variable_do_not_translate} 節點。\n\n"
+"{data_variable_do_not_translate}"
 
 #: plnodes/cog.py:220
 msgid "I have removed the {name_variable_do_not_translate} node. A direct message was sent to you with the node details in case you wish to re-add it."
-msgstr ""
+msgstr "我已經刪除了 {name_variable_do_not_translate} 節點。已向您發送一條直接消息，其中包含節點詳細資訊，以防您希望重新添加它。"
 
 #: plnodes/cog.py:230
 #, docstring
@@ -103,7 +121,7 @@ msgstr "管理 PyLav 實例中的所有節點"
 
 #: plnodes/cog.py:242
 msgid "Let us manage some nodes!"
-msgstr ""
+msgstr "讓我們管理一些節點！"
 
 #: plnodes/cog.py:243
 msgid "(**1**){space_variable_do_not_translate} - Cancel any changes made and close the menu.\n"
@@ -119,15 +137,27 @@ msgid "(**1**){space_variable_do_not_translate} - Cancel any changes made and cl
 "(**15**) - Remove this node.\n"
 "(**16**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space_variable_do_not_translate} - 取消所做的任何更改並關閉功能表。\n"
+"(**6**){space_variable_do_not_translate} - 顯示為此節點啟用的源。\n"
+"(**7**){space_variable_do_not_translate} - 應用更改並將節點添加到 PyLav。\n"
+"(**8**){space_variable_do_not_translate} - 在僅搜索模式和搜索和播放模式之間切換。\n"
+"(**9**){space_variable_do_not_translate} - 在 SSL 打開和關閉之間切換。\n"
+"（**10**） - 向節點添加名稱。\n"
+"（**11**） - 添加節點的主機位址。\n"
+"（**12**） - 添加節點使用的埠。\n"
+"（**13**） - 設置節點的密碼。\n"
+"（**14**） - 設置連接超時。\n"
+"（**15**） - 刪除此節點。\n"
+"（**16**） - 選擇要為此節點禁用的源（可以選擇多個）。\n"
+"如果多次與按鈕交互，則只有最後一次交互才會生效。\n\n\n"
 
 #: plnodes/cog.py:272
 msgid "{name_variable_do_not_translate} is managed by PyLav, and I can not modify it."
-msgstr ""
+msgstr "{name_variable_do_not_translate} 由 PyLav 管理，我無法修改它。"
 
 #: plnodes/cog.py:284
 msgid "I have removed the {name_variable_do_not_translate} node."
-msgstr ""
+msgstr "我已經刪除了 {name_variable_do_not_translate} 節點。"
 
 #: plnodes/cog.py:322
 msgid "I have changed the {name_variable_do_not_translate} node to the following settings:\n"
@@ -138,7 +168,14 @@ msgid "I have changed the {name_variable_do_not_translate} node to the following
 "Search Only: {search_only_variable_do_not_translate}\n"
 "SSL: {ssl_variable_do_not_translate}\n"
 "Disabled Sources: {disabled_sources_variable_do_not_translate}\n"
-msgstr ""
+msgstr "我已經改變了 {name_variable_do_not_translate} 節點到以下設定：\n"
+"主機： {host_variable_do_not_translate}\n"
+"港口： {port_variable_do_not_translate}\n"
+"密碼： {password_variable_do_not_translate}\n"
+"恢復逾時： {resume_timeout_variable_do_not_translate}\n"
+"僅搜尋： {search_only_variable_do_not_translate}\n"
+"SSL： {ssl_variable_do_not_translate}\n"
+"關閉來源： {disabled_sources_variable_do_not_translate}\n"
 
 #: plnodes/cog.py:349
 #, docstring
@@ -147,5 +184,5 @@ msgstr "列出 PyLav 使用的所有節點"
 
 #: plnodes/cog.py:359
 msgid "No nodes were added to PyLav."
-msgstr ""
+msgstr "沒有節點添加到 PyLav。"
 

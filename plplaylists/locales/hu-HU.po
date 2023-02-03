@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-02-03 20:16+0000\n"
-"PO-Revision-Date: 2023-02-03 20:20\n"
+"PO-Revision-Date: 2023-02-03 21:03\n"
 "Last-Translator: \n"
 "Language-Team: Hungarian\n"
 "MIME-Version: 1.0\n"
@@ -41,7 +41,7 @@ msgstr "Verzió"
 
 #: plplaylists/cog.py:128
 msgid "Let us create a playlist!"
-msgstr ""
+msgstr "Hozzunk létre egy lejátszási listát!"
 
 #: plplaylists/cog.py:129
 msgid "(**1**) - Apply changes to playlist.\n"
@@ -59,7 +59,7 @@ msgstr "(**1**) - Módosítások alkalmazása a lejátszási listára.\n"
 
 #: plplaylists/cog.py:163
 msgid "I did not create this playlist."
-msgstr ""
+msgstr "Nem én hoztam létre ezt a lejátszási listát."
 
 #: plplaylists/cog.py:164
 msgid "No tracks were provided in time."
@@ -67,13 +67,15 @@ msgstr "A pályákat nem biztosították időben."
 
 #: plplaylists/cog.py:177
 msgid "I have created a new playlist."
-msgstr ""
+msgstr "Létrehoztam egy új lejátszási listát."
 
 #: plplaylists/cog.py:178
 msgid "Name: `{name_variable_do_not_translate}`\n"
 "Identifier: `{id_variable_do_not_translate}`\n"
 "Tracks: `{track_count_variable_do_not_translate}`"
-msgstr ""
+msgstr "Név: '{name_variable_do_not_translate}`\n"
+"Azonosító: \"{id_variable_do_not_translate}`\n"
+"Számok: '{track_count_variable_do_not_translate}`"
 
 #: plplaylists/cog.py:206
 msgid "You have no playlists"
@@ -85,11 +87,11 @@ msgstr "Nincs mit menteni"
 
 #: plplaylists/cog.py:249 plplaylists/cog.py:638
 msgid "There is nothing in the queue to save."
-msgstr ""
+msgstr "Nincs semmi a sorban menteni."
 
 #: plplaylists/cog.py:286 plplaylists/cog.py:569 plplaylists/cog.py:655
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} cannot be managed by yourself."
-msgstr ""
+msgstr "{user_variable_do_not_translate}lejátszási lista {playlist_name_variable_do_not_translate} nem kezelhető egyedül."
 
 #: plplaylists/cog.py:298
 msgid "(**1**){space_variable_do_not_translate} - Apply changes to playlist.\n"
@@ -112,7 +114,26 @@ msgid "(**1**){space_variable_do_not_translate} - Apply changes to playlist.\n"
 "The clear button will always be run first before any other operations.\n"
 "The URL button will always run last - Linking a playlist via the URL will overwrite any tracks added or removed to this playlist.\n\n"
 "If you interact with a button multiple times other than the add/remove buttons only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space_variable_do_not_translate} - Változtatások alkalmazása a lejátszási listára.\n"
+"(**2**){space_variable_do_not_translate} - Törölje az elvégzett módosításokat és zárja be a menüt.\n"
+"(**3**){space_variable_do_not_translate} - Törölje ezt a lejátszási listát.\n"
+"(**4**){space_variable_do_not_translate} - Távolítsa el az összes zeneszámot erről a lejátszási listáról.\n"
+"(**5**){space_variable_do_not_translate} - Frissítse a lejátszási listát a legújabb számokkal.\n"
+"Felhívjuk figyelmét, hogy ez a művelet figyelmen kívül hagyja az ebben a menüben hozzáadott / eltávolított zeneszámokat.\n"
+"(**6**){space_variable_do_not_translate} - Változtassa meg a lejátszási lista nevét.\n"
+"(**7**){space_variable_do_not_translate} - Kapcsolja össze ezt a lejátszási listát egy meglévő lejátszási listával / albummal.\n"
+"(**8**){space_variable_do_not_translate} - Adjon hozzá egy lekérdezést ehhez a lejátszási listához.\n"
+"(**9**){space_variable_do_not_translate} - Távolítson el egy lekérdezést a lejátszási listáról.\n"
+"(**10**) - Töltse le a lejátszási lista fájlt.\n"
+"(**11**) - Aktuális lejátszási lista hozzáadása a sorhoz.\n"
+"(**12**) - Zeneszámok megjelenítése az aktuális lejátszási listában.\n"
+"(**13**) - Adjon hozzá számokat a sorból ehhez a lejátszási listához.\n"
+"(**14**) - Távolítsa el az ismétlődő bejegyzéseket a lejátszási listáról.\n\n"
+"A szám hozzáadása/eltávolítása gombok többször is használhatók több szám és lejátszási lista egyszerre történő hozzáadásához/eltávolításához.\n\n"
+"A lekérdezés bármi, ami lejátszható a play paranccsal - bármilyen lekérdezést használhat a hozzáadás/eltávolítás gombok\n\n"
+"Az átlátszó gomb mindig először kerül futtatásra minden más művelet előtt.\n"
+"Az URL gomb mindig utoljára fog futni - A lejátszási lista URL-en keresztüli összekapcsolása felülírja a lejátszási listához hozzáadott vagy eltávolított számokat.\n\n"
+"Ha a hozzáadás/eltávolítás gombokon kívül többször is interakcióba lép egy gombbal, csak az utolsó interakció lép érvénybe.\n\n\n"
 
 #: plplaylists/cog.py:324
 msgid "(**1**) - Close the menu.\n"
@@ -133,15 +154,20 @@ msgid "__**Currently managing**__:\n"
 "**Author**:{space_variable_do_not_translate}{space_variable_do_not_translate}{author_variable_do_not_translate}\n"
 "**Tracks**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{tracks_variable_do_not_translate} tracks\n"
 "**URL**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{url_variable_do_not_translate}\n"
-msgstr ""
+msgstr "__**Jelenleg menedzsel**__:\n"
+"**Név**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{playlist_name_variable_do_not_translate}\n"
+"**Kiterjedés**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{scope_variable_do_not_translate}\n"
+"**Szerző**:{space_variable_do_not_translate}{space_variable_do_not_translate}{author_variable_do_not_translate}\n"
+"**Sín**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{tracks_variable_do_not_translate} sín\n"
+"**URL**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{url_variable_do_not_translate}\n"
 
 #: plplaylists/cog.py:350
 msgid "Let us manage: {playlist_name_variable_do_not_translate}."
-msgstr ""
+msgstr "Kezeljük: {playlist_name_variable_do_not_translate}."
 
 #: plplaylists/cog.py:354
 msgid "Let us take a look at: {playlist_name_variable_do_not_translate}."
-msgstr ""
+msgstr "Vessünk egy pillantást a következőkre: {playlist_name_variable_do_not_translate}."
 
 #: plplaylists/cog.py:365
 msgid "N/A"
@@ -149,35 +175,39 @@ msgstr "N/A"
 
 #: plplaylists/cog.py:389
 msgid "I have deleted a playlist."
-msgstr ""
+msgstr "Töröltem egy lejátszási listát."
 
 #: plplaylists/cog.py:391 plplaylists/cog.py:584
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has been deleted."
-msgstr ""
+msgstr "{user_variable_do_not_translate}lejátszási lista {playlist_name_variable_do_not_translate} törölve lett."
 
 #: plplaylists/cog.py:444
 msgid "Playlist {playlist_name_variable_do_not_translate} could not be updated with URL: {url_variable_do_not_translate}"
-msgstr ""
+msgstr "Lejátszási lista {playlist_name_variable_do_not_translate} nem lehetett frissíteni URL-címmel: {url_variable_do_not_translate}"
 
 #: plplaylists/cog.py:486
 msgid "\n"
 "1 track was removed from the playlist."
-msgstr ""
+msgstr "\n"
+"1 számot eltávolítottak a lejátszási listáról."
 
 #: plplaylists/cog.py:488
 msgid "\n"
 "{track_count_variable_do_not_translate} tracks were removed from the playlist."
-msgstr ""
+msgstr "\n"
+"{track_count_variable_do_not_translate} a zeneszámokat eltávolították a lejátszási listáról."
 
 #: plplaylists/cog.py:494 plplaylists/cog.py:678
 msgid "\n"
 "1 track was added to the playlist."
-msgstr ""
+msgstr "\n"
+"1 szám került a lejátszási listára."
 
 #: plplaylists/cog.py:496 plplaylists/cog.py:680
 msgid "\n"
 "{track_count_variable_do_not_translate} tracks were added to the playlist."
-msgstr ""
+msgstr "\n"
+"{track_count_variable_do_not_translate} A számok hozzáadódtak a lejátszási listához."
 
 #: plplaylists/cog.py:502 plplaylists/cog.py:689
 msgid "Playlist updated"
@@ -185,7 +215,7 @@ msgstr "Lejátszási lista frissítve"
 
 #: plplaylists/cog.py:503 plplaylists/cog.py:690
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has been updated.{extras_variable_do_not_translate}."
-msgstr ""
+msgstr "{user_variable_do_not_translate}lejátszási lista {playlist_name_variable_do_not_translate} frissítve lett.{extras_variable_do_not_translate}."
 
 #: plplaylists/cog.py:517 plplaylists/cog.py:705
 msgid "Playlist unchanged"
@@ -193,7 +223,7 @@ msgstr "Lejátszási lista változatlan"
 
 #: plplaylists/cog.py:518
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has not been updated."
-msgstr ""
+msgstr "{user_variable_do_not_translate}lejátszási lista {playlist_name_variable_do_not_translate} nem frissült."
 
 #: plplaylists/cog.py:582
 msgid "Playlist deleted"
@@ -201,11 +231,11 @@ msgstr "Lejátszási lista törölve"
 
 #: plplaylists/cog.py:706
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has not been updated"
-msgstr ""
+msgstr "{user_variable_do_not_translate}lejátszási lista {playlist_name_variable_do_not_translate} nem lett frissítve"
 
 #: plplaylists/cog.py:737
 msgid "You must either provide a URL or attach a playlist file to upload a playlist."
-msgstr ""
+msgstr "A lejátszási lista feltöltéséhez meg kell adnia egy URL-címet, vagy csatolnia kell egy listafájlt."
 
 #: plplaylists/cog.py:749
 msgid "No valid playlist file provided"
@@ -213,29 +243,31 @@ msgstr "Nincs érvényes lejátszási listafájl megadva"
 
 #: plplaylists/cog.py:758
 msgid "Multiple playlist files are provided. Currently, only 1 per message is allowed."
-msgstr ""
+msgstr "Több lejátszási lista fájl is rendelkezésre áll. Jelenleg üzenetenként csak 1 engedélyezett."
 
 #: plplaylists/cog.py:775
 msgid "Failed to save any of the requested playlists."
-msgstr ""
+msgstr "Nem sikerült menteni a kért lejátszási listákat."
 
 #: plplaylists/cog.py:784
 msgid "Failed to save the following playlists:\n"
 "{invalid_playlists_variable_do_not_translate}."
-msgstr ""
+msgstr "Nem sikerült menteni a következő lejátszási listákat:\n"
+"{invalid_playlists_variable_do_not_translate}."
 
 #: plplaylists/cog.py:793
 msgid "Successfully saved the following playlists:\n"
 "{saved_playlists_variable_do_not_translate}."
-msgstr ""
+msgstr "Sikeresen mentette a következő lejátszási listákat:\n"
+"{saved_playlists_variable_do_not_translate}."
 
 #: plplaylists/cog.py:818
 msgid "You must be in a voice channel to allow me to connect."
-msgstr ""
+msgstr "Hangcsatornában kell lennie, hogy csatlakozhassak."
 
 #: plplaylists/cog.py:826
 msgid "I do not have permission to connect or speak in {channel_variable_do_not_translate}."
-msgstr ""
+msgstr "Nincs engedélyem arra, hogy csatlakozzak vagy beszéljek {channel_variable_do_not_translate}."
 
 #: plplaylists/cog.py:856
 msgid "Playlist"
@@ -243,5 +275,5 @@ msgstr "Lejátszási lista"
 
 #: plplaylists/cog.py:861
 msgid "{track_count_variable_do_not_translate} tracks enqueued.{playlist_name_variable_do_not_translate}."
-msgstr ""
+msgstr "{track_count_variable_do_not_translate} pályák sorba kerültek.{playlist_name_variable_do_not_translate}."
 

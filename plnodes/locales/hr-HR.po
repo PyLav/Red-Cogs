@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-02-03 20:16+0000\n"
-"PO-Revision-Date: 2023-02-03 20:20\n"
+"PO-Revision-Date: 2023-02-03 21:03\n"
 "Last-Translator: \n"
 "Language-Team: Croatian\n"
 "MIME-Version: 1.0\n"
@@ -47,7 +47,7 @@ msgstr "Dodavanje čvora u PyLav"
 
 #: plnodes/cog.py:87
 msgid "Let us add a node to PyLav!"
-msgstr ""
+msgstr "Dodajmo čvor u PyLav!"
 
 #: plnodes/cog.py:88
 msgid "(**1**){space_variable_do_not_translate} - Apply changes and add the node to PyLav.\n"
@@ -61,7 +61,17 @@ msgid "(**1**){space_variable_do_not_translate} - Apply changes and add the node
 "(**9**){space_variable_do_not_translate} - Set the connection timeout.\n"
 "(**10**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space_variable_do_not_translate} - Primijenite promjene i dodajte čvor u PyLav.\n"
+"(**2**){space_variable_do_not_translate} - Otkažite sve izvršene promjene i zatvorite izbornik.\n"
+"(**3**){space_variable_do_not_translate} - Prebacivanje između načina pretraživanja i pretraživanja i reprodukcije.\n"
+"(**4**){space_variable_do_not_translate} - Prebacivanje između SSL-a uključeno i isključeno.\n"
+"(**5**){space_variable_do_not_translate} - Dodajte naziv čvoru.\n"
+"(**6**){space_variable_do_not_translate} - Dodajte adresu glavnog računala čvora.\n"
+"(**7**){space_variable_do_not_translate} - Dodajte priključak koji čvor koristi.\n"
+"(**8**){space_variable_do_not_translate} - Postavite lozinku za čvor.\n"
+"(**9**){space_variable_do_not_translate} - Postavite vremensko ograničenje veze.\n"
+"(**10**) - Odaberite koje izvore želite onemogućiti za ovaj čvor (može se odabrati višestruko).\n"
+"Ako s gumbom stupite u interakciju više puta, stupit će na snagu samo posljednja interakcija.\n\n\n"
 
 #: plnodes/cog.py:134
 msgid "I have added the {name_variable_do_not_translate} node with the following settings:\n"
@@ -72,11 +82,18 @@ msgid "I have added the {name_variable_do_not_translate} node with the following
 "Search Only: {search_only_variable_do_not_translate}\n"
 "SSL: {ssl_variable_do_not_translate}\n"
 "Disabled Sources: {disabled_sources_variable_do_not_translate}\n"
-msgstr ""
+msgstr "Dodao sam {name_variable_do_not_translate} čvor sa sljedećim postavkama:\n"
+"Domaćin: {host_variable_do_not_translate}\n"
+"Luka: {port_variable_do_not_translate}\n"
+"Lozinka: {password_variable_do_not_translate}\n"
+"Prekoračenje vremena nastavka: {resume_timeout_variable_do_not_translate}\n"
+"Samo pretraživanje: {search_only_variable_do_not_translate}\n"
+"SSL: {ssl_variable_do_not_translate}\n"
+"Onemogućeni izvori: {disabled_sources_variable_do_not_translate}\n"
 
 #: plnodes/cog.py:165 plnodes/cog.py:172
 msgid "I am unable to add this node"
-msgstr ""
+msgstr "Ne mogu dodati ovaj čvor"
 
 #: plnodes/cog.py:178
 #, docstring
@@ -85,16 +102,17 @@ msgstr "Uklanjanje čvora iz instance PyLav-a"
 
 #: plnodes/cog.py:190
 msgid "{name_variable_do_not_translate} is managed by PyLav and cannot be removed."
-msgstr ""
+msgstr "{name_variable_do_not_translate} njime upravlja PyLav i ne može se ukloniti."
 
 #: plnodes/cog.py:207
 msgid "I have removed the {name_variable_do_not_translate} node.\n\n"
 "{data_variable_do_not_translate}"
-msgstr ""
+msgstr "Uklonio sam {name_variable_do_not_translate} čvor.\n\n"
+"{data_variable_do_not_translate}"
 
 #: plnodes/cog.py:220
 msgid "I have removed the {name_variable_do_not_translate} node. A direct message was sent to you with the node details in case you wish to re-add it."
-msgstr ""
+msgstr "Uklonio sam {name_variable_do_not_translate} čvor. Poslana vam je izravna poruka s detaljima čvora u slučaju da ga želite ponovno dodati."
 
 #: plnodes/cog.py:230
 #, docstring
@@ -103,7 +121,7 @@ msgstr "Upravljanje svim čvorovima u PyLav instanci"
 
 #: plnodes/cog.py:242
 msgid "Let us manage some nodes!"
-msgstr ""
+msgstr "Upravljajmo nekim čvorovima!"
 
 #: plnodes/cog.py:243
 msgid "(**1**){space_variable_do_not_translate} - Cancel any changes made and close the menu.\n"
@@ -119,15 +137,27 @@ msgid "(**1**){space_variable_do_not_translate} - Cancel any changes made and cl
 "(**15**) - Remove this node.\n"
 "(**16**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space_variable_do_not_translate} - Otkažite sve izvršene promjene i zatvorite izbornik.\n"
+"(**6**){space_variable_do_not_translate} - Prikaži izvore omogućene za ovaj čvor.\n"
+"(**7**){space_variable_do_not_translate} - Primijenite promjene i dodajte čvor u PyLav.\n"
+"(**8**){space_variable_do_not_translate} - Prebacivanje između načina pretraživanja i pretraživanja i reprodukcije.\n"
+"(**9**){space_variable_do_not_translate} - Prebacivanje između SSL-a uključeno i isključeno.\n"
+"(**10**) - Dodajte naziv čvoru.\n"
+"(**11**) - Dodajte adresu glavnog računala čvora.\n"
+"(**12**) - Dodajte priključak koji čvor koristi.\n"
+"(**13**) - Postavite lozinku za čvor.\n"
+"(**14**) - Postavite vremensko ograničenje veze.\n"
+"(**15**) - Uklonite ovaj čvor.\n"
+"(**16**) - Odaberite koje izvore želite onemogućiti za ovaj čvor (može se odabrati višestruko).\n"
+"Ako s gumbom stupite u interakciju više puta, stupit će na snagu samo posljednja interakcija.\n\n\n"
 
 #: plnodes/cog.py:272
 msgid "{name_variable_do_not_translate} is managed by PyLav, and I can not modify it."
-msgstr ""
+msgstr "{name_variable_do_not_translate} njime upravlja PyLav i ne mogu ga izmijeniti."
 
 #: plnodes/cog.py:284
 msgid "I have removed the {name_variable_do_not_translate} node."
-msgstr ""
+msgstr "Uklonio sam {name_variable_do_not_translate} čvor."
 
 #: plnodes/cog.py:322
 msgid "I have changed the {name_variable_do_not_translate} node to the following settings:\n"
@@ -138,7 +168,14 @@ msgid "I have changed the {name_variable_do_not_translate} node to the following
 "Search Only: {search_only_variable_do_not_translate}\n"
 "SSL: {ssl_variable_do_not_translate}\n"
 "Disabled Sources: {disabled_sources_variable_do_not_translate}\n"
-msgstr ""
+msgstr "Promijenio sam {name_variable_do_not_translate} čvor na sljedeće postavke:\n"
+"Domaćin: {host_variable_do_not_translate}\n"
+"Luka: {port_variable_do_not_translate}\n"
+"Lozinka: {password_variable_do_not_translate}\n"
+"Prekoračenje vremena nastavka: {resume_timeout_variable_do_not_translate}\n"
+"Samo pretraživanje: {search_only_variable_do_not_translate}\n"
+"SSL: {ssl_variable_do_not_translate}\n"
+"Onemogućeni izvori: {disabled_sources_variable_do_not_translate}\n"
 
 #: plnodes/cog.py:349
 #, docstring
@@ -147,5 +184,5 @@ msgstr "Popis svih čvorova koje koristi PyLav"
 
 #: plnodes/cog.py:359
 msgid "No nodes were added to PyLav."
-msgstr ""
+msgstr "PyLav-u nisu dodani čvorovi."
 

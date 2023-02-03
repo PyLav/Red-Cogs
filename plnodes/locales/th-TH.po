@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-02-03 20:16+0000\n"
-"PO-Revision-Date: 2023-02-03 20:20\n"
+"PO-Revision-Date: 2023-02-03 21:03\n"
 "Last-Translator: \n"
 "Language-Team: Thai\n"
 "MIME-Version: 1.0\n"
@@ -47,7 +47,7 @@ msgstr "เพิ่มโหนดไปยัง PyLav"
 
 #: plnodes/cog.py:87
 msgid "Let us add a node to PyLav!"
-msgstr ""
+msgstr "ให้เราเพิ่มโหนดใน PyLav!"
 
 #: plnodes/cog.py:88
 msgid "(**1**){space_variable_do_not_translate} - Apply changes and add the node to PyLav.\n"
@@ -61,7 +61,17 @@ msgid "(**1**){space_variable_do_not_translate} - Apply changes and add the node
 "(**9**){space_variable_do_not_translate} - Set the connection timeout.\n"
 "(**10**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space_variable_do_not_translate} - ใช้การเปลี่ยนแปลงและเพิ่มโหนดไปยัง PyLav\n"
+"(**2**){space_variable_do_not_translate} - ยกเลิกการเปลี่ยนแปลงใด ๆ ที่ทําและปิดเมนู\n"
+"(**3**){space_variable_do_not_translate} - สลับระหว่างโหมดค้นหาเท่านั้นและค้นหาและเล่น\n"
+"(**4**){space_variable_do_not_translate} - สลับระหว่าง SSL เปิดและปิด\n"
+"(**5**){space_variable_do_not_translate} - เพิ่มชื่อไปยังโหนด\n"
+"(**6**){space_variable_do_not_translate} - เพิ่มที่อยู่โฮสต์ของโหนด\n"
+"(**7**){space_variable_do_not_translate} - เพิ่มพอร์ตที่โหนดใช้\n"
+"(**8**){space_variable_do_not_translate} - ตั้งรหัสผ่านสําหรับโหนด\n"
+"(**9**){space_variable_do_not_translate} - ตั้งค่าการหมดเวลาการเชื่อมต่อ\n"
+"(**10**) - เลือกแหล่งที่จะปิดการใช้งานสําหรับโหนดนี้ (สามารถเลือกได้หลายรายการ)\n"
+"หากคุณโต้ตอบกับปุ่มหลายครั้ง จะมีผลเฉพาะการโต้ตอบครั้งล่าสุดเท่านั้น\n\n\n"
 
 #: plnodes/cog.py:134
 msgid "I have added the {name_variable_do_not_translate} node with the following settings:\n"
@@ -72,11 +82,18 @@ msgid "I have added the {name_variable_do_not_translate} node with the following
 "Search Only: {search_only_variable_do_not_translate}\n"
 "SSL: {ssl_variable_do_not_translate}\n"
 "Disabled Sources: {disabled_sources_variable_do_not_translate}\n"
-msgstr ""
+msgstr "ฉันได้เพิ่ม {name_variable_do_not_translate} โหนดที่มีการตั้งค่าต่อไปนี้:\n"
+"เจ้าภาพ: {host_variable_do_not_translate}\n"
+"ท่า: {port_variable_do_not_translate}\n"
+"รหัสผ่าน: {password_variable_do_not_translate}\n"
+"หมดเวลาของประวัติย่อ: {resume_timeout_variable_do_not_translate}\n"
+"ค้นหาเท่านั้น: {search_only_variable_do_not_translate}\n"
+"SSL : {ssl_variable_do_not_translate}\n"
+"แหล่งที่ปิดใช้งาน: {disabled_sources_variable_do_not_translate}\n"
 
 #: plnodes/cog.py:165 plnodes/cog.py:172
 msgid "I am unable to add this node"
-msgstr ""
+msgstr "ฉันไม่สามารถเพิ่มโหนดนี้ได้"
 
 #: plnodes/cog.py:178
 #, docstring
@@ -85,16 +102,17 @@ msgstr "ลบโหนดออกจากอินสแตนซ์ PyLav"
 
 #: plnodes/cog.py:190
 msgid "{name_variable_do_not_translate} is managed by PyLav and cannot be removed."
-msgstr ""
+msgstr "{name_variable_do_not_translate} ได้รับการจัดการโดย PyLav และไม่สามารถลบออกได้"
 
 #: plnodes/cog.py:207
 msgid "I have removed the {name_variable_do_not_translate} node.\n\n"
 "{data_variable_do_not_translate}"
-msgstr ""
+msgstr "ฉันได้ลบ {name_variable_do_not_translate} ปุ่ม\n\n"
+"{data_variable_do_not_translate}"
 
 #: plnodes/cog.py:220
 msgid "I have removed the {name_variable_do_not_translate} node. A direct message was sent to you with the node details in case you wish to re-add it."
-msgstr ""
+msgstr "ฉันได้ลบ {name_variable_do_not_translate} ปุ่ม ข้อความส่วนตัวถูกส่งถึงคุณพร้อมรายละเอียดโหนดในกรณีที่คุณต้องการเพิ่มใหม่"
 
 #: plnodes/cog.py:230
 #, docstring
@@ -103,7 +121,7 @@ msgstr "จัดการโหนดทั้งหมดในอินสแ
 
 #: plnodes/cog.py:242
 msgid "Let us manage some nodes!"
-msgstr ""
+msgstr "ให้เราจัดการโหนดบางอย่าง!"
 
 #: plnodes/cog.py:243
 msgid "(**1**){space_variable_do_not_translate} - Cancel any changes made and close the menu.\n"
@@ -119,15 +137,27 @@ msgid "(**1**){space_variable_do_not_translate} - Cancel any changes made and cl
 "(**15**) - Remove this node.\n"
 "(**16**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space_variable_do_not_translate} - ยกเลิกการเปลี่ยนแปลงใด ๆ ที่ทําและปิดเมนู\n"
+"(**6**){space_variable_do_not_translate} - แสดงแหล่งที่มาที่เปิดใช้งานสําหรับโหนดนี้\n"
+"(**7**){space_variable_do_not_translate} - ใช้การเปลี่ยนแปลงและเพิ่มโหนดไปยัง PyLav\n"
+"(**8**){space_variable_do_not_translate} - สลับระหว่างโหมดค้นหาเท่านั้นและค้นหาและเล่น\n"
+"(**9**){space_variable_do_not_translate} - สลับระหว่าง SSL เปิดและปิด\n"
+"(**10**) - เพิ่มชื่อไปยังโหนด\n"
+"(**11**) - เพิ่มที่อยู่โฮสต์ของโหนด\n"
+"(**12**) - เพิ่มพอร์ตที่โหนดใช้\n"
+"(**13**) - ตั้งรหัสผ่านสําหรับโหนด\n"
+"(**14**) - ตั้งค่าระยะหมดเวลาการเชื่อมต่อ\n"
+"(**15**) - ลบโหนดนี้\n"
+"(**16**) - เลือกแหล่งที่จะปิดการใช้งานสําหรับโหนดนี้ (สามารถเลือกได้หลายรายการ)\n"
+"หากคุณโต้ตอบกับปุ่มหลายครั้ง จะมีผลเฉพาะการโต้ตอบครั้งล่าสุดเท่านั้น\n\n\n"
 
 #: plnodes/cog.py:272
 msgid "{name_variable_do_not_translate} is managed by PyLav, and I can not modify it."
-msgstr ""
+msgstr "{name_variable_do_not_translate} มีการจัดการโดย PyLav และฉันไม่สามารถแก้ไขได้"
 
 #: plnodes/cog.py:284
 msgid "I have removed the {name_variable_do_not_translate} node."
-msgstr ""
+msgstr "ฉันได้ลบ {name_variable_do_not_translate} ปุ่ม"
 
 #: plnodes/cog.py:322
 msgid "I have changed the {name_variable_do_not_translate} node to the following settings:\n"
@@ -138,7 +168,14 @@ msgid "I have changed the {name_variable_do_not_translate} node to the following
 "Search Only: {search_only_variable_do_not_translate}\n"
 "SSL: {ssl_variable_do_not_translate}\n"
 "Disabled Sources: {disabled_sources_variable_do_not_translate}\n"
-msgstr ""
+msgstr "ฉันมีการเปลี่ยนแปลง {name_variable_do_not_translate} โหนดไปยังการตั้งค่าต่อไปนี้:\n"
+"เจ้าภาพ: {host_variable_do_not_translate}\n"
+"ท่า: {port_variable_do_not_translate}\n"
+"รหัสผ่าน: {password_variable_do_not_translate}\n"
+"หมดเวลาของประวัติย่อ: {resume_timeout_variable_do_not_translate}\n"
+"ค้นหาเท่านั้น: {search_only_variable_do_not_translate}\n"
+"SSL : {ssl_variable_do_not_translate}\n"
+"แหล่งที่ปิดใช้งาน: {disabled_sources_variable_do_not_translate}\n"
 
 #: plnodes/cog.py:349
 #, docstring
@@ -147,5 +184,5 @@ msgstr "แสดงรายการโหนดทั้งหมดที่
 
 #: plnodes/cog.py:359
 msgid "No nodes were added to PyLav."
-msgstr ""
+msgstr "ไม่มีการเพิ่มโหนดใน PyLav"
 

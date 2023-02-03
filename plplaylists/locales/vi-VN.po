@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-02-03 20:16+0000\n"
-"PO-Revision-Date: 2023-02-03 20:20\n"
+"PO-Revision-Date: 2023-02-03 21:03\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese\n"
 "MIME-Version: 1.0\n"
@@ -41,7 +41,7 @@ msgstr "Phiên bản"
 
 #: plplaylists/cog.py:128
 msgid "Let us create a playlist!"
-msgstr ""
+msgstr "Hãy để chúng tôi tạo một danh sách phát!"
 
 #: plplaylists/cog.py:129
 msgid "(**1**) - Apply changes to playlist.\n"
@@ -59,7 +59,7 @@ msgstr "(**1**) - Áp dụng các thay đổi cho danh sách phát.\n"
 
 #: plplaylists/cog.py:163
 msgid "I did not create this playlist."
-msgstr ""
+msgstr "Tôi đã không tạo danh sách phát này."
 
 #: plplaylists/cog.py:164
 msgid "No tracks were provided in time."
@@ -67,13 +67,15 @@ msgstr "Không có bản nhạc nào được cung cấp kịp thời."
 
 #: plplaylists/cog.py:177
 msgid "I have created a new playlist."
-msgstr ""
+msgstr "Tôi đã tạo một danh sách phát mới."
 
 #: plplaylists/cog.py:178
 msgid "Name: `{name_variable_do_not_translate}`\n"
 "Identifier: `{id_variable_do_not_translate}`\n"
 "Tracks: `{track_count_variable_do_not_translate}`"
-msgstr ""
+msgstr "Tên: '{name_variable_do_not_translate}`\n"
+"Mã định danh: '{id_variable_do_not_translate}`\n"
+"Bài hát: '{track_count_variable_do_not_translate}`"
 
 #: plplaylists/cog.py:206
 msgid "You have no playlists"
@@ -85,11 +87,11 @@ msgstr "Không có gì để tiết kiệm"
 
 #: plplaylists/cog.py:249 plplaylists/cog.py:638
 msgid "There is nothing in the queue to save."
-msgstr ""
+msgstr "Không có gì trong hàng đợi để lưu."
 
 #: plplaylists/cog.py:286 plplaylists/cog.py:569 plplaylists/cog.py:655
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} cannot be managed by yourself."
-msgstr ""
+msgstr "{user_variable_do_not_translate}Danh sách {playlist_name_variable_do_not_translate} không thể được quản lý bởi chính bạn."
 
 #: plplaylists/cog.py:298
 msgid "(**1**){space_variable_do_not_translate} - Apply changes to playlist.\n"
@@ -112,7 +114,26 @@ msgid "(**1**){space_variable_do_not_translate} - Apply changes to playlist.\n"
 "The clear button will always be run first before any other operations.\n"
 "The URL button will always run last - Linking a playlist via the URL will overwrite any tracks added or removed to this playlist.\n\n"
 "If you interact with a button multiple times other than the add/remove buttons only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space_variable_do_not_translate} - Áp dụng các thay đổi cho danh sách phát.\n"
+"(**2**){space_variable_do_not_translate} - Hủy bất kỳ thay đổi nào đã thực hiện và đóng menu.\n"
+"(**3**){space_variable_do_not_translate} - Xóa Danh sách phát này.\n"
+"(**4**){space_variable_do_not_translate} - Xóa tất cả các bản nhạc khỏi danh sách phát này.\n"
+"(**5**){space_variable_do_not_translate} - Cập nhật danh sách phát với các bản nhạc mới nhất.\n"
+"Xin lưu ý rằng hành động này sẽ bỏ qua bất kỳ bản nhạc nào được thêm / xóa thông qua menu này.\n"
+"(**6**){space_variable_do_not_translate} - Thay đổi tên của danh sách phát.\n"
+"(**7**){space_variable_do_not_translate} - Liên kết danh sách phát này với danh sách phát / album hiện có.\n"
+"(**8**){space_variable_do_not_translate} - Thêm một truy vấn vào danh sách phát này.\n"
+"(**9**){space_variable_do_not_translate} - Xóa truy vấn khỏi danh sách phát này.\n"
+"(**10**) - Tải xuống tệp danh sách phát.\n"
+"(**11**) - Thêm danh sách phát hiện tại vào hàng đợi.\n"
+"(**12**) - Hiển thị các bản nhạc trong danh sách phát hiện tại.\n"
+"(**13**) - Thêm các bản nhạc từ hàng đợi vào danh sách phát này.\n"
+"(**14**) - Xóa các mục nhập trùng lặp trong danh sách phát.\n\n"
+"Các nút thêm / xóa bản nhạc có thể được sử dụng nhiều lần để thêm / xóa nhiều bản nhạc và danh sách phát cùng một lúc.\n\n"
+"Truy vấn là bất kỳ thứ gì có thể phát được bằng lệnh phát - bất kỳ truy vấn nào cũng có thể được sử dụng bởi các nút thêm / xóa\n\n"
+"Nút xóa sẽ luôn được chạy trước bất kỳ thao tác nào khác.\n"
+"Nút URL sẽ luôn chạy cuối cùng - Liên kết danh sách phát qua URL sẽ ghi đè lên bất kỳ bản nhạc nào được thêm hoặc xóa vào danh sách phát này.\n\n"
+"Nếu bạn tương tác với một nút nhiều lần khác với các nút thêm / xóa, chỉ tương tác cuối cùng mới có hiệu lực.\n\n\n"
 
 #: plplaylists/cog.py:324
 msgid "(**1**) - Close the menu.\n"
@@ -133,15 +154,20 @@ msgid "__**Currently managing**__:\n"
 "**Author**:{space_variable_do_not_translate}{space_variable_do_not_translate}{author_variable_do_not_translate}\n"
 "**Tracks**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{tracks_variable_do_not_translate} tracks\n"
 "**URL**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{url_variable_do_not_translate}\n"
-msgstr ""
+msgstr "__**Hiện đang quản lý**__:\n"
+"**Tên**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{playlist_name_variable_do_not_translate}\n"
+"**Phạm vi**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{scope_variable_do_not_translate}\n"
+"**Tác giả**:{space_variable_do_not_translate}{space_variable_do_not_translate}{author_variable_do_not_translate}\n"
+"**Bài hát**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{tracks_variable_do_not_translate} Bài hát\n"
+"**URL**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{url_variable_do_not_translate}\n"
 
 #: plplaylists/cog.py:350
 msgid "Let us manage: {playlist_name_variable_do_not_translate}."
-msgstr ""
+msgstr "Hãy để chúng tôi quản lý: {playlist_name_variable_do_not_translate}."
 
 #: plplaylists/cog.py:354
 msgid "Let us take a look at: {playlist_name_variable_do_not_translate}."
-msgstr ""
+msgstr "Hãy để chúng tôi xem xét: {playlist_name_variable_do_not_translate}."
 
 #: plplaylists/cog.py:365
 msgid "N/A"
@@ -149,35 +175,39 @@ msgstr "N/A"
 
 #: plplaylists/cog.py:389
 msgid "I have deleted a playlist."
-msgstr ""
+msgstr "Tôi đã xóa một playlist."
 
 #: plplaylists/cog.py:391 plplaylists/cog.py:584
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has been deleted."
-msgstr ""
+msgstr "{user_variable_do_not_translate}Danh sách {playlist_name_variable_do_not_translate} đã bị xóa."
 
 #: plplaylists/cog.py:444
 msgid "Playlist {playlist_name_variable_do_not_translate} could not be updated with URL: {url_variable_do_not_translate}"
-msgstr ""
+msgstr "Danh sách {playlist_name_variable_do_not_translate} không thể cập nhật bằng URL: {url_variable_do_not_translate}"
 
 #: plplaylists/cog.py:486
 msgid "\n"
 "1 track was removed from the playlist."
-msgstr ""
+msgstr "\n"
+"1 bản nhạc đã bị xóa khỏi danh sách phát."
 
 #: plplaylists/cog.py:488
 msgid "\n"
 "{track_count_variable_do_not_translate} tracks were removed from the playlist."
-msgstr ""
+msgstr "\n"
+"{track_count_variable_do_not_translate} các bản nhạc đã bị xóa khỏi danh sách phát."
 
 #: plplaylists/cog.py:494 plplaylists/cog.py:678
 msgid "\n"
 "1 track was added to the playlist."
-msgstr ""
+msgstr "\n"
+"1 bản nhạc đã được thêm vào danh sách phát."
 
 #: plplaylists/cog.py:496 plplaylists/cog.py:680
 msgid "\n"
 "{track_count_variable_do_not_translate} tracks were added to the playlist."
-msgstr ""
+msgstr "\n"
+"{track_count_variable_do_not_translate} các bản nhạc đã được thêm vào danh sách phát."
 
 #: plplaylists/cog.py:502 plplaylists/cog.py:689
 msgid "Playlist updated"
@@ -185,7 +215,7 @@ msgstr "Danh sách phát đã cập nhật"
 
 #: plplaylists/cog.py:503 plplaylists/cog.py:690
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has been updated.{extras_variable_do_not_translate}."
-msgstr ""
+msgstr "{user_variable_do_not_translate}Danh sách {playlist_name_variable_do_not_translate} đã được cập nhật.{extras_variable_do_not_translate}."
 
 #: plplaylists/cog.py:517 plplaylists/cog.py:705
 msgid "Playlist unchanged"
@@ -193,7 +223,7 @@ msgstr "Danh sách phát không thay đổi"
 
 #: plplaylists/cog.py:518
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has not been updated."
-msgstr ""
+msgstr "{user_variable_do_not_translate}Danh sách {playlist_name_variable_do_not_translate} chưa được cập nhật."
 
 #: plplaylists/cog.py:582
 msgid "Playlist deleted"
@@ -201,11 +231,11 @@ msgstr "Đã xóa playlist"
 
 #: plplaylists/cog.py:706
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has not been updated"
-msgstr ""
+msgstr "{user_variable_do_not_translate}Danh sách {playlist_name_variable_do_not_translate} chưa được cập nhật"
 
 #: plplaylists/cog.py:737
 msgid "You must either provide a URL or attach a playlist file to upload a playlist."
-msgstr ""
+msgstr "Bạn phải cung cấp URL hoặc đính kèm tệp danh sách phát để tải danh sách phát lên."
 
 #: plplaylists/cog.py:749
 msgid "No valid playlist file provided"
@@ -213,29 +243,31 @@ msgstr "Không có tệp danh sách phát hợp lệ nào được cung cấp"
 
 #: plplaylists/cog.py:758
 msgid "Multiple playlist files are provided. Currently, only 1 per message is allowed."
-msgstr ""
+msgstr "Nhiều tệp danh sách phát được cung cấp. Hiện tại, chỉ cho phép 1 tin nhắn cho mỗi tin nhắn."
 
 #: plplaylists/cog.py:775
 msgid "Failed to save any of the requested playlists."
-msgstr ""
+msgstr "Không thể lưu bất kỳ danh sách phát nào được yêu cầu."
 
 #: plplaylists/cog.py:784
 msgid "Failed to save the following playlists:\n"
 "{invalid_playlists_variable_do_not_translate}."
-msgstr ""
+msgstr "Không thể lưu các playlist sau:\n"
+"{invalid_playlists_variable_do_not_translate}."
 
 #: plplaylists/cog.py:793
 msgid "Successfully saved the following playlists:\n"
 "{saved_playlists_variable_do_not_translate}."
-msgstr ""
+msgstr "Đã lưu thành công các danh sách phát sau:\n"
+"{saved_playlists_variable_do_not_translate}."
 
 #: plplaylists/cog.py:818
 msgid "You must be in a voice channel to allow me to connect."
-msgstr ""
+msgstr "Bạn phải ở trong một kênh thoại để cho phép tôi kết nối."
 
 #: plplaylists/cog.py:826
 msgid "I do not have permission to connect or speak in {channel_variable_do_not_translate}."
-msgstr ""
+msgstr "Tôi không có quyền kết nối hoặc nói chuyện {channel_variable_do_not_translate}."
 
 #: plplaylists/cog.py:856
 msgid "Playlist"
@@ -243,5 +275,5 @@ msgstr "Danh sách"
 
 #: plplaylists/cog.py:861
 msgid "{track_count_variable_do_not_translate} tracks enqueued.{playlist_name_variable_do_not_translate}."
-msgstr ""
+msgstr "{track_count_variable_do_not_translate} các bản nhạc được xếp hàng.{playlist_name_variable_do_not_translate}."
 

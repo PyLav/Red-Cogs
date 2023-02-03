@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-02-03 20:16+0000\n"
-"PO-Revision-Date: 2023-02-03 20:20\n"
+"PO-Revision-Date: 2023-02-03 21:03\n"
 "Last-Translator: \n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
@@ -47,7 +47,7 @@ msgstr "Lisää solmu PyLaviin"
 
 #: plnodes/cog.py:87
 msgid "Let us add a node to PyLav!"
-msgstr ""
+msgstr "Lisätään solmu PyLaviin!"
 
 #: plnodes/cog.py:88
 msgid "(**1**){space_variable_do_not_translate} - Apply changes and add the node to PyLav.\n"
@@ -61,7 +61,17 @@ msgid "(**1**){space_variable_do_not_translate} - Apply changes and add the node
 "(**9**){space_variable_do_not_translate} - Set the connection timeout.\n"
 "(**10**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space_variable_do_not_translate} - Käytä muutoksia ja lisää solmu PyLaviin.\n"
+"(**2**){space_variable_do_not_translate} - Peruuta tehdyt muutokset ja sulje valikko.\n"
+"(**3**){space_variable_do_not_translate} - Vaihda vain haku- ja haku- ja toistotilojen välillä.\n"
+"(**4**){space_variable_do_not_translate} - Vaihda SSL:n välillä päälle ja pois päältä.\n"
+"(**5**){space_variable_do_not_translate} - Lisää solmuun nimi.\n"
+"(**6**){space_variable_do_not_translate} - Lisää solmun isäntäosoite.\n"
+"(**7**){space_variable_do_not_translate} - Lisää solmun käyttämä portti.\n"
+"(**8**){space_variable_do_not_translate} - Aseta solmun salasana.\n"
+"(**9**){space_variable_do_not_translate} - Aseta yhteyden aikakatkaisu.\n"
+"(**10**) - Valitse, mitkä lähteet poistetaan käytöstä tässä solmussa (useita voidaan valita).\n"
+"Jos käytät painiketta useita kertoja, vain viimeinen vuorovaikutus tulee voimaan.\n\n\n"
 
 #: plnodes/cog.py:134
 msgid "I have added the {name_variable_do_not_translate} node with the following settings:\n"
@@ -72,11 +82,18 @@ msgid "I have added the {name_variable_do_not_translate} node with the following
 "Search Only: {search_only_variable_do_not_translate}\n"
 "SSL: {ssl_variable_do_not_translate}\n"
 "Disabled Sources: {disabled_sources_variable_do_not_translate}\n"
-msgstr ""
+msgstr "Olen lisännyt {name_variable_do_not_translate} solmu seuraavilla asetuksilla:\n"
+"Isäntä: {host_variable_do_not_translate}\n"
+"Satama: {port_variable_do_not_translate}\n"
+"Salasana: {password_variable_do_not_translate}\n"
+"Jatka aikakatkaisua: {resume_timeout_variable_do_not_translate}\n"
+"Vain haku: {search_only_variable_do_not_translate}\n"
+"SSL: {ssl_variable_do_not_translate}\n"
+"Käytöstä poistetut lähteet: {disabled_sources_variable_do_not_translate}\n"
 
 #: plnodes/cog.py:165 plnodes/cog.py:172
 msgid "I am unable to add this node"
-msgstr ""
+msgstr "En voi lisätä tätä solmua"
 
 #: plnodes/cog.py:178
 #, docstring
@@ -85,16 +102,17 @@ msgstr "Poista palvelin PyLav instanssista"
 
 #: plnodes/cog.py:190
 msgid "{name_variable_do_not_translate} is managed by PyLav and cannot be removed."
-msgstr ""
+msgstr "{name_variable_do_not_translate} on PyLavin hallinnoima, eikä sitä voi poistaa."
 
 #: plnodes/cog.py:207
 msgid "I have removed the {name_variable_do_not_translate} node.\n\n"
 "{data_variable_do_not_translate}"
-msgstr ""
+msgstr "Olen poistanut {name_variable_do_not_translate} solmu.\n\n"
+"{data_variable_do_not_translate}"
 
 #: plnodes/cog.py:220
 msgid "I have removed the {name_variable_do_not_translate} node. A direct message was sent to you with the node details in case you wish to re-add it."
-msgstr ""
+msgstr "Olen poistanut {name_variable_do_not_translate} solmu. Sinulle lähetettiin suora viesti, jossa on solmun tiedot, jos haluat lisätä sen uudelleen."
 
 #: plnodes/cog.py:230
 #, docstring
@@ -103,7 +121,7 @@ msgstr "Hallitse kaikkia solmuja PyLav instanssissa"
 
 #: plnodes/cog.py:242
 msgid "Let us manage some nodes!"
-msgstr ""
+msgstr "Hallitkaamme joitain solmuja!"
 
 #: plnodes/cog.py:243
 msgid "(**1**){space_variable_do_not_translate} - Cancel any changes made and close the menu.\n"
@@ -119,15 +137,27 @@ msgid "(**1**){space_variable_do_not_translate} - Cancel any changes made and cl
 "(**15**) - Remove this node.\n"
 "(**16**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space_variable_do_not_translate} - Peruuta tehdyt muutokset ja sulje valikko.\n"
+"(**6**){space_variable_do_not_translate} - Näytä lähteet, jotka on otettu käyttöön tässä solmussa.\n"
+"(**7**){space_variable_do_not_translate} - Käytä muutoksia ja lisää solmu PyLaviin.\n"
+"(**8**){space_variable_do_not_translate} - Vaihda vain haku- ja haku- ja toistotilojen välillä.\n"
+"(**9**){space_variable_do_not_translate} - Vaihda SSL:n välillä päälle ja pois päältä.\n"
+"(**10**) - Lisää solmulle nimi.\n"
+"(**11**) - Lisää solmun isäntäosoite.\n"
+"(**12**) - Lisää solmun käyttämä portti.\n"
+"(**13**) - Aseta solmun salasana.\n"
+"(**14**) - Aseta yhteyden aikakatkaisu.\n"
+"(**15**) - Poista tämä solmu.\n"
+"(**16**) - Valitse, mitkä lähteet poistetaan käytöstä tässä solmussa (useita voidaan valita).\n"
+"Jos käytät painiketta useita kertoja, vain viimeinen vuorovaikutus tulee voimaan.\n\n\n"
 
 #: plnodes/cog.py:272
 msgid "{name_variable_do_not_translate} is managed by PyLav, and I can not modify it."
-msgstr ""
+msgstr "{name_variable_do_not_translate} hallinnoi PyLav, enkä voi muokata sitä."
 
 #: plnodes/cog.py:284
 msgid "I have removed the {name_variable_do_not_translate} node."
-msgstr ""
+msgstr "Olen poistanut {name_variable_do_not_translate} solmu."
 
 #: plnodes/cog.py:322
 msgid "I have changed the {name_variable_do_not_translate} node to the following settings:\n"
@@ -138,7 +168,14 @@ msgid "I have changed the {name_variable_do_not_translate} node to the following
 "Search Only: {search_only_variable_do_not_translate}\n"
 "SSL: {ssl_variable_do_not_translate}\n"
 "Disabled Sources: {disabled_sources_variable_do_not_translate}\n"
-msgstr ""
+msgstr "Olen muuttanut {name_variable_do_not_translate} solmu seuraaviin asetuksiin:\n"
+"Isäntä: {host_variable_do_not_translate}\n"
+"Satama: {port_variable_do_not_translate}\n"
+"Salasana: {password_variable_do_not_translate}\n"
+"Jatka aikakatkaisua: {resume_timeout_variable_do_not_translate}\n"
+"Vain haku: {search_only_variable_do_not_translate}\n"
+"SSL: {ssl_variable_do_not_translate}\n"
+"Käytöstä poistetut lähteet: {disabled_sources_variable_do_not_translate}\n"
 
 #: plnodes/cog.py:349
 #, docstring
@@ -147,5 +184,5 @@ msgstr "Listaa kaikki PyLavin käyttämät solmut"
 
 #: plnodes/cog.py:359
 msgid "No nodes were added to PyLav."
-msgstr ""
+msgstr "PyLaviin ei lisätty solmuja."
 

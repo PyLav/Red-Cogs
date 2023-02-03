@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-02-03 20:16+0000\n"
-"PO-Revision-Date: 2023-02-03 20:20\n"
+"PO-Revision-Date: 2023-02-03 21:03\n"
 "Last-Translator: \n"
 "Language-Team: Ukrainian\n"
 "MIME-Version: 1.0\n"
@@ -47,7 +47,7 @@ msgstr "Додати вузол до PyLav"
 
 #: plnodes/cog.py:87
 msgid "Let us add a node to PyLav!"
-msgstr ""
+msgstr "Додамо вузол до PyLav!"
 
 #: plnodes/cog.py:88
 msgid "(**1**){space_variable_do_not_translate} - Apply changes and add the node to PyLav.\n"
@@ -61,7 +61,17 @@ msgid "(**1**){space_variable_do_not_translate} - Apply changes and add the node
 "(**9**){space_variable_do_not_translate} - Set the connection timeout.\n"
 "(**10**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space_variable_do_not_translate} - Застосуйте зміни і додайте вузол в PyLav.\n"
+"(**2**){space_variable_do_not_translate} - Скасуйте будь-які внесені зміни і закрийте меню.\n"
+"(**3**){space_variable_do_not_translate} - Переключення між режимами лише пошуку та пошуку та відтворення.\n"
+"(**4**){space_variable_do_not_translate} - Перемикайтеся між увімкненням і вимкненням SSL.\n"
+"(**5**){space_variable_do_not_translate} - Додайте ім'я до вузла.\n"
+"(**6**){space_variable_do_not_translate} - Додайте адресу хоста вузла.\n"
+"(**7**){space_variable_do_not_translate} - Додайте порт, який використовує вузол.\n"
+"(**8**){space_variable_do_not_translate} - Встановіть пароль на вузол.\n"
+"(**9**){space_variable_do_not_translate} - Встановіть тайм-аут з'єднання.\n"
+"(**10**) - Виберіть, які джерела відключити для цього вузла (можна вибрати Кілька).\n"
+"Якщо ви взаємодієте з кнопкою кілька разів, почне діяти тільки остання взаємодія.\n\n\n"
 
 #: plnodes/cog.py:134
 msgid "I have added the {name_variable_do_not_translate} node with the following settings:\n"
@@ -72,11 +82,18 @@ msgid "I have added the {name_variable_do_not_translate} node with the following
 "Search Only: {search_only_variable_do_not_translate}\n"
 "SSL: {ssl_variable_do_not_translate}\n"
 "Disabled Sources: {disabled_sources_variable_do_not_translate}\n"
-msgstr ""
+msgstr "Я додав {name_variable_do_not_translate} вузол з наступними настройками:\n"
+"Господар: {host_variable_do_not_translate}\n"
+"Порт: {port_variable_do_not_translate}\n"
+"Пароль: {password_variable_do_not_translate}\n"
+"Тайм-аут резюме: {resume_timeout_variable_do_not_translate}\n"
+"Пошук лише: {search_only_variable_do_not_translate}\n"
+"SSL: {ssl_variable_do_not_translate}\n"
+"Відключені джерела: {disabled_sources_variable_do_not_translate}\n"
 
 #: plnodes/cog.py:165 plnodes/cog.py:172
 msgid "I am unable to add this node"
-msgstr ""
+msgstr "Я не можу додати цей вузол"
 
 #: plnodes/cog.py:178
 #, docstring
@@ -85,16 +102,17 @@ msgstr "Видалити вузол із екземпляра PyLav"
 
 #: plnodes/cog.py:190
 msgid "{name_variable_do_not_translate} is managed by PyLav and cannot be removed."
-msgstr ""
+msgstr "{name_variable_do_not_translate} управляється PyLav і не може бути видалений."
 
 #: plnodes/cog.py:207
 msgid "I have removed the {name_variable_do_not_translate} node.\n\n"
 "{data_variable_do_not_translate}"
-msgstr ""
+msgstr "Я видалив {name_variable_do_not_translate} Вузол.\n\n"
+"{data_variable_do_not_translate}"
 
 #: plnodes/cog.py:220
 msgid "I have removed the {name_variable_do_not_translate} node. A direct message was sent to you with the node details in case you wish to re-add it."
-msgstr ""
+msgstr "Я видалив {name_variable_do_not_translate} Вузол. Вам було надіслано пряме повідомлення з деталями вузла на випадок, якщо ви захочете його повторно додати."
 
 #: plnodes/cog.py:230
 #, docstring
@@ -103,7 +121,7 @@ msgstr "Керувати всіма вузлами в екземплярі PyLav
 
 #: plnodes/cog.py:242
 msgid "Let us manage some nodes!"
-msgstr ""
+msgstr "Давайте керуватимемо деякими вузлами!"
 
 #: plnodes/cog.py:243
 msgid "(**1**){space_variable_do_not_translate} - Cancel any changes made and close the menu.\n"
@@ -119,15 +137,27 @@ msgid "(**1**){space_variable_do_not_translate} - Cancel any changes made and cl
 "(**15**) - Remove this node.\n"
 "(**16**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space_variable_do_not_translate} - Скасуйте будь-які внесені зміни і закрийте меню.\n"
+"(**6**){space_variable_do_not_translate} - Показати джерела, включені для цього вузла.\n"
+"(**7**){space_variable_do_not_translate} - Застосуйте зміни і додайте вузол в PyLav.\n"
+"(**8**){space_variable_do_not_translate} - Переключення між режимами лише пошуку та пошуку та відтворення.\n"
+"(**9**){space_variable_do_not_translate} - Перемикайтеся між увімкненням і вимкненням SSL.\n"
+"(**10**) - Додайте ім'я до вузла.\n"
+"(**11**) - Додайте адресу хоста вузла.\n"
+"(**12**) - Додайте порт, який використовує вузол.\n"
+"(**13**) - Встановіть пароль для вузла.\n"
+"(**14**) - Встановіть тайм-аут з'єднання.\n"
+"(**15**) - Видаліть цей вузол.\n"
+"(**16**) - Виберіть, які джерела відключити для цього вузла (можна вибрати Multiple ).\n"
+"Якщо ви взаємодієте з кнопкою кілька разів, почне діяти тільки остання взаємодія.\n\n\n"
 
 #: plnodes/cog.py:272
 msgid "{name_variable_do_not_translate} is managed by PyLav, and I can not modify it."
-msgstr ""
+msgstr "{name_variable_do_not_translate} управляється PyLav, і я не можу його модифікувати."
 
 #: plnodes/cog.py:284
 msgid "I have removed the {name_variable_do_not_translate} node."
-msgstr ""
+msgstr "Я видалив {name_variable_do_not_translate} Вузол."
 
 #: plnodes/cog.py:322
 msgid "I have changed the {name_variable_do_not_translate} node to the following settings:\n"
@@ -138,7 +168,14 @@ msgid "I have changed the {name_variable_do_not_translate} node to the following
 "Search Only: {search_only_variable_do_not_translate}\n"
 "SSL: {ssl_variable_do_not_translate}\n"
 "Disabled Sources: {disabled_sources_variable_do_not_translate}\n"
-msgstr ""
+msgstr "Я змінив {name_variable_do_not_translate} вузол з наступними налаштуваннями:\n"
+"Господар: {host_variable_do_not_translate}\n"
+"Порт: {port_variable_do_not_translate}\n"
+"Пароль: {password_variable_do_not_translate}\n"
+"Тайм-аут резюме: {resume_timeout_variable_do_not_translate}\n"
+"Пошук лише: {search_only_variable_do_not_translate}\n"
+"SSL: {ssl_variable_do_not_translate}\n"
+"Відключені джерела: {disabled_sources_variable_do_not_translate}\n"
 
 #: plnodes/cog.py:349
 #, docstring
@@ -147,5 +184,5 @@ msgstr "Список всіх вузлів, які використовують�
 
 #: plnodes/cog.py:359
 msgid "No nodes were added to PyLav."
-msgstr ""
+msgstr "Вузлів до PyLav не додали."
 

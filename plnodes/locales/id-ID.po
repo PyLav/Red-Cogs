@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-02-03 20:16+0000\n"
-"PO-Revision-Date: 2023-02-03 20:20\n"
+"PO-Revision-Date: 2023-02-03 21:03\n"
 "Last-Translator: \n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -47,7 +47,7 @@ msgstr "Menambahkan node ke PyLav"
 
 #: plnodes/cog.py:87
 msgid "Let us add a node to PyLav!"
-msgstr ""
+msgstr "Mari kita tambahkan node ke PyLav!"
 
 #: plnodes/cog.py:88
 msgid "(**1**){space_variable_do_not_translate} - Apply changes and add the node to PyLav.\n"
@@ -61,7 +61,17 @@ msgid "(**1**){space_variable_do_not_translate} - Apply changes and add the node
 "(**9**){space_variable_do_not_translate} - Set the connection timeout.\n"
 "(**10**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space_variable_do_not_translate} - Terapkan perubahan dan tambahkan node ke PyLav.\n"
+"(**2**){space_variable_do_not_translate} - Batalkan setiap perubahan yang dilakukan dan tutup menu.\n"
+"(**3**){space_variable_do_not_translate} - Beralih antara mode pencarian saja dan pencarian dan pemutaran.\n"
+"(**4**){space_variable_do_not_translate} - Beralih antara SSL on dan off.\n"
+"(**5**){space_variable_do_not_translate} - Tambahkan nama ke node.\n"
+"(**6**){space_variable_do_not_translate} - Tambahkan alamat host node.\n"
+"(**7**){space_variable_do_not_translate} - Tambahkan port yang digunakan node.\n"
+"(**8**){space_variable_do_not_translate} - Atur kata sandi untuk node.\n"
+"(**9**){space_variable_do_not_translate} - Atur batas waktu koneksi.\n"
+"(**10**) - Pilih sumber mana yang akan dinonaktifkan untuk node ini (Beberapa dapat dipilih).\n"
+"Jika Anda berinteraksi dengan tombol beberapa kali, hanya interaksi terakhir yang akan berlaku.\n\n\n"
 
 #: plnodes/cog.py:134
 msgid "I have added the {name_variable_do_not_translate} node with the following settings:\n"
@@ -72,11 +82,18 @@ msgid "I have added the {name_variable_do_not_translate} node with the following
 "Search Only: {search_only_variable_do_not_translate}\n"
 "SSL: {ssl_variable_do_not_translate}\n"
 "Disabled Sources: {disabled_sources_variable_do_not_translate}\n"
-msgstr ""
+msgstr "Saya telah menambahkan {name_variable_do_not_translate} node dengan pengaturan berikut:\n"
+"Tuan rumah: {host_variable_do_not_translate}\n"
+"Pelabuhan: {port_variable_do_not_translate}\n"
+"Kata sandi: {password_variable_do_not_translate}\n"
+"Lanjutkan Batas Waktu: {resume_timeout_variable_do_not_translate}\n"
+"Hanya Pencarian: {search_only_variable_do_not_translate}\n"
+"SSL: {ssl_variable_do_not_translate}\n"
+"Sumber yang Dinonaktifkan: {disabled_sources_variable_do_not_translate}\n"
 
 #: plnodes/cog.py:165 plnodes/cog.py:172
 msgid "I am unable to add this node"
-msgstr ""
+msgstr "Saya tidak dapat menambahkan node ini"
 
 #: plnodes/cog.py:178
 #, docstring
@@ -85,16 +102,17 @@ msgstr "Menghapus node dari instans PyLav"
 
 #: plnodes/cog.py:190
 msgid "{name_variable_do_not_translate} is managed by PyLav and cannot be removed."
-msgstr ""
+msgstr "{name_variable_do_not_translate} dikelola oleh PyLav dan tidak dapat dihapus."
 
 #: plnodes/cog.py:207
 msgid "I have removed the {name_variable_do_not_translate} node.\n\n"
 "{data_variable_do_not_translate}"
-msgstr ""
+msgstr "Saya telah menghapus {name_variable_do_not_translate} simpul.\n\n"
+"{data_variable_do_not_translate}"
 
 #: plnodes/cog.py:220
 msgid "I have removed the {name_variable_do_not_translate} node. A direct message was sent to you with the node details in case you wish to re-add it."
-msgstr ""
+msgstr "Saya telah menghapus {name_variable_do_not_translate} simpul. Pesan langsung dikirimkan kepada Anda dengan detail node jika Anda ingin menambahkannya kembali."
 
 #: plnodes/cog.py:230
 #, docstring
@@ -103,7 +121,7 @@ msgstr "Mengelola semua node dalam instans PyLav"
 
 #: plnodes/cog.py:242
 msgid "Let us manage some nodes!"
-msgstr ""
+msgstr "Mari kita kelola beberapa node!"
 
 #: plnodes/cog.py:243
 msgid "(**1**){space_variable_do_not_translate} - Cancel any changes made and close the menu.\n"
@@ -119,15 +137,27 @@ msgid "(**1**){space_variable_do_not_translate} - Cancel any changes made and cl
 "(**15**) - Remove this node.\n"
 "(**16**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space_variable_do_not_translate} - Batalkan setiap perubahan yang dilakukan dan tutup menu.\n"
+"(**6**){space_variable_do_not_translate} - Tampilkan sumber yang diaktifkan untuk node ini.\n"
+"(**7**){space_variable_do_not_translate} - Terapkan perubahan dan tambahkan node ke PyLav.\n"
+"(**8**){space_variable_do_not_translate} - Beralih antara mode pencarian saja dan pencarian dan pemutaran.\n"
+"(**9**){space_variable_do_not_translate} - Beralih antara SSL on dan off.\n"
+"(**10**) - Tambahkan nama ke node.\n"
+"(**11**) - Tambahkan alamat host node.\n"
+"(**12**) - Tambahkan port yang digunakan node.\n"
+"(**13**) - Atur kata sandi untuk node.\n"
+"(**14**) - Atur batas waktu koneksi.\n"
+"(**15**) - Hapus node ini.\n"
+"(**16**) - Pilih sumber mana yang akan dinonaktifkan untuk node ini (Beberapa dapat dipilih).\n"
+"Jika Anda berinteraksi dengan tombol beberapa kali, hanya interaksi terakhir yang akan berlaku.\n\n\n"
 
 #: plnodes/cog.py:272
 msgid "{name_variable_do_not_translate} is managed by PyLav, and I can not modify it."
-msgstr ""
+msgstr "{name_variable_do_not_translate} dikelola oleh PyLav, dan saya tidak dapat memodifikasinya."
 
 #: plnodes/cog.py:284
 msgid "I have removed the {name_variable_do_not_translate} node."
-msgstr ""
+msgstr "Saya telah menghapus {name_variable_do_not_translate} simpul."
 
 #: plnodes/cog.py:322
 msgid "I have changed the {name_variable_do_not_translate} node to the following settings:\n"
@@ -138,7 +168,14 @@ msgid "I have changed the {name_variable_do_not_translate} node to the following
 "Search Only: {search_only_variable_do_not_translate}\n"
 "SSL: {ssl_variable_do_not_translate}\n"
 "Disabled Sources: {disabled_sources_variable_do_not_translate}\n"
-msgstr ""
+msgstr "Saya telah mengubah {name_variable_do_not_translate} node ke pengaturan berikut:\n"
+"Tuan rumah: {host_variable_do_not_translate}\n"
+"Pelabuhan: {port_variable_do_not_translate}\n"
+"Kata sandi: {password_variable_do_not_translate}\n"
+"Lanjutkan Batas Waktu: {resume_timeout_variable_do_not_translate}\n"
+"Hanya Pencarian: {search_only_variable_do_not_translate}\n"
+"SSL: {ssl_variable_do_not_translate}\n"
+"Sumber yang Dinonaktifkan: {disabled_sources_variable_do_not_translate}\n"
 
 #: plnodes/cog.py:349
 #, docstring
@@ -147,5 +184,5 @@ msgstr "Daftar semua node yang digunakan oleh PyLav"
 
 #: plnodes/cog.py:359
 msgid "No nodes were added to PyLav."
-msgstr ""
+msgstr "Tidak ada node yang ditambahkan ke PyLav."
 

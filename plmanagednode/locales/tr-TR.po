@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-02-03 20:16+0000\n"
-"PO-Revision-Date: 2023-02-03 20:20\n"
+"PO-Revision-Date: 2023-02-03 21:03\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -46,11 +46,11 @@ msgstr "Yönetilen Lavalink düğümü zaten günceldir."
 
 #: plmanagednode/cog.py:101
 msgid "Your node is out of date, to update please run `{command_name_variable_do_not_translate}`."
-msgstr ""
+msgstr "Düğümünüz güncel değil, güncellemek için lütfen '{command_name_variable_do_not_translate}`."
 
 #: plmanagednode/cog.py:118
 msgid "The managed Lavalink node has been updated to version {version_variable_do_not_translate}."
-msgstr ""
+msgstr "Yönetilen Lavalink düğümü sürüme güncellendi {version_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:130
 #, docstring
@@ -63,11 +63,11 @@ msgstr "Yönetilen düğümü açın/kapatın.\n\n"
 
 #: plmanagednode/cog.py:145
 msgid "The PyLav managed node has been enabled."
-msgstr ""
+msgstr "PyLav yönetilen düğümü etkinleştirildi."
 
 #: plmanagednode/cog.py:153
 msgid "The PyLav managed node has been disabled."
-msgstr ""
+msgstr "PyLav yönetilen düğümü devre dışı bırakıldı."
 
 #: plmanagednode/cog.py:161
 #, docstring
@@ -80,11 +80,11 @@ msgstr "Yönetilen düğüm otomatik güncelleştirmelerini açın/kapatın.\n\n
 
 #: plmanagednode/cog.py:177
 msgid "The PyLav managed node auto updates have been enabled."
-msgstr ""
+msgstr "PyLav tarafından yönetilen düğüm otomatik güncellemeleri etkinleştirildi."
 
 #: plmanagednode/cog.py:185
 msgid "The  PyLav managed node auto updates have been disabled."
-msgstr ""
+msgstr "PyLav tarafından yönetilen düğüm otomatik güncellemeleri devre dışı bırakıldı."
 
 #: plmanagednode/cog.py:193
 #, docstring
@@ -111,15 +111,15 @@ msgstr "Yığın boyutu en az 64M olmalıdır, ancak en az 1G'ye ayarlanması ö
 
 #: plmanagednode/cog.py:239
 msgid "Heap-size must be less than your system RAM, You currently have {ram_in_bytes_variable_do_not_translate} of RAM available"
-msgstr ""
+msgstr "Yığın boyutu sisteminizdeki RAM'den daha küçük olmalıdır, şu anda sahip olduğunuz {ram_in_bytes_variable_do_not_translate} kullanılabilir RAM sayısı"
 
 #: plmanagednode/cog.py:251
 msgid "Heap-size must be less than {limit_variable_do_not_translate} due to your system limitations"
-msgstr ""
+msgstr "Yığın boyutu {limit_variable_do_not_translate} sistem sınırlamalarınız nedeniyle"
 
 #: plmanagednode/cog.py:271
 msgid "The Managed node heap-size set to {bytes_variable_do_not_translate}."
-msgstr ""
+msgstr "Yönetilen düğüm yığın boyutu kümesi {bytes_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:281
 #, docstring
@@ -133,7 +133,7 @@ msgstr "Yönetilen düğüm konağını ayarlama"
 
 #: plmanagednode/cog.py:297
 msgid "The Managed node host set to {host_variable_do_not_translate}."
-msgstr ""
+msgstr "Yönetilen düğüm ana bilgisayarı {host_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:307
 #, docstring
@@ -142,7 +142,11 @@ msgid "`Dangerous command` Set the managed Lavalink node connection port.\n\n"
 "        conflict with the default port because you already have an application using port 2154 on this device.\n\n"
 "        The value by default is `2154`.\n"
 "        "
-msgstr ""
+msgstr "'Tehlikeli komut' Yönetilen Lavalink düğüm bağlantı bağlantı noktasını ayarlayın.\n\n"
+"        Bu bağlantı noktası, yönetilen Lavalink düğümünün bağlandığı bağlantı noktasıdır, bunu yalnızca\n"
+"        Bu aygıtta 2154 numaralı bağlantı noktasını kullanan bir uygulamanız zaten olduğu için varsayılan bağlantı noktasıyla çakışma.\n\n"
+"        Varsayılan değer '2154'tür.\n"
+"        "
 
 #: plmanagednode/cog.py:317
 msgid "The port must be between 1024 and 49151"
@@ -150,7 +154,7 @@ msgstr "Bağlantı noktası 1024 ile 49151 arasında olmalıdır"
 
 #: plmanagednode/cog.py:329
 msgid "The managed node port set to {port_variable_do_not_translate}."
-msgstr ""
+msgstr "Yönetilen düğüm bağlantı noktası şu şekilde ayarlandı: {port_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:339
 #, docstring
@@ -164,11 +168,11 @@ msgstr "Mevcut eklentilerden biri devre dışı bırakıldı"
 
 #: plmanagednode/cog.py:361 plmanagednode/cog.py:472
 msgid "The plugin must be one of the following: {plugins_variable_do_not_translate}"
-msgstr ""
+msgstr "Eklenti aşağıdakilerden biri olmalıdır: {plugins_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:446
 msgid "Managed node plugin {plugin_variable_do_not_translate} disabled."
-msgstr ""
+msgstr "Yönetilen düğüm eklentisi {plugin_variable_do_not_translate} sakat."
 
 #: plmanagednode/cog.py:456
 #, docstring
@@ -177,7 +181,7 @@ msgstr "Mevcut eklentilerden birini etkinleştirin"
 
 #: plmanagednode/cog.py:505
 msgid "Managed node plugin {plugin_variable_do_not_translate} enabled."
-msgstr ""
+msgstr "Yönetilen düğüm eklentisi {plugin_variable_do_not_translate} Etkin."
 
 #: plmanagednode/cog.py:515
 #, docstring
@@ -186,16 +190,17 @@ msgstr "Yönetilen düğüm eklentilerini güncelleştirme"
 
 #: plmanagednode/cog.py:589
 msgid "{name_variable_do_not_translate} was updated from {old_variable_do_not_translate} to {new_variable_do_not_translate}\n"
-msgstr ""
+msgstr "{name_variable_do_not_translate} güncellendi {old_variable_do_not_translate} Hedef {new_variable_do_not_translate}\n"
 
 #: plmanagednode/cog.py:599
 msgid "Managed node plugins updated.\n\n"
 "{update_variable_do_not_translate}"
-msgstr ""
+msgstr "Yönetilen düğüm eklentileri güncellendi.\n\n"
+"{update_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:609
 msgid "The managed node plugins are already up to date."
-msgstr ""
+msgstr "Yönetilen düğüm eklentileri zaten günceldir."
 
 #: plmanagednode/cog.py:617
 #, docstring
@@ -204,7 +209,7 @@ msgstr "Yönetilen düğüm kaynaklarını değiştirme"
 
 #: plmanagednode/cog.py:632
 msgid "Invalid source, {valid_list_variable_do_not_translate} are valid sources"
-msgstr ""
+msgstr "Geçersiz kaynak, {valid_list_variable_do_not_translate} geçerli kaynaklardır"
 
 #: plmanagednode/cog.py:648 plmanagednode/cog.py:687
 msgid "enabled"
@@ -216,7 +221,7 @@ msgstr "sakat"
 
 #: plmanagednode/cog.py:651
 msgid "Managed node {source_variable_do_not_translate} source set to {state_variable_do_not_translate}."
-msgstr ""
+msgstr "Yönetilen düğüm {source_variable_do_not_translate} kaynak olarak ayarlandı {state_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:664
 #, docstring
@@ -225,11 +230,11 @@ msgstr "Yönetilen düğüm filtrelerini değiştirme"
 
 #: plmanagednode/cog.py:676
 msgid "Invalid source, {valid_list_variable_do_not_translate} are valid filters"
-msgstr ""
+msgstr "Geçersiz kaynak, {valid_list_variable_do_not_translate} geçerli filtrelerdir"
 
 #: plmanagednode/cog.py:690
 msgid "Managed node {source_variable_do_not_translate} filter set to {state_variable_do_not_translate}."
-msgstr ""
+msgstr "Yönetilen düğüm {source_variable_do_not_translate} filtre olarak ayarlandı {state_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:703
 #, docstring
@@ -247,12 +252,26 @@ msgid "Configure multiple settings for the managed node.\n\n"
 "        `youtubeSearchEnabled` : Boolean i.e True (Default True)\n"
 "        `soundcloudSearchEnabled` : Boolean i.e True (Default True)\n"
 "        "
-msgstr ""
+msgstr "Yönetilen düğüm için birden çok ayar yapılandırın.\n\n"
+"        Çalıştır '[p]plmanaged ayarlar sunucusu <setting> info' ayarları ve ne yaptıkları hakkında bilgi göstermek için kullanılır.\n\n"
+"        **Adları ayarlama**:\n"
+"        'bufferDurationMs' : Tamsayı yani 400 (Varsayılan 400) - JDA-NAS'ı devre dışı bırakmak için 0 olarak ayarlayın\n"
+"        'frameBufferDurationMs' : Tamsayı yani 1000 (Varsayılan 1000)\n"
+"        'trackStuckThresholdMs': Tamsayı yani 1000 (Varsayılan 1000)\n"
+"        'youtubePlaylistLoadLimit': Tamsayı, yani 1000 (Varsayılan 1000)\n"
+"        'opusEncodingQuality' : Tamsayı yani 10 (Varsayılan 10)\n"
+"        'resamplingQuality' : String yani LOW (Varsayılan HIGH)\n"
+"        'useSeekGhosting' : Boolean yani Doğru (Varsayılan Doğru)\n"
+"        'playerUpdateInterval' : Tamsayı yani 30 (Varsayılan 30)\n"
+"        'youtubeSearchEnabled' : Boolean yani Doğru (Varsayılan Doğru)\n"
+"        'soundcloudSearchEnabled' : Boolean yani Doğru (Varsayılan True)\n"
+"        "
 
 #: plmanagednode/cog.py:743
 msgid "{Setting_variable_do_not_translate} is not a valid Setting; Options are:\n\n"
 "{setting_list_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} geçerli bir Ayar değilse; Seçenekler şunlardır:\n\n"
+"{setting_list_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:757
 msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses but will increase RAM usage. Minimum of 40ms, lower values may introduce pauses and stutters. Set to 0 to disable JDA-NAS. Accepted values: Range: 0 - 2,000"
@@ -297,33 +316,39 @@ msgstr "Düğüm içinde SoundCloud aramalarını etkinleştirin veya devre dı�
 #: plmanagednode/cog.py:806
 msgid "{Setting_variable_do_not_translate} info.\n\n"
 "{info_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} Bilgi.\n\n"
+"{info_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:837
 msgid "{Setting_variable_do_not_translate} valid inputs are:\n\n"
 "Range between: {start_variable_do_not_translate} - {end_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} geçerli girişler şunlardır:\n\n"
+"Aralarındaki aralık: {start_variable_do_not_translate} - {end_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:852
 msgid "{Setting_variable_do_not_translate} valid inputs are:\n\n"
 "{setting_list_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} geçerli girişler şunlardır:\n\n"
+"{setting_list_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:874
 msgid "{Setting_variable_do_not_translate} set to {value_variable_do_not_translate}."
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} olarak ayarlayın {value_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:885
 #, docstring
 msgid "Configure Lavalink IP Rotation for rate limits.\n\n"
 "        Run `[p]plmanaged settings iprotation 1` to remove the ip rotation\n"
 "        "
-msgstr ""
+msgstr "Lavalink IP Rotasyonunu hız sınırları için yapılandırın.\n\n"
+"        Çalıştır '[p]plmanaged ayarları iprotation 1' ip rotasyonunu kaldırmak için\n"
+"        "
 
 #: plmanagednode/cog.py:896
 msgid "Click the button below to configure the IP rotation for your node.\n"
 "More info at: {url_value_1_variable_do_not_translate} and {url_value_2_variable_do_not_translate}"
-msgstr ""
+msgstr "Düğümünüzün IP rotasyonunu yapılandırmak için aşağıdaki düğmeye tıklayın.\n"
+"Daha fazla bilgi için: {url_value_1_variable_do_not_translate} ve {url_value_2_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:917
 msgid "Removing the IP rotation from your node."
@@ -334,12 +359,15 @@ msgstr "IP rotasyonunu düğümünüzden kaldırma."
 msgid "Link a Google account to Lavalink to bypass the YouTube age restriction.\n\n"
 "        Run `[p]plmanaged settings googleaccount 1` to remove the linked account.\n"
 "        "
-msgstr ""
+msgstr "YouTube yaş kısıtlamasını atlamak için Lavalink'e bir Google hesabı bağlayın.\n\n"
+"        Çalıştır '[p]plmanaged ayarları googleaccount 1' bağlı hesabı kaldırmak için.\n"
+"        "
 
 #: plmanagednode/cog.py:936
 msgid "Click the button below to link a Google account to your node, if you have 2FA setup on this account you will need an application password instead\n"
 "More info at: <https://support.google.com/accounts/answer/185833>"
-msgstr ""
+msgstr "Bir Google hesabını düğümünüze bağlamak için aşağıdaki düğmeyi tıklayın, bu hesapta 2FA kurulumunuz varsa, bunun yerine bir uygulama şifresine ihtiyacınız olacaktır.\n"
+"Daha fazla bilgi için: <https://support.google.com/accounts/answer/185833>"
 
 #: plmanagednode/cog.py:955
 msgid "Unlinking Google account from your node."
@@ -350,7 +378,9 @@ msgstr "Google hesabının düğümünüz ile bağlantısını kaldırma."
 msgid "Configure a HTTP proxy for Lavalink\n\n"
 "        Run `[p]plmanaged settings httpproxy 1` to remove the proxy.\n"
 "        "
-msgstr ""
+msgstr "Lavalink için HTTP proxy yapılandırma\n\n"
+"        Çalıştır '[p]plmanaged ayarları httpproxy 1' proxy kaldırmak için.\n"
+"        "
 
 #: plmanagednode/cog.py:974
 msgid "Click the button below to configure a HTTP proxy for your node"
@@ -407,31 +437,31 @@ msgstr "0 veya 1 (0 = devre dışı, 1 = etkin)"
 
 #: plmanagednode/view.py:189
 msgid "The IP block you have provided is not valid; {error_variable_do_not_translate}."
-msgstr ""
+msgstr "Sağladığınız IP bloğu geçerli değil; {error_variable_do_not_translate}."
 
 #: plmanagednode/view.py:203
 msgid "No IP blocks were provided."
-msgstr ""
+msgstr "IP blokları sağlanmadı."
 
 #: plmanagednode/view.py:215
 msgid "The IP address you have provided is not valid; {error_variable_do_not_translate}"
-msgstr ""
+msgstr "Verdiğiniz IP adresi geçerli değil; {error_variable_do_not_translate}"
 
 #: plmanagednode/view.py:236
 msgid "The strategy you provided is invalid. You must be one of: {options_variable_do_not_translate}."
-msgstr ""
+msgstr "Sağladığınız strateji geçersiz. Aşağıdakilerden biri olmalısınız: {options_variable_do_not_translate}."
 
 #: plmanagednode/view.py:252
 msgid "The retry limit must be a number greater than or equal to -1."
-msgstr ""
+msgstr "Yeniden deneme sınırı, -1'den büyük veya ona eşit bir sayı olmalıdır."
 
 #: plmanagednode/view.py:267
 msgid "The search trigger must be 0 or 1."
-msgstr ""
+msgstr "Arama tetikleyicisi 0 veya 1 olmalıdır."
 
 #: plmanagednode/view.py:286
 msgid "IP rotation settings saved."
-msgstr ""
+msgstr "IP döndürme ayarları kaydedildi."
 
 #: plmanagednode/view.py:307
 msgid "Google Account Configurator"
@@ -451,7 +481,7 @@ msgstr "şifre"
 
 #: plmanagednode/view.py:322
 msgid "If you have 2FA you will need an application password"
-msgstr ""
+msgstr "2FA'nız varsa bir uygulama şifresine ihtiyacınız olacaktır."
 
 #: plmanagednode/view.py:336 plmanagednode/view.py:425
 msgid "You are not authorized to interact with this"
@@ -475,7 +505,7 @@ msgstr "Ana bilgisayar adı"
 
 #: plmanagednode/view.py:381
 msgid "Hostname of the proxy, (IP or domain or localhost)"
-msgstr ""
+msgstr "Proxy'nin ana bilgisayar adı, (IP veya etki alanı ya da localhost)"
 
 #: plmanagednode/view.py:385
 msgid "Proxy port"
@@ -491,7 +521,7 @@ msgstr "Kullanıcı"
 
 #: plmanagednode/view.py:399
 msgid "Optional user for basic authentication fields. Leave blank if you do not use basic authentication"
-msgstr ""
+msgstr "Temel kimlik doğrulama alanları için isteğe bağlı kullanıcı. Temel kimlik doğrulaması kullanmıyorsanız boş bırakın"
 
 #: plmanagednode/view.py:405
 msgid "Password"
@@ -499,13 +529,13 @@ msgstr "Şifre"
 
 #: plmanagednode/view.py:410
 msgid "Optional password for basic authentication fields. Leave blank if you do not use basic authentication."
-msgstr ""
+msgstr "Temel kimlik doğrulama alanları için isteğe bağlı parola. Temel kimlik doğrulaması kullanmıyorsanız boş bırakın."
 
 #: plmanagednode/view.py:436
 msgid "The port provided is not valid. It must be between 0 and 65536."
-msgstr ""
+msgstr "Sağlanan bağlantı noktası geçerli değil. 0 ile 65536 arasında olmalıdır."
 
 #: plmanagednode/view.py:453
 msgid "HTTP proxy settings saved."
-msgstr ""
+msgstr "HTTP proxy ayarları kaydedildi."
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-02-03 20:16+0000\n"
-"PO-Revision-Date: 2023-02-03 20:20\n"
+"PO-Revision-Date: 2023-02-03 21:03\n"
 "Last-Translator: \n"
 "Language-Team: Korean\n"
 "MIME-Version: 1.0\n"
@@ -47,7 +47,7 @@ msgstr "PyLav에 노드 추가"
 
 #: plnodes/cog.py:87
 msgid "Let us add a node to PyLav!"
-msgstr ""
+msgstr "PyLav에 노드를 추가해 보겠습니다!"
 
 #: plnodes/cog.py:88
 msgid "(**1**){space_variable_do_not_translate} - Apply changes and add the node to PyLav.\n"
@@ -61,7 +61,17 @@ msgid "(**1**){space_variable_do_not_translate} - Apply changes and add the node
 "(**9**){space_variable_do_not_translate} - Set the connection timeout.\n"
 "(**10**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space_variable_do_not_translate} - 변경 사항을 적용하고 PyLav에 노드를 추가합니다.\n"
+"(**2**){space_variable_do_not_translate} - 변경 사항을 취소하고 메뉴를 닫습니다.\n"
+"(**3**){space_variable_do_not_translate} - 검색 전용 모드와 검색 및 재생 모드 사이를 전환합니다.\n"
+"(**4**){space_variable_do_not_translate} - SSL을 켜고 끕니다.\n"
+"(**5**){space_variable_do_not_translate} - 노드에 이름을 추가합니다.\n"
+"(**6**){space_variable_do_not_translate} - 노드의 호스트 주소를 추가합니다.\n"
+"(**7**){space_variable_do_not_translate} - 노드가 사용하는 포트를 추가합니다.\n"
+"(**8**){space_variable_do_not_translate} - 노드의 암호를 설정합니다.\n"
+"(**9**){space_variable_do_not_translate} - 연결 시간 제한을 설정합니다.\n"
+"(**10**) - 이 노드에 대해 비활성화할 소스를 선택합니다(여러 개를 선택할 수 있음).\n"
+"단추와 여러 번 상호 작용하는 경우 마지막 상호 작용만 적용됩니다.\n\n\n"
 
 #: plnodes/cog.py:134
 msgid "I have added the {name_variable_do_not_translate} node with the following settings:\n"
@@ -72,11 +82,18 @@ msgid "I have added the {name_variable_do_not_translate} node with the following
 "Search Only: {search_only_variable_do_not_translate}\n"
 "SSL: {ssl_variable_do_not_translate}\n"
 "Disabled Sources: {disabled_sources_variable_do_not_translate}\n"
-msgstr ""
+msgstr "나는 추가했다 {name_variable_do_not_translate} 노드를 다음 설정으로 바꿉니다.\n"
+"호스트: {host_variable_do_not_translate}\n"
+"항구: {port_variable_do_not_translate}\n"
+"암호: {password_variable_do_not_translate}\n"
+"시간 초과 재개: {resume_timeout_variable_do_not_translate}\n"
+"검색 전용: {search_only_variable_do_not_translate}\n"
+"SSL : {ssl_variable_do_not_translate}\n"
+"비활성화된 소스: {disabled_sources_variable_do_not_translate}\n"
 
 #: plnodes/cog.py:165 plnodes/cog.py:172
 msgid "I am unable to add this node"
-msgstr ""
+msgstr "이 노드를 추가할 수 없습니다."
 
 #: plnodes/cog.py:178
 #, docstring
@@ -85,16 +102,17 @@ msgstr "PyLav 인스턴스에서 노드 제거"
 
 #: plnodes/cog.py:190
 msgid "{name_variable_do_not_translate} is managed by PyLav and cannot be removed."
-msgstr ""
+msgstr "{name_variable_do_not_translate} 는 PyLav에 의해 관리되며 제거할 수 없습니다."
 
 #: plnodes/cog.py:207
 msgid "I have removed the {name_variable_do_not_translate} node.\n\n"
 "{data_variable_do_not_translate}"
-msgstr ""
+msgstr "나는 제거했다 {name_variable_do_not_translate} 노드.\n\n"
+"{data_variable_do_not_translate}"
 
 #: plnodes/cog.py:220
 msgid "I have removed the {name_variable_do_not_translate} node. A direct message was sent to you with the node details in case you wish to re-add it."
-msgstr ""
+msgstr "나는 제거했다 {name_variable_do_not_translate} 노드. 다시 추가하려는 경우 노드 세부 정보가 포함된 다이렉트 메시지가 전송되었습니다."
 
 #: plnodes/cog.py:230
 #, docstring
@@ -103,7 +121,7 @@ msgstr "PyLav 인스턴스의 모든 노드 관리"
 
 #: plnodes/cog.py:242
 msgid "Let us manage some nodes!"
-msgstr ""
+msgstr "일부 노드를 관리합시다!"
 
 #: plnodes/cog.py:243
 msgid "(**1**){space_variable_do_not_translate} - Cancel any changes made and close the menu.\n"
@@ -119,15 +137,27 @@ msgid "(**1**){space_variable_do_not_translate} - Cancel any changes made and cl
 "(**15**) - Remove this node.\n"
 "(**16**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space_variable_do_not_translate} - 변경 사항을 취소하고 메뉴를 닫습니다.\n"
+"(**6**){space_variable_do_not_translate} - 이 노드에 대해 활성화된 소스를 표시합니다.\n"
+"(**7**){space_variable_do_not_translate} - 변경 사항을 적용하고 PyLav에 노드를 추가합니다.\n"
+"(**8**){space_variable_do_not_translate} - 검색 전용 모드와 검색 및 재생 모드 사이를 전환합니다.\n"
+"(**9**){space_variable_do_not_translate} - SSL을 켜고 끕니다.\n"
+"(**10**) - 노드에 이름을 추가합니다.\n"
+"(**11**) - 노드의 호스트 주소를 추가합니다.\n"
+"(**12**) - 노드에서 사용하는 포트를 추가합니다.\n"
+"(**13**) - 노드의 암호를 설정합니다.\n"
+"(**14**) - 연결 시간 제한을 설정합니다.\n"
+"(**15**) - 이 노드를 제거합니다.\n"
+"(**16**) - 이 노드에 대해 비활성화할 소스를 선택합니다(여러 개를 선택할 수 있음).\n"
+"단추와 여러 번 상호 작용하는 경우 마지막 상호 작용만 적용됩니다.\n\n\n"
 
 #: plnodes/cog.py:272
 msgid "{name_variable_do_not_translate} is managed by PyLav, and I can not modify it."
-msgstr ""
+msgstr "{name_variable_do_not_translate} PyLav에서 관리하며 수정할 수 없습니다."
 
 #: plnodes/cog.py:284
 msgid "I have removed the {name_variable_do_not_translate} node."
-msgstr ""
+msgstr "나는 제거했다 {name_variable_do_not_translate} 노드."
 
 #: plnodes/cog.py:322
 msgid "I have changed the {name_variable_do_not_translate} node to the following settings:\n"
@@ -138,7 +168,14 @@ msgid "I have changed the {name_variable_do_not_translate} node to the following
 "Search Only: {search_only_variable_do_not_translate}\n"
 "SSL: {ssl_variable_do_not_translate}\n"
 "Disabled Sources: {disabled_sources_variable_do_not_translate}\n"
-msgstr ""
+msgstr "나는 변경했다 {name_variable_do_not_translate} 노드를 다음 설정으로 설정합니다.\n"
+"호스트: {host_variable_do_not_translate}\n"
+"항구: {port_variable_do_not_translate}\n"
+"암호: {password_variable_do_not_translate}\n"
+"시간 초과 재개: {resume_timeout_variable_do_not_translate}\n"
+"검색 전용: {search_only_variable_do_not_translate}\n"
+"SSL : {ssl_variable_do_not_translate}\n"
+"비활성화된 소스: {disabled_sources_variable_do_not_translate}\n"
 
 #: plnodes/cog.py:349
 #, docstring
@@ -147,5 +184,5 @@ msgstr "PyLav에서 사용하는 모든 노드 나열"
 
 #: plnodes/cog.py:359
 msgid "No nodes were added to PyLav."
-msgstr ""
+msgstr "PyLav에 노드가 추가되지 않았습니다."
 
