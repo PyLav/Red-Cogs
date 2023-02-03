@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-02-03 20:16+0000\n"
-"PO-Revision-Date: 2023-02-03 20:20\n"
+"PO-Revision-Date: 2023-02-03 21:03\n"
 "Last-Translator: \n"
 "Language-Team: Ukrainian\n"
 "MIME-Version: 1.0\n"
@@ -46,11 +46,11 @@ msgstr "Керований вузол Lavalink вже оновлений."
 
 #: plmanagednode/cog.py:101
 msgid "Your node is out of date, to update please run `{command_name_variable_do_not_translate}`."
-msgstr ""
+msgstr "Ваш вузол застарів, для оновлення, будь ласка, запустіть '{command_name_variable_do_not_translate}`."
 
 #: plmanagednode/cog.py:118
 msgid "The managed Lavalink node has been updated to version {version_variable_do_not_translate}."
-msgstr ""
+msgstr "Керований вузол Lavalink оновлено до версії {version_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:130
 #, docstring
@@ -63,11 +63,11 @@ msgstr "Ввімкніть/вимкніть керований вузол.\n\n"
 
 #: plmanagednode/cog.py:145
 msgid "The PyLav managed node has been enabled."
-msgstr ""
+msgstr "Увімкнено керований вузол PyLav."
 
 #: plmanagednode/cog.py:153
 msgid "The PyLav managed node has been disabled."
-msgstr ""
+msgstr "Керований вузол PyLav був відключений."
 
 #: plmanagednode/cog.py:161
 #, docstring
@@ -80,11 +80,11 @@ msgstr "Увімкніть/вимкніть автоматичне оновле�
 
 #: plmanagednode/cog.py:177
 msgid "The PyLav managed node auto updates have been enabled."
-msgstr ""
+msgstr "Увімкнено автоматичне оновлення керованого вузла PyLav."
 
 #: plmanagednode/cog.py:185
 msgid "The  PyLav managed node auto updates have been disabled."
-msgstr ""
+msgstr "Автоматичне оновлення керованого вузла PyLav було відключено."
 
 #: plmanagednode/cog.py:193
 #, docstring
@@ -111,15 +111,15 @@ msgstr "Розмір Геппа повинен бути не менше 64 М, �
 
 #: plmanagednode/cog.py:239
 msgid "Heap-size must be less than your system RAM, You currently have {ram_in_bytes_variable_do_not_translate} of RAM available"
-msgstr ""
+msgstr "Розмір купи повинен бути менше, ніж оперативна пам'ять вашої системи, у вас зараз є {ram_in_bytes_variable_do_not_translate} доступної оперативної пам'яті"
 
 #: plmanagednode/cog.py:251
 msgid "Heap-size must be less than {limit_variable_do_not_translate} due to your system limitations"
-msgstr ""
+msgstr "Розмір купи повинен бути менше {limit_variable_do_not_translate} через ваші системні обмеження"
 
 #: plmanagednode/cog.py:271
 msgid "The Managed node heap-size set to {bytes_variable_do_not_translate}."
-msgstr ""
+msgstr "Для параметра \"Розмір купи керованого вузла\" встановлено значення {bytes_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:281
 #, docstring
@@ -133,7 +133,7 @@ msgstr "Встановити керований вузол вузла"
 
 #: plmanagednode/cog.py:297
 msgid "The Managed node host set to {host_variable_do_not_translate}."
-msgstr ""
+msgstr "Для хоста керованого вузла встановлено значення {host_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:307
 #, docstring
@@ -142,7 +142,11 @@ msgid "`Dangerous command` Set the managed Lavalink node connection port.\n\n"
 "        conflict with the default port because you already have an application using port 2154 on this device.\n\n"
 "        The value by default is `2154`.\n"
 "        "
-msgstr ""
+msgstr "'Небезпечна команда' Встановіть керований порт підключення вузла Lavalink.\n\n"
+"        Цей порт є портом, з яким зв'язується керований вузол Lavalink, ви повинні змінити це, лише якщо є\n"
+"        конфлікт з портом за замовчуванням, оскільки на цьому пристрої вже є програма, яка використовує порт 2154.\n\n"
+"        Значення за замовчуванням - '2154'.\n"
+"        "
 
 #: plmanagednode/cog.py:317
 msgid "The port must be between 1024 and 49151"
@@ -150,7 +154,7 @@ msgstr "Порт має бути від 1024 до 49151"
 
 #: plmanagednode/cog.py:329
 msgid "The managed node port set to {port_variable_do_not_translate}."
-msgstr ""
+msgstr "Порт керованого вузла встановлено на {port_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:339
 #, docstring
@@ -164,11 +168,11 @@ msgstr "Вимкнено один з доступних плагінів"
 
 #: plmanagednode/cog.py:361 plmanagednode/cog.py:472
 msgid "The plugin must be one of the following: {plugins_variable_do_not_translate}"
-msgstr ""
+msgstr "Плагін повинен бути одним з наступних: {plugins_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:446
 msgid "Managed node plugin {plugin_variable_do_not_translate} disabled."
-msgstr ""
+msgstr "Плагін керованого вузла {plugin_variable_do_not_translate} Вимкнуто."
 
 #: plmanagednode/cog.py:456
 #, docstring
@@ -177,7 +181,7 @@ msgstr "Увімкнути один з доступних плагінів"
 
 #: plmanagednode/cog.py:505
 msgid "Managed node plugin {plugin_variable_do_not_translate} enabled."
-msgstr ""
+msgstr "Плагін керованого вузла {plugin_variable_do_not_translate} Включений."
 
 #: plmanagednode/cog.py:515
 #, docstring
@@ -186,16 +190,17 @@ msgstr "Оновити керованих плагінів вузла"
 
 #: plmanagednode/cog.py:589
 msgid "{name_variable_do_not_translate} was updated from {old_variable_do_not_translate} to {new_variable_do_not_translate}\n"
-msgstr ""
+msgstr "{name_variable_do_not_translate} було оновлено з {old_variable_do_not_translate} до {new_variable_do_not_translate}\n"
 
 #: plmanagednode/cog.py:599
 msgid "Managed node plugins updated.\n\n"
 "{update_variable_do_not_translate}"
-msgstr ""
+msgstr "Плагіни керованих вузлів оновлено.\n\n"
+"{update_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:609
 msgid "The managed node plugins are already up to date."
-msgstr ""
+msgstr "Плагіни керованих вузлів вже оновлені."
 
 #: plmanagednode/cog.py:617
 #, docstring
@@ -204,7 +209,7 @@ msgstr "Перемикач керованих джерел вузла"
 
 #: plmanagednode/cog.py:632
 msgid "Invalid source, {valid_list_variable_do_not_translate} are valid sources"
-msgstr ""
+msgstr "Недійсне джерело, {valid_list_variable_do_not_translate} є дійсними джерелами"
 
 #: plmanagednode/cog.py:648 plmanagednode/cog.py:687
 msgid "enabled"
@@ -216,7 +221,7 @@ msgstr "Вимкнуто"
 
 #: plmanagednode/cog.py:651
 msgid "Managed node {source_variable_do_not_translate} source set to {state_variable_do_not_translate}."
-msgstr ""
+msgstr "Керований вузол {source_variable_do_not_translate} вихідне джерело встановлено на {state_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:664
 #, docstring
@@ -225,11 +230,11 @@ msgstr "Перемкнути керуючі фільтри вузла"
 
 #: plmanagednode/cog.py:676
 msgid "Invalid source, {valid_list_variable_do_not_translate} are valid filters"
-msgstr ""
+msgstr "Недійсне джерело, {valid_list_variable_do_not_translate} є дійсними фільтрами"
 
 #: plmanagednode/cog.py:690
 msgid "Managed node {source_variable_do_not_translate} filter set to {state_variable_do_not_translate}."
-msgstr ""
+msgstr "Керований вузол {source_variable_do_not_translate} фільтр, встановлений на {state_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:703
 #, docstring
@@ -247,12 +252,26 @@ msgid "Configure multiple settings for the managed node.\n\n"
 "        `youtubeSearchEnabled` : Boolean i.e True (Default True)\n"
 "        `soundcloudSearchEnabled` : Boolean i.e True (Default True)\n"
 "        "
-msgstr ""
+msgstr "Налаштуйте кілька параметрів для керованого вузла.\n\n"
+"        Біг '[p]Сервер налаштувань PLMANAGED <setting> інформація, щоб показати інформацію про налаштування та про те, що вони роблять.\n\n"
+"        **Встановлення імен**:\n"
+"        'bufferDurationMs': ціле число, тобто 400 (за замовчуванням 400) - Встановіть значення 0, щоб вимкнути JDA-NAS\n"
+"        'frameBufferDurationMs' : Ціле число, тобто 1000 (за замовчуванням 1000)\n"
+"        'trackStuckThresholdMs': ціле число, тобто 1000 (за замовчуванням 1000)\n"
+"        \"youtubePlaylistLoadLimit\" : ціле число, тобто 1000 (за замовчуванням 1000)\n"
+"        'opusEncodingQuality' : Ціле число, тобто 10 (За замовчуванням 10)\n"
+"        \"дискретизаціяЯкість\": Рядок, тобто НИЗЬКИЙ (за замовчуванням ВИСОКИЙ)\n"
+"        'useSeekGhosting' : булевий, тобто істинний (за замовчуванням true)\n"
+"        'playerUpdateInterval': ціле число, тобто 30 (за замовчуванням 30)\n"
+"        'youtubeSearchEnabled' : булевий, тобто істинний (істина за замовчуванням)\n"
+"        'soundcloudSearchEnabled' : Булевий, тобто True (Default True)\n"
+"        "
 
 #: plmanagednode/cog.py:743
 msgid "{Setting_variable_do_not_translate} is not a valid Setting; Options are:\n\n"
 "{setting_list_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} не є дійсним Налаштуванням; Варіанти такі:\n\n"
+"{setting_list_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:757
 msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses but will increase RAM usage. Minimum of 40ms, lower values may introduce pauses and stutters. Set to 0 to disable JDA-NAS. Accepted values: Range: 0 - 2,000"
@@ -297,33 +316,39 @@ msgstr "Увімкніть або вимкніть пошук SoundCloud все�
 #: plmanagednode/cog.py:806
 msgid "{Setting_variable_do_not_translate} info.\n\n"
 "{info_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} Інформація.\n\n"
+"{info_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:837
 msgid "{Setting_variable_do_not_translate} valid inputs are:\n\n"
 "Range between: {start_variable_do_not_translate} - {end_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} Допустимими входами є:\n\n"
+"Діапазон між: {start_variable_do_not_translate} - {end_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:852
 msgid "{Setting_variable_do_not_translate} valid inputs are:\n\n"
 "{setting_list_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} Допустимими входами є:\n\n"
+"{setting_list_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:874
 msgid "{Setting_variable_do_not_translate} set to {value_variable_do_not_translate}."
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} установити в {value_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:885
 #, docstring
 msgid "Configure Lavalink IP Rotation for rate limits.\n\n"
 "        Run `[p]plmanaged settings iprotation 1` to remove the ip rotation\n"
 "        "
-msgstr ""
+msgstr "Налаштуйте обертання IP-адреси Lavalink для обмеження швидкості.\n\n"
+"        Біг '[p]PlManaged налаштування IPROTATION 1' для видалення обертання IP\n"
+"        "
 
 #: plmanagednode/cog.py:896
 msgid "Click the button below to configure the IP rotation for your node.\n"
 "More info at: {url_value_1_variable_do_not_translate} and {url_value_2_variable_do_not_translate}"
-msgstr ""
+msgstr "Натисніть кнопку нижче, щоб налаштувати обертання IP для вашого вузла.\n"
+"Більше інформації за посиланням: {url_value_1_variable_do_not_translate} і {url_value_2_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:917
 msgid "Removing the IP rotation from your node."
@@ -334,12 +359,15 @@ msgstr "Видалення IP-обертання з вашого вузла."
 msgid "Link a Google account to Lavalink to bypass the YouTube age restriction.\n\n"
 "        Run `[p]plmanaged settings googleaccount 1` to remove the linked account.\n"
 "        "
-msgstr ""
+msgstr "Зв'яжіть обліковий запис Google із Lavalink, щоб обійти вікове обмеження YouTube.\n\n"
+"        Біг '[p]plmanaged налаштування googleaccount 1' для видалення пов'язаного облікового запису.\n"
+"        "
 
 #: plmanagednode/cog.py:936
 msgid "Click the button below to link a Google account to your node, if you have 2FA setup on this account you will need an application password instead\n"
 "More info at: <https://support.google.com/accounts/answer/185833>"
-msgstr ""
+msgstr "Натисніть кнопку нижче, щоб пов'язати обліковий запис Google зі своїм вузлом, якщо у вас є налаштування 2FA в цьому обліковому записі, замість цього вам знадобиться пароль програми\n"
+"Більше інформації за посиланням: <https://support.google.com/accounts/answer/185833>"
 
 #: plmanagednode/cog.py:955
 msgid "Unlinking Google account from your node."
@@ -350,7 +378,9 @@ msgstr "Від'єднання облікового запису Google від в
 msgid "Configure a HTTP proxy for Lavalink\n\n"
 "        Run `[p]plmanaged settings httpproxy 1` to remove the proxy.\n"
 "        "
-msgstr ""
+msgstr "Налаштування HTTP-проксі для Lavalink\n\n"
+"        Біг '[p]Plmanaged налаштування httpproxy 1' для видалення проксі.\n"
+"        "
 
 #: plmanagednode/cog.py:974
 msgid "Click the button below to configure a HTTP proxy for your node"
@@ -407,31 +437,31 @@ msgstr "0 або 1 (0 = вимкнено, 1 = увімкнено)"
 
 #: plmanagednode/view.py:189
 msgid "The IP block you have provided is not valid; {error_variable_do_not_translate}."
-msgstr ""
+msgstr "IP-блок, який ви надали, не є дійсним; {error_variable_do_not_translate}."
 
 #: plmanagednode/view.py:203
 msgid "No IP blocks were provided."
-msgstr ""
+msgstr "Ніяких IP-блоків надано не було."
 
 #: plmanagednode/view.py:215
 msgid "The IP address you have provided is not valid; {error_variable_do_not_translate}"
-msgstr ""
+msgstr "IP-адреса, яку ви вказали, недійсна; {error_variable_do_not_translate}"
 
 #: plmanagednode/view.py:236
 msgid "The strategy you provided is invalid. You must be one of: {options_variable_do_not_translate}."
-msgstr ""
+msgstr "Стратегія, яку ви надали, є недійсною. Ви повинні бути одним із: {options_variable_do_not_translate}."
 
 #: plmanagednode/view.py:252
 msgid "The retry limit must be a number greater than or equal to -1."
-msgstr ""
+msgstr "Обмеження повторної спроби має бути числом більше або дорівнює -1."
 
 #: plmanagednode/view.py:267
 msgid "The search trigger must be 0 or 1."
-msgstr ""
+msgstr "Тригер пошуку повинен бути 0 або 1."
 
 #: plmanagednode/view.py:286
 msgid "IP rotation settings saved."
-msgstr ""
+msgstr "Збережені налаштування обертання IP."
 
 #: plmanagednode/view.py:307
 msgid "Google Account Configurator"
@@ -451,7 +481,7 @@ msgstr "пароль"
 
 #: plmanagednode/view.py:322
 msgid "If you have 2FA you will need an application password"
-msgstr ""
+msgstr "Якщо у вас є 2FA, вам знадобиться пароль програми"
 
 #: plmanagednode/view.py:336 plmanagednode/view.py:425
 msgid "You are not authorized to interact with this"
@@ -475,7 +505,7 @@ msgstr "Ім'я хоста"
 
 #: plmanagednode/view.py:381
 msgid "Hostname of the proxy, (IP or domain or localhost)"
-msgstr ""
+msgstr "Ім'я хоста проксі-сервера (IP, домен або localhost)"
 
 #: plmanagednode/view.py:385
 msgid "Proxy port"
@@ -491,7 +521,7 @@ msgstr "Користувач"
 
 #: plmanagednode/view.py:399
 msgid "Optional user for basic authentication fields. Leave blank if you do not use basic authentication"
-msgstr ""
+msgstr "Необов'язковий користувач для базових полів аутентифікації. Залиште незаповненим, якщо ви не використовуєте базову автентифікацію"
 
 #: plmanagednode/view.py:405
 msgid "Password"
@@ -499,13 +529,13 @@ msgstr "Пароль"
 
 #: plmanagednode/view.py:410
 msgid "Optional password for basic authentication fields. Leave blank if you do not use basic authentication."
-msgstr ""
+msgstr "Необов'язковий пароль для базових полів автентифікації. Залиште порожнім, якщо ви не використовуєте базову аутентифікацію."
 
 #: plmanagednode/view.py:436
 msgid "The port provided is not valid. It must be between 0 and 65536."
-msgstr ""
+msgstr "Наданий порт не є дійсним. Він повинен бути між 0 і 65536."
 
 #: plmanagednode/view.py:453
 msgid "HTTP proxy settings saved."
-msgstr ""
+msgstr "Збережено налаштування проксі-сервера HTTP."
 

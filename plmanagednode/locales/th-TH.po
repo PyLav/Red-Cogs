@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-02-03 20:16+0000\n"
-"PO-Revision-Date: 2023-02-03 20:20\n"
+"PO-Revision-Date: 2023-02-03 21:03\n"
 "Last-Translator: \n"
 "Language-Team: Thai\n"
 "MIME-Version: 1.0\n"
@@ -46,11 +46,11 @@ msgstr "โหนด Lavalink ที่มีการจัดการเป�
 
 #: plmanagednode/cog.py:101
 msgid "Your node is out of date, to update please run `{command_name_variable_do_not_translate}`."
-msgstr ""
+msgstr "โหนดของคุณล้าสมัยเพื่ออัปเดตโปรดเรียกใช้ '{command_name_variable_do_not_translate}`."
 
 #: plmanagednode/cog.py:118
 msgid "The managed Lavalink node has been updated to version {version_variable_do_not_translate}."
-msgstr ""
+msgstr "โหนด Lavalink ที่มีการจัดการได้รับการอัปเดตเป็นเวอร์ชันแล้ว {version_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:130
 #, docstring
@@ -63,11 +63,11 @@ msgstr "สลับเปิด/ปิดโหนดที่มีการ�
 
 #: plmanagednode/cog.py:145
 msgid "The PyLav managed node has been enabled."
-msgstr ""
+msgstr "โหนดที่มีการจัดการ PyLav ถูกเปิดใช้งานแล้ว"
 
 #: plmanagednode/cog.py:153
 msgid "The PyLav managed node has been disabled."
-msgstr ""
+msgstr "โหนดที่มีการจัดการ PyLav ถูกปิดใช้งาน"
 
 #: plmanagednode/cog.py:161
 #, docstring
@@ -80,11 +80,11 @@ msgstr "สลับเปิด/ปิดการอัปเดตอัต�
 
 #: plmanagednode/cog.py:177
 msgid "The PyLav managed node auto updates have been enabled."
-msgstr ""
+msgstr "การอัปเดตโหนดที่มีการจัดการของ PyLav ได้เปิดใช้งานแล้ว"
 
 #: plmanagednode/cog.py:185
 msgid "The  PyLav managed node auto updates have been disabled."
-msgstr ""
+msgstr "การอัปเดตโหนดที่มีการจัดการอัตโนมัติของ PyLav ถูกปิดใช้งาน"
 
 #: plmanagednode/cog.py:193
 #, docstring
@@ -111,15 +111,15 @@ msgstr "ขนาดกองต้องมีอย่างน้อย 64M �
 
 #: plmanagednode/cog.py:239
 msgid "Heap-size must be less than your system RAM, You currently have {ram_in_bytes_variable_do_not_translate} of RAM available"
-msgstr ""
+msgstr "ฮีปขนาดต้องน้อยกว่า RAM ระบบของคุณขณะนี้คุณมี {ram_in_bytes_variable_do_not_translate} จํานวนแรมที่มีอยู่"
 
 #: plmanagednode/cog.py:251
 msgid "Heap-size must be less than {limit_variable_do_not_translate} due to your system limitations"
-msgstr ""
+msgstr "ขนาดกองต้องน้อยกว่า {limit_variable_do_not_translate} เนื่องจากข้อ จํากัด ของระบบของคุณ"
 
 #: plmanagednode/cog.py:271
 msgid "The Managed node heap-size set to {bytes_variable_do_not_translate}."
-msgstr ""
+msgstr "ขนาดฮีปโหนดที่มีการจัดการตั้งค่าเป็น {bytes_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:281
 #, docstring
@@ -133,7 +133,7 @@ msgstr "ตั้งค่าโฮสต์โหนดที่มีการ
 
 #: plmanagednode/cog.py:297
 msgid "The Managed node host set to {host_variable_do_not_translate}."
-msgstr ""
+msgstr "โฮสต์โหนดที่มีการจัดการตั้งค่าเป็น {host_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:307
 #, docstring
@@ -142,7 +142,11 @@ msgid "`Dangerous command` Set the managed Lavalink node connection port.\n\n"
 "        conflict with the default port because you already have an application using port 2154 on this device.\n\n"
 "        The value by default is `2154`.\n"
 "        "
-msgstr ""
+msgstr "'คําสั่งอันตราย' ตั้งค่าพอร์ตการเชื่อมต่อโหนด Lavalink ที่มีการจัดการ\n\n"
+"        พอร์ตนี้เป็นพอร์ตที่โหนด Lavalink ที่มีการจัดการผูกกับคุณควรเปลี่ยนสิ่งนี้หากมี\n"
+"        ขัดแย้งกับพอร์ตเริ่มต้นเนื่องจากคุณมีแอปพลิเคชันที่ใช้พอร์ต 2154 บนอุปกรณ์นี้อยู่แล้ว\n\n"
+"        ค่าโดยค่าเริ่มต้นคือ '2154'\n"
+"        "
 
 #: plmanagednode/cog.py:317
 msgid "The port must be between 1024 and 49151"
@@ -150,7 +154,7 @@ msgstr "พอร์ตต้องอยู่ระหว่าง 1024 แล
 
 #: plmanagednode/cog.py:329
 msgid "The managed node port set to {port_variable_do_not_translate}."
-msgstr ""
+msgstr "พอร์ตโหนดที่มีการจัดการตั้งค่าเป็น {port_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:339
 #, docstring
@@ -164,11 +168,11 @@ msgstr "ปิดใช้งานปลั๊กอินที่มีอย
 
 #: plmanagednode/cog.py:361 plmanagednode/cog.py:472
 msgid "The plugin must be one of the following: {plugins_variable_do_not_translate}"
-msgstr ""
+msgstr "ปลั๊กอินต้องเป็นอย่างใดอย่างหนึ่งต่อไปนี้: {plugins_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:446
 msgid "Managed node plugin {plugin_variable_do_not_translate} disabled."
-msgstr ""
+msgstr "ปลั๊กอินโหนดที่มีการจัดการ {plugin_variable_do_not_translate} พิการ"
 
 #: plmanagednode/cog.py:456
 #, docstring
@@ -177,7 +181,7 @@ msgstr "เปิดใช้งานปลั๊กอินตัวใดต
 
 #: plmanagednode/cog.py:505
 msgid "Managed node plugin {plugin_variable_do_not_translate} enabled."
-msgstr ""
+msgstr "ปลั๊กอินโหนดที่มีการจัดการ {plugin_variable_do_not_translate} เปิด"
 
 #: plmanagednode/cog.py:515
 #, docstring
@@ -186,16 +190,17 @@ msgstr "อัปเดตปลั๊กอินโหนดที่มีก
 
 #: plmanagednode/cog.py:589
 msgid "{name_variable_do_not_translate} was updated from {old_variable_do_not_translate} to {new_variable_do_not_translate}\n"
-msgstr ""
+msgstr "{name_variable_do_not_translate} ได้รับการปรับปรุงจาก {old_variable_do_not_translate} ถึง {new_variable_do_not_translate}\n"
 
 #: plmanagednode/cog.py:599
 msgid "Managed node plugins updated.\n\n"
 "{update_variable_do_not_translate}"
-msgstr ""
+msgstr "อัปเดตปลั๊กอินโหนดที่มีการจัดการแล้ว\n\n"
+"{update_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:609
 msgid "The managed node plugins are already up to date."
-msgstr ""
+msgstr "ปลั๊กอินโหนดที่มีการจัดการเป็นปัจจุบันแล้ว"
 
 #: plmanagednode/cog.py:617
 #, docstring
@@ -204,7 +209,7 @@ msgstr "สลับแหล่งที่มาของโหนดที่
 
 #: plmanagednode/cog.py:632
 msgid "Invalid source, {valid_list_variable_do_not_translate} are valid sources"
-msgstr ""
+msgstr "แหล่งที่มาไม่ถูกต้อง {valid_list_variable_do_not_translate} เป็นแหล่งที่ถูกต้อง"
 
 #: plmanagednode/cog.py:648 plmanagednode/cog.py:687
 msgid "enabled"
@@ -216,7 +221,7 @@ msgstr "พิการ"
 
 #: plmanagednode/cog.py:651
 msgid "Managed node {source_variable_do_not_translate} source set to {state_variable_do_not_translate}."
-msgstr ""
+msgstr "โหนดที่มีการจัดการ {source_variable_do_not_translate} แหล่งที่ตั้งค่าเป็น {state_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:664
 #, docstring
@@ -225,11 +230,11 @@ msgstr "สลับตัวกรองโหนดที่มีการจ
 
 #: plmanagednode/cog.py:676
 msgid "Invalid source, {valid_list_variable_do_not_translate} are valid filters"
-msgstr ""
+msgstr "แหล่งที่มาไม่ถูกต้อง {valid_list_variable_do_not_translate} เป็นตัวกรองที่ถูกต้อง"
 
 #: plmanagednode/cog.py:690
 msgid "Managed node {source_variable_do_not_translate} filter set to {state_variable_do_not_translate}."
-msgstr ""
+msgstr "โหนดที่มีการจัดการ {source_variable_do_not_translate} ตั้งค่าตัวกรองเป็น {state_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:703
 #, docstring
@@ -247,12 +252,26 @@ msgid "Configure multiple settings for the managed node.\n\n"
 "        `youtubeSearchEnabled` : Boolean i.e True (Default True)\n"
 "        `soundcloudSearchEnabled` : Boolean i.e True (Default True)\n"
 "        "
-msgstr ""
+msgstr "กําหนดการตั้งค่าหลายรายการสําหรับโหนดที่มีการจัดการ\n\n"
+"        เรียกใช้ '[p]เซิร์ฟเวอร์การตั้งค่า plmanaged <setting> info' เพื่อแสดงข้อมูลเกี่ยวกับการตั้งค่าและสิ่งที่พวกเขาทํา\n\n"
+"        **ชื่อการตั้งค่า**:\n"
+"        'bufferationMs' : จํานวนเต็มเช่น 400 (ค่าเริ่มต้น 400) - ตั้งค่าเป็น 0 เพื่อปิดใช้งาน JDA-NAS\n"
+"        'frameBuffer ระยะเวลา Ms' : จํานวนเต็มเช่น 1000 (ค่าเริ่มต้น 1000)\n"
+"        'trackStuckThresholdMs' : จํานวนเต็มเช่น 1000 (ค่าเริ่มต้น 1000)\n"
+"        'youtubePlaylistLoadLimit' : จํานวนเต็มเช่น 1000 (ค่าเริ่มต้น 1000)\n"
+"        'opusEncodingQuality' : จํานวนเต็มเช่น 10 (ค่าเริ่มต้น 10)\n"
+"        'resamplingQuality' : สตริงเช่น ต่ํา (ค่าเริ่มต้นสูง)\n"
+"        'useSeekGhosting' : บูลีน เช่น ทรู (ค่าเริ่มต้นจริง)\n"
+"        'playerUpdateInterval' : จํานวนเต็มเช่น 30 (ค่าเริ่มต้น 30)\n"
+"        'youtubeSearchEnabled' : บูลีน เช่น จริง (ค่าเริ่มต้นจริง)\n"
+"        'soundcloudSearchEnabled' : บูลีน i.e True (ค่าเริ่มต้นจริง)\n"
+"        "
 
 #: plmanagednode/cog.py:743
 msgid "{Setting_variable_do_not_translate} is not a valid Setting; Options are:\n\n"
 "{setting_list_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} ไม่ใช่การตั้งค่าที่ถูกต้อง ตัวเลือกคือ:\n\n"
+"{setting_list_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:757
 msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses but will increase RAM usage. Minimum of 40ms, lower values may introduce pauses and stutters. Set to 0 to disable JDA-NAS. Accepted values: Range: 0 - 2,000"
@@ -297,33 +316,39 @@ msgstr "เปิดหรือปิดการค้นหา SoundCloud ภ
 #: plmanagednode/cog.py:806
 msgid "{Setting_variable_do_not_translate} info.\n\n"
 "{info_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} ข้อมูล\n\n"
+"{info_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:837
 msgid "{Setting_variable_do_not_translate} valid inputs are:\n\n"
 "Range between: {start_variable_do_not_translate} - {end_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} อินพุตที่ถูกต้องคือ:\n\n"
+"ช่วงระหว่าง: {start_variable_do_not_translate} - {end_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:852
 msgid "{Setting_variable_do_not_translate} valid inputs are:\n\n"
 "{setting_list_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} อินพุตที่ถูกต้องคือ:\n\n"
+"{setting_list_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:874
 msgid "{Setting_variable_do_not_translate} set to {value_variable_do_not_translate}."
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} ตั้งค่าเป็น {value_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:885
 #, docstring
 msgid "Configure Lavalink IP Rotation for rate limits.\n\n"
 "        Run `[p]plmanaged settings iprotation 1` to remove the ip rotation\n"
 "        "
-msgstr ""
+msgstr "กําหนดค่าการหมุน IP ของ Lavalink สําหรับขีดจํากัดอัตรา\n\n"
+"        เรียกใช้ '[p]การตั้งค่า plmanaged iprotation 1'เพื่อลบการหมุน IP\n"
+"        "
 
 #: plmanagednode/cog.py:896
 msgid "Click the button below to configure the IP rotation for your node.\n"
 "More info at: {url_value_1_variable_do_not_translate} and {url_value_2_variable_do_not_translate}"
-msgstr ""
+msgstr "คลิกปุ่มด้านล่างเพื่อกําหนดค่าการหมุน IP สําหรับโหนดของคุณ\n"
+"ข้อมูลเพิ่มเติมได้ที่: {url_value_1_variable_do_not_translate} และ {url_value_2_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:917
 msgid "Removing the IP rotation from your node."
@@ -334,12 +359,15 @@ msgstr "การลบการหมุน IP ออกจากโหนด�
 msgid "Link a Google account to Lavalink to bypass the YouTube age restriction.\n\n"
 "        Run `[p]plmanaged settings googleaccount 1` to remove the linked account.\n"
 "        "
-msgstr ""
+msgstr "ลิงก์บัญชี Google กับ Lavalink เพื่อหลีกเลี่ยงการจํากัดอายุของ YouTube\n\n"
+"        เรียกใช้ '[p]การตั้งค่า plmanaged googleaccount 1'เพื่อลบบัญชีที่เชื่อมโยง\n"
+"        "
 
 #: plmanagednode/cog.py:936
 msgid "Click the button below to link a Google account to your node, if you have 2FA setup on this account you will need an application password instead\n"
 "More info at: <https://support.google.com/accounts/answer/185833>"
-msgstr ""
+msgstr "คลิกปุ่มด้านล่างเพื่อเชื่อมโยงบัญชี Google กับโหนดของคุณหากคุณมีการตั้งค่า 2FA ในบัญชีนี้คุณจะต้องใช้รหัสผ่านแอปพลิเคชันแทน\n"
+"ข้อมูลเพิ่มเติมได้ที่: <https://support.google.com/accounts/answer/185833>"
 
 #: plmanagednode/cog.py:955
 msgid "Unlinking Google account from your node."
@@ -350,7 +378,9 @@ msgstr "ยกเลิกการเชื่อมโยงบัญชี Go
 msgid "Configure a HTTP proxy for Lavalink\n\n"
 "        Run `[p]plmanaged settings httpproxy 1` to remove the proxy.\n"
 "        "
-msgstr ""
+msgstr "กําหนดค่าพร็อกซี HTTP สําหรับ Lavalink\n\n"
+"        เรียกใช้ '[p]การตั้งค่า plmanaged httpproxy 1'เพื่อลบพร็อกซี่\n"
+"        "
 
 #: plmanagednode/cog.py:974
 msgid "Click the button below to configure a HTTP proxy for your node"
@@ -407,31 +437,31 @@ msgstr "0 หรือ 1 (0 = ปิดใช้งาน, 1 = เปิดใ�
 
 #: plmanagednode/view.py:189
 msgid "The IP block you have provided is not valid; {error_variable_do_not_translate}."
-msgstr ""
+msgstr "การบล็อก IP ที่คุณให้ไว้ไม่ถูกต้อง {error_variable_do_not_translate}."
 
 #: plmanagednode/view.py:203
 msgid "No IP blocks were provided."
-msgstr ""
+msgstr "ไม่มีการบล็อก IP ให้"
 
 #: plmanagednode/view.py:215
 msgid "The IP address you have provided is not valid; {error_variable_do_not_translate}"
-msgstr ""
+msgstr "ที่อยู่ IP ที่คุณให้ไว้ไม่ถูกต้อง {error_variable_do_not_translate}"
 
 #: plmanagednode/view.py:236
 msgid "The strategy you provided is invalid. You must be one of: {options_variable_do_not_translate}."
-msgstr ""
+msgstr "กลยุทธ์ที่คุณให้ไว้ไม่ถูกต้อง คุณต้องเป็นหนึ่งใน: {options_variable_do_not_translate}."
 
 #: plmanagednode/view.py:252
 msgid "The retry limit must be a number greater than or equal to -1."
-msgstr ""
+msgstr "ขีดจํากัดการลองใหม่ต้องเป็นจํานวนที่มากกว่าหรือเท่ากับ -1"
 
 #: plmanagednode/view.py:267
 msgid "The search trigger must be 0 or 1."
-msgstr ""
+msgstr "ทริกเกอร์การค้นหาต้องเป็น 0 หรือ 1"
 
 #: plmanagednode/view.py:286
 msgid "IP rotation settings saved."
-msgstr ""
+msgstr "บันทึกการตั้งค่าการหมุน IP"
 
 #: plmanagednode/view.py:307
 msgid "Google Account Configurator"
@@ -451,7 +481,7 @@ msgstr "รหัสผ่าน"
 
 #: plmanagednode/view.py:322
 msgid "If you have 2FA you will need an application password"
-msgstr ""
+msgstr "หากคุณมี 2FA คุณจะต้องมีรหัสผ่านแอปพลิเคชัน"
 
 #: plmanagednode/view.py:336 plmanagednode/view.py:425
 msgid "You are not authorized to interact with this"
@@ -475,7 +505,7 @@ msgstr "ชื่อโฮสต์"
 
 #: plmanagednode/view.py:381
 msgid "Hostname of the proxy, (IP or domain or localhost)"
-msgstr ""
+msgstr "ชื่อโฮสต์ของพร็อกซี (IP หรือโดเมนหรือ localhost)"
 
 #: plmanagednode/view.py:385
 msgid "Proxy port"
@@ -491,7 +521,7 @@ msgstr "ผู้ใช้"
 
 #: plmanagednode/view.py:399
 msgid "Optional user for basic authentication fields. Leave blank if you do not use basic authentication"
-msgstr ""
+msgstr "ผู้ใช้ที่ไม่บังคับสําหรับฟิลด์การรับรองความถูกต้องพื้นฐาน เว้นว่างไว้ถ้าคุณไม่ได้ใช้การรับรองความถูกต้องพื้นฐาน"
 
 #: plmanagednode/view.py:405
 msgid "Password"
@@ -499,13 +529,13 @@ msgstr "รหัสผ่าน"
 
 #: plmanagednode/view.py:410
 msgid "Optional password for basic authentication fields. Leave blank if you do not use basic authentication."
-msgstr ""
+msgstr "รหัสผ่านเพิ่มเติมสําหรับฟิลด์การรับรองความถูกต้องพื้นฐาน เว้นว่างไว้ถ้าคุณไม่ได้ใช้การรับรองความถูกต้องพื้นฐาน"
 
 #: plmanagednode/view.py:436
 msgid "The port provided is not valid. It must be between 0 and 65536."
-msgstr ""
+msgstr "พอร์ตที่ให้มาไม่ถูกต้อง ต้องอยู่ระหว่าง 0 ถึง 65536"
 
 #: plmanagednode/view.py:453
 msgid "HTTP proxy settings saved."
-msgstr ""
+msgstr "บันทึกการตั้งค่าพร็อกซี HTTP แล้ว"
 

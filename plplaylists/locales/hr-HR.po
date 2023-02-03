@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-02-03 20:16+0000\n"
-"PO-Revision-Date: 2023-02-03 20:20\n"
+"PO-Revision-Date: 2023-02-03 21:03\n"
 "Last-Translator: \n"
 "Language-Team: Croatian\n"
 "MIME-Version: 1.0\n"
@@ -41,7 +41,7 @@ msgstr "Verzija"
 
 #: plplaylists/cog.py:128
 msgid "Let us create a playlist!"
-msgstr ""
+msgstr "Napravimo popis pjesama!"
 
 #: plplaylists/cog.py:129
 msgid "(**1**) - Apply changes to playlist.\n"
@@ -59,7 +59,7 @@ msgstr "(**1**) - Primijeni promjene na popis za reproduciranje.\n"
 
 #: plplaylists/cog.py:163
 msgid "I did not create this playlist."
-msgstr ""
+msgstr "Nisam ja napravio ovaj popis pjesama."
 
 #: plplaylists/cog.py:164
 msgid "No tracks were provided in time."
@@ -67,13 +67,15 @@ msgstr "Tragovi nisu bili osigurani na vrijeme."
 
 #: plplaylists/cog.py:177
 msgid "I have created a new playlist."
-msgstr ""
+msgstr "Napravio sam novi popis pjesama."
 
 #: plplaylists/cog.py:178
 msgid "Name: `{name_variable_do_not_translate}`\n"
 "Identifier: `{id_variable_do_not_translate}`\n"
 "Tracks: `{track_count_variable_do_not_translate}`"
-msgstr ""
+msgstr "Naziv: '{name_variable_do_not_translate}`\n"
+"Identifikator: '{id_variable_do_not_translate}`\n"
+"Pjesme: '{track_count_variable_do_not_translate}`"
 
 #: plplaylists/cog.py:206
 msgid "You have no playlists"
@@ -85,11 +87,11 @@ msgstr "Nema ništa za spremit"
 
 #: plplaylists/cog.py:249 plplaylists/cog.py:638
 msgid "There is nothing in the queue to save."
-msgstr ""
+msgstr "U redu čekanja nema se što spremiti."
 
 #: plplaylists/cog.py:286 plplaylists/cog.py:569 plplaylists/cog.py:655
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} cannot be managed by yourself."
-msgstr ""
+msgstr "{user_variable_do_not_translate}Popis {playlist_name_variable_do_not_translate} ne može se upravljati sami."
 
 #: plplaylists/cog.py:298
 msgid "(**1**){space_variable_do_not_translate} - Apply changes to playlist.\n"
@@ -112,7 +114,26 @@ msgid "(**1**){space_variable_do_not_translate} - Apply changes to playlist.\n"
 "The clear button will always be run first before any other operations.\n"
 "The URL button will always run last - Linking a playlist via the URL will overwrite any tracks added or removed to this playlist.\n\n"
 "If you interact with a button multiple times other than the add/remove buttons only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space_variable_do_not_translate} - Primijenite promjene na popis za reproduciranje.\n"
+"(**2**){space_variable_do_not_translate} - Otkažite sve izvršene promjene i zatvorite izbornik.\n"
+"(**3**){space_variable_do_not_translate} - Izbrišite ovaj popis za reproduciranje.\n"
+"(**4**){space_variable_do_not_translate} - Uklonite sve pjesme s ovog popisa za reproduciranje.\n"
+"(**5**){space_variable_do_not_translate} - Ažurirajte popis za reprodukciju najnovijim pjesmama.\n"
+"Imajte na umu da će ova akcija zanemariti sve zapise dodane /uklonjene putem ovog izbornika.\n"
+"(**6**){space_variable_do_not_translate} - Promijenite naziv popisa za reprodukciju.\n"
+"(**7**){space_variable_do_not_translate} - Povežite ovu reprodukcijsku listu s postojećim popisom/albumom za reprodukciju.\n"
+"(**8**){space_variable_do_not_translate} - Dodajte upit na ovaj popis za reproduciranje.\n"
+"(**9**){space_variable_do_not_translate} - Uklonite upit s ovog popisa za reproduciranje.\n"
+"(**10**) - Preuzmite datoteku popisa za reproduciranje.\n"
+"(**11**) - Dodajte trenutni popis za reproduciranje u red čekanja.\n"
+"(**12**) - Prikaži zapise na trenutnom popisu za reproduciranje.\n"
+"(**13**) - Dodajte zapise iz reda čekanja na ovaj popis za reproduciranje.\n"
+"(**14**) - Uklonite duplicirane unose na popisu za reproduciranje.\n\n"
+"Gumbi za dodavanje/uklanjanje zapisa mogu se koristiti više puta za dodavanje/uklanjanje više pjesama i popisa za reprodukciju odjednom.\n\n"
+"Upit je sve što se može reproducirati pomoću naredbe za reprodukciju - bilo koji upit može se koristiti pomoću gumba za dodavanje/uklanjanje\n\n"
+"Gumb za čišćenje uvijek će se prvo pokrenuti prije bilo koje druge operacije.\n"
+"Gumb URL uvijek će se izvoditi posljednji - Povezivanje popisa za reproduciranje putem URL-a prebrisat će sve zapise dodane ili uklonjene na ovaj popis za reproduciranje.\n\n"
+"Ako s gumbom stupite u interakciju više puta osim gumba za dodavanje/uklanjanje, stupit će na snagu samo posljednja interakcija.\n\n\n"
 
 #: plplaylists/cog.py:324
 msgid "(**1**) - Close the menu.\n"
@@ -133,15 +154,20 @@ msgid "__**Currently managing**__:\n"
 "**Author**:{space_variable_do_not_translate}{space_variable_do_not_translate}{author_variable_do_not_translate}\n"
 "**Tracks**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{tracks_variable_do_not_translate} tracks\n"
 "**URL**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{url_variable_do_not_translate}\n"
-msgstr ""
+msgstr "__**Trenutno upravlja**__:\n"
+"**Ime**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{playlist_name_variable_do_not_translate}\n"
+"**Opseg**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{scope_variable_do_not_translate}\n"
+"**Autor**:{space_variable_do_not_translate}{space_variable_do_not_translate}{author_variable_do_not_translate}\n"
+"**Pjesme**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{tracks_variable_do_not_translate} Pjesme\n"
+"**URL**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{url_variable_do_not_translate}\n"
 
 #: plplaylists/cog.py:350
 msgid "Let us manage: {playlist_name_variable_do_not_translate}."
-msgstr ""
+msgstr "Upravljajmo: {playlist_name_variable_do_not_translate}."
 
 #: plplaylists/cog.py:354
 msgid "Let us take a look at: {playlist_name_variable_do_not_translate}."
-msgstr ""
+msgstr "Pogledajmo: {playlist_name_variable_do_not_translate}."
 
 #: plplaylists/cog.py:365
 msgid "N/A"
@@ -149,35 +175,39 @@ msgstr "Nema"
 
 #: plplaylists/cog.py:389
 msgid "I have deleted a playlist."
-msgstr ""
+msgstr "Izbrisao sam popis za reprodukciju."
 
 #: plplaylists/cog.py:391 plplaylists/cog.py:584
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has been deleted."
-msgstr ""
+msgstr "{user_variable_do_not_translate}Popis {playlist_name_variable_do_not_translate} je izbrisana."
 
 #: plplaylists/cog.py:444
 msgid "Playlist {playlist_name_variable_do_not_translate} could not be updated with URL: {url_variable_do_not_translate}"
-msgstr ""
+msgstr "Popis {playlist_name_variable_do_not_translate} nije moguće ažurirati URL-om: {url_variable_do_not_translate}"
 
 #: plplaylists/cog.py:486
 msgid "\n"
 "1 track was removed from the playlist."
-msgstr ""
+msgstr "\n"
+"1 pjesma uklonjena je s popisa za reprodukciju."
 
 #: plplaylists/cog.py:488
 msgid "\n"
 "{track_count_variable_do_not_translate} tracks were removed from the playlist."
-msgstr ""
+msgstr "\n"
+"{track_count_variable_do_not_translate} zapisi su uklonjeni s popisa za reproduciranje."
 
 #: plplaylists/cog.py:494 plplaylists/cog.py:678
 msgid "\n"
 "1 track was added to the playlist."
-msgstr ""
+msgstr "\n"
+"1 pjesma dodana je na popis za reprodukciju."
 
 #: plplaylists/cog.py:496 plplaylists/cog.py:680
 msgid "\n"
 "{track_count_variable_do_not_translate} tracks were added to the playlist."
-msgstr ""
+msgstr "\n"
+"{track_count_variable_do_not_translate} zapisi su dodani na popis za reproduciranje."
 
 #: plplaylists/cog.py:502 plplaylists/cog.py:689
 msgid "Playlist updated"
@@ -185,7 +215,7 @@ msgstr "Popis za reprodukciju je ažuriran"
 
 #: plplaylists/cog.py:503 plplaylists/cog.py:690
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has been updated.{extras_variable_do_not_translate}."
-msgstr ""
+msgstr "{user_variable_do_not_translate}Popis {playlist_name_variable_do_not_translate} je ažuriran.{extras_variable_do_not_translate}."
 
 #: plplaylists/cog.py:517 plplaylists/cog.py:705
 msgid "Playlist unchanged"
@@ -193,7 +223,7 @@ msgstr "Popis za reprodukciju je nepromijenjen"
 
 #: plplaylists/cog.py:518
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has not been updated."
-msgstr ""
+msgstr "{user_variable_do_not_translate}Popis {playlist_name_variable_do_not_translate} nije ažuriran."
 
 #: plplaylists/cog.py:582
 msgid "Playlist deleted"
@@ -201,11 +231,11 @@ msgstr "Popis za reprodukciju izbrisan"
 
 #: plplaylists/cog.py:706
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has not been updated"
-msgstr ""
+msgstr "{user_variable_do_not_translate}Popis {playlist_name_variable_do_not_translate} nije ažurirano"
 
 #: plplaylists/cog.py:737
 msgid "You must either provide a URL or attach a playlist file to upload a playlist."
-msgstr ""
+msgstr "Da biste prenijeli popis za reproduciranje, morate navesti URL ili priložiti datoteku popisa za reproduciranje."
 
 #: plplaylists/cog.py:749
 msgid "No valid playlist file provided"
@@ -213,29 +243,31 @@ msgstr "Nije navedena važeća datoteka popisa za reprodukciju"
 
 #: plplaylists/cog.py:758
 msgid "Multiple playlist files are provided. Currently, only 1 per message is allowed."
-msgstr ""
+msgstr "Dostupno je više datoteka popisa za reproduciranje. Trenutno je dopušteno samo 1 po poruci."
 
 #: plplaylists/cog.py:775
 msgid "Failed to save any of the requested playlists."
-msgstr ""
+msgstr "Spremanje nijednog od traženih popisa za reproduciranje nije uspjelo."
 
 #: plplaylists/cog.py:784
 msgid "Failed to save the following playlists:\n"
 "{invalid_playlists_variable_do_not_translate}."
-msgstr ""
+msgstr "Spremanje sljedećih popisa za reproduciranje nije uspjelo:\n"
+"{invalid_playlists_variable_do_not_translate}."
 
 #: plplaylists/cog.py:793
 msgid "Successfully saved the following playlists:\n"
 "{saved_playlists_variable_do_not_translate}."
-msgstr ""
+msgstr "Uspješno su spremljeni sljedeći popisi za reproduciranje:\n"
+"{saved_playlists_variable_do_not_translate}."
 
 #: plplaylists/cog.py:818
 msgid "You must be in a voice channel to allow me to connect."
-msgstr ""
+msgstr "Morate biti u glasovnom kanalu da biste mi omogućili da se povežem."
 
 #: plplaylists/cog.py:826
 msgid "I do not have permission to connect or speak in {channel_variable_do_not_translate}."
-msgstr ""
+msgstr "Nemam dozvolu za povezivanje ili govor u programu {channel_variable_do_not_translate}."
 
 #: plplaylists/cog.py:856
 msgid "Playlist"
@@ -243,5 +275,5 @@ msgstr "Popis za reprodukciju"
 
 #: plplaylists/cog.py:861
 msgid "{track_count_variable_do_not_translate} tracks enqueued.{playlist_name_variable_do_not_translate}."
-msgstr ""
+msgstr "{track_count_variable_do_not_translate} pjesme zaviđene.{playlist_name_variable_do_not_translate}."
 

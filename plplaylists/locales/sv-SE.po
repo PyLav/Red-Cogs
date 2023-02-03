@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-02-03 20:16+0000\n"
-"PO-Revision-Date: 2023-02-03 20:20\n"
+"PO-Revision-Date: 2023-02-03 21:03\n"
 "Last-Translator: \n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -41,7 +41,7 @@ msgstr "Version"
 
 #: plplaylists/cog.py:128
 msgid "Let us create a playlist!"
-msgstr ""
+msgstr "Låt oss skapa en spellista!"
 
 #: plplaylists/cog.py:129
 msgid "(**1**) - Apply changes to playlist.\n"
@@ -59,7 +59,7 @@ msgstr "(**1**) - Tillämpa ändringar i spellistan.\n"
 
 #: plplaylists/cog.py:163
 msgid "I did not create this playlist."
-msgstr ""
+msgstr "Jag skapade inte den här spellistan."
 
 #: plplaylists/cog.py:164
 msgid "No tracks were provided in time."
@@ -67,13 +67,15 @@ msgstr "Inga spår gavs i tid."
 
 #: plplaylists/cog.py:177
 msgid "I have created a new playlist."
-msgstr ""
+msgstr "Jag har skapat en ny spellista."
 
 #: plplaylists/cog.py:178
 msgid "Name: `{name_variable_do_not_translate}`\n"
 "Identifier: `{id_variable_do_not_translate}`\n"
 "Tracks: `{track_count_variable_do_not_translate}`"
-msgstr ""
+msgstr "Namn: '{name_variable_do_not_translate}`\n"
+"Identifierare: '{id_variable_do_not_translate}`\n"
+"Spår: '{track_count_variable_do_not_translate}`"
 
 #: plplaylists/cog.py:206
 msgid "You have no playlists"
@@ -85,11 +87,11 @@ msgstr "Inget att spara"
 
 #: plplaylists/cog.py:249 plplaylists/cog.py:638
 msgid "There is nothing in the queue to save."
-msgstr ""
+msgstr "Det finns inget i kön att spara."
 
 #: plplaylists/cog.py:286 plplaylists/cog.py:569 plplaylists/cog.py:655
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} cannot be managed by yourself."
-msgstr ""
+msgstr "{user_variable_do_not_translate}spellista {playlist_name_variable_do_not_translate} kan inte hanteras av dig själv."
 
 #: plplaylists/cog.py:298
 msgid "(**1**){space_variable_do_not_translate} - Apply changes to playlist.\n"
@@ -112,7 +114,26 @@ msgid "(**1**){space_variable_do_not_translate} - Apply changes to playlist.\n"
 "The clear button will always be run first before any other operations.\n"
 "The URL button will always run last - Linking a playlist via the URL will overwrite any tracks added or removed to this playlist.\n\n"
 "If you interact with a button multiple times other than the add/remove buttons only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space_variable_do_not_translate} - Tillämpa ändringar på spellistan.\n"
+"(**2**){space_variable_do_not_translate} - Avbryt alla ändringar som gjorts och stäng menyn.\n"
+"(**3**){space_variable_do_not_translate} - Ta bort den här spellistan.\n"
+"(**4**){space_variable_do_not_translate} - Ta bort alla spår från den här spellistan.\n"
+"(**5**){space_variable_do_not_translate} - Uppdatera spellistan med de senaste spåren.\n"
+"Observera att den här åtgärden ignorerar alla spår som läggs till / tas bort via den här menyn.\n"
+"(**6**){space_variable_do_not_translate} - Ändra namnet på spellistan.\n"
+"(**7**){space_variable_do_not_translate} - Länka denna spellista till en befintlig spellista/album.\n"
+"(**8**){space_variable_do_not_translate} - Lägg till en fråga i den här spellistan.\n"
+"(**9**){space_variable_do_not_translate} - Ta bort en fråga från den här spellistan.\n"
+"(**10**) - Ladda ner spellistans fil.\n"
+"(**11**) – Lägg till aktuell spellista i kön.\n"
+"(**12**) - Visa spår i aktuell spellista.\n"
+"(**13**) - Lägg till spår från kön i den här spellistan.\n"
+"(**14**) - Ta bort dubblettposter i spellistan.\n\n"
+"Knapparna lägg till/ta bort spår kan användas flera gånger för att lägga till/ta bort flera spår och spellistor samtidigt.\n\n"
+"En fråga är allt som kan spelas av uppspelningskommandot - alla frågor kan användas av knapparna lägg till / ta bort\n\n"
+"Rensa-knappen körs alltid först före andra åtgärder.\n"
+"URL-knappen körs alltid sist - Om du länkar en spellista via webbadressen skrivs alla spår som läggs till eller tas bort i den här spellistan.\n\n"
+"Om du interagerar med en knapp flera gånger förutom knapparna lägg till/ta bort kommer endast den sista interaktionen att gälla.\n\n\n"
 
 #: plplaylists/cog.py:324
 msgid "(**1**) - Close the menu.\n"
@@ -133,15 +154,20 @@ msgid "__**Currently managing**__:\n"
 "**Author**:{space_variable_do_not_translate}{space_variable_do_not_translate}{author_variable_do_not_translate}\n"
 "**Tracks**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{tracks_variable_do_not_translate} tracks\n"
 "**URL**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{url_variable_do_not_translate}\n"
-msgstr ""
+msgstr "__**Hanterar för närvarande**__:\n"
+"**Namn**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{playlist_name_variable_do_not_translate}\n"
+"**Omfattning**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{scope_variable_do_not_translate}\n"
+"**Författare**:{space_variable_do_not_translate}{space_variable_do_not_translate}{author_variable_do_not_translate}\n"
+"**Spår**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{tracks_variable_do_not_translate} Spår\n"
+"**URL**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{url_variable_do_not_translate}\n"
 
 #: plplaylists/cog.py:350
 msgid "Let us manage: {playlist_name_variable_do_not_translate}."
-msgstr ""
+msgstr "Låt oss hantera: {playlist_name_variable_do_not_translate}."
 
 #: plplaylists/cog.py:354
 msgid "Let us take a look at: {playlist_name_variable_do_not_translate}."
-msgstr ""
+msgstr "Låt oss ta en titt på: {playlist_name_variable_do_not_translate}."
 
 #: plplaylists/cog.py:365
 msgid "N/A"
@@ -149,35 +175,39 @@ msgstr "Ej tillämpligt"
 
 #: plplaylists/cog.py:389
 msgid "I have deleted a playlist."
-msgstr ""
+msgstr "Jag har tagit bort en spellista."
 
 #: plplaylists/cog.py:391 plplaylists/cog.py:584
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has been deleted."
-msgstr ""
+msgstr "{user_variable_do_not_translate}spellista {playlist_name_variable_do_not_translate} har strukits."
 
 #: plplaylists/cog.py:444
 msgid "Playlist {playlist_name_variable_do_not_translate} could not be updated with URL: {url_variable_do_not_translate}"
-msgstr ""
+msgstr "Spellista {playlist_name_variable_do_not_translate} Det gick inte att uppdatera med URL: {url_variable_do_not_translate}"
 
 #: plplaylists/cog.py:486
 msgid "\n"
 "1 track was removed from the playlist."
-msgstr ""
+msgstr "\n"
+"1 spår togs bort från spellistan."
 
 #: plplaylists/cog.py:488
 msgid "\n"
 "{track_count_variable_do_not_translate} tracks were removed from the playlist."
-msgstr ""
+msgstr "\n"
+"{track_count_variable_do_not_translate} spår togs bort från spellistan."
 
 #: plplaylists/cog.py:494 plplaylists/cog.py:678
 msgid "\n"
 "1 track was added to the playlist."
-msgstr ""
+msgstr "\n"
+"1 spår lades till i spellistan."
 
 #: plplaylists/cog.py:496 plplaylists/cog.py:680
 msgid "\n"
 "{track_count_variable_do_not_translate} tracks were added to the playlist."
-msgstr ""
+msgstr "\n"
+"{track_count_variable_do_not_translate} spår lades till i spellistan."
 
 #: plplaylists/cog.py:502 plplaylists/cog.py:689
 msgid "Playlist updated"
@@ -185,7 +215,7 @@ msgstr "Spellistan uppdaterad"
 
 #: plplaylists/cog.py:503 plplaylists/cog.py:690
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has been updated.{extras_variable_do_not_translate}."
-msgstr ""
+msgstr "{user_variable_do_not_translate}spellista {playlist_name_variable_do_not_translate} har uppdaterats.{extras_variable_do_not_translate}."
 
 #: plplaylists/cog.py:517 plplaylists/cog.py:705
 msgid "Playlist unchanged"
@@ -193,7 +223,7 @@ msgstr "Spellistan oförändrad"
 
 #: plplaylists/cog.py:518
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has not been updated."
-msgstr ""
+msgstr "{user_variable_do_not_translate}spellista {playlist_name_variable_do_not_translate} har inte uppdaterats."
 
 #: plplaylists/cog.py:582
 msgid "Playlist deleted"
@@ -201,11 +231,11 @@ msgstr "Spellista borttagen"
 
 #: plplaylists/cog.py:706
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has not been updated"
-msgstr ""
+msgstr "{user_variable_do_not_translate}spellista {playlist_name_variable_do_not_translate} har inte uppdaterats"
 
 #: plplaylists/cog.py:737
 msgid "You must either provide a URL or attach a playlist file to upload a playlist."
-msgstr ""
+msgstr "Du måste antingen ange en URL eller bifoga en spellistfil för att ladda upp en spellista."
 
 #: plplaylists/cog.py:749
 msgid "No valid playlist file provided"
@@ -213,29 +243,31 @@ msgstr "Ingen giltig spellistfil angiven"
 
 #: plplaylists/cog.py:758
 msgid "Multiple playlist files are provided. Currently, only 1 per message is allowed."
-msgstr ""
+msgstr "Flera spellistfiler tillhandahålls. För närvarande är endast 1 per meddelande tillåtet."
 
 #: plplaylists/cog.py:775
 msgid "Failed to save any of the requested playlists."
-msgstr ""
+msgstr "Det gick inte att spara någon av de begärda spellistorna."
 
 #: plplaylists/cog.py:784
 msgid "Failed to save the following playlists:\n"
 "{invalid_playlists_variable_do_not_translate}."
-msgstr ""
+msgstr "Det gick inte att spara följande spellistor:\n"
+"{invalid_playlists_variable_do_not_translate}."
 
 #: plplaylists/cog.py:793
 msgid "Successfully saved the following playlists:\n"
 "{saved_playlists_variable_do_not_translate}."
-msgstr ""
+msgstr "Har sparat följande spellistor:\n"
+"{saved_playlists_variable_do_not_translate}."
 
 #: plplaylists/cog.py:818
 msgid "You must be in a voice channel to allow me to connect."
-msgstr ""
+msgstr "Du måste vara i en röstkanal för att jag ska kunna ansluta."
 
 #: plplaylists/cog.py:826
 msgid "I do not have permission to connect or speak in {channel_variable_do_not_translate}."
-msgstr ""
+msgstr "Jag har inte behörighet att ansluta eller tala i {channel_variable_do_not_translate}."
 
 #: plplaylists/cog.py:856
 msgid "Playlist"
@@ -243,5 +275,5 @@ msgstr "Spellista"
 
 #: plplaylists/cog.py:861
 msgid "{track_count_variable_do_not_translate} tracks enqueued.{playlist_name_variable_do_not_translate}."
-msgstr ""
+msgstr "{track_count_variable_do_not_translate} spår i kö.{playlist_name_variable_do_not_translate}."
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-02-03 20:16+0000\n"
-"PO-Revision-Date: 2023-02-03 20:20\n"
+"PO-Revision-Date: 2023-02-03 21:03\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -47,11 +47,11 @@ msgstr "Establecer el canal de notificación para el jugador"
 
 #: plnotifier/cog.py:275 plnotifier/cog.py:345
 msgid "I do not have permission to manage webhooks in {channel_variable_do_not_translate}."
-msgstr ""
+msgstr "No tengo permiso para administrar webhooks en {channel_variable_do_not_translate}."
 
 #: plnotifier/cog.py:289
 msgid "I do not have permission to create a thread in {channel_variable_do_not_translate}."
-msgstr ""
+msgstr "No tengo permiso para crear un hilo en {channel_variable_do_not_translate}."
 
 #: plnotifier/cog.py:298 plnotifier/cog.py:316 plnotifier/cog.py:355
 msgid "PyLavNotifier"
@@ -59,7 +59,7 @@ msgstr "PyLavNotifier"
 
 #: plnotifier/cog.py:299 plnotifier/cog.py:319 plnotifier/cog.py:356
 msgid "PyLav Notifier - Requested by {author_variable_do_not_translate}."
-msgstr ""
+msgstr "PyLav Notifier - Solicitado por {author_variable_do_not_translate}."
 
 #: plnotifier/cog.py:312
 msgid "This thread will be used by PyLav to post notifications about the player."
@@ -67,11 +67,11 @@ msgstr "Este hilo será utilizado por PyLav para publicar notificaciones sobre e
 
 #: plnotifier/cog.py:327 plnotifier/cog.py:363
 msgid "A new webhook was being created."
-msgstr ""
+msgstr "Se estaba creando un nuevo webhook."
 
 #: plnotifier/cog.py:377
 msgid "PyLavNotifier channel set to {channel_variable_do_not_translate}."
-msgstr ""
+msgstr "Canal PyLavNotifier establecido en {channel_variable_do_not_translate}."
 
 #: plnotifier/cog.py:389
 #, docstring
@@ -91,11 +91,12 @@ msgstr "Establecer si notificar o no para el evento especificado.\n\n"
 #: plnotifier/cog.py:406
 msgid "Invalid event, possible events are:\n\n"
 "{events_variable_do_not_translate}."
-msgstr ""
+msgstr "Evento no válido, los eventos posibles son:\n\n"
+"{events_variable_do_not_translate}."
 
 #: plnotifier/cog.py:425
 msgid "Event {event_variable_do_not_translate} set to {toggle_variable_do_not_translate}{extras_variable_do_not_translate}."
-msgstr ""
+msgstr "Evento {event_variable_do_not_translate} establecer en {toggle_variable_do_not_translate}{extras_variable_do_not_translate}."
 
 #: plnotifier/cog.py:429
 msgid "notify"
@@ -119,7 +120,7 @@ msgstr "Rastrear evento atascado"
 
 #: plnotifier/cog.py:451
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} is stuck for {threshold_variable_do_not_translate} seconds, skipping."
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] {track_variable_do_not_translate} está atascado por {threshold_variable_do_not_translate} segundos, saltando."
 
 #: plnotifier/cog.py:478
 msgid "Track Exception Event"
@@ -128,27 +129,28 @@ msgstr "Rastrear Evento de Excepción"
 #: plnotifier/cog.py:479
 msgid "[Node={node_variable_do_not_translate}] There was an error while playing {track_variable_do_not_translate}:\n"
 "{exception_variable_do_not_translate}"
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] Se ha producido un error al jugar {track_variable_do_not_translate}:\n"
+"{exception_variable_do_not_translate}"
 
 #: plnotifier/cog.py:505
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing because the player reached the end of the tracks runtime."
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] {track_variable_do_not_translate} ha terminado de reproducirse porque el reproductor ha llegado al final del tiempo de ejecución de las pistas."
 
 #: plnotifier/cog.py:512
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing because a new track started playing."
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] {track_variable_do_not_translate} ha terminado de reproducirse porque comenzó a reproducirse una nueva pista."
 
 #: plnotifier/cog.py:519
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing because it failed to start."
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] {track_variable_do_not_translate} ha terminado de jugar porque no se ha iniciado."
 
 #: plnotifier/cog.py:526
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing becausethe player was stopped."
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] {track_variable_do_not_translate} ha terminado de jugar porque el jugador fue detenido."
 
 #: plnotifier/cog.py:533
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing becausethe node told it to stop."
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] {track_variable_do_not_translate} ha terminado de reproducirse porque el nodo le dijo que se detuviera."
 
 #: plnotifier/cog.py:542
 msgid "Track End Event"
@@ -161,7 +163,8 @@ msgstr "Evento de inicio de pista de YouTube"
 #: plnotifier/cog.py:569
 msgid "[Node={node_variable_do_not_translate}] YouTube Music track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] Pista de YouTube Music: {track_variable_do_not_translate} ha empezado a jugar.\n"
+"Solicitado por: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:600
 msgid "Deezer Track Start Event"
@@ -170,7 +173,8 @@ msgstr "Evento de inicio de la pista de Deezer"
 #: plnotifier/cog.py:601
 msgid "[Node={node_variable_do_not_translate}] Deezer track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] Pista de Deezer: {track_variable_do_not_translate} ha empezado a jugar.\n"
+"Solicitado por: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:632
 msgid "Spotify Track Start Event"
@@ -179,7 +183,8 @@ msgstr "Evento de inicio de pista de Spotify"
 #: plnotifier/cog.py:633
 msgid "[Node={node_variable_do_not_translate}] Spotify track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] Pista de Spotify: {track_variable_do_not_translate} ha empezado a jugar.\n"
+"Solicitado por: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:664
 msgid "Apple Music Track Start Event"
@@ -188,7 +193,8 @@ msgstr "Evento de inicio de Apple Music Track"
 #: plnotifier/cog.py:665
 msgid "[Node={node_variable_do_not_translate}] Apple Music track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] Pista de Apple Music: {track_variable_do_not_translate} ha empezado a jugar.\n"
+"Solicitado por: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:696
 msgid "Local Track Start Event"
@@ -197,7 +203,8 @@ msgstr "Evento de inicio de pista local"
 #: plnotifier/cog.py:697
 msgid "[Node={node_variable_do_not_translate}] Local track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] Pista local: {track_variable_do_not_translate} ha empezado a jugar.\n"
+"Solicitado por: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:728
 msgid "HTTP Track Start Event"
@@ -206,7 +213,8 @@ msgstr "Evento de inicio de pista HTTP"
 #: plnotifier/cog.py:729
 msgid "[Node={node_variable_do_not_translate}] HTTP track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] Pista HTTP: {track_variable_do_not_translate} ha empezado a jugar.\n"
+"Solicitado por: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:760
 msgid "Text-To-Speech Track Start Event"
@@ -215,7 +223,8 @@ msgstr "Evento de inicio de pista de texto a voz"
 #: plnotifier/cog.py:761
 msgid "[Node={node_variable_do_not_translate}] Text-To-Speech track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}."
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] Pista de texto a voz: {track_variable_do_not_translate} ha empezado a jugar.\n"
+"Solicitado por: {requester_variable_do_not_translate}."
 
 #: plnotifier/cog.py:792
 msgid "YouTube Track Start Event"
@@ -224,7 +233,8 @@ msgstr "Evento de inicio de pista de YouTube"
 #: plnotifier/cog.py:793
 msgid "[Node={node_variable_do_not_translate}] YouTube track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}."
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] Pista de YouTube: {track_variable_do_not_translate} ha empezado a jugar.\n"
+"Solicitado por: {requester_variable_do_not_translate}."
 
 #: plnotifier/cog.py:824 plnotifier/cog.py:859 plnotifier/cog.py:894
 #: plnotifier/cog.py:929 plnotifier/cog.py:964 plnotifier/cog.py:999
@@ -232,7 +242,7 @@ msgstr ""
 #: plnotifier/cog.py:1139 plnotifier/cog.py:1174 plnotifier/cog.py:1209
 #: plnotifier/cog.py:1244 plnotifier/cog.py:1279
 msgid "{source_variable_do_not_translate} Track Start Event"
-msgstr ""
+msgstr "{source_variable_do_not_translate} Evento Track Start"
 
 #: plnotifier/cog.py:827 plnotifier/cog.py:862 plnotifier/cog.py:897
 #: plnotifier/cog.py:932 plnotifier/cog.py:967 plnotifier/cog.py:1002
@@ -241,7 +251,8 @@ msgstr ""
 #: plnotifier/cog.py:1247 plnotifier/cog.py:1282
 msgid "[Node={node_variable_do_not_translate}] {source_variable_do_not_translate} track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] {source_variable_do_not_translate} pista: {track_variable_do_not_translate} ha empezado a jugar.\n"
+"Solicitado por: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:1314
 msgid "Track Skipped Event"
@@ -250,7 +261,8 @@ msgstr "Evento Omitido"
 #: plnotifier/cog.py:1315
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has been skipped.\n"
 "Requested by {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] {track_variable_do_not_translate} se ha omitido.\n"
+"Solicitado por {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:1346
 msgid "Track Seek Event"
@@ -258,7 +270,7 @@ msgstr "Rastrear Evento"
 
 #: plnotifier/cog.py:1347
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} requested that {track_variable_do_not_translate} is sought from position {from_variable_do_not_translate} to position {after_variable_do_not_translate}"
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] {requester_variable_do_not_translate} solicitó que {track_variable_do_not_translate} se busca desde la posición {from_variable_do_not_translate} para posicionar {after_variable_do_not_translate}"
 
 #: plnotifier/cog.py:1381
 msgid "Track Previous Requested Event"
@@ -266,7 +278,7 @@ msgstr "Rastrear Evento Solicitado Anterior"
 
 #: plnotifier/cog.py:1382
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} requested that the previous track {track_variable_do_not_translate} be played"
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] {requester_variable_do_not_translate} solicitó que la pista anterior {track_variable_do_not_translate} ser jugado"
 
 #: plnotifier/cog.py:1413
 msgid "Tracks Requested Event"
@@ -274,11 +286,11 @@ msgstr "Evento de pistas solicitadas"
 
 #: plnotifier/cog.py:1414
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} added {track_count_variable_do_not_translate} to the queue."
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] {requester_variable_do_not_translate} Añadido {track_count_variable_do_not_translate} a la cola."
 
 #: plnotifier/cog.py:1417
 msgid "{count_variable_do_not_translate} track"
-msgstr ""
+msgstr "{count_variable_do_not_translate} pista"
 
 #: plnotifier/cog.py:1444
 msgid "Track AutoPlay Event"
@@ -286,7 +298,7 @@ msgstr "Rastrear Evento de AutoPlay"
 
 #: plnotifier/cog.py:1445
 msgid "[Node={node_variable_do_not_translate}] Auto playing {track_variable_do_not_translate}."
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] Reproducción automática {track_variable_do_not_translate}."
 
 #: plnotifier/cog.py:1475
 msgid "Track Resumed Event"
@@ -294,7 +306,7 @@ msgstr "Rastrear Evento Revertido"
 
 #: plnotifier/cog.py:1476
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} resumed {track_variable_do_not_translate}"
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] {requester_variable_do_not_translate} Reanudó {track_variable_do_not_translate}"
 
 #: plnotifier/cog.py:1507
 msgid "Queue Shuffled Event"
@@ -302,7 +314,7 @@ msgstr "Evento aleatorio de cola"
 
 #: plnotifier/cog.py:1508
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} shuffled the queue"
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] {requester_variable_do_not_translate} barajó la cola"
 
 #: plnotifier/cog.py:1532
 msgid "Queue End Event"
@@ -310,7 +322,7 @@ msgstr "Evento final de cola"
 
 #: plnotifier/cog.py:1533
 msgid "[Node={node_variable_do_not_translate}] All tracks in the queue have been played"
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] Se han reproducido todas las pistas de la cola"
 
 #: plnotifier/cog.py:1560
 msgid "Tracks Removed Event"
@@ -318,7 +330,7 @@ msgstr "Evento eliminado pistas"
 
 #: plnotifier/cog.py:1561
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} removed {track_count_variable_do_not_translate} tracks from the queue"
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] {requester_variable_do_not_translate} Quitado {track_count_variable_do_not_translate} Pistas de la cola"
 
 #: plnotifier/cog.py:1592 plnotifier/cog.py:2117
 msgid "Player Paused Event"
@@ -326,7 +338,7 @@ msgstr "Evento pausado del jugador"
 
 #: plnotifier/cog.py:1593
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} paused the player"
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] {requester_variable_do_not_translate} pausó el reproductor"
 
 #: plnotifier/cog.py:1622
 msgid "Player Stopped Event"
@@ -334,7 +346,7 @@ msgstr "Evento detenido del jugador"
 
 #: plnotifier/cog.py:1623
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} stopped the player"
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] {requester_variable_do_not_translate} Detuvo el reproductor"
 
 #: plnotifier/cog.py:1652 plnotifier/cog.py:2147
 msgid "Player Resumed Event"
@@ -342,7 +354,7 @@ msgstr "Evento de Reanudación del Jugador"
 
 #: plnotifier/cog.py:1653
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} resumed the player"
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] {requester_variable_do_not_translate} reanudó el reproductor"
 
 #: plnotifier/cog.py:1682
 msgid "Player Moved Event"
@@ -350,7 +362,7 @@ msgstr "Evento movido del jugador"
 
 #: plnotifier/cog.py:1683
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} moved the player from {before_variable_do_not_translate} to {after_variable_do_not_translate}"
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] {requester_variable_do_not_translate} movió el reproductor desde {before_variable_do_not_translate} Para {after_variable_do_not_translate}"
 
 #: plnotifier/cog.py:1715
 msgid "Player Disconnected Event"
@@ -358,7 +370,7 @@ msgstr "Evento desconectado del jugador"
 
 #: plnotifier/cog.py:1716
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} disconnected the player"
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] {requester_variable_do_not_translate} Desconectó el reproductor"
 
 #: plnotifier/cog.py:1745
 msgid "Player Connected Event"
@@ -374,7 +386,7 @@ msgstr "Evento de Volumen del Jugador cambiado"
 
 #: plnotifier/cog.py:1774
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} changed the player volume from {before_variable_do_not_translate} to {afte_variable_do_not_translater}."
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] {requester_variable_do_not_translate} Cambió el volumen del reproductor de {before_variable_do_not_translate} Para {afte_variable_do_not_translater}."
 
 #: plnotifier/cog.py:1808 plnotifier/cog.py:1820 plnotifier/cog.py:1833
 msgid "Player Repeat Event"
@@ -382,11 +394,11 @@ msgstr "Evento de repetición del jugador"
 
 #: plnotifier/cog.py:1809
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} disabled repeat"
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] {requester_variable_do_not_translate} Repetir deshabilitado"
 
 #: plnotifier/cog.py:1821
 msgid "{requester_variable_do_not_translate} {status_variable_do_not_translate} repeat of the whole queue"
-msgstr ""
+msgstr "{requester_variable_do_not_translate} {status_variable_do_not_translate} Repetición de toda la cola"
 
 #: plnotifier/cog.py:1825 plnotifier/cog.py:1838
 msgid "enabled"
@@ -398,7 +410,7 @@ msgstr "Deshabilitado"
 
 #: plnotifier/cog.py:1834
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} {status_variable_do_not_translate} repeat for {track_variable_do_not_translate}"
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] {requester_variable_do_not_translate} {status_variable_do_not_translate} Repetir para {track_variable_do_not_translate}"
 
 #: plnotifier/cog.py:1868
 msgid "Player Restored Event"
@@ -406,7 +418,7 @@ msgstr "Evento restaurado del jugador"
 
 #: plnotifier/cog.py:1869
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} restored the player"
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] {requester_variable_do_not_translate} Restauró el reproductor"
 
 #: plnotifier/cog.py:1894
 msgid "an intro section"
@@ -446,7 +458,7 @@ msgstr "Evento omitido del segmento de patrocinador"
 
 #: plnotifier/cog.py:1913
 msgid "[Node={node_variable_do_not_translate}] Sponsorblock: Skipped {category_variable_do_not_translate} running from {start_variable_do_not_translate}s to {to_variable_do_not_translate}s"
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] Sponsorblock: omitido {category_variable_do_not_translate} Corriendo desde {start_variable_do_not_translate}s a {to_variable_do_not_translate}s"
 
 #: plnotifier/cog.py:1943
 msgid "Effect"
@@ -474,7 +486,7 @@ msgstr "Actualmente aplicado"
 
 #: plnotifier/cog.py:1991
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} changed the player filters"
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] {requester_variable_do_not_translate} Se han cambiado los filtros del reproductor"
 
 #: plnotifier/cog.py:2013
 msgid "Node Connected Event"
@@ -482,7 +494,7 @@ msgstr "Evento Conexión del Nodo"
 
 #: plnotifier/cog.py:2014
 msgid "Node {name_variable_do_not_translate} has been connected"
-msgstr ""
+msgstr "Nodo {name_variable_do_not_translate} se ha conectado"
 
 #: plnotifier/cog.py:2032
 msgid "Node Disconnected Event"
@@ -490,7 +502,7 @@ msgstr "Evento desconectado del nodo"
 
 #: plnotifier/cog.py:2033
 msgid "Node {name_variable_do_not_translate} has been disconnected with code {code_variable_do_not_translate} and reason: {reason_variable_do_not_translate}"
-msgstr ""
+msgstr "Nodo {name_variable_do_not_translate} se ha desconectado con el código {code_variable_do_not_translate} y motivo: {reason_variable_do_not_translate}"
 
 #: plnotifier/cog.py:2059
 msgid "Node Changed Event"
@@ -498,7 +510,7 @@ msgstr "Nodo modificado evento"
 
 #: plnotifier/cog.py:2060
 msgid "The node which the player is connected to changed from {from_variable_do_not_translate} to {to_variable_do_not_translate}"
-msgstr ""
+msgstr "El nodo al que está conectado el reproductor cambió de {from_variable_do_not_translate} Para {to_variable_do_not_translate}"
 
 #: plnotifier/cog.py:2084
 msgid "WebSocket Closed Event"
@@ -506,15 +518,15 @@ msgstr "Evento WebSocket cerrado"
 
 #: plnotifier/cog.py:2085
 msgid "[Node={node_variable_do_not_translate}] The Lavalink websocket connection to Discord closed with code {code_variable_do_not_translate} and reason {reason_variable_do_not_translate}"
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] La conexión del websocket de Lavalink a Discord se cerró con código {code_variable_do_not_translate} y razón {reason_variable_do_not_translate}"
 
 #: plnotifier/cog.py:2118
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} automatically paused the player due to configured values"
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] {requester_variable_do_not_translate} Pausó automáticamente el reproductor debido a los valores configurados"
 
 #: plnotifier/cog.py:2148
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} automatically resumed the player due to configured values"
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] {requester_variable_do_not_translate} Reanudó automáticamente el reproductor debido a los valores configurados"
 
 #: plnotifier/cog.py:2177 plnotifier/cog.py:2209
 msgid "Auto Player Disconnected Event"
@@ -522,9 +534,9 @@ msgstr "Evento Auto Jugador Desconectado"
 
 #: plnotifier/cog.py:2178
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} automatically disconnected the player as there is no one listening"
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] {requester_variable_do_not_translate} desconectó automáticamente el reproductor porque no hay nadie escuchando"
 
 #: plnotifier/cog.py:2210
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} automatically disconnected the player as the queue is empty"
-msgstr ""
+msgstr "[Nodo={node_variable_do_not_translate}] {requester_variable_do_not_translate} Desconectó automáticamente el reproductor porque la cola está vacía"
 

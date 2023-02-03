@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-02-03 20:16+0000\n"
-"PO-Revision-Date: 2023-02-03 20:20\n"
+"PO-Revision-Date: 2023-02-03 21:03\n"
 "Last-Translator: \n"
 "Language-Team: Korean\n"
 "MIME-Version: 1.0\n"
@@ -41,7 +41,7 @@ msgstr "버전"
 
 #: plplaylists/cog.py:128
 msgid "Let us create a playlist!"
-msgstr ""
+msgstr "재생 목록을 만들어 보겠습니다!"
 
 #: plplaylists/cog.py:129
 msgid "(**1**) - Apply changes to playlist.\n"
@@ -59,7 +59,7 @@ msgstr "(**1**) - 재생 목록에 변경 사항을 적용합니다.\n"
 
 #: plplaylists/cog.py:163
 msgid "I did not create this playlist."
-msgstr ""
+msgstr "이 재생 목록을 만들지 않았습니다."
 
 #: plplaylists/cog.py:164
 msgid "No tracks were provided in time."
@@ -67,13 +67,15 @@ msgstr "제 시간에 트랙이 제공되지 않았습니다."
 
 #: plplaylists/cog.py:177
 msgid "I have created a new playlist."
-msgstr ""
+msgstr "새 재생 목록을 만들었습니다."
 
 #: plplaylists/cog.py:178
 msgid "Name: `{name_variable_do_not_translate}`\n"
 "Identifier: `{id_variable_do_not_translate}`\n"
 "Tracks: `{track_count_variable_do_not_translate}`"
-msgstr ""
+msgstr "이름: '{name_variable_do_not_translate}`\n"
+"식별자: '{id_variable_do_not_translate}`\n"
+"트랙: '{track_count_variable_do_not_translate}`"
 
 #: plplaylists/cog.py:206
 msgid "You have no playlists"
@@ -85,11 +87,11 @@ msgstr "저장할 것이 없다."
 
 #: plplaylists/cog.py:249 plplaylists/cog.py:638
 msgid "There is nothing in the queue to save."
-msgstr ""
+msgstr "큐에 저장할 항목이 없습니다."
 
 #: plplaylists/cog.py:286 plplaylists/cog.py:569 plplaylists/cog.py:655
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} cannot be managed by yourself."
-msgstr ""
+msgstr "{user_variable_do_not_translate}재생 {playlist_name_variable_do_not_translate} 혼자서 관리 할 수 없습니다."
 
 #: plplaylists/cog.py:298
 msgid "(**1**){space_variable_do_not_translate} - Apply changes to playlist.\n"
@@ -112,7 +114,26 @@ msgid "(**1**){space_variable_do_not_translate} - Apply changes to playlist.\n"
 "The clear button will always be run first before any other operations.\n"
 "The URL button will always run last - Linking a playlist via the URL will overwrite any tracks added or removed to this playlist.\n\n"
 "If you interact with a button multiple times other than the add/remove buttons only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space_variable_do_not_translate} - 재생 목록에 변경 사항을 적용합니다.\n"
+"(**2**){space_variable_do_not_translate} - 변경 사항을 취소하고 메뉴를 닫습니다.\n"
+"(**3**){space_variable_do_not_translate} -이 재생 목록을 삭제하십시오.\n"
+"(**4**){space_variable_do_not_translate} -이 재생 목록에서 모든 트랙을 제거합니다.\n"
+"(**5**){space_variable_do_not_translate} - 재생 목록을 최신 트랙으로 업데이트하십시오.\n"
+"이 작업은 이 메뉴를 통해 추가/제거된 모든 트랙을 무시합니다.\n"
+"(**6**){space_variable_do_not_translate} - 재생 목록의 이름을 변경합니다.\n"
+"(**7**){space_variable_do_not_translate} -이 재생 목록을 기존 재생 목록 / 앨범에 연결합니다.\n"
+"(**8**){space_variable_do_not_translate} -이 재생 목록에 쿼리를 추가합니다.\n"
+"(**9**){space_variable_do_not_translate} - 이 재생 목록에서 쿼리를 제거합니다.\n"
+"(**10**) - 재생 목록 파일을 다운로드합니다.\n"
+"(**11**) - 현재 재생 목록을 대기열에 추가합니다.\n"
+"(**12**) - 현재 재생 목록의 트랙을 표시합니다.\n"
+"(**13**) - 대기열의 트랙을 이 재생 목록에 추가합니다.\n"
+"(**14**) - 재생 목록에서 중복 항목을 제거합니다.\n\n"
+"트랙 추가/제거 버튼을 여러 번 사용하여 한 번에 여러 트랙과 재생 목록을 추가/제거할 수 있습니다.\n\n"
+"쿼리는 play 명령으로 재생할 수있는 모든 것입니다 - 모든 쿼리는 추가 / 제거 버튼으로 사용할 수 있습니다.\n\n"
+"지우기 버튼은 항상 다른 작업보다 먼저 실행됩니다.\n"
+"URL 버튼은 항상 마지막에 실행됩니다 - URL을 통해 재생 목록을 연결하면이 재생 목록에 추가되거나 제거 된 모든 트랙을 덮어 씁니다.\n\n"
+"추가/제거 버튼 이외의 버튼과 여러 번 상호 작용하는 경우 마지막 상호 작용만 적용됩니다.\n\n\n"
 
 #: plplaylists/cog.py:324
 msgid "(**1**) - Close the menu.\n"
@@ -133,15 +154,20 @@ msgid "__**Currently managing**__:\n"
 "**Author**:{space_variable_do_not_translate}{space_variable_do_not_translate}{author_variable_do_not_translate}\n"
 "**Tracks**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{tracks_variable_do_not_translate} tracks\n"
 "**URL**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{url_variable_do_not_translate}\n"
-msgstr ""
+msgstr "__**현재 관리 중**__:\n"
+"**이름**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{playlist_name_variable_do_not_translate}\n"
+"**범위**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{scope_variable_do_not_translate}\n"
+"**저자**:{space_variable_do_not_translate}{space_variable_do_not_translate}{author_variable_do_not_translate}\n"
+"**트랙**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{tracks_variable_do_not_translate} 트랙\n"
+"**URL**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{url_variable_do_not_translate}\n"
 
 #: plplaylists/cog.py:350
 msgid "Let us manage: {playlist_name_variable_do_not_translate}."
-msgstr ""
+msgstr "우리가 관리하자 : {playlist_name_variable_do_not_translate}."
 
 #: plplaylists/cog.py:354
 msgid "Let us take a look at: {playlist_name_variable_do_not_translate}."
-msgstr ""
+msgstr "우리가 살펴 보자 : {playlist_name_variable_do_not_translate}."
 
 #: plplaylists/cog.py:365
 msgid "N/A"
@@ -149,35 +175,39 @@ msgstr "해당 없음"
 
 #: plplaylists/cog.py:389
 msgid "I have deleted a playlist."
-msgstr ""
+msgstr "재생 목록을 삭제했습니다."
 
 #: plplaylists/cog.py:391 plplaylists/cog.py:584
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has been deleted."
-msgstr ""
+msgstr "{user_variable_do_not_translate}재생 {playlist_name_variable_do_not_translate} 이(가) 삭제되었습니다."
 
 #: plplaylists/cog.py:444
 msgid "Playlist {playlist_name_variable_do_not_translate} could not be updated with URL: {url_variable_do_not_translate}"
-msgstr ""
+msgstr "재생 {playlist_name_variable_do_not_translate} URL로 업데이트 할 수 없습니다. {url_variable_do_not_translate}"
 
 #: plplaylists/cog.py:486
 msgid "\n"
 "1 track was removed from the playlist."
-msgstr ""
+msgstr "\n"
+"재생 목록에서 1개의 트랙이 제거되었습니다."
 
 #: plplaylists/cog.py:488
 msgid "\n"
 "{track_count_variable_do_not_translate} tracks were removed from the playlist."
-msgstr ""
+msgstr "\n"
+"{track_count_variable_do_not_translate} 재생 목록에서 트랙이 제거되었습니다."
 
 #: plplaylists/cog.py:494 plplaylists/cog.py:678
 msgid "\n"
 "1 track was added to the playlist."
-msgstr ""
+msgstr "\n"
+"1 트랙이 재생 목록에 추가되었습니다."
 
 #: plplaylists/cog.py:496 plplaylists/cog.py:680
 msgid "\n"
 "{track_count_variable_do_not_translate} tracks were added to the playlist."
-msgstr ""
+msgstr "\n"
+"{track_count_variable_do_not_translate} 트랙이 재생 목록에 추가되었습니다."
 
 #: plplaylists/cog.py:502 plplaylists/cog.py:689
 msgid "Playlist updated"
@@ -185,7 +215,7 @@ msgstr "재생 목록 업데이트"
 
 #: plplaylists/cog.py:503 plplaylists/cog.py:690
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has been updated.{extras_variable_do_not_translate}."
-msgstr ""
+msgstr "{user_variable_do_not_translate}재생 {playlist_name_variable_do_not_translate} 가 업데이트되었습니다.{extras_variable_do_not_translate}."
 
 #: plplaylists/cog.py:517 plplaylists/cog.py:705
 msgid "Playlist unchanged"
@@ -193,7 +223,7 @@ msgstr "재생 목록 변경 안 함"
 
 #: plplaylists/cog.py:518
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has not been updated."
-msgstr ""
+msgstr "{user_variable_do_not_translate}재생 {playlist_name_variable_do_not_translate} 업데이트되지 않았습니다."
 
 #: plplaylists/cog.py:582
 msgid "Playlist deleted"
@@ -201,11 +231,11 @@ msgstr "재생 목록이 삭제됨"
 
 #: plplaylists/cog.py:706
 msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has not been updated"
-msgstr ""
+msgstr "{user_variable_do_not_translate}재생 {playlist_name_variable_do_not_translate} 업데이트되지 않았습니다."
 
 #: plplaylists/cog.py:737
 msgid "You must either provide a URL or attach a playlist file to upload a playlist."
-msgstr ""
+msgstr "재생 목록을 업로드하려면 URL을 제공하거나 재생 목록 파일을 첨부해야 합니다."
 
 #: plplaylists/cog.py:749
 msgid "No valid playlist file provided"
@@ -213,29 +243,31 @@ msgstr "유효한 재생 목록 파일이 제공되지 않았습니다."
 
 #: plplaylists/cog.py:758
 msgid "Multiple playlist files are provided. Currently, only 1 per message is allowed."
-msgstr ""
+msgstr "여러 재생 목록 파일이 제공됩니다. 현재 메시지당 1개만 허용됩니다."
 
 #: plplaylists/cog.py:775
 msgid "Failed to save any of the requested playlists."
-msgstr ""
+msgstr "요청한 재생 목록을 저장하지 못했습니다."
 
 #: plplaylists/cog.py:784
 msgid "Failed to save the following playlists:\n"
 "{invalid_playlists_variable_do_not_translate}."
-msgstr ""
+msgstr "다음 재생 목록을 저장하지 못했습니다.\n"
+"{invalid_playlists_variable_do_not_translate}."
 
 #: plplaylists/cog.py:793
 msgid "Successfully saved the following playlists:\n"
 "{saved_playlists_variable_do_not_translate}."
-msgstr ""
+msgstr "다음 재생 목록을 성공적으로 저장했습니다.\n"
+"{saved_playlists_variable_do_not_translate}."
 
 #: plplaylists/cog.py:818
 msgid "You must be in a voice channel to allow me to connect."
-msgstr ""
+msgstr "내가 연결할 수 있도록 음성 채널에 있어야 합니다."
 
 #: plplaylists/cog.py:826
 msgid "I do not have permission to connect or speak in {channel_variable_do_not_translate}."
-msgstr ""
+msgstr "연결하거나 말할 수 있는 권한이 없습니다. {channel_variable_do_not_translate}."
 
 #: plplaylists/cog.py:856
 msgid "Playlist"
@@ -243,5 +275,5 @@ msgstr "재생"
 
 #: plplaylists/cog.py:861
 msgid "{track_count_variable_do_not_translate} tracks enqueued.{playlist_name_variable_do_not_translate}."
-msgstr ""
+msgstr "{track_count_variable_do_not_translate} 대기열에 포함된 트랙.{playlist_name_variable_do_not_translate}."
 

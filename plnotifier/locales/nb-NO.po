@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-02-03 20:16+0000\n"
-"PO-Revision-Date: 2023-02-03 20:20\n"
+"PO-Revision-Date: 2023-02-03 21:03\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian\n"
 "MIME-Version: 1.0\n"
@@ -47,11 +47,11 @@ msgstr "Sett varslingskanal for spilleren"
 
 #: plnotifier/cog.py:275 plnotifier/cog.py:345
 msgid "I do not have permission to manage webhooks in {channel_variable_do_not_translate}."
-msgstr ""
+msgstr "Jeg har ikke tillatelse til å administrere webhooks i {channel_variable_do_not_translate}."
 
 #: plnotifier/cog.py:289
 msgid "I do not have permission to create a thread in {channel_variable_do_not_translate}."
-msgstr ""
+msgstr "Jeg har ikke tillatelse til å opprette en tråd i {channel_variable_do_not_translate}."
 
 #: plnotifier/cog.py:298 plnotifier/cog.py:316 plnotifier/cog.py:355
 msgid "PyLavNotifier"
@@ -59,7 +59,7 @@ msgstr "PyLavNotifier"
 
 #: plnotifier/cog.py:299 plnotifier/cog.py:319 plnotifier/cog.py:356
 msgid "PyLav Notifier - Requested by {author_variable_do_not_translate}."
-msgstr ""
+msgstr "PyLav-varsler - forespurt av {author_variable_do_not_translate}."
 
 #: plnotifier/cog.py:312
 msgid "This thread will be used by PyLav to post notifications about the player."
@@ -67,11 +67,11 @@ msgstr "Denne tråden vil bli brukt av PyLav til å legge inn varsler om spiller
 
 #: plnotifier/cog.py:327 plnotifier/cog.py:363
 msgid "A new webhook was being created."
-msgstr ""
+msgstr "En ny webhook ble opprettet."
 
 #: plnotifier/cog.py:377
 msgid "PyLavNotifier channel set to {channel_variable_do_not_translate}."
-msgstr ""
+msgstr "PyLavNotifier-kanal satt til {channel_variable_do_not_translate}."
 
 #: plnotifier/cog.py:389
 #, docstring
@@ -91,11 +91,12 @@ msgstr "Angi om du skal varsle for den angitte hendelsen eller ikke.\n\n"
 #: plnotifier/cog.py:406
 msgid "Invalid event, possible events are:\n\n"
 "{events_variable_do_not_translate}."
-msgstr ""
+msgstr "Ugyldig hendelse, mulige hendelser er:\n\n"
+"{events_variable_do_not_translate}."
 
 #: plnotifier/cog.py:425
 msgid "Event {event_variable_do_not_translate} set to {toggle_variable_do_not_translate}{extras_variable_do_not_translate}."
-msgstr ""
+msgstr "Begivenhet {event_variable_do_not_translate} satt til {toggle_variable_do_not_translate}{extras_variable_do_not_translate}."
 
 #: plnotifier/cog.py:429
 msgid "notify"
@@ -119,7 +120,7 @@ msgstr "Spor taus hendelse"
 
 #: plnotifier/cog.py:451
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} is stuck for {threshold_variable_do_not_translate} seconds, skipping."
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} er fast for {threshold_variable_do_not_translate} sekunder, hopper."
 
 #: plnotifier/cog.py:478
 msgid "Track Exception Event"
@@ -128,27 +129,28 @@ msgstr "Spor unntak arrangement"
 #: plnotifier/cog.py:479
 msgid "[Node={node_variable_do_not_translate}] There was an error while playing {track_variable_do_not_translate}:\n"
 "{exception_variable_do_not_translate}"
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] Det oppstod en feil under avspilling {track_variable_do_not_translate}:\n"
+"{exception_variable_do_not_translate}"
 
 #: plnotifier/cog.py:505
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing because the player reached the end of the tracks runtime."
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} er ferdig med å spille fordi spilleren nådde slutten av sporets kjøretid."
 
 #: plnotifier/cog.py:512
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing because a new track started playing."
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} er ferdig med å spille fordi et nytt spor begynte å spille."
 
 #: plnotifier/cog.py:519
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing because it failed to start."
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} er ferdig med å spille fordi den ikke klarte å starte."
 
 #: plnotifier/cog.py:526
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing becausethe player was stopped."
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} er ferdig med å spille fordi spilleren ble stoppet."
 
 #: plnotifier/cog.py:533
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing becausethe node told it to stop."
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} er ferdig med å spille fordi noden ba den om å stoppe."
 
 #: plnotifier/cog.py:542
 msgid "Track End Event"
@@ -161,7 +163,8 @@ msgstr "YouTube Musikkspor Start Arrangement"
 #: plnotifier/cog.py:569
 msgid "[Node={node_variable_do_not_translate}] YouTube Music track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] YouTube Music-spor: {track_variable_do_not_translate} har begynt å spille.\n"
+"Forespurt av: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:600
 msgid "Deezer Track Start Event"
@@ -170,7 +173,8 @@ msgstr "Deezer slepestrek start event"
 #: plnotifier/cog.py:601
 msgid "[Node={node_variable_do_not_translate}] Deezer track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] Deezer spor: {track_variable_do_not_translate} har begynt å spille.\n"
+"Forespurt av: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:632
 msgid "Spotify Track Start Event"
@@ -179,7 +183,8 @@ msgstr "Spotify Slepestrek Start hendelse"
 #: plnotifier/cog.py:633
 msgid "[Node={node_variable_do_not_translate}] Spotify track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] Spotify-spor: {track_variable_do_not_translate} har begynt å spille.\n"
+"Forespurt av: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:664
 msgid "Apple Music Track Start Event"
@@ -188,7 +193,8 @@ msgstr "Apple Music Track Start event"
 #: plnotifier/cog.py:665
 msgid "[Node={node_variable_do_not_translate}] Apple Music track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] Apple Music-spor: {track_variable_do_not_translate} har begynt å spille.\n"
+"Forespurt av: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:696
 msgid "Local Track Start Event"
@@ -197,7 +203,8 @@ msgstr "Start Start lokale spor"
 #: plnotifier/cog.py:697
 msgid "[Node={node_variable_do_not_translate}] Local track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] Lokalt spor: {track_variable_do_not_translate} har begynt å spille.\n"
+"Forespurt av: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:728
 msgid "HTTP Track Start Event"
@@ -206,7 +213,8 @@ msgstr "HTTP-spor start hendelse"
 #: plnotifier/cog.py:729
 msgid "[Node={node_variable_do_not_translate}] HTTP track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] HTTP-spor: {track_variable_do_not_translate} har begynt å spille.\n"
+"Forespurt av: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:760
 msgid "Text-To-Speech Track Start Event"
@@ -215,7 +223,8 @@ msgstr "Tekst-Til-Tale Spor Start hendelse"
 #: plnotifier/cog.py:761
 msgid "[Node={node_variable_do_not_translate}] Text-To-Speech track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}."
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] Tekst-til-tale-spor: {track_variable_do_not_translate} har begynt å spille.\n"
+"Forespurt av: {requester_variable_do_not_translate}."
 
 #: plnotifier/cog.py:792
 msgid "YouTube Track Start Event"
@@ -224,7 +233,8 @@ msgstr "YouTube Spor Start hendelse"
 #: plnotifier/cog.py:793
 msgid "[Node={node_variable_do_not_translate}] YouTube track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}."
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] YouTube-spor: {track_variable_do_not_translate} har begynt å spille.\n"
+"Forespurt av: {requester_variable_do_not_translate}."
 
 #: plnotifier/cog.py:824 plnotifier/cog.py:859 plnotifier/cog.py:894
 #: plnotifier/cog.py:929 plnotifier/cog.py:964 plnotifier/cog.py:999
@@ -232,7 +242,7 @@ msgstr ""
 #: plnotifier/cog.py:1139 plnotifier/cog.py:1174 plnotifier/cog.py:1209
 #: plnotifier/cog.py:1244 plnotifier/cog.py:1279
 msgid "{source_variable_do_not_translate} Track Start Event"
-msgstr ""
+msgstr "{source_variable_do_not_translate} Spor Start hendelse"
 
 #: plnotifier/cog.py:827 plnotifier/cog.py:862 plnotifier/cog.py:897
 #: plnotifier/cog.py:932 plnotifier/cog.py:967 plnotifier/cog.py:1002
@@ -241,7 +251,8 @@ msgstr ""
 #: plnotifier/cog.py:1247 plnotifier/cog.py:1282
 msgid "[Node={node_variable_do_not_translate}] {source_variable_do_not_translate} track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] {source_variable_do_not_translate} spor: {track_variable_do_not_translate} har begynt å spille.\n"
+"Forespurt av: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:1314
 msgid "Track Skipped Event"
@@ -250,7 +261,8 @@ msgstr "Spor hoppet over arrangementet"
 #: plnotifier/cog.py:1315
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has been skipped.\n"
 "Requested by {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} har blitt hoppet over.\n"
+"Forespurt av {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:1346
 msgid "Track Seek Event"
@@ -258,7 +270,7 @@ msgstr "Spor søk-event"
 
 #: plnotifier/cog.py:1347
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} requested that {track_variable_do_not_translate} is sought from position {from_variable_do_not_translate} to position {after_variable_do_not_translate}"
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} bedt om at {track_variable_do_not_translate} søkes fra stilling {from_variable_do_not_translate} til posisjon {after_variable_do_not_translate}"
 
 #: plnotifier/cog.py:1381
 msgid "Track Previous Requested Event"
@@ -266,7 +278,7 @@ msgstr "Spor forrige forespurte hendelse"
 
 #: plnotifier/cog.py:1382
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} requested that the previous track {track_variable_do_not_translate} be played"
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} bedt om at forrige spor {track_variable_do_not_translate} spilles"
 
 #: plnotifier/cog.py:1413
 msgid "Tracks Requested Event"
@@ -274,11 +286,11 @@ msgstr "Spor forespurt hendelse"
 
 #: plnotifier/cog.py:1414
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} added {track_count_variable_do_not_translate} to the queue."
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} Lagt {track_count_variable_do_not_translate} til køen."
 
 #: plnotifier/cog.py:1417
 msgid "{count_variable_do_not_translate} track"
-msgstr ""
+msgstr "{count_variable_do_not_translate} spor"
 
 #: plnotifier/cog.py:1444
 msgid "Track AutoPlay Event"
@@ -286,7 +298,7 @@ msgstr "Spor AutoPlay hendelse"
 
 #: plnotifier/cog.py:1445
 msgid "[Node={node_variable_do_not_translate}] Auto playing {track_variable_do_not_translate}."
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] Automatisk avspilling {track_variable_do_not_translate}."
 
 #: plnotifier/cog.py:1475
 msgid "Track Resumed Event"
@@ -294,7 +306,7 @@ msgstr "Spor gjenopptatt hendelse"
 
 #: plnotifier/cog.py:1476
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} resumed {track_variable_do_not_translate}"
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} Gjenopptatt {track_variable_do_not_translate}"
 
 #: plnotifier/cog.py:1507
 msgid "Queue Shuffled Event"
@@ -302,7 +314,7 @@ msgstr "Kø vekslet begivenhet"
 
 #: plnotifier/cog.py:1508
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} shuffled the queue"
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} stokket køen"
 
 #: plnotifier/cog.py:1532
 msgid "Queue End Event"
@@ -310,7 +322,7 @@ msgstr "Avslutt kø event"
 
 #: plnotifier/cog.py:1533
 msgid "[Node={node_variable_do_not_translate}] All tracks in the queue have been played"
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] Alle sporene i køen er spilt"
 
 #: plnotifier/cog.py:1560
 msgid "Tracks Removed Event"
@@ -318,7 +330,7 @@ msgstr "Spor fjernet hendelse"
 
 #: plnotifier/cog.py:1561
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} removed {track_count_variable_do_not_translate} tracks from the queue"
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} Fjernet {track_count_variable_do_not_translate} Spor fra køen"
 
 #: plnotifier/cog.py:1592 plnotifier/cog.py:2117
 msgid "Player Paused Event"
@@ -326,7 +338,7 @@ msgstr "Spilleren pauset hendelse"
 
 #: plnotifier/cog.py:1593
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} paused the player"
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} satte spilleren på pause"
 
 #: plnotifier/cog.py:1622
 msgid "Player Stopped Event"
@@ -334,7 +346,7 @@ msgstr "Spilleren stoppet hendelse"
 
 #: plnotifier/cog.py:1623
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} stopped the player"
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} stoppet spilleren"
 
 #: plnotifier/cog.py:1652 plnotifier/cog.py:2147
 msgid "Player Resumed Event"
@@ -342,7 +354,7 @@ msgstr "Spilleren gjenopptatt hendelse"
 
 #: plnotifier/cog.py:1653
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} resumed the player"
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} gjenopptok spilleren"
 
 #: plnotifier/cog.py:1682
 msgid "Player Moved Event"
@@ -350,7 +362,7 @@ msgstr "Avspiller Flyttet Hendelse"
 
 #: plnotifier/cog.py:1683
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} moved the player from {before_variable_do_not_translate} to {after_variable_do_not_translate}"
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} flyttet spilleren fra {before_variable_do_not_translate} til {after_variable_do_not_translate}"
 
 #: plnotifier/cog.py:1715
 msgid "Player Disconnected Event"
@@ -358,7 +370,7 @@ msgstr "Spilleren frakoblet hendelse"
 
 #: plnotifier/cog.py:1716
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} disconnected the player"
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} koblet fra spilleren"
 
 #: plnotifier/cog.py:1745
 msgid "Player Connected Event"
@@ -374,7 +386,7 @@ msgstr "Spillervolum endret hendelse"
 
 #: plnotifier/cog.py:1774
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} changed the player volume from {before_variable_do_not_translate} to {afte_variable_do_not_translater}."
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} endret spillervolumet fra {before_variable_do_not_translate} til {afte_variable_do_not_translater}."
 
 #: plnotifier/cog.py:1808 plnotifier/cog.py:1820 plnotifier/cog.py:1833
 msgid "Player Repeat Event"
@@ -382,11 +394,11 @@ msgstr "Spilleren gjenta-hendelse"
 
 #: plnotifier/cog.py:1809
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} disabled repeat"
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} deaktivert gjenta"
 
 #: plnotifier/cog.py:1821
 msgid "{requester_variable_do_not_translate} {status_variable_do_not_translate} repeat of the whole queue"
-msgstr ""
+msgstr "{requester_variable_do_not_translate} {status_variable_do_not_translate} Gjentakelse av hele køen"
 
 #: plnotifier/cog.py:1825 plnotifier/cog.py:1838
 msgid "enabled"
@@ -398,7 +410,7 @@ msgstr "ufør"
 
 #: plnotifier/cog.py:1834
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} {status_variable_do_not_translate} repeat for {track_variable_do_not_translate}"
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} {status_variable_do_not_translate} gjenta for {track_variable_do_not_translate}"
 
 #: plnotifier/cog.py:1868
 msgid "Player Restored Event"
@@ -406,7 +418,7 @@ msgstr "Spilleren gjenopprettet hendelse"
 
 #: plnotifier/cog.py:1869
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} restored the player"
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} gjenopprettet spilleren"
 
 #: plnotifier/cog.py:1894
 msgid "an intro section"
@@ -446,7 +458,7 @@ msgstr "Sponsor Segment Hoppet over arrangementet"
 
 #: plnotifier/cog.py:1913
 msgid "[Node={node_variable_do_not_translate}] Sponsorblock: Skipped {category_variable_do_not_translate} running from {start_variable_do_not_translate}s to {to_variable_do_not_translate}s"
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] Sponsorblock: Hoppet over {category_variable_do_not_translate} kjører fra {start_variable_do_not_translate}s til {to_variable_do_not_translate}s"
 
 #: plnotifier/cog.py:1943
 msgid "Effect"
@@ -474,7 +486,7 @@ msgstr "Brukes for øyeblikket"
 
 #: plnotifier/cog.py:1991
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} changed the player filters"
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} endret spillerfiltrene"
 
 #: plnotifier/cog.py:2013
 msgid "Node Connected Event"
@@ -482,7 +494,7 @@ msgstr "Node-tilkoblet hendelse"
 
 #: plnotifier/cog.py:2014
 msgid "Node {name_variable_do_not_translate} has been connected"
-msgstr ""
+msgstr "Node {name_variable_do_not_translate} har blitt koblet til"
 
 #: plnotifier/cog.py:2032
 msgid "Node Disconnected Event"
@@ -490,7 +502,7 @@ msgstr "Noden frakoblet hendelse"
 
 #: plnotifier/cog.py:2033
 msgid "Node {name_variable_do_not_translate} has been disconnected with code {code_variable_do_not_translate} and reason: {reason_variable_do_not_translate}"
-msgstr ""
+msgstr "Node {name_variable_do_not_translate} har blitt koblet fra med kode {code_variable_do_not_translate} og grunn: {reason_variable_do_not_translate}"
 
 #: plnotifier/cog.py:2059
 msgid "Node Changed Event"
@@ -498,7 +510,7 @@ msgstr "Noden endret hendelse"
 
 #: plnotifier/cog.py:2060
 msgid "The node which the player is connected to changed from {from_variable_do_not_translate} to {to_variable_do_not_translate}"
-msgstr ""
+msgstr "Noden som spilleren er koblet til, endret fra {from_variable_do_not_translate} til {to_variable_do_not_translate}"
 
 #: plnotifier/cog.py:2084
 msgid "WebSocket Closed Event"
@@ -506,15 +518,15 @@ msgstr "WebSocket lukket hendelse"
 
 #: plnotifier/cog.py:2085
 msgid "[Node={node_variable_do_not_translate}] The Lavalink websocket connection to Discord closed with code {code_variable_do_not_translate} and reason {reason_variable_do_not_translate}"
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] Lavalink websocket-tilkoblingen til Discord lukket med kode {code_variable_do_not_translate} og fornuft {reason_variable_do_not_translate}"
 
 #: plnotifier/cog.py:2118
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} automatically paused the player due to configured values"
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} Satte spilleren automatisk på pause på grunn av konfigurerte verdier"
 
 #: plnotifier/cog.py:2148
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} automatically resumed the player due to configured values"
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} gjenopptok spilleren automatisk på grunn av konfigurerte verdier"
 
 #: plnotifier/cog.py:2177 plnotifier/cog.py:2209
 msgid "Auto Player Disconnected Event"
@@ -522,9 +534,9 @@ msgstr "Auto Spiller frakoblet hendelse"
 
 #: plnotifier/cog.py:2178
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} automatically disconnected the player as there is no one listening"
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} koblet automatisk fra spilleren, da det ikke er noen som lytter"
 
 #: plnotifier/cog.py:2210
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} automatically disconnected the player as the queue is empty"
-msgstr ""
+msgstr "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} Koblet spilleren automatisk fra siden køen er tom"
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-02-03 20:16+0000\n"
-"PO-Revision-Date: 2023-02-03 20:20\n"
+"PO-Revision-Date: 2023-02-03 21:03\n"
 "Last-Translator: \n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -47,11 +47,11 @@ msgstr "Ustaw kanał powiadomień dla odtwarzacza"
 
 #: plnotifier/cog.py:275 plnotifier/cog.py:345
 msgid "I do not have permission to manage webhooks in {channel_variable_do_not_translate}."
-msgstr ""
+msgstr "Nie mam uprawnień do zarządzania elementami webhook w {channel_variable_do_not_translate}."
 
 #: plnotifier/cog.py:289
 msgid "I do not have permission to create a thread in {channel_variable_do_not_translate}."
-msgstr ""
+msgstr "Nie mam uprawnień do tworzenia wątku w {channel_variable_do_not_translate}."
 
 #: plnotifier/cog.py:298 plnotifier/cog.py:316 plnotifier/cog.py:355
 msgid "PyLavNotifier"
@@ -59,7 +59,7 @@ msgstr "Powiadomienie PyLava"
 
 #: plnotifier/cog.py:299 plnotifier/cog.py:319 plnotifier/cog.py:356
 msgid "PyLav Notifier - Requested by {author_variable_do_not_translate}."
-msgstr ""
+msgstr "PyLav Notifier - Na życzenie {author_variable_do_not_translate}."
 
 #: plnotifier/cog.py:312
 msgid "This thread will be used by PyLav to post notifications about the player."
@@ -67,11 +67,11 @@ msgstr "Ten wątek będzie używany przez PyLav do publikowania powiadomień o g
 
 #: plnotifier/cog.py:327 plnotifier/cog.py:363
 msgid "A new webhook was being created."
-msgstr ""
+msgstr "Tworzony był nowy webhook."
 
 #: plnotifier/cog.py:377
 msgid "PyLavNotifier channel set to {channel_variable_do_not_translate}."
-msgstr ""
+msgstr "Kanał PyLavNotifier ustawiony na {channel_variable_do_not_translate}."
 
 #: plnotifier/cog.py:389
 #, docstring
@@ -91,11 +91,12 @@ msgstr "Ustaw czy chcesz powiadomić o określonym wydarzeniu.\n\n"
 #: plnotifier/cog.py:406
 msgid "Invalid event, possible events are:\n\n"
 "{events_variable_do_not_translate}."
-msgstr ""
+msgstr "Nieprawidłowe zdarzenie, możliwe zdarzenia to:\n\n"
+"{events_variable_do_not_translate}."
 
 #: plnotifier/cog.py:425
 msgid "Event {event_variable_do_not_translate} set to {toggle_variable_do_not_translate}{extras_variable_do_not_translate}."
-msgstr ""
+msgstr "Zdarzenie {event_variable_do_not_translate} ustaw na {toggle_variable_do_not_translate}{extras_variable_do_not_translate}."
 
 #: plnotifier/cog.py:429
 msgid "notify"
@@ -119,7 +120,7 @@ msgstr "Śledź wydarzenie utknięcia"
 
 #: plnotifier/cog.py:451
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} is stuck for {threshold_variable_do_not_translate} seconds, skipping."
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] {track_variable_do_not_translate} utknął na {threshold_variable_do_not_translate} sekund, pomijanie."
 
 #: plnotifier/cog.py:478
 msgid "Track Exception Event"
@@ -128,27 +129,28 @@ msgstr "Śledź zdarzenie wyjątku"
 #: plnotifier/cog.py:479
 msgid "[Node={node_variable_do_not_translate}] There was an error while playing {track_variable_do_not_translate}:\n"
 "{exception_variable_do_not_translate}"
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] Wystąpił błąd podczas gry {track_variable_do_not_translate}:\n"
+"{exception_variable_do_not_translate}"
 
 #: plnotifier/cog.py:505
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing because the player reached the end of the tracks runtime."
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] {track_variable_do_not_translate} zakończył odtwarzanie, ponieważ gracz dotarł do końca czasu trwania utworów."
 
 #: plnotifier/cog.py:512
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing because a new track started playing."
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] {track_variable_do_not_translate} został ukończony, ponieważ zaczął być odtwarzany nowy utwór."
 
 #: plnotifier/cog.py:519
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing because it failed to start."
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] {track_variable_do_not_translate} zakończył odtwarzanie, ponieważ nie udało się uruchomić."
 
 #: plnotifier/cog.py:526
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing becausethe player was stopped."
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] {track_variable_do_not_translate} zakończył grę, ponieważ gracz został zatrzymany."
 
 #: plnotifier/cog.py:533
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing becausethe node told it to stop."
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] {track_variable_do_not_translate} zakończył odtwarzanie, ponieważ węzeł kazał mu się zatrzymać."
 
 #: plnotifier/cog.py:542
 msgid "Track End Event"
@@ -161,7 +163,8 @@ msgstr "Rozpoczęcie wydarzenia utworu YouTube"
 #: plnotifier/cog.py:569
 msgid "[Node={node_variable_do_not_translate}] YouTube Music track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] Utwór YouTube Music: {track_variable_do_not_translate} zaczął grać.\n"
+"Na życzenie: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:600
 msgid "Deezer Track Start Event"
@@ -170,7 +173,8 @@ msgstr "Deezer Track Start Zdarzenia"
 #: plnotifier/cog.py:601
 msgid "[Node={node_variable_do_not_translate}] Deezer track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] Utwór Deezer: {track_variable_do_not_translate} zaczął grać.\n"
+"Na życzenie: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:632
 msgid "Spotify Track Start Event"
@@ -179,7 +183,8 @@ msgstr "Rozpoczęcie wydarzenia śladu Spotify"
 #: plnotifier/cog.py:633
 msgid "[Node={node_variable_do_not_translate}] Spotify track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] Utwór Spotify: {track_variable_do_not_translate} zaczął grać.\n"
+"Na życzenie: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:664
 msgid "Apple Music Track Start Event"
@@ -188,7 +193,8 @@ msgstr "Rozpoczęcie wydarzenia Apple Music Track"
 #: plnotifier/cog.py:665
 msgid "[Node={node_variable_do_not_translate}] Apple Music track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] Utwór Apple Music: {track_variable_do_not_translate} zaczął grać.\n"
+"Na życzenie: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:696
 msgid "Local Track Start Event"
@@ -197,7 +203,8 @@ msgstr "Rozpoczęcie lokalnego śladu"
 #: plnotifier/cog.py:697
 msgid "[Node={node_variable_do_not_translate}] Local track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] Ścieżka lokalna: {track_variable_do_not_translate} zaczął grać.\n"
+"Na życzenie: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:728
 msgid "HTTP Track Start Event"
@@ -206,7 +213,8 @@ msgstr "Wydarzenie początkowe śladu HTTP"
 #: plnotifier/cog.py:729
 msgid "[Node={node_variable_do_not_translate}] HTTP track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] Ścieżka HTTP: {track_variable_do_not_translate} zaczął grać.\n"
+"Na życzenie: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:760
 msgid "Text-To-Speech Track Start Event"
@@ -215,7 +223,8 @@ msgstr "Rozpoczęcie wydarzenia TT Speech Track"
 #: plnotifier/cog.py:761
 msgid "[Node={node_variable_do_not_translate}] Text-To-Speech track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}."
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] Ścieżka zamiany tekstu na mowę: {track_variable_do_not_translate} zaczął grać.\n"
+"Na życzenie: {requester_variable_do_not_translate}."
 
 #: plnotifier/cog.py:792
 msgid "YouTube Track Start Event"
@@ -224,7 +233,8 @@ msgstr "Rozpoczęcie wydarzenia utworu YouTube"
 #: plnotifier/cog.py:793
 msgid "[Node={node_variable_do_not_translate}] YouTube track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}."
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] Utwór na YouTube: {track_variable_do_not_translate} zaczął grać.\n"
+"Na życzenie: {requester_variable_do_not_translate}."
 
 #: plnotifier/cog.py:824 plnotifier/cog.py:859 plnotifier/cog.py:894
 #: plnotifier/cog.py:929 plnotifier/cog.py:964 plnotifier/cog.py:999
@@ -232,7 +242,7 @@ msgstr ""
 #: plnotifier/cog.py:1139 plnotifier/cog.py:1174 plnotifier/cog.py:1209
 #: plnotifier/cog.py:1244 plnotifier/cog.py:1279
 msgid "{source_variable_do_not_translate} Track Start Event"
-msgstr ""
+msgstr "{source_variable_do_not_translate} Śledź wydarzenie startowe"
 
 #: plnotifier/cog.py:827 plnotifier/cog.py:862 plnotifier/cog.py:897
 #: plnotifier/cog.py:932 plnotifier/cog.py:967 plnotifier/cog.py:1002
@@ -241,7 +251,8 @@ msgstr ""
 #: plnotifier/cog.py:1247 plnotifier/cog.py:1282
 msgid "[Node={node_variable_do_not_translate}] {source_variable_do_not_translate} track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] {source_variable_do_not_translate} śledzić: {track_variable_do_not_translate} zaczął grać.\n"
+"Na życzenie: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:1314
 msgid "Track Skipped Event"
@@ -250,7 +261,8 @@ msgstr "Śledź pominięte wydarzenie"
 #: plnotifier/cog.py:1315
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has been skipped.\n"
 "Requested by {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] {track_variable_do_not_translate} został pominięty.\n"
+"Na żądanie {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:1346
 msgid "Track Seek Event"
@@ -258,7 +270,7 @@ msgstr "Śledź zdarzenie Seek"
 
 #: plnotifier/cog.py:1347
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} requested that {track_variable_do_not_translate} is sought from position {from_variable_do_not_translate} to position {after_variable_do_not_translate}"
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] {requester_variable_do_not_translate} zażądał, aby {track_variable_do_not_translate} jest poszukiwany z pozycji {from_variable_do_not_translate} do pozycji {after_variable_do_not_translate}"
 
 #: plnotifier/cog.py:1381
 msgid "Track Previous Requested Event"
@@ -266,7 +278,7 @@ msgstr "Śledź poprzednie żądane wydarzenie"
 
 #: plnotifier/cog.py:1382
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} requested that the previous track {track_variable_do_not_translate} be played"
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] {requester_variable_do_not_translate} zażądał, aby poprzedni utwór {track_variable_do_not_translate} być odtwarzane"
 
 #: plnotifier/cog.py:1413
 msgid "Tracks Requested Event"
@@ -274,11 +286,11 @@ msgstr "Zdarzenie Żądanych ścieżek"
 
 #: plnotifier/cog.py:1414
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} added {track_count_variable_do_not_translate} to the queue."
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] {requester_variable_do_not_translate} Dodane {track_count_variable_do_not_translate} do kolejki."
 
 #: plnotifier/cog.py:1417
 msgid "{count_variable_do_not_translate} track"
-msgstr ""
+msgstr "{count_variable_do_not_translate} śledzić"
 
 #: plnotifier/cog.py:1444
 msgid "Track AutoPlay Event"
@@ -286,7 +298,7 @@ msgstr "Śledź zdarzenie AutoPlay"
 
 #: plnotifier/cog.py:1445
 msgid "[Node={node_variable_do_not_translate}] Auto playing {track_variable_do_not_translate}."
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] Automatyczne odtwarzanie {track_variable_do_not_translate}."
 
 #: plnotifier/cog.py:1475
 msgid "Track Resumed Event"
@@ -294,7 +306,7 @@ msgstr "Śledź wznowione wydarzenie"
 
 #: plnotifier/cog.py:1476
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} resumed {track_variable_do_not_translate}"
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] {requester_variable_do_not_translate} Wznowione {track_variable_do_not_translate}"
 
 #: plnotifier/cog.py:1507
 msgid "Queue Shuffled Event"
@@ -302,7 +314,7 @@ msgstr "Wydarzenie losowe kolejki"
 
 #: plnotifier/cog.py:1508
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} shuffled the queue"
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] {requester_variable_do_not_translate} przetasował kolejkę"
 
 #: plnotifier/cog.py:1532
 msgid "Queue End Event"
@@ -310,7 +322,7 @@ msgstr "Wydarzenie zakończenia kolejki"
 
 #: plnotifier/cog.py:1533
 msgid "[Node={node_variable_do_not_translate}] All tracks in the queue have been played"
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] Wszystkie utwory w kolejce zostały odtworzone"
 
 #: plnotifier/cog.py:1560
 msgid "Tracks Removed Event"
@@ -318,7 +330,7 @@ msgstr "Wydarzenie usunięte z utworu"
 
 #: plnotifier/cog.py:1561
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} removed {track_count_variable_do_not_translate} tracks from the queue"
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] {requester_variable_do_not_translate} Usunięte {track_count_variable_do_not_translate} Utwory z kolejki"
 
 #: plnotifier/cog.py:1592 plnotifier/cog.py:2117
 msgid "Player Paused Event"
@@ -326,7 +338,7 @@ msgstr "Wydarzenie wstrzymane"
 
 #: plnotifier/cog.py:1593
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} paused the player"
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] {requester_variable_do_not_translate} wstrzymał odtwarzacz"
 
 #: plnotifier/cog.py:1622
 msgid "Player Stopped Event"
@@ -334,7 +346,7 @@ msgstr "Gracz zatrzymał wydarzenie"
 
 #: plnotifier/cog.py:1623
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} stopped the player"
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] {requester_variable_do_not_translate} zatrzymał gracza"
 
 #: plnotifier/cog.py:1652 plnotifier/cog.py:2147
 msgid "Player Resumed Event"
@@ -342,7 +354,7 @@ msgstr "Odtwarzacz wznowił wydarzenie"
 
 #: plnotifier/cog.py:1653
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} resumed the player"
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] {requester_variable_do_not_translate} wznowił gracza"
 
 #: plnotifier/cog.py:1682
 msgid "Player Moved Event"
@@ -350,7 +362,7 @@ msgstr "Wydarzenie Przeniesiono gracza"
 
 #: plnotifier/cog.py:1683
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} moved the player from {before_variable_do_not_translate} to {after_variable_do_not_translate}"
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] {requester_variable_do_not_translate} przeniósł gracza z {before_variable_do_not_translate} do {after_variable_do_not_translate}"
 
 #: plnotifier/cog.py:1715
 msgid "Player Disconnected Event"
@@ -358,7 +370,7 @@ msgstr "Wydarzenie odłączonego gracza"
 
 #: plnotifier/cog.py:1716
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} disconnected the player"
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] {requester_variable_do_not_translate} odłączył odtwarzacz"
 
 #: plnotifier/cog.py:1745
 msgid "Player Connected Event"
@@ -374,7 +386,7 @@ msgstr "Wydarzenie Głośności odtwarzacza"
 
 #: plnotifier/cog.py:1774
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} changed the player volume from {before_variable_do_not_translate} to {afte_variable_do_not_translater}."
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] {requester_variable_do_not_translate} Zmieniono głośność odtwarzacza z {before_variable_do_not_translate} do {afte_variable_do_not_translater}."
 
 #: plnotifier/cog.py:1808 plnotifier/cog.py:1820 plnotifier/cog.py:1833
 msgid "Player Repeat Event"
@@ -382,11 +394,11 @@ msgstr "Wydarzenie Powtarzania Gracza"
 
 #: plnotifier/cog.py:1809
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} disabled repeat"
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] {requester_variable_do_not_translate} wyłączone powtarzanie"
 
 #: plnotifier/cog.py:1821
 msgid "{requester_variable_do_not_translate} {status_variable_do_not_translate} repeat of the whole queue"
-msgstr ""
+msgstr "{requester_variable_do_not_translate} {status_variable_do_not_translate} powtórzenie całej kolejki"
 
 #: plnotifier/cog.py:1825 plnotifier/cog.py:1838
 msgid "enabled"
@@ -398,7 +410,7 @@ msgstr "niepełnosprawny"
 
 #: plnotifier/cog.py:1834
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} {status_variable_do_not_translate} repeat for {track_variable_do_not_translate}"
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] {requester_variable_do_not_translate} {status_variable_do_not_translate} powtórz dla {track_variable_do_not_translate}"
 
 #: plnotifier/cog.py:1868
 msgid "Player Restored Event"
@@ -406,7 +418,7 @@ msgstr "Wydarzenie odtwarzacza"
 
 #: plnotifier/cog.py:1869
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} restored the player"
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] {requester_variable_do_not_translate} przywrócił gracza"
 
 #: plnotifier/cog.py:1894
 msgid "an intro section"
@@ -446,7 +458,7 @@ msgstr "Segment sponsora Pominięto wydarzenie"
 
 #: plnotifier/cog.py:1913
 msgid "[Node={node_variable_do_not_translate}] Sponsorblock: Skipped {category_variable_do_not_translate} running from {start_variable_do_not_translate}s to {to_variable_do_not_translate}s"
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] Sponsorblock: Pominięte {category_variable_do_not_translate} bieganie od {start_variable_do_not_translate}s do {to_variable_do_not_translate}s"
 
 #: plnotifier/cog.py:1943
 msgid "Effect"
@@ -474,7 +486,7 @@ msgstr "Aktualnie stosowane"
 
 #: plnotifier/cog.py:1991
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} changed the player filters"
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] {requester_variable_do_not_translate} Zmieniono filtry odtwarzacza"
 
 #: plnotifier/cog.py:2013
 msgid "Node Connected Event"
@@ -482,7 +494,7 @@ msgstr "Węzeł połączonego zdarzenia"
 
 #: plnotifier/cog.py:2014
 msgid "Node {name_variable_do_not_translate} has been connected"
-msgstr ""
+msgstr "Węzeł {name_variable_do_not_translate} został podłączony"
 
 #: plnotifier/cog.py:2032
 msgid "Node Disconnected Event"
@@ -490,7 +502,7 @@ msgstr "Zdarzenie rozłączone węzła"
 
 #: plnotifier/cog.py:2033
 msgid "Node {name_variable_do_not_translate} has been disconnected with code {code_variable_do_not_translate} and reason: {reason_variable_do_not_translate}"
-msgstr ""
+msgstr "Węzeł {name_variable_do_not_translate} został odłączony od kodu {code_variable_do_not_translate} i powód: {reason_variable_do_not_translate}"
 
 #: plnotifier/cog.py:2059
 msgid "Node Changed Event"
@@ -498,7 +510,7 @@ msgstr "Zdarzenie zmienione węzłem"
 
 #: plnotifier/cog.py:2060
 msgid "The node which the player is connected to changed from {from_variable_do_not_translate} to {to_variable_do_not_translate}"
-msgstr ""
+msgstr "Zmienił się węzeł, z którym gracz jest podłączony; {from_variable_do_not_translate} do {to_variable_do_not_translate}"
 
 #: plnotifier/cog.py:2084
 msgid "WebSocket Closed Event"
@@ -506,15 +518,15 @@ msgstr "Wydarzenie zamknięte WebSocket"
 
 #: plnotifier/cog.py:2085
 msgid "[Node={node_variable_do_not_translate}] The Lavalink websocket connection to Discord closed with code {code_variable_do_not_translate} and reason {reason_variable_do_not_translate}"
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] Połączenie Websocket Lavalink z Discordem zamknięte kodem {code_variable_do_not_translate} i rozum {reason_variable_do_not_translate}"
 
 #: plnotifier/cog.py:2118
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} automatically paused the player due to configured values"
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] {requester_variable_do_not_translate} Automatycznie wstrzymał odtwarzacz z powodu skonfigurowanych wartości"
 
 #: plnotifier/cog.py:2148
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} automatically resumed the player due to configured values"
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] {requester_variable_do_not_translate} automatycznie wznowił odtwarzanie odtwarzacza ze względu na skonfigurowane wartości"
 
 #: plnotifier/cog.py:2177 plnotifier/cog.py:2209
 msgid "Auto Player Disconnected Event"
@@ -522,9 +534,9 @@ msgstr "Wydarzenie automatycznego odłączonego gracza"
 
 #: plnotifier/cog.py:2178
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} automatically disconnected the player as there is no one listening"
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] {requester_variable_do_not_translate} automatycznie odłączył odtwarzacz, ponieważ nikt nie słucha"
 
 #: plnotifier/cog.py:2210
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} automatically disconnected the player as the queue is empty"
-msgstr ""
+msgstr "[Węzeł={node_variable_do_not_translate}] {requester_variable_do_not_translate} Automatyczne odłączanie odtwarzacza, gdy kolejka jest pusta"
 

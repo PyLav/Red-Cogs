@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-02-03 20:16+0000\n"
-"PO-Revision-Date: 2023-02-03 20:20\n"
+"PO-Revision-Date: 2023-02-03 21:03\n"
 "Last-Translator: \n"
 "Language-Team: Romanian\n"
 "MIME-Version: 1.0\n"
@@ -47,7 +47,7 @@ msgstr "Adaugă un nod în PyLav"
 
 #: plnodes/cog.py:87
 msgid "Let us add a node to PyLav!"
-msgstr ""
+msgstr "Să adăugăm un nod la PyLav!"
 
 #: plnodes/cog.py:88
 msgid "(**1**){space_variable_do_not_translate} - Apply changes and add the node to PyLav.\n"
@@ -61,7 +61,17 @@ msgid "(**1**){space_variable_do_not_translate} - Apply changes and add the node
 "(**9**){space_variable_do_not_translate} - Set the connection timeout.\n"
 "(**10**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space_variable_do_not_translate} - Aplicați modificările și adăugați nodul la PyLav.\n"
+"(**2**){space_variable_do_not_translate} - Anulați orice modificări efectuate și închideți meniul.\n"
+"(**3**){space_variable_do_not_translate} - Comutați între modurile de căutare și căutare și redare.\n"
+"(**4**){space_variable_do_not_translate} - Comutați între SSL pornit și oprit.\n"
+"(**5**){space_variable_do_not_translate} - Adăugați un nume la nod.\n"
+"(**6**){space_variable_do_not_translate} - Adăugați adresa gazdă a nodului.\n"
+"(**7**){space_variable_do_not_translate} - Adăugați portul pe care îl folosește nodul.\n"
+"(**8**){space_variable_do_not_translate} - Setați parola pentru nod.\n"
+"(**9**){space_variable_do_not_translate} - Setați expirarea conexiunii.\n"
+"(**10**) - Selectați ce surse să dezactivați pentru acest nod (pot fi selectate mai multe).\n"
+"Dacă interacționați cu un buton de mai multe ori, numai ultima interacțiune va intra în vigoare.\n\n\n"
 
 #: plnodes/cog.py:134
 msgid "I have added the {name_variable_do_not_translate} node with the following settings:\n"
@@ -72,11 +82,18 @@ msgid "I have added the {name_variable_do_not_translate} node with the following
 "Search Only: {search_only_variable_do_not_translate}\n"
 "SSL: {ssl_variable_do_not_translate}\n"
 "Disabled Sources: {disabled_sources_variable_do_not_translate}\n"
-msgstr ""
+msgstr "Am adăugat {name_variable_do_not_translate} nod cu următoarele setări:\n"
+"Gazdă: {host_variable_do_not_translate}\n"
+"Port: {port_variable_do_not_translate}\n"
+"Parolă: {password_variable_do_not_translate}\n"
+"Reluarea timeout-ului: {resume_timeout_variable_do_not_translate}\n"
+"Numai căutare: {search_only_variable_do_not_translate}\n"
+"SSL: {ssl_variable_do_not_translate}\n"
+"Surse dezactivate: {disabled_sources_variable_do_not_translate}\n"
 
 #: plnodes/cog.py:165 plnodes/cog.py:172
 msgid "I am unable to add this node"
-msgstr ""
+msgstr "Nu pot adăuga acest nod"
 
 #: plnodes/cog.py:178
 #, docstring
@@ -85,16 +102,17 @@ msgstr "Elimină un nod dintr-o instanță PyLav"
 
 #: plnodes/cog.py:190
 msgid "{name_variable_do_not_translate} is managed by PyLav and cannot be removed."
-msgstr ""
+msgstr "{name_variable_do_not_translate} este administrat de PyLav și nu poate fi îndepărtat."
 
 #: plnodes/cog.py:207
 msgid "I have removed the {name_variable_do_not_translate} node.\n\n"
 "{data_variable_do_not_translate}"
-msgstr ""
+msgstr "Am eliminat {name_variable_do_not_translate} nod.\n\n"
+"{data_variable_do_not_translate}"
 
 #: plnodes/cog.py:220
 msgid "I have removed the {name_variable_do_not_translate} node. A direct message was sent to you with the node details in case you wish to re-add it."
-msgstr ""
+msgstr "Am eliminat {name_variable_do_not_translate} nod. Un mesaj direct a fost trimis la tine cu detaliile nodului în cazul în care doriți să-l re-adăugați."
 
 #: plnodes/cog.py:230
 #, docstring
@@ -103,7 +121,7 @@ msgstr "Gestionează toate nodurile într-o instanță PyLav"
 
 #: plnodes/cog.py:242
 msgid "Let us manage some nodes!"
-msgstr ""
+msgstr "Să gestionăm niște noduri!"
 
 #: plnodes/cog.py:243
 msgid "(**1**){space_variable_do_not_translate} - Cancel any changes made and close the menu.\n"
@@ -119,15 +137,27 @@ msgid "(**1**){space_variable_do_not_translate} - Cancel any changes made and cl
 "(**15**) - Remove this node.\n"
 "(**16**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space_variable_do_not_translate} - Anulați orice modificări efectuate și închideți meniul.\n"
+"(**6**){space_variable_do_not_translate} - Afișați sursele activate pentru acest nod.\n"
+"(**7**){space_variable_do_not_translate} - Aplicați modificările și adăugați nodul la PyLav.\n"
+"(**8**){space_variable_do_not_translate} - Comutați între modurile de căutare și căutare și redare.\n"
+"(**9**){space_variable_do_not_translate} - Comutați între SSL pornit și oprit.\n"
+"(**10**) - Adăugați un nume la nod.\n"
+"(**11**) - Adăugați adresa gazdă a nodului.\n"
+"(**12**) - Adăugați portul pe care îl utilizează nodul.\n"
+"(**13**) - Setați parola pentru nod.\n"
+"(**14**) - Setați expirarea conexiunii.\n"
+"(**15**) - Eliminați acest nod.\n"
+"(**16**) - Selectați sursele de dezactivat pentru acest nod (pot fi selectate mai multe).\n"
+"Dacă interacționați cu un buton de mai multe ori, numai ultima interacțiune va intra în vigoare.\n\n\n"
 
 #: plnodes/cog.py:272
 msgid "{name_variable_do_not_translate} is managed by PyLav, and I can not modify it."
-msgstr ""
+msgstr "{name_variable_do_not_translate} este administrat de PyLav, iar eu nu-l pot modifica."
 
 #: plnodes/cog.py:284
 msgid "I have removed the {name_variable_do_not_translate} node."
-msgstr ""
+msgstr "Am eliminat {name_variable_do_not_translate} nod."
 
 #: plnodes/cog.py:322
 msgid "I have changed the {name_variable_do_not_translate} node to the following settings:\n"
@@ -138,7 +168,14 @@ msgid "I have changed the {name_variable_do_not_translate} node to the following
 "Search Only: {search_only_variable_do_not_translate}\n"
 "SSL: {ssl_variable_do_not_translate}\n"
 "Disabled Sources: {disabled_sources_variable_do_not_translate}\n"
-msgstr ""
+msgstr "Am schimbat {name_variable_do_not_translate} nod la următoarele setări:\n"
+"Gazdă: {host_variable_do_not_translate}\n"
+"Port: {port_variable_do_not_translate}\n"
+"Parolă: {password_variable_do_not_translate}\n"
+"Reluarea timeout-ului: {resume_timeout_variable_do_not_translate}\n"
+"Numai căutare: {search_only_variable_do_not_translate}\n"
+"SSL: {ssl_variable_do_not_translate}\n"
+"Surse dezactivate: {disabled_sources_variable_do_not_translate}\n"
 
 #: plnodes/cog.py:349
 #, docstring
@@ -147,5 +184,5 @@ msgstr "Listează toate nodurile folosite de PyLav"
 
 #: plnodes/cog.py:359
 msgid "No nodes were added to PyLav."
-msgstr ""
+msgstr "La PyLav nu au fost adăugate noduri."
 

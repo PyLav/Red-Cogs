@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-02-03 20:16+0000\n"
-"PO-Revision-Date: 2023-02-03 20:20\n"
+"PO-Revision-Date: 2023-02-03 21:03\n"
 "Last-Translator: \n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -46,11 +46,11 @@ msgstr "Le noeud Lavalink géré est déjà à jour."
 
 #: plmanagednode/cog.py:101
 msgid "Your node is out of date, to update please run `{command_name_variable_do_not_translate}`."
-msgstr ""
+msgstr "Votre nœud est obsolète, pour mettre à jour s’il vous plaît exécuter '{command_name_variable_do_not_translate}`."
 
 #: plmanagednode/cog.py:118
 msgid "The managed Lavalink node has been updated to version {version_variable_do_not_translate}."
-msgstr ""
+msgstr "Le nœud Lavalink géré a été mis à jour vers la version {version_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:130
 #, docstring
@@ -63,11 +63,11 @@ msgstr "Activez/désactivez le nœud géré.\n\n"
 
 #: plmanagednode/cog.py:145
 msgid "The PyLav managed node has been enabled."
-msgstr ""
+msgstr "Le nœud géré par PyLav a été activé."
 
 #: plmanagednode/cog.py:153
 msgid "The PyLav managed node has been disabled."
-msgstr ""
+msgstr "Le nœud géré par PyLav a été désactivé."
 
 #: plmanagednode/cog.py:161
 #, docstring
@@ -80,11 +80,11 @@ msgstr "Activez/désactivez les mises à jour automatiques des nœuds gérés.\n
 
 #: plmanagednode/cog.py:177
 msgid "The PyLav managed node auto updates have been enabled."
-msgstr ""
+msgstr "Les mises à jour automatiques des nœuds gérés par PyLav ont été activées."
 
 #: plmanagednode/cog.py:185
 msgid "The  PyLav managed node auto updates have been disabled."
-msgstr ""
+msgstr "Les mises à jour automatiques des nœuds gérés par PyLav ont été désactivées."
 
 #: plmanagednode/cog.py:193
 #, docstring
@@ -111,15 +111,15 @@ msgstr "La taille du tas doit être d'au moins 64M, mais il est recommandé de l
 
 #: plmanagednode/cog.py:239
 msgid "Heap-size must be less than your system RAM, You currently have {ram_in_bytes_variable_do_not_translate} of RAM available"
-msgstr ""
+msgstr "La taille du tas doit être inférieure à la RAM de votre système, vous avez actuellement {ram_in_bytes_variable_do_not_translate} de RAM disponible"
 
 #: plmanagednode/cog.py:251
 msgid "Heap-size must be less than {limit_variable_do_not_translate} due to your system limitations"
-msgstr ""
+msgstr "La taille du tas doit être inférieure à {limit_variable_do_not_translate} en raison des limitations de votre système"
 
 #: plmanagednode/cog.py:271
 msgid "The Managed node heap-size set to {bytes_variable_do_not_translate}."
-msgstr ""
+msgstr "Taille de segment de nœud géré définie sur {bytes_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:281
 #, docstring
@@ -133,7 +133,7 @@ msgstr "Définir l'hôte de nœud géré"
 
 #: plmanagednode/cog.py:297
 msgid "The Managed node host set to {host_variable_do_not_translate}."
-msgstr ""
+msgstr "L’hôte de nœud géré défini sur {host_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:307
 #, docstring
@@ -142,7 +142,11 @@ msgid "`Dangerous command` Set the managed Lavalink node connection port.\n\n"
 "        conflict with the default port because you already have an application using port 2154 on this device.\n\n"
 "        The value by default is `2154`.\n"
 "        "
-msgstr ""
+msgstr "'Commande dangereuse' Définissez le port de connexion du nœud Lavalink géré.\n\n"
+"        Ce port est le port auquel le nœud Lavalink géré se lie, vous ne devez le modifier que s’il existe un\n"
+"        conflit avec le port par défaut car vous avez déjà une application utilisant le port 2154 sur ce périphérique.\n\n"
+"        La valeur par défaut est '2154'.\n"
+"        "
 
 #: plmanagednode/cog.py:317
 msgid "The port must be between 1024 and 49151"
@@ -150,7 +154,7 @@ msgstr "Le port doit être compris entre 1024 et 49151"
 
 #: plmanagednode/cog.py:329
 msgid "The managed node port set to {port_variable_do_not_translate}."
-msgstr ""
+msgstr "Port de nœud géré défini sur {port_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:339
 #, docstring
@@ -164,11 +168,11 @@ msgstr "Désactivé un des plugins disponibles"
 
 #: plmanagednode/cog.py:361 plmanagednode/cog.py:472
 msgid "The plugin must be one of the following: {plugins_variable_do_not_translate}"
-msgstr ""
+msgstr "Le plugin doit être l’un des suivants : {plugins_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:446
 msgid "Managed node plugin {plugin_variable_do_not_translate} disabled."
-msgstr ""
+msgstr "Plug-in de nœud géré {plugin_variable_do_not_translate} handicapé."
 
 #: plmanagednode/cog.py:456
 #, docstring
@@ -177,7 +181,7 @@ msgstr "Activer l'un des plugins disponibles"
 
 #: plmanagednode/cog.py:505
 msgid "Managed node plugin {plugin_variable_do_not_translate} enabled."
-msgstr ""
+msgstr "Plug-in de nœud géré {plugin_variable_do_not_translate} Activé."
 
 #: plmanagednode/cog.py:515
 #, docstring
@@ -186,16 +190,17 @@ msgstr "Mettre à jour les plugins de nœuds gérés"
 
 #: plmanagednode/cog.py:589
 msgid "{name_variable_do_not_translate} was updated from {old_variable_do_not_translate} to {new_variable_do_not_translate}\n"
-msgstr ""
+msgstr "{name_variable_do_not_translate} a été mis à jour à partir de {old_variable_do_not_translate} À {new_variable_do_not_translate}\n"
 
 #: plmanagednode/cog.py:599
 msgid "Managed node plugins updated.\n\n"
 "{update_variable_do_not_translate}"
-msgstr ""
+msgstr "Mise à jour des plug-ins de nœuds gérés.\n\n"
+"{update_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:609
 msgid "The managed node plugins are already up to date."
-msgstr ""
+msgstr "Les plugins de nœuds gérés sont déjà à jour."
 
 #: plmanagednode/cog.py:617
 #, docstring
@@ -204,7 +209,7 @@ msgstr "Activer/désactiver les sources de nœuds gérés"
 
 #: plmanagednode/cog.py:632
 msgid "Invalid source, {valid_list_variable_do_not_translate} are valid sources"
-msgstr ""
+msgstr "Source non valide, {valid_list_variable_do_not_translate} sont des sources valides"
 
 #: plmanagednode/cog.py:648 plmanagednode/cog.py:687
 msgid "enabled"
@@ -216,7 +221,7 @@ msgstr "handicapé"
 
 #: plmanagednode/cog.py:651
 msgid "Managed node {source_variable_do_not_translate} source set to {state_variable_do_not_translate}."
-msgstr ""
+msgstr "Nœud géré {source_variable_do_not_translate} source définie sur {state_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:664
 #, docstring
@@ -225,11 +230,11 @@ msgstr "Activer/désactiver les filtres de noeuds gérés"
 
 #: plmanagednode/cog.py:676
 msgid "Invalid source, {valid_list_variable_do_not_translate} are valid filters"
-msgstr ""
+msgstr "Source non valide, {valid_list_variable_do_not_translate} sont des filtres valides"
 
 #: plmanagednode/cog.py:690
 msgid "Managed node {source_variable_do_not_translate} filter set to {state_variable_do_not_translate}."
-msgstr ""
+msgstr "Nœud géré {source_variable_do_not_translate} filtre défini sur {state_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:703
 #, docstring
@@ -247,12 +252,26 @@ msgid "Configure multiple settings for the managed node.\n\n"
 "        `youtubeSearchEnabled` : Boolean i.e True (Default True)\n"
 "        `soundcloudSearchEnabled` : Boolean i.e True (Default True)\n"
 "        "
-msgstr ""
+msgstr "Configurez plusieurs paramètres pour le nœud géré.\n\n"
+"        Exécuter '[p]Serveur de paramètres plmanaged <setting> info' pour afficher des informations sur les paramètres et ce qu’ils font.\n\n"
+"        **Noms des paramètres** :\n"
+"        'bufferDurationMs' : Entier c’est-à-dire 400 (400 par défaut) - Défini sur 0 pour désactiver JDA-NAS\n"
+"        'frameBufferDurationMs' : entier c’est-à-dire 1000 (1000 par défaut)\n"
+"        'trackStuckThresholdMs' : entier c’est-à-dire 1000 (1000 par défaut)\n"
+"        'youtubePlaylistLoadLimit' : Entier c’est-à-dire 1000 (1000 par défaut)\n"
+"        'opusEncodingQuality' : entier c’est-à-dire 10 (10 par défaut)\n"
+"        'resamplingQuality' : String i.e LOW (Default HIGH)\n"
+"        'useSeekGhosting' : booléen c’est-à-dire vrai (vrai par défaut)\n"
+"        'playerUpdateInterval' : entier c’est-à-dire 30 (30 par défaut)\n"
+"        'youtubeSearchEnabled' : Booléen c’est-à-dire vrai (True par défaut)\n"
+"        'soundcloudSearchEnabled' : Booléen c’est-à-dire vrai (True par défaut)\n"
+"        "
 
 #: plmanagednode/cog.py:743
 msgid "{Setting_variable_do_not_translate} is not a valid Setting; Options are:\n\n"
 "{setting_list_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} n’est pas un paramètre valide ; Les options sont les suivantes :\n\n"
+"{setting_list_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:757
 msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses but will increase RAM usage. Minimum of 40ms, lower values may introduce pauses and stutters. Set to 0 to disable JDA-NAS. Accepted values: Range: 0 - 2,000"
@@ -297,33 +316,39 @@ msgstr "Activez ou désactivez les recherches SoundCloud dans le nœud, cela aff
 #: plmanagednode/cog.py:806
 msgid "{Setting_variable_do_not_translate} info.\n\n"
 "{info_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} info.\n\n"
+"{info_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:837
 msgid "{Setting_variable_do_not_translate} valid inputs are:\n\n"
 "Range between: {start_variable_do_not_translate} - {end_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} Les entrées valides sont les suivantes :\n\n"
+"Intervalle entre: {start_variable_do_not_translate} - {end_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:852
 msgid "{Setting_variable_do_not_translate} valid inputs are:\n\n"
 "{setting_list_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} Les entrées valides sont les suivantes :\n\n"
+"{setting_list_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:874
 msgid "{Setting_variable_do_not_translate} set to {value_variable_do_not_translate}."
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} se mettre à {value_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:885
 #, docstring
 msgid "Configure Lavalink IP Rotation for rate limits.\n\n"
 "        Run `[p]plmanaged settings iprotation 1` to remove the ip rotation\n"
 "        "
-msgstr ""
+msgstr "Configurez Lavalink IP Rotation pour les limites de débit.\n\n"
+"        Exécuter '[p]Paramètres gérés iprotation 1' pour supprimer la rotation IP\n"
+"        "
 
 #: plmanagednode/cog.py:896
 msgid "Click the button below to configure the IP rotation for your node.\n"
 "More info at: {url_value_1_variable_do_not_translate} and {url_value_2_variable_do_not_translate}"
-msgstr ""
+msgstr "Cliquez sur le bouton ci-dessous pour configurer la rotation IP de votre nœud.\n"
+"Plus d’infos sur: {url_value_1_variable_do_not_translate} et {url_value_2_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:917
 msgid "Removing the IP rotation from your node."
@@ -334,12 +359,15 @@ msgstr "Suppression de la rotation IP de votre noeud."
 msgid "Link a Google account to Lavalink to bypass the YouTube age restriction.\n\n"
 "        Run `[p]plmanaged settings googleaccount 1` to remove the linked account.\n"
 "        "
-msgstr ""
+msgstr "Associez un compte Google à Lavalink pour contourner la restriction d’âge YouTube.\n\n"
+"        Exécuter '[p]Paramètres gérés GoogleAccount 1' pour supprimer le compte associé.\n"
+"        "
 
 #: plmanagednode/cog.py:936
 msgid "Click the button below to link a Google account to your node, if you have 2FA setup on this account you will need an application password instead\n"
 "More info at: <https://support.google.com/accounts/answer/185833>"
-msgstr ""
+msgstr "Cliquez sur le bouton ci-dessous pour lier un compte Google à votre nœud, si vous avez configuré 2FA sur ce compte, vous aurez besoin d’un mot de passe d’application à la place\n"
+"Plus d’infos sur: <https://support.google.com/accounts/answer/185833>"
 
 #: plmanagednode/cog.py:955
 msgid "Unlinking Google account from your node."
@@ -350,7 +378,9 @@ msgstr "Délier le compte Google de votre nœud."
 msgid "Configure a HTTP proxy for Lavalink\n\n"
 "        Run `[p]plmanaged settings httpproxy 1` to remove the proxy.\n"
 "        "
-msgstr ""
+msgstr "Configurer un proxy HTTP pour Lavalink\n\n"
+"        Exécuter '[p]plmanaged settings httpproxy 1' pour supprimer le proxy.\n"
+"        "
 
 #: plmanagednode/cog.py:974
 msgid "Click the button below to configure a HTTP proxy for your node"
@@ -407,31 +437,31 @@ msgstr "0 ou 1 (0 = désactivé, 1 = activé)"
 
 #: plmanagednode/view.py:189
 msgid "The IP block you have provided is not valid; {error_variable_do_not_translate}."
-msgstr ""
+msgstr "Le bloc IP que vous avez fourni n’est pas valide ; {error_variable_do_not_translate}."
 
 #: plmanagednode/view.py:203
 msgid "No IP blocks were provided."
-msgstr ""
+msgstr "Aucun bloc IP n’a été fourni."
 
 #: plmanagednode/view.py:215
 msgid "The IP address you have provided is not valid; {error_variable_do_not_translate}"
-msgstr ""
+msgstr "L’adresse IP que vous avez fournie n’est pas valide ; {error_variable_do_not_translate}"
 
 #: plmanagednode/view.py:236
 msgid "The strategy you provided is invalid. You must be one of: {options_variable_do_not_translate}."
-msgstr ""
+msgstr "La stratégie que vous avez fournie n’est pas valide. Vous devez être l’un des suivants : {options_variable_do_not_translate}."
 
 #: plmanagednode/view.py:252
 msgid "The retry limit must be a number greater than or equal to -1."
-msgstr ""
+msgstr "La limite de nouvelles tentatives doit être un nombre supérieur ou égal à -1."
 
 #: plmanagednode/view.py:267
 msgid "The search trigger must be 0 or 1."
-msgstr ""
+msgstr "Le déclencheur de recherche doit être 0 ou 1."
 
 #: plmanagednode/view.py:286
 msgid "IP rotation settings saved."
-msgstr ""
+msgstr "Paramètres de rotation IP enregistrés."
 
 #: plmanagednode/view.py:307
 msgid "Google Account Configurator"
@@ -451,7 +481,7 @@ msgstr "mot de passe"
 
 #: plmanagednode/view.py:322
 msgid "If you have 2FA you will need an application password"
-msgstr ""
+msgstr "Si vous avez 2FA, vous aurez besoin d’un mot de passe d’application"
 
 #: plmanagednode/view.py:336 plmanagednode/view.py:425
 msgid "You are not authorized to interact with this"
@@ -475,7 +505,7 @@ msgstr "Nom d’hôte"
 
 #: plmanagednode/view.py:381
 msgid "Hostname of the proxy, (IP or domain or localhost)"
-msgstr ""
+msgstr "Nom d’hôte du proxy (IP ou domaine ou localhost)"
 
 #: plmanagednode/view.py:385
 msgid "Proxy port"
@@ -491,7 +521,7 @@ msgstr "Utilisateur"
 
 #: plmanagednode/view.py:399
 msgid "Optional user for basic authentication fields. Leave blank if you do not use basic authentication"
-msgstr ""
+msgstr "Utilisateur facultatif pour les champs d’authentification de base. Laissez vide si vous n’utilisez pas l’authentification de base"
 
 #: plmanagednode/view.py:405
 msgid "Password"
@@ -499,13 +529,13 @@ msgstr "Mot de passe"
 
 #: plmanagednode/view.py:410
 msgid "Optional password for basic authentication fields. Leave blank if you do not use basic authentication."
-msgstr ""
+msgstr "Mot de passe facultatif pour les champs d’authentification de base. Laissez ce champ vide si vous n’utilisez pas l’authentification de base."
 
 #: plmanagednode/view.py:436
 msgid "The port provided is not valid. It must be between 0 and 65536."
-msgstr ""
+msgstr "Le port fourni n’est pas valide. Il doit être compris entre 0 et 65536."
 
 #: plmanagednode/view.py:453
 msgid "HTTP proxy settings saved."
-msgstr ""
+msgstr "Paramètres de proxy HTTP enregistrés."
 

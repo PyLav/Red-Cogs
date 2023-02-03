@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-02-03 20:16+0000\n"
-"PO-Revision-Date: 2023-02-03 20:20\n"
+"PO-Revision-Date: 2023-02-03 21:03\n"
 "Last-Translator: \n"
 "Language-Team: Croatian\n"
 "MIME-Version: 1.0\n"
@@ -46,11 +46,11 @@ msgstr "Upravljani čvor Lavalink već je ažuran."
 
 #: plmanagednode/cog.py:101
 msgid "Your node is out of date, to update please run `{command_name_variable_do_not_translate}`."
-msgstr ""
+msgstr "Vaš čvor je zastario, za ažuriranje pokrenite '{command_name_variable_do_not_translate}`."
 
 #: plmanagednode/cog.py:118
 msgid "The managed Lavalink node has been updated to version {version_variable_do_not_translate}."
-msgstr ""
+msgstr "Upravljani čvor Lavalink ažuriran je u verziju {version_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:130
 #, docstring
@@ -63,11 +63,11 @@ msgstr "Uključivanje/isključivanje upravljanog čvora.\n\n"
 
 #: plmanagednode/cog.py:145
 msgid "The PyLav managed node has been enabled."
-msgstr ""
+msgstr "Upravljani čvor PyLav je omogućen."
 
 #: plmanagednode/cog.py:153
 msgid "The PyLav managed node has been disabled."
-msgstr ""
+msgstr "Upravljani čvor PyLav je onemogućen."
 
 #: plmanagednode/cog.py:161
 #, docstring
@@ -80,11 +80,11 @@ msgstr "Uključivanje/isključivanje automatskih ažuriranja upravljanih čvorov
 
 #: plmanagednode/cog.py:177
 msgid "The PyLav managed node auto updates have been enabled."
-msgstr ""
+msgstr "Omogućena su automatska ažuriranja upravljanih čvorova PyLav."
 
 #: plmanagednode/cog.py:185
 msgid "The  PyLav managed node auto updates have been disabled."
-msgstr ""
+msgstr "Onemogućena su automatska ažuriranja upravljanih čvorovima kojima upravlja PyLav."
 
 #: plmanagednode/cog.py:193
 #, docstring
@@ -111,15 +111,15 @@ msgstr "Veličina hrpe mora biti najmanje 64M, no preporučuje se da se postavi 
 
 #: plmanagednode/cog.py:239
 msgid "Heap-size must be less than your system RAM, You currently have {ram_in_bytes_variable_do_not_translate} of RAM available"
-msgstr ""
+msgstr "Veličina hrpe mora biti manja od RAM-a vašeg sustava, trenutno imate {ram_in_bytes_variable_do_not_translate} RAM-a dostupan"
 
 #: plmanagednode/cog.py:251
 msgid "Heap-size must be less than {limit_variable_do_not_translate} due to your system limitations"
-msgstr ""
+msgstr "Veličina hrpe mora biti manja od {limit_variable_do_not_translate} zbog ograničenja sustava"
 
 #: plmanagednode/cog.py:271
 msgid "The Managed node heap-size set to {bytes_variable_do_not_translate}."
-msgstr ""
+msgstr "Veličina upravljane hrpe čvorova postavljena na {bytes_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:281
 #, docstring
@@ -133,7 +133,7 @@ msgstr "Postavljanje glavnog računala upravljanog čvora"
 
 #: plmanagednode/cog.py:297
 msgid "The Managed node host set to {host_variable_do_not_translate}."
-msgstr ""
+msgstr "Glavno računalo upravljanog čvora postavljeno na {host_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:307
 #, docstring
@@ -142,7 +142,11 @@ msgid "`Dangerous command` Set the managed Lavalink node connection port.\n\n"
 "        conflict with the default port because you already have an application using port 2154 on this device.\n\n"
 "        The value by default is `2154`.\n"
 "        "
-msgstr ""
+msgstr "'Opasna naredba' Postavite upravljani priključak veze čvora Lavalink.\n\n"
+"        Ovaj priključak je priključak za koji se upravljani čvor Lavalink veže, to biste trebali promijeniti samo ako postoji\n"
+"        sukob sa zadanim priključkom jer već imate aplikaciju koja koristi priključak 2154 na ovom uređaju.\n\n"
+"        Vrijednost je prema zadanim postavkama \"2154\".\n"
+"        "
 
 #: plmanagednode/cog.py:317
 msgid "The port must be between 1024 and 49151"
@@ -150,7 +154,7 @@ msgstr "Luka mora biti između 1024 i 49151"
 
 #: plmanagednode/cog.py:329
 msgid "The managed node port set to {port_variable_do_not_translate}."
-msgstr ""
+msgstr "Upravljani priključak čvora postavljen na {port_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:339
 #, docstring
@@ -164,11 +168,11 @@ msgstr "Onemogućen je jedan od dostupnih dodataka"
 
 #: plmanagednode/cog.py:361 plmanagednode/cog.py:472
 msgid "The plugin must be one of the following: {plugins_variable_do_not_translate}"
-msgstr ""
+msgstr "Dodatak mora biti jedan od sljedećih: {plugins_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:446
 msgid "Managed node plugin {plugin_variable_do_not_translate} disabled."
-msgstr ""
+msgstr "Dodatak upravljanog čvora {plugin_variable_do_not_translate} onemogućen."
 
 #: plmanagednode/cog.py:456
 #, docstring
@@ -177,7 +181,7 @@ msgstr "Omogući jedan od dostupnih dodataka"
 
 #: plmanagednode/cog.py:505
 msgid "Managed node plugin {plugin_variable_do_not_translate} enabled."
-msgstr ""
+msgstr "Dodatak upravljanog čvora {plugin_variable_do_not_translate} omogućen."
 
 #: plmanagednode/cog.py:515
 #, docstring
@@ -186,16 +190,17 @@ msgstr "Ažuriranje dodataka upravljanih čvorova"
 
 #: plmanagednode/cog.py:589
 msgid "{name_variable_do_not_translate} was updated from {old_variable_do_not_translate} to {new_variable_do_not_translate}\n"
-msgstr ""
+msgstr "{name_variable_do_not_translate} ažurirano je iz {old_variable_do_not_translate} do {new_variable_do_not_translate}\n"
 
 #: plmanagednode/cog.py:599
 msgid "Managed node plugins updated.\n\n"
 "{update_variable_do_not_translate}"
-msgstr ""
+msgstr "Ažurirani su dodaci upravljanih čvorova.\n\n"
+"{update_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:609
 msgid "The managed node plugins are already up to date."
-msgstr ""
+msgstr "Dodaci upravljanih čvorova već su ažurni."
 
 #: plmanagednode/cog.py:617
 #, docstring
@@ -204,7 +209,7 @@ msgstr "Uključivanje/isključivanje izvora upravljanih čvorova"
 
 #: plmanagednode/cog.py:632
 msgid "Invalid source, {valid_list_variable_do_not_translate} are valid sources"
-msgstr ""
+msgstr "Izvor nije valjan, {valid_list_variable_do_not_translate} su valjani izvori"
 
 #: plmanagednode/cog.py:648 plmanagednode/cog.py:687
 msgid "enabled"
@@ -216,7 +221,7 @@ msgstr "onemogućen"
 
 #: plmanagednode/cog.py:651
 msgid "Managed node {source_variable_do_not_translate} source set to {state_variable_do_not_translate}."
-msgstr ""
+msgstr "Upravljani čvor {source_variable_do_not_translate} izvor postavljen na {state_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:664
 #, docstring
@@ -225,11 +230,11 @@ msgstr "Uključivanje/isključivanje filtara upravljanih čvorova"
 
 #: plmanagednode/cog.py:676
 msgid "Invalid source, {valid_list_variable_do_not_translate} are valid filters"
-msgstr ""
+msgstr "Izvor nije valjan, {valid_list_variable_do_not_translate} su valjani filtri"
 
 #: plmanagednode/cog.py:690
 msgid "Managed node {source_variable_do_not_translate} filter set to {state_variable_do_not_translate}."
-msgstr ""
+msgstr "Upravljani čvor {source_variable_do_not_translate} filtar postavljen na {state_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:703
 #, docstring
@@ -247,12 +252,26 @@ msgid "Configure multiple settings for the managed node.\n\n"
 "        `youtubeSearchEnabled` : Boolean i.e True (Default True)\n"
 "        `soundcloudSearchEnabled` : Boolean i.e True (Default True)\n"
 "        "
-msgstr ""
+msgstr "Konfiguriranje više postavki za upravljani čvor.\n\n"
+"        Pokreni '[p]plmanaged poslužitelj postavki <setting> informacije' za prikaz informacija o postavkama i onome što rade.\n\n"
+"        **Postavljanje naziva**:\n"
+"        'bufferDurationMs' : Cijeli broj tj. 400 (Zadano 400) - Postavljeno na 0 za onemogućavanje JDA-NAS-a\n"
+"        'frameBufferDurationMs' : Cijeli broj tj 1000 (Zadano 1000)\n"
+"        'trackStuckThresholdMs' : Cijeli broj tj.\n"
+"        'youtubePlaylistLoadLimit' : Cijeli broj tj 1000 (Zadano 1000)\n"
+"        'opusEncodingQuality' : Cijeli broj tj.\n"
+"        \"resamplingQuality\" : Niz tj LOW (Zadano VISOKO)\n"
+"        'useSeekGhosting' : Boolean tj True (Zadano istinito)\n"
+"        'playerUpdateInterval' : Cijeli broj tj.\n"
+"        'youtubeSearchEnabled' : Boolean tj True (Zadano istinito)\n"
+"        'soundcloudSearchEnabled' : Boolean tj True (Default True)\n"
+"        "
 
 #: plmanagednode/cog.py:743
 msgid "{Setting_variable_do_not_translate} is not a valid Setting; Options are:\n\n"
 "{setting_list_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} nije valjana postavka; Mogućnosti su:\n\n"
+"{setting_list_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:757
 msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses but will increase RAM usage. Minimum of 40ms, lower values may introduce pauses and stutters. Set to 0 to disable JDA-NAS. Accepted values: Range: 0 - 2,000"
@@ -297,33 +316,39 @@ msgstr "Omogućite ili onemogućite SoundCloud pretraživanja unutar čvora, to 
 #: plmanagednode/cog.py:806
 msgid "{Setting_variable_do_not_translate} info.\n\n"
 "{info_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} informacije.\n\n"
+"{info_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:837
 msgid "{Setting_variable_do_not_translate} valid inputs are:\n\n"
 "Range between: {start_variable_do_not_translate} - {end_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} valjani ulazi su:\n\n"
+"Raspon između: {start_variable_do_not_translate} - {end_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:852
 msgid "{Setting_variable_do_not_translate} valid inputs are:\n\n"
 "{setting_list_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} valjani ulazi su:\n\n"
+"{setting_list_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:874
 msgid "{Setting_variable_do_not_translate} set to {value_variable_do_not_translate}."
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} postavljeno na {value_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:885
 #, docstring
 msgid "Configure Lavalink IP Rotation for rate limits.\n\n"
 "        Run `[p]plmanaged settings iprotation 1` to remove the ip rotation\n"
 "        "
-msgstr ""
+msgstr "Konfigurirajte Lavalink IP rotaciju za ograničenja brzine.\n\n"
+"        Pokreni '[p]plmanaged postavke iprotation 1' za uklanjanje ip rotacije\n"
+"        "
 
 #: plmanagednode/cog.py:896
 msgid "Click the button below to configure the IP rotation for your node.\n"
 "More info at: {url_value_1_variable_do_not_translate} and {url_value_2_variable_do_not_translate}"
-msgstr ""
+msgstr "Kliknite donji gumb da biste konfigurirali IP rotaciju za svoj čvor.\n"
+"Više informacija na: {url_value_1_variable_do_not_translate} i {url_value_2_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:917
 msgid "Removing the IP rotation from your node."
@@ -334,12 +359,15 @@ msgstr "Uklanjanje IP rotacije iz čvora."
 msgid "Link a Google account to Lavalink to bypass the YouTube age restriction.\n\n"
 "        Run `[p]plmanaged settings googleaccount 1` to remove the linked account.\n"
 "        "
-msgstr ""
+msgstr "Povežite Google račun s Lavalinkom da biste zaobišli dobno ograničenje na YouTubeu.\n\n"
+"        Pokreni '[p]plmanaged postavke googleaccount 1' za uklanjanje povezanog računa.\n"
+"        "
 
 #: plmanagednode/cog.py:936
 msgid "Click the button below to link a Google account to your node, if you have 2FA setup on this account you will need an application password instead\n"
 "More info at: <https://support.google.com/accounts/answer/185833>"
-msgstr ""
+msgstr "Kliknite donji gumb da biste povezali Google račun sa svojim čvorom, ako imate 2FA postavku na ovom računu, umjesto toga trebat će vam lozinka aplikacije\n"
+"Više informacija na: <https://support.google.com/accounts/answer/185833>"
 
 #: plmanagednode/cog.py:955
 msgid "Unlinking Google account from your node."
@@ -350,7 +378,9 @@ msgstr "Prekidanje veze Google računa s čvorom."
 msgid "Configure a HTTP proxy for Lavalink\n\n"
 "        Run `[p]plmanaged settings httpproxy 1` to remove the proxy.\n"
 "        "
-msgstr ""
+msgstr "Konfiguriranje HTTP proxyja za Lavalink\n\n"
+"        Pokreni '[p]plmanaged postavke httpproxy 1' za uklanjanje proxyja.\n"
+"        "
 
 #: plmanagednode/cog.py:974
 msgid "Click the button below to configure a HTTP proxy for your node"
@@ -407,31 +437,31 @@ msgstr "0 ili 1 (0 = onemogućeno, 1 = omogućeno)"
 
 #: plmanagednode/view.py:189
 msgid "The IP block you have provided is not valid; {error_variable_do_not_translate}."
-msgstr ""
+msgstr "IP blok koji ste naveli nije valjan; {error_variable_do_not_translate}."
 
 #: plmanagednode/view.py:203
 msgid "No IP blocks were provided."
-msgstr ""
+msgstr "Nisu osigurani IP blokovi."
 
 #: plmanagednode/view.py:215
 msgid "The IP address you have provided is not valid; {error_variable_do_not_translate}"
-msgstr ""
+msgstr "IP adresa koju ste naveli nije valjana; {error_variable_do_not_translate}"
 
 #: plmanagednode/view.py:236
 msgid "The strategy you provided is invalid. You must be one of: {options_variable_do_not_translate}."
-msgstr ""
+msgstr "Strategija koju ste naveli nije valjana. Morate biti jedan od: {options_variable_do_not_translate}."
 
 #: plmanagednode/view.py:252
 msgid "The retry limit must be a number greater than or equal to -1."
-msgstr ""
+msgstr "Ograničenje ponovnog pokušaja mora biti broj veći ili jednak -1."
 
 #: plmanagednode/view.py:267
 msgid "The search trigger must be 0 or 1."
-msgstr ""
+msgstr "Okidač pretraživanja mora biti 0 ili 1."
 
 #: plmanagednode/view.py:286
 msgid "IP rotation settings saved."
-msgstr ""
+msgstr "Spremljene su postavke IP rotacije."
 
 #: plmanagednode/view.py:307
 msgid "Google Account Configurator"
@@ -451,7 +481,7 @@ msgstr "lozinka"
 
 #: plmanagednode/view.py:322
 msgid "If you have 2FA you will need an application password"
-msgstr ""
+msgstr "Ako imate 2FA, trebat će vam lozinka za aplikaciju"
 
 #: plmanagednode/view.py:336 plmanagednode/view.py:425
 msgid "You are not authorized to interact with this"
@@ -475,7 +505,7 @@ msgstr "Naziv glavnog računala"
 
 #: plmanagednode/view.py:381
 msgid "Hostname of the proxy, (IP or domain or localhost)"
-msgstr ""
+msgstr "Naziv glavnog računala proxyja (IP ili domena ili localhost)"
 
 #: plmanagednode/view.py:385
 msgid "Proxy port"
@@ -491,7 +521,7 @@ msgstr "Korisnik"
 
 #: plmanagednode/view.py:399
 msgid "Optional user for basic authentication fields. Leave blank if you do not use basic authentication"
-msgstr ""
+msgstr "Neobavezni korisnik za osnovna polja provjere autentičnosti. Ostavite prazno ako ne koristite osnovnu provjeru autentičnosti"
 
 #: plmanagednode/view.py:405
 msgid "Password"
@@ -499,13 +529,13 @@ msgstr "Lozinka"
 
 #: plmanagednode/view.py:410
 msgid "Optional password for basic authentication fields. Leave blank if you do not use basic authentication."
-msgstr ""
+msgstr "Neobavezna lozinka za osnovna polja provjere autentičnosti. Ostavite prazno ako ne koristite osnovnu provjeru autentičnosti."
 
 #: plmanagednode/view.py:436
 msgid "The port provided is not valid. It must be between 0 and 65536."
-msgstr ""
+msgstr "Navedeni priključak nije valjan. Mora biti između 0 i 65536."
 
 #: plmanagednode/view.py:453
 msgid "HTTP proxy settings saved."
-msgstr ""
+msgstr "Spremljene su postavke HTTP proxy poslužitelja."
 

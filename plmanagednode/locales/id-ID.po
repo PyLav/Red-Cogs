@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-02-03 20:16+0000\n"
-"PO-Revision-Date: 2023-02-03 20:20\n"
+"PO-Revision-Date: 2023-02-03 21:03\n"
 "Last-Translator: \n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -46,11 +46,11 @@ msgstr "Node Lavalink terkelola sudah diperbarui."
 
 #: plmanagednode/cog.py:101
 msgid "Your node is out of date, to update please run `{command_name_variable_do_not_translate}`."
-msgstr ""
+msgstr "Node Anda sudah ketinggalan zaman, untuk memperbarui silakan jalankan '{command_name_variable_do_not_translate}`."
 
 #: plmanagednode/cog.py:118
 msgid "The managed Lavalink node has been updated to version {version_variable_do_not_translate}."
-msgstr ""
+msgstr "Node Lavalink terkelola telah diperbarui ke versi {version_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:130
 #, docstring
@@ -63,11 +63,11 @@ msgstr "Aktifkan/nonaktifkan simpul terkelola.\n\n"
 
 #: plmanagednode/cog.py:145
 msgid "The PyLav managed node has been enabled."
-msgstr ""
+msgstr "Node terkelola PyLav telah diaktifkan."
 
 #: plmanagednode/cog.py:153
 msgid "The PyLav managed node has been disabled."
-msgstr ""
+msgstr "Node terkelola PyLav telah dinonaktifkan."
 
 #: plmanagednode/cog.py:161
 #, docstring
@@ -80,11 +80,11 @@ msgstr "Aktifkan/nonaktifkan pembaruan otomatis node terkelola.\n\n"
 
 #: plmanagednode/cog.py:177
 msgid "The PyLav managed node auto updates have been enabled."
-msgstr ""
+msgstr "Pembaruan otomatis node terkelola PyLav telah diaktifkan."
 
 #: plmanagednode/cog.py:185
 msgid "The  PyLav managed node auto updates have been disabled."
-msgstr ""
+msgstr "Pembaruan otomatis node terkelola PyLav telah dinonaktifkan."
 
 #: plmanagednode/cog.py:193
 #, docstring
@@ -111,15 +111,15 @@ msgstr "Ukuran tumpukan harus setidaknya 64M, namun disarankan untuk mengaturnya
 
 #: plmanagednode/cog.py:239
 msgid "Heap-size must be less than your system RAM, You currently have {ram_in_bytes_variable_do_not_translate} of RAM available"
-msgstr ""
+msgstr "Ukuran tumpukan harus kurang dari RAM sistem Anda, Saat ini Anda memiliki {ram_in_bytes_variable_do_not_translate} jumlah RAM yang tersedia"
 
 #: plmanagednode/cog.py:251
 msgid "Heap-size must be less than {limit_variable_do_not_translate} due to your system limitations"
-msgstr ""
+msgstr "Ukuran tumpukan harus kurang dari {limit_variable_do_not_translate} karena keterbatasan sistem Anda"
 
 #: plmanagednode/cog.py:271
 msgid "The Managed node heap-size set to {bytes_variable_do_not_translate}."
-msgstr ""
+msgstr "Ukuran tumpukan node Terkelola diatur ke {bytes_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:281
 #, docstring
@@ -133,7 +133,7 @@ msgstr "Mengatur host node terkelola"
 
 #: plmanagednode/cog.py:297
 msgid "The Managed node host set to {host_variable_do_not_translate}."
-msgstr ""
+msgstr "Host node terkelola diatur ke {host_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:307
 #, docstring
@@ -142,7 +142,11 @@ msgid "`Dangerous command` Set the managed Lavalink node connection port.\n\n"
 "        conflict with the default port because you already have an application using port 2154 on this device.\n\n"
 "        The value by default is `2154`.\n"
 "        "
-msgstr ""
+msgstr "'Perintah berbahaya' Atur port koneksi node Lavalink terkelola.\n\n"
+"        Port ini adalah port yang mengikat node Lavalink terkelola, Anda hanya boleh mengubah ini jika ada\n"
+"        konflik dengan port default karena Anda sudah memiliki aplikasi menggunakan port 2154 pada perangkat ini.\n\n"
+"        Nilai secara default adalah '2154'.\n"
+"        "
 
 #: plmanagednode/cog.py:317
 msgid "The port must be between 1024 and 49151"
@@ -150,7 +154,7 @@ msgstr "Port harus antara 1024 dan 49151"
 
 #: plmanagednode/cog.py:329
 msgid "The managed node port set to {port_variable_do_not_translate}."
-msgstr ""
+msgstr "Port node terkelola diatur ke {port_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:339
 #, docstring
@@ -164,11 +168,11 @@ msgstr "Menonaktifkan salah satu plugin yang tersedia"
 
 #: plmanagednode/cog.py:361 plmanagednode/cog.py:472
 msgid "The plugin must be one of the following: {plugins_variable_do_not_translate}"
-msgstr ""
+msgstr "Plugin harus salah satu dari yang berikut: {plugins_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:446
 msgid "Managed node plugin {plugin_variable_do_not_translate} disabled."
-msgstr ""
+msgstr "Plugin node terkelola {plugin_variable_do_not_translate} cacat."
 
 #: plmanagednode/cog.py:456
 #, docstring
@@ -177,7 +181,7 @@ msgstr "Aktifkan salah satu plugin yang tersedia"
 
 #: plmanagednode/cog.py:505
 msgid "Managed node plugin {plugin_variable_do_not_translate} enabled."
-msgstr ""
+msgstr "Plugin node terkelola {plugin_variable_do_not_translate} Diaktifkan."
 
 #: plmanagednode/cog.py:515
 #, docstring
@@ -186,16 +190,17 @@ msgstr "Memperbarui plugin node terkelola"
 
 #: plmanagednode/cog.py:589
 msgid "{name_variable_do_not_translate} was updated from {old_variable_do_not_translate} to {new_variable_do_not_translate}\n"
-msgstr ""
+msgstr "{name_variable_do_not_translate} telah diperbarui dari {old_variable_do_not_translate} ke {new_variable_do_not_translate}\n"
 
 #: plmanagednode/cog.py:599
 msgid "Managed node plugins updated.\n\n"
 "{update_variable_do_not_translate}"
-msgstr ""
+msgstr "Plugin node terkelola diperbarui.\n\n"
+"{update_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:609
 msgid "The managed node plugins are already up to date."
-msgstr ""
+msgstr "Plugin node terkelola sudah diperbarui."
 
 #: plmanagednode/cog.py:617
 #, docstring
@@ -204,7 +209,7 @@ msgstr "Beralih sumber node terkelola"
 
 #: plmanagednode/cog.py:632
 msgid "Invalid source, {valid_list_variable_do_not_translate} are valid sources"
-msgstr ""
+msgstr "Sumber tidak valid, {valid_list_variable_do_not_translate} adalah sumber yang valid"
 
 #: plmanagednode/cog.py:648 plmanagednode/cog.py:687
 msgid "enabled"
@@ -216,7 +221,7 @@ msgstr "cacat"
 
 #: plmanagednode/cog.py:651
 msgid "Managed node {source_variable_do_not_translate} source set to {state_variable_do_not_translate}."
-msgstr ""
+msgstr "Node terkelola {source_variable_do_not_translate} sumber diatur ke {state_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:664
 #, docstring
@@ -225,11 +230,11 @@ msgstr "Beralih filter node terkelola"
 
 #: plmanagednode/cog.py:676
 msgid "Invalid source, {valid_list_variable_do_not_translate} are valid filters"
-msgstr ""
+msgstr "Sumber tidak valid, {valid_list_variable_do_not_translate} adalah filter yang valid"
 
 #: plmanagednode/cog.py:690
 msgid "Managed node {source_variable_do_not_translate} filter set to {state_variable_do_not_translate}."
-msgstr ""
+msgstr "Node terkelola {source_variable_do_not_translate} filter diatur ke {state_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:703
 #, docstring
@@ -247,12 +252,26 @@ msgid "Configure multiple settings for the managed node.\n\n"
 "        `youtubeSearchEnabled` : Boolean i.e True (Default True)\n"
 "        `soundcloudSearchEnabled` : Boolean i.e True (Default True)\n"
 "        "
-msgstr ""
+msgstr "Konfigurasikan beberapa pengaturan untuk node terkelola.\n\n"
+"        Jalankan '[p]server pengaturan plmanaged <setting> info' untuk menampilkan info tentang pengaturan dan apa yang mereka lakukan.\n\n"
+"        ** Nama pengaturan **:\n"
+"        'bufferDurationMs' : Integer yaitu 400 (Default 400) - Atur ke 0 untuk menonaktifkan JDA-NAS\n"
+"        'frameBufferDurationMs': Bilangan bulat yaitu 1000 (Default 1000)\n"
+"        'trackStuckThresholdMs' : Bilangan bulat yaitu 1000 (Default 1000)\n"
+"        'youtubePlaylistLoadLimit' : Bilangan bulat yaitu 1000 (Default 1000)\n"
+"        'opusEncodingQuality' : Bilangan bulat yaitu 10 (Default 10)\n"
+"        'resamplingQuality' : String yaitu LOW (Default HIGH)\n"
+"        'useSeekGhosting' : Boolean yaitu True (Default True)\n"
+"        'playerUpdateInterval' : Bilangan bulat yaitu 30 (Default 30)\n"
+"        'youtubeSearchEnabled' : Boolean yaitu True (Default True)\n"
+"        'soundcloudSearchEnabled' : Boolean yaitu True (Default True)\n"
+"        "
 
 #: plmanagednode/cog.py:743
 msgid "{Setting_variable_do_not_translate} is not a valid Setting; Options are:\n\n"
 "{setting_list_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} bukan Pengaturan yang valid; Pilihannya adalah:\n\n"
+"{setting_list_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:757
 msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses but will increase RAM usage. Minimum of 40ms, lower values may introduce pauses and stutters. Set to 0 to disable JDA-NAS. Accepted values: Range: 0 - 2,000"
@@ -297,33 +316,39 @@ msgstr "Aktifkan atau nonaktifkan pencarian SoundCloud di dalam node, ini akan m
 #: plmanagednode/cog.py:806
 msgid "{Setting_variable_do_not_translate} info.\n\n"
 "{info_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} Info.\n\n"
+"{info_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:837
 msgid "{Setting_variable_do_not_translate} valid inputs are:\n\n"
 "Range between: {start_variable_do_not_translate} - {end_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} Input yang valid adalah:\n\n"
+"Rentang antara: {start_variable_do_not_translate} - {end_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:852
 msgid "{Setting_variable_do_not_translate} valid inputs are:\n\n"
 "{setting_list_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} Input yang valid adalah:\n\n"
+"{setting_list_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:874
 msgid "{Setting_variable_do_not_translate} set to {value_variable_do_not_translate}."
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} Atur ke {value_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:885
 #, docstring
 msgid "Configure Lavalink IP Rotation for rate limits.\n\n"
 "        Run `[p]plmanaged settings iprotation 1` to remove the ip rotation\n"
 "        "
-msgstr ""
+msgstr "Konfigurasikan Rotasi IP Lavalink untuk batas tarif.\n\n"
+"        Jalankan '[p]Pengaturan plmanaged IPRearation 1' untuk menghapus rotasi IP\n"
+"        "
 
 #: plmanagednode/cog.py:896
 msgid "Click the button below to configure the IP rotation for your node.\n"
 "More info at: {url_value_1_variable_do_not_translate} and {url_value_2_variable_do_not_translate}"
-msgstr ""
+msgstr "Klik tombol di bawah ini untuk mengonfigurasi rotasi IP untuk node Anda.\n"
+"Info lebih lanjut di: {url_value_1_variable_do_not_translate} dan {url_value_2_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:917
 msgid "Removing the IP rotation from your node."
@@ -334,12 +359,15 @@ msgstr "Menghapus rotasi IP dari node Anda."
 msgid "Link a Google account to Lavalink to bypass the YouTube age restriction.\n\n"
 "        Run `[p]plmanaged settings googleaccount 1` to remove the linked account.\n"
 "        "
-msgstr ""
+msgstr "Tautkan akun Google ke Lavalink untuk melewati batasan usia YouTube.\n\n"
+"        Jalankan '[p]pengaturan plmanaged googleaccount 1' untuk menghapus akun yang ditautkan.\n"
+"        "
 
 #: plmanagednode/cog.py:936
 msgid "Click the button below to link a Google account to your node, if you have 2FA setup on this account you will need an application password instead\n"
 "More info at: <https://support.google.com/accounts/answer/185833>"
-msgstr ""
+msgstr "Klik tombol di bawah ini untuk menautkan akun Google ke node Anda, jika Anda memiliki pengaturan 2FA di akun ini, Anda memerlukan kata sandi aplikasi sebagai gantinya\n"
+"Info lebih lanjut di: <https://support.google.com/accounts/answer/185833>"
 
 #: plmanagednode/cog.py:955
 msgid "Unlinking Google account from your node."
@@ -350,7 +378,9 @@ msgstr "Memutuskan tautan akun Google dari node Anda."
 msgid "Configure a HTTP proxy for Lavalink\n\n"
 "        Run `[p]plmanaged settings httpproxy 1` to remove the proxy.\n"
 "        "
-msgstr ""
+msgstr "Mengonfigurasi proxy HTTP untuk Lavalink\n\n"
+"        Jalankan '[p]plmanaged pengaturan httpproxy 1 ' untuk menghapus proxy.\n"
+"        "
 
 #: plmanagednode/cog.py:974
 msgid "Click the button below to configure a HTTP proxy for your node"
@@ -407,31 +437,31 @@ msgstr "0 atau 1 (0 = dinonaktifkan, 1 = diaktifkan)"
 
 #: plmanagednode/view.py:189
 msgid "The IP block you have provided is not valid; {error_variable_do_not_translate}."
-msgstr ""
+msgstr "Blok IP yang Anda berikan tidak valid; {error_variable_do_not_translate}."
 
 #: plmanagednode/view.py:203
 msgid "No IP blocks were provided."
-msgstr ""
+msgstr "Tidak ada blok IP yang disediakan."
 
 #: plmanagednode/view.py:215
 msgid "The IP address you have provided is not valid; {error_variable_do_not_translate}"
-msgstr ""
+msgstr "Alamat IP yang Anda berikan tidak valid; {error_variable_do_not_translate}"
 
 #: plmanagednode/view.py:236
 msgid "The strategy you provided is invalid. You must be one of: {options_variable_do_not_translate}."
-msgstr ""
+msgstr "Strategi yang Anda berikan tidak valid. Anda harus menjadi salah satu dari: {options_variable_do_not_translate}."
 
 #: plmanagednode/view.py:252
 msgid "The retry limit must be a number greater than or equal to -1."
-msgstr ""
+msgstr "Batas coba lagi harus berupa angka yang lebih besar dari atau sama dengan -1."
 
 #: plmanagednode/view.py:267
 msgid "The search trigger must be 0 or 1."
-msgstr ""
+msgstr "Pemicu pencarian harus 0 atau 1."
 
 #: plmanagednode/view.py:286
 msgid "IP rotation settings saved."
-msgstr ""
+msgstr "Pengaturan rotasi IP disimpan."
 
 #: plmanagednode/view.py:307
 msgid "Google Account Configurator"
@@ -451,7 +481,7 @@ msgstr "kata sandi"
 
 #: plmanagednode/view.py:322
 msgid "If you have 2FA you will need an application password"
-msgstr ""
+msgstr "Jika Anda memiliki 2FA, Anda memerlukan kata sandi aplikasi"
 
 #: plmanagednode/view.py:336 plmanagednode/view.py:425
 msgid "You are not authorized to interact with this"
@@ -475,7 +505,7 @@ msgstr "Nama host"
 
 #: plmanagednode/view.py:381
 msgid "Hostname of the proxy, (IP or domain or localhost)"
-msgstr ""
+msgstr "Nama host proxy, (IP atau domain atau localhost)"
 
 #: plmanagednode/view.py:385
 msgid "Proxy port"
@@ -491,7 +521,7 @@ msgstr "Pengguna"
 
 #: plmanagednode/view.py:399
 msgid "Optional user for basic authentication fields. Leave blank if you do not use basic authentication"
-msgstr ""
+msgstr "Pengguna opsional untuk bidang autentikasi dasar. Biarkan kosong jika Anda tidak menggunakan autentikasi dasar"
 
 #: plmanagednode/view.py:405
 msgid "Password"
@@ -499,13 +529,13 @@ msgstr "Kata sandi"
 
 #: plmanagednode/view.py:410
 msgid "Optional password for basic authentication fields. Leave blank if you do not use basic authentication."
-msgstr ""
+msgstr "Kata sandi opsional untuk bidang autentikasi dasar. Biarkan kosong jika Anda tidak menggunakan autentikasi dasar."
 
 #: plmanagednode/view.py:436
 msgid "The port provided is not valid. It must be between 0 and 65536."
-msgstr ""
+msgstr "Port yang disediakan tidak valid. Itu harus antara 0 dan 65536."
 
 #: plmanagednode/view.py:453
 msgid "HTTP proxy settings saved."
-msgstr ""
+msgstr "Pengaturan proxy HTTP disimpan."
 

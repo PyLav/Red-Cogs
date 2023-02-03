@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-02-03 20:16+0000\n"
-"PO-Revision-Date: 2023-02-03 20:20\n"
+"PO-Revision-Date: 2023-02-03 21:03\n"
 "Last-Translator: \n"
 "Language-Team: Thai\n"
 "MIME-Version: 1.0\n"
@@ -47,11 +47,11 @@ msgstr "ตั้งค่าช่องทางการแจ้งเตื
 
 #: plnotifier/cog.py:275 plnotifier/cog.py:345
 msgid "I do not have permission to manage webhooks in {channel_variable_do_not_translate}."
-msgstr ""
+msgstr "ฉันไม่ได้รับอนุญาตให้จัดการ webhooks ใน {channel_variable_do_not_translate}."
 
 #: plnotifier/cog.py:289
 msgid "I do not have permission to create a thread in {channel_variable_do_not_translate}."
-msgstr ""
+msgstr "ฉันไม่มีสิทธิ์ในการสร้างหัวข้อใน {channel_variable_do_not_translate}."
 
 #: plnotifier/cog.py:298 plnotifier/cog.py:316 plnotifier/cog.py:355
 msgid "PyLavNotifier"
@@ -59,7 +59,7 @@ msgstr "PyLavNotifier"
 
 #: plnotifier/cog.py:299 plnotifier/cog.py:319 plnotifier/cog.py:356
 msgid "PyLav Notifier - Requested by {author_variable_do_not_translate}."
-msgstr ""
+msgstr "PyLav แจ้ง - ร้องขอโดย {author_variable_do_not_translate}."
 
 #: plnotifier/cog.py:312
 msgid "This thread will be used by PyLav to post notifications about the player."
@@ -67,11 +67,11 @@ msgstr "หัวข้อนี้จะถูกใช้โดย PyLav เ�
 
 #: plnotifier/cog.py:327 plnotifier/cog.py:363
 msgid "A new webhook was being created."
-msgstr ""
+msgstr "เว็บฮุคใหม่กําลังถูกสร้างขึ้น"
 
 #: plnotifier/cog.py:377
 msgid "PyLavNotifier channel set to {channel_variable_do_not_translate}."
-msgstr ""
+msgstr "ตั้งค่าช่อง PyLavNotifier เป็น {channel_variable_do_not_translate}."
 
 #: plnotifier/cog.py:389
 #, docstring
@@ -91,11 +91,12 @@ msgstr "ตั้งค่าว่าจะแจ้งเตือนสํา
 #: plnotifier/cog.py:406
 msgid "Invalid event, possible events are:\n\n"
 "{events_variable_do_not_translate}."
-msgstr ""
+msgstr "เหตุการณ์ที่ไม่ถูกต้องเหตุการณ์ที่เป็นไปได้คือ:\n\n"
+"{events_variable_do_not_translate}."
 
 #: plnotifier/cog.py:425
 msgid "Event {event_variable_do_not_translate} set to {toggle_variable_do_not_translate}{extras_variable_do_not_translate}."
-msgstr ""
+msgstr "เหตุการณ์ {event_variable_do_not_translate} ตั้งค่าเป็น {toggle_variable_do_not_translate}{extras_variable_do_not_translate}."
 
 #: plnotifier/cog.py:429
 msgid "notify"
@@ -119,7 +120,7 @@ msgstr "ติดตามเหตุการณ์ที่ติดอยู
 
 #: plnotifier/cog.py:451
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} is stuck for {threshold_variable_do_not_translate} seconds, skipping."
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] {track_variable_do_not_translate} ติดอยู่สําหรับ {threshold_variable_do_not_translate} วินาทีข้าม"
 
 #: plnotifier/cog.py:478
 msgid "Track Exception Event"
@@ -128,27 +129,28 @@ msgstr "ติดตามเหตุการณ์ข้อยกเว้น
 #: plnotifier/cog.py:479
 msgid "[Node={node_variable_do_not_translate}] There was an error while playing {track_variable_do_not_translate}:\n"
 "{exception_variable_do_not_translate}"
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] เกิดข้อผิดพลาดขณะเล่น {track_variable_do_not_translate}:\n"
+"{exception_variable_do_not_translate}"
 
 #: plnotifier/cog.py:505
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing because the player reached the end of the tracks runtime."
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] {track_variable_do_not_translate} เล่นเสร็จแล้วเพราะผู้เล่นถึงจุดสิ้นสุดของรันไทม์แทร็ก"
 
 #: plnotifier/cog.py:512
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing because a new track started playing."
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] {track_variable_do_not_translate} เล่นเสร็จแล้วเพราะแทร็กใหม่เริ่มเล่น"
 
 #: plnotifier/cog.py:519
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing because it failed to start."
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] {track_variable_do_not_translate} เล่นเสร็จแล้วเพราะไม่สามารถเริ่มได้"
 
 #: plnotifier/cog.py:526
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing becausethe player was stopped."
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] {track_variable_do_not_translate} เล่นเสร็จแล้วเพราะผู้เล่นหยุดเล่น"
 
 #: plnotifier/cog.py:533
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing becausethe node told it to stop."
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] {track_variable_do_not_translate} เล่นเสร็จแล้วเพราะโหนดบอกให้หยุด"
 
 #: plnotifier/cog.py:542
 msgid "Track End Event"
@@ -161,7 +163,8 @@ msgstr "กิจกรรมเริ่มแทร็กเพลงของ
 #: plnotifier/cog.py:569
 msgid "[Node={node_variable_do_not_translate}] YouTube Music track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] แทร็กเพลงจาก YouTube: {track_variable_do_not_translate} ได้เริ่มเล่น\n"
+"ร้องขอโดย: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:600
 msgid "Deezer Track Start Event"
@@ -170,7 +173,8 @@ msgstr "กิจกรรม Deezer Track Start"
 #: plnotifier/cog.py:601
 msgid "[Node={node_variable_do_not_translate}] Deezer track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] เพลงดีเซอร์: {track_variable_do_not_translate} ได้เริ่มเล่น\n"
+"ร้องขอโดย: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:632
 msgid "Spotify Track Start Event"
@@ -179,7 +183,8 @@ msgstr "กิจกรรมเริ่มแทร็กของ Spotify"
 #: plnotifier/cog.py:633
 msgid "[Node={node_variable_do_not_translate}] Spotify track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] แทร็ก Spotify: {track_variable_do_not_translate} ได้เริ่มเล่น\n"
+"ร้องขอโดย: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:664
 msgid "Apple Music Track Start Event"
@@ -188,7 +193,8 @@ msgstr "กิจกรรมเริ่มแทร็คของ Apple Music
 #: plnotifier/cog.py:665
 msgid "[Node={node_variable_do_not_translate}] Apple Music track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] แทร็ก Apple Music: {track_variable_do_not_translate} ได้เริ่มเล่น\n"
+"ร้องขอโดย: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:696
 msgid "Local Track Start Event"
@@ -197,7 +203,8 @@ msgstr "กิจกรรมเริ่มต้นการติดตาม
 #: plnotifier/cog.py:697
 msgid "[Node={node_variable_do_not_translate}] Local track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] แทร็กท้องถิ่น: {track_variable_do_not_translate} ได้เริ่มเล่น\n"
+"ร้องขอโดย: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:728
 msgid "HTTP Track Start Event"
@@ -206,7 +213,8 @@ msgstr "เหตุการณ์เริ่มต้นการติดต
 #: plnotifier/cog.py:729
 msgid "[Node={node_variable_do_not_translate}] HTTP track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] แทร็ก HTTP: {track_variable_do_not_translate} ได้เริ่มเล่น\n"
+"ร้องขอโดย: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:760
 msgid "Text-To-Speech Track Start Event"
@@ -215,7 +223,8 @@ msgstr "เหตุการณ์เริ่มแทร็กการอ่
 #: plnotifier/cog.py:761
 msgid "[Node={node_variable_do_not_translate}] Text-To-Speech track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}."
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] แทร็กการแปลงข้อความเป็นคําพูด: {track_variable_do_not_translate} ได้เริ่มเล่น\n"
+"ร้องขอโดย: {requester_variable_do_not_translate}."
 
 #: plnotifier/cog.py:792
 msgid "YouTube Track Start Event"
@@ -224,7 +233,8 @@ msgstr "กิจกรรมเริ่มติดตาม YouTube"
 #: plnotifier/cog.py:793
 msgid "[Node={node_variable_do_not_translate}] YouTube track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}."
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] แทร็ก YouTube: {track_variable_do_not_translate} ได้เริ่มเล่น\n"
+"ร้องขอโดย: {requester_variable_do_not_translate}."
 
 #: plnotifier/cog.py:824 plnotifier/cog.py:859 plnotifier/cog.py:894
 #: plnotifier/cog.py:929 plnotifier/cog.py:964 plnotifier/cog.py:999
@@ -232,7 +242,7 @@ msgstr ""
 #: plnotifier/cog.py:1139 plnotifier/cog.py:1174 plnotifier/cog.py:1209
 #: plnotifier/cog.py:1244 plnotifier/cog.py:1279
 msgid "{source_variable_do_not_translate} Track Start Event"
-msgstr ""
+msgstr "{source_variable_do_not_translate} ติดตามกิจกรรมเริ่มต้น"
 
 #: plnotifier/cog.py:827 plnotifier/cog.py:862 plnotifier/cog.py:897
 #: plnotifier/cog.py:932 plnotifier/cog.py:967 plnotifier/cog.py:1002
@@ -241,7 +251,8 @@ msgstr ""
 #: plnotifier/cog.py:1247 plnotifier/cog.py:1282
 msgid "[Node={node_variable_do_not_translate}] {source_variable_do_not_translate} track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] {source_variable_do_not_translate} ลู่: {track_variable_do_not_translate} ได้เริ่มเล่น\n"
+"ร้องขอโดย: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:1314
 msgid "Track Skipped Event"
@@ -250,7 +261,8 @@ msgstr "ติดตามกิจกรรมที่ข้ามไป"
 #: plnotifier/cog.py:1315
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has been skipped.\n"
 "Requested by {requester_variable_do_not_translate}"
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] {track_variable_do_not_translate} ถูกข้ามไป\n"
+"ร้องขอโดย {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:1346
 msgid "Track Seek Event"
@@ -258,7 +270,7 @@ msgstr "ติดตามหาเหตุการณ์"
 
 #: plnotifier/cog.py:1347
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} requested that {track_variable_do_not_translate} is sought from position {from_variable_do_not_translate} to position {after_variable_do_not_translate}"
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] {requester_variable_do_not_translate} ขอให้ {track_variable_do_not_translate} ถูกขอจากตําแหน่ง {from_variable_do_not_translate} ไปยังตําแหน่ง {after_variable_do_not_translate}"
 
 #: plnotifier/cog.py:1381
 msgid "Track Previous Requested Event"
@@ -266,7 +278,7 @@ msgstr "ติดตามเหตุการณ์ที่ร้องขอ
 
 #: plnotifier/cog.py:1382
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} requested that the previous track {track_variable_do_not_translate} be played"
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] {requester_variable_do_not_translate} ขอให้แทร็กก่อนหน้า {track_variable_do_not_translate} จะเล่น"
 
 #: plnotifier/cog.py:1413
 msgid "Tracks Requested Event"
@@ -274,11 +286,11 @@ msgstr "ติดตามเหตุการณ์ที่ร้องขอ
 
 #: plnotifier/cog.py:1414
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} added {track_count_variable_do_not_translate} to the queue."
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] {requester_variable_do_not_translate} เพิ่ม {track_count_variable_do_not_translate} ไปยังคิว"
 
 #: plnotifier/cog.py:1417
 msgid "{count_variable_do_not_translate} track"
-msgstr ""
+msgstr "{count_variable_do_not_translate} ลู่"
 
 #: plnotifier/cog.py:1444
 msgid "Track AutoPlay Event"
@@ -286,7 +298,7 @@ msgstr "ติดตามเหตุการณ์เล่นอัตโน
 
 #: plnotifier/cog.py:1445
 msgid "[Node={node_variable_do_not_translate}] Auto playing {track_variable_do_not_translate}."
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] เล่นอัตโนมัติ {track_variable_do_not_translate}."
 
 #: plnotifier/cog.py:1475
 msgid "Track Resumed Event"
@@ -294,7 +306,7 @@ msgstr "ติดตามกิจกรรมที่กลับมาทํ
 
 #: plnotifier/cog.py:1476
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} resumed {track_variable_do_not_translate}"
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] {requester_variable_do_not_translate} ดําเนินการต่อ {track_variable_do_not_translate}"
 
 #: plnotifier/cog.py:1507
 msgid "Queue Shuffled Event"
@@ -302,7 +314,7 @@ msgstr "กิจกรรมสับคิว"
 
 #: plnotifier/cog.py:1508
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} shuffled the queue"
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] {requester_variable_do_not_translate} สับคิว"
 
 #: plnotifier/cog.py:1532
 msgid "Queue End Event"
@@ -310,7 +322,7 @@ msgstr "เหตุการณ์สิ้นสุดคิว"
 
 #: plnotifier/cog.py:1533
 msgid "[Node={node_variable_do_not_translate}] All tracks in the queue have been played"
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] เล่นแทร็กทั้งหมดในคิวแล้ว"
 
 #: plnotifier/cog.py:1560
 msgid "Tracks Removed Event"
@@ -318,7 +330,7 @@ msgstr "แทร็กที่ลบกิจกรรม"
 
 #: plnotifier/cog.py:1561
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} removed {track_count_variable_do_not_translate} tracks from the queue"
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] {requester_variable_do_not_translate} ถูก เอา ออก {track_count_variable_do_not_translate} แทร็กจากคิว"
 
 #: plnotifier/cog.py:1592 plnotifier/cog.py:2117
 msgid "Player Paused Event"
@@ -326,7 +338,7 @@ msgstr "เหตุการณ์หยุดชั่วคราวของ
 
 #: plnotifier/cog.py:1593
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} paused the player"
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] {requester_variable_do_not_translate} หยุดผู้เล่นชั่วคราว"
 
 #: plnotifier/cog.py:1622
 msgid "Player Stopped Event"
@@ -334,7 +346,7 @@ msgstr "ผู้เล่นหยุดเหตุการณ์"
 
 #: plnotifier/cog.py:1623
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} stopped the player"
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] {requester_variable_do_not_translate} หยุดผู้เล่น"
 
 #: plnotifier/cog.py:1652 plnotifier/cog.py:2147
 msgid "Player Resumed Event"
@@ -342,7 +354,7 @@ msgstr "ผู้เล่นกลับมาดําเนินกิจก
 
 #: plnotifier/cog.py:1653
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} resumed the player"
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] {requester_variable_do_not_translate} กลับมาเล่นต่อ"
 
 #: plnotifier/cog.py:1682
 msgid "Player Moved Event"
@@ -350,7 +362,7 @@ msgstr "กิจกรรมการย้ายผู้เล่น"
 
 #: plnotifier/cog.py:1683
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} moved the player from {before_variable_do_not_translate} to {after_variable_do_not_translate}"
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] {requester_variable_do_not_translate} ย้ายผู้เล่นจาก {before_variable_do_not_translate} ถึง {after_variable_do_not_translate}"
 
 #: plnotifier/cog.py:1715
 msgid "Player Disconnected Event"
@@ -358,7 +370,7 @@ msgstr "เหตุการณ์ผู้เล่นถูกตัดกา
 
 #: plnotifier/cog.py:1716
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} disconnected the player"
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] {requester_variable_do_not_translate} ยกเลิกการเชื่อมต่อเครื่องเล่น"
 
 #: plnotifier/cog.py:1745
 msgid "Player Connected Event"
@@ -374,7 +386,7 @@ msgstr "เหตุการณ์การเปลี่ยนแปลงร
 
 #: plnotifier/cog.py:1774
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} changed the player volume from {before_variable_do_not_translate} to {afte_variable_do_not_translater}."
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] {requester_variable_do_not_translate} เปลี่ยนระดับเสียงของเครื่องเล่นจาก {before_variable_do_not_translate} ถึง {afte_variable_do_not_translater}."
 
 #: plnotifier/cog.py:1808 plnotifier/cog.py:1820 plnotifier/cog.py:1833
 msgid "Player Repeat Event"
@@ -382,11 +394,11 @@ msgstr "เหตุการณ์ซ้ําของผู้เล่น"
 
 #: plnotifier/cog.py:1809
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} disabled repeat"
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] {requester_variable_do_not_translate} ปิดใช้งานการทําซ้ํา"
 
 #: plnotifier/cog.py:1821
 msgid "{requester_variable_do_not_translate} {status_variable_do_not_translate} repeat of the whole queue"
-msgstr ""
+msgstr "{requester_variable_do_not_translate} {status_variable_do_not_translate} ทําซ้ําของคิวทั้งหมด"
 
 #: plnotifier/cog.py:1825 plnotifier/cog.py:1838
 msgid "enabled"
@@ -398,7 +410,7 @@ msgstr "พิการ"
 
 #: plnotifier/cog.py:1834
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} {status_variable_do_not_translate} repeat for {track_variable_do_not_translate}"
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] {requester_variable_do_not_translate} {status_variable_do_not_translate} ทําซ้ําสําหรับ {track_variable_do_not_translate}"
 
 #: plnotifier/cog.py:1868
 msgid "Player Restored Event"
@@ -406,7 +418,7 @@ msgstr "เหตุการณ์ที่ผู้เล่นกู้คื
 
 #: plnotifier/cog.py:1869
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} restored the player"
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] {requester_variable_do_not_translate} คืนค่าผู้เล่น"
 
 #: plnotifier/cog.py:1894
 msgid "an intro section"
@@ -446,7 +458,7 @@ msgstr "กิจกรรมข้ามกลุ่มสปอนเซอร
 
 #: plnotifier/cog.py:1913
 msgid "[Node={node_variable_do_not_translate}] Sponsorblock: Skipped {category_variable_do_not_translate} running from {start_variable_do_not_translate}s to {to_variable_do_not_translate}s"
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] สปอนเซอร์บล็อก: ข้ามไป {category_variable_do_not_translate} วิ่งจาก {start_variable_do_not_translate}s ถึง {to_variable_do_not_translate}s"
 
 #: plnotifier/cog.py:1943
 msgid "Effect"
@@ -474,7 +486,7 @@ msgstr "นําไปใช้ในปัจจุบัน"
 
 #: plnotifier/cog.py:1991
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} changed the player filters"
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] {requester_variable_do_not_translate} เปลี่ยนตัวกรองโปรแกรมเล่น"
 
 #: plnotifier/cog.py:2013
 msgid "Node Connected Event"
@@ -482,7 +494,7 @@ msgstr "เหตุการณ์การเชื่อมต่อโหน
 
 #: plnotifier/cog.py:2014
 msgid "Node {name_variable_do_not_translate} has been connected"
-msgstr ""
+msgstr "ปุ่ม {name_variable_do_not_translate} ได้เชื่อมต่อแล้ว"
 
 #: plnotifier/cog.py:2032
 msgid "Node Disconnected Event"
@@ -490,7 +502,7 @@ msgstr "เหตุการณ์โหนดถูกตัดการเช
 
 #: plnotifier/cog.py:2033
 msgid "Node {name_variable_do_not_translate} has been disconnected with code {code_variable_do_not_translate} and reason: {reason_variable_do_not_translate}"
-msgstr ""
+msgstr "ปุ่ม {name_variable_do_not_translate} ถูกตัดการเชื่อมต่อด้วยรหัส {code_variable_do_not_translate} และเหตุผล: {reason_variable_do_not_translate}"
 
 #: plnotifier/cog.py:2059
 msgid "Node Changed Event"
@@ -498,7 +510,7 @@ msgstr "เหตุการณ์โหนดเปลี่ยน"
 
 #: plnotifier/cog.py:2060
 msgid "The node which the player is connected to changed from {from_variable_do_not_translate} to {to_variable_do_not_translate}"
-msgstr ""
+msgstr "โหนดที่ผู้เล่นเชื่อมต่ออยู่นั้นเปลี่ยนจาก {from_variable_do_not_translate} ถึง {to_variable_do_not_translate}"
 
 #: plnotifier/cog.py:2084
 msgid "WebSocket Closed Event"
@@ -506,15 +518,15 @@ msgstr "กิจกรรมปิด WebSocket"
 
 #: plnotifier/cog.py:2085
 msgid "[Node={node_variable_do_not_translate}] The Lavalink websocket connection to Discord closed with code {code_variable_do_not_translate} and reason {reason_variable_do_not_translate}"
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] การเชื่อมต่อเว็บซ็อกเก็ต Lavalink กับ Discord ปิดด้วยรหัส {code_variable_do_not_translate} และเหตุผล {reason_variable_do_not_translate}"
 
 #: plnotifier/cog.py:2118
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} automatically paused the player due to configured values"
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] {requester_variable_do_not_translate} หยุดโปรแกรมเล่นชั่วคราวโดยอัตโนมัติเนื่องจากค่าที่กําหนดค่าไว้"
 
 #: plnotifier/cog.py:2148
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} automatically resumed the player due to configured values"
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] {requester_variable_do_not_translate} เล่นต่อโดยอัตโนมัติเนื่องจากค่าที่กําหนดค่าไว้"
 
 #: plnotifier/cog.py:2177 plnotifier/cog.py:2209
 msgid "Auto Player Disconnected Event"
@@ -522,9 +534,9 @@ msgstr "เหตุการณ์ผู้เล่นอัตโนมัต
 
 #: plnotifier/cog.py:2178
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} automatically disconnected the player as there is no one listening"
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] {requester_variable_do_not_translate} ตัดการเชื่อมต่อเครื่องเล่นโดยอัตโนมัติเนื่องจากไม่มีใครฟัง"
 
 #: plnotifier/cog.py:2210
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} automatically disconnected the player as the queue is empty"
-msgstr ""
+msgstr "[โหนด ={node_variable_do_not_translate}] {requester_variable_do_not_translate} ยกเลิกการเชื่อมต่อผู้เล่นโดยอัตโนมัติเนื่องจากคิวว่างเปล่า"
 

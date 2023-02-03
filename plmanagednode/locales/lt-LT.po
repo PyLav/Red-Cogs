@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-02-03 20:16+0000\n"
-"PO-Revision-Date: 2023-02-03 20:20\n"
+"PO-Revision-Date: 2023-02-03 21:03\n"
 "Last-Translator: \n"
 "Language-Team: Lithuanian\n"
 "MIME-Version: 1.0\n"
@@ -46,11 +46,11 @@ msgstr "Valdomas Lavalink mazgas jau yra atnaujintas."
 
 #: plmanagednode/cog.py:101
 msgid "Your node is out of date, to update please run `{command_name_variable_do_not_translate}`."
-msgstr ""
+msgstr "Jūsų mazgas pasenęs, norėdami atnaujinti, paleiskite '{command_name_variable_do_not_translate}`."
 
 #: plmanagednode/cog.py:118
 msgid "The managed Lavalink node has been updated to version {version_variable_do_not_translate}."
-msgstr ""
+msgstr "Valdomas Lavalink mazgas buvo atnaujintas į versiją {version_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:130
 #, docstring
@@ -63,11 +63,11 @@ msgstr "Įjunkite / išjunkite valdomą mazgą.\n\n"
 
 #: plmanagednode/cog.py:145
 msgid "The PyLav managed node has been enabled."
-msgstr ""
+msgstr "PyLav valdomas mazgas buvo įjungtas."
 
 #: plmanagednode/cog.py:153
 msgid "The PyLav managed node has been disabled."
-msgstr ""
+msgstr "PyLav valdomas mazgas buvo išjungtas."
 
 #: plmanagednode/cog.py:161
 #, docstring
@@ -80,11 +80,11 @@ msgstr "Įjunkite / išjunkite valdomo mazgo automatinius naujinimus.\n\n"
 
 #: plmanagednode/cog.py:177
 msgid "The PyLav managed node auto updates have been enabled."
-msgstr ""
+msgstr "\"PyLav\" valdomų mazgų automatiniai atnaujinimai buvo įjungti."
 
 #: plmanagednode/cog.py:185
 msgid "The  PyLav managed node auto updates have been disabled."
-msgstr ""
+msgstr "\"PyLav\" valdomi mazgų automatiniai atnaujinimai buvo išjungti."
 
 #: plmanagednode/cog.py:193
 #, docstring
@@ -111,15 +111,15 @@ msgstr "Krūvos dydis turi būti ne mažesnis kaip 64M, tačiau rekomenduojama, 
 
 #: plmanagednode/cog.py:239
 msgid "Heap-size must be less than your system RAM, You currently have {ram_in_bytes_variable_do_not_translate} of RAM available"
-msgstr ""
+msgstr "Krūvos dydis turi būti mažesnis nei jūsų sistemos RAM, Šiuo metu turite {ram_in_bytes_variable_do_not_translate} laisvos RAM"
 
 #: plmanagednode/cog.py:251
 msgid "Heap-size must be less than {limit_variable_do_not_translate} due to your system limitations"
-msgstr ""
+msgstr "Krūvos dydis turi būti mažesnis nei {limit_variable_do_not_translate} dėl jūsų sistemos apribojimų"
 
 #: plmanagednode/cog.py:271
 msgid "The Managed node heap-size set to {bytes_variable_do_not_translate}."
-msgstr ""
+msgstr "Valdomo mazgo krūvos dydis nustatytas kaip {bytes_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:281
 #, docstring
@@ -133,7 +133,7 @@ msgstr "Nustatykite valdomo mazgo pagrindinį kompiuterį"
 
 #: plmanagednode/cog.py:297
 msgid "The Managed node host set to {host_variable_do_not_translate}."
-msgstr ""
+msgstr "Valdomo mazgo pagrindinis kompiuteris nustatytas kaip {host_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:307
 #, docstring
@@ -142,7 +142,11 @@ msgid "`Dangerous command` Set the managed Lavalink node connection port.\n\n"
 "        conflict with the default port because you already have an application using port 2154 on this device.\n\n"
 "        The value by default is `2154`.\n"
 "        "
-msgstr ""
+msgstr "\"Pavojinga komanda\" Nustatykite valdomą Lavalink mazgo ryšio prievadą.\n\n"
+"        Šis prievadas yra prievadas, prie kurio jungiasi valdomas Lavalink mazgas, tai turėtumėte pakeisti tik tuo atveju, jei yra a\n"
+"        Konfliktas su numatytuoju prievadu, nes jau turite programą, naudojančią šio įrenginio 2154 prievadą.\n\n"
+"        Pagal numatytuosius nustatymus reikšmė yra \"2154\".\n"
+"        "
 
 #: plmanagednode/cog.py:317
 msgid "The port must be between 1024 and 49151"
@@ -150,7 +154,7 @@ msgstr "Uostas turi būti tarp 1024 ir 49151"
 
 #: plmanagednode/cog.py:329
 msgid "The managed node port set to {port_variable_do_not_translate}."
-msgstr ""
+msgstr "Valdomo mazgo prievadas nustatytas į {port_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:339
 #, docstring
@@ -164,11 +168,11 @@ msgstr "Išjungtas vienas iš galimų papildinių"
 
 #: plmanagednode/cog.py:361 plmanagednode/cog.py:472
 msgid "The plugin must be one of the following: {plugins_variable_do_not_translate}"
-msgstr ""
+msgstr "Papildinys turi būti vienas iš šių: {plugins_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:446
 msgid "Managed node plugin {plugin_variable_do_not_translate} disabled."
-msgstr ""
+msgstr "Valdomo mazgo papildinys {plugin_variable_do_not_translate} Išjungta."
 
 #: plmanagednode/cog.py:456
 #, docstring
@@ -177,7 +181,7 @@ msgstr "Įgalinkite vieną iš galimų papildinių"
 
 #: plmanagednode/cog.py:505
 msgid "Managed node plugin {plugin_variable_do_not_translate} enabled."
-msgstr ""
+msgstr "Valdomo mazgo papildinys {plugin_variable_do_not_translate} Įjungtas."
 
 #: plmanagednode/cog.py:515
 #, docstring
@@ -186,16 +190,17 @@ msgstr "Atnaujinkite valdomo mazgo papildinius"
 
 #: plmanagednode/cog.py:589
 msgid "{name_variable_do_not_translate} was updated from {old_variable_do_not_translate} to {new_variable_do_not_translate}\n"
-msgstr ""
+msgstr "{name_variable_do_not_translate} buvo atnaujinta iš {old_variable_do_not_translate} į {new_variable_do_not_translate}\n"
 
 #: plmanagednode/cog.py:599
 msgid "Managed node plugins updated.\n\n"
 "{update_variable_do_not_translate}"
-msgstr ""
+msgstr "Atnaujinti valdomų mazgų papildiniai.\n\n"
+"{update_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:609
 msgid "The managed node plugins are already up to date."
-msgstr ""
+msgstr "Valdomų mazgų papildiniai jau yra atnaujinti."
 
 #: plmanagednode/cog.py:617
 #, docstring
@@ -204,7 +209,7 @@ msgstr "Valdomų mazgų šaltinių perjungimas"
 
 #: plmanagednode/cog.py:632
 msgid "Invalid source, {valid_list_variable_do_not_translate} are valid sources"
-msgstr ""
+msgstr "Netinkamas šaltinis, {valid_list_variable_do_not_translate} yra tinkami šaltiniai"
 
 #: plmanagednode/cog.py:648 plmanagednode/cog.py:687
 msgid "enabled"
@@ -216,7 +221,7 @@ msgstr "Išjungta"
 
 #: plmanagednode/cog.py:651
 msgid "Managed node {source_variable_do_not_translate} source set to {state_variable_do_not_translate}."
-msgstr ""
+msgstr "Valdomas mazgas {source_variable_do_not_translate} šaltinis nustatytas kaip {state_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:664
 #, docstring
@@ -225,11 +230,11 @@ msgstr "Valdomų mazgų filtrų perjungimas"
 
 #: plmanagednode/cog.py:676
 msgid "Invalid source, {valid_list_variable_do_not_translate} are valid filters"
-msgstr ""
+msgstr "Netinkamas šaltinis, {valid_list_variable_do_not_translate} yra tinkami filtrai"
 
 #: plmanagednode/cog.py:690
 msgid "Managed node {source_variable_do_not_translate} filter set to {state_variable_do_not_translate}."
-msgstr ""
+msgstr "Valdomas mazgas {source_variable_do_not_translate} filtras nustatytas kaip {state_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:703
 #, docstring
@@ -247,12 +252,26 @@ msgid "Configure multiple settings for the managed node.\n\n"
 "        `youtubeSearchEnabled` : Boolean i.e True (Default True)\n"
 "        `soundcloudSearchEnabled` : Boolean i.e True (Default True)\n"
 "        "
-msgstr ""
+msgstr "Konfigūruokite kelis valdomo mazgo parametrus.\n\n"
+"        Bėk '[p]Plmanaged nustatymų serveris <setting> informacija\", kad būtų rodoma informacija apie parametrus ir jų veikimą.\n\n"
+"        **Parametrų pavadinimai**:\n"
+"        \"bufferDurationMs\" : sveikasis skaičius, ty 400 (numatytasis 400) - nustatytas į 0, kad išjungtumėte JDA-NAS\n"
+"        \"frameBufferDurationMs\" : sveikasis skaičius, ty 1000 (numatytasis 1000)\n"
+"        \"trackStuckThresholdMs\" : sveikasis skaičius, ty 1000 (numatytasis 1000)\n"
+"        \"youtubePlaylistLoadLimit\" : sveikasis skaičius, t. y. 1000 (numatytasis 1000)\n"
+"        \"opusEncodingQuality\" : sveikasis skaičius, t. y. 10 (numatytasis 10)\n"
+"        \"resamplingQuality\": eilutė, t. y. LOW (numatytoji HIGH)\n"
+"        \"useSeekGhosting\" : Bulio logika, ty teisinga (numatytoji teisinga)\n"
+"        \"playerUpdateInterval\" : sveikasis skaičius, t. y. 30 (numatytasis 30)\n"
+"        \"youtubeSearchEnabled\" : Bulio logika, ty teisinga (numatytoji teisinga)\n"
+"        \"soundcloudSearchEnabled\" : Bulio logika, t. y. teisinga (numatytoji teisinga)\n"
+"        "
 
 #: plmanagednode/cog.py:743
 msgid "{Setting_variable_do_not_translate} is not a valid Setting; Options are:\n\n"
 "{setting_list_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} nėra tinkamas nustatymas; Parinktys yra šios:\n\n"
+"{setting_list_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:757
 msgid "The duration of the NAS buffer in milliseconds. Higher values fare better against longer GC pauses but will increase RAM usage. Minimum of 40ms, lower values may introduce pauses and stutters. Set to 0 to disable JDA-NAS. Accepted values: Range: 0 - 2,000"
@@ -297,33 +316,39 @@ msgstr "Įjunkite arba išjunkite \"SoundCloud\" paieškas mazge, tai turės įt
 #: plmanagednode/cog.py:806
 msgid "{Setting_variable_do_not_translate} info.\n\n"
 "{info_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} Informacija.\n\n"
+"{info_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:837
 msgid "{Setting_variable_do_not_translate} valid inputs are:\n\n"
 "Range between: {start_variable_do_not_translate} - {end_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} Leistini duomenys yra šie:\n\n"
+"Diapazonas tarp: {start_variable_do_not_translate} - {end_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:852
 msgid "{Setting_variable_do_not_translate} valid inputs are:\n\n"
 "{setting_list_variable_do_not_translate}"
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} Leistini duomenys yra šie:\n\n"
+"{setting_list_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:874
 msgid "{Setting_variable_do_not_translate} set to {value_variable_do_not_translate}."
-msgstr ""
+msgstr "{Setting_variable_do_not_translate} nustatyta kaip {value_variable_do_not_translate}."
 
 #: plmanagednode/cog.py:885
 #, docstring
 msgid "Configure Lavalink IP Rotation for rate limits.\n\n"
 "        Run `[p]plmanaged settings iprotation 1` to remove the ip rotation\n"
 "        "
-msgstr ""
+msgstr "Sukonfigūruokite \"Lavalink IP Rotation\" greičio apribojimams.\n\n"
+"        Bėk '[p]Plmanaged nustatymai iprotation 1', kad pašalintumėte IP pasukimą\n"
+"        "
 
 #: plmanagednode/cog.py:896
 msgid "Click the button below to configure the IP rotation for your node.\n"
 "More info at: {url_value_1_variable_do_not_translate} and {url_value_2_variable_do_not_translate}"
-msgstr ""
+msgstr "Spustelėkite žemiau esantį mygtuką, kad sukonfigūruotumėte mazgo IP pasukimą.\n"
+"Daugiau informacijos: {url_value_1_variable_do_not_translate} ir {url_value_2_variable_do_not_translate}"
 
 #: plmanagednode/cog.py:917
 msgid "Removing the IP rotation from your node."
@@ -334,12 +359,15 @@ msgstr "IP pasukimo pašalinimas iš mazgo."
 msgid "Link a Google account to Lavalink to bypass the YouTube age restriction.\n\n"
 "        Run `[p]plmanaged settings googleaccount 1` to remove the linked account.\n"
 "        "
-msgstr ""
+msgstr "Susiekite \"Google\" paskyrą su \"Lavalink\", kad išvengtumėte \"YouTube\" amžiaus apribojimo.\n\n"
+"        Bėk '[p]Paslėpti nustatymai \"GoogleAccount 1\", kad pašalintumėte susietą paskyrą.\n"
+"        "
 
 #: plmanagednode/cog.py:936
 msgid "Click the button below to link a Google account to your node, if you have 2FA setup on this account you will need an application password instead\n"
 "More info at: <https://support.google.com/accounts/answer/185833>"
-msgstr ""
+msgstr "Spustelėkite žemiau esantį mygtuką, kad susietumėte \"Google\" paskyrą su mazgu, jei šioje paskyroje turite 2FA sąranką, jums reikės programos slaptažodžio\n"
+"Daugiau informacijos: <https://support.google.com/accounts/answer/185833>"
 
 #: plmanagednode/cog.py:955
 msgid "Unlinking Google account from your node."
@@ -350,7 +378,9 @@ msgstr "\"Google\" paskyros atsiejimas nuo mazgo."
 msgid "Configure a HTTP proxy for Lavalink\n\n"
 "        Run `[p]plmanaged settings httpproxy 1` to remove the proxy.\n"
 "        "
-msgstr ""
+msgstr "HTTP tarpinio serverio konfigūravimas \"Lavalink\"\n\n"
+"        Bėk '[p]paslėpti nustatymai httpproxy 1', kad pašalintumėte tarpinį serverį.\n"
+"        "
 
 #: plmanagednode/cog.py:974
 msgid "Click the button below to configure a HTTP proxy for your node"
@@ -407,31 +437,31 @@ msgstr "0 arba 1 (0 = išjungta, 1 = įjungta)"
 
 #: plmanagednode/view.py:189
 msgid "The IP block you have provided is not valid; {error_variable_do_not_translate}."
-msgstr ""
+msgstr "Jūsų pateiktas IP blokas negalioja; {error_variable_do_not_translate}."
 
 #: plmanagednode/view.py:203
 msgid "No IP blocks were provided."
-msgstr ""
+msgstr "IP blokai nebuvo pateikti."
 
 #: plmanagednode/view.py:215
 msgid "The IP address you have provided is not valid; {error_variable_do_not_translate}"
-msgstr ""
+msgstr "Jūsų nurodytas IP adresas negalioja; {error_variable_do_not_translate}"
 
 #: plmanagednode/view.py:236
 msgid "The strategy you provided is invalid. You must be one of: {options_variable_do_not_translate}."
-msgstr ""
+msgstr "Jūsų pateikta strategija yra negaliojanti. Turite būti vienas iš: {options_variable_do_not_translate}."
 
 #: plmanagednode/view.py:252
 msgid "The retry limit must be a number greater than or equal to -1."
-msgstr ""
+msgstr "Pakartotinio bandymo riba turi būti skaičius, didesnis arba lygus -1."
 
 #: plmanagednode/view.py:267
 msgid "The search trigger must be 0 or 1."
-msgstr ""
+msgstr "Paieškos paleidiklis turi būti 0 arba 1."
 
 #: plmanagednode/view.py:286
 msgid "IP rotation settings saved."
-msgstr ""
+msgstr "Išsaugoti IP pasukimo nustatymai."
 
 #: plmanagednode/view.py:307
 msgid "Google Account Configurator"
@@ -451,7 +481,7 @@ msgstr "slaptažodis"
 
 #: plmanagednode/view.py:322
 msgid "If you have 2FA you will need an application password"
-msgstr ""
+msgstr "Jei turite 2FA, jums reikės programos slaptažodžio"
 
 #: plmanagednode/view.py:336 plmanagednode/view.py:425
 msgid "You are not authorized to interact with this"
@@ -475,7 +505,7 @@ msgstr "Pagrindinio kompiuterio pavadinimas"
 
 #: plmanagednode/view.py:381
 msgid "Hostname of the proxy, (IP or domain or localhost)"
-msgstr ""
+msgstr "Tarpinio serverio pagrindinio kompiuterio pavadinimas (IP arba domenas, arba localhost)"
 
 #: plmanagednode/view.py:385
 msgid "Proxy port"
@@ -491,7 +521,7 @@ msgstr "Naudotojas"
 
 #: plmanagednode/view.py:399
 msgid "Optional user for basic authentication fields. Leave blank if you do not use basic authentication"
-msgstr ""
+msgstr "Pasirenkamas vartotojas pagrindiniams autentifikavimo laukams. Palikite tuščią, jei nenaudojate pagrindinio autentifikavimo"
 
 #: plmanagednode/view.py:405
 msgid "Password"
@@ -499,13 +529,13 @@ msgstr "Slaptažodis"
 
 #: plmanagednode/view.py:410
 msgid "Optional password for basic authentication fields. Leave blank if you do not use basic authentication."
-msgstr ""
+msgstr "Pasirenkamas pagrindinių autentifikavimo laukų slaptažodis. Palikite tuščią, jei nenaudojate pagrindinio autentifikavimo."
 
 #: plmanagednode/view.py:436
 msgid "The port provided is not valid. It must be between 0 and 65536."
-msgstr ""
+msgstr "Nurodytas uostas negalioja. Jis turi būti nuo 0 iki 65536."
 
 #: plmanagednode/view.py:453
 msgid "HTTP proxy settings saved."
-msgstr ""
+msgstr "HTTP tarpinio serverio nustatymai išsaugoti."
 

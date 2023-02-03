@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-02-03 20:16+0000\n"
-"PO-Revision-Date: 2023-02-03 20:20\n"
+"PO-Revision-Date: 2023-02-03 21:03\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -47,7 +47,7 @@ msgstr "PyLav'a düğüm ekleme"
 
 #: plnodes/cog.py:87
 msgid "Let us add a node to PyLav!"
-msgstr ""
+msgstr "PyLav'a bir düğüm ekleyelim!"
 
 #: plnodes/cog.py:88
 msgid "(**1**){space_variable_do_not_translate} - Apply changes and add the node to PyLav.\n"
@@ -61,7 +61,17 @@ msgid "(**1**){space_variable_do_not_translate} - Apply changes and add the node
 "(**9**){space_variable_do_not_translate} - Set the connection timeout.\n"
 "(**10**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space_variable_do_not_translate} - Değişiklikleri uygulayın ve düğümü PyLav'a ekleyin.\n"
+"(**2**){space_variable_do_not_translate} - Yapılan değişiklikleri iptal edin ve menüyü kapatın.\n"
+"(**3**){space_variable_do_not_translate} - Yalnızca arama ve arama ve oynatma modları arasında geçiş yapın.\n"
+"(**4**){space_variable_do_not_translate} - SSL'yi açma ve kapatma arasında geçiş yapın.\n"
+"(**5**){space_variable_do_not_translate} - Düğüme bir ad ekleyin.\n"
+"(**6**){space_variable_do_not_translate} - Düğümün ana bilgisayar adresini ekleyin.\n"
+"(**7**){space_variable_do_not_translate} - Düğümün kullandığı bağlantı noktasını ekleyin.\n"
+"(**8**){space_variable_do_not_translate} - Düğüm için şifreyi ayarlayın.\n"
+"(**9**){space_variable_do_not_translate} - Bağlantı zaman aşımını ayarlayın.\n"
+"(**10**) - Bu düğüm için hangi kaynakların devre dışı bırakılacağını seçin (Birden çok seçilebilir).\n"
+"Bir düğmeyle birden çok kez etkileşim kurarsanız, yalnızca son etkileşim etkili olur.\n\n\n"
 
 #: plnodes/cog.py:134
 msgid "I have added the {name_variable_do_not_translate} node with the following settings:\n"
@@ -72,11 +82,18 @@ msgid "I have added the {name_variable_do_not_translate} node with the following
 "Search Only: {search_only_variable_do_not_translate}\n"
 "SSL: {ssl_variable_do_not_translate}\n"
 "Disabled Sources: {disabled_sources_variable_do_not_translate}\n"
-msgstr ""
+msgstr "Ben ekledim {name_variable_do_not_translate} aşağıdaki ayarlara sahip düğüm:\n"
+"Ev sahibi: {host_variable_do_not_translate}\n"
+"Liman: {port_variable_do_not_translate}\n"
+"Parola: {password_variable_do_not_translate}\n"
+"Zaman Aşımını Sürdür: {resume_timeout_variable_do_not_translate}\n"
+"Yalnızca Ara: {search_only_variable_do_not_translate}\n"
+"SSL: {ssl_variable_do_not_translate}\n"
+"Engelli Kaynaklar: {disabled_sources_variable_do_not_translate}\n"
 
 #: plnodes/cog.py:165 plnodes/cog.py:172
 msgid "I am unable to add this node"
-msgstr ""
+msgstr "Bu düğümü ekleyemiyorum"
 
 #: plnodes/cog.py:178
 #, docstring
@@ -85,16 +102,17 @@ msgstr "PyLav örneğinden düğüm kaldırma"
 
 #: plnodes/cog.py:190
 msgid "{name_variable_do_not_translate} is managed by PyLav and cannot be removed."
-msgstr ""
+msgstr "{name_variable_do_not_translate} PyLav tarafından yönetilir ve kaldırılamaz."
 
 #: plnodes/cog.py:207
 msgid "I have removed the {name_variable_do_not_translate} node.\n\n"
 "{data_variable_do_not_translate}"
-msgstr ""
+msgstr "Ben kaldırdım {name_variable_do_not_translate} düğüm.\n\n"
+"{data_variable_do_not_translate}"
 
 #: plnodes/cog.py:220
 msgid "I have removed the {name_variable_do_not_translate} node. A direct message was sent to you with the node details in case you wish to re-add it."
-msgstr ""
+msgstr "Ben kaldırdım {name_variable_do_not_translate} düğüm. Yeniden eklemek istemeniz durumunda düğüm ayrıntılarını içeren doğrudan bir mesaj gönderildi."
 
 #: plnodes/cog.py:230
 #, docstring
@@ -103,7 +121,7 @@ msgstr "Bir PyLav örneğindeki tüm düğümleri yönetme"
 
 #: plnodes/cog.py:242
 msgid "Let us manage some nodes!"
-msgstr ""
+msgstr "Bazı düğümleri yönetelim!"
 
 #: plnodes/cog.py:243
 msgid "(**1**){space_variable_do_not_translate} - Cancel any changes made and close the menu.\n"
@@ -119,15 +137,27 @@ msgid "(**1**){space_variable_do_not_translate} - Cancel any changes made and cl
 "(**15**) - Remove this node.\n"
 "(**16**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr ""
+msgstr "(**1**){space_variable_do_not_translate} - Yapılan değişiklikleri iptal edin ve menüyü kapatın.\n"
+"(**6**){space_variable_do_not_translate} - Bu düğüm için etkinleştirilen kaynakları göster.\n"
+"(**7**){space_variable_do_not_translate} - Değişiklikleri uygulayın ve düğümü PyLav'a ekleyin.\n"
+"(**8**){space_variable_do_not_translate} - Yalnızca arama ve arama ve oynatma modları arasında geçiş yapın.\n"
+"(**9**){space_variable_do_not_translate} - SSL'yi açma ve kapatma arasında geçiş yapın.\n"
+"(**10**) - Düğüme bir ad ekleyin.\n"
+"(**11**) - Düğümün ana bilgisayar adresini ekleyin.\n"
+"(**12**) - Düğümün kullandığı bağlantı noktasını ekleyin.\n"
+"(**13**) - Düğümün parolasını ayarlayın.\n"
+"(**14**) - Bağlantı zaman aşımını ayarlayın.\n"
+"(**15**) - Bu düğümü kaldırın.\n"
+"(**16**) - Bu düğüm için hangi kaynakların devre dışı bırakılacağını seçin (Birden çok seçilebilir).\n"
+"Bir düğmeyle birden çok kez etkileşim kurarsanız, yalnızca son etkileşim etkili olur.\n\n\n"
 
 #: plnodes/cog.py:272
 msgid "{name_variable_do_not_translate} is managed by PyLav, and I can not modify it."
-msgstr ""
+msgstr "{name_variable_do_not_translate} PyLav tarafından yönetiliyor ve bunu değiştiremiyorum."
 
 #: plnodes/cog.py:284
 msgid "I have removed the {name_variable_do_not_translate} node."
-msgstr ""
+msgstr "Ben kaldırdım {name_variable_do_not_translate} düğüm."
 
 #: plnodes/cog.py:322
 msgid "I have changed the {name_variable_do_not_translate} node to the following settings:\n"
@@ -138,7 +168,14 @@ msgid "I have changed the {name_variable_do_not_translate} node to the following
 "Search Only: {search_only_variable_do_not_translate}\n"
 "SSL: {ssl_variable_do_not_translate}\n"
 "Disabled Sources: {disabled_sources_variable_do_not_translate}\n"
-msgstr ""
+msgstr "Ben değiştirdim {name_variable_do_not_translate} düğümü aşağıdaki ayarlara yönlendirin:\n"
+"Ev sahibi: {host_variable_do_not_translate}\n"
+"Liman: {port_variable_do_not_translate}\n"
+"Parola: {password_variable_do_not_translate}\n"
+"Zaman Aşımını Sürdür: {resume_timeout_variable_do_not_translate}\n"
+"Yalnızca Ara: {search_only_variable_do_not_translate}\n"
+"SSL: {ssl_variable_do_not_translate}\n"
+"Engelli Kaynaklar: {disabled_sources_variable_do_not_translate}\n"
 
 #: plnodes/cog.py:349
 #, docstring
@@ -147,5 +184,5 @@ msgstr "PyLav tarafından kullanılan tüm düğümleri listeleyin"
 
 #: plnodes/cog.py:359
 msgid "No nodes were added to PyLav."
-msgstr ""
+msgstr "PyLav'a düğüm eklenmedi."
 
