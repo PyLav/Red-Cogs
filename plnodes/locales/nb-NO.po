@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
-"POT-Creation-Date: 2023-02-02 22:16+0000\n"
-"PO-Revision-Date: 2023-02-02 22:33\n"
+"POT-Creation-Date: 2023-02-03 20:16+0000\n"
+"PO-Revision-Date: 2023-02-03 20:17\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian\n"
 "MIME-Version: 1.0\n"
@@ -17,118 +17,100 @@ msgstr ""
 "X-Crowdin-File-ID: 3321\n"
 "Language: no_NO\n"
 
-#: plnodes/cog.py:33
+#: plnodes/cog.py:32
 #, docstring
 msgid "Manage the nodes used by PyLav"
 msgstr "Administrer EK-gruppene brukt av PyLav"
 
-#: plnodes/cog.py:44
+#: plnodes/cog.py:43
 #, docstring
 msgid "Configure PyLav Nodes"
 msgstr "Konfigurer PyLav Nodes"
 
-#: plnodes/cog.py:48
+#: plnodes/cog.py:47
 #, docstring
-msgid "Show the version of the Cog and its PyLav dependencies"
-msgstr "Vis versjonen av tannhjulet og dets PyLav-avhengigheter"
+msgid "Show the version of the Cog and PyLav"
+msgstr ""
 
-#: plnodes/cog.py:64
+#: plnodes/cog.py:63
 msgid "Library / Cog"
 msgstr "Bibliotek / Cog"
 
-#: plnodes/cog.py:65
+#: plnodes/cog.py:64
 msgid "Version"
 msgstr "Versjon"
 
-#: plnodes/cog.py:78
+#: plnodes/cog.py:77
 #, docstring
 msgid "Add a node to PyLav"
 msgstr "Legg til en node til PyLav"
 
-#: plnodes/cog.py:88
-msgid "Let's add a node to PyLav!"
-msgstr "La oss legge til en node til PyLav!"
+#: plnodes/cog.py:87
+msgid "Let us add a node to PyLav!"
+msgstr ""
 
-#: plnodes/cog.py:89
-msgid "(**1**){space_value} - Apply changes and add the node to PyLav.\n"
-"(**2**){space_value} - Cancel any changes made and close the menu.\n"
-"(**3**){space_value} - Toggle between search-only and search and playback modes.\n"
-"(**4**){space_value} - Toggle between SSL on and off.\n"
-"(**5**){space_value} - Add a name to the node.\n"
-"(**6**){space_value} - Add the host address of the node.\n"
-"(**7**){space_value} - Add the port the node uses.\n"
-"(**8**){space_value} - Set the password for the node.\n"
-"(**9**){space_value} - Set the connection timeout.\n"
+#: plnodes/cog.py:88
+msgid "(**1**){space_variable_do_not_translate} - Apply changes and add the node to PyLav.\n"
+"(**2**){space_variable_do_not_translate} - Cancel any changes made and close the menu.\n"
+"(**3**){space_variable_do_not_translate} - Toggle between search-only and search and playback modes.\n"
+"(**4**){space_variable_do_not_translate} - Toggle between SSL on and off.\n"
+"(**5**){space_variable_do_not_translate} - Add a name to the node.\n"
+"(**6**){space_variable_do_not_translate} - Add the host address of the node.\n"
+"(**7**){space_variable_do_not_translate} - Add the port the node uses.\n"
+"(**8**){space_variable_do_not_translate} - Set the password for the node.\n"
+"(**9**){space_variable_do_not_translate} - Set the connection timeout.\n"
 "(**10**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr "(**1**){space_value} - Bruk endringer og legg til noden i PyLav.\n"
-"(**2**){space_value} - Avbryt eventuelle endringer og lukk menyen.\n"
-"(**3**){space_value} - Veksle mellom søke- og søke- og avspillingsmodus.\n"
-"(**4**){space_value} - Veksle mellom SSL på og av.\n"
-"(**5**){space_value} - Legg til et navn på noden.\n"
-"(**6**){space_value} - Legg til vertsadressen til noden.\n"
-"(**7**){space_value} - Legg til porten noden bruker.\n"
-"(**8**){space_value} - Angi passordet for noden.\n"
-"(**9**){space_value} - Still inn tidsavbrudd for tilkobling.\n"
-"(**10**) - Velg hvilke kilder som skal deaktiveres for denne noden (Flere kan velges).\n"
-"Hvis du samhandler med en knapp flere ganger, trer bare den siste samhandlingen i kraft.\n\n\n"
+msgstr ""
 
-#: plnodes/cog.py:137
-msgid "Added node {name_value} with the following settings:\n"
-"Host: {host_value}\n"
-"Port: {port_value}\n"
-"Password: {password_value}\n"
-"Resume Timeout: {resume_timeout_value}\n"
-"Search Only: {search_only_value}\n"
-"SSL: {ssl_value}\n"
-"Disabled Sources: {disabled_sources_value}\n"
-msgstr "Lagt til node {name_value} med følgende innstillinger:\n"
-"Vert: {host_value}\n"
-"Havn: {port_value}\n"
-"Passord: {password_value}\n"
-"Fortsett tidsavbrudd: {resume_timeout_value}\n"
-"Bare søk: {search_only_value}\n"
-"SSL: {ssl_value}\n"
-"Deaktiverte kilder: {disabled_sources_value}\n"
+#: plnodes/cog.py:134
+msgid "I have added the {name_variable_do_not_translate} node with the following settings:\n"
+"Host: {host_variable_do_not_translate}\n"
+"Port: {port_variable_do_not_translate}\n"
+"Password: {password_variable_do_not_translate}\n"
+"Resume Timeout: {resume_timeout_variable_do_not_translate}\n"
+"Search Only: {search_only_variable_do_not_translate}\n"
+"SSL: {ssl_variable_do_not_translate}\n"
+"Disabled Sources: {disabled_sources_variable_do_not_translate}\n"
+msgstr ""
 
-#: plnodes/cog.py:168 plnodes/cog.py:175
-msgid "Unable to add this node"
-msgstr "Kan ikke legge til denne noden"
+#: plnodes/cog.py:165 plnodes/cog.py:172
+msgid "I am unable to add this node"
+msgstr ""
 
-#: plnodes/cog.py:181
+#: plnodes/cog.py:178
 #, docstring
 msgid "Remove a node from a PyLav instance"
 msgstr "Fjern en node fra en PyLav forekomst"
 
-#: plnodes/cog.py:193
-msgid "{name_value} is managed by PyLav and cannot be removed."
-msgstr "{name_value} forvaltes av PyLav og kan ikke fjernes."
+#: plnodes/cog.py:190
+msgid "{name_variable_do_not_translate} is managed by PyLav and cannot be removed."
+msgstr ""
 
-#: plnodes/cog.py:210
-msgid "Removed node {name_value}.\n\n"
-"{data_value}"
-msgstr "Fjernet node {name_value}.\n\n"
-"{data_value}"
+#: plnodes/cog.py:207
+msgid "I have removed the {name_variable_do_not_translate} node.\n\n"
+"{data_variable_do_not_translate}"
+msgstr ""
 
-#: plnodes/cog.py:219
-msgid "Removed node {name_value}, a direct message was sent to you with the node details in case you wish to re-add it"
-msgstr "Fjernet node {name_value}, ble det sendt en direktemelding til deg med nodedetaljene i tilfelle du ønsker å legge den til på nytt"
+#: plnodes/cog.py:220
+msgid "I have removed the {name_variable_do_not_translate} node. A direct message was sent to you with the node details in case you wish to re-add it."
+msgstr ""
 
-#: plnodes/cog.py:229
+#: plnodes/cog.py:230
 #, docstring
 msgid "Manage all nodes in a PyLav instance"
 msgstr "Administrer alle noder i en PyLav forekomst"
 
-#: plnodes/cog.py:241
-msgid "Let's manage some nodes!"
-msgstr "La oss administrere noen noder!"
-
 #: plnodes/cog.py:242
-msgid "(**1**){space_value} - Cancel any changes made and close the menu.\n"
-"(**6**){space_value} - Show sources enabled for this node.\n"
-"(**7**){space_value} - Apply changes and add the node to PyLav.\n"
-"(**8**){space_value} - Toggle between search-only and search and playback modes.\n"
-"(**9**){space_value} - Toggle between SSL on and off.\n"
+msgid "Let us manage some nodes!"
+msgstr ""
+
+#: plnodes/cog.py:243
+msgid "(**1**){space_variable_do_not_translate} - Cancel any changes made and close the menu.\n"
+"(**6**){space_variable_do_not_translate} - Show sources enabled for this node.\n"
+"(**7**){space_variable_do_not_translate} - Apply changes and add the node to PyLav.\n"
+"(**8**){space_variable_do_not_translate} - Toggle between search-only and search and playback modes.\n"
+"(**9**){space_variable_do_not_translate} - Toggle between SSL on and off.\n"
 "(**10**) - Add a name to the node.\n"
 "(**11**) - Add the host address of the node.\n"
 "(**12**) - Add the port the node uses.\n"
@@ -137,52 +119,33 @@ msgid "(**1**){space_value} - Cancel any changes made and close the menu.\n"
 "(**15**) - Remove this node.\n"
 "(**16**) - Select which sources to disable for this node (Multiple can be selected).\n"
 "If you interact with a button multiple times, only the last interaction will take effect.\n\n\n"
-msgstr "(**1**){space_value} - Avbryt eventuelle endringer og lukk menyen.\n"
-"(**6**){space_value} - Vis kilder aktivert for denne noden.\n"
-"(**7**){space_value} - Bruk endringer og legg til noden i PyLav.\n"
-"(**8**){space_value} - Veksle mellom søke- og søke- og avspillingsmodus.\n"
-"(**9**){space_value} - Veksle mellom SSL på og av.\n"
-"(**10**) – Legg til et navn på noden.\n"
-"(**11**) – Legg til vertsadressen til noden.\n"
-"(**12**) – Legg til porten noden bruker.\n"
-"(**13**) - Angi passordet for noden.\n"
-"(**14**) – Angi tidsavbrudd for tilkobling.\n"
-"(**15**) - Fjern denne noden.\n"
-"(**16**) - Velg hvilke kilder som skal deaktiveres for denne noden (Flere kan velges).\n"
-"Hvis du samhandler med en knapp flere ganger, trer bare den siste samhandlingen i kraft.\n\n\n"
+msgstr ""
 
-#: plnodes/cog.py:271
-msgid "{name_value} is managed by PyLav and cannot be modified with this command."
-msgstr "{name_value} administreres av PyLav og kan ikke endres med denne kommandoen."
+#: plnodes/cog.py:272
+msgid "{name_variable_do_not_translate} is managed by PyLav, and I can not modify it."
+msgstr ""
 
-#: plnodes/cog.py:283
-msgid "Removed node {name_value}"
-msgstr "Fjernet node {name_value}"
+#: plnodes/cog.py:284
+msgid "I have removed the {name_variable_do_not_translate} node."
+msgstr ""
 
-#: plnodes/cog.py:319
-msgid "Changed node {name_value} to the following settings:\n"
-"Host: {host_value}\n"
-"Port: {port_value}\n"
-"Password: {password_value}\n"
-"Resume Timeout: {resume_timeout_value}\n"
-"Search Only: {search_only_value}\n"
-"SSL: {ssl_value}\n"
-"Disabled Sources: {disabled_sources_value}\n"
-msgstr "Endret node {name_value} til følgende innstillinger:\n"
-"Vert: {host_value}\n"
-"Havn: {port_value}\n"
-"Passord: {password_value}\n"
-"Fortsett tidsavbrudd: {resume_timeout_value}\n"
-"Bare søk: {search_only_value}\n"
-"SSL: {ssl_value}\n"
-"Deaktiverte kilder: {disabled_sources_value}\n"
+#: plnodes/cog.py:322
+msgid "I have changed the {name_variable_do_not_translate} node to the following settings:\n"
+"Host: {host_variable_do_not_translate}\n"
+"Port: {port_variable_do_not_translate}\n"
+"Password: {password_variable_do_not_translate}\n"
+"Resume Timeout: {resume_timeout_variable_do_not_translate}\n"
+"Search Only: {search_only_variable_do_not_translate}\n"
+"SSL: {ssl_variable_do_not_translate}\n"
+"Disabled Sources: {disabled_sources_variable_do_not_translate}\n"
+msgstr ""
 
-#: plnodes/cog.py:346
+#: plnodes/cog.py:349
 #, docstring
 msgid "List all nodes used by PyLav"
 msgstr "Vis alle noder brukt av PyLav"
 
-#: plnodes/cog.py:356
-msgid "No nodes added to PyLav"
-msgstr "Ingen noder er lagt til PyLav"
+#: plnodes/cog.py:359
+msgid "No nodes were added to PyLav."
+msgstr ""
 

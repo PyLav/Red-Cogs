@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
-"POT-Creation-Date: 2023-02-02 22:16+0000\n"
-"PO-Revision-Date: 2023-02-02 22:33\n"
+"POT-Creation-Date: 2023-02-03 20:16+0000\n"
+"PO-Revision-Date: 2023-02-03 20:17\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
@@ -17,33 +17,33 @@ msgstr ""
 "X-Crowdin-File-ID: 3319\n"
 "Language: zh_TW\n"
 
-#: plplaylists/cog.py:47
+#: plplaylists/cog.py:45
 #, docstring
 msgid "PyLav playlist management commands"
 msgstr "PyLav 播放列表管理命令"
 
-#: plplaylists/cog.py:55
+#: plplaylists/cog.py:53
 msgid "Control PyLav playlists"
 msgstr "控制 PyLav 播放列表"
 
-#: plplaylists/cog.py:77
+#: plplaylists/cog.py:75
 #, docstring
-msgid "Show the version of the Cog and it's PyLav dependencies"
-msgstr "顯示 Cog 的版本及其 PyLav 依賴項"
+msgid "Show the version of the Cog and PyLav"
+msgstr ""
 
-#: plplaylists/cog.py:92
+#: plplaylists/cog.py:90
 msgid "Library / Cog"
 msgstr "圖書館/齒輪"
 
-#: plplaylists/cog.py:93
+#: plplaylists/cog.py:91
 msgid "Version"
 msgstr "版本"
 
-#: plplaylists/cog.py:130
-msgid "Let's create a playlist!"
-msgstr "讓我們創建一個播放列表！"
+#: plplaylists/cog.py:128
+msgid "Let us create a playlist!"
+msgstr ""
 
-#: plplaylists/cog.py:131
+#: plplaylists/cog.py:129
 msgid "(**1**) - Apply changes to playlist.\n"
 "(**2**) - Cancel any changes made.\n"
 "(**3**) - Add a name to the playlist.\n"
@@ -57,53 +57,51 @@ msgstr "（**1**） - 將更改應用於播放清單。\n"
 "（**5**） - 將佇列中的所有曲目添加到播放清單。\n\n"
 "如果您希望播放清單名稱與原始播放清單相同，只需設置URL但沒有名稱。\n\n"
 
-#: plplaylists/cog.py:165
-msgid "Playlist not created"
-msgstr "未創建播放列表"
+#: plplaylists/cog.py:163
+msgid "I did not create this playlist."
+msgstr ""
 
-#: plplaylists/cog.py:166
+#: plplaylists/cog.py:164
 msgid "No tracks were provided in time."
 msgstr "沒有及時提供曲目。"
 
-#: plplaylists/cog.py:179
-msgid "Playlist created"
-msgstr "已創建播放列表"
+#: plplaylists/cog.py:177
+msgid "I have created a new playlist."
+msgstr ""
 
-#: plplaylists/cog.py:180
-msgid "Name: `{name_value}`\n"
-"Identifier: `{id_value}`\n"
-"Tracks: `{track_count_value}`"
-msgstr "姓名： '{name_value}`\n"
-"標識元：”{id_value}`\n"
-"曲目： '{track_count_value}`"
+#: plplaylists/cog.py:178
+msgid "Name: `{name_variable_do_not_translate}`\n"
+"Identifier: `{id_variable_do_not_translate}`\n"
+"Tracks: `{track_count_variable_do_not_translate}`"
+msgstr ""
 
-#: plplaylists/cog.py:204
+#: plplaylists/cog.py:206
 msgid "You have no playlists"
 msgstr "您沒有播放列表"
 
-#: plplaylists/cog.py:246 plplaylists/cog.py:618
+#: plplaylists/cog.py:248 plplaylists/cog.py:637
 msgid "Nothing to save"
 msgstr "沒有任何變更可以儲存"
 
-#: plplaylists/cog.py:247 plplaylists/cog.py:619
-msgid "There is nothing in the queue to save"
-msgstr "列表中沒有可保存的內容"
+#: plplaylists/cog.py:249 plplaylists/cog.py:638
+msgid "There is nothing in the queue to save."
+msgstr ""
 
-#: plplaylists/cog.py:284 plplaylists/cog.py:554 plplaylists/cog.py:636
-msgid "{user_value}, playlist {playlist_name_value} cannot be managed by yourself"
-msgstr "{user_value}播放清單 {playlist_name_value} 無法自行管理"
+#: plplaylists/cog.py:286 plplaylists/cog.py:569 plplaylists/cog.py:655
+msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} cannot be managed by yourself."
+msgstr ""
 
-#: plplaylists/cog.py:294
-msgid "(**1**){space_value} - Apply changes to playlist.\n"
-"(**2**){space_value} - Cancel any changes made and close the menu.\n"
-"(**3**){space_value} - Delete this playlist.\n"
-"(**4**){space_value} - Remove all tracks from this playlist.\n"
-"(**5**){space_value} - Update the playlist with the latest tracks.\n"
+#: plplaylists/cog.py:298
+msgid "(**1**){space_variable_do_not_translate} - Apply changes to playlist.\n"
+"(**2**){space_variable_do_not_translate} - Cancel any changes made and close the menu.\n"
+"(**3**){space_variable_do_not_translate} - Delete this playlist.\n"
+"(**4**){space_variable_do_not_translate} - Remove all tracks from this playlist.\n"
+"(**5**){space_variable_do_not_translate} - Update the playlist with the latest tracks.\n"
 "Please note that this action will ignore any tracks added/removed via this menu.\n"
-"(**6**){space_value} - Change the name of the playlist.\n"
-"(**7**){space_value} - Link this playlist to an existing playlist/album.\n"
-"(**8**){space_value} - Add a query to this playlist.\n"
-"(**9**){space_value} - Remove a query from this playlist.\n"
+"(**6**){space_variable_do_not_translate} - Change the name of the playlist.\n"
+"(**7**){space_variable_do_not_translate} - Link this playlist to an existing playlist/album.\n"
+"(**8**){space_variable_do_not_translate} - Add a query to this playlist.\n"
+"(**9**){space_variable_do_not_translate} - Remove a query from this playlist.\n"
 "(**10**) - Download the playlist file.\n"
 "(**11**) - Add current playlist to the queue.\n"
 "(**12**) - Show tracks in current playlist.\n"
@@ -114,28 +112,9 @@ msgid "(**1**){space_value} - Apply changes to playlist.\n"
 "The clear button will always be run first before any other operations.\n"
 "The URL button will always run last - Linking a playlist via the URL will overwrite any tracks added or removed to this playlist.\n\n"
 "If you interact with a button multiple times other than the add/remove buttons only the last interaction will take effect.\n\n\n"
-msgstr "(**1**){space_value} - 將更改應用於播放清單。\n"
-"(**2**){space_value} - 取消所做的任何更改並關閉功能表。\n"
-"(**3**){space_value} - 刪除此播放清單。\n"
-"(**4**){space_value} - 從此播放清單中移除所有曲目。\n"
-"(**5**){space_value} - 使用最新曲目更新播放清單。\n"
-"請注意，此操作將忽略通過此功能表添加/刪除的任何曲目。\n"
-"(**6**){space_value} - 更改播放清單的名稱。\n"
-"(**7**){space_value} - 將此播放清單連結到現有的播放清單/專輯。\n"
-"(**8**){space_value} - 向此播放清單添加查詢。\n"
-"(**9**){space_value} - 從此播放清單中刪除查詢。\n"
-"（**10**） - 下載播放清單檔。\n"
-"（**11**） - 將當前播放清單添加到佇列。\n"
-"（**12**） - 顯示目前播放清單中的曲目。\n"
-"（**13**） - 將佇列中的曲目添加到此播放清單。\n"
-"（**14**） - 刪除播放清單中的重複條目。\n\n"
-"添加/刪除曲目按鈕可以多次用於一次添加/刪除多個曲目和播放清單。\n\n"
-"查詢是 play 命令可播放的任何內容 - 任何查詢都可以由添加/刪除按鈕使用\n\n"
-"清除按鈕將始終先運行，然後再執行任何其他操作。\n"
-"URL 按鈕將始終最後運行 - 通過 URL 連結播放清單將覆蓋添加或刪除到此播放清單的任何曲目。\n\n"
-"如果與添加/刪除按鈕以外的按鈕多次交互，則只有最後一次交互將生效。\n\n\n"
+msgstr ""
 
-#: plplaylists/cog.py:320
+#: plplaylists/cog.py:324
 msgid "(**1**) - Close the menu.\n"
 "(**2**) - Update the playlist with the latest tracks.\n"
 "(**3**) - Download the playlist file.\n"
@@ -147,121 +126,122 @@ msgstr "（**1**） - 關閉功能表。\n"
 "（**4**） - 將當前播放清單添加到佇列。\n"
 "（**5**） - 顯示目前播放清單中的曲目。\n\n\n"
 
-#: plplaylists/cog.py:328
+#: plplaylists/cog.py:332
 msgid "__**Currently managing**__:\n"
-"**Name**:{space_value}{space_value}{space_value}{playlist_name_value}\n"
-"**Scope**:{space_value}{space_value}{space_value}{scope_value}\n"
-"**Author**:{space_value}{space_value}{author_value}\n"
-"**Tracks**:{space_value}{space_value}{space_value}{tracks_value} tracks\n"
-"**URL**:{space_value}{space_value}{space_value}{space_value}{space_value}{url_value}\n"
-msgstr "__**當前正在管理**__：\n"
-"**名字**：{space_value}{space_value}{space_value}{playlist_name_value}\n"
-"**範圍**：{space_value}{space_value}{space_value}{scope_value}\n"
-"**作者**：{space_value}{space_value}{author_value}\n"
-"**軌道**：{space_value}{space_value}{space_value}{tracks_value} 軌道\n"
-"網址**：{space_value}{space_value}{space_value}{space_value}{space_value}{url_value}\n"
+"**Name**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{playlist_name_variable_do_not_translate}\n"
+"**Scope**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{scope_variable_do_not_translate}\n"
+"**Author**:{space_variable_do_not_translate}{space_variable_do_not_translate}{author_variable_do_not_translate}\n"
+"**Tracks**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{tracks_variable_do_not_translate} tracks\n"
+"**URL**:{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{space_variable_do_not_translate}{url_variable_do_not_translate}\n"
+msgstr ""
 
-#: plplaylists/cog.py:346
-msgid "Let's manage: {playlist_name_value}"
-msgstr "讓我們管理： {playlist_name_value}"
+#: plplaylists/cog.py:350
+msgid "Let us manage: {playlist_name_variable_do_not_translate}."
+msgstr ""
 
-#: plplaylists/cog.py:348
-msgid "Let's take a look at: {playlist_name_value}"
-msgstr "我們來看看： {playlist_name_value}"
+#: plplaylists/cog.py:354
+msgid "Let us take a look at: {playlist_name_variable_do_not_translate}."
+msgstr ""
 
-#: plplaylists/cog.py:355
+#: plplaylists/cog.py:365
 msgid "N/A"
 msgstr "不適用"
 
-#: plplaylists/cog.py:387 plplaylists/cog.py:565
-msgid "Playlist deleted"
-msgstr "播放列表已刪除"
+#: plplaylists/cog.py:389
+msgid "I have deleted a playlist."
+msgstr ""
 
-#: plplaylists/cog.py:389 plplaylists/cog.py:567
-msgid "{user_value}, playlist {playlist_name_value} has been deleted"
-msgstr "{user_value}播放清單 {playlist_name_value} 已被刪除"
+#: plplaylists/cog.py:391 plplaylists/cog.py:584
+msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has been deleted."
+msgstr ""
 
-#: plplaylists/cog.py:440
-msgid "Playlist {playlist_name_value} could not be updated with URL: <{url_value}>"
-msgstr "播放清單 {playlist_name_value} 無法使用網址進行更新： <{url_value}>"
+#: plplaylists/cog.py:444
+msgid "Playlist {playlist_name_variable_do_not_translate} could not be updated with URL: {url_variable_do_not_translate}"
+msgstr ""
 
-#: plplaylists/cog.py:478
+#: plplaylists/cog.py:486
 msgid "\n"
-"{track_count_value} {track_plural_value} removed from the playlist"
-msgstr "\n"
-"{track_count_value} {track_plural_value} 已從播放清單中移除"
+"1 track was removed from the playlist."
+msgstr ""
 
-#: plplaylists/cog.py:480 plplaylists/cog.py:484 plplaylists/cog.py:656
-msgid "track"
-msgstr "曲目"
-
-#: plplaylists/cog.py:480 plplaylists/cog.py:484 plplaylists/cog.py:656
-msgid "tracks"
-msgstr "首歌曲"
-
-#: plplaylists/cog.py:483 plplaylists/cog.py:655
+#: plplaylists/cog.py:488
 msgid "\n"
-"{track_count_value} {track_plural_value} added to the playlist"
-msgstr "\n"
-"{track_count_value} {track_plural_value} 已添加到播放清單"
+"{track_count_variable_do_not_translate} tracks were removed from the playlist."
+msgstr ""
 
-#: plplaylists/cog.py:489 plplaylists/cog.py:662
+#: plplaylists/cog.py:494 plplaylists/cog.py:678
+msgid "\n"
+"1 track was added to the playlist."
+msgstr ""
+
+#: plplaylists/cog.py:496 plplaylists/cog.py:680
+msgid "\n"
+"{track_count_variable_do_not_translate} tracks were added to the playlist."
+msgstr ""
+
+#: plplaylists/cog.py:502 plplaylists/cog.py:689
 msgid "Playlist updated"
 msgstr "播放列表已更新"
 
-#: plplaylists/cog.py:490 plplaylists/cog.py:663
-msgid "{user_value}, playlist {playlist_name_value} has been updated.{extras_value}"
-msgstr "{user_value}播放清單 {playlist_name_value} 已更新。{extras_value}"
+#: plplaylists/cog.py:503 plplaylists/cog.py:690
+msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has been updated.{extras_variable_do_not_translate}."
+msgstr ""
 
-#: plplaylists/cog.py:504 plplaylists/cog.py:678
+#: plplaylists/cog.py:517 plplaylists/cog.py:705
 msgid "Playlist unchanged"
 msgstr "播放列表未更新"
 
-#: plplaylists/cog.py:505 plplaylists/cog.py:679
-msgid "{user_value}, playlist {playlist_name_value} has not been updated"
-msgstr "{user_value}播放清單 {playlist_name_value} 尚未更新"
+#: plplaylists/cog.py:518
+msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has not been updated."
+msgstr ""
 
-#: plplaylists/cog.py:708
-msgid "You must either provide a URL or attach a playlist file to upload a playlist"
-msgstr "您必須提供 URL 或附加播放列表文件才能上傳播放列表"
+#: plplaylists/cog.py:582
+msgid "Playlist deleted"
+msgstr "播放列表已刪除"
 
-#: plplaylists/cog.py:720
+#: plplaylists/cog.py:706
+msgid "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has not been updated"
+msgstr ""
+
+#: plplaylists/cog.py:737
+msgid "You must either provide a URL or attach a playlist file to upload a playlist."
+msgstr ""
+
+#: plplaylists/cog.py:749
 msgid "No valid playlist file provided"
 msgstr "未提供有效的播放列表文件"
 
-#: plplaylists/cog.py:729
-msgid "Multiple playlist files provided - Currently only 1 per message is allowed"
-msgstr "提供多個播放列表文件 - 目前每條訊息只允許 1 個文件"
+#: plplaylists/cog.py:758
+msgid "Multiple playlist files are provided. Currently, only 1 per message is allowed."
+msgstr ""
 
-#: plplaylists/cog.py:746
-msgid "Failed to save any of the requested playlists"
-msgstr "無法保存任何請求的播放列表"
+#: plplaylists/cog.py:775
+msgid "Failed to save any of the requested playlists."
+msgstr ""
 
-#: plplaylists/cog.py:755
+#: plplaylists/cog.py:784
 msgid "Failed to save the following playlists:\n"
-"{invalid_playlists_value}"
-msgstr "無法儲存以下播放清單：\n"
-"{invalid_playlists_value}"
+"{invalid_playlists_variable_do_not_translate}."
+msgstr ""
 
-#: plplaylists/cog.py:764
+#: plplaylists/cog.py:793
 msgid "Successfully saved the following playlists:\n"
-"{saved_playlists_value}"
-msgstr "已成功儲存以下播放清單：\n"
-"{saved_playlists_value}"
+"{saved_playlists_variable_do_not_translate}."
+msgstr ""
 
-#: plplaylists/cog.py:789
-msgid "You must be in a voice channel to allow me to connect"
-msgstr "您必須在語音通道中才能允許我連接"
+#: plplaylists/cog.py:818
+msgid "You must be in a voice channel to allow me to connect."
+msgstr ""
 
-#: plplaylists/cog.py:797
-msgid "I do not have permission to connect or speak in {channel_value}"
-msgstr "我無權連接或發言 {channel_value}"
+#: plplaylists/cog.py:826
+msgid "I do not have permission to connect or speak in {channel_variable_do_not_translate}."
+msgstr ""
 
-#: plplaylists/cog.py:827
+#: plplaylists/cog.py:856
 msgid "Playlist"
 msgstr "播放清單"
 
-#: plplaylists/cog.py:832
-msgid "{track_count_value} tracks enqueued.{playlist_name_value}"
-msgstr "{track_count_value} 跟蹤已排隊。{playlist_name_value}"
+#: plplaylists/cog.py:861
+msgid "{track_count_variable_do_not_translate} tracks enqueued.{playlist_name_variable_do_not_translate}."
+msgstr ""
 
