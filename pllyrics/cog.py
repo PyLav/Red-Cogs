@@ -125,7 +125,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
 
     @command_pllyrics_set.command(name="channel")
     async def command_pllyrics_set_channel(
-        self, context: PyLavContext, channel: discord.TextChannel | discord.Thread | discord.DMChannel | None = None
+        self, context: PyLavContext, channel: discord.TextChannel | discord.Thread | None = None
     ):
         """Set the lyrics channel"""
         if channel:

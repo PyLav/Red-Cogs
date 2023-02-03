@@ -20,7 +20,7 @@ _ = Translator("PyLavPlayer", Path(__file__))
 @cog_i18n(_)
 class UtilityCommands(DISCORD_COG_TYPE_MIXIN):
     @always_hidden()
-    @commands.command(name="__volume_change_by", hidden=True)
+    @commands.command(name="__PyLavPlayer_volume_change_by", hidden=True)
     async def command_volume_change_by(self, context: PyLavContext, change_by: int):
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
