@@ -166,6 +166,12 @@ class PyLavController(
         current = await self._config.guild(context.guild).list_for_searches()
         await self._config.guild(context.guild).list_for_searches.set(not current)
         self._list_for_search_cache[context.guild.id] = not current
+        channel_id = self._channel_cache[context.guild.id]
+        if channel := self.bot.get_channel(channel_id):
+            if not current:
+                self._view_cache[channel.id].enable_show_help()
+            else:
+                self._view_cache[channel.id].disable_show_help()
 
         if not current:
             await context.send(
@@ -471,10 +477,14 @@ class PyLavController(
                     cog=self, channel=channel, message=existing_view
                 )
                 await self._view_cache[channel.id].prepare()
+                if channel.guild.id in self._list_for_search_cache and self._list_for_search_cache[channel.guild.id]:
+                    self._view_cache[channel.id].enable_show_help()
                 self.bot.add_view(self._view_cache[channel.id], message_id=existing_view_id)
                 return
         self._view_cache[channel.id] = PersistentControllerView(cog=self, channel=channel)
         await self._view_cache[channel.id].prepare()
+        if channel.guild.id in self._list_for_search_cache and self._list_for_search_cache[channel.guild.id]:
+            self._view_cache[channel.id].enable_show_help()
         message = await self.send_channel_view(channel)
         await self._config.guild(channel.guild).persistent_view_message_id.set(message.id)
         self._view_cache[channel.id].set_message(message)

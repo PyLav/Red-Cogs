@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING
 import discord
 from redbot.core.i18n import Translator
 
+from pylav.constants.config import DEFAULT_SEARCH_SOURCE
 from pylav.extension.red.utils import rgetattr
 from pylav.extension.red.utils.decorators import is_dj_logic
 from pylav.helpers import emojis
@@ -281,6 +282,7 @@ class PersistentControllerView(discord.ui.View):
         self.channel = channel
         self.guild = channel.guild
         self._threading_lock = threading.Lock()
+        self.__show_help = False
 
         self.repeat_queue_button_on = ToggleRepeatQueueButton(
             style=discord.ButtonStyle.blurple,
@@ -369,6 +371,12 @@ class PersistentControllerView(discord.ui.View):
 
     def set_message(self, message: discord.Message):
         self.message = message
+
+    def enable_show_help(self) -> None:
+        self.__show_help = True
+
+    def disable_show_help(self) -> None:
+        self.__show_help = False
 
     @synchronized_method_call_with_self_threading_lock()
     async def prepare(self):
@@ -465,11 +473,38 @@ class PersistentControllerView(discord.ui.View):
         await asyncio.sleep(1)
         player = self.cog.pylav.get_player(self.guild.id)
         if player is None or player.current is None or forced:
+            if self.__show_help:
+                footer_text = _(
+                    "\n\nYou can search specific services by using the following prefixes:\n"
+                    "{deezer_service_variable_do_not_translate}  - Deezer\n"
+                    "{spotify_service_variable_do_not_translate}  - Spotify\n"
+                    "{apple_music_service_variable_do_not_translate}  - Apple Music\n"
+                    "{youtube_music_service_variable_do_not_translate} - YouTube Music\n"
+                    "{youtube_service_variable_do_not_translate}  - YouTube\n"
+                    "{soundcloud_service_variable_do_not_translate}  - SoundCloud\n"
+                    "{yandex_music_service_variable_do_not_translate}  - Yandex Music\n"
+                    "If no prefix is used I will default to {fallback_service_variable_do_not_translate}."
+                ).format(
+                    fallback_service_variable_do_not_translate=f"`{DEFAULT_SEARCH_SOURCE}:`",
+                    deezer_service_variable_do_not_translate="`dzsearch:`",
+                    spotify_service_variable_do_not_translate="`spsearch:`",
+                    apple_music_service_variable_do_not_translate="`amsearch:`",
+                    youtube_music_service_variable_do_not_translate="`ytmsearch:`",
+                    youtube_service_variable_do_not_translate="`ytsearch:`",
+                    soundcloud_service_variable_do_not_translate="`scsearch:`",
+                    yandex_music_service_variable_do_not_translate="`ymsearch:`",
+                )
+            else:
+                footer_text = None
+
             return await self.cog.pylav.construct_embed(
                 description=_("I am not currently playing anything on this server."),
                 messageable=self.channel,
+                footer=footer_text,
             )
-        return await player.get_currently_playing_message(embed=True, messageable=self.channel, progress=False)
+        return await player.get_currently_playing_message(
+            embed=True, messageable=self.channel, progress=False, show_help=self.__show_help
+        )
 
     @synchronized_method_call_with_self_threading_lock()
     async def update_view(self, forced: bool = False):
