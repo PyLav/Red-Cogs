@@ -34,8 +34,11 @@ class PyLavController(
         super().__init__(*args, **kwargs)
         self.bot = bot
         self._config = Config.get_conf(self, identifier=208903205982044161)
-        self._config.register_guild(channel=None, list_for_requests=False, persistent_view_message_id=None)
+        self._config.register_guild(
+            channel=None, list_for_requests=False, list_for_searches=False, persistent_view_message_id=None
+        )
         self._channel_cache: dict[int, int] = {}
+        self._list_for_search_cache: dict[int, bool] = {}
         self._list_for_command_cache: dict[int, bool] = {}
         self._view_cache: dict[int, PersistentControllerView] = {}
 
@@ -53,6 +56,7 @@ class PyLavController(
             if channel_id := data["channel"]:
                 self._channel_cache[guild_id] = channel_id
             self._list_for_command_cache[guild_id] = data["list_for_requests"]
+            self._list_for_search_cache[guild_id] = data["list_for_searches"]
             if data["persistent_view_message_id"]:
                 if channel := self.bot.get_channel(channel_id):
                     await self.prepare_channel(channel)
