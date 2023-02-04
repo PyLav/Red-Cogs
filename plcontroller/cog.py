@@ -209,7 +209,7 @@ class PyLavController(
                 ephemeral=True,
             )
 
-    @command_plcontrollerset.command(name="antispam", aliases=["as", "spam"])
+    @command_plcontrollerset.command(name="antispam", aliases=["spam"])
     async def command_plcontrollerset_antispam(self, context: PyLavContext):
         """Toggle whether the controller enable the antispam check."""
         current = await self._config.guild(context.guild).enable_antispam()
