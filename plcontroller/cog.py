@@ -41,11 +41,16 @@ class PyLavController(
         self.bot = bot
         self._config = Config.get_conf(self, identifier=208903205982044161)
         self._config.register_guild(
-            channel=None, list_for_requests=False, list_for_searches=False, persistent_view_message_id=None
+            channel=None,
+            list_for_requests=False,
+            list_for_searches=False,
+            persistent_view_message_id=None,
+            enable_antispam=True,
         )
         self._channel_cache: dict[int, int] = {}
         self._list_for_search_cache: dict[int, bool] = {}
         self._list_for_command_cache: dict[int, bool] = {}
+        self._enable_antispam_cache: dict[int, bool] = {}
         self._view_cache: dict[int, PersistentControllerView] = {}
         intervals = [
             (timedelta(seconds=15), 1),
@@ -70,6 +75,7 @@ class PyLavController(
                 self._channel_cache[guild_id] = channel_id
             self._list_for_command_cache[guild_id] = data["list_for_requests"]
             self._list_for_search_cache[guild_id] = data["list_for_searches"]
+            self._enable_antispam_cache[guild_id] = data["enable_antispam"]
             if data["persistent_view_message_id"]:
                 if channel := self.bot.get_channel(channel_id):
                     await self.prepare_channel(channel)
@@ -198,6 +204,32 @@ class PyLavController(
             await context.send(
                 embed=await context.construct_embed(
                     description=_("From now on, I will ignore user searches in the controller channel."),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+
+    @command_plcontrollerset.command(name="antispam", aliases=["as", "spam"])
+    async def command_plcontrollerset_antispam(self, context: PyLavContext):
+        """Toggle whether the controller enable the antispam check."""
+        current = await self._config.guild(context.guild).enable_antispam()
+        await self._config.guild(context.guild).enable_antispam.set(not current)
+        self._enable_antispam_cache[context.guild.id] = not current
+
+        if not current:
+            await context.send(
+                embed=await context.construct_embed(
+                    description=_("From now on, I will check user request against the antispam to avoid abuse."),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+        else:
+            await context.send(
+                embed=await context.construct_embed(
+                    description=_(
+                        "From now on, I will no longer check user request against the antispam to avoid abuse."
+                    ),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -547,10 +579,12 @@ class PyLavController(
         ):
             await message.delete(delay=1)
             return
-        if self.antispam[message.guild.id][message.author.id].spammy:
-            await message.delete(delay=1)
-            return
-        self.antispam[message.guild.id][message.author.id].stamp()
+
+        if message.guild.id in self._enable_antispam_cache and self._enable_antispam_cache[message.guild.id]:
+            if self.antispam[message.guild.id][message.author.id].spammy:
+                await message.delete(delay=1)
+                return
+            self.antispam[message.guild.id][message.author.id].stamp()
 
         query = await Query.from_string(
             message.clean_content, dont_search=not self._list_for_search_cache[message.guild.id]
