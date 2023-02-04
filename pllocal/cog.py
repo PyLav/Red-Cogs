@@ -64,8 +64,9 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
     async def file_watcher(self):
         await self.pylav.wait_until_ready()
         # noinspection PyProtectedMember
-        async for changes in awatch(pathlib.Path(LocalFile._ROOT_FOLDER), recursive=True):
-            await self._process_changes(changes)
+        with contextlib.suppress(Exception):
+            async for changes in awatch(pathlib.Path(LocalFile._ROOT_FOLDER), recursive=True):
+                await self._process_changes(changes)
 
     async def _process_changes(self, changes: set[tuple[Change, str]]) -> None:
         for change, path in changes:
