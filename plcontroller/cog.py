@@ -14,7 +14,6 @@ from plcontroller.view import PersistentControllerView
 from pylav.core.context import PyLavContext
 from pylav.events.queue import QueueEndEvent
 from pylav.events.track import TrackEndEvent, TrackExceptionEvent, TrackStartEvent
-from pylav.extension.red.utils.decorators import invoker_is_dj
 from pylav.players.player import Player
 from pylav.players.query.obj import Query
 from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE_MIXIN
@@ -63,7 +62,7 @@ class PyLavController(
 
     @commands.group(name="plcontrollerset")
     @commands.guild_only()
-    @invoker_is_dj()
+    @commands.admin_or_permissions(manage_guild=True)
     async def command_plcontrollerset(self, context: PyLavContext):
         """Configure the PyLav Controller."""
 
