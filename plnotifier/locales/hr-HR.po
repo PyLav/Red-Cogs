@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
 "POT-Creation-Date: 2023-02-03 20:16+0000\n"
-"PO-Revision-Date: 2023-02-03 21:03\n"
+"PO-Revision-Date: 2023-02-04 06:21\n"
 "Last-Translator: \n"
 "Language-Team: Croatian\n"
 "MIME-Version: 1.0\n"
@@ -30,11 +30,11 @@ msgstr "Konfiguriraj PyLavNotifier Cog"
 #: plnotifier/cog.py:234
 #, docstring
 msgid "Show the version of the Cog and PyLav"
-msgstr "Prikaz verzije Cog i PyLav"
+msgstr "Prikaži verziju Cog-a i PyLav-a"
 
 #: plnotifier/cog.py:250
 msgid "Library / Cog"
-msgstr "Knjižnica / Zupčanik"
+msgstr "Biblioteka/Cog"
 
 #: plnotifier/cog.py:251
 msgid "Version"
@@ -47,11 +47,11 @@ msgstr "Postavi kanal obavijesti za player"
 
 #: plnotifier/cog.py:275 plnotifier/cog.py:345
 msgid "I do not have permission to manage webhooks in {channel_variable_do_not_translate}."
-msgstr "Nemam dozvolu za upravljanje web-porukama u sustavu {channel_variable_do_not_translate}."
+msgstr "Nemam dozvolu za upravljanje webhookovima u {channel_variable_do_not_translate}."
 
 #: plnotifier/cog.py:289
 msgid "I do not have permission to create a thread in {channel_variable_do_not_translate}."
-msgstr "Nemam dozvolu za stvaranje niti u programu {channel_variable_do_not_translate}."
+msgstr "Nemam dozvolu za stvaranje threada u {channel_variable_do_not_translate}."
 
 #: plnotifier/cog.py:298 plnotifier/cog.py:316 plnotifier/cog.py:355
 msgid "PyLavNotifier"
@@ -63,7 +63,7 @@ msgstr "PyLav Notifier - Zatražio {author_variable_do_not_translate}."
 
 #: plnotifier/cog.py:312
 msgid "This thread will be used by PyLav to post notifications about the player."
-msgstr "PyLav će ovu nit koristiti za objavljivanje obavijesti o igraču."
+msgstr "PyLav će ovaj thread koristiti za objavljivanje obavijesti o playeru."
 
 #: plnotifier/cog.py:327 plnotifier/cog.py:363
 msgid "A new webhook was being created."
@@ -96,7 +96,7 @@ msgstr "Događaj nije valjan, mogući događaji su:\n\n"
 
 #: plnotifier/cog.py:425
 msgid "Event {event_variable_do_not_translate} set to {toggle_variable_do_not_translate}{extras_variable_do_not_translate}."
-msgstr "Događaj {event_variable_do_not_translate} postavljeno na {toggle_variable_do_not_translate}{extras_variable_do_not_translate}."
+msgstr "Događaj {event_variable_do_not_translate} postavljen na {toggle_variable_do_not_translate}{extras_variable_do_not_translate}."
 
 #: plnotifier/cog.py:429
 msgid "notify"
@@ -120,7 +120,7 @@ msgstr "Događaj zaglavljene pjesme"
 
 #: plnotifier/cog.py:451
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} is stuck for {threshold_variable_do_not_translate} seconds, skipping."
-msgstr "[Čvor={node_variable_do_not_translate}] {track_variable_do_not_translate} je zapelo za {threshold_variable_do_not_translate} sekundi, preskakanje."
+msgstr "[Čvor={node_variable_do_not_translate}] {track_variable_do_not_translate} je zapeo {threshold_variable_do_not_translate} sekundi, preskačem."
 
 #: plnotifier/cog.py:478
 msgid "Track Exception Event"
@@ -134,19 +134,19 @@ msgstr "[Čvor={node_variable_do_not_translate}] Došlo je do pogreške tijekom 
 
 #: plnotifier/cog.py:505
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing because the player reached the end of the tracks runtime."
-msgstr "[Čvor={node_variable_do_not_translate}] {track_variable_do_not_translate} je završio igranje jer je igrač stigao do kraja vremena izvođenja staza."
+msgstr "[Čvor={node_variable_do_not_translate}] {track_variable_do_not_translate} je završio sviranje jer je player stigao do kraja pjesme."
 
 #: plnotifier/cog.py:512
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing because a new track started playing."
-msgstr "[Čvor={node_variable_do_not_translate}] {track_variable_do_not_translate} završio je s reprodukcijom jer se počela reproducirati nova pjesma."
+msgstr "[Čvor={node_variable_do_not_translate}] {track_variable_do_not_translate} je završio s reprodukcijom jer se počela reproducirati nova pjesma."
 
 #: plnotifier/cog.py:519
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing because it failed to start."
-msgstr "[Čvor={node_variable_do_not_translate}] {track_variable_do_not_translate} završio je reprodukciju jer se nije uspio pokrenuti."
+msgstr "[Čvor={node_variable_do_not_translate}] {track_variable_do_not_translate} je završio reprodukciju jer se nije uspio pokrenuti."
 
 #: plnotifier/cog.py:526
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing becausethe player was stopped."
-msgstr "[Čvor={node_variable_do_not_translate}] {track_variable_do_not_translate} je završio s igranjem jer je igrač zaustavljen."
+msgstr "[Čvor={node_variable_do_not_translate}] {track_variable_do_not_translate} je završio sa sviranjem jer je player zaustavljen."
 
 #: plnotifier/cog.py:533
 msgid "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing becausethe node told it to stop."
@@ -163,7 +163,7 @@ msgstr "Događaj početka YouTube Music pjesme"
 #: plnotifier/cog.py:569
 msgid "[Node={node_variable_do_not_translate}] YouTube Music track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr "[Čvor={node_variable_do_not_translate}] YouTube glazbena pjesma: {track_variable_do_not_translate} je počeo igrati.\n"
+msgstr "[Čvor={node_variable_do_not_translate}] YouTube Music pjesma: {track_variable_do_not_translate} je počeo svirati.\n"
 "Zatražio: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:600
@@ -173,7 +173,7 @@ msgstr "Deezer događaj početka pjesme"
 #: plnotifier/cog.py:601
 msgid "[Node={node_variable_do_not_translate}] Deezer track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr "[Čvor={node_variable_do_not_translate}] Deezerova staza: {track_variable_do_not_translate} je počeo igrati.\n"
+msgstr "[Čvor={node_variable_do_not_translate}] Deezer pjesma: {track_variable_do_not_translate} je počeo svirati.\n"
 "Zatražio: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:632
@@ -183,7 +183,7 @@ msgstr "Događaj početka Spotify pjesme"
 #: plnotifier/cog.py:633
 msgid "[Node={node_variable_do_not_translate}] Spotify track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr "[Čvor={node_variable_do_not_translate}] Spotify pjesma: {track_variable_do_not_translate} je počeo igrati.\n"
+msgstr "[Čvor={node_variable_do_not_translate}] Spotify pjesma: {track_variable_do_not_translate} je počeo svirati.\n"
 "Zatražio: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:664
@@ -193,7 +193,7 @@ msgstr "Događaj početka Apple Music pjesme"
 #: plnotifier/cog.py:665
 msgid "[Node={node_variable_do_not_translate}] Apple Music track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr "[Čvor={node_variable_do_not_translate}] Apple Music pjesma: {track_variable_do_not_translate} je počeo igrati.\n"
+msgstr "[Čvor={node_variable_do_not_translate}] Apple Music pjesma: {track_variable_do_not_translate} je počeo svirati.\n"
 "Zatražio: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:696
@@ -203,7 +203,7 @@ msgstr "Događaj početka lokalne pjesme"
 #: plnotifier/cog.py:697
 msgid "[Node={node_variable_do_not_translate}] Local track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr "[Čvor={node_variable_do_not_translate}] Lokalna pjesma: {track_variable_do_not_translate} je počeo igrati.\n"
+msgstr "[Čvor={node_variable_do_not_translate}] Lokalna pjesma: {track_variable_do_not_translate} je počeo svirati.\n"
 "Zatražio: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:728
@@ -213,7 +213,7 @@ msgstr "Događaj početka HTTP pjesme"
 #: plnotifier/cog.py:729
 msgid "[Node={node_variable_do_not_translate}] HTTP track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr "[Čvor={node_variable_do_not_translate}] HTTP zapis: {track_variable_do_not_translate} je počeo igrati.\n"
+msgstr "[Čvor={node_variable_do_not_translate}] HTTP pjesma: {track_variable_do_not_translate} je počeo svirati.\n"
 "Zatražio: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:760
@@ -223,7 +223,7 @@ msgstr "Događaj početka Text-To-Speech zapisa"
 #: plnotifier/cog.py:761
 msgid "[Node={node_variable_do_not_translate}] Text-To-Speech track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}."
-msgstr "[Čvor={node_variable_do_not_translate}] Praćenje teksta u govor: {track_variable_do_not_translate} je počeo igrati.\n"
+msgstr "[Čvor={node_variable_do_not_translate}] Text-To-Speech zapis: {track_variable_do_not_translate} je počeo svirati.\n"
 "Zatražio: {requester_variable_do_not_translate}."
 
 #: plnotifier/cog.py:792
@@ -233,7 +233,7 @@ msgstr "Događaj početka YouTube pjesme"
 #: plnotifier/cog.py:793
 msgid "[Node={node_variable_do_not_translate}] YouTube track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}."
-msgstr "[Čvor={node_variable_do_not_translate}] YouTube pjesma: {track_variable_do_not_translate} je počeo igrati.\n"
+msgstr "[Čvor={node_variable_do_not_translate}] YouTube pjesma: {track_variable_do_not_translate} je počeo svirati.\n"
 "Zatražio: {requester_variable_do_not_translate}."
 
 #: plnotifier/cog.py:824 plnotifier/cog.py:859 plnotifier/cog.py:894
@@ -242,7 +242,7 @@ msgstr "[Čvor={node_variable_do_not_translate}] YouTube pjesma: {track_variable
 #: plnotifier/cog.py:1139 plnotifier/cog.py:1174 plnotifier/cog.py:1209
 #: plnotifier/cog.py:1244 plnotifier/cog.py:1279
 msgid "{source_variable_do_not_translate} Track Start Event"
-msgstr "{source_variable_do_not_translate} Praćenje početnog događaja"
+msgstr "Događaj početka {source_variable_do_not_translate} pjesme"
 
 #: plnotifier/cog.py:827 plnotifier/cog.py:862 plnotifier/cog.py:897
 #: plnotifier/cog.py:932 plnotifier/cog.py:967 plnotifier/cog.py:1002
@@ -251,7 +251,7 @@ msgstr "{source_variable_do_not_translate} Praćenje početnog događaja"
 #: plnotifier/cog.py:1247 plnotifier/cog.py:1282
 msgid "[Node={node_variable_do_not_translate}] {source_variable_do_not_translate} track: {track_variable_do_not_translate} has started playing.\n"
 "Requested by: {requester_variable_do_not_translate}"
-msgstr "[Čvor={node_variable_do_not_translate}] {source_variable_do_not_translate} trag: {track_variable_do_not_translate} je počeo igrati.\n"
+msgstr "[Čvor={node_variable_do_not_translate}] {source_variable_do_not_translate} pjesma: {track_variable_do_not_translate} je počeo svirati.\n"
 "Zatražio: {requester_variable_do_not_translate}"
 
 #: plnotifier/cog.py:1314
@@ -270,7 +270,7 @@ msgstr "Događaj micanje pjesme"
 
 #: plnotifier/cog.py:1347
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} requested that {track_variable_do_not_translate} is sought from position {from_variable_do_not_translate} to position {after_variable_do_not_translate}"
-msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} zatražio da {track_variable_do_not_translate} traži se s pozicije {from_variable_do_not_translate} za pozicioniranje {after_variable_do_not_translate}"
+msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} je zatražio da se {track_variable_do_not_translate} pomakne od {from_variable_do_not_translate} na {after_variable_do_not_translate}"
 
 #: plnotifier/cog.py:1381
 msgid "Track Previous Requested Event"
@@ -278,7 +278,7 @@ msgstr "Događaj prethodne pjesme"
 
 #: plnotifier/cog.py:1382
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} requested that the previous track {track_variable_do_not_translate} be played"
-msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} zatražio je da prethodni zapis {track_variable_do_not_translate} biti reproduciran"
+msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} je zatražio je da se reproducira prethodni zapis {track_variable_do_not_translate}"
 
 #: plnotifier/cog.py:1413
 msgid "Tracks Requested Event"
@@ -286,11 +286,11 @@ msgstr "Događaj traženih pjesama"
 
 #: plnotifier/cog.py:1414
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} added {track_count_variable_do_not_translate} to the queue."
-msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} dodan {track_count_variable_do_not_translate} u red čekanja."
+msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} je dodao {track_count_variable_do_not_translate} u red čekanja."
 
 #: plnotifier/cog.py:1417
 msgid "{count_variable_do_not_translate} track"
-msgstr "{count_variable_do_not_translate} trag"
+msgstr "{count_variable_do_not_translate} pjesma"
 
 #: plnotifier/cog.py:1444
 msgid "Track AutoPlay Event"
@@ -298,7 +298,7 @@ msgstr "Događaj AutoPlay pjesme"
 
 #: plnotifier/cog.py:1445
 msgid "[Node={node_variable_do_not_translate}] Auto playing {track_variable_do_not_translate}."
-msgstr "[Čvor={node_variable_do_not_translate}] Automatsko reproduciranje {track_variable_do_not_translate}."
+msgstr "[Čvor={node_variable_do_not_translate}] Automatski se reproducira {track_variable_do_not_translate}."
 
 #: plnotifier/cog.py:1475
 msgid "Track Resumed Event"
@@ -306,7 +306,7 @@ msgstr "Događaj nastavljene pjesme"
 
 #: plnotifier/cog.py:1476
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} resumed {track_variable_do_not_translate}"
-msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} Nastavio {track_variable_do_not_translate}"
+msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} je nastavio {track_variable_do_not_translate}"
 
 #: plnotifier/cog.py:1507
 msgid "Queue Shuffled Event"
@@ -314,7 +314,7 @@ msgstr "Događaj miješanog reda čekanja"
 
 #: plnotifier/cog.py:1508
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} shuffled the queue"
-msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} izmiješali red čekanja"
+msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} je promiješao red čekanja"
 
 #: plnotifier/cog.py:1532
 msgid "Queue End Event"
@@ -330,7 +330,7 @@ msgstr "Događaj uklanjanja pjesme"
 
 #: plnotifier/cog.py:1561
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} removed {track_count_variable_do_not_translate} tracks from the queue"
-msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} uklonjen {track_count_variable_do_not_translate} zapisi iz reda čekanja"
+msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} je uklonio {track_count_variable_do_not_translate} zapisa iz reda čekanja"
 
 #: plnotifier/cog.py:1592 plnotifier/cog.py:2117
 msgid "Player Paused Event"
@@ -338,7 +338,7 @@ msgstr "Događaj pauziranog playera"
 
 #: plnotifier/cog.py:1593
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} paused the player"
-msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} pauzirao player"
+msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} je pauzirao player"
 
 #: plnotifier/cog.py:1622
 msgid "Player Stopped Event"
@@ -346,7 +346,7 @@ msgstr "Događaj zaustavljenog playera"
 
 #: plnotifier/cog.py:1623
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} stopped the player"
-msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} zaustavio je player"
+msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} je zaustavio player"
 
 #: plnotifier/cog.py:1652 plnotifier/cog.py:2147
 msgid "Player Resumed Event"
@@ -354,7 +354,7 @@ msgstr "Događaj nastavka playera"
 
 #: plnotifier/cog.py:1653
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} resumed the player"
-msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} nastavio igrač"
+msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} je nastavio player"
 
 #: plnotifier/cog.py:1682
 msgid "Player Moved Event"
@@ -362,7 +362,7 @@ msgstr "Događaj premještenog playera"
 
 #: plnotifier/cog.py:1683
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} moved the player from {before_variable_do_not_translate} to {after_variable_do_not_translate}"
-msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} premjestio igrača iz {before_variable_do_not_translate} do {after_variable_do_not_translate}"
+msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} je premjestio player iz {before_variable_do_not_translate} u {after_variable_do_not_translate}"
 
 #: plnotifier/cog.py:1715
 msgid "Player Disconnected Event"
@@ -370,7 +370,7 @@ msgstr "Događaj odspojenog playera"
 
 #: plnotifier/cog.py:1716
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} disconnected the player"
-msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} prekinuo vezu s reproduktorom"
+msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} je prekinuo vezu playera"
 
 #: plnotifier/cog.py:1745
 msgid "Player Connected Event"
@@ -386,7 +386,7 @@ msgstr "Događaj promijenjene glasnoće playera"
 
 #: plnotifier/cog.py:1774
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} changed the player volume from {before_variable_do_not_translate} to {afte_variable_do_not_translater}."
-msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} promijenio glasnoću igrača iz {before_variable_do_not_translate} do {afte_variable_do_not_translater}."
+msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} je promijenio glasnoću playera sa {before_variable_do_not_translate} na {afte_variable_do_not_translater}."
 
 #: plnotifier/cog.py:1808 plnotifier/cog.py:1820 plnotifier/cog.py:1833
 msgid "Player Repeat Event"
@@ -394,7 +394,7 @@ msgstr "Događaj ponavljanja playera"
 
 #: plnotifier/cog.py:1809
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} disabled repeat"
-msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} onemogućeno ponavljanje"
+msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} je onemogućio ponavljanje"
 
 #: plnotifier/cog.py:1821
 msgid "{requester_variable_do_not_translate} {status_variable_do_not_translate} repeat of the whole queue"
@@ -410,7 +410,7 @@ msgstr "onemogućio"
 
 #: plnotifier/cog.py:1834
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} {status_variable_do_not_translate} repeat for {track_variable_do_not_translate}"
-msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} {status_variable_do_not_translate} ponovi za {track_variable_do_not_translate}"
+msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} {status_variable_do_not_translate} ponavljanje za {track_variable_do_not_translate}"
 
 #: plnotifier/cog.py:1868
 msgid "Player Restored Event"
@@ -418,7 +418,7 @@ msgstr "Događaj obnovljenog playera"
 
 #: plnotifier/cog.py:1869
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} restored the player"
-msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} vratio igrač"
+msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} je obnovio player"
 
 #: plnotifier/cog.py:1894
 msgid "an intro section"
@@ -458,7 +458,7 @@ msgstr "Događaj preskočenog sponzor odjeljka"
 
 #: plnotifier/cog.py:1913
 msgid "[Node={node_variable_do_not_translate}] Sponsorblock: Skipped {category_variable_do_not_translate} running from {start_variable_do_not_translate}s to {to_variable_do_not_translate}s"
-msgstr "[Čvor={node_variable_do_not_translate}] Sponsorblock: Preskočeno {category_variable_do_not_translate} trčanje iz {start_variable_do_not_translate}s to {to_variable_do_not_translate}s"
+msgstr "[Čvor={node_variable_do_not_translate}] Sponsorblock: Preskočio {category_variable_do_not_translate} od {start_variable_do_not_translate}s do {to_variable_do_not_translate}s"
 
 #: plnotifier/cog.py:1943
 msgid "Effect"
@@ -486,7 +486,7 @@ msgstr "Trenutno primijenjeno"
 
 #: plnotifier/cog.py:1991
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} changed the player filters"
-msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} promijenio filtre igrača"
+msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} je promijenio filtre playera"
 
 #: plnotifier/cog.py:2013
 msgid "Node Connected Event"
@@ -502,7 +502,7 @@ msgstr "Događaj odspojenog čvora"
 
 #: plnotifier/cog.py:2033
 msgid "Node {name_variable_do_not_translate} has been disconnected with code {code_variable_do_not_translate} and reason: {reason_variable_do_not_translate}"
-msgstr "Čvor {name_variable_do_not_translate} nije prekinuta veza s kodom {code_variable_do_not_translate} i razlog: {reason_variable_do_not_translate}"
+msgstr "Veza s čvorom pod nazivom {name_variable_do_not_translate} je prekinuta s kodom {code_variable_do_not_translate} i razlogom: {reason_variable_do_not_translate}"
 
 #: plnotifier/cog.py:2059
 msgid "Node Changed Event"
@@ -510,7 +510,7 @@ msgstr "Događaj promijenjenog čvora"
 
 #: plnotifier/cog.py:2060
 msgid "The node which the player is connected to changed from {from_variable_do_not_translate} to {to_variable_do_not_translate}"
-msgstr "Čvor s kojim je igrač povezan promijenjen je iz {from_variable_do_not_translate} do {to_variable_do_not_translate}"
+msgstr "Čvor s kojim je player povezan promijenjen je sa {from_variable_do_not_translate} na {to_variable_do_not_translate}"
 
 #: plnotifier/cog.py:2084
 msgid "WebSocket Closed Event"
@@ -518,15 +518,15 @@ msgstr "Događaj zatvorenog WebSocketa"
 
 #: plnotifier/cog.py:2085
 msgid "[Node={node_variable_do_not_translate}] The Lavalink websocket connection to Discord closed with code {code_variable_do_not_translate} and reason {reason_variable_do_not_translate}"
-msgstr "[Čvor={node_variable_do_not_translate}] Veza s Websocketom Lavalink s Discordom zatvorena je kodom {code_variable_do_not_translate} i razum {reason_variable_do_not_translate}"
+msgstr "[Čvor={node_variable_do_not_translate}] Lavalinkova websocket veza s Discordom zatvorena je kodom {code_variable_do_not_translate} i razlogom: {reason_variable_do_not_translate}"
 
 #: plnotifier/cog.py:2118
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} automatically paused the player due to configured values"
-msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} automatski pauzirao reproduktor zbog konfiguriranih vrijednosti"
+msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} je automatski pauzirao player zbog konfiguriranih vrijednosti"
 
 #: plnotifier/cog.py:2148
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} automatically resumed the player due to configured values"
-msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} automatski je nastavio player zbog konfiguriranih vrijednosti"
+msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} je automatski nastavio player zbog konfiguriranih vrijednosti"
 
 #: plnotifier/cog.py:2177 plnotifier/cog.py:2209
 msgid "Auto Player Disconnected Event"
@@ -534,9 +534,9 @@ msgstr "Događaj automatskog odspojavanja playera"
 
 #: plnotifier/cog.py:2178
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} automatically disconnected the player as there is no one listening"
-msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} automatski je prekinuo vezu s uređajem jer nitko ne sluša"
+msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} je automatski prekinuo vezu s playerom jer nitko ne sluša"
 
 #: plnotifier/cog.py:2210
 msgid "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} automatically disconnected the player as the queue is empty"
-msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} automatski prekinuo vezu s uređajem player jer je red čekanja prazan"
+msgstr "[Čvor={node_variable_do_not_translate}] {requester_variable_do_not_translate} je automatski prekinuo vezu s playerom jer je red čekanja prazan"
 
