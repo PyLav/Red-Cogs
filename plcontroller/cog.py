@@ -354,11 +354,7 @@ class PyLavController(
             )
             return
         if not context.player.paused:
-            description = _(
-                "The player already resumed, did you mean to run {command_name_variable_do_not_translate}."
-            ).format(
-                command_name_variable_do_not_translate=f"`{'/' if context.interaction else context.clean_prefix}{self.command_pause.qualified_name}`",
-            )
+            description = _("The player already resumed")
             await context.send(
                 embed=await context.pylav.construct_embed(description=description, messageable=context),
                 ephemeral=True,
@@ -388,11 +384,7 @@ class PyLavController(
             )
             return
         if context.player.paused:
-            description = _(
-                "The player is already paused, did you mean to run {command_name_variable_do_not_translate}."
-            ).format(
-                command_name_variable_do_not_translate=f"`{'/' if context.interaction else context.clean_prefix}{self.command_resume.qualified_name}`",
-            )
+            description = _("The player is already paused.")
             await context.send(
                 embed=await context.pylav.construct_embed(description=description, messageable=context),
                 ephemeral=True,
