@@ -1,6 +1,7 @@
 name: Auto Merge Translations
 on:
     pull_request:
+    status:
 jobs:
     automerge:
         runs-on: ubuntu-latest
