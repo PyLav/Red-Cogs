@@ -12,6 +12,7 @@ from redbot.core.utils.chat_formatting import humanize_number
 
 from plcontroller.view import PersistentControllerView
 from pylav.core.context import PyLavContext
+from pylav.events.queue import QueueEndEvent
 from pylav.events.track import TrackEndEvent, TrackExceptionEvent, TrackStartEvent
 from pylav.extension.red.utils.decorators import invoker_is_dj
 from pylav.players.player import Player
@@ -564,6 +565,10 @@ class PyLavController(
 
     @commands.Cog.listener()
     async def on_pylav_track_start_event(self, event: TrackStartEvent) -> None:
+        await self.process_event(event)
+
+    @commands.Cog.listener()
+    async def on_pylav_queue_end_event(self, event: QueueEndEvent) -> None:
         await self.process_event(event)
 
     async def process_event(self, event: TrackStartEvent | TrackEndEvent | TrackExceptionEvent):
