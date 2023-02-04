@@ -441,13 +441,22 @@ class PersistentControllerView(discord.ui.View):
             self.previous_track_button.disabled = True
             self.show_history_button.disabled = True
 
-    async def get_player(self) -> Player | None:
+    async def get_player(self, message: discord.Message) -> Player | None:
+        if not await is_dj_logic(message, bot=self.cog.bot):
+            await message.channel.send(
+                embed=await self.pylav.construct_embed(
+                    description=_("You need to be a disc jockey in this server to play tracks in this server."),
+                    messageable=message.channel,
+                ),
+                delete_after=10,
+            )
+            return None
         if (player := self.cog.pylav.get_player(self.guild.id)) is None:
             config = self.cog.pylav.player_config_manager.get_config(self.guild.id)
             if (channel := self.guild.get_channel_or_thread(await config.fetch_forced_channel_id())) is None:
-                channel = rgetattr(self.channel, "author.voice.channel", None)
+                channel = rgetattr(message, "author.voice.channel", None)
                 if not channel:
-                    await self.channel.send(
+                    await message.channel.send(
                         embed=await self.cog.pylav.construct_embed(
                             messageable=self.channel,
                             description=_("You must be in a voice channel, so I can connect to it."),
@@ -456,12 +465,12 @@ class PersistentControllerView(discord.ui.View):
                     )
                     return
             if not ((permission := channel.permissions_for(self.guild.me)) and permission.connect and permission.speak):
-                await self.channel.send(
+                await message.channel.send(
                     embed=await self.cog.pylav.construct_embed(
                         description=_(
                             "I do not have permission to connect or speak in {channel_variable_do_not_translate}."
                         ).format(channel_variable_do_not_translate=channel.mention),
-                        messageable=self.channel,
+                        messageable=message.channel,
                     ),
                     delete_after=10,
                 )

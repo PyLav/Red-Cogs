@@ -568,8 +568,9 @@ class PyLavController(
         if await self.bot.cog_disabled_in_guild(self, guild):
             return
 
-        player = await self._view_cache[channel.id].get_player()
+        player = await self._view_cache[channel.id].get_player(message)
         if player is None:
+            await message.delete(delay=1)
             return
 
         await self.process_potential_query(message, player)
