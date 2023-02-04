@@ -2,15 +2,20 @@ from __future__ import annotations
 
 import asyncio
 import contextlib
+from collections import defaultdict
+from datetime import timedelta
+from functools import partial
 from pathlib import Path
 from typing import Any, Literal
 
 import discord
 from redbot.core import Config, commands
 from redbot.core.i18n import Translator, cog_i18n
+from redbot.core.utils.antispam import AntiSpam
 from redbot.core.utils.chat_formatting import humanize_number
 
 from plcontroller.view import PersistentControllerView
+from pylav import logging
 from pylav.core.context import PyLavContext
 from pylav.events.queue import QueueEndEvent
 from pylav.events.track import TrackEndEvent, TrackExceptionEvent, TrackStartEvent
@@ -19,6 +24,8 @@ from pylav.players.query.obj import Query
 from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE_MIXIN
 
 _ = Translator("PyLavController", Path(__file__))
+
+LOGGER = logging.getLogger("PyLav.cog.Controller")
 
 
 @cog_i18n(_)
@@ -40,6 +47,13 @@ class PyLavController(
         self._list_for_search_cache: dict[int, bool] = {}
         self._list_for_command_cache: dict[int, bool] = {}
         self._view_cache: dict[int, PersistentControllerView] = {}
+        intervals = [
+            (timedelta(seconds=15), 1),
+            (timedelta(minutes=1), 3),
+            (timedelta(hours=1), 30),
+        ]
+
+        self.antispam: dict[int, dict[int, AntiSpam]] = defaultdict(lambda: defaultdict(partial(AntiSpam, intervals)))
 
     async def cog_unload(self) -> None:
         for view in self._view_cache.values():
@@ -515,10 +529,10 @@ class PyLavController(
         if channel is None:
             return
 
-        if await self.bot.cog_disabled_in_guild(self, guild):
+        if channel.id not in self._view_cache:
             return
 
-        if channel.id not in self._view_cache:
+        if await self.bot.cog_disabled_in_guild(self, guild):
             return
 
         player = await self._view_cache[channel.id].get_player()
