@@ -155,6 +155,30 @@ class PyLavController(
                 ephemeral=True,
             )
 
+    @command_plcontrollerset.command(name="acceptsearches", aliases=["as", "search"])
+    async def command_plcontrollerset_acceptsearches(self, context: PyLavContext):
+        """Toggle whether the controller should listen for searches."""
+        current = await self._config.guild(context.guild).list_for_searches()
+        await self._config.guild(context.guild).list_for_searches.set(not current)
+        self._list_for_search_cache[context.guild.id] = not current
+
+        if not current:
+            await context.send(
+                embed=await context.construct_embed(
+                    description=_("From now on, I will accept user searches in the controller channel."),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+        else:
+            await context.send(
+                embed=await context.construct_embed(
+                    description=_("From now on, I will ignore user searches in the controller channel."),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+
     async def volume(self, context: PyLavContext, change_by: int):
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -509,7 +533,7 @@ class PyLavController(
             await message.add_reaction("\N{CROSS MARK}")
             await message.delete(delay=5)
             return
-        if query.is_search:
+        if query.is_search and not self._list_for_search_cache[message.guild.id]:
             await message.add_reaction("\N{CROSS MARK}")
             await message.delete(delay=5)
             return
@@ -517,6 +541,8 @@ class PyLavController(
         await message.add_reaction("\N{WHITE HEAVY CHECK MARK}")
         successful, count, failed = await self.pylav.get_all_tracks_for_queries(query, player=player)
         if successful:
+            if query.is_search:
+                successful = [successful[0]]
             await player.bulk_add(tracks_and_queries=successful, requester=message.author.id)
             if (not player.is_playing) and player.queue.size() > 0:
                 await player.next(requester=message.author)
