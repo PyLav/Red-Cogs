@@ -547,8 +547,14 @@ class PyLavController(
         ):
             await message.delete(delay=1)
             return
+        if self.antispam[message.guild.id][message.author.id].spammy:
+            await message.delete(delay=1)
+            return
+        self.antispam[message.guild.id][message.author.id].stamp()
 
-        query = await Query.from_string(message.clean_content, dont_search=True)
+        query = await Query.from_string(
+            message.clean_content, dont_search=not self._list_for_search_cache[message.guild.id]
+        )
         if query.invalid:
             await message.add_reaction("\N{CROSS MARK}")
             await message.delete(delay=5)
