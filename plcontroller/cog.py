@@ -536,7 +536,9 @@ class PyLavController(
             return
 
         await message.add_reaction("\N{WHITE HEAVY CHECK MARK}")
-        successful, count, failed = await self.pylav.get_all_tracks_for_queries(query, player=player)
+        successful, count, failed = await self.pylav.get_all_tracks_for_queries(
+            query, player=player, requester=message.author
+        )
         if successful:
             if query.is_search:
                 successful = [successful[0]]
