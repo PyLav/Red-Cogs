@@ -9,6 +9,7 @@ import discord
 from redbot.core.i18n import Translator
 
 from pylav.extension.red.utils import rgetattr
+from pylav.extension.red.utils.decorators import is_dj_logic
 from pylav.helpers import emojis
 from pylav.helpers.singleton import synchronized_method_call_with_self_threading_lock
 from pylav.players.player import Player
@@ -475,3 +476,18 @@ class PersistentControllerView(discord.ui.View):
         await self.prepare()
         embed = await self.get_now_playing_embed(forced)
         await self.message.edit(view=self, embed=embed)
+
+    async def interaction_check(self, interaction: DISCORD_INTERACTION_TYPE, /) -> bool:
+        if not interaction.response.is_done():
+            await interaction.response.defer(ephemeral=True)
+
+        if not await is_dj_logic(interaction):
+            await interaction.send(
+                embed=await interaction.client.pylav.construct_embed(
+                    description=_("You need to be a disc jockey to interact with the controller in this server."),
+                    messageable=interaction,
+                ),
+                ephemeral=True,
+            )
+            return False
+        return True
