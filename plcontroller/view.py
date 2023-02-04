@@ -483,16 +483,18 @@ class PersistentControllerView(discord.ui.View):
                     "{youtube_service_variable_do_not_translate}  - YouTube\n"
                     "{soundcloud_service_variable_do_not_translate}  - SoundCloud\n"
                     "{yandex_music_service_variable_do_not_translate}  - Yandex Music\n"
-                    "If no prefix is used I will default to {fallback_service_variable_do_not_translate}."
+                    "Example: {example_variable_do_not_translate}.\n\n"
+                    "If no prefix is used I will default to {fallback_service_variable_do_not_translate}\n"
                 ).format(
                     fallback_service_variable_do_not_translate=f"`{DEFAULT_SEARCH_SOURCE}:`",
-                    deezer_service_variable_do_not_translate="`dzsearch:`",
-                    spotify_service_variable_do_not_translate="`spsearch:`",
-                    apple_music_service_variable_do_not_translate="`amsearch:`",
-                    youtube_music_service_variable_do_not_translate="`ytmsearch:`",
-                    youtube_service_variable_do_not_translate="`ytsearch:`",
-                    soundcloud_service_variable_do_not_translate="`scsearch:`",
-                    yandex_music_service_variable_do_not_translate="`ymsearch:`",
+                    deezer_service_variable_do_not_translate="'dzsearch:' ",
+                    spotify_service_variable_do_not_translate="'spsearch:' ",
+                    apple_music_service_variable_do_not_translate="'amsearch:' ",
+                    youtube_music_service_variable_do_not_translate="'ytmsearch:'",
+                    youtube_service_variable_do_not_translate="'ytsearch:' ",
+                    soundcloud_service_variable_do_not_translate="'scsearch:' ",
+                    yandex_music_service_variable_do_not_translate="'ymsearch:' ",
+                    example_variable_do_not_translate=f"'{DEFAULT_SEARCH_SOURCE}:Hello Adele'",
                 )
             else:
                 footer_text = None
