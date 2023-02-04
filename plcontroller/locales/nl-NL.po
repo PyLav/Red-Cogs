@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
-"POT-Creation-Date: 2023-02-04 17:27+0000\n"
-"PO-Revision-Date: 2023-02-04 17:30\n"
+"POT-Creation-Date: 2023-02-04 18:10+0000\n"
+"PO-Revision-Date: 2023-02-04 18:11\n"
 "Last-Translator: \n"
 "Language-Team: Dutch\n"
 "MIME-Version: 1.0\n"
@@ -22,141 +22,154 @@ msgstr ""
 msgid "Set a channel to listens and control the music player."
 msgstr "Stel een kanaal in om te luisteren en de muziekspeler te bedienen."
 
-#: plcontroller/cog.py:81
+#: plcontroller/cog.py:87
 #, docstring
 msgid "Configure the PyLav Controller."
 msgstr "Configureer de PyLav-controller."
 
-#: plcontroller/cog.py:87
+#: plcontroller/cog.py:93
 #, docstring
 msgid "Set the channel to create the controller in."
 msgstr "Stel het kanaal in om de controller in te maken."
 
-#: plcontroller/cog.py:92
+#: plcontroller/cog.py:98
 msgid "I need 'Send Messages' permission in {channel_name_variable_do_not_translate}."
 msgstr "Ik heb de toestemming 'Berichten verzenden' nodig in {channel_name_variable_do_not_translate}."
 
-#: plcontroller/cog.py:104
+#: plcontroller/cog.py:110
 msgid "I need 'Read Messages' permission in {channel_name_variable_do_not_translate}."
 msgstr "Ik heb de toestemming 'Berichten lezen' nodig in {channel_name_variable_do_not_translate}."
 
-#: plcontroller/cog.py:116
+#: plcontroller/cog.py:122
 msgid "I need 'Embed Links' permission in {channel_name_variable_do_not_translate}."
 msgstr "Ik heb de toestemming 'Links insluiten' nodig in {channel_name_variable_do_not_translate}."
 
-#: plcontroller/cog.py:128
+#: plcontroller/cog.py:134
 msgid "I need 'Manage Messages' permission in {channel_name_variable_do_not_translate}."
 msgstr "Ik heb de machtiging 'Berichten beheren' nodig in {channel_name_variable_do_not_translate}."
 
-#: plcontroller/cog.py:142
+#: plcontroller/cog.py:148
 msgid "I will now use {channel_name_variable_do_not_translate} for the controller functionality."
 msgstr "Ik zal nu gebruiken {channel_name_variable_do_not_translate} voor de controllerfunctionaliteit."
 
-#: plcontroller/cog.py:154
+#: plcontroller/cog.py:160
 #, docstring
 msgid "Toggle whether the controller should listen for requests."
 msgstr "Schakel of de controller naar verzoeken moet luisteren."
 
-#: plcontroller/cog.py:162
+#: plcontroller/cog.py:168
 msgid "From now on, I will accept user requests in the controller channel."
 msgstr "Vanaf nu accepteer ik gebruikersverzoeken in het controllerkanaal."
 
-#: plcontroller/cog.py:170
+#: plcontroller/cog.py:176
 msgid "From now on, I will ignore user requests in the controller channel."
 msgstr "Vanaf nu zal ik gebruikersverzoeken in het controllerkanaal negeren."
 
-#: plcontroller/cog.py:178
+#: plcontroller/cog.py:184
 #, docstring
 msgid "Toggle whether the controller should listen for searches."
 msgstr "Schakel in of de controller moet luisteren naar zoekopdrachten."
 
-#: plcontroller/cog.py:192
+#: plcontroller/cog.py:198
 msgid "From now on, I will accept user searches in the controller channel."
 msgstr "Vanaf nu accepteer ik zoekopdrachten van gebruikers in het controllerkanaal."
 
-#: plcontroller/cog.py:200
+#: plcontroller/cog.py:206
 msgid "From now on, I will ignore user searches in the controller channel."
 msgstr "Vanaf nu zal ik zoekopdrachten van gebruikers in het controllerkanaal negeren."
 
 #: plcontroller/cog.py:214
+#, docstring
+msgid "Toggle whether the controller enable the antispam check."
+msgstr ""
+
+#: plcontroller/cog.py:222
+msgid "From now on, I will check user request against the antispam to avoid abuse."
+msgstr ""
+
+#: plcontroller/cog.py:230
+msgid "From now on, I will no longer check user request against the antispam to avoid abuse."
+msgstr ""
+
+#: plcontroller/cog.py:246
 msgid "I am not connected to a voice channel."
 msgstr "Ik ben niet verbonden met een spraakkanaal."
 
-#: plcontroller/cog.py:225
+#: plcontroller/cog.py:257
 msgid "Volume limit reached, player volume set to {volume_variable_do_not_translate}%."
 msgstr "Volumelimiet bereikt, spelervolume ingesteld op {volume_variable_do_not_translate}%."
 
-#: plcontroller/cog.py:236
+#: plcontroller/cog.py:268
 msgid "Minimum volume reached, player volume set to 0%."
 msgstr "Minimaal volume bereikt, spelervolume ingesteld op 0%."
 
-#: plcontroller/cog.py:244
+#: plcontroller/cog.py:276
 msgid "Player volume set to {volume_variable_do_not_translate}%"
 msgstr "Spelervolume ingesteld op {volume_variable_do_not_translate}%"
 
-#: plcontroller/cog.py:264 plcontroller/cog.py:299 plcontroller/cog.py:341
-#: plcontroller/cog.py:370 plcontroller/cog.py:400 plcontroller/cog.py:430
-#: plcontroller/cog.py:456 plcontroller/view.py:503
+#: plcontroller/cog.py:296 plcontroller/cog.py:331 plcontroller/cog.py:373
+#: plcontroller/cog.py:402 plcontroller/cog.py:432 plcontroller/cog.py:462
+#: plcontroller/cog.py:488 plcontroller/view.py:503
 msgid "I am not currently playing anything on this server."
 msgstr "Ik speel momenteel niets op deze server."
 
-#: plcontroller/cog.py:272
+#: plcontroller/cog.py:304
 msgid "From now on, I will now repeat the entire queue."
 msgstr "Vanaf nu herhaal ik de hele rij."
 
-#: plcontroller/cog.py:275
+#: plcontroller/cog.py:307
 msgid "From now on, I will no longer repeat any tracks."
 msgstr "Vanaf nu zal ik geen nummers meer herhalen."
 
-#: plcontroller/cog.py:279
+#: plcontroller/cog.py:311
 msgid "From now on, I will now repeat {track_name_variable_do_not_translate}."
 msgstr "Vanaf nu zal ik het herhalen {track_name_variable_do_not_translate}."
 
-#: plcontroller/cog.py:285
+#: plcontroller/cog.py:317
 msgid "From now on, I will now repeat the current track."
 msgstr "Vanaf nu zal ik het huidige spoor herhalen."
 
-#: plcontroller/cog.py:307
+#: plcontroller/cog.py:339
 msgid "The server queue is currently empty."
 msgstr "De serverwachtrij is momenteel leeg."
 
-#: plcontroller/cog.py:315
+#: plcontroller/cog.py:347
 msgid "You are not allowed to shuffle the queue."
 msgstr "Het is niet toegestaan om de wachtrij door elkaar te schudden."
 
-#: plcontroller/cog.py:323
+#: plcontroller/cog.py:355
 msgid "{queue_size_variable_do_not_translate} tracks shuffled."
 msgstr "{queue_size_variable_do_not_translate} tracks geschud."
 
-#: plcontroller/cog.py:349
+#: plcontroller/cog.py:381
 msgid "I have skipped {track_name_variable_do_not_translate} as requested."
 msgstr "Ik heb overgeslagen {track_name_variable_do_not_translate} zoals gevraagd."
 
-#: plcontroller/cog.py:376
+#: plcontroller/cog.py:408
 msgid "The player already resumed"
 msgstr "De speler is al hervat"
 
-#: plcontroller/cog.py:386
+#: plcontroller/cog.py:418
 msgid "I have now resumed the player as requested."
 msgstr "Ik heb de speler nu hervat zoals gevraagd."
 
-#: plcontroller/cog.py:406
+#: plcontroller/cog.py:438
 msgid "The player is already paused."
 msgstr "De speler is al gepauzeerd."
 
-#: plcontroller/cog.py:416
+#: plcontroller/cog.py:448
 msgid "I have now paused the player as requested."
 msgstr "Ik heb de speler nu gepauzeerd zoals gevraagd."
 
-#: plcontroller/cog.py:438
+#: plcontroller/cog.py:470
 msgid "I have stopped the playback and cleared the queue as requested."
 msgstr "Ik heb het afspelen gestopt en de wachtrij gewist zoals gevraagd."
 
-#: plcontroller/cog.py:465
+#: plcontroller/cog.py:497
 msgid "The history of tracks is currently empty."
 msgstr "De geschiedenis van het spoor is momenteel leeg."
 
-#: plcontroller/cog.py:473
+#: plcontroller/cog.py:505
 msgid "Playing previous track: {track_name_variable_do_not_translate}."
 msgstr "Vorig nummer afspelen: {track_name_variable_do_not_translate}."
 
