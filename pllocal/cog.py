@@ -1,9 +1,11 @@
 from __future__ import annotations
 
 import asyncio
+import contextlib
 import hashlib
 import heapq
 import os.path
+import pathlib
 import re
 import typing
 from functools import partial
@@ -18,6 +20,7 @@ from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import box
 from tabulate import tabulate
+from watchfiles import Change, awatch
 
 from pylav.core.context import PyLavContext
 from pylav.extension.red.utils import rgetattr
@@ -29,6 +32,9 @@ from pylav.players.query.obj import Query
 from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE_MIXIN, DISCORD_INTERACTION_TYPE
 
 LOGGER = getLogger("PyLav.cog.LocalFiles")
+__LOGGER = getLogger("watchfiles")
+__LOGGER.setLevel("NOTSET")
+
 
 _ = Translator("PyLavLocalFiles", Path(__file__))
 
@@ -55,6 +61,48 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
         self.cache: dict[str, Query] = {}
         self.ready_event = asyncio.Event()
         self.__load_locals_task: asyncio.Task | None = None
+        self.__monitor_task = asyncio.create_task(self.file_watcher())
+
+    async def file_watcher(self):
+        await self.pylav.wait_until_ready()
+        # noinspection PyProtectedMember
+        async for changes in awatch(pathlib.Path(LocalFile._ROOT_FOLDER), recursive=True, raise_interrupt=False):
+            await self._process_changes(changes)
+
+    async def _process_changes(self, changes: set[tuple[Change, str]]) -> None:
+        for change, path in changes:
+            if change == Change.added:
+                await self._process_added(path)
+                LOGGER.debug(f"Added {path}")
+            elif change == Change.modified:
+                await self._process_modified(path)
+                LOGGER.debug(f"Modified {path}")
+            elif change == Change.deleted:
+                await self._process_deleted(path)
+                LOGGER.debug(f"Deleted {path}")
+
+    async def _process_added(self, path: str) -> None:
+        query = await Query.from_string(path)
+        # noinspection PyProtectedMember
+        self.cache[hashlib.md5(f"{query._query}".encode()).hexdigest()] = query
+        if os.path.isdir(path):
+            return
+        with contextlib.suppress(Exception):
+            await self.pylav.get_tracks(query)
+
+    async def _process_modified(self, path: str) -> None:
+        query = await Query.from_string(path)
+        # noinspection PyProtectedMember
+        self.cache[hashlib.md5(f"{query._query}".encode()).hexdigest()] = query
+        if os.path.isdir(path):
+            return
+        with contextlib.suppress(Exception):
+            await self.pylav.get_tracks(query, bypass_cache=True)
+
+    async def _process_deleted(self, path: str) -> None:
+        query = await Query.from_string(path)
+        # noinspection PyProtectedMember
+        self.cache.pop(hashlib.md5(f"{query._query}".encode()).hexdigest(), None)
 
     @staticmethod
     def _filter_is_folder_alphabetical(x: list[Query]) -> tuple[int, str]:
@@ -63,11 +111,7 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
         return -1 if os.path.isdir(string) else 2, string
 
     async def _update_cache(self):
-        # noinspection PyProtectedMember
-        while LocalFile._ROOT_FOLDER is None:
-            await asyncio.sleep(1)
-        # noinspection PyProtectedMember
-        assert LocalFile._ROOT_FOLDER is not None
+        await self.pylav.wait_until_ready()
         temp: dict[str, Query] = {}
         # noinspection PyProtectedMember
         async for file in LocalFile(LocalFile._ROOT_FOLDER).files_in_tree(show_folders=True):
@@ -104,6 +148,8 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
     async def cog_unload(self) -> None:
         if self.__load_locals_task is not None:
             self.__load_locals_task.cancel()
+        if self.__monitor_task is not None:
+            self.__monitor_task.cancel()
 
     async def cog_check(self, ctx: PyLavContext):
         return bool(self.ready_event.is_set())
