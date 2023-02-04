@@ -2,6 +2,7 @@ name: Auto Merge Translations
 on:
     pull_request:
         types:
+        -   opened
         -   labeled
         -   edited
         -   reopened
@@ -13,7 +14,6 @@ on:
         types:
         -   submitted
         -   edited
-    status:
 jobs:
     automerge:
         runs-on: ubuntu-latest
