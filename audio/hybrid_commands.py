@@ -272,9 +272,9 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             return
 
         if (player := context.player) is None:
-            player = await context.pylav.connect_player(context.author, channel=actual_channel, self_deaf=True)
+            player = await context.pylav.connect_player(context.author, channel=actual_channel)
         else:
-            await player.move_to(context.author, channel=actual_channel, self_deaf=True)
+            await player.move_to(context.author, channel=actual_channel)
 
         if (vc := await player.forced_vc()) and channel != actual_channel:
             await context.send(

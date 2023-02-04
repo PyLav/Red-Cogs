@@ -815,7 +815,8 @@ class PyLavPlaylists(
                 if not channel:
                     await context.send(
                         embed=await context.pylav.construct_embed(
-                            messageable=context, description=_("You must be in a voice channel to allow me to connect.")
+                            messageable=context,
+                            description=_("You must be in a voice channel, so I can connect to it."),
                         ),
                         ephemeral=True,
                     )
@@ -831,7 +832,7 @@ class PyLavPlaylists(
                     ephemeral=True,
                 )
                 return
-            player = await context.connect_player(channel=channel, self_deaf=True)
+            player = await context.connect_player(channel=channel)
         track_count = await playlist.size()
 
         tracks = await playlist.fetch_tracks()

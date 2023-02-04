@@ -481,12 +481,20 @@ class PyLavController(
         if message.channel.id != self._channel_cache[guild.id]:
             return
 
+        channel = self.bot.get_channel(self._channel_cache[guild.id])
+        if channel is None:
+            return
+
         if await self.bot.cog_disabled_in_guild(self, guild):
             return
 
-        player = self.pylav.get_player(message.guild)
+        if channel.id not in self._view_cache:
+            return
+
+        player = await self._view_cache[channel.id].get_player()
         if player is None:
             return
+
         await self.process_potential_query(message, player)
 
     async def process_potential_query(self, message: discord.Message, player: Player):

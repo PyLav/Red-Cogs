@@ -441,7 +441,7 @@ class PersistentControllerView(discord.ui.View):
                     await self.channel.send(
                         embed=await self.cog.pylav.construct_embed(
                             messageable=self.channel,
-                            description=_("You must be in a voice channel to allow me to connect."),
+                            description=_("You must be in a voice channel, so I can connect to it."),
                         ),
                         delete_after=10,
                     )
@@ -457,7 +457,7 @@ class PersistentControllerView(discord.ui.View):
                     delete_after=10,
                 )
                 return
-            player = await self.cog.pylav.player_manager.create(channel=channel, self_deaf=True)
+            player = await self.cog.pylav.player_manager.create(channel=channel)
         return player
 
     async def get_now_playing_embed(self, forced: bool = False) -> discord.Embed:
@@ -468,7 +468,7 @@ class PersistentControllerView(discord.ui.View):
                 description=_("I am not currently playing anything on this server."),
                 messageable=self.channel,
             )
-        return await player.get_currently_playing_message(embed=True, messageable=self.channel)
+        return await player.get_currently_playing_message(embed=True, messageable=self.channel, progress=False)
 
     @synchronized_method_call_with_self_threading_lock()
     async def update_view(self, forced: bool = False):
