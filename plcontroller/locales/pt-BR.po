@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
-"POT-Creation-Date: 2023-02-03 23:34+0000\n"
-"PO-Revision-Date: 2023-02-04 14:04\n"
+"POT-Creation-Date: 2023-02-04 17:27+0000\n"
+"PO-Revision-Date: 2023-02-04 17:27\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese, Brazilian\n"
 "MIME-Version: 1.0\n"
@@ -17,145 +17,186 @@ msgstr ""
 "X-Crowdin-File-ID: 3775\n"
 "Language: pt_BR\n"
 
-#: plcontroller/cog.py:28
+#: plcontroller/cog.py:35
 #, docstring
 msgid "Set a channel to listens and control the music player."
 msgstr "Defina um canal para ouvir e controlar o leitor de música."
 
-#: plcontroller/cog.py:63
+#: plcontroller/cog.py:81
 #, docstring
 msgid "Configure the PyLav Controller."
 msgstr "Configure o controlador PyLav."
 
-#: plcontroller/cog.py:69
+#: plcontroller/cog.py:87
 #, docstring
 msgid "Set the channel to create the controller in."
 msgstr "Defina o canal no qual o controlador será criado."
 
-#: plcontroller/cog.py:74
+#: plcontroller/cog.py:92
 msgid "I need 'Send Messages' permission in {channel_name_variable_do_not_translate}."
 msgstr "Preciso da permissão 'Enviar mensagens' em {channel_name_variable_do_not_translate}."
 
-#: plcontroller/cog.py:86
+#: plcontroller/cog.py:104
 msgid "I need 'Read Messages' permission in {channel_name_variable_do_not_translate}."
 msgstr "Preciso da permissão 'Ler Mensagens' em {channel_name_variable_do_not_translate}."
 
-#: plcontroller/cog.py:98
+#: plcontroller/cog.py:116
 msgid "I need 'Embed Links' permission in {channel_name_variable_do_not_translate}."
 msgstr "Preciso da permissão 'Incorporar links' em {channel_name_variable_do_not_translate}."
 
-#: plcontroller/cog.py:110
+#: plcontroller/cog.py:128
 msgid "I need 'Manage Messages' permission in {channel_name_variable_do_not_translate}."
 msgstr "Preciso da permissão 'Gerenciar mensagens' em {channel_name_variable_do_not_translate}."
 
-#: plcontroller/cog.py:124
+#: plcontroller/cog.py:142
 msgid "I will now use {channel_name_variable_do_not_translate} for the controller functionality."
 msgstr "Agora vou usar {channel_name_variable_do_not_translate} para a funcionalidade do controlador."
 
-#: plcontroller/cog.py:136
+#: plcontroller/cog.py:154
 #, docstring
 msgid "Toggle whether the controller should listen for requests."
 msgstr "Alterne se o controlador deve escutar as solicitações."
 
-#: plcontroller/cog.py:144
+#: plcontroller/cog.py:162
 msgid "From now on, I will accept user requests in the controller channel."
 msgstr "A partir de agora, aceitarei solicitações de usuários no canal do controlador."
 
-#: plcontroller/cog.py:152
+#: plcontroller/cog.py:170
 msgid "From now on, I will ignore user requests in the controller channel."
 msgstr "De agora em diante, ignorarei as solicitações do usuário no canal do controlador."
 
-#: plcontroller/cog.py:166
+#: plcontroller/cog.py:178
+#, docstring
+msgid "Toggle whether the controller should listen for searches."
+msgstr ""
+
+#: plcontroller/cog.py:192
+msgid "From now on, I will accept user searches in the controller channel."
+msgstr ""
+
+#: plcontroller/cog.py:200
+msgid "From now on, I will ignore user searches in the controller channel."
+msgstr ""
+
+#: plcontroller/cog.py:214
 msgid "I am not connected to a voice channel."
 msgstr "Não estou conectado a um canal de voz."
 
-#: plcontroller/cog.py:177
+#: plcontroller/cog.py:225
 msgid "Volume limit reached, player volume set to {volume_variable_do_not_translate}%."
 msgstr "Limite de volume atingido, volume do jogador definido como {volume_variable_do_not_translate}%."
 
-#: plcontroller/cog.py:188
+#: plcontroller/cog.py:236
 msgid "Minimum volume reached, player volume set to 0%."
 msgstr "Volume mínimo atingido, volume do jogador definido como 0%."
 
-#: plcontroller/cog.py:196
+#: plcontroller/cog.py:244
 msgid "Player volume set to {volume_variable_do_not_translate}%"
 msgstr "Volume do Player definido como {volume_variable_do_not_translate}%"
 
-#: plcontroller/cog.py:216 plcontroller/cog.py:251 plcontroller/cog.py:293
-#: plcontroller/cog.py:322 plcontroller/cog.py:356 plcontroller/cog.py:390
-#: plcontroller/cog.py:416 plcontroller/view.py:468
+#: plcontroller/cog.py:264 plcontroller/cog.py:299 plcontroller/cog.py:341
+#: plcontroller/cog.py:370 plcontroller/cog.py:400 plcontroller/cog.py:430
+#: plcontroller/cog.py:456 plcontroller/view.py:503
 msgid "I am not currently playing anything on this server."
 msgstr "No momento, não estou jogando nada neste servidor."
 
-#: plcontroller/cog.py:224
+#: plcontroller/cog.py:272
 msgid "From now on, I will now repeat the entire queue."
 msgstr "A partir de agora, vou repetir toda a fila."
 
-#: plcontroller/cog.py:227
+#: plcontroller/cog.py:275
 msgid "From now on, I will no longer repeat any tracks."
 msgstr "De agora em diante, não vou mais repetir nenhuma faixa."
 
-#: plcontroller/cog.py:231
+#: plcontroller/cog.py:279
 msgid "From now on, I will now repeat {track_name_variable_do_not_translate}."
 msgstr "De agora em diante, vou agora repetir {track_name_variable_do_not_translate}."
 
-#: plcontroller/cog.py:237
+#: plcontroller/cog.py:285
 msgid "From now on, I will now repeat the current track."
 msgstr "A partir de agora, vou repetir a faixa atual."
 
-#: plcontroller/cog.py:259
+#: plcontroller/cog.py:307
 msgid "The server queue is currently empty."
 msgstr "A fila do servidor está vazia no momento."
 
-#: plcontroller/cog.py:267
+#: plcontroller/cog.py:315
 msgid "You are not allowed to shuffle the queue."
 msgstr "Você não tem permissão para embaralhar a fila."
 
-#: plcontroller/cog.py:275
+#: plcontroller/cog.py:323
 msgid "{queue_size_variable_do_not_translate} tracks shuffled."
 msgstr "{queue_size_variable_do_not_translate} faixas embaralhadas."
 
-#: plcontroller/cog.py:301
+#: plcontroller/cog.py:349
 msgid "I have skipped {track_name_variable_do_not_translate} as requested."
 msgstr "Eu pulei {track_name_variable_do_not_translate} conforme solicitado."
 
-#: plcontroller/cog.py:328
-msgid "The player already resumed, did you mean to run {command_name_variable_do_not_translate}."
-msgstr "O jogador já retomou, você quis correr {command_name_variable_do_not_translate}."
+#: plcontroller/cog.py:376
+msgid "The player already resumed"
+msgstr ""
 
-#: plcontroller/cog.py:342
+#: plcontroller/cog.py:386
 msgid "I have now resumed the player as requested."
 msgstr "Eu já retomei o jogador como solicitado."
 
-#: plcontroller/cog.py:362
-msgid "The player is already paused, did you mean to run {command_name_variable_do_not_translate}."
-msgstr "O jogador já está pausado, você quis correr {command_name_variable_do_not_translate}."
+#: plcontroller/cog.py:406
+msgid "The player is already paused."
+msgstr ""
 
-#: plcontroller/cog.py:376
+#: plcontroller/cog.py:416
 msgid "I have now paused the player as requested."
 msgstr "Eu já pausei o jogador conforme solicitado."
 
-#: plcontroller/cog.py:398
+#: plcontroller/cog.py:438
 msgid "I have stopped the playback and cleared the queue as requested."
 msgstr "Parei a reprodução e limpei a fila conforme solicitado."
 
-#: plcontroller/cog.py:425
+#: plcontroller/cog.py:465
 msgid "The history of tracks is currently empty."
 msgstr "O histórico de faixas está vazio no momento."
 
-#: plcontroller/cog.py:433
+#: plcontroller/cog.py:473
 msgid "Playing previous track: {track_name_variable_do_not_translate}."
 msgstr "Tocando a faixa anterior: {track_name_variable_do_not_translate}."
 
-#: plcontroller/view.py:150 plcontroller/view.py:175 plcontroller/view.py:209
+#: plcontroller/view.py:152 plcontroller/view.py:177 plcontroller/view.py:211
 msgid "I am not connected to any voice channel at the moment."
 msgstr "Eu não estou conectado a nenhum canal de voz no momento."
 
-#: plcontroller/view.py:444
-msgid "You must be in a voice channel to allow me to connect."
-msgstr "Você deve estar em um canal de voz para me permitir conectar."
+#: plcontroller/view.py:453
+msgid "You must be in a voice channel, so I can connect to it."
+msgstr "Você deve estar em um canal de voz, para que eu possa me conectar a ele."
 
-#: plcontroller/view.py:452
+#: plcontroller/view.py:461
 msgid "I do not have permission to connect or speak in {channel_variable_do_not_translate}."
 msgstr "Eu não tenho permissão para me conectar ou falar em {channel_variable_do_not_translate}."
+
+#: plcontroller/view.py:477
+msgid "\n\n"
+"You can search specific services by using the following prefixes:\n"
+"{deezer_service_variable_do_not_translate}  - Deezer\n"
+"{spotify_service_variable_do_not_translate}  - Spotify\n"
+"{apple_music_service_variable_do_not_translate}  - Apple Music\n"
+"{youtube_music_service_variable_do_not_translate} - YouTube Music\n"
+"{youtube_service_variable_do_not_translate}  - YouTube\n"
+"{soundcloud_service_variable_do_not_translate}  - SoundCloud\n"
+"{yandex_music_service_variable_do_not_translate}  - Yandex Music\n"
+"Example: {example_variable_do_not_translate}.\n\n"
+"If no prefix is used I will default to {fallback_service_variable_do_not_translate}\n"
+msgstr "\n\n"
+"Você pode pesquisar serviços específicos usando os seguintes prefixos:\n"
+"{deezer_service_variable_do_not_translate}  - Deezer\n"
+"{spotify_service_variable_do_not_translate}  - Spotify (em inglês)\n"
+"{apple_music_service_variable_do_not_translate}  - Apple Music (em inglês)\n"
+"{youtube_music_service_variable_do_not_translate} - YouTube Music (em inglês)\n"
+"{youtube_service_variable_do_not_translate}  - YouTube (em inglês)\n"
+"{soundcloud_service_variable_do_not_translate}  - SoundCloud (em inglês)\n"
+"{yandex_music_service_variable_do_not_translate}  - Música Yandex\n"
+"Exemplo: {example_variable_do_not_translate}.\n\n"
+"Se nenhum prefixo for usado, o padrão será {fallback_service_variable_do_not_translate}\n"
+
+#: plcontroller/view.py:524
+msgid "You need to be a disc jockey to interact with the controller in this server."
+msgstr ""
 
