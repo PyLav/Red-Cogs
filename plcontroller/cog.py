@@ -17,8 +17,9 @@ from redbot.core.utils.chat_formatting import humanize_number
 from plcontroller.view import PersistentControllerView
 from pylav import logging
 from pylav.core.context import PyLavContext
+from pylav.events.player import PlayerPausedEvent, PlayerResumedEvent, PlayerStoppedEvent
 from pylav.events.queue import QueueEndEvent
-from pylav.events.track import TrackEndEvent, TrackExceptionEvent, TrackStartEvent
+from pylav.events.track import TrackStartEvent
 from pylav.players.player import Player
 from pylav.players.query.obj import Query
 from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE_MIXIN
@@ -632,15 +633,30 @@ class PyLavController(
     async def on_pylav_queue_end_event(self, event: QueueEndEvent) -> None:
         await self.process_event(event)
 
-    async def process_event(self, event: TrackStartEvent | TrackEndEvent | TrackExceptionEvent):
+    @commands.Cog.listener()
+    async def on_pylav_player_stopped_event(self, event: PlayerStoppedEvent) -> None:
+        await self.process_event(event)
+
+    @commands.Cog.listener()
+    async def on_pylav_player_paused_event(self, event: PlayerPausedEvent) -> None:
+        await self.process_event(event)
+
+    @commands.Cog.listener()
+    async def on_pylav_player_resumed_event(self, event: PlayerResumedEvent) -> None:
+        await self.process_event(event)
+
+    async def process_event(
+        self, event: TrackStartEvent | QueueEndEvent | PlayerStoppedEvent | PlayerPausedEvent | PlayerResumedEvent
+    ):
         await asyncio.sleep(1)
-        if event.player.guild.id not in self._channel_cache:
+        guild = event.player.guild
+        if guild.id not in self._channel_cache:
             return
-        channel = self.bot.get_channel(self._channel_cache[event.player.guild.id])
+        channel = self.bot.get_channel(self._channel_cache[guild.id])
         if channel is None:
             return
-        if await self.bot.cog_disabled_in_guild(self, channel.guild):
-            return
         if channel.id not in self._view_cache:
+            return
+        if await self.bot.cog_disabled_in_guild(self, channel.guild):
             return
         await self._view_cache[channel.id].update_view()
