@@ -33,8 +33,8 @@ from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE_MIXIN, DISCO
 
 LOGGER = getLogger("PyLav.cog.LocalFiles")
 __LOGGER = getLogger("watchfiles")
-__LOGGER.setLevel("NOTSET")
-
+__LOGGER.setLevel("CRITICAL")
+__LOGGER.disabled = True
 
 _ = Translator("PyLavLocalFiles", Path(__file__))
 
@@ -66,7 +66,7 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
     async def file_watcher(self):
         await self.pylav.wait_until_ready()
         # noinspection PyProtectedMember
-        async for changes in awatch(pathlib.Path(LocalFile._ROOT_FOLDER), recursive=True, raise_interrupt=False):
+        async for changes in awatch(pathlib.Path(LocalFile._ROOT_FOLDER), recursive=True):
             await self._process_changes(changes)
 
     async def _process_changes(self, changes: set[tuple[Change, str]]) -> None:
