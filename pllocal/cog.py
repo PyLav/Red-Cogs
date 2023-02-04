@@ -72,13 +72,13 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
         for change, path in changes:
             if change == Change.added:
                 await self._process_added(path)
-                LOGGER.debug(f"Added {path}")
+                LOGGER.verbose(f"Added {path}")
             elif change == Change.modified:
                 await self._process_modified(path)
-                LOGGER.debug(f"Modified {path}")
+                LOGGER.verbose(f"Modified {path}")
             elif change == Change.deleted:
                 await self._process_deleted(path)
-                LOGGER.debug(f"Deleted {path}")
+                LOGGER.verbose(f"Deleted {path}")
 
     async def _process_added(self, path: str) -> None:
         query = await Query.from_string(path)
