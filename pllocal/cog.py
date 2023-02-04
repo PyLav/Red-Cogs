@@ -32,9 +32,7 @@ from pylav.players.query.obj import Query
 from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE_MIXIN, DISCORD_INTERACTION_TYPE
 
 LOGGER = getLogger("PyLav.cog.LocalFiles")
-__LOGGER = getLogger("watchfiles")
-__LOGGER.setLevel("CRITICAL")
-__LOGGER.disabled = True
+
 
 _ = Translator("PyLavLocalFiles", Path(__file__))
 
