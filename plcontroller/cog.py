@@ -56,9 +56,8 @@ class PyLavController(
         self._use_slow_mode_cache: dict[int, bool] = {}
         self._view_cache: dict[int, PersistentControllerView] = {}
         intervals = [
-            (timedelta(seconds=15), 1),
-            (timedelta(minutes=1), 3),
-            (timedelta(hours=1), 30),
+            (timedelta(minutes=1), 5),
+            (timedelta(hours=1), 50),
         ]
 
         self.antispam: dict[int, dict[int, AntiSpam]] = defaultdict(lambda: defaultdict(partial(AntiSpam, intervals)))
