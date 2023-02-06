@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
-"POT-Creation-Date: 2023-02-04 19:16+0000\n"
-"PO-Revision-Date: 2023-02-04 20:03\n"
+"POT-Creation-Date: 2023-02-06 11:01+0000\n"
+"PO-Revision-Date: 2023-02-06 11:02\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
@@ -48,128 +48,136 @@ msgstr "我需要「嵌入連結」許可權 {channel_name_variable_do_not_trans
 msgid "I need 'Manage Messages' permission in {channel_name_variable_do_not_translate}."
 msgstr "我需要“管理消息”許可權 {channel_name_variable_do_not_translate}."
 
-#: plcontroller/cog.py:149
+#: plcontroller/cog.py:147
+msgid "I need 'Read Message History' permission in {channel_name_variable_do_not_translate}."
+msgstr ""
+
+#: plcontroller/cog.py:159
+msgid "I need 'Manage Channel' permission in {channel_name_variable_do_not_translate}."
+msgstr ""
+
+#: plcontroller/cog.py:173
 msgid "I will now use {channel_name_variable_do_not_translate} for the controller functionality."
 msgstr "我現在將使用 {channel_name_variable_do_not_translate} 用於控制器功能。"
 
-#: plcontroller/cog.py:161
+#: plcontroller/cog.py:185
 #, docstring
 msgid "Toggle whether the controller should listen for requests."
 msgstr "切換控制器是否應偵聽請求。"
 
-#: plcontroller/cog.py:169
+#: plcontroller/cog.py:193
 msgid "From now on, I will accept user requests in the controller channel."
 msgstr "從現在開始，我將在控制器通道中接受使用者請求。"
 
-#: plcontroller/cog.py:177
+#: plcontroller/cog.py:201
 msgid "From now on, I will ignore user requests in the controller channel."
 msgstr "從現在開始，我將忽略控制器通道中的使用者請求。"
 
-#: plcontroller/cog.py:185
+#: plcontroller/cog.py:209
 #, docstring
 msgid "Toggle whether the controller should listen for searches."
 msgstr "切換控制器是否應偵聽搜索。"
 
-#: plcontroller/cog.py:199
+#: plcontroller/cog.py:223
 msgid "From now on, I will accept user searches in the controller channel."
 msgstr "從現在開始，我將接受控制器通道中的使用者搜索。"
 
-#: plcontroller/cog.py:207
+#: plcontroller/cog.py:231
 msgid "From now on, I will ignore user searches in the controller channel."
 msgstr "從現在開始，我將忽略控制器通道中的使用者搜索。"
 
-#: plcontroller/cog.py:215
+#: plcontroller/cog.py:239
 #, docstring
 msgid "Toggle whether the controller enable the antispam check."
 msgstr "切換控制器是否啟用反垃圾郵件檢查。"
 
-#: plcontroller/cog.py:223
+#: plcontroller/cog.py:247
 msgid "From now on, I will check user request against the antispam to avoid abuse."
 msgstr "從現在開始，我將根據反垃圾郵件檢查使用者請求以避免濫用。"
 
-#: plcontroller/cog.py:231
+#: plcontroller/cog.py:255
 msgid "From now on, I will no longer check user request against the antispam to avoid abuse."
 msgstr "從現在開始，我將不再根據反垃圾郵件檢查使用者請求以避免濫用。"
 
-#: plcontroller/cog.py:247
+#: plcontroller/cog.py:271
 msgid "I am not connected to a voice channel."
 msgstr "我沒有連接到語音通道。"
 
-#: plcontroller/cog.py:258
+#: plcontroller/cog.py:282
 msgid "Volume limit reached, player volume set to {volume_variable_do_not_translate}%."
 msgstr "已達到音量限制，播放器音量設置為 {volume_variable_do_not_translate}%."
 
-#: plcontroller/cog.py:269
+#: plcontroller/cog.py:293
 msgid "Minimum volume reached, player volume set to 0%."
 msgstr "達到最小音量，播放器音量設置為 0%。"
 
-#: plcontroller/cog.py:277
+#: plcontroller/cog.py:301
 msgid "Player volume set to {volume_variable_do_not_translate}%"
 msgstr "播放機音量設置為 {volume_variable_do_not_translate}%"
 
-#: plcontroller/cog.py:297 plcontroller/cog.py:332 plcontroller/cog.py:374
-#: plcontroller/cog.py:403 plcontroller/cog.py:433 plcontroller/cog.py:463
-#: plcontroller/cog.py:489 plcontroller/view.py:512
+#: plcontroller/cog.py:321 plcontroller/cog.py:356 plcontroller/cog.py:398
+#: plcontroller/cog.py:427 plcontroller/cog.py:457 plcontroller/cog.py:487
+#: plcontroller/cog.py:513 plcontroller/view.py:512 plcontroller/view.py:542
 msgid "I am not currently playing anything on this server."
 msgstr "我目前沒有在此伺服器上播放任何內容。"
 
-#: plcontroller/cog.py:305
+#: plcontroller/cog.py:329
 msgid "From now on, I will now repeat the entire queue."
 msgstr "從現在開始，我現在將重複整個佇列。"
 
-#: plcontroller/cog.py:308
+#: plcontroller/cog.py:332
 msgid "From now on, I will no longer repeat any tracks."
 msgstr "從現在開始，我將不再重複任何曲目。"
 
-#: plcontroller/cog.py:312
+#: plcontroller/cog.py:336
 msgid "From now on, I will now repeat {track_name_variable_do_not_translate}."
 msgstr "從現在開始，我現在重複一遍 {track_name_variable_do_not_translate}."
 
-#: plcontroller/cog.py:318
+#: plcontroller/cog.py:342
 msgid "From now on, I will now repeat the current track."
 msgstr "從現在開始，我現在將重複當前的曲目。"
 
-#: plcontroller/cog.py:340
+#: plcontroller/cog.py:364
 msgid "The server queue is currently empty."
 msgstr "伺服器佇列當前為空。"
 
-#: plcontroller/cog.py:348
+#: plcontroller/cog.py:372
 msgid "You are not allowed to shuffle the queue."
 msgstr "不允許隨機排列佇列。"
 
-#: plcontroller/cog.py:356
+#: plcontroller/cog.py:380
 msgid "{queue_size_variable_do_not_translate} tracks shuffled."
 msgstr "{queue_size_variable_do_not_translate} 軌道被洗牌。"
 
-#: plcontroller/cog.py:382
+#: plcontroller/cog.py:406
 msgid "I have skipped {track_name_variable_do_not_translate} as requested."
 msgstr "我跳過了 {track_name_variable_do_not_translate} 根據要求。"
 
-#: plcontroller/cog.py:409
+#: plcontroller/cog.py:433
 msgid "The player already resumed"
 msgstr "播放機已恢復"
 
-#: plcontroller/cog.py:419
+#: plcontroller/cog.py:443
 msgid "I have now resumed the player as requested."
 msgstr "我現在已經按照要求恢復了播放機。"
 
-#: plcontroller/cog.py:439
+#: plcontroller/cog.py:463
 msgid "The player is already paused."
 msgstr "播放機已暫停。"
 
-#: plcontroller/cog.py:449
+#: plcontroller/cog.py:473
 msgid "I have now paused the player as requested."
 msgstr "我現在已經按照要求暫停了播放機。"
 
-#: plcontroller/cog.py:471
+#: plcontroller/cog.py:495
 msgid "I have stopped the playback and cleared the queue as requested."
 msgstr "我已停止播放並按照要求清除佇列。"
 
-#: plcontroller/cog.py:498
+#: plcontroller/cog.py:522
 msgid "The history of tracks is currently empty."
 msgstr "曲目的歷史記錄當前為空。"
 
-#: plcontroller/cog.py:506
+#: plcontroller/cog.py:530
 msgid "Playing previous track: {track_name_variable_do_not_translate}."
 msgstr "播放上一首曲目： {track_name_variable_do_not_translate}."
 
