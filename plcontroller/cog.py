@@ -91,29 +91,56 @@ class PyLavController(
 
     @command_plcontrollerset.command(name="channel")
     async def command_plcontrollerset_channel(
-        self, context: PyLavContext, channel: discord.TextChannel | discord.Thread | discord.VoiceChannel
+        self, context: PyLavContext, channel: discord.TextChannel | discord.Thread | discord.VoiceChannel = None
     ):
         """Set the channel to create the controller in."""
+        if channel is None:
+            if not (
+                context.guild.me.guild_permissions.manage_channels and context.guild.me.guild_permissions.administrator
+            ):
+                await context.send(
+                    embed=await context.construct_embed(
+                        title=_("I do not have the required permissions."),
+                        description=_(
+                            "Please make sure I have the `Manage Channels` and `Manage Roles` permissions in this server "
+                            "so that I can create a channel otherwise specify an existing channel."
+                        ),
+                        messageable=context.channel,
+                    )
+                )
+                return
+
+            channel = await context.guild.create_text_channel(
+                name=_("pylav-controller"),
+                category=context.channel.category,
+                reason=_("PyLav Controller | Channel creation | Requested by {user_variable_do_not_translate}.").format(
+                    user_variable_do_not_translate=context.author.id
+                ),
+            )
+
         channel_permissions = channel.permissions_for(context.guild.me)
         if not all(
             [
                 channel_permissions.read_messages,
-                channel_permissions.embed_links,
-                channel_permissions.manage_messages,
-                channel_permissions.read_message_history,
-                channel_permissions.add_reactions,
                 channel_permissions.manage_channels,
+                channel_permissions.manage_roles,
+                channel_permissions.send_messages,
+                channel_permissions.embed_links,
+                channel_permissions.add_reactions,
+                channel_permissions.external_emojis,
+                channel_permissions.manage_messages,
                 channel_permissions.manage_threads,
+                channel_permissions.read_message_history,
             ]
         ):
             await context.send(
                 embed=await context.construct_embed(
                     title=_("I do not have the required permissions in this channel."),
-                    description=_(
+                    description=(
                         "Please make sure I have the following permissions: "
-                        "`Send Messages`, `Read Messages`, `Embed Links`, "
-                        "`Manage Messages`, `Read Message History`, `Add Reactions`, "
-                        "`Manage Channels` and `Manage Threads` "
+                        "`View Channel`, `Manage Channel`, `Manage Permissions`, "
+                        "`Send Messages`, `Embed Links`, `Add Reactions`, "
+                        "`Use External Emojis`, `Manage Messages`, `Manage Threads` and `Read Message History` "
                         "in {channel_variable_do_not_translate}."
                     ).format(channel_variable_do_not_translate=channel.mention),
                     messageable=context,
@@ -570,12 +597,15 @@ class PyLavController(
         if not all(
             [
                 permissions.read_messages,
-                permissions.embed_links,
-                permissions.manage_messages,
-                permissions.read_message_history,
-                permissions.add_reactions,
                 permissions.manage_channels,
+                permissions.manage_roles,
+                permissions.send_messages,
+                permissions.embed_links,
+                permissions.add_reactions,
+                permissions.external_emojis,
+                permissions.manage_messages,
                 permissions.manage_threads,
+                permissions.read_message_history,
             ]
         ):
             await channel.send(
@@ -583,9 +613,9 @@ class PyLavController(
                     title=_("I do not have the required permissions in this channel."),
                     description=_(
                         "Please make sure I have the following permissions: "
-                        "`Send Messages`, `Read Messages`, `Embed Links`, "
-                        "`Manage Messages`, `Read Message History`, `Add Reactions`, "
-                        "`Manage Channels` and `Manage Threads`."
+                        "`View Channel`, `Manage Channel`, `Manage Permissions`, "
+                        "`Send Messages`, `Embed Links`, `Add Reactions`, "
+                        "`Use External Emojis`, `Manage Messages`, `Manage Threads` and `Read Message History`"
                     ),
                     messageable=channel,
                 )
@@ -598,6 +628,7 @@ class PyLavController(
                 self._view_cache[channel.id] = PersistentControllerView(
                     cog=self, channel=channel, message=existing_view
                 )
+                await self._view_cache[channel.id].set_permissions()
                 await self._view_cache[channel.id].prepare()
                 if channel.guild.id in self._list_for_search_cache and self._list_for_search_cache[channel.guild.id]:
                     self._view_cache[channel.id].enable_show_help()
@@ -609,6 +640,7 @@ class PyLavController(
                 return
         self._view_cache[channel.id] = PersistentControllerView(cog=self, channel=channel)
         await self._view_cache[channel.id].prepare()
+        await self._view_cache[channel.id].set_permissions()
         if channel.guild.id in self._list_for_search_cache and self._list_for_search_cache[channel.guild.id]:
             self._view_cache[channel.id].enable_show_help()
         message = await self.send_channel_view(channel)

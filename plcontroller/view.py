@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import contextlib
 from pathlib import Path
 from typing import TYPE_CHECKING
 
@@ -386,6 +387,70 @@ class PersistentControllerView(discord.ui.View):
         if self.channel.slowmode_delay == 0:
             return
         await self.channel.edit(slowmode_delay=0)
+
+    async def set_permissions(self) -> bool:
+        permissions = self.channel.permissions_for(self.channel.guild.me)
+        if permissions.manage_roles or self.guild.me.guild_permissions.manage_roles:
+            default_role_permissions = self.channel.permissions_for(self.channel.guild.default_role)
+            if not all(
+                [
+                    default_role_permissions.view_channel,
+                    default_role_permissions.read_messages,
+                    default_role_permissions.send_messages,
+                    default_role_permissions.read_message_history,
+                ]
+            ) or any(
+                [
+                    default_role_permissions.create_instant_invite,
+                    default_role_permissions.manage_channels,
+                    default_role_permissions.add_reactions,
+                    default_role_permissions.send_tts_messages,
+                    default_role_permissions.manage_messages,
+                    default_role_permissions.embed_links,
+                    default_role_permissions.attach_files,
+                    default_role_permissions.mention_everyone,
+                    default_role_permissions.external_emojis,
+                    default_role_permissions.manage_roles,
+                    default_role_permissions.manage_webhooks,
+                    default_role_permissions.use_application_commands,
+                    default_role_permissions.create_public_threads,
+                    default_role_permissions.create_private_threads,
+                    default_role_permissions.external_stickers,
+                    default_role_permissions.send_messages_in_threads,
+                    default_role_permissions.manage_events,
+                    default_role_permissions.manage_threads,
+                    default_role_permissions.use_embedded_activities,
+                ]
+            ):
+                with contextlib.suppress(discord.Forbidden):
+                    # No explicitly needed; However, just here to allow for a cleaner channel.
+                    await self.channel.set_permissions(
+                        self.channel.guild.default_role,
+                        view_channel=True,
+                        read_messages=True,
+                        send_messages=True,
+                        read_message_history=True,
+                        create_instant_invite=False,
+                        manage_channels=False,
+                        add_reactions=False,
+                        send_tts_messages=False,
+                        manage_messages=False,
+                        embed_links=False,
+                        attach_files=False,
+                        mention_everyone=False,
+                        external_emojis=False,
+                        manage_roles=False,
+                        manage_webhooks=False,
+                        use_application_commands=False,
+                        create_public_threads=False,
+                        create_private_threads=False,
+                        external_stickers=False,
+                        send_messages_in_threads=False,
+                        manage_events=False,
+                        manage_threads=False,
+                        use_embedded_activities=False,
+                        reason=_("PyLav Controller"),
+                    )
 
     async def prepare(self):
         async with self.__prepare_lock:
