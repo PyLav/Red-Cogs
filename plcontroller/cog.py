@@ -93,75 +93,29 @@ class PyLavController(
     ):
         """Set the channel to create the controller in."""
         channel_permissions = channel.permissions_for(context.guild.me)
-        if not channel_permissions.send_messages:
+        if not all(
+            [
+                channel_permissions.read_messages,
+                channel_permissions.embed_links,
+                channel_permissions.manage_messages,
+                channel_permissions.read_message_history,
+                channel_permissions.add_reactions,
+                channel_permissions.manage_channels,
+                channel_permissions.manage_threads,
+            ]
+        ):
             await context.send(
                 embed=await context.construct_embed(
+                    title=_("I do not have the required permissions in this channel."),
                     description=_(
-                        "I need 'Send Messages' permission in {channel_name_variable_do_not_translate}."
-                    ).format(channel_name_variable_do_not_translate=channel.mention),
+                        "Please make sure I have the following permissions: "
+                        "`Send Messages`, `Read Messages`, `Embed Links`, "
+                        "`Manage Messages`, `Read Message History`, `Add Reactions`, "
+                        "`Manage Channels` and `Manage Threads` "
+                        "in {channel_variable_do_not_translate}."
+                    ).format(channel_variable_do_not_translate=channel.mention),
                     messageable=context,
-                ),
-                ephemeral=True,
-            )
-            return
-
-        if not channel_permissions.read_messages:
-            await context.send(
-                embed=await context.construct_embed(
-                    description=_(
-                        "I need 'Read Messages' permission in {channel_name_variable_do_not_translate}."
-                    ).format(channel_name_variable_do_not_translate=channel.mention),
-                    messageable=context,
-                ),
-                ephemeral=True,
-            )
-            return
-
-        if not channel_permissions.embed_links:
-            await context.send(
-                embed=await context.construct_embed(
-                    description=_(
-                        "I need 'Embed Links' permission in {channel_name_variable_do_not_translate}."
-                    ).format(channel_name_variable_do_not_translate=channel.mention),
-                    messageable=context,
-                ),
-                ephemeral=True,
-            )
-            return
-
-        if not channel_permissions.manage_messages:
-            await context.send(
-                embed=await context.construct_embed(
-                    description=_(
-                        "I need 'Manage Messages' permission in {channel_name_variable_do_not_translate}."
-                    ).format(channel_name_variable_do_not_translate=channel.mention),
-                    messageable=context,
-                ),
-                ephemeral=True,
-            )
-            return
-
-        if not channel_permissions.read_message_history:
-            await context.send(
-                embed=await context.construct_embed(
-                    description=_(
-                        "I need 'Read Message History' permission in {channel_name_variable_do_not_translate}."
-                    ).format(channel_name_variable_do_not_translate=channel.mention),
-                    messageable=context,
-                ),
-                ephemeral=True,
-            )
-            return
-
-        if not channel_permissions.manage_channels:
-            await context.send(
-                embed=await context.construct_embed(
-                    description=_(
-                        "I need 'Manage Channel' permission in {channel_name_variable_do_not_translate}."
-                    ).format(channel_name_variable_do_not_translate=channel.mention),
-                    messageable=context,
-                ),
-                ephemeral=True,
+                )
             )
             return
 
@@ -183,6 +137,24 @@ class PyLavController(
     @command_plcontrollerset.command(name="acceptrequests", aliases=["ar", "listen"])
     async def command_plcontrollerset_acceptrequests(self, context: PyLavContext):
         """Toggle whether the controller should listen for requests."""
+        if (
+            context.guild.id not in self._channel_cache
+            or (channel_id := self._channel_cache[context.guild.id]) is None
+            or channel_id not in self._view_cache
+        ):
+            await context.send(
+                embed=await context.construct_embed(
+                    description=_(
+                        "I am not set up for the controller channel yet, "
+                        "please run {setup_command_variable_do_not_translate} first."
+                    ).format(
+                        setup_command_variable_do_not_translate=f"`{context.clean_prefix}{self.command_plcontrollerset_channel.qualified_name}`"
+                    ),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+            return
         current = await self._config.guild(context.guild).list_for_requests()
         await self._config.guild(context.guild).list_for_requests.set(not current)
         self._list_for_command_cache[context.guild.id] = not current
@@ -207,10 +179,22 @@ class PyLavController(
     @command_plcontrollerset.command(name="acceptsearches", aliases=["as", "search"])
     async def command_plcontrollerset_acceptsearches(self, context: PyLavContext):
         """Toggle whether the controller should listen for searches."""
+        if (channel_id := self._channel_cache.get(context.guild.id)) is None or channel_id not in self._view_cache:
+            await context.send(
+                embed=await context.construct_embed(
+                    description=_(
+                        "I am not set up for the controller channel yet, please run {setup_command_variable_do_not_translate} first."
+                    ).format(
+                        setup_command_variable_do_not_translate=f"`{context.clean_prefix}{self.command_plcontrollerset_channel.qualified_name}`"
+                    ),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+            return
         current = await self._config.guild(context.guild).list_for_searches()
         await self._config.guild(context.guild).list_for_searches.set(not current)
         self._list_for_search_cache[context.guild.id] = not current
-        channel_id = self._channel_cache[context.guild.id]
         if channel := self.bot.get_channel(channel_id):
             if not current:
                 self._view_cache[channel.id].enable_show_help()
@@ -539,6 +523,31 @@ class PyLavController(
         )
 
     async def prepare_channel(self, channel: discord.TextChannel | discord.Thread | discord.VoiceChannel):
+        permissions = channel.permissions_for(channel.guild.me)
+        if not all(
+            [
+                permissions.read_messages,
+                permissions.embed_links,
+                permissions.manage_messages,
+                permissions.read_message_history,
+                permissions.add_reactions,
+                permissions.manage_channels,
+                permissions.manage_threads,
+            ]
+        ):
+            await channel.send(
+                embed=await self.pylav.construct_embed(
+                    title=_("I do not have the required permissions in this channel."),
+                    description=_(
+                        "Please make sure I have the following permissions: "
+                        "`Send Messages`, `Read Messages`, `Embed Links`, "
+                        "`Manage Messages`, `Read Message History`, `Add Reactions`, "
+                        "`Manage Channels` and `Manage Threads`."
+                    ),
+                    messageable=channel,
+                )
+            )
+            return
         existing_view_id = await self._config.guild(channel.guild).persistent_view_message_id()
         if existing_view_id:
             with contextlib.suppress(discord.NotFound):
