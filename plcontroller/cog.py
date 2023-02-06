@@ -47,11 +47,13 @@ class PyLavController(
             list_for_searches=False,
             persistent_view_message_id=None,
             enable_antispam=True,
+            use_slow_mode=True,
         )
         self._channel_cache: dict[int, int] = {}
         self._list_for_search_cache: dict[int, bool] = {}
         self._list_for_command_cache: dict[int, bool] = {}
         self._enable_antispam_cache: dict[int, bool] = {}
+        self._use_slow_mode_cache: dict[int, bool] = {}
         self._view_cache: dict[int, PersistentControllerView] = {}
         intervals = [
             (timedelta(seconds=15), 1),
@@ -77,6 +79,7 @@ class PyLavController(
             self._list_for_command_cache[guild_id] = data["list_for_requests"]
             self._list_for_search_cache[guild_id] = data["list_for_searches"]
             self._enable_antispam_cache[guild_id] = data["enable_antispam"]
+            self._use_slow_mode_cache[guild_id] = data["use_slow_mode"]
             if data["persistent_view_message_id"]:
                 if channel := self.bot.get_channel(channel_id):
                     await self.prepare_channel(channel)
@@ -213,6 +216,47 @@ class PyLavController(
             await context.send(
                 embed=await context.construct_embed(
                     description=_("From now on, I will ignore user searches in the controller channel."),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+
+    @command_plcontrollerset.command(name="slowmode", aliases=["sm"])
+    async def command_plcontrollerset_slowmode(self, context: PyLavContext):
+        """Toggle whether the controller should use slowmode."""
+        if (channel_id := self._channel_cache.get(context.guild.id)) is None or channel_id not in self._view_cache:
+            await context.send(
+                embed=await context.construct_embed(
+                    description=_(
+                        "I am not set up for the controller channel yet, please run {setup_command_variable_do_not_translate} first."
+                    ).format(
+                        setup_command_variable_do_not_translate=f"`{context.clean_prefix}{self.command_plcontrollerset_channel.qualified_name}`"
+                    ),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+            return
+        current = await self._config.guild(context.guild).use_slow_mode()
+        await self._config.guild(context.guild).use_slow_mode.set(not current)
+        self._use_slow_mode_cache[context.guild.id] = not current
+        if channel := self.bot.get_channel(channel_id):
+            if not current:
+                await self._view_cache[channel.id].enable_slow_mode()
+            else:
+                await self._view_cache[channel.id].disable_slow_mode()
+        if not current:
+            await context.send(
+                embed=await context.construct_embed(
+                    description=_("From now on, I will use slowmode in the controller channel."),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+        else:
+            await context.send(
+                embed=await context.construct_embed(
+                    description=_("From now on, I will not use slowmode in the controller channel."),
                     messageable=context,
                 ),
                 ephemeral=True,
@@ -559,6 +603,10 @@ class PyLavController(
                 if channel.guild.id in self._list_for_search_cache and self._list_for_search_cache[channel.guild.id]:
                     self._view_cache[channel.id].enable_show_help()
                 self.bot.add_view(self._view_cache[channel.id], message_id=existing_view_id)
+                if self._use_slow_mode_cache[channel.guild.id]:
+                    await self._view_cache[channel.id].enable_slow_mode()
+                else:
+                    await self._view_cache[channel.id].disable_slow_mode()
                 return
         self._view_cache[channel.id] = PersistentControllerView(cog=self, channel=channel)
         await self._view_cache[channel.id].prepare()
@@ -568,6 +616,10 @@ class PyLavController(
         await self._config.guild(channel.guild).persistent_view_message_id.set(message.id)
         self._view_cache[channel.id].set_message(message)
         self.bot.add_view(self._view_cache[channel.id], message_id=message.id)
+        if self._use_slow_mode_cache[channel.guild.id]:
+            await self._view_cache[channel.id].enable_slow_mode()
+        else:
+            await self._view_cache[channel.id].disable_slow_mode()
 
     async def send_channel_view(
         self, channel: discord.TextChannel | discord.Thread | discord.VoiceChannel

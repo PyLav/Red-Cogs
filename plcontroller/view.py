@@ -377,6 +377,16 @@ class PersistentControllerView(discord.ui.View):
     def disable_show_help(self) -> None:
         self.__show_help = False
 
+    async def enable_slow_mode(self) -> None:
+        if self.channel.slowmode_delay != 0:
+            return
+        await self.channel.edit(slowmode_delay=5)
+
+    async def disable_slow_mode(self) -> None:
+        if self.channel.slowmode_delay == 0:
+            return
+        await self.channel.edit(slowmode_delay=0)
+
     async def prepare(self):
         async with self.__prepare_lock:
             player = self.cog.pylav.get_player(self.channel.guild.id)
