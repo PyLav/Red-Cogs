@@ -536,4 +536,13 @@ class PersistentControllerView(discord.ui.View):
                 ephemeral=True,
             )
             return False
+        if not (self.cog.pylav.get_player(self.channel.guild.id)):
+            await interaction.send(
+                embed=await interaction.client.pylav.construct_embed(
+                    description=_("I am not currently playing anything on this server."),
+                    messageable=interaction,
+                ),
+                ephemeral=True,
+            )
+            return False
         return True

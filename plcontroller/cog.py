@@ -141,6 +141,30 @@ class PyLavController(
             )
             return
 
+        if not channel_permissions.read_message_history:
+            await context.send(
+                embed=await context.construct_embed(
+                    description=_(
+                        "I need 'Read Message History' permission in {channel_name_variable_do_not_translate}."
+                    ).format(channel_name_variable_do_not_translate=channel.mention),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+            return
+
+        if not channel_permissions.manage_channels:
+            await context.send(
+                embed=await context.construct_embed(
+                    description=_(
+                        "I need 'Manage Channel' permission in {channel_name_variable_do_not_translate}."
+                    ).format(channel_name_variable_do_not_translate=channel.mention),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+            return
+
         await self._config.guild(context.guild).channel.set(channel.id)
         self._channel_cache[context.guild.id] = channel.id
 
