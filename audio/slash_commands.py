@@ -86,7 +86,7 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN):
         }
         inv_map = {v: k for k, v in prefix_mapping.items()}
         fallback_search = f"{DEFAULT_SEARCH_SOURCE}:"
-        fallback_source = next(k for k, v in prefix_mapping.items() if v == DEFAULT_SEARCH_SOURCE)
+        fallback_source = next(k for k, v in prefix_mapping.items() if v == f"{DEFAULT_SEARCH_SOURCE}:")
         fallback_feature = feature_mapping[fallback_search]
         if options := data.get("options", []):
             value_list = [v for v in options if v.get("name") == "source"]
