@@ -91,33 +91,9 @@ class PyLavController(
 
     @command_plcontrollerset.command(name="channel")
     async def command_plcontrollerset_channel(
-        self, context: PyLavContext, channel: discord.TextChannel | discord.Thread | discord.VoiceChannel = None
+        self, context: PyLavContext, channel: discord.TextChannel | discord.Thread | discord.VoiceChannel
     ):
         """Set the channel to create the controller in."""
-        if channel is None:
-            if not (
-                context.guild.me.guild_permissions.manage_channels and context.guild.me.guild_permissions.administrator
-            ):
-                await context.send(
-                    embed=await context.construct_embed(
-                        title=_("I do not have the required permissions."),
-                        description=_(
-                            "Please make sure I have the `Manage Channels` and `Manage Roles` permissions in this server "
-                            "so that I can create a channel otherwise specify an existing channel."
-                        ),
-                        messageable=context.channel,
-                    )
-                )
-                return
-
-            channel = await context.guild.create_text_channel(
-                name=_("pylav-controller"),
-                category=context.channel.category,
-                reason=_("PyLav Controller | Channel creation | Requested by {user_variable_do_not_translate}.").format(
-                    user_variable_do_not_translate=context.author.id
-                ),
-            )
-
         channel_permissions = channel.permissions_for(context.guild.me)
         if not all(
             [
@@ -135,7 +111,9 @@ class PyLavController(
         ):
             await context.send(
                 embed=await context.construct_embed(
-                    title=_("I do not have the required permissions in this channel."),
+                    title=_(
+                        "I do not have the required permissions in {channel_name_variable_do_not_translate}."
+                    ).format(channel_name_variable_do_not_translate=channel.name),
                     description=(
                         "Please make sure I have the following permissions: "
                         "`View Channel`, `Manage Channel`, `Manage Permissions`, "
@@ -615,7 +593,10 @@ class PyLavController(
                         "Please make sure I have the following permissions: "
                         "`View Channel`, `Manage Channel`, `Manage Permissions`, "
                         "`Send Messages`, `Embed Links`, `Add Reactions`, "
-                        "`Use External Emojis`, `Manage Messages`, `Manage Threads` and `Read Message History`"
+                        "`Use External Emojis`, `Manage Messages`, `Manage Threads` and `Read Message History`. "
+                        "Once you give me these permissions, run {command_variable_do_not_edit}."
+                    ).format(
+                        command_variable_do_not_edit=f"`{self.bot.get_valid_prefixes(channel.guild)[0]}{self.command_plcontrollerset_channel.qualified_name}`"
                     ),
                     messageable=channel,
                 )
