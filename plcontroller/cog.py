@@ -596,7 +596,7 @@ class PyLavController(
                         "`Use External Emojis`, `Manage Messages`, `Manage Threads` and `Read Message History`. "
                         "Once you give me these permissions, run {command_variable_do_not_edit}."
                     ).format(
-                        command_variable_do_not_edit=f"`{self.bot.get_valid_prefixes(channel.guild)[0]}{self.command_plcontrollerset_channel.qualified_name}`"
+                        command_variable_do_not_edit=f"`{(await self.bot.get_valid_prefixes(channel.guild))[0]}{self.command_plcontrollerset_channel.qualified_name}`"
                     ),
                     messageable=channel,
                 )
