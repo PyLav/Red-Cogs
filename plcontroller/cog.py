@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import asyncio
 import contextlib
+import datetime
 from collections import defaultdict
 from datetime import timedelta
 from functools import partial
@@ -9,6 +10,7 @@ from pathlib import Path
 from typing import Any, Literal
 
 import discord
+from apscheduler.jobstores.base import JobLookupError
 from redbot.core import Config, commands
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.antispam import AntiSpam
@@ -20,13 +22,14 @@ from pylav.core.context import PyLavContext
 from pylav.events.player import PlayerPausedEvent, PlayerResumedEvent, PlayerStoppedEvent
 from pylav.events.queue import QueueEndEvent
 from pylav.events.track import TrackStartEvent
+from pylav.helpers.time import get_now_utc
 from pylav.players.player import Player
 from pylav.players.query.obj import Query
 from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE_MIXIN
 
 _ = Translator("PyLavController", Path(__file__))
 
-LOGGER = logging.getLogger("PyLav.cog.Controller")
+LOGGER = logging.getLogger("red.PyLav.cog.Controller")
 
 
 @cog_i18n(_)
@@ -41,6 +44,7 @@ class PyLavController(
         super().__init__(*args, **kwargs)
         self.bot = bot
         self._config = Config.get_conf(self, identifier=208903205982044161)
+        self.__lock = defaultdict(asyncio.Lock)
         self._config.register_guild(
             channel=None,
             list_for_requests=False,
@@ -55,6 +59,9 @@ class PyLavController(
         self._enable_antispam_cache: dict[int, bool] = {}
         self._use_slow_mode_cache: dict[int, bool] = {}
         self._view_cache: dict[int, PersistentControllerView] = {}
+        self.__failed_messages_to_delete: dict[int, set[discord.Message]] = defaultdict(set)
+        self.__success_messages_to_delete: dict[int, set[discord.Message]] = defaultdict(set)
+        self.__ready = asyncio.Event()
         intervals = [
             (timedelta(minutes=1), 5),
             (timedelta(hours=1), 50),
@@ -66,9 +73,13 @@ class PyLavController(
         for view in self._view_cache.values():
             view.stop()
         self._view_cache.clear()
+        with contextlib.suppress(JobLookupError):
+            self.pylav.scheduler.remove_job(f"{self.__class__.__name__}-{self.bot.user.id}-delete_failed_messages")
+        with contextlib.suppress(JobLookupError):
+            self.pylav.scheduler.remove_job(f"{self.__class__.__name__}-{self.bot.user.id}-delete_successful_messages")
 
     async def initialize(self):
-        await self.bot.wait_until_red_ready()
+        await self.pylav.wait_until_ready()
 
         guild_data = await self._config.all_guilds()
 
@@ -82,6 +93,27 @@ class PyLavController(
             if data["persistent_view_message_id"]:
                 if channel := self.bot.get_channel(channel_id):
                     await self.prepare_channel(channel)
+        self.__ready.set()
+        self.pylav.scheduler.add_job(
+            self.delete_failed_messages,
+            trigger="interval",
+            seconds=5,
+            max_instances=1,
+            id=f"{self.__class__.__name__}-{self.bot.user.id}-delete_failed_messages",
+            replace_existing=True,
+            coalesce=True,
+            next_run_time=get_now_utc() + datetime.timedelta(seconds=5),
+        )
+        self.pylav.scheduler.add_job(
+            self.delete_successful_messages,
+            trigger="interval",
+            seconds=5,
+            max_instances=1,
+            id=f"{self.__class__.__name__}-{self.bot.user.id}-delete_successful_messages",
+            replace_existing=True,
+            coalesce=True,
+            next_run_time=get_now_utc() + datetime.timedelta(seconds=5),
+        )
 
     @commands.group(name="plcontrollerset")
     @commands.guild_only()
@@ -664,10 +696,10 @@ class PyLavController(
 
         if await self.bot.cog_disabled_in_guild(self, guild):
             return
-
-        player = await self._view_cache[channel.id].get_player(message)
+        async with self.__lock[message.guild.id]:
+            player = await self._view_cache[channel.id].get_player(message)
         if player is None:
-            await message.delete(delay=1)
+            await self.add_failure_reaction(message)
             return
 
         await self.process_potential_query(message, player)
@@ -676,12 +708,12 @@ class PyLavController(
         if (message.guild.id not in self._list_for_command_cache) or (
             self._list_for_command_cache[message.guild.id] is False
         ):
-            await message.delete(delay=1)
+            await self.add_failure_reaction(message)
             return
 
         if message.guild.id in self._enable_antispam_cache and self._enable_antispam_cache[message.guild.id]:
             if self.antispam[message.guild.id][message.author.id].spammy:
-                await message.delete(delay=1)
+                await self.add_failure_reaction(message)
                 return
             self.antispam[message.guild.id][message.author.id].stamp()
 
@@ -689,31 +721,25 @@ class PyLavController(
             message.clean_content, dont_search=not self._list_for_search_cache[message.guild.id]
         )
         if query.invalid:
-            await message.add_reaction("\N{CROSS MARK}")
-            await message.delete(delay=5)
+            await self.add_failure_reaction(message)
             return
         if query.is_search and not self._list_for_search_cache[message.guild.id]:
-            await message.add_reaction("\N{CROSS MARK}")
-            await message.delete(delay=5)
+            await self.add_failure_reaction(message)
             return
 
-        await message.add_reaction("\N{WHITE HEAVY CHECK MARK}")
         successful, count, failed = await self.pylav.get_all_tracks_for_queries(
             query, player=player, requester=message.author
         )
+
         if successful:
             if query.is_search:
                 successful = [successful[0]]
             await player.bulk_add(tracks_and_queries=successful, requester=message.author.id)
             if (not player.is_playing) and player.queue.size() > 0:
                 await player.next(requester=message.author)
-            delay = 10
+            await self.add_success_reaction(message)
         else:
-            await message.clear_reactions()
-            await message.add_reaction("\N{CROSS MARK}")
-            delay = 5
-
-        await message.delete(delay=delay)
+            await self.add_failure_reaction(message)
 
     async def red_delete_data_for_user(
         self,
@@ -745,7 +771,7 @@ class PyLavController(
 
     async def process_event(
         self, event: TrackStartEvent | QueueEndEvent | PlayerStoppedEvent | PlayerPausedEvent | PlayerResumedEvent
-    ):
+    ) -> None:
         await asyncio.sleep(1)
         guild = event.player.guild
         if guild.id not in self._channel_cache:
@@ -758,3 +784,65 @@ class PyLavController(
         if await self.bot.cog_disabled_in_guild(self, channel.guild):
             return
         await self._view_cache[channel.id].update_view()
+
+    async def __add_failed_message_to_delete(self, message: discord.Message) -> None:
+        async with self.__lock[message.guild.id]:
+            self.__failed_messages_to_delete[message.guild.id].add(message)
+
+    async def __copy_failed_message_to_delete(self, guild_id: int) -> set[discord.Message]:
+        async with self.__lock[guild_id]:
+            now = get_now_utc()
+            r = {m for m in self.__failed_messages_to_delete[guild_id] if m.created_at + timedelta(seconds=10) < now}
+            remaining = self.__failed_messages_to_delete[guild_id] - r
+            self.__failed_messages_to_delete[guild_id] = remaining
+            return r
+
+    async def delete_failed_messages(self) -> None:
+        await self.__ready.wait()
+        for guild_id in self.__failed_messages_to_delete:
+            if self.bot.get_guild(guild_id) is None:
+                self.__failed_messages_to_delete.pop(guild_id, None)
+                continue
+            channel = self.bot.get_channel(self._channel_cache[guild_id])
+            if channel is None:
+                return
+            messages = list(await self.__copy_failed_message_to_delete(guild_id))
+            for chunk in [messages[i : i + 100] for i in range(0, len(messages), 100)]:
+                await channel.delete_messages(chunk, reason=_("PyLavController: Deleting failed messages is channel"))
+
+    async def add_failure_reaction(self, message: discord.Message) -> None:
+        await self.__add_failed_message_to_delete(message)
+        with contextlib.suppress(discord.HTTPException):
+            await message.add_reaction("\N{CROSS MARK}")
+
+    async def __add_successful_message_to_delete(self, message: discord.Message) -> None:
+        async with self.__lock[message.guild.id]:
+            self.__success_messages_to_delete[message.guild.id].add(message)
+
+    async def __copy_success_messages_to_delete(self, guild_id: int) -> set[discord.Message]:
+        async with self.__lock[guild_id]:
+            now = get_now_utc()
+            r = {m for m in self.__success_messages_to_delete[guild_id] if m.created_at + timedelta(seconds=30) < now}
+            remaining = self.__success_messages_to_delete[guild_id] - r
+            self.__success_messages_to_delete[guild_id] = remaining
+            return r
+
+    async def delete_successful_messages(self) -> None:
+        await self.__ready.wait()
+        for guild_id in self.__success_messages_to_delete:
+            if self.bot.get_guild(guild_id) is None:
+                self.__success_messages_to_delete.pop(guild_id, None)
+                continue
+            channel = self.bot.get_channel(self._channel_cache[guild_id])
+            if channel is None:
+                return
+            messages = list(await self.__copy_success_messages_to_delete(guild_id))
+            for chunk in [messages[i : i + 100] for i in range(0, len(messages), 100)]:
+                await channel.delete_messages(
+                    chunk, reason=_("PyLavController: Deleting successful messages is channel")
+                )
+
+    async def add_success_reaction(self, message: discord.Message) -> None:
+        await self.__add_successful_message_to_delete(message)
+        with contextlib.suppress(discord.HTTPException):
+            await message.add_reaction("\N{WHITE HEAVY CHECK MARK}")
