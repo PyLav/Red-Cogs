@@ -389,6 +389,11 @@ class PersistentControllerView(discord.ui.View):
         await self.channel.edit(slowmode_delay=0)
 
     async def set_permissions(self) -> bool:
+        if isinstance(self.channel, discord.Thread):
+            # Threads don't have permissions, so we can't set them
+            #    We don't want o edit the permissions of the parent channel
+            #    as that would affect the entire channel and all its threads.
+            return
         permissions = self.channel.permissions_for(self.channel.guild.me)
         if permissions.manage_roles or self.guild.me.guild_permissions.manage_roles:
             default_role_permissions = self.channel.permissions_for(self.channel.guild.default_role)
