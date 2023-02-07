@@ -32,7 +32,6 @@ jobs:
                 upload_sources: true
                 upload_translations: false
                 download_translations: true
-                commit_message: '[skip ci] Update translations'
                 pull_request_labels: i18n, translations, automerge
             env:
                 CROWDIN_API_KEY: ${{ secrets.crowdin_token}}
