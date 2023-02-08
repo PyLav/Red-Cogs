@@ -61,7 +61,9 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN):
         await self.command_play.callback(self, interaction, query=track)
 
     @slash_search.autocomplete("query")
-    async def slash_search_autocomplete_query(self, interaction: DISCORD_INTERACTION_TYPE, current: str):
+    async def slash_search_autocomplete_query(
+        self, interaction: DISCORD_INTERACTION_TYPE, current: str
+    ):  # sourcery skip: low-code-quality
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         data = interaction.data
@@ -151,6 +153,8 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN):
 
         for track in tracks:
             track = await Track.build_track(node=node, data=track, query=original_query, requester=interaction.user.id)
+            if track is None:
+                continue
             track_id = hashlib.md5(track.encoded.encode()).hexdigest()
             self._track_cache[track_id] = track
             choices.append(

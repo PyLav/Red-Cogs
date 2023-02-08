@@ -523,7 +523,7 @@ class PersistentControllerView(discord.ui.View):
     async def get_player(self, message: discord.Message) -> Player | None:
         if not await is_dj_logic(message, bot=self.cog.bot):
             await message.channel.send(
-                embed=await self.pylav.construct_embed(
+                embed=await self.cog.pylav.construct_embed(
                     description=_("You need to be a disc jockey in this server to play tracks in this server."),
                     messageable=message.channel,
                 ),

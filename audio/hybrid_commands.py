@@ -120,23 +120,19 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                 requester=context.author.id,
                 query=None,
             )
+            if track is None:
+                return
             await player.add(track=track, requester=context.author.id)
             if not (player.is_playing or player.queue.empty()):
                 await player.next(requester=context.author)
             await self._process_play_message(context, track, 1)
             return
         queries = [await Query.from_string(qf) for q in query.split("\n") if (qf := q.strip("<>").strip())]
-        search_queries = [q for q in queries if q.is_search]
-        non_search_queries = [q for q in queries if not q.is_search]
         total_tracks_enqueue = 0
         single_track = None
-        if search_queries:
-            single_track, total_tracks_enqueue = await self._process_play_search_queries(
-                context, player, search_queries, single_track, total_tracks_enqueue
-            )
-        if non_search_queries:
-            single_track, total_tracks_enqueue = await self._process_play_non_search_queries(
-                context, non_search_queries, player, single_track, total_tracks_enqueue
+        if queries:
+            single_track, total_tracks_enqueue = await self._process_play_queries(
+                context, queries, player, single_track, total_tracks_enqueue
             )
         if not (player.is_playing or player.queue.empty()):
             await player.next(requester=context.author)
@@ -166,17 +162,13 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             ephemeral=True,
         )
 
-    async def _process_play_non_search_queries(
-        self, context, non_search_queries, player, single_track, total_tracks_enqueue
-    ):
+    async def _process_play_queries(self, context, queries, player, single_track, total_tracks_enqueue):
         successful, count, failed = await self.pylav.get_all_tracks_for_queries(
-            *non_search_queries, requester=context.author, player=player
+            *queries, requester=context.author, player=player
         )
         if successful:
             single_track = successful[0]
         total_tracks_enqueue += count
-        failed_queries = []
-        failed_queries.extend(failed)
         if count:
             if count == 1:
                 await player.add(requester=context.author.id, track=successful[0])
@@ -194,6 +186,8 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                 query=query,
                 requester=context.author.id,
             )
+            if track is None:
+                continue
             await player.add(requester=context.author.id, track=track)
             if not player.is_playing:
                 await player.next(requester=context.author)

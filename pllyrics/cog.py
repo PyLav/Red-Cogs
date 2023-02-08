@@ -235,7 +235,8 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
             return
         await self._send_lyrics_messages(channel, exact, lyrics, response, show_author, track)
 
-    def _get_translated_message_contents(self, exact: bool, show_author: bool, part: int | None = None) -> str:
+    @staticmethod
+    def _get_translated_message_contents(exact: bool, show_author: bool, part: int | None = None) -> str:
         if part:
             if exact:
                 return (
