@@ -196,7 +196,6 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
                 data=None,
                 query=query,
                 requester=context.author.id,
-                partial=query.is_partial,
             )
             await player.add(requester=context.author.id, track=track, index=0)
             if not player.is_playing:

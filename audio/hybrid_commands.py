@@ -10,7 +10,6 @@ from discord import app_commands
 from redbot.core import commands
 from redbot.core.i18n import Translator
 
-from pylav.constants.config import PREFER_PARTIAL_TRACKS
 from pylav.core.context import PyLavContext
 from pylav.extension.red.ui.menus.queue import QueueMenu
 from pylav.extension.red.ui.sources.queue import QueueSource
@@ -126,13 +125,9 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                 await player.next(requester=context.author)
             await self._process_play_message(context, track, 1)
             return
-        queries = [
-            await Query.from_string(qf, partial=PREFER_PARTIAL_TRACKS)
-            for q in query.split("\n")
-            if (qf := q.strip("<>").strip())
-        ]
-        search_queries = [q for q in queries if q.is_search or q.is_partial]
-        non_search_queries = [q for q in queries if not (q.is_search or q.is_partial)]
+        queries = [await Query.from_string(qf) for q in query.split("\n") if (qf := q.strip("<>").strip())]
+        search_queries = [q for q in queries if q.is_search]
+        non_search_queries = [q for q in queries if not q.is_search]
         total_tracks_enqueue = 0
         single_track = None
         if search_queries:
@@ -189,7 +184,8 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                 await player.bulk_add(requester=context.author.id, tracks_and_queries=successful)
         return single_track, total_tracks_enqueue
 
-    async def _process_play_search_queries(self, context, player, search_queries, single_track, total_tracks_enqueue):
+    @staticmethod
+    async def _process_play_search_queries(context, player, search_queries, single_track, total_tracks_enqueue):
         total_tracks_from_search = 0
         for query in search_queries:
             single_track = track = await Track.build_track(
@@ -197,7 +193,6 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                 data=None,
                 query=query,
                 requester=context.author.id,
-                partial=query.is_partial,
             )
             await player.add(requester=context.author.id, track=track)
             if not player.is_playing:

@@ -130,7 +130,7 @@ class PyLavRadio(DISCORD_COG_TYPE_MIXIN):
         url = station.url_resolved or station.url
         query = await Query.from_string(url)
         successful, count, failed = await self.pylav.get_all_tracks_for_queries(
-            query, requester=author, player=player, bypass_cache=True, partial=False
+            query, requester=author, player=player, bypass_cache=True
         )
         single_track = successful[0] if successful else None
         total_tracks_enqueue += count

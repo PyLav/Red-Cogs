@@ -127,7 +127,7 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
             self.__load_locals_task.cancel()
         self.__load_locals_task = asyncio.create_task(
             self.pylav.get_all_tracks_for_queries(
-                *self.cache.values(), partial=False, enqueue=False, requester=self.bot.user, player=None
+                *self.cache.values(), enqueue=False, requester=self.bot.user, player=None
             )
         )
         self.__load_locals_task.add_done_callback(self.__load_local_files_done_callback)
@@ -277,7 +277,9 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
             player = await self.pylav.connect_player(channel=channel, requester=author)
 
         successful, count, failed = await self.pylav.get_all_tracks_for_queries(
-            entry, requester=author, player=player, partial=True
+            entry,
+            requester=author,
+            player=player,
         )
         if count:
             if count == 1:
