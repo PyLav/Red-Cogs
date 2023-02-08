@@ -1772,7 +1772,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             await self.pylav.construct_embed(
                 title=_("Player Volume Changed Event"),
                 description=_(
-                    "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} changed the player volume from {before_variable_do_not_translate} to {afte_variable_do_not_translater}."
+                    "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} changed the player volume from {before_variable_do_not_translate} to {after_variable_do_not_translate}."
                 ).format(
                     requester_variable_do_not_translate=user,
                     before_variable_do_not_translate=event.before,
