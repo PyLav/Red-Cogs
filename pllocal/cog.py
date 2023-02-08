@@ -1,13 +1,8 @@
 from __future__ import annotations
 
-import asyncio
-import contextlib
-import hashlib
 import heapq
 import os.path
-import pathlib
 import re
-import typing
 from functools import partial
 from itertools import islice
 from pathlib import Path
@@ -20,14 +15,12 @@ from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import box
 from tabulate import tabulate
-from watchfiles import Change, awatch
 
 from pylav.core.context import PyLavContext
 from pylav.extension.red.utils import rgetattr
 from pylav.helpers.format.ascii import EightBitANSI
 from pylav.helpers.format.strings import shorten_string
 from pylav.logging import getLogger
-from pylav.players.query.local_files import LocalFile
 from pylav.players.query.obj import Query
 from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE_MIXIN, DISCORD_INTERACTION_TYPE
 
@@ -44,7 +37,7 @@ async def cache_filled(interaction: DISCORD_INTERACTION_TYPE) -> bool:
         await interaction.response.defer(ephemeral=True)
     context = await interaction.client.get_context(interaction)
     cog: PyLavLocalFiles = context.bot.get_cog("PyLavLocalFiles")  # type: ignore
-    return bool(cog.ready_event.is_set()) and len(cog.cache) > 0
+    return cog.pylav.local_tracks_cache.is_ready
 
 
 @cog_i18n(_)
@@ -56,102 +49,9 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
     def __init__(self, bot: DISCORD_BOT_TYPE, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot = bot
-        self.cache: dict[str, Query] = {}
-        self.ready_event = asyncio.Event()
-        self.__load_locals_task: asyncio.Task | None = None
-        self.__monitor_task = asyncio.create_task(self.file_watcher())
-
-    async def file_watcher(self):
-        await self.pylav.wait_until_ready()
-        # noinspection PyProtectedMember
-        with contextlib.suppress(Exception):
-            async for changes in awatch(pathlib.Path(LocalFile._ROOT_FOLDER), recursive=True):
-                await self._process_changes(changes)
-
-    async def _process_changes(self, changes: set[tuple[Change, str]]) -> None:
-        for change, path in changes:
-            if change == Change.added:
-                await self._process_added(path)
-                LOGGER.verbose(f"Added {path}")
-            elif change == Change.modified:
-                await self._process_modified(path)
-                LOGGER.verbose(f"Modified {path}")
-            elif change == Change.deleted:
-                await self._process_deleted(path)
-                LOGGER.verbose(f"Deleted {path}")
-
-    async def _process_added(self, path: str) -> None:
-        query = await Query.from_string(path)
-        # noinspection PyProtectedMember
-        self.cache[hashlib.md5(f"{query._query}".encode()).hexdigest()] = query
-        if os.path.isdir(path):
-            return
-        with contextlib.suppress(Exception):
-            await self.pylav.get_tracks(query)
-
-    async def _process_modified(self, path: str) -> None:
-        query = await Query.from_string(path)
-        # noinspection PyProtectedMember
-        self.cache[hashlib.md5(f"{query._query}".encode()).hexdigest()] = query
-        if os.path.isdir(path):
-            return
-        with contextlib.suppress(Exception):
-            await self.pylav.get_tracks(query, bypass_cache=True)
-
-    async def _process_deleted(self, path: str) -> None:
-        query = await Query.from_string(path)
-        # noinspection PyProtectedMember
-        self.cache.pop(hashlib.md5(f"{query._query}".encode()).hexdigest(), None)
-
-    @staticmethod
-    def _filter_is_folder_alphabetical(x: list[Query]) -> tuple[int, str]:
-        # noinspection PyProtectedMember
-        string = f"{x[1]._query}"
-        return -1 if os.path.isdir(string) else 2, string
-
-    async def _update_cache(self):
-        await self.pylav.wait_until_ready()
-        temp: dict[str, Query] = {}
-        # noinspection PyProtectedMember
-        async for file in LocalFile(LocalFile._ROOT_FOLDER).files_in_tree(show_folders=True):
-            # noinspection PyProtectedMember
-            temp[hashlib.md5(f"{file._query}".encode()).hexdigest()] = file
-
-        extracted: typing.Iterable[tuple[str, Query]] = heapq.nsmallest(len(temp.items()), temp.items(), key=self._filter_is_folder_alphabetical)  # type: ignore
-        self.cache = dict(extracted)
-        self.__load_local_files()
-
-    def __load_local_files(self):
-        LOGGER.debug("Loading local files into cache")
-        if self.__load_locals_task is not None:
-            self.__load_locals_task.cancel()
-        self.__load_locals_task = asyncio.create_task(
-            self.pylav.get_all_tracks_for_queries(
-                *self.cache.values(), enqueue=False, requester=self.bot.user, player=None
-            )
-        )
-        self.__load_locals_task.add_done_callback(self.__load_local_files_done_callback)
-        self.__load_locals_task.set_name("Load Local Files Task")
-
-    @staticmethod
-    def __load_local_files_done_callback(task: asyncio.Task) -> None:
-        if (exc := task.exception()) is not None:
-            name = task.get_name()
-            LOGGER.warning("%s encountered an exception!", name)
-            LOGGER.debug("%s encountered an exception!", name, exc_info=exc)
-
-    async def initialize(self):
-        await self._update_cache()
-        self.ready_event.set()
-
-    async def cog_unload(self) -> None:
-        if self.__load_locals_task is not None:
-            self.__load_locals_task.cancel()
-        if self.__monitor_task is not None:
-            self.__monitor_task.cancel()
 
     async def cog_check(self, ctx: PyLavContext):
-        return bool(self.ready_event.is_set())
+        return self.pylav.local_tracks_cache.is_ready
 
     @commands.group(name="pllocalset")
     async def command_pllocalset(self, ctx: PyLavContext):
@@ -195,14 +95,14 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
             context = await self.cog.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        await self._update_cache()
+        await self.pylav.local_tracks_cache.update()
         await context.send(
             embed=await self.pylav.construct_embed(
                 description=shorten_string(
                     max_length=100,
                     string=_(
                         "I have updated my local track cache. There are now {number_variable_do_not_translate} tracks present."
-                    ).format(number_variable_do_not_translate=len(self.cache)),
+                    ).format(number_variable_do_not_translate=len(self.pylav.local_tracks_cache.path_to_track)),
                 ),
                 messageable=context,
             ),
@@ -232,7 +132,7 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
             await interaction.response.defer(ephemeral=True)
         send = partial(interaction.followup.send, wait=True)
         author = interaction.user
-        if entry not in self.cache:
+        if entry not in self.pylav.local_tracks_cache.hexdigest_to_query:
             await send(
                 embed=await self.pylav.construct_embed(
                     description=_(
@@ -243,7 +143,7 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
                 ephemeral=True,
             )
             return
-        entry = self.cache[entry]
+        entry = self.pylav.local_tracks_cache.hexdigest_to_query[entry]
         entry._recursive = recursive
         player = self.pylav.get_player(interaction.guild.id)
         if player is None:
@@ -311,11 +211,11 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
 
     @slash_local.autocomplete("entry")
     async def slash_local_autocomplete_entry(self, interaction: DISCORD_INTERACTION_TYPE, current: str):
-        if not self.cache:
+        if not self.pylav.local_tracks_cache.hexdigest_to_query:
             return []
 
         if not current:
-            extracted = list(islice(self.cache.items(), 25))
+            extracted = list(islice(self.pylav.local_tracks_cache.hexdigest_to_query.items(), 25))
         else:
             current = re.sub(REGEX_FILE_NAME, r" ", current)
 
@@ -329,7 +229,9 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
                     [-ord(i) for i in path],
                 )
 
-            extracted = heapq.nlargest(25, self.cache.items(), key=_filter_partial_ratio)
+            extracted = heapq.nlargest(
+                25, self.pylav.local_tracks_cache.hexdigest_to_query.items(), key=_filter_partial_ratio
+            )
         entries = []
         for md5, query in extracted:
             entries.append(
