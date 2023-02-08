@@ -167,6 +167,8 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                 ephemeral=True,
             )
             return
+        if not self._track_cache[context.guild.id]:
+            self._track_cache[context.guild.id] = context.player.current.encoded
         await self._send_full_lyrics(
             track=context.player.current,
             guild=context.guild,
