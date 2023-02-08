@@ -255,7 +255,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                     )
                     if show_author
                     else _(
-                        "(Guess)I have found the lyrics for {title_variable_do_not_translate} - Part {page_variable_do_not_translate}."
+                        "(Guess) I have found the lyrics for {title_variable_do_not_translate} - Part {page_variable_do_not_translate}."
                     )
                 )
         elif exact:
@@ -270,7 +270,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                 "(Guess) I have found the lyrics for {title_variable_do_not_translate} by {author_variable_do_not_translate}."
             )
         else:
-            return _("(Guess)I have found the lyrics for {title_variable_do_not_translate}.")
+            return _("(Guess) I have found the lyrics for {title_variable_do_not_translate}.")
 
     async def _send_lyrics_messages(self, channel, exact, lyrics, response, show_author, track):
         if len(lyrics) > 3950:
@@ -282,7 +282,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                         title=translated_message.format(
                             title_variable_do_not_translate=await track.title(),
                             page_variable_do_not_translate=i,
-                            name_variable_do_not_translate=await track.author(),
+                            author_variable_do_not_translate=await track.author(),
                         ),
                         description=page,
                         url=await track.uri(),
@@ -299,7 +299,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                 embed=await self.pylav.construct_embed(
                     title=translated_message.format(
                         title_variable_do_not_translate=await track.title(),
-                        name_variable_do_not_translate=await track.author(),
+                        author_variable_do_not_translate=await track.author(),
                     ),
                     url=await track.uri(),
                     description=lyrics,
