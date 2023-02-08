@@ -7,6 +7,7 @@ from pathlib import Path
 import discord
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
+from redbot.core.utils.chat_formatting import humanize_number
 
 from pylav.core.context import PyLavContext
 from pylav.extension.red.utils import rgetattr
@@ -66,38 +67,39 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
             return
         queue_number -= 1
 
-        # noinspection PyUnusedLocal
-        track = None
-
-        with contextlib.suppress(ValueError):
-            track = player.queue.popindex(queue_number)
-        if not track:
+        try:
+            if after_current:
+                track = await player.move_track(queue_number, context.author, 0)
+            else:
+                track = player.queue.popindex(queue_number)
+        except ValueError:
             await context.send(
                 embed=await context.construct_embed(
                     description=_("There are no tracks in position {queue_position_variable_do_not_translate}.").format(
-                        queue_position_variable_do_not_translate=queue_number
+                        queue_position_variable_do_not_translate=humanize_number(queue_number + 1)
                     ),
                     messageable=context,
                 ),
                 ephemeral=True,
             )
             return
+
         if after_current:
-            await player.move_track(track, context.author, 0)
             await context.send(
                 embed=await context.construct_embed(
                     description=_(
-                        "{track_name_variable_do_not_translate} will play after {current_track_name_variable_do_not_translate} finishes ({estimated_time_variable_do_not_translate})."
+                        "{track_name_variable_do_not_translate} will play after {current_track_name_variable_do_not_translate} "
+                        "finishes ({estimated_time_variable_do_not_translate})."
                     ).format(
                         track_name_variable_do_not_translate=await track.get_track_display_name(with_url=True),
                         current_track_name_variable_do_not_translate=await player.current.get_track_display_name(
                             with_url=True
                         ),
                         estimated_time_variable_do_not_translate=discord.utils.format_dt(
-                            get_now_utc()
-                            + datetime.timedelta(
+                            datetime.timedelta(
                                 milliseconds=await player.current.duration() - await player.fetch_position()
-                            ),
+                            )
+                            + get_now_utc(),
                             style="R",
                         ),
                     ),
@@ -164,62 +166,31 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
             player = await self.pylav.connect_player(channel=channel, requester=context.author)
 
         queries = [await Query.from_string(qf) for q in query.split("\n") if (qf := q.strip("<>").strip())]
-        search_queries = [q for q in queries if q.is_search]
-        non_search_queries = [q for q in queries if not q.is_search]
         total_tracks_enqueue = 0
         single_track = None
-        if search_queries:
-            single_track, total_tracks_enqueue = await self._process_search_queries(
-                context, player, search_queries, single_track, total_tracks_enqueue
-            )
-        if non_search_queries:
-            single_track, total_tracks_enqueue = await self._process_non_search_queries(
-                context, non_search_queries, player, single_track, total_tracks_enqueue
+        if queries:
+            single_track, total_tracks_enqueue = await self._process_queries(
+                context, queries, player, single_track, total_tracks_enqueue
             )
         if not (player.is_playing or player.queue.empty()):
             await player.next(requester=context.author)
 
         await self._send_play_next_message(context, single_track, total_tracks_enqueue)
 
-    @staticmethod
-    async def _process_search_queries(
-        context: PyLavContext,
-        player: Player,
-        search_queries: list[Query],
-        single_track: Track | None,
-        total_tracks_enqueue: int,
-    ) -> tuple[Track, int]:
-        total_tracks_from_search = 0
-        for query in search_queries:
-            single_track = track = await Track.build_track(
-                node=player.node,
-                data=None,
-                query=query,
-                requester=context.author.id,
-            )
-            await player.add(requester=context.author.id, track=track, index=0)
-            if not player.is_playing:
-                await player.next(requester=context.author)
-            total_tracks_enqueue += 1
-            total_tracks_from_search += 1
-        return single_track, total_tracks_enqueue
-
-    async def _process_non_search_queries(
+    async def _process_queries(
         self,
         context: PyLavContext,
-        non_search_queries: list[Query],
+        queries: list[Query],
         player: Player,
         single_track: Track,
         total_tracks_enqueue: int,
     ) -> tuple[Track, int]:
         successful, count, failed = await self.pylav.get_all_tracks_for_queries(
-            *non_search_queries, requester=context.author, player=player
+            *queries, requester=context.author, player=player
         )
         if successful:
             single_track = successful[0]
         total_tracks_enqueue += count
-        failed_queries = []
-        failed_queries.extend(failed)
         if count:
             if count == 1:
                 await player.add(requester=context.author.id, track=successful[0], index=0)
