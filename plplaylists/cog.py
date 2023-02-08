@@ -383,7 +383,6 @@ class PyLavPlaylists(
         if manageable and playlist_prompt.queue and any([playlist_prompt.update, playlist_prompt.url]):
             playlist_prompt.queue = False
         if manageable and playlist_prompt.delete:
-            await playlist.delete()
             await context.send(
                 embed=await context.pylav.construct_embed(
                     title=_("I have deleted a playlist."),
@@ -397,6 +396,7 @@ class PyLavPlaylists(
                 ),
                 ephemeral=True,
             )
+            await playlist.delete()
             return
         tracks_added = 0
         tracks_removed = 0
