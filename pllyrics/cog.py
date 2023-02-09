@@ -167,8 +167,6 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                 ephemeral=True,
             )
             return
-        if context.guild.id not in self._track_cache.keys():
-            self._track_cache[context.guild.id] = context.player.current.encoded
         await self._send_full_lyrics(
             track=context.player.current,
             guild=context.guild,
@@ -193,7 +191,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
             return
         if not player.current:
             return
-        if self._track_cache[guild.id] and self._track_cache[guild.id] != track.encoded and not forced:
+        if (guild.id not in self._track_cache or (self._track_cache[guild.id] and self._track_cache[guild.id] != track.encoded)) and not forced:
             return
         try:
             exact, response = await track.fetch_lyrics()
@@ -233,7 +231,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
             return
         lyrics = response.lyrics.text
         show_author = await track.source() in {"deezer", "spotify", "applemusic"}
-        if self._track_cache[guild.id] and self._track_cache[guild.id] != track.encoded:
+        if guild.id not in self._track_cache or (self._track_cache[guild.id] and self._track_cache[guild.id] != track.encoded)  :
             return
         await self._send_lyrics_messages(channel, exact, lyrics, response, show_author, track)
 
@@ -356,7 +354,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                 embed=await self.pylav.construct_embed(
                     title=translated_message.format(
                         title_variable_do_not_translate=await track.title(),
-                        name_variable_do_not_translate=await track.author(),
+                        author_variable_do_not_translate=await track.author(),
                     ),
                     url=await track.uri(),
                     description=_(
