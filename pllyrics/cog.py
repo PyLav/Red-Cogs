@@ -409,13 +409,5 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                 self._tasks.remove(task)
 
     @commands.Cog.listener()
-    async def on_pylav_track_start_spotify_event(self, event: TrackStartEvent) -> None:
-        await self.process_event(event)
-
-    @commands.Cog.listener()
-    async def on_pylav_track_start_deezer_event(self, event: TrackStartEvent) -> None:
-        await self.process_event(event)
-
-    @commands.Cog.listener()
     async def on_pylav_track_start_event(self, event: TrackStartEvent) -> None:
         await self.process_event(event)
