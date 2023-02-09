@@ -191,7 +191,10 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
             return
         if not player.current:
             return
-        if (guild.id not in self._track_cache or (self._track_cache[guild.id] and self._track_cache[guild.id] != track.encoded)) and not forced:
+        if (
+            guild.id not in self._track_cache
+            or (self._track_cache[guild.id] and self._track_cache[guild.id] != track.encoded)
+        ) and not forced:
             return
         try:
             exact, response = await track.fetch_lyrics()
@@ -231,7 +234,9 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
             return
         lyrics = response.lyrics.text
         show_author = await track.source() in {"deezer", "spotify", "applemusic"}
-        if guild.id not in self._track_cache or (self._track_cache[guild.id] and self._track_cache[guild.id] != track.encoded)  :
+        if guild.id not in self._track_cache or (
+            self._track_cache[guild.id] and self._track_cache[guild.id] != track.encoded
+        ):
             return
         await self._send_lyrics_messages(channel, exact, lyrics, response, show_author, track)
 
