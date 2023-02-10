@@ -249,9 +249,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                         "{title_variable_do_not_translate} by {author_variable_do_not_translate} - Part {page_variable_do_not_translate}"
                     )
                     if show_author
-                    else _(
-                        "{title_variable_do_not_translate} - Part {page_variable_do_not_translate}"
-                    )
+                    else _("{title_variable_do_not_translate} - Part {page_variable_do_not_translate}")
                 )
             else:
                 return (
@@ -259,9 +257,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                         "(Guess) {title_variable_do_not_translate} by {author_variable_do_not_translate} - Part {page_variable_do_not_translate}"
                     )
                     if show_author
-                    else _(
-                        "(Guess) {title_variable_do_not_translate} - Part {page_variable_do_not_translate}"
-                    )
+                    else _("(Guess) {title_variable_do_not_translate} - Part {page_variable_do_not_translate}")
                 )
         elif exact:
             if show_author:
@@ -269,9 +265,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
             else:
                 return _("{title_variable_do_not_translate}")
         elif show_author:
-            return _(
-                "(Guess) {title_variable_do_not_translate} by {author_variable_do_not_translate}"
-            )
+            return _("(Guess) {title_variable_do_not_translate} by {author_variable_do_not_translate}")
         else:
             return _("(Guess) {title_variable_do_not_translate}")
 
