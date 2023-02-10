@@ -287,12 +287,13 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                             page_variable_do_not_translate=i,
                             author_variable_do_not_translate=await track.author(),
                         ),
-                        description=page,
                         url=await track.uri(),
-                        messageable=channel,
+                        description=page,
+                        thumbnail=await track.artworkUrl(),
                         footer=_("Lyrics provided by {provider_variable_do_not_translate}.").format(
                             provider_variable_do_not_translate=response.provider
                         ),
+                        messageable=channel,
                     )
                 )
             await channel.send(embeds=embed_list)
@@ -306,10 +307,11 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                     ),
                     url=await track.uri(),
                     description=lyrics,
-                    messageable=channel,
+                    thumbnail=await track.artworkUrl(),
                     footer=_("Lyrics provided by {provider_variable_do_not_translate}").format(
                         provider_variable_do_not_translate=response.provider
                     ),
+                    messageable=channel,
                 )
             )
 
@@ -369,10 +371,11 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                         else _("Start"),
                         until_variable_do_not_translate=format_time_dd_hh_mm_ss(start_point + delta),
                     ),
-                    messageable=channel,
+                    thumbnail=await track.artworkUrl(),
                     footer=_("Lyrics provided by {provider_variable_do_not_translate}.").format(
                         provider_variable_do_not_translate=response.provider
                     ),
+                    messageable=channel,
                 )
             )
             await asyncio.sleep(sleep_duration // 1000)
