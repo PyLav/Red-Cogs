@@ -227,7 +227,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                 return
             await channel.send(
                 embed=await self.pylav.construct_embed(
-                    description=_("No lyrics found"),
+                    description=_("No lyrics found."),
                     messageable=channel,
                 ),
             )
@@ -241,39 +241,83 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
         await self._send_lyrics_messages(channel, exact, lyrics, response, show_author, track)
 
     @staticmethod
-    def _get_translated_message_contents(exact: bool, show_author: bool, part: int | None = None) -> str:
-        if part:
-            if exact:
-                return (
-                    _(
-                        "{title_variable_do_not_translate} by {author_variable_do_not_translate} - Part {page_variable_do_not_translate}"
+    def _get_translated_message_contents(automated: bool, exact: bool, show_author: bool, part: int | None = None) -> str:
+        if automated:
+            if part:
+                if exact:
+                    return (
+                        _(
+                            "I have found the lyrics for {title_variable_do_not_translate} by {author_variable_do_not_translate} - Part {page_variable_do_not_translate}"
+                        )
+                        if show_author
+                        else _(
+                            "I have found the lyrics for {title_variable_do_not_translate} - Part {page_variable_do_not_translate}"
+                        )
                     )
-                    if show_author
-                    else _("{title_variable_do_not_translate} - Part {page_variable_do_not_translate}")
+                else:
+                    return (
+                        _(
+                            "(Guess) I have found the lyrics for {title_variable_do_not_translate} by {author_variable_do_not_translate} - Part {page_variable_do_not_translate}"
+                        )
+                        if show_author
+                        else _(
+                            "(Guess) I have found the lyrics for {title_variable_do_not_translate} - Part {page_variable_do_not_translate}"
+                        )
+                    )
+            elif exact:
+                if show_author:
+                    return _(
+                        "I have found the lyrics for {title_variable_do_not_translate} by {author_variable_do_not_translate}"
+                    )
+                else:
+                    return _(
+                        "I have found the lyrics for {title_variable_do_not_translate}"
+                    )
+            elif show_author:
+                return _(
+                    "(Guess) I have found the lyrics for {title_variable_do_not_translate} by {author_variable_do_not_translate}"
                 )
             else:
-                return (
-                    _(
-                        "(Guess) {title_variable_do_not_translate} by {author_variable_do_not_translate} - Part {page_variable_do_not_translate}"
-                    )
-                    if show_author
-                    else _("(Guess) {title_variable_do_not_translate} - Part {page_variable_do_not_translate}")
+                return _(
+                    "(Guess) I have found the lyrics for {title_variable_do_not_translate}"
                 )
-        elif exact:
-            if show_author:
-                return _("{title_variable_do_not_translate} by {author_variable_do_not_translate}")
-            else:
-                return _("{title_variable_do_not_translate}")
-        elif show_author:
-            return _("(Guess) {title_variable_do_not_translate} by {author_variable_do_not_translate}")
         else:
-            return _("(Guess) {title_variable_do_not_translate}")
+            if part:
+                if exact:
+                    return (
+                        _(
+                            "{title_variable_do_not_translate} by {author_variable_do_not_translate} - Part {page_variable_do_not_translate}"
+                        )
+                        if show_author
+                        else _(
+                            "{title_variable_do_not_translate} - Part {page_variable_do_not_translate}"
+                        )
+                    )
+                else:
+                    return (
+                        _(
+                            "(Guess) {title_variable_do_not_translate} by {author_variable_do_not_translate} - Part {page_variable_do_not_translate}"
+                        )
+                        if show_author
+                        else _(
+                            "(Guess) {title_variable_do_not_translate} - Part {page_variable_do_not_translate}"
+                        )
+                    )
+            elif exact:
+                if show_author:
+                    return _("{title_variable_do_not_translate} by {author_variable_do_not_translate}")
+                else:
+                    return _("{title_variable_do_not_translate}")
+            elif show_author:
+                return _("(Guess) {title_variable_do_not_translate} by {author_variable_do_not_translate}")
+            else:
+                return _("(Guess) {title_variable_do_not_translate}")
 
     async def _send_lyrics_messages(self, channel, exact, lyrics, response, show_author, track):
         if len(lyrics) > 3950:
             embed_list = []
             for i, page in enumerate(pagify(lyrics, delims=["\n"], page_length=3950), start=1):
-                translated_message = self._get_translated_message_contents(exact, show_author, i)
+                translated_message = self._get_translated_message_contents(False, exact, show_author, i)
                 embed_list.append(
                     await self.pylav.construct_embed(
                         title=translated_message.format(
@@ -292,7 +336,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                 )
             await channel.send(embeds=embed_list)
         else:
-            translated_message = self._get_translated_message_contents(exact, show_author, None)
+            translated_message = self._get_translated_message_contents(False, exact, show_author, None)
             await channel.send(
                 embed=await self.pylav.construct_embed(
                     title=translated_message.format(
@@ -348,7 +392,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
             if player.timescale.changed:
                 sleep_duration = player.timescale.adjust_position(sleep_duration)
 
-            translated_message = self._get_translated_message_contents(exact, show_author, None)
+            translated_message = self._get_translated_message_contents(True, exact, show_author, None)
             await channel.send(
                 embed=await self.pylav.construct_embed(
                     title=translated_message.format(
