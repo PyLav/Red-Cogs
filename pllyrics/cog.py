@@ -403,7 +403,6 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                         else _("Start"),
                         until_variable_do_not_translate=format_time_dd_hh_mm_ss(start_point + delta),
                     ),
-                    thumbnail=await track.artworkUrl(),
                     footer=_("Lyrics provided by {provider_variable_do_not_translate}.").format(
                         provider_variable_do_not_translate=response.provider
                     ),
