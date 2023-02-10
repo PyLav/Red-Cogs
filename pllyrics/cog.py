@@ -249,63 +249,65 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                 if exact:
                     return (
                         _(
-                            "I have found the lyrics for {title_variable_do_not_translate} by {author_variable_do_not_translate} - Part {page_variable_do_not_translate}"
+                            "Lyrics for {title_variable_do_not_translate} by {author_variable_do_not_translate} - Part {page_variable_do_not_translate}"
                         )
                         if show_author
                         else _(
-                            "I have found the lyrics for {title_variable_do_not_translate} - Part {page_variable_do_not_translate}"
+                            "Lyrics for {title_variable_do_not_translate} - Part {page_variable_do_not_translate}"
                         )
                     )
                 else:
                     return (
                         _(
-                            "(Guess) I have found the lyrics for {title_variable_do_not_translate} by {author_variable_do_not_translate} - Part {page_variable_do_not_translate}"
+                            "(Guess) Lyrics for {title_variable_do_not_translate} by {author_variable_do_not_translate} - Part {page_variable_do_not_translate}"
                         )
                         if show_author
                         else _(
-                            "(Guess) I have found the lyrics for {title_variable_do_not_translate} - Part {page_variable_do_not_translate}"
+                            "(Guess) Lyrics for {title_variable_do_not_translate} - Part {page_variable_do_not_translate}"
                         )
                     )
             elif exact:
-                if show_author:
-                    return _(
-                        "I have found the lyrics for {title_variable_do_not_translate} by {author_variable_do_not_translate}"
+                return (
+                    _(
+                        "Lyrics for {title_variable_do_not_translate} by {author_variable_do_not_translate}"
                     )
-                else:
-                    return _("I have found the lyrics for {title_variable_do_not_translate}")
+                    if show_author
+                    else _(
+                        "Lyrics for {title_variable_do_not_translate}"
+                    )
+                )
             elif show_author:
                 return _(
-                    "(Guess) I have found the lyrics for {title_variable_do_not_translate} by {author_variable_do_not_translate}"
+                    "(Guess) Lyrics for {title_variable_do_not_translate} by {author_variable_do_not_translate}"
                 )
             else:
-                return _("(Guess) I have found the lyrics for {title_variable_do_not_translate}")
-        else:
-            if part:
-                if exact:
-                    return (
-                        _(
-                            "{title_variable_do_not_translate} by {author_variable_do_not_translate} - Part {page_variable_do_not_translate}"
-                        )
-                        if show_author
-                        else _("{title_variable_do_not_translate} - Part {page_variable_do_not_translate}")
+                return _("(Guess) Lyrics for {title_variable_do_not_translate}")
+        elif part:
+            if exact:
+                return (
+                    _(
+                        "{title_variable_do_not_translate} by {author_variable_do_not_translate} - Part {page_variable_do_not_translate}"
                     )
-                else:
-                    return (
-                        _(
-                            "(Guess) {title_variable_do_not_translate} by {author_variable_do_not_translate} - Part {page_variable_do_not_translate}"
-                        )
-                        if show_author
-                        else _("(Guess) {title_variable_do_not_translate} - Part {page_variable_do_not_translate}")
-                    )
-            elif exact:
-                if show_author:
-                    return _("{title_variable_do_not_translate} by {author_variable_do_not_translate}")
-                else:
-                    return _("{title_variable_do_not_translate}")
-            elif show_author:
-                return _("(Guess) {title_variable_do_not_translate} by {author_variable_do_not_translate}")
+                    if show_author
+                    else _("{title_variable_do_not_translate} - Part {page_variable_do_not_translate}")
+                )
             else:
-                return _("(Guess) {title_variable_do_not_translate}")
+                return (
+                    _(
+                        "(Guess) {title_variable_do_not_translate} by {author_variable_do_not_translate} - Part {page_variable_do_not_translate}"
+                    )
+                    if show_author
+                    else _("(Guess) {title_variable_do_not_translate} - Part {page_variable_do_not_translate}")
+                )
+        elif exact:
+            if show_author:
+                return _("{title_variable_do_not_translate} by {author_variable_do_not_translate}")
+            else:
+                return _("{title_variable_do_not_translate}")
+        elif show_author:
+            return _("(Guess) {title_variable_do_not_translate} by {author_variable_do_not_translate}")
+        else:
+            return _("(Guess) {title_variable_do_not_translate}")
 
     async def _send_lyrics_messages(self, channel, exact, lyrics, response, show_author, track):
         if len(lyrics) > 3950:
