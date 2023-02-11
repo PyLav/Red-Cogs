@@ -12,7 +12,7 @@ on:
 
 jobs:
     crowdin:
-        if: github.repository == 'Drapersniper/PyLav-Cogs'
+        if: github.repository == 'PyLav/PyLav-Cogs'
         runs-on: [self-hosted, linux, x64]
         steps:
         -   uses: actions/checkout@v3
