@@ -1,20 +1,29 @@
-name: Pre-commit
+name: Pre-commit & Sourcery
 on:
     pull_request:
     push:
 
 permissions:
-    issues: write
+    pull-requests: write
 
 jobs:
-    pre-commit-fixes:
-        name: Pre-commit fixes
+    run:
+        name: Pre-commit fixes & Sourcery
         runs-on: [self-hosted, linux, x64]
         steps:
         -   uses: actions/checkout@v3
         -   uses: actions/setup-python@v4
             with:
                 python-version: '3.11'
+        -   uses: sourcery-ai/action@v1
+            if: github.event_name == 'pull_request'
+            with:
+                token: ${{ secrets.SOURCERY_TOKEN }}
+                diff_ref: ${{ github.event.pull_request.base.sha }}
+                in_place: true
+                check: false
         -   uses: pre-commit/action@v3.0.0
+            env:
+                SKIP: sourcery
         -   uses: pre-commit-ci/lite-action@v1.0.1
             if: always()
