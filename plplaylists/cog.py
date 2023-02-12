@@ -3,11 +3,13 @@ from __future__ import annotations
 import collections
 import contextlib
 import itertools
+import json
 import typing
 from pathlib import Path
 from typing import Literal
 
 import discord
+from dacite import from_dict
 from discord import app_commands
 from redbot.core import Config, commands
 from redbot.core.i18n import Translator, cog_i18n
@@ -21,7 +23,7 @@ from pylav.exceptions.playlist import InvalidPlaylistException
 from pylav.extension.red.ui.menus.generic import PaginatingMenu
 from pylav.extension.red.ui.menus.playlist import PlaylistCreationFlow, PlaylistManageFlow
 from pylav.extension.red.ui.prompts.playlists import maybe_prompt_for_playlist
-from pylav.extension.red.ui.sources.playlist import Base64Source, PlaylistListSource
+from pylav.extension.red.ui.sources.playlist import PlaylistListSource, TrackMappingSource
 from pylav.extension.red.utils import CompositeMetaClass, rgetattr
 from pylav.extension.red.utils.decorators import always_hidden, invoker_is_dj, requires_player
 from pylav.helpers.discord.converters.playlists import PlaylistConverter
@@ -145,7 +147,7 @@ class PyLavPlaylists(
                 url = await Query.from_string(url)
         if url:
             tracks_response = await context.pylav.get_tracks(url, player=context.player)
-            tracks = [track.encoded for track in tracks_response.tracks]
+            tracks = list(tracks_response.tracks)
             url = url.query_identifier
             name = name or tracks_response.playlistInfo.name or f"{context.message.id}"
             artwork = tracks_response.pluginInfo.artworkUrl
@@ -153,7 +155,7 @@ class PyLavPlaylists(
             artwork = None
             if add_queue and context.player:
                 tracks = context.player.queue.raw_queue
-                tracks = [track.encoded for track in tracks if track.encoded] if tracks else []
+                tracks = [track for track in tracks if track.encoded] if tracks else []
             else:
                 tracks = []
             url = None
@@ -263,7 +265,7 @@ class PyLavPlaylists(
             await PaginatingMenu(
                 bot=self.bot,
                 cog=self,
-                source=Base64Source(
+                source=TrackMappingSource(
                     guild_id=context.guild.id,
                     cog=self,
                     author=context.author,
@@ -428,7 +430,7 @@ class PyLavPlaylists(
                         player=context.player,
                     )
                     if tracks := typing.cast(collections.deque[LavalinkTrack], response.tracks):
-                        await playlist.add_track([t.encoded for t in tracks])
+                        await playlist.add_track(list(tracks))
                         changed = True
                         tracks_added += sum(1 for __ in tracks)
         if playlist_prompt.update:
@@ -453,7 +455,7 @@ class PyLavPlaylists(
                             ephemeral=True,
                         )
                         return
-                    if b64_list := typing.cast(list[str], [track.encoded for track in response.tracks if track.encoded]):  # type: ignore
+                    if b64_list := typing.cast(list[LavalinkTrack], [track for track in response.tracks if track.encoded]):  # type: ignore
                         changed = True
                         await playlist.update_tracks(b64_list)
             elif playlist.id in BUNDLED_PLAYLIST_IDS:
@@ -465,7 +467,10 @@ class PyLavPlaylists(
         if manageable:
             if playlist_prompt.dedupe:
                 track = await playlist.fetch_tracks()
-                new_tracks = list(dict.fromkeys(track))
+                new_tracks = [
+                    from_dict(data_class=LavalinkTrack, data=json.loads(t))
+                    for t in {json.dumps(d, sort_keys=True) for d in track}
+                ]
                 if diff := len(track) - len(new_tracks):
                     changed = True
                     await playlist.update_tracks(new_tracks)
@@ -474,7 +479,7 @@ class PyLavPlaylists(
                 changed = True
                 if context.player:
                     if tracks := context.player.queue.raw_queue:
-                        queue_tracks = [track.encoded for track in tracks if track.encoded]
+                        queue_tracks = [track for track in tracks if track.encoded]
                         await playlist.add_track(queue_tracks)
                         tracks_added += len(queue_tracks)
 
@@ -610,7 +615,7 @@ class PyLavPlaylists(
         await PaginatingMenu(
             bot=self.bot,
             cog=self,
-            source=Base64Source(
+            source=TrackMappingSource(
                 guild_id=context.guild.id,
                 cog=self,
                 author=context.author,
@@ -666,7 +671,7 @@ class PyLavPlaylists(
         changed = False
         if context.player:
             if tracks := context.player.queue.raw_queue:
-                queue_tracks = [track.encoded for track in tracks if track.encoded]
+                queue_tracks = [track for track in tracks if track.encoded]
                 await playlist.add_track(queue_tracks)
                 tracks_added += len(queue_tracks)
                 changed = True
@@ -836,8 +841,12 @@ class PyLavPlaylists(
         track_count = await playlist.size()
 
         tracks = await playlist.fetch_tracks()
-        node = await self.pylav.node_manager.find_best_node()
-        track_objects = await node.post_decodetracks(tracks)
+
+        if tracks and any(track["info"] is None for track in tracks):
+            node = await self.pylav.node_manager.find_best_node()
+            track_objects = await node.post_decodetracks([track["encoded"] for track in tracks])
+        else:
+            track_objects = [from_dict(data_class=LavalinkTrack, data=track) for track in tracks]
         if isinstance(track_objects, list):
             await player.bulk_add(
                 requester=context.author.id,
