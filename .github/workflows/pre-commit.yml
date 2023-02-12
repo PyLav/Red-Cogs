@@ -8,12 +8,12 @@ permissions:
 
 jobs:
     pre-commit fixes:
-        runs-on: ubuntu-latest
+        runs-on: [self-hosted, linux, x64]
         steps:
         -   uses: actions/checkout@v3
         -   uses: actions/setup-python@v4
             with:
-                python-version: [3.11]
+                python-version: '3.11'
                 cache: pip
         -   uses: pre-commit/action@v3.0.0
         -   uses: pre-commit-ci/lite-action@v1.0.1
