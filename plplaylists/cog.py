@@ -155,7 +155,7 @@ class PyLavPlaylists(
             artwork = None
             if add_queue and context.player:
                 tracks = context.player.queue.raw_queue
-                tracks = [track for track in tracks if track.encoded] if tracks else []
+                tracks = [track._processed for track in tracks if track.encoded] if tracks else []
             else:
                 tracks = []
             url = None
@@ -479,7 +479,7 @@ class PyLavPlaylists(
                 changed = True
                 if context.player:
                     if tracks := context.player.queue.raw_queue:
-                        queue_tracks = [track for track in tracks if track.encoded]
+                        queue_tracks = [track._processed for track in tracks if track.encoded]
                         await playlist.add_track(queue_tracks)
                         tracks_added += len(queue_tracks)
 
@@ -671,7 +671,7 @@ class PyLavPlaylists(
         changed = False
         if context.player:
             if tracks := context.player.queue.raw_queue:
-                queue_tracks = [track for track in tracks if track.encoded]
+                queue_tracks = [track._processed for track in tracks if track.encoded]
                 await playlist.add_track(queue_tracks)
                 tracks_added += len(queue_tracks)
                 changed = True
@@ -841,28 +841,14 @@ class PyLavPlaylists(
         track_count = await playlist.size()
 
         tracks = await playlist.fetch_tracks()
-
-        if tracks and any(track["info"] is None for track in tracks):
-            node = await self.pylav.node_manager.find_best_node()
-            track_objects = await node.post_decodetracks([track["encoded"] for track in tracks])
-        else:
-            track_objects = [from_dict(data_class=LavalinkTrack, data=track) for track in tracks]
-        if isinstance(track_objects, list):
-            await player.bulk_add(
-                requester=context.author.id,
-                tracks_and_queries=[
-                    await Track.build_track(node=player.node, data=track, requester=context.author.id, query=None)
-                    for track in track_objects
-                ],
-            )
-        else:
-            await player.bulk_add(
-                requester=context.author.id,
-                tracks_and_queries=[
-                    await Track.build_track(node=player.node, data=track, requester=context.author.id, query=None)
-                    for track in tracks
-                ],
-            )
+        track_objects = [from_dict(data_class=LavalinkTrack, data=track) for track in tracks]
+        await player.bulk_add(
+            requester=context.author.id,
+            tracks_and_queries=[
+                await Track.build_track(node=player.node, data=track, requester=context.author.id, query=None)
+                for track in track_objects
+            ],
+        )
         bundle_prefix = _("Playlist")
         playlist_name = f"\n\n**{bundle_prefix}**:  {await playlist.get_name_formatted(with_url=True)}"
         await context.send(
