@@ -1,5 +1,4 @@
 # Official [PyLav](https://github.com/PyLav/Py-Lav) Cogs for [Red-DiscordBot](https://github.com/Cog-Creators/Red-DiscordBot)
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/PyLav/PyLav-Cogs/master.svg)](https://results.pre-commit.ci/latest/github/PyLav/PyLav-Cogs/master)
 [![Crowdin](https://badges.crowdin.net/pylav/localized.svg)](https://crowdin.com/project/pylav)[![GitHub license](https://img.shields.io/github/license/PyLav/Py-Lav.svg)](https://github.com/PyLav/Py-Lav/blob/master/LICENSE)
 [![Support Server](https://img.shields.io/discord/970987707834720266)](https://discord.com/invite/Sjh2TSCYQB)
 
