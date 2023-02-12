@@ -7,7 +7,8 @@ permissions:
     issues: write
 
 jobs:
-    pre-commit fixes:
+    pre-commit-fixes:
+        name: Pre-commit fixes
         runs-on: [self-hosted, linux, x64]
         steps:
         -   uses: actions/checkout@v3
