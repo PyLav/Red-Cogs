@@ -27,7 +27,7 @@ About Cogs
 Installation
 ---------------------------
 To add the cogs to your Red instance run:
-- `[p]repo add PyLav https://github.com/PyLav/PyLav-Cogs`.
+- `[p]repo add PyLav https://github.com/PyLav/Red-Cogs`.
 - `[p]cog install PyLav <Package Name>`
 - `[p]load <Package Name>`
 
@@ -42,7 +42,7 @@ Follow [PyLav Setup](https://github.com/PyLav/PyLav/blob/master/SETUP.md)
 If you already have a Red instance with PyLav setup then you can do the following
 ```
 [p]load downloader
-[p]repo add PyLav https://github.com/PyLav/PyLav-Cogs
+[p]repo add PyLav https://github.com/PyLav/Red-Cogs
 [p]cog install PyLav audio
 [p]load audio
 ```
