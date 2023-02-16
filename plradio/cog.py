@@ -138,7 +138,7 @@ class PyLavRadio(DISCORD_COG_TYPE_MIXIN):
         failed_queries.extend(failed)
         if total_tracks_enqueue:
             await player.add(requester=author.id, track=successful[0])
-        if not player.is_playing and not player.queue.empty():
+        if not player.is_active and not player.queue.empty():
             await player.next(requester=author)
 
         if total_tracks_enqueue == 1:

@@ -864,5 +864,5 @@ class PyLavPlaylists(
             ephemeral=True,
         )
 
-        if not player.is_playing:
+        if not player.is_active:
             await player.next(requester=context.author)

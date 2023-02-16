@@ -172,7 +172,7 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
             single_track, total_tracks_enqueue = await self._process_queries(
                 context, queries, player, single_track, total_tracks_enqueue
             )
-        if not (player.is_playing or player.queue.empty()):
+        if not (player.is_active or player.queue.empty()):
             await player.next(requester=context.author)
 
         await self._send_play_next_message(context, single_track, total_tracks_enqueue)

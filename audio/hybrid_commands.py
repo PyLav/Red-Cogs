@@ -123,7 +123,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             if track is None:
                 return
             await player.add(track=track, requester=context.author.id)
-            if not (player.is_playing or player.queue.empty()):
+            if not (player.is_active or player.queue.empty()):
                 await player.next(requester=context.author)
             await self._process_play_message(context, track, 1)
             return
@@ -134,7 +134,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             single_track, total_tracks_enqueue = await self._process_play_queries(
                 context, queries, player, single_track, total_tracks_enqueue
             )
-        if not (player.is_playing or player.queue.empty()):
+        if not (player.is_active or player.queue.empty()):
             await player.next(requester=context.author)
 
         await self._process_play_message(context, single_track, total_tracks_enqueue)
@@ -189,7 +189,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             if track is None:
                 continue
             await player.add(requester=context.author.id, track=track)
-            if not player.is_playing:
+            if not player.is_active:
                 await player.next(requester=context.author)
             total_tracks_enqueue += 1
             total_tracks_from_search += 1
