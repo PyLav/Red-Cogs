@@ -16,13 +16,6 @@ jobs:
         -   uses: actions/setup-python@v4
             with:
                 python-version: '3.11'
-        -   uses: sourcery-ai/action@v1
-            if: github.event_name == 'pull_request'
-            with:
-                token: ${{ secrets.SOURCERY_TOKEN }}
-                diff_ref: ${{ github.event.pull_request.base.sha }}
-                in_place: true
-                check: false
         -   uses: pre-commit/action@v3.0.0
             env:
                 SKIP: sourcery
