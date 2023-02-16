@@ -735,7 +735,7 @@ class PyLavController(
             if query.is_search:
                 successful = [successful[0]]
             await player.bulk_add(tracks_and_queries=successful, requester=message.author.id)
-            if (not player.is_playing) and player.queue.size() > 0:
+            if (not player.is_active) and player.queue.size() > 0:
                 await player.next(requester=message.author)
             await self.add_success_reaction(message)
         else:

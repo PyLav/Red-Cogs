@@ -187,7 +187,7 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
             else:
                 await player.bulk_add(requester=author.id, tracks_and_queries=successful)
         single_track = successful[0] if successful else None
-        if not (player.is_playing or player.queue.empty()):
+        if not (player.is_active or player.queue.empty()):
             await player.next(requester=author)
 
         match count:
