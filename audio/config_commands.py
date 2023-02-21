@@ -815,7 +815,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
     async def command_playerset_server_dc(self, context: PyLavContext) -> None:
         """Set whether the bot should disconnect from the voice channel"""
 
-    @command_playerset_server.command(name="empty")
+    @command_playerset_server_dc.command(name="empty")
     async def command_playerset_server_dc_empty(
         self,
         context: PyLavContext,  # noqa
@@ -882,7 +882,7 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
             ephemeral=True,
         )
 
-    @command_playerset_server.command(name="alone")
+    @command_playerset_server_dc.command(name="alone")
     async def command_playerset_server_dc_alone(
         self,
         context: PyLavContext,  # noqa
