@@ -290,10 +290,7 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
             try:
                 data = await self.pylav.decode_track(track_url_or_index, raise_on_failure=True)
                 track = await Track.build_track(
-                    node=player.node,
-                    data=data,
-                    query=None,
-                    requester=context.author.id,
+                    node=player.node, data=data, query=None, requester=context.author.id, player_instance=player
                 )
             except Exception:  # noqa
                 track = await Track.build_track(
@@ -301,6 +298,7 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
                     data=None,
                     query=await Query.from_string(track_url_or_index),
                     requester=context.author.id,
+                    player_instance=player,
                 )
         try:
             number_removed += await player.remove_from_queue(

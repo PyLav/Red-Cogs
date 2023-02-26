@@ -152,7 +152,9 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN):
             node = await interaction.client.pylav.node_manager.find_best_node(feature=feature)
 
         for track in tracks:
-            track = await Track.build_track(node=node, data=track, query=original_query, requester=interaction.user.id)
+            track = await Track.build_track(
+                node=node, data=track, query=original_query, requester=interaction.user.id, player_instance=None
+            )
             if track is None:
                 continue
             track_id = hashlib.md5(track.encoded.encode()).hexdigest()

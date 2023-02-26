@@ -845,7 +845,9 @@ class PyLavPlaylists(
         await player.bulk_add(
             requester=context.author.id,
             tracks_and_queries=[
-                await Track.build_track(node=player.node, data=track, requester=context.author.id, query=None)
+                await Track.build_track(
+                    node=player.node, data=track, requester=context.author.id, query=None, player_instance=player
+                )
                 for track in track_objects
             ],
         )

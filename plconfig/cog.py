@@ -177,7 +177,7 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
                 )
             )
         else:
-            is_dj = await self.bot.pylav.is_dj(user=role_or_member, guild=context.guild, bot=self.bot)
+            is_dj = await self.bot.pylav.is_dj(user=role_or_member, guild=context.guild)
             message = (
                 _("{user_name_variable_do_not_translate} is a disc jockey.").format(
                     user_name_variable_do_not_translate=role_or_member.mention

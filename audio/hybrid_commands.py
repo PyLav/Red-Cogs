@@ -119,6 +119,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                 data=query,
                 requester=context.author.id,
                 query=None,
+                player_instance=player,
             )
             if track is None:
                 return
@@ -181,10 +182,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         total_tracks_from_search = 0
         for query in search_queries:
             single_track = track = await Track.build_track(
-                node=player.node,
-                data=None,
-                query=query,
-                requester=context.author.id,
+                node=player.node, data=None, query=query, requester=context.author.id, player_instance=player
             )
             if track is None:
                 continue
