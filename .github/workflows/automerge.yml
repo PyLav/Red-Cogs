@@ -1,22 +1,12 @@
 name: Auto Merge Translations
 on:
-    pull_request:
+    pull_request_target:
         types:
+        -   opened
+        -   synchronize
+        -   reopened
         -   labeled
         -   unlabeled
-        -   synchronize
-        -   opened
-        -   edited
-        -   ready_for_review
-        -   reopened
-        -   unlocked
-    pull_request_review:
-        types:
-        -   submitted
-    check_suite:
-        types:
-        -   completed
-    status: {}
 jobs:
     automerge:
         runs-on: [self-hosted, linux, x64]

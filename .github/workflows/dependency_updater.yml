@@ -7,13 +7,16 @@ on:
                 type: string
     repository_dispatch:
         types: [on-release]
-
+env:
+    ref: ${{ github.event.client_payload.ref || '' }}
 jobs:
     update:
         name: Update PyLav version
         runs-on: [self-hosted, linux, x64]
         steps:
         -   uses: actions/checkout@v3
+            with:
+                ref: ${{ env.ref }}
         -   name: Set up Python
             uses: actions/setup-python@v4
             with:
