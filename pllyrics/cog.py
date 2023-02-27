@@ -390,7 +390,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                 message_content += f"{lyric.text}\n"
                 sleep_duration += lyric.duration
             delta = sleep_duration
-            if player.timescale.changed:
+            if player.timescale:
                 sleep_duration = player.timescale.adjust_position(sleep_duration)
 
             translated_message = self._get_translated_automated_message_contents(exact, show_author, None)
