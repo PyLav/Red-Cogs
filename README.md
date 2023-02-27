@@ -1,6 +1,6 @@
 # Official [PyLav](https://github.com/PyLav/Py-Lav) Cogs for [Red-DiscordBot](https://github.com/Cog-Creators/Red-DiscordBot)
 [![Crowdin](https://badges.crowdin.net/pylav/localized.svg)](https://crowdin.com/project/pylav)[![GitHub license](https://img.shields.io/github/license/PyLav/Py-Lav.svg)](https://github.com/PyLav/Py-Lav/blob/master/LICENSE)
-[![Support Server](https://img.shields.io/discord/970987707834720266)](https://discord.com/invite/Sjh2TSCYQB)
+[![Support Server](https://img.shields.io/discord/970987707834720266)](https://discord.com/invite/vnmcXqtgeY)
 
 About Cogs
 ---------------------------
@@ -76,4 +76,4 @@ You can help translating the project into your language here:
 
 ------------------------------
 
-## Join our support server [![Support Server](https://img.shields.io/discord/970987707834720266?style=social)](https://discord.com/invite/Sjh2TSCYQB)
+## Join our support server [![Support Server](https://img.shields.io/discord/970987707834720266?style=social)](https://discord.com/invite/vnmcXqtgeY)
