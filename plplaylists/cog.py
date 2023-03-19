@@ -30,7 +30,8 @@ from pylav.helpers.discord.converters.playlists import PlaylistConverter
 from pylav.helpers.discord.converters.queries import QueryPlaylistConverter
 from pylav.helpers.format.ascii import EightBitANSI
 from pylav.helpers.format.strings import shorten_string
-from pylav.nodes.api.responses.track import Track as LavalinkTrack
+from pylav.nodes.api.responses import rest_api
+from pylav.nodes.api.responses.track import Track as Track_namespace_conflict
 from pylav.players.query.obj import Query
 from pylav.players.tracks.obj import Track
 from pylav.storage.models.playlist import Playlist
@@ -114,7 +115,7 @@ class PyLavPlaylists(
     @app_commands.guild_only()
     async def slash_playlist_create(
         self, interaction: DISCORD_INTERACTION_TYPE, url: QueryPlaylistConverter = None, *, name: str = None
-    ):
+    ):  # sourcery skip: low-code-quality
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
@@ -145,12 +146,23 @@ class PyLavPlaylists(
             if url:
                 add_queue = False
                 url = await Query.from_string(url)
+        name = name or f"{context.message.id}"
         if url:
             tracks_response = await context.pylav.get_tracks(url, player=context.player)
-            tracks = list(tracks_response.tracks)
+            if isinstance(tracks_response, rest_api.TrackResponse):
+                tracks = [tracks_response.data]
+                artwork = tracks_response.data.pluginInfo.artworkUrl
+            elif isinstance(tracks_response, rest_api.SearchResponse):
+                tracks = tracks_response.data
+                artwork = None
+            elif isinstance(tracks_response, rest_api.PlaylistResponse):
+                tracks = tracks_response.data.tracks
+                artwork = tracks_response.data.pluginInfo.artworkUrl
+                name = name or tracks_response.data.info.name
+            else:
+                tracks = []
+                name = name or f"{context.message.id}"
             url = url.query_identifier
-            name = name or tracks_response.playlistInfo.name or f"{context.message.id}"
-            artwork = tracks_response.pluginInfo.artworkUrl
         else:
             artwork = None
             if add_queue and context.player:
@@ -418,7 +430,7 @@ class PyLavPlaylists(
                     response = await self.pylav.get_tracks(
                         *[await Query.from_string(at) for at in playlist_prompt.remove_tracks], player=context.player
                     )
-                    tracks = typing.cast(collections.deque[LavalinkTrack], response.tracks)
+                    tracks = typing.cast(collections.deque[Track_namespace_conflict], response.tracks)
                     for t in tracks:
                         b64 = t.encoded
                         await playlist.remove_track(b64)
@@ -429,7 +441,7 @@ class PyLavPlaylists(
                         *[await Query.from_string(at) for at in playlist_prompt.add_tracks],
                         player=context.player,
                     )
-                    if tracks := typing.cast(collections.deque[LavalinkTrack], response.tracks):
+                    if tracks := typing.cast(collections.deque[Track_namespace_conflict], response.tracks):
                         await playlist.add_track(list(tracks))
                         changed = True
                         tracks_added += sum(1 for __ in tracks)
@@ -455,7 +467,7 @@ class PyLavPlaylists(
                             ephemeral=True,
                         )
                         return
-                    if b64_list := typing.cast(list[LavalinkTrack], [track for track in response.tracks if track.encoded]):  # type: ignore
+                    if b64_list := typing.cast(list[Track_namespace_conflict], [track for track in response.tracks if track.encoded]):  # type: ignore
                         changed = True
                         await playlist.update_tracks(b64_list)
             elif playlist.id in BUNDLED_PLAYLIST_IDS:
@@ -468,7 +480,7 @@ class PyLavPlaylists(
             if playlist_prompt.dedupe:
                 track = await playlist.fetch_tracks()
                 new_tracks = [
-                    from_dict(data_class=LavalinkTrack, data=json.loads(t))
+                    from_dict(data_class=Track_namespace_conflict, data=json.loads(t))
                     for t in {json.dumps(d, sort_keys=True) for d in track}
                 ]
                 if diff := len(track) - len(new_tracks):
@@ -841,7 +853,7 @@ class PyLavPlaylists(
         track_count = await playlist.size()
 
         tracks = await playlist.fetch_tracks()
-        track_objects = [from_dict(data_class=LavalinkTrack, data=track) for track in tracks]
+        track_objects = [from_dict(data_class=Track_namespace_conflict, data=track) for track in tracks]
         await player.bulk_add(
             requester=context.author.id,
             tracks_and_queries=[
