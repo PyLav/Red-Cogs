@@ -113,7 +113,12 @@ class ContextMenus(DISCORD_COG_TYPE_MIXIN):
                     content += f" {embed.footer.text}"
                 if embed.footer.icon_url and valid_query_attachment(embed.footer.icon_url):
                     content += f" {embed.footer.icon_url}"
-            if hasattr(embed, "video") and embed.video and embed.video.url:
+            if (
+                hasattr(embed, "video")
+                and embed.video
+                and embed.video.url
+                and ("www.youtube.com" not in embed.video.url or "/embed/" not in embed.video.url)
+            ):
                 content += f" {embed.video.url}"
             for field in embed.fields:
                 if field.value:
