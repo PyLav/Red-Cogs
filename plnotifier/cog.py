@@ -36,7 +36,7 @@ from pylav.events.player import (
     PlayerVolumeChangedEvent,
 )
 from pylav.events.plugins import SegmentSkippedEvent
-from pylav.events.queue import QueueEndEvent, QueueShuffledEvent, QueueTracksRemovedEvent
+from pylav.events.queue import QueueEndEvent, QueueShuffledEvent, QueueTracksAddedEvent, QueueTracksRemovedEvent
 from pylav.events.track import (
     TrackAutoPlayEvent,
     TrackEndEvent,
@@ -45,7 +45,6 @@ from pylav.events.track import (
     TrackResumedEvent,
     TrackSeekEvent,
     TrackSkippedEvent,
-    TracksRequestedEvent,
     TrackStuckEvent,
 )
 from pylav.events.track.track_start import (
@@ -1391,7 +1390,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_tracks_requested_event(self, event: TracksRequestedEvent) -> None:
+    async def on_pylav_queue_tracks_added_event(self, event: QueueTracksAddedEvent) -> None:
         player = event.player
         await self.pylav.set_context_locale(player.guild)
         channel = await player.notify_channel()
