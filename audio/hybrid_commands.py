@@ -360,7 +360,21 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             context = await self.bot.get_context(context)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        if not context.player or not context.player.current:
+        if not context.player:
+            if player_state := await self.pylav.player_manager.client.player_state_db_manager.fetch_player(
+                context.guild.id
+            ):
+                await player_state.delete()
+                await context.send(
+                    embed=await context.pylav.construct_embed(
+                        description=_(
+                            "I am not currently playing anything on this server, but I've gone ahead and wiped the saved player state."
+                        ),
+                        messageable=context,
+                    ),
+                    ephemeral=True,
+                )
+                return
             await context.send(
                 embed=await context.pylav.construct_embed(
                     description=_("I am not currently playing anything on this server."), messageable=context
