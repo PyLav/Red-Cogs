@@ -12,7 +12,7 @@ permissions:
 
 jobs:
     build:
-        runs-on: [self-hosted, linux, x64]
+        runs-on: [ubuntu-latest]
         steps:
         -   name: Apply Type Label
             uses: actions/labeler@v4
