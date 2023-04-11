@@ -9,7 +9,7 @@ on:
         -   unlabeled
 jobs:
     automerge:
-        runs-on: [self-hosted, linux, x64]
+        runs-on: [ubuntu-latest]
         steps:
         -   id: automerge
             name: automerge
