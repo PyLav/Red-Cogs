@@ -9,7 +9,7 @@ permissions:
 jobs:
     build:
 
-        runs-on: [self-hosted, linux, x64]
+        runs-on: [ubuntu-latest]
         steps:
         -   name: Apply Triage Label
             uses: actions/github-script@v6
