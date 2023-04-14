@@ -45,6 +45,7 @@ class PyLavRadio(DISCORD_COG_TYPE_MIXIN):
         description=shorten_string(
             max_length=100, string=_("Enqueue a radio station. Use the arguments to filter for a possible station")
         ),
+        extras={"red_force_enable": True},
     )
     @app_commands.describe(
         stations=shorten_string(max_length=100, string=_("The radio station to enqueue")),

@@ -54,6 +54,7 @@ class PyLavPlaylists(
     slash_playlist = app_commands.Group(
         name="playlist",
         description=shorten_string(max_length=100, string=_("Control PyLav playlists")),
+        extras={"red_force_enable": True},
     )
 
     def __init__(self, bot: DISCORD_BOT_TYPE, *args, **kwargs):

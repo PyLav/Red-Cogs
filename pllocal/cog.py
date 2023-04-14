@@ -112,6 +112,7 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
     @app_commands.command(
         name="local",
         description=shorten_string(max_length=100, string=_("Play a local file or folder, supports partial searching")),
+        extras={"red_force_enable": True},
     )
     @app_commands.describe(
         entry=shorten_string(max_length=100, string=_("The local file or folder to play")),

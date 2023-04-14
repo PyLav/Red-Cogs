@@ -35,6 +35,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         name="play",
         description=shorten_string(max_length=100, string=_("Enqueue the specified query to be played.")),
         aliases=["p"],
+        extras={"red_force_enable": True},
     )
     @app_commands.describe(
         query=shorten_string(max_length=100, string=_("This argument is the query to play, a link or a search query."))
@@ -198,6 +199,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         description=shorten_string(
             max_length=100, string=_("Request that I connect to the specified channel or your current channel.")
         ),
+        extras={"red_force_enable": True},
     )
     @app_commands.describe(channel=shorten_string(max_length=100, string=_("The voice channel to connect to.")))
     @commands.guild_only()
@@ -290,6 +292,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             max_length=100, string=_("Shows which track is currently being played on this server.")
         ),
         aliases=["now"],
+        extras={"red_force_enable": True},
     )
     @commands.guild_only()
     @requires_player()
@@ -313,6 +316,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
     @commands.hybrid_command(
         name="skip",
         description=shorten_string(max_length=100, string=_("Skips the current track.")),
+        extras={"red_force_enable": True},
     )
     @commands.guild_only()
     @requires_player()
@@ -350,6 +354,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
     @commands.hybrid_command(
         name="stop",
         description=shorten_string(max_length=100, string=_("Stops the player and clears the queue.")),
+        extras={"red_force_enable": True},
     )
     @commands.guild_only()
     @requires_player()
@@ -396,6 +401,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             max_length=100, string=_("Request that I disconnect from the current voice channel.")
         ),
         aliases=["disconnect"],
+        extras={"red_force_enable": True},
     )
     @requires_player()
     @invoker_is_dj()
@@ -429,6 +435,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         name="queue",
         description=shorten_string(max_length=100, string=_("Shows the current queue for this server.")),
         aliases=["q"],
+        extras={"red_force_enable": True},
     )
     @commands.guild_only()
     @requires_player()
@@ -454,7 +461,9 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         ).start(ctx=context)
 
     @commands.hybrid_command(
-        name="shuffle", description=shorten_string(max_length=100, string=_("Shuffles the current queue."))
+        name="shuffle",
+        description=shorten_string(max_length=100, string=_("Shuffles the current queue.")),
+        extras={"red_force_enable": True},
     )
     @commands.guild_only()
     @requires_player()
@@ -503,6 +512,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
     @commands.hybrid_command(
         name="repeat",
         description=shorten_string(max_length=100, string=_("Set whether to repeat the current song or queue.")),
+        extras={"red_force_enable": True},
     )
     @app_commands.describe(queue=shorten_string(max_length=100, string=_("Should the whole queue be repeated?")))
     @commands.guild_only()
@@ -546,7 +556,11 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             embed=await context.pylav.construct_embed(description=msg, messageable=context), ephemeral=True
         )
 
-    @commands.hybrid_command(name="pause", description=shorten_string(max_length=100, string=_("Pause the player")))
+    @commands.hybrid_command(
+        name="pause",
+        description=shorten_string(max_length=100, string=_("Pause the player")),
+        extras={"red_force_enable": True},
+    )
     @commands.guild_only()
     @requires_player()
     @invoker_is_dj()
@@ -584,7 +598,11 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             ephemeral=True,
         )
 
-    @commands.hybrid_command(name="resume", description=shorten_string(max_length=100, string=_("Resume the player")))
+    @commands.hybrid_command(
+        name="resume",
+        description=shorten_string(max_length=100, string=_("Resume the player")),
+        extras={"red_force_enable": True},
+    )
     @commands.guild_only()
     @requires_player()
     @invoker_is_dj()
@@ -622,7 +640,9 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             ephemeral=True,
         )
 
-    @commands.hybrid_command(name="volume", description=_("Set the current volume for the player."))
+    @commands.hybrid_command(
+        name="volume", description=_("Set the current volume for the player."), extras={"red_force_enable": True}
+    )
     @app_commands.describe(volume=_("The volume to set"))
     @commands.guild_only()
     @requires_player()
@@ -683,7 +703,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             ephemeral=True,
         )
 
-    @commands.hybrid_command(name="seek", description=_("Seek the current track."))
+    @commands.hybrid_command(name="seek", description=_("Seek the current track."), extras={"red_force_enable": True})
     @app_commands.describe(seek=_("The player position to seek to"))
     @commands.guild_only()
     @requires_player()
@@ -807,7 +827,12 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
 
         await context.player.seek(seek_ms, context.author, False)
 
-    @commands.hybrid_command(name="prev", description=_("Play previously played tracks."), aliases=["previous"])
+    @commands.hybrid_command(
+        name="prev",
+        description=_("Play previously played tracks."),
+        aliases=["previous"],
+        extras={"red_force_enable": True},
+    )
     @commands.guild_only()
     @requires_player()
     @invoker_is_dj()

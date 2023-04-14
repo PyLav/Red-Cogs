@@ -30,6 +30,7 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN):
     @app_commands.command(
         name="search",
         description=shorten_string(max_length=100, string=_("Search for a track, then play the selected response.")),
+        extras={"red_force_enable": True},
     )
     @app_commands.describe(
         source=shorten_string(max_length=100, string=_("Where to search in")),
