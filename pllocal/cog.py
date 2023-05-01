@@ -37,7 +37,11 @@ async def cache_filled(interaction: DISCORD_INTERACTION_TYPE) -> bool:
         await interaction.response.defer(ephemeral=True)
     context = await interaction.client.get_context(interaction)
     cog: PyLavLocalFiles = context.bot.get_cog("PyLavLocalFiles")  # type: ignore
-    return cog.pylav.local_tracks_cache.is_ready
+    if not cog:
+        return False
+    if not (cache := rgetattr(cog, "pylav.local_tracks_cache", None)):
+        return False
+    return cache.is_ready
 
 
 @cog_i18n(_)
