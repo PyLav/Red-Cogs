@@ -55,7 +55,9 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
         self.bot = bot
 
     async def cog_check(self, ctx: PyLavContext):
-        return self.pylav.local_tracks_cache.is_ready
+        if not (cache := rgetattr(self, "pylav.local_tracks_cache", None)):
+            return False
+        return cache.is_ready
 
     @commands.group(name="pllocalset")
     async def command_pllocalset(self, ctx: PyLavContext):
