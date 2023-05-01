@@ -431,7 +431,15 @@ class PyLavPlaylists(
                     response = await self.pylav.get_tracks(
                         *[await Query.from_string(at) for at in playlist_prompt.remove_tracks], player=context.player
                     )
-                    tracks = typing.cast(collections.deque[Track_namespace_conflict], response.tracks)
+                    if isinstance(response, rest_api.TrackResponse):
+                        tracks = [response.data]
+                    elif isinstance(response, rest_api.SearchResponse):
+                        tracks = response.data
+                    elif isinstance(response, rest_api.PlaylistResponse):
+                        tracks = response.data.tracks
+                    else:
+                        tracks = []
+                    tracks = typing.cast(collections.deque[Track_namespace_conflict], tracks)
                     for t in tracks:
                         b64 = t.encoded
                         await playlist.remove_track(b64)
@@ -442,7 +450,15 @@ class PyLavPlaylists(
                         *[await Query.from_string(at) for at in playlist_prompt.add_tracks],
                         player=context.player,
                     )
-                    if tracks := typing.cast(collections.deque[Track_namespace_conflict], response.tracks):
+                    if isinstance(response, rest_api.TrackResponse):
+                        tracks = [response.data]
+                    elif isinstance(response, rest_api.SearchResponse):
+                        tracks = response.data
+                    elif isinstance(response, rest_api.PlaylistResponse):
+                        tracks = response.data.tracks
+                    else:
+                        tracks = []
+                    if tracks := typing.cast(collections.deque[Track_namespace_conflict], tracks):
                         await playlist.add_track(list(tracks))
                         changed = True
                         tracks_added += sum(1 for __ in tracks)
@@ -452,7 +468,15 @@ class PyLavPlaylists(
                     response = await self.pylav.get_tracks(
                         await Query.from_string(url), bypass_cache=True, player=context.player
                     )
-                    if not response.tracks:
+                    if isinstance(response, rest_api.TrackResponse):
+                        tracks = [response.data]
+                    elif isinstance(response, rest_api.SearchResponse):
+                        tracks = response.data
+                    elif isinstance(response, rest_api.PlaylistResponse):
+                        tracks = response.data.tracks
+                    else:
+                        tracks = []
+                    if not tracks:
                         await context.send(
                             embed=await context.pylav.construct_embed(
                                 messageable=context,
@@ -468,7 +492,7 @@ class PyLavPlaylists(
                             ephemeral=True,
                         )
                         return
-                    if b64_list := typing.cast(list[Track_namespace_conflict], [track for track in response.tracks if track.encoded]):  # type: ignore
+                    if b64_list := typing.cast(list[Track_namespace_conflict], [track for track in tracks if track.encoded]):  # type: ignore
                         changed = True
                         await playlist.update_tracks(b64_list)
             elif playlist.id in BUNDLED_PLAYLIST_IDS:
