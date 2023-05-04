@@ -8,9 +8,9 @@ from redbot.core.i18n import Translator
 from redbot.core.utils.chat_formatting import box
 from tabulate import tabulate
 
+from pylav._internals.functions import get_true_path
 from pylav.core.context import PyLavContext
 from pylav.extension.bundled_node import LAVALINK_DOWNLOAD_DIR
-from pylav.extension.bundled_node.utils import get_true_path
 from pylav.helpers.format.ascii import EightBitANSI
 from pylav.helpers.format.strings import shorten_string
 from pylav.type_hints.bot import DISCORD_COG_TYPE, DISCORD_INTERACTION_TYPE
