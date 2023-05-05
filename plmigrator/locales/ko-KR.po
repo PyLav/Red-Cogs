@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
-"POT-Creation-Date: 2023-02-03 20:16+0000\n"
-"PO-Revision-Date: 2023-02-16 20:52\n"
+"POT-Creation-Date: 2023-05-05 09:21+0000\n"
+"PO-Revision-Date: 2023-05-05 09:21\n"
 "Last-Translator: \n"
 "Language-Team: Korean\n"
 "MIME-Version: 1.0\n"
@@ -43,7 +43,16 @@ msgid "Migration of Audio cog settings to PyLav complete. Restart the bot for it
 msgstr "오디오 톱니 바퀴 설정을 PyLav로 마이그레이션이 완료되었습니다. 적용하려면 봇을 다시 시작합니다.\n"
 "{requester_variable_do_not_translate}."
 
-#: plmigrator/cog.py:158
+#: plmigrator/cog.py:76
+#, docstring
+msgid "Reverts the Playlist migration which can cause broken autoplaylists.\n\n"
+"        Please note that this will replace any settings already in PyLav.\n\n"
+"        If you are sure you want to proceed please run this command again with the confirm argument set to 1\n"
+"        i.e `[p]plmigrate-revert 1`\n"
+"        "
+msgstr ""
+
+#: plmigrator/cog.py:178
 msgid "I do not have permission to access {folder_variable_do_not_translate}."
 msgstr "액세스 권한이 없습니다. {folder_variable_do_not_translate}."
 
