@@ -260,7 +260,10 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
 
     @command_plnotify.command(name="webhook")
     async def command_plnotify_webhook(
-        self, context: PyLavContext, *, channel: discord.TextChannel | discord.VoiceChannel | discord.Thread
+        self,
+        context: PyLavContext,
+        channel: discord.TextChannel | discord.VoiceChannel | discord.Thread,
+        use_thread: bool = True,
     ) -> None:  # sourcery skip: low-code-quality
         """Set the notify channel for the player"""
         if isinstance(context, discord.Interaction):
@@ -279,7 +282,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
                     ephemeral=True,
                 )
                 return
-            if not (
+            if use_thread and not (
                 (permission := channel.permissions_for(context.guild.me)).create_public_threads
                 and permission.send_messages_in_threads
             ):
@@ -299,26 +302,29 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
                     author_variable_do_not_translate=context.author
                 ),
             )
-            existing_thread = None
-            if isinstance(channel, discord.VoiceChannel):
-                existing_thread = channel
+            if not use_thread:
+                existing_thread = None
+                if isinstance(channel, discord.VoiceChannel):
+                    existing_thread = channel
+                else:
+                    for thread in channel.guild.threads:
+                        if thread.parent.id == channel.id and thread.name.startswith("PyLavNotifier"):
+                            existing_thread = thread
+                if not existing_thread:
+                    message = await channel.send(
+                        _("This thread will be used by PyLav to post notifications about the player.")
+                    )
+                    existing_thread = await channel.create_thread(
+                        invitable=False,
+                        name=_("PyLavNotifier"),
+                        message=message,
+                        auto_archive_duration=10080,
+                        reason=_("PyLav Notifier - Requested by {author_variable_do_not_translate}.").format(
+                            author_variable_do_not_translate=context.author
+                        ),
+                    )
             else:
-                for thread in channel.guild.threads:
-                    if thread.parent.id == channel.id:
-                        existing_thread = thread
-            if not existing_thread:
-                message = await channel.send(
-                    _("This thread will be used by PyLav to post notifications about the player.")
-                )
-                existing_thread = await channel.create_thread(
-                    invitable=False,
-                    name=_("PyLavNotifier"),
-                    message=message,
-                    auto_archive_duration=10080,
-                    reason=_("PyLav Notifier - Requested by {author_variable_do_not_translate}.").format(
-                        author_variable_do_not_translate=context.author
-                    ),
-                )
+                existing_thread = channel
             channel = existing_thread
             if old_url := await self._config.guild(context.guild).webhook_url():
                 with contextlib.suppress(discord.HTTPException):
