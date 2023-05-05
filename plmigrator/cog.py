@@ -61,7 +61,7 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
         await self._process_global_settings(audio_config, context)
         for guild, guild_config in (await audio_config.all_guilds()).items():
             await self._process_server_settings(guild, guild_config)
-        await self._process_playlists(playlist_api)
+        # await self._process_playlists(playlist_api)
         await context.send(
             content=_(
                 "Migration of Audio cog settings to PyLav complete. "
@@ -69,6 +69,28 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
             ).format(requester_variable_do_not_translate=context.author.mention),
             ephemeral=True,
         )
+
+    @commands.is_owner()
+    @commands.command(name="plmigrate-revert")
+    async def command_pylavmigrate(self, context: PyLavContext, confirm: bool, /) -> None:
+        """Reverts the Playlist migration which can cause broken autoplaylists.
+
+        Please note that this will replace any settings already in PyLav.
+
+        If you are sure you want to proceed please run this command again with the confirm argument set to 1
+        i.e `[p]plmigrate-revert 1`
+        """
+        if not confirm:
+            await context.send_help()
+            return
+        audio_config, playlist_api = await self._init_audio_cog_dependencies()
+        for guild, guild_config in (await audio_config.all_guilds()).items():
+            player_config = self.pylav.player_config_manager.get_config(guild)
+            await player_config.update_auto_play_playlist_id(1)
+            if guild_config.get("autoplaylist", {}).get("enabled", False):
+                await player_config.update_auto_play(True)
+            else:
+                await player_config.update_auto_play(False)
 
     async def _process_playlists(self, playlist_api: PlaylistWrapper) -> None:
         query = """
@@ -126,9 +148,7 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
                     if role := guild_obj.get_role(dj_role):
                         await player_config.add_to_dj_roles(role)
         if guild_config.get("autoplaylist", {}).get("enabled", False):
-            saved_id = guild_config.get("autoplaylist", {}).get("id", 42069)
             await player_config.update_auto_play(True)
-            await player_config.update_auto_play_playlist_id(saved_id if saved_id != 42069 else 1)
         else:
             await player_config.update_auto_play(False)
         if guild_config.get("shuffle", False):
@@ -162,28 +182,28 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
                 )
         if await audio_config.status():
             await global_config.update_update_bot_activity(True)
-        if __ := await audio_config.use_external_lavalink():
-            await global_config.update_enable_managed_node(False)
-            await self.pylav.add_node(
-                unique_identifier=context.message.id,
-                name="AudioMigratedExternal",
-                host=await audio_config.host(),
-                password=await audio_config.password(),
-                port=await audio_config.rest_port(),
-                ssl=await audio_config.secured_ws(),
-                search_only=False,
-                managed=False,
-                extras=None,
-                disabled_sources=None,
-                yaml=None,
-            )
-        else:
-            audio_yaml = change_dict_naming_convention(await audio_config.yaml.all())
-            bundled_node_config = self.pylav.node_db_manager.bundled_node_config()
-            await bundled_node_config.update_yaml(recursive_merge(await bundled_node_config.fetch_yaml(), audio_yaml))
-            extras = await bundled_node_config.fetch_extras()
-            extras["max_ram"] = await audio_config.java.Xmx()
-            await bundled_node_config.update_extras(extras)
+        # # if __ := await audio_config.use_external_lavalink():
+        #     await global_config.update_enable_managed_node(False)
+        #     await self.pylav.add_node(
+        #         unique_identifier=context.message.id,
+        #         name="AudioMigratedExternal",
+        #         host=await audio_config.host(),
+        #         password=await audio_config.password(),
+        #         port=await audio_config.rest_port(),
+        #         ssl=await audio_config.secured_ws(),
+        #         search_only=False,
+        #         managed=False,
+        #         extras=None,
+        #         disabled_sources=None,
+        #         yaml=None,
+        #     )
+        # else:
+        audio_yaml = change_dict_naming_convention(await audio_config.yaml.all())
+        bundled_node_config = self.pylav.node_db_manager.bundled_node_config()
+        await bundled_node_config.update_yaml(recursive_merge(await bundled_node_config.fetch_yaml(), audio_yaml))
+        extras = await bundled_node_config.fetch_extras()
+        extras["max_ram"] = await audio_config.java.Xmx()
+        await bundled_node_config.update_extras(extras)
 
     async def _init_audio_cog_dependencies(self) -> tuple[Config, PlaylistWrapper]:
         from redbot.cogs.audio import Audio
