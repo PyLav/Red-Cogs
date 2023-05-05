@@ -51,6 +51,7 @@ from pylav.events.track.track_start import (
     TrackStartAppleMusicEvent,
     TrackStartBandcampEvent,
     TrackStartDeezerEvent,
+    TrackStartEvent,
     TrackStartGCTTSEvent,
     TrackStartGetYarnEvent,
     TrackStartHTTPEvent,
@@ -99,6 +100,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             track_stuck=dict(enabled=True, mention=True),
             track_exception=dict(enabled=True, mention=True),
             track_end=dict(enabled=True, mention=True),
+            track_start=dict(enabled=False, mention=True),
             track_start_youtube_music=dict(enabled=True, mention=True),
             track_start_spotify=dict(enabled=True, mention=True),
             track_start_apple_music=dict(enabled=True, mention=True),
@@ -546,6 +548,39 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             await self.pylav.construct_embed(
                 title=_("Track End Event"),
                 description=message,
+                messageable=channel,
+            )
+        )
+
+    @commands.Cog.listener()
+    async def on_pylav_track_start(self, event: TrackStartEvent) -> None:
+        player = event.player
+        await self.pylav.set_context_locale(player.guild)
+        channel = await player.notify_channel()
+        if channel is None:
+            return
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_start", default={"enabled": False, "mention": True}
+        )
+        notify, mention = data["enabled"], data["mention"]
+        if not notify:
+            return
+        if mention:
+            req = event.track.requester or self.bot.user
+            user = req.mention
+        else:
+            user = event.track.requester or self.bot.user
+        self._message_queue[channel].append(
+            await self.pylav.construct_embed(
+                title=_("Track Start Event"),
+                description=_(
+                    "[Node={node_variable_do_not_translate}] Track: {track_variable_do_not_translate} has "
+                    "started playing.\nRequested by: {requester_variable_do_not_translate}"
+                ).format(
+                    track_variable_do_not_translate=await event.track.get_track_display_name(with_url=True),
+                    requester_variable_do_not_translate=user,
+                    node_variable_do_not_translate=event.node.name,
+                ),
                 messageable=channel,
             )
         )
