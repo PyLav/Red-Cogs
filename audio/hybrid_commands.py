@@ -677,12 +677,13 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
     async def command_seek(self, context: PyLavContext, seek: str):  # sourcery skip: low-code-quality
         """Seek the current track.
 
-        Seek can either be a number of seconds or a timestamp.
+        Seek can either be a number of seconds, a timestamp, or a specific percentage of the track.
 
         Examples:
         `[p]seek 10` Seeks 10 seconds forward
         `[p]seek -20` Seeks 20 seconds backwards
         `[p]seek 0:30` Seeks to 0:30
+        `[p]seek 50%` Seeks to 50% of the track
         """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -747,11 +748,44 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                 seek_ms = 0
             else:
                 seek_ms = (await context.player.fetch_position()) + seek * 1000
-        except (
-            ValueError
-        ):  # Taken from https://github.com/Cog-Creators/Red-DiscordBot/blob/ec55622418810731e1ee2ede1569f81f9bddeeec/redbot/cogs/audio/core/utilities/miscellaneous.py#L28
-            match = _RE_TIME_CONVERTER.match(seek)
-            if match is not None:
+        except ValueError:
+            if seek[-1] == "%":
+                try:
+                    seek = int(seek[:-1])
+                except ValueError:
+                    await context.send(
+                        embed=await context.pylav.construct_embed(
+                            title=_("Unable to seek track"),
+                            description=_("I can not seek the current track to an invalid percentage."),
+                            messageable=context,
+                        ),
+                        ephemeral=True,
+                    )
+                    return
+                if seek > 100:
+                    await context.send(
+                        embed=await context.pylav.construct_embed(
+                            title=_("Unable to seek track"),
+                            description=_("I can not seek the current track past 100%."),
+                            messageable=context,
+                        ),
+                        ephemeral=True,
+                    )
+                    return
+                if seek < 0:
+                    await context.send(
+                        embed=await context.pylav.construct_embed(
+                            title=_("Unable to seek track"),
+                            description=_("I can not seek the current track before 0%."),
+                            messageable=context,
+                        ),
+                        ephemeral=True,
+                    )
+                    return
+                seek_ms = await context.player.current.duration() * (seek / 100)
+                seek = -round(((await context.player.fetch_position()) - seek_ms) / 1000)
+            # Taken from https://github.com/Cog-Creators/Red-DiscordBot/blob/ec55622418810731e1ee2ede1569f81f9bddeeec/redbot/cogs/audio/core/utilities/miscellaneous.py#L28
+            elif (match := _RE_TIME_CONVERTER.match(seek)) is not None:
                 hr = int(match.group(1)) if match.group(1) else 0
                 mn = int(match.group(2)) if match.group(2) else 0
                 sec = int(match.group(3)) if match.group(3) else 0
