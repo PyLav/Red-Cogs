@@ -677,12 +677,13 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
     async def command_seek(self, context: PyLavContext, seek: str):  # sourcery skip: low-code-quality
         """Seek the current track.
 
-        Seek can either be a number of seconds or a timestamp.
+        Seek can either be a number of seconds, a timestamp, or a specific percentage of the track.
 
         Examples:
         `[p]seek 10` Seeks 10 seconds forward
         `[p]seek -20` Seeks 20 seconds backwards
         `[p]seek 0:30` Seeks to 0:30
+        `[p]seek 50%` Seeks to 50% of the track
         """
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
