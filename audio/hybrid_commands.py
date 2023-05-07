@@ -749,9 +749,33 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                 seek_ms = (await context.player.fetch_position()) + seek * 1000
         except (
             ValueError
-        ):  # Taken from https://github.com/Cog-Creators/Red-DiscordBot/blob/ec55622418810731e1ee2ede1569f81f9bddeeec/redbot/cogs/audio/core/utilities/miscellaneous.py#L28
-            match = _RE_TIME_CONVERTER.match(seek)
-            if match is not None:
+        ):
+            if seek[-1] == "%":
+                seek = int(seek[:-1])
+                if seek > 100:
+                    await context.send(
+                        embed=await context.pylav.construct_embed(
+                            title=_("Unable to seek track"),
+                            description=_("I can not seek the current track past 100%."),
+                            messageable=context,
+                        ),
+                        ephemeral=True,
+                    )
+                    return
+                if seek < 0:
+                    await context.send(
+                        embed=await context.pylav.construct_embed(
+                            title=_("Unable to seek track"),
+                            description=_("I can not seek the current track before 0%."),
+                            messageable=context,
+                        ),
+                        ephemeral=True,
+                    )
+                    return
+                seek_ms = await context.player.current.duration() * (seek / 100)
+                seek = -round(((await context.player.fetch_position()) - seek_ms) / 1000)
+            # Taken from https://github.com/Cog-Creators/Red-DiscordBot/blob/ec55622418810731e1ee2ede1569f81f9bddeeec/redbot/cogs/audio/core/utilities/miscellaneous.py#L28
+            elif (match := _RE_TIME_CONVERTER.match(seek)) is not None:
                 hr = int(match.group(1)) if match.group(1) else 0
                 mn = int(match.group(2)) if match.group(2) else 0
                 sec = int(match.group(3)) if match.group(3) else 0
