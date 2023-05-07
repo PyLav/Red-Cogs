@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
-"POT-Creation-Date: 2023-03-19 19:14+0000\n"
-"PO-Revision-Date: 2023-03-19 19:14\n"
+"POT-Creation-Date: 2023-05-07 19:17+0000\n"
+"PO-Revision-Date: 2023-05-07 19:17\n"
 "Last-Translator: \n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -582,8 +582,8 @@ msgstr "私は正常に接続しました {channel_name_variable_do_not_translat
 #: audio/hybrid_commands.py:430 audio/hybrid_commands.py:457
 #: audio/hybrid_commands.py:509 audio/hybrid_commands.py:548
 #: audio/hybrid_commands.py:586 audio/hybrid_commands.py:644
-#: audio/hybrid_commands.py:695 audio/hybrid_commands.py:704
-#: audio/hybrid_commands.py:813
+#: audio/hybrid_commands.py:696 audio/hybrid_commands.py:705
+#: audio/hybrid_commands.py:847
 msgid "I am not currently playing anything on this server."
 msgstr "私は現在、このサーバーで何もプレイしていません。"
 
@@ -659,48 +659,61 @@ msgstr "最大音量をに制限するように言われました {max_volume_va
 msgid "I have set the player volume to {volume_variable_do_not_translate}%."
 msgstr "プレーヤーの音量をに設定しました {volume_variable_do_not_translate}%."
 
-#: audio/hybrid_commands.py:714 audio/hybrid_commands.py:723
-#: audio/hybrid_commands.py:736
+#: audio/hybrid_commands.py:715 audio/hybrid_commands.py:724
+#: audio/hybrid_commands.py:737 audio/hybrid_commands.py:758
+#: audio/hybrid_commands.py:768 audio/hybrid_commands.py:778
 msgid "Unable to seek track"
 msgstr "曲をシークできません"
 
-#: audio/hybrid_commands.py:715
+#: audio/hybrid_commands.py:716
 msgid "I can not seek this track as the server reports it is a live stream."
 msgstr "サーバーがライブストリームであると報告しているため、このトラックを探すことはできません。"
 
-#: audio/hybrid_commands.py:724
+#: audio/hybrid_commands.py:725
 msgid "I can not seek this track as the server report that this track does not support seeking."
 msgstr "このトラックがシークをサポートしていないことをサーバーが報告しているため、このトラックを探すことはできません。"
 
-#: audio/hybrid_commands.py:737
+#: audio/hybrid_commands.py:738
 msgid "I can not seek the current track while the player is paused."
 msgstr "プレイヤーが一時停止している間は現在のトラックを探すことができません。"
 
-#: audio/hybrid_commands.py:765
+#: audio/hybrid_commands.py:759
+msgid "I can not seek the current track to an invalid percentage."
+msgstr ""
+
+#: audio/hybrid_commands.py:769
+msgid "I can not seek the current track past 100%."
+msgstr ""
+
+#: audio/hybrid_commands.py:779
+msgid "I can not seek the current track before 0%."
+msgstr ""
+
+#: audio/hybrid_commands.py:799
 msgid "I have moved the current track forward {number_of_seconds_variable_do_not_translate} seconds to the end of the track."
 msgstr "現在のトラックを前進させました {number_of_seconds_variable_do_not_translate} トラックの終わりまで数秒。"
 
-#: audio/hybrid_commands.py:769
+#: audio/hybrid_commands.py:803
 msgid "I have moved the current track forward {number_of_seconds} seconds to position {timestamp_variable_do_not_translate}."
 msgstr "現在のトラックを前進させました {number_of_seconds} 配置までの秒数 {timestamp_variable_do_not_translate}."
 
-#: audio/hybrid_commands.py:774
+#: audio/hybrid_commands.py:808
 msgid "I have moved the current track back {number_of_seconds_variable_do_not_translate} seconds to the beginning."
 msgstr "現在のトラックを元に戻しました {number_of_seconds_variable_do_not_translate} 先頭まで数秒。"
 
-#: audio/hybrid_commands.py:778
+#: audio/hybrid_commands.py:812
 msgid "I have moved the current track back {number_of_seconds} seconds to position {timestamp_variable_do_not_translate}."
 msgstr "現在のトラックを元に戻しました {number_of_seconds} 配置までの秒数 {timestamp_variable_do_not_translate}."
 
-#: audio/hybrid_commands.py:784
+#: audio/hybrid_commands.py:818
 msgid "I have moved the current track to the beginning."
 msgstr "現在のトラックを最初に移動しました。"
 
-#: audio/hybrid_commands.py:822
+#: audio/hybrid_commands.py:856
 msgid "The history of tracks is currently empty."
 msgstr "トラックの履歴は現在空です。"
 
-#: audio/hybrid_commands.py:830
+#: audio/hybrid_commands.py:864
 msgid "Playing previous track: {track_name_variable_do_not_translate}."
 msgstr "前のトラックを再生する: {track_name_variable_do_not_translate}."
 

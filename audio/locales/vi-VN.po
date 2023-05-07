@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
-"POT-Creation-Date: 2023-03-19 19:14+0000\n"
-"PO-Revision-Date: 2023-03-19 19:14\n"
+"POT-Creation-Date: 2023-05-07 19:17+0000\n"
+"PO-Revision-Date: 2023-05-07 19:17\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese\n"
 "MIME-Version: 1.0\n"
@@ -582,8 +582,8 @@ msgstr "Tôi đã kết nối thành công với {channel_name_variable_do_not_t
 #: audio/hybrid_commands.py:430 audio/hybrid_commands.py:457
 #: audio/hybrid_commands.py:509 audio/hybrid_commands.py:548
 #: audio/hybrid_commands.py:586 audio/hybrid_commands.py:644
-#: audio/hybrid_commands.py:695 audio/hybrid_commands.py:704
-#: audio/hybrid_commands.py:813
+#: audio/hybrid_commands.py:696 audio/hybrid_commands.py:705
+#: audio/hybrid_commands.py:847
 msgid "I am not currently playing anything on this server."
 msgstr "Tôi hiện không chơi bất cứ thứ gì trên máy chủ này."
 
@@ -659,48 +659,61 @@ msgstr "Tôi đã được yêu cầu hạn chế âm lượng tối đa ở m�
 msgid "I have set the player volume to {volume_variable_do_not_translate}%."
 msgstr "Tôi đã đặt âm lượng trình phát thành {volume_variable_do_not_translate}%."
 
-#: audio/hybrid_commands.py:714 audio/hybrid_commands.py:723
-#: audio/hybrid_commands.py:736
+#: audio/hybrid_commands.py:715 audio/hybrid_commands.py:724
+#: audio/hybrid_commands.py:737 audio/hybrid_commands.py:758
+#: audio/hybrid_commands.py:768 audio/hybrid_commands.py:778
 msgid "Unable to seek track"
 msgstr "Không thể tìm kiếm theo dõi"
 
-#: audio/hybrid_commands.py:715
+#: audio/hybrid_commands.py:716
 msgid "I can not seek this track as the server reports it is a live stream."
 msgstr "Tôi không thể tìm kiếm bản nhạc này vì máy chủ báo cáo đó là luồng trực tiếp."
 
-#: audio/hybrid_commands.py:724
+#: audio/hybrid_commands.py:725
 msgid "I can not seek this track as the server report that this track does not support seeking."
 msgstr "Tôi không thể tìm kiếm bản nhạc này vì máy chủ báo cáo rằng bản nhạc này không hỗ trợ tìm kiếm."
 
-#: audio/hybrid_commands.py:737
+#: audio/hybrid_commands.py:738
 msgid "I can not seek the current track while the player is paused."
 msgstr "Tôi không thể tìm kiếm bản nhạc hiện tại trong khi trình phát bị tạm dừng."
 
-#: audio/hybrid_commands.py:765
+#: audio/hybrid_commands.py:759
+msgid "I can not seek the current track to an invalid percentage."
+msgstr ""
+
+#: audio/hybrid_commands.py:769
+msgid "I can not seek the current track past 100%."
+msgstr ""
+
+#: audio/hybrid_commands.py:779
+msgid "I can not seek the current track before 0%."
+msgstr ""
+
+#: audio/hybrid_commands.py:799
 msgid "I have moved the current track forward {number_of_seconds_variable_do_not_translate} seconds to the end of the track."
 msgstr "Tôi đã di chuyển theo dõi hiện tại về phía trước {number_of_seconds_variable_do_not_translate} vài giây để kết thúc bản nhạc."
 
-#: audio/hybrid_commands.py:769
+#: audio/hybrid_commands.py:803
 msgid "I have moved the current track forward {number_of_seconds} seconds to position {timestamp_variable_do_not_translate}."
 msgstr "Tôi đã di chuyển theo dõi hiện tại về phía trước {number_of_seconds} giây để định vị {timestamp_variable_do_not_translate}."
 
-#: audio/hybrid_commands.py:774
+#: audio/hybrid_commands.py:808
 msgid "I have moved the current track back {number_of_seconds_variable_do_not_translate} seconds to the beginning."
 msgstr "Tôi đã chuyển bản nhạc hiện tại trở lại {number_of_seconds_variable_do_not_translate} vài giây để bắt đầu."
 
-#: audio/hybrid_commands.py:778
+#: audio/hybrid_commands.py:812
 msgid "I have moved the current track back {number_of_seconds} seconds to position {timestamp_variable_do_not_translate}."
 msgstr "Tôi đã chuyển bản nhạc hiện tại trở lại {number_of_seconds} giây để định vị {timestamp_variable_do_not_translate}."
 
-#: audio/hybrid_commands.py:784
+#: audio/hybrid_commands.py:818
 msgid "I have moved the current track to the beginning."
 msgstr "Tôi đã chuyển đường đua hiện tại sang đầu."
 
-#: audio/hybrid_commands.py:822
+#: audio/hybrid_commands.py:856
 msgid "The history of tracks is currently empty."
 msgstr "Lịch sử của các bản nhạc hiện đang trống rỗng."
 
-#: audio/hybrid_commands.py:830
+#: audio/hybrid_commands.py:864
 msgid "Playing previous track: {track_name_variable_do_not_translate}."
 msgstr "Phát bản nhạc trước đó: {track_name_variable_do_not_translate}."
 
