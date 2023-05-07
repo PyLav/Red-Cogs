@@ -751,7 +751,18 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             ValueError
         ):
             if seek[-1] == "%":
-                seek = int(seek[:-1])
+                try:
+                    seek = int(seek[:-1])
+                except ValueError:
+                    await context.send(
+                        embed=await context.pylav.construct_embed(
+                            title=_("Unable to seek track"),
+                            description=_("I can not seek the current track to an invalid percentage."),
+                            messageable=context,
+                        ),
+                        ephemeral=True,
+                    )
+                    return
                 if seek > 100:
                     await context.send(
                         embed=await context.pylav.construct_embed(
