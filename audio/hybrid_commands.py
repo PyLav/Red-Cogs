@@ -747,9 +747,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                 seek_ms = 0
             else:
                 seek_ms = (await context.player.fetch_position()) + seek * 1000
-        except (
-            ValueError
-        ):
+        except ValueError:
             if seek[-1] == "%":
                 try:
                     seek = int(seek[:-1])
