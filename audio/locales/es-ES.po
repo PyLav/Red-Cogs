@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
-"POT-Creation-Date: 2023-03-19 19:14+0000\n"
-"PO-Revision-Date: 2023-03-19 19:14\n"
+"POT-Creation-Date: 2023-05-07 19:17+0000\n"
+"PO-Revision-Date: 2023-05-07 19:17\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -582,8 +582,8 @@ msgstr "Me he conectado correctamente a {channel_name_variable_do_not_translate}
 #: audio/hybrid_commands.py:430 audio/hybrid_commands.py:457
 #: audio/hybrid_commands.py:509 audio/hybrid_commands.py:548
 #: audio/hybrid_commands.py:586 audio/hybrid_commands.py:644
-#: audio/hybrid_commands.py:695 audio/hybrid_commands.py:704
-#: audio/hybrid_commands.py:813
+#: audio/hybrid_commands.py:696 audio/hybrid_commands.py:705
+#: audio/hybrid_commands.py:847
 msgid "I am not currently playing anything on this server."
 msgstr "Actualmente no estoy reproduciendo nada en este servidor."
 
@@ -659,48 +659,61 @@ msgstr "Me han dicho que restrinja el volumen máximo a {max_volume_variable_do_
 msgid "I have set the player volume to {volume_variable_do_not_translate}%."
 msgstr "He ajustado el volumen del reproductor en {volume_variable_do_not_translate}%."
 
-#: audio/hybrid_commands.py:714 audio/hybrid_commands.py:723
-#: audio/hybrid_commands.py:736
+#: audio/hybrid_commands.py:715 audio/hybrid_commands.py:724
+#: audio/hybrid_commands.py:737 audio/hybrid_commands.py:758
+#: audio/hybrid_commands.py:768 audio/hybrid_commands.py:778
 msgid "Unable to seek track"
 msgstr "No se puede buscar la pista"
 
-#: audio/hybrid_commands.py:715
+#: audio/hybrid_commands.py:716
 msgid "I can not seek this track as the server reports it is a live stream."
 msgstr "No puedo buscar esta pista ya que el servidor informa que es una transmisión en vivo."
 
-#: audio/hybrid_commands.py:724
+#: audio/hybrid_commands.py:725
 msgid "I can not seek this track as the server report that this track does not support seeking."
 msgstr "No puedo buscar esta pista ya que el servidor informa que esta pista no admite la búsqueda."
 
-#: audio/hybrid_commands.py:737
+#: audio/hybrid_commands.py:738
 msgid "I can not seek the current track while the player is paused."
 msgstr "No puedo buscar la pista actual mientras el reproductor está en pausa."
 
-#: audio/hybrid_commands.py:765
+#: audio/hybrid_commands.py:759
+msgid "I can not seek the current track to an invalid percentage."
+msgstr ""
+
+#: audio/hybrid_commands.py:769
+msgid "I can not seek the current track past 100%."
+msgstr ""
+
+#: audio/hybrid_commands.py:779
+msgid "I can not seek the current track before 0%."
+msgstr ""
+
+#: audio/hybrid_commands.py:799
 msgid "I have moved the current track forward {number_of_seconds_variable_do_not_translate} seconds to the end of the track."
 msgstr "He avanzado en la pista actual {number_of_seconds_variable_do_not_translate} segundos hasta el final de la pista."
 
-#: audio/hybrid_commands.py:769
+#: audio/hybrid_commands.py:803
 msgid "I have moved the current track forward {number_of_seconds} seconds to position {timestamp_variable_do_not_translate}."
 msgstr "He avanzado en la pista actual {number_of_seconds} segundos para posicionar {timestamp_variable_do_not_translate}."
 
-#: audio/hybrid_commands.py:774
+#: audio/hybrid_commands.py:808
 msgid "I have moved the current track back {number_of_seconds_variable_do_not_translate} seconds to the beginning."
 msgstr "He movido la pista actual hacia atrás {number_of_seconds_variable_do_not_translate} segundos hasta el principio."
 
-#: audio/hybrid_commands.py:778
+#: audio/hybrid_commands.py:812
 msgid "I have moved the current track back {number_of_seconds} seconds to position {timestamp_variable_do_not_translate}."
 msgstr "He movido la pista actual hacia atrás {number_of_seconds} segundos para posicionar {timestamp_variable_do_not_translate}."
 
-#: audio/hybrid_commands.py:784
+#: audio/hybrid_commands.py:818
 msgid "I have moved the current track to the beginning."
 msgstr "He movido la pista actual al principio."
 
-#: audio/hybrid_commands.py:822
+#: audio/hybrid_commands.py:856
 msgid "The history of tracks is currently empty."
 msgstr "El historial de pistas está actualmente vacío."
 
-#: audio/hybrid_commands.py:830
+#: audio/hybrid_commands.py:864
 msgid "Playing previous track: {track_name_variable_do_not_translate}."
 msgstr "Reproducción de la pista anterior: {track_name_variable_do_not_translate}."
 

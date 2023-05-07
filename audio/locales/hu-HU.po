@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
-"POT-Creation-Date: 2023-03-19 19:14+0000\n"
-"PO-Revision-Date: 2023-03-19 19:14\n"
+"POT-Creation-Date: 2023-05-07 19:17+0000\n"
+"PO-Revision-Date: 2023-05-07 19:17\n"
 "Last-Translator: \n"
 "Language-Team: Hungarian\n"
 "MIME-Version: 1.0\n"
@@ -582,8 +582,8 @@ msgstr "Sikeresen csatlakoztam a következőhöz: {channel_name_variable_do_not_
 #: audio/hybrid_commands.py:430 audio/hybrid_commands.py:457
 #: audio/hybrid_commands.py:509 audio/hybrid_commands.py:548
 #: audio/hybrid_commands.py:586 audio/hybrid_commands.py:644
-#: audio/hybrid_commands.py:695 audio/hybrid_commands.py:704
-#: audio/hybrid_commands.py:813
+#: audio/hybrid_commands.py:696 audio/hybrid_commands.py:705
+#: audio/hybrid_commands.py:847
 msgid "I am not currently playing anything on this server."
 msgstr "Jelenleg nem játszom semmit ezen a szerveren."
 
@@ -659,48 +659,61 @@ msgstr "Azt mondták, hogy korlátozzam a maximális hangerőt {max_volume_varia
 msgid "I have set the player volume to {volume_variable_do_not_translate}%."
 msgstr "A lejátszó hangerejét a következőre állítottam: {volume_variable_do_not_translate}%."
 
-#: audio/hybrid_commands.py:714 audio/hybrid_commands.py:723
-#: audio/hybrid_commands.py:736
+#: audio/hybrid_commands.py:715 audio/hybrid_commands.py:724
+#: audio/hybrid_commands.py:737 audio/hybrid_commands.py:758
+#: audio/hybrid_commands.py:768 audio/hybrid_commands.py:778
 msgid "Unable to seek track"
 msgstr "Nem lehet nyomot keresni"
 
-#: audio/hybrid_commands.py:715
+#: audio/hybrid_commands.py:716
 msgid "I can not seek this track as the server reports it is a live stream."
 msgstr "Nem tudom keresni ezt a számot, mivel a szerver arról számol be, hogy ez egy élő közvetítés."
 
-#: audio/hybrid_commands.py:724
+#: audio/hybrid_commands.py:725
 msgid "I can not seek this track as the server report that this track does not support seeking."
 msgstr "Nem tudom keresni ezt a számot, mivel a szerver arról számol be, hogy ez a szám nem támogatja a keresést."
 
-#: audio/hybrid_commands.py:737
+#: audio/hybrid_commands.py:738
 msgid "I can not seek the current track while the player is paused."
 msgstr "Nem tudom megkeresni az aktuális számot, amíg a lejátszó szünetel."
 
-#: audio/hybrid_commands.py:765
+#: audio/hybrid_commands.py:759
+msgid "I can not seek the current track to an invalid percentage."
+msgstr ""
+
+#: audio/hybrid_commands.py:769
+msgid "I can not seek the current track past 100%."
+msgstr ""
+
+#: audio/hybrid_commands.py:779
+msgid "I can not seek the current track before 0%."
+msgstr ""
+
+#: audio/hybrid_commands.py:799
 msgid "I have moved the current track forward {number_of_seconds_variable_do_not_translate} seconds to the end of the track."
 msgstr "Előremozdítottam a jelenlegi pályát {number_of_seconds_variable_do_not_translate} másodpercig a pálya végéig."
 
-#: audio/hybrid_commands.py:769
+#: audio/hybrid_commands.py:803
 msgid "I have moved the current track forward {number_of_seconds} seconds to position {timestamp_variable_do_not_translate}."
 msgstr "Előremozdítottam a jelenlegi pályát {number_of_seconds} másodpercek alatt a pozícióig {timestamp_variable_do_not_translate}."
 
-#: audio/hybrid_commands.py:774
+#: audio/hybrid_commands.py:808
 msgid "I have moved the current track back {number_of_seconds_variable_do_not_translate} seconds to the beginning."
 msgstr "Visszahelyeztem az aktuális pályát {number_of_seconds_variable_do_not_translate} másodpercekkel az elejéig."
 
-#: audio/hybrid_commands.py:778
+#: audio/hybrid_commands.py:812
 msgid "I have moved the current track back {number_of_seconds} seconds to position {timestamp_variable_do_not_translate}."
 msgstr "Visszahelyeztem az aktuális pályát {number_of_seconds} másodpercek alatt a pozícióig {timestamp_variable_do_not_translate}."
 
-#: audio/hybrid_commands.py:784
+#: audio/hybrid_commands.py:818
 msgid "I have moved the current track to the beginning."
 msgstr "A jelenlegi pályát áthelyeztem az elejére."
 
-#: audio/hybrid_commands.py:822
+#: audio/hybrid_commands.py:856
 msgid "The history of tracks is currently empty."
 msgstr "A pályák története jelenleg üres."
 
-#: audio/hybrid_commands.py:830
+#: audio/hybrid_commands.py:864
 msgid "Playing previous track: {track_name_variable_do_not_translate}."
 msgstr "Az előző szám lejátszása: {track_name_variable_do_not_translate}."
 

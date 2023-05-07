@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pylav\n"
-"POT-Creation-Date: 2023-03-19 19:14+0000\n"
-"PO-Revision-Date: 2023-03-19 19:14\n"
+"POT-Creation-Date: 2023-05-07 19:17+0000\n"
+"PO-Revision-Date: 2023-05-07 19:17\n"
 "Last-Translator: \n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -582,8 +582,8 @@ msgstr "Jag har anslutit till {channel_name_variable_do_not_translate}."
 #: audio/hybrid_commands.py:430 audio/hybrid_commands.py:457
 #: audio/hybrid_commands.py:509 audio/hybrid_commands.py:548
 #: audio/hybrid_commands.py:586 audio/hybrid_commands.py:644
-#: audio/hybrid_commands.py:695 audio/hybrid_commands.py:704
-#: audio/hybrid_commands.py:813
+#: audio/hybrid_commands.py:696 audio/hybrid_commands.py:705
+#: audio/hybrid_commands.py:847
 msgid "I am not currently playing anything on this server."
 msgstr "Jag spelar för närvarande ingenting på den här servern."
 
@@ -659,48 +659,61 @@ msgstr "Jag har blivit tillsagd att begränsa den maximala volymen till {max_vol
 msgid "I have set the player volume to {volume_variable_do_not_translate}%."
 msgstr "Jag har ställt in spelarvolymen på {volume_variable_do_not_translate}%."
 
-#: audio/hybrid_commands.py:714 audio/hybrid_commands.py:723
-#: audio/hybrid_commands.py:736
+#: audio/hybrid_commands.py:715 audio/hybrid_commands.py:724
+#: audio/hybrid_commands.py:737 audio/hybrid_commands.py:758
+#: audio/hybrid_commands.py:768 audio/hybrid_commands.py:778
 msgid "Unable to seek track"
 msgstr "Det går inte att söka spår"
 
-#: audio/hybrid_commands.py:715
+#: audio/hybrid_commands.py:716
 msgid "I can not seek this track as the server reports it is a live stream."
 msgstr "Jag kan inte söka detta spår eftersom servern rapporterar att det är en livestream."
 
-#: audio/hybrid_commands.py:724
+#: audio/hybrid_commands.py:725
 msgid "I can not seek this track as the server report that this track does not support seeking."
 msgstr "Jag kan inte söka detta spår eftersom servern rapporterar att det här spåret inte stöder sökning."
 
-#: audio/hybrid_commands.py:737
+#: audio/hybrid_commands.py:738
 msgid "I can not seek the current track while the player is paused."
 msgstr "Jag kan inte söka det aktuella spåret medan spelaren är pausad."
 
-#: audio/hybrid_commands.py:765
+#: audio/hybrid_commands.py:759
+msgid "I can not seek the current track to an invalid percentage."
+msgstr ""
+
+#: audio/hybrid_commands.py:769
+msgid "I can not seek the current track past 100%."
+msgstr ""
+
+#: audio/hybrid_commands.py:779
+msgid "I can not seek the current track before 0%."
+msgstr ""
+
+#: audio/hybrid_commands.py:799
 msgid "I have moved the current track forward {number_of_seconds_variable_do_not_translate} seconds to the end of the track."
 msgstr "Jag har flyttat fram nuvarande spår {number_of_seconds_variable_do_not_translate} sekunder till slutet av spåret."
 
-#: audio/hybrid_commands.py:769
+#: audio/hybrid_commands.py:803
 msgid "I have moved the current track forward {number_of_seconds} seconds to position {timestamp_variable_do_not_translate}."
 msgstr "Jag har flyttat fram nuvarande spår {number_of_seconds} sekunder till position {timestamp_variable_do_not_translate}."
 
-#: audio/hybrid_commands.py:774
+#: audio/hybrid_commands.py:808
 msgid "I have moved the current track back {number_of_seconds_variable_do_not_translate} seconds to the beginning."
 msgstr "Jag har flyttat tillbaka det aktuella spåret {number_of_seconds_variable_do_not_translate} sekunder till början."
 
-#: audio/hybrid_commands.py:778
+#: audio/hybrid_commands.py:812
 msgid "I have moved the current track back {number_of_seconds} seconds to position {timestamp_variable_do_not_translate}."
 msgstr "Jag har flyttat tillbaka det aktuella spåret {number_of_seconds} sekunder till position {timestamp_variable_do_not_translate}."
 
-#: audio/hybrid_commands.py:784
+#: audio/hybrid_commands.py:818
 msgid "I have moved the current track to the beginning."
 msgstr "Jag har flyttat det nuvarande spåret till början."
 
-#: audio/hybrid_commands.py:822
+#: audio/hybrid_commands.py:856
 msgid "The history of tracks is currently empty."
 msgstr "Spårens historia är för närvarande tom."
 
-#: audio/hybrid_commands.py:830
+#: audio/hybrid_commands.py:864
 msgid "Playing previous track: {track_name_variable_do_not_translate}."
 msgstr "Spelar föregående spår: {track_name_variable_do_not_translate}."
 
