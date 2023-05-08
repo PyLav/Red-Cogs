@@ -236,7 +236,7 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
                 emptypause_timer=0,  # Supported in PyLav
                 max_volume=150,  # Supported in PyLav
                 shuffle=None,  # Supported in PyLav
-                volume=100,  # Supported in PyLav
+                volume=25,  # Supported in PyLav
                 dj_enabled=False,  # Supported in PyLav
                 dj_role=None,  # Supported in PyLav
             )
