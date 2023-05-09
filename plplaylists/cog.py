@@ -161,6 +161,7 @@ class PyLavPlaylists(
                 artwork = tracks_response.data.pluginInfo.artworkUrl
                 name = name or tracks_response.data.info.name
             else:
+                artwork = None
                 tracks = []
                 name = name or f"{context.message.id}"
             url = url.query_identifier

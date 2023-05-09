@@ -831,7 +831,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
 
         if isinstance(possible_values[0], int):
             value = int(value)
-            if value not in range(possible_values[0], possible_values[0] + 1):
+            if value not in range(possible_values[0], possible_values[1] + 1):
                 await context.send(
                     embed=await context.pylav.construct_embed(
                         description=_(
