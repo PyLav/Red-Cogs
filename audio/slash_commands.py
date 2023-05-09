@@ -176,7 +176,3 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN):
                 )
             )
         return choices
-
-    @slash_search.error
-    async def slash_search_error(self, interaction: DISCORD_INTERACTION_TYPE, error: Exception):
-        pass
