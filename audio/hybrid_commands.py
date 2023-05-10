@@ -9,6 +9,7 @@ import discord
 from discord import app_commands
 from redbot.core import commands
 from redbot.core.i18n import Translator
+from redbot.core.utils.chat_formatting import humanize_list
 
 from pylav.core.context import PyLavContext
 from pylav.extension.red.ui.menus.queue import QueueMenu
@@ -127,7 +128,9 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             await player.add(track=track, requester=context.author.id)
             if not (player.is_active or player.queue.empty()):
                 await player.next(requester=context.author)
-            await self._process_play_message(context, track, 1)
+            query = await track.query()
+            queries = [] if query is None else [query]
+            await self._process_play_message(context, track, 1, queries)
             return
         queries = [await Query.from_string(qf) for q in query.split("\n") if (qf := q.strip("<>").strip())]
         total_tracks_enqueue = 0
@@ -139,22 +142,61 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         if not (player.is_active or player.queue.empty()):
             await player.next(requester=context.author)
 
-        await self._process_play_message(context, single_track, total_tracks_enqueue)
+        await self._process_play_message(context, single_track, total_tracks_enqueue, queries)
 
-    async def _process_play_message(self, context, single_track, total_tracks_enqueue):
+    async def _process_play_message(self, context, single_track, total_tracks_enqueue, queries):
         artwork = None
         match total_tracks_enqueue:
             case 1:
-                description = _("{track_name_variable_do_not_translate} enqueued.").format(
-                    track_name_variable_do_not_translate=await single_track.get_track_display_name(with_url=True)
-                )
+                if len(queries) == 1:
+                    description = _(
+                        "{track_name_variable_do_not_translate} enqueued for {service_variable_do_not_translate}."
+                    ).format(
+                        service_variable_do_not_translate=queries[0].source,
+                        track_name_variable_do_not_translate=await single_track.get_track_display_name(with_url=True),
+                    )
+                elif len(queries) > 1:
+                    description = _(
+                        "{track_name_variable_do_not_translate} enqueued for {services_variable_do_not_translate}."
+                    ).format(
+                        services_variable_do_not_translate=humanize_list([q.source for q in queries]),
+                        track_name_variable_do_not_translate=await single_track.get_track_display_name(with_url=True),
+                    )
+                else:
+                    description = _("{track_name_variable_do_not_translate} enqueued.").format(
+                        track_name_variable_do_not_translate=await single_track.get_track_display_name(with_url=True)
+                    )
                 artwork = await single_track.artworkUrl()
             case 0:
-                description = _("No tracks were found for your query.")
+                if len(queries) == 1:
+                    description = _(
+                        "No tracks were found for your query on {service_variable_do_not_translate}."
+                    ).format(service_variable_do_not_translate=queries[0].source)
+                elif len(queries) > 1:
+                    description = _(
+                        "No tracks were found for your queries on {services_variable_do_not_translate}."
+                    ).format(services_variable_do_not_translate=humanize_list([q.source for q in queries]))
+                else:
+                    description = _("No tracks were found for your query.")
             case __:
-                description = _("{number_of_tracks_variable_do_not_translate} tracks enqueued.").format(
-                    number_of_tracks_variable_do_not_translate=total_tracks_enqueue
-                )
+                if len(queries) == 1:
+                    description = _(
+                        "{number_of_tracks_variable_do_not_translate} tracks enqueued for {service_variable_do_not_translate}."
+                    ).format(
+                        service_variable_do_not_translate=queries[0].source,
+                        number_of_tracks_variable_do_not_translate=total_tracks_enqueue,
+                    )
+                elif len(queries) > 1:
+                    description = _(
+                        "{number_of_tracks_variable_do_not_translate} tracks enqueued for {services_variable_do_not_translate}."
+                    ).format(
+                        services_variable_do_not_translate=humanize_list([q.source for q in queries]),
+                        number_of_tracks_variable_do_not_translate=total_tracks_enqueue,
+                    )
+                else:
+                    description = _("{number_of_tracks_variable_do_not_translate} tracks enqueued.").format(
+                        number_of_tracks_variable_do_not_translate=total_tracks_enqueue
+                    )
         await context.send(
             embed=await self.pylav.construct_embed(
                 description=description,
