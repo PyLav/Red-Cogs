@@ -215,7 +215,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         total_tracks_enqueue += count
         if count:
             if count == 1:
-                await player.add(requester=context.author.id, track=successful[0])
+                await player.add(requester=context.author.id, track=single_track)
             else:
                 await player.bulk_add(requester=context.author.id, tracks_and_queries=successful)
         return single_track, total_tracks_enqueue
