@@ -24,19 +24,13 @@ About Cogs
 * Cogs with version 1.0.0rc0 are considered finished and stable bar feature requests.
 * Cogs under version 1.0.0 are considered under development and may change without notice.
 
-Installation
----------------------------
-To add the cogs to your Red instance run:
-- `[p]repo add PyLav https://github.com/PyLav/Red-Cogs`.
-- `[p]cog install PyLav <Package Name>`
-- `[p]load <Package Name>`
-
 Documentation
 ---------------------------
 
 Getting Started
 -------------------------------------
-Follow [PyLav Setup](https://github.com/PyLav/PyLav/blob/develop/SETUP.md)
+> **Warning**
+> Make sure to follow [PyLav Setup](https://github.com/PyLav/PyLav/blob/develop/SETUP.md)
 
 
 If you already have a Red instance with PyLav setup then you can do the following
@@ -46,29 +40,7 @@ If you already have a Red instance with PyLav setup then you can do the followin
 [p]cog install PyLav audio
 [p]load audio
 ```
-------------------------------------
-System Requirements
-------------------------------------
-With a locally hosted Postgres server and locally hosted/managed lavalink node (**recommended - Best performance**):
-- CPU: 3 cores or more
-- RAM: 4GB or more
-- Disk Space: 10GB or more (NVME Ideally, SSD OK)
 
-With a locally hosted Postgres server and externally hosted lavalink node (Okay performance):
-- CPU: 2 cores or more
-- RAM: 3GB or more
-- Disk Space: 10GB or more (NVME Ideally, SSD OK)
-
-With an externally hosted Postgres server and locally hosted/managed lavalink node (Poor performance):
-- CPU: 2 cores or more
-- RAM: 2GB or more
-- Disk Space: 10GB or more (SSD)
-
-With an externally hosted Postgres server and externally hosted lavalink node (Worst performance):
-- CPU: 1 cores or more
-- RAM: 1GB or more
-- Disk Space: 10GB or more (SSD)
-------------------------------------
 Translations
 ------------------------------------
 You can help translating the project into your language here:
