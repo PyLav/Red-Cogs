@@ -9,7 +9,7 @@ from pathlib import Path
 
 import discord
 from discord import app_commands
-from discord.app_commands import Choice
+from discord.app_commands import AppCommandError, CheckFailure, Choice, CommandOnCooldown, Cooldown
 from rapidfuzz import fuzz
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
@@ -41,6 +41,8 @@ async def cache_filled(interaction: DISCORD_INTERACTION_TYPE) -> bool:
         return False
     if not (cache := rgetattr(cog, "pylav.local_tracks_cache", None)):
         return False
+    if not cache.is_ready:
+        raise CommandOnCooldown(Cooldown(1, 1), 60)
     return cache.is_ready
 
 
@@ -250,3 +252,13 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
                 )
             )
         return entries
+
+    @slash_local.error
+    async def slash_local_error(self, interaction: DISCORD_INTERACTION_TYPE, error: AppCommandError):
+        if isinstance(error, CheckFailure):
+            if not await cache_filled(interaction):
+                await self.bot.tree._send_from_interaction(
+                    interaction, _("The local track cache is currently being built, try again later.")
+                )
+                return
+        await self.bot.tree.on_error(error, interaction)
