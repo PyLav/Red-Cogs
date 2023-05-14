@@ -160,10 +160,11 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN):
         node = interaction.client.pylav.get_my_node()
         if node is None:
             node = await interaction.client.pylav.node_manager.find_best_node(feature=feature)
+        player = interaction.client.pylav.get_player(interaction.guild.id)
 
         for track in tracks:
             track = await Track.build_track(
-                node=node, data=track, query=original_query, requester=interaction.user.id, player_instance=None
+                node=node, data=track, query=original_query, requester=interaction.user.id, player_instance=player
             )
             if track is None:
                 continue

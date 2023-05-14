@@ -823,7 +823,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             if seek == 0:
                 seek_ms = 0
             else:
-                seek_ms = (await context.player.fetch_position()) + seek * 1000
+                seek_ms = (await context.player.position()) + seek * 1000
         except ValueError:
             if seek[-1] == "%":
                 try:
@@ -859,7 +859,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                     )
                     return
                 seek_ms = await context.player.current.duration() * (seek / 100)
-                seek = -round(((await context.player.fetch_position()) - seek_ms) / 1000)
+                seek = -round(((await context.player.position()) - seek_ms) / 1000)
             # Taken from https://github.com/Cog-Creators/Red-DiscordBot/blob/ec55622418810731e1ee2ede1569f81f9bddeeec/redbot/cogs/audio/core/utilities/miscellaneous.py#L28
             elif (match := _RE_TIME_CONVERTER.match(seek)) is not None:
                 hr = int(match.group(1)) if match.group(1) else 0

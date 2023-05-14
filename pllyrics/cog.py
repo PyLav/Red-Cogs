@@ -384,7 +384,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
             sleep_duration = 0
             message_content = ""
             start_point = chunk[0].start
-            if start_point < (player.estimated_position - 5000):
+            if start_point < (await player.position() - 5000):
                 continue
             for lyric in chunk:
                 message_content += f"{lyric.text}\n"
