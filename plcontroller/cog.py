@@ -477,6 +477,7 @@ class PyLavController(
                     messageable=context,
                 ),
                 ephemeral=True,
+                file=await context.player.current.get_embedded_artwork(),
             )
         await context.player.skip(requester=context.author)
 
@@ -601,6 +602,7 @@ class PyLavController(
                 messageable=context,
             ),
             ephemeral=True,
+            file=await context.player.current.get_embedded_artwork(),
         )
 
     async def prepare_channel(self, channel: discord.TextChannel | discord.Thread | discord.VoiceChannel):

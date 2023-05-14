@@ -146,6 +146,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
 
     async def _process_play_message(self, context, single_track, total_tracks_enqueue, queries):
         artwork = None
+        file = None
         match total_tracks_enqueue:
             case 1:
                 if len(queries) == 1:
@@ -167,6 +168,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                         track_name_variable_do_not_translate=await single_track.get_track_display_name(with_url=True)
                     )
                 artwork = await single_track.artworkUrl()
+                file = await single_track.get_embedded_artwork()
             case 0:
                 if len(queries) == 1:
                     description = _(
@@ -204,6 +206,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                 messageable=context,
             ),
             ephemeral=True,
+            file=file,
         )
 
     async def _process_play_queries(self, context, queries, player, single_track, total_tracks_enqueue):
@@ -352,8 +355,8 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                 ephemeral=True,
             )
             return
-        current_embed = await context.player.get_currently_playing_message(messageable=context)
-        await context.send(embed=current_embed, ephemeral=True)
+        kwargs = await context.player.get_currently_playing_message(messageable=context)
+        await context.send(ephemeral=True, **kwargs)
 
     @commands.hybrid_command(
         name="skip",
@@ -390,6 +393,7 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                     messageable=context,
                 ),
                 ephemeral=True,
+                file=await context.player.current.get_embedded_artwork(),
             )
         await context.player.skip(requester=context.author)
 
@@ -951,4 +955,5 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
                 messageable=context,
             ),
             ephemeral=True,
+            file=await context.player.current.get_embedded_artwork(),
         )

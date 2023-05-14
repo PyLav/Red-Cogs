@@ -152,6 +152,7 @@ class PyLavRadio(DISCORD_COG_TYPE_MIXIN):
                     messageable=context,
                 ),
                 ephemeral=True,
+                file=await single_track.get_embedded_artwork(),
             )
             await station.click()
         else:

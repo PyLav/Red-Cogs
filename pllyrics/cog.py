@@ -331,7 +331,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                         messageable=channel,
                     )
                 )
-            await channel.send(embeds=embed_list)
+            await channel.send(embeds=embed_list, file=await track.get_embedded_artwork())
         else:
             translated_message = (
                 self._get_translated_message_contents(exact, show_author, None)
@@ -351,7 +351,8 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                         provider_variable_do_not_translate=response.provider
                     ),
                     messageable=channel,
-                )
+                ),
+                file=await track.get_embedded_artwork(),
             )
 
     async def _send_timed_lyrics(self, track: Track, channel_id: int, guild: discord.Guild) -> None:
