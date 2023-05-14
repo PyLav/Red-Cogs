@@ -216,7 +216,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
             await channel.send(
                 embed=await self.pylav.construct_embed(
                     description=_(
-                        "The Flowery API, which I use to find lyrics, has returned an error while looking for the lyrics for this song {error_variable_do_not_translate}."
+                        "The Flowery API, which I use to find lyrics, has returned an error while looking for the lyrics for this song: {error_variable_do_not_translate}."
                     ).format(error_variable_do_not_translate=response.error),
                     messageable=channel,
                 ),
