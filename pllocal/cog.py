@@ -9,7 +9,7 @@ from pathlib import Path
 
 import discord
 from discord import app_commands
-from discord.app_commands import AppCommandError, CheckFailure, Choice, CommandOnCooldown, Cooldown
+from discord.app_commands import AppCommandError, Choice, CommandOnCooldown, Cooldown
 from rapidfuzz import fuzz
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
@@ -33,8 +33,6 @@ REGEX_FILE_NAME = re.compile(r"[.\-_/\\ ]+")
 
 
 async def cache_filled(interaction: DISCORD_INTERACTION_TYPE) -> bool:
-    if not interaction.response.is_done():
-        await interaction.response.defer(ephemeral=True)
     context = await interaction.client.get_context(interaction)
     cog: PyLavLocalFiles = context.bot.get_cog("PyLavLocalFiles")  # type: ignore
     if not cog:
@@ -198,7 +196,8 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
         single_track = successful[0] if successful else None
         if not (player.is_active or player.queue.empty()):
             await player.next(requester=author)
-
+        file = discord.utils.MISSING
+        thumbnail = discord.utils.MISSING
         match count:
             case 0:
                 description = _("No tracks were found for your query.")
@@ -206,6 +205,8 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
                 description = _("{track_name_variable_do_not_translate} enqueued.").format(
                     track_name_variable_do_not_translate=await single_track.get_track_display_name(with_url=True)
                 )
+                file = await single_track.get_embedded_artwork()
+                thumbnail = await single_track.artworkUrl() or discord.utils.MISSING
             case __:
                 description = _("I have enqueued {track_count_variable_do_not_translate} tracks.").format(
                     track_count_variable_do_not_translate=count
@@ -214,8 +215,10 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
             embed=await self.pylav.construct_embed(
                 description=description,
                 messageable=interaction,
+                thumbnail=thumbnail,
             ),
             ephemeral=True,
+            file=file,
         )
 
     @slash_local.autocomplete("entry")
@@ -255,8 +258,9 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
 
     @slash_local.error
     async def slash_local_error(self, interaction: DISCORD_INTERACTION_TYPE, error: AppCommandError):
-        if isinstance(error, CheckFailure):
-            if not await cache_filled(interaction):
+        if isinstance(error, CommandOnCooldown):
+            cache = rgetattr(self.bot, "pylav.local_tracks_cache", None)
+            if cache and not getattr(cache, "is_ready", False):
                 await self.bot.tree._send_from_interaction(
                     interaction, _("The local track cache is currently being built, try again later.")
                 )
