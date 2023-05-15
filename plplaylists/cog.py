@@ -30,7 +30,6 @@ from pylav.helpers.discord.converters.playlists import PlaylistConverter
 from pylav.helpers.discord.converters.queries import QueryPlaylistConverter
 from pylav.helpers.format.ascii import EightBitANSI
 from pylav.helpers.format.strings import shorten_string
-from pylav.nodes.api.responses import rest_api
 from pylav.nodes.api.responses.track import Track as Track_namespace_conflict
 from pylav.players.query.obj import Query
 from pylav.players.tracks.obj import Track
@@ -150,20 +149,21 @@ class PyLavPlaylists(
         name = name or f"{context.message.id}"
         if url:
             tracks_response = await context.pylav.get_tracks(url, player=context.player)
-            if isinstance(tracks_response, rest_api.TrackResponse):
-                tracks = [tracks_response.data]
-                artwork = tracks_response.data.pluginInfo.artworkUrl
-            elif isinstance(tracks_response, rest_api.SearchResponse):
-                tracks = tracks_response.data
-                artwork = None
-            elif isinstance(tracks_response, rest_api.PlaylistResponse):
-                tracks = tracks_response.data.tracks
-                artwork = tracks_response.data.pluginInfo.artworkUrl
-                name = name or tracks_response.data.info.name
-            else:
-                artwork = None
-                tracks = []
-                name = name or f"{context.message.id}"
+            match tracks_response.loadType:
+                case "track":
+                    tracks = [tracks_response.data]
+                    artwork = tracks_response.data.pluginInfo.artworkUrl
+                case "search":
+                    tracks = tracks_response.data
+                    artwork = None
+                case "playlist":
+                    tracks = tracks_response.data.tracks
+                    artwork = tracks_response.data.pluginInfo.artworkUrl
+                    name = name or tracks_response.data.info.name
+                case __:
+                    artwork = None
+                    tracks = []
+                    name = name or f"{context.message.id}"
             url = url.query_identifier
         else:
             artwork = None
@@ -432,14 +432,15 @@ class PyLavPlaylists(
                     response = await self.pylav.get_tracks(
                         *[await Query.from_string(at) for at in playlist_prompt.remove_tracks], player=context.player
                     )
-                    if isinstance(response, rest_api.TrackResponse):
-                        tracks = [response.data]
-                    elif isinstance(response, rest_api.SearchResponse):
-                        tracks = response.data
-                    elif isinstance(response, rest_api.PlaylistResponse):
-                        tracks = response.data.tracks
-                    else:
-                        tracks = []
+                    match response.loadType:
+                        case "track":
+                            tracks = [response.data]
+                        case "search":
+                            tracks = response.data
+                        case "playlist":
+                            tracks = response.data.tracks
+                        case __:
+                            tracks = []
                     tracks = typing.cast(collections.deque[Track_namespace_conflict], tracks)
                     for t in tracks:
                         b64 = t.encoded
@@ -451,14 +452,15 @@ class PyLavPlaylists(
                         *[await Query.from_string(at) for at in playlist_prompt.add_tracks],
                         player=context.player,
                     )
-                    if isinstance(response, rest_api.TrackResponse):
-                        tracks = [response.data]
-                    elif isinstance(response, rest_api.SearchResponse):
-                        tracks = response.data
-                    elif isinstance(response, rest_api.PlaylistResponse):
-                        tracks = response.data.tracks
-                    else:
-                        tracks = []
+                    match response.loadType:
+                        case "track":
+                            tracks = [response.data]
+                        case "search":
+                            tracks = response.data
+                        case "playlist":
+                            tracks = response.data.tracks
+                        case __:
+                            tracks = []
                     if tracks := typing.cast(collections.deque[Track_namespace_conflict], tracks):
                         await playlist.add_track(list(tracks))
                         changed = True
@@ -469,14 +471,15 @@ class PyLavPlaylists(
                     response = await self.pylav.get_tracks(
                         await Query.from_string(url), bypass_cache=True, player=context.player
                     )
-                    if isinstance(response, rest_api.TrackResponse):
-                        tracks = [response.data]
-                    elif isinstance(response, rest_api.SearchResponse):
-                        tracks = response.data
-                    elif isinstance(response, rest_api.PlaylistResponse):
-                        tracks = response.data.tracks
-                    else:
-                        tracks = []
+                    match response.loadType:
+                        case "track":
+                            tracks = [response.data]
+                        case "search":
+                            tracks = response.data
+                        case "playlist":
+                            tracks = response.data.tracks
+                        case __:
+                            tracks = []
                     if not tracks:
                         await context.send(
                             embed=await context.pylav.construct_embed(

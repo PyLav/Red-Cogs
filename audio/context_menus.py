@@ -9,7 +9,6 @@ from redbot.core.i18n import Translator, cog_i18n
 from pylav.constants.regex import SOURCE_INPUT_MATCH_MERGED
 from pylav.extension.red.utils.decorators import is_dj_logic
 from pylav.extension.red.utils.validators import valid_query_attachment
-from pylav.nodes.api.responses import rest_api
 from pylav.players.query.obj import Query
 from pylav.type_hints.bot import DISCORD_COG_TYPE_MIXIN, DISCORD_INTERACTION_TYPE
 
@@ -226,14 +225,15 @@ class ContextMenus(DISCORD_COG_TYPE_MIXIN):
                 await Query.from_string(search_string),
                 player=interaction.client.pylav.get_player(interaction.guild.id),
             )
-            if isinstance(response, rest_api.TrackResponse):
-                tracks = [response.data]
-            elif isinstance(response, rest_api.SearchResponse):
-                tracks = response.data
-            elif isinstance(response, rest_api.PlaylistResponse):
-                tracks = response.data.tracks
-            else:
-                tracks = []
+            match response.loadType:
+                case "track":
+                    tracks = [response.data]
+                case "search":
+                    tracks = response.data
+                case "playlist":
+                    tracks = response.data.tracks
+                case __:
+                    tracks = []
             if not tracks:
                 await interaction.followup.send(
                     embed=await self.pylav.construct_embed(
