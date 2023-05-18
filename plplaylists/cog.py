@@ -19,6 +19,7 @@ from tabulate import tabulate
 from pylav.constants.playlists import BUNDLED_PLAYLIST_IDS
 from pylav.core.client import Client
 from pylav.core.context import PyLavContext
+from pylav.exceptions.client import PyLavInvalidArgumentsException
 from pylav.exceptions.playlist import InvalidPlaylistException
 from pylav.extension.red.ui.menus.generic import PaginatingMenu
 from pylav.extension.red.ui.menus.playlist import PlaylistCreationFlow, PlaylistManageFlow
@@ -841,6 +842,154 @@ class PyLavPlaylists(
                 ).format(saved_playlists_variable_do_not_translate=humanize_list(saved_playlists)),
             ),
             ephemeral=True,
+        )
+
+    @slash_playlist.command(name="mix", description=_("Play a YouTube mix playlist from a input"))
+    @app_commands.describe(
+        video=_("The YouTube video ID to play a mix from"),
+        playlist=_("The YouTube playlist ID to play a mix from"),
+        user=_("The YouTube user ID to play a mix from"),
+        channel=_("The YouTube channel ID to play a mix from"),
+    )
+    @app_commands.guild_only()
+    @invoker_is_dj(slash=True)
+    async def slash_playlist_mix(
+        self,
+        context: DISCORD_INTERACTION_TYPE,
+        video: str = None,
+        playlist: str = None,
+        user: str = None,
+        channel: str = None,
+    ):
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+        if not any([video, playlist, user, channel]):
+            await context.send(
+                embed=await self.pylav.construct_embed(
+                    description=_("You need to give me a parameter to use."),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+            return
+        player = self.pylav.get_player(context.guild.id)
+        if player is None:
+            config = self.pylav.player_config_manager.get_config(context.guild.id)
+            if (channel := context.guild.get_channel_or_thread(await config.fetch_forced_channel_id())) is None:
+                channel = rgetattr(context.author, "voice.channel", None)
+                if not channel:
+                    await context.send(
+                        embed=await self.pylav.construct_embed(
+                            description=_("You must be in a voice channel, so I can connect to it."),
+                            messageable=context,
+                        ),
+                        ephemeral=True,
+                    )
+                    return
+            if not (
+                (permission := channel.permissions_for(context.guild.me)) and permission.connect and permission.speak
+            ):
+                await context.send(
+                    embed=await self.pylav.construct_embed(
+                        description=_(
+                            "I do not have permission to connect or speak in {channel_name_variable_do_not_translate}."
+                        ).format(channel_name_variable_do_not_translate=channel.mention),
+                        messageable=context,
+                    ),
+                    ephemeral=True,
+                )
+                return
+            player = await self.pylav.connect_player(channel=channel, requester=context.author)
+        try:
+            query = await Query.from_string(
+                await self.pylav.generate_mix_playlist(
+                    video_id=video, playlist_id=playlist, user_id=user, channel_id=channel
+                )
+            )
+        except PyLavInvalidArgumentsException as e:
+            await context.send(
+                embed=await self.pylav.construct_embed(
+                    description=str(e),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+            return
+        total_tracks_enqueue = 0
+        single_track = None
+        single_track, total_tracks_enqueue = await self._process_play_queries(
+            context, [query], player, single_track, total_tracks_enqueue
+        )
+        if not (player.is_active or player.queue.empty()):
+            await player.next(requester=context.author)
+
+        await self._process_play_message(context, single_track, total_tracks_enqueue, [query])
+
+    async def _process_play_message(self, context, single_track, total_tracks_enqueue, queries):
+        artwork = None
+        file = None
+        match total_tracks_enqueue:
+            case 1:
+                if len(queries) == 1:
+                    description = _(
+                        "{track_name_variable_do_not_translate} enqueued for {service_variable_do_not_translate}."
+                    ).format(
+                        service_variable_do_not_translate=queries[0].source,
+                        track_name_variable_do_not_translate=await single_track.get_track_display_name(with_url=True),
+                    )
+                elif len(queries) > 1:
+                    description = _(
+                        "{track_name_variable_do_not_translate} enqueued for {services_variable_do_not_translate}."
+                    ).format(
+                        services_variable_do_not_translate=humanize_list([q.source for q in queries]),
+                        track_name_variable_do_not_translate=await single_track.get_track_display_name(with_url=True),
+                    )
+                else:
+                    description = _("{track_name_variable_do_not_translate} enqueued.").format(
+                        track_name_variable_do_not_translate=await single_track.get_track_display_name(with_url=True)
+                    )
+                artwork = await single_track.artworkUrl()
+                file = await single_track.get_embedded_artwork()
+            case 0:
+                if len(queries) == 1:
+                    description = _(
+                        "No tracks were found for your query on {service_variable_do_not_translate}."
+                    ).format(service_variable_do_not_translate=queries[0].source)
+                elif len(queries) > 1:
+                    description = _(
+                        "No tracks were found for your queries on {services_variable_do_not_translate}."
+                    ).format(services_variable_do_not_translate=humanize_list([q.source for q in queries]))
+                else:
+                    description = _("No tracks were found for your query.")
+            case __:
+                if len(queries) == 1:
+                    description = _(
+                        "{number_of_tracks_variable_do_not_translate} tracks enqueued for {service_variable_do_not_translate}."
+                    ).format(
+                        service_variable_do_not_translate=queries[0].source,
+                        number_of_tracks_variable_do_not_translate=total_tracks_enqueue,
+                    )
+                elif len(queries) > 1:
+                    description = _(
+                        "{number_of_tracks_variable_do_not_translate} tracks enqueued for {services_variable_do_not_translate}."
+                    ).format(
+                        services_variable_do_not_translate=humanize_list([q.source for q in queries]),
+                        number_of_tracks_variable_do_not_translate=total_tracks_enqueue,
+                    )
+                else:
+                    description = _("{number_of_tracks_variable_do_not_translate} tracks enqueued.").format(
+                        number_of_tracks_variable_do_not_translate=total_tracks_enqueue
+                    )
+        await context.send(
+            embed=await self.pylav.construct_embed(
+                description=description,
+                thumbnail=artwork,
+                messageable=context,
+            ),
+            ephemeral=True,
+            file=file,
         )
 
     @commands.command(name="__command_playlist_play", hidden=True)
