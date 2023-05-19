@@ -672,7 +672,7 @@ class PyLavController(
         self, channel: discord.TextChannel | discord.Thread | discord.VoiceChannel
     ) -> discord.Message:
         return await channel.send(
-            embed=await self._view_cache[channel.id].get_now_playing_embed(), view=self._view_cache[channel.id]
+            view=self._view_cache[channel.id], **(await self._view_cache[channel.id].get_now_playing_embed())
         )
 
     @commands.Cog.listener()
