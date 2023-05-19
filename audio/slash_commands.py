@@ -30,6 +30,7 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN):
     @app_commands.command(
         name="search",
         description=shorten_string(max_length=100, string=_("Search for a track, then play the selected response.")),
+        extras={"red_force_enable": True},
     )
     @app_commands.describe(
         source=shorten_string(max_length=100, string=_("Where to search in")),
@@ -133,7 +134,16 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN):
                     value="FqgqQW21tQ@#1g2fasf2",
                 )
             ]
-        tracks = response.tracks[:25]
+        match response.loadType:
+            case "track":
+                tracks = [response.data]
+            case "search":
+                tracks = response.data
+            case "playlist":
+                tracks = response.data.tracks
+            case __:
+                tracks = []
+        tracks = tracks[:25]
         if not tracks:
             return [
                 Choice(
@@ -150,10 +160,11 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN):
         node = interaction.client.pylav.get_my_node()
         if node is None:
             node = await interaction.client.pylav.node_manager.find_best_node(feature=feature)
+        player = interaction.client.pylav.get_player(interaction.guild.id)
 
         for track in tracks:
             track = await Track.build_track(
-                node=node, data=track, query=original_query, requester=interaction.user.id, player_instance=None
+                node=node, data=track, query=original_query, requester=interaction.user.id, player_instance=player
             )
             if track is None:
                 continue
@@ -166,7 +177,3 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN):
                 )
             )
         return choices
-
-    @slash_search.error
-    async def slash_search_error(self, interaction: DISCORD_INTERACTION_TYPE, error: Exception):
-        pass

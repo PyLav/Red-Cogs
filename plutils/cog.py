@@ -8,6 +8,7 @@ from io import StringIO
 from pathlib import Path
 
 import discord
+from discord import AppCommandType
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import box, humanize_number, inline, pagify
@@ -107,10 +108,34 @@ class PyLavUtils(DISCORD_COG_TYPE_MIXIN):
         def rich_walk_commands(group: list, tree: Tree):
             for command in group:
                 if isinstance(command, discord.app_commands.Group):
-                    branch = tree.add(command.name, style="cyan")
+                    branch = tree.add(command.name, style="green")
                     rich_walk_commands(command.commands, branch)
-                else:
+                elif isinstance(command, discord.app_commands.Command):
                     tree.add(command.name, style="not bold white")
+                elif isinstance(command, discord.app_commands.ContextMenu):
+                    if command.type == AppCommandType.user:
+                        tree.add(
+                            _("{command_name_do_not_translate} # User menu").format(
+                                command_name_do_not_translate=command.name
+                            ),
+                            style="not bold cyan",
+                        )
+                    elif command.type == AppCommandType.message:
+                        tree.add(
+                            _("{command_name_do_not_translate} # Message menu").format(
+                                command_name_do_not_translate=command.name
+                            ),
+                            style="not bold magenta",
+                        )
+                    else:
+                        tree.add(
+                            _("{command_name_do_not_translate} # Unknown menu").format(
+                                command_name_do_not_translate=command.name
+                            ),
+                            style="not bold yellow",
+                        )
+                else:
+                    tree.add(command.name, style="not bold red")
 
         all_commands = self.bot.tree.get_commands()
         rich_tree = Tree("Slash Commands", style="bold yellow")

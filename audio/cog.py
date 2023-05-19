@@ -46,10 +46,16 @@ class PyLavPlayer(
             enable_context=False,
         )
         self.context_user_play = discord.app_commands.ContextMenu(
-            name=_("Play from activity"), callback=self._context_user_play, type=AppCommandType.user
+            name=_("Play from activity"),
+            callback=self._context_user_play,
+            type=AppCommandType.user,
+            extras={"red_force_enable": True},
         )
         self.context_message_play = discord.app_commands.ContextMenu(
-            name=_("Play from message"), callback=self._context_message_play, type=AppCommandType.message
+            name=_("Play from message"),
+            callback=self._context_message_play,
+            type=AppCommandType.message,
+            extras={"red_force_enable": True},
         )
         self.bot.tree.add_command(self.context_user_play)
         self.bot.tree.add_command(self.context_message_play)

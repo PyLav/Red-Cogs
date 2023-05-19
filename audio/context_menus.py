@@ -225,7 +225,16 @@ class ContextMenus(DISCORD_COG_TYPE_MIXIN):
                 await Query.from_string(search_string),
                 player=interaction.client.pylav.get_player(interaction.guild.id),
             )
-            if not response.tracks:
+            match response.loadType:
+                case "track":
+                    tracks = [response.data]
+                case "search":
+                    tracks = response.data
+                case "playlist":
+                    tracks = response.data.tracks
+                case __:
+                    tracks = []
+            if not tracks:
                 await interaction.followup.send(
                     embed=await self.pylav.construct_embed(
                         description=_("I could not find any tracks matching {query_variable_do_not_translate}.").format(
@@ -240,7 +249,7 @@ class ContextMenus(DISCORD_COG_TYPE_MIXIN):
             await self.command_play.callback(
                 self,
                 interaction,
-                query=response.tracks[0],
+                query=tracks[0],
             )
         else:
             await interaction.followup.send(

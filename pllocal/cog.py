@@ -9,7 +9,7 @@ from pathlib import Path
 
 import discord
 from discord import app_commands
-from discord.app_commands import Choice
+from discord.app_commands import AppCommandError, Choice, CommandOnCooldown, Cooldown
 from rapidfuzz import fuzz
 from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
@@ -33,11 +33,15 @@ REGEX_FILE_NAME = re.compile(r"[.\-_/\\ ]+")
 
 
 async def cache_filled(interaction: DISCORD_INTERACTION_TYPE) -> bool:
-    if not interaction.response.is_done():
-        await interaction.response.defer(ephemeral=True)
     context = await interaction.client.get_context(interaction)
     cog: PyLavLocalFiles = context.bot.get_cog("PyLavLocalFiles")  # type: ignore
-    return cog.pylav.local_tracks_cache.is_ready
+    if not cog:
+        return False
+    if not (cache := rgetattr(cog, "pylav.local_tracks_cache", None)):
+        return False
+    if not cache.is_ready:
+        raise CommandOnCooldown(Cooldown(1, 1), 60)
+    return cache.is_ready
 
 
 @cog_i18n(_)
@@ -51,7 +55,9 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
         self.bot = bot
 
     async def cog_check(self, ctx: PyLavContext):
-        return self.pylav.local_tracks_cache.is_ready
+        if not (cache := rgetattr(self, "pylav.local_tracks_cache", None)):
+            return False
+        return cache.is_ready
 
     @commands.group(name="pllocalset")
     async def command_pllocalset(self, ctx: PyLavContext):
@@ -112,6 +118,7 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
     @app_commands.command(
         name="local",
         description=shorten_string(max_length=100, string=_("Play a local file or folder, supports partial searching")),
+        extras={"red_force_enable": True},
     )
     @app_commands.describe(
         entry=shorten_string(max_length=100, string=_("The local file or folder to play")),
@@ -189,7 +196,8 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
         single_track = successful[0] if successful else None
         if not (player.is_active or player.queue.empty()):
             await player.next(requester=author)
-
+        file = discord.utils.MISSING
+        thumbnail = discord.utils.MISSING
         match count:
             case 0:
                 description = _("No tracks were found for your query.")
@@ -197,6 +205,8 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
                 description = _("{track_name_variable_do_not_translate} enqueued.").format(
                     track_name_variable_do_not_translate=await single_track.get_track_display_name(with_url=True)
                 )
+                file = await single_track.get_embedded_artwork()
+                thumbnail = await single_track.artworkUrl() or discord.utils.MISSING
             case __:
                 description = _("I have enqueued {track_count_variable_do_not_translate} tracks.").format(
                     track_count_variable_do_not_translate=count
@@ -205,8 +215,10 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
             embed=await self.pylav.construct_embed(
                 description=description,
                 messageable=interaction,
+                thumbnail=thumbnail,
             ),
             ephemeral=True,
+            file=file,
         )
 
     @slash_local.autocomplete("entry")
@@ -243,3 +255,14 @@ class PyLavLocalFiles(DISCORD_COG_TYPE_MIXIN):
                 )
             )
         return entries
+
+    @slash_local.error
+    async def slash_local_error(self, interaction: DISCORD_INTERACTION_TYPE, error: AppCommandError):
+        if isinstance(error, CommandOnCooldown):
+            cache = rgetattr(self.bot, "pylav.local_tracks_cache", None)
+            if cache and not getattr(cache, "is_ready", False):
+                await self.bot.tree._send_from_interaction(
+                    interaction, _("The local track cache is currently being built, try again later.")
+                )
+                return
+        await self.bot.tree.on_error(error, interaction)

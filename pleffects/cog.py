@@ -20,7 +20,7 @@ from pylav.helpers.format.ascii import EightBitANSI
 from pylav.helpers.format.strings import shorten_string
 from pylav.logging import getLogger
 from pylav.players.filters import Equalizer
-from pylav.storage.models.equilizer import Equalizer as EqualizerModel
+from pylav.storage.models.equilizer import Equalizer as Equalizer_namespace_conflict
 from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE_MIXIN, DISCORD_INTERACTION_TYPE
 from pylav.type_hints.dict_typing import JSON_DICT_TYPE
 
@@ -35,7 +35,7 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
 
     __version__ = "1.0.0"
 
-    slash_fx = app_commands.Group(name="fx", description="Apply or remove filters")
+    slash_fx = app_commands.Group(name="fx", description="Apply or remove filters", extras={"red_force_enable": True})
 
     def __init__(self, bot: DISCORD_BOT_TYPE, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -1198,7 +1198,7 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
 
-        eq_model = EqualizerModel(
+        eq_model = Equalizer_namespace_conflict(
             name=name,
             description=description,
             author=context.author.id,
@@ -1269,7 +1269,7 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
         data = context.player.equalizer.to_dict()
         data["name"] = name
         eq = context.player.equalizer.from_dict(data)
-        eq_model = EqualizerModel.from_filter(
+        eq_model = Equalizer_namespace_conflict.from_filter(
             equalizer=eq, context=context, scope=context.guild.id, description=description
         )
         await eq_model.save()

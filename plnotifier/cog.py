@@ -36,7 +36,7 @@ from pylav.events.player import (
     PlayerVolumeChangedEvent,
 )
 from pylav.events.plugins import SegmentSkippedEvent
-from pylav.events.queue import QueueEndEvent, QueueShuffledEvent, QueueTracksRemovedEvent
+from pylav.events.queue import QueueEndEvent, QueueShuffledEvent, QueueTracksAddedEvent, QueueTracksRemovedEvent
 from pylav.events.track import (
     TrackAutoPlayEvent,
     TrackEndEvent,
@@ -45,13 +45,13 @@ from pylav.events.track import (
     TrackResumedEvent,
     TrackSeekEvent,
     TrackSkippedEvent,
-    TracksRequestedEvent,
     TrackStuckEvent,
 )
 from pylav.events.track.track_start import (
     TrackStartAppleMusicEvent,
     TrackStartBandcampEvent,
     TrackStartDeezerEvent,
+    TrackStartEvent,
     TrackStartGCTTSEvent,
     TrackStartGetYarnEvent,
     TrackStartHTTPEvent,
@@ -100,6 +100,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             track_stuck=dict(enabled=True, mention=True),
             track_exception=dict(enabled=True, mention=True),
             track_end=dict(enabled=True, mention=True),
+            track_start=dict(enabled=False, mention=True),
             track_start_youtube_music=dict(enabled=True, mention=True),
             track_start_spotify=dict(enabled=True, mention=True),
             track_start_apple_music=dict(enabled=True, mention=True),
@@ -261,7 +262,10 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
 
     @command_plnotify.command(name="webhook")
     async def command_plnotify_webhook(
-        self, context: PyLavContext, *, channel: discord.TextChannel | discord.VoiceChannel | discord.Thread
+        self,
+        context: PyLavContext,
+        channel: discord.TextChannel | discord.VoiceChannel | discord.Thread,
+        use_thread: bool = True,
     ) -> None:  # sourcery skip: low-code-quality
         """Set the notify channel for the player"""
         if isinstance(context, discord.Interaction):
@@ -280,7 +284,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
                     ephemeral=True,
                 )
                 return
-            if not (
+            if use_thread and not (
                 (permission := channel.permissions_for(context.guild.me)).create_public_threads
                 and permission.send_messages_in_threads
             ):
@@ -300,26 +304,29 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
                     author_variable_do_not_translate=context.author
                 ),
             )
-            existing_thread = None
-            if isinstance(channel, discord.VoiceChannel):
-                existing_thread = channel
+            if not use_thread:
+                existing_thread = None
+                if isinstance(channel, discord.VoiceChannel):
+                    existing_thread = channel
+                else:
+                    for thread in channel.guild.threads:
+                        if thread.parent.id == channel.id and thread.name.startswith("PyLavNotifier"):
+                            existing_thread = thread
+                if not existing_thread:
+                    message = await channel.send(
+                        _("This thread will be used by PyLav to post notifications about the player.")
+                    )
+                    existing_thread = await channel.create_thread(
+                        invitable=False,
+                        name=_("PyLavNotifier"),
+                        message=message,
+                        auto_archive_duration=10080,
+                        reason=_("PyLav Notifier - Requested by {author_variable_do_not_translate}.").format(
+                            author_variable_do_not_translate=context.author
+                        ),
+                    )
             else:
-                for thread in channel.guild.threads:
-                    if thread.parent.id == channel.id:
-                        existing_thread = thread
-            if not existing_thread:
-                message = await channel.send(
-                    _("This thread will be used by PyLav to post notifications about the player.")
-                )
-                existing_thread = await channel.create_thread(
-                    invitable=False,
-                    name=_("PyLavNotifier"),
-                    message=message,
-                    auto_archive_duration=10080,
-                    reason=_("PyLav Notifier - Requested by {author_variable_do_not_translate}.").format(
-                        author_variable_do_not_translate=context.author
-                    ),
-                )
+                existing_thread = channel
             channel = existing_thread
             if old_url := await self._config.guild(context.guild).webhook_url():
                 with contextlib.suppress(discord.HTTPException):
@@ -501,37 +508,37 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
         if not notify:
             return
         match event.reason:
-            case "FINISHED":
+            case "finished":
                 message = _(
                     "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing because the player reached the end of the tracks runtime."
                 ).format(
                     track_variable_do_not_translate=await event.track.get_track_display_name(with_url=True),
                     node_variable_do_not_translate=event.node.name,
                 )
-            case "REPLACED":
+            case "replaced":
                 message = _(
                     "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing because a new track started playing."
                 ).format(
                     track_variable_do_not_translate=await event.track.get_track_display_name(with_url=True),
                     node_variable_do_not_translate=event.node.name,
                 )
-            case "LOAD_FAILED":
+            case "loadFailed":
                 message = _(
                     "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing because it failed to start."
                 ).format(
                     track_variable_do_not_translate=await event.track.get_track_display_name(with_url=True),
                     node_variable_do_not_translate=event.node.name,
                 )
-            case "STOPPED":
+            case "stopped":
                 message = _(
-                    "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing becausethe player was stopped."
+                    "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing because the player was stopped."
                 ).format(
                     track_variable_do_not_translate=await event.track.get_track_display_name(with_url=True),
                     node_variable_do_not_translate=event.node.name,
                 )
             case __:
                 message = _(
-                    "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing becausethe node told it to stop."
+                    "[Node={node_variable_do_not_translate}] {track_variable_do_not_translate} has finished playing because the node told it to stop."
                 ).format(
                     track_variable_do_not_translate=await event.track.get_track_display_name(with_url=True),
                     node_variable_do_not_translate=event.node.name,
@@ -541,6 +548,39 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             await self.pylav.construct_embed(
                 title=_("Track End Event"),
                 description=message,
+                messageable=channel,
+            )
+        )
+
+    @commands.Cog.listener()
+    async def on_pylav_track_start(self, event: TrackStartEvent) -> None:
+        player = event.player
+        await self.pylav.set_context_locale(player.guild)
+        channel = await player.notify_channel()
+        if channel is None:
+            return
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_start", default={"enabled": False, "mention": True}
+        )
+        notify, mention = data["enabled"], data["mention"]
+        if not notify:
+            return
+        if mention:
+            req = event.track.requester or self.bot.user
+            user = req.mention
+        else:
+            user = event.track.requester or self.bot.user
+        self._message_queue[channel].append(
+            await self.pylav.construct_embed(
+                title=_("Track Start Event"),
+                description=_(
+                    "[Node={node_variable_do_not_translate}] Track: {track_variable_do_not_translate} has "
+                    "started playing.\nRequested by: {requester_variable_do_not_translate}"
+                ).format(
+                    track_variable_do_not_translate=await event.track.get_track_display_name(with_url=True),
+                    requester_variable_do_not_translate=user,
+                    node_variable_do_not_translate=event.node.name,
+                ),
                 messageable=channel,
             )
         )
@@ -1391,7 +1431,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
         )
 
     @commands.Cog.listener()
-    async def on_pylav_tracks_requested_event(self, event: TracksRequestedEvent) -> None:
+    async def on_pylav_queue_tracks_added_event(self, event: QueueTracksAddedEvent) -> None:
         player = event.player
         await self.pylav.set_context_locale(player.guild)
         channel = await player.notify_channel()

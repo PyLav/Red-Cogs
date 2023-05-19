@@ -96,9 +96,7 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
                             with_url=True
                         ),
                         estimated_time_variable_do_not_translate=discord.utils.format_dt(
-                            datetime.timedelta(
-                                milliseconds=await player.current.duration() - await player.fetch_position()
-                            )
+                            datetime.timedelta(milliseconds=await player.current.duration() - await player.position())
                             + get_now_utc(),
                             style="R",
                         ),
@@ -221,6 +219,7 @@ class PlayerCommands(DISCORD_COG_TYPE_MIXIN):
                     messageable=context,
                 ),
                 ephemeral=True,
+                file=await single_track.get_embedded_artwork(),
             )
         else:
             await context.send(

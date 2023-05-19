@@ -19,6 +19,7 @@ from tabulate import tabulate
 from pylav.constants.playlists import BUNDLED_PLAYLIST_IDS
 from pylav.core.client import Client
 from pylav.core.context import PyLavContext
+from pylav.exceptions.client import PyLavInvalidArgumentsException
 from pylav.exceptions.playlist import InvalidPlaylistException
 from pylav.extension.red.ui.menus.generic import PaginatingMenu
 from pylav.extension.red.ui.menus.playlist import PlaylistCreationFlow, PlaylistManageFlow
@@ -30,7 +31,7 @@ from pylav.helpers.discord.converters.playlists import PlaylistConverter
 from pylav.helpers.discord.converters.queries import QueryPlaylistConverter
 from pylav.helpers.format.ascii import EightBitANSI
 from pylav.helpers.format.strings import shorten_string
-from pylav.nodes.api.responses.track import Track as LavalinkTrack
+from pylav.nodes.api.responses.track import Track as Track_namespace_conflict
 from pylav.players.query.obj import Query
 from pylav.players.tracks.obj import Track
 from pylav.storage.models.playlist import Playlist
@@ -53,6 +54,7 @@ class PyLavPlaylists(
     slash_playlist = app_commands.Group(
         name="playlist",
         description=shorten_string(max_length=100, string=_("Control PyLav playlists")),
+        extras={"red_force_enable": True},
     )
 
     def __init__(self, bot: DISCORD_BOT_TYPE, *args, **kwargs):
@@ -114,7 +116,7 @@ class PyLavPlaylists(
     @app_commands.guild_only()
     async def slash_playlist_create(
         self, interaction: DISCORD_INTERACTION_TYPE, url: QueryPlaylistConverter = None, *, name: str = None
-    ):
+    ):  # sourcery skip: low-code-quality
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
@@ -145,12 +147,25 @@ class PyLavPlaylists(
             if url:
                 add_queue = False
                 url = await Query.from_string(url)
+        name = name or f"{context.message.id}"
         if url:
             tracks_response = await context.pylav.get_tracks(url, player=context.player)
-            tracks = list(tracks_response.tracks)
+            match tracks_response.loadType:
+                case "track":
+                    tracks = [tracks_response.data]
+                    artwork = tracks_response.data.pluginInfo.artworkUrl
+                case "search":
+                    tracks = tracks_response.data
+                    artwork = None
+                case "playlist":
+                    tracks = tracks_response.data.tracks
+                    artwork = tracks_response.data.pluginInfo.artworkUrl
+                    name = name or tracks_response.data.info.name
+                case __:
+                    artwork = None
+                    tracks = []
+                    name = name or f"{context.message.id}"
             url = url.query_identifier
-            name = name or tracks_response.playlistInfo.name or f"{context.message.id}"
-            artwork = tracks_response.pluginInfo.artworkUrl
         else:
             artwork = None
             if add_queue and context.player:
@@ -418,7 +433,16 @@ class PyLavPlaylists(
                     response = await self.pylav.get_tracks(
                         *[await Query.from_string(at) for at in playlist_prompt.remove_tracks], player=context.player
                     )
-                    tracks = typing.cast(collections.deque[LavalinkTrack], response.tracks)
+                    match response.loadType:
+                        case "track":
+                            tracks = [response.data]
+                        case "search":
+                            tracks = response.data
+                        case "playlist":
+                            tracks = response.data.tracks
+                        case __:
+                            tracks = []
+                    tracks = typing.cast(collections.deque[Track_namespace_conflict], tracks)
                     for t in tracks:
                         b64 = t.encoded
                         await playlist.remove_track(b64)
@@ -429,7 +453,16 @@ class PyLavPlaylists(
                         *[await Query.from_string(at) for at in playlist_prompt.add_tracks],
                         player=context.player,
                     )
-                    if tracks := typing.cast(collections.deque[LavalinkTrack], response.tracks):
+                    match response.loadType:
+                        case "track":
+                            tracks = [response.data]
+                        case "search":
+                            tracks = response.data
+                        case "playlist":
+                            tracks = response.data.tracks
+                        case __:
+                            tracks = []
+                    if tracks := typing.cast(collections.deque[Track_namespace_conflict], tracks):
                         await playlist.add_track(list(tracks))
                         changed = True
                         tracks_added += sum(1 for __ in tracks)
@@ -439,7 +472,16 @@ class PyLavPlaylists(
                     response = await self.pylav.get_tracks(
                         await Query.from_string(url), bypass_cache=True, player=context.player
                     )
-                    if not response.tracks:
+                    match response.loadType:
+                        case "track":
+                            tracks = [response.data]
+                        case "search":
+                            tracks = response.data
+                        case "playlist":
+                            tracks = response.data.tracks
+                        case __:
+                            tracks = []
+                    if not tracks:
                         await context.send(
                             embed=await context.pylav.construct_embed(
                                 messageable=context,
@@ -455,7 +497,7 @@ class PyLavPlaylists(
                             ephemeral=True,
                         )
                         return
-                    if b64_list := typing.cast(list[LavalinkTrack], [track for track in response.tracks if track.encoded]):  # type: ignore
+                    if b64_list := typing.cast(list[Track_namespace_conflict], [track for track in tracks if track.encoded]):  # type: ignore
                         changed = True
                         await playlist.update_tracks(b64_list)
             elif playlist.id in BUNDLED_PLAYLIST_IDS:
@@ -468,7 +510,7 @@ class PyLavPlaylists(
             if playlist_prompt.dedupe:
                 track = await playlist.fetch_tracks()
                 new_tracks = [
-                    from_dict(data_class=LavalinkTrack, data=json.loads(t))
+                    from_dict(data_class=Track_namespace_conflict, data=json.loads(t))
                     for t in {json.dumps(d, sort_keys=True) for d in track}
                 ]
                 if diff := len(track) - len(new_tracks):
@@ -802,6 +844,154 @@ class PyLavPlaylists(
             ephemeral=True,
         )
 
+    @slash_playlist.command(name="mix", description=_("Play a YouTube mix playlist from a input"))
+    @app_commands.describe(
+        video=_("The YouTube video ID to play a mix from"),
+        playlist=_("The YouTube playlist ID to play a mix from"),
+        user=_("The YouTube user ID to play a mix from"),
+        channel=_("The YouTube channel ID to play a mix from"),
+    )
+    @app_commands.guild_only()
+    @invoker_is_dj(slash=True)
+    async def slash_playlist_mix(
+        self,
+        context: DISCORD_INTERACTION_TYPE,
+        video: str = None,
+        playlist: str = None,
+        user: str = None,
+        channel: str = None,
+    ):
+        if isinstance(context, discord.Interaction):
+            context = await self.bot.get_context(context)
+        if context.interaction and not context.interaction.response.is_done():
+            await context.defer(ephemeral=True)
+        if not any([video, playlist, user, channel]):
+            await context.send(
+                embed=await self.pylav.construct_embed(
+                    description=_("You need to give me a parameter to use."),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+            return
+        player = self.pylav.get_player(context.guild.id)
+        if player is None:
+            config = self.pylav.player_config_manager.get_config(context.guild.id)
+            if (channel := context.guild.get_channel_or_thread(await config.fetch_forced_channel_id())) is None:
+                channel = rgetattr(context.author, "voice.channel", None)
+                if not channel:
+                    await context.send(
+                        embed=await self.pylav.construct_embed(
+                            description=_("You must be in a voice channel, so I can connect to it."),
+                            messageable=context,
+                        ),
+                        ephemeral=True,
+                    )
+                    return
+            if not (
+                (permission := channel.permissions_for(context.guild.me)) and permission.connect and permission.speak
+            ):
+                await context.send(
+                    embed=await self.pylav.construct_embed(
+                        description=_(
+                            "I do not have permission to connect or speak in {channel_name_variable_do_not_translate}."
+                        ).format(channel_name_variable_do_not_translate=channel.mention),
+                        messageable=context,
+                    ),
+                    ephemeral=True,
+                )
+                return
+            player = await self.pylav.connect_player(channel=channel, requester=context.author)
+        try:
+            query = await Query.from_string(
+                await self.pylav.generate_mix_playlist(
+                    video_id=video, playlist_id=playlist, user_id=user, channel_id=channel
+                )
+            )
+        except PyLavInvalidArgumentsException as e:
+            await context.send(
+                embed=await self.pylav.construct_embed(
+                    description=str(e),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+            return
+        total_tracks_enqueue = 0
+        single_track = None
+        single_track, total_tracks_enqueue = await self._process_play_queries(
+            context, [query], player, single_track, total_tracks_enqueue
+        )
+        if not (player.is_active or player.queue.empty()):
+            await player.next(requester=context.author)
+
+        await self._process_play_message(context, single_track, total_tracks_enqueue, [query])
+
+    async def _process_play_message(self, context, single_track, total_tracks_enqueue, queries):
+        artwork = None
+        file = None
+        match total_tracks_enqueue:
+            case 1:
+                if len(queries) == 1:
+                    description = _(
+                        "{track_name_variable_do_not_translate} enqueued for {service_variable_do_not_translate}."
+                    ).format(
+                        service_variable_do_not_translate=queries[0].source,
+                        track_name_variable_do_not_translate=await single_track.get_track_display_name(with_url=True),
+                    )
+                elif len(queries) > 1:
+                    description = _(
+                        "{track_name_variable_do_not_translate} enqueued for {services_variable_do_not_translate}."
+                    ).format(
+                        services_variable_do_not_translate=humanize_list([q.source for q in queries]),
+                        track_name_variable_do_not_translate=await single_track.get_track_display_name(with_url=True),
+                    )
+                else:
+                    description = _("{track_name_variable_do_not_translate} enqueued.").format(
+                        track_name_variable_do_not_translate=await single_track.get_track_display_name(with_url=True)
+                    )
+                artwork = await single_track.artworkUrl()
+                file = await single_track.get_embedded_artwork()
+            case 0:
+                if len(queries) == 1:
+                    description = _(
+                        "No tracks were found for your query on {service_variable_do_not_translate}."
+                    ).format(service_variable_do_not_translate=queries[0].source)
+                elif len(queries) > 1:
+                    description = _(
+                        "No tracks were found for your queries on {services_variable_do_not_translate}."
+                    ).format(services_variable_do_not_translate=humanize_list([q.source for q in queries]))
+                else:
+                    description = _("No tracks were found for your query.")
+            case __:
+                if len(queries) == 1:
+                    description = _(
+                        "{number_of_tracks_variable_do_not_translate} tracks enqueued for {service_variable_do_not_translate}."
+                    ).format(
+                        service_variable_do_not_translate=queries[0].source,
+                        number_of_tracks_variable_do_not_translate=total_tracks_enqueue,
+                    )
+                elif len(queries) > 1:
+                    description = _(
+                        "{number_of_tracks_variable_do_not_translate} tracks enqueued for {services_variable_do_not_translate}."
+                    ).format(
+                        services_variable_do_not_translate=humanize_list([q.source for q in queries]),
+                        number_of_tracks_variable_do_not_translate=total_tracks_enqueue,
+                    )
+                else:
+                    description = _("{number_of_tracks_variable_do_not_translate} tracks enqueued.").format(
+                        number_of_tracks_variable_do_not_translate=total_tracks_enqueue
+                    )
+        await context.send(
+            embed=await self.pylav.construct_embed(
+                description=description,
+                thumbnail=artwork,
+                messageable=context,
+            ),
+            ephemeral=True,
+            file=file,
+        )
+
     @commands.command(name="__command_playlist_play", hidden=True)
     @always_hidden()
     async def command_playlist_play(self, context: PyLavContext, *, playlist: PlaylistConverter):
@@ -841,7 +1031,7 @@ class PyLavPlaylists(
         track_count = await playlist.size()
 
         tracks = await playlist.fetch_tracks()
-        track_objects = [from_dict(data_class=LavalinkTrack, data=track) for track in tracks]
+        track_objects = [from_dict(data_class=Track_namespace_conflict, data=track) for track in tracks]
         await player.bulk_add(
             requester=context.author.id,
             tracks_and_queries=[

@@ -44,7 +44,7 @@ class PyLavController(
         super().__init__(*args, **kwargs)
         self.bot = bot
         self._config = Config.get_conf(self, identifier=208903205982044161)
-        self.__lock = defaultdict(asyncio.Lock)
+        self.__lock: dict[int, asyncio.Lock] = defaultdict(asyncio.Lock)
         self._config.register_guild(
             channel=None,
             list_for_requests=False,
@@ -54,10 +54,10 @@ class PyLavController(
             use_slow_mode=True,
         )
         self._channel_cache: dict[int, int] = {}
-        self._list_for_search_cache: dict[int, bool] = {}
-        self._list_for_command_cache: dict[int, bool] = {}
-        self._enable_antispam_cache: dict[int, bool] = {}
-        self._use_slow_mode_cache: dict[int, bool] = {}
+        self._list_for_search_cache: dict[int, bool] = defaultdict(lambda: self._config.defaults["list_for_searches"])
+        self._list_for_command_cache: dict[int, bool] = defaultdict(lambda: self._config.defaults["list_for_requests"])
+        self._enable_antispam_cache: dict[int, bool] = defaultdict(lambda: self._config.defaults["enable_antispam"])
+        self._use_slow_mode_cache: dict[int, bool] = defaultdict(lambda: self._config.defaults["use_slow_mode"])
         self._view_cache: dict[int, PersistentControllerView] = {}
         self.__failed_messages_to_delete: dict[int, set[discord.Message]] = defaultdict(set)
         self.__success_messages_to_delete: dict[int, set[discord.Message]] = defaultdict(set)
@@ -68,6 +68,9 @@ class PyLavController(
         ]
 
         self.antispam: dict[int, dict[int, AntiSpam]] = defaultdict(lambda: defaultdict(partial(AntiSpam, intervals)))
+
+    async def cog_check(self, context: PyLavContext) -> bool:
+        return self.__ready.is_set()
 
     async def cog_unload(self) -> None:
         for view in self._view_cache.values():
@@ -176,10 +179,8 @@ class PyLavController(
     @command_plcontrollerset.command(name="acceptrequests", aliases=["ar", "listen"])
     async def command_plcontrollerset_acceptrequests(self, context: PyLavContext):
         """Toggle whether the controller should listen for requests."""
-        if (
-            context.guild.id not in self._channel_cache
-            or (channel_id := self._channel_cache[context.guild.id]) is None
-            or channel_id not in self._view_cache
+        if context.guild.id not in self._channel_cache or (
+            (channel_id := self._channel_cache[context.guild.id]) is None or channel_id not in self._view_cache
         ):
             await context.send(
                 embed=await context.construct_embed(
@@ -476,6 +477,7 @@ class PyLavController(
                     messageable=context,
                 ),
                 ephemeral=True,
+                file=await context.player.current.get_embedded_artwork(),
             )
         await context.player.skip(requester=context.author)
 
@@ -600,6 +602,7 @@ class PyLavController(
                 messageable=context,
             ),
             ephemeral=True,
+            file=await context.player.current.get_embedded_artwork(),
         )
 
     async def prepare_channel(self, channel: discord.TextChannel | discord.Thread | discord.VoiceChannel):

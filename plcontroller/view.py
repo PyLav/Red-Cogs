@@ -388,10 +388,10 @@ class PersistentControllerView(discord.ui.View):
             return
         await self.channel.edit(slowmode_delay=0)
 
-    async def set_permissions(self) -> bool:
+    async def set_permissions(self):
         if isinstance(self.channel, discord.Thread):
             # Threads don't have permissions, so we can't set them
-            #    We don't want o edit the permissions of the parent channel
+            #    We don't want to edit the permissions of the parent channel
             #    as that would affect the entire channel and all its threads.
             return
         permissions = self.channel.permissions_for(self.channel.guild.me)
@@ -557,7 +557,7 @@ class PersistentControllerView(discord.ui.View):
             player = await self.cog.pylav.player_manager.create(channel=channel)
         return player
 
-    async def get_now_playing_embed(self, forced: bool = False) -> discord.Embed:
+    async def get_now_playing_embed(self, forced: bool = False) -> dict[str, discord.Embed | str | discord.File]:
         await asyncio.sleep(1)
         player = self.cog.pylav.get_player(self.guild.id)
         if player is None or player.current is None or forced:
@@ -587,11 +587,13 @@ class PersistentControllerView(discord.ui.View):
             else:
                 footer_text = None
 
-            return await self.cog.pylav.construct_embed(
-                description=_("I am not currently playing anything on this server."),
-                messageable=self.channel,
-                footer=footer_text,
-            )
+            return {
+                "embed": await self.cog.pylav.construct_embed(
+                    description=_("I am not currently playing anything on this server."),
+                    messageable=self.channel,
+                    footer=footer_text,
+                )
+            }
         return await player.get_currently_playing_message(
             embed=True, messageable=self.channel, progress=False, show_help=self.__show_help
         )
@@ -599,8 +601,15 @@ class PersistentControllerView(discord.ui.View):
     async def update_view(self, forced: bool = False):
         async with self.__update_view_lock:
             await self.prepare()
-            embed = await self.get_now_playing_embed(forced)
-            await self.message.edit(view=self, embed=embed)
+            kwargs = await self.get_now_playing_embed(forced)
+            attachments = []
+            if "file" in kwargs:
+                attachments = [kwargs.pop("file")]
+            elif "files" in kwargs:
+                attachments = kwargs.pop("files")
+            if attachments:
+                kwargs["attachments"] = attachments
+            await self.message.edit(view=self, **kwargs)
 
     async def interaction_check(self, interaction: DISCORD_INTERACTION_TYPE, /) -> bool:
         if not interaction.response.is_done():

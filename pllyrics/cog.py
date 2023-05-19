@@ -216,7 +216,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
             await channel.send(
                 embed=await self.pylav.construct_embed(
                     description=_(
-                        "The Flowery API, which I use to find lyrics, has returned an error while looking for the lyrics for this song {error_variable_do_not_translate}."
+                        "The Flowery API, which I use to find lyrics, has returned an error while looking for the lyrics for this song: {error_variable_do_not_translate}."
                     ).format(error_variable_do_not_translate=response.error),
                     messageable=channel,
                 ),
@@ -331,7 +331,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                         messageable=channel,
                     )
                 )
-            await channel.send(embeds=embed_list)
+            await channel.send(embeds=embed_list, file=await track.get_embedded_artwork())
         else:
             translated_message = (
                 self._get_translated_message_contents(exact, show_author, None)
@@ -351,7 +351,8 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
                         provider_variable_do_not_translate=response.provider
                     ),
                     messageable=channel,
-                )
+                ),
+                file=await track.get_embedded_artwork(),
             )
 
     async def _send_timed_lyrics(self, track: Track, channel_id: int, guild: discord.Guild) -> None:
@@ -384,7 +385,7 @@ class PyLavLyrics(DISCORD_COG_TYPE_MIXIN):
             sleep_duration = 0
             message_content = ""
             start_point = chunk[0].start
-            if start_point < (player.estimated_position - 5000):
+            if start_point < (await player.position() - 5000):
                 continue
             for lyric in chunk:
                 message_content += f"{lyric.text}\n"

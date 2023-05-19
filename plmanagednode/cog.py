@@ -349,11 +349,11 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
             await context.defer(ephemeral=True)
         plugin_str = plugin.lower()
         plugins = [
-            "lavasrc-plugin",
-            "skybot-lavalink-plugin",
-            "sponsorblock-plugin",
-            "lavalink-filter-plugin",
-            "lava-xm-plugin",
+            "lavasrc",
+            "skybot",
+            "sponsorblock",
+            "lavalink-filter",
+            "lava-xm",
         ]
         if plugin_str not in plugins:
             return await context.send(
@@ -373,7 +373,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         folder = LAVALINK_DOWNLOAD_DIR / "plugins"
         for plugin in data["lavalink"]["plugins"].copy():
             if plugin["dependency"].startswith("com.github.TopiSenpai.LavaSrc:lavasrc-plugin:"):
-                if plugin_str != "lavasrc-plugin":
+                if plugin_str != "lavasrc":
                     new_plugins.append(plugin)
                 else:
                     filename = "lavasrc-plugin-"
@@ -385,7 +385,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
                         ]
                     )
             elif plugin["dependency"].startswith("com.dunctebot:skybot-lavalink-plugin:"):
-                if plugin_str != "skybot-lavalink-plugin":
+                if plugin_str != "skybot":
                     new_plugins.append(plugin)
                 else:
                     filename = "skybot-lavalink-plugin-"
@@ -397,7 +397,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
                         ]
                     )
             elif plugin["dependency"].startswith("com.github.topisenpai:sponsorblock-plugin:"):
-                if plugin_str != "sponsorblock-plugin":
+                if plugin_str != "sponsorblock":
                     new_plugins.append(plugin)
                 else:
                     filename = "sponsorblock-plugin-"
@@ -409,7 +409,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
                         ]
                     )
             elif plugin["dependency"].startswith("com.github.esmBot:lava-xm-plugin:"):
-                if plugin_str != "lava-xm-plugin":
+                if plugin_str != "lava-xm":
                     new_plugins.append(plugin)
                 else:
                     filename = "lava-xm-plugin-"
@@ -421,7 +421,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
                         ]
                     )
             elif plugin["dependency"].startswith("me.rohank05:lavalink-filter-plugin:"):
-                if plugin_str != "lavalink-filter-plugin":
+                if plugin_str != "lavalink-filter":
                     new_plugins.append(plugin)
                 else:
                     filename = "lavalink-filter-plugin-"
@@ -460,11 +460,11 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
             await context.defer(ephemeral=True)
         plugin_str = plugin.lower()
         plugins = [
-            "lavasrc-plugin",
-            "skybot-lavalink-plugin",
-            "sponsorblock-plugin",
-            "lavalink-filter-plugin",
-            "lava-xm-plugin",
+            "lavasrc",
+            "skybot",
+            "sponsorblock",
+            "lavalink-filter",
+            "lava-xm",
         ]
         if plugin_str not in plugins:
             return await context.send(
@@ -483,19 +483,19 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
 
         for plugin in NODE_DEFAULT_SETTINGS["lavalink"]["plugins"]:
             if plugin["dependency"].startswith("com.github.TopiSenpai.LavaSrc:lavasrc-plugin:"):
-                if plugin_str == "lavasrc-plugin":
+                if plugin_str == "lavasrc":
                     new_plugins.append(plugin)
             elif plugin["dependency"].startswith("com.dunctebot:skybot-lavalink-plugin:"):
-                if plugin_str == "skybot-lavalink-plugin":
+                if plugin_str == "skybot-lavalink":
                     new_plugins.append(plugin)
             elif plugin["dependency"].startswith("com.github.topisenpai:sponsorblock-plugin:"):
-                if plugin_str == "sponsorblock-plugin":
+                if plugin_str == "sponsorblock":
                     new_plugins.append(plugin)
             elif plugin["dependency"].startswith("com.github.esmBot:lava-xm-plugin:"):
-                if plugin_str == "lavalink-filter-plugin":
+                if plugin_str == "lavalink-filter":
                     new_plugins.append(plugin)
             elif plugin["dependency"].startswith("me.rohank05:lavalink-filter-plugin:"):
-                if plugin_str == "lava-xm-plugin":
+                if plugin_str == "lava-xm":
                     new_plugins.append(plugin)
 
         data["lavalink"]["plugins"] = new_plugins
@@ -530,7 +530,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
             if plugin["dependency"].startswith("com.github.TopiSenpai.LavaSrc:lavasrc-plugin:"):
                 org = "TopiSenpai"
                 repo = "LavaSrc"
-                repository = "https://jitpack.io"
+                repository = "https://maven.topi.wtf/releases"
                 dependency += ":"
             elif plugin["dependency"].startswith("com.dunctebot:skybot-lavalink-plugin:"):
                 org = "DuncteBot"
@@ -831,7 +831,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
 
         if isinstance(possible_values[0], int):
             value = int(value)
-            if value not in range(possible_values[0], possible_values[0] + 1):
+            if value not in range(possible_values[0], possible_values[1] + 1):
                 await context.send(
                     embed=await context.pylav.construct_embed(
                         description=_(
