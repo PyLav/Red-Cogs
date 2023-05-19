@@ -898,7 +898,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
                         "More info at: {url_value_1_variable_do_not_translate} and {url_value_2_variable_do_not_translate}"
                         ""
                     ).format(
-                        url_value_1_variable_do_not_translate="<https://github.com/freyacodes/Lavalink/blob/dev/ROUTEPLANNERS.md>",
+                        url_value_1_variable_do_not_translate="<https://github.com/lavalink-devs/Lavalink/blob/dev/ROUTEPLANNERS.md>",
                         url_value_2_variable_do_not_translate="<https://blog.arbjerg.dev/2020/3/tunnelbroker-with-lavalink>",
                     ),
                     messageable=context,
