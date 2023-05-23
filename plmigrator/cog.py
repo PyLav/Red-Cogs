@@ -18,11 +18,12 @@ from redbot.core.data_manager import cog_data_path
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.dbtools import APSWConnectionWrapper
 
+from pylav.constants.config import DEFAULT_PLAYER_VOLUME
 from pylav.core.client import Client
 from pylav.core.context import PyLavContext
 from pylav.extension.red.utils import recursive_merge
 from pylav.logging import getLogger
-from pylav.players.tracks.encoder import async_bulk_re_encoder
+from pylav.players.query.obj import Query
 from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE_MIXIN
 
 LOGGER = getLogger("PyLav.cog.Migrator")
@@ -49,7 +50,7 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
 
         Please note that this will replace any settings already in PyLav.
 
-        If you are sure you want to proceed please run this command again with the confirm argument set to 1
+        If you are sure you want to proceed please run this command again with the confirmation argument set to 1
         i.e `[p]pylavmigrate 1`
 
         Once you complete the migration unload this cog and uninstall it as you will not need it again.
@@ -61,7 +62,7 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
         await self._process_global_settings(audio_config, context)
         for guild, guild_config in (await audio_config.all_guilds()).items():
             await self._process_server_settings(guild, guild_config)
-        # await self._process_playlists(playlist_api)
+        await self._process_playlists(playlist_api)
         await context.send(
             content=_(
                 "Migration of Audio cog settings to PyLav complete. "
@@ -99,10 +100,11 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
                         playlist_name,
                         scope_id,
                         author_id,
-                        playlist_url,
-                        tracks
+                        playlist_url
                     FROM
                         playlists
+                    WHERE
+                    playlist_url IS NOT NULL
                 """
         row_results = await asyncio.to_thread(playlist_api.database.cursor().execute, query)
         for row in row_results:
@@ -110,16 +112,25 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
             try:
                 if pl.playlist_id == 42069:
                     continue
-                tracks_temp = [t["track"] for t in pl.tracks if "track" in t]
-                if pl.tracks:
-                    tracks = [
-                        t
-                        async for t in async_bulk_re_encoder(
-                            tracks_temp, await self.pylav.node_manager.find_best_node(wait=True)
+                query = await Query.from_string(pl.playlist_url)
+
+                response = await self.pylav.get_tracks(query)
+                match response.loadType:
+                    case "track":
+                        tracks = [response.data]
+                    case "search":
+                        tracks = response.data
+                    case "playlist":
+                        tracks = response.data.tracks
+                    case __:
+                        LOGGER.error(
+                            "Failed to fetch v4+ tracks playlist %s (%s) from scope: %s",
+                            pl.playlist_name,
+                            pl.playlist_id,
+                            pl.scope_id,
                         )
-                    ]
-                else:
-                    tracks = []
+                        continue
+
                 if tracks:
                     await self.pylav.playlist_db_manager.create_or_update_playlist(
                         identifier=pl.playlist_id,
@@ -153,7 +164,7 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
             await player_config.update_auto_play(False)
         if guild_config.get("shuffle", False):
             await player_config.update_shuffle(True)
-        if guild_config.get("volume", 100) != 100:
+        if guild_config.get("volume", 100) not in {100, DEFAULT_PLAYER_VOLUME}:
             await player_config.update_volume(guild_config.get("volume"))
         if guild_config.get("max_volume", 150) != 150:
             await player_config.update_max_volume(int((guild_config.get("max_volume") / 150) * 1000))
@@ -236,7 +247,7 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
                 emptypause_timer=0,  # Supported in PyLav
                 max_volume=150,  # Supported in PyLav
                 shuffle=None,  # Supported in PyLav
-                volume=25,  # Supported in PyLav
+                volume=DEFAULT_PLAYER_VOLUME,  # Supported in PyLav
                 dj_enabled=False,  # Supported in PyLav
                 dj_role=None,  # Supported in PyLav
             )
