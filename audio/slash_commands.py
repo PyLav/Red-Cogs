@@ -117,11 +117,25 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN):
                 )
             ]
         original_query = await Query.from_string(current)
-        response = await interaction.client.pylav.get_tracks(
-            original_query,
-            fullsearch=True,
-            player=interaction.client.pylav.get_player(interaction.guild.id),
-        )
+        try:
+            response = await interaction.client.pylav.search_query(
+                original_query,
+                fullsearch=True,
+                player=interaction.client.pylav.get_player(interaction.guild.id),
+            )
+        except Exception as e:
+            LOGGER.debug(f"Error searching for {original_query}", exc_info=e)
+            return [
+                Choice(
+                    name=shorten_string(
+                        max_length=100,
+                        string=_("Error searching {service_name_variable_do_not_translate}").format(
+                            service_name_variable_do_not_translate=inv_map.get(prefix, fallback_source)
+                        ),
+                    ),
+                    value="FqgqQW21tQ@#1g2fasf2",
+                )
+            ]
         if not response:
             return [
                 Choice(
