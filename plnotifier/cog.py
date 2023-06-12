@@ -1995,7 +1995,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             event.distortion,
             event.low_pass,
             event.channel_mix,
-            event.echo,
+            event.pluginFilters.echo,
         ):
             if not effect or isinstance(effect, Volume):
                 continue
