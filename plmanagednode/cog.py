@@ -372,7 +372,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         plugin_files = []
         folder = LAVALINK_DOWNLOAD_DIR / "plugins"
         for plugin in data["lavalink"]["plugins"].copy():
-            if plugin["dependency"].startswith("com.github.topi314.LavaSrc:lavasrc-plugin:"):
+            if plugin["dependency"].startswith("com.github.topi314.lavasrc:lavasrc-plugin:"):
                 if plugin_str != "lavasrc":
                     new_plugins.append(plugin)
                 else:
@@ -482,7 +482,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         new_plugins = data["lavalink"]["plugins"].copy()
 
         for plugin in NODE_DEFAULT_SETTINGS["lavalink"]["plugins"]:
-            if plugin["dependency"].startswith("com.github.topi314.LavaSrc:lavasrc-plugin:"):
+            if plugin["dependency"].startswith("com.github.topi314.lavasrc:lavasrc-plugin:"):
                 if plugin_str == "lavasrc":
                     new_plugins.append(plugin)
             elif plugin["dependency"].startswith("com.dunctebot:skybot-lavalink-plugin:"):
@@ -527,7 +527,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
             if dependency in _temp:
                 continue
             _temp.add(dependency)
-            if plugin["dependency"].startswith("com.github.topi314.LavaSrc:lavasrc-plugin:"):
+            if plugin["dependency"].startswith("com.github.topi314.lavasrc:lavasrc-plugin:"):
                 org = "topi314"
                 repo = "LavaSrc"
                 repository = "https://maven.topi.wtf/releases"
