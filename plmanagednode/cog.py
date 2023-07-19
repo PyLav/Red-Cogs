@@ -372,7 +372,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         plugin_files = []
         folder = LAVALINK_DOWNLOAD_DIR / "plugins"
         for plugin in data["lavalink"]["plugins"].copy():
-            if plugin["dependency"].startswith("com.github.TopiSenpai.LavaSrc:lavasrc-plugin:"):
+            if plugin["dependency"].startswith("com.github.topi314.LavaSrc:lavasrc-plugin:"):
                 if plugin_str != "lavasrc":
                     new_plugins.append(plugin)
                 else:
@@ -396,7 +396,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
                             if x.name.startswith(filename) and x.suffix == ".jar" and x.is_file()
                         ]
                     )
-            elif plugin["dependency"].startswith("com.github.topisenpai:sponsorblock-plugin:"):
+            elif plugin["dependency"].startswith("com.github.topi314.sponsorblock:sponsorblock-plugin:"):
                 if plugin_str != "sponsorblock":
                     new_plugins.append(plugin)
                 else:
@@ -482,13 +482,13 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         new_plugins = data["lavalink"]["plugins"].copy()
 
         for plugin in NODE_DEFAULT_SETTINGS["lavalink"]["plugins"]:
-            if plugin["dependency"].startswith("com.github.TopiSenpai.LavaSrc:lavasrc-plugin:"):
+            if plugin["dependency"].startswith("com.github.topi314.LavaSrc:lavasrc-plugin:"):
                 if plugin_str == "lavasrc":
                     new_plugins.append(plugin)
             elif plugin["dependency"].startswith("com.dunctebot:skybot-lavalink-plugin:"):
                 if plugin_str == "skybot-lavalink":
                     new_plugins.append(plugin)
-            elif plugin["dependency"].startswith("com.github.topisenpai:sponsorblock-plugin:"):
+            elif plugin["dependency"].startswith("com.github.topi314.sponsorblock:sponsorblock-plugin:"):
                 if plugin_str == "sponsorblock":
                     new_plugins.append(plugin)
             elif plugin["dependency"].startswith("com.github.esmBot:lava-xm-plugin:"):
@@ -527,8 +527,8 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
             if dependency in _temp:
                 continue
             _temp.add(dependency)
-            if plugin["dependency"].startswith("com.github.TopiSenpai.LavaSrc:lavasrc-plugin:"):
-                org = "TopiSenpai"
+            if plugin["dependency"].startswith("com.github.topi314.LavaSrc:lavasrc-plugin:"):
+                org = "topi314"
                 repo = "LavaSrc"
                 repository = "https://maven.topi.wtf/releases"
                 dependency += ":"
@@ -537,10 +537,10 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
                 repo = "skybot-lavalink-plugin"
                 repository = "https://m2.duncte123.dev/releases"
                 dependency += ":"
-            elif plugin["dependency"].startswith("com.github.topisenpai:sponsorblock-plugin:"):
-                org = "Topis-Lavalink-Plugins"
+            elif plugin["dependency"].startswith("com.github.topi314.sponsorblock:sponsorblock-plugin:"):
+                org = "topi314"
                 repo = "Sponsorblock-Plugin"
-                repository = "https://jitpack.io"
+                repository = "https://maven.topi.wtf/releases"
                 dependency += ":"
             elif plugin["dependency"].startswith("com.github.esmBot:lava-xm-plugin:"):
                 org = "esmBot"
