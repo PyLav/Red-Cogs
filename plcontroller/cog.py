@@ -53,6 +53,9 @@ class PyLavController(
             enable_antispam=True,
             use_slow_mode=True,
         )
+        self._config.register_global(
+            listen_to_any_message=False,
+        )
         self._channel_cache: dict[int, int] = {}
         self._list_for_search_cache: dict[int, bool] = defaultdict(lambda: self._config.defaults["list_for_searches"])
         self._list_for_command_cache: dict[int, bool] = defaultdict(lambda: self._config.defaults["list_for_requests"])
@@ -61,6 +64,7 @@ class PyLavController(
         self._view_cache: dict[int, PersistentControllerView] = {}
         self.__failed_messages_to_delete: dict[int, set[discord.Message]] = defaultdict(set)
         self.__success_messages_to_delete: dict[int, set[discord.Message]] = defaultdict(set)
+        self._greedy_cache = False
         self.__ready = asyncio.Event()
         intervals = [
             (timedelta(minutes=1), 5),
@@ -73,6 +77,8 @@ class PyLavController(
         return self.__ready.is_set()
 
     async def cog_unload(self) -> None:
+        self.bot.remove_listener(self.on_message)
+        self.bot.remove_listener(self.on_message_without_command)
         for view in self._view_cache.values():
             view.stop()
         self._view_cache.clear()
@@ -117,6 +123,10 @@ class PyLavController(
             coalesce=True,
             next_run_time=get_now_utc() + datetime.timedelta(seconds=5),
         )
+        if await self._config.listen_to_any_message():
+            self.bot.add_listener(self.on_message)
+        else:
+            self.bot.add_listener(self.on_message_without_command)
 
     @commands.group(name="plcontrollerset")
     @commands.guild_only()
@@ -324,6 +334,36 @@ class PyLavController(
                 ),
                 ephemeral=True,
             )
+
+    @commands.is_owner()
+    @command_plcontrollerset.command(name="greedy", aliases=["g"])
+    async def command_plcontrollerset_greedy(self, context: PyLavContext):
+        """Toggles whether I should listen to any message I see or only messages starting without a command prefix."""
+
+        self._greedy_cache = not self._greedy_cache
+        await self._config.listen_to_any_message.set(self._greedy_cache)
+
+        if self._greedy_cache:
+            await context.send(
+                embed=await context.construct_embed(
+                    description=_("From now on, I will listen to any message I see."),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+            self.bot.remove_listener(self.on_message_without_command)
+            self.bot.add_listener(self.on_message)
+        else:
+            await context.send(
+                embed=await context.construct_embed(
+                    description=_("From now on, I will only listen to messages starting without a command prefix."),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
+            self.bot.remove_listener(self.on_message)
+            self.bot.add_listener(self.on_message_without_command)
+
 
     async def volume(self, context: PyLavContext, change_by: int):
         if isinstance(context, discord.Interaction):
@@ -675,7 +715,42 @@ class PyLavController(
             view=self._view_cache[channel.id], **(await self._view_cache[channel.id].get_now_playing_embed())
         )
 
-    @commands.Cog.listener()
+    async def on_message(self, message: discord.Message):
+        guild = message.guild
+        if guild is None:
+            return
+
+        if message.author.bot:
+            return
+
+        if guild.id not in self._channel_cache:
+            return
+
+        if message.channel.id != self._channel_cache[guild.id]:
+            return
+
+        channel = self.bot.get_channel(self._channel_cache[guild.id])
+        if channel is None:
+            return
+
+        if channel.id not in self._view_cache:
+            return
+
+        if await self.bot.cog_disabled_in_guild(self, guild):
+            return
+
+        if (await self.bot.get_context(message)).valid:
+            await self.__add_failed_message_to_delete(message)
+            return
+
+        async with self.__lock[message.guild.id]:
+            player = await self._view_cache[channel.id].get_player(message)
+        if player is None:
+            await self.add_failure_reaction(message)
+            return
+
+        await self.process_potential_query(message, player)
+
     async def on_message_without_command(self, message: discord.Message):
         guild = message.guild
         if guild is None:
