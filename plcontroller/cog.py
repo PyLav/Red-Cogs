@@ -364,7 +364,6 @@ class PyLavController(
             self.bot.remove_listener(self.on_message)
             self.bot.add_listener(self.on_message_without_command)
 
-
     async def volume(self, context: PyLavContext, change_by: int):
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
