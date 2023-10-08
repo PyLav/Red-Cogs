@@ -3,7 +3,7 @@ default_language_version:
 exclude: ^.*\.po$
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v4.5.0
     hooks:
       # Checks for git-related issues
     -   id: check-case-conflict
@@ -33,7 +33,7 @@ repos:
     -   id: check-json
     -   id: check-symlinks
 -   repo: https://github.com/PyCQA/autoflake
-    rev: v2.0.2
+    rev: v2.2.1
     hooks:
     -   id: autoflake
         args: [--remove-all-unused-imports, --recursive, --in-place, --remove-unused-variables, --ignore-init-module-imports, --remove-duplicate-keys]
@@ -42,7 +42,7 @@ repos:
     hooks:
     -   id: absolufy-imports
 -   repo: https://github.com/pycqa/flake8
-    rev: 6.0.0
+    rev: 6.1.0
     hooks:
     -   id: flake8
         additional_dependencies: [flake8-print]
@@ -61,17 +61,17 @@ repos:
     -   id: upgrade-type-hints
         args: [--futures=true]
 -   repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.22.0
+    rev: 0.27.0
     hooks:
     -   id: check-github-actions
     -   id: check-dependabot
 -   repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
-    rev: v2.8.0
+    rev: v2.10.0
     hooks:
     -   id: pretty-format-yaml
         args: [--autofix, --indent, '4']
 -   repo: https://github.com/asottile/blacken-docs
-    rev: 1.13.0
+    rev: 1.16.0
     hooks:
     -   id: blacken-docs
 -   repo: https://github.com/pycqa/isort
@@ -84,14 +84,14 @@ repos:
     -   id: auto-walrus
         args: [--line-length, '120']
 -   repo: https://github.com/asottile/pyupgrade
-    rev: v3.3.1
+    rev: v3.15.0
     hooks:
     -   id: pyupgrade
         args: [--py311-plus]
 -   repo: https://github.com/psf/black
     # The `refs/tags/<tag>:refs/tags/<tag>` is needed for black's required-version to work:
     # https://github.com/psf/black/issues/2493#issuecomment-1081987650
-    rev: 23.3.0
+    rev: 23.9.1
     hooks:
     -   id: black
 -   repo: https://github.com/Pierre-Sassoulas/black-disable-checker

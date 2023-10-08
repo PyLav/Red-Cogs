@@ -9,18 +9,14 @@ import discord
 from discord import app_commands
 from redbot.core import commands
 from redbot.core.i18n import Translator
-from redbot.core.utils.chat_formatting import humanize_list
 
 from pylav.core.context import PyLavContext
 from pylav.extension.red.ui.menus.queue import QueueMenu
 from pylav.extension.red.ui.sources.queue import QueueSource
 from pylav.extension.red.utils import rgetattr
 from pylav.extension.red.utils.decorators import invoker_is_dj, requires_player
-from pylav.extension.red.utils.validators import valid_query_attachment
 from pylav.helpers.format.strings import format_time_dd_hh_mm_ss, shorten_string
 from pylav.logging import getLogger
-from pylav.nodes.api.responses.track import Track as Track_namespace_conflict
-from pylav.players.query.obj import Query
 from pylav.players.tracks.obj import Track
 from pylav.type_hints.bot import DISCORD_COG_TYPE_MIXIN
 
@@ -32,197 +28,6 @@ _RE_TIME_CONVERTER: Final[Pattern] = re.compile(r"(?:(\d+):)?(\d+):(\d+)")
 
 
 class HybridCommands(DISCORD_COG_TYPE_MIXIN):
-    @commands.hybrid_command(
-        name="play",
-        description=shorten_string(max_length=100, string=_("Enqueue the specified query to be played.")),
-        aliases=["p"],
-        extras={"red_force_enable": True},
-    )
-    @app_commands.describe(
-        query=shorten_string(max_length=100, string=_("This argument is the query to play, a link or a search query."))
-    )
-    @commands.guild_only()
-    @invoker_is_dj()
-    async def command_play(self, context: PyLavContext, *, query: str = None):  # sourcery skip: low-code-quality
-        """Attempt to play the queries which you provide.
-
-        Separate multiple queries with a new line (`shift + enter`).
-
-        If you want to play a local track, you can specify the full path relative to the local tracks' folder.
-        For example, if my local tracks folder is: `/home/draper/music`.
-
-        I can play a single track with `track.mp3` or `/home/draper/music/track.mp3`.
-        I can play everything inside a folder with a `sub-folder/folder`.
-        I can play everything inside a folder and its sub-folders with the `all:` prefix, i.e. `all:sub-folder/folder`.
-
-        You can search specific services by using the following prefixes*:
-        `dzsearch:`  - Deezer
-        `spsearch:`  - Spotify
-        `amsearch:`  - Apple Music
-        `ytmsearch:` - YouTube Music
-        `ytsearch:`  - YouTube
-        `scsearch:`  - SoundCloud
-        `ymsearch:`  - Yandex Music
-
-        You can trigger text-to-speech by using the following prefixes*:
-        `speak:` - I will speak the query (limited to 200 characters)
-        `tts://` - I will speak the query
-        """
-        if isinstance(context, discord.Interaction):
-            context = await self.bot.get_context(context)
-        if context.interaction and not context.interaction.response.is_done():
-            await context.defer(ephemeral=True)
-
-        if query is None:
-            if attachments := context.message.attachments:
-                query = "\n".join(
-                    attachment.url for attachment in attachments if valid_query_attachment(attachment.filename)
-                )
-        if not query:
-            await context.send(
-                embed=await self.pylav.construct_embed(
-                    description=_("You need to give me a query to enqueue."),
-                    messageable=context,
-                ),
-                ephemeral=True,
-            )
-            return
-        player = self.pylav.get_player(context.guild.id)
-        if player is None:
-            config = self.pylav.player_config_manager.get_config(context.guild.id)
-            if (channel := context.guild.get_channel_or_thread(await config.fetch_forced_channel_id())) is None:
-                channel = rgetattr(context.author, "voice.channel", None)
-                if not channel:
-                    await context.send(
-                        embed=await self.pylav.construct_embed(
-                            description=_("You must be in a voice channel, so I can connect to it."),
-                            messageable=context,
-                        ),
-                        ephemeral=True,
-                    )
-                    return
-            if not (
-                (permission := channel.permissions_for(context.guild.me)) and permission.connect and permission.speak
-            ):
-                await context.send(
-                    embed=await self.pylav.construct_embed(
-                        description=_(
-                            "I do not have permission to connect or speak in {channel_name_variable_do_not_translate}."
-                        ).format(channel_name_variable_do_not_translate=channel.mention),
-                        messageable=context,
-                    ),
-                    ephemeral=True,
-                )
-                return
-            player = await self.pylav.connect_player(channel=channel, requester=context.author)
-        if isinstance(query, (Track, Track_namespace_conflict)):
-            track = await Track.build_track(
-                node=player.node,
-                data=query,
-                requester=context.author.id,
-                query=None,
-                player_instance=player,
-            )
-            if track is None:
-                return
-            await player.add(track=track, requester=context.author.id)
-            if not (player.is_active or player.queue.empty()):
-                await player.next(requester=context.author)
-            query = await track.query()
-            queries = [] if query is None else [query]
-            await self._process_play_message(context, track, 1, queries)
-            return
-        queries = [await Query.from_string(qf) for q in query.split("\n") if (qf := q.strip("<>").strip())]
-        total_tracks_enqueue = 0
-        single_track = None
-        if queries:
-            single_track, total_tracks_enqueue = await self._process_play_queries(
-                context, queries, player, single_track, total_tracks_enqueue
-            )
-        if not (player.is_active or player.queue.empty()):
-            await player.next(requester=context.author)
-
-        await self._process_play_message(context, single_track, total_tracks_enqueue, queries)
-
-    async def _process_play_message(self, context, single_track, total_tracks_enqueue, queries):
-        artwork = None
-        file = None
-        match total_tracks_enqueue:
-            case 1:
-                if len(queries) == 1:
-                    description = _(
-                        "{track_name_variable_do_not_translate} enqueued for {service_variable_do_not_translate}."
-                    ).format(
-                        service_variable_do_not_translate=queries[0].source,
-                        track_name_variable_do_not_translate=await single_track.get_track_display_name(with_url=True),
-                    )
-                elif len(queries) > 1:
-                    description = _(
-                        "{track_name_variable_do_not_translate} enqueued for {services_variable_do_not_translate}."
-                    ).format(
-                        services_variable_do_not_translate=humanize_list([q.source for q in queries]),
-                        track_name_variable_do_not_translate=await single_track.get_track_display_name(with_url=True),
-                    )
-                else:
-                    description = _("{track_name_variable_do_not_translate} enqueued.").format(
-                        track_name_variable_do_not_translate=await single_track.get_track_display_name(with_url=True)
-                    )
-                artwork = await single_track.artworkUrl()
-                file = await single_track.get_embedded_artwork()
-            case 0:
-                if len(queries) == 1:
-                    description = _(
-                        "No tracks were found for your query on {service_variable_do_not_translate}."
-                    ).format(service_variable_do_not_translate=queries[0].source)
-                elif len(queries) > 1:
-                    description = _(
-                        "No tracks were found for your queries on {services_variable_do_not_translate}."
-                    ).format(services_variable_do_not_translate=humanize_list([q.source for q in queries]))
-                else:
-                    description = _("No tracks were found for your query.")
-            case __:
-                if len(queries) == 1:
-                    description = _(
-                        "{number_of_tracks_variable_do_not_translate} tracks enqueued for {service_variable_do_not_translate}."
-                    ).format(
-                        service_variable_do_not_translate=queries[0].source,
-                        number_of_tracks_variable_do_not_translate=total_tracks_enqueue,
-                    )
-                elif len(queries) > 1:
-                    description = _(
-                        "{number_of_tracks_variable_do_not_translate} tracks enqueued for {services_variable_do_not_translate}."
-                    ).format(
-                        services_variable_do_not_translate=humanize_list([q.source for q in queries]),
-                        number_of_tracks_variable_do_not_translate=total_tracks_enqueue,
-                    )
-                else:
-                    description = _("{number_of_tracks_variable_do_not_translate} tracks enqueued.").format(
-                        number_of_tracks_variable_do_not_translate=total_tracks_enqueue
-                    )
-        await context.send(
-            embed=await self.pylav.construct_embed(
-                description=description,
-                thumbnail=artwork,
-                messageable=context,
-            ),
-            ephemeral=True,
-            file=file,
-        )
-
-    async def _process_play_queries(self, context, queries, player, single_track, total_tracks_enqueue):
-        successful, count, failed = await self.pylav.get_all_tracks_for_queries(
-            *queries, requester=context.author, player=player
-        )
-        if successful:
-            single_track = successful[0]
-        total_tracks_enqueue += count
-        if count:
-            if count == 1:
-                await player.add(requester=context.author.id, track=single_track)
-            else:
-                await player.bulk_add(requester=context.author.id, tracks_and_queries=successful)
-        return single_track, total_tracks_enqueue
-
     @staticmethod
     async def _process_play_search_queries(context, player, search_queries, single_track, total_tracks_enqueue):
         total_tracks_from_search = 0
