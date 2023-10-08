@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import asyncio
 import contextlib
 from pathlib import Path
 
@@ -102,7 +101,7 @@ class PyLavNodes(DISCORD_COG_TYPE_MIXIN):
             space_variable_do_not_translate="\N{EN SPACE}",
         )
         await menu.start(context, description=info_description, title=title)
-        with contextlib.suppress(asyncio.TimeoutError):
+        with contextlib.suppress(TimeoutError):
             await menu.wait_until_complete()
         if menu.cancelled:
             return
@@ -123,7 +122,7 @@ class PyLavNodes(DISCORD_COG_TYPE_MIXIN):
         )
         try:
             if node:
-                with contextlib.suppress(asyncio.TimeoutError):
+                with contextlib.suppress(TimeoutError):
                     await node.wait_until_ready(timeout=120)
                     await node.update_features()
                     await node.update_disabled_sources(set(menu.disabled_sources_selector.values))
@@ -259,7 +258,7 @@ class PyLavNodes(DISCORD_COG_TYPE_MIXIN):
             space_variable_do_not_translate="\N{EN SPACE}",
         )
         await menu.start(context, description=info_description, title=title)
-        with contextlib.suppress(asyncio.TimeoutError):
+        with contextlib.suppress(TimeoutError):
             await menu.wait_until_complete()
         if menu.cancelled:
             return
@@ -290,7 +289,7 @@ class PyLavNodes(DISCORD_COG_TYPE_MIXIN):
             )
             return
 
-        with contextlib.suppress(asyncio.TimeoutError):
+        with contextlib.suppress(TimeoutError):
             await node.wait_until_ready(timeout=120)
             await node.update_features()
             await node.update_disabled_sources(set(menu.disabled_sources_selector.values))
