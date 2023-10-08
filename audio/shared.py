@@ -3,12 +3,14 @@ from pathlib import Path
 from redbot.core.i18n import Translator
 from redbot.core.utils.chat_formatting import humanize_list
 
-from pylav.type_hints.bot import DISCORD_COG_TYPE_MIXIN
+from pylav.core.client import Client
 
 _ = Translator("PyLavPlayer", Path(__file__))
 
 
-class SharedMethods(DISCORD_COG_TYPE_MIXIN):
+class SharedMethods:
+    pylav: Client
+
     async def _process_play_message(self, context, single_track, total_tracks_enqueue, queries):
         artwork = None
         file = None
@@ -16,14 +18,14 @@ class SharedMethods(DISCORD_COG_TYPE_MIXIN):
             case 1:
                 if len(queries) == 1:
                     description = _(
-                        "{track_name_variable_do_not_translate} enqueued for {service_variable_do_not_translate}."
+                        "{track_name_variable_do_not_translate} enqueued using {service_variable_do_not_translate}."
                     ).format(
                         service_variable_do_not_translate=queries[0].source,
                         track_name_variable_do_not_translate=await single_track.get_track_display_name(with_url=True),
                     )
                 elif len(queries) > 1:
                     description = _(
-                        "{track_name_variable_do_not_translate} enqueued for {services_variable_do_not_translate}."
+                        "{track_name_variable_do_not_translate} enqueued using {services_variable_do_not_translate}."
                     ).format(
                         services_variable_do_not_translate=humanize_list([q.source for q in queries]),
                         track_name_variable_do_not_translate=await single_track.get_track_display_name(with_url=True),
@@ -48,14 +50,14 @@ class SharedMethods(DISCORD_COG_TYPE_MIXIN):
             case __:
                 if len(queries) == 1:
                     description = _(
-                        "{number_of_tracks_variable_do_not_translate} tracks enqueued for {service_variable_do_not_translate}."
+                        "{number_of_tracks_variable_do_not_translate} tracks enqueued using {service_variable_do_not_translate}."
                     ).format(
                         service_variable_do_not_translate=queries[0].source,
                         number_of_tracks_variable_do_not_translate=total_tracks_enqueue,
                     )
                 elif len(queries) > 1:
                     description = _(
-                        "{number_of_tracks_variable_do_not_translate} tracks enqueued for {services_variable_do_not_translate}."
+                        "{number_of_tracks_variable_do_not_translate} tracks enqueued using {services_variable_do_not_translate}."
                     ).format(
                         services_variable_do_not_translate=humanize_list([q.source for q in queries]),
                         number_of_tracks_variable_do_not_translate=total_tracks_enqueue,
@@ -85,5 +87,5 @@ class SharedMethods(DISCORD_COG_TYPE_MIXIN):
             if count == 1:
                 await player.add(requester=context.author.id, track=single_track, index=index)
             else:
-                await player.bulk_add(requester=context.author.id, tracks_and_queries=successful, priority=index)
+                await player.bulk_add(requester=context.author.id, tracks_and_queries=successful, index=index)
         return single_track, total_tracks_enqueue

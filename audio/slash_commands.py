@@ -244,15 +244,6 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN, SharedMethods):
         context = await self.bot.get_context(interaction)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
-        if query == "FqgqQW21tQ@#1g2fasf2":
-            return await interaction.followup.send(
-                embed=await self.pylav.construct_embed(
-                    description=_("You have not selected something to play."),
-                    messageable=context,
-                ),
-                ephemeral=True,
-            )
-
         if query is None:
             if attachments := context.message.attachments:
                 query = "\n".join(
@@ -308,11 +299,12 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN, SharedMethods):
             case __:
                 priority = 100
                 index = None
+        LOGGER.info(f"Priority: {priority}, Index: {index}")
         if queries:
             single_track, total_tracks_enqueue = await self._process_play_queries(
                 context, queries, player, single_track, total_tracks_enqueue, index
             )
-        if (not (player.is_active or player.queue.empty())) or priority == 0:
+        if (not (player.is_active or player.queue.empty())) or priority == -1:
             await player.next(requester=context.author)
 
         await self._process_play_message(context, single_track, total_tracks_enqueue, queries)
