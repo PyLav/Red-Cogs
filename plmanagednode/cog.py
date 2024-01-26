@@ -348,13 +348,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
         plugin_str = plugin.lower()
-        plugins = [
-            "lavasrc",
-            "skybot",
-            "sponsorblock",
-            "lavalink-filter",
-            "lava-xm",
-        ]
+        plugins = ["lavasrc", "skybot", "sponsorblock", "lavalink-filter", "lava-xm", "lavasearch"]
         if plugin_str not in plugins:
             return await context.send(
                 embed=await context.pylav.construct_embed(
@@ -384,6 +378,22 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
                             if x.name.startswith(filename) and x.suffix == ".jar" and x.is_file()
                         ]
                     )
+                if "repository" in plugin:
+                    plugin.pop("repository")
+            elif plugin["dependency"].startswith("com.github.topi314.lavasearch:lavasearch-plugin:"):
+                if plugin_str != "lavasearch":
+                    new_plugins.append(plugin)
+                else:
+                    filename = "lavasearch-plugin-"
+                    plugin_files.extend(
+                        [
+                            x
+                            async for x in folder.iterdir()
+                            if x.name.startswith(filename) and x.suffix == ".jar" and x.is_file()
+                        ]
+                    )
+                if "repository" in plugin:
+                    plugin.pop("repository")
             elif plugin["dependency"].startswith("com.dunctebot:skybot-lavalink-plugin:"):
                 if plugin_str != "skybot":
                     new_plugins.append(plugin)
@@ -396,6 +406,8 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
                             if x.name.startswith(filename) and x.suffix == ".jar" and x.is_file()
                         ]
                     )
+                if "repository" in plugin:
+                    plugin.pop("repository")
             elif plugin["dependency"].startswith("com.github.topi314.sponsorblock:sponsorblock-plugin:"):
                 if plugin_str != "sponsorblock":
                     new_plugins.append(plugin)
@@ -408,6 +420,8 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
                             if x.name.startswith(filename) and x.suffix == ".jar" and x.is_file()
                         ]
                     )
+                if "repository" in plugin:
+                    plugin.pop("repository")
             elif plugin["dependency"].startswith("com.github.esmBot:lava-xm-plugin:"):
                 if plugin_str != "lava-xm":
                     new_plugins.append(plugin)
@@ -459,13 +473,7 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
         plugin_str = plugin.lower()
-        plugins = [
-            "lavasrc",
-            "skybot",
-            "sponsorblock",
-            "lavalink-filter",
-            "lava-xm",
-        ]
+        plugins = ["lavasrc", "skybot", "sponsorblock", "lavalink-filter", "lava-xm", "lavasearch"]
         if plugin_str not in plugins:
             return await context.send(
                 embed=await context.pylav.construct_embed(

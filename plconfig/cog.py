@@ -10,7 +10,6 @@ from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import bold, box, inline
 from tabulate import tabulate
 
-from pylav.constants.builtin_nodes import PYLAV_BUNDLED_NODES_SETTINGS
 from pylav.core.client import Client
 from pylav.core.context import PyLavContext
 from pylav.extension.red.ui.menus.player import StatsMenu
@@ -327,44 +326,6 @@ class PyLavConfigurator(DISCORD_COG_TYPE_MIXIN):
     @command_plset_node.group(name="external")
     async def command_plset_node_external(self, context: PyLavContext) -> None:
         """Change the bundled external nodes state"""
-
-    @command_plset_node_external.command(name="pylav")
-    async def command_plset_node_external_pylav(self, context: PyLavContext) -> None:
-        """Toggle the managed external draper.wtf nodes on/off"""
-        if isinstance(context, discord.Interaction):
-            context = await self.bot.get_context(context)
-        if context.interaction and not context.interaction.response.is_done():
-            await context.defer(ephemeral=True)
-        global_config = self.pylav.lib_db_manager.get_config()
-        current_state = await global_config.fetch_use_bundled_pylav_external()
-        await global_config.update_use_bundled_pylav_external(not current_state)
-
-        if not current_state:
-            # node_config = self.pylav.node_db_manager.get_node_config(
-            #     PYLAV_BUNDLED_NODES_SETTINGS["ll-gb.draper.wtf"]["unique_identifier"]
-            # )
-            # await self.pylav.add_node(**(await node_config.get_connection_args()))
-            node_config = self.pylav.node_db_manager.get_node_config(
-                PYLAV_BUNDLED_NODES_SETTINGS["ll-us-ny.draper.wtf"]["unique_identifier"]
-            )
-            await self.pylav.add_node(**(await node_config.get_connection_args()))
-            await context.send(
-                embed=await context.pylav.construct_embed(
-                    description=_("I have turned on the PyLav external Lavalink nodes."),
-                    messageable=context,
-                ),
-                ephemeral=True,
-            )
-        else:
-            # await self.pylav.remove_node(PYLAV_BUNDLED_NODES_SETTINGS["ll-gb.draper.wtf"]["unique_identifier"])
-            await self.pylav.remove_node(PYLAV_BUNDLED_NODES_SETTINGS["ll-us-ny.draper.wtf"]["unique_identifier"])
-            await context.send(
-                embed=await context.pylav.construct_embed(
-                    description=_("I have turned off the PyLav external Lavalink nodes."),
-                    messageable=context,
-                ),
-                ephemeral=True,
-            )
 
     @command_plset_node_external.command(name="lavalink")
     async def command_plset_node_lavalink(self, context: PyLavContext) -> None:

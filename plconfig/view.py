@@ -42,10 +42,6 @@ class EmbedGenerator:
                 enabled if pylav_config["update_bot_activity"] else disabled,
             ),
             (
-                EightBitANSI.paint_white(_("Use Bundled\nPyLav Nodes")),
-                enabled if pylav_config["use_bundled_pylav_external"] else disabled,
-            ),
-            (
                 EightBitANSI.paint_white(_("Use Bundled\nlava.link Nodes")),
                 disabled,
             ),
