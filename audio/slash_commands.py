@@ -215,7 +215,10 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN, SharedMethods):
     @app_commands.guild_only()
     @invoker_is_dj(slash=True)
     async def slash_play(
-        self, interaction: DISCORD_INTERACTION_TYPE, enqueue_type: app_commands.Choice[str], *, query: str = None
+        self,
+        interaction: DISCORD_INTERACTION_TYPE,
+        query: str = None,
+        enqueue_type: app_commands.Choice[str] = "add_to_queue",
     ):  # sourcery skip: low-code-quality
         """Attempt to play the queries which you provide.
 
@@ -289,7 +292,9 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN, SharedMethods):
         queries = [await Query.from_string(qf) for q in query.split("\n") if (qf := q.strip("<>").strip())]
         total_tracks_enqueue = 0
         single_track = None
-        match enqueue_type.value:
+        if isinstance(enqueue_type, app_commands.Choice):
+            enqueue_type = enqueue_type.value
+        match enqueue_type:
             case "play_now":
                 priority = -1
                 index = 0
