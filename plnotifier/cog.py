@@ -52,6 +52,7 @@ from pylav.events.track.track_start import (
     TrackStartBandcampEvent,
     TrackStartDeezerEvent,
     TrackStartEvent,
+    TrackStartFloweryTTSEvent,
     TrackStartGCTTSEvent,
     TrackStartGetYarnEvent,
     TrackStartHTTPEvent,
@@ -122,6 +123,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             track_start_twitch=dict(enabled=True, mention=True),
             track_start_vimeo=dict(enabled=True, mention=True),
             track_start_gctts=dict(enabled=True, mention=True),
+            track_start_flowery_tts=dict(enabled=True, mention=True),
             track_start_niconico=dict(enabled=True, mention=True),
             track_skipped=dict(enabled=True, mention=True),
             track_seek=dict(enabled=True, mention=True),
@@ -1297,6 +1299,41 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
         )
 
     @commands.Cog.listener()
+    async def on_pylav_track_start_flowery_tts_event(self, event: TrackStartFloweryTTSEvent) -> None:
+        player = event.player
+        await self.pylav.set_context_locale(player.guild)
+        channel = await player.notify_channel()
+        if channel is None:
+            return
+        data = await self._config.guild(guild=event.player.guild).get_raw(
+            "track_start_flowery_tts", default={"enabled": True, "mention": True}
+        )
+        notify, mention = data["enabled"], data["mention"]
+        if not notify:
+            return
+        if mention:
+            req = event.track.requester or self.bot.user
+            user = req.mention
+        else:
+            user = event.track.requester or self.bot.user
+        self._message_queue[channel].append(
+            await self.pylav.construct_embed(
+                title=_("{source_variable_do_not_translate} Track Start Event").format(
+                    source_variable_do_not_translate=await event.track.query_source()
+                ),
+                description=_(
+                    "[Node={node_variable_do_not_translate}] {source_variable_do_not_translate} track: {track_variable_do_not_translate} has started playing.\nRequested by: {requester_variable_do_not_translate}"
+                ).format(
+                    track_variable_do_not_translate=await event.track.get_track_display_name(with_url=True),
+                    requester_variable_do_not_translate=user,
+                    node_variable_do_not_translate=event.node.name,
+                    source_variable_do_not_translate=await event.track.query_source(),
+                ),
+                messageable=channel,
+            )
+        )
+
+    @commands.Cog.listener()
     async def on_pylav_track_start_niconico_event(self, event: TrackStartNicoNicoEvent) -> None:
         player = event.player
         await self.pylav.set_context_locale(player.guild)
@@ -1996,6 +2033,7 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             event.low_pass,
             event.channel_mix,
             event.pluginFilters.echo,
+            event.pluginFilters.reverb,
         ):
             if not effect or isinstance(effect, Volume):
                 continue

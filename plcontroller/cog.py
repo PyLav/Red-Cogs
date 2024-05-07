@@ -38,7 +38,7 @@ class PyLavController(
 ):
     """Set a channel to listens and control the music player."""
 
-    __version__ = "1.0.0rc1"
+    __version__ = "1.0.0"
 
     def __init__(self, bot: DISCORD_BOT_TYPE, *args: Any, **kwargs: Any):
         super().__init__(*args, **kwargs)

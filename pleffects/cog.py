@@ -837,6 +837,91 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
             ephemeral=True,
         )
 
+    @slash_fx.command(name="reverb", description=_("Apply a reverb filter to the player"))
+    @app_commands.describe(
+        delays=_("The delays of the reverb"),
+        gains=_("The gains of the reverb"),
+        reset=_("Reset any existing effects currently applied to the player"),
+    )
+    @app_commands.guild_only()
+    @requires_player(slash=True)
+    @invoker_is_dj(slash=True)
+    async def slash_fx_reverb(
+        self,
+        interaction: DISCORD_INTERACTION_TYPE,
+        delays: str = None,
+        gains: str = None,
+        reset: bool = False,
+    ) -> None:
+        """Apply a Reberb filter to the player."""
+        if not interaction.response.is_done():
+            await interaction.response.defer(ephemeral=True)
+        context = await self.bot.get_context(interaction)
+        if not context.player.node.has_filter("reverb"):
+            await context.send(
+                embed=await self.pylav.construct_embed(
+                    messageable=context,
+                    description=_("The current node does not have the Reverb functionality enabled"),
+                ),
+                ephemeral=True,
+            )
+            return
+        try:
+            delays: list[float] | None = map(float, delays.split(",")) if delays else None
+        except Exception:
+            await context.send(
+                embed=await self.pylav.construct_embed(
+                    messageable=context,
+                    description=_("The delays provided are invalid, it should be a comma separated list of floats"),
+                ),
+                ephemeral=True,
+            )
+            return
+        try:
+            gains: list[float] | None = map(float, gains.split(",")) if gains else None
+        except Exception:
+            await context.send(
+                embed=await self.pylav.construct_embed(
+                    messageable=context,
+                    description=_("The gains provided are invalid, it should be a comma separated list of floats"),
+                ),
+                ephemeral=True,
+            )
+
+            return
+
+        context.player.reverb.delays = delays or context.player.reverb.delays
+        context.player.reverb.gains = gains or context.player.reverb.gains
+        await context.player.set_reverb(reverb=context.player.reverb, requester=context.author, forced=reset)
+        default = _("Not changed")
+
+        data = [
+            (EightBitANSI.paint_white(_("Delays")), EightBitANSI.paint_blue(context.player.reverb.delays or default)),
+            (EightBitANSI.paint_white(_("Gains")), EightBitANSI.paint_blue(context.player.reverb.gains or default)),
+            (
+                EightBitANSI.paint_white(_("Reset previous filters")),
+                EightBitANSI.paint_red(_("Yes")) if reset else EightBitANSI.paint_green(_("No")),
+            ),
+        ]
+        await context.send(
+            embed=await self.pylav.construct_embed(
+                messageable=context,
+                title=_("New reverb effect applied to the player"),
+                description=box(
+                    tabulate(
+                        data,
+                        headers=(
+                            EightBitANSI.paint_yellow(_("Setting"), bold=True, underline=True),
+                            EightBitANSI.paint_yellow(_("Value"), bold=True, underline=True),
+                        ),
+                        tablefmt="fancy_grid",
+                    ),
+                    lang="ansi",
+                ),
+            ),
+            ephemeral=True,
+        )
+
     @slash_fx.command(name="show", description=_("Show the current filters applied to the player"))
     @app_commands.guild_only()
     @requires_player(slash=True)
@@ -861,6 +946,7 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
             context.player.low_pass,
             context.player.channel_mix,
             context.player.echo,
+            context.player.reverb,
         ):
             data_ = {t_effect: effect.__class__.__name__}
 

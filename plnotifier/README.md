@@ -41,6 +41,7 @@
     - `track_start_twitch` - Track start event for Twitch.
     - `track_start_vimeo` - Track start event for Vimeo.
     - `track_start_gctts` - Track start event for Google Cloud Text to Speech.
+    - `track_start_flowery_tts` - Track start event for Google Cloud Text to Speech.
     - `track_start_niconico` - Track start event for Niconico.
     - `track_skipped` - Track skipped event.
     - `track_seek` - Track seek event.

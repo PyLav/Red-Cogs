@@ -242,7 +242,7 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN, SharedMethods):
 
         You can trigger text-to-speech by using the following prefixes*:
         `speak:` - I will speak the query (limited to 200 characters)
-        `tts://` - I will speak the query
+        `(f)tts://` - I will speak the query
         """
         context = await self.bot.get_context(interaction)
         if context.interaction and not context.interaction.response.is_done():

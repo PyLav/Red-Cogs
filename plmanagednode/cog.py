@@ -22,7 +22,7 @@ from pylav.helpers.format.ascii import EightBitANSI
 from pylav.logging import getLogger
 from pylav.type_hints.bot import DISCORD_BOT_TYPE, DISCORD_COG_TYPE_MIXIN
 
-from plmanagednode.view import ConfigureGoogleAccountView, ConfigureHTTPProxyView, ConfigureIPRotationView
+from plmanagednode.view import ConfigureHTTPProxyView, ConfigureIPRotationView
 
 LOGGER = getLogger("PyLav.cog.ManagedNode")
 
@@ -348,7 +348,16 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
         plugin_str = plugin.lower()
-        plugins = ["lavasrc", "skybot", "sponsorblock", "lavalink-filter", "lava-xm", "lavasearch"]
+        plugins = [
+            "lavasrc",
+            "skybot",
+            "sponsorblock",
+            "lavalink-filter",
+            "lava-xm",
+            "lavasearch",
+            "youtube",
+            "lavalyrics",
+        ]
         if plugin_str not in plugins:
             return await context.send(
                 embed=await context.pylav.construct_embed(
@@ -394,11 +403,39 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
                     )
                 if "repository" in plugin:
                     plugin.pop("repository")
+            elif plugin["dependency"].startswith("com.github.topi314.lavalyrics:lavalyrics-plugin:"):
+                if plugin_str != "lavalyrics":
+                    new_plugins.append(plugin)
+                else:
+                    filename = "lavalyrics-plugin-"
+                    plugin_files.extend(
+                        [
+                            x
+                            async for x in folder.iterdir()
+                            if x.name.startswith(filename) and x.suffix == ".jar" and x.is_file()
+                        ]
+                    )
+                if "repository" in plugin:
+                    plugin.pop("repository")
             elif plugin["dependency"].startswith("com.dunctebot:skybot-lavalink-plugin:"):
                 if plugin_str != "skybot":
                     new_plugins.append(plugin)
                 else:
                     filename = "skybot-lavalink-plugin-"
+                    plugin_files.extend(
+                        [
+                            x
+                            async for x in folder.iterdir()
+                            if x.name.startswith(filename) and x.suffix == ".jar" and x.is_file()
+                        ]
+                    )
+                if "repository" in plugin:
+                    plugin.pop("repository")
+            elif plugin["dependency"].startswith("dev.lavalink.youtube:youtube-plugin:"):
+                if plugin_str != "youtube":
+                    new_plugins.append(plugin)
+                else:
+                    filename = "youtube-plugin-"
                     plugin_files.extend(
                         [
                             x
@@ -473,7 +510,16 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
         plugin_str = plugin.lower()
-        plugins = ["lavasrc", "skybot", "sponsorblock", "lavalink-filter", "lava-xm", "lavasearch"]
+        plugins = [
+            "lavasrc",
+            "skybot",
+            "sponsorblock",
+            "lavalink-filter",
+            "lava-xm",
+            "lavasearch",
+            "youtube",
+            "lavalyrics",
+        ]
         if plugin_str not in plugins:
             return await context.send(
                 embed=await context.pylav.construct_embed(
@@ -498,6 +544,12 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
                     new_plugins.append(plugin)
             elif plugin["dependency"].startswith("com.github.topi314.sponsorblock:sponsorblock-plugin:"):
                 if plugin_str == "sponsorblock":
+                    new_plugins.append(plugin)
+            elif plugin["dependency"].startswith("com.github.topi314.lavalyrics:lavalyrics-plugin:"):
+                if plugin_str == "lavalyrics":
+                    new_plugins.append(plugin)
+            elif plugin["dependency"].startswith("com.github.topi314.lavasearch:lavasearch-plugin:"):
+                if plugin_str == "lavasearch":
                     new_plugins.append(plugin)
             elif plugin["dependency"].startswith("com.github.esmBot:lava-xm-plugin:"):
                 if plugin_str == "lavalink-filter":
@@ -535,20 +587,22 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
             if dependency in _temp:
                 continue
             _temp.add(dependency)
+            repository = "https://maven.lavalink.dev/releases"
             if plugin["dependency"].startswith("com.github.topi314.lavasrc:lavasrc-plugin:"):
                 org = "topi314"
                 repo = "LavaSrc"
-                repository = "https://maven.topi.wtf/releases"
                 dependency += ":"
             elif plugin["dependency"].startswith("com.dunctebot:skybot-lavalink-plugin:"):
                 org = "DuncteBot"
                 repo = "skybot-lavalink-plugin"
-                repository = "https://m2.duncte123.dev/releases"
                 dependency += ":"
             elif plugin["dependency"].startswith("com.github.topi314.sponsorblock:sponsorblock-plugin:"):
                 org = "topi314"
                 repo = "Sponsorblock-Plugin"
-                repository = "https://maven.topi.wtf/releases"
+                dependency += ":"
+            elif plugin["dependency"].startswith("dev.lavalink.youtube:youtube-plugin:"):
+                org = "lavalink-devs"
+                repo = "youtube-source"
                 dependency += ":"
             elif plugin["dependency"].startswith("com.github.esmBot:lava-xm-plugin:"):
                 org = "esmBot"
@@ -646,12 +700,17 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
                 ),
                 ephemeral=True,
             )
-        if source in data["lavalink"]["server"]["sources"]:
+        if source in data["lavalink"]["server"]["sources"] and source not in {
+            "youtube",
+        }:
             data["lavalink"]["server"]["sources"][source] = state
         elif source in data["plugins"]["lavasrc"]["sources"]:
             data["plugins"]["lavasrc"]["sources"][source] = state
         elif source in data["plugins"]["dunctebot"]["sources"]:
             data["plugins"]["dunctebot"]["sources"][source] = state
+        elif source == "youtube":
+            data["lavalink"]["server"]["sources"]["youtube"] = False
+
         await config.update_yaml(data)
         state = _("enabled") if state else _("disabled")
         await context.send(
@@ -923,44 +982,6 @@ class PyLavManagedNode(DISCORD_COG_TYPE_MIXIN):
             await context.send(
                 embed=await context.pylav.construct_embed(
                     description=_("Removing the IP rotation from your node."),
-                    messageable=context,
-                ),
-                ephemeral=True,
-            )
-
-    @command_plmanaged_config.command(name="googleaccount", aliases=["ga"])
-    async def command_plmanaged_config_googleaccount(self, context: PyLavContext, *, reset: bool = False):
-        """Link a Google account to Lavalink to bypass the YouTube age restriction.
-
-        Run `[p]plmanaged settings googleaccount 1` to remove the linked account.
-        """
-        if isinstance(context, discord.Interaction):
-            context = await self.bot.get_context(context)
-        if context.interaction and not context.interaction.response.is_done():
-            await context.defer(ephemeral=True)
-        if not reset:
-            await context.send(
-                embed=await context.pylav.construct_embed(
-                    description=_(
-                        "Click the button below to link a Google account to your node, "
-                        "if you have 2FA setup on this account you will need an application password instead"
-                        "\nMore info at: <https://support.google.com/accounts/answer/185833>"
-                    ),
-                    messageable=context,
-                ),
-                view=ConfigureGoogleAccountView(self.bot, cog=self, prefix=context.clean_prefix),
-                ephemeral=True,
-            )
-        else:
-            # noinspection PyProtectedMember
-            config = self.pylav._node_config_manager.bundled_node_config()
-            data = await config.fetch_yaml()
-            data["lavalink"]["server"]["youtubeConfig"] = NODE_DEFAULT_SETTINGS["lavalink"]["server"]["youtubeConfig"]
-            await config.update_yaml(data)
-            await self.bot.remove_shared_api_tokens("google", "email", "password")
-            await context.send(
-                embed=await context.pylav.construct_embed(
-                    description=_("Unlinking Google account from your node."),
                     messageable=context,
                 ),
                 ephemeral=True,
