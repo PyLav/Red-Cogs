@@ -259,72 +259,8 @@ class ContextMenus(DISCORD_COG_TYPE_MIXIN):
                 query=tracks[0],
             )
         elif youtube_music_activity and youtube_music_activity.application_id == 1143202598460076053:
-            search_mode = False
             assert isinstance(youtube_music_activity, discord.activity.Activity)
-            if search_mode:
-                track = apple_music_activity.details
-                # TODO: This should use the button URL instead of a search for 100% accuracy
-                #   Currently discord.py doesnt provide the button URLs, the day they do this can be updated
-                search_string = "ytmsearch:" if (track) else ""
-                if track:
-                    search_string += f"{track}"
-                if not search_string:
-                    await interaction.followup.send(
-                        embed=await self.pylav.construct_embed(
-                            description=_(
-                                "I could not find a valid YouTube Music track in the activity "
-                                "{user_name_variable_do_not_translate} is partaking in."
-                            ).format(user_name_variable_do_not_translate=member.mention),
-                            messageable=interaction,
-                        ),
-                        ephemeral=True,
-                        wait=True,
-                    )
-                    return
-                response = await self.pylav.get_tracks(
-                    await Query.from_string(search_string),
-                    player=interaction.client.pylav.get_player(interaction.guild.id),
-                )
-                match response.loadType:
-                    case "track":
-                        tracks = [response.data]
-                    case "search":
-                        tracks = response.data
-                    case "playlist":
-                        tracks = response.data.tracks
-                    case __:
-                        tracks = []
-                if not tracks:
-                    await interaction.followup.send(
-                        embed=await self.pylav.construct_embed(
-                            description=_(
-                                "I could not find any tracks matching {query_variable_do_not_translate}."
-                            ).format(query_variable_do_not_translate=search_string),
-                            messageable=interaction,
-                        ),
-                        ephemeral=True,
-                        wait=True,
-                    )
-                    return
-                await self.command_play.callback(
-                    self,
-                    interaction,
-                    query=tracks[0],
-                )
-            else:
-                if not (image_url := youtube_music_activity.assets.get("large_image")):
-                    await interaction.followup.send(
-                        embed=await self.pylav.construct_embed(
-                            description=_(
-                                "I could not find a valid YouTube Music track in the activity "
-                                "{user_name_variable_do_not_translate} is partaking in."
-                            ).format(user_name_variable_do_not_translate=member.mention),
-                            messageable=interaction,
-                        ),
-                        ephemeral=True,
-                        wait=True,
-                    )
-                    return
+            if image_url := youtube_music_activity.assets.get("large_image"):
                 track_id_match = YOUTUBE_MUSIC_ACTIVITY.search(image_url)
                 if track_id_match and track_id_match.group(1):
                     await self.command_play.callback(
@@ -332,19 +268,56 @@ class ContextMenus(DISCORD_COG_TYPE_MIXIN):
                         interaction,
                         query=f"https://music.youtube.com/watch?v={track_id_match.group(1)}",
                     )
-                else:
-                    await interaction.followup.send(
-                        embed=await self.pylav.construct_embed(
-                            description=_(
-                                "I could not find a valid YouTube Music track in the activity "
-                                "{user_name_variable_do_not_translate} is partaking in."
-                            ).format(user_name_variable_do_not_translate=member.mention),
-                            messageable=interaction,
-                        ),
-                        ephemeral=True,
-                        wait=True,
-                    )
                     return
+            track = apple_music_activity.details
+            # TODO: This should use the button URL instead of a search for 100% accuracy
+            #   Currently discord.py doesnt provide the button URLs, the day they do this can be updated
+            search_string = "ytmsearch:" if (track) else ""
+            if track:
+                search_string += f"{track}"
+            if not search_string:
+                await interaction.followup.send(
+                    embed=await self.pylav.construct_embed(
+                        description=_(
+                            "I could not find a valid YouTube Music track in the activity "
+                            "{user_name_variable_do_not_translate} is partaking in."
+                        ).format(user_name_variable_do_not_translate=member.mention),
+                        messageable=interaction,
+                    ),
+                    ephemeral=True,
+                    wait=True,
+                )
+                return
+            response = await self.pylav.get_tracks(
+                await Query.from_string(search_string),
+                player=interaction.client.pylav.get_player(interaction.guild.id),
+            )
+            match response.loadType:
+                case "track":
+                    tracks = [response.data]
+                case "search":
+                    tracks = response.data
+                case "playlist":
+                    tracks = response.data.tracks
+                case __:
+                    tracks = []
+            if not tracks:
+                await interaction.followup.send(
+                    embed=await self.pylav.construct_embed(
+                        description=_("I could not find any tracks matching {query_variable_do_not_translate}.").format(
+                            query_variable_do_not_translate=search_string
+                        ),
+                        messageable=interaction,
+                    ),
+                    ephemeral=True,
+                    wait=True,
+                )
+                return
+            await self.command_play.callback(
+                self,
+                interaction,
+                query=tracks[0],
+            )
         else:
             await interaction.followup.send(
                 embed=await self.pylav.construct_embed(
