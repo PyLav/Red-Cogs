@@ -45,7 +45,7 @@ class PyLavController(
         self.bot = bot
         self._config = Config.get_conf(self, identifier=208903205982044161)
         self.__lock: dict[int, asyncio.Lock] = defaultdict(asyncio.Lock)
-        self._config.register_guild(
+        self.__defaults = dict(
             channel=None,
             list_for_requests=False,
             list_for_searches=False,
@@ -53,14 +53,15 @@ class PyLavController(
             enable_antispam=True,
             use_slow_mode=True,
         )
+        self._config.register_guild(**self.__defaults)
         self._config.register_global(
             listen_to_any_message=False,
         )
         self._channel_cache: dict[int, int] = {}
-        self._list_for_search_cache: dict[int, bool] = defaultdict(lambda: self._config.defaults["list_for_searches"])
-        self._list_for_command_cache: dict[int, bool] = defaultdict(lambda: self._config.defaults["list_for_requests"])
-        self._enable_antispam_cache: dict[int, bool] = defaultdict(lambda: self._config.defaults["enable_antispam"])
-        self._use_slow_mode_cache: dict[int, bool] = defaultdict(lambda: self._config.defaults["use_slow_mode"])
+        self._list_for_search_cache: dict[int, bool] = defaultdict(lambda: self.__defaults["list_for_searches"])
+        self._list_for_command_cache: dict[int, bool] = defaultdict(lambda: self.__defaults["list_for_requests"])
+        self._enable_antispam_cache: dict[int, bool] = defaultdict(lambda: self.__defaults["enable_antispam"])
+        self._use_slow_mode_cache: dict[int, bool] = defaultdict(lambda: self.__defaults["use_slow_mode"])
         self._view_cache: dict[int, PersistentControllerView] = {}
         self.__failed_messages_to_delete: dict[int, set[discord.Message]] = defaultdict(set)
         self.__success_messages_to_delete: dict[int, set[discord.Message]] = defaultdict(set)
