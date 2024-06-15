@@ -144,9 +144,12 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
         aliases=["now"],
         extras={"red_force_enable": True},
     )
+    @app_commands.describe(
+        to_dm=shorten_string(max_length=100, string=_("Whether to send this command to your DM instead."))
+    )
     @commands.guild_only()
     @requires_player()
-    async def command_now(self, context: PyLavContext):
+    async def command_now(self, context: PyLavContext, to_dm: bool = False):
         """Shows which track is currently being played on this server."""
         if isinstance(context, discord.Interaction):
             context = await self.bot.get_context(context)
@@ -161,6 +164,25 @@ class HybridCommands(DISCORD_COG_TYPE_MIXIN):
             )
             return
         kwargs = await context.player.get_currently_playing_message(messageable=context)
+        if to_dm:
+            try:
+                await context.author.send(**kwargs)
+            except discord.Forbidden:
+                await context.send(
+                    embed=await context.pylav.construct_embed(
+                        description=_("I am unable to send you a DM, please enable DMs from server members."),
+                        messageable=context,
+                    ),
+                    ephemeral=True,
+                )
+            else:
+                await context.send(
+                    embed=await context.pylav.construct_embed(
+                        description=_("I have sent the currently playing track to your DMs."), messageable=context
+                    ),
+                    ephemeral=True,
+                )
+            return
         await context.send(ephemeral=True, **kwargs)
 
     @commands.hybrid_command(
