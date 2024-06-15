@@ -73,7 +73,7 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
 
     @commands.is_owner()
     @commands.command(name="plm-playlists")
-    async def command_pylavmigrate(self, context: PyLavContext, confirm: bool, /) -> None:
+    async def command_pylavmigrate_playlist(self, context: PyLavContext, confirm: bool, /) -> None:
         """Migrate Audio Playlists to PyLav
 
         If you are sure you want to proceed please run this command again with the confirmation argument set to 1
