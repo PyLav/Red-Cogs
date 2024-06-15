@@ -45,6 +45,7 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
 
     @commands.is_owner()
     @commands.command(name="plmigrate")
+    @commands.max_concurrency(1, per=commands.BucketType.user)
     async def command_pylavmigrate(self, context: PyLavContext, confirm: bool, /) -> None:
         """Migrate Audio settings to PyLav
 
@@ -73,6 +74,7 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
 
     @commands.is_owner()
     @commands.command(name="plm-playlists")
+    @commands.max_concurrency(1, per=commands.BucketType.user)
     async def command_pylavmigrate_playlist(self, context: PyLavContext, confirm: bool, /) -> None:
         """Migrate Audio Playlists to PyLav
 
@@ -88,7 +90,7 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
         await self._process_playlists(playlist_api, context)
         await context.send(
             content=_(
-                "Migration of Audio cog Playlists to PyLav complete. " "\n{requester_variable_do_not_translate}."
+                "Migration of Audio cog Playlists to PyLav complete.\n{requester_variable_do_not_translate}."
             ).format(requester_variable_do_not_translate=context.author.mention),
             ephemeral=True,
         )
