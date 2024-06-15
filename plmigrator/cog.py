@@ -170,12 +170,20 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
                         url=pl.playlist_url,
                         tracks=tracks,
                     )
+                    LOGGER.info(
+                        "Successfully to migrate playlist %s (%s) from guild: %s in scope: %s",
+                        pl.playlist_name,
+                        pl.playlist_id,
+                        pl.author_id,
+                        pl.scope_id,
+                    )
             except Exception as exc:
                 LOGGER.error(
-                    "Failed to migrate playlist %s (%s) from guild: %s",
+                    "Failed to migrate playlist %s (%s) from guild: %s in scope: %s",
                     pl.playlist_name,
                     pl.playlist_id,
                     pl.author_id,
+                    pl.scope_id,
                     exc_info=exc,
                 )
 
