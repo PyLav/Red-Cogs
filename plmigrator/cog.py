@@ -171,7 +171,7 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
                         tracks=tracks,
                     )
                     LOGGER.info(
-                        "Successfully to migrate playlist %s (%s) from guild: %s in scope: %s",
+                        "Successfully migrated playlist %s (%s) from guild: %s in scope: %s",
                         pl.playlist_name,
                         pl.playlist_id,
                         pl.author_id,
