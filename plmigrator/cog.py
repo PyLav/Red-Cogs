@@ -124,37 +124,42 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
                         playlist_name,
                         scope_id,
                         author_id,
-                        playlist_url
+                        playlist_url,
+                        tracks
                     FROM
                         playlists
                     WHERE
-                        playlist_url IS NOT NULL
-                        AND deleted = false
+                        deleted = false
                 """
         row_results = await asyncio.to_thread(playlist_api.database.cursor().execute, query)
         for row in row_results:
             pl = PlaylistFetchResult(*row)
+            queries = [await Query.from_string(track["info"]["uri"]) for track in pl.tracks if track.get("info")]
+            url = pl.playlist_url
             try:
                 if pl.playlist_id == 42069:
                     continue
-                query = await Query.from_string(pl.playlist_url)
-
-                response = await self.pylav.get_tracks(query)
-                match response.loadType:
-                    case "track":
-                        tracks = [response.data]
-                    case "search":
-                        tracks = response.data
-                    case "playlist":
-                        tracks = response.data.tracks
-                    case __:
-                        LOGGER.error(
-                            "Failed to fetch v4+ tracks playlist %s (%s) from scope: %s",
-                            pl.playlist_name,
-                            pl.playlist_id,
-                            pl.scope_id,
-                        )
-                        continue
+                if url:
+                    response = await self.pylav.get_tracks(await Query.from_string(url))
+                    match response.loadType:
+                        case "track":
+                            tracks = [response.data]
+                        case "search":
+                            tracks = response.data
+                        case "playlist":
+                            tracks = response.data.tracks
+                        case __:
+                            LOGGER.error(
+                                "Failed to fetch v4+ tracks playlist %s (%s) from scope: %s",
+                                pl.playlist_name,
+                                pl.playlist_id,
+                                pl.scope_id,
+                            )
+                            continue
+                else:
+                    tracks, __, __ = await self.bot.pylav.get_all_tracks_for_queries(
+                        *queries, requester=context.guild.me
+                    )
 
                 if tracks:
                     await self.pylav.playlist_db_manager.create_or_update_playlist(
@@ -164,47 +169,6 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
                         author=pl.author_id,
                         url=pl.playlist_url,
                         tracks=tracks,
-                    )
-            except Exception as exc:
-                LOGGER.error(
-                    "Failed to migrate playlist %s (%s) from guild: %s",
-                    pl.playlist_name,
-                    pl.playlist_id,
-                    pl.author_id,
-                    exc_info=exc,
-                )
-        second_query = """
-                        SELECT
-                            playlist_id,
-                            playlist_name,
-                            scope_id,
-                            author_id,
-                            playlist_url,
-                            tracks
-                        FROM
-                            playlists
-                        WHERE
-                            playlist_url IS NULL
-                            AND deleted = false;
-                        """
-        row_results = await asyncio.to_thread(playlist_api.database.cursor().execute, second_query)
-        for row in row_results:
-            pl = PlaylistFetchResult(*row)
-            queries = [Query.from_string(track["info"]["uri"]) for track in pl.tracks if track.get("info")]
-            try:
-                if pl.playlist_id == 42069:
-                    continue
-                successful, __, __ = await self.bot.pylav.get_all_tracks_for_queries(
-                    *queries, requester=context.guild.me
-                )
-                if successful:
-                    await self.pylav.playlist_db_manager.create_or_update_playlist(
-                        identifier=pl.playlist_id,
-                        name=pl.playlist_name,
-                        scope=pl.scope_id,
-                        author=pl.author_id,
-                        url=pl.playlist_url,
-                        tracks=successful,
                     )
             except Exception as exc:
                 LOGGER.error(
