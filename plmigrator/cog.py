@@ -77,7 +77,7 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
         """Migrate Audio Playlists to PyLav
 
         If you are sure you want to proceed please run this command again with the confirmation argument set to 1
-        i.e `[p]plmigrate-playlists 1`
+        i.e `[p]pl,-playlists 1`
 
         Do Note this is a best effort task, somethings may not migrate.
         """
