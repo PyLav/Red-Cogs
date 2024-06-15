@@ -62,11 +62,33 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
         await self._process_global_settings(audio_config, context)
         for guild, guild_config in (await audio_config.all_guilds()).items():
             await self._process_server_settings(guild, guild_config)
-        await self._process_playlists(playlist_api)
+        await self._process_playlists(playlist_api, context)
         await context.send(
             content=_(
                 "Migration of Audio cog settings to PyLav complete. "
                 "Restart the bot for it to take effect.\n{requester_variable_do_not_translate}."
+            ).format(requester_variable_do_not_translate=context.author.mention),
+            ephemeral=True,
+        )
+
+    @commands.is_owner()
+    @commands.command(name="plm-playlists")
+    async def command_pylavmigrate(self, context: PyLavContext, confirm: bool, /) -> None:
+        """Migrate Audio Playlists to PyLav
+
+        If you are sure you want to proceed please run this command again with the confirmation argument set to 1
+        i.e `[p]plmigrate-playlists 1`
+
+        Do Note this is a best effort task, somethings may not migrate.
+        """
+        if not confirm:
+            await context.send_help()
+            return
+        __, playlist_api = await self._init_audio_cog_dependencies()
+        await self._process_playlists(playlist_api, context)
+        await context.send(
+            content=_(
+                "Migration of Audio cog Playlists to PyLav complete. " "\n{requester_variable_do_not_translate}."
             ).format(requester_variable_do_not_translate=context.author.mention),
             ephemeral=True,
         )
@@ -93,7 +115,7 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
             else:
                 await player_config.update_auto_play(False)
 
-    async def _process_playlists(self, playlist_api: PlaylistWrapper) -> None:
+    async def _process_playlists(self, playlist_api: PlaylistWrapper, context: PyLavContext) -> None:
         query = """
                     SELECT
                         playlist_id,
@@ -104,7 +126,8 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
                     FROM
                         playlists
                     WHERE
-                    playlist_url IS NOT NULL
+                        playlist_url IS NOT NULL
+                        AND deleted = false
                 """
         row_results = await asyncio.to_thread(playlist_api.database.cursor().execute, query)
         for row in row_results:
@@ -139,6 +162,47 @@ class PyLavMigrator(DISCORD_COG_TYPE_MIXIN):
                         author=pl.author_id,
                         url=pl.playlist_url,
                         tracks=tracks,
+                    )
+            except Exception as exc:
+                LOGGER.error(
+                    "Failed to migrate playlist %s (%s) from guild: %s",
+                    pl.playlist_name,
+                    pl.playlist_id,
+                    pl.author_id,
+                    exc_info=exc,
+                )
+        second_query = """
+                        SELECT
+                            playlist_id,
+                            playlist_name,
+                            scope_id,
+                            author_id,
+                            playlist_url,
+                            tracks
+                        FROM
+                            playlists
+                        WHERE
+                            playlist_url IS NULL
+                            AND deleted = false;
+                        """
+        row_results = await asyncio.to_thread(playlist_api.database.cursor().execute, second_query)
+        for row in row_results:
+            pl = PlaylistFetchResult(*row)
+            queries = [Query.from_string(track["info"]["uri"]) for track in pl.tracks if track.get("info")]
+            try:
+                if pl.playlist_id == 42069:
+                    continue
+                successful, __, __ = await self.bot.pylav.get_all_tracks_for_queries(
+                    *queries, requester=context.guild.me
+                )
+                if successful:
+                    await self.pylav.playlist_db_manager.create_or_update_playlist(
+                        identifier=pl.playlist_id,
+                        name=pl.playlist_name,
+                        scope=pl.scope_id,
+                        author=pl.author_id,
+                        url=pl.playlist_url,
+                        tracks=successful,
                     )
             except Exception as exc:
                 LOGGER.error(
