@@ -1,15 +1,14 @@
 name: Pre-commit & Sourcery
 on:
     pull_request:
-    push:
-        branches:
+        branches: [develop]
 
 permissions:
     pull-requests: write
 
 jobs:
     run:
-        name: Pre-commit fixes & Sourcery
+        name: Pre-commit fixes
         runs-on: [ubuntu-latest]
         steps:
         -   uses: actions/checkout@v4.1.7
