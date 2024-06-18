@@ -58,9 +58,11 @@ class ContextMenus(DISCORD_COG_TYPE_MIXIN):
                     description=_(
                         "This command is unavailable in this channel. Please use {channel_name_variable_do_not_translate} instead."
                     ).format(
-                        channel_name_variable_do_not_translate=channel.mention
-                        if (channel := interaction.guild.get_channel_or_thread(channel_id))
-                        else channel_id
+                        channel_name_variable_do_not_translate=(
+                            channel.mention
+                            if (channel := interaction.guild.get_channel_or_thread(channel_id))
+                            else channel_id
+                        )
                     ),
                 ),
                 ephemeral=True,
@@ -167,9 +169,11 @@ class ContextMenus(DISCORD_COG_TYPE_MIXIN):
                     description=_(
                         "This command is unavailable in this channel. Please use {channel_name_variable_do_not_translate} instead."
                     ).format(
-                        channel_name_variable_do_not_translate=channel.mention
-                        if (channel := interaction.guild.get_channel_or_thread(channel_id))
-                        else channel_id
+                        channel_name_variable_do_not_translate=(
+                            channel.mention
+                            if (channel := interaction.guild.get_channel_or_thread(channel_id))
+                            else channel_id
+                        )
                     ),
                 ),
                 ephemeral=True,

@@ -172,9 +172,11 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         await self.pylav.player_manager.global_config.update_self_deaf(toggle)
         await context.send(
             embed=await self.pylav.construct_embed(
-                description=_("From now on, I will deafen myself when joining a voice channel.")
-                if toggle
-                else _("From now on, I will no longer deafen myself when joining a voice channel."),
+                description=(
+                    _("From now on, I will deafen myself when joining a voice channel.")
+                    if toggle
+                    else _("From now on, I will no longer deafen myself when joining a voice channel.")
+                ),
                 messageable=context,
             ),
             ephemeral=True,
@@ -192,9 +194,11 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         await self.pylav.player_manager.global_config.update_auto_shuffle(toggle)
         await context.send(
             embed=await self.pylav.construct_embed(
-                description=_("From now on, I will auto shuffle my track queue when new songs are added.")
-                if toggle
-                else _("From now on, I will no longer auto shuffle my track queue when new songs are added."),
+                description=(
+                    _("From now on, I will auto shuffle my track queue when new songs are added.")
+                    if toggle
+                    else _("From now on, I will no longer auto shuffle my track queue when new songs are added.")
+                ),
                 messageable=context,
             ),
             ephemeral=True,
@@ -212,9 +216,11 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         await self.pylav.player_manager.global_config.update_shuffle(toggle)
         await context.send(
             embed=await self.pylav.construct_embed(
-                description=_("From now on, I will allow users to shuffle the queue.")
-                if toggle
-                else _("From now on, I will no longer allow users to shuffle the queue."),
+                description=(
+                    _("From now on, I will allow users to shuffle the queue.")
+                    if toggle
+                    else _("From now on, I will no longer allow users to shuffle the queue.")
+                ),
                 messageable=context,
             ),
             ephemeral=True,
@@ -231,12 +237,14 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
         await self.pylav.player_manager.global_config.update_auto_play(toggle)
         await context.send(
             embed=await self.pylav.construct_embed(
-                description=_(
-                    "From now on, I will automatically play songs from the specified playlist when the queue is empty."
-                )
-                if toggle
-                else _(
-                    "From now on, I will no longer automatically play songs from the specified playlist when the queue is empty."
+                description=(
+                    _(
+                        "From now on, I will automatically play songs from the specified playlist when the queue is empty."
+                    )
+                    if toggle
+                    else _(
+                        "From now on, I will no longer automatically play songs from the specified playlist when the queue is empty."
+                    )
                 ),
                 messageable=context,
             ),
@@ -702,9 +710,11 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
             await config.update_self_deaf(toggle)
         await context.send(
             embed=await self.pylav.construct_embed(
-                description=_("I will deafen myself when joining voice channels on this server.")
-                if toggle
-                else _("I will no longer deafen myself when joining voice channels on this server."),
+                description=(
+                    _("I will deafen myself when joining voice channels on this server.")
+                    if toggle
+                    else _("I will no longer deafen myself when joining voice channels on this server.")
+                ),
                 messageable=context,
             ),
             ephemeral=True,
@@ -734,9 +744,11 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
             await config.update_auto_shuffle(toggle)
         await context.send(
             embed=await self.pylav.construct_embed(
-                description=_("Auto shuffle turned on for this server.")
-                if toggle
-                else _("Auto shuffle turned off for this server."),
+                description=(
+                    _("Auto shuffle turned on for this server.")
+                    if toggle
+                    else _("Auto shuffle turned off for this server.")
+                ),
                 messageable=context,
             ),
             ephemeral=True,
@@ -767,9 +779,9 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
             await config.update_shuffle(toggle)
         await context.send(
             embed=await self.pylav.construct_embed(
-                description=_("Shuffling turned on for this server.")
-                if toggle
-                else _("Shuffling turned off for this server."),
+                description=(
+                    _("Shuffling turned on for this server.") if toggle else _("Shuffling turned off for this server.")
+                ),
                 messageable=context,
             ),
             ephemeral=True,
@@ -803,9 +815,11 @@ class ConfigCommands(DISCORD_COG_TYPE_MIXIN):
             await config.update_auto_play(toggle)
         await context.send(
             embed=await self.pylav.construct_embed(
-                description=_("From now on, I will automatically play songs when the queue is empty.")
-                if toggle
-                else _("From now on, I will no longer automatically play songs when the queue is empty."),
+                description=(
+                    _("From now on, I will automatically play songs when the queue is empty.")
+                    if toggle
+                    else _("From now on, I will no longer automatically play songs when the queue is empty.")
+                ),
                 messageable=context,
             ),
             ephemeral=True,

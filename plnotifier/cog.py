@@ -159,9 +159,9 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
             webhook_url=None,
             webhook_channel_id=None,
         )
-        self._message_queue: dict[
-            discord.TextChannel | discord.VoiceChannel | discord.Thread, list[discord.Embed]
-        ] = defaultdict(list)
+        self._message_queue: dict[discord.TextChannel | discord.VoiceChannel | discord.Thread, list[discord.Embed]] = (
+            defaultdict(list)
+        )
         self._scheduled_jobs: list[Job] = []
         self._webhook_cache: dict[int, discord.Webhook] = {}
         self._session = aiohttp.ClientSession(json_serialize=json.dumps, auto_decompress=False)
@@ -436,11 +436,9 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
                 ).format(
                     event_variable_do_not_translate=inline(event),
                     toggle_variable_do_not_translate=_("notify") if toggle else _("do not notify"),
-                    extras_variable_do_not_translate=_(" with mentions")
-                    if use_mention and toggle
-                    else _(" without mentions")
-                    if toggle
-                    else "",
+                    extras_variable_do_not_translate=(
+                        _(" with mentions") if use_mention and toggle else _(" without mentions") if toggle else ""
+                    ),
                 ),
                 messageable=context,
             ),
@@ -1491,11 +1489,11 @@ class PyLavNotifier(DISCORD_COG_TYPE_MIXIN):
                 description=_(
                     "[Node={node_variable_do_not_translate}] {requester_variable_do_not_translate} added {track_count_variable_do_not_translate} to the queue."
                 ).format(
-                    track_count_variable_do_not_translate=_("{count_variable_do_not_translate} track").format(
-                        count_variable_do_not_translate=count
-                    )
-                    if (count := len(event.tracks)) > 1
-                    else await event.tracks[0].get_track_display_name(with_url=True),
+                    track_count_variable_do_not_translate=(
+                        _("{count_variable_do_not_translate} track").format(count_variable_do_not_translate=count)
+                        if (count := len(event.tracks)) > 1
+                        else await event.tracks[0].get_track_display_name(with_url=True)
+                    ),
                     requester_variable_do_not_translate=user,
                     node_variable_do_not_translate=event.player.node.name,
                 ),

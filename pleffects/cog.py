@@ -977,9 +977,11 @@ class PyLavEffects(DISCORD_COG_TYPE_MIXIN):
             embed=await self.pylav.construct_embed(
                 title=_("Current filters applied to the player"),
                 description="__**{translation}:**__\n{data}".format(
-                    data=box(tabulate(data, headers="keys", tablefmt="fancy_grid", maxcolwidths=[10, 18]), lang="ansi")  # type: ignore
-                    if data
-                    else _("None"),
+                    data=(
+                        box(tabulate(data, headers="keys", tablefmt="fancy_grid", maxcolwidths=[10, 18]), lang="ansi")  # type: ignore
+                        if data
+                        else _("None")
+                    ),
                     translation=discord.utils.escape_markdown(_("Currently Applied")),
                 ),
                 messageable=context,

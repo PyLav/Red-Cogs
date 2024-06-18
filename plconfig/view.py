@@ -291,12 +291,14 @@ class EmbedGenerator:
         dj_user_str = (
             "\n".join(
                 [
-                    EightBitANSI.colorize(
-                        discord.utils.escape_markdown(str(member_obj)),
-                        color=EightBitANSI.closest_color(*member_obj.color.to_rgb()),
+                    (
+                        EightBitANSI.colorize(
+                            discord.utils.escape_markdown(str(member_obj)),
+                            color=EightBitANSI.closest_color(*member_obj.color.to_rgb()),
+                        )
+                        if (member_obj := self.context.guild.get_member(user))
+                        else EightBitANSI.paint_green(user)
                     )
-                    if (member_obj := self.context.guild.get_member(user))
-                    else EightBitANSI.paint_green(user)
                     for user in config["dj_users"]
                 ]
             )
@@ -309,12 +311,14 @@ class EmbedGenerator:
         dj_role_str = (
             "\n".join(
                 [
-                    EightBitANSI.colorize(
-                        discord.utils.escape_markdown(str(role_obj)),
-                        color=EightBitANSI.closest_color(*role_obj.color.to_rgb()),
+                    (
+                        EightBitANSI.colorize(
+                            discord.utils.escape_markdown(str(role_obj)),
+                            color=EightBitANSI.closest_color(*role_obj.color.to_rgb()),
+                        )
+                        if (role_obj := self.context.guild.get_role(role))
+                        else EightBitANSI.paint_green(role)
                     )
-                    if (role_obj := self.context.guild.get_role(role))
-                    else EightBitANSI.paint_green(role)
                     for role in config["dj_roles"]
                 ]
             )
@@ -429,21 +433,27 @@ class EmbedGenerator:
             (EightBitANSI.paint_white(_("Auto Alone Disconnect")), auto_alone_dc_message),
             (
                 EightBitANSI.paint_white(_("Forced Voice Channel")),
-                EightBitANSI.paint_green(config["forced_channel_id"])
-                if config["forced_channel_id"] != 0
-                else EightBitANSI.paint_red(_("None")),
+                (
+                    EightBitANSI.paint_green(config["forced_channel_id"])
+                    if config["forced_channel_id"] != 0
+                    else EightBitANSI.paint_red(_("None"))
+                ),
             ),
             (
                 EightBitANSI.paint_white(_("Forced Command Channel")),
-                EightBitANSI.paint_green(config["text_channel_id"])
-                if config["text_channel_id"] != 0
-                else EightBitANSI.paint_red(_("None")),
+                (
+                    EightBitANSI.paint_green(config["text_channel_id"])
+                    if config["text_channel_id"] != 0
+                    else EightBitANSI.paint_red(_("None"))
+                ),
             ),
             (
                 EightBitANSI.paint_white(_("Forced Notification Channel")),
-                EightBitANSI.paint_green(config["notify_channel_id"])
-                if config["notify_channel_id"] != 0
-                else EightBitANSI.paint_red(_("None")),
+                (
+                    EightBitANSI.paint_green(config["notify_channel_id"])
+                    if config["notify_channel_id"] != 0
+                    else EightBitANSI.paint_red(_("None"))
+                ),
             ),
             (EightBitANSI.paint_white(_("Disc Jockey Users")), dj_user_str),
             (EightBitANSI.paint_white(_("Disc Jockey Roles")), dj_role_str),
