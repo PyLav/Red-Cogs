@@ -17,7 +17,7 @@ pylav_threshold_version = f"{pylav_current_minor_version.major}.{pylav_current_m
 
 print(f"PyLav max version: {pylav_threshold_version}")
 
-new_pylav_version = f"Py-Lav[all]>={__PYLAV_VERSION__}<{pylav_threshold_version}"
+new_pylav_version = f"Py-Lav[all]>={__PYLAV_VERSION__},<{pylav_threshold_version}"
 
 print(f"New PyLav version range: {new_pylav_version}")
 
