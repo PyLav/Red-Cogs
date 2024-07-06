@@ -576,10 +576,18 @@ class PyLavPlaylists(
         name="play",
         description=_("Enqueue a playlist"),
     )
-    @app_commands.describe(playlist=_("The playlist to enqueue"), reverse=_("Set whether the playlist should be queued starting from the last track"))
+    @app_commands.describe(
+        playlist=_("The playlist to enqueue"),
+        reverse=_("Set whether the playlist should be queued starting from the last track"),
+    )
     @app_commands.guild_only()
     @invoker_is_dj(slash=True)
-    async def slash_playlist_play(self, interaction: DISCORD_INTERACTION_TYPE, playlist: PlaylistConverter, reverse: bool = False):
+    async def slash_playlist_play(
+        self,
+        interaction: DISCORD_INTERACTION_TYPE,
+        playlist: PlaylistConverter,
+        reverse: bool = False,
+    ):
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         context = await self.bot.get_context(interaction)
