@@ -844,6 +844,114 @@ class PyLavPlaylists(
             ephemeral=True,
         )
 
+    @slash_playlist.command(name="append", description=shorten_string(max_length=100, string=_("Append a URL or song to a playlist")))
+    @app_commands.describe(
+        playlist=shorten_string(max_length=100, string=_("The playlist to append to")),
+        url=shorten_string(
+            max_length=100,
+            string=_(
+                "URL to append - any direct link including radio streams e.g. https://radio.example.com/stream"
+            ),
+        ),
+    )
+    @app_commands.guild_only()
+    async def slash_playlist_append(
+        self, interaction: DISCORD_INTERACTION_TYPE, playlist: PlaylistConverter, url: str
+    ):
+        if not interaction.response.is_done():
+            await interaction.response.defer(ephemeral=True)
+        context = await self.bot.get_context(interaction)
+
+        playlists: list[Playlist] = playlist
+        playlist = await maybe_prompt_for_playlist(cog=self, playlists=playlists, context=context)
+        if not playlist:
+            return
+
+        if playlist.id not in BUNDLED_PLAYLIST_IDS:
+            manageable = await playlist.can_manage(bot=self.bot, requester=context.author)
+        else:
+            manageable = False
+
+        if not manageable:
+            await context.send(
+                embed=await context.pylav.construct_embed(
+                    messageable=context,
+                    description=_(
+                        "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} cannot be managed by yourself."
+                    ).format(
+                        user_variable_do_not_translate=context.author.mention,
+                        playlist_name_variable_do_not_translate=await playlist.get_name_formatted(with_url=True),
+                    ),
+                ),
+                ephemeral=True,
+            )
+            return
+
+        url = url.strip("<>").strip()
+        query = await Query.from_string(url)
+        response = await context.pylav.get_tracks(query, player=context.player)
+
+        if response is None:
+            await context.send(
+                embed=await context.pylav.construct_embed(
+                    messageable=context,
+                    description=_(
+                        "Could not resolve `{url_variable_do_not_translate}` - no capable node is available. "
+                        "Make sure your Lavalink node supports this source."
+                    ).format(url_variable_do_not_translate=url),
+                ),
+                ephemeral=True,
+            )
+            return
+
+        match response.loadType:
+            case "track":
+                tracks = [response.data]
+            case "search":
+                tracks = list(response.data)
+            case "playlist":
+                tracks = list(response.data.tracks)
+            case _:
+                tracks = []
+
+        if not tracks:
+            await context.send(
+                embed=await context.pylav.construct_embed(
+                    messageable=context,
+                    description=_(
+                        "No tracks were found for `{url_variable_do_not_translate}`. "
+                        "The URL may be invalid or unsupported."
+                    ).format(url_variable_do_not_translate=url),
+                ),
+                ephemeral=True,
+            )
+            return
+
+        await playlist.add_track(list(tracks))
+        count = len(tracks)
+        match count:
+            case 1:
+                added_msg = _("1 track was added to the playlist.")
+            case __:
+                added_msg = _(
+                    "{track_count_variable_do_not_translate} tracks were added to the playlist."
+                ).format(track_count_variable_do_not_translate=count)
+
+        await context.send(
+            embed=await context.pylav.construct_embed(
+                messageable=context,
+                title=_("Playlist updated"),
+                description=_(
+                    "{user_variable_do_not_translate}, playlist {playlist_name_variable_do_not_translate} has been updated.\n{added_variable_do_not_translate}"
+                ).format(
+                    user_variable_do_not_translate=context.author.mention,
+                    playlist_name_variable_do_not_translate=await playlist.get_name_formatted(with_url=True),
+                    added_variable_do_not_translate=added_msg,
+                ),
+            ),
+            ephemeral=True,
+        )
+
     @slash_playlist.command(name="mix", description=_("Play a YouTube mix playlist from a input"))
     @app_commands.describe(
         video=_("The YouTube video ID to play a mix from"),
