@@ -17,7 +17,7 @@ pylav_threshold_version = f"{pylav_current_minor_version.major}.{pylav_current_m
 
 print(f"PyLav max version: {pylav_threshold_version}")
 
-new_pylav_version = "Py-Lav[all] @ git+https://github.com/1Example/PyLav@main"
+new_pylav_version = "Py-Lav[all] @ git+https://github.com/1Example/PyLav@develop"
 
 print(f"New PyLav version range: {new_pylav_version}")
 
