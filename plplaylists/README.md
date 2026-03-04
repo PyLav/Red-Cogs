@@ -42,3 +42,6 @@
   - Create playlist from files.
     - If no URL is provided, it will upload the playlist file from the current attached filed.
     - If a URL is provided, it will upload the playlist file from the URL.
+- `/playlist append <playlist> [url]`
+  - Append a URL or song to a playlist.
+    - URL to append - any direct link including radio streams e.g. https://radio.example.com/stream
