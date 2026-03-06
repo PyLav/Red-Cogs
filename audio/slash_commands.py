@@ -325,7 +325,7 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN, SharedMethods):
             if track is None:
                 return
             await player.add(track=track, requester=context.author.id, index=index)
-            if enqueue_type == "play_now" or not (player.is_active or player.queue.empty()):
+            if (not (player.is_active or player.queue.empty())) or priority == -1:
                 await player.next(requester=context.author)
             _query = await track.query()
             queries = [] if _query is None else [_query]
