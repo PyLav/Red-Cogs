@@ -260,11 +260,13 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN, SharedMethods):
                 query = "\n".join(
                     attachment.url for attachment in attachments if valid_query_attachment(attachment.filename)
                 )
+        cached_queries = None
         if query is not None:
             _track = self._track_cache.get(query)
             if _track is not None:
-                query = _track
-        if not query:
+                cached_queries = [_track]
+                query = None
+        if not query and cached_queries is None:
             await context.send(
                 embed=await self.pylav.construct_embed(
                     description=_("You need to give me a query to enqueue."),
@@ -301,7 +303,10 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN, SharedMethods):
                 )
                 return
             player = await self.pylav.connect_player(channel=channel, requester=context.author)
-        queries = [await Query.from_string(qf) for q in query.split("\n") if (qf := q.strip("<>").strip())]
+        if cached_queries is not None:
+            queries = cached_queries
+        else:
+            queries = [await Query.from_string(qf) for q in query.split("\n") if (qf := q.strip("<>").strip())]
         total_tracks_enqueue = 0
         single_track = None
         if isinstance(enqueue_type, app_commands.Choice):
