@@ -302,29 +302,6 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN, SharedMethods):
                 )
                 return
             player = await self.pylav.connect_player(channel=channel, requester=context.author)
-        if isinstance(query, (Track, Track_namespace_conflict)):
-            track = await Track.build_track(
-                node=player.node,
-                data=query,
-                requester=context.author.id,
-                query=None,
-                player_instance=player,
-            )
-            if track is None:
-                return
-            await player.add(track=track, requester=context.author.id)
-            if not (player.is_active or player.queue.empty()):
-                await player.next(requester=context.author)
-            _query = await track.query()
-            queries = [] if _query is None else [_query]
-            await self._process_play_message(context, track, 1, queries)
-            return
-        if isinstance(query, str):
-            queries = [await Query.from_string(qf) for q in query.split("\n") if (qf := q.strip("<>").strip())]
-        else:
-            queries = []
-        total_tracks_enqueue = 0
-        single_track = None
         if isinstance(enqueue_type, app_commands.Choice):
             enqueue_type = enqueue_type.value
         match enqueue_type:
@@ -337,6 +314,29 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN, SharedMethods):
             case __:
                 priority = 100
                 index = None
+        if isinstance(query, (Track, Track_namespace_conflict)):
+            track = await Track.build_track(
+                node=player.node,
+                data=query,
+                requester=context.author.id,
+                query=None,
+                player_instance=player,
+            )
+            if track is None:
+                return
+            await player.add(track=track, requester=context.author.id, index=index)
+            if enqueue_type == "play_now" or not (player.is_active or player.queue.empty()):
+                await player.next(requester=context.author)
+            _query = await track.query()
+            queries = [] if _query is None else [_query]
+            await self._process_play_message(context, track, 1, queries)
+            return
+        if isinstance(query, str):
+            queries = [await Query.from_string(qf) for q in query.split("\n") if (qf := q.strip("<>").strip())]
+        else:
+            queries = []
+        total_tracks_enqueue = 0
+        single_track = None
         LOGGER.info(f"Priority: {priority}, Index: {index}")
         if queries:
             single_track, total_tracks_enqueue = await self._process_play_queries(
