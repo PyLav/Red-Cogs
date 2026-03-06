@@ -247,11 +247,23 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN, SharedMethods):
         context = await self.bot.get_context(interaction)
         if context.interaction and not context.interaction.response.is_done():
             await context.defer(ephemeral=True)
+        if query == "FqgqQW21tQ@#1g2fasf2":
+            return await context.send(
+                embed=await self.pylav.construct_embed(
+                    description=_("You have not selected something to play."),
+                    messageable=context,
+                ),
+                ephemeral=True,
+            )
         if query is None:
             if attachments := context.message.attachments:
                 query = "\n".join(
                     attachment.url for attachment in attachments if valid_query_attachment(attachment.filename)
                 )
+        if query is not None:
+            _track = self._track_cache.get(query)
+            if _track is not None:
+                query = _track
         if not query:
             await context.send(
                 embed=await self.pylav.construct_embed(
@@ -313,3 +325,85 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN, SharedMethods):
             await player.next(requester=context.author)
 
         await self._process_play_message(context, single_track, total_tracks_enqueue, queries)
+
+    @slash_play.autocomplete("query")
+    async def slash_play_autocomplete_query(
+        self, interaction: DISCORD_INTERACTION_TYPE, current: str
+    ):
+        if not interaction.response.is_done():
+            await interaction.response.defer(ephemeral=True)
+        # If it looks like a URL, don't show autocomplete
+        if current and (current.startswith("http://") or current.startswith("https://")):
+            return [
+                Choice(
+                    name=shorten_string(max_length=100, string=current),
+                    value=current,
+                )
+            ]
+        if not current:
+            return [
+                Choice(
+                    name=shorten_string(max_length=100, string=_("Type to search YouTube...")),
+                    value="FqgqQW21tQ@#1g2fasf2",
+                )
+            ]
+        search_query = f"ytsearch:{current}"
+        original_query = await Query.from_string(search_query)
+        try:
+            response = await interaction.client.pylav.search_query(
+                original_query,
+                fullsearch=True,
+                player=interaction.client.pylav.get_player(interaction.guild.id),
+            )
+        except Exception as e:
+            LOGGER.debug(f"Error searching for {original_query}", exc_info=e)
+            return [
+                Choice(
+                    name=shorten_string(max_length=100, string=_("Error searching YouTube")),
+                    value="FqgqQW21tQ@#1g2fasf2",
+                )
+            ]
+        if not response:
+            return [
+                Choice(
+                    name=shorten_string(max_length=100, string=_("No results found on YouTube")),
+                    value="FqgqQW21tQ@#1g2fasf2",
+                )
+            ]
+        match response.loadType:
+            case "track":
+                tracks = [response.data]
+            case "search":
+                tracks = response.data
+            case "playlist":
+                tracks = response.data.tracks
+            case __:
+                tracks = []
+        tracks = tracks[:25]
+        if not tracks:
+            return [
+                Choice(
+                    name=shorten_string(max_length=100, string=_("No results found on YouTube")),
+                    value="FqgqQW21tQ@#1g2fasf2",
+                )
+            ]
+        choices = []
+        node = interaction.client.pylav.get_my_node()
+        if node is None:
+            node = await interaction.client.pylav.node_manager.find_best_node(feature="youtube")
+        player = interaction.client.pylav.get_player(interaction.guild.id)
+        for track in tracks:
+            track = await Track.build_track(
+                node=node, data=track, query=original_query, requester=interaction.user.id, player_instance=player
+            )
+            if track is None:
+                continue
+            track_id = hashlib.md5(track.encoded.encode()).hexdigest()
+            self._track_cache[track_id] = track
+            choices.append(
+                Choice(
+                    name=await track.get_track_display_name(max_length=95, unformatted=True, with_url=False),
+                    value=track_id,
+                )
+            )
+        return choices
