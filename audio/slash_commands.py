@@ -17,6 +17,7 @@ from pylav.extension.red.utils.decorators import invoker_is_dj
 from pylav.extension.red.utils.validators import valid_query_attachment
 from pylav.helpers.format.strings import shorten_string
 from pylav.logging import getLogger
+from pylav.nodes.api.responses.track import Track as Track_namespace_conflict
 from pylav.players.query.obj import Query
 from pylav.players.tracks.obj import Track
 from pylav.type_hints.bot import DISCORD_COG_TYPE_MIXIN, DISCORD_INTERACTION_TYPE
@@ -260,13 +261,11 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN, SharedMethods):
                 query = "\n".join(
                     attachment.url for attachment in attachments if valid_query_attachment(attachment.filename)
                 )
-        cached_queries = None
         if query is not None:
             _track = self._track_cache.get(query)
             if _track is not None:
-                cached_queries = [_track]
-                query = None
-        if not query and cached_queries is None:
+                query = _track
+        if not query:
             await context.send(
                 embed=await self.pylav.construct_embed(
                     description=_("You need to give me a query to enqueue."),
@@ -303,10 +302,27 @@ class SlashCommands(DISCORD_COG_TYPE_MIXIN, SharedMethods):
                 )
                 return
             player = await self.pylav.connect_player(channel=channel, requester=context.author)
-        if cached_queries is not None:
-            queries = cached_queries
-        else:
+        if isinstance(query, (Track, Track_namespace_conflict)):
+            track = await Track.build_track(
+                node=player.node,
+                data=query,
+                requester=context.author.id,
+                query=None,
+                player_instance=player,
+            )
+            if track is None:
+                return
+            await player.add(track=track, requester=context.author.id)
+            if not (player.is_active or player.queue.empty()):
+                await player.next(requester=context.author)
+            _query = await track.query()
+            queries = [] if _query is None else [_query]
+            await self._process_play_message(context, track, 1, queries)
+            return
+        if isinstance(query, str):
             queries = [await Query.from_string(qf) for q in query.split("\n") if (qf := q.strip("<>").strip())]
+        else:
+            queries = []
         total_tracks_enqueue = 0
         single_track = None
         if isinstance(enqueue_type, app_commands.Choice):
