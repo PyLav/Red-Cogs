@@ -1,6 +1,5 @@
-# Official [PyLav](https://github.com/PyLav/PyLav) Cogs for [Red-DiscordBot](https://github.com/Cog-Creators/Red-DiscordBot)
+# Official [PyLav]([https://github.com/PyLav/PyLav](https://github.com/1Example/PyLav)) Cogs for [Red-DiscordBot](https://github.com/Cog-Creators/Red-DiscordBot)
 [![Crowdin](https://badges.crowdin.net/pylav/localized.svg)](https://crowdin.com/project/pylav)[![GitHub license](https://img.shields.io/github/license/PyLav/PyLav.svg)](https://github.com/PyLav/Py-Lav/blob/develop/LICENSE)
-[![Support Server](https://img.shields.io/discord/970987707834720266)](https://discord.com/invite/vnmcXqtgeY)
 
 About Cogs
 ---------------------------
@@ -30,22 +29,13 @@ Documentation
 Getting Started
 -------------------------------------
 > **Warning**
-> Make sure to follow [PyLav Setup](https://github.com/PyLav/PyLav/blob/develop/SETUP.md)
+> Make sure to follow [PyLav Setup](https://github.com/1Example/PyLav/blob/develop/SETUP.md)
 
 
 If you already have a Red instance with PyLav setup then you can do the following
 ```
 [p]load downloader
-[p]repo add PyLav https://github.com/PyLav/Red-Cogs
+[p]repo add PyLav https://github.com/1Example/PyLav-Cogs
 [p]cog install PyLav audio
 [p]load audio
 ```
-
-Translations
-------------------------------------
-You can help translating the project into your language here:
-[![Crowdin](https://badges.crowdin.net/pylav/localized.svg)](https://crowdin.com/project/pylav)
-
-------------------------------
-
-## Join our support server [![Support Server](https://img.shields.io/discord/970987707834720266?style=social)](https://discord.com/invite/vnmcXqtgeY)
